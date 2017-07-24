@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated service -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="de.dfki.iui.basys.model.service.presentation.ServiceModelWizardID"
+            name="%_UI_ServiceModelWizard_label"
+            class="de.dfki.iui.basys.model.service.presentation.ServiceModelWizard"
+            category="de.dfki.iui.basys.workbench.wizard.category.ID"
+            icon="icons/full/obj16/ServiceModelFile.png">
+         <description>%_UI_ServiceModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated service -->
+      <editor
+            id="de.dfki.iui.basys.model.service.presentation.ServiceEditorID"
+            name="%_UI_ServiceEditor_label"
+            icon="icons/full/obj16/ServiceModelFile.png"
+            extensions="service"
+            class="de.dfki.iui.basys.model.service.presentation.ServiceEditor"
+            contributorClass="de.dfki.iui.basys.model.service.presentation.ServiceActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

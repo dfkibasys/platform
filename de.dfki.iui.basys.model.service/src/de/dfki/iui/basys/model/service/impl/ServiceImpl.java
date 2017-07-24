@@ -1,0 +1,501 @@
+/**
+ */
+package de.dfki.iui.basys.model.service.impl;
+
+import de.dfki.iui.basys.model.base.BasePackage;
+import de.dfki.iui.basys.model.base.Entity;
+import de.dfki.iui.basys.model.base.IdentifiableEntity;
+import de.dfki.iui.basys.model.base.Metadata;
+import de.dfki.iui.basys.model.service.Operation;
+import de.dfki.iui.basys.model.service.Publication;
+import de.dfki.iui.basys.model.service.Service;
+import de.dfki.iui.basys.model.service.ServicePackage;
+import de.dfki.iui.basys.model.service.Subscription;
+
+import java.util.Collection;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.impl.ENamedElementImpl;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.InternalEList;
+
+/**
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>Service</b></em>'.
+ * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceImpl#getMetadata <em>Metadata</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceImpl#getId <em>Id</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceImpl#getVersion <em>Version</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceImpl#getOperations <em>Operations</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceImpl#getPublications <em>Publications</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceImpl#getSubscriptions <em>Subscriptions</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceImpl#getDependencies <em>Dependencies</em>}</li>
+ * </ul>
+ *
+ * @generated
+ */
+public class ServiceImpl extends ENamedElementImpl implements Service {
+	/**
+	 * The cached value of the '{@link #getMetadata() <em>Metadata</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMetadata()
+	 * @generated
+	 * @ordered
+	 */
+	protected Metadata metadata;
+
+	/**
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ID_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected String id = ID_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getVersion() <em>Version</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVersion()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String VERSION_EDEFAULT = "";
+
+	/**
+	 * The cached value of the '{@link #getVersion() <em>Version</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVersion()
+	 * @generated
+	 * @ordered
+	 */
+	protected String version = VERSION_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getOperations() <em>Operations</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOperations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Operation> operations;
+
+	/**
+	 * The cached value of the '{@link #getPublications() <em>Publications</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPublications()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Publication> publications;
+
+	/**
+	 * The cached value of the '{@link #getSubscriptions() <em>Subscriptions</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSubscriptions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Subscription> subscriptions;
+
+	/**
+	 * The cached value of the '{@link #getDependencies() <em>Dependencies</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDependencies()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Service> dependencies;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected ServiceImpl() {
+		super();
+		setId(EcoreUtil.generateUUID());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EClass eStaticClass() {
+		return ServicePackage.Literals.SERVICE;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Metadata getMetadata() {
+		return metadata;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetMetadata(Metadata newMetadata, NotificationChain msgs) {
+		Metadata oldMetadata = metadata;
+		metadata = newMetadata;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ServicePackage.SERVICE__METADATA, oldMetadata, newMetadata);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMetadata(Metadata newMetadata) {
+		if (newMetadata != metadata) {
+			NotificationChain msgs = null;
+			if (metadata != null)
+				msgs = ((InternalEObject)metadata).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ServicePackage.SERVICE__METADATA, null, msgs);
+			if (newMetadata != null)
+				msgs = ((InternalEObject)newMetadata).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ServicePackage.SERVICE__METADATA, null, msgs);
+			msgs = basicSetMetadata(newMetadata, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ServicePackage.SERVICE__METADATA, newMetadata, newMetadata));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getId() {
+		return id;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setId(String newId) {
+		String oldId = id;
+		id = newId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ServicePackage.SERVICE__ID, oldId, id));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getVersion() {
+		return version;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setVersion(String newVersion) {
+		String oldVersion = version;
+		version = newVersion;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ServicePackage.SERVICE__VERSION, oldVersion, version));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Operation> getOperations() {
+		if (operations == null) {
+			operations = new EObjectContainmentEList<Operation>(Operation.class, this, ServicePackage.SERVICE__OPERATIONS);
+		}
+		return operations;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Publication> getPublications() {
+		if (publications == null) {
+			publications = new EObjectContainmentEList<Publication>(Publication.class, this, ServicePackage.SERVICE__PUBLICATIONS);
+		}
+		return publications;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Subscription> getSubscriptions() {
+		if (subscriptions == null) {
+			subscriptions = new EObjectContainmentEList<Subscription>(Subscription.class, this, ServicePackage.SERVICE__SUBSCRIPTIONS);
+		}
+		return subscriptions;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Service> getDependencies() {
+		if (dependencies == null) {
+			dependencies = new EObjectResolvingEList<Service>(Service.class, this, ServicePackage.SERVICE__DEPENDENCIES);
+		}
+		return dependencies;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ServicePackage.SERVICE__METADATA:
+				return basicSetMetadata(null, msgs);
+			case ServicePackage.SERVICE__OPERATIONS:
+				return ((InternalEList<?>)getOperations()).basicRemove(otherEnd, msgs);
+			case ServicePackage.SERVICE__PUBLICATIONS:
+				return ((InternalEList<?>)getPublications()).basicRemove(otherEnd, msgs);
+			case ServicePackage.SERVICE__SUBSCRIPTIONS:
+				return ((InternalEList<?>)getSubscriptions()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case ServicePackage.SERVICE__METADATA:
+				return getMetadata();
+			case ServicePackage.SERVICE__ID:
+				return getId();
+			case ServicePackage.SERVICE__VERSION:
+				return getVersion();
+			case ServicePackage.SERVICE__OPERATIONS:
+				return getOperations();
+			case ServicePackage.SERVICE__PUBLICATIONS:
+				return getPublications();
+			case ServicePackage.SERVICE__SUBSCRIPTIONS:
+				return getSubscriptions();
+			case ServicePackage.SERVICE__DEPENDENCIES:
+				return getDependencies();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
+			case ServicePackage.SERVICE__METADATA:
+				setMetadata((Metadata)newValue);
+				return;
+			case ServicePackage.SERVICE__ID:
+				setId((String)newValue);
+				return;
+			case ServicePackage.SERVICE__VERSION:
+				setVersion((String)newValue);
+				return;
+			case ServicePackage.SERVICE__OPERATIONS:
+				getOperations().clear();
+				getOperations().addAll((Collection<? extends Operation>)newValue);
+				return;
+			case ServicePackage.SERVICE__PUBLICATIONS:
+				getPublications().clear();
+				getPublications().addAll((Collection<? extends Publication>)newValue);
+				return;
+			case ServicePackage.SERVICE__SUBSCRIPTIONS:
+				getSubscriptions().clear();
+				getSubscriptions().addAll((Collection<? extends Subscription>)newValue);
+				return;
+			case ServicePackage.SERVICE__DEPENDENCIES:
+				getDependencies().clear();
+				getDependencies().addAll((Collection<? extends Service>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
+			case ServicePackage.SERVICE__METADATA:
+				setMetadata((Metadata)null);
+				return;
+			case ServicePackage.SERVICE__ID:
+				setId(ID_EDEFAULT);
+				return;
+			case ServicePackage.SERVICE__VERSION:
+				setVersion(VERSION_EDEFAULT);
+				return;
+			case ServicePackage.SERVICE__OPERATIONS:
+				getOperations().clear();
+				return;
+			case ServicePackage.SERVICE__PUBLICATIONS:
+				getPublications().clear();
+				return;
+			case ServicePackage.SERVICE__SUBSCRIPTIONS:
+				getSubscriptions().clear();
+				return;
+			case ServicePackage.SERVICE__DEPENDENCIES:
+				getDependencies().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+			case ServicePackage.SERVICE__METADATA:
+				return metadata != null;
+			case ServicePackage.SERVICE__ID:
+				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+			case ServicePackage.SERVICE__VERSION:
+				return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
+			case ServicePackage.SERVICE__OPERATIONS:
+				return operations != null && !operations.isEmpty();
+			case ServicePackage.SERVICE__PUBLICATIONS:
+				return publications != null && !publications.isEmpty();
+			case ServicePackage.SERVICE__SUBSCRIPTIONS:
+				return subscriptions != null && !subscriptions.isEmpty();
+			case ServicePackage.SERVICE__DEPENDENCIES:
+				return dependencies != null && !dependencies.isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == Entity.class) {
+			switch (derivedFeatureID) {
+				case ServicePackage.SERVICE__METADATA: return BasePackage.ENTITY__METADATA;
+				default: return -1;
+			}
+		}
+		if (baseClass == IdentifiableEntity.class) {
+			switch (derivedFeatureID) {
+				case ServicePackage.SERVICE__ID: return BasePackage.IDENTIFIABLE_ENTITY__ID;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == Entity.class) {
+			switch (baseFeatureID) {
+				case BasePackage.ENTITY__METADATA: return ServicePackage.SERVICE__METADATA;
+				default: return -1;
+			}
+		}
+		if (baseClass == IdentifiableEntity.class) {
+			switch (baseFeatureID) {
+				case BasePackage.IDENTIFIABLE_ENTITY__ID: return ServicePackage.SERVICE__ID;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (id: ");
+		result.append(id);
+		result.append(", version: ");
+		result.append(version);
+		result.append(')');
+		return result.toString();
+	}
+
+} //ServiceImpl

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated basys -->
+      <package
+            uri="http://www.dfki.de/iui/basys/base"
+            class="de.dfki.iui.basys.model.base.BasePackage"
+            genModel="model/basys.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated basys -->
+      <package
+            uri="http://www.dfki.de/iui/basys/domain"
+            class="de.dfki.iui.basys.model.domain.DomainPackage"
+            genModel="model/basys.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated basys -->
+      <package
+            uri="http://www.dfki.de/iui/basys/physical"
+            class="de.dfki.iui.basys.model.physical.PhysicalPackage"
+            genModel="model/basys.genmodel"/>
+   </extension>
+
+</plugin>
