@@ -15,8 +15,8 @@
             id="de.dfki.iui.basys.model.service.presentation.ServiceModelWizardID"
             name="%_UI_ServiceModelWizard_label"
             class="de.dfki.iui.basys.model.service.presentation.ServiceModelWizard"
-            category="de.dfki.iui.basys.workbench.wizard.category.ID"
-            icon="icons/full/obj16/ServiceModelFile.png">
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/ServiceModelFile.gif">
          <description>%_UI_ServiceModelWizard_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>
       </wizard>
@@ -27,7 +27,7 @@
       <editor
             id="de.dfki.iui.basys.model.service.presentation.ServiceEditorID"
             name="%_UI_ServiceEditor_label"
-            icon="icons/full/obj16/ServiceModelFile.png"
+            icon="icons/full/obj16/ServiceModelFile.gif"
             extensions="service"
             class="de.dfki.iui.basys.model.service.presentation.ServiceEditor"
             contributorClass="de.dfki.iui.basys.model.service.presentation.ServiceActionBarContributor">

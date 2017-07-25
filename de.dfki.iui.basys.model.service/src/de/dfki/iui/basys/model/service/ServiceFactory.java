@@ -22,13 +22,13 @@ public interface ServiceFactory extends EFactory {
 	ServiceFactory eINSTANCE = de.dfki.iui.basys.model.service.impl.ServiceFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Service</em>'.
+	 * Returns a new object of class '<em>Description</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Service</em>'.
+	 * @return a new object of class '<em>Description</em>'.
 	 * @generated
 	 */
-	Service createService();
+	ServiceDescription createServiceDescription();
 
 	/**
 	 * Returns a new object of class '<em>Operation</em>'.

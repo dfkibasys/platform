@@ -59,14 +59,14 @@ public interface ServicePackage extends EPackage {
 	ServicePackage eINSTANCE = de.dfki.iui.basys.model.service.impl.ServicePackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.service.impl.ServiceImpl <em>Service</em>}' class.
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionImpl <em>Description</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.service.impl.ServiceImpl
-	 * @see de.dfki.iui.basys.model.service.impl.ServicePackageImpl#getService()
+	 * @see de.dfki.iui.basys.model.service.impl.ServiceDescriptionImpl
+	 * @see de.dfki.iui.basys.model.service.impl.ServicePackageImpl#getServiceDescription()
 	 * @generated
 	 */
-	int SERVICE = 0;
+	int SERVICE_DESCRIPTION = 0;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -75,7 +75,7 @@ public interface ServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE__EANNOTATIONS = EcorePackage.ENAMED_ELEMENT__EANNOTATIONS;
+	int SERVICE_DESCRIPTION__EANNOTATIONS = EcorePackage.ENAMED_ELEMENT__EANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -84,7 +84,7 @@ public interface ServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE__NAME = EcorePackage.ENAMED_ELEMENT__NAME;
+	int SERVICE_DESCRIPTION__NAME = EcorePackage.ENAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -93,7 +93,7 @@ public interface ServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE__METADATA = EcorePackage.ENAMED_ELEMENT_FEATURE_COUNT + 0;
+	int SERVICE_DESCRIPTION__METADATA = EcorePackage.ENAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -102,7 +102,7 @@ public interface ServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE__ID = EcorePackage.ENAMED_ELEMENT_FEATURE_COUNT + 1;
+	int SERVICE_DESCRIPTION__ID = EcorePackage.ENAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -111,7 +111,7 @@ public interface ServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE__VERSION = EcorePackage.ENAMED_ELEMENT_FEATURE_COUNT + 2;
+	int SERVICE_DESCRIPTION__VERSION = EcorePackage.ENAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Operations</b></em>' containment reference list.
@@ -120,7 +120,7 @@ public interface ServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE__OPERATIONS = EcorePackage.ENAMED_ELEMENT_FEATURE_COUNT + 3;
+	int SERVICE_DESCRIPTION__OPERATIONS = EcorePackage.ENAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Publications</b></em>' containment reference list.
@@ -129,7 +129,7 @@ public interface ServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE__PUBLICATIONS = EcorePackage.ENAMED_ELEMENT_FEATURE_COUNT + 4;
+	int SERVICE_DESCRIPTION__PUBLICATIONS = EcorePackage.ENAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Subscriptions</b></em>' containment reference list.
@@ -138,7 +138,7 @@ public interface ServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE__SUBSCRIPTIONS = EcorePackage.ENAMED_ELEMENT_FEATURE_COUNT + 5;
+	int SERVICE_DESCRIPTION__SUBSCRIPTIONS = EcorePackage.ENAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Dependencies</b></em>' reference list.
@@ -147,16 +147,16 @@ public interface ServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE__DEPENDENCIES = EcorePackage.ENAMED_ELEMENT_FEATURE_COUNT + 6;
+	int SERVICE_DESCRIPTION__DEPENDENCIES = EcorePackage.ENAMED_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
-	 * The number of structural features of the '<em>Service</em>' class.
+	 * The number of structural features of the '<em>Description</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_FEATURE_COUNT = EcorePackage.ENAMED_ELEMENT_FEATURE_COUNT + 7;
+	int SERVICE_DESCRIPTION_FEATURE_COUNT = EcorePackage.ENAMED_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The operation id for the '<em>Get EAnnotation</em>' operation.
@@ -165,16 +165,16 @@ public interface ServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE___GET_EANNOTATION__STRING = EcorePackage.ENAMED_ELEMENT___GET_EANNOTATION__STRING;
+	int SERVICE_DESCRIPTION___GET_EANNOTATION__STRING = EcorePackage.ENAMED_ELEMENT___GET_EANNOTATION__STRING;
 
 	/**
-	 * The number of operations of the '<em>Service</em>' class.
+	 * The number of operations of the '<em>Description</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_OPERATION_COUNT = EcorePackage.ENAMED_ELEMENT_OPERATION_COUNT + 0;
+	int SERVICE_DESCRIPTION_OPERATION_COUNT = EcorePackage.ENAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.service.impl.OperationImpl <em>Operation</em>}' class.
@@ -658,69 +658,69 @@ public interface ServicePackage extends EPackage {
 
 
 	/**
-	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.service.Service <em>Service</em>}'.
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.service.ServiceDescription <em>Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Service</em>'.
-	 * @see de.dfki.iui.basys.model.service.Service
+	 * @return the meta object for class '<em>Description</em>'.
+	 * @see de.dfki.iui.basys.model.service.ServiceDescription
 	 * @generated
 	 */
-	EClass getService();
+	EClass getServiceDescription();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.service.Service#getVersion <em>Version</em>}'.
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.service.ServiceDescription#getVersion <em>Version</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Version</em>'.
-	 * @see de.dfki.iui.basys.model.service.Service#getVersion()
-	 * @see #getService()
+	 * @see de.dfki.iui.basys.model.service.ServiceDescription#getVersion()
+	 * @see #getServiceDescription()
 	 * @generated
 	 */
-	EAttribute getService_Version();
+	EAttribute getServiceDescription_Version();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.service.Service#getOperations <em>Operations</em>}'.
+	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.service.ServiceDescription#getOperations <em>Operations</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Operations</em>'.
-	 * @see de.dfki.iui.basys.model.service.Service#getOperations()
-	 * @see #getService()
+	 * @see de.dfki.iui.basys.model.service.ServiceDescription#getOperations()
+	 * @see #getServiceDescription()
 	 * @generated
 	 */
-	EReference getService_Operations();
+	EReference getServiceDescription_Operations();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.service.Service#getPublications <em>Publications</em>}'.
+	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.service.ServiceDescription#getPublications <em>Publications</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Publications</em>'.
-	 * @see de.dfki.iui.basys.model.service.Service#getPublications()
-	 * @see #getService()
+	 * @see de.dfki.iui.basys.model.service.ServiceDescription#getPublications()
+	 * @see #getServiceDescription()
 	 * @generated
 	 */
-	EReference getService_Publications();
+	EReference getServiceDescription_Publications();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.service.Service#getSubscriptions <em>Subscriptions</em>}'.
+	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.service.ServiceDescription#getSubscriptions <em>Subscriptions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Subscriptions</em>'.
-	 * @see de.dfki.iui.basys.model.service.Service#getSubscriptions()
-	 * @see #getService()
+	 * @see de.dfki.iui.basys.model.service.ServiceDescription#getSubscriptions()
+	 * @see #getServiceDescription()
 	 * @generated
 	 */
-	EReference getService_Subscriptions();
+	EReference getServiceDescription_Subscriptions();
 
 	/**
-	 * Returns the meta object for the reference list '{@link de.dfki.iui.basys.model.service.Service#getDependencies <em>Dependencies</em>}'.
+	 * Returns the meta object for the reference list '{@link de.dfki.iui.basys.model.service.ServiceDescription#getDependencies <em>Dependencies</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Dependencies</em>'.
-	 * @see de.dfki.iui.basys.model.service.Service#getDependencies()
-	 * @see #getService()
+	 * @see de.dfki.iui.basys.model.service.ServiceDescription#getDependencies()
+	 * @see #getServiceDescription()
 	 * @generated
 	 */
-	EReference getService_Dependencies();
+	EReference getServiceDescription_Dependencies();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.service.Operation <em>Operation</em>}'.
@@ -820,14 +820,14 @@ public interface ServicePackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.service.impl.ServiceImpl <em>Service</em>}' class.
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionImpl <em>Description</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.service.impl.ServiceImpl
-		 * @see de.dfki.iui.basys.model.service.impl.ServicePackageImpl#getService()
+		 * @see de.dfki.iui.basys.model.service.impl.ServiceDescriptionImpl
+		 * @see de.dfki.iui.basys.model.service.impl.ServicePackageImpl#getServiceDescription()
 		 * @generated
 		 */
-		EClass SERVICE = eINSTANCE.getService();
+		EClass SERVICE_DESCRIPTION = eINSTANCE.getServiceDescription();
 
 		/**
 		 * The meta object literal for the '<em><b>Version</b></em>' attribute feature.
@@ -835,7 +835,7 @@ public interface ServicePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SERVICE__VERSION = eINSTANCE.getService_Version();
+		EAttribute SERVICE_DESCRIPTION__VERSION = eINSTANCE.getServiceDescription_Version();
 
 		/**
 		 * The meta object literal for the '<em><b>Operations</b></em>' containment reference list feature.
@@ -843,7 +843,7 @@ public interface ServicePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SERVICE__OPERATIONS = eINSTANCE.getService_Operations();
+		EReference SERVICE_DESCRIPTION__OPERATIONS = eINSTANCE.getServiceDescription_Operations();
 
 		/**
 		 * The meta object literal for the '<em><b>Publications</b></em>' containment reference list feature.
@@ -851,7 +851,7 @@ public interface ServicePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SERVICE__PUBLICATIONS = eINSTANCE.getService_Publications();
+		EReference SERVICE_DESCRIPTION__PUBLICATIONS = eINSTANCE.getServiceDescription_Publications();
 
 		/**
 		 * The meta object literal for the '<em><b>Subscriptions</b></em>' containment reference list feature.
@@ -859,7 +859,7 @@ public interface ServicePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SERVICE__SUBSCRIPTIONS = eINSTANCE.getService_Subscriptions();
+		EReference SERVICE_DESCRIPTION__SUBSCRIPTIONS = eINSTANCE.getServiceDescription_Subscriptions();
 
 		/**
 		 * The meta object literal for the '<em><b>Dependencies</b></em>' reference list feature.
@@ -867,7 +867,7 @@ public interface ServicePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SERVICE__DEPENDENCIES = eINSTANCE.getService_Dependencies();
+		EReference SERVICE_DESCRIPTION__DEPENDENCIES = eINSTANCE.getServiceDescription_Dependencies();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.service.impl.OperationImpl <em>Operation</em>}' class.

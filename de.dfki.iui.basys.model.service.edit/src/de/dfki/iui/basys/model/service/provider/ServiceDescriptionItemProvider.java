@@ -5,7 +5,8 @@ package de.dfki.iui.basys.model.service.provider;
 
 import de.dfki.iui.basys.model.base.BaseFactory;
 import de.dfki.iui.basys.model.base.BasePackage;
-import de.dfki.iui.basys.model.service.Service;
+
+import de.dfki.iui.basys.model.service.ServiceDescription;
 import de.dfki.iui.basys.model.service.ServiceFactory;
 import de.dfki.iui.basys.model.service.ServicePackage;
 
@@ -27,19 +28,19 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link de.dfki.iui.basys.model.service.Service} object.
+ * This is the item provider adapter for a {@link de.dfki.iui.basys.model.service.ServiceDescription} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ServiceItemProvider extends ENamedElementItemProvider {
+public class ServiceDescriptionItemProvider extends ENamedElementItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ServiceItemProvider(AdapterFactory adapterFactory) {
+	public ServiceDescriptionItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -94,9 +95,9 @@ public class ServiceItemProvider extends ENamedElementItemProvider {
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Service_version_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Service_version_feature", "_UI_Service_type"),
-				 ServicePackage.Literals.SERVICE__VERSION,
+				 getString("_UI_ServiceDescription_version_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ServiceDescription_version_feature", "_UI_ServiceDescription_type"),
+				 ServicePackage.Literals.SERVICE_DESCRIPTION__VERSION,
 				 true,
 				 false,
 				 false,
@@ -113,29 +114,29 @@ public class ServiceItemProvider extends ENamedElementItemProvider {
 	 */
 	protected void addDependenciesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add(
-			//(createItemPropertyDescriptor
-			new ItemPropertyDescriptor(
-				((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Service_dependencies_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Service_dependencies_feature", "_UI_Service_type"),
-				ServicePackage.Literals.SERVICE__DEPENDENCIES,
-				true,
-				false,
-				true,
-				null,
-				null,
-				null) 
-			{
-				@Override
-				public Collection<?> getChoiceOfValues(Object object) {
-					// TODO Auto-generated method stub
-					Collection<?> result = super.getChoiceOfValues(object);
-					result.remove(object);
-					return result;
-				}			
-			}
-		);
+				//(createItemPropertyDescriptor
+				new ItemPropertyDescriptor(
+					((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+					getResourceLocator(),
+					getString("_UI_Service_dependencies_feature"),
+					getString("_UI_PropertyDescriptor_description", "_UI_Service_dependencies_feature", "_UI_Service_type"),
+					ServicePackage.Literals.SERVICE_DESCRIPTION__DEPENDENCIES,
+					true,
+					false,
+					true,
+					null,
+					null,
+					null) 
+				{
+					@Override
+					public Collection<?> getChoiceOfValues(Object object) {
+						// TODO Auto-generated method stub
+						Collection<?> result = super.getChoiceOfValues(object);
+						result.remove(object);
+						return result;
+					}			
+				}
+			);
 	}
 
 	/**
@@ -151,9 +152,9 @@ public class ServiceItemProvider extends ENamedElementItemProvider {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(BasePackage.Literals.ENTITY__METADATA);
-			childrenFeatures.add(ServicePackage.Literals.SERVICE__OPERATIONS);
-			childrenFeatures.add(ServicePackage.Literals.SERVICE__PUBLICATIONS);
-			childrenFeatures.add(ServicePackage.Literals.SERVICE__SUBSCRIPTIONS);
+			childrenFeatures.add(ServicePackage.Literals.SERVICE_DESCRIPTION__OPERATIONS);
+			childrenFeatures.add(ServicePackage.Literals.SERVICE_DESCRIPTION__PUBLICATIONS);
+			childrenFeatures.add(ServicePackage.Literals.SERVICE_DESCRIPTION__SUBSCRIPTIONS);
 		}
 		return childrenFeatures;
 	}
@@ -172,14 +173,14 @@ public class ServiceItemProvider extends ENamedElementItemProvider {
 	}
 
 	/**
-	 * This returns Service.gif.
+	 * This returns ServiceDescription.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Service.png"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ServiceDescription.png"));
 	}
 
 	/**
@@ -190,10 +191,10 @@ public class ServiceItemProvider extends ENamedElementItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Service)object).getName();
+		String label = ((ServiceDescription)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Service_type") :
-			getString("_UI_Service_type") + " " + label;
+			getString("_UI_ServiceDescription_type") :
+			getString("_UI_ServiceDescription_type") + " " + label;
 	}
 	
 
@@ -208,15 +209,15 @@ public class ServiceItemProvider extends ENamedElementItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Service.class)) {
-			case ServicePackage.SERVICE__ID:
-			case ServicePackage.SERVICE__VERSION:
+		switch (notification.getFeatureID(ServiceDescription.class)) {
+			case ServicePackage.SERVICE_DESCRIPTION__ID:
+			case ServicePackage.SERVICE_DESCRIPTION__VERSION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case ServicePackage.SERVICE__METADATA:
-			case ServicePackage.SERVICE__OPERATIONS:
-			case ServicePackage.SERVICE__PUBLICATIONS:
-			case ServicePackage.SERVICE__SUBSCRIPTIONS:
+			case ServicePackage.SERVICE_DESCRIPTION__METADATA:
+			case ServicePackage.SERVICE_DESCRIPTION__OPERATIONS:
+			case ServicePackage.SERVICE_DESCRIPTION__PUBLICATIONS:
+			case ServicePackage.SERVICE_DESCRIPTION__SUBSCRIPTIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -241,17 +242,17 @@ public class ServiceItemProvider extends ENamedElementItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ServicePackage.Literals.SERVICE__OPERATIONS,
+				(ServicePackage.Literals.SERVICE_DESCRIPTION__OPERATIONS,
 				 ServiceFactory.eINSTANCE.createOperation()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ServicePackage.Literals.SERVICE__PUBLICATIONS,
+				(ServicePackage.Literals.SERVICE_DESCRIPTION__PUBLICATIONS,
 				 ServiceFactory.eINSTANCE.createPublication()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ServicePackage.Literals.SERVICE__SUBSCRIPTIONS,
+				(ServicePackage.Literals.SERVICE_DESCRIPTION__SUBSCRIPTIONS,
 				 ServiceFactory.eINSTANCE.createSubscription()));
 	}
 

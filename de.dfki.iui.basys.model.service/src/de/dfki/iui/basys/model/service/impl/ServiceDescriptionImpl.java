@@ -6,9 +6,10 @@ import de.dfki.iui.basys.model.base.BasePackage;
 import de.dfki.iui.basys.model.base.Entity;
 import de.dfki.iui.basys.model.base.IdentifiableEntity;
 import de.dfki.iui.basys.model.base.Metadata;
+
 import de.dfki.iui.basys.model.service.Operation;
 import de.dfki.iui.basys.model.service.Publication;
-import de.dfki.iui.basys.model.service.Service;
+import de.dfki.iui.basys.model.service.ServiceDescription;
 import de.dfki.iui.basys.model.service.ServicePackage;
 import de.dfki.iui.basys.model.service.Subscription;
 
@@ -32,24 +33,24 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Service</b></em>'.
+ * An implementation of the model object '<em><b>Description</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceImpl#getMetadata <em>Metadata</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceImpl#getId <em>Id</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceImpl#getVersion <em>Version</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceImpl#getOperations <em>Operations</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceImpl#getPublications <em>Publications</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceImpl#getSubscriptions <em>Subscriptions</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceImpl#getDependencies <em>Dependencies</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionImpl#getMetadata <em>Metadata</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionImpl#getId <em>Id</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionImpl#getVersion <em>Version</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionImpl#getOperations <em>Operations</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionImpl#getPublications <em>Publications</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionImpl#getSubscriptions <em>Subscriptions</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionImpl#getDependencies <em>Dependencies</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ServiceImpl extends ENamedElementImpl implements Service {
+public class ServiceDescriptionImpl extends ENamedElementImpl implements ServiceDescription {
 	/**
 	 * The cached value of the '{@link #getMetadata() <em>Metadata</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -138,14 +139,14 @@ public class ServiceImpl extends ENamedElementImpl implements Service {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Service> dependencies;
+	protected EList<ServiceDescription> dependencies;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	protected ServiceImpl() {
+	protected ServiceDescriptionImpl() {
 		super();
 		setId(EcoreUtil.generateUUID());
 	}
@@ -157,7 +158,7 @@ public class ServiceImpl extends ENamedElementImpl implements Service {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ServicePackage.Literals.SERVICE;
+		return ServicePackage.Literals.SERVICE_DESCRIPTION;
 	}
 
 	/**
@@ -178,7 +179,7 @@ public class ServiceImpl extends ENamedElementImpl implements Service {
 		Metadata oldMetadata = metadata;
 		metadata = newMetadata;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ServicePackage.SERVICE__METADATA, oldMetadata, newMetadata);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ServicePackage.SERVICE_DESCRIPTION__METADATA, oldMetadata, newMetadata);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -193,14 +194,14 @@ public class ServiceImpl extends ENamedElementImpl implements Service {
 		if (newMetadata != metadata) {
 			NotificationChain msgs = null;
 			if (metadata != null)
-				msgs = ((InternalEObject)metadata).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ServicePackage.SERVICE__METADATA, null, msgs);
+				msgs = ((InternalEObject)metadata).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ServicePackage.SERVICE_DESCRIPTION__METADATA, null, msgs);
 			if (newMetadata != null)
-				msgs = ((InternalEObject)newMetadata).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ServicePackage.SERVICE__METADATA, null, msgs);
+				msgs = ((InternalEObject)newMetadata).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ServicePackage.SERVICE_DESCRIPTION__METADATA, null, msgs);
 			msgs = basicSetMetadata(newMetadata, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ServicePackage.SERVICE__METADATA, newMetadata, newMetadata));
+			eNotify(new ENotificationImpl(this, Notification.SET, ServicePackage.SERVICE_DESCRIPTION__METADATA, newMetadata, newMetadata));
 	}
 
 	/**
@@ -221,7 +222,7 @@ public class ServiceImpl extends ENamedElementImpl implements Service {
 		String oldId = id;
 		id = newId;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ServicePackage.SERVICE__ID, oldId, id));
+			eNotify(new ENotificationImpl(this, Notification.SET, ServicePackage.SERVICE_DESCRIPTION__ID, oldId, id));
 	}
 
 	/**
@@ -242,7 +243,7 @@ public class ServiceImpl extends ENamedElementImpl implements Service {
 		String oldVersion = version;
 		version = newVersion;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ServicePackage.SERVICE__VERSION, oldVersion, version));
+			eNotify(new ENotificationImpl(this, Notification.SET, ServicePackage.SERVICE_DESCRIPTION__VERSION, oldVersion, version));
 	}
 
 	/**
@@ -252,7 +253,7 @@ public class ServiceImpl extends ENamedElementImpl implements Service {
 	 */
 	public EList<Operation> getOperations() {
 		if (operations == null) {
-			operations = new EObjectContainmentEList<Operation>(Operation.class, this, ServicePackage.SERVICE__OPERATIONS);
+			operations = new EObjectContainmentEList<Operation>(Operation.class, this, ServicePackage.SERVICE_DESCRIPTION__OPERATIONS);
 		}
 		return operations;
 	}
@@ -264,7 +265,7 @@ public class ServiceImpl extends ENamedElementImpl implements Service {
 	 */
 	public EList<Publication> getPublications() {
 		if (publications == null) {
-			publications = new EObjectContainmentEList<Publication>(Publication.class, this, ServicePackage.SERVICE__PUBLICATIONS);
+			publications = new EObjectContainmentEList<Publication>(Publication.class, this, ServicePackage.SERVICE_DESCRIPTION__PUBLICATIONS);
 		}
 		return publications;
 	}
@@ -276,7 +277,7 @@ public class ServiceImpl extends ENamedElementImpl implements Service {
 	 */
 	public EList<Subscription> getSubscriptions() {
 		if (subscriptions == null) {
-			subscriptions = new EObjectContainmentEList<Subscription>(Subscription.class, this, ServicePackage.SERVICE__SUBSCRIPTIONS);
+			subscriptions = new EObjectContainmentEList<Subscription>(Subscription.class, this, ServicePackage.SERVICE_DESCRIPTION__SUBSCRIPTIONS);
 		}
 		return subscriptions;
 	}
@@ -286,9 +287,9 @@ public class ServiceImpl extends ENamedElementImpl implements Service {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Service> getDependencies() {
+	public EList<ServiceDescription> getDependencies() {
 		if (dependencies == null) {
-			dependencies = new EObjectResolvingEList<Service>(Service.class, this, ServicePackage.SERVICE__DEPENDENCIES);
+			dependencies = new EObjectResolvingEList<ServiceDescription>(ServiceDescription.class, this, ServicePackage.SERVICE_DESCRIPTION__DEPENDENCIES);
 		}
 		return dependencies;
 	}
@@ -301,13 +302,13 @@ public class ServiceImpl extends ENamedElementImpl implements Service {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ServicePackage.SERVICE__METADATA:
+			case ServicePackage.SERVICE_DESCRIPTION__METADATA:
 				return basicSetMetadata(null, msgs);
-			case ServicePackage.SERVICE__OPERATIONS:
+			case ServicePackage.SERVICE_DESCRIPTION__OPERATIONS:
 				return ((InternalEList<?>)getOperations()).basicRemove(otherEnd, msgs);
-			case ServicePackage.SERVICE__PUBLICATIONS:
+			case ServicePackage.SERVICE_DESCRIPTION__PUBLICATIONS:
 				return ((InternalEList<?>)getPublications()).basicRemove(otherEnd, msgs);
-			case ServicePackage.SERVICE__SUBSCRIPTIONS:
+			case ServicePackage.SERVICE_DESCRIPTION__SUBSCRIPTIONS:
 				return ((InternalEList<?>)getSubscriptions()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -321,19 +322,19 @@ public class ServiceImpl extends ENamedElementImpl implements Service {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ServicePackage.SERVICE__METADATA:
+			case ServicePackage.SERVICE_DESCRIPTION__METADATA:
 				return getMetadata();
-			case ServicePackage.SERVICE__ID:
+			case ServicePackage.SERVICE_DESCRIPTION__ID:
 				return getId();
-			case ServicePackage.SERVICE__VERSION:
+			case ServicePackage.SERVICE_DESCRIPTION__VERSION:
 				return getVersion();
-			case ServicePackage.SERVICE__OPERATIONS:
+			case ServicePackage.SERVICE_DESCRIPTION__OPERATIONS:
 				return getOperations();
-			case ServicePackage.SERVICE__PUBLICATIONS:
+			case ServicePackage.SERVICE_DESCRIPTION__PUBLICATIONS:
 				return getPublications();
-			case ServicePackage.SERVICE__SUBSCRIPTIONS:
+			case ServicePackage.SERVICE_DESCRIPTION__SUBSCRIPTIONS:
 				return getSubscriptions();
-			case ServicePackage.SERVICE__DEPENDENCIES:
+			case ServicePackage.SERVICE_DESCRIPTION__DEPENDENCIES:
 				return getDependencies();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -348,30 +349,30 @@ public class ServiceImpl extends ENamedElementImpl implements Service {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ServicePackage.SERVICE__METADATA:
+			case ServicePackage.SERVICE_DESCRIPTION__METADATA:
 				setMetadata((Metadata)newValue);
 				return;
-			case ServicePackage.SERVICE__ID:
+			case ServicePackage.SERVICE_DESCRIPTION__ID:
 				setId((String)newValue);
 				return;
-			case ServicePackage.SERVICE__VERSION:
+			case ServicePackage.SERVICE_DESCRIPTION__VERSION:
 				setVersion((String)newValue);
 				return;
-			case ServicePackage.SERVICE__OPERATIONS:
+			case ServicePackage.SERVICE_DESCRIPTION__OPERATIONS:
 				getOperations().clear();
 				getOperations().addAll((Collection<? extends Operation>)newValue);
 				return;
-			case ServicePackage.SERVICE__PUBLICATIONS:
+			case ServicePackage.SERVICE_DESCRIPTION__PUBLICATIONS:
 				getPublications().clear();
 				getPublications().addAll((Collection<? extends Publication>)newValue);
 				return;
-			case ServicePackage.SERVICE__SUBSCRIPTIONS:
+			case ServicePackage.SERVICE_DESCRIPTION__SUBSCRIPTIONS:
 				getSubscriptions().clear();
 				getSubscriptions().addAll((Collection<? extends Subscription>)newValue);
 				return;
-			case ServicePackage.SERVICE__DEPENDENCIES:
+			case ServicePackage.SERVICE_DESCRIPTION__DEPENDENCIES:
 				getDependencies().clear();
-				getDependencies().addAll((Collection<? extends Service>)newValue);
+				getDependencies().addAll((Collection<? extends ServiceDescription>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -385,25 +386,25 @@ public class ServiceImpl extends ENamedElementImpl implements Service {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ServicePackage.SERVICE__METADATA:
+			case ServicePackage.SERVICE_DESCRIPTION__METADATA:
 				setMetadata((Metadata)null);
 				return;
-			case ServicePackage.SERVICE__ID:
+			case ServicePackage.SERVICE_DESCRIPTION__ID:
 				setId(ID_EDEFAULT);
 				return;
-			case ServicePackage.SERVICE__VERSION:
+			case ServicePackage.SERVICE_DESCRIPTION__VERSION:
 				setVersion(VERSION_EDEFAULT);
 				return;
-			case ServicePackage.SERVICE__OPERATIONS:
+			case ServicePackage.SERVICE_DESCRIPTION__OPERATIONS:
 				getOperations().clear();
 				return;
-			case ServicePackage.SERVICE__PUBLICATIONS:
+			case ServicePackage.SERVICE_DESCRIPTION__PUBLICATIONS:
 				getPublications().clear();
 				return;
-			case ServicePackage.SERVICE__SUBSCRIPTIONS:
+			case ServicePackage.SERVICE_DESCRIPTION__SUBSCRIPTIONS:
 				getSubscriptions().clear();
 				return;
-			case ServicePackage.SERVICE__DEPENDENCIES:
+			case ServicePackage.SERVICE_DESCRIPTION__DEPENDENCIES:
 				getDependencies().clear();
 				return;
 		}
@@ -418,19 +419,19 @@ public class ServiceImpl extends ENamedElementImpl implements Service {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ServicePackage.SERVICE__METADATA:
+			case ServicePackage.SERVICE_DESCRIPTION__METADATA:
 				return metadata != null;
-			case ServicePackage.SERVICE__ID:
+			case ServicePackage.SERVICE_DESCRIPTION__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
-			case ServicePackage.SERVICE__VERSION:
+			case ServicePackage.SERVICE_DESCRIPTION__VERSION:
 				return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
-			case ServicePackage.SERVICE__OPERATIONS:
+			case ServicePackage.SERVICE_DESCRIPTION__OPERATIONS:
 				return operations != null && !operations.isEmpty();
-			case ServicePackage.SERVICE__PUBLICATIONS:
+			case ServicePackage.SERVICE_DESCRIPTION__PUBLICATIONS:
 				return publications != null && !publications.isEmpty();
-			case ServicePackage.SERVICE__SUBSCRIPTIONS:
+			case ServicePackage.SERVICE_DESCRIPTION__SUBSCRIPTIONS:
 				return subscriptions != null && !subscriptions.isEmpty();
-			case ServicePackage.SERVICE__DEPENDENCIES:
+			case ServicePackage.SERVICE_DESCRIPTION__DEPENDENCIES:
 				return dependencies != null && !dependencies.isEmpty();
 		}
 		return super.eIsSet(featureID);
@@ -445,13 +446,13 @@ public class ServiceImpl extends ENamedElementImpl implements Service {
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == Entity.class) {
 			switch (derivedFeatureID) {
-				case ServicePackage.SERVICE__METADATA: return BasePackage.ENTITY__METADATA;
+				case ServicePackage.SERVICE_DESCRIPTION__METADATA: return BasePackage.ENTITY__METADATA;
 				default: return -1;
 			}
 		}
 		if (baseClass == IdentifiableEntity.class) {
 			switch (derivedFeatureID) {
-				case ServicePackage.SERVICE__ID: return BasePackage.IDENTIFIABLE_ENTITY__ID;
+				case ServicePackage.SERVICE_DESCRIPTION__ID: return BasePackage.IDENTIFIABLE_ENTITY__ID;
 				default: return -1;
 			}
 		}
@@ -467,13 +468,13 @@ public class ServiceImpl extends ENamedElementImpl implements Service {
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == Entity.class) {
 			switch (baseFeatureID) {
-				case BasePackage.ENTITY__METADATA: return ServicePackage.SERVICE__METADATA;
+				case BasePackage.ENTITY__METADATA: return ServicePackage.SERVICE_DESCRIPTION__METADATA;
 				default: return -1;
 			}
 		}
 		if (baseClass == IdentifiableEntity.class) {
 			switch (baseFeatureID) {
-				case BasePackage.IDENTIFIABLE_ENTITY__ID: return ServicePackage.SERVICE__ID;
+				case BasePackage.IDENTIFIABLE_ENTITY__ID: return ServicePackage.SERVICE_DESCRIPTION__ID;
 				default: return -1;
 			}
 		}
@@ -498,4 +499,4 @@ public class ServiceImpl extends ENamedElementImpl implements Service {
 		return result.toString();
 	}
 
-} //ServiceImpl
+} //ServiceDescriptionImpl

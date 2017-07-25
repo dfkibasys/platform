@@ -56,7 +56,7 @@ public class ServiceFactoryImpl extends EFactoryImpl implements ServiceFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case ServicePackage.SERVICE: return createService();
+			case ServicePackage.SERVICE_DESCRIPTION: return createServiceDescription();
 			case ServicePackage.OPERATION: return createOperation();
 			case ServicePackage.PUBLICATION: return createPublication();
 			case ServicePackage.SUBSCRIPTION: return createSubscription();
@@ -70,9 +70,9 @@ public class ServiceFactoryImpl extends EFactoryImpl implements ServiceFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Service createService() {
-		ServiceImpl service = new ServiceImpl();
-		return service;
+	public ServiceDescription createServiceDescription() {
+		ServiceDescriptionImpl serviceDescription = new ServiceDescriptionImpl();
+		return serviceDescription;
 	}
 
 	/**

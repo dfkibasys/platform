@@ -96,8 +96,8 @@ public class ServiceValidator extends EObjectValidator {
 	@Override
 	protected boolean validate(int classifierID, Object value, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		switch (classifierID) {
-			case ServicePackage.SERVICE:
-				return validateService((Service)value, diagnostics, context);
+			case ServicePackage.SERVICE_DESCRIPTION:
+				return validateServiceDescription((ServiceDescription)value, diagnostics, context);
 			case ServicePackage.OPERATION:
 				return validateOperation((Operation)value, diagnostics, context);
 			case ServicePackage.PUBLICATION:
@@ -114,45 +114,45 @@ public class ServiceValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateService(Service service, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(service, diagnostics, context)) return false;
-		boolean result = validate_EveryMultiplicityConforms(service, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(service, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(service, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(service, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(service, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(service, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(service, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(service, diagnostics, context);
-		if (result || diagnostics != null) result &= ecoreValidator.validateENamedElement_WellFormedName(service, diagnostics, context);
-		if (result || diagnostics != null) result &= validateService_noSelfDependency(service, diagnostics, context);
+	public boolean validateServiceDescription(ServiceDescription serviceDescription, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(serviceDescription, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(serviceDescription, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(serviceDescription, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(serviceDescription, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(serviceDescription, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(serviceDescription, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(serviceDescription, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(serviceDescription, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(serviceDescription, diagnostics, context);
+		if (result || diagnostics != null) result &= ecoreValidator.validateENamedElement_WellFormedName(serviceDescription, diagnostics, context);
+		if (result || diagnostics != null) result &= validateServiceDescription_noSelfDependency(serviceDescription, diagnostics, context);
 		return result;
 	}
 
 	/**
-	 * The cached validation expression for the noSelfDependency constraint of '<em>Service</em>'.
+	 * The cached validation expression for the noSelfDependency constraint of '<em>Description</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static final String SERVICE__NO_SELF_DEPENDENCY__EEXPRESSION = "not dependencies->includes(self)";
+	protected static final String SERVICE_DESCRIPTION__NO_SELF_DEPENDENCY__EEXPRESSION = "not dependencies->includes(self)";
 
 	/**
-	 * Validates the noSelfDependency constraint of '<em>Service</em>'.
+	 * Validates the noSelfDependency constraint of '<em>Description</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateService_noSelfDependency(Service service, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateServiceDescription_noSelfDependency(ServiceDescription serviceDescription, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return
 			validate
-				(ServicePackage.Literals.SERVICE,
-				 service,
+				(ServicePackage.Literals.SERVICE_DESCRIPTION,
+				 serviceDescription,
 				 diagnostics,
 				 context,
 				 "http://www.eclipse.org/emf/2002/Ecore/OCL",
 				 "noSelfDependency",
-				 SERVICE__NO_SELF_DEPENDENCY__EEXPRESSION,
+				 SERVICE_DESCRIPTION__NO_SELF_DEPENDENCY__EEXPRESSION,
 				 Diagnostic.ERROR,
 				 DIAGNOSTIC_SOURCE,
 				 0);

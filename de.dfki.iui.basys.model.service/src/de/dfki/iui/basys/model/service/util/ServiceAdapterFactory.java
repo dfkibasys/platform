@@ -74,8 +74,8 @@ public class ServiceAdapterFactory extends AdapterFactoryImpl {
 	protected ServiceSwitch<Adapter> modelSwitch =
 		new ServiceSwitch<Adapter>() {
 			@Override
-			public Adapter caseService(Service object) {
-				return createServiceAdapter();
+			public Adapter caseServiceDescription(ServiceDescription object) {
+				return createServiceDescriptionAdapter();
 			}
 			@Override
 			public Adapter caseOperation(Operation object) {
@@ -134,16 +134,16 @@ public class ServiceAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.service.Service <em>Service</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.service.ServiceDescription <em>Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.dfki.iui.basys.model.service.Service
+	 * @see de.dfki.iui.basys.model.service.ServiceDescription
 	 * @generated
 	 */
-	public Adapter createServiceAdapter() {
+	public Adapter createServiceDescriptionAdapter() {
 		return null;
 	}
 

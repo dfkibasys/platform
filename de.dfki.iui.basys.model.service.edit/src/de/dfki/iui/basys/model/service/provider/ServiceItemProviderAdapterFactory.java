@@ -72,26 +72,26 @@ public class ServiceItemProviderAdapterFactory extends ServiceAdapterFactory imp
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.service.Service} instances.
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.service.ServiceDescription} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ServiceItemProvider serviceItemProvider;
+	protected ServiceDescriptionItemProvider serviceDescriptionItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link de.dfki.iui.basys.model.service.Service}.
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.service.ServiceDescription}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createServiceAdapter() {
-		if (serviceItemProvider == null) {
-			serviceItemProvider = new ServiceItemProvider(this);
+	public Adapter createServiceDescriptionAdapter() {
+		if (serviceDescriptionItemProvider == null) {
+			serviceDescriptionItemProvider = new ServiceDescriptionItemProvider(this);
 		}
 
-		return serviceItemProvider;
+		return serviceDescriptionItemProvider;
 	}
 
 	/**
@@ -262,7 +262,7 @@ public class ServiceItemProviderAdapterFactory extends ServiceAdapterFactory imp
 	 * @generated
 	 */
 	public void dispose() {
-		if (serviceItemProvider != null) serviceItemProvider.dispose();
+		if (serviceDescriptionItemProvider != null) serviceDescriptionItemProvider.dispose();
 		if (operationItemProvider != null) operationItemProvider.dispose();
 		if (publicationItemProvider != null) publicationItemProvider.dispose();
 		if (subscriptionItemProvider != null) subscriptionItemProvider.dispose();

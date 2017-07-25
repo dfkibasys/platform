@@ -5,7 +5,7 @@ package de.dfki.iui.basys.model.service.impl;
 import de.dfki.iui.basys.model.base.BasePackage;
 import de.dfki.iui.basys.model.service.Operation;
 import de.dfki.iui.basys.model.service.Publication;
-import de.dfki.iui.basys.model.service.Service;
+import de.dfki.iui.basys.model.service.ServiceDescription;
 import de.dfki.iui.basys.model.service.ServiceFactory;
 import de.dfki.iui.basys.model.service.ServicePackage;
 import de.dfki.iui.basys.model.service.Subscription;
@@ -32,7 +32,7 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass serviceEClass = null;
+	private EClass serviceDescriptionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -134,8 +134,8 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getService() {
-		return serviceEClass;
+	public EClass getServiceDescription() {
+		return serviceDescriptionEClass;
 	}
 
 	/**
@@ -143,8 +143,8 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getService_Version() {
-		return (EAttribute)serviceEClass.getEStructuralFeatures().get(0);
+	public EAttribute getServiceDescription_Version() {
+		return (EAttribute)serviceDescriptionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -152,8 +152,8 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getService_Operations() {
-		return (EReference)serviceEClass.getEStructuralFeatures().get(1);
+	public EReference getServiceDescription_Operations() {
+		return (EReference)serviceDescriptionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -161,8 +161,8 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getService_Publications() {
-		return (EReference)serviceEClass.getEStructuralFeatures().get(2);
+	public EReference getServiceDescription_Publications() {
+		return (EReference)serviceDescriptionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -170,8 +170,8 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getService_Subscriptions() {
-		return (EReference)serviceEClass.getEStructuralFeatures().get(3);
+	public EReference getServiceDescription_Subscriptions() {
+		return (EReference)serviceDescriptionEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -179,8 +179,8 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getService_Dependencies() {
-		return (EReference)serviceEClass.getEStructuralFeatures().get(4);
+	public EReference getServiceDescription_Dependencies() {
+		return (EReference)serviceDescriptionEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -274,12 +274,12 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 		isCreated = true;
 
 		// Create classes and their features
-		serviceEClass = createEClass(SERVICE);
-		createEAttribute(serviceEClass, SERVICE__VERSION);
-		createEReference(serviceEClass, SERVICE__OPERATIONS);
-		createEReference(serviceEClass, SERVICE__PUBLICATIONS);
-		createEReference(serviceEClass, SERVICE__SUBSCRIPTIONS);
-		createEReference(serviceEClass, SERVICE__DEPENDENCIES);
+		serviceDescriptionEClass = createEClass(SERVICE_DESCRIPTION);
+		createEAttribute(serviceDescriptionEClass, SERVICE_DESCRIPTION__VERSION);
+		createEReference(serviceDescriptionEClass, SERVICE_DESCRIPTION__OPERATIONS);
+		createEReference(serviceDescriptionEClass, SERVICE_DESCRIPTION__PUBLICATIONS);
+		createEReference(serviceDescriptionEClass, SERVICE_DESCRIPTION__SUBSCRIPTIONS);
+		createEReference(serviceDescriptionEClass, SERVICE_DESCRIPTION__DEPENDENCIES);
 
 		operationEClass = createEClass(OPERATION);
 
@@ -324,19 +324,19 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		serviceEClass.getESuperTypes().add(theEcorePackage.getENamedElement());
-		serviceEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
+		serviceDescriptionEClass.getESuperTypes().add(theEcorePackage.getENamedElement());
+		serviceDescriptionEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
 		operationEClass.getESuperTypes().add(theEcorePackage.getEOperation());
 		publicationEClass.getESuperTypes().add(theEcorePackage.getETypedElement());
 		subscriptionEClass.getESuperTypes().add(theEcorePackage.getETypedElement());
 
 		// Initialize classes, features, and operations; add parameters
-		initEClass(serviceEClass, Service.class, "Service", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getService_Version(), theEcorePackage.getEString(), "version", "", 0, 1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getService_Operations(), this.getOperation(), null, "operations", null, 0, -1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getService_Publications(), this.getPublication(), null, "publications", null, 0, -1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getService_Subscriptions(), this.getSubscription(), null, "subscriptions", null, 0, -1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getService_Dependencies(), this.getService(), null, "dependencies", null, 0, -1, Service.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(serviceDescriptionEClass, ServiceDescription.class, "ServiceDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getServiceDescription_Version(), theEcorePackage.getEString(), "version", "", 0, 1, ServiceDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getServiceDescription_Operations(), this.getOperation(), null, "operations", null, 0, -1, ServiceDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getServiceDescription_Publications(), this.getPublication(), null, "publications", null, 0, -1, ServiceDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getServiceDescription_Subscriptions(), this.getSubscription(), null, "subscriptions", null, 0, -1, ServiceDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getServiceDescription_Dependencies(), this.getServiceDescription(), null, "dependencies", null, 0, -1, ServiceDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(operationEClass, Operation.class, "Operation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -375,7 +375,7 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 			 "validationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL"
 		   });	
 		addAnnotation
-		  (serviceEClass, 
+		  (serviceDescriptionEClass, 
 		   source, 
 		   new String[] {
 			 "constraints", "noSelfDependency"
@@ -391,7 +391,7 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 	protected void createOCLAnnotations() {
 		String source = "http://www.eclipse.org/emf/2002/Ecore/OCL";	
 		addAnnotation
-		  (serviceEClass, 
+		  (serviceDescriptionEClass, 
 		   source, 
 		   new String[] {
 			 "noSelfDependency", "not dependencies->includes(self)"

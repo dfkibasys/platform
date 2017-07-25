@@ -192,7 +192,7 @@ public class ServiceModelWizard extends Wizard implements INewWizard {
 				if (eClassifier instanceof EClass) {
 					EClass eClass = (EClass)eClassifier;
 					if (!eClass.isAbstract()) {
-						if (eClass == servicePackage.getService())
+						if (eClass == servicePackage.getServiceDescription())
 							initialObjectNames.add(eClass.getName());
 					}
 				}

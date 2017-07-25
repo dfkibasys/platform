@@ -72,13 +72,13 @@ public class ServiceSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case ServicePackage.SERVICE: {
-				Service service = (Service)theEObject;
-				T result = caseService(service);
-				if (result == null) result = caseENamedElement(service);
-				if (result == null) result = caseIdentifiableEntity(service);
-				if (result == null) result = caseEModelElement(service);
-				if (result == null) result = caseEntity(service);
+			case ServicePackage.SERVICE_DESCRIPTION: {
+				ServiceDescription serviceDescription = (ServiceDescription)theEObject;
+				T result = caseServiceDescription(serviceDescription);
+				if (result == null) result = caseENamedElement(serviceDescription);
+				if (result == null) result = caseIdentifiableEntity(serviceDescription);
+				if (result == null) result = caseEModelElement(serviceDescription);
+				if (result == null) result = caseEntity(serviceDescription);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -115,17 +115,17 @@ public class ServiceSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Service</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Description</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Service</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Description</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseService(Service object) {
+	public T caseServiceDescription(ServiceDescription object) {
 		return null;
 	}
 
