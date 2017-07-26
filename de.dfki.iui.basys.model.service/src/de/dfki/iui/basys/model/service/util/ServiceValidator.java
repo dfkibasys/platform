@@ -104,6 +104,18 @@ public class ServiceValidator extends EObjectValidator {
 				return validatePublication((Publication)value, diagnostics, context);
 			case ServicePackage.SUBSCRIPTION:
 				return validateSubscription((Subscription)value, diagnostics, context);
+			case ServicePackage.SERVICE_IMPLEMENTATION:
+				return validateServiceImplementation((ServiceImplementation)value, diagnostics, context);
+			case ServicePackage.SERVICE_INSTANCE:
+				return validateServiceInstance((ServiceInstance)value, diagnostics, context);
+			case ServicePackage.SERVICE_ENDPOINT:
+				return validateServiceEndpoint((ServiceEndpoint)value, diagnostics, context);
+			case ServicePackage.REST_ENDPOINT:
+				return validateRestEndpoint((RestEndpoint)value, diagnostics, context);
+			case ServicePackage.SOAP_ENDPOINT:
+				return validateSoapEndpoint((SoapEndpoint)value, diagnostics, context);
+			case ServicePackage.SERVICE_TYPE_ENUM:
+				return validateServiceTypeEnum((ServiceTypeEnum)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -228,6 +240,60 @@ public class ServiceValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= ecoreValidator.validateETypedElement_ConsistentBounds(subscription, diagnostics, context);
 		if (result || diagnostics != null) result &= ecoreValidator.validateETypedElement_ValidType(subscription, diagnostics, context);
 		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateServiceImplementation(ServiceImplementation serviceImplementation, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(serviceImplementation, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateServiceInstance(ServiceInstance serviceInstance, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(serviceInstance, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateServiceEndpoint(ServiceEndpoint serviceEndpoint, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(serviceEndpoint, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateRestEndpoint(RestEndpoint restEndpoint, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(restEndpoint, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateSoapEndpoint(SoapEndpoint soapEndpoint, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(soapEndpoint, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateServiceTypeEnum(ServiceTypeEnum serviceTypeEnum, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
 	}
 
 	/**

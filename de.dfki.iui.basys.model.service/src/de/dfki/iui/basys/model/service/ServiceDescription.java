@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.ENamedElement;
  * </p>
  * <ul>
  *   <li>{@link de.dfki.iui.basys.model.service.ServiceDescription#getVersion <em>Version</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.service.ServiceDescription#getServiceType <em>Service Type</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.service.ServiceDescription#getOperations <em>Operations</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.service.ServiceDescription#getPublications <em>Publications</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.service.ServiceDescription#getSubscriptions <em>Subscriptions</em>}</li>
@@ -56,6 +57,36 @@ public interface ServiceDescription extends ENamedElement, IdentifiableEntity {
 	 * @generated
 	 */
 	void setVersion(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Service Type</b></em>' attribute.
+	 * The default value is <code>"DIGITAL_SERVICE"</code>.
+	 * The literals are from the enumeration {@link de.dfki.iui.basys.model.service.ServiceTypeEnum}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Service Type</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Service Type</em>' attribute.
+	 * @see de.dfki.iui.basys.model.service.ServiceTypeEnum
+	 * @see #setServiceType(ServiceTypeEnum)
+	 * @see de.dfki.iui.basys.model.service.ServicePackage#getServiceDescription_ServiceType()
+	 * @model default="DIGITAL_SERVICE" required="true"
+	 * @generated
+	 */
+	ServiceTypeEnum getServiceType();
+
+	/**
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.service.ServiceDescription#getServiceType <em>Service Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Service Type</em>' attribute.
+	 * @see de.dfki.iui.basys.model.service.ServiceTypeEnum
+	 * @see #getServiceType()
+	 * @generated
+	 */
+	void setServiceType(ServiceTypeEnum value);
 
 	/**
 	 * Returns the value of the '<em><b>Operations</b></em>' containment reference list.

@@ -58,6 +58,51 @@ public interface ServiceFactory extends EFactory {
 	Subscription createSubscription();
 
 	/**
+	 * Returns a new object of class '<em>Implementation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Implementation</em>'.
+	 * @generated
+	 */
+	ServiceImplementation createServiceImplementation();
+
+	/**
+	 * Returns a new object of class '<em>Instance</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Instance</em>'.
+	 * @generated
+	 */
+	ServiceInstance createServiceInstance();
+
+	/**
+	 * Returns a new object of class '<em>Endpoint</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Endpoint</em>'.
+	 * @generated
+	 */
+	ServiceEndpoint createServiceEndpoint();
+
+	/**
+	 * Returns a new object of class '<em>Rest Endpoint</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Rest Endpoint</em>'.
+	 * @generated
+	 */
+	RestEndpoint createRestEndpoint();
+
+	/**
+	 * Returns a new object of class '<em>Soap Endpoint</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Soap Endpoint</em>'.
+	 * @generated
+	 */
+	SoapEndpoint createSoapEndpoint();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -5,6 +5,7 @@ package de.dfki.iui.basys.model.service.impl;
 import de.dfki.iui.basys.model.service.*;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -60,8 +61,43 @@ public class ServiceFactoryImpl extends EFactoryImpl implements ServiceFactory {
 			case ServicePackage.OPERATION: return createOperation();
 			case ServicePackage.PUBLICATION: return createPublication();
 			case ServicePackage.SUBSCRIPTION: return createSubscription();
+			case ServicePackage.SERVICE_IMPLEMENTATION: return createServiceImplementation();
+			case ServicePackage.SERVICE_INSTANCE: return createServiceInstance();
+			case ServicePackage.SERVICE_ENDPOINT: return createServiceEndpoint();
+			case ServicePackage.REST_ENDPOINT: return createRestEndpoint();
+			case ServicePackage.SOAP_ENDPOINT: return createSoapEndpoint();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object createFromString(EDataType eDataType, String initialValue) {
+		switch (eDataType.getClassifierID()) {
+			case ServicePackage.SERVICE_TYPE_ENUM:
+				return createServiceTypeEnumFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String convertToString(EDataType eDataType, Object instanceValue) {
+		switch (eDataType.getClassifierID()) {
+			case ServicePackage.SERVICE_TYPE_ENUM:
+				return convertServiceTypeEnumToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -103,6 +139,76 @@ public class ServiceFactoryImpl extends EFactoryImpl implements ServiceFactory {
 	public Subscription createSubscription() {
 		SubscriptionImpl subscription = new SubscriptionImpl();
 		return subscription;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ServiceImplementation createServiceImplementation() {
+		ServiceImplementationImpl serviceImplementation = new ServiceImplementationImpl();
+		return serviceImplementation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ServiceInstance createServiceInstance() {
+		ServiceInstanceImpl serviceInstance = new ServiceInstanceImpl();
+		return serviceInstance;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ServiceEndpoint createServiceEndpoint() {
+		ServiceEndpointImpl serviceEndpoint = new ServiceEndpointImpl();
+		return serviceEndpoint;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RestEndpoint createRestEndpoint() {
+		RestEndpointImpl restEndpoint = new RestEndpointImpl();
+		return restEndpoint;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SoapEndpoint createSoapEndpoint() {
+		SoapEndpointImpl soapEndpoint = new SoapEndpointImpl();
+		return soapEndpoint;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ServiceTypeEnum createServiceTypeEnumFromString(EDataType eDataType, String initialValue) {
+		ServiceTypeEnum result = ServiceTypeEnum.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertServiceTypeEnumToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

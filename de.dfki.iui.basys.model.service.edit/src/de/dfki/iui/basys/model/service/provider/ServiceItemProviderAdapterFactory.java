@@ -164,6 +164,121 @@ public class ServiceItemProviderAdapterFactory extends ServiceAdapterFactory imp
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.service.ServiceImplementation} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ServiceImplementationItemProvider serviceImplementationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.service.ServiceImplementation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createServiceImplementationAdapter() {
+		if (serviceImplementationItemProvider == null) {
+			serviceImplementationItemProvider = new ServiceImplementationItemProvider(this);
+		}
+
+		return serviceImplementationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.service.ServiceInstance} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ServiceInstanceItemProvider serviceInstanceItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.service.ServiceInstance}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createServiceInstanceAdapter() {
+		if (serviceInstanceItemProvider == null) {
+			serviceInstanceItemProvider = new ServiceInstanceItemProvider(this);
+		}
+
+		return serviceInstanceItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.service.ServiceEndpoint} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ServiceEndpointItemProvider serviceEndpointItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.service.ServiceEndpoint}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createServiceEndpointAdapter() {
+		if (serviceEndpointItemProvider == null) {
+			serviceEndpointItemProvider = new ServiceEndpointItemProvider(this);
+		}
+
+		return serviceEndpointItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.service.RestEndpoint} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RestEndpointItemProvider restEndpointItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.service.RestEndpoint}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createRestEndpointAdapter() {
+		if (restEndpointItemProvider == null) {
+			restEndpointItemProvider = new RestEndpointItemProvider(this);
+		}
+
+		return restEndpointItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.service.SoapEndpoint} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SoapEndpointItemProvider soapEndpointItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.service.SoapEndpoint}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSoapEndpointAdapter() {
+		if (soapEndpointItemProvider == null) {
+			soapEndpointItemProvider = new SoapEndpointItemProvider(this);
+		}
+
+		return soapEndpointItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -266,6 +381,11 @@ public class ServiceItemProviderAdapterFactory extends ServiceAdapterFactory imp
 		if (operationItemProvider != null) operationItemProvider.dispose();
 		if (publicationItemProvider != null) publicationItemProvider.dispose();
 		if (subscriptionItemProvider != null) subscriptionItemProvider.dispose();
+		if (serviceImplementationItemProvider != null) serviceImplementationItemProvider.dispose();
+		if (serviceInstanceItemProvider != null) serviceInstanceItemProvider.dispose();
+		if (serviceEndpointItemProvider != null) serviceEndpointItemProvider.dispose();
+		if (restEndpointItemProvider != null) restEndpointItemProvider.dispose();
+		if (soapEndpointItemProvider != null) soapEndpointItemProvider.dispose();
 	}
 
 }

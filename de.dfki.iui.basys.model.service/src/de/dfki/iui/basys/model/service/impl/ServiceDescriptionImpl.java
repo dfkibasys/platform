@@ -11,6 +11,7 @@ import de.dfki.iui.basys.model.service.Operation;
 import de.dfki.iui.basys.model.service.Publication;
 import de.dfki.iui.basys.model.service.ServiceDescription;
 import de.dfki.iui.basys.model.service.ServicePackage;
+import de.dfki.iui.basys.model.service.ServiceTypeEnum;
 import de.dfki.iui.basys.model.service.Subscription;
 
 import java.util.Collection;
@@ -42,6 +43,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionImpl#getMetadata <em>Metadata</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionImpl#getId <em>Id</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionImpl#getVersion <em>Version</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionImpl#getServiceType <em>Service Type</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionImpl#getOperations <em>Operations</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionImpl#getPublications <em>Publications</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionImpl#getSubscriptions <em>Subscriptions</em>}</li>
@@ -100,6 +102,26 @@ public class ServiceDescriptionImpl extends ENamedElementImpl implements Service
 	 * @ordered
 	 */
 	protected String version = VERSION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getServiceType() <em>Service Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getServiceType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final ServiceTypeEnum SERVICE_TYPE_EDEFAULT = ServiceTypeEnum.DIGITAL_SERVICE;
+
+	/**
+	 * The cached value of the '{@link #getServiceType() <em>Service Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getServiceType()
+	 * @generated
+	 * @ordered
+	 */
+	protected ServiceTypeEnum serviceType = SERVICE_TYPE_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getOperations() <em>Operations</em>}' containment reference list.
@@ -251,6 +273,27 @@ public class ServiceDescriptionImpl extends ENamedElementImpl implements Service
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ServiceTypeEnum getServiceType() {
+		return serviceType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setServiceType(ServiceTypeEnum newServiceType) {
+		ServiceTypeEnum oldServiceType = serviceType;
+		serviceType = newServiceType == null ? SERVICE_TYPE_EDEFAULT : newServiceType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ServicePackage.SERVICE_DESCRIPTION__SERVICE_TYPE, oldServiceType, serviceType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<Operation> getOperations() {
 		if (operations == null) {
 			operations = new EObjectContainmentEList<Operation>(Operation.class, this, ServicePackage.SERVICE_DESCRIPTION__OPERATIONS);
@@ -328,6 +371,8 @@ public class ServiceDescriptionImpl extends ENamedElementImpl implements Service
 				return getId();
 			case ServicePackage.SERVICE_DESCRIPTION__VERSION:
 				return getVersion();
+			case ServicePackage.SERVICE_DESCRIPTION__SERVICE_TYPE:
+				return getServiceType();
 			case ServicePackage.SERVICE_DESCRIPTION__OPERATIONS:
 				return getOperations();
 			case ServicePackage.SERVICE_DESCRIPTION__PUBLICATIONS:
@@ -357,6 +402,9 @@ public class ServiceDescriptionImpl extends ENamedElementImpl implements Service
 				return;
 			case ServicePackage.SERVICE_DESCRIPTION__VERSION:
 				setVersion((String)newValue);
+				return;
+			case ServicePackage.SERVICE_DESCRIPTION__SERVICE_TYPE:
+				setServiceType((ServiceTypeEnum)newValue);
 				return;
 			case ServicePackage.SERVICE_DESCRIPTION__OPERATIONS:
 				getOperations().clear();
@@ -395,6 +443,9 @@ public class ServiceDescriptionImpl extends ENamedElementImpl implements Service
 			case ServicePackage.SERVICE_DESCRIPTION__VERSION:
 				setVersion(VERSION_EDEFAULT);
 				return;
+			case ServicePackage.SERVICE_DESCRIPTION__SERVICE_TYPE:
+				setServiceType(SERVICE_TYPE_EDEFAULT);
+				return;
 			case ServicePackage.SERVICE_DESCRIPTION__OPERATIONS:
 				getOperations().clear();
 				return;
@@ -425,6 +476,8 @@ public class ServiceDescriptionImpl extends ENamedElementImpl implements Service
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case ServicePackage.SERVICE_DESCRIPTION__VERSION:
 				return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
+			case ServicePackage.SERVICE_DESCRIPTION__SERVICE_TYPE:
+				return serviceType != SERVICE_TYPE_EDEFAULT;
 			case ServicePackage.SERVICE_DESCRIPTION__OPERATIONS:
 				return operations != null && !operations.isEmpty();
 			case ServicePackage.SERVICE_DESCRIPTION__PUBLICATIONS:
@@ -495,6 +548,8 @@ public class ServiceDescriptionImpl extends ENamedElementImpl implements Service
 		result.append(id);
 		result.append(", version: ");
 		result.append(version);
+		result.append(", serviceType: ");
+		result.append(serviceType);
 		result.append(')');
 		return result.toString();
 	}

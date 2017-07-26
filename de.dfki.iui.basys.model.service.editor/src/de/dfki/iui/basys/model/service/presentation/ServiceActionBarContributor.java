@@ -146,11 +146,12 @@ public class ServiceActionBarContributor
 	 * This creates an instance of the contributor.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public ServiceActionBarContributor() {
 		super(ADDITIONS_LAST_STYLE);
-		loadResourceAction = new LoadResourceAction();
+		//loadResourceAction = new LoadResourceAction();
+		loadResourceAction = new org.eclipse.emf.ecore.presentation.EcoreActionBarContributor.ExtendedLoadResourceAction();
 		validateAction = new ValidateAction();
 		controlAction = new ControlAction();
 	}

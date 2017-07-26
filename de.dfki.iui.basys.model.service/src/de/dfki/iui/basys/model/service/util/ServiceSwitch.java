@@ -110,6 +110,42 @@ public class ServiceSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ServicePackage.SERVICE_IMPLEMENTATION: {
+				ServiceImplementation serviceImplementation = (ServiceImplementation)theEObject;
+				T result = caseServiceImplementation(serviceImplementation);
+				if (result == null) result = caseIdentifiableEntity(serviceImplementation);
+				if (result == null) result = caseEntity(serviceImplementation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ServicePackage.SERVICE_INSTANCE: {
+				ServiceInstance serviceInstance = (ServiceInstance)theEObject;
+				T result = caseServiceInstance(serviceInstance);
+				if (result == null) result = caseIdentifiableEntity(serviceInstance);
+				if (result == null) result = caseEntity(serviceInstance);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ServicePackage.SERVICE_ENDPOINT: {
+				ServiceEndpoint serviceEndpoint = (ServiceEndpoint)theEObject;
+				T result = caseServiceEndpoint(serviceEndpoint);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ServicePackage.REST_ENDPOINT: {
+				RestEndpoint restEndpoint = (RestEndpoint)theEObject;
+				T result = caseRestEndpoint(restEndpoint);
+				if (result == null) result = caseServiceEndpoint(restEndpoint);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ServicePackage.SOAP_ENDPOINT: {
+				SoapEndpoint soapEndpoint = (SoapEndpoint)theEObject;
+				T result = caseSoapEndpoint(soapEndpoint);
+				if (result == null) result = caseServiceEndpoint(soapEndpoint);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -171,6 +207,81 @@ public class ServiceSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseSubscription(Subscription object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Implementation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Implementation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseServiceImplementation(ServiceImplementation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Instance</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Instance</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseServiceInstance(ServiceInstance object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Endpoint</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Endpoint</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseServiceEndpoint(ServiceEndpoint object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Rest Endpoint</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Rest Endpoint</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRestEndpoint(RestEndpoint object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Soap Endpoint</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Soap Endpoint</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSoapEndpoint(SoapEndpoint object) {
 		return null;
 	}
 

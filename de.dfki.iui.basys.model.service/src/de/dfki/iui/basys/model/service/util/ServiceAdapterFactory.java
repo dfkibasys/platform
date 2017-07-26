@@ -90,6 +90,26 @@ public class ServiceAdapterFactory extends AdapterFactoryImpl {
 				return createSubscriptionAdapter();
 			}
 			@Override
+			public Adapter caseServiceImplementation(ServiceImplementation object) {
+				return createServiceImplementationAdapter();
+			}
+			@Override
+			public Adapter caseServiceInstance(ServiceInstance object) {
+				return createServiceInstanceAdapter();
+			}
+			@Override
+			public Adapter caseServiceEndpoint(ServiceEndpoint object) {
+				return createServiceEndpointAdapter();
+			}
+			@Override
+			public Adapter caseRestEndpoint(RestEndpoint object) {
+				return createRestEndpointAdapter();
+			}
+			@Override
+			public Adapter caseSoapEndpoint(SoapEndpoint object) {
+				return createSoapEndpointAdapter();
+			}
+			@Override
 			public Adapter caseEModelElement(EModelElement object) {
 				return createEModelElementAdapter();
 			}
@@ -186,6 +206,76 @@ public class ServiceAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSubscriptionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.service.ServiceImplementation <em>Implementation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.service.ServiceImplementation
+	 * @generated
+	 */
+	public Adapter createServiceImplementationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.service.ServiceInstance <em>Instance</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.service.ServiceInstance
+	 * @generated
+	 */
+	public Adapter createServiceInstanceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.service.ServiceEndpoint <em>Endpoint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.service.ServiceEndpoint
+	 * @generated
+	 */
+	public Adapter createServiceEndpointAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.service.RestEndpoint <em>Rest Endpoint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.service.RestEndpoint
+	 * @generated
+	 */
+	public Adapter createRestEndpointAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.service.SoapEndpoint <em>Soap Endpoint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.service.SoapEndpoint
+	 * @generated
+	 */
+	public Adapter createSoapEndpointAdapter() {
 		return null;
 	}
 

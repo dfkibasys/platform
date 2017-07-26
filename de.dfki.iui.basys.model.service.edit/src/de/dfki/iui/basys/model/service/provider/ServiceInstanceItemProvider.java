@@ -3,11 +3,10 @@
 package de.dfki.iui.basys.model.service.provider;
 
 
-import de.dfki.iui.basys.model.base.BaseFactory;
-import de.dfki.iui.basys.model.base.BasePackage;
+import de.dfki.iui.basys.model.base.provider.IdentifiableEntityItemProvider;
 
-import de.dfki.iui.basys.model.service.ServiceDescription;
 import de.dfki.iui.basys.model.service.ServiceFactory;
+import de.dfki.iui.basys.model.service.ServiceInstance;
 import de.dfki.iui.basys.model.service.ServicePackage;
 
 import java.util.Collection;
@@ -20,27 +19,25 @@ import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
-import org.eclipse.emf.ecore.provider.ENamedElementItemProvider;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link de.dfki.iui.basys.model.service.ServiceDescription} object.
+ * This is the item provider adapter for a {@link de.dfki.iui.basys.model.service.ServiceInstance} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ServiceDescriptionItemProvider extends ENamedElementItemProvider {
+public class ServiceInstanceItemProvider extends IdentifiableEntityItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ServiceDescriptionItemProvider(AdapterFactory adapterFactory) {
+	public ServiceInstanceItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -55,28 +52,26 @@ public class ServiceDescriptionItemProvider extends ENamedElementItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addIdPropertyDescriptor(object);
-			addVersionPropertyDescriptor(object);
-			addServiceTypePropertyDescriptor(object);
-			addDependenciesPropertyDescriptor(object);
+			addDescriptionIdPropertyDescriptor(object);
+			addImplementationIdPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Id feature.
+	 * This adds a property descriptor for the Description Id feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addIdPropertyDescriptor(Object object) {
+	protected void addDescriptionIdPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_IdentifiableEntity_id_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_IdentifiableEntity_id_feature", "_UI_IdentifiableEntity_type"),
-				 BasePackage.Literals.IDENTIFIABLE_ENTITY__ID,
+				 getString("_UI_ServiceInstance_descriptionId_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ServiceInstance_descriptionId_feature", "_UI_ServiceInstance_type"),
+				 ServicePackage.Literals.SERVICE_INSTANCE__DESCRIPTION_ID,
 				 true,
 				 false,
 				 false,
@@ -86,80 +81,25 @@ public class ServiceDescriptionItemProvider extends ENamedElementItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Version feature.
+	 * This adds a property descriptor for the Implementation Id feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addVersionPropertyDescriptor(Object object) {
+	protected void addImplementationIdPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ServiceDescription_version_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ServiceDescription_version_feature", "_UI_ServiceDescription_type"),
-				 ServicePackage.Literals.SERVICE_DESCRIPTION__VERSION,
+				 getString("_UI_ServiceInstance_implementationId_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ServiceInstance_implementationId_feature", "_UI_ServiceInstance_type"),
+				 ServicePackage.Literals.SERVICE_INSTANCE__IMPLEMENTATION_ID,
 				 true,
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Service Type feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addServiceTypePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ServiceDescription_serviceType_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ServiceDescription_serviceType_feature", "_UI_ServiceDescription_type"),
-				 ServicePackage.Literals.SERVICE_DESCRIPTION__SERVICE_TYPE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Dependencies feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	protected void addDependenciesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(
-				//(createItemPropertyDescriptor
-				new ItemPropertyDescriptor(
-					((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-					getResourceLocator(),
-					getString("_UI_ServiceDescription_dependencies_feature"),
-					getString("_UI_PropertyDescriptor_description", "_UI_ServiceDescription_dependencies_feature", "_UI_ServiceDescription_type"),
-					ServicePackage.Literals.SERVICE_DESCRIPTION__DEPENDENCIES,
-					true,
-					false,
-					true,
-					null,
-					null,
-					null) 
-				{
-					@Override
-					public Collection<?> getChoiceOfValues(Object object) {
-						// TODO Auto-generated method stub
-						Collection<?> result = super.getChoiceOfValues(object);
-						result.remove(object);
-						return result;
-					}			
-				}
-			);
 	}
 
 	/**
@@ -174,10 +114,7 @@ public class ServiceDescriptionItemProvider extends ENamedElementItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(BasePackage.Literals.ENTITY__METADATA);
-			childrenFeatures.add(ServicePackage.Literals.SERVICE_DESCRIPTION__OPERATIONS);
-			childrenFeatures.add(ServicePackage.Literals.SERVICE_DESCRIPTION__PUBLICATIONS);
-			childrenFeatures.add(ServicePackage.Literals.SERVICE_DESCRIPTION__SUBSCRIPTIONS);
+			childrenFeatures.add(ServicePackage.Literals.SERVICE_INSTANCE__ENDPOINTS);
 		}
 		return childrenFeatures;
 	}
@@ -196,14 +133,14 @@ public class ServiceDescriptionItemProvider extends ENamedElementItemProvider {
 	}
 
 	/**
-	 * This returns ServiceDescription.gif.
+	 * This returns ServiceInstance.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ServiceDescription"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ServiceInstance"));
 	}
 
 	/**
@@ -214,10 +151,10 @@ public class ServiceDescriptionItemProvider extends ENamedElementItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ServiceDescription)object).getName();
+		String label = ((ServiceInstance)object).getId();
 		return label == null || label.length() == 0 ?
-			getString("_UI_ServiceDescription_type") :
-			getString("_UI_ServiceDescription_type") + " " + label;
+			getString("_UI_ServiceInstance_type") :
+			getString("_UI_ServiceInstance_type") + " " + label;
 	}
 	
 
@@ -232,16 +169,12 @@ public class ServiceDescriptionItemProvider extends ENamedElementItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ServiceDescription.class)) {
-			case ServicePackage.SERVICE_DESCRIPTION__ID:
-			case ServicePackage.SERVICE_DESCRIPTION__VERSION:
-			case ServicePackage.SERVICE_DESCRIPTION__SERVICE_TYPE:
+		switch (notification.getFeatureID(ServiceInstance.class)) {
+			case ServicePackage.SERVICE_INSTANCE__DESCRIPTION_ID:
+			case ServicePackage.SERVICE_INSTANCE__IMPLEMENTATION_ID:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case ServicePackage.SERVICE_DESCRIPTION__METADATA:
-			case ServicePackage.SERVICE_DESCRIPTION__OPERATIONS:
-			case ServicePackage.SERVICE_DESCRIPTION__PUBLICATIONS:
-			case ServicePackage.SERVICE_DESCRIPTION__SUBSCRIPTIONS:
+			case ServicePackage.SERVICE_INSTANCE__ENDPOINTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -261,23 +194,18 @@ public class ServiceDescriptionItemProvider extends ENamedElementItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(BasePackage.Literals.ENTITY__METADATA,
-				 BaseFactory.eINSTANCE.createMetadata()));
+				(ServicePackage.Literals.SERVICE_INSTANCE__ENDPOINTS,
+				 ServiceFactory.eINSTANCE.createServiceEndpoint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ServicePackage.Literals.SERVICE_DESCRIPTION__OPERATIONS,
-				 ServiceFactory.eINSTANCE.createOperation()));
+				(ServicePackage.Literals.SERVICE_INSTANCE__ENDPOINTS,
+				 ServiceFactory.eINSTANCE.createRestEndpoint()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ServicePackage.Literals.SERVICE_DESCRIPTION__PUBLICATIONS,
-				 ServiceFactory.eINSTANCE.createPublication()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ServicePackage.Literals.SERVICE_DESCRIPTION__SUBSCRIPTIONS,
-				 ServiceFactory.eINSTANCE.createSubscription()));
+				(ServicePackage.Literals.SERVICE_INSTANCE__ENDPOINTS,
+				 ServiceFactory.eINSTANCE.createSoapEndpoint()));
 	}
 
 	/**

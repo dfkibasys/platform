@@ -15,6 +15,8 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"
         defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="serviceType" lowerBound="1"
+        eType="#//ServiceTypeEnum" defaultValueLiteral="DIGITAL_SERVICE"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="operations" upperBound="-1"
         eType="#//Operation" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="publications" upperBound="-1"
@@ -33,4 +35,27 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="topic" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="qos" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ServiceTypeEnum">
+    <eLiterals name="DIGITAL_SERVICE"/>
+    <eLiterals name="PHYSICAL_SERVICE"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ServiceImplementation" eSuperTypes="../../de.dfki.iui.basys.model/model/base.ecore#//IdentifiableEntity">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="descriptionId" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="platform" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bundleLocation" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ServiceInstance" eSuperTypes="../../de.dfki.iui.basys.model/model/base.ecore#//IdentifiableEntity">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="descriptionId" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="implementationId" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="endpoints" lowerBound="1"
+        upperBound="-1" eType="#//ServiceEndpoint" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ServiceEndpoint">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ipAddress" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="port" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RestEndpoint" eSuperTypes="#//ServiceEndpoint"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SoapEndpoint" eSuperTypes="#//ServiceEndpoint"/>
 </ecore:EPackage>
