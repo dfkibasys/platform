@@ -1,6 +1,6 @@
 /**
  */
-package de.dfki.iui.basys.model.service.presentation;
+package de.dfki.iui.basys.model.aas.presentation;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -14,6 +14,7 @@ import org.eclipse.emf.edit.ui.action.ControlAction;
 import org.eclipse.emf.edit.ui.action.CreateChildAction;
 import org.eclipse.emf.edit.ui.action.CreateSiblingAction;
 import org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor;
+import org.eclipse.emf.edit.ui.action.LoadResourceAction;
 import org.eclipse.emf.edit.ui.action.ValidateAction;
 
 import org.eclipse.jface.action.Action;
@@ -39,12 +40,12 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PartInitException;
 
 /**
- * This is the action bar contributor for the Service model editor.
+ * This is the action bar contributor for the Aas model editor.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ServiceActionBarContributor
+public class AasActionBarContributor
 	extends EditingDomainActionBarContributor
 	implements ISelectionChangedListener {
 	/**
@@ -70,14 +71,14 @@ public class ServiceActionBarContributor
 	 * @generated
 	 */
 	protected IAction showPropertiesViewAction =
-		new Action(ServiceEditorPlugin.INSTANCE.getString("_UI_ShowPropertiesView_menu_item")) {
+		new Action(AasEditorPlugin.INSTANCE.getString("_UI_ShowPropertiesView_menu_item")) {
 			@Override
 			public void run() {
 				try {
 					getPage().showView("org.eclipse.ui.views.PropertySheet");
 				}
 				catch (PartInitException exception) {
-					ServiceEditorPlugin.INSTANCE.log(exception);
+					AasEditorPlugin.INSTANCE.log(exception);
 				}
 			}
 		};
@@ -90,7 +91,7 @@ public class ServiceActionBarContributor
 	 * @generated
 	 */
 	protected IAction refreshViewerAction =
-		new Action(ServiceEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")) {
+		new Action(AasEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")) {
 			@Override
 			public boolean isEnabled() {
 				return activeEditorPart instanceof IViewerProvider;
@@ -145,12 +146,11 @@ public class ServiceActionBarContributor
 	 * This creates an instance of the contributor.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	public ServiceActionBarContributor() {
+	public AasActionBarContributor() {
 		super(ADDITIONS_LAST_STYLE);
-		//loadResourceAction = new LoadResourceAction();
-		loadResourceAction = new org.eclipse.emf.ecore.presentation.EcoreActionBarContributor.ExtendedLoadResourceAction();
+		loadResourceAction = new LoadResourceAction();
 		validateAction = new ValidateAction();
 		controlAction = new ControlAction();
 	}
@@ -163,8 +163,8 @@ public class ServiceActionBarContributor
 	 */
 	@Override
 	public void contributeToToolBar(IToolBarManager toolBarManager) {
-		toolBarManager.add(new Separator("service-settings"));
-		toolBarManager.add(new Separator("service-additions"));
+		toolBarManager.add(new Separator("aas-settings"));
+		toolBarManager.add(new Separator("aas-additions"));
 	}
 
 	/**
@@ -178,7 +178,7 @@ public class ServiceActionBarContributor
 	public void contributeToMenu(IMenuManager menuManager) {
 		super.contributeToMenu(menuManager);
 
-		IMenuManager submenuManager = new MenuManager(ServiceEditorPlugin.INSTANCE.getString("_UI_ServiceEditor_menu"), "de.dfki.iui.basys.model.serviceMenuID");
+		IMenuManager submenuManager = new MenuManager(AasEditorPlugin.INSTANCE.getString("_UI_AasEditor_menu"), "de.dfki.iui.basys.model.aasMenuID");
 		menuManager.insertAfter("additions", submenuManager);
 		submenuManager.add(new Separator("settings"));
 		submenuManager.add(new Separator("actions"));
@@ -187,12 +187,12 @@ public class ServiceActionBarContributor
 
 		// Prepare for CreateChild item addition or removal.
 		//
-		createChildMenuManager = new MenuManager(ServiceEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item"));
+		createChildMenuManager = new MenuManager(AasEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item"));
 		submenuManager.insertBefore("additions", createChildMenuManager);
 
 		// Prepare for CreateSibling item addition or removal.
 		//
-		createSiblingMenuManager = new MenuManager(ServiceEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item"));
+		createSiblingMenuManager = new MenuManager(AasEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item"));
 		submenuManager.insertBefore("additions", createSiblingMenuManager);
 
 		// Force an update because Eclipse hides empty menus now.
@@ -383,11 +383,11 @@ public class ServiceActionBarContributor
 		super.menuAboutToShow(menuManager);
 		MenuManager submenuManager = null;
 
-		submenuManager = new MenuManager(ServiceEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item"));
+		submenuManager = new MenuManager(AasEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item"));
 		populateManager(submenuManager, createChildActions, null);
 		menuManager.insertBefore("edit", submenuManager);
 
-		submenuManager = new MenuManager(ServiceEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item"));
+		submenuManager = new MenuManager(AasEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item"));
 		populateManager(submenuManager, createSiblingActions, null);
 		menuManager.insertBefore("edit", submenuManager);
 	}

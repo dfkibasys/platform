@@ -348,7 +348,7 @@
     <eLiterals name="IN_REPAIR" value="3" literal="IN_REPAIR"/>
     <eLiterals name="IO" value="4" literal="PRODUCED"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TemperatureReading">
+  <eClassifiers xsi:type="ecore:EClass" name="TemperatureReading" eSuperTypes="base.ecore#//Entity">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="measuredValueRange"/>
     </eAnnotations>
