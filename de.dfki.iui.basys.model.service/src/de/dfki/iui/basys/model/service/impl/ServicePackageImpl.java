@@ -7,6 +7,7 @@ import de.dfki.iui.basys.model.service.Operation;
 import de.dfki.iui.basys.model.service.Publication;
 import de.dfki.iui.basys.model.service.RestEndpoint;
 import de.dfki.iui.basys.model.service.ServiceDescription;
+import de.dfki.iui.basys.model.service.ServiceDescriptionStore;
 import de.dfki.iui.basys.model.service.ServiceEndpoint;
 import de.dfki.iui.basys.model.service.ServiceFactory;
 import de.dfki.iui.basys.model.service.ServiceImplementation;
@@ -96,6 +97,13 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 	 * @generated
 	 */
 	private EClass soapEndpointEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass serviceDescriptionStoreEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -435,6 +443,24 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getServiceDescriptionStore() {
+		return serviceDescriptionStoreEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getServiceDescriptionStore_ServiceDescriptions() {
+		return (EReference)serviceDescriptionStoreEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getServiceTypeEnum() {
 		return serviceTypeEnumEEnum;
 	}
@@ -503,6 +529,9 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 		restEndpointEClass = createEClass(REST_ENDPOINT);
 
 		soapEndpointEClass = createEClass(SOAP_ENDPOINT);
+
+		serviceDescriptionStoreEClass = createEClass(SERVICE_DESCRIPTION_STORE);
+		createEReference(serviceDescriptionStoreEClass, SERVICE_DESCRIPTION_STORE__SERVICE_DESCRIPTIONS);
 
 		// Create enums
 		serviceTypeEnumEEnum = createEEnum(SERVICE_TYPE_ENUM);
@@ -587,6 +616,9 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 		initEClass(restEndpointEClass, RestEndpoint.class, "RestEndpoint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(soapEndpointEClass, SoapEndpoint.class, "SoapEndpoint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(serviceDescriptionStoreEClass, ServiceDescriptionStore.class, "ServiceDescriptionStore", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getServiceDescriptionStore_ServiceDescriptions(), this.getServiceDescription(), null, "serviceDescriptions", null, 0, -1, ServiceDescriptionStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(serviceTypeEnumEEnum, ServiceTypeEnum.class, "ServiceTypeEnum");

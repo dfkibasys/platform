@@ -103,6 +103,15 @@ public interface ServiceFactory extends EFactory {
 	SoapEndpoint createSoapEndpoint();
 
 	/**
+	 * Returns a new object of class '<em>Description Store</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Description Store</em>'.
+	 * @generated
+	 */
+	ServiceDescriptionStore createServiceDescriptionStore();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

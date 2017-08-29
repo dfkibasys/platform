@@ -962,6 +962,43 @@ public interface ServicePackage extends EPackage {
 	int SOAP_ENDPOINT_OPERATION_COUNT = SERVICE_ENDPOINT_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionStoreImpl <em>Description Store</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.service.impl.ServiceDescriptionStoreImpl
+	 * @see de.dfki.iui.basys.model.service.impl.ServicePackageImpl#getServiceDescriptionStore()
+	 * @generated
+	 */
+	int SERVICE_DESCRIPTION_STORE = 9;
+
+	/**
+	 * The feature id for the '<em><b>Service Descriptions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_DESCRIPTION_STORE__SERVICE_DESCRIPTIONS = 0;
+
+	/**
+	 * The number of structural features of the '<em>Description Store</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_DESCRIPTION_STORE_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Description Store</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_DESCRIPTION_STORE_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.service.ServiceTypeEnum <em>Type Enum</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -969,7 +1006,7 @@ public interface ServicePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.service.impl.ServicePackageImpl#getServiceTypeEnum()
 	 * @generated
 	 */
-	int SERVICE_TYPE_ENUM = 9;
+	int SERVICE_TYPE_ENUM = 10;
 
 
 	/**
@@ -1272,6 +1309,27 @@ public interface ServicePackage extends EPackage {
 	EClass getSoapEndpoint();
 
 	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.service.ServiceDescriptionStore <em>Description Store</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Description Store</em>'.
+	 * @see de.dfki.iui.basys.model.service.ServiceDescriptionStore
+	 * @generated
+	 */
+	EClass getServiceDescriptionStore();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.service.ServiceDescriptionStore#getServiceDescriptions <em>Service Descriptions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Service Descriptions</em>'.
+	 * @see de.dfki.iui.basys.model.service.ServiceDescriptionStore#getServiceDescriptions()
+	 * @see #getServiceDescriptionStore()
+	 * @generated
+	 */
+	EReference getServiceDescriptionStore_ServiceDescriptions();
+
+	/**
 	 * Returns the meta object for enum '{@link de.dfki.iui.basys.model.service.ServiceTypeEnum <em>Type Enum</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1545,6 +1603,24 @@ public interface ServicePackage extends EPackage {
 		 * @generated
 		 */
 		EClass SOAP_ENDPOINT = eINSTANCE.getSoapEndpoint();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionStoreImpl <em>Description Store</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.service.impl.ServiceDescriptionStoreImpl
+		 * @see de.dfki.iui.basys.model.service.impl.ServicePackageImpl#getServiceDescriptionStore()
+		 * @generated
+		 */
+		EClass SERVICE_DESCRIPTION_STORE = eINSTANCE.getServiceDescriptionStore();
+
+		/**
+		 * The meta object literal for the '<em><b>Service Descriptions</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SERVICE_DESCRIPTION_STORE__SERVICE_DESCRIPTIONS = eINSTANCE.getServiceDescriptionStore_ServiceDescriptions();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.service.ServiceTypeEnum <em>Type Enum</em>}' enum.

@@ -110,6 +110,10 @@ public class ServiceAdapterFactory extends AdapterFactoryImpl {
 				return createSoapEndpointAdapter();
 			}
 			@Override
+			public Adapter caseServiceDescriptionStore(ServiceDescriptionStore object) {
+				return createServiceDescriptionStoreAdapter();
+			}
+			@Override
 			public Adapter caseEModelElement(EModelElement object) {
 				return createEModelElementAdapter();
 			}
@@ -276,6 +280,20 @@ public class ServiceAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSoapEndpointAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.service.ServiceDescriptionStore <em>Description Store</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.service.ServiceDescriptionStore
+	 * @generated
+	 */
+	public Adapter createServiceDescriptionStoreAdapter() {
 		return null;
 	}
 

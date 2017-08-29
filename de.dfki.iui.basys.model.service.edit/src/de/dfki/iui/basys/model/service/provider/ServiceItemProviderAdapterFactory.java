@@ -279,6 +279,29 @@ public class ServiceItemProviderAdapterFactory extends ServiceAdapterFactory imp
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.service.ServiceDescriptionStore} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ServiceDescriptionStoreItemProvider serviceDescriptionStoreItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.service.ServiceDescriptionStore}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createServiceDescriptionStoreAdapter() {
+		if (serviceDescriptionStoreItemProvider == null) {
+			serviceDescriptionStoreItemProvider = new ServiceDescriptionStoreItemProvider(this);
+		}
+
+		return serviceDescriptionStoreItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -386,6 +409,7 @@ public class ServiceItemProviderAdapterFactory extends ServiceAdapterFactory imp
 		if (serviceEndpointItemProvider != null) serviceEndpointItemProvider.dispose();
 		if (restEndpointItemProvider != null) restEndpointItemProvider.dispose();
 		if (soapEndpointItemProvider != null) soapEndpointItemProvider.dispose();
+		if (serviceDescriptionStoreItemProvider != null) serviceDescriptionStoreItemProvider.dispose();
 	}
 
 }

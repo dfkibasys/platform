@@ -58,4 +58,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RestEndpoint" eSuperTypes="#//ServiceEndpoint"/>
   <eClassifiers xsi:type="ecore:EClass" name="SoapEndpoint" eSuperTypes="#//ServiceEndpoint"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ServiceDescriptionStore">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="serviceDescriptions" upperBound="-1"
+        eType="#//ServiceDescription" containment="true"/>
+  </eClassifiers>
 </ecore:EPackage>

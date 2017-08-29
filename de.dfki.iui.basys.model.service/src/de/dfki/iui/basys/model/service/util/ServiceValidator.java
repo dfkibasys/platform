@@ -114,6 +114,8 @@ public class ServiceValidator extends EObjectValidator {
 				return validateRestEndpoint((RestEndpoint)value, diagnostics, context);
 			case ServicePackage.SOAP_ENDPOINT:
 				return validateSoapEndpoint((SoapEndpoint)value, diagnostics, context);
+			case ServicePackage.SERVICE_DESCRIPTION_STORE:
+				return validateServiceDescriptionStore((ServiceDescriptionStore)value, diagnostics, context);
 			case ServicePackage.SERVICE_TYPE_ENUM:
 				return validateServiceTypeEnum((ServiceTypeEnum)value, diagnostics, context);
 			default:
@@ -285,6 +287,15 @@ public class ServiceValidator extends EObjectValidator {
 	 */
 	public boolean validateSoapEndpoint(SoapEndpoint soapEndpoint, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(soapEndpoint, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateServiceDescriptionStore(ServiceDescriptionStore serviceDescriptionStore, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(serviceDescriptionStore, diagnostics, context);
 	}
 
 	/**
