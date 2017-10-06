@@ -12,8 +12,8 @@ Export-Package: de.dfki.iui.basys.model.service.provider
 Require-Bundle: org.eclipse.core.runtime,
  de.dfki.iui.basys.model.service;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport,
- de.dfki.iui.basys.model;visibility:=reexport,
- de.dfki.iui.basys.model.edit;visibility:=reexport,
+ de.dfki.iui.basys.model.base;visibility:=reexport,
+ de.dfki.iui.basys.model.base.edit;visibility:=reexport,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.emf.ecore.edit;visibility:=reexport
 Bundle-ActivationPolicy: lazy

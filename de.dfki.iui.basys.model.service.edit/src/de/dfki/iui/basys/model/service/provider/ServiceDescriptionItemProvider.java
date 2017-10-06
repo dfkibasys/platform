@@ -175,6 +175,7 @@ public class ServiceDescriptionItemProvider extends ENamedElementItemProvider {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(BasePackage.Literals.ENTITY__METADATA);
+			childrenFeatures.add(ServicePackage.Literals.SERVICE_DESCRIPTION__PROPERTIES);
 			childrenFeatures.add(ServicePackage.Literals.SERVICE_DESCRIPTION__OPERATIONS);
 			childrenFeatures.add(ServicePackage.Literals.SERVICE_DESCRIPTION__PUBLICATIONS);
 			childrenFeatures.add(ServicePackage.Literals.SERVICE_DESCRIPTION__SUBSCRIPTIONS);
@@ -239,6 +240,7 @@ public class ServiceDescriptionItemProvider extends ENamedElementItemProvider {
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case ServicePackage.SERVICE_DESCRIPTION__METADATA:
+			case ServicePackage.SERVICE_DESCRIPTION__PROPERTIES:
 			case ServicePackage.SERVICE_DESCRIPTION__OPERATIONS:
 			case ServicePackage.SERVICE_DESCRIPTION__PUBLICATIONS:
 			case ServicePackage.SERVICE_DESCRIPTION__SUBSCRIPTIONS:
@@ -263,6 +265,11 @@ public class ServiceDescriptionItemProvider extends ENamedElementItemProvider {
 			(createChildParameter
 				(BasePackage.Literals.ENTITY__METADATA,
 				 BaseFactory.eINSTANCE.createMetadata()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ServicePackage.Literals.SERVICE_DESCRIPTION__PROPERTIES,
+				 ServiceFactory.eINSTANCE.createProperty()));
 
 		newChildDescriptors.add
 			(createChildParameter

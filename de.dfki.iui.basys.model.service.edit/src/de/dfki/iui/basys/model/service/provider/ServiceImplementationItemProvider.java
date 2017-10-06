@@ -49,7 +49,7 @@ public class ServiceImplementationItemProvider extends IdentifiableEntityItemPro
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addDescriptionIdPropertyDescriptor(object);
+			addServiceDescriptionIdPropertyDescriptor(object);
 			addVersionPropertyDescriptor(object);
 			addPlatformPropertyDescriptor(object);
 			addBundleLocationPropertyDescriptor(object);
@@ -58,19 +58,19 @@ public class ServiceImplementationItemProvider extends IdentifiableEntityItemPro
 	}
 
 	/**
-	 * This adds a property descriptor for the Description Id feature.
+	 * This adds a property descriptor for the Service Description Id feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addDescriptionIdPropertyDescriptor(Object object) {
+	protected void addServiceDescriptionIdPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ServiceImplementation_descriptionId_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ServiceImplementation_descriptionId_feature", "_UI_ServiceImplementation_type"),
-				 ServicePackage.Literals.SERVICE_IMPLEMENTATION__DESCRIPTION_ID,
+				 getString("_UI_ServiceImplementation_serviceDescriptionId_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ServiceImplementation_serviceDescriptionId_feature", "_UI_ServiceImplementation_type"),
+				 ServicePackage.Literals.SERVICE_IMPLEMENTATION__SERVICE_DESCRIPTION_ID,
 				 true,
 				 false,
 				 false,
@@ -183,7 +183,7 @@ public class ServiceImplementationItemProvider extends IdentifiableEntityItemPro
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ServiceImplementation.class)) {
-			case ServicePackage.SERVICE_IMPLEMENTATION__DESCRIPTION_ID:
+			case ServicePackage.SERVICE_IMPLEMENTATION__SERVICE_DESCRIPTION_ID:
 			case ServicePackage.SERVICE_IMPLEMENTATION__VERSION:
 			case ServicePackage.SERVICE_IMPLEMENTATION__PLATFORM:
 			case ServicePackage.SERVICE_IMPLEMENTATION__BUNDLE_LOCATION:

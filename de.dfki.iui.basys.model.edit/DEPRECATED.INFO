@@ -1,0 +1,5 @@
+This project is deprecated
+
+instead use
+ - de.dfki.iui.basys.model.base.edit
+ - de.dfki.iui.basys.model.domain.edit

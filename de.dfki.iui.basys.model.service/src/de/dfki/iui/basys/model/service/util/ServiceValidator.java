@@ -98,6 +98,8 @@ public class ServiceValidator extends EObjectValidator {
 		switch (classifierID) {
 			case ServicePackage.SERVICE_DESCRIPTION:
 				return validateServiceDescription((ServiceDescription)value, diagnostics, context);
+			case ServicePackage.PROPERTY:
+				return validateProperty((Property)value, diagnostics, context);
 			case ServicePackage.OPERATION:
 				return validateOperation((Operation)value, diagnostics, context);
 			case ServicePackage.PUBLICATION:
@@ -114,8 +116,6 @@ public class ServiceValidator extends EObjectValidator {
 				return validateRestEndpoint((RestEndpoint)value, diagnostics, context);
 			case ServicePackage.SOAP_ENDPOINT:
 				return validateSoapEndpoint((SoapEndpoint)value, diagnostics, context);
-			case ServicePackage.SERVICE_DESCRIPTION_STORE:
-				return validateServiceDescriptionStore((ServiceDescriptionStore)value, diagnostics, context);
 			case ServicePackage.SERVICE_TYPE_ENUM:
 				return validateServiceTypeEnum((ServiceTypeEnum)value, diagnostics, context);
 			default:
@@ -170,6 +170,29 @@ public class ServiceValidator extends EObjectValidator {
 				 Diagnostic.ERROR,
 				 DIAGNOSTIC_SOURCE,
 				 0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateProperty(Property property, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(property, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(property, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(property, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(property, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(property, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(property, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(property, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(property, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(property, diagnostics, context);
+		if (result || diagnostics != null) result &= ecoreValidator.validateENamedElement_WellFormedName(property, diagnostics, context);
+		if (result || diagnostics != null) result &= ecoreValidator.validateETypedElement_ValidLowerBound(property, diagnostics, context);
+		if (result || diagnostics != null) result &= ecoreValidator.validateETypedElement_ValidUpperBound(property, diagnostics, context);
+		if (result || diagnostics != null) result &= ecoreValidator.validateETypedElement_ConsistentBounds(property, diagnostics, context);
+		if (result || diagnostics != null) result &= ecoreValidator.validateETypedElement_ValidType(property, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -287,15 +310,6 @@ public class ServiceValidator extends EObjectValidator {
 	 */
 	public boolean validateSoapEndpoint(SoapEndpoint soapEndpoint, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(soapEndpoint, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateServiceDescriptionStore(ServiceDescriptionStore serviceDescriptionStore, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(serviceDescriptionStore, diagnostics, context);
 	}
 
 	/**

@@ -87,6 +87,10 @@ public class AasAdapterFactory extends AdapterFactoryImpl {
 				return createParameterMappingAdapter();
 			}
 			@Override
+			public Adapter caseOperationalServiceMapping(OperationalServiceMapping object) {
+				return createOperationalServiceMappingAdapter();
+			}
+			@Override
 			public Adapter caseEntity(Entity object) {
 				return createEntityAdapter();
 			}
@@ -167,6 +171,20 @@ public class AasAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createParameterMappingAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.aas.OperationalServiceMapping <em>Operational Service Mapping</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.aas.OperationalServiceMapping
+	 * @generated
+	 */
+	public Adapter createOperationalServiceMappingAdapter() {
 		return null;
 	}
 

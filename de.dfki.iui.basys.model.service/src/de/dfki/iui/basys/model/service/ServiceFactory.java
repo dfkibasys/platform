@@ -31,6 +31,15 @@ public interface ServiceFactory extends EFactory {
 	ServiceDescription createServiceDescription();
 
 	/**
+	 * Returns a new object of class '<em>Property</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Property</em>'.
+	 * @generated
+	 */
+	Property createProperty();
+
+	/**
 	 * Returns a new object of class '<em>Operation</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -101,15 +110,6 @@ public interface ServiceFactory extends EFactory {
 	 * @generated
 	 */
 	SoapEndpoint createSoapEndpoint();
-
-	/**
-	 * Returns a new object of class '<em>Description Store</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Description Store</em>'.
-	 * @generated
-	 */
-	ServiceDescriptionStore createServiceDescriptionStore();
 
 	/**
 	 * Returns the package supported by this factory.

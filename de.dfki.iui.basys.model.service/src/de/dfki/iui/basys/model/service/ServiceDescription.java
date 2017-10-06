@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.ENamedElement;
  * <ul>
  *   <li>{@link de.dfki.iui.basys.model.service.ServiceDescription#getVersion <em>Version</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.service.ServiceDescription#getServiceType <em>Service Type</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.service.ServiceDescription#getProperties <em>Properties</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.service.ServiceDescription#getOperations <em>Operations</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.service.ServiceDescription#getPublications <em>Publications</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.service.ServiceDescription#getSubscriptions <em>Subscriptions</em>}</li>
@@ -27,7 +28,7 @@ import org.eclipse.emf.ecore.ENamedElement;
  *
  * @see de.dfki.iui.basys.model.service.ServicePackage#getServiceDescription()
  * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='noSelfDependency'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL noSelfDependency='not dependencies-&gt;includes(self)'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL noSelfDependency='not dependencies->includes(self)'"
  * @generated
  */
 public interface ServiceDescription extends ENamedElement, IdentifiableEntity {
@@ -87,6 +88,22 @@ public interface ServiceDescription extends ENamedElement, IdentifiableEntity {
 	 * @generated
 	 */
 	void setServiceType(ServiceTypeEnum value);
+
+	/**
+	 * Returns the value of the '<em><b>Properties</b></em>' containment reference list.
+	 * The list contents are of type {@link de.dfki.iui.basys.model.service.Property}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Properties</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Properties</em>' containment reference list.
+	 * @see de.dfki.iui.basys.model.service.ServicePackage#getServiceDescription_Properties()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Property> getProperties();
 
 	/**
 	 * Returns the value of the '<em><b>Operations</b></em>' containment reference list.

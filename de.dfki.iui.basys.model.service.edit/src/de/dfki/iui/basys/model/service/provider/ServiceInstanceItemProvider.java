@@ -52,26 +52,26 @@ public class ServiceInstanceItemProvider extends IdentifiableEntityItemProvider 
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addDescriptionIdPropertyDescriptor(object);
-			addImplementationIdPropertyDescriptor(object);
+			addServiceDescriptionIdPropertyDescriptor(object);
+			addServiceImplementationIdPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Description Id feature.
+	 * This adds a property descriptor for the Service Description Id feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addDescriptionIdPropertyDescriptor(Object object) {
+	protected void addServiceDescriptionIdPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ServiceInstance_descriptionId_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ServiceInstance_descriptionId_feature", "_UI_ServiceInstance_type"),
-				 ServicePackage.Literals.SERVICE_INSTANCE__DESCRIPTION_ID,
+				 getString("_UI_ServiceInstance_serviceDescriptionId_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ServiceInstance_serviceDescriptionId_feature", "_UI_ServiceInstance_type"),
+				 ServicePackage.Literals.SERVICE_INSTANCE__SERVICE_DESCRIPTION_ID,
 				 true,
 				 false,
 				 false,
@@ -81,19 +81,19 @@ public class ServiceInstanceItemProvider extends IdentifiableEntityItemProvider 
 	}
 
 	/**
-	 * This adds a property descriptor for the Implementation Id feature.
+	 * This adds a property descriptor for the Service Implementation Id feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addImplementationIdPropertyDescriptor(Object object) {
+	protected void addServiceImplementationIdPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ServiceInstance_implementationId_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ServiceInstance_implementationId_feature", "_UI_ServiceInstance_type"),
-				 ServicePackage.Literals.SERVICE_INSTANCE__IMPLEMENTATION_ID,
+				 getString("_UI_ServiceInstance_serviceImplementationId_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ServiceInstance_serviceImplementationId_feature", "_UI_ServiceInstance_type"),
+				 ServicePackage.Literals.SERVICE_INSTANCE__SERVICE_IMPLEMENTATION_ID,
 				 true,
 				 false,
 				 false,
@@ -170,8 +170,8 @@ public class ServiceInstanceItemProvider extends IdentifiableEntityItemProvider 
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ServiceInstance.class)) {
-			case ServicePackage.SERVICE_INSTANCE__DESCRIPTION_ID:
-			case ServicePackage.SERVICE_INSTANCE__IMPLEMENTATION_ID:
+			case ServicePackage.SERVICE_INSTANCE__SERVICE_DESCRIPTION_ID:
+			case ServicePackage.SERVICE_INSTANCE__SERVICE_IMPLEMENTATION_ID:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case ServicePackage.SERVICE_INSTANCE__ENDPOINTS:

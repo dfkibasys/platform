@@ -125,13 +125,22 @@ public interface ServicePackage extends EPackage {
 	int SERVICE_DESCRIPTION__SERVICE_TYPE = EcorePackage.ENAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_DESCRIPTION__PROPERTIES = EcorePackage.ENAMED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
 	 * The feature id for the '<em><b>Operations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_DESCRIPTION__OPERATIONS = EcorePackage.ENAMED_ELEMENT_FEATURE_COUNT + 4;
+	int SERVICE_DESCRIPTION__OPERATIONS = EcorePackage.ENAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Publications</b></em>' containment reference list.
@@ -140,7 +149,7 @@ public interface ServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_DESCRIPTION__PUBLICATIONS = EcorePackage.ENAMED_ELEMENT_FEATURE_COUNT + 5;
+	int SERVICE_DESCRIPTION__PUBLICATIONS = EcorePackage.ENAMED_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Subscriptions</b></em>' containment reference list.
@@ -149,7 +158,7 @@ public interface ServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_DESCRIPTION__SUBSCRIPTIONS = EcorePackage.ENAMED_ELEMENT_FEATURE_COUNT + 6;
+	int SERVICE_DESCRIPTION__SUBSCRIPTIONS = EcorePackage.ENAMED_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Dependencies</b></em>' reference list.
@@ -158,7 +167,7 @@ public interface ServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_DESCRIPTION__DEPENDENCIES = EcorePackage.ENAMED_ELEMENT_FEATURE_COUNT + 7;
+	int SERVICE_DESCRIPTION__DEPENDENCIES = EcorePackage.ENAMED_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
 	 * The number of structural features of the '<em>Description</em>' class.
@@ -167,7 +176,7 @@ public interface ServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_DESCRIPTION_FEATURE_COUNT = EcorePackage.ENAMED_ELEMENT_FEATURE_COUNT + 8;
+	int SERVICE_DESCRIPTION_FEATURE_COUNT = EcorePackage.ENAMED_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
 	 * The operation id for the '<em>Get EAnnotation</em>' operation.
@@ -188,6 +197,133 @@ public interface ServicePackage extends EPackage {
 	int SERVICE_DESCRIPTION_OPERATION_COUNT = EcorePackage.ENAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.service.impl.PropertyImpl <em>Property</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.service.impl.PropertyImpl
+	 * @see de.dfki.iui.basys.model.service.impl.ServicePackageImpl#getProperty()
+	 * @generated
+	 */
+	int PROPERTY = 1;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY__EANNOTATIONS = EcorePackage.ETYPED_ELEMENT__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY__NAME = EcorePackage.ETYPED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Ordered</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY__ORDERED = EcorePackage.ETYPED_ELEMENT__ORDERED;
+
+	/**
+	 * The feature id for the '<em><b>Unique</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY__UNIQUE = EcorePackage.ETYPED_ELEMENT__UNIQUE;
+
+	/**
+	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY__LOWER_BOUND = EcorePackage.ETYPED_ELEMENT__LOWER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY__UPPER_BOUND = EcorePackage.ETYPED_ELEMENT__UPPER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Many</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY__MANY = EcorePackage.ETYPED_ELEMENT__MANY;
+
+	/**
+	 * The feature id for the '<em><b>Required</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY__REQUIRED = EcorePackage.ETYPED_ELEMENT__REQUIRED;
+
+	/**
+	 * The feature id for the '<em><b>EType</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY__ETYPE = EcorePackage.ETYPED_ELEMENT__ETYPE;
+
+	/**
+	 * The feature id for the '<em><b>EGeneric Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY__EGENERIC_TYPE = EcorePackage.ETYPED_ELEMENT__EGENERIC_TYPE;
+
+	/**
+	 * The number of structural features of the '<em>Property</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY_FEATURE_COUNT = EcorePackage.ETYPED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY___GET_EANNOTATION__STRING = EcorePackage.ETYPED_ELEMENT___GET_EANNOTATION__STRING;
+
+	/**
+	 * The number of operations of the '<em>Property</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY_OPERATION_COUNT = EcorePackage.ETYPED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.service.impl.OperationImpl <em>Operation</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -195,7 +331,7 @@ public interface ServicePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.service.impl.ServicePackageImpl#getOperation()
 	 * @generated
 	 */
-	int OPERATION = 1;
+	int OPERATION = 2;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -385,7 +521,7 @@ public interface ServicePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.service.impl.ServicePackageImpl#getPublication()
 	 * @generated
 	 */
-	int PUBLICATION = 2;
+	int PUBLICATION = 3;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -530,7 +666,7 @@ public interface ServicePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.service.impl.ServicePackageImpl#getSubscription()
 	 * @generated
 	 */
-	int SUBSCRIPTION = 3;
+	int SUBSCRIPTION = 4;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -676,7 +812,7 @@ public interface ServicePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.service.impl.ServicePackageImpl#getServiceImplementation()
 	 * @generated
 	 */
-	int SERVICE_IMPLEMENTATION = 4;
+	int SERVICE_IMPLEMENTATION = 5;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -697,13 +833,13 @@ public interface ServicePackage extends EPackage {
 	int SERVICE_IMPLEMENTATION__ID = BasePackage.IDENTIFIABLE_ENTITY__ID;
 
 	/**
-	 * The feature id for the '<em><b>Description Id</b></em>' attribute.
+	 * The feature id for the '<em><b>Service Description Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_IMPLEMENTATION__DESCRIPTION_ID = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
+	int SERVICE_IMPLEMENTATION__SERVICE_DESCRIPTION_ID = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -758,7 +894,7 @@ public interface ServicePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.service.impl.ServicePackageImpl#getServiceInstance()
 	 * @generated
 	 */
-	int SERVICE_INSTANCE = 5;
+	int SERVICE_INSTANCE = 6;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -779,22 +915,22 @@ public interface ServicePackage extends EPackage {
 	int SERVICE_INSTANCE__ID = BasePackage.IDENTIFIABLE_ENTITY__ID;
 
 	/**
-	 * The feature id for the '<em><b>Description Id</b></em>' attribute.
+	 * The feature id for the '<em><b>Service Description Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_INSTANCE__DESCRIPTION_ID = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
+	int SERVICE_INSTANCE__SERVICE_DESCRIPTION_ID = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Implementation Id</b></em>' attribute.
+	 * The feature id for the '<em><b>Service Implementation Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_INSTANCE__IMPLEMENTATION_ID = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 1;
+	int SERVICE_INSTANCE__SERVICE_IMPLEMENTATION_ID = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Endpoints</b></em>' containment reference list.
@@ -831,7 +967,7 @@ public interface ServicePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.service.impl.ServicePackageImpl#getServiceEndpoint()
 	 * @generated
 	 */
-	int SERVICE_ENDPOINT = 6;
+	int SERVICE_ENDPOINT = 7;
 
 	/**
 	 * The feature id for the '<em><b>Ip Address</b></em>' attribute.
@@ -877,7 +1013,7 @@ public interface ServicePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.service.impl.ServicePackageImpl#getRestEndpoint()
 	 * @generated
 	 */
-	int REST_ENDPOINT = 7;
+	int REST_ENDPOINT = 8;
 
 	/**
 	 * The feature id for the '<em><b>Ip Address</b></em>' attribute.
@@ -923,7 +1059,7 @@ public interface ServicePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.service.impl.ServicePackageImpl#getSoapEndpoint()
 	 * @generated
 	 */
-	int SOAP_ENDPOINT = 8;
+	int SOAP_ENDPOINT = 9;
 
 	/**
 	 * The feature id for the '<em><b>Ip Address</b></em>' attribute.
@@ -960,43 +1096,6 @@ public interface ServicePackage extends EPackage {
 	 * @ordered
 	 */
 	int SOAP_ENDPOINT_OPERATION_COUNT = SERVICE_ENDPOINT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionStoreImpl <em>Description Store</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.service.impl.ServiceDescriptionStoreImpl
-	 * @see de.dfki.iui.basys.model.service.impl.ServicePackageImpl#getServiceDescriptionStore()
-	 * @generated
-	 */
-	int SERVICE_DESCRIPTION_STORE = 9;
-
-	/**
-	 * The feature id for the '<em><b>Service Descriptions</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_DESCRIPTION_STORE__SERVICE_DESCRIPTIONS = 0;
-
-	/**
-	 * The number of structural features of the '<em>Description Store</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_DESCRIPTION_STORE_FEATURE_COUNT = 1;
-
-	/**
-	 * The number of operations of the '<em>Description Store</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVICE_DESCRIPTION_STORE_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.service.ServiceTypeEnum <em>Type Enum</em>}' enum.
@@ -1042,6 +1141,17 @@ public interface ServicePackage extends EPackage {
 	EAttribute getServiceDescription_ServiceType();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.service.ServiceDescription#getProperties <em>Properties</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Properties</em>'.
+	 * @see de.dfki.iui.basys.model.service.ServiceDescription#getProperties()
+	 * @see #getServiceDescription()
+	 * @generated
+	 */
+	EReference getServiceDescription_Properties();
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.service.ServiceDescription#getOperations <em>Operations</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1084,6 +1194,16 @@ public interface ServicePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getServiceDescription_Dependencies();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.service.Property <em>Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Property</em>'.
+	 * @see de.dfki.iui.basys.model.service.Property
+	 * @generated
+	 */
+	EClass getProperty();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.service.Operation <em>Operation</em>}'.
@@ -1170,15 +1290,15 @@ public interface ServicePackage extends EPackage {
 	EClass getServiceImplementation();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.service.ServiceImplementation#getDescriptionId <em>Description Id</em>}'.
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.service.ServiceImplementation#getServiceDescriptionId <em>Service Description Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Description Id</em>'.
-	 * @see de.dfki.iui.basys.model.service.ServiceImplementation#getDescriptionId()
+	 * @return the meta object for the attribute '<em>Service Description Id</em>'.
+	 * @see de.dfki.iui.basys.model.service.ServiceImplementation#getServiceDescriptionId()
 	 * @see #getServiceImplementation()
 	 * @generated
 	 */
-	EAttribute getServiceImplementation_DescriptionId();
+	EAttribute getServiceImplementation_ServiceDescriptionId();
 
 	/**
 	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.service.ServiceImplementation#getVersion <em>Version</em>}'.
@@ -1224,26 +1344,26 @@ public interface ServicePackage extends EPackage {
 	EClass getServiceInstance();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.service.ServiceInstance#getDescriptionId <em>Description Id</em>}'.
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.service.ServiceInstance#getServiceDescriptionId <em>Service Description Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Description Id</em>'.
-	 * @see de.dfki.iui.basys.model.service.ServiceInstance#getDescriptionId()
+	 * @return the meta object for the attribute '<em>Service Description Id</em>'.
+	 * @see de.dfki.iui.basys.model.service.ServiceInstance#getServiceDescriptionId()
 	 * @see #getServiceInstance()
 	 * @generated
 	 */
-	EAttribute getServiceInstance_DescriptionId();
+	EAttribute getServiceInstance_ServiceDescriptionId();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.service.ServiceInstance#getImplementationId <em>Implementation Id</em>}'.
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.service.ServiceInstance#getServiceImplementationId <em>Service Implementation Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Implementation Id</em>'.
-	 * @see de.dfki.iui.basys.model.service.ServiceInstance#getImplementationId()
+	 * @return the meta object for the attribute '<em>Service Implementation Id</em>'.
+	 * @see de.dfki.iui.basys.model.service.ServiceInstance#getServiceImplementationId()
 	 * @see #getServiceInstance()
 	 * @generated
 	 */
-	EAttribute getServiceInstance_ImplementationId();
+	EAttribute getServiceInstance_ServiceImplementationId();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.service.ServiceInstance#getEndpoints <em>Endpoints</em>}'.
@@ -1309,27 +1429,6 @@ public interface ServicePackage extends EPackage {
 	EClass getSoapEndpoint();
 
 	/**
-	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.service.ServiceDescriptionStore <em>Description Store</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Description Store</em>'.
-	 * @see de.dfki.iui.basys.model.service.ServiceDescriptionStore
-	 * @generated
-	 */
-	EClass getServiceDescriptionStore();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.service.ServiceDescriptionStore#getServiceDescriptions <em>Service Descriptions</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Service Descriptions</em>'.
-	 * @see de.dfki.iui.basys.model.service.ServiceDescriptionStore#getServiceDescriptions()
-	 * @see #getServiceDescriptionStore()
-	 * @generated
-	 */
-	EReference getServiceDescriptionStore_ServiceDescriptions();
-
-	/**
 	 * Returns the meta object for enum '{@link de.dfki.iui.basys.model.service.ServiceTypeEnum <em>Type Enum</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1389,6 +1488,14 @@ public interface ServicePackage extends EPackage {
 		EAttribute SERVICE_DESCRIPTION__SERVICE_TYPE = eINSTANCE.getServiceDescription_ServiceType();
 
 		/**
+		 * The meta object literal for the '<em><b>Properties</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SERVICE_DESCRIPTION__PROPERTIES = eINSTANCE.getServiceDescription_Properties();
+
+		/**
 		 * The meta object literal for the '<em><b>Operations</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1419,6 +1526,16 @@ public interface ServicePackage extends EPackage {
 		 * @generated
 		 */
 		EReference SERVICE_DESCRIPTION__DEPENDENCIES = eINSTANCE.getServiceDescription_Dependencies();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.service.impl.PropertyImpl <em>Property</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.service.impl.PropertyImpl
+		 * @see de.dfki.iui.basys.model.service.impl.ServicePackageImpl#getProperty()
+		 * @generated
+		 */
+		EClass PROPERTY = eINSTANCE.getProperty();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.service.impl.OperationImpl <em>Operation</em>}' class.
@@ -1493,12 +1610,12 @@ public interface ServicePackage extends EPackage {
 		EClass SERVICE_IMPLEMENTATION = eINSTANCE.getServiceImplementation();
 
 		/**
-		 * The meta object literal for the '<em><b>Description Id</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Service Description Id</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SERVICE_IMPLEMENTATION__DESCRIPTION_ID = eINSTANCE.getServiceImplementation_DescriptionId();
+		EAttribute SERVICE_IMPLEMENTATION__SERVICE_DESCRIPTION_ID = eINSTANCE.getServiceImplementation_ServiceDescriptionId();
 
 		/**
 		 * The meta object literal for the '<em><b>Version</b></em>' attribute feature.
@@ -1535,20 +1652,20 @@ public interface ServicePackage extends EPackage {
 		EClass SERVICE_INSTANCE = eINSTANCE.getServiceInstance();
 
 		/**
-		 * The meta object literal for the '<em><b>Description Id</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Service Description Id</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SERVICE_INSTANCE__DESCRIPTION_ID = eINSTANCE.getServiceInstance_DescriptionId();
+		EAttribute SERVICE_INSTANCE__SERVICE_DESCRIPTION_ID = eINSTANCE.getServiceInstance_ServiceDescriptionId();
 
 		/**
-		 * The meta object literal for the '<em><b>Implementation Id</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Service Implementation Id</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SERVICE_INSTANCE__IMPLEMENTATION_ID = eINSTANCE.getServiceInstance_ImplementationId();
+		EAttribute SERVICE_INSTANCE__SERVICE_IMPLEMENTATION_ID = eINSTANCE.getServiceInstance_ServiceImplementationId();
 
 		/**
 		 * The meta object literal for the '<em><b>Endpoints</b></em>' containment reference list feature.
@@ -1603,24 +1720,6 @@ public interface ServicePackage extends EPackage {
 		 * @generated
 		 */
 		EClass SOAP_ENDPOINT = eINSTANCE.getSoapEndpoint();
-
-		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionStoreImpl <em>Description Store</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.service.impl.ServiceDescriptionStoreImpl
-		 * @see de.dfki.iui.basys.model.service.impl.ServicePackageImpl#getServiceDescriptionStore()
-		 * @generated
-		 */
-		EClass SERVICE_DESCRIPTION_STORE = eINSTANCE.getServiceDescriptionStore();
-
-		/**
-		 * The meta object literal for the '<em><b>Service Descriptions</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SERVICE_DESCRIPTION_STORE__SERVICE_DESCRIPTIONS = eINSTANCE.getServiceDescriptionStore_ServiceDescriptions();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.service.ServiceTypeEnum <em>Type Enum</em>}' enum.

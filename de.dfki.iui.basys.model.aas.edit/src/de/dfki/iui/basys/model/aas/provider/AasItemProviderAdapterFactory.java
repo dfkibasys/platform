@@ -164,6 +164,29 @@ public class AasItemProviderAdapterFactory extends AasAdapterFactory implements 
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.aas.OperationalServiceMapping} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OperationalServiceMappingItemProvider operationalServiceMappingItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.aas.OperationalServiceMapping}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOperationalServiceMappingAdapter() {
+		if (operationalServiceMappingItemProvider == null) {
+			operationalServiceMappingItemProvider = new OperationalServiceMappingItemProvider(this);
+		}
+
+		return operationalServiceMappingItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -266,6 +289,7 @@ public class AasItemProviderAdapterFactory extends AasAdapterFactory implements 
 		if (informationMappingItemProvider != null) informationMappingItemProvider.dispose();
 		if (serviceCallItemProvider != null) serviceCallItemProvider.dispose();
 		if (parameterMappingItemProvider != null) parameterMappingItemProvider.dispose();
+		if (operationalServiceMappingItemProvider != null) operationalServiceMappingItemProvider.dispose();
 	}
 
 }

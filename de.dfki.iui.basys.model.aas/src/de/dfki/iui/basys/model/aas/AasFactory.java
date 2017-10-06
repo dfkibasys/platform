@@ -58,6 +58,15 @@ public interface AasFactory extends EFactory {
 	ParameterMapping createParameterMapping();
 
 	/**
+	 * Returns a new object of class '<em>Operational Service Mapping</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Operational Service Mapping</em>'.
+	 * @generated
+	 */
+	OperationalServiceMapping createOperationalServiceMapping();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

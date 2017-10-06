@@ -60,6 +60,7 @@ public class AasFactoryImpl extends EFactoryImpl implements AasFactory {
 			case AasPackage.INFORMATION_MAPPING: return createInformationMapping();
 			case AasPackage.SERVICE_CALL: return createServiceCall();
 			case AasPackage.PARAMETER_MAPPING: return createParameterMapping();
+			case AasPackage.OPERATIONAL_SERVICE_MAPPING: return createOperationalServiceMapping();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -103,6 +104,16 @@ public class AasFactoryImpl extends EFactoryImpl implements AasFactory {
 	public ParameterMapping createParameterMapping() {
 		ParameterMappingImpl parameterMapping = new ParameterMappingImpl();
 		return parameterMapping;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OperationalServiceMapping createOperationalServiceMapping() {
+		OperationalServiceMappingImpl operationalServiceMapping = new OperationalServiceMappingImpl();
+		return operationalServiceMapping;
 	}
 
 	/**

@@ -95,6 +95,12 @@ public class AasSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AasPackage.OPERATIONAL_SERVICE_MAPPING: {
+				OperationalServiceMapping operationalServiceMapping = (OperationalServiceMapping)theEObject;
+				T result = caseOperationalServiceMapping(operationalServiceMapping);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -156,6 +162,21 @@ public class AasSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseParameterMapping(ParameterMapping object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Operational Service Mapping</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Operational Service Mapping</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOperationalServiceMapping(OperationalServiceMapping object) {
 		return null;
 	}
 

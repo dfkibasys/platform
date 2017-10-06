@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceImplementationImpl#getDescriptionId <em>Description Id</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceImplementationImpl#getServiceDescriptionId <em>Service Description Id</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceImplementationImpl#getVersion <em>Version</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceImplementationImpl#getPlatform <em>Platform</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceImplementationImpl#getBundleLocation <em>Bundle Location</em>}</li>
@@ -31,24 +31,24 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class ServiceImplementationImpl extends IdentifiableEntityImpl implements ServiceImplementation {
 	/**
-	 * The default value of the '{@link #getDescriptionId() <em>Description Id</em>}' attribute.
+	 * The default value of the '{@link #getServiceDescriptionId() <em>Service Description Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDescriptionId()
+	 * @see #getServiceDescriptionId()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String DESCRIPTION_ID_EDEFAULT = null;
+	protected static final String SERVICE_DESCRIPTION_ID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getDescriptionId() <em>Description Id</em>}' attribute.
+	 * The cached value of the '{@link #getServiceDescriptionId() <em>Service Description Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDescriptionId()
+	 * @see #getServiceDescriptionId()
 	 * @generated
 	 * @ordered
 	 */
-	protected String descriptionId = DESCRIPTION_ID_EDEFAULT;
+	protected String serviceDescriptionId = SERVICE_DESCRIPTION_ID_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getVersion() <em>Version</em>}' attribute.
@@ -134,8 +134,8 @@ public class ServiceImplementationImpl extends IdentifiableEntityImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getDescriptionId() {
-		return descriptionId;
+	public String getServiceDescriptionId() {
+		return serviceDescriptionId;
 	}
 
 	/**
@@ -143,11 +143,11 @@ public class ServiceImplementationImpl extends IdentifiableEntityImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDescriptionId(String newDescriptionId) {
-		String oldDescriptionId = descriptionId;
-		descriptionId = newDescriptionId;
+	public void setServiceDescriptionId(String newServiceDescriptionId) {
+		String oldServiceDescriptionId = serviceDescriptionId;
+		serviceDescriptionId = newServiceDescriptionId;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ServicePackage.SERVICE_IMPLEMENTATION__DESCRIPTION_ID, oldDescriptionId, descriptionId));
+			eNotify(new ENotificationImpl(this, Notification.SET, ServicePackage.SERVICE_IMPLEMENTATION__SERVICE_DESCRIPTION_ID, oldServiceDescriptionId, serviceDescriptionId));
 	}
 
 	/**
@@ -221,8 +221,8 @@ public class ServiceImplementationImpl extends IdentifiableEntityImpl implements
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ServicePackage.SERVICE_IMPLEMENTATION__DESCRIPTION_ID:
-				return getDescriptionId();
+			case ServicePackage.SERVICE_IMPLEMENTATION__SERVICE_DESCRIPTION_ID:
+				return getServiceDescriptionId();
 			case ServicePackage.SERVICE_IMPLEMENTATION__VERSION:
 				return getVersion();
 			case ServicePackage.SERVICE_IMPLEMENTATION__PLATFORM:
@@ -241,8 +241,8 @@ public class ServiceImplementationImpl extends IdentifiableEntityImpl implements
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ServicePackage.SERVICE_IMPLEMENTATION__DESCRIPTION_ID:
-				setDescriptionId((String)newValue);
+			case ServicePackage.SERVICE_IMPLEMENTATION__SERVICE_DESCRIPTION_ID:
+				setServiceDescriptionId((String)newValue);
 				return;
 			case ServicePackage.SERVICE_IMPLEMENTATION__VERSION:
 				setVersion((String)newValue);
@@ -265,8 +265,8 @@ public class ServiceImplementationImpl extends IdentifiableEntityImpl implements
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ServicePackage.SERVICE_IMPLEMENTATION__DESCRIPTION_ID:
-				setDescriptionId(DESCRIPTION_ID_EDEFAULT);
+			case ServicePackage.SERVICE_IMPLEMENTATION__SERVICE_DESCRIPTION_ID:
+				setServiceDescriptionId(SERVICE_DESCRIPTION_ID_EDEFAULT);
 				return;
 			case ServicePackage.SERVICE_IMPLEMENTATION__VERSION:
 				setVersion(VERSION_EDEFAULT);
@@ -289,8 +289,8 @@ public class ServiceImplementationImpl extends IdentifiableEntityImpl implements
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ServicePackage.SERVICE_IMPLEMENTATION__DESCRIPTION_ID:
-				return DESCRIPTION_ID_EDEFAULT == null ? descriptionId != null : !DESCRIPTION_ID_EDEFAULT.equals(descriptionId);
+			case ServicePackage.SERVICE_IMPLEMENTATION__SERVICE_DESCRIPTION_ID:
+				return SERVICE_DESCRIPTION_ID_EDEFAULT == null ? serviceDescriptionId != null : !SERVICE_DESCRIPTION_ID_EDEFAULT.equals(serviceDescriptionId);
 			case ServicePackage.SERVICE_IMPLEMENTATION__VERSION:
 				return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
 			case ServicePackage.SERVICE_IMPLEMENTATION__PLATFORM:
@@ -311,8 +311,8 @@ public class ServiceImplementationImpl extends IdentifiableEntityImpl implements
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (descriptionId: ");
-		result.append(descriptionId);
+		result.append(" (serviceDescriptionId: ");
+		result.append(serviceDescriptionId);
 		result.append(", version: ");
 		result.append(version);
 		result.append(", platform: ");

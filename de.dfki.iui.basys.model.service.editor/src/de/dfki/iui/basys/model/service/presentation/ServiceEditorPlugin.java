@@ -2,7 +2,7 @@
  */
 package de.dfki.iui.basys.model.service.presentation;
 
-import de.dfki.iui.basys.model.base.provider.BasysEditPlugin;
+import de.dfki.iui.basys.model.base.provider.BaseEditPlugin;
 import org.eclipse.emf.common.EMFPlugin;
 
 import org.eclipse.emf.common.ui.EclipseUIPlugin;
@@ -43,7 +43,7 @@ public final class ServiceEditorPlugin extends EMFPlugin {
 	public ServiceEditorPlugin() {
 		super
 			(new ResourceLocator [] {
-				BasysEditPlugin.INSTANCE,
+				BaseEditPlugin.INSTANCE,
 				EcoreEditPlugin.INSTANCE,
 			});
 	}

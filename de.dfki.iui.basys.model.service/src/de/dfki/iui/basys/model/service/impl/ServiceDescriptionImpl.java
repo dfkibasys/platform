@@ -8,6 +8,7 @@ import de.dfki.iui.basys.model.base.IdentifiableEntity;
 import de.dfki.iui.basys.model.base.Metadata;
 
 import de.dfki.iui.basys.model.service.Operation;
+import de.dfki.iui.basys.model.service.Property;
 import de.dfki.iui.basys.model.service.Publication;
 import de.dfki.iui.basys.model.service.ServiceDescription;
 import de.dfki.iui.basys.model.service.ServicePackage;
@@ -44,6 +45,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionImpl#getId <em>Id</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionImpl#getVersion <em>Version</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionImpl#getServiceType <em>Service Type</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionImpl#getProperties <em>Properties</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionImpl#getOperations <em>Operations</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionImpl#getPublications <em>Publications</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionImpl#getSubscriptions <em>Subscriptions</em>}</li>
@@ -122,6 +124,16 @@ public class ServiceDescriptionImpl extends ENamedElementImpl implements Service
 	 * @ordered
 	 */
 	protected ServiceTypeEnum serviceType = SERVICE_TYPE_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getProperties()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Property> properties;
 
 	/**
 	 * The cached value of the '{@link #getOperations() <em>Operations</em>}' containment reference list.
@@ -294,6 +306,18 @@ public class ServiceDescriptionImpl extends ENamedElementImpl implements Service
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Property> getProperties() {
+		if (properties == null) {
+			properties = new EObjectContainmentEList<Property>(Property.class, this, ServicePackage.SERVICE_DESCRIPTION__PROPERTIES);
+		}
+		return properties;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<Operation> getOperations() {
 		if (operations == null) {
 			operations = new EObjectContainmentEList<Operation>(Operation.class, this, ServicePackage.SERVICE_DESCRIPTION__OPERATIONS);
@@ -347,6 +371,8 @@ public class ServiceDescriptionImpl extends ENamedElementImpl implements Service
 		switch (featureID) {
 			case ServicePackage.SERVICE_DESCRIPTION__METADATA:
 				return basicSetMetadata(null, msgs);
+			case ServicePackage.SERVICE_DESCRIPTION__PROPERTIES:
+				return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
 			case ServicePackage.SERVICE_DESCRIPTION__OPERATIONS:
 				return ((InternalEList<?>)getOperations()).basicRemove(otherEnd, msgs);
 			case ServicePackage.SERVICE_DESCRIPTION__PUBLICATIONS:
@@ -373,6 +399,8 @@ public class ServiceDescriptionImpl extends ENamedElementImpl implements Service
 				return getVersion();
 			case ServicePackage.SERVICE_DESCRIPTION__SERVICE_TYPE:
 				return getServiceType();
+			case ServicePackage.SERVICE_DESCRIPTION__PROPERTIES:
+				return getProperties();
 			case ServicePackage.SERVICE_DESCRIPTION__OPERATIONS:
 				return getOperations();
 			case ServicePackage.SERVICE_DESCRIPTION__PUBLICATIONS:
@@ -405,6 +433,10 @@ public class ServiceDescriptionImpl extends ENamedElementImpl implements Service
 				return;
 			case ServicePackage.SERVICE_DESCRIPTION__SERVICE_TYPE:
 				setServiceType((ServiceTypeEnum)newValue);
+				return;
+			case ServicePackage.SERVICE_DESCRIPTION__PROPERTIES:
+				getProperties().clear();
+				getProperties().addAll((Collection<? extends Property>)newValue);
 				return;
 			case ServicePackage.SERVICE_DESCRIPTION__OPERATIONS:
 				getOperations().clear();
@@ -446,6 +478,9 @@ public class ServiceDescriptionImpl extends ENamedElementImpl implements Service
 			case ServicePackage.SERVICE_DESCRIPTION__SERVICE_TYPE:
 				setServiceType(SERVICE_TYPE_EDEFAULT);
 				return;
+			case ServicePackage.SERVICE_DESCRIPTION__PROPERTIES:
+				getProperties().clear();
+				return;
 			case ServicePackage.SERVICE_DESCRIPTION__OPERATIONS:
 				getOperations().clear();
 				return;
@@ -478,6 +513,8 @@ public class ServiceDescriptionImpl extends ENamedElementImpl implements Service
 				return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
 			case ServicePackage.SERVICE_DESCRIPTION__SERVICE_TYPE:
 				return serviceType != SERVICE_TYPE_EDEFAULT;
+			case ServicePackage.SERVICE_DESCRIPTION__PROPERTIES:
+				return properties != null && !properties.isEmpty();
 			case ServicePackage.SERVICE_DESCRIPTION__OPERATIONS:
 				return operations != null && !operations.isEmpty();
 			case ServicePackage.SERVICE_DESCRIPTION__PUBLICATIONS:

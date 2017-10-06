@@ -6,6 +6,7 @@ import de.dfki.iui.basys.model.aas.AasPackage;
 import de.dfki.iui.basys.model.aas.AdministrationShell;
 import de.dfki.iui.basys.model.aas.InformationMapping;
 
+import de.dfki.iui.basys.model.aas.OperationalServiceMapping;
 import de.dfki.iui.basys.model.base.Entity;
 
 import de.dfki.iui.basys.model.base.impl.IdentifiableEntityImpl;
@@ -35,23 +36,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.dfki.iui.basys.model.aas.impl.AdministrationShellImpl#getMappings <em>Mappings</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.aas.impl.AdministrationShellImpl#getAssetId <em>Asset Id</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.aas.impl.AdministrationShellImpl#getMappings <em>Mappings</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.aas.impl.AdministrationShellImpl#getOperationalServiceMappings <em>Operational Service Mappings</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class AdministrationShellImpl extends IdentifiableEntityImpl implements AdministrationShell {
-	/**
-	 * The cached value of the '{@link #getMappings() <em>Mappings</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMappings()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<InformationMapping> mappings;
-
 	/**
 	 * The default value of the '{@link #getAssetId() <em>Asset Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -71,6 +63,26 @@ public class AdministrationShellImpl extends IdentifiableEntityImpl implements A
 	 * @ordered
 	 */
 	protected String assetId = ASSET_ID_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getMappings() <em>Mappings</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMappings()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<InformationMapping> mappings;
+
+	/**
+	 * The cached value of the '{@link #getOperationalServiceMappings() <em>Operational Service Mappings</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOperationalServiceMappings()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<OperationalServiceMapping> operationalServiceMappings;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -101,6 +113,18 @@ public class AdministrationShellImpl extends IdentifiableEntityImpl implements A
 			mappings = new EObjectContainmentEList<InformationMapping>(InformationMapping.class, this, AasPackage.ADMINISTRATION_SHELL__MAPPINGS);
 		}
 		return mappings;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<OperationalServiceMapping> getOperationalServiceMappings() {
+		if (operationalServiceMappings == null) {
+			operationalServiceMappings = new EObjectContainmentEList<OperationalServiceMapping>(OperationalServiceMapping.class, this, AasPackage.ADMINISTRATION_SHELL__OPERATIONAL_SERVICE_MAPPINGS);
+		}
+		return operationalServiceMappings;
 	}
 
 	/**
@@ -145,6 +169,8 @@ public class AdministrationShellImpl extends IdentifiableEntityImpl implements A
 		switch (featureID) {
 			case AasPackage.ADMINISTRATION_SHELL__MAPPINGS:
 				return ((InternalEList<?>)getMappings()).basicRemove(otherEnd, msgs);
+			case AasPackage.ADMINISTRATION_SHELL__OPERATIONAL_SERVICE_MAPPINGS:
+				return ((InternalEList<?>)getOperationalServiceMappings()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -157,10 +183,12 @@ public class AdministrationShellImpl extends IdentifiableEntityImpl implements A
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AasPackage.ADMINISTRATION_SHELL__MAPPINGS:
-				return getMappings();
 			case AasPackage.ADMINISTRATION_SHELL__ASSET_ID:
 				return getAssetId();
+			case AasPackage.ADMINISTRATION_SHELL__MAPPINGS:
+				return getMappings();
+			case AasPackage.ADMINISTRATION_SHELL__OPERATIONAL_SERVICE_MAPPINGS:
+				return getOperationalServiceMappings();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -174,12 +202,16 @@ public class AdministrationShellImpl extends IdentifiableEntityImpl implements A
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case AasPackage.ADMINISTRATION_SHELL__ASSET_ID:
+				setAssetId((String)newValue);
+				return;
 			case AasPackage.ADMINISTRATION_SHELL__MAPPINGS:
 				getMappings().clear();
 				getMappings().addAll((Collection<? extends InformationMapping>)newValue);
 				return;
-			case AasPackage.ADMINISTRATION_SHELL__ASSET_ID:
-				setAssetId((String)newValue);
+			case AasPackage.ADMINISTRATION_SHELL__OPERATIONAL_SERVICE_MAPPINGS:
+				getOperationalServiceMappings().clear();
+				getOperationalServiceMappings().addAll((Collection<? extends OperationalServiceMapping>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -193,11 +225,14 @@ public class AdministrationShellImpl extends IdentifiableEntityImpl implements A
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case AasPackage.ADMINISTRATION_SHELL__ASSET_ID:
+				setAssetId(ASSET_ID_EDEFAULT);
+				return;
 			case AasPackage.ADMINISTRATION_SHELL__MAPPINGS:
 				getMappings().clear();
 				return;
-			case AasPackage.ADMINISTRATION_SHELL__ASSET_ID:
-				setAssetId(ASSET_ID_EDEFAULT);
+			case AasPackage.ADMINISTRATION_SHELL__OPERATIONAL_SERVICE_MAPPINGS:
+				getOperationalServiceMappings().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -211,10 +246,12 @@ public class AdministrationShellImpl extends IdentifiableEntityImpl implements A
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AasPackage.ADMINISTRATION_SHELL__MAPPINGS:
-				return mappings != null && !mappings.isEmpty();
 			case AasPackage.ADMINISTRATION_SHELL__ASSET_ID:
 				return ASSET_ID_EDEFAULT == null ? assetId != null : !ASSET_ID_EDEFAULT.equals(assetId);
+			case AasPackage.ADMINISTRATION_SHELL__MAPPINGS:
+				return mappings != null && !mappings.isEmpty();
+			case AasPackage.ADMINISTRATION_SHELL__OPERATIONAL_SERVICE_MAPPINGS:
+				return operationalServiceMappings != null && !operationalServiceMappings.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

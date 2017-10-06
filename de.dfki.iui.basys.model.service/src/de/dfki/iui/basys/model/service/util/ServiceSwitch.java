@@ -82,6 +82,15 @@ public class ServiceSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ServicePackage.PROPERTY: {
+				Property property = (Property)theEObject;
+				T result = caseProperty(property);
+				if (result == null) result = caseETypedElement(property);
+				if (result == null) result = caseENamedElement(property);
+				if (result == null) result = caseEModelElement(property);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case ServicePackage.OPERATION: {
 				Operation operation = (Operation)theEObject;
 				T result = caseOperation(operation);
@@ -146,12 +155,6 @@ public class ServiceSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ServicePackage.SERVICE_DESCRIPTION_STORE: {
-				ServiceDescriptionStore serviceDescriptionStore = (ServiceDescriptionStore)theEObject;
-				T result = caseServiceDescriptionStore(serviceDescriptionStore);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -168,6 +171,21 @@ public class ServiceSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseServiceDescription(ServiceDescription object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Property</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Property</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseProperty(Property object) {
 		return null;
 	}
 
@@ -288,21 +306,6 @@ public class ServiceSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseSoapEndpoint(SoapEndpoint object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Description Store</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Description Store</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseServiceDescriptionStore(ServiceDescriptionStore object) {
 		return null;
 	}
 

@@ -78,6 +78,10 @@ public class ServiceAdapterFactory extends AdapterFactoryImpl {
 				return createServiceDescriptionAdapter();
 			}
 			@Override
+			public Adapter caseProperty(Property object) {
+				return createPropertyAdapter();
+			}
+			@Override
 			public Adapter caseOperation(Operation object) {
 				return createOperationAdapter();
 			}
@@ -108,10 +112,6 @@ public class ServiceAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseSoapEndpoint(SoapEndpoint object) {
 				return createSoapEndpointAdapter();
-			}
-			@Override
-			public Adapter caseServiceDescriptionStore(ServiceDescriptionStore object) {
-				return createServiceDescriptionStoreAdapter();
 			}
 			@Override
 			public Adapter caseEModelElement(EModelElement object) {
@@ -168,6 +168,20 @@ public class ServiceAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createServiceDescriptionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.service.Property <em>Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.service.Property
+	 * @generated
+	 */
+	public Adapter createPropertyAdapter() {
 		return null;
 	}
 
@@ -280,20 +294,6 @@ public class ServiceAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSoapEndpointAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.service.ServiceDescriptionStore <em>Description Store</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.dfki.iui.basys.model.service.ServiceDescriptionStore
-	 * @generated
-	 */
-	public Adapter createServiceDescriptionStoreAdapter() {
 		return null;
 	}
 

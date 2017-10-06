@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.dfki.iui.basys.model.domain/src" modelPluginID="de.dfki.iui.basys.model.domain"
+    modelName="Domain" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    usedGenPackages="../../de.dfki.iui.basys.model.base/model/base.genmodel#//base"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>order.ecore</foreignModel>
+  <foreignModel>product.ecore</foreignModel>
+  <foreignModel>staff.ecore</foreignModel>
+  <foreignModel>topology.ecore</foreignModel>
+  <foreignModel>workerguidance.ecore</foreignModel>
+  <foreignModel>workplan.ecore</foreignModel>
+  <genPackages prefix="Order" basePackage="de.dfki.iui.basys.model.domain" disposableProviderFactory="true"
+      ecorePackage="order.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="order.ecore#//OrderStatusEnum">
+      <genEnumLiterals ecoreEnumLiteral="order.ecore#//OrderStatusEnum/UNKNOWN"/>
+      <genEnumLiterals ecoreEnumLiteral="order.ecore#//OrderStatusEnum/PLANNED"/>
+      <genEnumLiterals ecoreEnumLiteral="order.ecore#//OrderStatusEnum/STARTED"/>
+      <genEnumLiterals ecoreEnumLiteral="order.ecore#//OrderStatusEnum/PAUSED"/>
+      <genEnumLiterals ecoreEnumLiteral="order.ecore#//OrderStatusEnum/COMPLETED"/>
+      <genEnumLiterals ecoreEnumLiteral="order.ecore#//OrderStatusEnum/ABORTED"/>
+    </genEnums>
+    <genClasses ecoreClass="order.ecore#//Order">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute order.ecore#//Order/productVariantId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute order.ecore#//Order/startDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute order.ecore#//Order/endDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute order.ecore#//Order/pieces"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute order.ecore#//Order/priority"/>
+    </genClasses>
+    <genClasses ecoreClass="order.ecore#//OrderStatus">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute order.ecore#//OrderStatus/orderId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute order.ecore#//OrderStatus/status"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute order.ecore#//OrderStatus/pieceCount"/>
+    </genClasses>
+  </genPackages>
+  <genPackages prefix="Product" basePackage="de.dfki.iui.basys.model.domain" disposableProviderFactory="true"
+      ecorePackage="product.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="product.ecore#//RecognitionEnum">
+      <genEnumLiterals ecoreEnumLiteral="product.ecore#//RecognitionEnum/UNKNOWN"/>
+      <genEnumLiterals ecoreEnumLiteral="product.ecore#//RecognitionEnum/PRESENT"/>
+      <genEnumLiterals ecoreEnumLiteral="product.ecore#//RecognitionEnum/IN_TRANSIT"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="product.ecore#//ProductInstanceStatusEnum">
+      <genEnumLiterals ecoreEnumLiteral="product.ecore#//ProductInstanceStatusEnum/UNKNOWN"/>
+      <genEnumLiterals ecoreEnumLiteral="product.ecore#//ProductInstanceStatusEnum/IN_PRODUCTION"/>
+      <genEnumLiterals ecoreEnumLiteral="product.ecore#//ProductInstanceStatusEnum/WAITING"/>
+      <genEnumLiterals ecoreEnumLiteral="product.ecore#//ProductInstanceStatusEnum/IN_TEST"/>
+      <genEnumLiterals ecoreEnumLiteral="product.ecore#//ProductInstanceStatusEnum/NIO"/>
+      <genEnumLiterals ecoreEnumLiteral="product.ecore#//ProductInstanceStatusEnum/IN_REPAIR"/>
+      <genEnumLiterals ecoreEnumLiteral="product.ecore#//ProductInstanceStatusEnum/IO"/>
+    </genEnums>
+    <genClasses ecoreClass="product.ecore#//ProductGroup"/>
+    <genClasses ecoreClass="product.ecore#//ProductVariant">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product.ecore#//ProductVariant/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product.ecore#//ProductVariant/productGroupId"/>
+    </genClasses>
+    <genClasses ecoreClass="product.ecore#//ProductInstance">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product.ecore#//ProductInstance/productVariantId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product.ecore#//ProductInstance/orderId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product.ecore#//ProductInstance/serialNumber"/>
+    </genClasses>
+    <genClasses ecoreClass="product.ecore#//ProductInstanceStatus">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product.ecore#//ProductInstanceStatus/productInstanceId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product.ecore#//ProductInstanceStatus/status"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product.ecore#//ProductInstanceStatus/workstepInstanceId"/>
+    </genClasses>
+    <genClasses ecoreClass="product.ecore#//ProductRecognition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product.ecore#//ProductRecognition/eventType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product.ecore#//ProductRecognition/productInstanceId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product.ecore#//ProductRecognition/componentId"/>
+    </genClasses>
+  </genPackages>
+  <genPackages prefix="Staff" basePackage="de.dfki.iui.basys.model.domain" disposableProviderFactory="true"
+      ecorePackage="staff.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="staff.ecore#//StaffRecognitionEnum">
+      <genEnumLiterals ecoreEnumLiteral="staff.ecore#//StaffRecognitionEnum/UNKNOWN"/>
+      <genEnumLiterals ecoreEnumLiteral="staff.ecore#//StaffRecognitionEnum/PRESENT"/>
+      <genEnumLiterals ecoreEnumLiteral="staff.ecore#//StaffRecognitionEnum/IN_TRANSIT"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="staff.ecore#//PreferenceEnum">
+      <genEnumLiterals ecoreEnumLiteral="staff.ecore#//PreferenceEnum/NEUTRAL"/>
+      <genEnumLiterals ecoreEnumLiteral="staff.ecore#//PreferenceEnum/POSITIVE"/>
+      <genEnumLiterals ecoreEnumLiteral="staff.ecore#//PreferenceEnum/NEGATIVE"/>
+    </genEnums>
+    <genClasses ecoreClass="staff.ecore#//Staff">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute staff.ecore#//Staff/firstname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute staff.ecore#//Staff/lastname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute staff.ecore#//Staff/birthdate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute staff.ecore#//Staff/language"/>
+    </genClasses>
+    <genClasses ecoreClass="staff.ecore#//StaffRecognition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute staff.ecore#//StaffRecognition/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute staff.ecore#//StaffRecognition/workerId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute staff.ecore#//StaffRecognition/componentId"/>
+    </genClasses>
+    <genClasses ecoreClass="staff.ecore#//StaffSkills">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute staff.ecore#//StaffSkills/workerId"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference staff.ecore#//StaffSkills/skills"/>
+    </genClasses>
+    <genClasses ecoreClass="staff.ecore#//StaffSkill">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute staff.ecore#//StaffSkill/workstepId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute staff.ecore#//StaffSkill/level"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute staff.ecore#//StaffSkill/preference"/>
+    </genClasses>
+  </genPackages>
+  <genPackages prefix="Topology" basePackage="de.dfki.iui.basys.model.domain" disposableProviderFactory="true"
+      ecorePackage="topology.ecore#/">
+    <genClasses ecoreClass="topology.ecore#//Enterprise">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference topology.ecore#//Enterprise/sites"/>
+    </genClasses>
+    <genClasses ecoreClass="topology.ecore#//Site">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference topology.ecore#//Site/areas"/>
+    </genClasses>
+    <genClasses ecoreClass="topology.ecore#//Area">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference topology.ecore#//Area/workCenters"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="topology.ecore#//WorkCenter"/>
+    <genClasses ecoreClass="topology.ecore#//ProcessCell">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference topology.ecore#//ProcessCell/units"/>
+    </genClasses>
+    <genClasses ecoreClass="topology.ecore#//ProductionUnit">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference topology.ecore#//ProductionUnit/units"/>
+    </genClasses>
+    <genClasses ecoreClass="topology.ecore#//ProductionLine">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference topology.ecore#//ProductionLine/workCells"/>
+    </genClasses>
+    <genClasses ecoreClass="topology.ecore#//StorageZone">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference topology.ecore#//StorageZone/storageUnits"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="topology.ecore#//WorkUnit">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference topology.ecore#//WorkUnit/equipmentModules"/>
+    </genClasses>
+    <genClasses ecoreClass="topology.ecore#//Unit"/>
+    <genClasses ecoreClass="topology.ecore#//WorkCell">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference topology.ecore#//WorkCell/stations"/>
+    </genClasses>
+    <genClasses ecoreClass="topology.ecore#//StorageUnit"/>
+    <genClasses ecoreClass="topology.ecore#//EquipmentModule">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference topology.ecore#//EquipmentModule/controlModules"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference topology.ecore#//EquipmentModule/equipmentModules"/>
+    </genClasses>
+    <genClasses ecoreClass="topology.ecore#//ControlModule">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference topology.ecore#//ControlModule/controlModules"/>
+    </genClasses>
+    <genClasses ecoreClass="topology.ecore#//ProductionLineSection"/>
+    <genClasses ecoreClass="topology.ecore#//Station"/>
+  </genPackages>
+  <genPackages prefix="Workerguidance" basePackage="de.dfki.iui.basys.model.domain"
+      disposableProviderFactory="true" ecorePackage="workerguidance.ecore#/">
+    <genClasses ecoreClass="workerguidance.ecore#//Instruction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workerguidance.ecore#//Instruction/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workerguidance.ecore#//Instruction/parameters"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workerguidance.ecore#//Instruction/workstepIds"/>
+    </genClasses>
+    <genClasses ecoreClass="workerguidance.ecore#//Material">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workerguidance.ecore#//Material/name"/>
+    </genClasses>
+    <genClasses ecoreClass="workerguidance.ecore#//Media">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workerguidance.ecore#//Media/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workerguidance.ecore#//Media/fileSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workerguidance.ecore#//Media/checksum"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workerguidance.ecore#//Media/location"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workerguidance.ecore#//Media/entityType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workerguidance.ecore#//Media/entityIds"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workerguidance.ecore#//Media/tags"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workerguidance.ecore#//Media/locale"/>
+    </genClasses>
+    <genClasses ecoreClass="workerguidance.ecore#//Audio">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workerguidance.ecore#//Audio/duration"/>
+    </genClasses>
+    <genClasses ecoreClass="workerguidance.ecore#//Video">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workerguidance.ecore#//Video/duration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workerguidance.ecore#//Video/width"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workerguidance.ecore#//Video/height"/>
+    </genClasses>
+    <genClasses ecoreClass="workerguidance.ecore#//Image">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workerguidance.ecore#//Image/width"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workerguidance.ecore#//Image/height"/>
+    </genClasses>
+  </genPackages>
+  <genPackages prefix="Workplan" basePackage="de.dfki.iui.basys.model.domain" disposableProviderFactory="true"
+      ecorePackage="workplan.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="workplan.ecore#//WorkstepInstanceChangeType">
+      <genEnumLiterals ecoreEnumLiteral="workplan.ecore#//WorkstepInstanceChangeType/UNKNOWN"/>
+      <genEnumLiterals ecoreEnumLiteral="workplan.ecore#//WorkstepInstanceChangeType/STARTED"/>
+      <genEnumLiterals ecoreEnumLiteral="workplan.ecore#//WorkstepInstanceChangeType/PAUSED"/>
+      <genEnumLiterals ecoreEnumLiteral="workplan.ecore#//WorkstepInstanceChangeType/REPEATING"/>
+      <genEnumLiterals ecoreEnumLiteral="workplan.ecore#//WorkstepInstanceChangeType/FINISHED"/>
+      <genEnumLiterals ecoreEnumLiteral="workplan.ecore#//WorkstepInstanceChangeType/ABORTED"/>
+    </genEnums>
+    <genClasses ecoreClass="workplan.ecore#//WorkplanInstance">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workplan.ecore#//WorkplanInstance/productInstanceId"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference workplan.ecore#//WorkplanInstance/workstepInstances"/>
+    </genClasses>
+    <genClasses ecoreClass="workplan.ecore#//WorkstepInstance">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workplan.ecore#//WorkstepInstance/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workplan.ecore#//WorkstepInstance/stationId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workplan.ecore#//WorkstepInstance/isAutomatic"/>
+    </genClasses>
+    <genClasses ecoreClass="workplan.ecore#//WorkstepInstanceChangeEvent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workplan.ecore#//WorkstepInstanceChangeEvent/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workplan.ecore#//WorkstepInstanceChangeEvent/productInstanceId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workplan.ecore#//WorkstepInstanceChangeEvent/workstepInstanceId"/>
+    </genClasses>
+    <genClasses ecoreClass="workplan.ecore#//Duration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workplan.ecore#//Duration/workstepInstanceId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workplan.ecore#//Duration/beginnerLevel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workplan.ecore#//Duration/beginnerLevelDeviance"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workplan.ecore#//Duration/expertLevel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workplan.ecore#//Duration/expertLevelDeviance"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

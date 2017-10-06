@@ -58,6 +58,7 @@ public class ServiceFactoryImpl extends EFactoryImpl implements ServiceFactory {
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case ServicePackage.SERVICE_DESCRIPTION: return createServiceDescription();
+			case ServicePackage.PROPERTY: return createProperty();
 			case ServicePackage.OPERATION: return createOperation();
 			case ServicePackage.PUBLICATION: return createPublication();
 			case ServicePackage.SUBSCRIPTION: return createSubscription();
@@ -66,7 +67,6 @@ public class ServiceFactoryImpl extends EFactoryImpl implements ServiceFactory {
 			case ServicePackage.SERVICE_ENDPOINT: return createServiceEndpoint();
 			case ServicePackage.REST_ENDPOINT: return createRestEndpoint();
 			case ServicePackage.SOAP_ENDPOINT: return createSoapEndpoint();
-			case ServicePackage.SERVICE_DESCRIPTION_STORE: return createServiceDescriptionStore();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -110,6 +110,16 @@ public class ServiceFactoryImpl extends EFactoryImpl implements ServiceFactory {
 	public ServiceDescription createServiceDescription() {
 		ServiceDescriptionImpl serviceDescription = new ServiceDescriptionImpl();
 		return serviceDescription;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Property createProperty() {
+		PropertyImpl property = new PropertyImpl();
+		return property;
 	}
 
 	/**
@@ -190,16 +200,6 @@ public class ServiceFactoryImpl extends EFactoryImpl implements ServiceFactory {
 	public SoapEndpoint createSoapEndpoint() {
 		SoapEndpointImpl soapEndpoint = new SoapEndpointImpl();
 		return soapEndpoint;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ServiceDescriptionStore createServiceDescriptionStore() {
-		ServiceDescriptionStoreImpl serviceDescriptionStore = new ServiceDescriptionStoreImpl();
-		return serviceDescriptionStore;
 	}
 
 	/**

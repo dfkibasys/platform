@@ -6,6 +6,7 @@ import de.dfki.iui.basys.model.aas.AasFactory;
 import de.dfki.iui.basys.model.aas.AasPackage;
 import de.dfki.iui.basys.model.aas.AdministrationShell;
 import de.dfki.iui.basys.model.aas.InformationMapping;
+import de.dfki.iui.basys.model.aas.OperationalServiceMapping;
 import de.dfki.iui.basys.model.aas.ParameterMapping;
 import de.dfki.iui.basys.model.aas.ServiceCall;
 
@@ -58,6 +59,13 @@ public class AasPackageImpl extends EPackageImpl implements AasPackage {
 	 * @generated
 	 */
 	private EClass parameterMappingEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass operationalServiceMappingEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -138,7 +146,16 @@ public class AasPackageImpl extends EPackageImpl implements AasPackage {
 	 * @generated
 	 */
 	public EReference getAdministrationShell_Mappings() {
-		return (EReference)administrationShellEClass.getEStructuralFeatures().get(0);
+		return (EReference)administrationShellEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAdministrationShell_OperationalServiceMappings() {
+		return (EReference)administrationShellEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -147,7 +164,7 @@ public class AasPackageImpl extends EPackageImpl implements AasPackage {
 	 * @generated
 	 */
 	public EAttribute getAdministrationShell_AssetId() {
-		return (EAttribute)administrationShellEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)administrationShellEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -254,6 +271,33 @@ public class AasPackageImpl extends EPackageImpl implements AasPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getOperationalServiceMapping() {
+		return operationalServiceMappingEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOperationalServiceMapping_ServiceDescriptionId() {
+		return (EAttribute)operationalServiceMappingEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOperationalServiceMapping_ServiceInstanceId() {
+		return (EAttribute)operationalServiceMappingEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public AasFactory getAasFactory() {
 		return (AasFactory)getEFactoryInstance();
 	}
@@ -278,8 +322,9 @@ public class AasPackageImpl extends EPackageImpl implements AasPackage {
 
 		// Create classes and their features
 		administrationShellEClass = createEClass(ADMINISTRATION_SHELL);
-		createEReference(administrationShellEClass, ADMINISTRATION_SHELL__MAPPINGS);
 		createEAttribute(administrationShellEClass, ADMINISTRATION_SHELL__ASSET_ID);
+		createEReference(administrationShellEClass, ADMINISTRATION_SHELL__MAPPINGS);
+		createEReference(administrationShellEClass, ADMINISTRATION_SHELL__OPERATIONAL_SERVICE_MAPPINGS);
 		createEOperation(administrationShellEClass, ADMINISTRATION_SHELL___GET);
 
 		informationMappingEClass = createEClass(INFORMATION_MAPPING);
@@ -294,6 +339,10 @@ public class AasPackageImpl extends EPackageImpl implements AasPackage {
 		parameterMappingEClass = createEClass(PARAMETER_MAPPING);
 		createEReference(parameterMappingEClass, PARAMETER_MAPPING__PARAMETER);
 		createEAttribute(parameterMappingEClass, PARAMETER_MAPPING__VALUE);
+
+		operationalServiceMappingEClass = createEClass(OPERATIONAL_SERVICE_MAPPING);
+		createEAttribute(operationalServiceMappingEClass, OPERATIONAL_SERVICE_MAPPING__SERVICE_DESCRIPTION_ID);
+		createEAttribute(operationalServiceMappingEClass, OPERATIONAL_SERVICE_MAPPING__SERVICE_INSTANCE_ID);
 	}
 
 	/**
@@ -333,8 +382,9 @@ public class AasPackageImpl extends EPackageImpl implements AasPackage {
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(administrationShellEClass, AdministrationShell.class, "AdministrationShell", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAdministrationShell_Mappings(), this.getInformationMapping(), null, "mappings", null, 0, -1, AdministrationShell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAdministrationShell_AssetId(), theEcorePackage.getEString(), "assetId", null, 0, 1, AdministrationShell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAdministrationShell_Mappings(), this.getInformationMapping(), null, "mappings", null, 0, -1, AdministrationShell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAdministrationShell_OperationalServiceMappings(), this.getOperationalServiceMapping(), null, "operationalServiceMappings", null, 0, -1, AdministrationShell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		EOperation op = initEOperation(getAdministrationShell__Get(), null, "get", 0, 1, IS_UNIQUE, IS_ORDERED);
 		ETypeParameter t1 = addETypeParameter(op, "T");
@@ -355,6 +405,10 @@ public class AasPackageImpl extends EPackageImpl implements AasPackage {
 		initEClass(parameterMappingEClass, ParameterMapping.class, "ParameterMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getParameterMapping_Parameter(), theEcorePackage.getEParameter(), null, "parameter", null, 0, 1, ParameterMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParameterMapping_Value(), theEcorePackage.getEString(), "value", null, 0, 1, ParameterMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(operationalServiceMappingEClass, OperationalServiceMapping.class, "OperationalServiceMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getOperationalServiceMapping_ServiceDescriptionId(), theEcorePackage.getEString(), "serviceDescriptionId", null, 0, 1, OperationalServiceMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperationalServiceMapping_ServiceInstanceId(), theEcorePackage.getEString(), "serviceInstanceId", null, 0, 1, OperationalServiceMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

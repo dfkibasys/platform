@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated domain -->
+      <package
+            uri="http://www.dfki.de/iui/basys/model/order"
+            class="de.dfki.iui.basys.model.domain.order.OrderPackage"
+            genModel="model/domain.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated domain -->
+      <package
+            uri="http://www.dfki.de/iui/basys/model/product"
+            class="de.dfki.iui.basys.model.domain.product.ProductPackage"
+            genModel="model/domain.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated domain -->
+      <package
+            uri="http://www.dfki.de/iui/basys/model/staff"
+            class="de.dfki.iui.basys.model.domain.staff.StaffPackage"
+            genModel="model/domain.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated domain -->
+      <package
+            uri="http://www.dfki.de/iui/basys/model/topology"
+            class="de.dfki.iui.basys.model.domain.topology.TopologyPackage"
+            genModel="model/domain.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated domain -->
+      <package
+            uri="http://www.dfki.de/iui/basys/model/workerguidance"
+            class="de.dfki.iui.basys.model.domain.workerguidance.WorkerguidancePackage"
+            genModel="model/domain.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated domain -->
+      <package
+            uri="http://www.dfki.de/iui/basys/model/workplan"
+            class="de.dfki.iui.basys.model.domain.workplan.WorkplanPackage"
+            genModel="model/domain.genmodel"/>
+   </extension>
+
+</plugin>

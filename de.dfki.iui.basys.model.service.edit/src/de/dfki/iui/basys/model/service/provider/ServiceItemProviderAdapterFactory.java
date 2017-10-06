@@ -95,6 +95,29 @@ public class ServiceItemProviderAdapterFactory extends ServiceAdapterFactory imp
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.service.Property} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PropertyItemProvider propertyItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.service.Property}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPropertyAdapter() {
+		if (propertyItemProvider == null) {
+			propertyItemProvider = new PropertyItemProvider(this);
+		}
+
+		return propertyItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.service.Operation} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -279,29 +302,6 @@ public class ServiceItemProviderAdapterFactory extends ServiceAdapterFactory imp
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.service.ServiceDescriptionStore} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ServiceDescriptionStoreItemProvider serviceDescriptionStoreItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link de.dfki.iui.basys.model.service.ServiceDescriptionStore}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createServiceDescriptionStoreAdapter() {
-		if (serviceDescriptionStoreItemProvider == null) {
-			serviceDescriptionStoreItemProvider = new ServiceDescriptionStoreItemProvider(this);
-		}
-
-		return serviceDescriptionStoreItemProvider;
-	}
-
-	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -401,6 +401,7 @@ public class ServiceItemProviderAdapterFactory extends ServiceAdapterFactory imp
 	 */
 	public void dispose() {
 		if (serviceDescriptionItemProvider != null) serviceDescriptionItemProvider.dispose();
+		if (propertyItemProvider != null) propertyItemProvider.dispose();
 		if (operationItemProvider != null) operationItemProvider.dispose();
 		if (publicationItemProvider != null) publicationItemProvider.dispose();
 		if (subscriptionItemProvider != null) subscriptionItemProvider.dispose();
@@ -409,7 +410,6 @@ public class ServiceItemProviderAdapterFactory extends ServiceAdapterFactory imp
 		if (serviceEndpointItemProvider != null) serviceEndpointItemProvider.dispose();
 		if (restEndpointItemProvider != null) restEndpointItemProvider.dispose();
 		if (soapEndpointItemProvider != null) soapEndpointItemProvider.dispose();
-		if (serviceDescriptionStoreItemProvider != null) serviceDescriptionStoreItemProvider.dispose();
 	}
 
 }

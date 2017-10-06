@@ -89,22 +89,31 @@ public interface AasPackage extends EPackage {
 	int ADMINISTRATION_SHELL__ID = BasePackage.IDENTIFIABLE_ENTITY__ID;
 
 	/**
-	 * The feature id for the '<em><b>Mappings</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ADMINISTRATION_SHELL__MAPPINGS = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Asset Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ADMINISTRATION_SHELL__ASSET_ID = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 1;
+	int ADMINISTRATION_SHELL__ASSET_ID = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Mappings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADMINISTRATION_SHELL__MAPPINGS = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Operational Service Mappings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADMINISTRATION_SHELL__OPERATIONAL_SERVICE_MAPPINGS = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Administration Shell</em>' class.
@@ -113,7 +122,7 @@ public interface AasPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADMINISTRATION_SHELL_FEATURE_COUNT = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 2;
+	int ADMINISTRATION_SHELL_FEATURE_COUNT = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Get</em>' operation.
@@ -282,6 +291,53 @@ public interface AasPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.aas.impl.OperationalServiceMappingImpl <em>Operational Service Mapping</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.aas.impl.OperationalServiceMappingImpl
+	 * @see de.dfki.iui.basys.model.aas.impl.AasPackageImpl#getOperationalServiceMapping()
+	 * @generated
+	 */
+	int OPERATIONAL_SERVICE_MAPPING = 4;
+
+	/**
+	 * The feature id for the '<em><b>Service Description Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATIONAL_SERVICE_MAPPING__SERVICE_DESCRIPTION_ID = 0;
+
+	/**
+	 * The feature id for the '<em><b>Service Instance Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATIONAL_SERVICE_MAPPING__SERVICE_INSTANCE_ID = 1;
+
+	/**
+	 * The number of structural features of the '<em>Operational Service Mapping</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATIONAL_SERVICE_MAPPING_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Operational Service Mapping</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATIONAL_SERVICE_MAPPING_OPERATION_COUNT = 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.aas.AdministrationShell <em>Administration Shell</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -301,6 +357,17 @@ public interface AasPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getAdministrationShell_Mappings();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.aas.AdministrationShell#getOperationalServiceMappings <em>Operational Service Mappings</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Operational Service Mappings</em>'.
+	 * @see de.dfki.iui.basys.model.aas.AdministrationShell#getOperationalServiceMappings()
+	 * @see #getAdministrationShell()
+	 * @generated
+	 */
+	EReference getAdministrationShell_OperationalServiceMappings();
 
 	/**
 	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.aas.AdministrationShell#getAssetId <em>Asset Id</em>}'.
@@ -431,6 +498,38 @@ public interface AasPackage extends EPackage {
 	EAttribute getParameterMapping_Value();
 
 	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.aas.OperationalServiceMapping <em>Operational Service Mapping</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Operational Service Mapping</em>'.
+	 * @see de.dfki.iui.basys.model.aas.OperationalServiceMapping
+	 * @generated
+	 */
+	EClass getOperationalServiceMapping();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.aas.OperationalServiceMapping#getServiceDescriptionId <em>Service Description Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Service Description Id</em>'.
+	 * @see de.dfki.iui.basys.model.aas.OperationalServiceMapping#getServiceDescriptionId()
+	 * @see #getOperationalServiceMapping()
+	 * @generated
+	 */
+	EAttribute getOperationalServiceMapping_ServiceDescriptionId();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.aas.OperationalServiceMapping#getServiceInstanceId <em>Service Instance Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Service Instance Id</em>'.
+	 * @see de.dfki.iui.basys.model.aas.OperationalServiceMapping#getServiceInstanceId()
+	 * @see #getOperationalServiceMapping()
+	 * @generated
+	 */
+	EAttribute getOperationalServiceMapping_ServiceInstanceId();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -470,6 +569,14 @@ public interface AasPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ADMINISTRATION_SHELL__MAPPINGS = eINSTANCE.getAdministrationShell_Mappings();
+
+		/**
+		 * The meta object literal for the '<em><b>Operational Service Mappings</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ADMINISTRATION_SHELL__OPERATIONAL_SERVICE_MAPPINGS = eINSTANCE.getAdministrationShell_OperationalServiceMappings();
 
 		/**
 		 * The meta object literal for the '<em><b>Asset Id</b></em>' attribute feature.
@@ -572,6 +679,32 @@ public interface AasPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PARAMETER_MAPPING__VALUE = eINSTANCE.getParameterMapping_Value();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.aas.impl.OperationalServiceMappingImpl <em>Operational Service Mapping</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.aas.impl.OperationalServiceMappingImpl
+		 * @see de.dfki.iui.basys.model.aas.impl.AasPackageImpl#getOperationalServiceMapping()
+		 * @generated
+		 */
+		EClass OPERATIONAL_SERVICE_MAPPING = eINSTANCE.getOperationalServiceMapping();
+
+		/**
+		 * The meta object literal for the '<em><b>Service Description Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OPERATIONAL_SERVICE_MAPPING__SERVICE_DESCRIPTION_ID = eINSTANCE.getOperationalServiceMapping_ServiceDescriptionId();
+
+		/**
+		 * The meta object literal for the '<em><b>Service Instance Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OPERATIONAL_SERVICE_MAPPING__SERVICE_INSTANCE_ID = eINSTANCE.getOperationalServiceMapping_ServiceInstanceId();
 
 	}
 

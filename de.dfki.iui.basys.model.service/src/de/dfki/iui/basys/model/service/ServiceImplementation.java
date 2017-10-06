@@ -13,7 +13,7 @@ import de.dfki.iui.basys.model.base.IdentifiableEntity;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.dfki.iui.basys.model.service.ServiceImplementation#getDescriptionId <em>Description Id</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.service.ServiceImplementation#getServiceDescriptionId <em>Service Description Id</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.service.ServiceImplementation#getVersion <em>Version</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.service.ServiceImplementation#getPlatform <em>Platform</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.service.ServiceImplementation#getBundleLocation <em>Bundle Location</em>}</li>
@@ -25,30 +25,30 @@ import de.dfki.iui.basys.model.base.IdentifiableEntity;
  */
 public interface ServiceImplementation extends IdentifiableEntity {
 	/**
-	 * Returns the value of the '<em><b>Description Id</b></em>' attribute.
+	 * Returns the value of the '<em><b>Service Description Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Description Id</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Service Description Id</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Description Id</em>' attribute.
-	 * @see #setDescriptionId(String)
-	 * @see de.dfki.iui.basys.model.service.ServicePackage#getServiceImplementation_DescriptionId()
+	 * @return the value of the '<em>Service Description Id</em>' attribute.
+	 * @see #setServiceDescriptionId(String)
+	 * @see de.dfki.iui.basys.model.service.ServicePackage#getServiceImplementation_ServiceDescriptionId()
 	 * @model
 	 * @generated
 	 */
-	String getDescriptionId();
+	String getServiceDescriptionId();
 
 	/**
-	 * Sets the value of the '{@link de.dfki.iui.basys.model.service.ServiceImplementation#getDescriptionId <em>Description Id</em>}' attribute.
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.service.ServiceImplementation#getServiceDescriptionId <em>Service Description Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Description Id</em>' attribute.
-	 * @see #getDescriptionId()
+	 * @param value the new value of the '<em>Service Description Id</em>' attribute.
+	 * @see #getServiceDescriptionId()
 	 * @generated
 	 */
-	void setDescriptionId(String value);
+	void setServiceDescriptionId(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Version</b></em>' attribute.

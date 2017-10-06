@@ -92,6 +92,7 @@ public class AdministrationShellItemProvider extends IdentifiableEntityItemProvi
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(AasPackage.Literals.ADMINISTRATION_SHELL__MAPPINGS);
+			childrenFeatures.add(AasPackage.Literals.ADMINISTRATION_SHELL__OPERATIONAL_SERVICE_MAPPINGS);
 		}
 		return childrenFeatures;
 	}
@@ -151,6 +152,7 @@ public class AdministrationShellItemProvider extends IdentifiableEntityItemProvi
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case AasPackage.ADMINISTRATION_SHELL__MAPPINGS:
+			case AasPackage.ADMINISTRATION_SHELL__OPERATIONAL_SERVICE_MAPPINGS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -172,6 +174,11 @@ public class AdministrationShellItemProvider extends IdentifiableEntityItemProvi
 			(createChildParameter
 				(AasPackage.Literals.ADMINISTRATION_SHELL__MAPPINGS,
 				 AasFactory.eINSTANCE.createInformationMapping()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AasPackage.Literals.ADMINISTRATION_SHELL__OPERATIONAL_SERVICE_MAPPINGS,
+				 AasFactory.eINSTANCE.createOperationalServiceMapping()));
 	}
 
 	/**

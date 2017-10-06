@@ -6,16 +6,18 @@
     <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
     <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
   </eAnnotations>
-  <eClassifiers xsi:type="ecore:EClass" name="AdministrationShell" eSuperTypes="../../de.dfki.iui.basys.model/model/base.ecore#//IdentifiableEntity">
+  <eClassifiers xsi:type="ecore:EClass" name="AdministrationShell" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//IdentifiableEntity">
     <eOperations name="get">
       <eGenericType eTypeParameter="#//AdministrationShell/get/T"/>
       <eTypeParameters name="T">
-        <eBounds eClassifier="ecore:EClass ../../de.dfki.iui.basys.model/model/base.ecore#//Entity"/>
+        <eBounds eClassifier="ecore:EClass ../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity"/>
       </eTypeParameters>
     </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="assetId" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mappings" upperBound="-1"
         eType="#//InformationMapping" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="assetId" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operationalServiceMappings"
+        upperBound="-1" eType="#//OperationalServiceMapping" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InformationMapping">
     <eStructuralFeatures xsi:type="ecore:EReference" name="entityType" lowerBound="1"
@@ -32,5 +34,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="ParameterMapping">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EParameter"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OperationalServiceMapping">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="serviceDescriptionId" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="serviceInstanceId" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

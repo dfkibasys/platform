@@ -2,8 +2,7 @@
  */
 package de.dfki.iui.basys.model.aas.presentation;
 
-import de.dfki.iui.basys.model.base.provider.BasysEditPlugin;
-
+import de.dfki.iui.basys.model.base.provider.BaseEditPlugin;
 import de.dfki.iui.basys.model.service.provider.ServiceEditPlugin;
 
 import org.eclipse.emf.common.EMFPlugin;
@@ -46,7 +45,7 @@ public final class AasEditorPlugin extends EMFPlugin {
 	public AasEditorPlugin() {
 		super
 			(new ResourceLocator [] {
-				BasysEditPlugin.INSTANCE,
+				BaseEditPlugin.INSTANCE,
 				EcoreEditPlugin.INSTANCE,
 				ServiceEditPlugin.INSTANCE,
 			});
