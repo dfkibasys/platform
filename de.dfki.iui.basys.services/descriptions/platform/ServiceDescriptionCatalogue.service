@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service:ServiceDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:service="http://www.dfki.de/iui/basys/model/service" name="ServiceDescriptionCatalogue" id="_KoPJgKqNEeeas-2CtWQtdA">
+  <operations name="getServiceDescriptions" upperBound="-1">
+    <eType xsi:type="ecore:EClass" href="http://www.dfki.de/iui/basys/model/service#//ServiceDescription"/>
+  </operations>
+  <operations name="getServiceDescription">
+    <eType xsi:type="ecore:EClass" href="http://www.dfki.de/iui/basys/model/service#//ServiceDescription"/>
+    <eParameters name="serviceDescriptionId">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eParameters>
+  </operations>
+</service:ServiceDescription>

@@ -164,6 +164,29 @@ public class BaseItemProviderAdapterFactory extends BaseAdapterFactory implement
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.base.Capability} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CapabilityItemProvider capabilityItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.base.Capability}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCapabilityAdapter() {
+		if (capabilityItemProvider == null) {
+			capabilityItemProvider = new CapabilityItemProvider(this);
+		}
+
+		return capabilityItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -266,6 +289,7 @@ public class BaseItemProviderAdapterFactory extends BaseAdapterFactory implement
 		if (entityItemProvider != null) entityItemProvider.dispose();
 		if (identifiableEntityItemProvider != null) identifiableEntityItemProvider.dispose();
 		if (eventItemProvider != null) eventItemProvider.dispose();
+		if (capabilityItemProvider != null) capabilityItemProvider.dispose();
 	}
 
 }

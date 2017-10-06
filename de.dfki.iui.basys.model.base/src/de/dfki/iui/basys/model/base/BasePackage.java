@@ -39,7 +39,7 @@ public interface BasePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.dfki.de/iui/basys/base";
+	String eNS_URI = "http://www.dfki.de/iui/basys/model/base";
 
 	/**
 	 * The package namespace name.
@@ -243,6 +243,44 @@ public interface BasePackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.base.impl.CapabilityImpl <em>Capability</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.base.impl.CapabilityImpl
+	 * @see de.dfki.iui.basys.model.base.impl.BasePackageImpl#getCapability()
+	 * @generated
+	 */
+	int CAPABILITY = 4;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY__METADATA = ENTITY__METADATA;
+
+	/**
+	 * The number of structural features of the '<em>Capability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_FEATURE_COUNT = ENTITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Capability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_OPERATION_COUNT = ENTITY_OPERATION_COUNT + 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.base.Metadata <em>Metadata</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -347,6 +385,16 @@ public interface BasePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getEvent_Timestamp();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.base.Capability <em>Capability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Capability</em>'.
+	 * @see de.dfki.iui.basys.model.base.Capability
+	 * @generated
+	 */
+	EClass getCapability();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -458,6 +506,16 @@ public interface BasePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute EVENT__TIMESTAMP = eINSTANCE.getEvent_Timestamp();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.base.impl.CapabilityImpl <em>Capability</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.base.impl.CapabilityImpl
+		 * @see de.dfki.iui.basys.model.base.impl.BasePackageImpl#getCapability()
+		 * @generated
+		 */
+		EClass CAPABILITY = eINSTANCE.getCapability();
 
 	}
 

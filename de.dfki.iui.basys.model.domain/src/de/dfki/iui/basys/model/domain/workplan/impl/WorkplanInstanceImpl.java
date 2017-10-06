@@ -12,13 +12,16 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -56,7 +59,7 @@ public class WorkplanInstanceImpl extends IdentifiableEntityImpl implements Work
 	protected String productInstanceId = PRODUCT_INSTANCE_ID_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getWorkstepInstances() <em>Workstep Instances</em>}' reference list.
+	 * The cached value of the '{@link #getWorkstepInstances() <em>Workstep Instances</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getWorkstepInstances()
@@ -112,9 +115,23 @@ public class WorkplanInstanceImpl extends IdentifiableEntityImpl implements Work
 	 */
 	public EList<WorkstepInstance> getWorkstepInstances() {
 		if (workstepInstances == null) {
-			workstepInstances = new EObjectResolvingEList<WorkstepInstance>(WorkstepInstance.class, this, WorkplanPackage.WORKPLAN_INSTANCE__WORKSTEP_INSTANCES);
+			workstepInstances = new EObjectContainmentEList<WorkstepInstance>(WorkstepInstance.class, this, WorkplanPackage.WORKPLAN_INSTANCE__WORKSTEP_INSTANCES);
 		}
 		return workstepInstances;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case WorkplanPackage.WORKPLAN_INSTANCE__WORKSTEP_INSTANCES:
+				return ((InternalEList<?>)getWorkstepInstances()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

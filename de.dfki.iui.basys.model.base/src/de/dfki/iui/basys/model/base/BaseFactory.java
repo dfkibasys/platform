@@ -58,6 +58,15 @@ public interface BaseFactory extends EFactory {
 	Event createEvent();
 
 	/**
+	 * Returns a new object of class '<em>Capability</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Capability</em>'.
+	 * @generated
+	 */
+	Capability createCapability();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

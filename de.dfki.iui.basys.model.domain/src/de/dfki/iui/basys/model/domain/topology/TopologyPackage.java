@@ -875,13 +875,22 @@ public interface TopologyPackage extends EPackage {
 	int STATION = 15;
 
 	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATION__EQUIPMENT_MODULES = 0;
+
+	/**
 	 * The number of structural features of the '<em>Station</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATION_FEATURE_COUNT = 0;
+	int STATION_FEATURE_COUNT = 1;
 
 	/**
 	 * The number of operations of the '<em>Station</em>' class.
@@ -1186,6 +1195,17 @@ public interface TopologyPackage extends EPackage {
 	EClass getStation();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.domain.topology.Station#getEquipmentModules <em>Equipment Modules</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Equipment Modules</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.Station#getEquipmentModules()
+	 * @see #getStation()
+	 * @generated
+	 */
+	EReference getStation_EquipmentModules();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1463,6 +1483,14 @@ public interface TopologyPackage extends EPackage {
 		 * @generated
 		 */
 		EClass STATION = eINSTANCE.getStation();
+
+		/**
+		 * The meta object literal for the '<em><b>Equipment Modules</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STATION__EQUIPMENT_MODULES = eINSTANCE.getStation_EquipmentModules();
 
 	}
 

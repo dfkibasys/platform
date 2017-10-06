@@ -60,6 +60,7 @@ public class BaseFactoryImpl extends EFactoryImpl implements BaseFactory {
 			case BasePackage.ENTITY: return createEntity();
 			case BasePackage.IDENTIFIABLE_ENTITY: return createIdentifiableEntity();
 			case BasePackage.EVENT: return createEvent();
+			case BasePackage.CAPABILITY: return createCapability();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -103,6 +104,16 @@ public class BaseFactoryImpl extends EFactoryImpl implements BaseFactory {
 	public Event createEvent() {
 		EventImpl event = new EventImpl();
 		return event;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Capability createCapability() {
+		CapabilityImpl capability = new CapabilityImpl();
+		return capability;
 	}
 
 	/**

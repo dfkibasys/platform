@@ -42,7 +42,7 @@ public interface AasPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.dfki.de/iui/basys/aas";
+	String eNS_URI = "http://www.dfki.de/iui/basys/model/aas";
 
 	/**
 	 * The package namespace name.

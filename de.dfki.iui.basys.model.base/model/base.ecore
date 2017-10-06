@@ -40,4 +40,5 @@
   <eClassifiers xsi:type="ecore:EClass" name="Event" eSuperTypes="#//Entity">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestamp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Capability" eSuperTypes="#//Entity"/>
 </ecore:EPackage>

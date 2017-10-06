@@ -68,5 +68,7 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Äquivalent zu oder Spezialisierung zu WorkCell?"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="equipmentModules" upperBound="-1"
+        eType="#//EquipmentModule" containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

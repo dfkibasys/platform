@@ -4,6 +4,7 @@ package de.dfki.iui.basys.model.base.impl;
 
 import de.dfki.iui.basys.model.base.BaseFactory;
 import de.dfki.iui.basys.model.base.BasePackage;
+import de.dfki.iui.basys.model.base.Capability;
 import de.dfki.iui.basys.model.base.Entity;
 import de.dfki.iui.basys.model.base.Event;
 import de.dfki.iui.basys.model.base.IdentifiableEntity;
@@ -50,6 +51,13 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 	 * @generated
 	 */
 	private EClass eventEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass capabilityEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -207,6 +215,15 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getCapability() {
+		return capabilityEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public BaseFactory getBaseFactory() {
 		return (BaseFactory)getEFactoryInstance();
 	}
@@ -243,6 +260,8 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 
 		eventEClass = createEClass(EVENT);
 		createEAttribute(eventEClass, EVENT__TIMESTAMP);
+
+		capabilityEClass = createEClass(CAPABILITY);
 	}
 
 	/**
@@ -275,6 +294,7 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 		// Add supertypes to classes
 		identifiableEntityEClass.getESuperTypes().add(this.getEntity());
 		eventEClass.getESuperTypes().add(this.getEntity());
+		capabilityEClass.getESuperTypes().add(this.getEntity());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(metadataEClass, Metadata.class, "Metadata", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -290,6 +310,8 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 
 		initEClass(eventEClass, Event.class, "Event", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEvent_Timestamp(), ecorePackage.getEDate(), "timestamp", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(capabilityEClass, Capability.class, "Capability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

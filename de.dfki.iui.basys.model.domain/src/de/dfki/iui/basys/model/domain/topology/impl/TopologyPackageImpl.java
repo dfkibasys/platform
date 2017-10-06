@@ -506,6 +506,15 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getStation_EquipmentModules() {
+		return (EReference)stationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public TopologyFactory getTopologyFactory() {
 		return (TopologyFactory)getEFactoryInstance();
 	}
@@ -572,6 +581,7 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		productionLineSectionEClass = createEClass(PRODUCTION_LINE_SECTION);
 
 		stationEClass = createEClass(STATION);
+		createEReference(stationEClass, STATION__EQUIPMENT_MODULES);
 	}
 
 	/**
@@ -664,6 +674,7 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		initEClass(productionLineSectionEClass, ProductionLineSection.class, "ProductionLineSection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(stationEClass, Station.class, "Station", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getStation_EquipmentModules(), this.getEquipmentModule(), null, "equipmentModules", null, 0, -1, Station.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -42,7 +42,7 @@ public interface ServicePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.dfki.de/iui/basys/service";
+	String eNS_URI = "http://www.dfki.de/iui/basys/model/service";
 
 	/**
 	 * The package namespace name.

@@ -55,7 +55,7 @@ public interface WorkplanInstance extends IdentifiableEntity {
 	void setProductInstanceId(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Workstep Instances</b></em>' reference list.
+	 * Returns the value of the '<em><b>Workstep Instances</b></em>' containment reference list.
 	 * The list contents are of type {@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstance}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -63,9 +63,9 @@ public interface WorkplanInstance extends IdentifiableEntity {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Workstep Instances</em>' reference list.
+	 * @return the value of the '<em>Workstep Instances</em>' containment reference list.
 	 * @see de.dfki.iui.basys.model.domain.workplan.WorkplanPackage#getWorkplanInstance_WorkstepInstances()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<WorkstepInstance> getWorkstepInstances();

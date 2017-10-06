@@ -9,7 +9,7 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated base -->
       <package
-            uri="http://www.dfki.de/iui/basys/base"
+            uri="http://www.dfki.de/iui/basys/model/base"
             class="de.dfki.iui.basys.model.base.BasePackage"
             genModel="model/base.genmodel"/>
    </extension>
