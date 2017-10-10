@@ -14,8 +14,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="workCenters" eType="#//WorkCenter"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WorkCenter" abstract="true" interface="true"
-      eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//IdentifiableEntity"/>
+  <eClassifiers xsi:type="ecore:EClass" name="WorkCenter" abstract="true" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//IdentifiableEntity"/>
   <eClassifiers xsi:type="ecore:EClass" name="ProcessCell" eSuperTypes="#//WorkCenter">
     <eStructuralFeatures xsi:type="ecore:EReference" name="units" lowerBound="1" upperBound="-1"
         eType="#//Unit" containment="true"/>
@@ -35,8 +34,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="storageUnits" lowerBound="1"
         upperBound="-1" eType="#//StorageUnit" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WorkUnit" abstract="true" interface="true"
-      eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//IdentifiableEntity">
+  <eClassifiers xsi:type="ecore:EClass" name="WorkUnit" abstract="true" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//IdentifiableEntity">
     <eStructuralFeatures xsi:type="ecore:EReference" name="equipmentModules" upperBound="-1"
         eType="#//EquipmentModule" containment="true"/>
   </eClassifiers>

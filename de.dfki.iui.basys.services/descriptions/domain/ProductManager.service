@@ -33,4 +33,7 @@
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eParameters>
   </operations>
+  <publications name="status">
+    <eType xsi:type="ecore:EClass" href="http://www.dfki.de/iui/basys/model/product#//ProductInstanceStatus"/>
+  </publications>
 </service:ServiceDescription>
