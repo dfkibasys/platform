@@ -9,7 +9,7 @@
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated service -->
       <factory
-            uri="http://www.dfki.de/iui/basys/service"
+            uri="http://www.dfki.de/iui/basys/model/service"
             class="de.dfki.iui.basys.model.service.provider.ServiceItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
