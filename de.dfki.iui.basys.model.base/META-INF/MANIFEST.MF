@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1508946008029
+Bnd-LastModified: 1508947418871
 Build-Jdk: 1.8.0_131
 Built-By: dapo01
 Bundle-ManifestVersion: 2
