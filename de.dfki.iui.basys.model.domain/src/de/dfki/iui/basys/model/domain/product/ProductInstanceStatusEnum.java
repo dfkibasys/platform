@@ -14,7 +14,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * <!-- begin-model-doc -->
- * Weitere Literale? Verschmelzung mit OderStatusEnum?
+ * Weitere Literale? Verschmelzung mit OrderStatusEnum?
  * <!-- end-model-doc -->
  * @see de.dfki.iui.basys.model.domain.product.ProductPackage#getProductInstanceStatusEnum()
  * @model

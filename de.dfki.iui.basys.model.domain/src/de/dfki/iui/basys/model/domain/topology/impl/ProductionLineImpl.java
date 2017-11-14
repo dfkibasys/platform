@@ -2,8 +2,6 @@
  */
 package de.dfki.iui.basys.model.domain.topology.impl;
 
-import de.dfki.iui.basys.model.base.impl.IdentifiableEntityImpl;
-
 import de.dfki.iui.basys.model.domain.topology.ProductionLine;
 import de.dfki.iui.basys.model.domain.topology.TopologyPackage;
 import de.dfki.iui.basys.model.domain.topology.WorkCell;
@@ -33,7 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class ProductionLineImpl extends IdentifiableEntityImpl implements ProductionLine {
+public class ProductionLineImpl extends WorkCenterImpl implements ProductionLine {
 	/**
 	 * The cached value of the '{@link #getWorkCells() <em>Work Cells</em>}' containment reference list.
 	 * <!-- begin-user-doc -->

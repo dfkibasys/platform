@@ -95,26 +95,95 @@ public class StaffItemProviderAdapterFactory extends StaffAdapterFactory impleme
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.staff.StaffRecognition} instances.
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.staff.StaffLocation} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected StaffRecognitionItemProvider staffRecognitionItemProvider;
+	protected StaffLocationItemProvider staffLocationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.staff.StaffRecognition}.
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.staff.StaffLocation}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createStaffRecognitionAdapter() {
-		if (staffRecognitionItemProvider == null) {
-			staffRecognitionItemProvider = new StaffRecognitionItemProvider(this);
+	public Adapter createStaffLocationAdapter() {
+		if (staffLocationItemProvider == null) {
+			staffLocationItemProvider = new StaffLocationItemProvider(this);
 		}
 
-		return staffRecognitionItemProvider;
+		return staffLocationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.staff.StaffLocationChangeEvent} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected StaffLocationChangeEventItemProvider staffLocationChangeEventItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.staff.StaffLocationChangeEvent}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createStaffLocationChangeEventAdapter() {
+		if (staffLocationChangeEventItemProvider == null) {
+			staffLocationChangeEventItemProvider = new StaffLocationChangeEventItemProvider(this);
+		}
+
+		return staffLocationChangeEventItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.staff.Ability} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AbilityItemProvider abilityItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.staff.Ability}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAbilityAdapter() {
+		if (abilityItemProvider == null) {
+			abilityItemProvider = new AbilityItemProvider(this);
+		}
+
+		return abilityItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.staff.WorkstepSkill} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected WorkstepSkillItemProvider workstepSkillItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.staff.WorkstepSkill}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createWorkstepSkillAdapter() {
+		if (workstepSkillItemProvider == null) {
+			workstepSkillItemProvider = new WorkstepSkillItemProvider(this);
+		}
+
+		return workstepSkillItemProvider;
 	}
 
 	/**
@@ -138,29 +207,6 @@ public class StaffItemProviderAdapterFactory extends StaffAdapterFactory impleme
 		}
 
 		return staffSkillsItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.staff.StaffSkill} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected StaffSkillItemProvider staffSkillItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.staff.StaffSkill}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createStaffSkillAdapter() {
-		if (staffSkillItemProvider == null) {
-			staffSkillItemProvider = new StaffSkillItemProvider(this);
-		}
-
-		return staffSkillItemProvider;
 	}
 
 	/**
@@ -263,9 +309,11 @@ public class StaffItemProviderAdapterFactory extends StaffAdapterFactory impleme
 	 */
 	public void dispose() {
 		if (staffItemProvider != null) staffItemProvider.dispose();
-		if (staffRecognitionItemProvider != null) staffRecognitionItemProvider.dispose();
+		if (staffLocationItemProvider != null) staffLocationItemProvider.dispose();
+		if (staffLocationChangeEventItemProvider != null) staffLocationChangeEventItemProvider.dispose();
+		if (abilityItemProvider != null) abilityItemProvider.dispose();
+		if (workstepSkillItemProvider != null) workstepSkillItemProvider.dispose();
 		if (staffSkillsItemProvider != null) staffSkillsItemProvider.dispose();
-		if (staffSkillItemProvider != null) staffSkillItemProvider.dispose();
 	}
 
 }

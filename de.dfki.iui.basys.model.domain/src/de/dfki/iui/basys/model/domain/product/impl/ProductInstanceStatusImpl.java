@@ -24,7 +24,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link de.dfki.iui.basys.model.domain.product.impl.ProductInstanceStatusImpl#getProductInstanceId <em>Product Instance Id</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.product.impl.ProductInstanceStatusImpl#getStatus <em>Status</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.domain.product.impl.ProductInstanceStatusImpl#getWorkstepInstanceId <em>Workstep Instance Id</em>}</li>
  * </ul>
  *
  * @generated
@@ -69,26 +68,6 @@ public class ProductInstanceStatusImpl extends EntityImpl implements ProductInst
 	 * @ordered
 	 */
 	protected ProductInstanceStatusEnum status = STATUS_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getWorkstepInstanceId() <em>Workstep Instance Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getWorkstepInstanceId()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String WORKSTEP_INSTANCE_ID_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getWorkstepInstanceId() <em>Workstep Instance Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getWorkstepInstanceId()
-	 * @generated
-	 * @ordered
-	 */
-	protected String workstepInstanceId = WORKSTEP_INSTANCE_ID_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -156,27 +135,6 @@ public class ProductInstanceStatusImpl extends EntityImpl implements ProductInst
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getWorkstepInstanceId() {
-		return workstepInstanceId;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setWorkstepInstanceId(String newWorkstepInstanceId) {
-		String oldWorkstepInstanceId = workstepInstanceId;
-		workstepInstanceId = newWorkstepInstanceId;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ProductPackage.PRODUCT_INSTANCE_STATUS__WORKSTEP_INSTANCE_ID, oldWorkstepInstanceId, workstepInstanceId));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -184,8 +142,6 @@ public class ProductInstanceStatusImpl extends EntityImpl implements ProductInst
 				return getProductInstanceId();
 			case ProductPackage.PRODUCT_INSTANCE_STATUS__STATUS:
 				return getStatus();
-			case ProductPackage.PRODUCT_INSTANCE_STATUS__WORKSTEP_INSTANCE_ID:
-				return getWorkstepInstanceId();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -203,9 +159,6 @@ public class ProductInstanceStatusImpl extends EntityImpl implements ProductInst
 				return;
 			case ProductPackage.PRODUCT_INSTANCE_STATUS__STATUS:
 				setStatus((ProductInstanceStatusEnum)newValue);
-				return;
-			case ProductPackage.PRODUCT_INSTANCE_STATUS__WORKSTEP_INSTANCE_ID:
-				setWorkstepInstanceId((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -225,9 +178,6 @@ public class ProductInstanceStatusImpl extends EntityImpl implements ProductInst
 			case ProductPackage.PRODUCT_INSTANCE_STATUS__STATUS:
 				setStatus(STATUS_EDEFAULT);
 				return;
-			case ProductPackage.PRODUCT_INSTANCE_STATUS__WORKSTEP_INSTANCE_ID:
-				setWorkstepInstanceId(WORKSTEP_INSTANCE_ID_EDEFAULT);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -244,8 +194,6 @@ public class ProductInstanceStatusImpl extends EntityImpl implements ProductInst
 				return PRODUCT_INSTANCE_ID_EDEFAULT == null ? productInstanceId != null : !PRODUCT_INSTANCE_ID_EDEFAULT.equals(productInstanceId);
 			case ProductPackage.PRODUCT_INSTANCE_STATUS__STATUS:
 				return status != STATUS_EDEFAULT;
-			case ProductPackage.PRODUCT_INSTANCE_STATUS__WORKSTEP_INSTANCE_ID:
-				return WORKSTEP_INSTANCE_ID_EDEFAULT == null ? workstepInstanceId != null : !WORKSTEP_INSTANCE_ID_EDEFAULT.equals(workstepInstanceId);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -264,8 +212,6 @@ public class ProductInstanceStatusImpl extends EntityImpl implements ProductInst
 		result.append(productInstanceId);
 		result.append(", status: ");
 		result.append(status);
-		result.append(", workstepInstanceId: ");
-		result.append(workstepInstanceId);
 		result.append(')');
 		return result.toString();
 	}

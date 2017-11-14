@@ -4,10 +4,15 @@ package de.dfki.iui.basys.model.domain.order.impl;
 
 import de.dfki.iui.basys.model.base.BasePackage;
 
+import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
+
+import de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl;
+
 import de.dfki.iui.basys.model.domain.order.Order;
 import de.dfki.iui.basys.model.domain.order.OrderFactory;
 import de.dfki.iui.basys.model.domain.order.OrderPackage;
 import de.dfki.iui.basys.model.domain.order.OrderStatus;
+import de.dfki.iui.basys.model.domain.order.OrderStatusChangeEvent;
 import de.dfki.iui.basys.model.domain.order.OrderStatusEnum;
 
 import de.dfki.iui.basys.model.domain.product.ProductPackage;
@@ -34,6 +39,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
@@ -57,6 +63,13 @@ public class OrderPackageImpl extends EPackageImpl implements OrderPackage {
 	 * @generated
 	 */
 	private EClass orderStatusEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass orderStatusChangeEventEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -120,6 +133,7 @@ public class OrderPackageImpl extends EPackageImpl implements OrderPackage {
 		TopologyPackageImpl theTopologyPackage = (TopologyPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(TopologyPackage.eNS_URI) instanceof TopologyPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(TopologyPackage.eNS_URI) : TopologyPackage.eINSTANCE);
 		WorkerguidancePackageImpl theWorkerguidancePackage = (WorkerguidancePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkerguidancePackage.eNS_URI) instanceof WorkerguidancePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkerguidancePackage.eNS_URI) : WorkerguidancePackage.eINSTANCE);
 		WorkplanPackageImpl theWorkplanPackage = (WorkplanPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkplanPackage.eNS_URI) instanceof WorkplanPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkplanPackage.eNS_URI) : WorkplanPackage.eINSTANCE);
+		LinebalancingPackageImpl theLinebalancingPackage = (LinebalancingPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(LinebalancingPackage.eNS_URI) instanceof LinebalancingPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(LinebalancingPackage.eNS_URI) : LinebalancingPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theOrderPackage.createPackageContents();
@@ -128,6 +142,7 @@ public class OrderPackageImpl extends EPackageImpl implements OrderPackage {
 		theTopologyPackage.createPackageContents();
 		theWorkerguidancePackage.createPackageContents();
 		theWorkplanPackage.createPackageContents();
+		theLinebalancingPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theOrderPackage.initializePackageContents();
@@ -136,6 +151,7 @@ public class OrderPackageImpl extends EPackageImpl implements OrderPackage {
 		theTopologyPackage.initializePackageContents();
 		theWorkerguidancePackage.initializePackageContents();
 		theWorkplanPackage.initializePackageContents();
+		theLinebalancingPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theOrderPackage.freeze();
@@ -205,6 +221,15 @@ public class OrderPackageImpl extends EPackageImpl implements OrderPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getOrder_Status() {
+		return (EReference)orderEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getOrderStatus() {
 		return orderStatusEClass;
 	}
@@ -234,6 +259,15 @@ public class OrderPackageImpl extends EPackageImpl implements OrderPackage {
 	 */
 	public EAttribute getOrderStatus_PieceCount() {
 		return (EAttribute)orderStatusEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getOrderStatusChangeEvent() {
+		return orderStatusChangeEventEClass;
 	}
 
 	/**
@@ -279,11 +313,14 @@ public class OrderPackageImpl extends EPackageImpl implements OrderPackage {
 		createEAttribute(orderEClass, ORDER__END_DATE);
 		createEAttribute(orderEClass, ORDER__PIECES);
 		createEAttribute(orderEClass, ORDER__PRIORITY);
+		createEReference(orderEClass, ORDER__STATUS);
 
 		orderStatusEClass = createEClass(ORDER_STATUS);
 		createEAttribute(orderStatusEClass, ORDER_STATUS__ORDER_ID);
 		createEAttribute(orderStatusEClass, ORDER_STATUS__STATUS);
 		createEAttribute(orderStatusEClass, ORDER_STATUS__PIECE_COUNT);
+
+		orderStatusChangeEventEClass = createEClass(ORDER_STATUS_CHANGE_EVENT);
 
 		// Create enums
 		orderStatusEnumEEnum = createEEnum(ORDER_STATUS_ENUM);
@@ -322,6 +359,8 @@ public class OrderPackageImpl extends EPackageImpl implements OrderPackage {
 		// Add supertypes to classes
 		orderEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
 		orderStatusEClass.getESuperTypes().add(theBasePackage.getEntity());
+		orderStatusChangeEventEClass.getESuperTypes().add(theBasePackage.getEvent());
+		orderStatusChangeEventEClass.getESuperTypes().add(this.getOrderStatus());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(orderEClass, Order.class, "Order", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -330,11 +369,14 @@ public class OrderPackageImpl extends EPackageImpl implements OrderPackage {
 		initEAttribute(getOrder_EndDate(), ecorePackage.getEDate(), "endDate", null, 0, 1, Order.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOrder_Pieces(), ecorePackage.getEInt(), "pieces", null, 0, 1, Order.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOrder_Priority(), ecorePackage.getEInt(), "priority", null, 0, 1, Order.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOrder_Status(), this.getOrderStatus(), null, "status", null, 0, 1, Order.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(orderStatusEClass, OrderStatus.class, "OrderStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOrderStatus_OrderId(), ecorePackage.getEString(), "orderId", null, 0, 1, OrderStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOrderStatus_Status(), this.getOrderStatusEnum(), "status", null, 0, 1, OrderStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOrderStatus_PieceCount(), ecorePackage.getEInt(), "pieceCount", null, 0, 1, OrderStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(orderStatusChangeEventEClass, OrderStatusChangeEvent.class, "OrderStatusChangeEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize enums and add enum literals
 		initEEnum(orderStatusEnumEEnum, OrderStatusEnum.class, "OrderStatusEnum");

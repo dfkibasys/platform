@@ -3,6 +3,7 @@
 package de.dfki.iui.basys.model.domain.staff.util;
 
 import de.dfki.iui.basys.model.base.Entity;
+import de.dfki.iui.basys.model.base.Event;
 import de.dfki.iui.basys.model.base.IdentifiableEntity;
 
 import de.dfki.iui.basys.model.domain.staff.*;
@@ -77,10 +78,33 @@ public class StaffSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case StaffPackage.STAFF_RECOGNITION: {
-				StaffRecognition staffRecognition = (StaffRecognition)theEObject;
-				T result = caseStaffRecognition(staffRecognition);
-				if (result == null) result = caseEntity(staffRecognition);
+			case StaffPackage.STAFF_LOCATION: {
+				StaffLocation staffLocation = (StaffLocation)theEObject;
+				T result = caseStaffLocation(staffLocation);
+				if (result == null) result = caseEntity(staffLocation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case StaffPackage.STAFF_LOCATION_CHANGE_EVENT: {
+				StaffLocationChangeEvent staffLocationChangeEvent = (StaffLocationChangeEvent)theEObject;
+				T result = caseStaffLocationChangeEvent(staffLocationChangeEvent);
+				if (result == null) result = caseEvent(staffLocationChangeEvent);
+				if (result == null) result = caseStaffLocation(staffLocationChangeEvent);
+				if (result == null) result = caseEntity(staffLocationChangeEvent);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case StaffPackage.ABILITY: {
+				Ability ability = (Ability)theEObject;
+				T result = caseAbility(ability);
+				if (result == null) result = caseEntity(ability);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case StaffPackage.WORKSTEP_SKILL: {
+				WorkstepSkill workstepSkill = (WorkstepSkill)theEObject;
+				T result = caseWorkstepSkill(workstepSkill);
+				if (result == null) result = caseEntity(workstepSkill);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -88,12 +112,6 @@ public class StaffSwitch<T> extends Switch<T> {
 				StaffSkills staffSkills = (StaffSkills)theEObject;
 				T result = caseStaffSkills(staffSkills);
 				if (result == null) result = caseEntity(staffSkills);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case StaffPackage.STAFF_SKILL: {
-				StaffSkill staffSkill = (StaffSkill)theEObject;
-				T result = caseStaffSkill(staffSkill);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -117,17 +135,62 @@ public class StaffSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Recognition</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Location</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Recognition</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Location</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseStaffRecognition(StaffRecognition object) {
+	public T caseStaffLocation(StaffLocation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Location Change Event</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Location Change Event</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStaffLocationChangeEvent(StaffLocationChangeEvent object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Ability</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Ability</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAbility(Ability object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Workstep Skill</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Workstep Skill</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseWorkstepSkill(WorkstepSkill object) {
 		return null;
 	}
 
@@ -143,21 +206,6 @@ public class StaffSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseStaffSkills(StaffSkills object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Skill</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Skill</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseStaffSkill(StaffSkill object) {
 		return null;
 	}
 
@@ -188,6 +236,21 @@ public class StaffSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseIdentifiableEntity(IdentifiableEntity object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Event</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Event</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEvent(Event object) {
 		return null;
 	}
 

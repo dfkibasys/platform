@@ -10,7 +10,7 @@ import de.dfki.iui.basys.model.base.Entity;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * kann am ProductLifecycleService abgefragt (getCurrentStatus/ getStatusHistory) werden und wird kontinuierlich als Event publiziert, sollte man noch den Ort aufnehmen?
+ * kann am ProductLifecycleService abgefragt (getCurrentStatus/ getStatusHistory) werden
  * <!-- end-model-doc -->
  *
  * <p>
@@ -19,7 +19,6 @@ import de.dfki.iui.basys.model.base.Entity;
  * <ul>
  *   <li>{@link de.dfki.iui.basys.model.domain.product.ProductInstanceStatus#getProductInstanceId <em>Product Instance Id</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.product.ProductInstanceStatus#getStatus <em>Status</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.domain.product.ProductInstanceStatus#getWorkstepInstanceId <em>Workstep Instance Id</em>}</li>
  * </ul>
  *
  * @see de.dfki.iui.basys.model.domain.product.ProductPackage#getProductInstanceStatus()
@@ -81,31 +80,5 @@ public interface ProductInstanceStatus extends Entity {
 	 * @generated
 	 */
 	void setStatus(ProductInstanceStatusEnum value);
-
-	/**
-	 * Returns the value of the '<em><b>Workstep Instance Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Workstep Instance Id</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Workstep Instance Id</em>' attribute.
-	 * @see #setWorkstepInstanceId(String)
-	 * @see de.dfki.iui.basys.model.domain.product.ProductPackage#getProductInstanceStatus_WorkstepInstanceId()
-	 * @model
-	 * @generated
-	 */
-	String getWorkstepInstanceId();
-
-	/**
-	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.product.ProductInstanceStatus#getWorkstepInstanceId <em>Workstep Instance Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Workstep Instance Id</em>' attribute.
-	 * @see #getWorkstepInstanceId()
-	 * @generated
-	 */
-	void setWorkstepInstanceId(String value);
 
 } // ProductInstanceStatus

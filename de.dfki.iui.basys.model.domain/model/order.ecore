@@ -30,14 +30,12 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="status" eType="#//OrderStatus"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="OrderStatus" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Event">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="Unterschied zu OrderProgressChange? braucht man noch ein OrderStatusChange? Kann man das verschmelzen? -> ja, unterscheidung über Topics"/>
-    </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="OrderStatus" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="orderId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" eType="#//OrderStatusEnum"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="pieceCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OrderStatusChangeEvent" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Event #//OrderStatus"/>
   <eClassifiers xsi:type="ecore:EEnum" name="OrderStatusEnum">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Weitere Literale?"/>

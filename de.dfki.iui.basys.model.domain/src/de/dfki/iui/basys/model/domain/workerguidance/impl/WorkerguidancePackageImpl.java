@@ -4,6 +4,10 @@ package de.dfki.iui.basys.model.domain.workerguidance.impl;
 
 import de.dfki.iui.basys.model.base.BasePackage;
 
+import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
+
+import de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl;
+
 import de.dfki.iui.basys.model.domain.order.OrderPackage;
 
 import de.dfki.iui.basys.model.domain.order.impl.OrderPackageImpl;
@@ -143,6 +147,7 @@ public class WorkerguidancePackageImpl extends EPackageImpl implements Workergui
 		StaffPackageImpl theStaffPackage = (StaffPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(StaffPackage.eNS_URI) instanceof StaffPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(StaffPackage.eNS_URI) : StaffPackage.eINSTANCE);
 		TopologyPackageImpl theTopologyPackage = (TopologyPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(TopologyPackage.eNS_URI) instanceof TopologyPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(TopologyPackage.eNS_URI) : TopologyPackage.eINSTANCE);
 		WorkplanPackageImpl theWorkplanPackage = (WorkplanPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkplanPackage.eNS_URI) instanceof WorkplanPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkplanPackage.eNS_URI) : WorkplanPackage.eINSTANCE);
+		LinebalancingPackageImpl theLinebalancingPackage = (LinebalancingPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(LinebalancingPackage.eNS_URI) instanceof LinebalancingPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(LinebalancingPackage.eNS_URI) : LinebalancingPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theWorkerguidancePackage.createPackageContents();
@@ -151,6 +156,7 @@ public class WorkerguidancePackageImpl extends EPackageImpl implements Workergui
 		theStaffPackage.createPackageContents();
 		theTopologyPackage.createPackageContents();
 		theWorkplanPackage.createPackageContents();
+		theLinebalancingPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theWorkerguidancePackage.initializePackageContents();
@@ -159,6 +165,7 @@ public class WorkerguidancePackageImpl extends EPackageImpl implements Workergui
 		theStaffPackage.initializePackageContents();
 		theTopologyPackage.initializePackageContents();
 		theWorkplanPackage.initializePackageContents();
+		theLinebalancingPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theWorkerguidancePackage.freeze();

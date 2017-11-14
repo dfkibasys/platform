@@ -11,7 +11,7 @@ import de.dfki.iui.basys.model.base.IdentifiableEntity;
  *
  *
  * @see de.dfki.iui.basys.model.domain.topology.TopologyPackage#getWorkCenter()
- * @model interface="true" abstract="true"
+ * @model abstract="true"
  * @generated
  */
 public interface WorkCenter extends IdentifiableEntity {

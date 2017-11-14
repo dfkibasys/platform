@@ -3,6 +3,7 @@
 package de.dfki.iui.basys.model.domain.topology;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -26,7 +27,6 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface Station extends EObject {
-
 	/**
 	 * Returns the value of the '<em><b>Equipment Modules</b></em>' containment reference list.
 	 * The list contents are of type {@link de.dfki.iui.basys.model.domain.topology.EquipmentModule}.
@@ -42,4 +42,5 @@ public interface Station extends EObject {
 	 * @generated
 	 */
 	EList<EquipmentModule> getEquipmentModules();
+
 } // Station

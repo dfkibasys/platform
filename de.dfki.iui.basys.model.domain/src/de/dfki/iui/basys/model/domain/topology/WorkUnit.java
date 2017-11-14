@@ -19,7 +19,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see de.dfki.iui.basys.model.domain.topology.TopologyPackage#getWorkUnit()
- * @model interface="true" abstract="true"
+ * @model abstract="true"
  * @generated
  */
 public interface WorkUnit extends IdentifiableEntity {

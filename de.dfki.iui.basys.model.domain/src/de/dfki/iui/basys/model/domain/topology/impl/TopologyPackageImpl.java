@@ -4,6 +4,10 @@ package de.dfki.iui.basys.model.domain.topology.impl;
 
 import de.dfki.iui.basys.model.base.BasePackage;
 
+import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
+
+import de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl;
+
 import de.dfki.iui.basys.model.domain.order.OrderPackage;
 
 import de.dfki.iui.basys.model.domain.order.impl.OrderPackageImpl;
@@ -30,6 +34,7 @@ import de.dfki.iui.basys.model.domain.topology.StorageUnit;
 import de.dfki.iui.basys.model.domain.topology.StorageZone;
 import de.dfki.iui.basys.model.domain.topology.TopologyFactory;
 import de.dfki.iui.basys.model.domain.topology.TopologyPackage;
+import de.dfki.iui.basys.model.domain.topology.Transition;
 import de.dfki.iui.basys.model.domain.topology.Unit;
 import de.dfki.iui.basys.model.domain.topology.WorkCell;
 import de.dfki.iui.basys.model.domain.topology.WorkCenter;
@@ -43,6 +48,7 @@ import de.dfki.iui.basys.model.domain.workplan.WorkplanPackage;
 
 import de.dfki.iui.basys.model.domain.workplan.impl.WorkplanPackageImpl;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -169,6 +175,13 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 	private EClass stationEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass transitionEClass = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -223,6 +236,7 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		StaffPackageImpl theStaffPackage = (StaffPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(StaffPackage.eNS_URI) instanceof StaffPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(StaffPackage.eNS_URI) : StaffPackage.eINSTANCE);
 		WorkerguidancePackageImpl theWorkerguidancePackage = (WorkerguidancePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkerguidancePackage.eNS_URI) instanceof WorkerguidancePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkerguidancePackage.eNS_URI) : WorkerguidancePackage.eINSTANCE);
 		WorkplanPackageImpl theWorkplanPackage = (WorkplanPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkplanPackage.eNS_URI) instanceof WorkplanPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkplanPackage.eNS_URI) : WorkplanPackage.eINSTANCE);
+		LinebalancingPackageImpl theLinebalancingPackage = (LinebalancingPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(LinebalancingPackage.eNS_URI) instanceof LinebalancingPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(LinebalancingPackage.eNS_URI) : LinebalancingPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theTopologyPackage.createPackageContents();
@@ -231,6 +245,7 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		theStaffPackage.createPackageContents();
 		theWorkerguidancePackage.createPackageContents();
 		theWorkplanPackage.createPackageContents();
+		theLinebalancingPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theTopologyPackage.initializePackageContents();
@@ -239,6 +254,7 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		theStaffPackage.initializePackageContents();
 		theWorkerguidancePackage.initializePackageContents();
 		theWorkplanPackage.initializePackageContents();
+		theLinebalancingPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theTopologyPackage.freeze();
@@ -515,6 +531,42 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getTransition() {
+		return transitionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTransition_ComponentId_src() {
+		return (EAttribute)transitionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTransition_ComponentId_target() {
+		return (EAttribute)transitionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTransition_Distance() {
+		return (EAttribute)transitionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public TopologyFactory getTopologyFactory() {
 		return (TopologyFactory)getEFactoryInstance();
 	}
@@ -582,6 +634,11 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 
 		stationEClass = createEClass(STATION);
 		createEReference(stationEClass, STATION__EQUIPMENT_MODULES);
+
+		transitionEClass = createEClass(TRANSITION);
+		createEAttribute(transitionEClass, TRANSITION__COMPONENT_ID_SRC);
+		createEAttribute(transitionEClass, TRANSITION__COMPONENT_ID_TARGET);
+		createEAttribute(transitionEClass, TRANSITION__DISTANCE);
 	}
 
 	/**
@@ -640,7 +697,7 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		initEClass(areaEClass, Area.class, "Area", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getArea_WorkCenters(), this.getWorkCenter(), null, "workCenters", null, 0, 1, Area.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(workCenterEClass, WorkCenter.class, "WorkCenter", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(workCenterEClass, WorkCenter.class, "WorkCenter", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(processCellEClass, ProcessCell.class, "ProcessCell", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getProcessCell_Units(), this.getUnit(), null, "units", null, 1, -1, ProcessCell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -654,7 +711,7 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		initEClass(storageZoneEClass, StorageZone.class, "StorageZone", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getStorageZone_StorageUnits(), this.getStorageUnit(), null, "storageUnits", null, 1, -1, StorageZone.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(workUnitEClass, WorkUnit.class, "WorkUnit", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(workUnitEClass, WorkUnit.class, "WorkUnit", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getWorkUnit_EquipmentModules(), this.getEquipmentModule(), null, "equipmentModules", null, 0, -1, WorkUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(unitEClass, Unit.class, "Unit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -675,6 +732,11 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 
 		initEClass(stationEClass, Station.class, "Station", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getStation_EquipmentModules(), this.getEquipmentModule(), null, "equipmentModules", null, 0, -1, Station.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(transitionEClass, Transition.class, "Transition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTransition_ComponentId_src(), ecorePackage.getEString(), "componentId_src", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransition_ComponentId_target(), ecorePackage.getEString(), "componentId_target", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransition_Distance(), ecorePackage.getEFloat(), "distance", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

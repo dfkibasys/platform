@@ -6,12 +6,15 @@ import de.dfki.iui.basys.model.base.impl.IdentifiableEntityImpl;
 
 import de.dfki.iui.basys.model.domain.order.Order;
 import de.dfki.iui.basys.model.domain.order.OrderPackage;
+import de.dfki.iui.basys.model.domain.order.OrderStatus;
 
 import java.util.Date;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -28,6 +31,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link de.dfki.iui.basys.model.domain.order.impl.OrderImpl#getEndDate <em>End Date</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.order.impl.OrderImpl#getPieces <em>Pieces</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.order.impl.OrderImpl#getPriority <em>Priority</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.order.impl.OrderImpl#getStatus <em>Status</em>}</li>
  * </ul>
  *
  * @generated
@@ -132,6 +136,16 @@ public class OrderImpl extends IdentifiableEntityImpl implements Order {
 	 * @ordered
 	 */
 	protected int priority = PRIORITY_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getStatus() <em>Status</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStatus()
+	 * @generated
+	 * @ordered
+	 */
+	protected OrderStatus status;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -262,6 +276,63 @@ public class OrderImpl extends IdentifiableEntityImpl implements Order {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public OrderStatus getStatus() {
+		return status;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetStatus(OrderStatus newStatus, NotificationChain msgs) {
+		OrderStatus oldStatus = status;
+		status = newStatus;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, OrderPackage.ORDER__STATUS, oldStatus, newStatus);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStatus(OrderStatus newStatus) {
+		if (newStatus != status) {
+			NotificationChain msgs = null;
+			if (status != null)
+				msgs = ((InternalEObject)status).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OrderPackage.ORDER__STATUS, null, msgs);
+			if (newStatus != null)
+				msgs = ((InternalEObject)newStatus).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OrderPackage.ORDER__STATUS, null, msgs);
+			msgs = basicSetStatus(newStatus, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, OrderPackage.ORDER__STATUS, newStatus, newStatus));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case OrderPackage.ORDER__STATUS:
+				return basicSetStatus(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -275,6 +346,8 @@ public class OrderImpl extends IdentifiableEntityImpl implements Order {
 				return getPieces();
 			case OrderPackage.ORDER__PRIORITY:
 				return getPriority();
+			case OrderPackage.ORDER__STATUS:
+				return getStatus();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -301,6 +374,9 @@ public class OrderImpl extends IdentifiableEntityImpl implements Order {
 				return;
 			case OrderPackage.ORDER__PRIORITY:
 				setPriority((Integer)newValue);
+				return;
+			case OrderPackage.ORDER__STATUS:
+				setStatus((OrderStatus)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -329,6 +405,9 @@ public class OrderImpl extends IdentifiableEntityImpl implements Order {
 			case OrderPackage.ORDER__PRIORITY:
 				setPriority(PRIORITY_EDEFAULT);
 				return;
+			case OrderPackage.ORDER__STATUS:
+				setStatus((OrderStatus)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -351,6 +430,8 @@ public class OrderImpl extends IdentifiableEntityImpl implements Order {
 				return pieces != PIECES_EDEFAULT;
 			case OrderPackage.ORDER__PRIORITY:
 				return priority != PRIORITY_EDEFAULT;
+			case OrderPackage.ORDER__STATUS:
+				return status != null;
 		}
 		return super.eIsSet(featureID);
 	}

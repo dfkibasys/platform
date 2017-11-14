@@ -2,8 +2,6 @@
  */
 package de.dfki.iui.basys.model.domain.topology.impl;
 
-import de.dfki.iui.basys.model.base.impl.IdentifiableEntityImpl;
-
 import de.dfki.iui.basys.model.domain.topology.StorageUnit;
 import de.dfki.iui.basys.model.domain.topology.StorageZone;
 import de.dfki.iui.basys.model.domain.topology.TopologyPackage;
@@ -33,7 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class StorageZoneImpl extends IdentifiableEntityImpl implements StorageZone {
+public class StorageZoneImpl extends WorkCenterImpl implements StorageZone {
 	/**
 	 * The cached value of the '{@link #getStorageUnits() <em>Storage Units</em>}' containment reference list.
 	 * <!-- begin-user-doc -->

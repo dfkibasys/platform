@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1508947421554
-Build-Jdk: 1.8.0_131
-Built-By: dapo01
+Bnd-LastModified: 1510663248276
+Build-Jdk: 1.8.0_25
+Built-By: fkerber
 Bundle-ManifestVersion: 2
 Bundle-Name: BaSys 4.0 - AAS Model
 Bundle-SymbolicName: de.dfki.iui.basys.model.aas;singleton:=true

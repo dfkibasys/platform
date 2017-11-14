@@ -3,10 +3,6 @@
 package de.dfki.iui.basys.model.domain.topology.provider;
 
 
-import de.dfki.iui.basys.model.base.provider.IdentifiableEntityItemProvider;
-
-import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
-
 import de.dfki.iui.basys.model.domain.topology.StorageZone;
 import de.dfki.iui.basys.model.domain.topology.TopologyFactory;
 import de.dfki.iui.basys.model.domain.topology.TopologyPackage;
@@ -16,9 +12,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -30,7 +23,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class StorageZoneItemProvider extends IdentifiableEntityItemProvider {
+public class StorageZoneItemProvider extends WorkCenterItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -146,17 +139,6 @@ public class StorageZoneItemProvider extends IdentifiableEntityItemProvider {
 			(createChildParameter
 				(TopologyPackage.Literals.STORAGE_ZONE__STORAGE_UNITS,
 				 TopologyFactory.eINSTANCE.createStorageUnit()));
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return DomainEditPlugin.INSTANCE;
 	}
 
 }

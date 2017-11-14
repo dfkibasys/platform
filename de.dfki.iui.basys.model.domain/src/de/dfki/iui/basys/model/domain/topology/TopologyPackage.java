@@ -4,6 +4,7 @@ package de.dfki.iui.basys.model.domain.topology;
 
 import de.dfki.iui.basys.model.base.BasePackage;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -223,10 +224,10 @@ public interface TopologyPackage extends EPackage {
 	int AREA_OPERATION_COUNT = BasePackage.IDENTIFIABLE_ENTITY_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.WorkCenter <em>Work Center</em>}' class.
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.WorkCenterImpl <em>Work Center</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.topology.WorkCenter
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.WorkCenterImpl
 	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getWorkCenter()
 	 * @generated
 	 */
@@ -489,10 +490,10 @@ public interface TopologyPackage extends EPackage {
 	int STORAGE_ZONE_OPERATION_COUNT = WORK_CENTER_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.WorkUnit <em>Work Unit</em>}' class.
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.WorkUnitImpl <em>Work Unit</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.topology.WorkUnit
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.WorkUnitImpl
 	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getWorkUnit()
 	 * @generated
 	 */
@@ -901,6 +902,61 @@ public interface TopologyPackage extends EPackage {
 	 */
 	int STATION_OPERATION_COUNT = 0;
 
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.TransitionImpl <em>Transition</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TransitionImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getTransition()
+	 * @generated
+	 */
+	int TRANSITION = 16;
+
+	/**
+	 * The feature id for the '<em><b>Component Id src</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__COMPONENT_ID_SRC = 0;
+
+	/**
+	 * The feature id for the '<em><b>Component Id target</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__COMPONENT_ID_TARGET = 1;
+
+	/**
+	 * The feature id for the '<em><b>Distance</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__DISTANCE = 2;
+
+	/**
+	 * The number of structural features of the '<em>Transition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION_FEATURE_COUNT = 3;
+
+	/**
+	 * The number of operations of the '<em>Transition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION_OPERATION_COUNT = 0;
+
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.Enterprise <em>Enterprise</em>}'.
@@ -1206,6 +1262,49 @@ public interface TopologyPackage extends EPackage {
 	EReference getStation_EquipmentModules();
 
 	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.Transition <em>Transition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Transition</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.Transition
+	 * @generated
+	 */
+	EClass getTransition();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.topology.Transition#getComponentId_src <em>Component Id src</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Component Id src</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.Transition#getComponentId_src()
+	 * @see #getTransition()
+	 * @generated
+	 */
+	EAttribute getTransition_ComponentId_src();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.topology.Transition#getComponentId_target <em>Component Id target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Component Id target</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.Transition#getComponentId_target()
+	 * @see #getTransition()
+	 * @generated
+	 */
+	EAttribute getTransition_ComponentId_target();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.topology.Transition#getDistance <em>Distance</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Distance</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.Transition#getDistance()
+	 * @see #getTransition()
+	 * @generated
+	 */
+	EAttribute getTransition_Distance();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1283,10 +1382,10 @@ public interface TopologyPackage extends EPackage {
 		EReference AREA__WORK_CENTERS = eINSTANCE.getArea_WorkCenters();
 
 		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.WorkCenter <em>Work Center</em>}' class.
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.WorkCenterImpl <em>Work Center</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.domain.topology.WorkCenter
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.WorkCenterImpl
 		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getWorkCenter()
 		 * @generated
 		 */
@@ -1365,10 +1464,10 @@ public interface TopologyPackage extends EPackage {
 		EReference STORAGE_ZONE__STORAGE_UNITS = eINSTANCE.getStorageZone_StorageUnits();
 
 		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.WorkUnit <em>Work Unit</em>}' class.
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.WorkUnitImpl <em>Work Unit</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.domain.topology.WorkUnit
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.WorkUnitImpl
 		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getWorkUnit()
 		 * @generated
 		 */
@@ -1491,6 +1590,40 @@ public interface TopologyPackage extends EPackage {
 		 * @generated
 		 */
 		EReference STATION__EQUIPMENT_MODULES = eINSTANCE.getStation_EquipmentModules();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.TransitionImpl <em>Transition</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TransitionImpl
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getTransition()
+		 * @generated
+		 */
+		EClass TRANSITION = eINSTANCE.getTransition();
+
+		/**
+		 * The meta object literal for the '<em><b>Component Id src</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRANSITION__COMPONENT_ID_SRC = eINSTANCE.getTransition_ComponentId_src();
+
+		/**
+		 * The meta object literal for the '<em><b>Component Id target</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRANSITION__COMPONENT_ID_TARGET = eINSTANCE.getTransition_ComponentId_target();
+
+		/**
+		 * The meta object literal for the '<em><b>Distance</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRANSITION__DISTANCE = eINSTANCE.getTransition_Distance();
 
 	}
 

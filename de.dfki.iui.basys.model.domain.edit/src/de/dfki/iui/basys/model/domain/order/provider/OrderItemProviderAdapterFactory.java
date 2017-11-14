@@ -118,6 +118,29 @@ public class OrderItemProviderAdapterFactory extends OrderAdapterFactory impleme
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.order.OrderStatusChangeEvent} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OrderStatusChangeEventItemProvider orderStatusChangeEventItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.order.OrderStatusChangeEvent}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOrderStatusChangeEventAdapter() {
+		if (orderStatusChangeEventItemProvider == null) {
+			orderStatusChangeEventItemProvider = new OrderStatusChangeEventItemProvider(this);
+		}
+
+		return orderStatusChangeEventItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -218,6 +241,7 @@ public class OrderItemProviderAdapterFactory extends OrderAdapterFactory impleme
 	public void dispose() {
 		if (orderItemProvider != null) orderItemProvider.dispose();
 		if (orderStatusItemProvider != null) orderStatusItemProvider.dispose();
+		if (orderStatusChangeEventItemProvider != null) orderStatusChangeEventItemProvider.dispose();
 	}
 
 }

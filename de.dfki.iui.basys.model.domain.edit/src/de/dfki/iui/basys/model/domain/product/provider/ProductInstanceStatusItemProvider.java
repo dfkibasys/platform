@@ -53,7 +53,6 @@ public class ProductInstanceStatusItemProvider extends EntityItemProvider {
 
 			addProductInstanceIdPropertyDescriptor(object);
 			addStatusPropertyDescriptor(object);
-			addWorkstepInstanceIdPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -103,28 +102,6 @@ public class ProductInstanceStatusItemProvider extends EntityItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Workstep Instance Id feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addWorkstepInstanceIdPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ProductInstanceStatus_workstepInstanceId_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ProductInstanceStatus_workstepInstanceId_feature", "_UI_ProductInstanceStatus_type"),
-				 ProductPackage.Literals.PRODUCT_INSTANCE_STATUS__WORKSTEP_INSTANCE_ID,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This returns ProductInstanceStatus.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -164,7 +141,6 @@ public class ProductInstanceStatusItemProvider extends EntityItemProvider {
 		switch (notification.getFeatureID(ProductInstanceStatus.class)) {
 			case ProductPackage.PRODUCT_INSTANCE_STATUS__PRODUCT_INSTANCE_ID:
 			case ProductPackage.PRODUCT_INSTANCE_STATUS__STATUS:
-			case ProductPackage.PRODUCT_INSTANCE_STATUS__WORKSTEP_INSTANCE_ID:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

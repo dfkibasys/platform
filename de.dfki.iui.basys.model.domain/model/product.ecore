@@ -11,6 +11,7 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="besser ProductType?"/>
     </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ProductVariant" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//IdentifiableEntity">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -29,17 +30,14 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ProductInstanceStatus" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="kann am ProductLifecycleService abgefragt (getCurrentStatus/ getStatusHistory) werden und wird kontinuierlich als Event publiziert, sollte man noch den Ort aufnehmen?"/>
+      <details key="documentation" value="kann am ProductLifecycleService abgefragt (getCurrentStatus/ getStatusHistory) werden"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="productInstanceId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" eType="#//ProductInstanceStatusEnum"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="workstepInstanceId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ProductRecognition" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="Umbenennung ProductLocation? Kann diese Info auch am PLC-Dienst abgefragt werden? oder PromiseMonitoring?"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="eventType" eType="#//RecognitionEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ProductInstanceStatusEvent" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Event #//ProductInstanceStatus"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ProductInstanceLocation" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="detectionType" eType="#//ProductInstanceDetectionEnum"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="productInstanceId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="componentId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -47,14 +45,15 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="RecognitionEnum">
+  <eClassifiers xsi:type="ecore:EClass" name="ProductInstanceLocationEvent" eSuperTypes="#//ProductInstanceLocation ../../de.dfki.iui.basys.model.base/model/base.ecore#//Event"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="ProductInstanceDetectionEnum">
     <eLiterals name="UNKNOWN" literal="UNKNOWN"/>
     <eLiterals name="PRESENT" value="1"/>
     <eLiterals name="IN_TRANSIT" value="2"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ProductInstanceStatusEnum">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="Weitere Literale? Verschmelzung mit OderStatusEnum?"/>
+      <details key="documentation" value="Weitere Literale? Verschmelzung mit OrderStatusEnum?"/>
     </eAnnotations>
     <eLiterals name="UNKNOWN" literal="UNKNOWN"/>
     <eLiterals name="IN_PRODUCTION" value="1" literal="IN_PRODUCTION"/>

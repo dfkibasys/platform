@@ -18,7 +18,7 @@ import de.dfki.iui.basys.model.base.IdentifiableEntity;
  * </p>
  * <ul>
  *   <li>{@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstance#getName <em>Name</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstance#getStationId <em>Station Id</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstance#getComponentId <em>Component Id</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstance#isIsAutomatic <em>Is Automatic</em>}</li>
  * </ul>
  *
@@ -53,30 +53,30 @@ public interface WorkstepInstance extends IdentifiableEntity {
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Station Id</b></em>' attribute.
+	 * Returns the value of the '<em><b>Component Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Station Id</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Component Id</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Station Id</em>' attribute.
-	 * @see #setStationId(String)
-	 * @see de.dfki.iui.basys.model.domain.workplan.WorkplanPackage#getWorkstepInstance_StationId()
+	 * @return the value of the '<em>Component Id</em>' attribute.
+	 * @see #setComponentId(String)
+	 * @see de.dfki.iui.basys.model.domain.workplan.WorkplanPackage#getWorkstepInstance_ComponentId()
 	 * @model
 	 * @generated
 	 */
-	String getStationId();
+	String getComponentId();
 
 	/**
-	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstance#getStationId <em>Station Id</em>}' attribute.
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstance#getComponentId <em>Component Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Station Id</em>' attribute.
-	 * @see #getStationId()
+	 * @param value the new value of the '<em>Component Id</em>' attribute.
+	 * @see #getComponentId()
 	 * @generated
 	 */
-	void setStationId(String value);
+	void setComponentId(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Is Automatic</b></em>' attribute.

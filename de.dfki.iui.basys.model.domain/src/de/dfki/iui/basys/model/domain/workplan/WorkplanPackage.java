@@ -161,13 +161,13 @@ public interface WorkplanPackage extends EPackage {
 	int WORKSTEP_INSTANCE__NAME = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Station Id</b></em>' attribute.
+	 * The feature id for the '<em><b>Component Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WORKSTEP_INSTANCE__STATION_ID = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 1;
+	int WORKSTEP_INSTANCE__COMPONENT_ID = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Is Automatic</b></em>' attribute.
@@ -197,14 +197,14 @@ public interface WorkplanPackage extends EPackage {
 	int WORKSTEP_INSTANCE_OPERATION_COUNT = BasePackage.IDENTIFIABLE_ENTITY_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.workplan.impl.WorkstepInstanceChangeEventImpl <em>Workstep Instance Change Event</em>}' class.
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.workplan.impl.WorkstepInstanceStatusImpl <em>Workstep Instance Status</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.workplan.impl.WorkstepInstanceChangeEventImpl
-	 * @see de.dfki.iui.basys.model.domain.workplan.impl.WorkplanPackageImpl#getWorkstepInstanceChangeEvent()
+	 * @see de.dfki.iui.basys.model.domain.workplan.impl.WorkstepInstanceStatusImpl
+	 * @see de.dfki.iui.basys.model.domain.workplan.impl.WorkplanPackageImpl#getWorkstepInstanceStatus()
 	 * @generated
 	 */
-	int WORKSTEP_INSTANCE_CHANGE_EVENT = 2;
+	int WORKSTEP_INSTANCE_STATUS = 2;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -213,25 +213,16 @@ public interface WorkplanPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKSTEP_INSTANCE_CHANGE_EVENT__METADATA = BasePackage.EVENT__METADATA;
+	int WORKSTEP_INSTANCE_STATUS__METADATA = BasePackage.ENTITY__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Timestamp</b></em>' attribute.
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WORKSTEP_INSTANCE_CHANGE_EVENT__TIMESTAMP = BasePackage.EVENT__TIMESTAMP;
-
-	/**
-	 * The feature id for the '<em><b>Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WORKSTEP_INSTANCE_CHANGE_EVENT__TYPE = BasePackage.EVENT_FEATURE_COUNT + 0;
+	int WORKSTEP_INSTANCE_STATUS__STATUS = BasePackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Product Instance Id</b></em>' attribute.
@@ -240,7 +231,7 @@ public interface WorkplanPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKSTEP_INSTANCE_CHANGE_EVENT__PRODUCT_INSTANCE_ID = BasePackage.EVENT_FEATURE_COUNT + 1;
+	int WORKSTEP_INSTANCE_STATUS__PRODUCT_INSTANCE_ID = BasePackage.ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Workstep Instance Id</b></em>' attribute.
@@ -249,25 +240,98 @@ public interface WorkplanPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKSTEP_INSTANCE_CHANGE_EVENT__WORKSTEP_INSTANCE_ID = BasePackage.EVENT_FEATURE_COUNT + 2;
+	int WORKSTEP_INSTANCE_STATUS__WORKSTEP_INSTANCE_ID = BasePackage.ENTITY_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the '<em>Workstep Instance Change Event</em>' class.
+	 * The number of structural features of the '<em>Workstep Instance Status</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WORKSTEP_INSTANCE_CHANGE_EVENT_FEATURE_COUNT = BasePackage.EVENT_FEATURE_COUNT + 3;
+	int WORKSTEP_INSTANCE_STATUS_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of operations of the '<em>Workstep Instance Change Event</em>' class.
+	 * The number of operations of the '<em>Workstep Instance Status</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WORKSTEP_INSTANCE_CHANGE_EVENT_OPERATION_COUNT = BasePackage.EVENT_OPERATION_COUNT + 0;
+	int WORKSTEP_INSTANCE_STATUS_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.workplan.impl.WorkstepInstanceStatusChangeEventImpl <em>Workstep Instance Status Change Event</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.workplan.impl.WorkstepInstanceStatusChangeEventImpl
+	 * @see de.dfki.iui.basys.model.domain.workplan.impl.WorkplanPackageImpl#getWorkstepInstanceStatusChangeEvent()
+	 * @generated
+	 */
+	int WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT = 3;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT__METADATA = BasePackage.EVENT__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Timestamp</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT__TIMESTAMP = BasePackage.EVENT__TIMESTAMP;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT__STATUS = BasePackage.EVENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Product Instance Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT__PRODUCT_INSTANCE_ID = BasePackage.EVENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Workstep Instance Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT__WORKSTEP_INSTANCE_ID = BasePackage.EVENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Workstep Instance Status Change Event</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT_FEATURE_COUNT = BasePackage.EVENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Workstep Instance Status Change Event</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT_OPERATION_COUNT = BasePackage.EVENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.workplan.impl.DurationImpl <em>Duration</em>}' class.
@@ -277,7 +341,7 @@ public interface WorkplanPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.workplan.impl.WorkplanPackageImpl#getDuration()
 	 * @generated
 	 */
-	int DURATION = 3;
+	int DURATION = 4;
 
 	/**
 	 * The feature id for the '<em><b>Workstep Instance Id</b></em>' attribute.
@@ -289,40 +353,31 @@ public interface WorkplanPackage extends EPackage {
 	int DURATION__WORKSTEP_INSTANCE_ID = 0;
 
 	/**
-	 * The feature id for the '<em><b>Beginner Level</b></em>' attribute.
+	 * The feature id for the '<em><b>Agent Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DURATION__BEGINNER_LEVEL = 1;
+	int DURATION__AGENT_ID = 1;
 
 	/**
-	 * The feature id for the '<em><b>Beginner Level Deviance</b></em>' attribute.
+	 * The feature id for the '<em><b>Average</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DURATION__BEGINNER_LEVEL_DEVIANCE = 2;
+	int DURATION__AVERAGE = 2;
 
 	/**
-	 * The feature id for the '<em><b>Expert Level</b></em>' attribute.
+	 * The feature id for the '<em><b>Standard Deviation</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DURATION__EXPERT_LEVEL = 3;
-
-	/**
-	 * The feature id for the '<em><b>Expert Level Deviance</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DURATION__EXPERT_LEVEL_DEVIANCE = 4;
+	int DURATION__STANDARD_DEVIATION = 3;
 
 	/**
 	 * The number of structural features of the '<em>Duration</em>' class.
@@ -331,7 +386,7 @@ public interface WorkplanPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DURATION_FEATURE_COUNT = 5;
+	int DURATION_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Duration</em>' class.
@@ -343,14 +398,14 @@ public interface WorkplanPackage extends EPackage {
 	int DURATION_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceChangeType <em>Workstep Instance Change Type</em>}' enum.
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatusEnum <em>Workstep Instance Status Enum</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceChangeType
-	 * @see de.dfki.iui.basys.model.domain.workplan.impl.WorkplanPackageImpl#getWorkstepInstanceChangeType()
+	 * @see de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatusEnum
+	 * @see de.dfki.iui.basys.model.domain.workplan.impl.WorkplanPackageImpl#getWorkstepInstanceStatusEnum()
 	 * @generated
 	 */
-	int WORKSTEP_INSTANCE_CHANGE_TYPE = 4;
+	int WORKSTEP_INSTANCE_STATUS_ENUM = 5;
 
 
 	/**
@@ -407,15 +462,15 @@ public interface WorkplanPackage extends EPackage {
 	EAttribute getWorkstepInstance_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstance#getStationId <em>Station Id</em>}'.
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstance#getComponentId <em>Component Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Station Id</em>'.
-	 * @see de.dfki.iui.basys.model.domain.workplan.WorkstepInstance#getStationId()
+	 * @return the meta object for the attribute '<em>Component Id</em>'.
+	 * @see de.dfki.iui.basys.model.domain.workplan.WorkstepInstance#getComponentId()
 	 * @see #getWorkstepInstance()
 	 * @generated
 	 */
-	EAttribute getWorkstepInstance_StationId();
+	EAttribute getWorkstepInstance_ComponentId();
 
 	/**
 	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstance#isIsAutomatic <em>Is Automatic</em>}'.
@@ -429,47 +484,57 @@ public interface WorkplanPackage extends EPackage {
 	EAttribute getWorkstepInstance_IsAutomatic();
 
 	/**
-	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceChangeEvent <em>Workstep Instance Change Event</em>}'.
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatus <em>Workstep Instance Status</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Workstep Instance Change Event</em>'.
-	 * @see de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceChangeEvent
+	 * @return the meta object for class '<em>Workstep Instance Status</em>'.
+	 * @see de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatus
 	 * @generated
 	 */
-	EClass getWorkstepInstanceChangeEvent();
+	EClass getWorkstepInstanceStatus();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceChangeEvent#getType <em>Type</em>}'.
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatus#getStatus <em>Status</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Type</em>'.
-	 * @see de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceChangeEvent#getType()
-	 * @see #getWorkstepInstanceChangeEvent()
+	 * @return the meta object for the attribute '<em>Status</em>'.
+	 * @see de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatus#getStatus()
+	 * @see #getWorkstepInstanceStatus()
 	 * @generated
 	 */
-	EAttribute getWorkstepInstanceChangeEvent_Type();
+	EAttribute getWorkstepInstanceStatus_Status();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceChangeEvent#getProductInstanceId <em>Product Instance Id</em>}'.
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatus#getProductInstanceId <em>Product Instance Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Product Instance Id</em>'.
-	 * @see de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceChangeEvent#getProductInstanceId()
-	 * @see #getWorkstepInstanceChangeEvent()
+	 * @see de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatus#getProductInstanceId()
+	 * @see #getWorkstepInstanceStatus()
 	 * @generated
 	 */
-	EAttribute getWorkstepInstanceChangeEvent_ProductInstanceId();
+	EAttribute getWorkstepInstanceStatus_ProductInstanceId();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceChangeEvent#getWorkstepInstanceId <em>Workstep Instance Id</em>}'.
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatus#getWorkstepInstanceId <em>Workstep Instance Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Workstep Instance Id</em>'.
-	 * @see de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceChangeEvent#getWorkstepInstanceId()
-	 * @see #getWorkstepInstanceChangeEvent()
+	 * @see de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatus#getWorkstepInstanceId()
+	 * @see #getWorkstepInstanceStatus()
 	 * @generated
 	 */
-	EAttribute getWorkstepInstanceChangeEvent_WorkstepInstanceId();
+	EAttribute getWorkstepInstanceStatus_WorkstepInstanceId();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatusChangeEvent <em>Workstep Instance Status Change Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Workstep Instance Status Change Event</em>'.
+	 * @see de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatusChangeEvent
+	 * @generated
+	 */
+	EClass getWorkstepInstanceStatusChangeEvent();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.workplan.Duration <em>Duration</em>}'.
@@ -493,58 +558,47 @@ public interface WorkplanPackage extends EPackage {
 	EAttribute getDuration_WorkstepInstanceId();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.workplan.Duration#getBeginnerLevel <em>Beginner Level</em>}'.
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.workplan.Duration#getAgentId <em>Agent Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Beginner Level</em>'.
-	 * @see de.dfki.iui.basys.model.domain.workplan.Duration#getBeginnerLevel()
+	 * @return the meta object for the attribute '<em>Agent Id</em>'.
+	 * @see de.dfki.iui.basys.model.domain.workplan.Duration#getAgentId()
 	 * @see #getDuration()
 	 * @generated
 	 */
-	EAttribute getDuration_BeginnerLevel();
+	EAttribute getDuration_AgentId();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.workplan.Duration#getBeginnerLevelDeviance <em>Beginner Level Deviance</em>}'.
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.workplan.Duration#getAverage <em>Average</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Beginner Level Deviance</em>'.
-	 * @see de.dfki.iui.basys.model.domain.workplan.Duration#getBeginnerLevelDeviance()
+	 * @return the meta object for the attribute '<em>Average</em>'.
+	 * @see de.dfki.iui.basys.model.domain.workplan.Duration#getAverage()
 	 * @see #getDuration()
 	 * @generated
 	 */
-	EAttribute getDuration_BeginnerLevelDeviance();
+	EAttribute getDuration_Average();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.workplan.Duration#getExpertLevel <em>Expert Level</em>}'.
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.workplan.Duration#getStandardDeviation <em>Standard Deviation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Expert Level</em>'.
-	 * @see de.dfki.iui.basys.model.domain.workplan.Duration#getExpertLevel()
+	 * @return the meta object for the attribute '<em>Standard Deviation</em>'.
+	 * @see de.dfki.iui.basys.model.domain.workplan.Duration#getStandardDeviation()
 	 * @see #getDuration()
 	 * @generated
 	 */
-	EAttribute getDuration_ExpertLevel();
+	EAttribute getDuration_StandardDeviation();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.workplan.Duration#getExpertLevelDeviance <em>Expert Level Deviance</em>}'.
+	 * Returns the meta object for enum '{@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatusEnum <em>Workstep Instance Status Enum</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Expert Level Deviance</em>'.
-	 * @see de.dfki.iui.basys.model.domain.workplan.Duration#getExpertLevelDeviance()
-	 * @see #getDuration()
+	 * @return the meta object for enum '<em>Workstep Instance Status Enum</em>'.
+	 * @see de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatusEnum
 	 * @generated
 	 */
-	EAttribute getDuration_ExpertLevelDeviance();
-
-	/**
-	 * Returns the meta object for enum '{@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceChangeType <em>Workstep Instance Change Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Workstep Instance Change Type</em>'.
-	 * @see de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceChangeType
-	 * @generated
-	 */
-	EEnum getWorkstepInstanceChangeType();
+	EEnum getWorkstepInstanceStatusEnum();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -614,12 +668,12 @@ public interface WorkplanPackage extends EPackage {
 		EAttribute WORKSTEP_INSTANCE__NAME = eINSTANCE.getWorkstepInstance_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Station Id</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Component Id</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute WORKSTEP_INSTANCE__STATION_ID = eINSTANCE.getWorkstepInstance_StationId();
+		EAttribute WORKSTEP_INSTANCE__COMPONENT_ID = eINSTANCE.getWorkstepInstance_ComponentId();
 
 		/**
 		 * The meta object literal for the '<em><b>Is Automatic</b></em>' attribute feature.
@@ -630,22 +684,22 @@ public interface WorkplanPackage extends EPackage {
 		EAttribute WORKSTEP_INSTANCE__IS_AUTOMATIC = eINSTANCE.getWorkstepInstance_IsAutomatic();
 
 		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.workplan.impl.WorkstepInstanceChangeEventImpl <em>Workstep Instance Change Event</em>}' class.
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.workplan.impl.WorkstepInstanceStatusImpl <em>Workstep Instance Status</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.domain.workplan.impl.WorkstepInstanceChangeEventImpl
-		 * @see de.dfki.iui.basys.model.domain.workplan.impl.WorkplanPackageImpl#getWorkstepInstanceChangeEvent()
+		 * @see de.dfki.iui.basys.model.domain.workplan.impl.WorkstepInstanceStatusImpl
+		 * @see de.dfki.iui.basys.model.domain.workplan.impl.WorkplanPackageImpl#getWorkstepInstanceStatus()
 		 * @generated
 		 */
-		EClass WORKSTEP_INSTANCE_CHANGE_EVENT = eINSTANCE.getWorkstepInstanceChangeEvent();
+		EClass WORKSTEP_INSTANCE_STATUS = eINSTANCE.getWorkstepInstanceStatus();
 
 		/**
-		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Status</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute WORKSTEP_INSTANCE_CHANGE_EVENT__TYPE = eINSTANCE.getWorkstepInstanceChangeEvent_Type();
+		EAttribute WORKSTEP_INSTANCE_STATUS__STATUS = eINSTANCE.getWorkstepInstanceStatus_Status();
 
 		/**
 		 * The meta object literal for the '<em><b>Product Instance Id</b></em>' attribute feature.
@@ -653,7 +707,7 @@ public interface WorkplanPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute WORKSTEP_INSTANCE_CHANGE_EVENT__PRODUCT_INSTANCE_ID = eINSTANCE.getWorkstepInstanceChangeEvent_ProductInstanceId();
+		EAttribute WORKSTEP_INSTANCE_STATUS__PRODUCT_INSTANCE_ID = eINSTANCE.getWorkstepInstanceStatus_ProductInstanceId();
 
 		/**
 		 * The meta object literal for the '<em><b>Workstep Instance Id</b></em>' attribute feature.
@@ -661,7 +715,17 @@ public interface WorkplanPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute WORKSTEP_INSTANCE_CHANGE_EVENT__WORKSTEP_INSTANCE_ID = eINSTANCE.getWorkstepInstanceChangeEvent_WorkstepInstanceId();
+		EAttribute WORKSTEP_INSTANCE_STATUS__WORKSTEP_INSTANCE_ID = eINSTANCE.getWorkstepInstanceStatus_WorkstepInstanceId();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.workplan.impl.WorkstepInstanceStatusChangeEventImpl <em>Workstep Instance Status Change Event</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.workplan.impl.WorkstepInstanceStatusChangeEventImpl
+		 * @see de.dfki.iui.basys.model.domain.workplan.impl.WorkplanPackageImpl#getWorkstepInstanceStatusChangeEvent()
+		 * @generated
+		 */
+		EClass WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT = eINSTANCE.getWorkstepInstanceStatusChangeEvent();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.workplan.impl.DurationImpl <em>Duration</em>}' class.
@@ -682,46 +746,38 @@ public interface WorkplanPackage extends EPackage {
 		EAttribute DURATION__WORKSTEP_INSTANCE_ID = eINSTANCE.getDuration_WorkstepInstanceId();
 
 		/**
-		 * The meta object literal for the '<em><b>Beginner Level</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Agent Id</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DURATION__BEGINNER_LEVEL = eINSTANCE.getDuration_BeginnerLevel();
+		EAttribute DURATION__AGENT_ID = eINSTANCE.getDuration_AgentId();
 
 		/**
-		 * The meta object literal for the '<em><b>Beginner Level Deviance</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Average</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DURATION__BEGINNER_LEVEL_DEVIANCE = eINSTANCE.getDuration_BeginnerLevelDeviance();
+		EAttribute DURATION__AVERAGE = eINSTANCE.getDuration_Average();
 
 		/**
-		 * The meta object literal for the '<em><b>Expert Level</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Standard Deviation</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DURATION__EXPERT_LEVEL = eINSTANCE.getDuration_ExpertLevel();
+		EAttribute DURATION__STANDARD_DEVIATION = eINSTANCE.getDuration_StandardDeviation();
 
 		/**
-		 * The meta object literal for the '<em><b>Expert Level Deviance</b></em>' attribute feature.
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatusEnum <em>Workstep Instance Status Enum</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatusEnum
+		 * @see de.dfki.iui.basys.model.domain.workplan.impl.WorkplanPackageImpl#getWorkstepInstanceStatusEnum()
 		 * @generated
 		 */
-		EAttribute DURATION__EXPERT_LEVEL_DEVIANCE = eINSTANCE.getDuration_ExpertLevelDeviance();
-
-		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceChangeType <em>Workstep Instance Change Type</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceChangeType
-		 * @see de.dfki.iui.basys.model.domain.workplan.impl.WorkplanPackageImpl#getWorkstepInstanceChangeType()
-		 * @generated
-		 */
-		EEnum WORKSTEP_INSTANCE_CHANGE_TYPE = eINSTANCE.getWorkstepInstanceChangeType();
+		EEnum WORKSTEP_INSTANCE_STATUS_ENUM = eINSTANCE.getWorkstepInstanceStatusEnum();
 
 	}
 

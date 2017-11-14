@@ -58,9 +58,11 @@ public class StaffFactoryImpl extends EFactoryImpl implements StaffFactory {
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case StaffPackage.STAFF: return createStaff();
-			case StaffPackage.STAFF_RECOGNITION: return createStaffRecognition();
+			case StaffPackage.STAFF_LOCATION: return createStaffLocation();
+			case StaffPackage.STAFF_LOCATION_CHANGE_EVENT: return createStaffLocationChangeEvent();
+			case StaffPackage.ABILITY: return createAbility();
+			case StaffPackage.WORKSTEP_SKILL: return createWorkstepSkill();
 			case StaffPackage.STAFF_SKILLS: return createStaffSkills();
-			case StaffPackage.STAFF_SKILL: return createStaffSkill();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -74,10 +76,10 @@ public class StaffFactoryImpl extends EFactoryImpl implements StaffFactory {
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case StaffPackage.STAFF_RECOGNITION_ENUM:
-				return createStaffRecognitionEnumFromString(eDataType, initialValue);
-			case StaffPackage.PREFERENCE_ENUM:
-				return createPreferenceEnumFromString(eDataType, initialValue);
+			case StaffPackage.STAFF_DETECTION_ENUM:
+				return createStaffDetectionEnumFromString(eDataType, initialValue);
+			case StaffPackage.WORKSTEP_PREFERENCE_ENUM:
+				return createWorkstepPreferenceEnumFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -91,10 +93,10 @@ public class StaffFactoryImpl extends EFactoryImpl implements StaffFactory {
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case StaffPackage.STAFF_RECOGNITION_ENUM:
-				return convertStaffRecognitionEnumToString(eDataType, instanceValue);
-			case StaffPackage.PREFERENCE_ENUM:
-				return convertPreferenceEnumToString(eDataType, instanceValue);
+			case StaffPackage.STAFF_DETECTION_ENUM:
+				return convertStaffDetectionEnumToString(eDataType, instanceValue);
+			case StaffPackage.WORKSTEP_PREFERENCE_ENUM:
+				return convertWorkstepPreferenceEnumToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -115,9 +117,39 @@ public class StaffFactoryImpl extends EFactoryImpl implements StaffFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StaffRecognition createStaffRecognition() {
-		StaffRecognitionImpl staffRecognition = new StaffRecognitionImpl();
-		return staffRecognition;
+	public StaffLocation createStaffLocation() {
+		StaffLocationImpl staffLocation = new StaffLocationImpl();
+		return staffLocation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StaffLocationChangeEvent createStaffLocationChangeEvent() {
+		StaffLocationChangeEventImpl staffLocationChangeEvent = new StaffLocationChangeEventImpl();
+		return staffLocationChangeEvent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Ability createAbility() {
+		AbilityImpl ability = new AbilityImpl();
+		return ability;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public WorkstepSkill createWorkstepSkill() {
+		WorkstepSkillImpl workstepSkill = new WorkstepSkillImpl();
+		return workstepSkill;
 	}
 
 	/**
@@ -135,18 +167,8 @@ public class StaffFactoryImpl extends EFactoryImpl implements StaffFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StaffSkill createStaffSkill() {
-		StaffSkillImpl staffSkill = new StaffSkillImpl();
-		return staffSkill;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public StaffRecognitionEnum createStaffRecognitionEnumFromString(EDataType eDataType, String initialValue) {
-		StaffRecognitionEnum result = StaffRecognitionEnum.get(initialValue);
+	public StaffDetectionEnum createStaffDetectionEnumFromString(EDataType eDataType, String initialValue) {
+		StaffDetectionEnum result = StaffDetectionEnum.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -156,7 +178,7 @@ public class StaffFactoryImpl extends EFactoryImpl implements StaffFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertStaffRecognitionEnumToString(EDataType eDataType, Object instanceValue) {
+	public String convertStaffDetectionEnumToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -165,8 +187,8 @@ public class StaffFactoryImpl extends EFactoryImpl implements StaffFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PreferenceEnum createPreferenceEnumFromString(EDataType eDataType, String initialValue) {
-		PreferenceEnum result = PreferenceEnum.get(initialValue);
+	public WorkstepPreferenceEnum createWorkstepPreferenceEnumFromString(EDataType eDataType, String initialValue) {
+		WorkstepPreferenceEnum result = WorkstepPreferenceEnum.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -176,7 +198,7 @@ public class StaffFactoryImpl extends EFactoryImpl implements StaffFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertPreferenceEnumToString(EDataType eDataType, Object instanceValue) {
+	public String convertWorkstepPreferenceEnumToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

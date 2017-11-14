@@ -31,13 +31,40 @@ public interface StaffFactory extends EFactory {
 	Staff createStaff();
 
 	/**
-	 * Returns a new object of class '<em>Recognition</em>'.
+	 * Returns a new object of class '<em>Location</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Recognition</em>'.
+	 * @return a new object of class '<em>Location</em>'.
 	 * @generated
 	 */
-	StaffRecognition createStaffRecognition();
+	StaffLocation createStaffLocation();
+
+	/**
+	 * Returns a new object of class '<em>Location Change Event</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Location Change Event</em>'.
+	 * @generated
+	 */
+	StaffLocationChangeEvent createStaffLocationChangeEvent();
+
+	/**
+	 * Returns a new object of class '<em>Ability</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Ability</em>'.
+	 * @generated
+	 */
+	Ability createAbility();
+
+	/**
+	 * Returns a new object of class '<em>Workstep Skill</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Workstep Skill</em>'.
+	 * @generated
+	 */
+	WorkstepSkill createWorkstepSkill();
 
 	/**
 	 * Returns a new object of class '<em>Skills</em>'.
@@ -47,15 +74,6 @@ public interface StaffFactory extends EFactory {
 	 * @generated
 	 */
 	StaffSkills createStaffSkills();
-
-	/**
-	 * Returns a new object of class '<em>Skill</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Skill</em>'.
-	 * @generated
-	 */
-	StaffSkill createStaffSkill();
 
 	/**
 	 * Returns the package supported by this factory.

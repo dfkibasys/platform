@@ -93,7 +93,8 @@ public class StaffSkillsItemProvider extends EntityItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(StaffPackage.Literals.STAFF_SKILLS__SKILLS);
+			childrenFeatures.add(StaffPackage.Literals.STAFF_SKILLS__WORKSTEP_SKILLS);
+			childrenFeatures.add(StaffPackage.Literals.STAFF_SKILLS__ABILITIES);
 		}
 		return childrenFeatures;
 	}
@@ -152,7 +153,8 @@ public class StaffSkillsItemProvider extends EntityItemProvider {
 			case StaffPackage.STAFF_SKILLS__WORKER_ID:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case StaffPackage.STAFF_SKILLS__SKILLS:
+			case StaffPackage.STAFF_SKILLS__WORKSTEP_SKILLS:
+			case StaffPackage.STAFF_SKILLS__ABILITIES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -172,8 +174,13 @@ public class StaffSkillsItemProvider extends EntityItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(StaffPackage.Literals.STAFF_SKILLS__SKILLS,
-				 StaffFactory.eINSTANCE.createStaffSkill()));
+				(StaffPackage.Literals.STAFF_SKILLS__WORKSTEP_SKILLS,
+				 StaffFactory.eINSTANCE.createWorkstepSkill()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(StaffPackage.Literals.STAFF_SKILLS__ABILITIES,
+				 StaffFactory.eINSTANCE.createAbility()));
 	}
 
 	/**

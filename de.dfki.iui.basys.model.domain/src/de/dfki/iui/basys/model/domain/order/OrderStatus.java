@@ -9,10 +9,6 @@ import de.dfki.iui.basys.model.base.Entity;
  * A representation of the model object '<em><b>Status</b></em>'.
  * <!-- end-user-doc -->
  *
- * <!-- begin-model-doc -->
- * Unterschied zu OrderProgressChange? braucht man noch ein OrderStatusChange? Kann man das verschmelzen? -> ja, unterscheidung über Topics
- * <!-- end-model-doc -->
- *
  * <p>
  * The following features are supported:
  * </p>

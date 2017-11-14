@@ -88,13 +88,22 @@ public interface ProductPackage extends EPackage {
 	int PRODUCT_GROUP__ID = BasePackage.IDENTIFIABLE_ENTITY__ID;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_GROUP__NAME = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Group</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_GROUP_FEATURE_COUNT = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
+	int PRODUCT_GROUP_FEATURE_COUNT = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Group</em>' class.
@@ -280,22 +289,13 @@ public interface ProductPackage extends EPackage {
 	int PRODUCT_INSTANCE_STATUS__STATUS = BasePackage.ENTITY_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Workstep Instance Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRODUCT_INSTANCE_STATUS__WORKSTEP_INSTANCE_ID = BasePackage.ENTITY_FEATURE_COUNT + 2;
-
-	/**
 	 * The number of structural features of the '<em>Instance Status</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_INSTANCE_STATUS_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 3;
+	int PRODUCT_INSTANCE_STATUS_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Instance Status</em>' class.
@@ -307,14 +307,14 @@ public interface ProductPackage extends EPackage {
 	int PRODUCT_INSTANCE_STATUS_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.product.impl.ProductRecognitionImpl <em>Recognition</em>}' class.
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.product.impl.ProductInstanceStatusEventImpl <em>Instance Status Event</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.product.impl.ProductRecognitionImpl
-	 * @see de.dfki.iui.basys.model.domain.product.impl.ProductPackageImpl#getProductRecognition()
+	 * @see de.dfki.iui.basys.model.domain.product.impl.ProductInstanceStatusEventImpl
+	 * @see de.dfki.iui.basys.model.domain.product.impl.ProductPackageImpl#getProductInstanceStatusEvent()
 	 * @generated
 	 */
-	int PRODUCT_RECOGNITION = 4;
+	int PRODUCT_INSTANCE_STATUS_EVENT = 4;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -323,16 +323,16 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_RECOGNITION__METADATA = BasePackage.ENTITY__METADATA;
+	int PRODUCT_INSTANCE_STATUS_EVENT__METADATA = BasePackage.EVENT__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Event Type</b></em>' attribute.
+	 * The feature id for the '<em><b>Timestamp</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_RECOGNITION__EVENT_TYPE = BasePackage.ENTITY_FEATURE_COUNT + 0;
+	int PRODUCT_INSTANCE_STATUS_EVENT__TIMESTAMP = BasePackage.EVENT__TIMESTAMP;
 
 	/**
 	 * The feature id for the '<em><b>Product Instance Id</b></em>' attribute.
@@ -341,7 +341,71 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_RECOGNITION__PRODUCT_INSTANCE_ID = BasePackage.ENTITY_FEATURE_COUNT + 1;
+	int PRODUCT_INSTANCE_STATUS_EVENT__PRODUCT_INSTANCE_ID = BasePackage.EVENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_INSTANCE_STATUS_EVENT__STATUS = BasePackage.EVENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Instance Status Event</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_INSTANCE_STATUS_EVENT_FEATURE_COUNT = BasePackage.EVENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Instance Status Event</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_INSTANCE_STATUS_EVENT_OPERATION_COUNT = BasePackage.EVENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.product.impl.ProductInstanceLocationImpl <em>Instance Location</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.product.impl.ProductInstanceLocationImpl
+	 * @see de.dfki.iui.basys.model.domain.product.impl.ProductPackageImpl#getProductInstanceLocation()
+	 * @generated
+	 */
+	int PRODUCT_INSTANCE_LOCATION = 5;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_INSTANCE_LOCATION__METADATA = BasePackage.ENTITY__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Detection Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_INSTANCE_LOCATION__DETECTION_TYPE = BasePackage.ENTITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Product Instance Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_INSTANCE_LOCATION__PRODUCT_INSTANCE_ID = BasePackage.ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Component Id</b></em>' attribute.
@@ -350,35 +414,108 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_RECOGNITION__COMPONENT_ID = BasePackage.ENTITY_FEATURE_COUNT + 2;
+	int PRODUCT_INSTANCE_LOCATION__COMPONENT_ID = BasePackage.ENTITY_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the '<em>Recognition</em>' class.
+	 * The number of structural features of the '<em>Instance Location</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_RECOGNITION_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 3;
+	int PRODUCT_INSTANCE_LOCATION_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of operations of the '<em>Recognition</em>' class.
+	 * The number of operations of the '<em>Instance Location</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_RECOGNITION_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
+	int PRODUCT_INSTANCE_LOCATION_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.product.RecognitionEnum <em>Recognition Enum</em>}' enum.
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.product.impl.ProductInstanceLocationEventImpl <em>Instance Location Event</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.product.RecognitionEnum
-	 * @see de.dfki.iui.basys.model.domain.product.impl.ProductPackageImpl#getRecognitionEnum()
+	 * @see de.dfki.iui.basys.model.domain.product.impl.ProductInstanceLocationEventImpl
+	 * @see de.dfki.iui.basys.model.domain.product.impl.ProductPackageImpl#getProductInstanceLocationEvent()
 	 * @generated
 	 */
-	int RECOGNITION_ENUM = 5;
+	int PRODUCT_INSTANCE_LOCATION_EVENT = 6;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_INSTANCE_LOCATION_EVENT__METADATA = PRODUCT_INSTANCE_LOCATION__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Detection Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_INSTANCE_LOCATION_EVENT__DETECTION_TYPE = PRODUCT_INSTANCE_LOCATION__DETECTION_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Product Instance Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_INSTANCE_LOCATION_EVENT__PRODUCT_INSTANCE_ID = PRODUCT_INSTANCE_LOCATION__PRODUCT_INSTANCE_ID;
+
+	/**
+	 * The feature id for the '<em><b>Component Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_INSTANCE_LOCATION_EVENT__COMPONENT_ID = PRODUCT_INSTANCE_LOCATION__COMPONENT_ID;
+
+	/**
+	 * The feature id for the '<em><b>Timestamp</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_INSTANCE_LOCATION_EVENT__TIMESTAMP = PRODUCT_INSTANCE_LOCATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Instance Location Event</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_INSTANCE_LOCATION_EVENT_FEATURE_COUNT = PRODUCT_INSTANCE_LOCATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Instance Location Event</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_INSTANCE_LOCATION_EVENT_OPERATION_COUNT = PRODUCT_INSTANCE_LOCATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.product.ProductInstanceDetectionEnum <em>Instance Detection Enum</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.product.ProductInstanceDetectionEnum
+	 * @see de.dfki.iui.basys.model.domain.product.impl.ProductPackageImpl#getProductInstanceDetectionEnum()
+	 * @generated
+	 */
+	int PRODUCT_INSTANCE_DETECTION_ENUM = 7;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.product.ProductInstanceStatusEnum <em>Instance Status Enum</em>}' enum.
@@ -388,7 +525,7 @@ public interface ProductPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.product.impl.ProductPackageImpl#getProductInstanceStatusEnum()
 	 * @generated
 	 */
-	int PRODUCT_INSTANCE_STATUS_ENUM = 6;
+	int PRODUCT_INSTANCE_STATUS_ENUM = 8;
 
 
 	/**
@@ -400,6 +537,17 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getProductGroup();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.product.ProductGroup#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see de.dfki.iui.basys.model.domain.product.ProductGroup#getName()
+	 * @see #getProductGroup()
+	 * @generated
+	 */
+	EAttribute getProductGroup_Name();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.product.ProductVariant <em>Variant</em>}'.
@@ -509,68 +657,77 @@ public interface ProductPackage extends EPackage {
 	EAttribute getProductInstanceStatus_Status();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.product.ProductInstanceStatus#getWorkstepInstanceId <em>Workstep Instance Id</em>}'.
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.product.ProductInstanceStatusEvent <em>Instance Status Event</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Workstep Instance Id</em>'.
-	 * @see de.dfki.iui.basys.model.domain.product.ProductInstanceStatus#getWorkstepInstanceId()
-	 * @see #getProductInstanceStatus()
+	 * @return the meta object for class '<em>Instance Status Event</em>'.
+	 * @see de.dfki.iui.basys.model.domain.product.ProductInstanceStatusEvent
 	 * @generated
 	 */
-	EAttribute getProductInstanceStatus_WorkstepInstanceId();
+	EClass getProductInstanceStatusEvent();
 
 	/**
-	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.product.ProductRecognition <em>Recognition</em>}'.
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.product.ProductInstanceLocation <em>Instance Location</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Recognition</em>'.
-	 * @see de.dfki.iui.basys.model.domain.product.ProductRecognition
+	 * @return the meta object for class '<em>Instance Location</em>'.
+	 * @see de.dfki.iui.basys.model.domain.product.ProductInstanceLocation
 	 * @generated
 	 */
-	EClass getProductRecognition();
+	EClass getProductInstanceLocation();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.product.ProductRecognition#getEventType <em>Event Type</em>}'.
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.product.ProductInstanceLocation#getDetectionType <em>Detection Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Event Type</em>'.
-	 * @see de.dfki.iui.basys.model.domain.product.ProductRecognition#getEventType()
-	 * @see #getProductRecognition()
+	 * @return the meta object for the attribute '<em>Detection Type</em>'.
+	 * @see de.dfki.iui.basys.model.domain.product.ProductInstanceLocation#getDetectionType()
+	 * @see #getProductInstanceLocation()
 	 * @generated
 	 */
-	EAttribute getProductRecognition_EventType();
+	EAttribute getProductInstanceLocation_DetectionType();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.product.ProductRecognition#getProductInstanceId <em>Product Instance Id</em>}'.
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.product.ProductInstanceLocation#getProductInstanceId <em>Product Instance Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Product Instance Id</em>'.
-	 * @see de.dfki.iui.basys.model.domain.product.ProductRecognition#getProductInstanceId()
-	 * @see #getProductRecognition()
+	 * @see de.dfki.iui.basys.model.domain.product.ProductInstanceLocation#getProductInstanceId()
+	 * @see #getProductInstanceLocation()
 	 * @generated
 	 */
-	EAttribute getProductRecognition_ProductInstanceId();
+	EAttribute getProductInstanceLocation_ProductInstanceId();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.product.ProductRecognition#getComponentId <em>Component Id</em>}'.
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.product.ProductInstanceLocation#getComponentId <em>Component Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Component Id</em>'.
-	 * @see de.dfki.iui.basys.model.domain.product.ProductRecognition#getComponentId()
-	 * @see #getProductRecognition()
+	 * @see de.dfki.iui.basys.model.domain.product.ProductInstanceLocation#getComponentId()
+	 * @see #getProductInstanceLocation()
 	 * @generated
 	 */
-	EAttribute getProductRecognition_ComponentId();
+	EAttribute getProductInstanceLocation_ComponentId();
 
 	/**
-	 * Returns the meta object for enum '{@link de.dfki.iui.basys.model.domain.product.RecognitionEnum <em>Recognition Enum</em>}'.
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.product.ProductInstanceLocationEvent <em>Instance Location Event</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Recognition Enum</em>'.
-	 * @see de.dfki.iui.basys.model.domain.product.RecognitionEnum
+	 * @return the meta object for class '<em>Instance Location Event</em>'.
+	 * @see de.dfki.iui.basys.model.domain.product.ProductInstanceLocationEvent
 	 * @generated
 	 */
-	EEnum getRecognitionEnum();
+	EClass getProductInstanceLocationEvent();
+
+	/**
+	 * Returns the meta object for enum '{@link de.dfki.iui.basys.model.domain.product.ProductInstanceDetectionEnum <em>Instance Detection Enum</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Instance Detection Enum</em>'.
+	 * @see de.dfki.iui.basys.model.domain.product.ProductInstanceDetectionEnum
+	 * @generated
+	 */
+	EEnum getProductInstanceDetectionEnum();
 
 	/**
 	 * Returns the meta object for enum '{@link de.dfki.iui.basys.model.domain.product.ProductInstanceStatusEnum <em>Instance Status Enum</em>}'.
@@ -614,6 +771,14 @@ public interface ProductPackage extends EPackage {
 		 * @generated
 		 */
 		EClass PRODUCT_GROUP = eINSTANCE.getProductGroup();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PRODUCT_GROUP__NAME = eINSTANCE.getProductGroup_Name();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.product.impl.ProductVariantImpl <em>Variant</em>}' class.
@@ -702,30 +867,32 @@ public interface ProductPackage extends EPackage {
 		EAttribute PRODUCT_INSTANCE_STATUS__STATUS = eINSTANCE.getProductInstanceStatus_Status();
 
 		/**
-		 * The meta object literal for the '<em><b>Workstep Instance Id</b></em>' attribute feature.
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.product.impl.ProductInstanceStatusEventImpl <em>Instance Status Event</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.product.impl.ProductInstanceStatusEventImpl
+		 * @see de.dfki.iui.basys.model.domain.product.impl.ProductPackageImpl#getProductInstanceStatusEvent()
 		 * @generated
 		 */
-		EAttribute PRODUCT_INSTANCE_STATUS__WORKSTEP_INSTANCE_ID = eINSTANCE.getProductInstanceStatus_WorkstepInstanceId();
+		EClass PRODUCT_INSTANCE_STATUS_EVENT = eINSTANCE.getProductInstanceStatusEvent();
 
 		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.product.impl.ProductRecognitionImpl <em>Recognition</em>}' class.
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.product.impl.ProductInstanceLocationImpl <em>Instance Location</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.domain.product.impl.ProductRecognitionImpl
-		 * @see de.dfki.iui.basys.model.domain.product.impl.ProductPackageImpl#getProductRecognition()
+		 * @see de.dfki.iui.basys.model.domain.product.impl.ProductInstanceLocationImpl
+		 * @see de.dfki.iui.basys.model.domain.product.impl.ProductPackageImpl#getProductInstanceLocation()
 		 * @generated
 		 */
-		EClass PRODUCT_RECOGNITION = eINSTANCE.getProductRecognition();
+		EClass PRODUCT_INSTANCE_LOCATION = eINSTANCE.getProductInstanceLocation();
 
 		/**
-		 * The meta object literal for the '<em><b>Event Type</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Detection Type</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PRODUCT_RECOGNITION__EVENT_TYPE = eINSTANCE.getProductRecognition_EventType();
+		EAttribute PRODUCT_INSTANCE_LOCATION__DETECTION_TYPE = eINSTANCE.getProductInstanceLocation_DetectionType();
 
 		/**
 		 * The meta object literal for the '<em><b>Product Instance Id</b></em>' attribute feature.
@@ -733,7 +900,7 @@ public interface ProductPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PRODUCT_RECOGNITION__PRODUCT_INSTANCE_ID = eINSTANCE.getProductRecognition_ProductInstanceId();
+		EAttribute PRODUCT_INSTANCE_LOCATION__PRODUCT_INSTANCE_ID = eINSTANCE.getProductInstanceLocation_ProductInstanceId();
 
 		/**
 		 * The meta object literal for the '<em><b>Component Id</b></em>' attribute feature.
@@ -741,17 +908,27 @@ public interface ProductPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PRODUCT_RECOGNITION__COMPONENT_ID = eINSTANCE.getProductRecognition_ComponentId();
+		EAttribute PRODUCT_INSTANCE_LOCATION__COMPONENT_ID = eINSTANCE.getProductInstanceLocation_ComponentId();
 
 		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.product.RecognitionEnum <em>Recognition Enum</em>}' enum.
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.product.impl.ProductInstanceLocationEventImpl <em>Instance Location Event</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.domain.product.RecognitionEnum
-		 * @see de.dfki.iui.basys.model.domain.product.impl.ProductPackageImpl#getRecognitionEnum()
+		 * @see de.dfki.iui.basys.model.domain.product.impl.ProductInstanceLocationEventImpl
+		 * @see de.dfki.iui.basys.model.domain.product.impl.ProductPackageImpl#getProductInstanceLocationEvent()
 		 * @generated
 		 */
-		EEnum RECOGNITION_ENUM = eINSTANCE.getRecognitionEnum();
+		EClass PRODUCT_INSTANCE_LOCATION_EVENT = eINSTANCE.getProductInstanceLocationEvent();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.product.ProductInstanceDetectionEnum <em>Instance Detection Enum</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.product.ProductInstanceDetectionEnum
+		 * @see de.dfki.iui.basys.model.domain.product.impl.ProductPackageImpl#getProductInstanceDetectionEnum()
+		 * @generated
+		 */
+		EEnum PRODUCT_INSTANCE_DETECTION_ENUM = eINSTANCE.getProductInstanceDetectionEnum();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.product.ProductInstanceStatusEnum <em>Instance Status Enum</em>}' enum.

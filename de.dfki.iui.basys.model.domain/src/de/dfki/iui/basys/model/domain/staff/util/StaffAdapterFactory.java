@@ -3,6 +3,7 @@
 package de.dfki.iui.basys.model.domain.staff.util;
 
 import de.dfki.iui.basys.model.base.Entity;
+import de.dfki.iui.basys.model.base.Event;
 import de.dfki.iui.basys.model.base.IdentifiableEntity;
 
 import de.dfki.iui.basys.model.domain.staff.*;
@@ -75,16 +76,24 @@ public class StaffAdapterFactory extends AdapterFactoryImpl {
 				return createStaffAdapter();
 			}
 			@Override
-			public Adapter caseStaffRecognition(StaffRecognition object) {
-				return createStaffRecognitionAdapter();
+			public Adapter caseStaffLocation(StaffLocation object) {
+				return createStaffLocationAdapter();
+			}
+			@Override
+			public Adapter caseStaffLocationChangeEvent(StaffLocationChangeEvent object) {
+				return createStaffLocationChangeEventAdapter();
+			}
+			@Override
+			public Adapter caseAbility(Ability object) {
+				return createAbilityAdapter();
+			}
+			@Override
+			public Adapter caseWorkstepSkill(WorkstepSkill object) {
+				return createWorkstepSkillAdapter();
 			}
 			@Override
 			public Adapter caseStaffSkills(StaffSkills object) {
 				return createStaffSkillsAdapter();
-			}
-			@Override
-			public Adapter caseStaffSkill(StaffSkill object) {
-				return createStaffSkillAdapter();
 			}
 			@Override
 			public Adapter caseEntity(Entity object) {
@@ -93,6 +102,10 @@ public class StaffAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseIdentifiableEntity(IdentifiableEntity object) {
 				return createIdentifiableEntityAdapter();
+			}
+			@Override
+			public Adapter caseEvent(Event object) {
+				return createEventAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -129,16 +142,58 @@ public class StaffAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.staff.StaffRecognition <em>Recognition</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.staff.StaffLocation <em>Location</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.dfki.iui.basys.model.domain.staff.StaffRecognition
+	 * @see de.dfki.iui.basys.model.domain.staff.StaffLocation
 	 * @generated
 	 */
-	public Adapter createStaffRecognitionAdapter() {
+	public Adapter createStaffLocationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.staff.StaffLocationChangeEvent <em>Location Change Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.domain.staff.StaffLocationChangeEvent
+	 * @generated
+	 */
+	public Adapter createStaffLocationChangeEventAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.staff.Ability <em>Ability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.domain.staff.Ability
+	 * @generated
+	 */
+	public Adapter createAbilityAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.staff.WorkstepSkill <em>Workstep Skill</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.domain.staff.WorkstepSkill
+	 * @generated
+	 */
+	public Adapter createWorkstepSkillAdapter() {
 		return null;
 	}
 
@@ -153,20 +208,6 @@ public class StaffAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createStaffSkillsAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.staff.StaffSkill <em>Skill</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.dfki.iui.basys.model.domain.staff.StaffSkill
-	 * @generated
-	 */
-	public Adapter createStaffSkillAdapter() {
 		return null;
 	}
 
@@ -195,6 +236,20 @@ public class StaffAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createIdentifiableEntityAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.base.Event <em>Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.base.Event
+	 * @generated
+	 */
+	public Adapter createEventAdapter() {
 		return null;
 	}
 

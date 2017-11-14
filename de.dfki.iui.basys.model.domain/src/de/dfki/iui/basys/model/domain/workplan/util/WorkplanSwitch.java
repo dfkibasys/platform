@@ -86,11 +86,19 @@ public class WorkplanSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case WorkplanPackage.WORKSTEP_INSTANCE_CHANGE_EVENT: {
-				WorkstepInstanceChangeEvent workstepInstanceChangeEvent = (WorkstepInstanceChangeEvent)theEObject;
-				T result = caseWorkstepInstanceChangeEvent(workstepInstanceChangeEvent);
-				if (result == null) result = caseEvent(workstepInstanceChangeEvent);
-				if (result == null) result = caseEntity(workstepInstanceChangeEvent);
+			case WorkplanPackage.WORKSTEP_INSTANCE_STATUS: {
+				WorkstepInstanceStatus workstepInstanceStatus = (WorkstepInstanceStatus)theEObject;
+				T result = caseWorkstepInstanceStatus(workstepInstanceStatus);
+				if (result == null) result = caseEntity(workstepInstanceStatus);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case WorkplanPackage.WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT: {
+				WorkstepInstanceStatusChangeEvent workstepInstanceStatusChangeEvent = (WorkstepInstanceStatusChangeEvent)theEObject;
+				T result = caseWorkstepInstanceStatusChangeEvent(workstepInstanceStatusChangeEvent);
+				if (result == null) result = caseEvent(workstepInstanceStatusChangeEvent);
+				if (result == null) result = caseWorkstepInstanceStatus(workstepInstanceStatusChangeEvent);
+				if (result == null) result = caseEntity(workstepInstanceStatusChangeEvent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -135,17 +143,32 @@ public class WorkplanSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Workstep Instance Change Event</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Workstep Instance Status</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Workstep Instance Change Event</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Workstep Instance Status</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseWorkstepInstanceChangeEvent(WorkstepInstanceChangeEvent object) {
+	public T caseWorkstepInstanceStatus(WorkstepInstanceStatus object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Workstep Instance Status Change Event</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Workstep Instance Status Change Event</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseWorkstepInstanceStatusChangeEvent(WorkstepInstanceStatusChangeEvent object) {
 		return null;
 	}
 

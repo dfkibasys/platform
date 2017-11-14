@@ -40,13 +40,22 @@ public interface WorkplanFactory extends EFactory {
 	WorkstepInstance createWorkstepInstance();
 
 	/**
-	 * Returns a new object of class '<em>Workstep Instance Change Event</em>'.
+	 * Returns a new object of class '<em>Workstep Instance Status</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Workstep Instance Change Event</em>'.
+	 * @return a new object of class '<em>Workstep Instance Status</em>'.
 	 * @generated
 	 */
-	WorkstepInstanceChangeEvent createWorkstepInstanceChangeEvent();
+	WorkstepInstanceStatus createWorkstepInstanceStatus();
+
+	/**
+	 * Returns a new object of class '<em>Workstep Instance Status Change Event</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Workstep Instance Status Change Event</em>'.
+	 * @generated
+	 */
+	WorkstepInstanceStatusChangeEvent createWorkstepInstanceStatusChangeEvent();
 
 	/**
 	 * Returns a new object of class '<em>Duration</em>'.

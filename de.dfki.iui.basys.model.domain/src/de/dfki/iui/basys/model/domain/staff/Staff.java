@@ -11,10 +11,6 @@ import java.util.Date;
  * A representation of the model object '<em><b>Staff</b></em>'.
  * <!-- end-user-doc -->
  *
- * <!-- begin-model-doc -->
- * 
- * <!-- end-model-doc -->
- *
  * <p>
  * The following features are supported:
  * </p>

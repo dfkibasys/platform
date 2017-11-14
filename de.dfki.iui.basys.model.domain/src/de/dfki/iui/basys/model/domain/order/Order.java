@@ -24,6 +24,7 @@ import java.util.Date;
  *   <li>{@link de.dfki.iui.basys.model.domain.order.Order#getEndDate <em>End Date</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.order.Order#getPieces <em>Pieces</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.order.Order#getPriority <em>Priority</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.order.Order#getStatus <em>Status</em>}</li>
  * </ul>
  *
  * @see de.dfki.iui.basys.model.domain.order.OrderPackage#getOrder()
@@ -157,5 +158,31 @@ public interface Order extends IdentifiableEntity {
 	 * @generated
 	 */
 	void setPriority(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Status</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Status</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Status</em>' containment reference.
+	 * @see #setStatus(OrderStatus)
+	 * @see de.dfki.iui.basys.model.domain.order.OrderPackage#getOrder_Status()
+	 * @model containment="true"
+	 * @generated
+	 */
+	OrderStatus getStatus();
+
+	/**
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.order.Order#getStatus <em>Status</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Status</em>' containment reference.
+	 * @see #getStatus()
+	 * @generated
+	 */
+	void setStatus(OrderStatus value);
 
 } // Order

@@ -21,10 +21,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link de.dfki.iui.basys.model.domain.workplan.impl.DurationImpl#getWorkstepInstanceId <em>Workstep Instance Id</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.domain.workplan.impl.DurationImpl#getBeginnerLevel <em>Beginner Level</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.domain.workplan.impl.DurationImpl#getBeginnerLevelDeviance <em>Beginner Level Deviance</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.domain.workplan.impl.DurationImpl#getExpertLevel <em>Expert Level</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.domain.workplan.impl.DurationImpl#getExpertLevelDeviance <em>Expert Level Deviance</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.workplan.impl.DurationImpl#getAgentId <em>Agent Id</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.workplan.impl.DurationImpl#getAverage <em>Average</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.workplan.impl.DurationImpl#getStandardDeviation <em>Standard Deviation</em>}</li>
  * </ul>
  *
  * @generated
@@ -51,84 +50,64 @@ public class DurationImpl extends MinimalEObjectImpl.Container implements Durati
 	protected String workstepInstanceId = WORKSTEP_INSTANCE_ID_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getBeginnerLevel() <em>Beginner Level</em>}' attribute.
+	 * The default value of the '{@link #getAgentId() <em>Agent Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBeginnerLevel()
+	 * @see #getAgentId()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int BEGINNER_LEVEL_EDEFAULT = 0;
+	protected static final String AGENT_ID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getBeginnerLevel() <em>Beginner Level</em>}' attribute.
+	 * The cached value of the '{@link #getAgentId() <em>Agent Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBeginnerLevel()
+	 * @see #getAgentId()
 	 * @generated
 	 * @ordered
 	 */
-	protected int beginnerLevel = BEGINNER_LEVEL_EDEFAULT;
+	protected String agentId = AGENT_ID_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getBeginnerLevelDeviance() <em>Beginner Level Deviance</em>}' attribute.
+	 * The default value of the '{@link #getAverage() <em>Average</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBeginnerLevelDeviance()
+	 * @see #getAverage()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int BEGINNER_LEVEL_DEVIANCE_EDEFAULT = 0;
+	protected static final double AVERAGE_EDEFAULT = 0.0;
 
 	/**
-	 * The cached value of the '{@link #getBeginnerLevelDeviance() <em>Beginner Level Deviance</em>}' attribute.
+	 * The cached value of the '{@link #getAverage() <em>Average</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBeginnerLevelDeviance()
+	 * @see #getAverage()
 	 * @generated
 	 * @ordered
 	 */
-	protected int beginnerLevelDeviance = BEGINNER_LEVEL_DEVIANCE_EDEFAULT;
+	protected double average = AVERAGE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getExpertLevel() <em>Expert Level</em>}' attribute.
+	 * The default value of the '{@link #getStandardDeviation() <em>Standard Deviation</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getExpertLevel()
+	 * @see #getStandardDeviation()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int EXPERT_LEVEL_EDEFAULT = 0;
+	protected static final double STANDARD_DEVIATION_EDEFAULT = 0.0;
 
 	/**
-	 * The cached value of the '{@link #getExpertLevel() <em>Expert Level</em>}' attribute.
+	 * The cached value of the '{@link #getStandardDeviation() <em>Standard Deviation</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getExpertLevel()
+	 * @see #getStandardDeviation()
 	 * @generated
 	 * @ordered
 	 */
-	protected int expertLevel = EXPERT_LEVEL_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getExpertLevelDeviance() <em>Expert Level Deviance</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExpertLevelDeviance()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int EXPERT_LEVEL_DEVIANCE_EDEFAULT = 0;
-
-	/**
-	 * The cached value of the '{@link #getExpertLevelDeviance() <em>Expert Level Deviance</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExpertLevelDeviance()
-	 * @generated
-	 * @ordered
-	 */
-	protected int expertLevelDeviance = EXPERT_LEVEL_DEVIANCE_EDEFAULT;
+	protected double standardDeviation = STANDARD_DEVIATION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -175,8 +154,8 @@ public class DurationImpl extends MinimalEObjectImpl.Container implements Durati
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getBeginnerLevel() {
-		return beginnerLevel;
+	public String getAgentId() {
+		return agentId;
 	}
 
 	/**
@@ -184,11 +163,11 @@ public class DurationImpl extends MinimalEObjectImpl.Container implements Durati
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setBeginnerLevel(int newBeginnerLevel) {
-		int oldBeginnerLevel = beginnerLevel;
-		beginnerLevel = newBeginnerLevel;
+	public void setAgentId(String newAgentId) {
+		String oldAgentId = agentId;
+		agentId = newAgentId;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WorkplanPackage.DURATION__BEGINNER_LEVEL, oldBeginnerLevel, beginnerLevel));
+			eNotify(new ENotificationImpl(this, Notification.SET, WorkplanPackage.DURATION__AGENT_ID, oldAgentId, agentId));
 	}
 
 	/**
@@ -196,8 +175,8 @@ public class DurationImpl extends MinimalEObjectImpl.Container implements Durati
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getBeginnerLevelDeviance() {
-		return beginnerLevelDeviance;
+	public double getAverage() {
+		return average;
 	}
 
 	/**
@@ -205,11 +184,11 @@ public class DurationImpl extends MinimalEObjectImpl.Container implements Durati
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setBeginnerLevelDeviance(int newBeginnerLevelDeviance) {
-		int oldBeginnerLevelDeviance = beginnerLevelDeviance;
-		beginnerLevelDeviance = newBeginnerLevelDeviance;
+	public void setAverage(double newAverage) {
+		double oldAverage = average;
+		average = newAverage;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WorkplanPackage.DURATION__BEGINNER_LEVEL_DEVIANCE, oldBeginnerLevelDeviance, beginnerLevelDeviance));
+			eNotify(new ENotificationImpl(this, Notification.SET, WorkplanPackage.DURATION__AVERAGE, oldAverage, average));
 	}
 
 	/**
@@ -217,8 +196,8 @@ public class DurationImpl extends MinimalEObjectImpl.Container implements Durati
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getExpertLevel() {
-		return expertLevel;
+	public double getStandardDeviation() {
+		return standardDeviation;
 	}
 
 	/**
@@ -226,32 +205,11 @@ public class DurationImpl extends MinimalEObjectImpl.Container implements Durati
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setExpertLevel(int newExpertLevel) {
-		int oldExpertLevel = expertLevel;
-		expertLevel = newExpertLevel;
+	public void setStandardDeviation(double newStandardDeviation) {
+		double oldStandardDeviation = standardDeviation;
+		standardDeviation = newStandardDeviation;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WorkplanPackage.DURATION__EXPERT_LEVEL, oldExpertLevel, expertLevel));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public int getExpertLevelDeviance() {
-		return expertLevelDeviance;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setExpertLevelDeviance(int newExpertLevelDeviance) {
-		int oldExpertLevelDeviance = expertLevelDeviance;
-		expertLevelDeviance = newExpertLevelDeviance;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WorkplanPackage.DURATION__EXPERT_LEVEL_DEVIANCE, oldExpertLevelDeviance, expertLevelDeviance));
+			eNotify(new ENotificationImpl(this, Notification.SET, WorkplanPackage.DURATION__STANDARD_DEVIATION, oldStandardDeviation, standardDeviation));
 	}
 
 	/**
@@ -264,14 +222,12 @@ public class DurationImpl extends MinimalEObjectImpl.Container implements Durati
 		switch (featureID) {
 			case WorkplanPackage.DURATION__WORKSTEP_INSTANCE_ID:
 				return getWorkstepInstanceId();
-			case WorkplanPackage.DURATION__BEGINNER_LEVEL:
-				return getBeginnerLevel();
-			case WorkplanPackage.DURATION__BEGINNER_LEVEL_DEVIANCE:
-				return getBeginnerLevelDeviance();
-			case WorkplanPackage.DURATION__EXPERT_LEVEL:
-				return getExpertLevel();
-			case WorkplanPackage.DURATION__EXPERT_LEVEL_DEVIANCE:
-				return getExpertLevelDeviance();
+			case WorkplanPackage.DURATION__AGENT_ID:
+				return getAgentId();
+			case WorkplanPackage.DURATION__AVERAGE:
+				return getAverage();
+			case WorkplanPackage.DURATION__STANDARD_DEVIATION:
+				return getStandardDeviation();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -287,17 +243,14 @@ public class DurationImpl extends MinimalEObjectImpl.Container implements Durati
 			case WorkplanPackage.DURATION__WORKSTEP_INSTANCE_ID:
 				setWorkstepInstanceId((String)newValue);
 				return;
-			case WorkplanPackage.DURATION__BEGINNER_LEVEL:
-				setBeginnerLevel((Integer)newValue);
+			case WorkplanPackage.DURATION__AGENT_ID:
+				setAgentId((String)newValue);
 				return;
-			case WorkplanPackage.DURATION__BEGINNER_LEVEL_DEVIANCE:
-				setBeginnerLevelDeviance((Integer)newValue);
+			case WorkplanPackage.DURATION__AVERAGE:
+				setAverage((Double)newValue);
 				return;
-			case WorkplanPackage.DURATION__EXPERT_LEVEL:
-				setExpertLevel((Integer)newValue);
-				return;
-			case WorkplanPackage.DURATION__EXPERT_LEVEL_DEVIANCE:
-				setExpertLevelDeviance((Integer)newValue);
+			case WorkplanPackage.DURATION__STANDARD_DEVIATION:
+				setStandardDeviation((Double)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -314,17 +267,14 @@ public class DurationImpl extends MinimalEObjectImpl.Container implements Durati
 			case WorkplanPackage.DURATION__WORKSTEP_INSTANCE_ID:
 				setWorkstepInstanceId(WORKSTEP_INSTANCE_ID_EDEFAULT);
 				return;
-			case WorkplanPackage.DURATION__BEGINNER_LEVEL:
-				setBeginnerLevel(BEGINNER_LEVEL_EDEFAULT);
+			case WorkplanPackage.DURATION__AGENT_ID:
+				setAgentId(AGENT_ID_EDEFAULT);
 				return;
-			case WorkplanPackage.DURATION__BEGINNER_LEVEL_DEVIANCE:
-				setBeginnerLevelDeviance(BEGINNER_LEVEL_DEVIANCE_EDEFAULT);
+			case WorkplanPackage.DURATION__AVERAGE:
+				setAverage(AVERAGE_EDEFAULT);
 				return;
-			case WorkplanPackage.DURATION__EXPERT_LEVEL:
-				setExpertLevel(EXPERT_LEVEL_EDEFAULT);
-				return;
-			case WorkplanPackage.DURATION__EXPERT_LEVEL_DEVIANCE:
-				setExpertLevelDeviance(EXPERT_LEVEL_DEVIANCE_EDEFAULT);
+			case WorkplanPackage.DURATION__STANDARD_DEVIATION:
+				setStandardDeviation(STANDARD_DEVIATION_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -340,14 +290,12 @@ public class DurationImpl extends MinimalEObjectImpl.Container implements Durati
 		switch (featureID) {
 			case WorkplanPackage.DURATION__WORKSTEP_INSTANCE_ID:
 				return WORKSTEP_INSTANCE_ID_EDEFAULT == null ? workstepInstanceId != null : !WORKSTEP_INSTANCE_ID_EDEFAULT.equals(workstepInstanceId);
-			case WorkplanPackage.DURATION__BEGINNER_LEVEL:
-				return beginnerLevel != BEGINNER_LEVEL_EDEFAULT;
-			case WorkplanPackage.DURATION__BEGINNER_LEVEL_DEVIANCE:
-				return beginnerLevelDeviance != BEGINNER_LEVEL_DEVIANCE_EDEFAULT;
-			case WorkplanPackage.DURATION__EXPERT_LEVEL:
-				return expertLevel != EXPERT_LEVEL_EDEFAULT;
-			case WorkplanPackage.DURATION__EXPERT_LEVEL_DEVIANCE:
-				return expertLevelDeviance != EXPERT_LEVEL_DEVIANCE_EDEFAULT;
+			case WorkplanPackage.DURATION__AGENT_ID:
+				return AGENT_ID_EDEFAULT == null ? agentId != null : !AGENT_ID_EDEFAULT.equals(agentId);
+			case WorkplanPackage.DURATION__AVERAGE:
+				return average != AVERAGE_EDEFAULT;
+			case WorkplanPackage.DURATION__STANDARD_DEVIATION:
+				return standardDeviation != STANDARD_DEVIATION_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -364,14 +312,12 @@ public class DurationImpl extends MinimalEObjectImpl.Container implements Durati
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (workstepInstanceId: ");
 		result.append(workstepInstanceId);
-		result.append(", beginnerLevel: ");
-		result.append(beginnerLevel);
-		result.append(", beginnerLevelDeviance: ");
-		result.append(beginnerLevelDeviance);
-		result.append(", expertLevel: ");
-		result.append(expertLevel);
-		result.append(", expertLevelDeviance: ");
-		result.append(expertLevelDeviance);
+		result.append(", agentId: ");
+		result.append(agentId);
+		result.append(", average: ");
+		result.append(average);
+		result.append(", standardDeviation: ");
+		result.append(standardDeviation);
 		result.append(')');
 		return result.toString();
 	}

@@ -3,10 +3,6 @@
 package de.dfki.iui.basys.model.domain.topology.provider;
 
 
-import de.dfki.iui.basys.model.base.provider.IdentifiableEntityItemProvider;
-
-import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
-
 import de.dfki.iui.basys.model.domain.topology.TopologyFactory;
 import de.dfki.iui.basys.model.domain.topology.TopologyPackage;
 import de.dfki.iui.basys.model.domain.topology.WorkCell;
@@ -16,9 +12,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -30,7 +23,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class WorkCellItemProvider extends IdentifiableEntityItemProvider {
+public class WorkCellItemProvider extends WorkUnitItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -68,7 +61,6 @@ public class WorkCellItemProvider extends IdentifiableEntityItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(TopologyPackage.Literals.WORK_UNIT__EQUIPMENT_MODULES);
 			childrenFeatures.add(TopologyPackage.Literals.WORK_CELL__STATIONS);
 		}
 		return childrenFeatures;
@@ -125,7 +117,6 @@ public class WorkCellItemProvider extends IdentifiableEntityItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(WorkCell.class)) {
-			case TopologyPackage.WORK_CELL__EQUIPMENT_MODULES:
 			case TopologyPackage.WORK_CELL__STATIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -146,24 +137,8 @@ public class WorkCellItemProvider extends IdentifiableEntityItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(TopologyPackage.Literals.WORK_UNIT__EQUIPMENT_MODULES,
-				 TopologyFactory.eINSTANCE.createEquipmentModule()));
-
-		newChildDescriptors.add
-			(createChildParameter
 				(TopologyPackage.Literals.WORK_CELL__STATIONS,
 				 TopologyFactory.eINSTANCE.createStation()));
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return DomainEditPlugin.INSTANCE;
 	}
 
 }

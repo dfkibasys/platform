@@ -4,6 +4,10 @@ package de.dfki.iui.basys.model.domain.staff.impl;
 
 import de.dfki.iui.basys.model.base.BasePackage;
 
+import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
+
+import de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl;
+
 import de.dfki.iui.basys.model.domain.order.OrderPackage;
 
 import de.dfki.iui.basys.model.domain.order.impl.OrderPackageImpl;
@@ -12,14 +16,16 @@ import de.dfki.iui.basys.model.domain.product.ProductPackage;
 
 import de.dfki.iui.basys.model.domain.product.impl.ProductPackageImpl;
 
-import de.dfki.iui.basys.model.domain.staff.PreferenceEnum;
+import de.dfki.iui.basys.model.domain.staff.Ability;
 import de.dfki.iui.basys.model.domain.staff.Staff;
+import de.dfki.iui.basys.model.domain.staff.StaffDetectionEnum;
 import de.dfki.iui.basys.model.domain.staff.StaffFactory;
+import de.dfki.iui.basys.model.domain.staff.StaffLocation;
+import de.dfki.iui.basys.model.domain.staff.StaffLocationChangeEvent;
 import de.dfki.iui.basys.model.domain.staff.StaffPackage;
-import de.dfki.iui.basys.model.domain.staff.StaffRecognition;
-import de.dfki.iui.basys.model.domain.staff.StaffRecognitionEnum;
-import de.dfki.iui.basys.model.domain.staff.StaffSkill;
 import de.dfki.iui.basys.model.domain.staff.StaffSkills;
+import de.dfki.iui.basys.model.domain.staff.WorkstepPreferenceEnum;
+import de.dfki.iui.basys.model.domain.staff.WorkstepSkill;
 
 import de.dfki.iui.basys.model.domain.topology.TopologyPackage;
 
@@ -60,7 +66,28 @@ public class StaffPackageImpl extends EPackageImpl implements StaffPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass staffRecognitionEClass = null;
+	private EClass staffLocationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass staffLocationChangeEventEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass abilityEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass workstepSkillEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -74,21 +101,14 @@ public class StaffPackageImpl extends EPackageImpl implements StaffPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass staffSkillEClass = null;
+	private EEnum staffDetectionEnumEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum staffRecognitionEnumEEnum = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EEnum preferenceEnumEEnum = null;
+	private EEnum workstepPreferenceEnumEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -145,6 +165,7 @@ public class StaffPackageImpl extends EPackageImpl implements StaffPackage {
 		TopologyPackageImpl theTopologyPackage = (TopologyPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(TopologyPackage.eNS_URI) instanceof TopologyPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(TopologyPackage.eNS_URI) : TopologyPackage.eINSTANCE);
 		WorkerguidancePackageImpl theWorkerguidancePackage = (WorkerguidancePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkerguidancePackage.eNS_URI) instanceof WorkerguidancePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkerguidancePackage.eNS_URI) : WorkerguidancePackage.eINSTANCE);
 		WorkplanPackageImpl theWorkplanPackage = (WorkplanPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkplanPackage.eNS_URI) instanceof WorkplanPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkplanPackage.eNS_URI) : WorkplanPackage.eINSTANCE);
+		LinebalancingPackageImpl theLinebalancingPackage = (LinebalancingPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(LinebalancingPackage.eNS_URI) instanceof LinebalancingPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(LinebalancingPackage.eNS_URI) : LinebalancingPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theStaffPackage.createPackageContents();
@@ -153,6 +174,7 @@ public class StaffPackageImpl extends EPackageImpl implements StaffPackage {
 		theTopologyPackage.createPackageContents();
 		theWorkerguidancePackage.createPackageContents();
 		theWorkplanPackage.createPackageContents();
+		theLinebalancingPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theStaffPackage.initializePackageContents();
@@ -161,6 +183,7 @@ public class StaffPackageImpl extends EPackageImpl implements StaffPackage {
 		theTopologyPackage.initializePackageContents();
 		theWorkerguidancePackage.initializePackageContents();
 		theWorkplanPackage.initializePackageContents();
+		theLinebalancingPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theStaffPackage.freeze();
@@ -221,8 +244,8 @@ public class StaffPackageImpl extends EPackageImpl implements StaffPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getStaffRecognition() {
-		return staffRecognitionEClass;
+	public EClass getStaffLocation() {
+		return staffLocationEClass;
 	}
 
 	/**
@@ -230,8 +253,8 @@ public class StaffPackageImpl extends EPackageImpl implements StaffPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStaffRecognition_Type() {
-		return (EAttribute)staffRecognitionEClass.getEStructuralFeatures().get(0);
+	public EAttribute getStaffLocation_DetectionType() {
+		return (EAttribute)staffLocationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -239,8 +262,8 @@ public class StaffPackageImpl extends EPackageImpl implements StaffPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStaffRecognition_WorkerId() {
-		return (EAttribute)staffRecognitionEClass.getEStructuralFeatures().get(1);
+	public EAttribute getStaffLocation_Staffid() {
+		return (EAttribute)staffLocationEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -248,8 +271,80 @@ public class StaffPackageImpl extends EPackageImpl implements StaffPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStaffRecognition_ComponentId() {
-		return (EAttribute)staffRecognitionEClass.getEStructuralFeatures().get(2);
+	public EAttribute getStaffLocation_ComponentId() {
+		return (EAttribute)staffLocationEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getStaffLocationChangeEvent() {
+		return staffLocationChangeEventEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAbility() {
+		return abilityEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAbility_Key() {
+		return (EAttribute)abilityEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAbility_Value() {
+		return (EAttribute)abilityEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getWorkstepSkill() {
+		return workstepSkillEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getWorkstepSkill_WorkstepId() {
+		return (EAttribute)workstepSkillEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getWorkstepSkill_Level() {
+		return (EAttribute)workstepSkillEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getWorkstepSkill_Preference() {
+		return (EAttribute)workstepSkillEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -275,7 +370,7 @@ public class StaffPackageImpl extends EPackageImpl implements StaffPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getStaffSkills_Skills() {
+	public EReference getStaffSkills_WorkstepSkills() {
 		return (EReference)staffSkillsEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -284,8 +379,8 @@ public class StaffPackageImpl extends EPackageImpl implements StaffPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getStaffSkill() {
-		return staffSkillEClass;
+	public EReference getStaffSkills_Abilities() {
+		return (EReference)staffSkillsEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -293,8 +388,8 @@ public class StaffPackageImpl extends EPackageImpl implements StaffPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStaffSkill_WorkstepId() {
-		return (EAttribute)staffSkillEClass.getEStructuralFeatures().get(0);
+	public EEnum getStaffDetectionEnum() {
+		return staffDetectionEnumEEnum;
 	}
 
 	/**
@@ -302,35 +397,8 @@ public class StaffPackageImpl extends EPackageImpl implements StaffPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStaffSkill_Level() {
-		return (EAttribute)staffSkillEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getStaffSkill_Preference() {
-		return (EAttribute)staffSkillEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EEnum getStaffRecognitionEnum() {
-		return staffRecognitionEnumEEnum;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EEnum getPreferenceEnum() {
-		return preferenceEnumEEnum;
+	public EEnum getWorkstepPreferenceEnum() {
+		return workstepPreferenceEnumEEnum;
 	}
 
 	/**
@@ -367,23 +435,30 @@ public class StaffPackageImpl extends EPackageImpl implements StaffPackage {
 		createEAttribute(staffEClass, STAFF__BIRTHDATE);
 		createEAttribute(staffEClass, STAFF__LANGUAGE);
 
-		staffRecognitionEClass = createEClass(STAFF_RECOGNITION);
-		createEAttribute(staffRecognitionEClass, STAFF_RECOGNITION__TYPE);
-		createEAttribute(staffRecognitionEClass, STAFF_RECOGNITION__WORKER_ID);
-		createEAttribute(staffRecognitionEClass, STAFF_RECOGNITION__COMPONENT_ID);
+		staffLocationEClass = createEClass(STAFF_LOCATION);
+		createEAttribute(staffLocationEClass, STAFF_LOCATION__DETECTION_TYPE);
+		createEAttribute(staffLocationEClass, STAFF_LOCATION__STAFFID);
+		createEAttribute(staffLocationEClass, STAFF_LOCATION__COMPONENT_ID);
+
+		staffLocationChangeEventEClass = createEClass(STAFF_LOCATION_CHANGE_EVENT);
+
+		abilityEClass = createEClass(ABILITY);
+		createEAttribute(abilityEClass, ABILITY__KEY);
+		createEAttribute(abilityEClass, ABILITY__VALUE);
+
+		workstepSkillEClass = createEClass(WORKSTEP_SKILL);
+		createEAttribute(workstepSkillEClass, WORKSTEP_SKILL__WORKSTEP_ID);
+		createEAttribute(workstepSkillEClass, WORKSTEP_SKILL__LEVEL);
+		createEAttribute(workstepSkillEClass, WORKSTEP_SKILL__PREFERENCE);
 
 		staffSkillsEClass = createEClass(STAFF_SKILLS);
 		createEAttribute(staffSkillsEClass, STAFF_SKILLS__WORKER_ID);
-		createEReference(staffSkillsEClass, STAFF_SKILLS__SKILLS);
-
-		staffSkillEClass = createEClass(STAFF_SKILL);
-		createEAttribute(staffSkillEClass, STAFF_SKILL__WORKSTEP_ID);
-		createEAttribute(staffSkillEClass, STAFF_SKILL__LEVEL);
-		createEAttribute(staffSkillEClass, STAFF_SKILL__PREFERENCE);
+		createEReference(staffSkillsEClass, STAFF_SKILLS__WORKSTEP_SKILLS);
+		createEReference(staffSkillsEClass, STAFF_SKILLS__ABILITIES);
 
 		// Create enums
-		staffRecognitionEnumEEnum = createEEnum(STAFF_RECOGNITION_ENUM);
-		preferenceEnumEEnum = createEEnum(PREFERENCE_ENUM);
+		staffDetectionEnumEEnum = createEEnum(STAFF_DETECTION_ENUM);
+		workstepPreferenceEnumEEnum = createEEnum(WORKSTEP_PREFERENCE_ENUM);
 	}
 
 	/**
@@ -418,7 +493,11 @@ public class StaffPackageImpl extends EPackageImpl implements StaffPackage {
 
 		// Add supertypes to classes
 		staffEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
-		staffRecognitionEClass.getESuperTypes().add(theBasePackage.getEntity());
+		staffLocationEClass.getESuperTypes().add(theBasePackage.getEntity());
+		staffLocationChangeEventEClass.getESuperTypes().add(theBasePackage.getEvent());
+		staffLocationChangeEventEClass.getESuperTypes().add(this.getStaffLocation());
+		abilityEClass.getESuperTypes().add(theBasePackage.getEntity());
+		workstepSkillEClass.getESuperTypes().add(theBasePackage.getEntity());
 		staffSkillsEClass.getESuperTypes().add(theBasePackage.getEntity());
 
 		// Initialize classes, features, and operations; add parameters
@@ -428,30 +507,37 @@ public class StaffPackageImpl extends EPackageImpl implements StaffPackage {
 		initEAttribute(getStaff_Birthdate(), ecorePackage.getEDate(), "birthdate", null, 0, 1, Staff.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getStaff_Language(), ecorePackage.getEString(), "language", null, 0, 1, Staff.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(staffRecognitionEClass, StaffRecognition.class, "StaffRecognition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getStaffRecognition_Type(), this.getStaffRecognitionEnum(), "type", null, 0, 1, StaffRecognition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getStaffRecognition_WorkerId(), ecorePackage.getEString(), "workerId", null, 0, 1, StaffRecognition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getStaffRecognition_ComponentId(), ecorePackage.getEString(), "componentId", null, 0, 1, StaffRecognition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(staffLocationEClass, StaffLocation.class, "StaffLocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getStaffLocation_DetectionType(), this.getStaffDetectionEnum(), "detectionType", null, 0, 1, StaffLocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStaffLocation_Staffid(), ecorePackage.getEString(), "staffid", null, 0, 1, StaffLocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStaffLocation_ComponentId(), ecorePackage.getEString(), "componentId", null, 0, 1, StaffLocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(staffLocationChangeEventEClass, StaffLocationChangeEvent.class, "StaffLocationChangeEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(abilityEClass, Ability.class, "Ability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAbility_Key(), ecorePackage.getEString(), "key", null, 0, 1, Ability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAbility_Value(), ecorePackage.getEString(), "value", null, 0, 1, Ability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(workstepSkillEClass, WorkstepSkill.class, "WorkstepSkill", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getWorkstepSkill_WorkstepId(), ecorePackage.getEString(), "workstepId", null, 0, 1, WorkstepSkill.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getWorkstepSkill_Level(), ecorePackage.getEInt(), "level", null, 0, 1, WorkstepSkill.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getWorkstepSkill_Preference(), this.getWorkstepPreferenceEnum(), "preference", null, 0, 1, WorkstepSkill.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(staffSkillsEClass, StaffSkills.class, "StaffSkills", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getStaffSkills_WorkerId(), ecorePackage.getEString(), "workerId", null, 0, 1, StaffSkills.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getStaffSkills_Skills(), this.getStaffSkill(), null, "skills", null, 0, -1, StaffSkills.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(staffSkillEClass, StaffSkill.class, "StaffSkill", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getStaffSkill_WorkstepId(), ecorePackage.getEString(), "workstepId", null, 0, 1, StaffSkill.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getStaffSkill_Level(), ecorePackage.getEInt(), "level", null, 0, 1, StaffSkill.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getStaffSkill_Preference(), this.getPreferenceEnum(), "preference", null, 0, 1, StaffSkill.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStaffSkills_WorkstepSkills(), this.getWorkstepSkill(), null, "workstepSkills", null, 0, -1, StaffSkills.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStaffSkills_Abilities(), this.getAbility(), null, "abilities", null, 0, -1, StaffSkills.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
-		initEEnum(staffRecognitionEnumEEnum, StaffRecognitionEnum.class, "StaffRecognitionEnum");
-		addEEnumLiteral(staffRecognitionEnumEEnum, StaffRecognitionEnum.UNKNOWN);
-		addEEnumLiteral(staffRecognitionEnumEEnum, StaffRecognitionEnum.PRESENT);
-		addEEnumLiteral(staffRecognitionEnumEEnum, StaffRecognitionEnum.IN_TRANSIT);
+		initEEnum(staffDetectionEnumEEnum, StaffDetectionEnum.class, "StaffDetectionEnum");
+		addEEnumLiteral(staffDetectionEnumEEnum, StaffDetectionEnum.UNKNOWN);
+		addEEnumLiteral(staffDetectionEnumEEnum, StaffDetectionEnum.PRESENT);
+		addEEnumLiteral(staffDetectionEnumEEnum, StaffDetectionEnum.IN_TRANSIT);
 
-		initEEnum(preferenceEnumEEnum, PreferenceEnum.class, "PreferenceEnum");
-		addEEnumLiteral(preferenceEnumEEnum, PreferenceEnum.NEUTRAL);
-		addEEnumLiteral(preferenceEnumEEnum, PreferenceEnum.POSITIVE);
-		addEEnumLiteral(preferenceEnumEEnum, PreferenceEnum.NEGATIVE);
+		initEEnum(workstepPreferenceEnumEEnum, WorkstepPreferenceEnum.class, "WorkstepPreferenceEnum");
+		addEEnumLiteral(workstepPreferenceEnumEEnum, WorkstepPreferenceEnum.NEUTRAL);
+		addEEnumLiteral(workstepPreferenceEnumEEnum, WorkstepPreferenceEnum.POSITIVE);
+		addEEnumLiteral(workstepPreferenceEnumEEnum, WorkstepPreferenceEnum.NEGATIVE);
 
 		// Create resource
 		createResource(eNS_URI);

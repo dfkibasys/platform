@@ -59,7 +59,8 @@ public class WorkplanFactoryImpl extends EFactoryImpl implements WorkplanFactory
 		switch (eClass.getClassifierID()) {
 			case WorkplanPackage.WORKPLAN_INSTANCE: return createWorkplanInstance();
 			case WorkplanPackage.WORKSTEP_INSTANCE: return createWorkstepInstance();
-			case WorkplanPackage.WORKSTEP_INSTANCE_CHANGE_EVENT: return createWorkstepInstanceChangeEvent();
+			case WorkplanPackage.WORKSTEP_INSTANCE_STATUS: return createWorkstepInstanceStatus();
+			case WorkplanPackage.WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT: return createWorkstepInstanceStatusChangeEvent();
 			case WorkplanPackage.DURATION: return createDuration();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -74,8 +75,8 @@ public class WorkplanFactoryImpl extends EFactoryImpl implements WorkplanFactory
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case WorkplanPackage.WORKSTEP_INSTANCE_CHANGE_TYPE:
-				return createWorkstepInstanceChangeTypeFromString(eDataType, initialValue);
+			case WorkplanPackage.WORKSTEP_INSTANCE_STATUS_ENUM:
+				return createWorkstepInstanceStatusEnumFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -89,8 +90,8 @@ public class WorkplanFactoryImpl extends EFactoryImpl implements WorkplanFactory
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case WorkplanPackage.WORKSTEP_INSTANCE_CHANGE_TYPE:
-				return convertWorkstepInstanceChangeTypeToString(eDataType, instanceValue);
+			case WorkplanPackage.WORKSTEP_INSTANCE_STATUS_ENUM:
+				return convertWorkstepInstanceStatusEnumToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -121,9 +122,19 @@ public class WorkplanFactoryImpl extends EFactoryImpl implements WorkplanFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public WorkstepInstanceChangeEvent createWorkstepInstanceChangeEvent() {
-		WorkstepInstanceChangeEventImpl workstepInstanceChangeEvent = new WorkstepInstanceChangeEventImpl();
-		return workstepInstanceChangeEvent;
+	public WorkstepInstanceStatus createWorkstepInstanceStatus() {
+		WorkstepInstanceStatusImpl workstepInstanceStatus = new WorkstepInstanceStatusImpl();
+		return workstepInstanceStatus;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public WorkstepInstanceStatusChangeEvent createWorkstepInstanceStatusChangeEvent() {
+		WorkstepInstanceStatusChangeEventImpl workstepInstanceStatusChangeEvent = new WorkstepInstanceStatusChangeEventImpl();
+		return workstepInstanceStatusChangeEvent;
 	}
 
 	/**
@@ -141,8 +152,8 @@ public class WorkplanFactoryImpl extends EFactoryImpl implements WorkplanFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public WorkstepInstanceChangeType createWorkstepInstanceChangeTypeFromString(EDataType eDataType, String initialValue) {
-		WorkstepInstanceChangeType result = WorkstepInstanceChangeType.get(initialValue);
+	public WorkstepInstanceStatusEnum createWorkstepInstanceStatusEnumFromString(EDataType eDataType, String initialValue) {
+		WorkstepInstanceStatusEnum result = WorkstepInstanceStatusEnum.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -152,7 +163,7 @@ public class WorkplanFactoryImpl extends EFactoryImpl implements WorkplanFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertWorkstepInstanceChangeTypeToString(EDataType eDataType, Object instanceValue) {
+	public String convertWorkstepInstanceStatusEnumToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

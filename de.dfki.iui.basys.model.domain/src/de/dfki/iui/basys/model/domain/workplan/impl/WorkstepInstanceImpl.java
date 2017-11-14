@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link de.dfki.iui.basys.model.domain.workplan.impl.WorkstepInstanceImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.domain.workplan.impl.WorkstepInstanceImpl#getStationId <em>Station Id</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.workplan.impl.WorkstepInstanceImpl#getComponentId <em>Component Id</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.workplan.impl.WorkstepInstanceImpl#isIsAutomatic <em>Is Automatic</em>}</li>
  * </ul>
  *
@@ -50,24 +50,24 @@ public class WorkstepInstanceImpl extends IdentifiableEntityImpl implements Work
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getStationId() <em>Station Id</em>}' attribute.
+	 * The default value of the '{@link #getComponentId() <em>Component Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getStationId()
+	 * @see #getComponentId()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String STATION_ID_EDEFAULT = null;
+	protected static final String COMPONENT_ID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getStationId() <em>Station Id</em>}' attribute.
+	 * The cached value of the '{@link #getComponentId() <em>Component Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getStationId()
+	 * @see #getComponentId()
 	 * @generated
 	 * @ordered
 	 */
-	protected String stationId = STATION_ID_EDEFAULT;
+	protected String componentId = COMPONENT_ID_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isIsAutomatic() <em>Is Automatic</em>}' attribute.
@@ -134,8 +134,8 @@ public class WorkstepInstanceImpl extends IdentifiableEntityImpl implements Work
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getStationId() {
-		return stationId;
+	public String getComponentId() {
+		return componentId;
 	}
 
 	/**
@@ -143,11 +143,11 @@ public class WorkstepInstanceImpl extends IdentifiableEntityImpl implements Work
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setStationId(String newStationId) {
-		String oldStationId = stationId;
-		stationId = newStationId;
+	public void setComponentId(String newComponentId) {
+		String oldComponentId = componentId;
+		componentId = newComponentId;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WorkplanPackage.WORKSTEP_INSTANCE__STATION_ID, oldStationId, stationId));
+			eNotify(new ENotificationImpl(this, Notification.SET, WorkplanPackage.WORKSTEP_INSTANCE__COMPONENT_ID, oldComponentId, componentId));
 	}
 
 	/**
@@ -181,8 +181,8 @@ public class WorkstepInstanceImpl extends IdentifiableEntityImpl implements Work
 		switch (featureID) {
 			case WorkplanPackage.WORKSTEP_INSTANCE__NAME:
 				return getName();
-			case WorkplanPackage.WORKSTEP_INSTANCE__STATION_ID:
-				return getStationId();
+			case WorkplanPackage.WORKSTEP_INSTANCE__COMPONENT_ID:
+				return getComponentId();
 			case WorkplanPackage.WORKSTEP_INSTANCE__IS_AUTOMATIC:
 				return isIsAutomatic();
 		}
@@ -200,8 +200,8 @@ public class WorkstepInstanceImpl extends IdentifiableEntityImpl implements Work
 			case WorkplanPackage.WORKSTEP_INSTANCE__NAME:
 				setName((String)newValue);
 				return;
-			case WorkplanPackage.WORKSTEP_INSTANCE__STATION_ID:
-				setStationId((String)newValue);
+			case WorkplanPackage.WORKSTEP_INSTANCE__COMPONENT_ID:
+				setComponentId((String)newValue);
 				return;
 			case WorkplanPackage.WORKSTEP_INSTANCE__IS_AUTOMATIC:
 				setIsAutomatic((Boolean)newValue);
@@ -221,8 +221,8 @@ public class WorkstepInstanceImpl extends IdentifiableEntityImpl implements Work
 			case WorkplanPackage.WORKSTEP_INSTANCE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case WorkplanPackage.WORKSTEP_INSTANCE__STATION_ID:
-				setStationId(STATION_ID_EDEFAULT);
+			case WorkplanPackage.WORKSTEP_INSTANCE__COMPONENT_ID:
+				setComponentId(COMPONENT_ID_EDEFAULT);
 				return;
 			case WorkplanPackage.WORKSTEP_INSTANCE__IS_AUTOMATIC:
 				setIsAutomatic(IS_AUTOMATIC_EDEFAULT);
@@ -241,8 +241,8 @@ public class WorkstepInstanceImpl extends IdentifiableEntityImpl implements Work
 		switch (featureID) {
 			case WorkplanPackage.WORKSTEP_INSTANCE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case WorkplanPackage.WORKSTEP_INSTANCE__STATION_ID:
-				return STATION_ID_EDEFAULT == null ? stationId != null : !STATION_ID_EDEFAULT.equals(stationId);
+			case WorkplanPackage.WORKSTEP_INSTANCE__COMPONENT_ID:
+				return COMPONENT_ID_EDEFAULT == null ? componentId != null : !COMPONENT_ID_EDEFAULT.equals(componentId);
 			case WorkplanPackage.WORKSTEP_INSTANCE__IS_AUTOMATIC:
 				return isAutomatic != IS_AUTOMATIC_EDEFAULT;
 		}
@@ -261,8 +261,8 @@ public class WorkstepInstanceImpl extends IdentifiableEntityImpl implements Work
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
-		result.append(", stationId: ");
-		result.append(stationId);
+		result.append(", componentId: ");
+		result.append(componentId);
 		result.append(", isAutomatic: ");
 		result.append(isAutomatic);
 		result.append(')');

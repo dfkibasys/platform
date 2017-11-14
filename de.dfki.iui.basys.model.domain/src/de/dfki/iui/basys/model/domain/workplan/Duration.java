@@ -14,10 +14,9 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link de.dfki.iui.basys.model.domain.workplan.Duration#getWorkstepInstanceId <em>Workstep Instance Id</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.domain.workplan.Duration#getBeginnerLevel <em>Beginner Level</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.domain.workplan.Duration#getBeginnerLevelDeviance <em>Beginner Level Deviance</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.domain.workplan.Duration#getExpertLevel <em>Expert Level</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.domain.workplan.Duration#getExpertLevelDeviance <em>Expert Level Deviance</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.workplan.Duration#getAgentId <em>Agent Id</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.workplan.Duration#getAverage <em>Average</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.workplan.Duration#getStandardDeviation <em>Standard Deviation</em>}</li>
  * </ul>
  *
  * @see de.dfki.iui.basys.model.domain.workplan.WorkplanPackage#getDuration()
@@ -52,107 +51,81 @@ public interface Duration extends EObject {
 	void setWorkstepInstanceId(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Beginner Level</b></em>' attribute.
+	 * Returns the value of the '<em><b>Agent Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Beginner Level</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Agent Id</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Beginner Level</em>' attribute.
-	 * @see #setBeginnerLevel(int)
-	 * @see de.dfki.iui.basys.model.domain.workplan.WorkplanPackage#getDuration_BeginnerLevel()
+	 * @return the value of the '<em>Agent Id</em>' attribute.
+	 * @see #setAgentId(String)
+	 * @see de.dfki.iui.basys.model.domain.workplan.WorkplanPackage#getDuration_AgentId()
 	 * @model
 	 * @generated
 	 */
-	int getBeginnerLevel();
+	String getAgentId();
 
 	/**
-	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.workplan.Duration#getBeginnerLevel <em>Beginner Level</em>}' attribute.
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.workplan.Duration#getAgentId <em>Agent Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Beginner Level</em>' attribute.
-	 * @see #getBeginnerLevel()
+	 * @param value the new value of the '<em>Agent Id</em>' attribute.
+	 * @see #getAgentId()
 	 * @generated
 	 */
-	void setBeginnerLevel(int value);
+	void setAgentId(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Beginner Level Deviance</b></em>' attribute.
+	 * Returns the value of the '<em><b>Average</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Beginner Level Deviance</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Average</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Beginner Level Deviance</em>' attribute.
-	 * @see #setBeginnerLevelDeviance(int)
-	 * @see de.dfki.iui.basys.model.domain.workplan.WorkplanPackage#getDuration_BeginnerLevelDeviance()
+	 * @return the value of the '<em>Average</em>' attribute.
+	 * @see #setAverage(double)
+	 * @see de.dfki.iui.basys.model.domain.workplan.WorkplanPackage#getDuration_Average()
 	 * @model
 	 * @generated
 	 */
-	int getBeginnerLevelDeviance();
+	double getAverage();
 
 	/**
-	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.workplan.Duration#getBeginnerLevelDeviance <em>Beginner Level Deviance</em>}' attribute.
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.workplan.Duration#getAverage <em>Average</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Beginner Level Deviance</em>' attribute.
-	 * @see #getBeginnerLevelDeviance()
+	 * @param value the new value of the '<em>Average</em>' attribute.
+	 * @see #getAverage()
 	 * @generated
 	 */
-	void setBeginnerLevelDeviance(int value);
+	void setAverage(double value);
 
 	/**
-	 * Returns the value of the '<em><b>Expert Level</b></em>' attribute.
+	 * Returns the value of the '<em><b>Standard Deviation</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Expert Level</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Standard Deviation</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Expert Level</em>' attribute.
-	 * @see #setExpertLevel(int)
-	 * @see de.dfki.iui.basys.model.domain.workplan.WorkplanPackage#getDuration_ExpertLevel()
+	 * @return the value of the '<em>Standard Deviation</em>' attribute.
+	 * @see #setStandardDeviation(double)
+	 * @see de.dfki.iui.basys.model.domain.workplan.WorkplanPackage#getDuration_StandardDeviation()
 	 * @model
 	 * @generated
 	 */
-	int getExpertLevel();
+	double getStandardDeviation();
 
 	/**
-	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.workplan.Duration#getExpertLevel <em>Expert Level</em>}' attribute.
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.workplan.Duration#getStandardDeviation <em>Standard Deviation</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Expert Level</em>' attribute.
-	 * @see #getExpertLevel()
+	 * @param value the new value of the '<em>Standard Deviation</em>' attribute.
+	 * @see #getStandardDeviation()
 	 * @generated
 	 */
-	void setExpertLevel(int value);
-
-	/**
-	 * Returns the value of the '<em><b>Expert Level Deviance</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Expert Level Deviance</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Expert Level Deviance</em>' attribute.
-	 * @see #setExpertLevelDeviance(int)
-	 * @see de.dfki.iui.basys.model.domain.workplan.WorkplanPackage#getDuration_ExpertLevelDeviance()
-	 * @model
-	 * @generated
-	 */
-	int getExpertLevelDeviance();
-
-	/**
-	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.workplan.Duration#getExpertLevelDeviance <em>Expert Level Deviance</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Expert Level Deviance</em>' attribute.
-	 * @see #getExpertLevelDeviance()
-	 * @generated
-	 */
-	void setExpertLevelDeviance(int value);
+	void setStandardDeviation(double value);
 
 } // Duration

@@ -19,28 +19,27 @@
         <details key="documentation" value="loc"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stationId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="componentId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isAutomatic" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WorkstepInstanceChangeEvent" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Event">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//WorkstepInstanceChangeType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="WorkstepInstanceStatus" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" eType="#//WorkstepInstanceStatusEnum"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="productInstanceId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="workstepInstanceId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="WorkstepInstanceChangeType">
+  <eClassifiers xsi:type="ecore:EClass" name="WorkstepInstanceStatusChangeEvent" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Event #//WorkstepInstanceStatus"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Duration">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="workstepInstanceId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="agentId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="average" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="standardDeviation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="WorkstepInstanceStatusEnum">
     <eLiterals name="UNKNOWN"/>
     <eLiterals name="STARTED" value="1"/>
     <eLiterals name="PAUSED" value="2"/>
     <eLiterals name="REPEATING" value="3"/>
     <eLiterals name="FINISHED" value="4"/>
     <eLiterals name="ABORTED" value="5"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Duration">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="workstepInstanceId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="beginnerLevel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="beginnerLevelDeviance"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="expertLevel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="expertLevelDeviance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
 </ecore:EPackage>

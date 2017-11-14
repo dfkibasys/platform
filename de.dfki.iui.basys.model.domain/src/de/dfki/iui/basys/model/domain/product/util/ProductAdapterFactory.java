@@ -3,6 +3,7 @@
 package de.dfki.iui.basys.model.domain.product.util;
 
 import de.dfki.iui.basys.model.base.Entity;
+import de.dfki.iui.basys.model.base.Event;
 import de.dfki.iui.basys.model.base.IdentifiableEntity;
 
 import de.dfki.iui.basys.model.domain.product.*;
@@ -87,8 +88,16 @@ public class ProductAdapterFactory extends AdapterFactoryImpl {
 				return createProductInstanceStatusAdapter();
 			}
 			@Override
-			public Adapter caseProductRecognition(ProductRecognition object) {
-				return createProductRecognitionAdapter();
+			public Adapter caseProductInstanceStatusEvent(ProductInstanceStatusEvent object) {
+				return createProductInstanceStatusEventAdapter();
+			}
+			@Override
+			public Adapter caseProductInstanceLocation(ProductInstanceLocation object) {
+				return createProductInstanceLocationAdapter();
+			}
+			@Override
+			public Adapter caseProductInstanceLocationEvent(ProductInstanceLocationEvent object) {
+				return createProductInstanceLocationEventAdapter();
 			}
 			@Override
 			public Adapter caseEntity(Entity object) {
@@ -97,6 +106,10 @@ public class ProductAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseIdentifiableEntity(IdentifiableEntity object) {
 				return createIdentifiableEntityAdapter();
+			}
+			@Override
+			public Adapter caseEvent(Event object) {
+				return createEventAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -175,16 +188,44 @@ public class ProductAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.product.ProductRecognition <em>Recognition</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.product.ProductInstanceStatusEvent <em>Instance Status Event</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.dfki.iui.basys.model.domain.product.ProductRecognition
+	 * @see de.dfki.iui.basys.model.domain.product.ProductInstanceStatusEvent
 	 * @generated
 	 */
-	public Adapter createProductRecognitionAdapter() {
+	public Adapter createProductInstanceStatusEventAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.product.ProductInstanceLocation <em>Instance Location</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.domain.product.ProductInstanceLocation
+	 * @generated
+	 */
+	public Adapter createProductInstanceLocationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.product.ProductInstanceLocationEvent <em>Instance Location Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.domain.product.ProductInstanceLocationEvent
+	 * @generated
+	 */
+	public Adapter createProductInstanceLocationEventAdapter() {
 		return null;
 	}
 
@@ -213,6 +254,20 @@ public class ProductAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createIdentifiableEntityAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.base.Event <em>Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.base.Event
+	 * @generated
+	 */
+	public Adapter createEventAdapter() {
 		return null;
 	}
 

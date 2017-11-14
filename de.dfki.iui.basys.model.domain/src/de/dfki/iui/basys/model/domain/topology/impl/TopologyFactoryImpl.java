@@ -70,6 +70,7 @@ public class TopologyFactoryImpl extends EFactoryImpl implements TopologyFactory
 			case TopologyPackage.CONTROL_MODULE: return createControlModule();
 			case TopologyPackage.PRODUCTION_LINE_SECTION: return createProductionLineSection();
 			case TopologyPackage.STATION: return createStation();
+			case TopologyPackage.TRANSITION: return createTransition();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -213,6 +214,16 @@ public class TopologyFactoryImpl extends EFactoryImpl implements TopologyFactory
 	public Station createStation() {
 		StationImpl station = new StationImpl();
 		return station;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Transition createTransition() {
+		TransitionImpl transition = new TransitionImpl();
+		return transition;
 	}
 
 	/**

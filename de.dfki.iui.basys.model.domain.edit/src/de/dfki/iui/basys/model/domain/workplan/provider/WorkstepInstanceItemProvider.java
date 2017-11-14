@@ -52,7 +52,7 @@ public class WorkstepInstanceItemProvider extends IdentifiableEntityItemProvider
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
-			addStationIdPropertyDescriptor(object);
+			addComponentIdPropertyDescriptor(object);
 			addIsAutomaticPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -81,19 +81,19 @@ public class WorkstepInstanceItemProvider extends IdentifiableEntityItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Station Id feature.
+	 * This adds a property descriptor for the Component Id feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addStationIdPropertyDescriptor(Object object) {
+	protected void addComponentIdPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_WorkstepInstance_stationId_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_WorkstepInstance_stationId_feature", "_UI_WorkstepInstance_type"),
-				 WorkplanPackage.Literals.WORKSTEP_INSTANCE__STATION_ID,
+				 getString("_UI_WorkstepInstance_componentId_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_WorkstepInstance_componentId_feature", "_UI_WorkstepInstance_type"),
+				 WorkplanPackage.Literals.WORKSTEP_INSTANCE__COMPONENT_ID,
 				 true,
 				 false,
 				 false,
@@ -163,7 +163,7 @@ public class WorkstepInstanceItemProvider extends IdentifiableEntityItemProvider
 
 		switch (notification.getFeatureID(WorkstepInstance.class)) {
 			case WorkplanPackage.WORKSTEP_INSTANCE__NAME:
-			case WorkplanPackage.WORKSTEP_INSTANCE__STATION_ID:
+			case WorkplanPackage.WORKSTEP_INSTANCE__COMPONENT_ID:
 			case WorkplanPackage.WORKSTEP_INSTANCE__IS_AUTOMATIC:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;

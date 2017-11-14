@@ -143,14 +143,14 @@ public interface StaffPackage extends EPackage {
 	int STAFF_OPERATION_COUNT = BasePackage.IDENTIFIABLE_ENTITY_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.staff.impl.StaffRecognitionImpl <em>Recognition</em>}' class.
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.staff.impl.StaffLocationImpl <em>Location</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.staff.impl.StaffRecognitionImpl
-	 * @see de.dfki.iui.basys.model.domain.staff.impl.StaffPackageImpl#getStaffRecognition()
+	 * @see de.dfki.iui.basys.model.domain.staff.impl.StaffLocationImpl
+	 * @see de.dfki.iui.basys.model.domain.staff.impl.StaffPackageImpl#getStaffLocation()
 	 * @generated
 	 */
-	int STAFF_RECOGNITION = 1;
+	int STAFF_LOCATION = 1;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -159,25 +159,25 @@ public interface StaffPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STAFF_RECOGNITION__METADATA = BasePackage.ENTITY__METADATA;
+	int STAFF_LOCATION__METADATA = BasePackage.ENTITY__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * The feature id for the '<em><b>Detection Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STAFF_RECOGNITION__TYPE = BasePackage.ENTITY_FEATURE_COUNT + 0;
+	int STAFF_LOCATION__DETECTION_TYPE = BasePackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Worker Id</b></em>' attribute.
+	 * The feature id for the '<em><b>Staffid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STAFF_RECOGNITION__WORKER_ID = BasePackage.ENTITY_FEATURE_COUNT + 1;
+	int STAFF_LOCATION__STAFFID = BasePackage.ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Component Id</b></em>' attribute.
@@ -186,25 +186,217 @@ public interface StaffPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STAFF_RECOGNITION__COMPONENT_ID = BasePackage.ENTITY_FEATURE_COUNT + 2;
+	int STAFF_LOCATION__COMPONENT_ID = BasePackage.ENTITY_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the '<em>Recognition</em>' class.
+	 * The number of structural features of the '<em>Location</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STAFF_RECOGNITION_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 3;
+	int STAFF_LOCATION_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of operations of the '<em>Recognition</em>' class.
+	 * The number of operations of the '<em>Location</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STAFF_RECOGNITION_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
+	int STAFF_LOCATION_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.staff.impl.StaffLocationChangeEventImpl <em>Location Change Event</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.staff.impl.StaffLocationChangeEventImpl
+	 * @see de.dfki.iui.basys.model.domain.staff.impl.StaffPackageImpl#getStaffLocationChangeEvent()
+	 * @generated
+	 */
+	int STAFF_LOCATION_CHANGE_EVENT = 2;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAFF_LOCATION_CHANGE_EVENT__METADATA = BasePackage.EVENT__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Timestamp</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAFF_LOCATION_CHANGE_EVENT__TIMESTAMP = BasePackage.EVENT__TIMESTAMP;
+
+	/**
+	 * The feature id for the '<em><b>Detection Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAFF_LOCATION_CHANGE_EVENT__DETECTION_TYPE = BasePackage.EVENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Staffid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAFF_LOCATION_CHANGE_EVENT__STAFFID = BasePackage.EVENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Component Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAFF_LOCATION_CHANGE_EVENT__COMPONENT_ID = BasePackage.EVENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Location Change Event</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAFF_LOCATION_CHANGE_EVENT_FEATURE_COUNT = BasePackage.EVENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Location Change Event</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAFF_LOCATION_CHANGE_EVENT_OPERATION_COUNT = BasePackage.EVENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.staff.impl.AbilityImpl <em>Ability</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.staff.impl.AbilityImpl
+	 * @see de.dfki.iui.basys.model.domain.staff.impl.StaffPackageImpl#getAbility()
+	 * @generated
+	 */
+	int ABILITY = 3;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABILITY__METADATA = BasePackage.ENTITY__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABILITY__KEY = BasePackage.ENTITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABILITY__VALUE = BasePackage.ENTITY_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Ability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABILITY_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Ability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABILITY_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.staff.impl.WorkstepSkillImpl <em>Workstep Skill</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.staff.impl.WorkstepSkillImpl
+	 * @see de.dfki.iui.basys.model.domain.staff.impl.StaffPackageImpl#getWorkstepSkill()
+	 * @generated
+	 */
+	int WORKSTEP_SKILL = 4;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKSTEP_SKILL__METADATA = BasePackage.ENTITY__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Workstep Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKSTEP_SKILL__WORKSTEP_ID = BasePackage.ENTITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Level</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKSTEP_SKILL__LEVEL = BasePackage.ENTITY_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Preference</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKSTEP_SKILL__PREFERENCE = BasePackage.ENTITY_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Workstep Skill</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKSTEP_SKILL_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Workstep Skill</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKSTEP_SKILL_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.staff.impl.StaffSkillsImpl <em>Skills</em>}' class.
@@ -214,7 +406,7 @@ public interface StaffPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.staff.impl.StaffPackageImpl#getStaffSkills()
 	 * @generated
 	 */
-	int STAFF_SKILLS = 2;
+	int STAFF_SKILLS = 5;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -235,13 +427,22 @@ public interface StaffPackage extends EPackage {
 	int STAFF_SKILLS__WORKER_ID = BasePackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Skills</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Workstep Skills</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STAFF_SKILLS__SKILLS = BasePackage.ENTITY_FEATURE_COUNT + 1;
+	int STAFF_SKILLS__WORKSTEP_SKILLS = BasePackage.ENTITY_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Abilities</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAFF_SKILLS__ABILITIES = BasePackage.ENTITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Skills</em>' class.
@@ -250,7 +451,7 @@ public interface StaffPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STAFF_SKILLS_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 2;
+	int STAFF_SKILLS_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Skills</em>' class.
@@ -262,79 +463,24 @@ public interface StaffPackage extends EPackage {
 	int STAFF_SKILLS_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.staff.impl.StaffSkillImpl <em>Skill</em>}' class.
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.staff.StaffDetectionEnum <em>Detection Enum</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.staff.impl.StaffSkillImpl
-	 * @see de.dfki.iui.basys.model.domain.staff.impl.StaffPackageImpl#getStaffSkill()
+	 * @see de.dfki.iui.basys.model.domain.staff.StaffDetectionEnum
+	 * @see de.dfki.iui.basys.model.domain.staff.impl.StaffPackageImpl#getStaffDetectionEnum()
 	 * @generated
 	 */
-	int STAFF_SKILL = 3;
+	int STAFF_DETECTION_ENUM = 6;
 
 	/**
-	 * The feature id for the '<em><b>Workstep Id</b></em>' attribute.
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.staff.WorkstepPreferenceEnum <em>Workstep Preference Enum</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STAFF_SKILL__WORKSTEP_ID = 0;
-
-	/**
-	 * The feature id for the '<em><b>Level</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STAFF_SKILL__LEVEL = 1;
-
-	/**
-	 * The feature id for the '<em><b>Preference</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STAFF_SKILL__PREFERENCE = 2;
-
-	/**
-	 * The number of structural features of the '<em>Skill</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STAFF_SKILL_FEATURE_COUNT = 3;
-
-	/**
-	 * The number of operations of the '<em>Skill</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STAFF_SKILL_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.staff.StaffRecognitionEnum <em>Recognition Enum</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.staff.StaffRecognitionEnum
-	 * @see de.dfki.iui.basys.model.domain.staff.impl.StaffPackageImpl#getStaffRecognitionEnum()
+	 * @see de.dfki.iui.basys.model.domain.staff.WorkstepPreferenceEnum
+	 * @see de.dfki.iui.basys.model.domain.staff.impl.StaffPackageImpl#getWorkstepPreferenceEnum()
 	 * @generated
 	 */
-	int STAFF_RECOGNITION_ENUM = 4;
-
-	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.staff.PreferenceEnum <em>Preference Enum</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.staff.PreferenceEnum
-	 * @see de.dfki.iui.basys.model.domain.staff.impl.StaffPackageImpl#getPreferenceEnum()
-	 * @generated
-	 */
-	int PREFERENCE_ENUM = 5;
+	int WORKSTEP_PREFERENCE_ENUM = 7;
 
 
 	/**
@@ -392,47 +538,132 @@ public interface StaffPackage extends EPackage {
 	EAttribute getStaff_Language();
 
 	/**
-	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.staff.StaffRecognition <em>Recognition</em>}'.
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.staff.StaffLocation <em>Location</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Recognition</em>'.
-	 * @see de.dfki.iui.basys.model.domain.staff.StaffRecognition
+	 * @return the meta object for class '<em>Location</em>'.
+	 * @see de.dfki.iui.basys.model.domain.staff.StaffLocation
 	 * @generated
 	 */
-	EClass getStaffRecognition();
+	EClass getStaffLocation();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.staff.StaffRecognition#getType <em>Type</em>}'.
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.staff.StaffLocation#getDetectionType <em>Detection Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Type</em>'.
-	 * @see de.dfki.iui.basys.model.domain.staff.StaffRecognition#getType()
-	 * @see #getStaffRecognition()
+	 * @return the meta object for the attribute '<em>Detection Type</em>'.
+	 * @see de.dfki.iui.basys.model.domain.staff.StaffLocation#getDetectionType()
+	 * @see #getStaffLocation()
 	 * @generated
 	 */
-	EAttribute getStaffRecognition_Type();
+	EAttribute getStaffLocation_DetectionType();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.staff.StaffRecognition#getWorkerId <em>Worker Id</em>}'.
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.staff.StaffLocation#getStaffid <em>Staffid</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Worker Id</em>'.
-	 * @see de.dfki.iui.basys.model.domain.staff.StaffRecognition#getWorkerId()
-	 * @see #getStaffRecognition()
+	 * @return the meta object for the attribute '<em>Staffid</em>'.
+	 * @see de.dfki.iui.basys.model.domain.staff.StaffLocation#getStaffid()
+	 * @see #getStaffLocation()
 	 * @generated
 	 */
-	EAttribute getStaffRecognition_WorkerId();
+	EAttribute getStaffLocation_Staffid();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.staff.StaffRecognition#getComponentId <em>Component Id</em>}'.
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.staff.StaffLocation#getComponentId <em>Component Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Component Id</em>'.
-	 * @see de.dfki.iui.basys.model.domain.staff.StaffRecognition#getComponentId()
-	 * @see #getStaffRecognition()
+	 * @see de.dfki.iui.basys.model.domain.staff.StaffLocation#getComponentId()
+	 * @see #getStaffLocation()
 	 * @generated
 	 */
-	EAttribute getStaffRecognition_ComponentId();
+	EAttribute getStaffLocation_ComponentId();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.staff.StaffLocationChangeEvent <em>Location Change Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Location Change Event</em>'.
+	 * @see de.dfki.iui.basys.model.domain.staff.StaffLocationChangeEvent
+	 * @generated
+	 */
+	EClass getStaffLocationChangeEvent();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.staff.Ability <em>Ability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Ability</em>'.
+	 * @see de.dfki.iui.basys.model.domain.staff.Ability
+	 * @generated
+	 */
+	EClass getAbility();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.staff.Ability#getKey <em>Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Key</em>'.
+	 * @see de.dfki.iui.basys.model.domain.staff.Ability#getKey()
+	 * @see #getAbility()
+	 * @generated
+	 */
+	EAttribute getAbility_Key();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.staff.Ability#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see de.dfki.iui.basys.model.domain.staff.Ability#getValue()
+	 * @see #getAbility()
+	 * @generated
+	 */
+	EAttribute getAbility_Value();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.staff.WorkstepSkill <em>Workstep Skill</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Workstep Skill</em>'.
+	 * @see de.dfki.iui.basys.model.domain.staff.WorkstepSkill
+	 * @generated
+	 */
+	EClass getWorkstepSkill();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.staff.WorkstepSkill#getWorkstepId <em>Workstep Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Workstep Id</em>'.
+	 * @see de.dfki.iui.basys.model.domain.staff.WorkstepSkill#getWorkstepId()
+	 * @see #getWorkstepSkill()
+	 * @generated
+	 */
+	EAttribute getWorkstepSkill_WorkstepId();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.staff.WorkstepSkill#getLevel <em>Level</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Level</em>'.
+	 * @see de.dfki.iui.basys.model.domain.staff.WorkstepSkill#getLevel()
+	 * @see #getWorkstepSkill()
+	 * @generated
+	 */
+	EAttribute getWorkstepSkill_Level();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.staff.WorkstepSkill#getPreference <em>Preference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Preference</em>'.
+	 * @see de.dfki.iui.basys.model.domain.staff.WorkstepSkill#getPreference()
+	 * @see #getWorkstepSkill()
+	 * @generated
+	 */
+	EAttribute getWorkstepSkill_Preference();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.staff.StaffSkills <em>Skills</em>}'.
@@ -456,78 +687,46 @@ public interface StaffPackage extends EPackage {
 	EAttribute getStaffSkills_WorkerId();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.domain.staff.StaffSkills#getSkills <em>Skills</em>}'.
+	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.domain.staff.StaffSkills#getWorkstepSkills <em>Workstep Skills</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Skills</em>'.
-	 * @see de.dfki.iui.basys.model.domain.staff.StaffSkills#getSkills()
+	 * @return the meta object for the containment reference list '<em>Workstep Skills</em>'.
+	 * @see de.dfki.iui.basys.model.domain.staff.StaffSkills#getWorkstepSkills()
 	 * @see #getStaffSkills()
 	 * @generated
 	 */
-	EReference getStaffSkills_Skills();
+	EReference getStaffSkills_WorkstepSkills();
 
 	/**
-	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.staff.StaffSkill <em>Skill</em>}'.
+	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.domain.staff.StaffSkills#getAbilities <em>Abilities</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Skill</em>'.
-	 * @see de.dfki.iui.basys.model.domain.staff.StaffSkill
+	 * @return the meta object for the containment reference list '<em>Abilities</em>'.
+	 * @see de.dfki.iui.basys.model.domain.staff.StaffSkills#getAbilities()
+	 * @see #getStaffSkills()
 	 * @generated
 	 */
-	EClass getStaffSkill();
+	EReference getStaffSkills_Abilities();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.staff.StaffSkill#getWorkstepId <em>Workstep Id</em>}'.
+	 * Returns the meta object for enum '{@link de.dfki.iui.basys.model.domain.staff.StaffDetectionEnum <em>Detection Enum</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Workstep Id</em>'.
-	 * @see de.dfki.iui.basys.model.domain.staff.StaffSkill#getWorkstepId()
-	 * @see #getStaffSkill()
+	 * @return the meta object for enum '<em>Detection Enum</em>'.
+	 * @see de.dfki.iui.basys.model.domain.staff.StaffDetectionEnum
 	 * @generated
 	 */
-	EAttribute getStaffSkill_WorkstepId();
+	EEnum getStaffDetectionEnum();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.staff.StaffSkill#getLevel <em>Level</em>}'.
+	 * Returns the meta object for enum '{@link de.dfki.iui.basys.model.domain.staff.WorkstepPreferenceEnum <em>Workstep Preference Enum</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Level</em>'.
-	 * @see de.dfki.iui.basys.model.domain.staff.StaffSkill#getLevel()
-	 * @see #getStaffSkill()
+	 * @return the meta object for enum '<em>Workstep Preference Enum</em>'.
+	 * @see de.dfki.iui.basys.model.domain.staff.WorkstepPreferenceEnum
 	 * @generated
 	 */
-	EAttribute getStaffSkill_Level();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.staff.StaffSkill#getPreference <em>Preference</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Preference</em>'.
-	 * @see de.dfki.iui.basys.model.domain.staff.StaffSkill#getPreference()
-	 * @see #getStaffSkill()
-	 * @generated
-	 */
-	EAttribute getStaffSkill_Preference();
-
-	/**
-	 * Returns the meta object for enum '{@link de.dfki.iui.basys.model.domain.staff.StaffRecognitionEnum <em>Recognition Enum</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Recognition Enum</em>'.
-	 * @see de.dfki.iui.basys.model.domain.staff.StaffRecognitionEnum
-	 * @generated
-	 */
-	EEnum getStaffRecognitionEnum();
-
-	/**
-	 * Returns the meta object for enum '{@link de.dfki.iui.basys.model.domain.staff.PreferenceEnum <em>Preference Enum</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Preference Enum</em>'.
-	 * @see de.dfki.iui.basys.model.domain.staff.PreferenceEnum
-	 * @generated
-	 */
-	EEnum getPreferenceEnum();
+	EEnum getWorkstepPreferenceEnum();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -595,30 +794,30 @@ public interface StaffPackage extends EPackage {
 		EAttribute STAFF__LANGUAGE = eINSTANCE.getStaff_Language();
 
 		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.staff.impl.StaffRecognitionImpl <em>Recognition</em>}' class.
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.staff.impl.StaffLocationImpl <em>Location</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.domain.staff.impl.StaffRecognitionImpl
-		 * @see de.dfki.iui.basys.model.domain.staff.impl.StaffPackageImpl#getStaffRecognition()
+		 * @see de.dfki.iui.basys.model.domain.staff.impl.StaffLocationImpl
+		 * @see de.dfki.iui.basys.model.domain.staff.impl.StaffPackageImpl#getStaffLocation()
 		 * @generated
 		 */
-		EClass STAFF_RECOGNITION = eINSTANCE.getStaffRecognition();
+		EClass STAFF_LOCATION = eINSTANCE.getStaffLocation();
 
 		/**
-		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Detection Type</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute STAFF_RECOGNITION__TYPE = eINSTANCE.getStaffRecognition_Type();
+		EAttribute STAFF_LOCATION__DETECTION_TYPE = eINSTANCE.getStaffLocation_DetectionType();
 
 		/**
-		 * The meta object literal for the '<em><b>Worker Id</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Staffid</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute STAFF_RECOGNITION__WORKER_ID = eINSTANCE.getStaffRecognition_WorkerId();
+		EAttribute STAFF_LOCATION__STAFFID = eINSTANCE.getStaffLocation_Staffid();
 
 		/**
 		 * The meta object literal for the '<em><b>Component Id</b></em>' attribute feature.
@@ -626,7 +825,77 @@ public interface StaffPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute STAFF_RECOGNITION__COMPONENT_ID = eINSTANCE.getStaffRecognition_ComponentId();
+		EAttribute STAFF_LOCATION__COMPONENT_ID = eINSTANCE.getStaffLocation_ComponentId();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.staff.impl.StaffLocationChangeEventImpl <em>Location Change Event</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.staff.impl.StaffLocationChangeEventImpl
+		 * @see de.dfki.iui.basys.model.domain.staff.impl.StaffPackageImpl#getStaffLocationChangeEvent()
+		 * @generated
+		 */
+		EClass STAFF_LOCATION_CHANGE_EVENT = eINSTANCE.getStaffLocationChangeEvent();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.staff.impl.AbilityImpl <em>Ability</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.staff.impl.AbilityImpl
+		 * @see de.dfki.iui.basys.model.domain.staff.impl.StaffPackageImpl#getAbility()
+		 * @generated
+		 */
+		EClass ABILITY = eINSTANCE.getAbility();
+
+		/**
+		 * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ABILITY__KEY = eINSTANCE.getAbility_Key();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ABILITY__VALUE = eINSTANCE.getAbility_Value();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.staff.impl.WorkstepSkillImpl <em>Workstep Skill</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.staff.impl.WorkstepSkillImpl
+		 * @see de.dfki.iui.basys.model.domain.staff.impl.StaffPackageImpl#getWorkstepSkill()
+		 * @generated
+		 */
+		EClass WORKSTEP_SKILL = eINSTANCE.getWorkstepSkill();
+
+		/**
+		 * The meta object literal for the '<em><b>Workstep Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WORKSTEP_SKILL__WORKSTEP_ID = eINSTANCE.getWorkstepSkill_WorkstepId();
+
+		/**
+		 * The meta object literal for the '<em><b>Level</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WORKSTEP_SKILL__LEVEL = eINSTANCE.getWorkstepSkill_Level();
+
+		/**
+		 * The meta object literal for the '<em><b>Preference</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WORKSTEP_SKILL__PREFERENCE = eINSTANCE.getWorkstepSkill_Preference();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.staff.impl.StaffSkillsImpl <em>Skills</em>}' class.
@@ -647,66 +916,40 @@ public interface StaffPackage extends EPackage {
 		EAttribute STAFF_SKILLS__WORKER_ID = eINSTANCE.getStaffSkills_WorkerId();
 
 		/**
-		 * The meta object literal for the '<em><b>Skills</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Workstep Skills</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference STAFF_SKILLS__SKILLS = eINSTANCE.getStaffSkills_Skills();
+		EReference STAFF_SKILLS__WORKSTEP_SKILLS = eINSTANCE.getStaffSkills_WorkstepSkills();
 
 		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.staff.impl.StaffSkillImpl <em>Skill</em>}' class.
+		 * The meta object literal for the '<em><b>Abilities</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.domain.staff.impl.StaffSkillImpl
-		 * @see de.dfki.iui.basys.model.domain.staff.impl.StaffPackageImpl#getStaffSkill()
 		 * @generated
 		 */
-		EClass STAFF_SKILL = eINSTANCE.getStaffSkill();
+		EReference STAFF_SKILLS__ABILITIES = eINSTANCE.getStaffSkills_Abilities();
 
 		/**
-		 * The meta object literal for the '<em><b>Workstep Id</b></em>' attribute feature.
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.staff.StaffDetectionEnum <em>Detection Enum</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.staff.StaffDetectionEnum
+		 * @see de.dfki.iui.basys.model.domain.staff.impl.StaffPackageImpl#getStaffDetectionEnum()
 		 * @generated
 		 */
-		EAttribute STAFF_SKILL__WORKSTEP_ID = eINSTANCE.getStaffSkill_WorkstepId();
+		EEnum STAFF_DETECTION_ENUM = eINSTANCE.getStaffDetectionEnum();
 
 		/**
-		 * The meta object literal for the '<em><b>Level</b></em>' attribute feature.
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.staff.WorkstepPreferenceEnum <em>Workstep Preference Enum</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.staff.WorkstepPreferenceEnum
+		 * @see de.dfki.iui.basys.model.domain.staff.impl.StaffPackageImpl#getWorkstepPreferenceEnum()
 		 * @generated
 		 */
-		EAttribute STAFF_SKILL__LEVEL = eINSTANCE.getStaffSkill_Level();
-
-		/**
-		 * The meta object literal for the '<em><b>Preference</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute STAFF_SKILL__PREFERENCE = eINSTANCE.getStaffSkill_Preference();
-
-		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.staff.StaffRecognitionEnum <em>Recognition Enum</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.domain.staff.StaffRecognitionEnum
-		 * @see de.dfki.iui.basys.model.domain.staff.impl.StaffPackageImpl#getStaffRecognitionEnum()
-		 * @generated
-		 */
-		EEnum STAFF_RECOGNITION_ENUM = eINSTANCE.getStaffRecognitionEnum();
-
-		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.staff.PreferenceEnum <em>Preference Enum</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.domain.staff.PreferenceEnum
-		 * @see de.dfki.iui.basys.model.domain.staff.impl.StaffPackageImpl#getPreferenceEnum()
-		 * @generated
-		 */
-		EEnum PREFERENCE_ENUM = eINSTANCE.getPreferenceEnum();
+		EEnum WORKSTEP_PREFERENCE_ENUM = eINSTANCE.getWorkstepPreferenceEnum();
 
 	}
 

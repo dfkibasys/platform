@@ -4,6 +4,10 @@ package de.dfki.iui.basys.model.domain.workplan.impl;
 
 import de.dfki.iui.basys.model.base.BasePackage;
 
+import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
+
+import de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl;
+
 import de.dfki.iui.basys.model.domain.order.OrderPackage;
 
 import de.dfki.iui.basys.model.domain.order.impl.OrderPackageImpl;
@@ -29,8 +33,9 @@ import de.dfki.iui.basys.model.domain.workplan.WorkplanFactory;
 import de.dfki.iui.basys.model.domain.workplan.WorkplanInstance;
 import de.dfki.iui.basys.model.domain.workplan.WorkplanPackage;
 import de.dfki.iui.basys.model.domain.workplan.WorkstepInstance;
-import de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceChangeEvent;
-import de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceChangeType;
+import de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatus;
+import de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatusChangeEvent;
+import de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatusEnum;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -66,7 +71,14 @@ public class WorkplanPackageImpl extends EPackageImpl implements WorkplanPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass workstepInstanceChangeEventEClass = null;
+	private EClass workstepInstanceStatusEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass workstepInstanceStatusChangeEventEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -80,7 +92,7 @@ public class WorkplanPackageImpl extends EPackageImpl implements WorkplanPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum workstepInstanceChangeTypeEEnum = null;
+	private EEnum workstepInstanceStatusEnumEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -137,6 +149,7 @@ public class WorkplanPackageImpl extends EPackageImpl implements WorkplanPackage
 		StaffPackageImpl theStaffPackage = (StaffPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(StaffPackage.eNS_URI) instanceof StaffPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(StaffPackage.eNS_URI) : StaffPackage.eINSTANCE);
 		TopologyPackageImpl theTopologyPackage = (TopologyPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(TopologyPackage.eNS_URI) instanceof TopologyPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(TopologyPackage.eNS_URI) : TopologyPackage.eINSTANCE);
 		WorkerguidancePackageImpl theWorkerguidancePackage = (WorkerguidancePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkerguidancePackage.eNS_URI) instanceof WorkerguidancePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkerguidancePackage.eNS_URI) : WorkerguidancePackage.eINSTANCE);
+		LinebalancingPackageImpl theLinebalancingPackage = (LinebalancingPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(LinebalancingPackage.eNS_URI) instanceof LinebalancingPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(LinebalancingPackage.eNS_URI) : LinebalancingPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theWorkplanPackage.createPackageContents();
@@ -145,6 +158,7 @@ public class WorkplanPackageImpl extends EPackageImpl implements WorkplanPackage
 		theStaffPackage.createPackageContents();
 		theTopologyPackage.createPackageContents();
 		theWorkerguidancePackage.createPackageContents();
+		theLinebalancingPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theWorkplanPackage.initializePackageContents();
@@ -153,6 +167,7 @@ public class WorkplanPackageImpl extends EPackageImpl implements WorkplanPackage
 		theStaffPackage.initializePackageContents();
 		theTopologyPackage.initializePackageContents();
 		theWorkerguidancePackage.initializePackageContents();
+		theLinebalancingPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theWorkplanPackage.freeze();
@@ -213,7 +228,7 @@ public class WorkplanPackageImpl extends EPackageImpl implements WorkplanPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getWorkstepInstance_StationId() {
+	public EAttribute getWorkstepInstance_ComponentId() {
 		return (EAttribute)workstepInstanceEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -231,8 +246,8 @@ public class WorkplanPackageImpl extends EPackageImpl implements WorkplanPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getWorkstepInstanceChangeEvent() {
-		return workstepInstanceChangeEventEClass;
+	public EClass getWorkstepInstanceStatus() {
+		return workstepInstanceStatusEClass;
 	}
 
 	/**
@@ -240,8 +255,8 @@ public class WorkplanPackageImpl extends EPackageImpl implements WorkplanPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getWorkstepInstanceChangeEvent_Type() {
-		return (EAttribute)workstepInstanceChangeEventEClass.getEStructuralFeatures().get(0);
+	public EAttribute getWorkstepInstanceStatus_Status() {
+		return (EAttribute)workstepInstanceStatusEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -249,8 +264,8 @@ public class WorkplanPackageImpl extends EPackageImpl implements WorkplanPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getWorkstepInstanceChangeEvent_ProductInstanceId() {
-		return (EAttribute)workstepInstanceChangeEventEClass.getEStructuralFeatures().get(1);
+	public EAttribute getWorkstepInstanceStatus_ProductInstanceId() {
+		return (EAttribute)workstepInstanceStatusEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -258,8 +273,17 @@ public class WorkplanPackageImpl extends EPackageImpl implements WorkplanPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getWorkstepInstanceChangeEvent_WorkstepInstanceId() {
-		return (EAttribute)workstepInstanceChangeEventEClass.getEStructuralFeatures().get(2);
+	public EAttribute getWorkstepInstanceStatus_WorkstepInstanceId() {
+		return (EAttribute)workstepInstanceStatusEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getWorkstepInstanceStatusChangeEvent() {
+		return workstepInstanceStatusChangeEventEClass;
 	}
 
 	/**
@@ -285,7 +309,7 @@ public class WorkplanPackageImpl extends EPackageImpl implements WorkplanPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDuration_BeginnerLevel() {
+	public EAttribute getDuration_AgentId() {
 		return (EAttribute)durationEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -294,7 +318,7 @@ public class WorkplanPackageImpl extends EPackageImpl implements WorkplanPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDuration_BeginnerLevelDeviance() {
+	public EAttribute getDuration_Average() {
 		return (EAttribute)durationEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -303,7 +327,7 @@ public class WorkplanPackageImpl extends EPackageImpl implements WorkplanPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDuration_ExpertLevel() {
+	public EAttribute getDuration_StandardDeviation() {
 		return (EAttribute)durationEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -312,17 +336,8 @@ public class WorkplanPackageImpl extends EPackageImpl implements WorkplanPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDuration_ExpertLevelDeviance() {
-		return (EAttribute)durationEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EEnum getWorkstepInstanceChangeType() {
-		return workstepInstanceChangeTypeEEnum;
+	public EEnum getWorkstepInstanceStatusEnum() {
+		return workstepInstanceStatusEnumEEnum;
 	}
 
 	/**
@@ -359,23 +374,24 @@ public class WorkplanPackageImpl extends EPackageImpl implements WorkplanPackage
 
 		workstepInstanceEClass = createEClass(WORKSTEP_INSTANCE);
 		createEAttribute(workstepInstanceEClass, WORKSTEP_INSTANCE__NAME);
-		createEAttribute(workstepInstanceEClass, WORKSTEP_INSTANCE__STATION_ID);
+		createEAttribute(workstepInstanceEClass, WORKSTEP_INSTANCE__COMPONENT_ID);
 		createEAttribute(workstepInstanceEClass, WORKSTEP_INSTANCE__IS_AUTOMATIC);
 
-		workstepInstanceChangeEventEClass = createEClass(WORKSTEP_INSTANCE_CHANGE_EVENT);
-		createEAttribute(workstepInstanceChangeEventEClass, WORKSTEP_INSTANCE_CHANGE_EVENT__TYPE);
-		createEAttribute(workstepInstanceChangeEventEClass, WORKSTEP_INSTANCE_CHANGE_EVENT__PRODUCT_INSTANCE_ID);
-		createEAttribute(workstepInstanceChangeEventEClass, WORKSTEP_INSTANCE_CHANGE_EVENT__WORKSTEP_INSTANCE_ID);
+		workstepInstanceStatusEClass = createEClass(WORKSTEP_INSTANCE_STATUS);
+		createEAttribute(workstepInstanceStatusEClass, WORKSTEP_INSTANCE_STATUS__STATUS);
+		createEAttribute(workstepInstanceStatusEClass, WORKSTEP_INSTANCE_STATUS__PRODUCT_INSTANCE_ID);
+		createEAttribute(workstepInstanceStatusEClass, WORKSTEP_INSTANCE_STATUS__WORKSTEP_INSTANCE_ID);
+
+		workstepInstanceStatusChangeEventEClass = createEClass(WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT);
 
 		durationEClass = createEClass(DURATION);
 		createEAttribute(durationEClass, DURATION__WORKSTEP_INSTANCE_ID);
-		createEAttribute(durationEClass, DURATION__BEGINNER_LEVEL);
-		createEAttribute(durationEClass, DURATION__BEGINNER_LEVEL_DEVIANCE);
-		createEAttribute(durationEClass, DURATION__EXPERT_LEVEL);
-		createEAttribute(durationEClass, DURATION__EXPERT_LEVEL_DEVIANCE);
+		createEAttribute(durationEClass, DURATION__AGENT_ID);
+		createEAttribute(durationEClass, DURATION__AVERAGE);
+		createEAttribute(durationEClass, DURATION__STANDARD_DEVIATION);
 
 		// Create enums
-		workstepInstanceChangeTypeEEnum = createEEnum(WORKSTEP_INSTANCE_CHANGE_TYPE);
+		workstepInstanceStatusEnumEEnum = createEEnum(WORKSTEP_INSTANCE_STATUS_ENUM);
 	}
 
 	/**
@@ -411,7 +427,9 @@ public class WorkplanPackageImpl extends EPackageImpl implements WorkplanPackage
 		// Add supertypes to classes
 		workplanInstanceEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
 		workstepInstanceEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
-		workstepInstanceChangeEventEClass.getESuperTypes().add(theBasePackage.getEvent());
+		workstepInstanceStatusEClass.getESuperTypes().add(theBasePackage.getEntity());
+		workstepInstanceStatusChangeEventEClass.getESuperTypes().add(theBasePackage.getEvent());
+		workstepInstanceStatusChangeEventEClass.getESuperTypes().add(this.getWorkstepInstanceStatus());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(workplanInstanceEClass, WorkplanInstance.class, "WorkplanInstance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -420,29 +438,30 @@ public class WorkplanPackageImpl extends EPackageImpl implements WorkplanPackage
 
 		initEClass(workstepInstanceEClass, WorkstepInstance.class, "WorkstepInstance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getWorkstepInstance_Name(), ecorePackage.getEString(), "name", null, 0, 1, WorkstepInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getWorkstepInstance_StationId(), ecorePackage.getEString(), "stationId", null, 0, 1, WorkstepInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getWorkstepInstance_ComponentId(), ecorePackage.getEString(), "componentId", null, 0, 1, WorkstepInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getWorkstepInstance_IsAutomatic(), ecorePackage.getEBoolean(), "isAutomatic", null, 0, 1, WorkstepInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(workstepInstanceChangeEventEClass, WorkstepInstanceChangeEvent.class, "WorkstepInstanceChangeEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getWorkstepInstanceChangeEvent_Type(), this.getWorkstepInstanceChangeType(), "type", null, 0, 1, WorkstepInstanceChangeEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getWorkstepInstanceChangeEvent_ProductInstanceId(), ecorePackage.getEString(), "productInstanceId", null, 0, 1, WorkstepInstanceChangeEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getWorkstepInstanceChangeEvent_WorkstepInstanceId(), ecorePackage.getEString(), "workstepInstanceId", null, 0, 1, WorkstepInstanceChangeEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(workstepInstanceStatusEClass, WorkstepInstanceStatus.class, "WorkstepInstanceStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getWorkstepInstanceStatus_Status(), this.getWorkstepInstanceStatusEnum(), "status", null, 0, 1, WorkstepInstanceStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getWorkstepInstanceStatus_ProductInstanceId(), ecorePackage.getEString(), "productInstanceId", null, 0, 1, WorkstepInstanceStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getWorkstepInstanceStatus_WorkstepInstanceId(), ecorePackage.getEString(), "workstepInstanceId", null, 0, 1, WorkstepInstanceStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(workstepInstanceStatusChangeEventEClass, WorkstepInstanceStatusChangeEvent.class, "WorkstepInstanceStatusChangeEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(durationEClass, Duration.class, "Duration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDuration_WorkstepInstanceId(), ecorePackage.getEString(), "workstepInstanceId", null, 0, 1, Duration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDuration_BeginnerLevel(), ecorePackage.getEInt(), "beginnerLevel", null, 0, 1, Duration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDuration_BeginnerLevelDeviance(), ecorePackage.getEInt(), "beginnerLevelDeviance", null, 0, 1, Duration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDuration_ExpertLevel(), ecorePackage.getEInt(), "expertLevel", null, 0, 1, Duration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDuration_ExpertLevelDeviance(), ecorePackage.getEInt(), "expertLevelDeviance", null, 0, 1, Duration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDuration_AgentId(), ecorePackage.getEString(), "agentId", null, 0, 1, Duration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDuration_Average(), ecorePackage.getEDouble(), "average", null, 0, 1, Duration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDuration_StandardDeviation(), ecorePackage.getEDouble(), "standardDeviation", null, 0, 1, Duration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
-		initEEnum(workstepInstanceChangeTypeEEnum, WorkstepInstanceChangeType.class, "WorkstepInstanceChangeType");
-		addEEnumLiteral(workstepInstanceChangeTypeEEnum, WorkstepInstanceChangeType.UNKNOWN);
-		addEEnumLiteral(workstepInstanceChangeTypeEEnum, WorkstepInstanceChangeType.STARTED);
-		addEEnumLiteral(workstepInstanceChangeTypeEEnum, WorkstepInstanceChangeType.PAUSED);
-		addEEnumLiteral(workstepInstanceChangeTypeEEnum, WorkstepInstanceChangeType.REPEATING);
-		addEEnumLiteral(workstepInstanceChangeTypeEEnum, WorkstepInstanceChangeType.FINISHED);
-		addEEnumLiteral(workstepInstanceChangeTypeEEnum, WorkstepInstanceChangeType.ABORTED);
+		initEEnum(workstepInstanceStatusEnumEEnum, WorkstepInstanceStatusEnum.class, "WorkstepInstanceStatusEnum");
+		addEEnumLiteral(workstepInstanceStatusEnumEEnum, WorkstepInstanceStatusEnum.UNKNOWN);
+		addEEnumLiteral(workstepInstanceStatusEnumEEnum, WorkstepInstanceStatusEnum.STARTED);
+		addEEnumLiteral(workstepInstanceStatusEnumEEnum, WorkstepInstanceStatusEnum.PAUSED);
+		addEEnumLiteral(workstepInstanceStatusEnumEEnum, WorkstepInstanceStatusEnum.REPEATING);
+		addEEnumLiteral(workstepInstanceStatusEnumEEnum, WorkstepInstanceStatusEnum.FINISHED);
+		addEEnumLiteral(workstepInstanceStatusEnumEEnum, WorkstepInstanceStatusEnum.ABORTED);
 
 		// Create resource
 		createResource(eNS_URI);

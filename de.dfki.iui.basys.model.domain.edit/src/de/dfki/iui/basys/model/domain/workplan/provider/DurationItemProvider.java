@@ -63,10 +63,9 @@ public class DurationItemProvider
 			super.getPropertyDescriptors(object);
 
 			addWorkstepInstanceIdPropertyDescriptor(object);
-			addBeginnerLevelPropertyDescriptor(object);
-			addBeginnerLevelDeviancePropertyDescriptor(object);
-			addExpertLevelPropertyDescriptor(object);
-			addExpertLevelDeviancePropertyDescriptor(object);
+			addAgentIdPropertyDescriptor(object);
+			addAveragePropertyDescriptor(object);
+			addStandardDeviationPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -94,89 +93,67 @@ public class DurationItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Beginner Level feature.
+	 * This adds a property descriptor for the Agent Id feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addBeginnerLevelPropertyDescriptor(Object object) {
+	protected void addAgentIdPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Duration_beginnerLevel_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Duration_beginnerLevel_feature", "_UI_Duration_type"),
-				 WorkplanPackage.Literals.DURATION__BEGINNER_LEVEL,
+				 getString("_UI_Duration_agentId_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Duration_agentId_feature", "_UI_Duration_type"),
+				 WorkplanPackage.Literals.DURATION__AGENT_ID,
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Beginner Level Deviance feature.
+	 * This adds a property descriptor for the Average feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addBeginnerLevelDeviancePropertyDescriptor(Object object) {
+	protected void addAveragePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Duration_beginnerLevelDeviance_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Duration_beginnerLevelDeviance_feature", "_UI_Duration_type"),
-				 WorkplanPackage.Literals.DURATION__BEGINNER_LEVEL_DEVIANCE,
+				 getString("_UI_Duration_average_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Duration_average_feature", "_UI_Duration_type"),
+				 WorkplanPackage.Literals.DURATION__AVERAGE,
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Expert Level feature.
+	 * This adds a property descriptor for the Standard Deviation feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addExpertLevelPropertyDescriptor(Object object) {
+	protected void addStandardDeviationPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Duration_expertLevel_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Duration_expertLevel_feature", "_UI_Duration_type"),
-				 WorkplanPackage.Literals.DURATION__EXPERT_LEVEL,
+				 getString("_UI_Duration_standardDeviation_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Duration_standardDeviation_feature", "_UI_Duration_type"),
+				 WorkplanPackage.Literals.DURATION__STANDARD_DEVIATION,
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Expert Level Deviance feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addExpertLevelDeviancePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Duration_expertLevelDeviance_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Duration_expertLevelDeviance_feature", "_UI_Duration_type"),
-				 WorkplanPackage.Literals.DURATION__EXPERT_LEVEL_DEVIANCE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -220,10 +197,9 @@ public class DurationItemProvider
 
 		switch (notification.getFeatureID(Duration.class)) {
 			case WorkplanPackage.DURATION__WORKSTEP_INSTANCE_ID:
-			case WorkplanPackage.DURATION__BEGINNER_LEVEL:
-			case WorkplanPackage.DURATION__BEGINNER_LEVEL_DEVIANCE:
-			case WorkplanPackage.DURATION__EXPERT_LEVEL:
-			case WorkplanPackage.DURATION__EXPERT_LEVEL_DEVIANCE:
+			case WorkplanPackage.DURATION__AGENT_ID:
+			case WorkplanPackage.DURATION__AVERAGE:
+			case WorkplanPackage.DURATION__STANDARD_DEVIATION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

@@ -11,16 +11,13 @@ import org.eclipse.emf.common.util.EList;
  * A representation of the model object '<em><b>Skills</b></em>'.
  * <!-- end-user-doc -->
  *
- * <!-- begin-model-doc -->
- * 
- * <!-- end-model-doc -->
- *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
  *   <li>{@link de.dfki.iui.basys.model.domain.staff.StaffSkills#getWorkerId <em>Worker Id</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.domain.staff.StaffSkills#getSkills <em>Skills</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.staff.StaffSkills#getWorkstepSkills <em>Workstep Skills</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.staff.StaffSkills#getAbilities <em>Abilities</em>}</li>
  * </ul>
  *
  * @see de.dfki.iui.basys.model.domain.staff.StaffPackage#getStaffSkills()
@@ -54,19 +51,35 @@ public interface StaffSkills extends Entity {
 	void setWorkerId(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Skills</b></em>' containment reference list.
-	 * The list contents are of type {@link de.dfki.iui.basys.model.domain.staff.StaffSkill}.
+	 * Returns the value of the '<em><b>Workstep Skills</b></em>' containment reference list.
+	 * The list contents are of type {@link de.dfki.iui.basys.model.domain.staff.WorkstepSkill}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Skills</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Workstep Skills</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Skills</em>' containment reference list.
-	 * @see de.dfki.iui.basys.model.domain.staff.StaffPackage#getStaffSkills_Skills()
+	 * @return the value of the '<em>Workstep Skills</em>' containment reference list.
+	 * @see de.dfki.iui.basys.model.domain.staff.StaffPackage#getStaffSkills_WorkstepSkills()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<StaffSkill> getSkills();
+	EList<WorkstepSkill> getWorkstepSkills();
+
+	/**
+	 * Returns the value of the '<em><b>Abilities</b></em>' containment reference list.
+	 * The list contents are of type {@link de.dfki.iui.basys.model.domain.staff.Ability}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Abilities</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Abilities</em>' containment reference list.
+	 * @see de.dfki.iui.basys.model.domain.staff.StaffPackage#getStaffSkills_Abilities()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Ability> getAbilities();
 
 } // StaffSkills

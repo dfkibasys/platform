@@ -80,8 +80,12 @@ public class WorkplanAdapterFactory extends AdapterFactoryImpl {
 				return createWorkstepInstanceAdapter();
 			}
 			@Override
-			public Adapter caseWorkstepInstanceChangeEvent(WorkstepInstanceChangeEvent object) {
-				return createWorkstepInstanceChangeEventAdapter();
+			public Adapter caseWorkstepInstanceStatus(WorkstepInstanceStatus object) {
+				return createWorkstepInstanceStatusAdapter();
+			}
+			@Override
+			public Adapter caseWorkstepInstanceStatusChangeEvent(WorkstepInstanceStatusChangeEvent object) {
+				return createWorkstepInstanceStatusChangeEventAdapter();
 			}
 			@Override
 			public Adapter caseDuration(Duration object) {
@@ -148,16 +152,30 @@ public class WorkplanAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceChangeEvent <em>Workstep Instance Change Event</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatus <em>Workstep Instance Status</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceChangeEvent
+	 * @see de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatus
 	 * @generated
 	 */
-	public Adapter createWorkstepInstanceChangeEventAdapter() {
+	public Adapter createWorkstepInstanceStatusAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatusChangeEvent <em>Workstep Instance Status Change Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatusChangeEvent
+	 * @generated
+	 */
+	public Adapter createWorkstepInstanceStatusChangeEventAdapter() {
 		return null;
 	}
 

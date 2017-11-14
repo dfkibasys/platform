@@ -4,6 +4,10 @@ package de.dfki.iui.basys.model.domain.product.impl;
 
 import de.dfki.iui.basys.model.base.BasePackage;
 
+import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
+
+import de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl;
+
 import de.dfki.iui.basys.model.domain.order.OrderPackage;
 
 import de.dfki.iui.basys.model.domain.order.impl.OrderPackageImpl;
@@ -11,12 +15,14 @@ import de.dfki.iui.basys.model.domain.order.impl.OrderPackageImpl;
 import de.dfki.iui.basys.model.domain.product.ProductFactory;
 import de.dfki.iui.basys.model.domain.product.ProductGroup;
 import de.dfki.iui.basys.model.domain.product.ProductInstance;
+import de.dfki.iui.basys.model.domain.product.ProductInstanceDetectionEnum;
+import de.dfki.iui.basys.model.domain.product.ProductInstanceLocation;
+import de.dfki.iui.basys.model.domain.product.ProductInstanceLocationEvent;
 import de.dfki.iui.basys.model.domain.product.ProductInstanceStatus;
 import de.dfki.iui.basys.model.domain.product.ProductInstanceStatusEnum;
+import de.dfki.iui.basys.model.domain.product.ProductInstanceStatusEvent;
 import de.dfki.iui.basys.model.domain.product.ProductPackage;
-import de.dfki.iui.basys.model.domain.product.ProductRecognition;
 import de.dfki.iui.basys.model.domain.product.ProductVariant;
-import de.dfki.iui.basys.model.domain.product.RecognitionEnum;
 
 import de.dfki.iui.basys.model.domain.staff.StaffPackage;
 
@@ -81,14 +87,28 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass productRecognitionEClass = null;
+	private EClass productInstanceStatusEventEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum recognitionEnumEEnum = null;
+	private EClass productInstanceLocationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass productInstanceLocationEventEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum productInstanceDetectionEnumEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -152,6 +172,7 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 		TopologyPackageImpl theTopologyPackage = (TopologyPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(TopologyPackage.eNS_URI) instanceof TopologyPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(TopologyPackage.eNS_URI) : TopologyPackage.eINSTANCE);
 		WorkerguidancePackageImpl theWorkerguidancePackage = (WorkerguidancePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkerguidancePackage.eNS_URI) instanceof WorkerguidancePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkerguidancePackage.eNS_URI) : WorkerguidancePackage.eINSTANCE);
 		WorkplanPackageImpl theWorkplanPackage = (WorkplanPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkplanPackage.eNS_URI) instanceof WorkplanPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkplanPackage.eNS_URI) : WorkplanPackage.eINSTANCE);
+		LinebalancingPackageImpl theLinebalancingPackage = (LinebalancingPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(LinebalancingPackage.eNS_URI) instanceof LinebalancingPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(LinebalancingPackage.eNS_URI) : LinebalancingPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theProductPackage.createPackageContents();
@@ -160,6 +181,7 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 		theTopologyPackage.createPackageContents();
 		theWorkerguidancePackage.createPackageContents();
 		theWorkplanPackage.createPackageContents();
+		theLinebalancingPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theProductPackage.initializePackageContents();
@@ -168,6 +190,7 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 		theTopologyPackage.initializePackageContents();
 		theWorkerguidancePackage.initializePackageContents();
 		theWorkplanPackage.initializePackageContents();
+		theLinebalancingPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theProductPackage.freeze();
@@ -185,6 +208,15 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 	 */
 	public EClass getProductGroup() {
 		return productGroupEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProductGroup_Name() {
+		return (EAttribute)productGroupEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -282,8 +314,8 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getProductInstanceStatus_WorkstepInstanceId() {
-		return (EAttribute)productInstanceStatusEClass.getEStructuralFeatures().get(2);
+	public EClass getProductInstanceStatusEvent() {
+		return productInstanceStatusEventEClass;
 	}
 
 	/**
@@ -291,8 +323,8 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getProductRecognition() {
-		return productRecognitionEClass;
+	public EClass getProductInstanceLocation() {
+		return productInstanceLocationEClass;
 	}
 
 	/**
@@ -300,8 +332,8 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getProductRecognition_EventType() {
-		return (EAttribute)productRecognitionEClass.getEStructuralFeatures().get(0);
+	public EAttribute getProductInstanceLocation_DetectionType() {
+		return (EAttribute)productInstanceLocationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -309,8 +341,8 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getProductRecognition_ProductInstanceId() {
-		return (EAttribute)productRecognitionEClass.getEStructuralFeatures().get(1);
+	public EAttribute getProductInstanceLocation_ProductInstanceId() {
+		return (EAttribute)productInstanceLocationEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -318,8 +350,8 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getProductRecognition_ComponentId() {
-		return (EAttribute)productRecognitionEClass.getEStructuralFeatures().get(2);
+	public EAttribute getProductInstanceLocation_ComponentId() {
+		return (EAttribute)productInstanceLocationEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -327,8 +359,17 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EEnum getRecognitionEnum() {
-		return recognitionEnumEEnum;
+	public EClass getProductInstanceLocationEvent() {
+		return productInstanceLocationEventEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getProductInstanceDetectionEnum() {
+		return productInstanceDetectionEnumEEnum;
 	}
 
 	/**
@@ -369,6 +410,7 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 
 		// Create classes and their features
 		productGroupEClass = createEClass(PRODUCT_GROUP);
+		createEAttribute(productGroupEClass, PRODUCT_GROUP__NAME);
 
 		productVariantEClass = createEClass(PRODUCT_VARIANT);
 		createEAttribute(productVariantEClass, PRODUCT_VARIANT__NAME);
@@ -382,15 +424,18 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 		productInstanceStatusEClass = createEClass(PRODUCT_INSTANCE_STATUS);
 		createEAttribute(productInstanceStatusEClass, PRODUCT_INSTANCE_STATUS__PRODUCT_INSTANCE_ID);
 		createEAttribute(productInstanceStatusEClass, PRODUCT_INSTANCE_STATUS__STATUS);
-		createEAttribute(productInstanceStatusEClass, PRODUCT_INSTANCE_STATUS__WORKSTEP_INSTANCE_ID);
 
-		productRecognitionEClass = createEClass(PRODUCT_RECOGNITION);
-		createEAttribute(productRecognitionEClass, PRODUCT_RECOGNITION__EVENT_TYPE);
-		createEAttribute(productRecognitionEClass, PRODUCT_RECOGNITION__PRODUCT_INSTANCE_ID);
-		createEAttribute(productRecognitionEClass, PRODUCT_RECOGNITION__COMPONENT_ID);
+		productInstanceStatusEventEClass = createEClass(PRODUCT_INSTANCE_STATUS_EVENT);
+
+		productInstanceLocationEClass = createEClass(PRODUCT_INSTANCE_LOCATION);
+		createEAttribute(productInstanceLocationEClass, PRODUCT_INSTANCE_LOCATION__DETECTION_TYPE);
+		createEAttribute(productInstanceLocationEClass, PRODUCT_INSTANCE_LOCATION__PRODUCT_INSTANCE_ID);
+		createEAttribute(productInstanceLocationEClass, PRODUCT_INSTANCE_LOCATION__COMPONENT_ID);
+
+		productInstanceLocationEventEClass = createEClass(PRODUCT_INSTANCE_LOCATION_EVENT);
 
 		// Create enums
-		recognitionEnumEEnum = createEEnum(RECOGNITION_ENUM);
+		productInstanceDetectionEnumEEnum = createEEnum(PRODUCT_INSTANCE_DETECTION_ENUM);
 		productInstanceStatusEnumEEnum = createEEnum(PRODUCT_INSTANCE_STATUS_ENUM);
 	}
 
@@ -429,10 +474,15 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 		productVariantEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
 		productInstanceEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
 		productInstanceStatusEClass.getESuperTypes().add(theBasePackage.getEntity());
-		productRecognitionEClass.getESuperTypes().add(theBasePackage.getEntity());
+		productInstanceStatusEventEClass.getESuperTypes().add(theBasePackage.getEvent());
+		productInstanceStatusEventEClass.getESuperTypes().add(this.getProductInstanceStatus());
+		productInstanceLocationEClass.getESuperTypes().add(theBasePackage.getEntity());
+		productInstanceLocationEventEClass.getESuperTypes().add(this.getProductInstanceLocation());
+		productInstanceLocationEventEClass.getESuperTypes().add(theBasePackage.getEvent());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(productGroupEClass, ProductGroup.class, "ProductGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getProductGroup_Name(), ecorePackage.getEString(), "name", null, 0, 1, ProductGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(productVariantEClass, ProductVariant.class, "ProductVariant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProductVariant_Name(), ecorePackage.getEString(), "name", null, 0, 1, ProductVariant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -446,18 +496,21 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 		initEClass(productInstanceStatusEClass, ProductInstanceStatus.class, "ProductInstanceStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProductInstanceStatus_ProductInstanceId(), ecorePackage.getEString(), "productInstanceId", null, 0, 1, ProductInstanceStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProductInstanceStatus_Status(), this.getProductInstanceStatusEnum(), "status", null, 0, 1, ProductInstanceStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getProductInstanceStatus_WorkstepInstanceId(), ecorePackage.getEString(), "workstepInstanceId", null, 0, 1, ProductInstanceStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(productRecognitionEClass, ProductRecognition.class, "ProductRecognition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getProductRecognition_EventType(), this.getRecognitionEnum(), "eventType", null, 0, 1, ProductRecognition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getProductRecognition_ProductInstanceId(), ecorePackage.getEString(), "productInstanceId", null, 0, 1, ProductRecognition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getProductRecognition_ComponentId(), ecorePackage.getEString(), "componentId", null, 0, 1, ProductRecognition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(productInstanceStatusEventEClass, ProductInstanceStatusEvent.class, "ProductInstanceStatusEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(productInstanceLocationEClass, ProductInstanceLocation.class, "ProductInstanceLocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getProductInstanceLocation_DetectionType(), this.getProductInstanceDetectionEnum(), "detectionType", null, 0, 1, ProductInstanceLocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProductInstanceLocation_ProductInstanceId(), ecorePackage.getEString(), "productInstanceId", null, 0, 1, ProductInstanceLocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProductInstanceLocation_ComponentId(), ecorePackage.getEString(), "componentId", null, 0, 1, ProductInstanceLocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(productInstanceLocationEventEClass, ProductInstanceLocationEvent.class, "ProductInstanceLocationEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize enums and add enum literals
-		initEEnum(recognitionEnumEEnum, RecognitionEnum.class, "RecognitionEnum");
-		addEEnumLiteral(recognitionEnumEEnum, RecognitionEnum.UNKNOWN);
-		addEEnumLiteral(recognitionEnumEEnum, RecognitionEnum.PRESENT);
-		addEEnumLiteral(recognitionEnumEEnum, RecognitionEnum.IN_TRANSIT);
+		initEEnum(productInstanceDetectionEnumEEnum, ProductInstanceDetectionEnum.class, "ProductInstanceDetectionEnum");
+		addEEnumLiteral(productInstanceDetectionEnumEEnum, ProductInstanceDetectionEnum.UNKNOWN);
+		addEEnumLiteral(productInstanceDetectionEnumEEnum, ProductInstanceDetectionEnum.PRESENT);
+		addEEnumLiteral(productInstanceDetectionEnumEEnum, ProductInstanceDetectionEnum.IN_TRANSIT);
 
 		initEEnum(productInstanceStatusEnumEEnum, ProductInstanceStatusEnum.class, "ProductInstanceStatusEnum");
 		addEEnumLiteral(productInstanceStatusEnumEEnum, ProductInstanceStatusEnum.UNKNOWN);

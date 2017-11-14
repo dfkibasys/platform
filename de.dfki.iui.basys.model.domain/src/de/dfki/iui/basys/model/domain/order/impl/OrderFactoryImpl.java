@@ -59,6 +59,7 @@ public class OrderFactoryImpl extends EFactoryImpl implements OrderFactory {
 		switch (eClass.getClassifierID()) {
 			case OrderPackage.ORDER: return createOrder();
 			case OrderPackage.ORDER_STATUS: return createOrderStatus();
+			case OrderPackage.ORDER_STATUS_CHANGE_EVENT: return createOrderStatusChangeEvent();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -112,6 +113,16 @@ public class OrderFactoryImpl extends EFactoryImpl implements OrderFactory {
 	public OrderStatus createOrderStatus() {
 		OrderStatusImpl orderStatus = new OrderStatusImpl();
 		return orderStatus;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OrderStatusChangeEvent createOrderStatusChangeEvent() {
+		OrderStatusChangeEventImpl orderStatusChangeEvent = new OrderStatusChangeEventImpl();
+		return orderStatusChangeEvent;
 	}
 
 	/**

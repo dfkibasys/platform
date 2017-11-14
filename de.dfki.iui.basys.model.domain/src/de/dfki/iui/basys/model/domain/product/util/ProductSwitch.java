@@ -3,6 +3,7 @@
 package de.dfki.iui.basys.model.domain.product.util;
 
 import de.dfki.iui.basys.model.base.Entity;
+import de.dfki.iui.basys.model.base.Event;
 import de.dfki.iui.basys.model.base.IdentifiableEntity;
 
 import de.dfki.iui.basys.model.domain.product.*;
@@ -100,10 +101,28 @@ public class ProductSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ProductPackage.PRODUCT_RECOGNITION: {
-				ProductRecognition productRecognition = (ProductRecognition)theEObject;
-				T result = caseProductRecognition(productRecognition);
-				if (result == null) result = caseEntity(productRecognition);
+			case ProductPackage.PRODUCT_INSTANCE_STATUS_EVENT: {
+				ProductInstanceStatusEvent productInstanceStatusEvent = (ProductInstanceStatusEvent)theEObject;
+				T result = caseProductInstanceStatusEvent(productInstanceStatusEvent);
+				if (result == null) result = caseEvent(productInstanceStatusEvent);
+				if (result == null) result = caseProductInstanceStatus(productInstanceStatusEvent);
+				if (result == null) result = caseEntity(productInstanceStatusEvent);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ProductPackage.PRODUCT_INSTANCE_LOCATION: {
+				ProductInstanceLocation productInstanceLocation = (ProductInstanceLocation)theEObject;
+				T result = caseProductInstanceLocation(productInstanceLocation);
+				if (result == null) result = caseEntity(productInstanceLocation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ProductPackage.PRODUCT_INSTANCE_LOCATION_EVENT: {
+				ProductInstanceLocationEvent productInstanceLocationEvent = (ProductInstanceLocationEvent)theEObject;
+				T result = caseProductInstanceLocationEvent(productInstanceLocationEvent);
+				if (result == null) result = caseProductInstanceLocation(productInstanceLocationEvent);
+				if (result == null) result = caseEvent(productInstanceLocationEvent);
+				if (result == null) result = caseEntity(productInstanceLocationEvent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -172,17 +191,47 @@ public class ProductSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Recognition</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Instance Status Event</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Recognition</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Instance Status Event</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseProductRecognition(ProductRecognition object) {
+	public T caseProductInstanceStatusEvent(ProductInstanceStatusEvent object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Instance Location</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Instance Location</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseProductInstanceLocation(ProductInstanceLocation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Instance Location Event</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Instance Location Event</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseProductInstanceLocationEvent(ProductInstanceLocationEvent object) {
 		return null;
 	}
 
@@ -213,6 +262,21 @@ public class ProductSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseIdentifiableEntity(IdentifiableEntity object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Event</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Event</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEvent(Event object) {
 		return null;
 	}
 

@@ -164,26 +164,72 @@ public class ProductItemProviderAdapterFactory extends ProductAdapterFactory imp
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.product.ProductRecognition} instances.
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.product.ProductInstanceStatusEvent} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ProductRecognitionItemProvider productRecognitionItemProvider;
+	protected ProductInstanceStatusEventItemProvider productInstanceStatusEventItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.product.ProductRecognition}.
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.product.ProductInstanceStatusEvent}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createProductRecognitionAdapter() {
-		if (productRecognitionItemProvider == null) {
-			productRecognitionItemProvider = new ProductRecognitionItemProvider(this);
+	public Adapter createProductInstanceStatusEventAdapter() {
+		if (productInstanceStatusEventItemProvider == null) {
+			productInstanceStatusEventItemProvider = new ProductInstanceStatusEventItemProvider(this);
 		}
 
-		return productRecognitionItemProvider;
+		return productInstanceStatusEventItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.product.ProductInstanceLocation} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ProductInstanceLocationItemProvider productInstanceLocationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.product.ProductInstanceLocation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createProductInstanceLocationAdapter() {
+		if (productInstanceLocationItemProvider == null) {
+			productInstanceLocationItemProvider = new ProductInstanceLocationItemProvider(this);
+		}
+
+		return productInstanceLocationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.product.ProductInstanceLocationEvent} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ProductInstanceLocationEventItemProvider productInstanceLocationEventItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.product.ProductInstanceLocationEvent}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createProductInstanceLocationEventAdapter() {
+		if (productInstanceLocationEventItemProvider == null) {
+			productInstanceLocationEventItemProvider = new ProductInstanceLocationEventItemProvider(this);
+		}
+
+		return productInstanceLocationEventItemProvider;
 	}
 
 	/**
@@ -289,7 +335,9 @@ public class ProductItemProviderAdapterFactory extends ProductAdapterFactory imp
 		if (productVariantItemProvider != null) productVariantItemProvider.dispose();
 		if (productInstanceItemProvider != null) productInstanceItemProvider.dispose();
 		if (productInstanceStatusItemProvider != null) productInstanceStatusItemProvider.dispose();
-		if (productRecognitionItemProvider != null) productRecognitionItemProvider.dispose();
+		if (productInstanceStatusEventItemProvider != null) productInstanceStatusEventItemProvider.dispose();
+		if (productInstanceLocationItemProvider != null) productInstanceLocationItemProvider.dispose();
+		if (productInstanceLocationEventItemProvider != null) productInstanceLocationEventItemProvider.dispose();
 	}
 
 }

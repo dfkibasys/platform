@@ -394,6 +394,29 @@ public class TopologyItemProviderAdapterFactory extends TopologyAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.Transition} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TransitionItemProvider transitionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.Transition}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTransitionAdapter() {
+		if (transitionItemProvider == null) {
+			transitionItemProvider = new TransitionItemProvider(this);
+		}
+
+		return transitionItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -506,6 +529,7 @@ public class TopologyItemProviderAdapterFactory extends TopologyAdapterFactory i
 		if (controlModuleItemProvider != null) controlModuleItemProvider.dispose();
 		if (productionLineSectionItemProvider != null) productionLineSectionItemProvider.dispose();
 		if (stationItemProvider != null) stationItemProvider.dispose();
+		if (transitionItemProvider != null) transitionItemProvider.dispose();
 	}
 
 }

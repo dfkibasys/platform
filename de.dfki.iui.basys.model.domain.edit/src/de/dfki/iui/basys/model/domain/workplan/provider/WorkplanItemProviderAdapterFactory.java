@@ -118,26 +118,49 @@ public class WorkplanItemProviderAdapterFactory extends WorkplanAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceChangeEvent} instances.
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatus} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected WorkstepInstanceChangeEventItemProvider workstepInstanceChangeEventItemProvider;
+	protected WorkstepInstanceStatusItemProvider workstepInstanceStatusItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceChangeEvent}.
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatus}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createWorkstepInstanceChangeEventAdapter() {
-		if (workstepInstanceChangeEventItemProvider == null) {
-			workstepInstanceChangeEventItemProvider = new WorkstepInstanceChangeEventItemProvider(this);
+	public Adapter createWorkstepInstanceStatusAdapter() {
+		if (workstepInstanceStatusItemProvider == null) {
+			workstepInstanceStatusItemProvider = new WorkstepInstanceStatusItemProvider(this);
 		}
 
-		return workstepInstanceChangeEventItemProvider;
+		return workstepInstanceStatusItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatusChangeEvent} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected WorkstepInstanceStatusChangeEventItemProvider workstepInstanceStatusChangeEventItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatusChangeEvent}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createWorkstepInstanceStatusChangeEventAdapter() {
+		if (workstepInstanceStatusChangeEventItemProvider == null) {
+			workstepInstanceStatusChangeEventItemProvider = new WorkstepInstanceStatusChangeEventItemProvider(this);
+		}
+
+		return workstepInstanceStatusChangeEventItemProvider;
 	}
 
 	/**
@@ -264,7 +287,8 @@ public class WorkplanItemProviderAdapterFactory extends WorkplanAdapterFactory i
 	public void dispose() {
 		if (workplanInstanceItemProvider != null) workplanInstanceItemProvider.dispose();
 		if (workstepInstanceItemProvider != null) workstepInstanceItemProvider.dispose();
-		if (workstepInstanceChangeEventItemProvider != null) workstepInstanceChangeEventItemProvider.dispose();
+		if (workstepInstanceStatusItemProvider != null) workstepInstanceStatusItemProvider.dispose();
+		if (workstepInstanceStatusChangeEventItemProvider != null) workstepInstanceStatusChangeEventItemProvider.dispose();
 		if (durationItemProvider != null) durationItemProvider.dispose();
 	}
 

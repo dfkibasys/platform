@@ -4,9 +4,10 @@ package de.dfki.iui.basys.model.domain.staff.impl;
 
 import de.dfki.iui.basys.model.base.impl.EntityImpl;
 
+import de.dfki.iui.basys.model.domain.staff.Ability;
 import de.dfki.iui.basys.model.domain.staff.StaffPackage;
-import de.dfki.iui.basys.model.domain.staff.StaffSkill;
 import de.dfki.iui.basys.model.domain.staff.StaffSkills;
+import de.dfki.iui.basys.model.domain.staff.WorkstepSkill;
 
 import java.util.Collection;
 
@@ -32,7 +33,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link de.dfki.iui.basys.model.domain.staff.impl.StaffSkillsImpl#getWorkerId <em>Worker Id</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.domain.staff.impl.StaffSkillsImpl#getSkills <em>Skills</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.staff.impl.StaffSkillsImpl#getWorkstepSkills <em>Workstep Skills</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.staff.impl.StaffSkillsImpl#getAbilities <em>Abilities</em>}</li>
  * </ul>
  *
  * @generated
@@ -59,14 +61,24 @@ public class StaffSkillsImpl extends EntityImpl implements StaffSkills {
 	protected String workerId = WORKER_ID_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getSkills() <em>Skills</em>}' containment reference list.
+	 * The cached value of the '{@link #getWorkstepSkills() <em>Workstep Skills</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSkills()
+	 * @see #getWorkstepSkills()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<StaffSkill> skills;
+	protected EList<WorkstepSkill> workstepSkills;
+
+	/**
+	 * The cached value of the '{@link #getAbilities() <em>Abilities</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAbilities()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Ability> abilities;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -113,11 +125,23 @@ public class StaffSkillsImpl extends EntityImpl implements StaffSkills {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<StaffSkill> getSkills() {
-		if (skills == null) {
-			skills = new EObjectContainmentEList<StaffSkill>(StaffSkill.class, this, StaffPackage.STAFF_SKILLS__SKILLS);
+	public EList<WorkstepSkill> getWorkstepSkills() {
+		if (workstepSkills == null) {
+			workstepSkills = new EObjectContainmentEList<WorkstepSkill>(WorkstepSkill.class, this, StaffPackage.STAFF_SKILLS__WORKSTEP_SKILLS);
 		}
-		return skills;
+		return workstepSkills;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Ability> getAbilities() {
+		if (abilities == null) {
+			abilities = new EObjectContainmentEList<Ability>(Ability.class, this, StaffPackage.STAFF_SKILLS__ABILITIES);
+		}
+		return abilities;
 	}
 
 	/**
@@ -128,8 +152,10 @@ public class StaffSkillsImpl extends EntityImpl implements StaffSkills {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case StaffPackage.STAFF_SKILLS__SKILLS:
-				return ((InternalEList<?>)getSkills()).basicRemove(otherEnd, msgs);
+			case StaffPackage.STAFF_SKILLS__WORKSTEP_SKILLS:
+				return ((InternalEList<?>)getWorkstepSkills()).basicRemove(otherEnd, msgs);
+			case StaffPackage.STAFF_SKILLS__ABILITIES:
+				return ((InternalEList<?>)getAbilities()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -144,8 +170,10 @@ public class StaffSkillsImpl extends EntityImpl implements StaffSkills {
 		switch (featureID) {
 			case StaffPackage.STAFF_SKILLS__WORKER_ID:
 				return getWorkerId();
-			case StaffPackage.STAFF_SKILLS__SKILLS:
-				return getSkills();
+			case StaffPackage.STAFF_SKILLS__WORKSTEP_SKILLS:
+				return getWorkstepSkills();
+			case StaffPackage.STAFF_SKILLS__ABILITIES:
+				return getAbilities();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -162,9 +190,13 @@ public class StaffSkillsImpl extends EntityImpl implements StaffSkills {
 			case StaffPackage.STAFF_SKILLS__WORKER_ID:
 				setWorkerId((String)newValue);
 				return;
-			case StaffPackage.STAFF_SKILLS__SKILLS:
-				getSkills().clear();
-				getSkills().addAll((Collection<? extends StaffSkill>)newValue);
+			case StaffPackage.STAFF_SKILLS__WORKSTEP_SKILLS:
+				getWorkstepSkills().clear();
+				getWorkstepSkills().addAll((Collection<? extends WorkstepSkill>)newValue);
+				return;
+			case StaffPackage.STAFF_SKILLS__ABILITIES:
+				getAbilities().clear();
+				getAbilities().addAll((Collection<? extends Ability>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -181,8 +213,11 @@ public class StaffSkillsImpl extends EntityImpl implements StaffSkills {
 			case StaffPackage.STAFF_SKILLS__WORKER_ID:
 				setWorkerId(WORKER_ID_EDEFAULT);
 				return;
-			case StaffPackage.STAFF_SKILLS__SKILLS:
-				getSkills().clear();
+			case StaffPackage.STAFF_SKILLS__WORKSTEP_SKILLS:
+				getWorkstepSkills().clear();
+				return;
+			case StaffPackage.STAFF_SKILLS__ABILITIES:
+				getAbilities().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -198,8 +233,10 @@ public class StaffSkillsImpl extends EntityImpl implements StaffSkills {
 		switch (featureID) {
 			case StaffPackage.STAFF_SKILLS__WORKER_ID:
 				return WORKER_ID_EDEFAULT == null ? workerId != null : !WORKER_ID_EDEFAULT.equals(workerId);
-			case StaffPackage.STAFF_SKILLS__SKILLS:
-				return skills != null && !skills.isEmpty();
+			case StaffPackage.STAFF_SKILLS__WORKSTEP_SKILLS:
+				return workstepSkills != null && !workstepSkills.isEmpty();
+			case StaffPackage.STAFF_SKILLS__ABILITIES:
+				return abilities != null && !abilities.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

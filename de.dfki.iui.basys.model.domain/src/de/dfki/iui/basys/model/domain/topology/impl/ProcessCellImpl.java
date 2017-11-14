@@ -2,8 +2,6 @@
  */
 package de.dfki.iui.basys.model.domain.topology.impl;
 
-import de.dfki.iui.basys.model.base.impl.IdentifiableEntityImpl;
-
 import de.dfki.iui.basys.model.domain.topology.ProcessCell;
 import de.dfki.iui.basys.model.domain.topology.TopologyPackage;
 import de.dfki.iui.basys.model.domain.topology.Unit;
@@ -33,7 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class ProcessCellImpl extends IdentifiableEntityImpl implements ProcessCell {
+public class ProcessCellImpl extends WorkCenterImpl implements ProcessCell {
 	/**
 	 * The cached value of the '{@link #getUnits() <em>Units</em>}' containment reference list.
 	 * <!-- begin-user-doc -->

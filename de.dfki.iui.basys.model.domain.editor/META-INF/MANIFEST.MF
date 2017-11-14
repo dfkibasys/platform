@@ -8,7 +8,8 @@ Bundle-Activator: de.dfki.iui.basys.model.domain.order.presentation.DomainEditor
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: de.dfki.iui.basys.model.domain.order.presentation,
+Export-Package: de.dfki.iui.basys.model.domain.linebalancing.presentation,
+ de.dfki.iui.basys.model.domain.order.presentation,
  de.dfki.iui.basys.model.domain.product.presentation,
  de.dfki.iui.basys.model.domain.staff.presentation,
  de.dfki.iui.basys.model.domain.topology.presentation,

@@ -61,7 +61,9 @@ public class ProductFactoryImpl extends EFactoryImpl implements ProductFactory {
 			case ProductPackage.PRODUCT_VARIANT: return createProductVariant();
 			case ProductPackage.PRODUCT_INSTANCE: return createProductInstance();
 			case ProductPackage.PRODUCT_INSTANCE_STATUS: return createProductInstanceStatus();
-			case ProductPackage.PRODUCT_RECOGNITION: return createProductRecognition();
+			case ProductPackage.PRODUCT_INSTANCE_STATUS_EVENT: return createProductInstanceStatusEvent();
+			case ProductPackage.PRODUCT_INSTANCE_LOCATION: return createProductInstanceLocation();
+			case ProductPackage.PRODUCT_INSTANCE_LOCATION_EVENT: return createProductInstanceLocationEvent();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -75,8 +77,8 @@ public class ProductFactoryImpl extends EFactoryImpl implements ProductFactory {
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case ProductPackage.RECOGNITION_ENUM:
-				return createRecognitionEnumFromString(eDataType, initialValue);
+			case ProductPackage.PRODUCT_INSTANCE_DETECTION_ENUM:
+				return createProductInstanceDetectionEnumFromString(eDataType, initialValue);
 			case ProductPackage.PRODUCT_INSTANCE_STATUS_ENUM:
 				return createProductInstanceStatusEnumFromString(eDataType, initialValue);
 			default:
@@ -92,8 +94,8 @@ public class ProductFactoryImpl extends EFactoryImpl implements ProductFactory {
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case ProductPackage.RECOGNITION_ENUM:
-				return convertRecognitionEnumToString(eDataType, instanceValue);
+			case ProductPackage.PRODUCT_INSTANCE_DETECTION_ENUM:
+				return convertProductInstanceDetectionEnumToString(eDataType, instanceValue);
 			case ProductPackage.PRODUCT_INSTANCE_STATUS_ENUM:
 				return convertProductInstanceStatusEnumToString(eDataType, instanceValue);
 			default:
@@ -146,9 +148,9 @@ public class ProductFactoryImpl extends EFactoryImpl implements ProductFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProductRecognition createProductRecognition() {
-		ProductRecognitionImpl productRecognition = new ProductRecognitionImpl();
-		return productRecognition;
+	public ProductInstanceStatusEvent createProductInstanceStatusEvent() {
+		ProductInstanceStatusEventImpl productInstanceStatusEvent = new ProductInstanceStatusEventImpl();
+		return productInstanceStatusEvent;
 	}
 
 	/**
@@ -156,8 +158,28 @@ public class ProductFactoryImpl extends EFactoryImpl implements ProductFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public RecognitionEnum createRecognitionEnumFromString(EDataType eDataType, String initialValue) {
-		RecognitionEnum result = RecognitionEnum.get(initialValue);
+	public ProductInstanceLocation createProductInstanceLocation() {
+		ProductInstanceLocationImpl productInstanceLocation = new ProductInstanceLocationImpl();
+		return productInstanceLocation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ProductInstanceLocationEvent createProductInstanceLocationEvent() {
+		ProductInstanceLocationEventImpl productInstanceLocationEvent = new ProductInstanceLocationEventImpl();
+		return productInstanceLocationEvent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ProductInstanceDetectionEnum createProductInstanceDetectionEnumFromString(EDataType eDataType, String initialValue) {
+		ProductInstanceDetectionEnum result = ProductInstanceDetectionEnum.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -167,7 +189,7 @@ public class ProductFactoryImpl extends EFactoryImpl implements ProductFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertRecognitionEnumToString(EDataType eDataType, Object instanceValue) {
+	public String convertProductInstanceDetectionEnumToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

@@ -2,27 +2,17 @@
  */
 package de.dfki.iui.basys.model.domain.topology.impl;
 
-import de.dfki.iui.basys.model.base.impl.IdentifiableEntityImpl;
-
-import de.dfki.iui.basys.model.domain.topology.EquipmentModule;
 import de.dfki.iui.basys.model.domain.topology.Station;
 import de.dfki.iui.basys.model.domain.topology.TopologyPackage;
 import de.dfki.iui.basys.model.domain.topology.WorkCell;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,23 +22,12 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.dfki.iui.basys.model.domain.topology.impl.WorkCellImpl#getEquipmentModules <em>Equipment Modules</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.topology.impl.WorkCellImpl#getStations <em>Stations</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class WorkCellImpl extends IdentifiableEntityImpl implements WorkCell {
-	/**
-	 * The cached value of the '{@link #getEquipmentModules() <em>Equipment Modules</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEquipmentModules()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<EquipmentModule> equipmentModules;
-
+public class WorkCellImpl extends WorkUnitImpl implements WorkCell {
 	/**
 	 * The cached value of the '{@link #getStations() <em>Stations</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -76,18 +55,6 @@ public class WorkCellImpl extends IdentifiableEntityImpl implements WorkCell {
 	@Override
 	protected EClass eStaticClass() {
 		return TopologyPackage.Literals.WORK_CELL;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<EquipmentModule> getEquipmentModules() {
-		if (equipmentModules == null) {
-			equipmentModules = new EObjectContainmentEList<EquipmentModule>(EquipmentModule.class, this, TopologyPackage.WORK_CELL__EQUIPMENT_MODULES);
-		}
-		return equipmentModules;
 	}
 
 	/**
@@ -141,8 +108,6 @@ public class WorkCellImpl extends IdentifiableEntityImpl implements WorkCell {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case TopologyPackage.WORK_CELL__EQUIPMENT_MODULES:
-				return ((InternalEList<?>)getEquipmentModules()).basicRemove(otherEnd, msgs);
 			case TopologyPackage.WORK_CELL__STATIONS:
 				return basicSetStations(null, msgs);
 		}
@@ -157,8 +122,6 @@ public class WorkCellImpl extends IdentifiableEntityImpl implements WorkCell {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case TopologyPackage.WORK_CELL__EQUIPMENT_MODULES:
-				return getEquipmentModules();
 			case TopologyPackage.WORK_CELL__STATIONS:
 				return getStations();
 		}
@@ -170,14 +133,9 @@ public class WorkCellImpl extends IdentifiableEntityImpl implements WorkCell {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case TopologyPackage.WORK_CELL__EQUIPMENT_MODULES:
-				getEquipmentModules().clear();
-				getEquipmentModules().addAll((Collection<? extends EquipmentModule>)newValue);
-				return;
 			case TopologyPackage.WORK_CELL__STATIONS:
 				setStations((Station)newValue);
 				return;
@@ -193,9 +151,6 @@ public class WorkCellImpl extends IdentifiableEntityImpl implements WorkCell {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case TopologyPackage.WORK_CELL__EQUIPMENT_MODULES:
-				getEquipmentModules().clear();
-				return;
 			case TopologyPackage.WORK_CELL__STATIONS:
 				setStations((Station)null);
 				return;
@@ -211,8 +166,6 @@ public class WorkCellImpl extends IdentifiableEntityImpl implements WorkCell {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case TopologyPackage.WORK_CELL__EQUIPMENT_MODULES:
-				return equipmentModules != null && !equipmentModules.isEmpty();
 			case TopologyPackage.WORK_CELL__STATIONS:
 				return stations != null;
 		}
