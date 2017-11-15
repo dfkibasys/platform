@@ -35,7 +35,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="productInstanceId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" eType="#//ProductInstanceStatusEnum"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ProductInstanceStatusEvent" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Event #//ProductInstanceStatus"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ProductInstanceStatusEvent" eSuperTypes="#//ProductInstanceStatus">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestamp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ProductInstanceLocation" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="detectionType" eType="#//ProductInstanceDetectionEnum"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="productInstanceId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -45,7 +47,9 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ProductInstanceLocationEvent" eSuperTypes="#//ProductInstanceLocation ../../de.dfki.iui.basys.model.base/model/base.ecore#//Event"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ProductInstanceLocationEvent" eSuperTypes="#//ProductInstanceLocation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestamp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ProductInstanceDetectionEnum">
     <eLiterals name="UNKNOWN" literal="UNKNOWN"/>
     <eLiterals name="PRESENT" value="1"/>

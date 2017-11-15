@@ -35,7 +35,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" eType="#//OrderStatusEnum"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="pieceCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="OrderStatusChangeEvent" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Event #//OrderStatus"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OrderStatusChangeEvent" eSuperTypes="#//OrderStatus">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestamp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="OrderStatusEnum">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Weitere Literale?"/>

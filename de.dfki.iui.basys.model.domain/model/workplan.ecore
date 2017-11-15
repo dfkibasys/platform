@@ -27,7 +27,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="productInstanceId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="workstepInstanceId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WorkstepInstanceStatusChangeEvent" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Event #//WorkstepInstanceStatus"/>
+  <eClassifiers xsi:type="ecore:EClass" name="WorkstepInstanceStatusChangeEvent" eSuperTypes="#//WorkstepInstanceStatus">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestamp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Duration">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="workstepInstanceId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="agentId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
