@@ -40,7 +40,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Unit" eSuperTypes="#//WorkUnit"/>
   <eClassifiers xsi:type="ecore:EClass" name="WorkCell" eSuperTypes="#//WorkUnit">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="stations" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stations" upperBound="-1"
         eType="#//Station" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StorageUnit" eSuperTypes="#//WorkUnit"/>
@@ -62,7 +62,7 @@
       <details key="documentation" value="Logische Unterteilung einer Linie in Abschnitte. Gibts so noch nicht in ISA95."/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Station">
+  <eClassifiers xsi:type="ecore:EClass" name="Station" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//IdentifiableEntity">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Äquivalent zu oder Spezialisierung zu WorkCell?"/>
     </eAnnotations>
@@ -73,5 +73,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="componentId_src" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="componentId_target" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="distance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AssemblyStation" eSuperTypes="#//Station"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BufferStation" eSuperTypes="#//Station">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="capacity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
 </ecore:EPackage>

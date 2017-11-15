@@ -30,7 +30,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="WorkstepInstanceStatusChangeEvent" eSuperTypes="#//WorkstepInstanceStatus">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestamp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Duration">
+  <eClassifiers xsi:type="ecore:EClass" name="Duration"  eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="workstepInstanceId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="agentId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="average" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
@@ -43,5 +43,6 @@
     <eLiterals name="REPEATING" value="3"/>
     <eLiterals name="FINISHED" value="4"/>
     <eLiterals name="ABORTED" value="5"/>
+    <eLiterals name="RESUMED" value="6"/>
   </eClassifiers>
 </ecore:EPackage>
