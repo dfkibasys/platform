@@ -291,6 +291,15 @@ public class WorkplanPackageImpl extends EPackageImpl implements WorkplanPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getWorkstepInstanceStatusChangeEvent_Timestamp() {
+		return (EAttribute)workstepInstanceStatusChangeEventEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDuration() {
 		return durationEClass;
 	}
@@ -383,6 +392,7 @@ public class WorkplanPackageImpl extends EPackageImpl implements WorkplanPackage
 		createEAttribute(workstepInstanceStatusEClass, WORKSTEP_INSTANCE_STATUS__WORKSTEP_INSTANCE_ID);
 
 		workstepInstanceStatusChangeEventEClass = createEClass(WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT);
+		createEAttribute(workstepInstanceStatusChangeEventEClass, WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT__TIMESTAMP);
 
 		durationEClass = createEClass(DURATION);
 		createEAttribute(durationEClass, DURATION__WORKSTEP_INSTANCE_ID);
@@ -428,8 +438,8 @@ public class WorkplanPackageImpl extends EPackageImpl implements WorkplanPackage
 		workplanInstanceEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
 		workstepInstanceEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
 		workstepInstanceStatusEClass.getESuperTypes().add(theBasePackage.getEntity());
-		workstepInstanceStatusChangeEventEClass.getESuperTypes().add(theBasePackage.getEvent());
 		workstepInstanceStatusChangeEventEClass.getESuperTypes().add(this.getWorkstepInstanceStatus());
+		durationEClass.getESuperTypes().add(theBasePackage.getEntity());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(workplanInstanceEClass, WorkplanInstance.class, "WorkplanInstance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -447,6 +457,7 @@ public class WorkplanPackageImpl extends EPackageImpl implements WorkplanPackage
 		initEAttribute(getWorkstepInstanceStatus_WorkstepInstanceId(), ecorePackage.getEString(), "workstepInstanceId", null, 0, 1, WorkstepInstanceStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(workstepInstanceStatusChangeEventEClass, WorkstepInstanceStatusChangeEvent.class, "WorkstepInstanceStatusChangeEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getWorkstepInstanceStatusChangeEvent_Timestamp(), ecorePackage.getEDate(), "timestamp", null, 0, 1, WorkstepInstanceStatusChangeEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(durationEClass, Duration.class, "Duration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDuration_WorkstepInstanceId(), ecorePackage.getEString(), "workstepInstanceId", null, 0, 1, Duration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -462,6 +473,7 @@ public class WorkplanPackageImpl extends EPackageImpl implements WorkplanPackage
 		addEEnumLiteral(workstepInstanceStatusEnumEEnum, WorkstepInstanceStatusEnum.REPEATING);
 		addEEnumLiteral(workstepInstanceStatusEnumEEnum, WorkstepInstanceStatusEnum.FINISHED);
 		addEEnumLiteral(workstepInstanceStatusEnumEEnum, WorkstepInstanceStatusEnum.ABORTED);
+		addEEnumLiteral(workstepInstanceStatusEnumEEnum, WorkstepInstanceStatusEnum.RESUMED);
 
 		// Create resource
 		createResource(eNS_URI);

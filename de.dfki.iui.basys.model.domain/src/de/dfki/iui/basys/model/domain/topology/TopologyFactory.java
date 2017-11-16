@@ -157,6 +157,24 @@ public interface TopologyFactory extends EFactory {
 	Transition createTransition();
 
 	/**
+	 * Returns a new object of class '<em>Assembly Station</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Assembly Station</em>'.
+	 * @generated
+	 */
+	AssemblyStation createAssemblyStation();
+
+	/**
+	 * Returns a new object of class '<em>Buffer Station</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Buffer Station</em>'.
+	 * @generated
+	 */
+	BufferStation createBufferStation();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

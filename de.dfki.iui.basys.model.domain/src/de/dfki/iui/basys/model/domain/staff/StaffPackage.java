@@ -223,16 +223,7 @@ public interface StaffPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STAFF_LOCATION_CHANGE_EVENT__METADATA = BasePackage.EVENT__METADATA;
-
-	/**
-	 * The feature id for the '<em><b>Timestamp</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STAFF_LOCATION_CHANGE_EVENT__TIMESTAMP = BasePackage.EVENT__TIMESTAMP;
+	int STAFF_LOCATION_CHANGE_EVENT__METADATA = STAFF_LOCATION__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Detection Type</b></em>' attribute.
@@ -241,7 +232,7 @@ public interface StaffPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STAFF_LOCATION_CHANGE_EVENT__DETECTION_TYPE = BasePackage.EVENT_FEATURE_COUNT + 0;
+	int STAFF_LOCATION_CHANGE_EVENT__DETECTION_TYPE = STAFF_LOCATION__DETECTION_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Staffid</b></em>' attribute.
@@ -250,7 +241,7 @@ public interface StaffPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STAFF_LOCATION_CHANGE_EVENT__STAFFID = BasePackage.EVENT_FEATURE_COUNT + 1;
+	int STAFF_LOCATION_CHANGE_EVENT__STAFFID = STAFF_LOCATION__STAFFID;
 
 	/**
 	 * The feature id for the '<em><b>Component Id</b></em>' attribute.
@@ -259,7 +250,16 @@ public interface StaffPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STAFF_LOCATION_CHANGE_EVENT__COMPONENT_ID = BasePackage.EVENT_FEATURE_COUNT + 2;
+	int STAFF_LOCATION_CHANGE_EVENT__COMPONENT_ID = STAFF_LOCATION__COMPONENT_ID;
+
+	/**
+	 * The feature id for the '<em><b>Timestamp</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAFF_LOCATION_CHANGE_EVENT__TIMESTAMP = STAFF_LOCATION_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Location Change Event</em>' class.
@@ -268,7 +268,7 @@ public interface StaffPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STAFF_LOCATION_CHANGE_EVENT_FEATURE_COUNT = BasePackage.EVENT_FEATURE_COUNT + 3;
+	int STAFF_LOCATION_CHANGE_EVENT_FEATURE_COUNT = STAFF_LOCATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Location Change Event</em>' class.
@@ -277,7 +277,7 @@ public interface StaffPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STAFF_LOCATION_CHANGE_EVENT_OPERATION_COUNT = BasePackage.EVENT_OPERATION_COUNT + 0;
+	int STAFF_LOCATION_CHANGE_EVENT_OPERATION_COUNT = STAFF_LOCATION_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.staff.impl.AbilityImpl <em>Ability</em>}' class.
@@ -591,6 +591,17 @@ public interface StaffPackage extends EPackage {
 	EClass getStaffLocationChangeEvent();
 
 	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.staff.StaffLocationChangeEvent#getTimestamp <em>Timestamp</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Timestamp</em>'.
+	 * @see de.dfki.iui.basys.model.domain.staff.StaffLocationChangeEvent#getTimestamp()
+	 * @see #getStaffLocationChangeEvent()
+	 * @generated
+	 */
+	EAttribute getStaffLocationChangeEvent_Timestamp();
+
+	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.staff.Ability <em>Ability</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -836,6 +847,14 @@ public interface StaffPackage extends EPackage {
 		 * @generated
 		 */
 		EClass STAFF_LOCATION_CHANGE_EVENT = eINSTANCE.getStaffLocationChangeEvent();
+
+		/**
+		 * The meta object literal for the '<em><b>Timestamp</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STAFF_LOCATION_CHANGE_EVENT__TIMESTAMP = eINSTANCE.getStaffLocationChangeEvent_Timestamp();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.staff.impl.AbilityImpl <em>Ability</em>}' class.

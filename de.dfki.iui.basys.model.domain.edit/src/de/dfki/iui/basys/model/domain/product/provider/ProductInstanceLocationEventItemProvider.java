@@ -3,8 +3,6 @@
 package de.dfki.iui.basys.model.domain.product.provider;
 
 
-import de.dfki.iui.basys.model.base.BasePackage;
-
 import de.dfki.iui.basys.model.domain.product.ProductInstanceDetectionEnum;
 import de.dfki.iui.basys.model.domain.product.ProductInstanceLocationEvent;
 import de.dfki.iui.basys.model.domain.product.ProductPackage;
@@ -64,9 +62,9 @@ public class ProductInstanceLocationEventItemProvider extends ProductInstanceLoc
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Event_timestamp_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Event_timestamp_feature", "_UI_Event_type"),
-				 BasePackage.Literals.EVENT__TIMESTAMP,
+				 getString("_UI_ProductInstanceLocationEvent_timestamp_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ProductInstanceLocationEvent_timestamp_feature", "_UI_ProductInstanceLocationEvent_type"),
+				 ProductPackage.Literals.PRODUCT_INSTANCE_LOCATION_EVENT__TIMESTAMP,
 				 true,
 				 false,
 				 false,

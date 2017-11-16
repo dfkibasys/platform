@@ -2,6 +2,8 @@
  */
 package de.dfki.iui.basys.model.domain.topology;
 
+import org.eclipse.emf.common.util.EList;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -21,29 +23,19 @@ package de.dfki.iui.basys.model.domain.topology;
  */
 public interface WorkCell extends WorkUnit {
 	/**
-	 * Returns the value of the '<em><b>Stations</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Stations</b></em>' containment reference list.
+	 * The list contents are of type {@link de.dfki.iui.basys.model.domain.topology.Station}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Stations</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Stations</em>' containment reference.
-	 * @see #setStations(Station)
+	 * @return the value of the '<em>Stations</em>' containment reference list.
 	 * @see de.dfki.iui.basys.model.domain.topology.TopologyPackage#getWorkCell_Stations()
-	 * @model containment="true" required="true"
+	 * @model containment="true"
 	 * @generated
 	 */
-	Station getStations();
-
-	/**
-	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.topology.WorkCell#getStations <em>Stations</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Stations</em>' containment reference.
-	 * @see #getStations()
-	 * @generated
-	 */
-	void setStations(Station value);
+	EList<Station> getStations();
 
 } // WorkCell

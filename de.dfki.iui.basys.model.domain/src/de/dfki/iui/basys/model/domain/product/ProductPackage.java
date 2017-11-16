@@ -323,16 +323,7 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_INSTANCE_STATUS_EVENT__METADATA = BasePackage.EVENT__METADATA;
-
-	/**
-	 * The feature id for the '<em><b>Timestamp</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRODUCT_INSTANCE_STATUS_EVENT__TIMESTAMP = BasePackage.EVENT__TIMESTAMP;
+	int PRODUCT_INSTANCE_STATUS_EVENT__METADATA = PRODUCT_INSTANCE_STATUS__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Product Instance Id</b></em>' attribute.
@@ -341,7 +332,7 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_INSTANCE_STATUS_EVENT__PRODUCT_INSTANCE_ID = BasePackage.EVENT_FEATURE_COUNT + 0;
+	int PRODUCT_INSTANCE_STATUS_EVENT__PRODUCT_INSTANCE_ID = PRODUCT_INSTANCE_STATUS__PRODUCT_INSTANCE_ID;
 
 	/**
 	 * The feature id for the '<em><b>Status</b></em>' attribute.
@@ -350,7 +341,16 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_INSTANCE_STATUS_EVENT__STATUS = BasePackage.EVENT_FEATURE_COUNT + 1;
+	int PRODUCT_INSTANCE_STATUS_EVENT__STATUS = PRODUCT_INSTANCE_STATUS__STATUS;
+
+	/**
+	 * The feature id for the '<em><b>Timestamp</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_INSTANCE_STATUS_EVENT__TIMESTAMP = PRODUCT_INSTANCE_STATUS_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Instance Status Event</em>' class.
@@ -359,7 +359,7 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_INSTANCE_STATUS_EVENT_FEATURE_COUNT = BasePackage.EVENT_FEATURE_COUNT + 2;
+	int PRODUCT_INSTANCE_STATUS_EVENT_FEATURE_COUNT = PRODUCT_INSTANCE_STATUS_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Instance Status Event</em>' class.
@@ -368,7 +368,7 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_INSTANCE_STATUS_EVENT_OPERATION_COUNT = BasePackage.EVENT_OPERATION_COUNT + 0;
+	int PRODUCT_INSTANCE_STATUS_EVENT_OPERATION_COUNT = PRODUCT_INSTANCE_STATUS_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.product.impl.ProductInstanceLocationImpl <em>Instance Location</em>}' class.
@@ -667,6 +667,17 @@ public interface ProductPackage extends EPackage {
 	EClass getProductInstanceStatusEvent();
 
 	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.product.ProductInstanceStatusEvent#getTimestamp <em>Timestamp</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Timestamp</em>'.
+	 * @see de.dfki.iui.basys.model.domain.product.ProductInstanceStatusEvent#getTimestamp()
+	 * @see #getProductInstanceStatusEvent()
+	 * @generated
+	 */
+	EAttribute getProductInstanceStatusEvent_Timestamp();
+
+	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.product.ProductInstanceLocation <em>Instance Location</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -718,6 +729,17 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getProductInstanceLocationEvent();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.product.ProductInstanceLocationEvent#getTimestamp <em>Timestamp</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Timestamp</em>'.
+	 * @see de.dfki.iui.basys.model.domain.product.ProductInstanceLocationEvent#getTimestamp()
+	 * @see #getProductInstanceLocationEvent()
+	 * @generated
+	 */
+	EAttribute getProductInstanceLocationEvent_Timestamp();
 
 	/**
 	 * Returns the meta object for enum '{@link de.dfki.iui.basys.model.domain.product.ProductInstanceDetectionEnum <em>Instance Detection Enum</em>}'.
@@ -877,6 +899,14 @@ public interface ProductPackage extends EPackage {
 		EClass PRODUCT_INSTANCE_STATUS_EVENT = eINSTANCE.getProductInstanceStatusEvent();
 
 		/**
+		 * The meta object literal for the '<em><b>Timestamp</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PRODUCT_INSTANCE_STATUS_EVENT__TIMESTAMP = eINSTANCE.getProductInstanceStatusEvent_Timestamp();
+
+		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.product.impl.ProductInstanceLocationImpl <em>Instance Location</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -919,6 +949,14 @@ public interface ProductPackage extends EPackage {
 		 * @generated
 		 */
 		EClass PRODUCT_INSTANCE_LOCATION_EVENT = eINSTANCE.getProductInstanceLocationEvent();
+
+		/**
+		 * The meta object literal for the '<em><b>Timestamp</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PRODUCT_INSTANCE_LOCATION_EVENT__TIMESTAMP = eINSTANCE.getProductInstanceLocationEvent_Timestamp();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.product.ProductInstanceDetectionEnum <em>Instance Detection Enum</em>}' enum.

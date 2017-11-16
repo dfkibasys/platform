@@ -6,13 +6,14 @@ import de.dfki.iui.basys.model.domain.topology.Station;
 import de.dfki.iui.basys.model.domain.topology.TopologyPackage;
 import de.dfki.iui.basys.model.domain.topology.WorkCell;
 
-import org.eclipse.emf.common.notify.Notification;
+import java.util.Collection;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,14 +30,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class WorkCellImpl extends WorkUnitImpl implements WorkCell {
 	/**
-	 * The cached value of the '{@link #getStations() <em>Stations</em>}' containment reference.
+	 * The cached value of the '{@link #getStations() <em>Stations</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getStations()
 	 * @generated
 	 * @ordered
 	 */
-	protected Station stations;
+	protected EList<Station> stations;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -62,42 +63,11 @@ public class WorkCellImpl extends WorkUnitImpl implements WorkCell {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Station getStations() {
+	public EList<Station> getStations() {
+		if (stations == null) {
+			stations = new EObjectContainmentEList<Station>(Station.class, this, TopologyPackage.WORK_CELL__STATIONS);
+		}
 		return stations;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetStations(Station newStations, NotificationChain msgs) {
-		Station oldStations = stations;
-		stations = newStations;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TopologyPackage.WORK_CELL__STATIONS, oldStations, newStations);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setStations(Station newStations) {
-		if (newStations != stations) {
-			NotificationChain msgs = null;
-			if (stations != null)
-				msgs = ((InternalEObject)stations).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TopologyPackage.WORK_CELL__STATIONS, null, msgs);
-			if (newStations != null)
-				msgs = ((InternalEObject)newStations).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TopologyPackage.WORK_CELL__STATIONS, null, msgs);
-			msgs = basicSetStations(newStations, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TopologyPackage.WORK_CELL__STATIONS, newStations, newStations));
 	}
 
 	/**
@@ -109,7 +79,7 @@ public class WorkCellImpl extends WorkUnitImpl implements WorkCell {
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case TopologyPackage.WORK_CELL__STATIONS:
-				return basicSetStations(null, msgs);
+				return ((InternalEList<?>)getStations()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -133,11 +103,13 @@ public class WorkCellImpl extends WorkUnitImpl implements WorkCell {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case TopologyPackage.WORK_CELL__STATIONS:
-				setStations((Station)newValue);
+				getStations().clear();
+				getStations().addAll((Collection<? extends Station>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -152,7 +124,7 @@ public class WorkCellImpl extends WorkUnitImpl implements WorkCell {
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case TopologyPackage.WORK_CELL__STATIONS:
-				setStations((Station)null);
+				getStations().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -167,7 +139,7 @@ public class WorkCellImpl extends WorkUnitImpl implements WorkCell {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case TopologyPackage.WORK_CELL__STATIONS:
-				return stations != null;
+				return stations != null && !stations.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

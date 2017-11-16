@@ -637,7 +637,7 @@ public interface TopologyPackage extends EPackage {
 	int WORK_CELL__EQUIPMENT_MODULES = WORK_UNIT__EQUIPMENT_MODULES;
 
 	/**
-	 * The feature id for the '<em><b>Stations</b></em>' containment reference.
+	 * The feature id for the '<em><b>Stations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -876,13 +876,31 @@ public interface TopologyPackage extends EPackage {
 	int STATION = 15;
 
 	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATION__METADATA = BasePackage.IDENTIFIABLE_ENTITY__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATION__ID = BasePackage.IDENTIFIABLE_ENTITY__ID;
+
+	/**
 	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATION__EQUIPMENT_MODULES = 0;
+	int STATION__EQUIPMENT_MODULES = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Station</em>' class.
@@ -891,7 +909,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATION_FEATURE_COUNT = 1;
+	int STATION_FEATURE_COUNT = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Station</em>' class.
@@ -900,7 +918,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATION_OPERATION_COUNT = 0;
+	int STATION_OPERATION_COUNT = BasePackage.IDENTIFIABLE_ENTITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.TransitionImpl <em>Transition</em>}' class.
@@ -956,6 +974,126 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int TRANSITION_OPERATION_COUNT = 0;
+
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.AssemblyStationImpl <em>Assembly Station</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.AssemblyStationImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getAssemblyStation()
+	 * @generated
+	 */
+	int ASSEMBLY_STATION = 17;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSEMBLY_STATION__METADATA = STATION__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSEMBLY_STATION__ID = STATION__ID;
+
+	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSEMBLY_STATION__EQUIPMENT_MODULES = STATION__EQUIPMENT_MODULES;
+
+	/**
+	 * The number of structural features of the '<em>Assembly Station</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSEMBLY_STATION_FEATURE_COUNT = STATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Assembly Station</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSEMBLY_STATION_OPERATION_COUNT = STATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.BufferStationImpl <em>Buffer Station</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.BufferStationImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getBufferStation()
+	 * @generated
+	 */
+	int BUFFER_STATION = 18;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUFFER_STATION__METADATA = STATION__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUFFER_STATION__ID = STATION__ID;
+
+	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUFFER_STATION__EQUIPMENT_MODULES = STATION__EQUIPMENT_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Capacity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUFFER_STATION__CAPACITY = STATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Buffer Station</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUFFER_STATION_FEATURE_COUNT = STATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Buffer Station</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUFFER_STATION_OPERATION_COUNT = STATION_OPERATION_COUNT + 0;
 
 
 	/**
@@ -1157,10 +1295,10 @@ public interface TopologyPackage extends EPackage {
 	EClass getWorkCell();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link de.dfki.iui.basys.model.domain.topology.WorkCell#getStations <em>Stations</em>}'.
+	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.domain.topology.WorkCell#getStations <em>Stations</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Stations</em>'.
+	 * @return the meta object for the containment reference list '<em>Stations</em>'.
 	 * @see de.dfki.iui.basys.model.domain.topology.WorkCell#getStations()
 	 * @see #getWorkCell()
 	 * @generated
@@ -1303,6 +1441,37 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getTransition_Distance();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.AssemblyStation <em>Assembly Station</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Assembly Station</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.AssemblyStation
+	 * @generated
+	 */
+	EClass getAssemblyStation();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.BufferStation <em>Buffer Station</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Buffer Station</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.BufferStation
+	 * @generated
+	 */
+	EClass getBufferStation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.topology.BufferStation#getCapacity <em>Capacity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Capacity</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.BufferStation#getCapacity()
+	 * @see #getBufferStation()
+	 * @generated
+	 */
+	EAttribute getBufferStation_Capacity();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1502,7 +1671,7 @@ public interface TopologyPackage extends EPackage {
 		EClass WORK_CELL = eINSTANCE.getWorkCell();
 
 		/**
-		 * The meta object literal for the '<em><b>Stations</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Stations</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1624,6 +1793,34 @@ public interface TopologyPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TRANSITION__DISTANCE = eINSTANCE.getTransition_Distance();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.AssemblyStationImpl <em>Assembly Station</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.AssemblyStationImpl
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getAssemblyStation()
+		 * @generated
+		 */
+		EClass ASSEMBLY_STATION = eINSTANCE.getAssemblyStation();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.BufferStationImpl <em>Buffer Station</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.BufferStationImpl
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getBufferStation()
+		 * @generated
+		 */
+		EClass BUFFER_STATION = eINSTANCE.getBufferStation();
+
+		/**
+		 * The meta object literal for the '<em><b>Capacity</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BUFFER_STATION__CAPACITY = eINSTANCE.getBufferStation_Capacity();
 
 	}
 

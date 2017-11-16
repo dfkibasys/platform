@@ -139,6 +139,14 @@ public class TopologyAdapterFactory extends AdapterFactoryImpl {
 				return createTransitionAdapter();
 			}
 			@Override
+			public Adapter caseAssemblyStation(AssemblyStation object) {
+				return createAssemblyStationAdapter();
+			}
+			@Override
+			public Adapter caseBufferStation(BufferStation object) {
+				return createBufferStationAdapter();
+			}
+			@Override
 			public Adapter caseEntity(Entity object) {
 				return createEntityAdapter();
 			}
@@ -401,6 +409,34 @@ public class TopologyAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTransitionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.topology.AssemblyStation <em>Assembly Station</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.domain.topology.AssemblyStation
+	 * @generated
+	 */
+	public Adapter createAssemblyStationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.topology.BufferStation <em>Buffer Station</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.domain.topology.BufferStation
+	 * @generated
+	 */
+	public Adapter createBufferStationAdapter() {
 		return null;
 	}
 

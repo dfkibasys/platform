@@ -21,6 +21,8 @@ import de.dfki.iui.basys.model.domain.staff.StaffPackage;
 import de.dfki.iui.basys.model.domain.staff.impl.StaffPackageImpl;
 
 import de.dfki.iui.basys.model.domain.topology.Area;
+import de.dfki.iui.basys.model.domain.topology.AssemblyStation;
+import de.dfki.iui.basys.model.domain.topology.BufferStation;
 import de.dfki.iui.basys.model.domain.topology.ControlModule;
 import de.dfki.iui.basys.model.domain.topology.Enterprise;
 import de.dfki.iui.basys.model.domain.topology.EquipmentModule;
@@ -180,6 +182,20 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 	 * @generated
 	 */
 	private EClass transitionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass assemblyStationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass bufferStationEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -567,6 +583,33 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getAssemblyStation() {
+		return assemblyStationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getBufferStation() {
+		return bufferStationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getBufferStation_Capacity() {
+		return (EAttribute)bufferStationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public TopologyFactory getTopologyFactory() {
 		return (TopologyFactory)getEFactoryInstance();
 	}
@@ -639,6 +682,11 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		createEAttribute(transitionEClass, TRANSITION__COMPONENT_ID_SRC);
 		createEAttribute(transitionEClass, TRANSITION__COMPONENT_ID_TARGET);
 		createEAttribute(transitionEClass, TRANSITION__DISTANCE);
+
+		assemblyStationEClass = createEClass(ASSEMBLY_STATION);
+
+		bufferStationEClass = createEClass(BUFFER_STATION);
+		createEAttribute(bufferStationEClass, BUFFER_STATION__CAPACITY);
 	}
 
 	/**
@@ -686,6 +734,9 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		storageUnitEClass.getESuperTypes().add(this.getWorkUnit());
 		equipmentModuleEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
 		controlModuleEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
+		stationEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
+		assemblyStationEClass.getESuperTypes().add(this.getStation());
+		bufferStationEClass.getESuperTypes().add(this.getStation());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(enterpriseEClass, Enterprise.class, "Enterprise", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -717,7 +768,7 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		initEClass(unitEClass, Unit.class, "Unit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(workCellEClass, WorkCell.class, "WorkCell", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getWorkCell_Stations(), this.getStation(), null, "stations", null, 1, 1, WorkCell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getWorkCell_Stations(), this.getStation(), null, "stations", null, 0, -1, WorkCell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(storageUnitEClass, StorageUnit.class, "StorageUnit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -737,6 +788,11 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		initEAttribute(getTransition_ComponentId_src(), ecorePackage.getEString(), "componentId_src", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTransition_ComponentId_target(), ecorePackage.getEString(), "componentId_target", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTransition_Distance(), ecorePackage.getEFloat(), "distance", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(assemblyStationEClass, AssemblyStation.class, "AssemblyStation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(bufferStationEClass, BufferStation.class, "BufferStation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getBufferStation_Capacity(), ecorePackage.getEInt(), "capacity", null, 0, 1, BufferStation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

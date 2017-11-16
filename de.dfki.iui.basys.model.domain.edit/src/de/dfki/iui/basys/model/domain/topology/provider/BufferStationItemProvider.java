@@ -1,35 +1,36 @@
 /**
  */
-package de.dfki.iui.basys.model.domain.product.provider;
+package de.dfki.iui.basys.model.domain.topology.provider;
 
 
-import de.dfki.iui.basys.model.domain.product.ProductInstanceStatusEvent;
-import de.dfki.iui.basys.model.domain.product.ProductPackage;
+import de.dfki.iui.basys.model.domain.topology.BufferStation;
+import de.dfki.iui.basys.model.domain.topology.TopologyPackage;
 
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link de.dfki.iui.basys.model.domain.product.ProductInstanceStatusEvent} object.
+ * This is the item provider adapter for a {@link de.dfki.iui.basys.model.domain.topology.BufferStation} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ProductInstanceStatusEventItemProvider extends ProductInstanceStatusItemProvider {
+public class BufferStationItemProvider extends StationItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProductInstanceStatusEventItemProvider(AdapterFactory adapterFactory) {
+	public BufferStationItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -44,42 +45,42 @@ public class ProductInstanceStatusEventItemProvider extends ProductInstanceStatu
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addTimestampPropertyDescriptor(object);
+			addCapacityPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Timestamp feature.
+	 * This adds a property descriptor for the Capacity feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addTimestampPropertyDescriptor(Object object) {
+	protected void addCapacityPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ProductInstanceStatusEvent_timestamp_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ProductInstanceStatusEvent_timestamp_feature", "_UI_ProductInstanceStatusEvent_type"),
-				 ProductPackage.Literals.PRODUCT_INSTANCE_STATUS_EVENT__TIMESTAMP,
+				 getString("_UI_BufferStation_capacity_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_BufferStation_capacity_feature", "_UI_BufferStation_type"),
+				 TopologyPackage.Literals.BUFFER_STATION__CAPACITY,
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
 
 	/**
-	 * This returns ProductInstanceStatusEvent.gif.
+	 * This returns BufferStation.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ProductInstanceStatusEvent"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/BufferStation"));
 	}
 
 	/**
@@ -90,10 +91,10 @@ public class ProductInstanceStatusEventItemProvider extends ProductInstanceStatu
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ProductInstanceStatusEvent)object).getProductInstanceId();
+		String label = ((BufferStation)object).getId();
 		return label == null || label.length() == 0 ?
-			getString("_UI_ProductInstanceStatusEvent_type") :
-			getString("_UI_ProductInstanceStatusEvent_type") + " " + label;
+			getString("_UI_BufferStation_type") :
+			getString("_UI_BufferStation_type") + " " + label;
 	}
 	
 
@@ -108,8 +109,8 @@ public class ProductInstanceStatusEventItemProvider extends ProductInstanceStatu
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ProductInstanceStatusEvent.class)) {
-			case ProductPackage.PRODUCT_INSTANCE_STATUS_EVENT__TIMESTAMP:
+		switch (notification.getFeatureID(BufferStation.class)) {
+			case TopologyPackage.BUFFER_STATION__CAPACITY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

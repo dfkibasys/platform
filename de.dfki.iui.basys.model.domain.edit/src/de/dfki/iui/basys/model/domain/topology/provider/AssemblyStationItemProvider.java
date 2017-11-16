@@ -1,35 +1,32 @@
 /**
  */
-package de.dfki.iui.basys.model.domain.order.provider;
+package de.dfki.iui.basys.model.domain.topology.provider;
 
 
-import de.dfki.iui.basys.model.domain.order.OrderPackage;
-import de.dfki.iui.basys.model.domain.order.OrderStatusChangeEvent;
+import de.dfki.iui.basys.model.domain.topology.AssemblyStation;
 
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link de.dfki.iui.basys.model.domain.order.OrderStatusChangeEvent} object.
+ * This is the item provider adapter for a {@link de.dfki.iui.basys.model.domain.topology.AssemblyStation} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class OrderStatusChangeEventItemProvider extends OrderStatusItemProvider {
+public class AssemblyStationItemProvider extends StationItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OrderStatusChangeEventItemProvider(AdapterFactory adapterFactory) {
+	public AssemblyStationItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -44,42 +41,19 @@ public class OrderStatusChangeEventItemProvider extends OrderStatusItemProvider 
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addTimestampPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Timestamp feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addTimestampPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_OrderStatusChangeEvent_timestamp_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_OrderStatusChangeEvent_timestamp_feature", "_UI_OrderStatusChangeEvent_type"),
-				 OrderPackage.Literals.ORDER_STATUS_CHANGE_EVENT__TIMESTAMP,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This returns OrderStatusChangeEvent.gif.
+	 * This returns AssemblyStation.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/OrderStatusChangeEvent"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/AssemblyStation"));
 	}
 
 	/**
@@ -90,10 +64,10 @@ public class OrderStatusChangeEventItemProvider extends OrderStatusItemProvider 
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((OrderStatusChangeEvent)object).getOrderId();
+		String label = ((AssemblyStation)object).getId();
 		return label == null || label.length() == 0 ?
-			getString("_UI_OrderStatusChangeEvent_type") :
-			getString("_UI_OrderStatusChangeEvent_type") + " " + label;
+			getString("_UI_AssemblyStation_type") :
+			getString("_UI_AssemblyStation_type") + " " + label;
 	}
 	
 
@@ -107,12 +81,6 @@ public class OrderStatusChangeEventItemProvider extends OrderStatusItemProvider 
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-
-		switch (notification.getFeatureID(OrderStatusChangeEvent.class)) {
-			case OrderPackage.ORDER_STATUS_CHANGE_EVENT__TIMESTAMP:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-		}
 		super.notifyChanged(notification);
 	}
 

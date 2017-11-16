@@ -275,6 +275,15 @@ public class OrderPackageImpl extends EPackageImpl implements OrderPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getOrderStatusChangeEvent_Timestamp() {
+		return (EAttribute)orderStatusChangeEventEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getOrderStatusEnum() {
 		return orderStatusEnumEEnum;
 	}
@@ -321,6 +330,7 @@ public class OrderPackageImpl extends EPackageImpl implements OrderPackage {
 		createEAttribute(orderStatusEClass, ORDER_STATUS__PIECE_COUNT);
 
 		orderStatusChangeEventEClass = createEClass(ORDER_STATUS_CHANGE_EVENT);
+		createEAttribute(orderStatusChangeEventEClass, ORDER_STATUS_CHANGE_EVENT__TIMESTAMP);
 
 		// Create enums
 		orderStatusEnumEEnum = createEEnum(ORDER_STATUS_ENUM);
@@ -359,7 +369,6 @@ public class OrderPackageImpl extends EPackageImpl implements OrderPackage {
 		// Add supertypes to classes
 		orderEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
 		orderStatusEClass.getESuperTypes().add(theBasePackage.getEntity());
-		orderStatusChangeEventEClass.getESuperTypes().add(theBasePackage.getEvent());
 		orderStatusChangeEventEClass.getESuperTypes().add(this.getOrderStatus());
 
 		// Initialize classes, features, and operations; add parameters
@@ -377,6 +386,7 @@ public class OrderPackageImpl extends EPackageImpl implements OrderPackage {
 		initEAttribute(getOrderStatus_PieceCount(), ecorePackage.getEInt(), "pieceCount", null, 0, 1, OrderStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(orderStatusChangeEventEClass, OrderStatusChangeEvent.class, "OrderStatusChangeEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getOrderStatusChangeEvent_Timestamp(), ecorePackage.getEDate(), "timestamp", null, 0, 1, OrderStatusChangeEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(orderStatusEnumEEnum, OrderStatusEnum.class, "OrderStatusEnum");

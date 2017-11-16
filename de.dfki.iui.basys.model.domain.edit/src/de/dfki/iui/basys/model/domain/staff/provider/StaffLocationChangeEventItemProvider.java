@@ -3,22 +3,15 @@
 package de.dfki.iui.basys.model.domain.staff.provider;
 
 
-import de.dfki.iui.basys.model.base.provider.EventItemProvider;
-
-import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
-
+import de.dfki.iui.basys.model.domain.staff.StaffDetectionEnum;
 import de.dfki.iui.basys.model.domain.staff.StaffLocationChangeEvent;
 import de.dfki.iui.basys.model.domain.staff.StaffPackage;
 
 import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
@@ -30,7 +23,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class StaffLocationChangeEventItemProvider extends EventItemProvider {
+public class StaffLocationChangeEventItemProvider extends StaffLocationItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -52,71 +45,25 @@ public class StaffLocationChangeEventItemProvider extends EventItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addDetectionTypePropertyDescriptor(object);
-			addStaffidPropertyDescriptor(object);
-			addComponentIdPropertyDescriptor(object);
+			addTimestampPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Detection Type feature.
+	 * This adds a property descriptor for the Timestamp feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addDetectionTypePropertyDescriptor(Object object) {
+	protected void addTimestampPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_StaffLocation_detectionType_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_StaffLocation_detectionType_feature", "_UI_StaffLocation_type"),
-				 StaffPackage.Literals.STAFF_LOCATION__DETECTION_TYPE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Staffid feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addStaffidPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_StaffLocation_staffid_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_StaffLocation_staffid_feature", "_UI_StaffLocation_type"),
-				 StaffPackage.Literals.STAFF_LOCATION__STAFFID,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Component Id feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addComponentIdPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_StaffLocation_componentId_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_StaffLocation_componentId_feature", "_UI_StaffLocation_type"),
-				 StaffPackage.Literals.STAFF_LOCATION__COMPONENT_ID,
+				 getString("_UI_StaffLocationChangeEvent_timestamp_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_StaffLocationChangeEvent_timestamp_feature", "_UI_StaffLocationChangeEvent_type"),
+				 StaffPackage.Literals.STAFF_LOCATION_CHANGE_EVENT__TIMESTAMP,
 				 true,
 				 false,
 				 false,
@@ -144,7 +91,7 @@ public class StaffLocationChangeEventItemProvider extends EventItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		Date labelValue = ((StaffLocationChangeEvent)object).getTimestamp();
+		StaffDetectionEnum labelValue = ((StaffLocationChangeEvent)object).getDetectionType();
 		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
 			getString("_UI_StaffLocationChangeEvent_type") :
@@ -164,9 +111,7 @@ public class StaffLocationChangeEventItemProvider extends EventItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(StaffLocationChangeEvent.class)) {
-			case StaffPackage.STAFF_LOCATION_CHANGE_EVENT__DETECTION_TYPE:
-			case StaffPackage.STAFF_LOCATION_CHANGE_EVENT__STAFFID:
-			case StaffPackage.STAFF_LOCATION_CHANGE_EVENT__COMPONENT_ID:
+			case StaffPackage.STAFF_LOCATION_CHANGE_EVENT__TIMESTAMP:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
@@ -183,17 +128,6 @@ public class StaffLocationChangeEventItemProvider extends EventItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return DomainEditPlugin.INSTANCE;
 	}
 
 }

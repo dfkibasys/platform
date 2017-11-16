@@ -3,22 +3,15 @@
 package de.dfki.iui.basys.model.domain.workplan.provider;
 
 
-import de.dfki.iui.basys.model.base.provider.EventItemProvider;
-
-import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
-
 import de.dfki.iui.basys.model.domain.workplan.WorkplanPackage;
 import de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatusChangeEvent;
 
+import de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatusEnum;
 import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
@@ -30,7 +23,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class WorkstepInstanceStatusChangeEventItemProvider extends EventItemProvider {
+public class WorkstepInstanceStatusChangeEventItemProvider extends WorkstepInstanceStatusItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -52,71 +45,25 @@ public class WorkstepInstanceStatusChangeEventItemProvider extends EventItemProv
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addStatusPropertyDescriptor(object);
-			addProductInstanceIdPropertyDescriptor(object);
-			addWorkstepInstanceIdPropertyDescriptor(object);
+			addTimestampPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Status feature.
+	 * This adds a property descriptor for the Timestamp feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addStatusPropertyDescriptor(Object object) {
+	protected void addTimestampPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_WorkstepInstanceStatus_status_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_WorkstepInstanceStatus_status_feature", "_UI_WorkstepInstanceStatus_type"),
-				 WorkplanPackage.Literals.WORKSTEP_INSTANCE_STATUS__STATUS,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Product Instance Id feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addProductInstanceIdPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_WorkstepInstanceStatus_productInstanceId_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_WorkstepInstanceStatus_productInstanceId_feature", "_UI_WorkstepInstanceStatus_type"),
-				 WorkplanPackage.Literals.WORKSTEP_INSTANCE_STATUS__PRODUCT_INSTANCE_ID,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Workstep Instance Id feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addWorkstepInstanceIdPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_WorkstepInstanceStatus_workstepInstanceId_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_WorkstepInstanceStatus_workstepInstanceId_feature", "_UI_WorkstepInstanceStatus_type"),
-				 WorkplanPackage.Literals.WORKSTEP_INSTANCE_STATUS__WORKSTEP_INSTANCE_ID,
+				 getString("_UI_WorkstepInstanceStatusChangeEvent_timestamp_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_WorkstepInstanceStatusChangeEvent_timestamp_feature", "_UI_WorkstepInstanceStatusChangeEvent_type"),
+				 WorkplanPackage.Literals.WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT__TIMESTAMP,
 				 true,
 				 false,
 				 false,
@@ -144,7 +91,7 @@ public class WorkstepInstanceStatusChangeEventItemProvider extends EventItemProv
 	 */
 	@Override
 	public String getText(Object object) {
-		Date labelValue = ((WorkstepInstanceStatusChangeEvent)object).getTimestamp();
+		WorkstepInstanceStatusEnum labelValue = ((WorkstepInstanceStatusChangeEvent)object).getStatus();
 		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
 			getString("_UI_WorkstepInstanceStatusChangeEvent_type") :
@@ -164,9 +111,7 @@ public class WorkstepInstanceStatusChangeEventItemProvider extends EventItemProv
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(WorkstepInstanceStatusChangeEvent.class)) {
-			case WorkplanPackage.WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT__STATUS:
-			case WorkplanPackage.WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT__PRODUCT_INSTANCE_ID:
-			case WorkplanPackage.WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT__WORKSTEP_INSTANCE_ID:
+			case WorkplanPackage.WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT__TIMESTAMP:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
@@ -183,17 +128,6 @@ public class WorkstepInstanceStatusChangeEventItemProvider extends EventItemProv
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return DomainEditPlugin.INSTANCE;
 	}
 
 }

@@ -197,12 +197,32 @@ public class TopologySwitch<T> extends Switch<T> {
 			case TopologyPackage.STATION: {
 				Station station = (Station)theEObject;
 				T result = caseStation(station);
+				if (result == null) result = caseIdentifiableEntity(station);
+				if (result == null) result = caseEntity(station);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case TopologyPackage.TRANSITION: {
 				Transition transition = (Transition)theEObject;
 				T result = caseTransition(transition);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TopologyPackage.ASSEMBLY_STATION: {
+				AssemblyStation assemblyStation = (AssemblyStation)theEObject;
+				T result = caseAssemblyStation(assemblyStation);
+				if (result == null) result = caseStation(assemblyStation);
+				if (result == null) result = caseIdentifiableEntity(assemblyStation);
+				if (result == null) result = caseEntity(assemblyStation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TopologyPackage.BUFFER_STATION: {
+				BufferStation bufferStation = (BufferStation)theEObject;
+				T result = caseBufferStation(bufferStation);
+				if (result == null) result = caseStation(bufferStation);
+				if (result == null) result = caseIdentifiableEntity(bufferStation);
+				if (result == null) result = caseEntity(bufferStation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -462,6 +482,36 @@ public class TopologySwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseTransition(Transition object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Assembly Station</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Assembly Station</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAssemblyStation(AssemblyStation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Buffer Station</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Buffer Station</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBufferStation(BufferStation object) {
 		return null;
 	}
 

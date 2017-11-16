@@ -277,16 +277,7 @@ public interface WorkplanPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT__METADATA = BasePackage.EVENT__METADATA;
-
-	/**
-	 * The feature id for the '<em><b>Timestamp</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT__TIMESTAMP = BasePackage.EVENT__TIMESTAMP;
+	int WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT__METADATA = WORKSTEP_INSTANCE_STATUS__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Status</b></em>' attribute.
@@ -295,7 +286,7 @@ public interface WorkplanPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT__STATUS = BasePackage.EVENT_FEATURE_COUNT + 0;
+	int WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT__STATUS = WORKSTEP_INSTANCE_STATUS__STATUS;
 
 	/**
 	 * The feature id for the '<em><b>Product Instance Id</b></em>' attribute.
@@ -304,7 +295,7 @@ public interface WorkplanPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT__PRODUCT_INSTANCE_ID = BasePackage.EVENT_FEATURE_COUNT + 1;
+	int WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT__PRODUCT_INSTANCE_ID = WORKSTEP_INSTANCE_STATUS__PRODUCT_INSTANCE_ID;
 
 	/**
 	 * The feature id for the '<em><b>Workstep Instance Id</b></em>' attribute.
@@ -313,7 +304,16 @@ public interface WorkplanPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT__WORKSTEP_INSTANCE_ID = BasePackage.EVENT_FEATURE_COUNT + 2;
+	int WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT__WORKSTEP_INSTANCE_ID = WORKSTEP_INSTANCE_STATUS__WORKSTEP_INSTANCE_ID;
+
+	/**
+	 * The feature id for the '<em><b>Timestamp</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT__TIMESTAMP = WORKSTEP_INSTANCE_STATUS_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Workstep Instance Status Change Event</em>' class.
@@ -322,7 +322,7 @@ public interface WorkplanPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT_FEATURE_COUNT = BasePackage.EVENT_FEATURE_COUNT + 3;
+	int WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT_FEATURE_COUNT = WORKSTEP_INSTANCE_STATUS_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Workstep Instance Status Change Event</em>' class.
@@ -331,7 +331,7 @@ public interface WorkplanPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT_OPERATION_COUNT = BasePackage.EVENT_OPERATION_COUNT + 0;
+	int WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT_OPERATION_COUNT = WORKSTEP_INSTANCE_STATUS_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.workplan.impl.DurationImpl <em>Duration</em>}' class.
@@ -344,13 +344,22 @@ public interface WorkplanPackage extends EPackage {
 	int DURATION = 4;
 
 	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DURATION__METADATA = BasePackage.ENTITY__METADATA;
+
+	/**
 	 * The feature id for the '<em><b>Workstep Instance Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DURATION__WORKSTEP_INSTANCE_ID = 0;
+	int DURATION__WORKSTEP_INSTANCE_ID = BasePackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Agent Id</b></em>' attribute.
@@ -359,7 +368,7 @@ public interface WorkplanPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DURATION__AGENT_ID = 1;
+	int DURATION__AGENT_ID = BasePackage.ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Average</b></em>' attribute.
@@ -368,7 +377,7 @@ public interface WorkplanPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DURATION__AVERAGE = 2;
+	int DURATION__AVERAGE = BasePackage.ENTITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Standard Deviation</b></em>' attribute.
@@ -377,7 +386,7 @@ public interface WorkplanPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DURATION__STANDARD_DEVIATION = 3;
+	int DURATION__STANDARD_DEVIATION = BasePackage.ENTITY_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Duration</em>' class.
@@ -386,7 +395,7 @@ public interface WorkplanPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DURATION_FEATURE_COUNT = 4;
+	int DURATION_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Duration</em>' class.
@@ -395,7 +404,7 @@ public interface WorkplanPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DURATION_OPERATION_COUNT = 0;
+	int DURATION_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatusEnum <em>Workstep Instance Status Enum</em>}' enum.
@@ -535,6 +544,17 @@ public interface WorkplanPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getWorkstepInstanceStatusChangeEvent();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatusChangeEvent#getTimestamp <em>Timestamp</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Timestamp</em>'.
+	 * @see de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatusChangeEvent#getTimestamp()
+	 * @see #getWorkstepInstanceStatusChangeEvent()
+	 * @generated
+	 */
+	EAttribute getWorkstepInstanceStatusChangeEvent_Timestamp();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.workplan.Duration <em>Duration</em>}'.
@@ -726,6 +746,14 @@ public interface WorkplanPackage extends EPackage {
 		 * @generated
 		 */
 		EClass WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT = eINSTANCE.getWorkstepInstanceStatusChangeEvent();
+
+		/**
+		 * The meta object literal for the '<em><b>Timestamp</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT__TIMESTAMP = eINSTANCE.getWorkstepInstanceStatusChangeEvent_Timestamp();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.workplan.impl.DurationImpl <em>Duration</em>}' class.

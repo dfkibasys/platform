@@ -323,6 +323,15 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getProductInstanceStatusEvent_Timestamp() {
+		return (EAttribute)productInstanceStatusEventEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getProductInstanceLocation() {
 		return productInstanceLocationEClass;
 	}
@@ -361,6 +370,15 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 	 */
 	public EClass getProductInstanceLocationEvent() {
 		return productInstanceLocationEventEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProductInstanceLocationEvent_Timestamp() {
+		return (EAttribute)productInstanceLocationEventEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -426,6 +444,7 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 		createEAttribute(productInstanceStatusEClass, PRODUCT_INSTANCE_STATUS__STATUS);
 
 		productInstanceStatusEventEClass = createEClass(PRODUCT_INSTANCE_STATUS_EVENT);
+		createEAttribute(productInstanceStatusEventEClass, PRODUCT_INSTANCE_STATUS_EVENT__TIMESTAMP);
 
 		productInstanceLocationEClass = createEClass(PRODUCT_INSTANCE_LOCATION);
 		createEAttribute(productInstanceLocationEClass, PRODUCT_INSTANCE_LOCATION__DETECTION_TYPE);
@@ -433,6 +452,7 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 		createEAttribute(productInstanceLocationEClass, PRODUCT_INSTANCE_LOCATION__COMPONENT_ID);
 
 		productInstanceLocationEventEClass = createEClass(PRODUCT_INSTANCE_LOCATION_EVENT);
+		createEAttribute(productInstanceLocationEventEClass, PRODUCT_INSTANCE_LOCATION_EVENT__TIMESTAMP);
 
 		// Create enums
 		productInstanceDetectionEnumEEnum = createEEnum(PRODUCT_INSTANCE_DETECTION_ENUM);
@@ -474,11 +494,9 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 		productVariantEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
 		productInstanceEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
 		productInstanceStatusEClass.getESuperTypes().add(theBasePackage.getEntity());
-		productInstanceStatusEventEClass.getESuperTypes().add(theBasePackage.getEvent());
 		productInstanceStatusEventEClass.getESuperTypes().add(this.getProductInstanceStatus());
 		productInstanceLocationEClass.getESuperTypes().add(theBasePackage.getEntity());
 		productInstanceLocationEventEClass.getESuperTypes().add(this.getProductInstanceLocation());
-		productInstanceLocationEventEClass.getESuperTypes().add(theBasePackage.getEvent());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(productGroupEClass, ProductGroup.class, "ProductGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -498,6 +516,7 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 		initEAttribute(getProductInstanceStatus_Status(), this.getProductInstanceStatusEnum(), "status", null, 0, 1, ProductInstanceStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(productInstanceStatusEventEClass, ProductInstanceStatusEvent.class, "ProductInstanceStatusEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getProductInstanceStatusEvent_Timestamp(), ecorePackage.getEDate(), "timestamp", null, 0, 1, ProductInstanceStatusEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(productInstanceLocationEClass, ProductInstanceLocation.class, "ProductInstanceLocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProductInstanceLocation_DetectionType(), this.getProductInstanceDetectionEnum(), "detectionType", null, 0, 1, ProductInstanceLocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -505,6 +524,7 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 		initEAttribute(getProductInstanceLocation_ComponentId(), ecorePackage.getEString(), "componentId", null, 0, 1, ProductInstanceLocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(productInstanceLocationEventEClass, ProductInstanceLocationEvent.class, "ProductInstanceLocationEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getProductInstanceLocationEvent_Timestamp(), ecorePackage.getEDate(), "timestamp", null, 0, 1, ProductInstanceLocationEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(productInstanceDetectionEnumEEnum, ProductInstanceDetectionEnum.class, "ProductInstanceDetectionEnum");

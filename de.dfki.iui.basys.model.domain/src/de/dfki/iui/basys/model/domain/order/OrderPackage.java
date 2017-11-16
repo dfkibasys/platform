@@ -241,16 +241,7 @@ public interface OrderPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ORDER_STATUS_CHANGE_EVENT__METADATA = BasePackage.EVENT__METADATA;
-
-	/**
-	 * The feature id for the '<em><b>Timestamp</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ORDER_STATUS_CHANGE_EVENT__TIMESTAMP = BasePackage.EVENT__TIMESTAMP;
+	int ORDER_STATUS_CHANGE_EVENT__METADATA = ORDER_STATUS__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Order Id</b></em>' attribute.
@@ -259,7 +250,7 @@ public interface OrderPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ORDER_STATUS_CHANGE_EVENT__ORDER_ID = BasePackage.EVENT_FEATURE_COUNT + 0;
+	int ORDER_STATUS_CHANGE_EVENT__ORDER_ID = ORDER_STATUS__ORDER_ID;
 
 	/**
 	 * The feature id for the '<em><b>Status</b></em>' attribute.
@@ -268,7 +259,7 @@ public interface OrderPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ORDER_STATUS_CHANGE_EVENT__STATUS = BasePackage.EVENT_FEATURE_COUNT + 1;
+	int ORDER_STATUS_CHANGE_EVENT__STATUS = ORDER_STATUS__STATUS;
 
 	/**
 	 * The feature id for the '<em><b>Piece Count</b></em>' attribute.
@@ -277,7 +268,16 @@ public interface OrderPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ORDER_STATUS_CHANGE_EVENT__PIECE_COUNT = BasePackage.EVENT_FEATURE_COUNT + 2;
+	int ORDER_STATUS_CHANGE_EVENT__PIECE_COUNT = ORDER_STATUS__PIECE_COUNT;
+
+	/**
+	 * The feature id for the '<em><b>Timestamp</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORDER_STATUS_CHANGE_EVENT__TIMESTAMP = ORDER_STATUS_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Status Change Event</em>' class.
@@ -286,7 +286,7 @@ public interface OrderPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ORDER_STATUS_CHANGE_EVENT_FEATURE_COUNT = BasePackage.EVENT_FEATURE_COUNT + 3;
+	int ORDER_STATUS_CHANGE_EVENT_FEATURE_COUNT = ORDER_STATUS_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Status Change Event</em>' class.
@@ -295,7 +295,7 @@ public interface OrderPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ORDER_STATUS_CHANGE_EVENT_OPERATION_COUNT = BasePackage.EVENT_OPERATION_COUNT + 0;
+	int ORDER_STATUS_CHANGE_EVENT_OPERATION_COUNT = ORDER_STATUS_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.order.OrderStatusEnum <em>Status Enum</em>}' enum.
@@ -438,6 +438,17 @@ public interface OrderPackage extends EPackage {
 	EClass getOrderStatusChangeEvent();
 
 	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.order.OrderStatusChangeEvent#getTimestamp <em>Timestamp</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Timestamp</em>'.
+	 * @see de.dfki.iui.basys.model.domain.order.OrderStatusChangeEvent#getTimestamp()
+	 * @see #getOrderStatusChangeEvent()
+	 * @generated
+	 */
+	EAttribute getOrderStatusChangeEvent_Timestamp();
+
+	/**
 	 * Returns the meta object for enum '{@link de.dfki.iui.basys.model.domain.order.OrderStatusEnum <em>Status Enum</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -571,6 +582,14 @@ public interface OrderPackage extends EPackage {
 		 * @generated
 		 */
 		EClass ORDER_STATUS_CHANGE_EVENT = eINSTANCE.getOrderStatusChangeEvent();
+
+		/**
+		 * The meta object literal for the '<em><b>Timestamp</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ORDER_STATUS_CHANGE_EVENT__TIMESTAMP = eINSTANCE.getOrderStatusChangeEvent_Timestamp();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.order.OrderStatusEnum <em>Status Enum</em>}' enum.

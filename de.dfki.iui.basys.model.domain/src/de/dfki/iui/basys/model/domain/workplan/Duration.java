@@ -2,7 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.workplan;
 
-import org.eclipse.emf.ecore.EObject;
+import de.dfki.iui.basys.model.base.Entity;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Duration extends EObject {
+public interface Duration extends Entity {
 	/**
 	 * Returns the value of the '<em><b>Workstep Instance Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->

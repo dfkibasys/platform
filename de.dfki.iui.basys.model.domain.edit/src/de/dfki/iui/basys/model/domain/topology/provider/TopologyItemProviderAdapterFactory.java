@@ -417,6 +417,52 @@ public class TopologyItemProviderAdapterFactory extends TopologyAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.AssemblyStation} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AssemblyStationItemProvider assemblyStationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.AssemblyStation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAssemblyStationAdapter() {
+		if (assemblyStationItemProvider == null) {
+			assemblyStationItemProvider = new AssemblyStationItemProvider(this);
+		}
+
+		return assemblyStationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.BufferStation} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected BufferStationItemProvider bufferStationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.BufferStation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createBufferStationAdapter() {
+		if (bufferStationItemProvider == null) {
+			bufferStationItemProvider = new BufferStationItemProvider(this);
+		}
+
+		return bufferStationItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -530,6 +576,8 @@ public class TopologyItemProviderAdapterFactory extends TopologyAdapterFactory i
 		if (productionLineSectionItemProvider != null) productionLineSectionItemProvider.dispose();
 		if (stationItemProvider != null) stationItemProvider.dispose();
 		if (transitionItemProvider != null) transitionItemProvider.dispose();
+		if (assemblyStationItemProvider != null) assemblyStationItemProvider.dispose();
+		if (bufferStationItemProvider != null) bufferStationItemProvider.dispose();
 	}
 
 }

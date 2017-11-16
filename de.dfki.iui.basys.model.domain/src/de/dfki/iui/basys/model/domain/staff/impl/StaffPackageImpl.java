@@ -289,6 +289,15 @@ public class StaffPackageImpl extends EPackageImpl implements StaffPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getStaffLocationChangeEvent_Timestamp() {
+		return (EAttribute)staffLocationChangeEventEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getAbility() {
 		return abilityEClass;
 	}
@@ -441,6 +450,7 @@ public class StaffPackageImpl extends EPackageImpl implements StaffPackage {
 		createEAttribute(staffLocationEClass, STAFF_LOCATION__COMPONENT_ID);
 
 		staffLocationChangeEventEClass = createEClass(STAFF_LOCATION_CHANGE_EVENT);
+		createEAttribute(staffLocationChangeEventEClass, STAFF_LOCATION_CHANGE_EVENT__TIMESTAMP);
 
 		abilityEClass = createEClass(ABILITY);
 		createEAttribute(abilityEClass, ABILITY__KEY);
@@ -494,7 +504,6 @@ public class StaffPackageImpl extends EPackageImpl implements StaffPackage {
 		// Add supertypes to classes
 		staffEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
 		staffLocationEClass.getESuperTypes().add(theBasePackage.getEntity());
-		staffLocationChangeEventEClass.getESuperTypes().add(theBasePackage.getEvent());
 		staffLocationChangeEventEClass.getESuperTypes().add(this.getStaffLocation());
 		abilityEClass.getESuperTypes().add(theBasePackage.getEntity());
 		workstepSkillEClass.getESuperTypes().add(theBasePackage.getEntity());
@@ -513,6 +522,7 @@ public class StaffPackageImpl extends EPackageImpl implements StaffPackage {
 		initEAttribute(getStaffLocation_ComponentId(), ecorePackage.getEString(), "componentId", null, 0, 1, StaffLocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(staffLocationChangeEventEClass, StaffLocationChangeEvent.class, "StaffLocationChangeEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getStaffLocationChangeEvent_Timestamp(), ecorePackage.getEDate(), "timestamp", null, 0, 1, StaffLocationChangeEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(abilityEClass, Ability.class, "Ability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAbility_Key(), ecorePackage.getEString(), "key", null, 0, 1, Ability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

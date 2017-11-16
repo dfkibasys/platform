@@ -2,13 +2,9 @@
  */
 package de.dfki.iui.basys.model.domain.order.impl;
 
-import de.dfki.iui.basys.model.base.impl.EventImpl;
-
 import de.dfki.iui.basys.model.domain.order.OrderPackage;
-import de.dfki.iui.basys.model.domain.order.OrderStatus;
 import de.dfki.iui.basys.model.domain.order.OrderStatusChangeEvent;
-import de.dfki.iui.basys.model.domain.order.OrderStatusEnum;
-
+import java.util.Date;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -23,73 +19,31 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.dfki.iui.basys.model.domain.order.impl.OrderStatusChangeEventImpl#getOrderId <em>Order Id</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.domain.order.impl.OrderStatusChangeEventImpl#getStatus <em>Status</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.domain.order.impl.OrderStatusChangeEventImpl#getPieceCount <em>Piece Count</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.order.impl.OrderStatusChangeEventImpl#getTimestamp <em>Timestamp</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class OrderStatusChangeEventImpl extends EventImpl implements OrderStatusChangeEvent {
+public class OrderStatusChangeEventImpl extends OrderStatusImpl implements OrderStatusChangeEvent {
 	/**
-	 * The default value of the '{@link #getOrderId() <em>Order Id</em>}' attribute.
+	 * The default value of the '{@link #getTimestamp() <em>Timestamp</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOrderId()
+	 * @see #getTimestamp()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String ORDER_ID_EDEFAULT = null;
+	protected static final Date TIMESTAMP_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getOrderId() <em>Order Id</em>}' attribute.
+	 * The cached value of the '{@link #getTimestamp() <em>Timestamp</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOrderId()
+	 * @see #getTimestamp()
 	 * @generated
 	 * @ordered
 	 */
-	protected String orderId = ORDER_ID_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getStatus() <em>Status</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getStatus()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final OrderStatusEnum STATUS_EDEFAULT = OrderStatusEnum.UNKNOWN;
-
-	/**
-	 * The cached value of the '{@link #getStatus() <em>Status</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getStatus()
-	 * @generated
-	 * @ordered
-	 */
-	protected OrderStatusEnum status = STATUS_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getPieceCount() <em>Piece Count</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPieceCount()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int PIECE_COUNT_EDEFAULT = 0;
-
-	/**
-	 * The cached value of the '{@link #getPieceCount() <em>Piece Count</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPieceCount()
-	 * @generated
-	 * @ordered
-	 */
-	protected int pieceCount = PIECE_COUNT_EDEFAULT;
+	protected Date timestamp = TIMESTAMP_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -115,8 +69,8 @@ public class OrderStatusChangeEventImpl extends EventImpl implements OrderStatus
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getOrderId() {
-		return orderId;
+	public Date getTimestamp() {
+		return timestamp;
 	}
 
 	/**
@@ -124,53 +78,11 @@ public class OrderStatusChangeEventImpl extends EventImpl implements OrderStatus
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setOrderId(String newOrderId) {
-		String oldOrderId = orderId;
-		orderId = newOrderId;
+	public void setTimestamp(Date newTimestamp) {
+		Date oldTimestamp = timestamp;
+		timestamp = newTimestamp;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OrderPackage.ORDER_STATUS_CHANGE_EVENT__ORDER_ID, oldOrderId, orderId));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public OrderStatusEnum getStatus() {
-		return status;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setStatus(OrderStatusEnum newStatus) {
-		OrderStatusEnum oldStatus = status;
-		status = newStatus == null ? STATUS_EDEFAULT : newStatus;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OrderPackage.ORDER_STATUS_CHANGE_EVENT__STATUS, oldStatus, status));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public int getPieceCount() {
-		return pieceCount;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setPieceCount(int newPieceCount) {
-		int oldPieceCount = pieceCount;
-		pieceCount = newPieceCount;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OrderPackage.ORDER_STATUS_CHANGE_EVENT__PIECE_COUNT, oldPieceCount, pieceCount));
+			eNotify(new ENotificationImpl(this, Notification.SET, OrderPackage.ORDER_STATUS_CHANGE_EVENT__TIMESTAMP, oldTimestamp, timestamp));
 	}
 
 	/**
@@ -181,12 +93,8 @@ public class OrderStatusChangeEventImpl extends EventImpl implements OrderStatus
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case OrderPackage.ORDER_STATUS_CHANGE_EVENT__ORDER_ID:
-				return getOrderId();
-			case OrderPackage.ORDER_STATUS_CHANGE_EVENT__STATUS:
-				return getStatus();
-			case OrderPackage.ORDER_STATUS_CHANGE_EVENT__PIECE_COUNT:
-				return getPieceCount();
+			case OrderPackage.ORDER_STATUS_CHANGE_EVENT__TIMESTAMP:
+				return getTimestamp();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -199,14 +107,8 @@ public class OrderStatusChangeEventImpl extends EventImpl implements OrderStatus
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case OrderPackage.ORDER_STATUS_CHANGE_EVENT__ORDER_ID:
-				setOrderId((String)newValue);
-				return;
-			case OrderPackage.ORDER_STATUS_CHANGE_EVENT__STATUS:
-				setStatus((OrderStatusEnum)newValue);
-				return;
-			case OrderPackage.ORDER_STATUS_CHANGE_EVENT__PIECE_COUNT:
-				setPieceCount((Integer)newValue);
+			case OrderPackage.ORDER_STATUS_CHANGE_EVENT__TIMESTAMP:
+				setTimestamp((Date)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -220,14 +122,8 @@ public class OrderStatusChangeEventImpl extends EventImpl implements OrderStatus
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case OrderPackage.ORDER_STATUS_CHANGE_EVENT__ORDER_ID:
-				setOrderId(ORDER_ID_EDEFAULT);
-				return;
-			case OrderPackage.ORDER_STATUS_CHANGE_EVENT__STATUS:
-				setStatus(STATUS_EDEFAULT);
-				return;
-			case OrderPackage.ORDER_STATUS_CHANGE_EVENT__PIECE_COUNT:
-				setPieceCount(PIECE_COUNT_EDEFAULT);
+			case OrderPackage.ORDER_STATUS_CHANGE_EVENT__TIMESTAMP:
+				setTimestamp(TIMESTAMP_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -241,50 +137,10 @@ public class OrderStatusChangeEventImpl extends EventImpl implements OrderStatus
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case OrderPackage.ORDER_STATUS_CHANGE_EVENT__ORDER_ID:
-				return ORDER_ID_EDEFAULT == null ? orderId != null : !ORDER_ID_EDEFAULT.equals(orderId);
-			case OrderPackage.ORDER_STATUS_CHANGE_EVENT__STATUS:
-				return status != STATUS_EDEFAULT;
-			case OrderPackage.ORDER_STATUS_CHANGE_EVENT__PIECE_COUNT:
-				return pieceCount != PIECE_COUNT_EDEFAULT;
+			case OrderPackage.ORDER_STATUS_CHANGE_EVENT__TIMESTAMP:
+				return TIMESTAMP_EDEFAULT == null ? timestamp != null : !TIMESTAMP_EDEFAULT.equals(timestamp);
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == OrderStatus.class) {
-			switch (derivedFeatureID) {
-				case OrderPackage.ORDER_STATUS_CHANGE_EVENT__ORDER_ID: return OrderPackage.ORDER_STATUS__ORDER_ID;
-				case OrderPackage.ORDER_STATUS_CHANGE_EVENT__STATUS: return OrderPackage.ORDER_STATUS__STATUS;
-				case OrderPackage.ORDER_STATUS_CHANGE_EVENT__PIECE_COUNT: return OrderPackage.ORDER_STATUS__PIECE_COUNT;
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == OrderStatus.class) {
-			switch (baseFeatureID) {
-				case OrderPackage.ORDER_STATUS__ORDER_ID: return OrderPackage.ORDER_STATUS_CHANGE_EVENT__ORDER_ID;
-				case OrderPackage.ORDER_STATUS__STATUS: return OrderPackage.ORDER_STATUS_CHANGE_EVENT__STATUS;
-				case OrderPackage.ORDER_STATUS__PIECE_COUNT: return OrderPackage.ORDER_STATUS_CHANGE_EVENT__PIECE_COUNT;
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**
@@ -297,12 +153,8 @@ public class OrderStatusChangeEventImpl extends EventImpl implements OrderStatus
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (orderId: ");
-		result.append(orderId);
-		result.append(", status: ");
-		result.append(status);
-		result.append(", pieceCount: ");
-		result.append(pieceCount);
+		result.append(" (timestamp: ");
+		result.append(timestamp);
 		result.append(')');
 		return result.toString();
 	}

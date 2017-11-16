@@ -3,7 +3,6 @@
 package de.dfki.iui.basys.model.domain.product.util;
 
 import de.dfki.iui.basys.model.base.Entity;
-import de.dfki.iui.basys.model.base.Event;
 import de.dfki.iui.basys.model.base.IdentifiableEntity;
 
 import de.dfki.iui.basys.model.domain.product.*;
@@ -104,7 +103,6 @@ public class ProductSwitch<T> extends Switch<T> {
 			case ProductPackage.PRODUCT_INSTANCE_STATUS_EVENT: {
 				ProductInstanceStatusEvent productInstanceStatusEvent = (ProductInstanceStatusEvent)theEObject;
 				T result = caseProductInstanceStatusEvent(productInstanceStatusEvent);
-				if (result == null) result = caseEvent(productInstanceStatusEvent);
 				if (result == null) result = caseProductInstanceStatus(productInstanceStatusEvent);
 				if (result == null) result = caseEntity(productInstanceStatusEvent);
 				if (result == null) result = defaultCase(theEObject);
@@ -121,7 +119,6 @@ public class ProductSwitch<T> extends Switch<T> {
 				ProductInstanceLocationEvent productInstanceLocationEvent = (ProductInstanceLocationEvent)theEObject;
 				T result = caseProductInstanceLocationEvent(productInstanceLocationEvent);
 				if (result == null) result = caseProductInstanceLocation(productInstanceLocationEvent);
-				if (result == null) result = caseEvent(productInstanceLocationEvent);
 				if (result == null) result = caseEntity(productInstanceLocationEvent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -262,21 +259,6 @@ public class ProductSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseIdentifiableEntity(IdentifiableEntity object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Event</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Event</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEvent(Event object) {
 		return null;
 	}
 

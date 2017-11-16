@@ -2,9 +2,8 @@
  */
 package de.dfki.iui.basys.model.domain.topology;
 
+import de.dfki.iui.basys.model.base.IdentifiableEntity;
 import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,7 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Station extends EObject {
+public interface Station extends IdentifiableEntity {
 	/**
 	 * Returns the value of the '<em><b>Equipment Modules</b></em>' containment reference list.
 	 * The list contents are of type {@link de.dfki.iui.basys.model.domain.topology.EquipmentModule}.

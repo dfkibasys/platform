@@ -3,7 +3,6 @@
 package de.dfki.iui.basys.model.domain.order.util;
 
 import de.dfki.iui.basys.model.base.Entity;
-import de.dfki.iui.basys.model.base.Event;
 import de.dfki.iui.basys.model.base.IdentifiableEntity;
 
 import de.dfki.iui.basys.model.domain.order.*;
@@ -92,10 +91,6 @@ public class OrderAdapterFactory extends AdapterFactoryImpl {
 				return createIdentifiableEntityAdapter();
 			}
 			@Override
-			public Adapter caseEvent(Event object) {
-				return createEventAdapter();
-			}
-			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -182,20 +177,6 @@ public class OrderAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createIdentifiableEntityAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.base.Event <em>Event</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.dfki.iui.basys.model.base.Event
-	 * @generated
-	 */
-	public Adapter createEventAdapter() {
 		return null;
 	}
 

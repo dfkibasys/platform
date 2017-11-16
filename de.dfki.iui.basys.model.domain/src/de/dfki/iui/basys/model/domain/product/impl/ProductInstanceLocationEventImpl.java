@@ -2,9 +2,6 @@
  */
 package de.dfki.iui.basys.model.domain.product.impl;
 
-import de.dfki.iui.basys.model.base.BasePackage;
-import de.dfki.iui.basys.model.base.Event;
-
 import de.dfki.iui.basys.model.domain.product.ProductInstanceLocationEvent;
 import de.dfki.iui.basys.model.domain.product.ProductPackage;
 
@@ -146,38 +143,6 @@ public class ProductInstanceLocationEventImpl extends ProductInstanceLocationImp
 				return TIMESTAMP_EDEFAULT == null ? timestamp != null : !TIMESTAMP_EDEFAULT.equals(timestamp);
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == Event.class) {
-			switch (derivedFeatureID) {
-				case ProductPackage.PRODUCT_INSTANCE_LOCATION_EVENT__TIMESTAMP: return BasePackage.EVENT__TIMESTAMP;
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == Event.class) {
-			switch (baseFeatureID) {
-				case BasePackage.EVENT__TIMESTAMP: return ProductPackage.PRODUCT_INSTANCE_LOCATION_EVENT__TIMESTAMP;
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**

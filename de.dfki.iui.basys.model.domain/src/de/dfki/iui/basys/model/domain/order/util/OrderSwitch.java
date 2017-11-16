@@ -3,7 +3,6 @@
 package de.dfki.iui.basys.model.domain.order.util;
 
 import de.dfki.iui.basys.model.base.Entity;
-import de.dfki.iui.basys.model.base.Event;
 import de.dfki.iui.basys.model.base.IdentifiableEntity;
 
 import de.dfki.iui.basys.model.domain.order.*;
@@ -88,7 +87,6 @@ public class OrderSwitch<T> extends Switch<T> {
 			case OrderPackage.ORDER_STATUS_CHANGE_EVENT: {
 				OrderStatusChangeEvent orderStatusChangeEvent = (OrderStatusChangeEvent)theEObject;
 				T result = caseOrderStatusChangeEvent(orderStatusChangeEvent);
-				if (result == null) result = caseEvent(orderStatusChangeEvent);
 				if (result == null) result = caseOrderStatus(orderStatusChangeEvent);
 				if (result == null) result = caseEntity(orderStatusChangeEvent);
 				if (result == null) result = defaultCase(theEObject);
@@ -170,21 +168,6 @@ public class OrderSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseIdentifiableEntity(IdentifiableEntity object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Event</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Event</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEvent(Event object) {
 		return null;
 	}
 

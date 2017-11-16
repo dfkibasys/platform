@@ -3,6 +3,7 @@
 package de.dfki.iui.basys.model.domain.topology.provider;
 
 
+import de.dfki.iui.basys.model.base.provider.IdentifiableEntityItemProvider;
 import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
 
 import de.dfki.iui.basys.model.domain.topology.Station;
@@ -17,13 +18,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -33,13 +28,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * @generated
  */
 public class StationItemProvider 
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+	extends IdentifiableEntityItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -114,7 +103,10 @@ public class StationItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_Station_type");
+		String label = ((Station)object).getId();
+		return label == null || label.length() == 0 ?
+			getString("_UI_Station_type") :
+			getString("_UI_Station_type") + " " + label;
 	}
 	
 

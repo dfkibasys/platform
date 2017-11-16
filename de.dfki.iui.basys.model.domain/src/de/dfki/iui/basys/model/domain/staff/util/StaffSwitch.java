@@ -3,7 +3,6 @@
 package de.dfki.iui.basys.model.domain.staff.util;
 
 import de.dfki.iui.basys.model.base.Entity;
-import de.dfki.iui.basys.model.base.Event;
 import de.dfki.iui.basys.model.base.IdentifiableEntity;
 
 import de.dfki.iui.basys.model.domain.staff.*;
@@ -88,7 +87,6 @@ public class StaffSwitch<T> extends Switch<T> {
 			case StaffPackage.STAFF_LOCATION_CHANGE_EVENT: {
 				StaffLocationChangeEvent staffLocationChangeEvent = (StaffLocationChangeEvent)theEObject;
 				T result = caseStaffLocationChangeEvent(staffLocationChangeEvent);
-				if (result == null) result = caseEvent(staffLocationChangeEvent);
 				if (result == null) result = caseStaffLocation(staffLocationChangeEvent);
 				if (result == null) result = caseEntity(staffLocationChangeEvent);
 				if (result == null) result = defaultCase(theEObject);
@@ -236,21 +234,6 @@ public class StaffSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseIdentifiableEntity(IdentifiableEntity object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Event</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Event</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEvent(Event object) {
 		return null;
 	}
 

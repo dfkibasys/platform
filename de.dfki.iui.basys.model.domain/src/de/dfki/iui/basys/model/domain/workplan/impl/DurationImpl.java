@@ -2,6 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.workplan.impl;
 
+import de.dfki.iui.basys.model.base.impl.EntityImpl;
 import de.dfki.iui.basys.model.domain.workplan.Duration;
 import de.dfki.iui.basys.model.domain.workplan.WorkplanPackage;
 
@@ -10,7 +11,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public class DurationImpl extends MinimalEObjectImpl.Container implements Duration {
+public class DurationImpl extends EntityImpl implements Duration {
 	/**
 	 * The default value of the '{@link #getWorkstepInstanceId() <em>Workstep Instance Id</em>}' attribute.
 	 * <!-- begin-user-doc -->

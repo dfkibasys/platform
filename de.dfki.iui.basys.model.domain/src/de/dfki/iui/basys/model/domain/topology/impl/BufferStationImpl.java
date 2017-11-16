@@ -1,10 +1,10 @@
 /**
  */
-package de.dfki.iui.basys.model.domain.workplan.impl;
+package de.dfki.iui.basys.model.domain.topology.impl;
 
-import de.dfki.iui.basys.model.domain.workplan.WorkplanPackage;
-import de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatusChangeEvent;
-import java.util.Date;
+import de.dfki.iui.basys.model.domain.topology.BufferStation;
+import de.dfki.iui.basys.model.domain.topology.TopologyPackage;
+
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -13,44 +13,44 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Workstep Instance Status Change Event</b></em>'.
+ * An implementation of the model object '<em><b>Buffer Station</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.dfki.iui.basys.model.domain.workplan.impl.WorkstepInstanceStatusChangeEventImpl#getTimestamp <em>Timestamp</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.topology.impl.BufferStationImpl#getCapacity <em>Capacity</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class WorkstepInstanceStatusChangeEventImpl extends WorkstepInstanceStatusImpl implements WorkstepInstanceStatusChangeEvent {
+public class BufferStationImpl extends StationImpl implements BufferStation {
 	/**
-	 * The default value of the '{@link #getTimestamp() <em>Timestamp</em>}' attribute.
+	 * The default value of the '{@link #getCapacity() <em>Capacity</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTimestamp()
+	 * @see #getCapacity()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Date TIMESTAMP_EDEFAULT = null;
+	protected static final int CAPACITY_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getTimestamp() <em>Timestamp</em>}' attribute.
+	 * The cached value of the '{@link #getCapacity() <em>Capacity</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTimestamp()
+	 * @see #getCapacity()
 	 * @generated
 	 * @ordered
 	 */
-	protected Date timestamp = TIMESTAMP_EDEFAULT;
+	protected int capacity = CAPACITY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected WorkstepInstanceStatusChangeEventImpl() {
+	protected BufferStationImpl() {
 		super();
 	}
 
@@ -61,7 +61,7 @@ public class WorkstepInstanceStatusChangeEventImpl extends WorkstepInstanceStatu
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return WorkplanPackage.Literals.WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT;
+		return TopologyPackage.Literals.BUFFER_STATION;
 	}
 
 	/**
@@ -69,8 +69,8 @@ public class WorkstepInstanceStatusChangeEventImpl extends WorkstepInstanceStatu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Date getTimestamp() {
-		return timestamp;
+	public int getCapacity() {
+		return capacity;
 	}
 
 	/**
@@ -78,11 +78,11 @@ public class WorkstepInstanceStatusChangeEventImpl extends WorkstepInstanceStatu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTimestamp(Date newTimestamp) {
-		Date oldTimestamp = timestamp;
-		timestamp = newTimestamp;
+	public void setCapacity(int newCapacity) {
+		int oldCapacity = capacity;
+		capacity = newCapacity;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WorkplanPackage.WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT__TIMESTAMP, oldTimestamp, timestamp));
+			eNotify(new ENotificationImpl(this, Notification.SET, TopologyPackage.BUFFER_STATION__CAPACITY, oldCapacity, capacity));
 	}
 
 	/**
@@ -93,8 +93,8 @@ public class WorkstepInstanceStatusChangeEventImpl extends WorkstepInstanceStatu
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case WorkplanPackage.WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT__TIMESTAMP:
-				return getTimestamp();
+			case TopologyPackage.BUFFER_STATION__CAPACITY:
+				return getCapacity();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -107,8 +107,8 @@ public class WorkstepInstanceStatusChangeEventImpl extends WorkstepInstanceStatu
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case WorkplanPackage.WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT__TIMESTAMP:
-				setTimestamp((Date)newValue);
+			case TopologyPackage.BUFFER_STATION__CAPACITY:
+				setCapacity((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -122,8 +122,8 @@ public class WorkstepInstanceStatusChangeEventImpl extends WorkstepInstanceStatu
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case WorkplanPackage.WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT__TIMESTAMP:
-				setTimestamp(TIMESTAMP_EDEFAULT);
+			case TopologyPackage.BUFFER_STATION__CAPACITY:
+				setCapacity(CAPACITY_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -137,8 +137,8 @@ public class WorkstepInstanceStatusChangeEventImpl extends WorkstepInstanceStatu
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case WorkplanPackage.WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT__TIMESTAMP:
-				return TIMESTAMP_EDEFAULT == null ? timestamp != null : !TIMESTAMP_EDEFAULT.equals(timestamp);
+			case TopologyPackage.BUFFER_STATION__CAPACITY:
+				return capacity != CAPACITY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -153,10 +153,10 @@ public class WorkstepInstanceStatusChangeEventImpl extends WorkstepInstanceStatu
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (timestamp: ");
-		result.append(timestamp);
+		result.append(" (capacity: ");
+		result.append(capacity);
 		result.append(')');
 		return result.toString();
 	}
 
-} //WorkstepInstanceStatusChangeEventImpl
+} //BufferStationImpl

@@ -76,7 +76,15 @@ public enum WorkstepInstanceStatusEnum implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	ABORTED(5, "ABORTED", "ABORTED");
+	ABORTED(5, "ABORTED", "ABORTED"), /**
+	 * The '<em><b>RESUMED</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #RESUMED_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	RESUMED(6, "RESUMED", "RESUMED");
 
 	/**
 	 * The '<em><b>UNKNOWN</b></em>' literal value.
@@ -169,6 +177,21 @@ public enum WorkstepInstanceStatusEnum implements Enumerator {
 	public static final int ABORTED_VALUE = 5;
 
 	/**
+	 * The '<em><b>RESUMED</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>RESUMED</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #RESUMED
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RESUMED_VALUE = 6;
+
+	/**
 	 * An array of all the '<em><b>Workstep Instance Status Enum</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -182,6 +205,7 @@ public enum WorkstepInstanceStatusEnum implements Enumerator {
 			REPEATING,
 			FINISHED,
 			ABORTED,
+			RESUMED,
 		};
 
 	/**
@@ -244,6 +268,7 @@ public enum WorkstepInstanceStatusEnum implements Enumerator {
 			case REPEATING_VALUE: return REPEATING;
 			case FINISHED_VALUE: return FINISHED;
 			case ABORTED_VALUE: return ABORTED;
+			case RESUMED_VALUE: return RESUMED;
 		}
 		return null;
 	}
