@@ -2,7 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.product.impl;
 
-import de.dfki.iui.basys.model.domain.product.ProductInstanceLocationEvent;
+import de.dfki.iui.basys.model.domain.product.ProductInstanceLocationChangeEvent;
 import de.dfki.iui.basys.model.domain.product.ProductPackage;
 
 import java.util.Date;
@@ -15,18 +15,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Instance Location Event</b></em>'.
+ * An implementation of the model object '<em><b>Instance Location Change Event</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.dfki.iui.basys.model.domain.product.impl.ProductInstanceLocationEventImpl#getTimestamp <em>Timestamp</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.product.impl.ProductInstanceLocationChangeEventImpl#getTimestamp <em>Timestamp</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ProductInstanceLocationEventImpl extends ProductInstanceLocationImpl implements ProductInstanceLocationEvent {
+public class ProductInstanceLocationChangeEventImpl extends ProductInstanceLocationImpl implements ProductInstanceLocationChangeEvent {
 	/**
 	 * The default value of the '{@link #getTimestamp() <em>Timestamp</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -52,7 +52,7 @@ public class ProductInstanceLocationEventImpl extends ProductInstanceLocationImp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ProductInstanceLocationEventImpl() {
+	protected ProductInstanceLocationChangeEventImpl() {
 		super();
 	}
 
@@ -63,7 +63,7 @@ public class ProductInstanceLocationEventImpl extends ProductInstanceLocationImp
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ProductPackage.Literals.PRODUCT_INSTANCE_LOCATION_EVENT;
+		return ProductPackage.Literals.PRODUCT_INSTANCE_LOCATION_CHANGE_EVENT;
 	}
 
 	/**
@@ -84,7 +84,7 @@ public class ProductInstanceLocationEventImpl extends ProductInstanceLocationImp
 		Date oldTimestamp = timestamp;
 		timestamp = newTimestamp;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ProductPackage.PRODUCT_INSTANCE_LOCATION_EVENT__TIMESTAMP, oldTimestamp, timestamp));
+			eNotify(new ENotificationImpl(this, Notification.SET, ProductPackage.PRODUCT_INSTANCE_LOCATION_CHANGE_EVENT__TIMESTAMP, oldTimestamp, timestamp));
 	}
 
 	/**
@@ -95,7 +95,7 @@ public class ProductInstanceLocationEventImpl extends ProductInstanceLocationImp
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ProductPackage.PRODUCT_INSTANCE_LOCATION_EVENT__TIMESTAMP:
+			case ProductPackage.PRODUCT_INSTANCE_LOCATION_CHANGE_EVENT__TIMESTAMP:
 				return getTimestamp();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -109,7 +109,7 @@ public class ProductInstanceLocationEventImpl extends ProductInstanceLocationImp
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ProductPackage.PRODUCT_INSTANCE_LOCATION_EVENT__TIMESTAMP:
+			case ProductPackage.PRODUCT_INSTANCE_LOCATION_CHANGE_EVENT__TIMESTAMP:
 				setTimestamp((Date)newValue);
 				return;
 		}
@@ -124,7 +124,7 @@ public class ProductInstanceLocationEventImpl extends ProductInstanceLocationImp
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ProductPackage.PRODUCT_INSTANCE_LOCATION_EVENT__TIMESTAMP:
+			case ProductPackage.PRODUCT_INSTANCE_LOCATION_CHANGE_EVENT__TIMESTAMP:
 				setTimestamp(TIMESTAMP_EDEFAULT);
 				return;
 		}
@@ -139,7 +139,7 @@ public class ProductInstanceLocationEventImpl extends ProductInstanceLocationImp
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ProductPackage.PRODUCT_INSTANCE_LOCATION_EVENT__TIMESTAMP:
+			case ProductPackage.PRODUCT_INSTANCE_LOCATION_CHANGE_EVENT__TIMESTAMP:
 				return TIMESTAMP_EDEFAULT == null ? timestamp != null : !TIMESTAMP_EDEFAULT.equals(timestamp);
 		}
 		return super.eIsSet(featureID);
@@ -161,4 +161,4 @@ public class ProductInstanceLocationEventImpl extends ProductInstanceLocationImp
 		return result.toString();
 	}
 
-} //ProductInstanceLocationEventImpl
+} //ProductInstanceLocationChangeEventImpl

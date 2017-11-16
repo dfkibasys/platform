@@ -87,16 +87,16 @@ public class ProductAdapterFactory extends AdapterFactoryImpl {
 				return createProductInstanceStatusAdapter();
 			}
 			@Override
-			public Adapter caseProductInstanceStatusEvent(ProductInstanceStatusEvent object) {
-				return createProductInstanceStatusEventAdapter();
+			public Adapter caseProductInstanceStatusChangeEvent(ProductInstanceStatusChangeEvent object) {
+				return createProductInstanceStatusChangeEventAdapter();
 			}
 			@Override
 			public Adapter caseProductInstanceLocation(ProductInstanceLocation object) {
 				return createProductInstanceLocationAdapter();
 			}
 			@Override
-			public Adapter caseProductInstanceLocationEvent(ProductInstanceLocationEvent object) {
-				return createProductInstanceLocationEventAdapter();
+			public Adapter caseProductInstanceLocationChangeEvent(ProductInstanceLocationChangeEvent object) {
+				return createProductInstanceLocationChangeEventAdapter();
 			}
 			@Override
 			public Adapter caseEntity(Entity object) {
@@ -183,16 +183,16 @@ public class ProductAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.product.ProductInstanceStatusEvent <em>Instance Status Event</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.product.ProductInstanceStatusChangeEvent <em>Instance Status Change Event</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.dfki.iui.basys.model.domain.product.ProductInstanceStatusEvent
+	 * @see de.dfki.iui.basys.model.domain.product.ProductInstanceStatusChangeEvent
 	 * @generated
 	 */
-	public Adapter createProductInstanceStatusEventAdapter() {
+	public Adapter createProductInstanceStatusChangeEventAdapter() {
 		return null;
 	}
 
@@ -211,16 +211,16 @@ public class ProductAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.product.ProductInstanceLocationEvent <em>Instance Location Event</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.product.ProductInstanceLocationChangeEvent <em>Instance Location Change Event</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.dfki.iui.basys.model.domain.product.ProductInstanceLocationEvent
+	 * @see de.dfki.iui.basys.model.domain.product.ProductInstanceLocationChangeEvent
 	 * @generated
 	 */
-	public Adapter createProductInstanceLocationEventAdapter() {
+	public Adapter createProductInstanceLocationChangeEventAdapter() {
 		return null;
 	}
 

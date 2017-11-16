@@ -58,13 +58,13 @@ public interface ProductFactory extends EFactory {
 	ProductInstanceStatus createProductInstanceStatus();
 
 	/**
-	 * Returns a new object of class '<em>Instance Status Event</em>'.
+	 * Returns a new object of class '<em>Instance Status Change Event</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Instance Status Event</em>'.
+	 * @return a new object of class '<em>Instance Status Change Event</em>'.
 	 * @generated
 	 */
-	ProductInstanceStatusEvent createProductInstanceStatusEvent();
+	ProductInstanceStatusChangeEvent createProductInstanceStatusChangeEvent();
 
 	/**
 	 * Returns a new object of class '<em>Instance Location</em>'.
@@ -76,13 +76,13 @@ public interface ProductFactory extends EFactory {
 	ProductInstanceLocation createProductInstanceLocation();
 
 	/**
-	 * Returns a new object of class '<em>Instance Location Event</em>'.
+	 * Returns a new object of class '<em>Instance Location Change Event</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Instance Location Event</em>'.
+	 * @return a new object of class '<em>Instance Location Change Event</em>'.
 	 * @generated
 	 */
-	ProductInstanceLocationEvent createProductInstanceLocationEvent();
+	ProductInstanceLocationChangeEvent createProductInstanceLocationChangeEvent();
 
 	/**
 	 * Returns the package supported by this factory.

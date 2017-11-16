@@ -100,11 +100,11 @@ public class ProductSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ProductPackage.PRODUCT_INSTANCE_STATUS_EVENT: {
-				ProductInstanceStatusEvent productInstanceStatusEvent = (ProductInstanceStatusEvent)theEObject;
-				T result = caseProductInstanceStatusEvent(productInstanceStatusEvent);
-				if (result == null) result = caseProductInstanceStatus(productInstanceStatusEvent);
-				if (result == null) result = caseEntity(productInstanceStatusEvent);
+			case ProductPackage.PRODUCT_INSTANCE_STATUS_CHANGE_EVENT: {
+				ProductInstanceStatusChangeEvent productInstanceStatusChangeEvent = (ProductInstanceStatusChangeEvent)theEObject;
+				T result = caseProductInstanceStatusChangeEvent(productInstanceStatusChangeEvent);
+				if (result == null) result = caseProductInstanceStatus(productInstanceStatusChangeEvent);
+				if (result == null) result = caseEntity(productInstanceStatusChangeEvent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -115,11 +115,11 @@ public class ProductSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ProductPackage.PRODUCT_INSTANCE_LOCATION_EVENT: {
-				ProductInstanceLocationEvent productInstanceLocationEvent = (ProductInstanceLocationEvent)theEObject;
-				T result = caseProductInstanceLocationEvent(productInstanceLocationEvent);
-				if (result == null) result = caseProductInstanceLocation(productInstanceLocationEvent);
-				if (result == null) result = caseEntity(productInstanceLocationEvent);
+			case ProductPackage.PRODUCT_INSTANCE_LOCATION_CHANGE_EVENT: {
+				ProductInstanceLocationChangeEvent productInstanceLocationChangeEvent = (ProductInstanceLocationChangeEvent)theEObject;
+				T result = caseProductInstanceLocationChangeEvent(productInstanceLocationChangeEvent);
+				if (result == null) result = caseProductInstanceLocation(productInstanceLocationChangeEvent);
+				if (result == null) result = caseEntity(productInstanceLocationChangeEvent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -188,17 +188,17 @@ public class ProductSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Instance Status Event</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Instance Status Change Event</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Instance Status Event</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Instance Status Change Event</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseProductInstanceStatusEvent(ProductInstanceStatusEvent object) {
+	public T caseProductInstanceStatusChangeEvent(ProductInstanceStatusChangeEvent object) {
 		return null;
 	}
 
@@ -218,17 +218,17 @@ public class ProductSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Instance Location Event</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Instance Location Change Event</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Instance Location Event</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Instance Location Change Event</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseProductInstanceLocationEvent(ProductInstanceLocationEvent object) {
+	public T caseProductInstanceLocationChangeEvent(ProductInstanceLocationChangeEvent object) {
 		return null;
 	}
 

@@ -61,9 +61,9 @@ public class ProductFactoryImpl extends EFactoryImpl implements ProductFactory {
 			case ProductPackage.PRODUCT_VARIANT: return createProductVariant();
 			case ProductPackage.PRODUCT_INSTANCE: return createProductInstance();
 			case ProductPackage.PRODUCT_INSTANCE_STATUS: return createProductInstanceStatus();
-			case ProductPackage.PRODUCT_INSTANCE_STATUS_EVENT: return createProductInstanceStatusEvent();
+			case ProductPackage.PRODUCT_INSTANCE_STATUS_CHANGE_EVENT: return createProductInstanceStatusChangeEvent();
 			case ProductPackage.PRODUCT_INSTANCE_LOCATION: return createProductInstanceLocation();
-			case ProductPackage.PRODUCT_INSTANCE_LOCATION_EVENT: return createProductInstanceLocationEvent();
+			case ProductPackage.PRODUCT_INSTANCE_LOCATION_CHANGE_EVENT: return createProductInstanceLocationChangeEvent();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -148,9 +148,9 @@ public class ProductFactoryImpl extends EFactoryImpl implements ProductFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProductInstanceStatusEvent createProductInstanceStatusEvent() {
-		ProductInstanceStatusEventImpl productInstanceStatusEvent = new ProductInstanceStatusEventImpl();
-		return productInstanceStatusEvent;
+	public ProductInstanceStatusChangeEvent createProductInstanceStatusChangeEvent() {
+		ProductInstanceStatusChangeEventImpl productInstanceStatusChangeEvent = new ProductInstanceStatusChangeEventImpl();
+		return productInstanceStatusChangeEvent;
 	}
 
 	/**
@@ -168,9 +168,9 @@ public class ProductFactoryImpl extends EFactoryImpl implements ProductFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProductInstanceLocationEvent createProductInstanceLocationEvent() {
-		ProductInstanceLocationEventImpl productInstanceLocationEvent = new ProductInstanceLocationEventImpl();
-		return productInstanceLocationEvent;
+	public ProductInstanceLocationChangeEvent createProductInstanceLocationChangeEvent() {
+		ProductInstanceLocationChangeEventImpl productInstanceLocationChangeEvent = new ProductInstanceLocationChangeEventImpl();
+		return productInstanceLocationChangeEvent;
 	}
 
 	/**

@@ -2,10 +2,11 @@
  */
 package de.dfki.iui.basys.model.domain.product.impl;
 
-import de.dfki.iui.basys.model.domain.product.ProductInstanceStatusEvent;
+import de.dfki.iui.basys.model.domain.product.ProductInstanceStatusChangeEvent;
 import de.dfki.iui.basys.model.domain.product.ProductPackage;
 
 import java.util.Date;
+
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -14,18 +15,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Instance Status Event</b></em>'.
+ * An implementation of the model object '<em><b>Instance Status Change Event</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.dfki.iui.basys.model.domain.product.impl.ProductInstanceStatusEventImpl#getTimestamp <em>Timestamp</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.product.impl.ProductInstanceStatusChangeEventImpl#getTimestamp <em>Timestamp</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ProductInstanceStatusEventImpl extends ProductInstanceStatusImpl implements ProductInstanceStatusEvent {
+public class ProductInstanceStatusChangeEventImpl extends ProductInstanceStatusImpl implements ProductInstanceStatusChangeEvent {
 	/**
 	 * The default value of the '{@link #getTimestamp() <em>Timestamp</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -51,7 +52,7 @@ public class ProductInstanceStatusEventImpl extends ProductInstanceStatusImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ProductInstanceStatusEventImpl() {
+	protected ProductInstanceStatusChangeEventImpl() {
 		super();
 	}
 
@@ -62,7 +63,7 @@ public class ProductInstanceStatusEventImpl extends ProductInstanceStatusImpl im
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ProductPackage.Literals.PRODUCT_INSTANCE_STATUS_EVENT;
+		return ProductPackage.Literals.PRODUCT_INSTANCE_STATUS_CHANGE_EVENT;
 	}
 
 	/**
@@ -83,7 +84,7 @@ public class ProductInstanceStatusEventImpl extends ProductInstanceStatusImpl im
 		Date oldTimestamp = timestamp;
 		timestamp = newTimestamp;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ProductPackage.PRODUCT_INSTANCE_STATUS_EVENT__TIMESTAMP, oldTimestamp, timestamp));
+			eNotify(new ENotificationImpl(this, Notification.SET, ProductPackage.PRODUCT_INSTANCE_STATUS_CHANGE_EVENT__TIMESTAMP, oldTimestamp, timestamp));
 	}
 
 	/**
@@ -94,7 +95,7 @@ public class ProductInstanceStatusEventImpl extends ProductInstanceStatusImpl im
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ProductPackage.PRODUCT_INSTANCE_STATUS_EVENT__TIMESTAMP:
+			case ProductPackage.PRODUCT_INSTANCE_STATUS_CHANGE_EVENT__TIMESTAMP:
 				return getTimestamp();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -108,7 +109,7 @@ public class ProductInstanceStatusEventImpl extends ProductInstanceStatusImpl im
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ProductPackage.PRODUCT_INSTANCE_STATUS_EVENT__TIMESTAMP:
+			case ProductPackage.PRODUCT_INSTANCE_STATUS_CHANGE_EVENT__TIMESTAMP:
 				setTimestamp((Date)newValue);
 				return;
 		}
@@ -123,7 +124,7 @@ public class ProductInstanceStatusEventImpl extends ProductInstanceStatusImpl im
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ProductPackage.PRODUCT_INSTANCE_STATUS_EVENT__TIMESTAMP:
+			case ProductPackage.PRODUCT_INSTANCE_STATUS_CHANGE_EVENT__TIMESTAMP:
 				setTimestamp(TIMESTAMP_EDEFAULT);
 				return;
 		}
@@ -138,7 +139,7 @@ public class ProductInstanceStatusEventImpl extends ProductInstanceStatusImpl im
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ProductPackage.PRODUCT_INSTANCE_STATUS_EVENT__TIMESTAMP:
+			case ProductPackage.PRODUCT_INSTANCE_STATUS_CHANGE_EVENT__TIMESTAMP:
 				return TIMESTAMP_EDEFAULT == null ? timestamp != null : !TIMESTAMP_EDEFAULT.equals(timestamp);
 		}
 		return super.eIsSet(featureID);
@@ -160,4 +161,4 @@ public class ProductInstanceStatusEventImpl extends ProductInstanceStatusImpl im
 		return result.toString();
 	}
 
-} //ProductInstanceStatusEventImpl
+} //ProductInstanceStatusChangeEventImpl

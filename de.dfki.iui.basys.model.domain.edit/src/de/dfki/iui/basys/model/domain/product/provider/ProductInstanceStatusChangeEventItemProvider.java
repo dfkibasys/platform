@@ -3,7 +3,7 @@
 package de.dfki.iui.basys.model.domain.product.provider;
 
 
-import de.dfki.iui.basys.model.domain.product.ProductInstanceStatusEvent;
+import de.dfki.iui.basys.model.domain.product.ProductInstanceStatusChangeEvent;
 import de.dfki.iui.basys.model.domain.product.ProductPackage;
 
 import java.util.Collection;
@@ -11,25 +11,26 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link de.dfki.iui.basys.model.domain.product.ProductInstanceStatusEvent} object.
+ * This is the item provider adapter for a {@link de.dfki.iui.basys.model.domain.product.ProductInstanceStatusChangeEvent} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ProductInstanceStatusEventItemProvider extends ProductInstanceStatusItemProvider {
+public class ProductInstanceStatusChangeEventItemProvider extends ProductInstanceStatusItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProductInstanceStatusEventItemProvider(AdapterFactory adapterFactory) {
+	public ProductInstanceStatusChangeEventItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -60,9 +61,9 @@ public class ProductInstanceStatusEventItemProvider extends ProductInstanceStatu
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ProductInstanceStatusEvent_timestamp_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ProductInstanceStatusEvent_timestamp_feature", "_UI_ProductInstanceStatusEvent_type"),
-				 ProductPackage.Literals.PRODUCT_INSTANCE_STATUS_EVENT__TIMESTAMP,
+				 getString("_UI_ProductInstanceStatusChangeEvent_timestamp_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ProductInstanceStatusChangeEvent_timestamp_feature", "_UI_ProductInstanceStatusChangeEvent_type"),
+				 ProductPackage.Literals.PRODUCT_INSTANCE_STATUS_CHANGE_EVENT__TIMESTAMP,
 				 true,
 				 false,
 				 false,
@@ -72,14 +73,14 @@ public class ProductInstanceStatusEventItemProvider extends ProductInstanceStatu
 	}
 
 	/**
-	 * This returns ProductInstanceStatusEvent.gif.
+	 * This returns ProductInstanceStatusChangeEvent.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ProductInstanceStatusEvent"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ProductInstanceStatusChangeEvent"));
 	}
 
 	/**
@@ -90,10 +91,10 @@ public class ProductInstanceStatusEventItemProvider extends ProductInstanceStatu
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ProductInstanceStatusEvent)object).getProductInstanceId();
+		String label = ((ProductInstanceStatusChangeEvent)object).getProductInstanceId();
 		return label == null || label.length() == 0 ?
-			getString("_UI_ProductInstanceStatusEvent_type") :
-			getString("_UI_ProductInstanceStatusEvent_type") + " " + label;
+			getString("_UI_ProductInstanceStatusChangeEvent_type") :
+			getString("_UI_ProductInstanceStatusChangeEvent_type") + " " + label;
 	}
 	
 
@@ -108,8 +109,8 @@ public class ProductInstanceStatusEventItemProvider extends ProductInstanceStatu
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ProductInstanceStatusEvent.class)) {
-			case ProductPackage.PRODUCT_INSTANCE_STATUS_EVENT__TIMESTAMP:
+		switch (notification.getFeatureID(ProductInstanceStatusChangeEvent.class)) {
+			case ProductPackage.PRODUCT_INSTANCE_STATUS_CHANGE_EVENT__TIMESTAMP:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

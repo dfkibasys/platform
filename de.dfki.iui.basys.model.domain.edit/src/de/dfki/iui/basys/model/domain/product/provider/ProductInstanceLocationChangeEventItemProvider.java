@@ -4,7 +4,7 @@ package de.dfki.iui.basys.model.domain.product.provider;
 
 
 import de.dfki.iui.basys.model.domain.product.ProductInstanceDetectionEnum;
-import de.dfki.iui.basys.model.domain.product.ProductInstanceLocationEvent;
+import de.dfki.iui.basys.model.domain.product.ProductInstanceLocationChangeEvent;
 import de.dfki.iui.basys.model.domain.product.ProductPackage;
 
 import java.util.Collection;
@@ -19,19 +19,19 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link de.dfki.iui.basys.model.domain.product.ProductInstanceLocationEvent} object.
+ * This is the item provider adapter for a {@link de.dfki.iui.basys.model.domain.product.ProductInstanceLocationChangeEvent} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ProductInstanceLocationEventItemProvider extends ProductInstanceLocationItemProvider {
+public class ProductInstanceLocationChangeEventItemProvider extends ProductInstanceLocationItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProductInstanceLocationEventItemProvider(AdapterFactory adapterFactory) {
+	public ProductInstanceLocationChangeEventItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -62,9 +62,9 @@ public class ProductInstanceLocationEventItemProvider extends ProductInstanceLoc
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ProductInstanceLocationEvent_timestamp_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ProductInstanceLocationEvent_timestamp_feature", "_UI_ProductInstanceLocationEvent_type"),
-				 ProductPackage.Literals.PRODUCT_INSTANCE_LOCATION_EVENT__TIMESTAMP,
+				 getString("_UI_ProductInstanceLocationChangeEvent_timestamp_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ProductInstanceLocationChangeEvent_timestamp_feature", "_UI_ProductInstanceLocationChangeEvent_type"),
+				 ProductPackage.Literals.PRODUCT_INSTANCE_LOCATION_CHANGE_EVENT__TIMESTAMP,
 				 true,
 				 false,
 				 false,
@@ -74,14 +74,14 @@ public class ProductInstanceLocationEventItemProvider extends ProductInstanceLoc
 	}
 
 	/**
-	 * This returns ProductInstanceLocationEvent.gif.
+	 * This returns ProductInstanceLocationChangeEvent.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ProductInstanceLocationEvent"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ProductInstanceLocationChangeEvent"));
 	}
 
 	/**
@@ -92,11 +92,11 @@ public class ProductInstanceLocationEventItemProvider extends ProductInstanceLoc
 	 */
 	@Override
 	public String getText(Object object) {
-		ProductInstanceDetectionEnum labelValue = ((ProductInstanceLocationEvent)object).getDetectionType();
+		ProductInstanceDetectionEnum labelValue = ((ProductInstanceLocationChangeEvent)object).getDetectionType();
 		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
-			getString("_UI_ProductInstanceLocationEvent_type") :
-			getString("_UI_ProductInstanceLocationEvent_type") + " " + label;
+			getString("_UI_ProductInstanceLocationChangeEvent_type") :
+			getString("_UI_ProductInstanceLocationChangeEvent_type") + " " + label;
 	}
 	
 
@@ -111,8 +111,8 @@ public class ProductInstanceLocationEventItemProvider extends ProductInstanceLoc
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ProductInstanceLocationEvent.class)) {
-			case ProductPackage.PRODUCT_INSTANCE_LOCATION_EVENT__TIMESTAMP:
+		switch (notification.getFeatureID(ProductInstanceLocationChangeEvent.class)) {
+			case ProductPackage.PRODUCT_INSTANCE_LOCATION_CHANGE_EVENT__TIMESTAMP:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
