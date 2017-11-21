@@ -1,0 +1,94 @@
+#!/bin/sh
+_SCRIPTDIR_=`dirname "$0"`
+
+# -----------------------------------------------------------------------------
+# Copyright 2007-2008 Stuart McCulloch.
+# 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# 
+#      http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+# implied.
+# 
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# -----------------------------------------------------------------------------
+
+if [ -z "${PAX_CONSTRUCT_VERSION}" ]
+then
+  PAX_CONSTRUCT_VERSION=1.6.0
+fi
+
+PAX_PLUGIN=org.ops4j:maven-pax-plugin:${PAX_CONSTRUCT_VERSION}
+
+unset _PACKAGE_
+unset _BUNDLENAME_
+unset _BUNDLEGROUPID_
+unset _VERSION_
+unset _OVERWRITE_
+
+while
+  getopts p:n:g:v:oh- _SETTING_
+do
+  case ${_SETTING_} in
+    h|\?) echo "pax-create-bundle -p package [-n bundleName] [-g bundleGroupId] [-v version] [-o] [-- mvnOpts ...]"
+          echo "@ http://www.ops4j.org/projects/pax/construct/help/create-bundle.html"
+          exit ;;
+
+    p) _PACKAGE_=${OPTARG} ;;
+    n) _BUNDLENAME_=${OPTARG} ;;
+    g) _BUNDLEGROUPID_=${OPTARG} ;;
+    v) _VERSION_=${OPTARG} ;;
+    o) _OVERWRITE_=-Doverwrite ;;
+
+    -) break ;;
+  esac
+done
+
+shift $((${OPTIND}-1))
+
+if [ -z "${_PACKAGE_}" ]
+then
+  PAX_PROMPT=true
+fi
+
+_PACKAGE_=${_PACKAGE_:-org.example.pkg}
+_VERSION_=${_VERSION_:-1.0-SNAPSHOT}
+
+if [ -n "${PAX_PROMPT}" ]
+then
+  echo
+  echo "pax-create-bundle -p package [-n bundleName] [-g bundleGroupId] [-v version] [-o] [-- mvnOpts ...]"
+  echo
+
+  unset _INPUT_
+  read -p "package (${_PACKAGE_}) ? " _INPUT_
+  _PACKAGE_=${_INPUT_:-${_PACKAGE_}}
+
+  unset _INPUT_
+  read -p "bundleName (${_BUNDLENAME_}) ? " _INPUT_
+  _BUNDLENAME_=${_INPUT_:-${_BUNDLENAME_}}
+
+  unset _INPUT_
+  read -p "bundleGroupId (${_BUNDLEGROUPID_}) ? " _INPUT_
+  _BUNDLEGROUPID_=${_INPUT_:-${_BUNDLEGROUPID_}}
+
+  unset _INPUT_
+  read -p "version (${_VERSION_}) ? " _INPUT_
+  _VERSION_=${_INPUT_:-${_VERSION_}}
+
+  echo
+fi
+
+exec mvn -N ${PAX_PLUGIN}:create-bundle \
+  "-Dpackage=${_PACKAGE_}" \
+  "-DbundleName=${_BUNDLENAME_}" \
+  "-DbundleGroupId=${_BUNDLEGROUPID_}" \
+  "-Dversion=${_VERSION_}" \
+  ${PAX_CONSTRUCT_OPTIONS} ${_OVERWRITE_} "$@"
+

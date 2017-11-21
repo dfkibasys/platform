@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <parent>
+    <groupId>de.dfki.iui</groupId>
+    <artifactId>basys</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>de.dfki.iui.basys.build</groupId>
+  <artifactId>provision</artifactId>
+
+  <name>BaSys 4.0 - Imported Bundles</name>
+
+  <packaging>pom</packaging>
+
+  <!--
+   | imported (non-local) bundles are listed here as dependencies
+   | and will be deployed by pax:provision unless they are marked
+   | with <optional>true</optional>
+  -->
+  
+  	<properties>
+		<emf-version>2.12.0</emf-version>
+		<emf-common-version>2.12.0</emf-common-version>
+		<commons-io-version>2.6</commons-io-version>
+		<jackson-version>2.9.2</jackson-version>
+		<emfjson-version>0.13.0</emfjson-version>
+		<emfjson-jackson-version>1.0.1</emfjson-jackson-version>
+		<paho-version>1.2.0</paho-version>
+		<slf4j-version>1.7.25</slf4j-version>		
+	</properties>
+	
+	<dependencies>
+		<dependency>
+			<groupId>org.eclipse.emf</groupId>
+			<artifactId>org.eclipse.emf.common</artifactId>
+			<version>${emf-common-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.emf</groupId>
+			<artifactId>org.eclipse.emf.ecore</artifactId>
+			<version>${emf-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons-io-version}</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${jackson-version}</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${jackson-version}</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.emfjson</groupId>
+			<artifactId>emfjson-core</artifactId>
+			<version>${emfjson-version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.emfjson/emfjson-jackson -->
+		<dependency>
+			<groupId>org.emfjson</groupId>
+			<artifactId>emfjson-jackson</artifactId>
+			<version>${emfjson-jackson-version}</version>
+		</dependency>
+		
+		<!-- https://dzone.com/articles/adding-slf4j-your-maven -->
+		<dependency>		
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j-version}</version>
+		</dependency>
+				
+		<!-- SLF4F-Binding for System.out -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>${slf4j-version}</version>
+		</dependency>
+				
+		<!-- Eclipse Paho MQTT Client Library -->
+		<dependency>
+	      <groupId>org.eclipse.paho</groupId>
+	      <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
+	      <version>${paho-version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/javax.inject/javax.inject -->
+		<!-- zur Nutzung von communication.mqtt im Wildfly -->
+		<dependency>
+		    <groupId>javax.inject</groupId>
+		    <artifactId>javax.inject</artifactId>
+		    <version>1</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.service.component.annotations</artifactId>
+			<version>1.3.0</version>
+		</dependency>
+		
+	</dependencies>
+
+</project>

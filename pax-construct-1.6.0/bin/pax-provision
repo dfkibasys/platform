@@ -1,0 +1,79 @@
+#!/bin/sh
+_SCRIPTDIR_=`dirname "$0"`
+
+# -----------------------------------------------------------------------------
+# Copyright 2007-2008 Stuart McCulloch.
+# 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# 
+#      http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+# implied.
+# 
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# -----------------------------------------------------------------------------
+
+if [ -z "${PAX_CONSTRUCT_VERSION}" ]
+then
+  PAX_CONSTRUCT_VERSION=1.6.0
+fi
+
+PAX_PLUGIN=org.ops4j:maven-pax-plugin:${PAX_CONSTRUCT_VERSION}
+
+unset _FRAMEWORK_
+unset _PROFILES_
+unset _DEPLOYURLS_
+unset _OVERWRITE_
+
+while
+  getopts f:p:u:oh- _SETTING_
+do
+  case ${_SETTING_} in
+    h|\?) echo "pax-provision [-f felix|equinox|kf|concierge] [-p log,war,spring,...] [-u url,...] [-o] [-- mvnOpts ...]"
+          echo "@ http://www.ops4j.org/projects/pax/construct/help/provision.html"
+          exit ;;
+
+    f) _FRAMEWORK_=${OPTARG} ;;
+    p) _PROFILES_=${OPTARG} ;;
+    u) _DEPLOYURLS_=${OPTARG} ;;
+    o) _OVERWRITE_=-Doverwrite ;;
+
+    -) break ;;
+  esac
+done
+
+shift $((${OPTIND}-1))
+
+if [ -n "${PAX_PROMPT}" ]
+then
+  echo
+  echo "pax-provision [-f felix|equinox|kf|concierge] [-p log,war,spring,...] [-u url,...] [-o] [-- mvnOpts ...]"
+  echo
+
+  unset _INPUT_
+  read -p "framework (${_FRAMEWORK_}) ? " _INPUT_
+  _FRAMEWORK_=${_INPUT_:-${_FRAMEWORK_}}
+
+  unset _INPUT_
+  read -p "profiles (${_PROFILES_}) ? " _INPUT_
+  _PROFILES_=${_INPUT_:-${_PROFILES_}}
+
+  unset _INPUT_
+  read -p "deployURLs (${_DEPLOYURLS_}) ? " _INPUT_
+  _DEPLOYURLS_=${_INPUT_:-${_DEPLOYURLS_}}
+
+  echo
+fi
+
+exec mvn  ${PAX_PLUGIN}:provision \
+  "-Dframework=${_FRAMEWORK_}" \
+  "-Dprofiles=${_PROFILES_}" \
+  "-DdeployURLs=${_DEPLOYURLS_}" \
+  ${PAX_CONSTRUCT_OPTIONS} ${_OVERWRITE_} "$@"
+
