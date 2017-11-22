@@ -71,6 +71,7 @@ public class TopologyFactoryImpl extends EFactoryImpl implements TopologyFactory
 			case TopologyPackage.ASSEMBLY_STATION: return createAssemblyStation();
 			case TopologyPackage.BUFFER_STATION: return createBufferStation();
 			case TopologyPackage.PROCESS_UNIT: return createProcessUnit();
+			case TopologyPackage.DISCRETE_MANUFACTURING_EQUIPMENT_MODULE: return createDiscreteManufacturingEquipmentModule();
 			case TopologyPackage.TOOL: return createTool();
 			case TopologyPackage.STATIONARY_TOOL: return createStationaryTool();
 			case TopologyPackage.MOVABLE_TOOL: return createMovableTool();
@@ -254,6 +255,16 @@ public class TopologyFactoryImpl extends EFactoryImpl implements TopologyFactory
 	public ProcessUnit createProcessUnit() {
 		ProcessUnitImpl processUnit = new ProcessUnitImpl();
 		return processUnit;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DiscreteManufacturingEquipmentModule createDiscreteManufacturingEquipmentModule() {
+		DiscreteManufacturingEquipmentModuleImpl discreteManufacturingEquipmentModule = new DiscreteManufacturingEquipmentModuleImpl();
+		return discreteManufacturingEquipmentModule;
 	}
 
 	/**

@@ -2,7 +2,6 @@
  */
 package de.dfki.iui.basys.model.domain.topology;
 
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Discrete Manufacturing Equipment Module</b></em>'.
@@ -10,7 +9,7 @@ package de.dfki.iui.basys.model.domain.topology;
  *
  *
  * @see de.dfki.iui.basys.model.domain.topology.TopologyPackage#getDiscreteManufacturingEquipmentModule()
- * @model interface="true" abstract="true"
+ * @model
  * @generated
  */
 public interface DiscreteManufacturingEquipmentModule extends EquipmentModule {

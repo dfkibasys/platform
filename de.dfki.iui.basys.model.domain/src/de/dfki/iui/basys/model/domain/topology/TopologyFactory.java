@@ -157,6 +157,15 @@ public interface TopologyFactory extends EFactory {
 	ProcessUnit createProcessUnit();
 
 	/**
+	 * Returns a new object of class '<em>Discrete Manufacturing Equipment Module</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Discrete Manufacturing Equipment Module</em>'.
+	 * @generated
+	 */
+	DiscreteManufacturingEquipmentModule createDiscreteManufacturingEquipmentModule();
+
+	/**
 	 * Returns a new object of class '<em>Tool</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

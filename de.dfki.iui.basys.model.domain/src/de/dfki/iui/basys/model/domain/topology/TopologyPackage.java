@@ -719,10 +719,10 @@ public interface TopologyPackage extends EPackage {
 	int STORAGE_UNIT_OPERATION_COUNT = WORK_UNIT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.EquipmentModule <em>Equipment Module</em>}' class.
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.EquipmentModuleImpl <em>Equipment Module</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.topology.EquipmentModule
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.EquipmentModuleImpl
 	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getEquipmentModule()
 	 * @generated
 	 */
@@ -783,10 +783,10 @@ public interface TopologyPackage extends EPackage {
 	int EQUIPMENT_MODULE_OPERATION_COUNT = BasePackage.IDENTIFIABLE_ENTITY_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.ControlModule <em>Control Module</em>}' class.
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.ControlModuleImpl <em>Control Module</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.topology.ControlModule
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.ControlModuleImpl
 	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getControlModule()
 	 * @generated
 	 */
@@ -1122,10 +1122,10 @@ public interface TopologyPackage extends EPackage {
 	int PROCESS_UNIT_OPERATION_COUNT = WORK_UNIT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.DiscreteManufacturingEquipmentModule <em>Discrete Manufacturing Equipment Module</em>}' class.
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.DiscreteManufacturingEquipmentModuleImpl <em>Discrete Manufacturing Equipment Module</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.topology.DiscreteManufacturingEquipmentModule
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.DiscreteManufacturingEquipmentModuleImpl
 	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getDiscreteManufacturingEquipmentModule()
 	 * @generated
 	 */
@@ -4009,10 +4009,10 @@ public interface TopologyPackage extends EPackage {
 		EClass STORAGE_UNIT = eINSTANCE.getStorageUnit();
 
 		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.EquipmentModule <em>Equipment Module</em>}' class.
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.EquipmentModuleImpl <em>Equipment Module</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.domain.topology.EquipmentModule
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.EquipmentModuleImpl
 		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getEquipmentModule()
 		 * @generated
 		 */
@@ -4035,10 +4035,10 @@ public interface TopologyPackage extends EPackage {
 		EReference EQUIPMENT_MODULE__EQUIPMENT_MODULES = eINSTANCE.getEquipmentModule_EquipmentModules();
 
 		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.ControlModule <em>Control Module</em>}' class.
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.ControlModuleImpl <em>Control Module</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.domain.topology.ControlModule
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.ControlModuleImpl
 		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getControlModule()
 		 * @generated
 		 */
@@ -4143,10 +4143,10 @@ public interface TopologyPackage extends EPackage {
 		EClass PROCESS_UNIT = eINSTANCE.getProcessUnit();
 
 		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.DiscreteManufacturingEquipmentModule <em>Discrete Manufacturing Equipment Module</em>}' class.
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.DiscreteManufacturingEquipmentModuleImpl <em>Discrete Manufacturing Equipment Module</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.domain.topology.DiscreteManufacturingEquipmentModule
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.DiscreteManufacturingEquipmentModuleImpl
 		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getDiscreteManufacturingEquipmentModule()
 		 * @generated
 		 */

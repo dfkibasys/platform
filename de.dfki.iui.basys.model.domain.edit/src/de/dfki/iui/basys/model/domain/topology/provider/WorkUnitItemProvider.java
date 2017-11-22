@@ -134,6 +134,11 @@ public class WorkUnitItemProvider extends IdentifiableEntityItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(TopologyPackage.Literals.WORK_UNIT__EQUIPMENT_MODULES,
+				 TopologyFactory.eINSTANCE.createDiscreteManufacturingEquipmentModule()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.WORK_UNIT__EQUIPMENT_MODULES,
 				 TopologyFactory.eINSTANCE.createTool()));
 
 		newChildDescriptors.add

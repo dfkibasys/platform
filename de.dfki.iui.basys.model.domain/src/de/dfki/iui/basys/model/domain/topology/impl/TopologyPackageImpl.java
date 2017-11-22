@@ -1392,11 +1392,11 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 
 		initEClass(storageUnitEClass, StorageUnit.class, "StorageUnit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(equipmentModuleEClass, EquipmentModule.class, "EquipmentModule", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(equipmentModuleEClass, EquipmentModule.class, "EquipmentModule", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEquipmentModule_ControlModules(), this.getControlModule(), null, "controlModules", null, 0, -1, EquipmentModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEquipmentModule_EquipmentModules(), this.getEquipmentModule(), null, "equipmentModules", null, 0, -1, EquipmentModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(controlModuleEClass, ControlModule.class, "ControlModule", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(controlModuleEClass, ControlModule.class, "ControlModule", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getControlModule_ControlModules(), this.getControlModule(), null, "controlModules", null, 0, -1, ControlModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(stationEClass, Station.class, "Station", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1414,7 +1414,7 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 
 		initEClass(processUnitEClass, ProcessUnit.class, "ProcessUnit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(discreteManufacturingEquipmentModuleEClass, DiscreteManufacturingEquipmentModule.class, "DiscreteManufacturingEquipmentModule", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(discreteManufacturingEquipmentModuleEClass, DiscreteManufacturingEquipmentModule.class, "DiscreteManufacturingEquipmentModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(toolEClass, Tool.class, "Tool", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

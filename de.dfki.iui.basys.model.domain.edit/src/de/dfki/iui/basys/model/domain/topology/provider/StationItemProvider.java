@@ -145,6 +145,11 @@ public class StationItemProvider extends IdentifiableEntityItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(TopologyPackage.Literals.STATION__EQUIPMENT_MODULES,
+				 TopologyFactory.eINSTANCE.createDiscreteManufacturingEquipmentModule()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.STATION__EQUIPMENT_MODULES,
 				 TopologyFactory.eINSTANCE.createTool()));
 
 		newChildDescriptors.add

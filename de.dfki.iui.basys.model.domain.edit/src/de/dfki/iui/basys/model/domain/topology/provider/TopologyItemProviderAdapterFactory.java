@@ -417,6 +417,29 @@ public class TopologyItemProviderAdapterFactory extends TopologyAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.DiscreteManufacturingEquipmentModule} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DiscreteManufacturingEquipmentModuleItemProvider discreteManufacturingEquipmentModuleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.DiscreteManufacturingEquipmentModule}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDiscreteManufacturingEquipmentModuleAdapter() {
+		if (discreteManufacturingEquipmentModuleItemProvider == null) {
+			discreteManufacturingEquipmentModuleItemProvider = new DiscreteManufacturingEquipmentModuleItemProvider(this);
+		}
+
+		return discreteManufacturingEquipmentModuleItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.Tool} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1220,6 +1243,7 @@ public class TopologyItemProviderAdapterFactory extends TopologyAdapterFactory i
 		if (assemblyStationItemProvider != null) assemblyStationItemProvider.dispose();
 		if (bufferStationItemProvider != null) bufferStationItemProvider.dispose();
 		if (processUnitItemProvider != null) processUnitItemProvider.dispose();
+		if (discreteManufacturingEquipmentModuleItemProvider != null) discreteManufacturingEquipmentModuleItemProvider.dispose();
 		if (toolItemProvider != null) toolItemProvider.dispose();
 		if (stationaryToolItemProvider != null) stationaryToolItemProvider.dispose();
 		if (movableToolItemProvider != null) movableToolItemProvider.dispose();

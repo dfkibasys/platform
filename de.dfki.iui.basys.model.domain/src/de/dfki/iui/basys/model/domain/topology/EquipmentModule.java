@@ -3,7 +3,6 @@
 package de.dfki.iui.basys.model.domain.topology;
 
 import de.dfki.iui.basys.model.base.IdentifiableEntity;
-
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -24,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see de.dfki.iui.basys.model.domain.topology.TopologyPackage#getEquipmentModule()
- * @model interface="true" abstract="true"
+ * @model abstract="true"
  * @generated
  */
 public interface EquipmentModule extends IdentifiableEntity {
