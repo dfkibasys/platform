@@ -4,6 +4,8 @@ package de.dfki.iui.basys.model.domain.topology;
 
 import de.dfki.iui.basys.model.base.IdentifiableEntity;
 
+import org.eclipse.emf.common.util.EList;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Area</b></em>'.
@@ -22,29 +24,19 @@ import de.dfki.iui.basys.model.base.IdentifiableEntity;
  */
 public interface Area extends IdentifiableEntity {
 	/**
-	 * Returns the value of the '<em><b>Work Centers</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Work Centers</b></em>' containment reference list.
+	 * The list contents are of type {@link de.dfki.iui.basys.model.domain.topology.WorkCenter}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Work Centers</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Work Centers</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Work Centers</em>' containment reference.
-	 * @see #setWorkCenters(WorkCenter)
+	 * @return the value of the '<em>Work Centers</em>' containment reference list.
 	 * @see de.dfki.iui.basys.model.domain.topology.TopologyPackage#getArea_WorkCenters()
 	 * @model containment="true"
 	 * @generated
 	 */
-	WorkCenter getWorkCenters();
-
-	/**
-	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.topology.Area#getWorkCenters <em>Work Centers</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Work Centers</em>' containment reference.
-	 * @see #getWorkCenters()
-	 * @generated
-	 */
-	void setWorkCenters(WorkCenter value);
+	EList<WorkCenter> getWorkCenters();
 
 } // Area

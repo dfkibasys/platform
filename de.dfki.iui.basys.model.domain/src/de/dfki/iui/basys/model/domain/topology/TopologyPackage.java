@@ -197,7 +197,7 @@ public interface TopologyPackage extends EPackage {
 	int AREA__ID = BasePackage.IDENTIFIABLE_ENTITY__ID;
 
 	/**
-	 * The feature id for the '<em><b>Work Centers</b></em>' containment reference.
+	 * The feature id for the '<em><b>Work Centers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -298,13 +298,13 @@ public interface TopologyPackage extends EPackage {
 	int PROCESS_CELL__ID = WORK_CENTER__ID;
 
 	/**
-	 * The feature id for the '<em><b>Units</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Process Units</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROCESS_CELL__UNITS = WORK_CENTER_FEATURE_COUNT + 0;
+	int PROCESS_CELL__PROCESS_UNITS = WORK_CENTER_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Process Cell</em>' class.
@@ -719,10 +719,10 @@ public interface TopologyPackage extends EPackage {
 	int STORAGE_UNIT_OPERATION_COUNT = WORK_UNIT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.EquipmentModuleImpl <em>Equipment Module</em>}' class.
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.EquipmentModule <em>Equipment Module</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.topology.impl.EquipmentModuleImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.EquipmentModule
 	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getEquipmentModule()
 	 * @generated
 	 */
@@ -783,10 +783,10 @@ public interface TopologyPackage extends EPackage {
 	int EQUIPMENT_MODULE_OPERATION_COUNT = BasePackage.IDENTIFIABLE_ENTITY_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.ControlModuleImpl <em>Control Module</em>}' class.
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.ControlModule <em>Control Module</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.topology.impl.ControlModuleImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.ControlModule
 	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getControlModule()
 	 * @generated
 	 */
@@ -838,34 +838,6 @@ public interface TopologyPackage extends EPackage {
 	int CONTROL_MODULE_OPERATION_COUNT = BasePackage.IDENTIFIABLE_ENTITY_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.ProductionLineSectionImpl <em>Production Line Section</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.topology.impl.ProductionLineSectionImpl
-	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getProductionLineSection()
-	 * @generated
-	 */
-	int PRODUCTION_LINE_SECTION = 14;
-
-	/**
-	 * The number of structural features of the '<em>Production Line Section</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRODUCTION_LINE_SECTION_FEATURE_COUNT = 0;
-
-	/**
-	 * The number of operations of the '<em>Production Line Section</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRODUCTION_LINE_SECTION_OPERATION_COUNT = 0;
-
-	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.StationImpl <em>Station</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -873,7 +845,7 @@ public interface TopologyPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getStation()
 	 * @generated
 	 */
-	int STATION = 15;
+	int STATION = 14;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -928,7 +900,7 @@ public interface TopologyPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getTransition()
 	 * @generated
 	 */
-	int TRANSITION = 16;
+	int TRANSITION = 15;
 
 	/**
 	 * The feature id for the '<em><b>Component Id src</b></em>' attribute.
@@ -975,7 +947,6 @@ public interface TopologyPackage extends EPackage {
 	 */
 	int TRANSITION_OPERATION_COUNT = 0;
 
-
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.AssemblyStationImpl <em>Assembly Station</em>}' class.
 	 * <!-- begin-user-doc -->
@@ -984,7 +955,7 @@ public interface TopologyPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getAssemblyStation()
 	 * @generated
 	 */
-	int ASSEMBLY_STATION = 17;
+	int ASSEMBLY_STATION = 16;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -1039,7 +1010,7 @@ public interface TopologyPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getBufferStation()
 	 * @generated
 	 */
-	int BUFFER_STATION = 18;
+	int BUFFER_STATION = 17;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -1095,6 +1066,2045 @@ public interface TopologyPackage extends EPackage {
 	 */
 	int BUFFER_STATION_OPERATION_COUNT = STATION_OPERATION_COUNT + 0;
 
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.ProcessUnitImpl <em>Process Unit</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.ProcessUnitImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getProcessUnit()
+	 * @generated
+	 */
+	int PROCESS_UNIT = 18;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_UNIT__METADATA = WORK_UNIT__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_UNIT__ID = WORK_UNIT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_UNIT__EQUIPMENT_MODULES = WORK_UNIT__EQUIPMENT_MODULES;
+
+	/**
+	 * The number of structural features of the '<em>Process Unit</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_UNIT_FEATURE_COUNT = WORK_UNIT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Process Unit</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_UNIT_OPERATION_COUNT = WORK_UNIT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.DiscreteManufacturingEquipmentModule <em>Discrete Manufacturing Equipment Module</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.DiscreteManufacturingEquipmentModule
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getDiscreteManufacturingEquipmentModule()
+	 * @generated
+	 */
+	int DISCRETE_MANUFACTURING_EQUIPMENT_MODULE = 19;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA = EQUIPMENT_MODULE__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__ID = EQUIPMENT_MODULE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CONTROL_MODULES = EQUIPMENT_MODULE__CONTROL_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__EQUIPMENT_MODULES = EQUIPMENT_MODULE__EQUIPMENT_MODULES;
+
+	/**
+	 * The number of structural features of the '<em>Discrete Manufacturing Equipment Module</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_MANUFACTURING_EQUIPMENT_MODULE_FEATURE_COUNT = EQUIPMENT_MODULE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Discrete Manufacturing Equipment Module</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_MANUFACTURING_EQUIPMENT_MODULE_OPERATION_COUNT = EQUIPMENT_MODULE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.ToolImpl <em>Tool</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.ToolImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getTool()
+	 * @generated
+	 */
+	int TOOL = 20;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOOL__METADATA = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOOL__ID = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOOL__CONTROL_MODULES = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CONTROL_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOOL__EQUIPMENT_MODULES = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__EQUIPMENT_MODULES;
+
+	/**
+	 * The number of structural features of the '<em>Tool</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOOL_FEATURE_COUNT = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Tool</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOOL_OPERATION_COUNT = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.StationaryToolImpl <em>Stationary Tool</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.StationaryToolImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getStationaryTool()
+	 * @generated
+	 */
+	int STATIONARY_TOOL = 21;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATIONARY_TOOL__METADATA = TOOL__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATIONARY_TOOL__ID = TOOL__ID;
+
+	/**
+	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATIONARY_TOOL__CONTROL_MODULES = TOOL__CONTROL_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATIONARY_TOOL__EQUIPMENT_MODULES = TOOL__EQUIPMENT_MODULES;
+
+	/**
+	 * The number of structural features of the '<em>Stationary Tool</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATIONARY_TOOL_FEATURE_COUNT = TOOL_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Stationary Tool</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATIONARY_TOOL_OPERATION_COUNT = TOOL_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.MovableToolImpl <em>Movable Tool</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.MovableToolImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getMovableTool()
+	 * @generated
+	 */
+	int MOVABLE_TOOL = 22;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVABLE_TOOL__METADATA = TOOL__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVABLE_TOOL__ID = TOOL__ID;
+
+	/**
+	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVABLE_TOOL__CONTROL_MODULES = TOOL__CONTROL_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVABLE_TOOL__EQUIPMENT_MODULES = TOOL__EQUIPMENT_MODULES;
+
+	/**
+	 * The number of structural features of the '<em>Movable Tool</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVABLE_TOOL_FEATURE_COUNT = TOOL_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Movable Tool</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVABLE_TOOL_OPERATION_COUNT = TOOL_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.TransportImpl <em>Transport</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TransportImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getTransport()
+	 * @generated
+	 */
+	int TRANSPORT = 23;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSPORT__METADATA = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSPORT__ID = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSPORT__CONTROL_MODULES = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CONTROL_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSPORT__EQUIPMENT_MODULES = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__EQUIPMENT_MODULES;
+
+	/**
+	 * The number of structural features of the '<em>Transport</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSPORT_FEATURE_COUNT = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Transport</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSPORT_OPERATION_COUNT = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.StorageImpl <em>Storage</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.StorageImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getStorage()
+	 * @generated
+	 */
+	int STORAGE = 24;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE__METADATA = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE__ID = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE__CONTROL_MODULES = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CONTROL_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE__EQUIPMENT_MODULES = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__EQUIPMENT_MODULES;
+
+	/**
+	 * The number of structural features of the '<em>Storage</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE_FEATURE_COUNT = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Storage</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE_OPERATION_COUNT = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.FixtureImpl <em>Fixture</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.FixtureImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getFixture()
+	 * @generated
+	 */
+	int FIXTURE = 25;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIXTURE__METADATA = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIXTURE__ID = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIXTURE__CONTROL_MODULES = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CONTROL_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIXTURE__EQUIPMENT_MODULES = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__EQUIPMENT_MODULES;
+
+	/**
+	 * The number of structural features of the '<em>Fixture</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIXTURE_FEATURE_COUNT = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Fixture</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIXTURE_OPERATION_COUNT = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.GateImpl <em>Gate</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.GateImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getGate()
+	 * @generated
+	 */
+	int GATE = 26;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GATE__METADATA = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GATE__ID = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GATE__CONTROL_MODULES = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CONTROL_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GATE__EQUIPMENT_MODULES = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__EQUIPMENT_MODULES;
+
+	/**
+	 * The number of structural features of the '<em>Gate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GATE_FEATURE_COUNT = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Gate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GATE_OPERATION_COUNT = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.RobotImpl <em>Robot</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.RobotImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getRobot()
+	 * @generated
+	 */
+	int ROBOT = 27;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROBOT__METADATA = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROBOT__ID = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROBOT__CONTROL_MODULES = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CONTROL_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROBOT__EQUIPMENT_MODULES = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__EQUIPMENT_MODULES;
+
+	/**
+	 * The number of structural features of the '<em>Robot</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROBOT_FEATURE_COUNT = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Robot</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROBOT_OPERATION_COUNT = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.CarrierImpl <em>Carrier</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.CarrierImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getCarrier()
+	 * @generated
+	 */
+	int CARRIER = 28;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARRIER__METADATA = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARRIER__ID = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARRIER__CONTROL_MODULES = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CONTROL_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARRIER__EQUIPMENT_MODULES = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__EQUIPMENT_MODULES;
+
+	/**
+	 * The number of structural features of the '<em>Carrier</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARRIER_FEATURE_COUNT = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Carrier</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARRIER_OPERATION_COUNT = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.MachineImpl <em>Machine</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.MachineImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getMachine()
+	 * @generated
+	 */
+	int MACHINE = 29;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE__METADATA = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE__ID = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE__CONTROL_MODULES = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CONTROL_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE__EQUIPMENT_MODULES = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__EQUIPMENT_MODULES;
+
+	/**
+	 * The number of structural features of the '<em>Machine</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_FEATURE_COUNT = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Machine</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_OPERATION_COUNT = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.StaticObjectImpl <em>Static Object</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.StaticObjectImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getStaticObject()
+	 * @generated
+	 */
+	int STATIC_OBJECT = 30;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATIC_OBJECT__METADATA = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATIC_OBJECT__ID = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATIC_OBJECT__CONTROL_MODULES = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CONTROL_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATIC_OBJECT__EQUIPMENT_MODULES = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__EQUIPMENT_MODULES;
+
+	/**
+	 * The number of structural features of the '<em>Static Object</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATIC_OBJECT_FEATURE_COUNT = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Static Object</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATIC_OBJECT_OPERATION_COUNT = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.HorizontalTransportImpl <em>Horizontal Transport</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.HorizontalTransportImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getHorizontalTransport()
+	 * @generated
+	 */
+	int HORIZONTAL_TRANSPORT = 39;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HORIZONTAL_TRANSPORT__METADATA = TRANSPORT__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HORIZONTAL_TRANSPORT__ID = TRANSPORT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HORIZONTAL_TRANSPORT__CONTROL_MODULES = TRANSPORT__CONTROL_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HORIZONTAL_TRANSPORT__EQUIPMENT_MODULES = TRANSPORT__EQUIPMENT_MODULES;
+
+	/**
+	 * The number of structural features of the '<em>Horizontal Transport</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HORIZONTAL_TRANSPORT_FEATURE_COUNT = TRANSPORT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Horizontal Transport</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HORIZONTAL_TRANSPORT_OPERATION_COUNT = TRANSPORT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.TurnableImpl <em>Turnable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TurnableImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getTurnable()
+	 * @generated
+	 */
+	int TURNABLE = 31;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TURNABLE__METADATA = HORIZONTAL_TRANSPORT__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TURNABLE__ID = HORIZONTAL_TRANSPORT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TURNABLE__CONTROL_MODULES = HORIZONTAL_TRANSPORT__CONTROL_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TURNABLE__EQUIPMENT_MODULES = HORIZONTAL_TRANSPORT__EQUIPMENT_MODULES;
+
+	/**
+	 * The number of structural features of the '<em>Turnable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TURNABLE_FEATURE_COUNT = HORIZONTAL_TRANSPORT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Turnable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TURNABLE_OPERATION_COUNT = HORIZONTAL_TRANSPORT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.ConveyorImpl <em>Conveyor</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.ConveyorImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getConveyor()
+	 * @generated
+	 */
+	int CONVEYOR = 32;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONVEYOR__METADATA = HORIZONTAL_TRANSPORT__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONVEYOR__ID = HORIZONTAL_TRANSPORT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONVEYOR__CONTROL_MODULES = HORIZONTAL_TRANSPORT__CONTROL_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONVEYOR__EQUIPMENT_MODULES = HORIZONTAL_TRANSPORT__EQUIPMENT_MODULES;
+
+	/**
+	 * The number of structural features of the '<em>Conveyor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONVEYOR_FEATURE_COUNT = HORIZONTAL_TRANSPORT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Conveyor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONVEYOR_OPERATION_COUNT = HORIZONTAL_TRANSPORT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.VerticalTransportImpl <em>Vertical Transport</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.VerticalTransportImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getVerticalTransport()
+	 * @generated
+	 */
+	int VERTICAL_TRANSPORT = 38;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VERTICAL_TRANSPORT__METADATA = TRANSPORT__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VERTICAL_TRANSPORT__ID = TRANSPORT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VERTICAL_TRANSPORT__CONTROL_MODULES = TRANSPORT__CONTROL_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VERTICAL_TRANSPORT__EQUIPMENT_MODULES = TRANSPORT__EQUIPMENT_MODULES;
+
+	/**
+	 * The number of structural features of the '<em>Vertical Transport</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VERTICAL_TRANSPORT_FEATURE_COUNT = TRANSPORT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Vertical Transport</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VERTICAL_TRANSPORT_OPERATION_COUNT = TRANSPORT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.LiftingTableImpl <em>Lifting Table</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.LiftingTableImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getLiftingTable()
+	 * @generated
+	 */
+	int LIFTING_TABLE = 33;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIFTING_TABLE__METADATA = VERTICAL_TRANSPORT__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIFTING_TABLE__ID = VERTICAL_TRANSPORT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIFTING_TABLE__CONTROL_MODULES = VERTICAL_TRANSPORT__CONTROL_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIFTING_TABLE__EQUIPMENT_MODULES = VERTICAL_TRANSPORT__EQUIPMENT_MODULES;
+
+	/**
+	 * The number of structural features of the '<em>Lifting Table</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIFTING_TABLE_FEATURE_COUNT = VERTICAL_TRANSPORT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Lifting Table</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIFTING_TABLE_OPERATION_COUNT = VERTICAL_TRANSPORT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.AVGImpl <em>AVG</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.AVGImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getAVG()
+	 * @generated
+	 */
+	int AVG = 34;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AVG__METADATA = HORIZONTAL_TRANSPORT__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AVG__ID = HORIZONTAL_TRANSPORT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AVG__CONTROL_MODULES = HORIZONTAL_TRANSPORT__CONTROL_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AVG__EQUIPMENT_MODULES = HORIZONTAL_TRANSPORT__EQUIPMENT_MODULES;
+
+	/**
+	 * The number of structural features of the '<em>AVG</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AVG_FEATURE_COUNT = HORIZONTAL_TRANSPORT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>AVG</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AVG_OPERATION_COUNT = HORIZONTAL_TRANSPORT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.TransposerImpl <em>Transposer</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TransposerImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getTransposer()
+	 * @generated
+	 */
+	int TRANSPOSER = 35;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSPOSER__METADATA = TRANSPORT__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSPOSER__ID = TRANSPORT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSPOSER__CONTROL_MODULES = TRANSPORT__CONTROL_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSPOSER__EQUIPMENT_MODULES = TRANSPORT__EQUIPMENT_MODULES;
+
+	/**
+	 * The number of structural features of the '<em>Transposer</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSPOSER_FEATURE_COUNT = TRANSPORT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Transposer</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSPOSER_OPERATION_COUNT = TRANSPORT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.CarrierHandlingSystemImpl <em>Carrier Handling System</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.CarrierHandlingSystemImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getCarrierHandlingSystem()
+	 * @generated
+	 */
+	int CARRIER_HANDLING_SYSTEM = 36;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARRIER_HANDLING_SYSTEM__METADATA = TRANSPORT__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARRIER_HANDLING_SYSTEM__ID = TRANSPORT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARRIER_HANDLING_SYSTEM__CONTROL_MODULES = TRANSPORT__CONTROL_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARRIER_HANDLING_SYSTEM__EQUIPMENT_MODULES = TRANSPORT__EQUIPMENT_MODULES;
+
+	/**
+	 * The number of structural features of the '<em>Carrier Handling System</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARRIER_HANDLING_SYSTEM_FEATURE_COUNT = TRANSPORT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Carrier Handling System</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARRIER_HANDLING_SYSTEM_OPERATION_COUNT = TRANSPORT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.LiftImpl <em>Lift</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.LiftImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getLift()
+	 * @generated
+	 */
+	int LIFT = 37;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIFT__METADATA = VERTICAL_TRANSPORT__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIFT__ID = VERTICAL_TRANSPORT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIFT__CONTROL_MODULES = VERTICAL_TRANSPORT__CONTROL_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIFT__EQUIPMENT_MODULES = VERTICAL_TRANSPORT__EQUIPMENT_MODULES;
+
+	/**
+	 * The number of structural features of the '<em>Lift</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIFT_FEATURE_COUNT = VERTICAL_TRANSPORT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Lift</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIFT_OPERATION_COUNT = VERTICAL_TRANSPORT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.RollerbedImpl <em>Rollerbed</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.RollerbedImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getRollerbed()
+	 * @generated
+	 */
+	int ROLLERBED = 40;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLLERBED__METADATA = HORIZONTAL_TRANSPORT__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLLERBED__ID = HORIZONTAL_TRANSPORT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLLERBED__CONTROL_MODULES = HORIZONTAL_TRANSPORT__CONTROL_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLLERBED__EQUIPMENT_MODULES = HORIZONTAL_TRANSPORT__EQUIPMENT_MODULES;
+
+	/**
+	 * The number of structural features of the '<em>Rollerbed</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLLERBED_FEATURE_COUNT = HORIZONTAL_TRANSPORT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Rollerbed</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLLERBED_OPERATION_COUNT = HORIZONTAL_TRANSPORT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.LoaderImpl <em>Loader</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.LoaderImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getLoader()
+	 * @generated
+	 */
+	int LOADER = 41;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOADER__METADATA = STORAGE__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOADER__ID = STORAGE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOADER__CONTROL_MODULES = STORAGE__CONTROL_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOADER__EQUIPMENT_MODULES = STORAGE__EQUIPMENT_MODULES;
+
+	/**
+	 * The number of structural features of the '<em>Loader</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOADER_FEATURE_COUNT = STORAGE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Loader</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOADER_OPERATION_COUNT = STORAGE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.UnloaderImpl <em>Unloader</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.UnloaderImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getUnloader()
+	 * @generated
+	 */
+	int UNLOADER = 42;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNLOADER__METADATA = STORAGE__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNLOADER__ID = STORAGE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNLOADER__CONTROL_MODULES = STORAGE__CONTROL_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNLOADER__EQUIPMENT_MODULES = STORAGE__EQUIPMENT_MODULES;
+
+	/**
+	 * The number of structural features of the '<em>Unloader</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNLOADER_FEATURE_COUNT = STORAGE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Unloader</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNLOADER_OPERATION_COUNT = STORAGE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.BodyStoreImpl <em>Body Store</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.BodyStoreImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getBodyStore()
+	 * @generated
+	 */
+	int BODY_STORE = 43;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BODY_STORE__METADATA = STORAGE__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BODY_STORE__ID = STORAGE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BODY_STORE__CONTROL_MODULES = STORAGE__CONTROL_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BODY_STORE__EQUIPMENT_MODULES = STORAGE__EQUIPMENT_MODULES;
+
+	/**
+	 * The number of structural features of the '<em>Body Store</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BODY_STORE_FEATURE_COUNT = STORAGE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Body Store</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BODY_STORE_OPERATION_COUNT = STORAGE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.ClampImpl <em>Clamp</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.ClampImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getClamp()
+	 * @generated
+	 */
+	int CLAMP = 44;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLAMP__METADATA = FIXTURE__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLAMP__ID = FIXTURE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLAMP__CONTROL_MODULES = FIXTURE__CONTROL_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLAMP__EQUIPMENT_MODULES = FIXTURE__EQUIPMENT_MODULES;
+
+	/**
+	 * The number of structural features of the '<em>Clamp</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLAMP_FEATURE_COUNT = FIXTURE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Clamp</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLAMP_OPERATION_COUNT = FIXTURE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.BeltConveyorImpl <em>Belt Conveyor</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.BeltConveyorImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getBeltConveyor()
+	 * @generated
+	 */
+	int BELT_CONVEYOR = 45;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BELT_CONVEYOR__METADATA = CONVEYOR__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BELT_CONVEYOR__ID = CONVEYOR__ID;
+
+	/**
+	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BELT_CONVEYOR__CONTROL_MODULES = CONVEYOR__CONTROL_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BELT_CONVEYOR__EQUIPMENT_MODULES = CONVEYOR__EQUIPMENT_MODULES;
+
+	/**
+	 * The number of structural features of the '<em>Belt Conveyor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BELT_CONVEYOR_FEATURE_COUNT = CONVEYOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Belt Conveyor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BELT_CONVEYOR_OPERATION_COUNT = CONVEYOR_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.RollConveyorImpl <em>Roll Conveyor</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.RollConveyorImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getRollConveyor()
+	 * @generated
+	 */
+	int ROLL_CONVEYOR = 46;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLL_CONVEYOR__METADATA = CONVEYOR__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLL_CONVEYOR__ID = CONVEYOR__ID;
+
+	/**
+	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLL_CONVEYOR__CONTROL_MODULES = CONVEYOR__CONTROL_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLL_CONVEYOR__EQUIPMENT_MODULES = CONVEYOR__EQUIPMENT_MODULES;
+
+	/**
+	 * The number of structural features of the '<em>Roll Conveyor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLL_CONVEYOR_FEATURE_COUNT = CONVEYOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Roll Conveyor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLL_CONVEYOR_OPERATION_COUNT = CONVEYOR_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.ChainConveyorImpl <em>Chain Conveyor</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.ChainConveyorImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getChainConveyor()
+	 * @generated
+	 */
+	int CHAIN_CONVEYOR = 47;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHAIN_CONVEYOR__METADATA = CONVEYOR__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHAIN_CONVEYOR__ID = CONVEYOR__ID;
+
+	/**
+	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHAIN_CONVEYOR__CONTROL_MODULES = CONVEYOR__CONTROL_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHAIN_CONVEYOR__EQUIPMENT_MODULES = CONVEYOR__EQUIPMENT_MODULES;
+
+	/**
+	 * The number of structural features of the '<em>Chain Conveyor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHAIN_CONVEYOR_FEATURE_COUNT = CONVEYOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Chain Conveyor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHAIN_CONVEYOR_OPERATION_COUNT = CONVEYOR_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.PalletConveyorImpl <em>Pallet Conveyor</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.PalletConveyorImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getPalletConveyor()
+	 * @generated
+	 */
+	int PALLET_CONVEYOR = 48;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PALLET_CONVEYOR__METADATA = CONVEYOR__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PALLET_CONVEYOR__ID = CONVEYOR__ID;
+
+	/**
+	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PALLET_CONVEYOR__CONTROL_MODULES = CONVEYOR__CONTROL_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PALLET_CONVEYOR__EQUIPMENT_MODULES = CONVEYOR__EQUIPMENT_MODULES;
+
+	/**
+	 * The number of structural features of the '<em>Pallet Conveyor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PALLET_CONVEYOR_FEATURE_COUNT = CONVEYOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Pallet Conveyor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PALLET_CONVEYOR_OPERATION_COUNT = CONVEYOR_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.OverheadConveyorImpl <em>Overhead Conveyor</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.OverheadConveyorImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getOverheadConveyor()
+	 * @generated
+	 */
+	int OVERHEAD_CONVEYOR = 49;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OVERHEAD_CONVEYOR__METADATA = CONVEYOR__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OVERHEAD_CONVEYOR__ID = CONVEYOR__ID;
+
+	/**
+	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OVERHEAD_CONVEYOR__CONTROL_MODULES = CONVEYOR__CONTROL_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OVERHEAD_CONVEYOR__EQUIPMENT_MODULES = CONVEYOR__EQUIPMENT_MODULES;
+
+	/**
+	 * The number of structural features of the '<em>Overhead Conveyor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OVERHEAD_CONVEYOR_FEATURE_COUNT = CONVEYOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Overhead Conveyor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OVERHEAD_CONVEYOR_OPERATION_COUNT = CONVEYOR_OPERATION_COUNT + 0;
+
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.Enterprise <em>Enterprise</em>}'.
@@ -1149,10 +3159,10 @@ public interface TopologyPackage extends EPackage {
 	EClass getArea();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link de.dfki.iui.basys.model.domain.topology.Area#getWorkCenters <em>Work Centers</em>}'.
+	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.domain.topology.Area#getWorkCenters <em>Work Centers</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Work Centers</em>'.
+	 * @return the meta object for the containment reference list '<em>Work Centers</em>'.
 	 * @see de.dfki.iui.basys.model.domain.topology.Area#getWorkCenters()
 	 * @see #getArea()
 	 * @generated
@@ -1180,15 +3190,15 @@ public interface TopologyPackage extends EPackage {
 	EClass getProcessCell();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.domain.topology.ProcessCell#getUnits <em>Units</em>}'.
+	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.domain.topology.ProcessCell#getProcessUnits <em>Process Units</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Units</em>'.
-	 * @see de.dfki.iui.basys.model.domain.topology.ProcessCell#getUnits()
+	 * @return the meta object for the containment reference list '<em>Process Units</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.ProcessCell#getProcessUnits()
 	 * @see #getProcessCell()
 	 * @generated
 	 */
-	EReference getProcessCell_Units();
+	EReference getProcessCell_ProcessUnits();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.ProductionUnit <em>Production Unit</em>}'.
@@ -1369,16 +3379,6 @@ public interface TopologyPackage extends EPackage {
 	EReference getControlModule_ControlModules();
 
 	/**
-	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.ProductionLineSection <em>Production Line Section</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Production Line Section</em>'.
-	 * @see de.dfki.iui.basys.model.domain.topology.ProductionLineSection
-	 * @generated
-	 */
-	EClass getProductionLineSection();
-
-	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.Station <em>Station</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1474,6 +3474,326 @@ public interface TopologyPackage extends EPackage {
 	EAttribute getBufferStation_Capacity();
 
 	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.ProcessUnit <em>Process Unit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Process Unit</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.ProcessUnit
+	 * @generated
+	 */
+	EClass getProcessUnit();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.DiscreteManufacturingEquipmentModule <em>Discrete Manufacturing Equipment Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Discrete Manufacturing Equipment Module</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.DiscreteManufacturingEquipmentModule
+	 * @generated
+	 */
+	EClass getDiscreteManufacturingEquipmentModule();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.Tool <em>Tool</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Tool</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.Tool
+	 * @generated
+	 */
+	EClass getTool();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.StationaryTool <em>Stationary Tool</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Stationary Tool</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.StationaryTool
+	 * @generated
+	 */
+	EClass getStationaryTool();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.MovableTool <em>Movable Tool</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Movable Tool</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.MovableTool
+	 * @generated
+	 */
+	EClass getMovableTool();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.Transport <em>Transport</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Transport</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.Transport
+	 * @generated
+	 */
+	EClass getTransport();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.Storage <em>Storage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Storage</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.Storage
+	 * @generated
+	 */
+	EClass getStorage();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.Fixture <em>Fixture</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Fixture</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.Fixture
+	 * @generated
+	 */
+	EClass getFixture();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.Gate <em>Gate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Gate</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.Gate
+	 * @generated
+	 */
+	EClass getGate();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.Robot <em>Robot</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Robot</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.Robot
+	 * @generated
+	 */
+	EClass getRobot();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.Carrier <em>Carrier</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Carrier</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.Carrier
+	 * @generated
+	 */
+	EClass getCarrier();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.Machine <em>Machine</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Machine</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.Machine
+	 * @generated
+	 */
+	EClass getMachine();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.StaticObject <em>Static Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Static Object</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.StaticObject
+	 * @generated
+	 */
+	EClass getStaticObject();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.Turnable <em>Turnable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Turnable</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.Turnable
+	 * @generated
+	 */
+	EClass getTurnable();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.Conveyor <em>Conveyor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Conveyor</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.Conveyor
+	 * @generated
+	 */
+	EClass getConveyor();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.LiftingTable <em>Lifting Table</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Lifting Table</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.LiftingTable
+	 * @generated
+	 */
+	EClass getLiftingTable();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.AVG <em>AVG</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>AVG</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.AVG
+	 * @generated
+	 */
+	EClass getAVG();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.Transposer <em>Transposer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Transposer</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.Transposer
+	 * @generated
+	 */
+	EClass getTransposer();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.CarrierHandlingSystem <em>Carrier Handling System</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Carrier Handling System</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.CarrierHandlingSystem
+	 * @generated
+	 */
+	EClass getCarrierHandlingSystem();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.Lift <em>Lift</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Lift</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.Lift
+	 * @generated
+	 */
+	EClass getLift();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.VerticalTransport <em>Vertical Transport</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Vertical Transport</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.VerticalTransport
+	 * @generated
+	 */
+	EClass getVerticalTransport();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.HorizontalTransport <em>Horizontal Transport</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Horizontal Transport</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.HorizontalTransport
+	 * @generated
+	 */
+	EClass getHorizontalTransport();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.Rollerbed <em>Rollerbed</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Rollerbed</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.Rollerbed
+	 * @generated
+	 */
+	EClass getRollerbed();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.Loader <em>Loader</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Loader</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.Loader
+	 * @generated
+	 */
+	EClass getLoader();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.Unloader <em>Unloader</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Unloader</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.Unloader
+	 * @generated
+	 */
+	EClass getUnloader();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.BodyStore <em>Body Store</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Body Store</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.BodyStore
+	 * @generated
+	 */
+	EClass getBodyStore();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.Clamp <em>Clamp</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Clamp</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.Clamp
+	 * @generated
+	 */
+	EClass getClamp();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.BeltConveyor <em>Belt Conveyor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Belt Conveyor</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.BeltConveyor
+	 * @generated
+	 */
+	EClass getBeltConveyor();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.RollConveyor <em>Roll Conveyor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Roll Conveyor</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.RollConveyor
+	 * @generated
+	 */
+	EClass getRollConveyor();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.ChainConveyor <em>Chain Conveyor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Chain Conveyor</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.ChainConveyor
+	 * @generated
+	 */
+	EClass getChainConveyor();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.PalletConveyor <em>Pallet Conveyor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Pallet Conveyor</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.PalletConveyor
+	 * @generated
+	 */
+	EClass getPalletConveyor();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.OverheadConveyor <em>Overhead Conveyor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Overhead Conveyor</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.OverheadConveyor
+	 * @generated
+	 */
+	EClass getOverheadConveyor();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1543,7 +3863,7 @@ public interface TopologyPackage extends EPackage {
 		EClass AREA = eINSTANCE.getArea();
 
 		/**
-		 * The meta object literal for the '<em><b>Work Centers</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Work Centers</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1571,12 +3891,12 @@ public interface TopologyPackage extends EPackage {
 		EClass PROCESS_CELL = eINSTANCE.getProcessCell();
 
 		/**
-		 * The meta object literal for the '<em><b>Units</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Process Units</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PROCESS_CELL__UNITS = eINSTANCE.getProcessCell_Units();
+		EReference PROCESS_CELL__PROCESS_UNITS = eINSTANCE.getProcessCell_ProcessUnits();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.ProductionUnitImpl <em>Production Unit</em>}' class.
@@ -1689,10 +4009,10 @@ public interface TopologyPackage extends EPackage {
 		EClass STORAGE_UNIT = eINSTANCE.getStorageUnit();
 
 		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.EquipmentModuleImpl <em>Equipment Module</em>}' class.
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.EquipmentModule <em>Equipment Module</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.domain.topology.impl.EquipmentModuleImpl
+		 * @see de.dfki.iui.basys.model.domain.topology.EquipmentModule
 		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getEquipmentModule()
 		 * @generated
 		 */
@@ -1715,10 +4035,10 @@ public interface TopologyPackage extends EPackage {
 		EReference EQUIPMENT_MODULE__EQUIPMENT_MODULES = eINSTANCE.getEquipmentModule_EquipmentModules();
 
 		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.ControlModuleImpl <em>Control Module</em>}' class.
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.ControlModule <em>Control Module</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.domain.topology.impl.ControlModuleImpl
+		 * @see de.dfki.iui.basys.model.domain.topology.ControlModule
 		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getControlModule()
 		 * @generated
 		 */
@@ -1731,16 +4051,6 @@ public interface TopologyPackage extends EPackage {
 		 * @generated
 		 */
 		EReference CONTROL_MODULE__CONTROL_MODULES = eINSTANCE.getControlModule_ControlModules();
-
-		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.ProductionLineSectionImpl <em>Production Line Section</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.domain.topology.impl.ProductionLineSectionImpl
-		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getProductionLineSection()
-		 * @generated
-		 */
-		EClass PRODUCTION_LINE_SECTION = eINSTANCE.getProductionLineSection();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.StationImpl <em>Station</em>}' class.
@@ -1821,6 +4131,326 @@ public interface TopologyPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute BUFFER_STATION__CAPACITY = eINSTANCE.getBufferStation_Capacity();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.ProcessUnitImpl <em>Process Unit</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.ProcessUnitImpl
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getProcessUnit()
+		 * @generated
+		 */
+		EClass PROCESS_UNIT = eINSTANCE.getProcessUnit();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.DiscreteManufacturingEquipmentModule <em>Discrete Manufacturing Equipment Module</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.topology.DiscreteManufacturingEquipmentModule
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getDiscreteManufacturingEquipmentModule()
+		 * @generated
+		 */
+		EClass DISCRETE_MANUFACTURING_EQUIPMENT_MODULE = eINSTANCE.getDiscreteManufacturingEquipmentModule();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.ToolImpl <em>Tool</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.ToolImpl
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getTool()
+		 * @generated
+		 */
+		EClass TOOL = eINSTANCE.getTool();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.StationaryToolImpl <em>Stationary Tool</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.StationaryToolImpl
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getStationaryTool()
+		 * @generated
+		 */
+		EClass STATIONARY_TOOL = eINSTANCE.getStationaryTool();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.MovableToolImpl <em>Movable Tool</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.MovableToolImpl
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getMovableTool()
+		 * @generated
+		 */
+		EClass MOVABLE_TOOL = eINSTANCE.getMovableTool();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.TransportImpl <em>Transport</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TransportImpl
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getTransport()
+		 * @generated
+		 */
+		EClass TRANSPORT = eINSTANCE.getTransport();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.StorageImpl <em>Storage</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.StorageImpl
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getStorage()
+		 * @generated
+		 */
+		EClass STORAGE = eINSTANCE.getStorage();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.FixtureImpl <em>Fixture</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.FixtureImpl
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getFixture()
+		 * @generated
+		 */
+		EClass FIXTURE = eINSTANCE.getFixture();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.GateImpl <em>Gate</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.GateImpl
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getGate()
+		 * @generated
+		 */
+		EClass GATE = eINSTANCE.getGate();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.RobotImpl <em>Robot</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.RobotImpl
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getRobot()
+		 * @generated
+		 */
+		EClass ROBOT = eINSTANCE.getRobot();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.CarrierImpl <em>Carrier</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.CarrierImpl
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getCarrier()
+		 * @generated
+		 */
+		EClass CARRIER = eINSTANCE.getCarrier();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.MachineImpl <em>Machine</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.MachineImpl
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getMachine()
+		 * @generated
+		 */
+		EClass MACHINE = eINSTANCE.getMachine();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.StaticObjectImpl <em>Static Object</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.StaticObjectImpl
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getStaticObject()
+		 * @generated
+		 */
+		EClass STATIC_OBJECT = eINSTANCE.getStaticObject();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.TurnableImpl <em>Turnable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TurnableImpl
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getTurnable()
+		 * @generated
+		 */
+		EClass TURNABLE = eINSTANCE.getTurnable();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.ConveyorImpl <em>Conveyor</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.ConveyorImpl
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getConveyor()
+		 * @generated
+		 */
+		EClass CONVEYOR = eINSTANCE.getConveyor();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.LiftingTableImpl <em>Lifting Table</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.LiftingTableImpl
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getLiftingTable()
+		 * @generated
+		 */
+		EClass LIFTING_TABLE = eINSTANCE.getLiftingTable();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.AVGImpl <em>AVG</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.AVGImpl
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getAVG()
+		 * @generated
+		 */
+		EClass AVG = eINSTANCE.getAVG();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.TransposerImpl <em>Transposer</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TransposerImpl
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getTransposer()
+		 * @generated
+		 */
+		EClass TRANSPOSER = eINSTANCE.getTransposer();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.CarrierHandlingSystemImpl <em>Carrier Handling System</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.CarrierHandlingSystemImpl
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getCarrierHandlingSystem()
+		 * @generated
+		 */
+		EClass CARRIER_HANDLING_SYSTEM = eINSTANCE.getCarrierHandlingSystem();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.LiftImpl <em>Lift</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.LiftImpl
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getLift()
+		 * @generated
+		 */
+		EClass LIFT = eINSTANCE.getLift();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.VerticalTransportImpl <em>Vertical Transport</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.VerticalTransportImpl
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getVerticalTransport()
+		 * @generated
+		 */
+		EClass VERTICAL_TRANSPORT = eINSTANCE.getVerticalTransport();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.HorizontalTransportImpl <em>Horizontal Transport</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.HorizontalTransportImpl
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getHorizontalTransport()
+		 * @generated
+		 */
+		EClass HORIZONTAL_TRANSPORT = eINSTANCE.getHorizontalTransport();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.RollerbedImpl <em>Rollerbed</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.RollerbedImpl
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getRollerbed()
+		 * @generated
+		 */
+		EClass ROLLERBED = eINSTANCE.getRollerbed();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.LoaderImpl <em>Loader</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.LoaderImpl
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getLoader()
+		 * @generated
+		 */
+		EClass LOADER = eINSTANCE.getLoader();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.UnloaderImpl <em>Unloader</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.UnloaderImpl
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getUnloader()
+		 * @generated
+		 */
+		EClass UNLOADER = eINSTANCE.getUnloader();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.BodyStoreImpl <em>Body Store</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.BodyStoreImpl
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getBodyStore()
+		 * @generated
+		 */
+		EClass BODY_STORE = eINSTANCE.getBodyStore();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.ClampImpl <em>Clamp</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.ClampImpl
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getClamp()
+		 * @generated
+		 */
+		EClass CLAMP = eINSTANCE.getClamp();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.BeltConveyorImpl <em>Belt Conveyor</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.BeltConveyorImpl
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getBeltConveyor()
+		 * @generated
+		 */
+		EClass BELT_CONVEYOR = eINSTANCE.getBeltConveyor();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.RollConveyorImpl <em>Roll Conveyor</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.RollConveyorImpl
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getRollConveyor()
+		 * @generated
+		 */
+		EClass ROLL_CONVEYOR = eINSTANCE.getRollConveyor();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.ChainConveyorImpl <em>Chain Conveyor</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.ChainConveyorImpl
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getChainConveyor()
+		 * @generated
+		 */
+		EClass CHAIN_CONVEYOR = eINSTANCE.getChainConveyor();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.PalletConveyorImpl <em>Pallet Conveyor</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.PalletConveyorImpl
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getPalletConveyor()
+		 * @generated
+		 */
+		EClass PALLET_CONVEYOR = eINSTANCE.getPalletConveyor();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.OverheadConveyorImpl <em>Overhead Conveyor</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.OverheadConveyorImpl
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getOverheadConveyor()
+		 * @generated
+		 */
+		EClass OVERHEAD_CONVEYOR = eINSTANCE.getOverheadConveyor();
 
 	}
 

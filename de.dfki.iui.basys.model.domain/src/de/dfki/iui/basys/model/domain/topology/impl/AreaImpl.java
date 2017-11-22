@@ -8,13 +8,17 @@ import de.dfki.iui.basys.model.domain.topology.Area;
 import de.dfki.iui.basys.model.domain.topology.TopologyPackage;
 import de.dfki.iui.basys.model.domain.topology.WorkCenter;
 
-import org.eclipse.emf.common.notify.Notification;
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,14 +35,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class AreaImpl extends IdentifiableEntityImpl implements Area {
 	/**
-	 * The cached value of the '{@link #getWorkCenters() <em>Work Centers</em>}' containment reference.
+	 * The cached value of the '{@link #getWorkCenters() <em>Work Centers</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getWorkCenters()
 	 * @generated
 	 * @ordered
 	 */
-	protected WorkCenter workCenters;
+	protected EList<WorkCenter> workCenters;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -64,42 +68,11 @@ public class AreaImpl extends IdentifiableEntityImpl implements Area {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public WorkCenter getWorkCenters() {
+	public EList<WorkCenter> getWorkCenters() {
+		if (workCenters == null) {
+			workCenters = new EObjectContainmentEList<WorkCenter>(WorkCenter.class, this, TopologyPackage.AREA__WORK_CENTERS);
+		}
 		return workCenters;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetWorkCenters(WorkCenter newWorkCenters, NotificationChain msgs) {
-		WorkCenter oldWorkCenters = workCenters;
-		workCenters = newWorkCenters;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TopologyPackage.AREA__WORK_CENTERS, oldWorkCenters, newWorkCenters);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setWorkCenters(WorkCenter newWorkCenters) {
-		if (newWorkCenters != workCenters) {
-			NotificationChain msgs = null;
-			if (workCenters != null)
-				msgs = ((InternalEObject)workCenters).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TopologyPackage.AREA__WORK_CENTERS, null, msgs);
-			if (newWorkCenters != null)
-				msgs = ((InternalEObject)newWorkCenters).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TopologyPackage.AREA__WORK_CENTERS, null, msgs);
-			msgs = basicSetWorkCenters(newWorkCenters, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TopologyPackage.AREA__WORK_CENTERS, newWorkCenters, newWorkCenters));
 	}
 
 	/**
@@ -111,7 +84,7 @@ public class AreaImpl extends IdentifiableEntityImpl implements Area {
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case TopologyPackage.AREA__WORK_CENTERS:
-				return basicSetWorkCenters(null, msgs);
+				return ((InternalEList<?>)getWorkCenters()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -135,11 +108,13 @@ public class AreaImpl extends IdentifiableEntityImpl implements Area {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case TopologyPackage.AREA__WORK_CENTERS:
-				setWorkCenters((WorkCenter)newValue);
+				getWorkCenters().clear();
+				getWorkCenters().addAll((Collection<? extends WorkCenter>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -154,7 +129,7 @@ public class AreaImpl extends IdentifiableEntityImpl implements Area {
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case TopologyPackage.AREA__WORK_CENTERS:
-				setWorkCenters((WorkCenter)null);
+				getWorkCenters().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -169,7 +144,7 @@ public class AreaImpl extends IdentifiableEntityImpl implements Area {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case TopologyPackage.AREA__WORK_CENTERS:
-				return workCenters != null;
+				return workCenters != null && !workCenters.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

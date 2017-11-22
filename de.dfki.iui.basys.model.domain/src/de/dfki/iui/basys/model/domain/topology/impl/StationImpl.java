@@ -3,7 +3,8 @@
 package de.dfki.iui.basys.model.domain.topology.impl;
 
 import de.dfki.iui.basys.model.base.impl.IdentifiableEntityImpl;
-import de.dfki.iui.basys.model.domain.topology.EquipmentModule;
+
+import de.dfki.iui.basys.model.domain.topology.DiscreteManufacturingEquipmentModule;
 import de.dfki.iui.basys.model.domain.topology.Station;
 import de.dfki.iui.basys.model.domain.topology.TopologyPackage;
 
@@ -15,6 +16,7 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -40,7 +42,7 @@ public class StationImpl extends IdentifiableEntityImpl implements Station {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<EquipmentModule> equipmentModules;
+	protected EList<DiscreteManufacturingEquipmentModule> equipmentModules;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -66,9 +68,9 @@ public class StationImpl extends IdentifiableEntityImpl implements Station {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<EquipmentModule> getEquipmentModules() {
+	public EList<DiscreteManufacturingEquipmentModule> getEquipmentModules() {
 		if (equipmentModules == null) {
-			equipmentModules = new EObjectContainmentEList<EquipmentModule>(EquipmentModule.class, this, TopologyPackage.STATION__EQUIPMENT_MODULES);
+			equipmentModules = new EObjectContainmentEList<DiscreteManufacturingEquipmentModule>(DiscreteManufacturingEquipmentModule.class, this, TopologyPackage.STATION__EQUIPMENT_MODULES);
 		}
 		return equipmentModules;
 	}
@@ -112,7 +114,7 @@ public class StationImpl extends IdentifiableEntityImpl implements Station {
 		switch (featureID) {
 			case TopologyPackage.STATION__EQUIPMENT_MODULES:
 				getEquipmentModules().clear();
-				getEquipmentModules().addAll((Collection<? extends EquipmentModule>)newValue);
+				getEquipmentModules().addAll((Collection<? extends DiscreteManufacturingEquipmentModule>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

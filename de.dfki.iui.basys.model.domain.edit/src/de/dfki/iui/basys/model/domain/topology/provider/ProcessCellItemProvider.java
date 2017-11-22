@@ -12,6 +12,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -61,7 +62,7 @@ public class ProcessCellItemProvider extends WorkCenterItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(TopologyPackage.Literals.PROCESS_CELL__UNITS);
+			childrenFeatures.add(TopologyPackage.Literals.PROCESS_CELL__PROCESS_UNITS);
 		}
 		return childrenFeatures;
 	}
@@ -117,7 +118,7 @@ public class ProcessCellItemProvider extends WorkCenterItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ProcessCell.class)) {
-			case TopologyPackage.PROCESS_CELL__UNITS:
+			case TopologyPackage.PROCESS_CELL__PROCESS_UNITS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -137,8 +138,8 @@ public class ProcessCellItemProvider extends WorkCenterItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(TopologyPackage.Literals.PROCESS_CELL__UNITS,
-				 TopologyFactory.eINSTANCE.createUnit()));
+				(TopologyPackage.Literals.PROCESS_CELL__PROCESS_UNITS,
+				 TopologyFactory.eINSTANCE.createProcessUnit()));
 	}
 
 }

@@ -13,7 +13,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.dfki.iui.basys.model.domain.topology.ProcessCell#getUnits <em>Units</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.topology.ProcessCell#getProcessUnits <em>Process Units</em>}</li>
  * </ul>
  *
  * @see de.dfki.iui.basys.model.domain.topology.TopologyPackage#getProcessCell()
@@ -22,19 +22,19 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface ProcessCell extends WorkCenter {
 	/**
-	 * Returns the value of the '<em><b>Units</b></em>' containment reference list.
-	 * The list contents are of type {@link de.dfki.iui.basys.model.domain.topology.Unit}.
+	 * Returns the value of the '<em><b>Process Units</b></em>' containment reference list.
+	 * The list contents are of type {@link de.dfki.iui.basys.model.domain.topology.ProcessUnit}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Units</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Process Units</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Units</em>' containment reference list.
-	 * @see de.dfki.iui.basys.model.domain.topology.TopologyPackage#getProcessCell_Units()
+	 * @return the value of the '<em>Process Units</em>' containment reference list.
+	 * @see de.dfki.iui.basys.model.domain.topology.TopologyPackage#getProcessCell_ProcessUnits()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	EList<Unit> getUnits();
+	EList<ProcessUnit> getProcessUnits();
 
 } // ProcessCell

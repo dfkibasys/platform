@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.ENamedElement;
  *
  * @see de.dfki.iui.basys.model.service.ServicePackage#getServiceDescription()
  * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='noSelfDependency'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL noSelfDependency='not dependencies->includes(self)'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL noSelfDependency='not dependencies-&gt;includes(self)'"
  * @generated
  */
 public interface ServiceDescription extends ENamedElement, IdentifiableEntity {

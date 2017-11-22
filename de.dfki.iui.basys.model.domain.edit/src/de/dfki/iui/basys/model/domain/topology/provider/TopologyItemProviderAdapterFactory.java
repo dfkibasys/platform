@@ -302,75 +302,6 @@ public class TopologyItemProviderAdapterFactory extends TopologyAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.EquipmentModule} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EquipmentModuleItemProvider equipmentModuleItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.EquipmentModule}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createEquipmentModuleAdapter() {
-		if (equipmentModuleItemProvider == null) {
-			equipmentModuleItemProvider = new EquipmentModuleItemProvider(this);
-		}
-
-		return equipmentModuleItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.ControlModule} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ControlModuleItemProvider controlModuleItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.ControlModule}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createControlModuleAdapter() {
-		if (controlModuleItemProvider == null) {
-			controlModuleItemProvider = new ControlModuleItemProvider(this);
-		}
-
-		return controlModuleItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.ProductionLineSection} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ProductionLineSectionItemProvider productionLineSectionItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.ProductionLineSection}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createProductionLineSectionAdapter() {
-		if (productionLineSectionItemProvider == null) {
-			productionLineSectionItemProvider = new ProductionLineSectionItemProvider(this);
-		}
-
-		return productionLineSectionItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.Station} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -460,6 +391,719 @@ public class TopologyItemProviderAdapterFactory extends TopologyAdapterFactory i
 		}
 
 		return bufferStationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.ProcessUnit} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ProcessUnitItemProvider processUnitItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.ProcessUnit}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createProcessUnitAdapter() {
+		if (processUnitItemProvider == null) {
+			processUnitItemProvider = new ProcessUnitItemProvider(this);
+		}
+
+		return processUnitItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.Tool} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ToolItemProvider toolItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.Tool}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createToolAdapter() {
+		if (toolItemProvider == null) {
+			toolItemProvider = new ToolItemProvider(this);
+		}
+
+		return toolItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.StationaryTool} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected StationaryToolItemProvider stationaryToolItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.StationaryTool}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createStationaryToolAdapter() {
+		if (stationaryToolItemProvider == null) {
+			stationaryToolItemProvider = new StationaryToolItemProvider(this);
+		}
+
+		return stationaryToolItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.MovableTool} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MovableToolItemProvider movableToolItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.MovableTool}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMovableToolAdapter() {
+		if (movableToolItemProvider == null) {
+			movableToolItemProvider = new MovableToolItemProvider(this);
+		}
+
+		return movableToolItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.Transport} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TransportItemProvider transportItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.Transport}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTransportAdapter() {
+		if (transportItemProvider == null) {
+			transportItemProvider = new TransportItemProvider(this);
+		}
+
+		return transportItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.Storage} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected StorageItemProvider storageItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.Storage}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createStorageAdapter() {
+		if (storageItemProvider == null) {
+			storageItemProvider = new StorageItemProvider(this);
+		}
+
+		return storageItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.Fixture} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FixtureItemProvider fixtureItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.Fixture}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFixtureAdapter() {
+		if (fixtureItemProvider == null) {
+			fixtureItemProvider = new FixtureItemProvider(this);
+		}
+
+		return fixtureItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.Gate} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected GateItemProvider gateItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.Gate}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createGateAdapter() {
+		if (gateItemProvider == null) {
+			gateItemProvider = new GateItemProvider(this);
+		}
+
+		return gateItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.Robot} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RobotItemProvider robotItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.Robot}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createRobotAdapter() {
+		if (robotItemProvider == null) {
+			robotItemProvider = new RobotItemProvider(this);
+		}
+
+		return robotItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.Carrier} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CarrierItemProvider carrierItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.Carrier}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCarrierAdapter() {
+		if (carrierItemProvider == null) {
+			carrierItemProvider = new CarrierItemProvider(this);
+		}
+
+		return carrierItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.Machine} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MachineItemProvider machineItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.Machine}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMachineAdapter() {
+		if (machineItemProvider == null) {
+			machineItemProvider = new MachineItemProvider(this);
+		}
+
+		return machineItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.StaticObject} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected StaticObjectItemProvider staticObjectItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.StaticObject}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createStaticObjectAdapter() {
+		if (staticObjectItemProvider == null) {
+			staticObjectItemProvider = new StaticObjectItemProvider(this);
+		}
+
+		return staticObjectItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.Turnable} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TurnableItemProvider turnableItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.Turnable}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTurnableAdapter() {
+		if (turnableItemProvider == null) {
+			turnableItemProvider = new TurnableItemProvider(this);
+		}
+
+		return turnableItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.Conveyor} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ConveyorItemProvider conveyorItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.Conveyor}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createConveyorAdapter() {
+		if (conveyorItemProvider == null) {
+			conveyorItemProvider = new ConveyorItemProvider(this);
+		}
+
+		return conveyorItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.LiftingTable} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LiftingTableItemProvider liftingTableItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.LiftingTable}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLiftingTableAdapter() {
+		if (liftingTableItemProvider == null) {
+			liftingTableItemProvider = new LiftingTableItemProvider(this);
+		}
+
+		return liftingTableItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.AVG} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AVGItemProvider avgItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.AVG}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAVGAdapter() {
+		if (avgItemProvider == null) {
+			avgItemProvider = new AVGItemProvider(this);
+		}
+
+		return avgItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.Transposer} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TransposerItemProvider transposerItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.Transposer}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTransposerAdapter() {
+		if (transposerItemProvider == null) {
+			transposerItemProvider = new TransposerItemProvider(this);
+		}
+
+		return transposerItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.CarrierHandlingSystem} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CarrierHandlingSystemItemProvider carrierHandlingSystemItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.CarrierHandlingSystem}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCarrierHandlingSystemAdapter() {
+		if (carrierHandlingSystemItemProvider == null) {
+			carrierHandlingSystemItemProvider = new CarrierHandlingSystemItemProvider(this);
+		}
+
+		return carrierHandlingSystemItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.Lift} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LiftItemProvider liftItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.Lift}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLiftAdapter() {
+		if (liftItemProvider == null) {
+			liftItemProvider = new LiftItemProvider(this);
+		}
+
+		return liftItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.VerticalTransport} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected VerticalTransportItemProvider verticalTransportItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.VerticalTransport}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createVerticalTransportAdapter() {
+		if (verticalTransportItemProvider == null) {
+			verticalTransportItemProvider = new VerticalTransportItemProvider(this);
+		}
+
+		return verticalTransportItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.HorizontalTransport} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected HorizontalTransportItemProvider horizontalTransportItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.HorizontalTransport}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createHorizontalTransportAdapter() {
+		if (horizontalTransportItemProvider == null) {
+			horizontalTransportItemProvider = new HorizontalTransportItemProvider(this);
+		}
+
+		return horizontalTransportItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.Rollerbed} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RollerbedItemProvider rollerbedItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.Rollerbed}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createRollerbedAdapter() {
+		if (rollerbedItemProvider == null) {
+			rollerbedItemProvider = new RollerbedItemProvider(this);
+		}
+
+		return rollerbedItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.Loader} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LoaderItemProvider loaderItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.Loader}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLoaderAdapter() {
+		if (loaderItemProvider == null) {
+			loaderItemProvider = new LoaderItemProvider(this);
+		}
+
+		return loaderItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.Unloader} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected UnloaderItemProvider unloaderItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.Unloader}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createUnloaderAdapter() {
+		if (unloaderItemProvider == null) {
+			unloaderItemProvider = new UnloaderItemProvider(this);
+		}
+
+		return unloaderItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.BodyStore} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected BodyStoreItemProvider bodyStoreItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.BodyStore}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createBodyStoreAdapter() {
+		if (bodyStoreItemProvider == null) {
+			bodyStoreItemProvider = new BodyStoreItemProvider(this);
+		}
+
+		return bodyStoreItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.Clamp} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ClampItemProvider clampItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.Clamp}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createClampAdapter() {
+		if (clampItemProvider == null) {
+			clampItemProvider = new ClampItemProvider(this);
+		}
+
+		return clampItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.BeltConveyor} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected BeltConveyorItemProvider beltConveyorItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.BeltConveyor}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createBeltConveyorAdapter() {
+		if (beltConveyorItemProvider == null) {
+			beltConveyorItemProvider = new BeltConveyorItemProvider(this);
+		}
+
+		return beltConveyorItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.RollConveyor} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RollConveyorItemProvider rollConveyorItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.RollConveyor}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createRollConveyorAdapter() {
+		if (rollConveyorItemProvider == null) {
+			rollConveyorItemProvider = new RollConveyorItemProvider(this);
+		}
+
+		return rollConveyorItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.ChainConveyor} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ChainConveyorItemProvider chainConveyorItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.ChainConveyor}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createChainConveyorAdapter() {
+		if (chainConveyorItemProvider == null) {
+			chainConveyorItemProvider = new ChainConveyorItemProvider(this);
+		}
+
+		return chainConveyorItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.PalletConveyor} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PalletConveyorItemProvider palletConveyorItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.PalletConveyor}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPalletConveyorAdapter() {
+		if (palletConveyorItemProvider == null) {
+			palletConveyorItemProvider = new PalletConveyorItemProvider(this);
+		}
+
+		return palletConveyorItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.OverheadConveyor} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OverheadConveyorItemProvider overheadConveyorItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.OverheadConveyor}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOverheadConveyorAdapter() {
+		if (overheadConveyorItemProvider == null) {
+			overheadConveyorItemProvider = new OverheadConveyorItemProvider(this);
+		}
+
+		return overheadConveyorItemProvider;
 	}
 
 	/**
@@ -571,13 +1215,41 @@ public class TopologyItemProviderAdapterFactory extends TopologyAdapterFactory i
 		if (unitItemProvider != null) unitItemProvider.dispose();
 		if (workCellItemProvider != null) workCellItemProvider.dispose();
 		if (storageUnitItemProvider != null) storageUnitItemProvider.dispose();
-		if (equipmentModuleItemProvider != null) equipmentModuleItemProvider.dispose();
-		if (controlModuleItemProvider != null) controlModuleItemProvider.dispose();
-		if (productionLineSectionItemProvider != null) productionLineSectionItemProvider.dispose();
 		if (stationItemProvider != null) stationItemProvider.dispose();
 		if (transitionItemProvider != null) transitionItemProvider.dispose();
 		if (assemblyStationItemProvider != null) assemblyStationItemProvider.dispose();
 		if (bufferStationItemProvider != null) bufferStationItemProvider.dispose();
+		if (processUnitItemProvider != null) processUnitItemProvider.dispose();
+		if (toolItemProvider != null) toolItemProvider.dispose();
+		if (stationaryToolItemProvider != null) stationaryToolItemProvider.dispose();
+		if (movableToolItemProvider != null) movableToolItemProvider.dispose();
+		if (transportItemProvider != null) transportItemProvider.dispose();
+		if (storageItemProvider != null) storageItemProvider.dispose();
+		if (fixtureItemProvider != null) fixtureItemProvider.dispose();
+		if (gateItemProvider != null) gateItemProvider.dispose();
+		if (robotItemProvider != null) robotItemProvider.dispose();
+		if (carrierItemProvider != null) carrierItemProvider.dispose();
+		if (machineItemProvider != null) machineItemProvider.dispose();
+		if (staticObjectItemProvider != null) staticObjectItemProvider.dispose();
+		if (turnableItemProvider != null) turnableItemProvider.dispose();
+		if (conveyorItemProvider != null) conveyorItemProvider.dispose();
+		if (liftingTableItemProvider != null) liftingTableItemProvider.dispose();
+		if (avgItemProvider != null) avgItemProvider.dispose();
+		if (transposerItemProvider != null) transposerItemProvider.dispose();
+		if (carrierHandlingSystemItemProvider != null) carrierHandlingSystemItemProvider.dispose();
+		if (liftItemProvider != null) liftItemProvider.dispose();
+		if (verticalTransportItemProvider != null) verticalTransportItemProvider.dispose();
+		if (horizontalTransportItemProvider != null) horizontalTransportItemProvider.dispose();
+		if (rollerbedItemProvider != null) rollerbedItemProvider.dispose();
+		if (loaderItemProvider != null) loaderItemProvider.dispose();
+		if (unloaderItemProvider != null) unloaderItemProvider.dispose();
+		if (bodyStoreItemProvider != null) bodyStoreItemProvider.dispose();
+		if (clampItemProvider != null) clampItemProvider.dispose();
+		if (beltConveyorItemProvider != null) beltConveyorItemProvider.dispose();
+		if (rollConveyorItemProvider != null) rollConveyorItemProvider.dispose();
+		if (chainConveyorItemProvider != null) chainConveyorItemProvider.dispose();
+		if (palletConveyorItemProvider != null) palletConveyorItemProvider.dispose();
+		if (overheadConveyorItemProvider != null) overheadConveyorItemProvider.dispose();
 	}
 
 }

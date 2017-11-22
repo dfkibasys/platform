@@ -134,7 +134,152 @@ public class WorkUnitItemProvider extends IdentifiableEntityItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(TopologyPackage.Literals.WORK_UNIT__EQUIPMENT_MODULES,
-				 TopologyFactory.eINSTANCE.createEquipmentModule()));
+				 TopologyFactory.eINSTANCE.createTool()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.WORK_UNIT__EQUIPMENT_MODULES,
+				 TopologyFactory.eINSTANCE.createStationaryTool()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.WORK_UNIT__EQUIPMENT_MODULES,
+				 TopologyFactory.eINSTANCE.createMovableTool()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.WORK_UNIT__EQUIPMENT_MODULES,
+				 TopologyFactory.eINSTANCE.createTransport()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.WORK_UNIT__EQUIPMENT_MODULES,
+				 TopologyFactory.eINSTANCE.createStorage()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.WORK_UNIT__EQUIPMENT_MODULES,
+				 TopologyFactory.eINSTANCE.createFixture()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.WORK_UNIT__EQUIPMENT_MODULES,
+				 TopologyFactory.eINSTANCE.createGate()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.WORK_UNIT__EQUIPMENT_MODULES,
+				 TopologyFactory.eINSTANCE.createRobot()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.WORK_UNIT__EQUIPMENT_MODULES,
+				 TopologyFactory.eINSTANCE.createCarrier()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.WORK_UNIT__EQUIPMENT_MODULES,
+				 TopologyFactory.eINSTANCE.createMachine()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.WORK_UNIT__EQUIPMENT_MODULES,
+				 TopologyFactory.eINSTANCE.createStaticObject()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.WORK_UNIT__EQUIPMENT_MODULES,
+				 TopologyFactory.eINSTANCE.createHorizontalTransport()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.WORK_UNIT__EQUIPMENT_MODULES,
+				 TopologyFactory.eINSTANCE.createTurnable()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.WORK_UNIT__EQUIPMENT_MODULES,
+				 TopologyFactory.eINSTANCE.createConveyor()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.WORK_UNIT__EQUIPMENT_MODULES,
+				 TopologyFactory.eINSTANCE.createVerticalTransport()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.WORK_UNIT__EQUIPMENT_MODULES,
+				 TopologyFactory.eINSTANCE.createLiftingTable()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.WORK_UNIT__EQUIPMENT_MODULES,
+				 TopologyFactory.eINSTANCE.createAVG()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.WORK_UNIT__EQUIPMENT_MODULES,
+				 TopologyFactory.eINSTANCE.createTransposer()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.WORK_UNIT__EQUIPMENT_MODULES,
+				 TopologyFactory.eINSTANCE.createCarrierHandlingSystem()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.WORK_UNIT__EQUIPMENT_MODULES,
+				 TopologyFactory.eINSTANCE.createLift()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.WORK_UNIT__EQUIPMENT_MODULES,
+				 TopologyFactory.eINSTANCE.createRollerbed()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.WORK_UNIT__EQUIPMENT_MODULES,
+				 TopologyFactory.eINSTANCE.createLoader()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.WORK_UNIT__EQUIPMENT_MODULES,
+				 TopologyFactory.eINSTANCE.createUnloader()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.WORK_UNIT__EQUIPMENT_MODULES,
+				 TopologyFactory.eINSTANCE.createBodyStore()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.WORK_UNIT__EQUIPMENT_MODULES,
+				 TopologyFactory.eINSTANCE.createClamp()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.WORK_UNIT__EQUIPMENT_MODULES,
+				 TopologyFactory.eINSTANCE.createBeltConveyor()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.WORK_UNIT__EQUIPMENT_MODULES,
+				 TopologyFactory.eINSTANCE.createRollConveyor()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.WORK_UNIT__EQUIPMENT_MODULES,
+				 TopologyFactory.eINSTANCE.createChainConveyor()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.WORK_UNIT__EQUIPMENT_MODULES,
+				 TopologyFactory.eINSTANCE.createPalletConveyor()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.WORK_UNIT__EQUIPMENT_MODULES,
+				 TopologyFactory.eINSTANCE.createOverheadConveyor()));
 	}
 
 	/**

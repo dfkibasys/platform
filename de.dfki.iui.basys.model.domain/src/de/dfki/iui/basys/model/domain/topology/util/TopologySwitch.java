@@ -188,12 +188,6 @@ public class TopologySwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case TopologyPackage.PRODUCTION_LINE_SECTION: {
-				ProductionLineSection productionLineSection = (ProductionLineSection)theEObject;
-				T result = caseProductionLineSection(productionLineSection);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case TopologyPackage.STATION: {
 				Station station = (Station)theEObject;
 				T result = caseStation(station);
@@ -223,6 +217,361 @@ public class TopologySwitch<T> extends Switch<T> {
 				if (result == null) result = caseStation(bufferStation);
 				if (result == null) result = caseIdentifiableEntity(bufferStation);
 				if (result == null) result = caseEntity(bufferStation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TopologyPackage.PROCESS_UNIT: {
+				ProcessUnit processUnit = (ProcessUnit)theEObject;
+				T result = caseProcessUnit(processUnit);
+				if (result == null) result = caseWorkUnit(processUnit);
+				if (result == null) result = caseIdentifiableEntity(processUnit);
+				if (result == null) result = caseEntity(processUnit);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TopologyPackage.DISCRETE_MANUFACTURING_EQUIPMENT_MODULE: {
+				DiscreteManufacturingEquipmentModule discreteManufacturingEquipmentModule = (DiscreteManufacturingEquipmentModule)theEObject;
+				T result = caseDiscreteManufacturingEquipmentModule(discreteManufacturingEquipmentModule);
+				if (result == null) result = caseEquipmentModule(discreteManufacturingEquipmentModule);
+				if (result == null) result = caseIdentifiableEntity(discreteManufacturingEquipmentModule);
+				if (result == null) result = caseEntity(discreteManufacturingEquipmentModule);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TopologyPackage.TOOL: {
+				Tool tool = (Tool)theEObject;
+				T result = caseTool(tool);
+				if (result == null) result = caseDiscreteManufacturingEquipmentModule(tool);
+				if (result == null) result = caseEquipmentModule(tool);
+				if (result == null) result = caseIdentifiableEntity(tool);
+				if (result == null) result = caseEntity(tool);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TopologyPackage.STATIONARY_TOOL: {
+				StationaryTool stationaryTool = (StationaryTool)theEObject;
+				T result = caseStationaryTool(stationaryTool);
+				if (result == null) result = caseTool(stationaryTool);
+				if (result == null) result = caseDiscreteManufacturingEquipmentModule(stationaryTool);
+				if (result == null) result = caseEquipmentModule(stationaryTool);
+				if (result == null) result = caseIdentifiableEntity(stationaryTool);
+				if (result == null) result = caseEntity(stationaryTool);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TopologyPackage.MOVABLE_TOOL: {
+				MovableTool movableTool = (MovableTool)theEObject;
+				T result = caseMovableTool(movableTool);
+				if (result == null) result = caseTool(movableTool);
+				if (result == null) result = caseDiscreteManufacturingEquipmentModule(movableTool);
+				if (result == null) result = caseEquipmentModule(movableTool);
+				if (result == null) result = caseIdentifiableEntity(movableTool);
+				if (result == null) result = caseEntity(movableTool);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TopologyPackage.TRANSPORT: {
+				Transport transport = (Transport)theEObject;
+				T result = caseTransport(transport);
+				if (result == null) result = caseDiscreteManufacturingEquipmentModule(transport);
+				if (result == null) result = caseEquipmentModule(transport);
+				if (result == null) result = caseIdentifiableEntity(transport);
+				if (result == null) result = caseEntity(transport);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TopologyPackage.STORAGE: {
+				Storage storage = (Storage)theEObject;
+				T result = caseStorage(storage);
+				if (result == null) result = caseDiscreteManufacturingEquipmentModule(storage);
+				if (result == null) result = caseEquipmentModule(storage);
+				if (result == null) result = caseIdentifiableEntity(storage);
+				if (result == null) result = caseEntity(storage);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TopologyPackage.FIXTURE: {
+				Fixture fixture = (Fixture)theEObject;
+				T result = caseFixture(fixture);
+				if (result == null) result = caseDiscreteManufacturingEquipmentModule(fixture);
+				if (result == null) result = caseEquipmentModule(fixture);
+				if (result == null) result = caseIdentifiableEntity(fixture);
+				if (result == null) result = caseEntity(fixture);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TopologyPackage.GATE: {
+				Gate gate = (Gate)theEObject;
+				T result = caseGate(gate);
+				if (result == null) result = caseDiscreteManufacturingEquipmentModule(gate);
+				if (result == null) result = caseEquipmentModule(gate);
+				if (result == null) result = caseIdentifiableEntity(gate);
+				if (result == null) result = caseEntity(gate);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TopologyPackage.ROBOT: {
+				Robot robot = (Robot)theEObject;
+				T result = caseRobot(robot);
+				if (result == null) result = caseDiscreteManufacturingEquipmentModule(robot);
+				if (result == null) result = caseEquipmentModule(robot);
+				if (result == null) result = caseIdentifiableEntity(robot);
+				if (result == null) result = caseEntity(robot);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TopologyPackage.CARRIER: {
+				Carrier carrier = (Carrier)theEObject;
+				T result = caseCarrier(carrier);
+				if (result == null) result = caseDiscreteManufacturingEquipmentModule(carrier);
+				if (result == null) result = caseEquipmentModule(carrier);
+				if (result == null) result = caseIdentifiableEntity(carrier);
+				if (result == null) result = caseEntity(carrier);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TopologyPackage.MACHINE: {
+				Machine machine = (Machine)theEObject;
+				T result = caseMachine(machine);
+				if (result == null) result = caseDiscreteManufacturingEquipmentModule(machine);
+				if (result == null) result = caseEquipmentModule(machine);
+				if (result == null) result = caseIdentifiableEntity(machine);
+				if (result == null) result = caseEntity(machine);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TopologyPackage.STATIC_OBJECT: {
+				StaticObject staticObject = (StaticObject)theEObject;
+				T result = caseStaticObject(staticObject);
+				if (result == null) result = caseDiscreteManufacturingEquipmentModule(staticObject);
+				if (result == null) result = caseEquipmentModule(staticObject);
+				if (result == null) result = caseIdentifiableEntity(staticObject);
+				if (result == null) result = caseEntity(staticObject);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TopologyPackage.TURNABLE: {
+				Turnable turnable = (Turnable)theEObject;
+				T result = caseTurnable(turnable);
+				if (result == null) result = caseHorizontalTransport(turnable);
+				if (result == null) result = caseTransport(turnable);
+				if (result == null) result = caseDiscreteManufacturingEquipmentModule(turnable);
+				if (result == null) result = caseEquipmentModule(turnable);
+				if (result == null) result = caseIdentifiableEntity(turnable);
+				if (result == null) result = caseEntity(turnable);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TopologyPackage.CONVEYOR: {
+				Conveyor conveyor = (Conveyor)theEObject;
+				T result = caseConveyor(conveyor);
+				if (result == null) result = caseHorizontalTransport(conveyor);
+				if (result == null) result = caseTransport(conveyor);
+				if (result == null) result = caseDiscreteManufacturingEquipmentModule(conveyor);
+				if (result == null) result = caseEquipmentModule(conveyor);
+				if (result == null) result = caseIdentifiableEntity(conveyor);
+				if (result == null) result = caseEntity(conveyor);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TopologyPackage.LIFTING_TABLE: {
+				LiftingTable liftingTable = (LiftingTable)theEObject;
+				T result = caseLiftingTable(liftingTable);
+				if (result == null) result = caseVerticalTransport(liftingTable);
+				if (result == null) result = caseTransport(liftingTable);
+				if (result == null) result = caseDiscreteManufacturingEquipmentModule(liftingTable);
+				if (result == null) result = caseEquipmentModule(liftingTable);
+				if (result == null) result = caseIdentifiableEntity(liftingTable);
+				if (result == null) result = caseEntity(liftingTable);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TopologyPackage.AVG: {
+				AVG avg = (AVG)theEObject;
+				T result = caseAVG(avg);
+				if (result == null) result = caseHorizontalTransport(avg);
+				if (result == null) result = caseTransport(avg);
+				if (result == null) result = caseDiscreteManufacturingEquipmentModule(avg);
+				if (result == null) result = caseEquipmentModule(avg);
+				if (result == null) result = caseIdentifiableEntity(avg);
+				if (result == null) result = caseEntity(avg);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TopologyPackage.TRANSPOSER: {
+				Transposer transposer = (Transposer)theEObject;
+				T result = caseTransposer(transposer);
+				if (result == null) result = caseTransport(transposer);
+				if (result == null) result = caseDiscreteManufacturingEquipmentModule(transposer);
+				if (result == null) result = caseEquipmentModule(transposer);
+				if (result == null) result = caseIdentifiableEntity(transposer);
+				if (result == null) result = caseEntity(transposer);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TopologyPackage.CARRIER_HANDLING_SYSTEM: {
+				CarrierHandlingSystem carrierHandlingSystem = (CarrierHandlingSystem)theEObject;
+				T result = caseCarrierHandlingSystem(carrierHandlingSystem);
+				if (result == null) result = caseTransport(carrierHandlingSystem);
+				if (result == null) result = caseDiscreteManufacturingEquipmentModule(carrierHandlingSystem);
+				if (result == null) result = caseEquipmentModule(carrierHandlingSystem);
+				if (result == null) result = caseIdentifiableEntity(carrierHandlingSystem);
+				if (result == null) result = caseEntity(carrierHandlingSystem);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TopologyPackage.LIFT: {
+				Lift lift = (Lift)theEObject;
+				T result = caseLift(lift);
+				if (result == null) result = caseVerticalTransport(lift);
+				if (result == null) result = caseTransport(lift);
+				if (result == null) result = caseDiscreteManufacturingEquipmentModule(lift);
+				if (result == null) result = caseEquipmentModule(lift);
+				if (result == null) result = caseIdentifiableEntity(lift);
+				if (result == null) result = caseEntity(lift);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TopologyPackage.VERTICAL_TRANSPORT: {
+				VerticalTransport verticalTransport = (VerticalTransport)theEObject;
+				T result = caseVerticalTransport(verticalTransport);
+				if (result == null) result = caseTransport(verticalTransport);
+				if (result == null) result = caseDiscreteManufacturingEquipmentModule(verticalTransport);
+				if (result == null) result = caseEquipmentModule(verticalTransport);
+				if (result == null) result = caseIdentifiableEntity(verticalTransport);
+				if (result == null) result = caseEntity(verticalTransport);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TopologyPackage.HORIZONTAL_TRANSPORT: {
+				HorizontalTransport horizontalTransport = (HorizontalTransport)theEObject;
+				T result = caseHorizontalTransport(horizontalTransport);
+				if (result == null) result = caseTransport(horizontalTransport);
+				if (result == null) result = caseDiscreteManufacturingEquipmentModule(horizontalTransport);
+				if (result == null) result = caseEquipmentModule(horizontalTransport);
+				if (result == null) result = caseIdentifiableEntity(horizontalTransport);
+				if (result == null) result = caseEntity(horizontalTransport);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TopologyPackage.ROLLERBED: {
+				Rollerbed rollerbed = (Rollerbed)theEObject;
+				T result = caseRollerbed(rollerbed);
+				if (result == null) result = caseHorizontalTransport(rollerbed);
+				if (result == null) result = caseTransport(rollerbed);
+				if (result == null) result = caseDiscreteManufacturingEquipmentModule(rollerbed);
+				if (result == null) result = caseEquipmentModule(rollerbed);
+				if (result == null) result = caseIdentifiableEntity(rollerbed);
+				if (result == null) result = caseEntity(rollerbed);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TopologyPackage.LOADER: {
+				Loader loader = (Loader)theEObject;
+				T result = caseLoader(loader);
+				if (result == null) result = caseStorage(loader);
+				if (result == null) result = caseDiscreteManufacturingEquipmentModule(loader);
+				if (result == null) result = caseEquipmentModule(loader);
+				if (result == null) result = caseIdentifiableEntity(loader);
+				if (result == null) result = caseEntity(loader);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TopologyPackage.UNLOADER: {
+				Unloader unloader = (Unloader)theEObject;
+				T result = caseUnloader(unloader);
+				if (result == null) result = caseStorage(unloader);
+				if (result == null) result = caseDiscreteManufacturingEquipmentModule(unloader);
+				if (result == null) result = caseEquipmentModule(unloader);
+				if (result == null) result = caseIdentifiableEntity(unloader);
+				if (result == null) result = caseEntity(unloader);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TopologyPackage.BODY_STORE: {
+				BodyStore bodyStore = (BodyStore)theEObject;
+				T result = caseBodyStore(bodyStore);
+				if (result == null) result = caseStorage(bodyStore);
+				if (result == null) result = caseDiscreteManufacturingEquipmentModule(bodyStore);
+				if (result == null) result = caseEquipmentModule(bodyStore);
+				if (result == null) result = caseIdentifiableEntity(bodyStore);
+				if (result == null) result = caseEntity(bodyStore);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TopologyPackage.CLAMP: {
+				Clamp clamp = (Clamp)theEObject;
+				T result = caseClamp(clamp);
+				if (result == null) result = caseFixture(clamp);
+				if (result == null) result = caseDiscreteManufacturingEquipmentModule(clamp);
+				if (result == null) result = caseEquipmentModule(clamp);
+				if (result == null) result = caseIdentifiableEntity(clamp);
+				if (result == null) result = caseEntity(clamp);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TopologyPackage.BELT_CONVEYOR: {
+				BeltConveyor beltConveyor = (BeltConveyor)theEObject;
+				T result = caseBeltConveyor(beltConveyor);
+				if (result == null) result = caseConveyor(beltConveyor);
+				if (result == null) result = caseHorizontalTransport(beltConveyor);
+				if (result == null) result = caseTransport(beltConveyor);
+				if (result == null) result = caseDiscreteManufacturingEquipmentModule(beltConveyor);
+				if (result == null) result = caseEquipmentModule(beltConveyor);
+				if (result == null) result = caseIdentifiableEntity(beltConveyor);
+				if (result == null) result = caseEntity(beltConveyor);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TopologyPackage.ROLL_CONVEYOR: {
+				RollConveyor rollConveyor = (RollConveyor)theEObject;
+				T result = caseRollConveyor(rollConveyor);
+				if (result == null) result = caseConveyor(rollConveyor);
+				if (result == null) result = caseHorizontalTransport(rollConveyor);
+				if (result == null) result = caseTransport(rollConveyor);
+				if (result == null) result = caseDiscreteManufacturingEquipmentModule(rollConveyor);
+				if (result == null) result = caseEquipmentModule(rollConveyor);
+				if (result == null) result = caseIdentifiableEntity(rollConveyor);
+				if (result == null) result = caseEntity(rollConveyor);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TopologyPackage.CHAIN_CONVEYOR: {
+				ChainConveyor chainConveyor = (ChainConveyor)theEObject;
+				T result = caseChainConveyor(chainConveyor);
+				if (result == null) result = caseConveyor(chainConveyor);
+				if (result == null) result = caseHorizontalTransport(chainConveyor);
+				if (result == null) result = caseTransport(chainConveyor);
+				if (result == null) result = caseDiscreteManufacturingEquipmentModule(chainConveyor);
+				if (result == null) result = caseEquipmentModule(chainConveyor);
+				if (result == null) result = caseIdentifiableEntity(chainConveyor);
+				if (result == null) result = caseEntity(chainConveyor);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TopologyPackage.PALLET_CONVEYOR: {
+				PalletConveyor palletConveyor = (PalletConveyor)theEObject;
+				T result = casePalletConveyor(palletConveyor);
+				if (result == null) result = caseConveyor(palletConveyor);
+				if (result == null) result = caseHorizontalTransport(palletConveyor);
+				if (result == null) result = caseTransport(palletConveyor);
+				if (result == null) result = caseDiscreteManufacturingEquipmentModule(palletConveyor);
+				if (result == null) result = caseEquipmentModule(palletConveyor);
+				if (result == null) result = caseIdentifiableEntity(palletConveyor);
+				if (result == null) result = caseEntity(palletConveyor);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TopologyPackage.OVERHEAD_CONVEYOR: {
+				OverheadConveyor overheadConveyor = (OverheadConveyor)theEObject;
+				T result = caseOverheadConveyor(overheadConveyor);
+				if (result == null) result = caseConveyor(overheadConveyor);
+				if (result == null) result = caseHorizontalTransport(overheadConveyor);
+				if (result == null) result = caseTransport(overheadConveyor);
+				if (result == null) result = caseDiscreteManufacturingEquipmentModule(overheadConveyor);
+				if (result == null) result = caseEquipmentModule(overheadConveyor);
+				if (result == null) result = caseIdentifiableEntity(overheadConveyor);
+				if (result == null) result = caseEntity(overheadConveyor);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -441,21 +790,6 @@ public class TopologySwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Production Line Section</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Production Line Section</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseProductionLineSection(ProductionLineSection object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Station</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -512,6 +846,486 @@ public class TopologySwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseBufferStation(BufferStation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Process Unit</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Process Unit</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseProcessUnit(ProcessUnit object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Discrete Manufacturing Equipment Module</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Discrete Manufacturing Equipment Module</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDiscreteManufacturingEquipmentModule(DiscreteManufacturingEquipmentModule object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Tool</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Tool</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTool(Tool object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Stationary Tool</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Stationary Tool</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStationaryTool(StationaryTool object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Movable Tool</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Movable Tool</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMovableTool(MovableTool object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Transport</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Transport</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTransport(Transport object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Storage</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Storage</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStorage(Storage object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Fixture</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Fixture</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFixture(Fixture object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Gate</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Gate</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGate(Gate object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Robot</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Robot</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRobot(Robot object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Carrier</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Carrier</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCarrier(Carrier object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Machine</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Machine</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMachine(Machine object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Static Object</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Static Object</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStaticObject(StaticObject object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Turnable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Turnable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTurnable(Turnable object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Conveyor</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Conveyor</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConveyor(Conveyor object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Lifting Table</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Lifting Table</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLiftingTable(LiftingTable object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>AVG</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>AVG</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAVG(AVG object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Transposer</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Transposer</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTransposer(Transposer object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Carrier Handling System</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Carrier Handling System</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCarrierHandlingSystem(CarrierHandlingSystem object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Lift</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Lift</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLift(Lift object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Vertical Transport</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Vertical Transport</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseVerticalTransport(VerticalTransport object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Horizontal Transport</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Horizontal Transport</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseHorizontalTransport(HorizontalTransport object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Rollerbed</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Rollerbed</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRollerbed(Rollerbed object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Loader</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Loader</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLoader(Loader object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Unloader</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Unloader</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseUnloader(Unloader object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Body Store</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Body Store</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBodyStore(BodyStore object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Clamp</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Clamp</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseClamp(Clamp object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Belt Conveyor</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Belt Conveyor</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBeltConveyor(BeltConveyor object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Roll Conveyor</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Roll Conveyor</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRollConveyor(RollConveyor object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Chain Conveyor</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Chain Conveyor</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseChainConveyor(ChainConveyor object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Pallet Conveyor</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Pallet Conveyor</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePalletConveyor(PalletConveyor object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Overhead Conveyor</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Overhead Conveyor</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOverheadConveyor(OverheadConveyor object) {
 		return null;
 	}
 

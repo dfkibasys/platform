@@ -24,7 +24,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see de.dfki.iui.basys.model.domain.topology.TopologyPackage#getEquipmentModule()
- * @model
+ * @model interface="true" abstract="true"
  * @generated
  */
 public interface EquipmentModule extends IdentifiableEntity {
@@ -48,11 +48,10 @@ public interface EquipmentModule extends IdentifiableEntity {
 	 * Returns the value of the '<em><b>Equipment Modules</b></em>' containment reference list.
 	 * The list contents are of type {@link de.dfki.iui.basys.model.domain.topology.EquipmentModule}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Equipment Modules</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Unscharf: DiscManufacturingEquipmentModule kann einfache EquipmentModules enthalten.
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Equipment Modules</em>' containment reference list.
 	 * @see de.dfki.iui.basys.model.domain.topology.TopologyPackage#getEquipmentModule_EquipmentModules()
 	 * @model containment="true"
