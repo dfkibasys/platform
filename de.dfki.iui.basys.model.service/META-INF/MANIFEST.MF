@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1510663247693
-Build-Jdk: 1.8.0_25
-Built-By: fkerber
+Bnd-LastModified: 1511221998644
+Build-Jdk: 1.8.0_131
+Built-By: dapo01
 Bundle-ManifestVersion: 2
-Bundle-Name: BaSys 4.0 - Base Model
+Bundle-Name: BaSys 4.0 - Service Model
 Bundle-SymbolicName: de.dfki.iui.basys.model.service;singleton:=true
 Bundle-Version: 0.0.1.SNAPSHOT
 Created-By: Apache Maven Bundle Plugin
