@@ -1,21 +1,27 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1511221999126
+Bnd-LastModified: 1511362435250
 Build-Jdk: 1.8.0_131
 Built-By: dapo01
+Bundle-Description: Generated using Pax-Construct
+Bundle-DocURL: http://www.dfki.de
+Bundle-License: https://www.eclipse.org/legal/epl-v10.html
 Bundle-ManifestVersion: 2
-Bundle-Name: BaSys 4.0 - AAS Model
+Bundle-Name: de.dfki.iui.basys.model.aas
 Bundle-SymbolicName: de.dfki.iui.basys.model.aas;singleton:=true
-Bundle-Version: 0.0.1.SNAPSHOT
+Bundle-Vendor: DFKI GmbH
+Bundle-Version: 1.0.0.SNAPSHOT
 Created-By: Apache Maven Bundle Plugin
-Export-Package: de.dfki.iui.basys.model.aas;uses:="de.dfki.iui.basys.mod
- el.base,de.dfki.iui.basys.model.service,org.eclipse.emf.common.util,org
- .eclipse.emf.ecore";version="0.0.1.SNAPSHOT",de.dfki.iui.basys.model.aa
- s.util;uses:="de.dfki.iui.basys.model.aas,de.dfki.iui.basys.model.base,
- org.eclipse.emf.common.notify,org.eclipse.emf.ecore,org.eclipse.emf.eco
- re.util";version="0.0.1.SNAPSHOT"
-Import-Package: de.dfki.iui.basys.model.base;version="[0.0,1)",de.dfki.i
- ui.basys.model.service;version="[0.0,1)",org.eclipse.emf.common.notify,
- org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore
- .plugin,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.util
+Export-Package: de.dfki.iui.basys.model.aas;version="1.0.0.SNAPSHOT";use
+ s:="de.dfki.iui.basys.model.base,de.dfki.iui.basys.model.service,org.ec
+ lipse.emf.common.util,org.eclipse.emf.ecore",de.dfki.iui.basys.model.aa
+ s.util;version="1.0.0.SNAPSHOT";uses:="de.dfki.iui.basys.model.aas,de.d
+ fki.iui.basys.model.base,org.eclipse.emf.common.notify,org.eclipse.emf.
+ ecore,org.eclipse.emf.ecore.util"
+Import-Package: de.dfki.iui.basys.model.base;version="[1.0,2)",de.dfki.i
+ ui.basys.model.service;version="[1.0,2)",org.eclipse.emf.common.notify;
+ resolution:=optional,org.eclipse.emf.common.util;resolution:=optional,o
+ rg.eclipse.emf.ecore;resolution:=optional,org.eclipse.emf.ecore.plugin;
+ resolution:=optional,org.eclipse.emf.ecore.resource;resolution:=optiona
+ l,org.eclipse.emf.ecore.util;resolution:=optional
 Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
 Tool: Bnd-3.3.0.201609221906

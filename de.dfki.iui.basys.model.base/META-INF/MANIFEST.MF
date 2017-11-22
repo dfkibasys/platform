@@ -1,24 +1,32 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1511221996002
+Bnd-LastModified: 1511362432667
 Build-Jdk: 1.8.0_131
 Built-By: dapo01
+Bundle-Description: Generated using Pax-Construct
+Bundle-DocURL: http://www.dfki.de
+Bundle-License: https://www.eclipse.org/legal/epl-v10.html
 Bundle-ManifestVersion: 2
-Bundle-Name: BaSys 4.0 - Base Model
+Bundle-Name: de.dfki.iui.basys.model.base
 Bundle-SymbolicName: de.dfki.iui.basys.model.base;singleton:=true
-Bundle-Version: 0.0.1.SNAPSHOT
+Bundle-Vendor: DFKI GmbH
+Bundle-Version: 1.0.0.SNAPSHOT
 Created-By: Apache Maven Bundle Plugin
 Export-Package: de.dfki.iui.basys.model.base;uses:="org.eclipse.emf.ecor
- e";version="0.0.1.SNAPSHOT",de.dfki.iui.basys.model.base.util;uses:="de
+ e";version="1.0.0.SNAPSHOT",de.dfki.iui.basys.model.base.util;uses:="de
  .dfki.iui.basys.model.base,org.eclipse.emf.common.notify,org.eclipse.em
- f.ecore,org.eclipse.emf.ecore.util";version="0.0.1.SNAPSHOT",de.dfki.iu
+ f.ecore,org.eclipse.emf.ecore.util";version="1.0.0.SNAPSHOT",de.dfki.iu
  i.basys.model.util;uses:="org.eclipse.emf.ecore,org.eclipse.emf.ecore.r
- esource";version="0.0.1.SNAPSHOT"
-Import-Package: com.fasterxml.jackson.databind;version="[2.9,3)",org.apa
- che.commons.io.input;version="[1.4,2)",org.apache.commons.io.output;ver
- sion="[1.4,2)",org.eclipse.emf.common.notify,org.eclipse.emf.common.uti
- l,org.eclipse.emf.ecore,org.eclipse.emf.ecore.plugin,org.eclipse.emf.ec
- ore.resource,org.eclipse.emf.ecore.util,org.emfjson.jackson.databind;ve
- rsion="[1.0,2)",org.emfjson.jackson.module;version="[1.0,2)",org.emfjso
- n.jackson.resource;version="[1.0,2)"
+ esource";version="1.0.0.SNAPSHOT"
+Import-Package: com.fasterxml.jackson.databind;version="[2.9,3)";resolut
+ ion:=optional,org.apache.commons.io.input;version="[1.4,2)";resolution:
+ =optional,org.apache.commons.io.output;version="[1.4,2)";resolution:=op
+ tional,org.eclipse.emf.common.notify;resolution:=optional,org.eclipse.e
+ mf.common.util;resolution:=optional,org.eclipse.emf.ecore;resolution:=o
+ ptional,org.eclipse.emf.ecore.plugin;resolution:=optional,org.eclipse.e
+ mf.ecore.resource;resolution:=optional,org.eclipse.emf.ecore.util;resol
+ ution:=optional,org.emfjson.jackson.databind;version="[1.0,2)";resoluti
+ on:=optional,org.emfjson.jackson.module;version="[1.0,2)";resolution:=o
+ ptional,org.emfjson.jackson.resource;version="[1.0,2)";resolution:=opti
+ onal
 Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
 Tool: Bnd-3.3.0.201609221906
