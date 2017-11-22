@@ -1,88 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
 
-  <organization>
-    <name>DFKI GmbH</name>
-    <url>http://www.dfki.de</url>
-  </organization>
+	<organization>
+		<name>DFKI GmbH</name>
+		<url>http://www.dfki.de</url>
+	</organization>
 
-  <licenses>
-    <license>
-      <name>Eclipse Public License - v 1.0</name>
-      <url>https://www.eclipse.org/legal/epl-v10.html</url>
-      <comments></comments>
-	  <distribution>repo</distribution>
-    </license>
-  </licenses> 
+	<licenses>
+		<license>
+			<name>Eclipse Public License - v 1.0</name>
+			<url>https://www.eclipse.org/legal/epl-v10.html</url>
+			<comments></comments>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
 
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>de.dfki.iui</groupId>
-  <artifactId>basys</artifactId>
-  <version>1.0-SNAPSHOT</version>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>de.dfki.iui</groupId>
+	<artifactId>basys</artifactId>
+	<version>1.0-SNAPSHOT</version>
 
-  <name>BaSys 4.0 (OSGi project)</name>
+	<name>BaSys 4.0 (OSGi project)</name>
 
-  <!--
-   | describe your project here
-  -->
+	<!-- | describe your project here -->
 
-  <description>Generated using Pax-Construct</description>
+	<description>Generated using Pax-Construct</description>
 
-  <properties>
-    <!--
-     | some example OSGi runtime properties
-    -->
-    <org.osgi.service.http.port>8080</org.osgi.service.http.port>
-    <org.osgi.service.http.port.secure>8443</org.osgi.service.http.port.secure>
-  </properties>
+	<properties>
+		<!-- | some example OSGi runtime properties -->
+		<org.osgi.service.http.port>8080</org.osgi.service.http.port>
+		<org.osgi.service.http.port.secure>8443</org.osgi.service.http.port.secure>
 
-  <packaging>pom</packaging>
+		<tycho-version>1.0.0</tycho-version>
+	</properties>
 
-  <modules>
-    <module>poms</module>
-    <module>provision</module>
-    <module>../common</module>
-    <module>../models</module>
-    <module>../communication</module>
-    <module>../workbench</module>
-    <module>../services</module>
-  </modules>
+	<packaging>pom</packaging>
 
-  	<distributionManagement>
+	<modules>
+		<module>poms</module>
+		<module>provision</module>
+		<module>../common</module>
+		<module>../models</module>
+		<module>../communication</module>
+		<module>../workbench</module>
+		<module>../services</module>
+	</modules>
+
+	<distributionManagement>
 		<snapshotRepository>
 			<id>nexus-snapshots</id>
 			<url>http://lns-90165.sb.dfki.de:8081/repository/maven-snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
-  
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.ops4j</groupId>
-        <artifactId>maven-pax-plugin</artifactId>
-        <version>1.6.0</version>
-        <configuration>
-          <!--
-           | some example Pax-Runner settings
-          -->
-          <provision>
-            <param>--platform=felix</param>
-          </provision>
-        </configuration>
-        <executions>
-          <!--
-           | uncomment to auto-generate IDE files
-          <execution>
-            <id>ide-support</id>
-            <goals>
-              <goal>eclipse</goal>
-            </goals>
-          </execution>
-          -->
-        </executions>
-      </plugin>
-	  <plugin>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.ops4j</groupId>
+				<artifactId>maven-pax-plugin</artifactId>
+				<version>1.6.0</version>
+				<configuration>
+					<!-- | some example Pax-Runner settings -->
+					<provision>
+						<param>--platform=felix</param>
+					</provision>
+				</configuration>
+				<executions>
+					<!-- | uncomment to auto-generate IDE files 
+					<execution> 
+						<id>ide-support</id> 
+						<goals> 
+						<goal>eclipse</goal> 
+						</goals> 
+					</execution> 
+					-->		
+				</executions>
+			</plugin>
+
+			<!-- https://wiki.eclipse.org/Tycho/Target_Platform#.22POM_dependencies_consider.22 -->
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<pomDependencies>consider</pomDependencies>
+				</configuration>
+			</plugin>
+
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-deploy-plugin</artifactId>
 				<version>2.8.2</version>
@@ -109,9 +123,9 @@
 					<skipStaging>true</skipStaging>
 				</configuration>
 			</plugin>
-	  
-	  
-    </plugins>
-  </build>
+
+
+		</plugins>
+	</build>
 
 </project>
