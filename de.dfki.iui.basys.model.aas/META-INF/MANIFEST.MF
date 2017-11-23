@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1511364761425
-Build-Jdk: 1.8.0_131
-Built-By: dapo01
+Bnd-LastModified: 1511440550650
+Build-Jdk: 1.8.0_25
+Built-By: fkerber
 Bundle-Description: Generated using Pax-Construct
 Bundle-DocURL: http://www.dfki.de
 Bundle-License: https://www.eclipse.org/legal/epl-v10.html
@@ -23,5 +23,7 @@ Import-Package: de.dfki.iui.basys.model.base;version="[1.0,2)",de.dfki.i
  rg.eclipse.emf.ecore;resolution:=optional,org.eclipse.emf.ecore.plugin;
  resolution:=optional,org.eclipse.emf.ecore.resource;resolution:=optiona
  l,org.eclipse.emf.ecore.util;resolution:=optional
+Require-Bundle: org.eclipse.core.runtime, org.eclipse.emf.ecore;visibili
+ ty:=reexport
 Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
 Tool: Bnd-3.3.0.201609221906
