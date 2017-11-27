@@ -34,61 +34,61 @@
     </eParameters>
   </operations>
   <operations name="getProcessCells" upperBound="-1">
-    <eType xsi:type="ecore:EClass" href="http://www.dfki.de/iui/basys/model/topology#//Site"/>
+    <eType xsi:type="ecore:EClass" href="http://www.dfki.de/iui/basys/model/topology#//ProcessCell"/>
     <eParameters name="parentId">
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eParameters>
   </operations>
   <operations name="getProcessCell">
-    <eType xsi:type="ecore:EClass" href="http://www.dfki.de/iui/basys/model/topology#//Site"/>
+    <eType xsi:type="ecore:EClass" href="http://www.dfki.de/iui/basys/model/topology#//ProcessCell"/>
     <eParameters name="processCellId">
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eParameters>
   </operations>
   <operations name="getProductionUnits" upperBound="-1">
-    <eType xsi:type="ecore:EClass" href="http://www.dfki.de/iui/basys/model/topology#//Site"/>
+    <eType xsi:type="ecore:EClass" href="http://www.dfki.de/iui/basys/model/topology#//ProductionUnit"/>
     <eParameters name="parentId">
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eParameters>
   </operations>
   <operations name="getProductionUnit">
-    <eType xsi:type="ecore:EClass" href="http://www.dfki.de/iui/basys/model/topology#//Site"/>
+    <eType xsi:type="ecore:EClass" href="http://www.dfki.de/iui/basys/model/topology#//ProductionUnit"/>
     <eParameters name="productionUnitId">
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eParameters>
   </operations>
   <operations name="getProductionLines" upperBound="-1">
-    <eType xsi:type="ecore:EClass" href="http://www.dfki.de/iui/basys/model/topology#//Site"/>
+    <eType xsi:type="ecore:EClass" href="http://www.dfki.de/iui/basys/model/topology#//ProductionLine"/>
     <eParameters name="parentId">
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eParameters>
   </operations>
   <operations name="getProductionLine">
-    <eType xsi:type="ecore:EClass" href="http://www.dfki.de/iui/basys/model/topology#//Site"/>
+    <eType xsi:type="ecore:EClass" href="http://www.dfki.de/iui/basys/model/topology#//ProductionLine"/>
     <eParameters name="productionLineId">
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eParameters>
   </operations>
   <operations name="getStorageZone" upperBound="-1">
-    <eType xsi:type="ecore:EClass" href="http://www.dfki.de/iui/basys/model/topology#//Site"/>
+    <eType xsi:type="ecore:EClass" href="http://www.dfki.de/iui/basys/model/topology#//StorageZone"/>
     <eParameters name="parentId">
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eParameters>
   </operations>
   <operations name="getStorageZone">
-    <eType xsi:type="ecore:EClass" href="http://www.dfki.de/iui/basys/model/topology#//Site"/>
+    <eType xsi:type="ecore:EClass" href="http://www.dfki.de/iui/basys/model/topology#//StorageZone"/>
     <eParameters name="storageZoneId">
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eParameters>
   </operations>
   <operations name="getWorkCells" upperBound="-1">
-    <eType xsi:type="ecore:EClass" href="http://www.dfki.de/iui/basys/model/topology#//Site"/>
+    <eType xsi:type="ecore:EClass" href="http://www.dfki.de/iui/basys/model/topology#//WorkCell"/>
     <eParameters name="parentId">
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eParameters>
   </operations>
   <operations name="getWorkCell">
-    <eType xsi:type="ecore:EClass" href="http://www.dfki.de/iui/basys/model/topology#//Site"/>
+    <eType xsi:type="ecore:EClass" href="http://www.dfki.de/iui/basys/model/topology#//WorkCell"/>
     <eParameters name="workCellId">
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eParameters>

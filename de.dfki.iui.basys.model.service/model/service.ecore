@@ -30,7 +30,10 @@
         eType="#//ServiceDescription"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Property" eSuperTypes="../../org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Operation" eSuperTypes="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EOperation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Operation" eSuperTypes="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EOperation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="capability" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="qos" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Publication" eSuperTypes="../../org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="topic" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="qos" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
