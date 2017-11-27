@@ -64,7 +64,10 @@
             <!--
              | each module can override these defaults in their osgi.bnd file
             -->
+			<!--
             <Import-Package>!*.impl,*</Import-Package>
+			-->
+			<Export-Package>!${bundle.namespace}.internal.*,${bundle.namespace}.*;version="${project.version}"</Export-Package>
             <_include>-osgi.bnd</_include>
 			<_dsannotations>*</_dsannotations>
           </instructions>
