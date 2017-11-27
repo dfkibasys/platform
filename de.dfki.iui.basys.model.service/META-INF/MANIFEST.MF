@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1511440550135
-Build-Jdk: 1.8.0_25
-Built-By: fkerber
+Bnd-LastModified: 1511781685168
+Build-Jdk: 1.8.0_131
+Built-By: dapo01
 Bundle-Description: Generated using Pax-Construct
 Bundle-DocURL: http://www.dfki.de
 Bundle-License: https://www.eclipse.org/legal/epl-v10.html
@@ -11,18 +11,26 @@ Bundle-SymbolicName: de.dfki.iui.basys.model.service;singleton:=true
 Bundle-Vendor: DFKI GmbH
 Bundle-Version: 1.0.0.SNAPSHOT
 Created-By: Apache Maven Bundle Plugin
-Export-Package: de.dfki.iui.basys.model.service;uses:="de.dfki.iui.basys
- .model.base,org.eclipse.emf.common.util,org.eclipse.emf.ecore";version=
- "1.0.0.SNAPSHOT",de.dfki.iui.basys.model.service.util;uses:="de.dfki.iu
- i.basys.model.base,de.dfki.iui.basys.model.service,org.eclipse.emf.comm
- on.notify,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse
- .emf.ecore.util";version="1.0.0.SNAPSHOT"
+Export-Package: de.dfki.iui.basys.model.service;version="1.0.0.SNAPSHOT"
+ ;uses:="de.dfki.iui.basys.model.base,org.eclipse.emf.common.util,org.ec
+ lipse.emf.ecore",de.dfki.iui.basys.model.service.impl;version="1.0.0.SN
+ APSHOT";uses:="de.dfki.iui.basys.model.base,de.dfki.iui.basys.model.bas
+ e.impl,de.dfki.iui.basys.model.service,org.eclipse.emf.common.notify,or
+ g.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.i
+ mpl",de.dfki.iui.basys.model.service.util;version="1.0.0.SNAPSHOT";uses
+ :="de.dfki.iui.basys.model.base,de.dfki.iui.basys.model.service,org.ecl
+ ipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse.e
+ mf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.util"
 Import-Package: de.dfki.iui.basys.model.base;version="[1.0,2)",de.dfki.i
- ui.basys.model.service.util,org.eclipse.emf.common.notify;resolution:=o
- ptional,org.eclipse.emf.common.util;resolution:=optional,org.eclipse.em
- f.ecore;resolution:=optional,org.eclipse.emf.ecore.plugin;resolution:=o
- ptional,org.eclipse.emf.ecore.resource;resolution:=optional,org.eclipse
- .emf.ecore.util;resolution:=optional
+ ui.basys.model.base.impl;version="[1.0,2)",de.dfki.iui.basys.model.serv
+ ice;version="[1.0,2)",de.dfki.iui.basys.model.service.impl;version="[1.
+ 0,2)",de.dfki.iui.basys.model.service.util;version="[1.0,2)",org.eclips
+ e.emf.common.notify;resolution:=optional,org.eclipse.emf.common.notify.
+ impl;resolution:=optional,org.eclipse.emf.common.util;resolution:=optio
+ nal,org.eclipse.emf.ecore;resolution:=optional,org.eclipse.emf.ecore.im
+ pl;resolution:=optional,org.eclipse.emf.ecore.plugin;resolution:=option
+ al,org.eclipse.emf.ecore.resource;resolution:=optional,org.eclipse.emf.
+ ecore.util;resolution:=optional
 Require-Bundle: org.eclipse.core.runtime, org.eclipse.emf.ecore;visibili
  ty:=reexport
 Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
