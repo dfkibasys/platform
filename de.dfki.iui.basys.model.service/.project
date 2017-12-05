@@ -1,5 +1,5 @@
 <projectDescription>
-  <name>de.dfki.iui.basys.model.service [1.0-SNAPSHOT]</name>
+  <name>de.dfki.iui.basys.model.service</name>
   <comment>Generated using Pax-Construct</comment>
   <projects/>
   <buildSpec>
