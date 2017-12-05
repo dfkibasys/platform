@@ -58,6 +58,7 @@ public class LinebalancingFactoryImpl extends EFactoryImpl implements Linebalanc
 		switch (eClass.getClassifierID()) {
 			case LinebalancingPackage.LB_PRODUCT_INSTANCE: return createLBProductInstance();
 			case LinebalancingPackage.LB_STAFF: return createLBStaff();
+			case LinebalancingPackage.LB_LOCATIONS: return createLBLocations();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -81,6 +82,16 @@ public class LinebalancingFactoryImpl extends EFactoryImpl implements Linebalanc
 	public LBStaff createLBStaff() {
 		LBStaffImpl lbStaff = new LBStaffImpl();
 		return lbStaff;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LBLocations createLBLocations() {
+		LBLocationsImpl lbLocations = new LBLocationsImpl();
+		return lbLocations;
 	}
 
 	/**

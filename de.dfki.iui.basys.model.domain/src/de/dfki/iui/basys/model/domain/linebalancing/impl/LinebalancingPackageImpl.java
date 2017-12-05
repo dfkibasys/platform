@@ -4,6 +4,7 @@ package de.dfki.iui.basys.model.domain.linebalancing.impl;
 
 import de.dfki.iui.basys.model.base.BasePackage;
 
+import de.dfki.iui.basys.model.domain.linebalancing.LBLocations;
 import de.dfki.iui.basys.model.domain.linebalancing.LBProductInstance;
 import de.dfki.iui.basys.model.domain.linebalancing.LBStaff;
 import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingFactory;
@@ -37,6 +38,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -59,6 +61,13 @@ public class LinebalancingPackageImpl extends EPackageImpl implements Linebalanc
 	 * @generated
 	 */
 	private EClass lbStaffEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass lbLocationsEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -239,6 +248,33 @@ public class LinebalancingPackageImpl extends EPackageImpl implements Linebalanc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getLBLocations() {
+		return lbLocationsEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLBLocations_Staff() {
+		return (EReference)lbLocationsEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLBLocations_ProductInstances() {
+		return (EReference)lbLocationsEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public LinebalancingFactory getLinebalancingFactory() {
 		return (LinebalancingFactory)getEFactoryInstance();
 	}
@@ -273,6 +309,10 @@ public class LinebalancingPackageImpl extends EPackageImpl implements Linebalanc
 		createEAttribute(lbStaffEClass, LB_STAFF__COMPONENT_ID_TARGET);
 		createEAttribute(lbStaffEClass, LB_STAFF__CURRENT_PRODUCT_INSTANCE_ID);
 		createEAttribute(lbStaffEClass, LB_STAFF__REMAINING_MOVEMENT_TIME);
+
+		lbLocationsEClass = createEClass(LB_LOCATIONS);
+		createEReference(lbLocationsEClass, LB_LOCATIONS__STAFF);
+		createEReference(lbLocationsEClass, LB_LOCATIONS__PRODUCT_INSTANCES);
 	}
 
 	/**
@@ -321,6 +361,10 @@ public class LinebalancingPackageImpl extends EPackageImpl implements Linebalanc
 		initEAttribute(getLBStaff_ComponentId_target(), ecorePackage.getEString(), "componentId_target", null, 0, 1, LBStaff.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLBStaff_CurrentProductInstanceId(), ecorePackage.getEString(), "currentProductInstanceId", null, 0, 1, LBStaff.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLBStaff_RemainingMovementTime(), ecorePackage.getELong(), "remainingMovementTime", null, 0, 1, LBStaff.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(lbLocationsEClass, LBLocations.class, "LBLocations", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLBLocations_Staff(), this.getLBStaff(), null, "staff", null, 0, -1, LBLocations.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLBLocations_ProductInstances(), this.getLBProductInstance(), null, "productInstances", null, 0, -1, LBLocations.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

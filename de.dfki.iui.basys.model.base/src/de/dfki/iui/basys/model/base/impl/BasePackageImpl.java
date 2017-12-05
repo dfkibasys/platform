@@ -8,6 +8,7 @@ import de.dfki.iui.basys.model.base.Capability;
 import de.dfki.iui.basys.model.base.Entity;
 import de.dfki.iui.basys.model.base.Event;
 import de.dfki.iui.basys.model.base.IdentifiableEntity;
+import de.dfki.iui.basys.model.base.KeyValuePair;
 import de.dfki.iui.basys.model.base.Metadata;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -58,6 +59,13 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 	 * @generated
 	 */
 	private EClass capabilityEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass keyValuePairEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -224,6 +232,33 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getKeyValuePair() {
+		return keyValuePairEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getKeyValuePair_Key() {
+		return (EAttribute)keyValuePairEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getKeyValuePair_Value() {
+		return (EAttribute)keyValuePairEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public BaseFactory getBaseFactory() {
 		return (BaseFactory)getEFactoryInstance();
 	}
@@ -262,6 +297,10 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 		createEAttribute(eventEClass, EVENT__TIMESTAMP);
 
 		capabilityEClass = createEClass(CAPABILITY);
+
+		keyValuePairEClass = createEClass(KEY_VALUE_PAIR);
+		createEAttribute(keyValuePairEClass, KEY_VALUE_PAIR__KEY);
+		createEAttribute(keyValuePairEClass, KEY_VALUE_PAIR__VALUE);
 	}
 
 	/**
@@ -295,6 +334,7 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 		identifiableEntityEClass.getESuperTypes().add(this.getEntity());
 		eventEClass.getESuperTypes().add(this.getEntity());
 		capabilityEClass.getESuperTypes().add(this.getEntity());
+		keyValuePairEClass.getESuperTypes().add(this.getEntity());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(metadataEClass, Metadata.class, "Metadata", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -312,6 +352,10 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 		initEAttribute(getEvent_Timestamp(), ecorePackage.getEDate(), "timestamp", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(capabilityEClass, Capability.class, "Capability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(keyValuePairEClass, KeyValuePair.class, "KeyValuePair", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getKeyValuePair_Key(), ecorePackage.getEString(), "key", null, 0, 1, KeyValuePair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getKeyValuePair_Value(), ecorePackage.getEString(), "value", null, 0, 1, KeyValuePair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

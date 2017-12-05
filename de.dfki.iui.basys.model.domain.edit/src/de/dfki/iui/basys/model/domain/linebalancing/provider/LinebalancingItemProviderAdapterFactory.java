@@ -118,6 +118,29 @@ public class LinebalancingItemProviderAdapterFactory extends LinebalancingAdapte
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.linebalancing.LBLocations} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LBLocationsItemProvider lbLocationsItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.linebalancing.LBLocations}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLBLocationsAdapter() {
+		if (lbLocationsItemProvider == null) {
+			lbLocationsItemProvider = new LBLocationsItemProvider(this);
+		}
+
+		return lbLocationsItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -218,6 +241,7 @@ public class LinebalancingItemProviderAdapterFactory extends LinebalancingAdapte
 	public void dispose() {
 		if (lbProductInstanceItemProvider != null) lbProductInstanceItemProvider.dispose();
 		if (lbStaffItemProvider != null) lbStaffItemProvider.dispose();
+		if (lbLocationsItemProvider != null) lbLocationsItemProvider.dispose();
 	}
 
 }

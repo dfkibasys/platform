@@ -7,6 +7,7 @@ import de.dfki.iui.basys.model.base.BasePackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -224,6 +225,53 @@ public interface LinebalancingPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.linebalancing.impl.LBLocationsImpl <em>LB Locations</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.LBLocationsImpl
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl#getLBLocations()
+	 * @generated
+	 */
+	int LB_LOCATIONS = 2;
+
+	/**
+	 * The feature id for the '<em><b>Staff</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LB_LOCATIONS__STAFF = 0;
+
+	/**
+	 * The feature id for the '<em><b>Product Instances</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LB_LOCATIONS__PRODUCT_INSTANCES = 1;
+
+	/**
+	 * The number of structural features of the '<em>LB Locations</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LB_LOCATIONS_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>LB Locations</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LB_LOCATIONS_OPERATION_COUNT = 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.linebalancing.LBProductInstance <em>LB Product Instance</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -332,6 +380,38 @@ public interface LinebalancingPackage extends EPackage {
 	EAttribute getLBStaff_RemainingMovementTime();
 
 	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.linebalancing.LBLocations <em>LB Locations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>LB Locations</em>'.
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.LBLocations
+	 * @generated
+	 */
+	EClass getLBLocations();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.domain.linebalancing.LBLocations#getStaff <em>Staff</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Staff</em>'.
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.LBLocations#getStaff()
+	 * @see #getLBLocations()
+	 * @generated
+	 */
+	EReference getLBLocations_Staff();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.domain.linebalancing.LBLocations#getProductInstances <em>Product Instances</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Product Instances</em>'.
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.LBLocations#getProductInstances()
+	 * @see #getLBLocations()
+	 * @generated
+	 */
+	EReference getLBLocations_ProductInstances();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -437,6 +517,32 @@ public interface LinebalancingPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute LB_STAFF__REMAINING_MOVEMENT_TIME = eINSTANCE.getLBStaff_RemainingMovementTime();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.linebalancing.impl.LBLocationsImpl <em>LB Locations</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.LBLocationsImpl
+		 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl#getLBLocations()
+		 * @generated
+		 */
+		EClass LB_LOCATIONS = eINSTANCE.getLBLocations();
+
+		/**
+		 * The meta object literal for the '<em><b>Staff</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LB_LOCATIONS__STAFF = eINSTANCE.getLBLocations_Staff();
+
+		/**
+		 * The meta object literal for the '<em><b>Product Instances</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LB_LOCATIONS__PRODUCT_INSTANCES = eINSTANCE.getLBLocations_ProductInstances();
 
 	}
 

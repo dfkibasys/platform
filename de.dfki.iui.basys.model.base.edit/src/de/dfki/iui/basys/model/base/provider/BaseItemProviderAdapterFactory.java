@@ -187,6 +187,29 @@ public class BaseItemProviderAdapterFactory extends BaseAdapterFactory implement
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.base.KeyValuePair} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected KeyValuePairItemProvider keyValuePairItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.base.KeyValuePair}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createKeyValuePairAdapter() {
+		if (keyValuePairItemProvider == null) {
+			keyValuePairItemProvider = new KeyValuePairItemProvider(this);
+		}
+
+		return keyValuePairItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -290,6 +313,7 @@ public class BaseItemProviderAdapterFactory extends BaseAdapterFactory implement
 		if (identifiableEntityItemProvider != null) identifiableEntityItemProvider.dispose();
 		if (eventItemProvider != null) eventItemProvider.dispose();
 		if (capabilityItemProvider != null) capabilityItemProvider.dispose();
+		if (keyValuePairItemProvider != null) keyValuePairItemProvider.dispose();
 	}
 
 }
