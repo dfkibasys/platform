@@ -3,6 +3,7 @@
 package de.dfki.iui.basys.model.service.impl;
 
 import de.dfki.iui.basys.model.base.BasePackage;
+import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
 import de.dfki.iui.basys.model.service.Operation;
 import de.dfki.iui.basys.model.service.Property;
 import de.dfki.iui.basys.model.service.Publication;
@@ -160,6 +161,7 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 
 		// Initialize simple dependencies
 		BasePackage.eINSTANCE.eClass();
+		CapabilityPackage.eINSTANCE.eClass();
 		EcorePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
@@ -272,8 +274,26 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getProperty_Capability() {
+		return (EReference)propertyEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getOperation() {
 		return operationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOperation_Capability() {
+		return (EReference)operationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -290,17 +310,8 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPublication_Topic() {
-		return (EAttribute)publicationEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getPublication_Qos() {
-		return (EAttribute)publicationEClass.getEStructuralFeatures().get(1);
+	public EReference getPublication_Capability() {
+		return (EReference)publicationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -317,17 +328,8 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSubscription_Topic() {
-		return (EAttribute)subscriptionEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSubscription_Qos() {
-		return (EAttribute)subscriptionEClass.getEStructuralFeatures().get(1);
+	public EReference getSubscription_Capability() {
+		return (EReference)subscriptionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -503,16 +505,16 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 		createEReference(serviceDescriptionEClass, SERVICE_DESCRIPTION__DEPENDENCIES);
 
 		propertyEClass = createEClass(PROPERTY);
+		createEReference(propertyEClass, PROPERTY__CAPABILITY);
 
 		operationEClass = createEClass(OPERATION);
+		createEReference(operationEClass, OPERATION__CAPABILITY);
 
 		publicationEClass = createEClass(PUBLICATION);
-		createEAttribute(publicationEClass, PUBLICATION__TOPIC);
-		createEAttribute(publicationEClass, PUBLICATION__QOS);
+		createEReference(publicationEClass, PUBLICATION__CAPABILITY);
 
 		subscriptionEClass = createEClass(SUBSCRIPTION);
-		createEAttribute(subscriptionEClass, SUBSCRIPTION__TOPIC);
-		createEAttribute(subscriptionEClass, SUBSCRIPTION__QOS);
+		createEReference(subscriptionEClass, SUBSCRIPTION__CAPABILITY);
 
 		serviceImplementationEClass = createEClass(SERVICE_IMPLEMENTATION);
 		createEAttribute(serviceImplementationEClass, SERVICE_IMPLEMENTATION__SERVICE_DESCRIPTION_ID);
@@ -563,6 +565,7 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 		// Obtain other dependent packages
 		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 		BasePackage theBasePackage = (BasePackage)EPackage.Registry.INSTANCE.getEPackage(BasePackage.eNS_URI);
+		CapabilityPackage theCapabilityPackage = (CapabilityPackage)EPackage.Registry.INSTANCE.getEPackage(CapabilityPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -591,16 +594,16 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 		initEReference(getServiceDescription_Dependencies(), this.getServiceDescription(), null, "dependencies", null, 0, -1, ServiceDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(propertyEClass, Property.class, "Property", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getProperty_Capability(), theCapabilityPackage.getCapability(), null, "capability", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(operationEClass, Operation.class, "Operation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getOperation_Capability(), theCapabilityPackage.getCapability(), null, "capability", null, 0, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(publicationEClass, Publication.class, "Publication", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPublication_Topic(), theEcorePackage.getEString(), "topic", null, 0, 1, Publication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPublication_Qos(), theEcorePackage.getEString(), "qos", null, 0, 1, Publication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPublication_Capability(), theCapabilityPackage.getCapability(), null, "capability", null, 0, 1, Publication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(subscriptionEClass, Subscription.class, "Subscription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSubscription_Topic(), theEcorePackage.getEString(), "topic", null, 0, 1, Subscription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSubscription_Qos(), theEcorePackage.getEString(), "qos", null, 0, 1, Subscription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSubscription_Capability(), theCapabilityPackage.getCapability(), null, "capability", null, 0, 1, Subscription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(serviceImplementationEClass, ServiceImplementation.class, "ServiceImplementation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getServiceImplementation_ServiceDescriptionId(), theEcorePackage.getEString(), "serviceDescriptionId", null, 0, 1, ServiceImplementation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

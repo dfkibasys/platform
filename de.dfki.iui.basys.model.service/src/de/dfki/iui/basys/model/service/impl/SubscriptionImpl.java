@@ -2,13 +2,16 @@
  */
 package de.dfki.iui.basys.model.service.impl;
 
+import de.dfki.iui.basys.model.domain.capability.Capability;
 import de.dfki.iui.basys.model.service.ServicePackage;
 import de.dfki.iui.basys.model.service.Subscription;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.ETypedElementImpl;
 
@@ -20,52 +23,21 @@ import org.eclipse.emf.ecore.impl.ETypedElementImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.dfki.iui.basys.model.service.impl.SubscriptionImpl#getTopic <em>Topic</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.service.impl.SubscriptionImpl#getQos <em>Qos</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.service.impl.SubscriptionImpl#getCapability <em>Capability</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class SubscriptionImpl extends ETypedElementImpl implements Subscription {
 	/**
-	 * The default value of the '{@link #getTopic() <em>Topic</em>}' attribute.
+	 * The cached value of the '{@link #getCapability() <em>Capability</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTopic()
+	 * @see #getCapability()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TOPIC_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getTopic() <em>Topic</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTopic()
-	 * @generated
-	 * @ordered
-	 */
-	protected String topic = TOPIC_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getQos() <em>Qos</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getQos()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String QOS_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getQos() <em>Qos</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getQos()
-	 * @generated
-	 * @ordered
-	 */
-	protected String qos = QOS_EDEFAULT;
+	protected Capability capability;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -91,8 +63,8 @@ public class SubscriptionImpl extends ETypedElementImpl implements Subscription 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getTopic() {
-		return topic;
+	public Capability getCapability() {
+		return capability;
 	}
 
 	/**
@@ -100,11 +72,14 @@ public class SubscriptionImpl extends ETypedElementImpl implements Subscription 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTopic(String newTopic) {
-		String oldTopic = topic;
-		topic = newTopic;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ServicePackage.SUBSCRIPTION__TOPIC, oldTopic, topic));
+	public NotificationChain basicSetCapability(Capability newCapability, NotificationChain msgs) {
+		Capability oldCapability = capability;
+		capability = newCapability;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ServicePackage.SUBSCRIPTION__CAPABILITY, oldCapability, newCapability);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -112,8 +87,18 @@ public class SubscriptionImpl extends ETypedElementImpl implements Subscription 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getQos() {
-		return qos;
+	public void setCapability(Capability newCapability) {
+		if (newCapability != capability) {
+			NotificationChain msgs = null;
+			if (capability != null)
+				msgs = ((InternalEObject)capability).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ServicePackage.SUBSCRIPTION__CAPABILITY, null, msgs);
+			if (newCapability != null)
+				msgs = ((InternalEObject)newCapability).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ServicePackage.SUBSCRIPTION__CAPABILITY, null, msgs);
+			msgs = basicSetCapability(newCapability, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ServicePackage.SUBSCRIPTION__CAPABILITY, newCapability, newCapability));
 	}
 
 	/**
@@ -121,11 +106,13 @@ public class SubscriptionImpl extends ETypedElementImpl implements Subscription 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setQos(String newQos) {
-		String oldQos = qos;
-		qos = newQos;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ServicePackage.SUBSCRIPTION__QOS, oldQos, qos));
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ServicePackage.SUBSCRIPTION__CAPABILITY:
+				return basicSetCapability(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -136,10 +123,8 @@ public class SubscriptionImpl extends ETypedElementImpl implements Subscription 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ServicePackage.SUBSCRIPTION__TOPIC:
-				return getTopic();
-			case ServicePackage.SUBSCRIPTION__QOS:
-				return getQos();
+			case ServicePackage.SUBSCRIPTION__CAPABILITY:
+				return getCapability();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -152,11 +137,8 @@ public class SubscriptionImpl extends ETypedElementImpl implements Subscription 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ServicePackage.SUBSCRIPTION__TOPIC:
-				setTopic((String)newValue);
-				return;
-			case ServicePackage.SUBSCRIPTION__QOS:
-				setQos((String)newValue);
+			case ServicePackage.SUBSCRIPTION__CAPABILITY:
+				setCapability((Capability)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -170,11 +152,8 @@ public class SubscriptionImpl extends ETypedElementImpl implements Subscription 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ServicePackage.SUBSCRIPTION__TOPIC:
-				setTopic(TOPIC_EDEFAULT);
-				return;
-			case ServicePackage.SUBSCRIPTION__QOS:
-				setQos(QOS_EDEFAULT);
+			case ServicePackage.SUBSCRIPTION__CAPABILITY:
+				setCapability((Capability)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -188,30 +167,10 @@ public class SubscriptionImpl extends ETypedElementImpl implements Subscription 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ServicePackage.SUBSCRIPTION__TOPIC:
-				return TOPIC_EDEFAULT == null ? topic != null : !TOPIC_EDEFAULT.equals(topic);
-			case ServicePackage.SUBSCRIPTION__QOS:
-				return QOS_EDEFAULT == null ? qos != null : !QOS_EDEFAULT.equals(qos);
+			case ServicePackage.SUBSCRIPTION__CAPABILITY:
+				return capability != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (topic: ");
-		result.append(topic);
-		result.append(", qos: ");
-		result.append(qos);
-		result.append(')');
-		return result.toString();
 	}
 
 } //SubscriptionImpl

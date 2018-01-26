@@ -202,4 +202,32 @@
       </editor>
    </extension>
 
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated domain -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="de.dfki.iui.basys.model.domain.capability.presentation.CapabilityModelWizardID"
+            name="%_UI_CapabilityModelWizard_label"
+            class="de.dfki.iui.basys.model.domain.capability.presentation.CapabilityModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/CapabilityModelFile.gif">
+         <description>%_UI_CapabilityModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated domain -->
+      <editor
+            id="de.dfki.iui.basys.model.domain.capability.presentation.CapabilityEditorID"
+            name="%_UI_CapabilityEditor_label"
+            icon="icons/full/obj16/CapabilityModelFile.gif"
+            extensions="capability"
+            class="de.dfki.iui.basys.model.domain.capability.presentation.CapabilityEditor"
+            contributorClass="de.dfki.iui.basys.model.domain.capability.presentation.CapabilityActionBarContributor">
+      </editor>
+   </extension>
+
 </plugin>

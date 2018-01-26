@@ -1,6 +1,6 @@
 /**
  */
-package de.dfki.iui.basys.model.service.presentation;
+package de.dfki.iui.basys.model.domain.capability.presentation;
 
 
 import java.io.IOException;
@@ -154,22 +154,36 @@ import org.eclipse.emf.edit.ui.util.EditUIUtil;
 
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 
-import de.dfki.iui.basys.model.service.provider.ServiceItemProviderAdapterFactory;
+import de.dfki.iui.basys.model.domain.capability.provider.CapabilityItemProviderAdapterFactory;
 
 import de.dfki.iui.basys.model.base.provider.BaseItemProviderAdapterFactory;
-import de.dfki.iui.basys.model.domain.capability.provider.CapabilityItemProviderAdapterFactory;
-import org.eclipse.emf.ecore.provider.EcoreItemProviderAdapterFactory;
+
+import de.dfki.iui.basys.model.domain.linebalancing.provider.LinebalancingItemProviderAdapterFactory;
+
+import de.dfki.iui.basys.model.domain.order.presentation.DomainEditorPlugin;
+
+import de.dfki.iui.basys.model.domain.order.provider.OrderItemProviderAdapterFactory;
+
+import de.dfki.iui.basys.model.domain.product.provider.ProductItemProviderAdapterFactory;
+
+import de.dfki.iui.basys.model.domain.staff.provider.StaffItemProviderAdapterFactory;
+
+import de.dfki.iui.basys.model.domain.topology.provider.TopologyItemProviderAdapterFactory;
+
+import de.dfki.iui.basys.model.domain.workerguidance.provider.WorkerguidanceItemProviderAdapterFactory;
+
+import de.dfki.iui.basys.model.domain.workplan.provider.WorkplanItemProviderAdapterFactory;
 
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 
 /**
- * This is an example of a Service model editor.
+ * This is an example of a Capability model editor.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ServiceEditor
+public class CapabilityEditor
 	extends MultiPageEditorPart
 	implements IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider, IGotoMarker {
 	/**
@@ -331,18 +345,18 @@ public class ServiceEditor
 			public void partActivated(IWorkbenchPart p) {
 				if (p instanceof ContentOutline) {
 					if (((ContentOutline)p).getCurrentPage() == contentOutlinePage) {
-						getActionBarContributor().setActiveEditor(ServiceEditor.this);
+						getActionBarContributor().setActiveEditor(CapabilityEditor.this);
 
 						setCurrentViewer(contentOutlineViewer);
 					}
 				}
 				else if (p instanceof PropertySheet) {
 					if (propertySheetPages.contains(((PropertySheet)p).getCurrentPage())) {
-						getActionBarContributor().setActiveEditor(ServiceEditor.this);
+						getActionBarContributor().setActiveEditor(CapabilityEditor.this);
 						handleActivate();
 					}
 				}
-				else if (p == ServiceEditor.this) {
+				else if (p == CapabilityEditor.this) {
 					handleActivate();
 				}
 			}
@@ -515,7 +529,7 @@ public class ServiceEditor
 								 public void run() {
 									 removedResources.addAll(visitor.getRemovedResources());
 									 if (!isDirty()) {
-										 getSite().getPage().closeEditor(ServiceEditor.this, false);
+										 getSite().getPage().closeEditor(CapabilityEditor.this, false);
 									 }
 								 }
 							 });
@@ -526,7 +540,7 @@ public class ServiceEditor
 							(new Runnable() {
 								 public void run() {
 									 changedResources.addAll(visitor.getChangedResources());
-									 if (getSite().getPage().getActiveEditor() == ServiceEditor.this) {
+									 if (getSite().getPage().getActiveEditor() == CapabilityEditor.this) {
 										 handleActivate();
 									 }
 								 }
@@ -534,7 +548,7 @@ public class ServiceEditor
 					}
 				}
 				catch (CoreException exception) {
-					ServiceEditorPlugin.INSTANCE.log(exception);
+					DomainEditorPlugin.INSTANCE.log(exception);
 				}
 			}
 		};
@@ -558,7 +572,7 @@ public class ServiceEditor
 
 		if (!removedResources.isEmpty()) {
 			if (handleDirtyConflict()) {
-				getSite().getPage().closeEditor(ServiceEditor.this, false);
+				getSite().getPage().closeEditor(CapabilityEditor.this, false);
 			}
 			else {
 				removedResources.clear();
@@ -622,7 +636,7 @@ public class ServiceEditor
 			BasicDiagnostic diagnostic =
 				new BasicDiagnostic
 					(Diagnostic.OK,
-					 "de.dfki.iui.basys.model.service.editor",
+					 "de.dfki.iui.basys.model.domain.editor",
 					 0,
 					 null,
 					 new Object [] { editingDomain.getResourceSet() });
@@ -650,7 +664,7 @@ public class ServiceEditor
 					showTabs();
 				}
 				catch (PartInitException exception) {
-					ServiceEditorPlugin.INSTANCE.log(exception);
+					DomainEditorPlugin.INSTANCE.log(exception);
 				}
 			}
 
@@ -659,7 +673,7 @@ public class ServiceEditor
 					markerHelper.updateMarkers(diagnostic);
 				}
 				catch (CoreException exception) {
-					ServiceEditorPlugin.INSTANCE.log(exception);
+					DomainEditorPlugin.INSTANCE.log(exception);
 				}
 			}
 		}
@@ -685,7 +699,7 @@ public class ServiceEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ServiceEditor() {
+	public CapabilityEditor() {
 		super();
 		initializeEditingDomain();
 	}
@@ -702,10 +716,15 @@ public class ServiceEditor
 		adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new ServiceItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new BaseItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new OrderItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new ProductItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new StaffItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new TopologyItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new WorkerguidanceItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new WorkplanItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new LinebalancingItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new CapabilityItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new EcoreItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new BaseItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
 		// Create the command stack that will notify this editor as commands are executed.
@@ -986,7 +1005,7 @@ public class ServiceEditor
 			BasicDiagnostic basicDiagnostic =
 				new BasicDiagnostic
 					(hasErrors ? Diagnostic.ERROR : Diagnostic.WARNING,
-					 "de.dfki.iui.basys.model.service.editor",
+					 "de.dfki.iui.basys.model.domain.editor",
 					 0,
 					 getString("_UI_CreateModelError_message", resource.getURI()),
 					 new Object [] { exception == null ? (Object)resource : exception });
@@ -997,7 +1016,7 @@ public class ServiceEditor
 			return
 				new BasicDiagnostic
 					(Diagnostic.ERROR,
-					 "de.dfki.iui.basys.model.service.editor",
+					 "de.dfki.iui.basys.model.domain.editor",
 					 0,
 					 getString("_UI_CreateModelError_message", resource.getURI()),
 					 new Object[] { exception });
@@ -1026,7 +1045,7 @@ public class ServiceEditor
 			//
 			{
 				ViewerPane viewerPane =
-					new ViewerPane(getSite().getPage(), ServiceEditor.this) {
+					new ViewerPane(getSite().getPage(), CapabilityEditor.this) {
 						@Override
 						public Viewer createViewer(Composite composite) {
 							Tree tree = new Tree(composite, SWT.MULTI);
@@ -1061,7 +1080,7 @@ public class ServiceEditor
 			//
 			{
 				ViewerPane viewerPane =
-					new ViewerPane(getSite().getPage(), ServiceEditor.this) {
+					new ViewerPane(getSite().getPage(), CapabilityEditor.this) {
 						@Override
 						public Viewer createViewer(Composite composite) {
 							Tree tree = new Tree(composite, SWT.MULTI);
@@ -1090,7 +1109,7 @@ public class ServiceEditor
 			//
 			{
 				ViewerPane viewerPane =
-					new ViewerPane(getSite().getPage(), ServiceEditor.this) {
+					new ViewerPane(getSite().getPage(), CapabilityEditor.this) {
 						@Override
 						public Viewer createViewer(Composite composite) {
 							return new ListViewer(composite);
@@ -1115,7 +1134,7 @@ public class ServiceEditor
 			//
 			{
 				ViewerPane viewerPane =
-					new ViewerPane(getSite().getPage(), ServiceEditor.this) {
+					new ViewerPane(getSite().getPage(), CapabilityEditor.this) {
 						@Override
 						public Viewer createViewer(Composite composite) {
 							return new TreeViewer(composite);
@@ -1142,7 +1161,7 @@ public class ServiceEditor
 			//
 			{
 				ViewerPane viewerPane =
-					new ViewerPane(getSite().getPage(), ServiceEditor.this) {
+					new ViewerPane(getSite().getPage(), CapabilityEditor.this) {
 						@Override
 						public Viewer createViewer(Composite composite) {
 							return new TableViewer(composite);
@@ -1185,7 +1204,7 @@ public class ServiceEditor
 			//
 			{
 				ViewerPane viewerPane =
-					new ViewerPane(getSite().getPage(), ServiceEditor.this) {
+					new ViewerPane(getSite().getPage(), CapabilityEditor.this) {
 						@Override
 						public Viewer createViewer(Composite composite) {
 							return new TreeViewer(composite);
@@ -1406,8 +1425,8 @@ public class ServiceEditor
 			new ExtendedPropertySheetPage(editingDomain) {
 				@Override
 				public void setSelectionToViewer(List<?> selection) {
-					ServiceEditor.this.setSelectionToViewer(selection);
-					ServiceEditor.this.setFocus();
+					CapabilityEditor.this.setSelectionToViewer(selection);
+					CapabilityEditor.this.setFocus();
 				}
 
 				@Override
@@ -1531,7 +1550,7 @@ public class ServiceEditor
 		catch (Exception exception) {
 			// Something went wrong that shouldn't.
 			//
-			ServiceEditorPlugin.INSTANCE.log(exception);
+			DomainEditorPlugin.INSTANCE.log(exception);
 		}
 		updateProblemIndication = true;
 		updateProblemIndication();
@@ -1735,7 +1754,7 @@ public class ServiceEditor
 	 * @generated
 	 */
 	private static String getString(String key) {
-		return ServiceEditorPlugin.INSTANCE.getString(key);
+		return DomainEditorPlugin.INSTANCE.getString(key);
 	}
 
 	/**
@@ -1745,7 +1764,7 @@ public class ServiceEditor
 	 * @generated
 	 */
 	private static String getString(String key, Object s1) {
-		return ServiceEditorPlugin.INSTANCE.getString(key, new Object [] { s1 });
+		return DomainEditorPlugin.INSTANCE.getString(key, new Object [] { s1 });
 	}
 
 	/**

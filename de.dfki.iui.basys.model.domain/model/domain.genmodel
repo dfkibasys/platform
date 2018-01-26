@@ -12,6 +12,7 @@
   <foreignModel>workerguidance.ecore</foreignModel>
   <foreignModel>workplan.ecore</foreignModel>
   <foreignModel>linebalancing.ecore</foreignModel>
+  <foreignModel>capability.ecore</foreignModel>
   <genPackages prefix="Order" basePackage="de.dfki.iui.basys.model.domain" disposableProviderFactory="true"
       ecorePackage="order.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="order.ecore#//OrderStatusEnum">
@@ -35,7 +36,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute order.ecore#//OrderStatus/status"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute order.ecore#//OrderStatus/pieceCount"/>
     </genClasses>
-    <genClasses ecoreClass="order.ecore#//OrderStatusChangeEvent"/>
+    <genClasses ecoreClass="order.ecore#//OrderStatusChangeEvent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute order.ecore#//OrderStatusChangeEvent/timestamp"/>
+    </genClasses>
   </genPackages>
   <genPackages prefix="Product" basePackage="de.dfki.iui.basys.model.domain" disposableProviderFactory="true"
       ecorePackage="product.ecore#/">
@@ -69,13 +72,17 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product.ecore#//ProductInstanceStatus/productInstanceId"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product.ecore#//ProductInstanceStatus/status"/>
     </genClasses>
-    <genClasses ecoreClass="product.ecore#//ProductInstanceStatusEvent"/>
+    <genClasses ecoreClass="product.ecore#//ProductInstanceStatusChangeEvent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product.ecore#//ProductInstanceStatusChangeEvent/timestamp"/>
+    </genClasses>
     <genClasses ecoreClass="product.ecore#//ProductInstanceLocation">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product.ecore#//ProductInstanceLocation/detectionType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product.ecore#//ProductInstanceLocation/productInstanceId"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product.ecore#//ProductInstanceLocation/componentId"/>
     </genClasses>
-    <genClasses ecoreClass="product.ecore#//ProductInstanceLocationEvent"/>
+    <genClasses ecoreClass="product.ecore#//ProductInstanceLocationChangeEvent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product.ecore#//ProductInstanceLocationChangeEvent/timestamp"/>
+    </genClasses>
   </genPackages>
   <genPackages prefix="Staff" basePackage="de.dfki.iui.basys.model.domain" disposableProviderFactory="true"
       ecorePackage="staff.ecore#/">
@@ -100,7 +107,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute staff.ecore#//StaffLocation/staffid"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute staff.ecore#//StaffLocation/componentId"/>
     </genClasses>
-    <genClasses ecoreClass="staff.ecore#//StaffLocationChangeEvent"/>
+    <genClasses ecoreClass="staff.ecore#//StaffLocationChangeEvent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute staff.ecore#//StaffLocationChangeEvent/timestamp"/>
+    </genClasses>
     <genClasses ecoreClass="staff.ecore#//Ability">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute staff.ecore#//Ability/key"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute staff.ecore#//Ability/value"/>
@@ -129,7 +138,7 @@
     </genClasses>
     <genClasses image="false" ecoreClass="topology.ecore#//WorkCenter"/>
     <genClasses ecoreClass="topology.ecore#//ProcessCell">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference topology.ecore#//ProcessCell/units"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference topology.ecore#//ProcessCell/processUnits"/>
     </genClasses>
     <genClasses ecoreClass="topology.ecore#//ProductionUnit">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference topology.ecore#//ProductionUnit/units"/>
@@ -155,7 +164,6 @@
     <genClasses ecoreClass="topology.ecore#//ControlModule">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference topology.ecore#//ControlModule/controlModules"/>
     </genClasses>
-    <genClasses ecoreClass="topology.ecore#//ProductionLineSection"/>
     <genClasses ecoreClass="topology.ecore#//Station">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference topology.ecore#//Station/equipmentModules"/>
     </genClasses>
@@ -164,6 +172,42 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute topology.ecore#//Transition/componentId_target"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute topology.ecore#//Transition/distance"/>
     </genClasses>
+    <genClasses ecoreClass="topology.ecore#//AssemblyStation"/>
+    <genClasses ecoreClass="topology.ecore#//BufferStation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute topology.ecore#//BufferStation/capacity"/>
+    </genClasses>
+    <genClasses ecoreClass="topology.ecore#//ProcessUnit"/>
+    <genClasses ecoreClass="topology.ecore#//DiscreteManufacturingEquipmentModule"/>
+    <genClasses ecoreClass="topology.ecore#//Tool"/>
+    <genClasses ecoreClass="topology.ecore#//StationaryTool"/>
+    <genClasses ecoreClass="topology.ecore#//MovableTool"/>
+    <genClasses ecoreClass="topology.ecore#//Transport"/>
+    <genClasses ecoreClass="topology.ecore#//Storage"/>
+    <genClasses ecoreClass="topology.ecore#//Fixture"/>
+    <genClasses ecoreClass="topology.ecore#//Gate"/>
+    <genClasses ecoreClass="topology.ecore#//Robot"/>
+    <genClasses ecoreClass="topology.ecore#//Carrier"/>
+    <genClasses ecoreClass="topology.ecore#//Machine"/>
+    <genClasses ecoreClass="topology.ecore#//StaticObject"/>
+    <genClasses ecoreClass="topology.ecore#//Turnable"/>
+    <genClasses ecoreClass="topology.ecore#//Conveyor"/>
+    <genClasses ecoreClass="topology.ecore#//LiftingTable"/>
+    <genClasses ecoreClass="topology.ecore#//AVG"/>
+    <genClasses ecoreClass="topology.ecore#//Transposer"/>
+    <genClasses ecoreClass="topology.ecore#//CarrierHandlingSystem"/>
+    <genClasses ecoreClass="topology.ecore#//Lift"/>
+    <genClasses ecoreClass="topology.ecore#//VerticalTransport"/>
+    <genClasses ecoreClass="topology.ecore#//HorizontalTransport"/>
+    <genClasses ecoreClass="topology.ecore#//Rollerbed"/>
+    <genClasses ecoreClass="topology.ecore#//Loader"/>
+    <genClasses ecoreClass="topology.ecore#//Unloader"/>
+    <genClasses ecoreClass="topology.ecore#//BodyStore"/>
+    <genClasses ecoreClass="topology.ecore#//Clamp"/>
+    <genClasses ecoreClass="topology.ecore#//BeltConveyor"/>
+    <genClasses ecoreClass="topology.ecore#//RollConveyor"/>
+    <genClasses ecoreClass="topology.ecore#//ChainConveyor"/>
+    <genClasses ecoreClass="topology.ecore#//PalletConveyor"/>
+    <genClasses ecoreClass="topology.ecore#//OverheadConveyor"/>
   </genPackages>
   <genPackages prefix="Workerguidance" basePackage="de.dfki.iui.basys.model.domain"
       disposableProviderFactory="true" ecorePackage="workerguidance.ecore#/">
@@ -207,6 +251,7 @@
       <genEnumLiterals ecoreEnumLiteral="workplan.ecore#//WorkstepInstanceStatusEnum/REPEATING"/>
       <genEnumLiterals ecoreEnumLiteral="workplan.ecore#//WorkstepInstanceStatusEnum/FINISHED"/>
       <genEnumLiterals ecoreEnumLiteral="workplan.ecore#//WorkstepInstanceStatusEnum/ABORTED"/>
+      <genEnumLiterals ecoreEnumLiteral="workplan.ecore#//WorkstepInstanceStatusEnum/RESUMED"/>
     </genEnums>
     <genClasses ecoreClass="workplan.ecore#//WorkplanInstance">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workplan.ecore#//WorkplanInstance/productInstanceId"/>
@@ -222,14 +267,14 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workplan.ecore#//WorkstepInstanceStatus/productInstanceId"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workplan.ecore#//WorkstepInstanceStatus/workstepInstanceId"/>
     </genClasses>
-    <genClasses ecoreClass="workplan.ecore#//WorkstepInstanceStatusChangeEvent"/>
+    <genClasses ecoreClass="workplan.ecore#//WorkstepInstanceStatusChangeEvent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workplan.ecore#//WorkstepInstanceStatusChangeEvent/timestamp"/>
+    </genClasses>
     <genClasses ecoreClass="workplan.ecore#//Duration">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workplan.ecore#//Duration/workstepInstanceId"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workplan.ecore#//Duration/values"/>
-    </genClasses>
-    <genClasses ecoreClass="workplan.ecore#//StringToPairMap">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workplan.ecore#//StringToPairMap/key"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workplan.ecore#//StringToPairMap/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workplan.ecore#//Duration/agentId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workplan.ecore#//Duration/average"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workplan.ecore#//Duration/standardDeviation"/>
     </genClasses>
   </genPackages>
   <genPackages prefix="Linebalancing" basePackage="de.dfki.iui.basys.model.domain"
@@ -246,5 +291,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute linebalancing.ecore#//LBStaff/currentProductInstanceId"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute linebalancing.ecore#//LBStaff/remainingMovementTime"/>
     </genClasses>
+  </genPackages>
+  <genPackages prefix="Capability" basePackage="de.dfki.iui.basys.model.domain" disposableProviderFactory="true"
+      ecorePackage="capability.ecore#/">
+    <genClasses ecoreClass="capability.ecore#//Capability"/>
   </genPackages>
 </genmodel:GenModel>

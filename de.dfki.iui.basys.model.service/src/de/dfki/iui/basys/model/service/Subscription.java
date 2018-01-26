@@ -2,6 +2,7 @@
  */
 package de.dfki.iui.basys.model.service;
 
+import de.dfki.iui.basys.model.domain.capability.Capability;
 import org.eclipse.emf.ecore.ETypedElement;
 
 /**
@@ -13,8 +14,7 @@ import org.eclipse.emf.ecore.ETypedElement;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.dfki.iui.basys.model.service.Subscription#getTopic <em>Topic</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.service.Subscription#getQos <em>Qos</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.service.Subscription#getCapability <em>Capability</em>}</li>
  * </ul>
  *
  * @see de.dfki.iui.basys.model.service.ServicePackage#getSubscription()
@@ -23,55 +23,29 @@ import org.eclipse.emf.ecore.ETypedElement;
  */
 public interface Subscription extends ETypedElement {
 	/**
-	 * Returns the value of the '<em><b>Topic</b></em>' attribute.
+	 * Returns the value of the '<em><b>Capability</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Topic</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Capability</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Topic</em>' attribute.
-	 * @see #setTopic(String)
-	 * @see de.dfki.iui.basys.model.service.ServicePackage#getSubscription_Topic()
-	 * @model
+	 * @return the value of the '<em>Capability</em>' containment reference.
+	 * @see #setCapability(Capability)
+	 * @see de.dfki.iui.basys.model.service.ServicePackage#getSubscription_Capability()
+	 * @model containment="true"
 	 * @generated
 	 */
-	String getTopic();
+	Capability getCapability();
 
 	/**
-	 * Sets the value of the '{@link de.dfki.iui.basys.model.service.Subscription#getTopic <em>Topic</em>}' attribute.
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.service.Subscription#getCapability <em>Capability</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Topic</em>' attribute.
-	 * @see #getTopic()
+	 * @param value the new value of the '<em>Capability</em>' containment reference.
+	 * @see #getCapability()
 	 * @generated
 	 */
-	void setTopic(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Qos</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Qos</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Qos</em>' attribute.
-	 * @see #setQos(String)
-	 * @see de.dfki.iui.basys.model.service.ServicePackage#getSubscription_Qos()
-	 * @model
-	 * @generated
-	 */
-	String getQos();
-
-	/**
-	 * Sets the value of the '{@link de.dfki.iui.basys.model.service.Subscription#getQos <em>Qos</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Qos</em>' attribute.
-	 * @see #getQos()
-	 * @generated
-	 */
-	void setQos(String value);
+	void setCapability(Capability value);
 
 } // Subscription

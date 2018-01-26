@@ -29,18 +29,21 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="dependencies" upperBound="-1"
         eType="#//ServiceDescription"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Property" eSuperTypes="../../org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Property" eSuperTypes="../../org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capability" eType="ecore:EClass ../../de.dfki.iui.basys.model.domain/model/capability.ecore#//Capability"
+        containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Operation" eSuperTypes="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EOperation">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="capability" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="qos" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capability" eType="ecore:EClass ../../de.dfki.iui.basys.model.domain/model/capability.ecore#//Capability"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Publication" eSuperTypes="../../org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="topic" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="qos" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capability" eType="ecore:EClass ../../de.dfki.iui.basys.model.domain/model/capability.ecore#//Capability"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Subscription" eSuperTypes="../../org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="topic" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="qos" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capability" eType="ecore:EClass ../../de.dfki.iui.basys.model.domain/model/capability.ecore#//Capability"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ServiceTypeEnum">
     <eLiterals name="DIGITAL_SERVICE"/>

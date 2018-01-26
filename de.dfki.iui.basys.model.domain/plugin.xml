@@ -62,4 +62,12 @@
             genModel="model/domain.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated domain -->
+      <package
+            uri="http://www.dfki.de/iui/basys/model/capability"
+            class="de.dfki.iui.basys.model.domain.capability.CapabilityPackage"
+            genModel="model/domain.genmodel"/>
+   </extension>
+
 </plugin>

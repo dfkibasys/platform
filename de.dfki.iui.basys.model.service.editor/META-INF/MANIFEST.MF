@@ -16,6 +16,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.edit.ui;visibility:=reexport,
  org.eclipse.ui.ide;visibility:=reexport,
  de.dfki.iui.basys.model.base.edit;visibility:=reexport,
+ de.dfki.iui.basys.model.domain.edit;visibility:=reexport,
  org.eclipse.emf.ecore.edit;visibility:=reexport,
  org.eclipse.emf.ecore.editor
 Bundle-ActivationPolicy: lazy

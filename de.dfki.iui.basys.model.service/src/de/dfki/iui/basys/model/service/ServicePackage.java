@@ -297,13 +297,22 @@ public interface ServicePackage extends EPackage {
 	int PROPERTY__EGENERIC_TYPE = EcorePackage.ETYPED_ELEMENT__EGENERIC_TYPE;
 
 	/**
+	 * The feature id for the '<em><b>Capability</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY__CAPABILITY = EcorePackage.ETYPED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Property</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTY_FEATURE_COUNT = EcorePackage.ETYPED_ELEMENT_FEATURE_COUNT + 0;
+	int PROPERTY_FEATURE_COUNT = EcorePackage.ETYPED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Get EAnnotation</em>' operation.
@@ -469,13 +478,22 @@ public interface ServicePackage extends EPackage {
 	int OPERATION__EGENERIC_EXCEPTIONS = EcorePackage.EOPERATION__EGENERIC_EXCEPTIONS;
 
 	/**
+	 * The feature id for the '<em><b>Capability</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__CAPABILITY = EcorePackage.EOPERATION_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Operation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION_FEATURE_COUNT = EcorePackage.EOPERATION_FEATURE_COUNT + 0;
+	int OPERATION_FEATURE_COUNT = EcorePackage.EOPERATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Get EAnnotation</em>' operation.
@@ -614,22 +632,13 @@ public interface ServicePackage extends EPackage {
 	int PUBLICATION__EGENERIC_TYPE = EcorePackage.ETYPED_ELEMENT__EGENERIC_TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Topic</b></em>' attribute.
+	 * The feature id for the '<em><b>Capability</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PUBLICATION__TOPIC = EcorePackage.ETYPED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Qos</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PUBLICATION__QOS = EcorePackage.ETYPED_ELEMENT_FEATURE_COUNT + 1;
+	int PUBLICATION__CAPABILITY = EcorePackage.ETYPED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Publication</em>' class.
@@ -638,7 +647,7 @@ public interface ServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PUBLICATION_FEATURE_COUNT = EcorePackage.ETYPED_ELEMENT_FEATURE_COUNT + 2;
+	int PUBLICATION_FEATURE_COUNT = EcorePackage.ETYPED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Get EAnnotation</em>' operation.
@@ -759,22 +768,13 @@ public interface ServicePackage extends EPackage {
 	int SUBSCRIPTION__EGENERIC_TYPE = EcorePackage.ETYPED_ELEMENT__EGENERIC_TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Topic</b></em>' attribute.
+	 * The feature id for the '<em><b>Capability</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SUBSCRIPTION__TOPIC = EcorePackage.ETYPED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Qos</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUBSCRIPTION__QOS = EcorePackage.ETYPED_ELEMENT_FEATURE_COUNT + 1;
+	int SUBSCRIPTION__CAPABILITY = EcorePackage.ETYPED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Subscription</em>' class.
@@ -783,7 +783,7 @@ public interface ServicePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SUBSCRIPTION_FEATURE_COUNT = EcorePackage.ETYPED_ELEMENT_FEATURE_COUNT + 2;
+	int SUBSCRIPTION_FEATURE_COUNT = EcorePackage.ETYPED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Get EAnnotation</em>' operation.
@@ -1206,6 +1206,17 @@ public interface ServicePackage extends EPackage {
 	EClass getProperty();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link de.dfki.iui.basys.model.service.Property#getCapability <em>Capability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Capability</em>'.
+	 * @see de.dfki.iui.basys.model.service.Property#getCapability()
+	 * @see #getProperty()
+	 * @generated
+	 */
+	EReference getProperty_Capability();
+
+	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.service.Operation <em>Operation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1214,6 +1225,17 @@ public interface ServicePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getOperation();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link de.dfki.iui.basys.model.service.Operation#getCapability <em>Capability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Capability</em>'.
+	 * @see de.dfki.iui.basys.model.service.Operation#getCapability()
+	 * @see #getOperation()
+	 * @generated
+	 */
+	EReference getOperation_Capability();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.service.Publication <em>Publication</em>}'.
@@ -1226,26 +1248,15 @@ public interface ServicePackage extends EPackage {
 	EClass getPublication();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.service.Publication#getTopic <em>Topic</em>}'.
+	 * Returns the meta object for the containment reference '{@link de.dfki.iui.basys.model.service.Publication#getCapability <em>Capability</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Topic</em>'.
-	 * @see de.dfki.iui.basys.model.service.Publication#getTopic()
+	 * @return the meta object for the containment reference '<em>Capability</em>'.
+	 * @see de.dfki.iui.basys.model.service.Publication#getCapability()
 	 * @see #getPublication()
 	 * @generated
 	 */
-	EAttribute getPublication_Topic();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.service.Publication#getQos <em>Qos</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Qos</em>'.
-	 * @see de.dfki.iui.basys.model.service.Publication#getQos()
-	 * @see #getPublication()
-	 * @generated
-	 */
-	EAttribute getPublication_Qos();
+	EReference getPublication_Capability();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.service.Subscription <em>Subscription</em>}'.
@@ -1258,26 +1269,15 @@ public interface ServicePackage extends EPackage {
 	EClass getSubscription();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.service.Subscription#getTopic <em>Topic</em>}'.
+	 * Returns the meta object for the containment reference '{@link de.dfki.iui.basys.model.service.Subscription#getCapability <em>Capability</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Topic</em>'.
-	 * @see de.dfki.iui.basys.model.service.Subscription#getTopic()
+	 * @return the meta object for the containment reference '<em>Capability</em>'.
+	 * @see de.dfki.iui.basys.model.service.Subscription#getCapability()
 	 * @see #getSubscription()
 	 * @generated
 	 */
-	EAttribute getSubscription_Topic();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.service.Subscription#getQos <em>Qos</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Qos</em>'.
-	 * @see de.dfki.iui.basys.model.service.Subscription#getQos()
-	 * @see #getSubscription()
-	 * @generated
-	 */
-	EAttribute getSubscription_Qos();
+	EReference getSubscription_Capability();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.service.ServiceImplementation <em>Implementation</em>}'.
@@ -1538,6 +1538,14 @@ public interface ServicePackage extends EPackage {
 		EClass PROPERTY = eINSTANCE.getProperty();
 
 		/**
+		 * The meta object literal for the '<em><b>Capability</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROPERTY__CAPABILITY = eINSTANCE.getProperty_Capability();
+
+		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.service.impl.OperationImpl <em>Operation</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1546,6 +1554,14 @@ public interface ServicePackage extends EPackage {
 		 * @generated
 		 */
 		EClass OPERATION = eINSTANCE.getOperation();
+
+		/**
+		 * The meta object literal for the '<em><b>Capability</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OPERATION__CAPABILITY = eINSTANCE.getOperation_Capability();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.service.impl.PublicationImpl <em>Publication</em>}' class.
@@ -1558,20 +1574,12 @@ public interface ServicePackage extends EPackage {
 		EClass PUBLICATION = eINSTANCE.getPublication();
 
 		/**
-		 * The meta object literal for the '<em><b>Topic</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Capability</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PUBLICATION__TOPIC = eINSTANCE.getPublication_Topic();
-
-		/**
-		 * The meta object literal for the '<em><b>Qos</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PUBLICATION__QOS = eINSTANCE.getPublication_Qos();
+		EReference PUBLICATION__CAPABILITY = eINSTANCE.getPublication_Capability();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.service.impl.SubscriptionImpl <em>Subscription</em>}' class.
@@ -1584,20 +1592,12 @@ public interface ServicePackage extends EPackage {
 		EClass SUBSCRIPTION = eINSTANCE.getSubscription();
 
 		/**
-		 * The meta object literal for the '<em><b>Topic</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Capability</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SUBSCRIPTION__TOPIC = eINSTANCE.getSubscription_Topic();
-
-		/**
-		 * The meta object literal for the '<em><b>Qos</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SUBSCRIPTION__QOS = eINSTANCE.getSubscription_Qos();
+		EReference SUBSCRIPTION__CAPABILITY = eINSTANCE.getSubscription_Capability();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.service.impl.ServiceImplementationImpl <em>Implementation</em>}' class.

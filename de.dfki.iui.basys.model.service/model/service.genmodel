@@ -3,7 +3,7 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.dfki.iui.basys.model.service/src" modelPluginID="de.dfki.iui.basys.model.service"
     modelName="Service" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
-    usedGenPackages="../../de.dfki.iui.basys.model.base/model/base.genmodel#//base ../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"
+    usedGenPackages="../../de.dfki.iui.basys.model.base/model/base.genmodel#//base ../../de.dfki.iui.basys.model.domain/model/domain.genmodel#//capability ../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"
     operationReflection="true" importOrganizing="true">
   <foreignModel>service.ecore</foreignModel>
   <genPackages prefix="Service" basePackage="de.dfki.iui.basys.model" disposableProviderFactory="true"
@@ -21,15 +21,17 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference service.ecore#//ServiceDescription/subscriptions"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference service.ecore#//ServiceDescription/dependencies"/>
     </genClasses>
-    <genClasses ecoreClass="service.ecore#//Property"/>
-    <genClasses ecoreClass="service.ecore#//Operation"/>
+    <genClasses ecoreClass="service.ecore#//Property">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference service.ecore#//Property/capability"/>
+    </genClasses>
+    <genClasses ecoreClass="service.ecore#//Operation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference service.ecore#//Operation/capability"/>
+    </genClasses>
     <genClasses ecoreClass="service.ecore#//Publication">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute service.ecore#//Publication/topic"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute service.ecore#//Publication/qos"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference service.ecore#//Publication/capability"/>
     </genClasses>
     <genClasses ecoreClass="service.ecore#//Subscription">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute service.ecore#//Subscription/topic"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute service.ecore#//Subscription/qos"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference service.ecore#//Subscription/capability"/>
     </genClasses>
     <genClasses ecoreClass="service.ecore#//ServiceImplementation">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute service.ecore#//ServiceImplementation/serviceDescriptionId"/>
