@@ -55,12 +55,35 @@ public class ServiceDescriptionItemProvider extends ENamedElementItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addBindingPropertyDescriptor(object);
 			addIdPropertyDescriptor(object);
 			addVersionPropertyDescriptor(object);
 			addServiceTypePropertyDescriptor(object);
 			addDependenciesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Binding feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addBindingPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_BObject_binding_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_BObject_binding_feature", "_UI_BObject_type"),
+				 BasePackage.Literals.BOBJECT__BINDING,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -74,9 +97,9 @@ public class ServiceDescriptionItemProvider extends ENamedElementItemProvider {
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_IdentifiableEntity_id_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_IdentifiableEntity_id_feature", "_UI_IdentifiableEntity_type"),
-				 BasePackage.Literals.IDENTIFIABLE_ENTITY__ID,
+				 getString("_UI_Entity_id_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Entity_id_feature", "_UI_Entity_type"),
+				 BasePackage.Literals.ENTITY__ID,
 				 true,
 				 false,
 				 false,
@@ -234,6 +257,7 @@ public class ServiceDescriptionItemProvider extends ENamedElementItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ServiceDescription.class)) {
+			case ServicePackage.SERVICE_DESCRIPTION__BINDING:
 			case ServicePackage.SERVICE_DESCRIPTION__ID:
 			case ServicePackage.SERVICE_DESCRIPTION__VERSION:
 			case ServicePackage.SERVICE_DESCRIPTION__SERVICE_TYPE:

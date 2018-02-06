@@ -69,13 +69,13 @@ public interface TopologyPackage extends EPackage {
 	int ENTERPRISE = 0;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENTERPRISE__METADATA = BasePackage.IDENTIFIABLE_ENTITY__METADATA;
+	int ENTERPRISE__BINDING = BasePackage.ENTITY__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -84,7 +84,16 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTERPRISE__ID = BasePackage.IDENTIFIABLE_ENTITY__ID;
+	int ENTERPRISE__ID = BasePackage.ENTITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTERPRISE__METADATA = BasePackage.ENTITY__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Sites</b></em>' containment reference list.
@@ -93,7 +102,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTERPRISE__SITES = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
+	int ENTERPRISE__SITES = BasePackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Enterprise</em>' class.
@@ -102,7 +111,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTERPRISE_FEATURE_COUNT = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 1;
+	int ENTERPRISE_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Enterprise</em>' class.
@@ -111,7 +120,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTERPRISE_OPERATION_COUNT = BasePackage.IDENTIFIABLE_ENTITY_OPERATION_COUNT + 0;
+	int ENTERPRISE_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.SiteImpl <em>Site</em>}' class.
@@ -124,13 +133,13 @@ public interface TopologyPackage extends EPackage {
 	int SITE = 1;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SITE__METADATA = BasePackage.IDENTIFIABLE_ENTITY__METADATA;
+	int SITE__BINDING = BasePackage.ENTITY__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -139,7 +148,16 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SITE__ID = BasePackage.IDENTIFIABLE_ENTITY__ID;
+	int SITE__ID = BasePackage.ENTITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SITE__METADATA = BasePackage.ENTITY__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Areas</b></em>' containment reference list.
@@ -148,7 +166,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SITE__AREAS = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
+	int SITE__AREAS = BasePackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Site</em>' class.
@@ -157,7 +175,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SITE_FEATURE_COUNT = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 1;
+	int SITE_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Site</em>' class.
@@ -166,7 +184,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SITE_OPERATION_COUNT = BasePackage.IDENTIFIABLE_ENTITY_OPERATION_COUNT + 0;
+	int SITE_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.AreaImpl <em>Area</em>}' class.
@@ -179,13 +197,13 @@ public interface TopologyPackage extends EPackage {
 	int AREA = 2;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AREA__METADATA = BasePackage.IDENTIFIABLE_ENTITY__METADATA;
+	int AREA__BINDING = BasePackage.ENTITY__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -194,7 +212,16 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AREA__ID = BasePackage.IDENTIFIABLE_ENTITY__ID;
+	int AREA__ID = BasePackage.ENTITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AREA__METADATA = BasePackage.ENTITY__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Work Centers</b></em>' containment reference list.
@@ -203,7 +230,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AREA__WORK_CENTERS = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
+	int AREA__WORK_CENTERS = BasePackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Area</em>' class.
@@ -212,7 +239,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AREA_FEATURE_COUNT = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 1;
+	int AREA_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Area</em>' class.
@@ -221,7 +248,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AREA_OPERATION_COUNT = BasePackage.IDENTIFIABLE_ENTITY_OPERATION_COUNT + 0;
+	int AREA_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.WorkCenterImpl <em>Work Center</em>}' class.
@@ -234,13 +261,13 @@ public interface TopologyPackage extends EPackage {
 	int WORK_CENTER = 3;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WORK_CENTER__METADATA = BasePackage.IDENTIFIABLE_ENTITY__METADATA;
+	int WORK_CENTER__BINDING = BasePackage.ENTITY__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -249,7 +276,16 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORK_CENTER__ID = BasePackage.IDENTIFIABLE_ENTITY__ID;
+	int WORK_CENTER__ID = BasePackage.ENTITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORK_CENTER__METADATA = BasePackage.ENTITY__METADATA;
 
 	/**
 	 * The number of structural features of the '<em>Work Center</em>' class.
@@ -258,7 +294,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORK_CENTER_FEATURE_COUNT = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
+	int WORK_CENTER_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Work Center</em>' class.
@@ -267,7 +303,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORK_CENTER_OPERATION_COUNT = BasePackage.IDENTIFIABLE_ENTITY_OPERATION_COUNT + 0;
+	int WORK_CENTER_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.ProcessCellImpl <em>Process Cell</em>}' class.
@@ -280,13 +316,13 @@ public interface TopologyPackage extends EPackage {
 	int PROCESS_CELL = 4;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROCESS_CELL__METADATA = WORK_CENTER__METADATA;
+	int PROCESS_CELL__BINDING = WORK_CENTER__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -296,6 +332,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROCESS_CELL__ID = WORK_CENTER__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_CELL__METADATA = WORK_CENTER__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Process Units</b></em>' containment reference list.
@@ -335,13 +380,13 @@ public interface TopologyPackage extends EPackage {
 	int PRODUCTION_UNIT = 5;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCTION_UNIT__METADATA = WORK_CENTER__METADATA;
+	int PRODUCTION_UNIT__BINDING = WORK_CENTER__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -351,6 +396,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int PRODUCTION_UNIT__ID = WORK_CENTER__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCTION_UNIT__METADATA = WORK_CENTER__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Units</b></em>' containment reference list.
@@ -390,13 +444,13 @@ public interface TopologyPackage extends EPackage {
 	int PRODUCTION_LINE = 6;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCTION_LINE__METADATA = WORK_CENTER__METADATA;
+	int PRODUCTION_LINE__BINDING = WORK_CENTER__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -406,6 +460,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int PRODUCTION_LINE__ID = WORK_CENTER__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCTION_LINE__METADATA = WORK_CENTER__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Work Cells</b></em>' containment reference list.
@@ -445,13 +508,13 @@ public interface TopologyPackage extends EPackage {
 	int STORAGE_ZONE = 7;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STORAGE_ZONE__METADATA = WORK_CENTER__METADATA;
+	int STORAGE_ZONE__BINDING = WORK_CENTER__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -461,6 +524,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int STORAGE_ZONE__ID = WORK_CENTER__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE_ZONE__METADATA = WORK_CENTER__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Storage Units</b></em>' containment reference list.
@@ -500,13 +572,13 @@ public interface TopologyPackage extends EPackage {
 	int WORK_UNIT = 8;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WORK_UNIT__METADATA = BasePackage.IDENTIFIABLE_ENTITY__METADATA;
+	int WORK_UNIT__BINDING = BasePackage.ENTITY__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -515,7 +587,16 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORK_UNIT__ID = BasePackage.IDENTIFIABLE_ENTITY__ID;
+	int WORK_UNIT__ID = BasePackage.ENTITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORK_UNIT__METADATA = BasePackage.ENTITY__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
@@ -524,7 +605,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORK_UNIT__EQUIPMENT_MODULES = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
+	int WORK_UNIT__EQUIPMENT_MODULES = BasePackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Work Unit</em>' class.
@@ -533,7 +614,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORK_UNIT_FEATURE_COUNT = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 1;
+	int WORK_UNIT_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Work Unit</em>' class.
@@ -542,7 +623,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORK_UNIT_OPERATION_COUNT = BasePackage.IDENTIFIABLE_ENTITY_OPERATION_COUNT + 0;
+	int WORK_UNIT_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.UnitImpl <em>Unit</em>}' class.
@@ -555,13 +636,13 @@ public interface TopologyPackage extends EPackage {
 	int UNIT = 9;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int UNIT__METADATA = WORK_UNIT__METADATA;
+	int UNIT__BINDING = WORK_UNIT__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -571,6 +652,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int UNIT__ID = WORK_UNIT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNIT__METADATA = WORK_UNIT__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
@@ -610,13 +700,13 @@ public interface TopologyPackage extends EPackage {
 	int WORK_CELL = 10;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WORK_CELL__METADATA = WORK_UNIT__METADATA;
+	int WORK_CELL__BINDING = WORK_UNIT__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -626,6 +716,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int WORK_CELL__ID = WORK_UNIT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORK_CELL__METADATA = WORK_UNIT__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
@@ -674,13 +773,13 @@ public interface TopologyPackage extends EPackage {
 	int STORAGE_UNIT = 11;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STORAGE_UNIT__METADATA = WORK_UNIT__METADATA;
+	int STORAGE_UNIT__BINDING = WORK_UNIT__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -690,6 +789,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int STORAGE_UNIT__ID = WORK_UNIT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE_UNIT__METADATA = WORK_UNIT__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
@@ -729,13 +837,13 @@ public interface TopologyPackage extends EPackage {
 	int EQUIPMENT_MODULE = 12;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EQUIPMENT_MODULE__METADATA = BasePackage.IDENTIFIABLE_ENTITY__METADATA;
+	int EQUIPMENT_MODULE__BINDING = BasePackage.ENTITY__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -744,7 +852,16 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EQUIPMENT_MODULE__ID = BasePackage.IDENTIFIABLE_ENTITY__ID;
+	int EQUIPMENT_MODULE__ID = BasePackage.ENTITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EQUIPMENT_MODULE__METADATA = BasePackage.ENTITY__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
@@ -753,7 +870,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EQUIPMENT_MODULE__CONTROL_MODULES = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
+	int EQUIPMENT_MODULE__CONTROL_MODULES = BasePackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
@@ -762,7 +879,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EQUIPMENT_MODULE__EQUIPMENT_MODULES = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 1;
+	int EQUIPMENT_MODULE__EQUIPMENT_MODULES = BasePackage.ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Equipment Module</em>' class.
@@ -771,7 +888,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EQUIPMENT_MODULE_FEATURE_COUNT = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 2;
+	int EQUIPMENT_MODULE_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Equipment Module</em>' class.
@@ -780,7 +897,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EQUIPMENT_MODULE_OPERATION_COUNT = BasePackage.IDENTIFIABLE_ENTITY_OPERATION_COUNT + 0;
+	int EQUIPMENT_MODULE_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.ControlModuleImpl <em>Control Module</em>}' class.
@@ -793,13 +910,13 @@ public interface TopologyPackage extends EPackage {
 	int CONTROL_MODULE = 13;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTROL_MODULE__METADATA = BasePackage.IDENTIFIABLE_ENTITY__METADATA;
+	int CONTROL_MODULE__BINDING = BasePackage.ENTITY__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -808,7 +925,16 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTROL_MODULE__ID = BasePackage.IDENTIFIABLE_ENTITY__ID;
+	int CONTROL_MODULE__ID = BasePackage.ENTITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_MODULE__METADATA = BasePackage.ENTITY__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
@@ -817,7 +943,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTROL_MODULE__CONTROL_MODULES = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
+	int CONTROL_MODULE__CONTROL_MODULES = BasePackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Control Module</em>' class.
@@ -826,7 +952,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTROL_MODULE_FEATURE_COUNT = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 1;
+	int CONTROL_MODULE_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Control Module</em>' class.
@@ -835,7 +961,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTROL_MODULE_OPERATION_COUNT = BasePackage.IDENTIFIABLE_ENTITY_OPERATION_COUNT + 0;
+	int CONTROL_MODULE_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.StationImpl <em>Station</em>}' class.
@@ -848,13 +974,13 @@ public interface TopologyPackage extends EPackage {
 	int STATION = 14;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATION__METADATA = BasePackage.IDENTIFIABLE_ENTITY__METADATA;
+	int STATION__BINDING = BasePackage.ENTITY__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -863,7 +989,16 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATION__ID = BasePackage.IDENTIFIABLE_ENTITY__ID;
+	int STATION__ID = BasePackage.ENTITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATION__METADATA = BasePackage.ENTITY__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
@@ -872,7 +1007,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATION__EQUIPMENT_MODULES = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
+	int STATION__EQUIPMENT_MODULES = BasePackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Station</em>' class.
@@ -881,7 +1016,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATION_FEATURE_COUNT = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 1;
+	int STATION_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Station</em>' class.
@@ -890,7 +1025,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATION_OPERATION_COUNT = BasePackage.IDENTIFIABLE_ENTITY_OPERATION_COUNT + 0;
+	int STATION_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.TransitionImpl <em>Transition</em>}' class.
@@ -958,13 +1093,13 @@ public interface TopologyPackage extends EPackage {
 	int ASSEMBLY_STATION = 16;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ASSEMBLY_STATION__METADATA = STATION__METADATA;
+	int ASSEMBLY_STATION__BINDING = STATION__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -974,6 +1109,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int ASSEMBLY_STATION__ID = STATION__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSEMBLY_STATION__METADATA = STATION__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
@@ -1013,13 +1157,13 @@ public interface TopologyPackage extends EPackage {
 	int BUFFER_STATION = 17;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BUFFER_STATION__METADATA = STATION__METADATA;
+	int BUFFER_STATION__BINDING = STATION__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1029,6 +1173,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int BUFFER_STATION__ID = STATION__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUFFER_STATION__METADATA = STATION__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
@@ -1077,13 +1230,13 @@ public interface TopologyPackage extends EPackage {
 	int PROCESS_UNIT = 18;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROCESS_UNIT__METADATA = WORK_UNIT__METADATA;
+	int PROCESS_UNIT__BINDING = WORK_UNIT__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1093,6 +1246,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROCESS_UNIT__ID = WORK_UNIT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_UNIT__METADATA = WORK_UNIT__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
@@ -1132,13 +1294,13 @@ public interface TopologyPackage extends EPackage {
 	int DISCRETE_MANUFACTURING_EQUIPMENT_MODULE = 19;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA = EQUIPMENT_MODULE__METADATA;
+	int DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__BINDING = EQUIPMENT_MODULE__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1148,6 +1310,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__ID = EQUIPMENT_MODULE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA = EQUIPMENT_MODULE__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
@@ -1196,13 +1367,13 @@ public interface TopologyPackage extends EPackage {
 	int TOOL = 20;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TOOL__METADATA = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA;
+	int TOOL__BINDING = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1212,6 +1383,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int TOOL__ID = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOOL__METADATA = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
@@ -1260,13 +1440,13 @@ public interface TopologyPackage extends EPackage {
 	int STATIONARY_TOOL = 21;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATIONARY_TOOL__METADATA = TOOL__METADATA;
+	int STATIONARY_TOOL__BINDING = TOOL__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1276,6 +1456,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int STATIONARY_TOOL__ID = TOOL__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATIONARY_TOOL__METADATA = TOOL__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
@@ -1324,13 +1513,13 @@ public interface TopologyPackage extends EPackage {
 	int MOVABLE_TOOL = 22;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MOVABLE_TOOL__METADATA = TOOL__METADATA;
+	int MOVABLE_TOOL__BINDING = TOOL__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1340,6 +1529,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int MOVABLE_TOOL__ID = TOOL__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVABLE_TOOL__METADATA = TOOL__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
@@ -1388,13 +1586,13 @@ public interface TopologyPackage extends EPackage {
 	int TRANSPORT = 23;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSPORT__METADATA = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA;
+	int TRANSPORT__BINDING = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1404,6 +1602,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int TRANSPORT__ID = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSPORT__METADATA = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
@@ -1452,13 +1659,13 @@ public interface TopologyPackage extends EPackage {
 	int STORAGE = 24;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STORAGE__METADATA = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA;
+	int STORAGE__BINDING = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1468,6 +1675,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int STORAGE__ID = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE__METADATA = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
@@ -1516,13 +1732,13 @@ public interface TopologyPackage extends EPackage {
 	int FIXTURE = 25;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FIXTURE__METADATA = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA;
+	int FIXTURE__BINDING = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1532,6 +1748,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int FIXTURE__ID = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIXTURE__METADATA = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
@@ -1580,13 +1805,13 @@ public interface TopologyPackage extends EPackage {
 	int GATE = 26;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GATE__METADATA = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA;
+	int GATE__BINDING = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1596,6 +1821,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int GATE__ID = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GATE__METADATA = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
@@ -1644,13 +1878,13 @@ public interface TopologyPackage extends EPackage {
 	int ROBOT = 27;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ROBOT__METADATA = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA;
+	int ROBOT__BINDING = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1660,6 +1894,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int ROBOT__ID = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROBOT__METADATA = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
@@ -1708,13 +1951,13 @@ public interface TopologyPackage extends EPackage {
 	int CARRIER = 28;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CARRIER__METADATA = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA;
+	int CARRIER__BINDING = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1724,6 +1967,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int CARRIER__ID = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARRIER__METADATA = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
@@ -1772,13 +2024,13 @@ public interface TopologyPackage extends EPackage {
 	int MACHINE = 29;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE__METADATA = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA;
+	int MACHINE__BINDING = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1788,6 +2040,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE__ID = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE__METADATA = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
@@ -1836,13 +2097,13 @@ public interface TopologyPackage extends EPackage {
 	int STATIC_OBJECT = 30;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATIC_OBJECT__METADATA = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA;
+	int STATIC_OBJECT__BINDING = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1852,6 +2113,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int STATIC_OBJECT__ID = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATIC_OBJECT__METADATA = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
@@ -1900,13 +2170,13 @@ public interface TopologyPackage extends EPackage {
 	int HORIZONTAL_TRANSPORT = 39;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HORIZONTAL_TRANSPORT__METADATA = TRANSPORT__METADATA;
+	int HORIZONTAL_TRANSPORT__BINDING = TRANSPORT__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1916,6 +2186,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int HORIZONTAL_TRANSPORT__ID = TRANSPORT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HORIZONTAL_TRANSPORT__METADATA = TRANSPORT__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
@@ -1964,13 +2243,13 @@ public interface TopologyPackage extends EPackage {
 	int TURNABLE = 31;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TURNABLE__METADATA = HORIZONTAL_TRANSPORT__METADATA;
+	int TURNABLE__BINDING = HORIZONTAL_TRANSPORT__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1980,6 +2259,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int TURNABLE__ID = HORIZONTAL_TRANSPORT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TURNABLE__METADATA = HORIZONTAL_TRANSPORT__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
@@ -2028,13 +2316,13 @@ public interface TopologyPackage extends EPackage {
 	int CONVEYOR = 32;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONVEYOR__METADATA = HORIZONTAL_TRANSPORT__METADATA;
+	int CONVEYOR__BINDING = HORIZONTAL_TRANSPORT__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2044,6 +2332,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONVEYOR__ID = HORIZONTAL_TRANSPORT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONVEYOR__METADATA = HORIZONTAL_TRANSPORT__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
@@ -2092,13 +2389,13 @@ public interface TopologyPackage extends EPackage {
 	int VERTICAL_TRANSPORT = 38;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VERTICAL_TRANSPORT__METADATA = TRANSPORT__METADATA;
+	int VERTICAL_TRANSPORT__BINDING = TRANSPORT__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2108,6 +2405,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int VERTICAL_TRANSPORT__ID = TRANSPORT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VERTICAL_TRANSPORT__METADATA = TRANSPORT__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
@@ -2156,13 +2462,13 @@ public interface TopologyPackage extends EPackage {
 	int LIFTING_TABLE = 33;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LIFTING_TABLE__METADATA = VERTICAL_TRANSPORT__METADATA;
+	int LIFTING_TABLE__BINDING = VERTICAL_TRANSPORT__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2172,6 +2478,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int LIFTING_TABLE__ID = VERTICAL_TRANSPORT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIFTING_TABLE__METADATA = VERTICAL_TRANSPORT__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
@@ -2220,13 +2535,13 @@ public interface TopologyPackage extends EPackage {
 	int AVG = 34;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AVG__METADATA = HORIZONTAL_TRANSPORT__METADATA;
+	int AVG__BINDING = HORIZONTAL_TRANSPORT__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2236,6 +2551,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int AVG__ID = HORIZONTAL_TRANSPORT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AVG__METADATA = HORIZONTAL_TRANSPORT__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
@@ -2284,13 +2608,13 @@ public interface TopologyPackage extends EPackage {
 	int TRANSPOSER = 35;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSPOSER__METADATA = TRANSPORT__METADATA;
+	int TRANSPOSER__BINDING = TRANSPORT__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2300,6 +2624,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int TRANSPOSER__ID = TRANSPORT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSPOSER__METADATA = TRANSPORT__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
@@ -2348,13 +2681,13 @@ public interface TopologyPackage extends EPackage {
 	int CARRIER_HANDLING_SYSTEM = 36;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CARRIER_HANDLING_SYSTEM__METADATA = TRANSPORT__METADATA;
+	int CARRIER_HANDLING_SYSTEM__BINDING = TRANSPORT__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2364,6 +2697,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int CARRIER_HANDLING_SYSTEM__ID = TRANSPORT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARRIER_HANDLING_SYSTEM__METADATA = TRANSPORT__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
@@ -2412,13 +2754,13 @@ public interface TopologyPackage extends EPackage {
 	int LIFT = 37;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LIFT__METADATA = VERTICAL_TRANSPORT__METADATA;
+	int LIFT__BINDING = VERTICAL_TRANSPORT__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2428,6 +2770,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int LIFT__ID = VERTICAL_TRANSPORT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIFT__METADATA = VERTICAL_TRANSPORT__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
@@ -2476,13 +2827,13 @@ public interface TopologyPackage extends EPackage {
 	int ROLLERBED = 40;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ROLLERBED__METADATA = HORIZONTAL_TRANSPORT__METADATA;
+	int ROLLERBED__BINDING = HORIZONTAL_TRANSPORT__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2492,6 +2843,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int ROLLERBED__ID = HORIZONTAL_TRANSPORT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLLERBED__METADATA = HORIZONTAL_TRANSPORT__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
@@ -2540,13 +2900,13 @@ public interface TopologyPackage extends EPackage {
 	int LOADER = 41;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LOADER__METADATA = STORAGE__METADATA;
+	int LOADER__BINDING = STORAGE__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2556,6 +2916,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int LOADER__ID = STORAGE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOADER__METADATA = STORAGE__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
@@ -2604,13 +2973,13 @@ public interface TopologyPackage extends EPackage {
 	int UNLOADER = 42;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int UNLOADER__METADATA = STORAGE__METADATA;
+	int UNLOADER__BINDING = STORAGE__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2620,6 +2989,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int UNLOADER__ID = STORAGE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNLOADER__METADATA = STORAGE__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
@@ -2668,13 +3046,13 @@ public interface TopologyPackage extends EPackage {
 	int BODY_STORE = 43;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BODY_STORE__METADATA = STORAGE__METADATA;
+	int BODY_STORE__BINDING = STORAGE__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2684,6 +3062,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int BODY_STORE__ID = STORAGE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BODY_STORE__METADATA = STORAGE__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
@@ -2732,13 +3119,13 @@ public interface TopologyPackage extends EPackage {
 	int CLAMP = 44;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CLAMP__METADATA = FIXTURE__METADATA;
+	int CLAMP__BINDING = FIXTURE__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2748,6 +3135,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int CLAMP__ID = FIXTURE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLAMP__METADATA = FIXTURE__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
@@ -2796,13 +3192,13 @@ public interface TopologyPackage extends EPackage {
 	int BELT_CONVEYOR = 45;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BELT_CONVEYOR__METADATA = CONVEYOR__METADATA;
+	int BELT_CONVEYOR__BINDING = CONVEYOR__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2812,6 +3208,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int BELT_CONVEYOR__ID = CONVEYOR__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BELT_CONVEYOR__METADATA = CONVEYOR__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
@@ -2860,13 +3265,13 @@ public interface TopologyPackage extends EPackage {
 	int ROLL_CONVEYOR = 46;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ROLL_CONVEYOR__METADATA = CONVEYOR__METADATA;
+	int ROLL_CONVEYOR__BINDING = CONVEYOR__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2876,6 +3281,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int ROLL_CONVEYOR__ID = CONVEYOR__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLL_CONVEYOR__METADATA = CONVEYOR__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
@@ -2924,13 +3338,13 @@ public interface TopologyPackage extends EPackage {
 	int CHAIN_CONVEYOR = 47;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CHAIN_CONVEYOR__METADATA = CONVEYOR__METADATA;
+	int CHAIN_CONVEYOR__BINDING = CONVEYOR__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2940,6 +3354,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int CHAIN_CONVEYOR__ID = CONVEYOR__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHAIN_CONVEYOR__METADATA = CONVEYOR__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
@@ -2988,13 +3411,13 @@ public interface TopologyPackage extends EPackage {
 	int PALLET_CONVEYOR = 48;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PALLET_CONVEYOR__METADATA = CONVEYOR__METADATA;
+	int PALLET_CONVEYOR__BINDING = CONVEYOR__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3004,6 +3427,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int PALLET_CONVEYOR__ID = CONVEYOR__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PALLET_CONVEYOR__METADATA = CONVEYOR__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
@@ -3052,13 +3484,13 @@ public interface TopologyPackage extends EPackage {
 	int OVERHEAD_CONVEYOR = 49;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OVERHEAD_CONVEYOR__METADATA = CONVEYOR__METADATA;
+	int OVERHEAD_CONVEYOR__BINDING = CONVEYOR__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3068,6 +3500,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int OVERHEAD_CONVEYOR__ID = CONVEYOR__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OVERHEAD_CONVEYOR__METADATA = CONVEYOR__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.

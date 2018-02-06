@@ -2,8 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.order.impl;
 
-import de.dfki.iui.basys.model.base.impl.IdentifiableEntityImpl;
-
+import de.dfki.iui.basys.model.base.impl.EntityImpl;
 import de.dfki.iui.basys.model.domain.order.Order;
 import de.dfki.iui.basys.model.domain.order.OrderPackage;
 import de.dfki.iui.basys.model.domain.order.OrderStatus;
@@ -36,7 +35,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class OrderImpl extends IdentifiableEntityImpl implements Order {
+public class OrderImpl extends EntityImpl implements Order {
 	/**
 	 * The default value of the '{@link #getProductVariantId() <em>Product Variant Id</em>}' attribute.
 	 * <!-- begin-user-doc -->

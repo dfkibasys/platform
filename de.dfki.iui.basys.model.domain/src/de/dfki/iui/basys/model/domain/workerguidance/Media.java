@@ -2,8 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.workerguidance;
 
-import de.dfki.iui.basys.model.base.IdentifiableEntity;
-
+import de.dfki.iui.basys.model.base.Entity;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -33,7 +32,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Media extends IdentifiableEntity {
+public interface Media extends Entity {
 	/**
 	 * Returns the value of the '<em><b>Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->

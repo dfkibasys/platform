@@ -2,9 +2,8 @@
  */
 package de.dfki.iui.basys.model.domain.product.util;
 
+import de.dfki.iui.basys.model.base.BObject;
 import de.dfki.iui.basys.model.base.Entity;
-import de.dfki.iui.basys.model.base.IdentifiableEntity;
-
 import de.dfki.iui.basys.model.domain.product.*;
 
 import org.eclipse.emf.ecore.EObject;
@@ -72,24 +71,24 @@ public class ProductSwitch<T> extends Switch<T> {
 			case ProductPackage.PRODUCT_GROUP: {
 				ProductGroup productGroup = (ProductGroup)theEObject;
 				T result = caseProductGroup(productGroup);
-				if (result == null) result = caseIdentifiableEntity(productGroup);
 				if (result == null) result = caseEntity(productGroup);
+				if (result == null) result = caseBObject(productGroup);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ProductPackage.PRODUCT_VARIANT: {
 				ProductVariant productVariant = (ProductVariant)theEObject;
 				T result = caseProductVariant(productVariant);
-				if (result == null) result = caseIdentifiableEntity(productVariant);
 				if (result == null) result = caseEntity(productVariant);
+				if (result == null) result = caseBObject(productVariant);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ProductPackage.PRODUCT_INSTANCE: {
 				ProductInstance productInstance = (ProductInstance)theEObject;
 				T result = caseProductInstance(productInstance);
-				if (result == null) result = caseIdentifiableEntity(productInstance);
 				if (result == null) result = caseEntity(productInstance);
+				if (result == null) result = caseBObject(productInstance);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -97,6 +96,7 @@ public class ProductSwitch<T> extends Switch<T> {
 				ProductInstanceStatus productInstanceStatus = (ProductInstanceStatus)theEObject;
 				T result = caseProductInstanceStatus(productInstanceStatus);
 				if (result == null) result = caseEntity(productInstanceStatus);
+				if (result == null) result = caseBObject(productInstanceStatus);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -105,6 +105,7 @@ public class ProductSwitch<T> extends Switch<T> {
 				T result = caseProductInstanceStatusChangeEvent(productInstanceStatusChangeEvent);
 				if (result == null) result = caseProductInstanceStatus(productInstanceStatusChangeEvent);
 				if (result == null) result = caseEntity(productInstanceStatusChangeEvent);
+				if (result == null) result = caseBObject(productInstanceStatusChangeEvent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -112,6 +113,7 @@ public class ProductSwitch<T> extends Switch<T> {
 				ProductInstanceLocation productInstanceLocation = (ProductInstanceLocation)theEObject;
 				T result = caseProductInstanceLocation(productInstanceLocation);
 				if (result == null) result = caseEntity(productInstanceLocation);
+				if (result == null) result = caseBObject(productInstanceLocation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -120,6 +122,7 @@ public class ProductSwitch<T> extends Switch<T> {
 				T result = caseProductInstanceLocationChangeEvent(productInstanceLocationChangeEvent);
 				if (result == null) result = caseProductInstanceLocation(productInstanceLocationChangeEvent);
 				if (result == null) result = caseEntity(productInstanceLocationChangeEvent);
+				if (result == null) result = caseBObject(productInstanceLocationChangeEvent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -233,6 +236,21 @@ public class ProductSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>BObject</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>BObject</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBObject(BObject object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Entity</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -244,21 +262,6 @@ public class ProductSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseEntity(Entity object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Identifiable Entity</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Identifiable Entity</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseIdentifiableEntity(IdentifiableEntity object) {
 		return null;
 	}
 

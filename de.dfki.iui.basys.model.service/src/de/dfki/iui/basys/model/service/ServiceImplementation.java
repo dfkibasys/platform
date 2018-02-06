@@ -2,7 +2,7 @@
  */
 package de.dfki.iui.basys.model.service;
 
-import de.dfki.iui.basys.model.base.IdentifiableEntity;
+import de.dfki.iui.basys.model.base.Entity;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,7 +23,7 @@ import de.dfki.iui.basys.model.base.IdentifiableEntity;
  * @model
  * @generated
  */
-public interface ServiceImplementation extends IdentifiableEntity {
+public interface ServiceImplementation extends Entity {
 	/**
 	 * Returns the value of the '<em><b>Service Description Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->

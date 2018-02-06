@@ -5,8 +5,21 @@
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
     operationReflection="true" importOrganizing="true">
   <foreignModel>base.ecore</foreignModel>
+  <foreignModel>pattern.ecore</foreignModel>
   <genPackages prefix="Base" basePackage="de.dfki.iui.basys.model" disposableProviderFactory="true"
       ecorePackage="base.ecore#/">
+    <genDataTypes ecoreDataType="base.ecore#//BBoolean"/>
+    <genDataTypes ecoreDataType="base.ecore#//BByte"/>
+    <genDataTypes ecoreDataType="base.ecore#//BChar"/>
+    <genDataTypes ecoreDataType="base.ecore#//BDouble"/>
+    <genDataTypes ecoreDataType="base.ecore#//BFloat"/>
+    <genDataTypes ecoreDataType="base.ecore#//BInteger"/>
+    <genDataTypes ecoreDataType="base.ecore#//BLong"/>
+    <genDataTypes ecoreDataType="base.ecore#//BShort"/>
+    <genDataTypes ecoreDataType="base.ecore#//BString"/>
+    <genClasses ecoreClass="base.ecore#//BObject">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//BObject/binding"/>
+    </genClasses>
     <genClasses ecoreClass="base.ecore#//Metadata">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//Metadata/creator"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//Metadata/creationDate"/>
@@ -18,8 +31,280 @@
     <genClasses ecoreClass="base.ecore#//IdentifiableEntity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//IdentifiableEntity/id"/>
     </genClasses>
-    <genClasses ecoreClass="base.ecore#//Event">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//Event/timestamp"/>
+    <genClasses ecoreClass="base.ecore#//KeyValuePair">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//KeyValuePair/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//KeyValuePair/value"/>
+    </genClasses>
+  </genPackages>
+  <genPackages prefix="Pattern" basePackage="de.dfki.iui.basys.model" disposableProviderFactory="true"
+      ecorePackage="pattern.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="pattern.ecore#//Computation">
+      <genEnumLiterals ecoreEnumLiteral="pattern.ecore#//Computation/SET"/>
+      <genEnumLiterals ecoreEnumLiteral="pattern.ecore#//Computation/OVERLAY"/>
+      <genEnumLiterals ecoreEnumLiteral="pattern.ecore#//Computation/UNIFICATION"/>
+      <genEnumLiterals ecoreEnumLiteral="pattern.ecore#//Computation/RESTRICTED_UNIFICATION"/>
+      <genEnumLiterals ecoreEnumLiteral="pattern.ecore#//Computation/ADD"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="pattern.ecore#//PBooleanRestrictionEnum">
+      <genEnumLiterals ecoreEnumLiteral="pattern.ecore#//PBooleanRestrictionEnum/EQUALS"/>
+      <genEnumLiterals ecoreEnumLiteral="pattern.ecore#//PBooleanRestrictionEnum/NOT_EQUALS"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="pattern.ecore#//PNumberRestrictionEnum">
+      <genEnumLiterals ecoreEnumLiteral="pattern.ecore#//PNumberRestrictionEnum/EQUALS"/>
+      <genEnumLiterals ecoreEnumLiteral="pattern.ecore#//PNumberRestrictionEnum/NOT_EQUALS"/>
+      <genEnumLiterals ecoreEnumLiteral="pattern.ecore#//PNumberRestrictionEnum/GREATER_THAN"/>
+      <genEnumLiterals ecoreEnumLiteral="pattern.ecore#//PNumberRestrictionEnum/GREATER_EQUALS"/>
+      <genEnumLiterals ecoreEnumLiteral="pattern.ecore#//PNumberRestrictionEnum/LESS_EQUALS"/>
+      <genEnumLiterals ecoreEnumLiteral="pattern.ecore#//PNumberRestrictionEnum/LESS_THAN"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="pattern.ecore#//PEnumRestrictionEnum">
+      <genEnumLiterals ecoreEnumLiteral="pattern.ecore#//PEnumRestrictionEnum/EQUALS"/>
+      <genEnumLiterals ecoreEnumLiteral="pattern.ecore#//PEnumRestrictionEnum/NOT_EQUALS"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="pattern.ecore#//PEnumRestrictionType">
+      <genEnumLiterals ecoreEnumLiteral="pattern.ecore#//PEnumRestrictionType/VALUE"/>
+      <genEnumLiterals ecoreEnumLiteral="pattern.ecore#//PEnumRestrictionType/LITERAL"/>
+      <genEnumLiterals ecoreEnumLiteral="pattern.ecore#//PEnumRestrictionType/NAME"/>
+      <genEnumLiterals ecoreEnumLiteral="pattern.ecore#//PEnumRestrictionType/INSTANCE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="pattern.ecore#//PStringRestrictionEnum">
+      <genEnumLiterals ecoreEnumLiteral="pattern.ecore#//PStringRestrictionEnum/EQUALS"/>
+      <genEnumLiterals ecoreEnumLiteral="pattern.ecore#//PStringRestrictionEnum/NOT_EQUALS"/>
+      <genEnumLiterals ecoreEnumLiteral="pattern.ecore#//PStringRestrictionEnum/STARTS_WITH"/>
+      <genEnumLiterals ecoreEnumLiteral="pattern.ecore#//PStringRestrictionEnum/ENDS_WITH"/>
+      <genEnumLiterals ecoreEnumLiteral="pattern.ecore#//PStringRestrictionEnum/CONTAINS"/>
+      <genEnumLiterals ecoreEnumLiteral="pattern.ecore#//PStringRestrictionEnum/MATCHES"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="pattern.ecore#//PCharRestrictionEnum">
+      <genEnumLiterals ecoreEnumLiteral="pattern.ecore#//PCharRestrictionEnum/EQUALS"/>
+      <genEnumLiterals ecoreEnumLiteral="pattern.ecore#//PCharRestrictionEnum/NOT_EQUALS"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="pattern.ecore#//PRestrictionsEnum">
+      <genEnumLiterals ecoreEnumLiteral="pattern.ecore#//PRestrictionsEnum/AND"/>
+      <genEnumLiterals ecoreEnumLiteral="pattern.ecore#//PRestrictionsEnum/OR"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="pattern.ecore#//PQuantorEnum">
+      <genEnumLiterals ecoreEnumLiteral="pattern.ecore#//PQuantorEnum/EXISTS"/>
+      <genEnumLiterals ecoreEnumLiteral="pattern.ecore#//PQuantorEnum/NOT_EXISTS"/>
+      <genEnumLiterals ecoreEnumLiteral="pattern.ecore#//PQuantorEnum/FOR_ALL"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="pattern.ecore#//PEObjectArray"/>
+    <genClasses ecoreClass="pattern.ecore#//PEmptySlot"/>
+    <genClasses ecoreClass="pattern.ecore#//PObject">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pattern.ecore#//PObject/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pattern.ecore#//PObject/slot"/>
+      <genOperations ecoreOperation="pattern.ecore#//PObject/getSlot">
+        <genParameters ecoreParameter="pattern.ecore#//PObject/getSlot/feature"/>
+      </genOperations>
+      <genOperations ecoreOperation="pattern.ecore#//PObject/createSkeleton"/>
+      <genOperations ecoreOperation="pattern.ecore#//PObject/unify">
+        <genParameters ecoreParameter="pattern.ecore#//PObject/unify/ppatt"/>
+      </genOperations>
+      <genOperations ecoreOperation="pattern.ecore#//PObject/unify.1">
+        <genParameters ecoreParameter="pattern.ecore#//PObject/unify.1/bg"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="pattern.ecore#//PSlot">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pattern.ecore#//PSlot/feature"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pattern.ecore#//PSlot/range"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute pattern.ecore#//PSlot/featureName"/>
+      <genOperations ecoreOperation="pattern.ecore#//PSlot/getRangeValue"/>
+      <genOperations ecoreOperation="pattern.ecore#//PSlot/getRangeValues"/>
+      <genOperations ecoreOperation="pattern.ecore#//PSlot/getRangeObject"/>
+      <genOperations ecoreOperation="pattern.ecore#//PSlot/getRangeObjects"/>
+      <genOperations ecoreOperation="pattern.ecore#//PSlot/unify">
+        <genParameters ecoreParameter="pattern.ecore#//PSlot/unify/bg"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="pattern.ecore#//PSubscription">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pattern.ecore#//PSubscription/patterns"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="pattern.ecore#//PPattern">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pattern.ecore#//PPattern/varName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pattern.ecore#//PPattern/instIdx"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pattern.ecore#//PPattern/quantor"/>
+      <genOperations ecoreOperation="pattern.ecore#//PPattern/matches">
+        <genParameters ecoreParameter="pattern.ecore#//PPattern/matches/object"/>
+      </genOperations>
+      <genOperations ecoreOperation="pattern.ecore#//PPattern/createSkeleton"/>
+      <genOperations ecoreOperation="pattern.ecore#//PPattern/unify">
+        <genParameters ecoreParameter="pattern.ecore#//PPattern/unify/ppatt"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="pattern.ecore#//PValue">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pattern.ecore#//PValue/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pattern.ecore#//PValue/restrictions"/>
+      <genOperations ecoreOperation="pattern.ecore#//PValue/createSkeleton"/>
+      <genOperations ecoreOperation="pattern.ecore#//PValue/unify">
+        <genParameters ecoreParameter="pattern.ecore#//PValue/unify/ppatt"/>
+      </genOperations>
+      <genOperations ecoreOperation="pattern.ecore#//PValue/unify.1">
+        <genParameters ecoreParameter="pattern.ecore#//PValue/unify.1/bg"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="pattern.ecore#//PValueObject">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pattern.ecore#//PValueObject/value"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="pattern.ecore#//PValueGen">
+      <genOperations ecoreOperation="pattern.ecore#//PValueGen/getDefaultValue">
+        <genParameters ecoreParameter="pattern.ecore#//PValueGen/getDefaultValue/defVal"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="pattern.ecore#//PRestrictions">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pattern.ecore#//PRestrictions/restriction"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pattern.ecore#//PRestrictions/restrictions"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pattern.ecore#//PRestrictions/function"/>
+      <genOperations ecoreOperation="pattern.ecore#//PRestrictions/getDefaultValue">
+        <genParameters ecoreParameter="pattern.ecore#//PRestrictions/getDefaultValue/defVal_"/>
+      </genOperations>
+      <genOperations ecoreOperation="pattern.ecore#//PRestrictions/unify">
+        <genParameters ecoreParameter="pattern.ecore#//PRestrictions/unify/bg"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="pattern.ecore#//PRestriction">
+      <genTypeParameters ecoreTypeParameter="pattern.ecore#//PRestriction/F"/>
+      <genTypeParameters ecoreTypeParameter="pattern.ecore#//PRestriction/V"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pattern.ecore#//PRestriction/expression"/>
+      <genOperations ecoreOperation="pattern.ecore#//PRestriction/isSatisfiedBy">
+        <genParameters ecoreParameter="pattern.ecore#//PRestriction/isSatisfiedBy/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="pattern.ecore#//PRestriction/getFunction"/>
+      <genOperations ecoreOperation="pattern.ecore#//PRestriction/setFunction">
+        <genParameters ecoreParameter="pattern.ecore#//PRestriction/setFunction/function"/>
+      </genOperations>
+      <genOperations ecoreOperation="pattern.ecore#//PRestriction/getValue"/>
+      <genOperations ecoreOperation="pattern.ecore#//PRestriction/setValue">
+        <genParameters ecoreParameter="pattern.ecore#//PRestriction/setValue/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="pattern.ecore#//PRestriction/unify">
+        <genParameters ecoreParameter="pattern.ecore#//PRestriction/unify/bg"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="pattern.ecore#//PBooleanRestriction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pattern.ecore#//PBooleanRestriction/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pattern.ecore#//PBooleanRestriction/function"/>
+      <genOperations ecoreOperation="pattern.ecore#//PBooleanRestriction/isSatisfiedBy">
+        <genParameters ecoreParameter="pattern.ecore#//PBooleanRestriction/isSatisfiedBy/value_"/>
+      </genOperations>
+      <genOperations ecoreOperation="pattern.ecore#//PBooleanRestriction/getDefaultValue">
+        <genParameters ecoreParameter="pattern.ecore#//PBooleanRestriction/getDefaultValue/defVal"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="pattern.ecore#//PEnumRestriction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pattern.ecore#//PEnumRestriction/function"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pattern.ecore#//PEnumRestriction/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pattern.ecore#//PEnumRestriction/enumDataType"/>
+      <genOperations ecoreOperation="pattern.ecore#//PEnumRestriction/isSatisfiedBy">
+        <genParameters ecoreParameter="pattern.ecore#//PEnumRestriction/isSatisfiedBy/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="pattern.ecore#//PEnumRestriction/getDefaultValue">
+        <genParameters ecoreParameter="pattern.ecore#//PEnumRestriction/getDefaultValue/defVal"/>
+      </genOperations>
+      <genOperations ecoreOperation="pattern.ecore#//PEnumRestriction/unify">
+        <genParameters ecoreParameter="pattern.ecore#//PEnumRestriction/unify/bgrest"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="pattern.ecore#//PCharRestriction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pattern.ecore#//PCharRestriction/ignoreCase"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pattern.ecore#//PCharRestriction/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pattern.ecore#//PCharRestriction/function"/>
+      <genOperations ecoreOperation="pattern.ecore#//PCharRestriction/isSatisfiedBy">
+        <genParameters ecoreParameter="pattern.ecore#//PCharRestriction/isSatisfiedBy/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="pattern.ecore#//PCharRestriction/getDefaultValue">
+        <genParameters ecoreParameter="pattern.ecore#//PCharRestriction/getDefaultValue/defVal"/>
+      </genOperations>
+      <genOperations ecoreOperation="pattern.ecore#//PCharRestriction/unify">
+        <genParameters ecoreParameter="pattern.ecore#//PCharRestriction/unify/bgrest"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="pattern.ecore#//PStringRestriction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pattern.ecore#//PStringRestriction/ignoreCase"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pattern.ecore#//PStringRestriction/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pattern.ecore#//PStringRestriction/function"/>
+      <genOperations ecoreOperation="pattern.ecore#//PStringRestriction/isSatisfiedBy">
+        <genParameters ecoreParameter="pattern.ecore#//PStringRestriction/isSatisfiedBy/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="pattern.ecore#//PStringRestriction/getDefaultValue">
+        <genParameters ecoreParameter="pattern.ecore#//PStringRestriction/getDefaultValue/defVal"/>
+      </genOperations>
+      <genOperations ecoreOperation="pattern.ecore#//PStringRestriction/unify">
+        <genParameters ecoreParameter="pattern.ecore#//PStringRestriction/unify/bgrest"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="pattern.ecore#//PNumberRestriction">
+      <genTypeParameters ecoreTypeParameter="pattern.ecore#//PNumberRestriction/V"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pattern.ecore#//PNumberRestriction/function"/>
+      <genOperations ecoreOperation="pattern.ecore#//PNumberRestriction/_compareTo">
+        <genParameters ecoreParameter="pattern.ecore#//PNumberRestriction/_compareTo/compareToResult"/>
+        <genParameters ecoreParameter="pattern.ecore#//PNumberRestriction/_compareTo/function"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="pattern.ecore#//PByteRestriction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pattern.ecore#//PByteRestriction/value"/>
+      <genOperations ecoreOperation="pattern.ecore#//PByteRestriction/isSatisfiedBy">
+        <genParameters ecoreParameter="pattern.ecore#//PByteRestriction/isSatisfiedBy/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="pattern.ecore#//PByteRestriction/getDefaultValue">
+        <genParameters ecoreParameter="pattern.ecore#//PByteRestriction/getDefaultValue/defVal"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="pattern.ecore#//PShortRestriction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pattern.ecore#//PShortRestriction/value"/>
+      <genOperations ecoreOperation="pattern.ecore#//PShortRestriction/isSatisfiedBy">
+        <genParameters ecoreParameter="pattern.ecore#//PShortRestriction/isSatisfiedBy/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="pattern.ecore#//PShortRestriction/getDefaultValue">
+        <genParameters ecoreParameter="pattern.ecore#//PShortRestriction/getDefaultValue/defVal"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="pattern.ecore#//PIntegerRestriction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pattern.ecore#//PIntegerRestriction/value"/>
+      <genOperations ecoreOperation="pattern.ecore#//PIntegerRestriction/isSatisfiedBy">
+        <genParameters ecoreParameter="pattern.ecore#//PIntegerRestriction/isSatisfiedBy/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="pattern.ecore#//PIntegerRestriction/getDefaultValue">
+        <genParameters ecoreParameter="pattern.ecore#//PIntegerRestriction/getDefaultValue/defVal"/>
+      </genOperations>
+      <genOperations ecoreOperation="pattern.ecore#//PIntegerRestriction/unify">
+        <genParameters ecoreParameter="pattern.ecore#//PIntegerRestriction/unify/bgrest"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="pattern.ecore#//PLongRestriction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pattern.ecore#//PLongRestriction/value"/>
+      <genOperations ecoreOperation="pattern.ecore#//PLongRestriction/isSatisfiedBy">
+        <genParameters ecoreParameter="pattern.ecore#//PLongRestriction/isSatisfiedBy/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="pattern.ecore#//PLongRestriction/getDefaultValue">
+        <genParameters ecoreParameter="pattern.ecore#//PLongRestriction/getDefaultValue/defVal"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="pattern.ecore#//PFloatRestriction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pattern.ecore#//PFloatRestriction/value"/>
+      <genOperations ecoreOperation="pattern.ecore#//PFloatRestriction/isSatisfiedBy">
+        <genParameters ecoreParameter="pattern.ecore#//PFloatRestriction/isSatisfiedBy/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="pattern.ecore#//PFloatRestriction/getDefaultValue">
+        <genParameters ecoreParameter="pattern.ecore#//PFloatRestriction/getDefaultValue/defVal"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="pattern.ecore#//PDoubleRestriction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pattern.ecore#//PDoubleRestriction/value"/>
+      <genOperations ecoreOperation="pattern.ecore#//PDoubleRestriction/isSatisfiedBy">
+        <genParameters ecoreParameter="pattern.ecore#//PDoubleRestriction/isSatisfiedBy/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="pattern.ecore#//PDoubleRestriction/getDefaultValue">
+        <genParameters ecoreParameter="pattern.ecore#//PDoubleRestriction/getDefaultValue/defVal"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="pattern.ecore#//PDateRestriction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pattern.ecore#//PDateRestriction/value"/>
+      <genOperations ecoreOperation="pattern.ecore#//PDateRestriction/isSatisfiedBy">
+        <genParameters ecoreParameter="pattern.ecore#//PDateRestriction/isSatisfiedBy/value"/>
+      </genOperations>
+      <genOperations ecoreOperation="pattern.ecore#//PDateRestriction/getDefaultValue">
+        <genParameters ecoreParameter="pattern.ecore#//PDateRestriction/getDefaultValue/defVal"/>
+      </genOperations>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

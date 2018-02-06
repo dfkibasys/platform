@@ -4,6 +4,8 @@ package de.dfki.iui.basys.model.domain.workerguidance.impl;
 
 import de.dfki.iui.basys.model.base.BasePackage;
 
+import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
+import de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl;
 import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
 
 import de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl;
@@ -148,6 +150,7 @@ public class WorkerguidancePackageImpl extends EPackageImpl implements Workergui
 		TopologyPackageImpl theTopologyPackage = (TopologyPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(TopologyPackage.eNS_URI) instanceof TopologyPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(TopologyPackage.eNS_URI) : TopologyPackage.eINSTANCE);
 		WorkplanPackageImpl theWorkplanPackage = (WorkplanPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkplanPackage.eNS_URI) instanceof WorkplanPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkplanPackage.eNS_URI) : WorkplanPackage.eINSTANCE);
 		LinebalancingPackageImpl theLinebalancingPackage = (LinebalancingPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(LinebalancingPackage.eNS_URI) instanceof LinebalancingPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(LinebalancingPackage.eNS_URI) : LinebalancingPackage.eINSTANCE);
+		CapabilityPackageImpl theCapabilityPackage = (CapabilityPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CapabilityPackage.eNS_URI) instanceof CapabilityPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CapabilityPackage.eNS_URI) : CapabilityPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theWorkerguidancePackage.createPackageContents();
@@ -157,6 +160,7 @@ public class WorkerguidancePackageImpl extends EPackageImpl implements Workergui
 		theTopologyPackage.createPackageContents();
 		theWorkplanPackage.createPackageContents();
 		theLinebalancingPackage.createPackageContents();
+		theCapabilityPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theWorkerguidancePackage.initializePackageContents();
@@ -166,6 +170,7 @@ public class WorkerguidancePackageImpl extends EPackageImpl implements Workergui
 		theTopologyPackage.initializePackageContents();
 		theWorkplanPackage.initializePackageContents();
 		theLinebalancingPackage.initializePackageContents();
+		theCapabilityPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theWorkerguidancePackage.freeze();
@@ -482,9 +487,9 @@ public class WorkerguidancePackageImpl extends EPackageImpl implements Workergui
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		instructionEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
-		materialEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
-		mediaEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
+		instructionEClass.getESuperTypes().add(theBasePackage.getEntity());
+		materialEClass.getESuperTypes().add(theBasePackage.getEntity());
+		mediaEClass.getESuperTypes().add(theBasePackage.getEntity());
 		audioEClass.getESuperTypes().add(this.getMedia());
 		videoEClass.getESuperTypes().add(this.getMedia());
 		imageEClass.getESuperTypes().add(this.getMedia());

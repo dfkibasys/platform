@@ -65,7 +65,7 @@ public class PropertyItemProvider extends ETypedElementItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(ServicePackage.Literals.PROPERTY__CAPABILITY);
+			childrenFeatures.add(ServicePackage.Literals.PROPERTY__CAPABILITIES);
 		}
 		return childrenFeatures;
 	}
@@ -121,7 +121,7 @@ public class PropertyItemProvider extends ETypedElementItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Property.class)) {
-			case ServicePackage.PROPERTY__CAPABILITY:
+			case ServicePackage.PROPERTY__CAPABILITIES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -141,8 +141,63 @@ public class PropertyItemProvider extends ETypedElementItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ServicePackage.Literals.PROPERTY__CAPABILITY,
+				(ServicePackage.Literals.PROPERTY__CAPABILITIES,
 				 CapabilityFactory.eINSTANCE.createCapability()));
+
+//		newChildDescriptors.add
+//			(createChildParameter
+//				(ServicePackage.Literals.PROPERTY__CAPABILITIES,
+//				 CapabilityFactory.eINSTANCE.createManufacturingCapability()));
+//
+//		newChildDescriptors.add
+//			(createChildParameter
+//				(ServicePackage.Literals.PROPERTY__CAPABILITIES,
+//				 CapabilityFactory.eINSTANCE.createFügen()));
+//
+//		newChildDescriptors.add
+//			(createChildParameter
+//				(ServicePackage.Literals.PROPERTY__CAPABILITIES,
+//				 CapabilityFactory.eINSTANCE.createAnEinpressen()));
+//
+//		newChildDescriptors.add
+//			(createChildParameter
+//				(ServicePackage.Literals.PROPERTY__CAPABILITIES,
+//				 CapabilityFactory.eINSTANCE.createPressen()));
+//
+//		newChildDescriptors.add
+//			(createChildParameter
+//				(ServicePackage.Literals.PROPERTY__CAPABILITIES,
+//				 CapabilityFactory.eINSTANCE.createQoSCapability()));
+//
+//		newChildDescriptors.add
+//			(createChildParameter
+//				(ServicePackage.Literals.PROPERTY__CAPABILITIES,
+//				 CapabilityFactory.eINSTANCE.createUrformen()));
+//
+//		newChildDescriptors.add
+//			(createChildParameter
+//				(ServicePackage.Literals.PROPERTY__CAPABILITIES,
+//				 CapabilityFactory.eINSTANCE.createUmformen()));
+//
+//		newChildDescriptors.add
+//			(createChildParameter
+//				(ServicePackage.Literals.PROPERTY__CAPABILITIES,
+//				 CapabilityFactory.eINSTANCE.createTrennen()));
+//
+//		newChildDescriptors.add
+//			(createChildParameter
+//				(ServicePackage.Literals.PROPERTY__CAPABILITIES,
+//				 CapabilityFactory.eINSTANCE.createBeschichten()));
+//
+//		newChildDescriptors.add
+//			(createChildParameter
+//				(ServicePackage.Literals.PROPERTY__CAPABILITIES,
+//				 CapabilityFactory.eINSTANCE.createStoffeigenschaften()));
+//
+//		newChildDescriptors.add
+//			(createChildParameter
+//				(ServicePackage.Literals.PROPERTY__CAPABILITIES,
+//				 CapabilityFactory.eINSTANCE.createSchrauben()));
 	}
 
 	/**

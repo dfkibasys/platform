@@ -2,8 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.topology;
 
-import de.dfki.iui.basys.model.base.IdentifiableEntity;
-
+import de.dfki.iui.basys.model.base.Entity;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -22,7 +21,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Enterprise extends IdentifiableEntity {
+public interface Enterprise extends Entity {
 	/**
 	 * Returns the value of the '<em><b>Sites</b></em>' containment reference list.
 	 * The list contents are of type {@link de.dfki.iui.basys.model.domain.topology.Site}.

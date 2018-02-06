@@ -3,8 +3,6 @@
 package de.dfki.iui.basys.model.aas;
 
 import de.dfki.iui.basys.model.base.Entity;
-import de.dfki.iui.basys.model.base.IdentifiableEntity;
-
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -25,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface AdministrationShell extends IdentifiableEntity {
+public interface AdministrationShell extends Entity {
 	/**
 	 * Returns the value of the '<em><b>Mappings</b></em>' containment reference list.
 	 * The list contents are of type {@link de.dfki.iui.basys.model.aas.InformationMapping}.

@@ -6,7 +6,7 @@
     <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
     <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
   </eAnnotations>
-  <eClassifiers xsi:type="ecore:EClass" name="AdministrationShell" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//IdentifiableEntity">
+  <eClassifiers xsi:type="ecore:EClass" name="AdministrationShell" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
     <eOperations name="get">
       <eGenericType eTypeParameter="#//AdministrationShell/get/T"/>
       <eTypeParameters name="T">

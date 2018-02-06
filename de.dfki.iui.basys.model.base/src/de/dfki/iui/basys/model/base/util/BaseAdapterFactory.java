@@ -68,24 +68,16 @@ public class BaseAdapterFactory extends AdapterFactoryImpl {
 	protected BaseSwitch<Adapter> modelSwitch =
 		new BaseSwitch<Adapter>() {
 			@Override
+			public Adapter caseBObject(BObject object) {
+				return createBObjectAdapter();
+			}
+			@Override
 			public Adapter caseMetadata(Metadata object) {
 				return createMetadataAdapter();
 			}
 			@Override
 			public Adapter caseEntity(Entity object) {
 				return createEntityAdapter();
-			}
-			@Override
-			public Adapter caseIdentifiableEntity(IdentifiableEntity object) {
-				return createIdentifiableEntityAdapter();
-			}
-			@Override
-			public Adapter caseEvent(Event object) {
-				return createEventAdapter();
-			}
-			@Override
-			public Adapter caseCapability(Capability object) {
-				return createCapabilityAdapter();
 			}
 			@Override
 			public Adapter caseKeyValuePair(KeyValuePair object) {
@@ -112,6 +104,20 @@ public class BaseAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.base.BObject <em>BObject</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.base.BObject
+	 * @generated
+	 */
+	public Adapter createBObjectAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.base.Metadata <em>Metadata</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -136,48 +142,6 @@ public class BaseAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createEntityAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.base.IdentifiableEntity <em>Identifiable Entity</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.dfki.iui.basys.model.base.IdentifiableEntity
-	 * @generated
-	 */
-	public Adapter createIdentifiableEntityAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.base.Event <em>Event</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.dfki.iui.basys.model.base.Event
-	 * @generated
-	 */
-	public Adapter createEventAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.base.Capability <em>Capability</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.dfki.iui.basys.model.base.Capability
-	 * @generated
-	 */
-	public Adapter createCapabilityAdapter() {
 		return null;
 	}
 

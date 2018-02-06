@@ -2,8 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.topology.impl;
 
-import de.dfki.iui.basys.model.base.impl.IdentifiableEntityImpl;
-
+import de.dfki.iui.basys.model.base.impl.EntityImpl;
 import de.dfki.iui.basys.model.domain.topology.Area;
 import de.dfki.iui.basys.model.domain.topology.TopologyPackage;
 import de.dfki.iui.basys.model.domain.topology.WorkCenter;
@@ -33,7 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class AreaImpl extends IdentifiableEntityImpl implements Area {
+public class AreaImpl extends EntityImpl implements Area {
 	/**
 	 * The cached value of the '{@link #getWorkCenters() <em>Work Centers</em>}' containment reference list.
 	 * <!-- begin-user-doc -->

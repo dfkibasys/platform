@@ -274,7 +274,7 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getProperty_Capability() {
+	public EReference getProperty_Capabilities() {
 		return (EReference)propertyEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -292,7 +292,7 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOperation_Capability() {
+	public EReference getOperation_Capabilities() {
 		return (EReference)operationEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -310,7 +310,7 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPublication_Capability() {
+	public EReference getPublication_Capabilities() {
 		return (EReference)publicationEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -328,7 +328,7 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSubscription_Capability() {
+	public EReference getSubscription_Capabilities() {
 		return (EReference)subscriptionEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -505,16 +505,16 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 		createEReference(serviceDescriptionEClass, SERVICE_DESCRIPTION__DEPENDENCIES);
 
 		propertyEClass = createEClass(PROPERTY);
-		createEReference(propertyEClass, PROPERTY__CAPABILITY);
+		createEReference(propertyEClass, PROPERTY__CAPABILITIES);
 
 		operationEClass = createEClass(OPERATION);
-		createEReference(operationEClass, OPERATION__CAPABILITY);
+		createEReference(operationEClass, OPERATION__CAPABILITIES);
 
 		publicationEClass = createEClass(PUBLICATION);
-		createEReference(publicationEClass, PUBLICATION__CAPABILITY);
+		createEReference(publicationEClass, PUBLICATION__CAPABILITIES);
 
 		subscriptionEClass = createEClass(SUBSCRIPTION);
-		createEReference(subscriptionEClass, SUBSCRIPTION__CAPABILITY);
+		createEReference(subscriptionEClass, SUBSCRIPTION__CAPABILITIES);
 
 		serviceImplementationEClass = createEClass(SERVICE_IMPLEMENTATION);
 		createEAttribute(serviceImplementationEClass, SERVICE_IMPLEMENTATION__SERVICE_DESCRIPTION_ID);
@@ -573,13 +573,13 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 
 		// Add supertypes to classes
 		serviceDescriptionEClass.getESuperTypes().add(theEcorePackage.getENamedElement());
-		serviceDescriptionEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
+		serviceDescriptionEClass.getESuperTypes().add(theBasePackage.getEntity());
 		propertyEClass.getESuperTypes().add(theEcorePackage.getETypedElement());
 		operationEClass.getESuperTypes().add(theEcorePackage.getEOperation());
 		publicationEClass.getESuperTypes().add(theEcorePackage.getETypedElement());
 		subscriptionEClass.getESuperTypes().add(theEcorePackage.getETypedElement());
-		serviceImplementationEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
-		serviceInstanceEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
+		serviceImplementationEClass.getESuperTypes().add(theBasePackage.getEntity());
+		serviceInstanceEClass.getESuperTypes().add(theBasePackage.getEntity());
 		restEndpointEClass.getESuperTypes().add(this.getServiceEndpoint());
 		soapEndpointEClass.getESuperTypes().add(this.getServiceEndpoint());
 
@@ -594,16 +594,16 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 		initEReference(getServiceDescription_Dependencies(), this.getServiceDescription(), null, "dependencies", null, 0, -1, ServiceDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(propertyEClass, Property.class, "Property", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getProperty_Capability(), theCapabilityPackage.getCapability(), null, "capability", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProperty_Capabilities(), theCapabilityPackage.getCapability(), null, "capabilities", null, 0, -1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(operationEClass, Operation.class, "Operation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOperation_Capability(), theCapabilityPackage.getCapability(), null, "capability", null, 0, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOperation_Capabilities(), theCapabilityPackage.getCapability(), null, "capabilities", null, 0, -1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(publicationEClass, Publication.class, "Publication", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPublication_Capability(), theCapabilityPackage.getCapability(), null, "capability", null, 0, 1, Publication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPublication_Capabilities(), theCapabilityPackage.getCapability(), null, "capabilities", null, 0, -1, Publication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(subscriptionEClass, Subscription.class, "Subscription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSubscription_Capability(), theCapabilityPackage.getCapability(), null, "capability", null, 0, 1, Subscription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSubscription_Capabilities(), theCapabilityPackage.getCapability(), null, "capabilities", null, 0, -1, Subscription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(serviceImplementationEClass, ServiceImplementation.class, "ServiceImplementation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getServiceImplementation_ServiceDescriptionId(), theEcorePackage.getEString(), "serviceDescriptionId", null, 0, 1, ServiceImplementation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

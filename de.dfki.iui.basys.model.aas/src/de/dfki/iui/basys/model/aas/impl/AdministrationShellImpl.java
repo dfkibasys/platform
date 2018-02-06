@@ -9,8 +9,7 @@ import de.dfki.iui.basys.model.aas.InformationMapping;
 import de.dfki.iui.basys.model.aas.OperationalServiceMapping;
 import de.dfki.iui.basys.model.base.Entity;
 
-import de.dfki.iui.basys.model.base.impl.IdentifiableEntityImpl;
-
+import de.dfki.iui.basys.model.base.impl.EntityImpl;
 import java.lang.reflect.InvocationTargetException;
 
 import java.util.Collection;
@@ -43,7 +42,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class AdministrationShellImpl extends IdentifiableEntityImpl implements AdministrationShell {
+public class AdministrationShellImpl extends EntityImpl implements AdministrationShell {
 	/**
 	 * The default value of the '{@link #getAssetId() <em>Asset Id</em>}' attribute.
 	 * <!-- begin-user-doc -->

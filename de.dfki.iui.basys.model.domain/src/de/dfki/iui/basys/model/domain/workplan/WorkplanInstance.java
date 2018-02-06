@@ -2,8 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.workplan;
 
-import de.dfki.iui.basys.model.base.IdentifiableEntity;
-
+import de.dfki.iui.basys.model.base.Entity;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -27,7 +26,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface WorkplanInstance extends IdentifiableEntity {
+public interface WorkplanInstance extends Entity {
 	/**
 	 * Returns the value of the '<em><b>Product Instance Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->

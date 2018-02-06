@@ -6,13 +6,15 @@ import de.dfki.iui.basys.model.domain.capability.Capability;
 import de.dfki.iui.basys.model.service.Property;
 import de.dfki.iui.basys.model.service.ServicePackage;
 
-import org.eclipse.emf.common.notify.Notification;
+import java.util.Collection;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.ETypedElementImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,22 +24,21 @@ import org.eclipse.emf.ecore.impl.ETypedElementImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.dfki.iui.basys.model.service.impl.PropertyImpl#getCapability <em>Capability</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.service.impl.PropertyImpl#getCapabilities <em>Capabilities</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class PropertyImpl extends ETypedElementImpl implements Property {
 	/**
-	 * The cached value of the '{@link #getCapability() <em>Capability</em>}' containment reference.
+	 * The cached value of the '{@link #getCapabilities() <em>Capabilities</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCapability()
+	 * @see #getCapabilities()
 	 * @generated
 	 * @ordered
 	 */
-	protected Capability capability;
-
+	protected EList<Capability> capabilities;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -62,42 +63,11 @@ public class PropertyImpl extends ETypedElementImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Capability getCapability() {
-		return capability;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetCapability(Capability newCapability, NotificationChain msgs) {
-		Capability oldCapability = capability;
-		capability = newCapability;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ServicePackage.PROPERTY__CAPABILITY, oldCapability, newCapability);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+	public EList<Capability> getCapabilities() {
+		if (capabilities == null) {
+			capabilities = new EObjectContainmentEList<Capability>(Capability.class, this, ServicePackage.PROPERTY__CAPABILITIES);
 		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setCapability(Capability newCapability) {
-		if (newCapability != capability) {
-			NotificationChain msgs = null;
-			if (capability != null)
-				msgs = ((InternalEObject)capability).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ServicePackage.PROPERTY__CAPABILITY, null, msgs);
-			if (newCapability != null)
-				msgs = ((InternalEObject)newCapability).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ServicePackage.PROPERTY__CAPABILITY, null, msgs);
-			msgs = basicSetCapability(newCapability, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ServicePackage.PROPERTY__CAPABILITY, newCapability, newCapability));
+		return capabilities;
 	}
 
 	/**
@@ -108,8 +78,8 @@ public class PropertyImpl extends ETypedElementImpl implements Property {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ServicePackage.PROPERTY__CAPABILITY:
-				return basicSetCapability(null, msgs);
+			case ServicePackage.PROPERTY__CAPABILITIES:
+				return ((InternalEList<?>)getCapabilities()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -122,8 +92,8 @@ public class PropertyImpl extends ETypedElementImpl implements Property {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ServicePackage.PROPERTY__CAPABILITY:
-				return getCapability();
+			case ServicePackage.PROPERTY__CAPABILITIES:
+				return getCapabilities();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -133,11 +103,13 @@ public class PropertyImpl extends ETypedElementImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ServicePackage.PROPERTY__CAPABILITY:
-				setCapability((Capability)newValue);
+			case ServicePackage.PROPERTY__CAPABILITIES:
+				getCapabilities().clear();
+				getCapabilities().addAll((Collection<? extends Capability>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -151,8 +123,8 @@ public class PropertyImpl extends ETypedElementImpl implements Property {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ServicePackage.PROPERTY__CAPABILITY:
-				setCapability((Capability)null);
+			case ServicePackage.PROPERTY__CAPABILITIES:
+				getCapabilities().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -166,8 +138,8 @@ public class PropertyImpl extends ETypedElementImpl implements Property {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ServicePackage.PROPERTY__CAPABILITY:
-				return capability != null;
+			case ServicePackage.PROPERTY__CAPABILITIES:
+				return capabilities != null && !capabilities.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

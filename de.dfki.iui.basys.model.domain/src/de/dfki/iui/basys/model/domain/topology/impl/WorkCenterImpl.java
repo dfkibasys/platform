@@ -2,8 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.topology.impl;
 
-import de.dfki.iui.basys.model.base.impl.IdentifiableEntityImpl;
-
+import de.dfki.iui.basys.model.base.impl.EntityImpl;
 import de.dfki.iui.basys.model.domain.topology.TopologyPackage;
 import de.dfki.iui.basys.model.domain.topology.WorkCenter;
 
@@ -16,7 +15,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public abstract class WorkCenterImpl extends IdentifiableEntityImpl implements WorkCenter {
+public abstract class WorkCenterImpl extends EntityImpl implements WorkCenter {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

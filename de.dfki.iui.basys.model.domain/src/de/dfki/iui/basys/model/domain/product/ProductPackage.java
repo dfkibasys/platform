@@ -70,13 +70,13 @@ public interface ProductPackage extends EPackage {
 	int PRODUCT_GROUP = 0;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_GROUP__METADATA = BasePackage.IDENTIFIABLE_ENTITY__METADATA;
+	int PRODUCT_GROUP__BINDING = BasePackage.ENTITY__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -85,7 +85,16 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_GROUP__ID = BasePackage.IDENTIFIABLE_ENTITY__ID;
+	int PRODUCT_GROUP__ID = BasePackage.ENTITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_GROUP__METADATA = BasePackage.ENTITY__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -94,7 +103,7 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_GROUP__NAME = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
+	int PRODUCT_GROUP__NAME = BasePackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Group</em>' class.
@@ -103,7 +112,7 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_GROUP_FEATURE_COUNT = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 1;
+	int PRODUCT_GROUP_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Group</em>' class.
@@ -112,7 +121,7 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_GROUP_OPERATION_COUNT = BasePackage.IDENTIFIABLE_ENTITY_OPERATION_COUNT + 0;
+	int PRODUCT_GROUP_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.product.impl.ProductVariantImpl <em>Variant</em>}' class.
@@ -125,13 +134,13 @@ public interface ProductPackage extends EPackage {
 	int PRODUCT_VARIANT = 1;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_VARIANT__METADATA = BasePackage.IDENTIFIABLE_ENTITY__METADATA;
+	int PRODUCT_VARIANT__BINDING = BasePackage.ENTITY__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -140,7 +149,16 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_VARIANT__ID = BasePackage.IDENTIFIABLE_ENTITY__ID;
+	int PRODUCT_VARIANT__ID = BasePackage.ENTITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_VARIANT__METADATA = BasePackage.ENTITY__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -149,7 +167,7 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_VARIANT__NAME = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
+	int PRODUCT_VARIANT__NAME = BasePackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Product Group Id</b></em>' attribute.
@@ -158,7 +176,7 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_VARIANT__PRODUCT_GROUP_ID = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 1;
+	int PRODUCT_VARIANT__PRODUCT_GROUP_ID = BasePackage.ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Variant</em>' class.
@@ -167,7 +185,7 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_VARIANT_FEATURE_COUNT = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 2;
+	int PRODUCT_VARIANT_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Variant</em>' class.
@@ -176,7 +194,7 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_VARIANT_OPERATION_COUNT = BasePackage.IDENTIFIABLE_ENTITY_OPERATION_COUNT + 0;
+	int PRODUCT_VARIANT_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.product.impl.ProductInstanceImpl <em>Instance</em>}' class.
@@ -189,13 +207,13 @@ public interface ProductPackage extends EPackage {
 	int PRODUCT_INSTANCE = 2;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_INSTANCE__METADATA = BasePackage.IDENTIFIABLE_ENTITY__METADATA;
+	int PRODUCT_INSTANCE__BINDING = BasePackage.ENTITY__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -204,7 +222,16 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_INSTANCE__ID = BasePackage.IDENTIFIABLE_ENTITY__ID;
+	int PRODUCT_INSTANCE__ID = BasePackage.ENTITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_INSTANCE__METADATA = BasePackage.ENTITY__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Product Variant Id</b></em>' attribute.
@@ -213,7 +240,7 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_INSTANCE__PRODUCT_VARIANT_ID = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
+	int PRODUCT_INSTANCE__PRODUCT_VARIANT_ID = BasePackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Order Id</b></em>' attribute.
@@ -222,7 +249,7 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_INSTANCE__ORDER_ID = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 1;
+	int PRODUCT_INSTANCE__ORDER_ID = BasePackage.ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Serial Number</b></em>' attribute.
@@ -231,7 +258,7 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_INSTANCE__SERIAL_NUMBER = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 2;
+	int PRODUCT_INSTANCE__SERIAL_NUMBER = BasePackage.ENTITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Instance</em>' class.
@@ -240,7 +267,7 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_INSTANCE_FEATURE_COUNT = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 3;
+	int PRODUCT_INSTANCE_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Instance</em>' class.
@@ -249,7 +276,7 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_INSTANCE_OPERATION_COUNT = BasePackage.IDENTIFIABLE_ENTITY_OPERATION_COUNT + 0;
+	int PRODUCT_INSTANCE_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.product.impl.ProductInstanceStatusImpl <em>Instance Status</em>}' class.
@@ -260,6 +287,24 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 */
 	int PRODUCT_INSTANCE_STATUS = 3;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_INSTANCE_STATUS__BINDING = BasePackage.ENTITY__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_INSTANCE_STATUS__ID = BasePackage.ENTITY__ID;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -315,6 +360,24 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 */
 	int PRODUCT_INSTANCE_STATUS_CHANGE_EVENT = 4;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_INSTANCE_STATUS_CHANGE_EVENT__BINDING = PRODUCT_INSTANCE_STATUS__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_INSTANCE_STATUS_CHANGE_EVENT__ID = PRODUCT_INSTANCE_STATUS__ID;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -381,6 +444,24 @@ public interface ProductPackage extends EPackage {
 	int PRODUCT_INSTANCE_LOCATION = 5;
 
 	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_INSTANCE_LOCATION__BINDING = BasePackage.ENTITY__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_INSTANCE_LOCATION__ID = BasePackage.ENTITY__ID;
+
+	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -443,6 +524,24 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 */
 	int PRODUCT_INSTANCE_LOCATION_CHANGE_EVENT = 6;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_INSTANCE_LOCATION_CHANGE_EVENT__BINDING = PRODUCT_INSTANCE_LOCATION__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_INSTANCE_LOCATION_CHANGE_EVENT__ID = PRODUCT_INSTANCE_LOCATION__ID;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.

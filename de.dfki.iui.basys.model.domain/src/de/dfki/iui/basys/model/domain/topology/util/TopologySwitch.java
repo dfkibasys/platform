@@ -2,9 +2,8 @@
  */
 package de.dfki.iui.basys.model.domain.topology.util;
 
+import de.dfki.iui.basys.model.base.BObject;
 import de.dfki.iui.basys.model.base.Entity;
-import de.dfki.iui.basys.model.base.IdentifiableEntity;
-
 import de.dfki.iui.basys.model.domain.topology.*;
 
 import org.eclipse.emf.ecore.EObject;
@@ -72,32 +71,32 @@ public class TopologySwitch<T> extends Switch<T> {
 			case TopologyPackage.ENTERPRISE: {
 				Enterprise enterprise = (Enterprise)theEObject;
 				T result = caseEnterprise(enterprise);
-				if (result == null) result = caseIdentifiableEntity(enterprise);
 				if (result == null) result = caseEntity(enterprise);
+				if (result == null) result = caseBObject(enterprise);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case TopologyPackage.SITE: {
 				Site site = (Site)theEObject;
 				T result = caseSite(site);
-				if (result == null) result = caseIdentifiableEntity(site);
 				if (result == null) result = caseEntity(site);
+				if (result == null) result = caseBObject(site);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case TopologyPackage.AREA: {
 				Area area = (Area)theEObject;
 				T result = caseArea(area);
-				if (result == null) result = caseIdentifiableEntity(area);
 				if (result == null) result = caseEntity(area);
+				if (result == null) result = caseBObject(area);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case TopologyPackage.WORK_CENTER: {
 				WorkCenter workCenter = (WorkCenter)theEObject;
 				T result = caseWorkCenter(workCenter);
-				if (result == null) result = caseIdentifiableEntity(workCenter);
 				if (result == null) result = caseEntity(workCenter);
+				if (result == null) result = caseBObject(workCenter);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -105,8 +104,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				ProcessCell processCell = (ProcessCell)theEObject;
 				T result = caseProcessCell(processCell);
 				if (result == null) result = caseWorkCenter(processCell);
-				if (result == null) result = caseIdentifiableEntity(processCell);
 				if (result == null) result = caseEntity(processCell);
+				if (result == null) result = caseBObject(processCell);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -114,8 +113,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				ProductionUnit productionUnit = (ProductionUnit)theEObject;
 				T result = caseProductionUnit(productionUnit);
 				if (result == null) result = caseWorkCenter(productionUnit);
-				if (result == null) result = caseIdentifiableEntity(productionUnit);
 				if (result == null) result = caseEntity(productionUnit);
+				if (result == null) result = caseBObject(productionUnit);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -123,8 +122,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				ProductionLine productionLine = (ProductionLine)theEObject;
 				T result = caseProductionLine(productionLine);
 				if (result == null) result = caseWorkCenter(productionLine);
-				if (result == null) result = caseIdentifiableEntity(productionLine);
 				if (result == null) result = caseEntity(productionLine);
+				if (result == null) result = caseBObject(productionLine);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -132,16 +131,16 @@ public class TopologySwitch<T> extends Switch<T> {
 				StorageZone storageZone = (StorageZone)theEObject;
 				T result = caseStorageZone(storageZone);
 				if (result == null) result = caseWorkCenter(storageZone);
-				if (result == null) result = caseIdentifiableEntity(storageZone);
 				if (result == null) result = caseEntity(storageZone);
+				if (result == null) result = caseBObject(storageZone);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case TopologyPackage.WORK_UNIT: {
 				WorkUnit workUnit = (WorkUnit)theEObject;
 				T result = caseWorkUnit(workUnit);
-				if (result == null) result = caseIdentifiableEntity(workUnit);
 				if (result == null) result = caseEntity(workUnit);
+				if (result == null) result = caseBObject(workUnit);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -149,8 +148,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				Unit unit = (Unit)theEObject;
 				T result = caseUnit(unit);
 				if (result == null) result = caseWorkUnit(unit);
-				if (result == null) result = caseIdentifiableEntity(unit);
 				if (result == null) result = caseEntity(unit);
+				if (result == null) result = caseBObject(unit);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -158,8 +157,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				WorkCell workCell = (WorkCell)theEObject;
 				T result = caseWorkCell(workCell);
 				if (result == null) result = caseWorkUnit(workCell);
-				if (result == null) result = caseIdentifiableEntity(workCell);
 				if (result == null) result = caseEntity(workCell);
+				if (result == null) result = caseBObject(workCell);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -167,32 +166,32 @@ public class TopologySwitch<T> extends Switch<T> {
 				StorageUnit storageUnit = (StorageUnit)theEObject;
 				T result = caseStorageUnit(storageUnit);
 				if (result == null) result = caseWorkUnit(storageUnit);
-				if (result == null) result = caseIdentifiableEntity(storageUnit);
 				if (result == null) result = caseEntity(storageUnit);
+				if (result == null) result = caseBObject(storageUnit);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case TopologyPackage.EQUIPMENT_MODULE: {
 				EquipmentModule equipmentModule = (EquipmentModule)theEObject;
 				T result = caseEquipmentModule(equipmentModule);
-				if (result == null) result = caseIdentifiableEntity(equipmentModule);
 				if (result == null) result = caseEntity(equipmentModule);
+				if (result == null) result = caseBObject(equipmentModule);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case TopologyPackage.CONTROL_MODULE: {
 				ControlModule controlModule = (ControlModule)theEObject;
 				T result = caseControlModule(controlModule);
-				if (result == null) result = caseIdentifiableEntity(controlModule);
 				if (result == null) result = caseEntity(controlModule);
+				if (result == null) result = caseBObject(controlModule);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case TopologyPackage.STATION: {
 				Station station = (Station)theEObject;
 				T result = caseStation(station);
-				if (result == null) result = caseIdentifiableEntity(station);
 				if (result == null) result = caseEntity(station);
+				if (result == null) result = caseBObject(station);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -206,8 +205,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				AssemblyStation assemblyStation = (AssemblyStation)theEObject;
 				T result = caseAssemblyStation(assemblyStation);
 				if (result == null) result = caseStation(assemblyStation);
-				if (result == null) result = caseIdentifiableEntity(assemblyStation);
 				if (result == null) result = caseEntity(assemblyStation);
+				if (result == null) result = caseBObject(assemblyStation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -215,8 +214,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				BufferStation bufferStation = (BufferStation)theEObject;
 				T result = caseBufferStation(bufferStation);
 				if (result == null) result = caseStation(bufferStation);
-				if (result == null) result = caseIdentifiableEntity(bufferStation);
 				if (result == null) result = caseEntity(bufferStation);
+				if (result == null) result = caseBObject(bufferStation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -224,8 +223,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				ProcessUnit processUnit = (ProcessUnit)theEObject;
 				T result = caseProcessUnit(processUnit);
 				if (result == null) result = caseWorkUnit(processUnit);
-				if (result == null) result = caseIdentifiableEntity(processUnit);
 				if (result == null) result = caseEntity(processUnit);
+				if (result == null) result = caseBObject(processUnit);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -233,8 +232,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				DiscreteManufacturingEquipmentModule discreteManufacturingEquipmentModule = (DiscreteManufacturingEquipmentModule)theEObject;
 				T result = caseDiscreteManufacturingEquipmentModule(discreteManufacturingEquipmentModule);
 				if (result == null) result = caseEquipmentModule(discreteManufacturingEquipmentModule);
-				if (result == null) result = caseIdentifiableEntity(discreteManufacturingEquipmentModule);
 				if (result == null) result = caseEntity(discreteManufacturingEquipmentModule);
+				if (result == null) result = caseBObject(discreteManufacturingEquipmentModule);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -243,8 +242,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				T result = caseTool(tool);
 				if (result == null) result = caseDiscreteManufacturingEquipmentModule(tool);
 				if (result == null) result = caseEquipmentModule(tool);
-				if (result == null) result = caseIdentifiableEntity(tool);
 				if (result == null) result = caseEntity(tool);
+				if (result == null) result = caseBObject(tool);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -254,8 +253,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				if (result == null) result = caseTool(stationaryTool);
 				if (result == null) result = caseDiscreteManufacturingEquipmentModule(stationaryTool);
 				if (result == null) result = caseEquipmentModule(stationaryTool);
-				if (result == null) result = caseIdentifiableEntity(stationaryTool);
 				if (result == null) result = caseEntity(stationaryTool);
+				if (result == null) result = caseBObject(stationaryTool);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -265,8 +264,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				if (result == null) result = caseTool(movableTool);
 				if (result == null) result = caseDiscreteManufacturingEquipmentModule(movableTool);
 				if (result == null) result = caseEquipmentModule(movableTool);
-				if (result == null) result = caseIdentifiableEntity(movableTool);
 				if (result == null) result = caseEntity(movableTool);
+				if (result == null) result = caseBObject(movableTool);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -275,8 +274,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				T result = caseTransport(transport);
 				if (result == null) result = caseDiscreteManufacturingEquipmentModule(transport);
 				if (result == null) result = caseEquipmentModule(transport);
-				if (result == null) result = caseIdentifiableEntity(transport);
 				if (result == null) result = caseEntity(transport);
+				if (result == null) result = caseBObject(transport);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -285,8 +284,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				T result = caseStorage(storage);
 				if (result == null) result = caseDiscreteManufacturingEquipmentModule(storage);
 				if (result == null) result = caseEquipmentModule(storage);
-				if (result == null) result = caseIdentifiableEntity(storage);
 				if (result == null) result = caseEntity(storage);
+				if (result == null) result = caseBObject(storage);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -295,8 +294,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				T result = caseFixture(fixture);
 				if (result == null) result = caseDiscreteManufacturingEquipmentModule(fixture);
 				if (result == null) result = caseEquipmentModule(fixture);
-				if (result == null) result = caseIdentifiableEntity(fixture);
 				if (result == null) result = caseEntity(fixture);
+				if (result == null) result = caseBObject(fixture);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -305,8 +304,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				T result = caseGate(gate);
 				if (result == null) result = caseDiscreteManufacturingEquipmentModule(gate);
 				if (result == null) result = caseEquipmentModule(gate);
-				if (result == null) result = caseIdentifiableEntity(gate);
 				if (result == null) result = caseEntity(gate);
+				if (result == null) result = caseBObject(gate);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -315,8 +314,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				T result = caseRobot(robot);
 				if (result == null) result = caseDiscreteManufacturingEquipmentModule(robot);
 				if (result == null) result = caseEquipmentModule(robot);
-				if (result == null) result = caseIdentifiableEntity(robot);
 				if (result == null) result = caseEntity(robot);
+				if (result == null) result = caseBObject(robot);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -325,8 +324,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				T result = caseCarrier(carrier);
 				if (result == null) result = caseDiscreteManufacturingEquipmentModule(carrier);
 				if (result == null) result = caseEquipmentModule(carrier);
-				if (result == null) result = caseIdentifiableEntity(carrier);
 				if (result == null) result = caseEntity(carrier);
+				if (result == null) result = caseBObject(carrier);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -335,8 +334,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				T result = caseMachine(machine);
 				if (result == null) result = caseDiscreteManufacturingEquipmentModule(machine);
 				if (result == null) result = caseEquipmentModule(machine);
-				if (result == null) result = caseIdentifiableEntity(machine);
 				if (result == null) result = caseEntity(machine);
+				if (result == null) result = caseBObject(machine);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -345,8 +344,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				T result = caseStaticObject(staticObject);
 				if (result == null) result = caseDiscreteManufacturingEquipmentModule(staticObject);
 				if (result == null) result = caseEquipmentModule(staticObject);
-				if (result == null) result = caseIdentifiableEntity(staticObject);
 				if (result == null) result = caseEntity(staticObject);
+				if (result == null) result = caseBObject(staticObject);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -357,8 +356,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				if (result == null) result = caseTransport(turnable);
 				if (result == null) result = caseDiscreteManufacturingEquipmentModule(turnable);
 				if (result == null) result = caseEquipmentModule(turnable);
-				if (result == null) result = caseIdentifiableEntity(turnable);
 				if (result == null) result = caseEntity(turnable);
+				if (result == null) result = caseBObject(turnable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -369,8 +368,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				if (result == null) result = caseTransport(conveyor);
 				if (result == null) result = caseDiscreteManufacturingEquipmentModule(conveyor);
 				if (result == null) result = caseEquipmentModule(conveyor);
-				if (result == null) result = caseIdentifiableEntity(conveyor);
 				if (result == null) result = caseEntity(conveyor);
+				if (result == null) result = caseBObject(conveyor);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -381,8 +380,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				if (result == null) result = caseTransport(liftingTable);
 				if (result == null) result = caseDiscreteManufacturingEquipmentModule(liftingTable);
 				if (result == null) result = caseEquipmentModule(liftingTable);
-				if (result == null) result = caseIdentifiableEntity(liftingTable);
 				if (result == null) result = caseEntity(liftingTable);
+				if (result == null) result = caseBObject(liftingTable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -393,8 +392,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				if (result == null) result = caseTransport(avg);
 				if (result == null) result = caseDiscreteManufacturingEquipmentModule(avg);
 				if (result == null) result = caseEquipmentModule(avg);
-				if (result == null) result = caseIdentifiableEntity(avg);
 				if (result == null) result = caseEntity(avg);
+				if (result == null) result = caseBObject(avg);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -404,8 +403,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				if (result == null) result = caseTransport(transposer);
 				if (result == null) result = caseDiscreteManufacturingEquipmentModule(transposer);
 				if (result == null) result = caseEquipmentModule(transposer);
-				if (result == null) result = caseIdentifiableEntity(transposer);
 				if (result == null) result = caseEntity(transposer);
+				if (result == null) result = caseBObject(transposer);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -415,8 +414,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				if (result == null) result = caseTransport(carrierHandlingSystem);
 				if (result == null) result = caseDiscreteManufacturingEquipmentModule(carrierHandlingSystem);
 				if (result == null) result = caseEquipmentModule(carrierHandlingSystem);
-				if (result == null) result = caseIdentifiableEntity(carrierHandlingSystem);
 				if (result == null) result = caseEntity(carrierHandlingSystem);
+				if (result == null) result = caseBObject(carrierHandlingSystem);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -427,8 +426,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				if (result == null) result = caseTransport(lift);
 				if (result == null) result = caseDiscreteManufacturingEquipmentModule(lift);
 				if (result == null) result = caseEquipmentModule(lift);
-				if (result == null) result = caseIdentifiableEntity(lift);
 				if (result == null) result = caseEntity(lift);
+				if (result == null) result = caseBObject(lift);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -438,8 +437,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				if (result == null) result = caseTransport(verticalTransport);
 				if (result == null) result = caseDiscreteManufacturingEquipmentModule(verticalTransport);
 				if (result == null) result = caseEquipmentModule(verticalTransport);
-				if (result == null) result = caseIdentifiableEntity(verticalTransport);
 				if (result == null) result = caseEntity(verticalTransport);
+				if (result == null) result = caseBObject(verticalTransport);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -449,8 +448,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				if (result == null) result = caseTransport(horizontalTransport);
 				if (result == null) result = caseDiscreteManufacturingEquipmentModule(horizontalTransport);
 				if (result == null) result = caseEquipmentModule(horizontalTransport);
-				if (result == null) result = caseIdentifiableEntity(horizontalTransport);
 				if (result == null) result = caseEntity(horizontalTransport);
+				if (result == null) result = caseBObject(horizontalTransport);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -461,8 +460,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				if (result == null) result = caseTransport(rollerbed);
 				if (result == null) result = caseDiscreteManufacturingEquipmentModule(rollerbed);
 				if (result == null) result = caseEquipmentModule(rollerbed);
-				if (result == null) result = caseIdentifiableEntity(rollerbed);
 				if (result == null) result = caseEntity(rollerbed);
+				if (result == null) result = caseBObject(rollerbed);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -472,8 +471,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				if (result == null) result = caseStorage(loader);
 				if (result == null) result = caseDiscreteManufacturingEquipmentModule(loader);
 				if (result == null) result = caseEquipmentModule(loader);
-				if (result == null) result = caseIdentifiableEntity(loader);
 				if (result == null) result = caseEntity(loader);
+				if (result == null) result = caseBObject(loader);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -483,8 +482,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				if (result == null) result = caseStorage(unloader);
 				if (result == null) result = caseDiscreteManufacturingEquipmentModule(unloader);
 				if (result == null) result = caseEquipmentModule(unloader);
-				if (result == null) result = caseIdentifiableEntity(unloader);
 				if (result == null) result = caseEntity(unloader);
+				if (result == null) result = caseBObject(unloader);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -494,8 +493,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				if (result == null) result = caseStorage(bodyStore);
 				if (result == null) result = caseDiscreteManufacturingEquipmentModule(bodyStore);
 				if (result == null) result = caseEquipmentModule(bodyStore);
-				if (result == null) result = caseIdentifiableEntity(bodyStore);
 				if (result == null) result = caseEntity(bodyStore);
+				if (result == null) result = caseBObject(bodyStore);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -505,8 +504,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				if (result == null) result = caseFixture(clamp);
 				if (result == null) result = caseDiscreteManufacturingEquipmentModule(clamp);
 				if (result == null) result = caseEquipmentModule(clamp);
-				if (result == null) result = caseIdentifiableEntity(clamp);
 				if (result == null) result = caseEntity(clamp);
+				if (result == null) result = caseBObject(clamp);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -518,8 +517,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				if (result == null) result = caseTransport(beltConveyor);
 				if (result == null) result = caseDiscreteManufacturingEquipmentModule(beltConveyor);
 				if (result == null) result = caseEquipmentModule(beltConveyor);
-				if (result == null) result = caseIdentifiableEntity(beltConveyor);
 				if (result == null) result = caseEntity(beltConveyor);
+				if (result == null) result = caseBObject(beltConveyor);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -531,8 +530,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				if (result == null) result = caseTransport(rollConveyor);
 				if (result == null) result = caseDiscreteManufacturingEquipmentModule(rollConveyor);
 				if (result == null) result = caseEquipmentModule(rollConveyor);
-				if (result == null) result = caseIdentifiableEntity(rollConveyor);
 				if (result == null) result = caseEntity(rollConveyor);
+				if (result == null) result = caseBObject(rollConveyor);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -544,8 +543,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				if (result == null) result = caseTransport(chainConveyor);
 				if (result == null) result = caseDiscreteManufacturingEquipmentModule(chainConveyor);
 				if (result == null) result = caseEquipmentModule(chainConveyor);
-				if (result == null) result = caseIdentifiableEntity(chainConveyor);
 				if (result == null) result = caseEntity(chainConveyor);
+				if (result == null) result = caseBObject(chainConveyor);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -557,8 +556,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				if (result == null) result = caseTransport(palletConveyor);
 				if (result == null) result = caseDiscreteManufacturingEquipmentModule(palletConveyor);
 				if (result == null) result = caseEquipmentModule(palletConveyor);
-				if (result == null) result = caseIdentifiableEntity(palletConveyor);
 				if (result == null) result = caseEntity(palletConveyor);
+				if (result == null) result = caseBObject(palletConveyor);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -570,8 +569,8 @@ public class TopologySwitch<T> extends Switch<T> {
 				if (result == null) result = caseTransport(overheadConveyor);
 				if (result == null) result = caseDiscreteManufacturingEquipmentModule(overheadConveyor);
 				if (result == null) result = caseEquipmentModule(overheadConveyor);
-				if (result == null) result = caseIdentifiableEntity(overheadConveyor);
 				if (result == null) result = caseEntity(overheadConveyor);
+				if (result == null) result = caseBObject(overheadConveyor);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1330,6 +1329,21 @@ public class TopologySwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>BObject</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>BObject</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBObject(BObject object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Entity</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1341,21 +1355,6 @@ public class TopologySwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseEntity(Entity object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Identifiable Entity</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Identifiable Entity</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseIdentifiableEntity(IdentifiableEntity object) {
 		return null;
 	}
 

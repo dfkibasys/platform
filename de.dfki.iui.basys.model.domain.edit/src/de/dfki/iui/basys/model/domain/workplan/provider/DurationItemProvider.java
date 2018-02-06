@@ -166,7 +166,7 @@ public class DurationItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Duration)object).getWorkstepInstanceId();
+		String label = ((Duration)object).getId();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Duration_type") :
 			getString("_UI_Duration_type") + " " + label;

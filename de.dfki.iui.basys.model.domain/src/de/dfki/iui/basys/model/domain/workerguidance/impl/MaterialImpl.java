@@ -2,8 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.workerguidance.impl;
 
-import de.dfki.iui.basys.model.base.impl.IdentifiableEntityImpl;
-
+import de.dfki.iui.basys.model.base.impl.EntityImpl;
 import de.dfki.iui.basys.model.domain.workerguidance.Material;
 import de.dfki.iui.basys.model.domain.workerguidance.WorkerguidancePackage;
 
@@ -26,7 +25,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class MaterialImpl extends IdentifiableEntityImpl implements Material {
+public class MaterialImpl extends EntityImpl implements Material {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->

@@ -2,9 +2,9 @@
  */
 package de.dfki.iui.basys.model.service.impl;
 
+import de.dfki.iui.basys.model.base.BObject;
 import de.dfki.iui.basys.model.base.BasePackage;
 import de.dfki.iui.basys.model.base.Entity;
-import de.dfki.iui.basys.model.base.IdentifiableEntity;
 import de.dfki.iui.basys.model.base.Metadata;
 
 import de.dfki.iui.basys.model.service.Operation;
@@ -41,8 +41,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionImpl#getMetadata <em>Metadata</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionImpl#getBinding <em>Binding</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionImpl#getId <em>Id</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionImpl#getMetadata <em>Metadata</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionImpl#getVersion <em>Version</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionImpl#getServiceType <em>Service Type</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionImpl#getProperties <em>Properties</em>}</li>
@@ -56,14 +57,24 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class ServiceDescriptionImpl extends ENamedElementImpl implements ServiceDescription {
 	/**
-	 * The cached value of the '{@link #getMetadata() <em>Metadata</em>}' containment reference.
+	 * The default value of the '{@link #getBinding() <em>Binding</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getMetadata()
+	 * @see #getBinding()
 	 * @generated
 	 * @ordered
 	 */
-	protected Metadata metadata;
+	protected static final String BINDING_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getBinding() <em>Binding</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBinding()
+	 * @generated
+	 * @ordered
+	 */
+	protected String binding = BINDING_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
@@ -84,6 +95,16 @@ public class ServiceDescriptionImpl extends ENamedElementImpl implements Service
 	 * @ordered
 	 */
 	protected String id = ID_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getMetadata() <em>Metadata</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMetadata()
+	 * @generated
+	 * @ordered
+	 */
+	protected Metadata metadata;
 
 	/**
 	 * The default value of the '{@link #getVersion() <em>Version</em>}' attribute.
@@ -193,6 +214,27 @@ public class ServiceDescriptionImpl extends ENamedElementImpl implements Service
 	@Override
 	protected EClass eStaticClass() {
 		return ServicePackage.Literals.SERVICE_DESCRIPTION;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getBinding() {
+		return binding;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBinding(String newBinding) {
+		String oldBinding = binding;
+		binding = newBinding;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ServicePackage.SERVICE_DESCRIPTION__BINDING, oldBinding, binding));
 	}
 
 	/**
@@ -391,10 +433,12 @@ public class ServiceDescriptionImpl extends ENamedElementImpl implements Service
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ServicePackage.SERVICE_DESCRIPTION__METADATA:
-				return getMetadata();
+			case ServicePackage.SERVICE_DESCRIPTION__BINDING:
+				return getBinding();
 			case ServicePackage.SERVICE_DESCRIPTION__ID:
 				return getId();
+			case ServicePackage.SERVICE_DESCRIPTION__METADATA:
+				return getMetadata();
 			case ServicePackage.SERVICE_DESCRIPTION__VERSION:
 				return getVersion();
 			case ServicePackage.SERVICE_DESCRIPTION__SERVICE_TYPE:
@@ -422,11 +466,14 @@ public class ServiceDescriptionImpl extends ENamedElementImpl implements Service
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ServicePackage.SERVICE_DESCRIPTION__METADATA:
-				setMetadata((Metadata)newValue);
+			case ServicePackage.SERVICE_DESCRIPTION__BINDING:
+				setBinding((String)newValue);
 				return;
 			case ServicePackage.SERVICE_DESCRIPTION__ID:
 				setId((String)newValue);
+				return;
+			case ServicePackage.SERVICE_DESCRIPTION__METADATA:
+				setMetadata((Metadata)newValue);
 				return;
 			case ServicePackage.SERVICE_DESCRIPTION__VERSION:
 				setVersion((String)newValue);
@@ -466,11 +513,14 @@ public class ServiceDescriptionImpl extends ENamedElementImpl implements Service
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ServicePackage.SERVICE_DESCRIPTION__METADATA:
-				setMetadata((Metadata)null);
+			case ServicePackage.SERVICE_DESCRIPTION__BINDING:
+				setBinding(BINDING_EDEFAULT);
 				return;
 			case ServicePackage.SERVICE_DESCRIPTION__ID:
 				setId(ID_EDEFAULT);
+				return;
+			case ServicePackage.SERVICE_DESCRIPTION__METADATA:
+				setMetadata((Metadata)null);
 				return;
 			case ServicePackage.SERVICE_DESCRIPTION__VERSION:
 				setVersion(VERSION_EDEFAULT);
@@ -505,10 +555,12 @@ public class ServiceDescriptionImpl extends ENamedElementImpl implements Service
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ServicePackage.SERVICE_DESCRIPTION__METADATA:
-				return metadata != null;
+			case ServicePackage.SERVICE_DESCRIPTION__BINDING:
+				return BINDING_EDEFAULT == null ? binding != null : !BINDING_EDEFAULT.equals(binding);
 			case ServicePackage.SERVICE_DESCRIPTION__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+			case ServicePackage.SERVICE_DESCRIPTION__METADATA:
+				return metadata != null;
 			case ServicePackage.SERVICE_DESCRIPTION__VERSION:
 				return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
 			case ServicePackage.SERVICE_DESCRIPTION__SERVICE_TYPE:
@@ -534,15 +586,16 @@ public class ServiceDescriptionImpl extends ENamedElementImpl implements Service
 	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == Entity.class) {
+		if (baseClass == BObject.class) {
 			switch (derivedFeatureID) {
-				case ServicePackage.SERVICE_DESCRIPTION__METADATA: return BasePackage.ENTITY__METADATA;
+				case ServicePackage.SERVICE_DESCRIPTION__BINDING: return BasePackage.BOBJECT__BINDING;
 				default: return -1;
 			}
 		}
-		if (baseClass == IdentifiableEntity.class) {
+		if (baseClass == Entity.class) {
 			switch (derivedFeatureID) {
-				case ServicePackage.SERVICE_DESCRIPTION__ID: return BasePackage.IDENTIFIABLE_ENTITY__ID;
+				case ServicePackage.SERVICE_DESCRIPTION__ID: return BasePackage.ENTITY__ID;
+				case ServicePackage.SERVICE_DESCRIPTION__METADATA: return BasePackage.ENTITY__METADATA;
 				default: return -1;
 			}
 		}
@@ -556,15 +609,16 @@ public class ServiceDescriptionImpl extends ENamedElementImpl implements Service
 	 */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == Entity.class) {
+		if (baseClass == BObject.class) {
 			switch (baseFeatureID) {
-				case BasePackage.ENTITY__METADATA: return ServicePackage.SERVICE_DESCRIPTION__METADATA;
+				case BasePackage.BOBJECT__BINDING: return ServicePackage.SERVICE_DESCRIPTION__BINDING;
 				default: return -1;
 			}
 		}
-		if (baseClass == IdentifiableEntity.class) {
+		if (baseClass == Entity.class) {
 			switch (baseFeatureID) {
-				case BasePackage.IDENTIFIABLE_ENTITY__ID: return ServicePackage.SERVICE_DESCRIPTION__ID;
+				case BasePackage.ENTITY__ID: return ServicePackage.SERVICE_DESCRIPTION__ID;
+				case BasePackage.ENTITY__METADATA: return ServicePackage.SERVICE_DESCRIPTION__METADATA;
 				default: return -1;
 			}
 		}
@@ -581,7 +635,9 @@ public class ServiceDescriptionImpl extends ENamedElementImpl implements Service
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (id: ");
+		result.append(" (binding: ");
+		result.append(binding);
+		result.append(", id: ");
 		result.append(id);
 		result.append(", version: ");
 		result.append(version);

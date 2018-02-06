@@ -3,8 +3,7 @@
 package de.dfki.iui.basys.model.domain.order.provider;
 
 
-import de.dfki.iui.basys.model.base.provider.IdentifiableEntityItemProvider;
-
+import de.dfki.iui.basys.model.base.provider.EntityItemProvider;
 import de.dfki.iui.basys.model.domain.order.Order;
 import de.dfki.iui.basys.model.domain.order.OrderFactory;
 import de.dfki.iui.basys.model.domain.order.OrderPackage;
@@ -29,7 +28,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class OrderItemProvider extends IdentifiableEntityItemProvider {
+public class OrderItemProvider extends EntityItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

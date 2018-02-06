@@ -95,6 +95,259 @@ public class CapabilityItemProviderAdapterFactory extends CapabilityAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.ManufacturingCapability} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ManufacturingCapabilityItemProvider manufacturingCapabilityItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.ManufacturingCapability}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createManufacturingCapabilityAdapter() {
+		if (manufacturingCapabilityItemProvider == null) {
+			manufacturingCapabilityItemProvider = new ManufacturingCapabilityItemProvider(this);
+		}
+
+		return manufacturingCapabilityItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.Fügen} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FügenItemProvider fügenItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.Fügen}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFügenAdapter() {
+		if (fügenItemProvider == null) {
+			fügenItemProvider = new FügenItemProvider(this);
+		}
+
+		return fügenItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.Pressen} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PressenItemProvider pressenItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.Pressen}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPressenAdapter() {
+		if (pressenItemProvider == null) {
+			pressenItemProvider = new PressenItemProvider(this);
+		}
+
+		return pressenItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.QoSCapability} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected QoSCapabilityItemProvider qoSCapabilityItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.QoSCapability}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createQoSCapabilityAdapter() {
+		if (qoSCapabilityItemProvider == null) {
+			qoSCapabilityItemProvider = new QoSCapabilityItemProvider(this);
+		}
+
+		return qoSCapabilityItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.Urformen} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected UrformenItemProvider urformenItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.Urformen}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createUrformenAdapter() {
+		if (urformenItemProvider == null) {
+			urformenItemProvider = new UrformenItemProvider(this);
+		}
+
+		return urformenItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.Umformen} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected UmformenItemProvider umformenItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.Umformen}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createUmformenAdapter() {
+		if (umformenItemProvider == null) {
+			umformenItemProvider = new UmformenItemProvider(this);
+		}
+
+		return umformenItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.Trennen} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TrennenItemProvider trennenItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.Trennen}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTrennenAdapter() {
+		if (trennenItemProvider == null) {
+			trennenItemProvider = new TrennenItemProvider(this);
+		}
+
+		return trennenItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.Beschichten} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected BeschichtenItemProvider beschichtenItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.Beschichten}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createBeschichtenAdapter() {
+		if (beschichtenItemProvider == null) {
+			beschichtenItemProvider = new BeschichtenItemProvider(this);
+		}
+
+		return beschichtenItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.Stoffeigenschaften} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected StoffeigenschaftenItemProvider stoffeigenschaftenItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.Stoffeigenschaften}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createStoffeigenschaftenAdapter() {
+		if (stoffeigenschaftenItemProvider == null) {
+			stoffeigenschaftenItemProvider = new StoffeigenschaftenItemProvider(this);
+		}
+
+		return stoffeigenschaftenItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.AnEinpressen} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AnEinpressenItemProvider anEinpressenItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.AnEinpressen}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAnEinpressenAdapter() {
+		if (anEinpressenItemProvider == null) {
+			anEinpressenItemProvider = new AnEinpressenItemProvider(this);
+		}
+
+		return anEinpressenItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.Schrauben} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SchraubenItemProvider schraubenItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.Schrauben}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSchraubenAdapter() {
+		if (schraubenItemProvider == null) {
+			schraubenItemProvider = new SchraubenItemProvider(this);
+		}
+
+		return schraubenItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -194,6 +447,17 @@ public class CapabilityItemProviderAdapterFactory extends CapabilityAdapterFacto
 	 */
 	public void dispose() {
 		if (capabilityItemProvider != null) capabilityItemProvider.dispose();
+		if (manufacturingCapabilityItemProvider != null) manufacturingCapabilityItemProvider.dispose();
+		if (fügenItemProvider != null) fügenItemProvider.dispose();
+		if (pressenItemProvider != null) pressenItemProvider.dispose();
+		if (qoSCapabilityItemProvider != null) qoSCapabilityItemProvider.dispose();
+		if (urformenItemProvider != null) urformenItemProvider.dispose();
+		if (umformenItemProvider != null) umformenItemProvider.dispose();
+		if (trennenItemProvider != null) trennenItemProvider.dispose();
+		if (beschichtenItemProvider != null) beschichtenItemProvider.dispose();
+		if (stoffeigenschaftenItemProvider != null) stoffeigenschaftenItemProvider.dispose();
+		if (anEinpressenItemProvider != null) anEinpressenItemProvider.dispose();
+		if (schraubenItemProvider != null) schraubenItemProvider.dispose();
 	}
 
 }

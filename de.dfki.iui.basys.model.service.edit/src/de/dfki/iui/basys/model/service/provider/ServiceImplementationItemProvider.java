@@ -3,8 +3,7 @@
 package de.dfki.iui.basys.model.service.provider;
 
 
-import de.dfki.iui.basys.model.base.provider.IdentifiableEntityItemProvider;
-
+import de.dfki.iui.basys.model.base.provider.EntityItemProvider;
 import de.dfki.iui.basys.model.service.ServiceImplementation;
 import de.dfki.iui.basys.model.service.ServicePackage;
 
@@ -27,7 +26,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ServiceImplementationItemProvider extends IdentifiableEntityItemProvider {
+public class ServiceImplementationItemProvider extends EntityItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

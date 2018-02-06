@@ -2,9 +2,8 @@
  */
 package de.dfki.iui.basys.model.domain.workplan.util;
 
+import de.dfki.iui.basys.model.base.BObject;
 import de.dfki.iui.basys.model.base.Entity;
-import de.dfki.iui.basys.model.base.IdentifiableEntity;
-
 import de.dfki.iui.basys.model.domain.workplan.*;
 
 import org.eclipse.emf.ecore.EObject;
@@ -72,16 +71,16 @@ public class WorkplanSwitch<T> extends Switch<T> {
 			case WorkplanPackage.WORKPLAN_INSTANCE: {
 				WorkplanInstance workplanInstance = (WorkplanInstance)theEObject;
 				T result = caseWorkplanInstance(workplanInstance);
-				if (result == null) result = caseIdentifiableEntity(workplanInstance);
 				if (result == null) result = caseEntity(workplanInstance);
+				if (result == null) result = caseBObject(workplanInstance);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case WorkplanPackage.WORKSTEP_INSTANCE: {
 				WorkstepInstance workstepInstance = (WorkstepInstance)theEObject;
 				T result = caseWorkstepInstance(workstepInstance);
-				if (result == null) result = caseIdentifiableEntity(workstepInstance);
 				if (result == null) result = caseEntity(workstepInstance);
+				if (result == null) result = caseBObject(workstepInstance);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -89,6 +88,7 @@ public class WorkplanSwitch<T> extends Switch<T> {
 				WorkstepInstanceStatus workstepInstanceStatus = (WorkstepInstanceStatus)theEObject;
 				T result = caseWorkstepInstanceStatus(workstepInstanceStatus);
 				if (result == null) result = caseEntity(workstepInstanceStatus);
+				if (result == null) result = caseBObject(workstepInstanceStatus);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -97,6 +97,7 @@ public class WorkplanSwitch<T> extends Switch<T> {
 				T result = caseWorkstepInstanceStatusChangeEvent(workstepInstanceStatusChangeEvent);
 				if (result == null) result = caseWorkstepInstanceStatus(workstepInstanceStatusChangeEvent);
 				if (result == null) result = caseEntity(workstepInstanceStatusChangeEvent);
+				if (result == null) result = caseBObject(workstepInstanceStatusChangeEvent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -104,6 +105,7 @@ public class WorkplanSwitch<T> extends Switch<T> {
 				Duration duration = (Duration)theEObject;
 				T result = caseDuration(duration);
 				if (result == null) result = caseEntity(duration);
+				if (result == null) result = caseBObject(duration);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -187,6 +189,21 @@ public class WorkplanSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>BObject</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>BObject</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBObject(BObject object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Entity</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -198,21 +215,6 @@ public class WorkplanSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseEntity(Entity object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Identifiable Entity</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Identifiable Entity</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseIdentifiableEntity(IdentifiableEntity object) {
 		return null;
 	}
 

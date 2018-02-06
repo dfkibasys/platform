@@ -71,13 +71,13 @@ public interface OrderPackage extends EPackage {
 	int ORDER = 0;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ORDER__METADATA = BasePackage.IDENTIFIABLE_ENTITY__METADATA;
+	int ORDER__BINDING = BasePackage.ENTITY__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -86,7 +86,16 @@ public interface OrderPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ORDER__ID = BasePackage.IDENTIFIABLE_ENTITY__ID;
+	int ORDER__ID = BasePackage.ENTITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORDER__METADATA = BasePackage.ENTITY__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Product Variant Id</b></em>' attribute.
@@ -95,7 +104,7 @@ public interface OrderPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ORDER__PRODUCT_VARIANT_ID = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
+	int ORDER__PRODUCT_VARIANT_ID = BasePackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Start Date</b></em>' attribute.
@@ -104,7 +113,7 @@ public interface OrderPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ORDER__START_DATE = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 1;
+	int ORDER__START_DATE = BasePackage.ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>End Date</b></em>' attribute.
@@ -113,7 +122,7 @@ public interface OrderPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ORDER__END_DATE = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 2;
+	int ORDER__END_DATE = BasePackage.ENTITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Pieces</b></em>' attribute.
@@ -122,7 +131,7 @@ public interface OrderPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ORDER__PIECES = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 3;
+	int ORDER__PIECES = BasePackage.ENTITY_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Priority</b></em>' attribute.
@@ -131,7 +140,7 @@ public interface OrderPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ORDER__PRIORITY = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 4;
+	int ORDER__PRIORITY = BasePackage.ENTITY_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Status</b></em>' containment reference.
@@ -140,7 +149,7 @@ public interface OrderPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ORDER__STATUS = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 5;
+	int ORDER__STATUS = BasePackage.ENTITY_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>Order</em>' class.
@@ -149,7 +158,7 @@ public interface OrderPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ORDER_FEATURE_COUNT = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 6;
+	int ORDER_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of operations of the '<em>Order</em>' class.
@@ -158,7 +167,7 @@ public interface OrderPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ORDER_OPERATION_COUNT = BasePackage.IDENTIFIABLE_ENTITY_OPERATION_COUNT + 0;
+	int ORDER_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.order.impl.OrderStatusImpl <em>Status</em>}' class.
@@ -169,6 +178,24 @@ public interface OrderPackage extends EPackage {
 	 * @generated
 	 */
 	int ORDER_STATUS = 1;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORDER_STATUS__BINDING = BasePackage.ENTITY__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORDER_STATUS__ID = BasePackage.ENTITY__ID;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -233,6 +260,24 @@ public interface OrderPackage extends EPackage {
 	 * @generated
 	 */
 	int ORDER_STATUS_CHANGE_EVENT = 2;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORDER_STATUS_CHANGE_EVENT__BINDING = ORDER_STATUS__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORDER_STATUS_CHANGE_EVENT__ID = ORDER_STATUS__ID;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.

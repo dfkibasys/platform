@@ -2,8 +2,6 @@
  */
 package de.dfki.iui.basys.model.base;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Entity</b></em>'.
@@ -17,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link de.dfki.iui.basys.model.base.Entity#getId <em>Id</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.base.Entity#getMetadata <em>Metadata</em>}</li>
  * </ul>
  *
@@ -24,7 +23,33 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Entity extends EObject {
+public interface Entity extends BObject {
+	/**
+	 * Returns the value of the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Id</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Id</em>' attribute.
+	 * @see #setId(String)
+	 * @see de.dfki.iui.basys.model.base.BasePackage#getEntity_Id()
+	 * @model id="true" required="true"
+	 * @generated
+	 */
+	String getId();
+
+	/**
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.base.Entity#getId <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Id</em>' attribute.
+	 * @see #getId()
+	 * @generated
+	 */
+	void setId(String value);
+
 	/**
 	 * Returns the value of the '<em><b>Metadata</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

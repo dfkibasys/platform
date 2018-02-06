@@ -32,6 +32,13 @@
 			<artifactId>provision</artifactId>
 			<optional>true</optional>
 		</dependency>
+		
+		<dependency>
+			<groupId>de.dfki.iui.basys.common</groupId>
+			<artifactId>de.dfki.iui.basys.common.emf</artifactId>
+			<version>${project.version}</version>
+			<type>bundle</type>
+		</dependency>
 	</dependencies>
 
 </project>

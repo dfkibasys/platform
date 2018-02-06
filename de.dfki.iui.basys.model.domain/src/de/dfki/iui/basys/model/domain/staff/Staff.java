@@ -2,8 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.staff;
 
-import de.dfki.iui.basys.model.base.IdentifiableEntity;
-
+import de.dfki.iui.basys.model.base.Entity;
 import java.util.Date;
 
 /**
@@ -25,7 +24,7 @@ import java.util.Date;
  * @model
  * @generated
  */
-public interface Staff extends IdentifiableEntity {
+public interface Staff extends Entity {
 	/**
 	 * Returns the value of the '<em><b>Firstname</b></em>' attribute.
 	 * <!-- begin-user-doc -->

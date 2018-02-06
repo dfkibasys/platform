@@ -6,8 +6,6 @@ package de.dfki.iui.basys.model.domain.staff.provider;
 import de.dfki.iui.basys.model.base.provider.EntityItemProvider;
 
 import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
-
-import de.dfki.iui.basys.model.domain.staff.StaffDetectionEnum;
 import de.dfki.iui.basys.model.domain.staff.StaffLocation;
 import de.dfki.iui.basys.model.domain.staff.StaffPackage;
 
@@ -144,8 +142,7 @@ public class StaffLocationItemProvider extends EntityItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		StaffDetectionEnum labelValue = ((StaffLocation)object).getDetectionType();
-		String label = labelValue == null ? null : labelValue.toString();
+		String label = ((StaffLocation)object).getId();
 		return label == null || label.length() == 0 ?
 			getString("_UI_StaffLocation_type") :
 			getString("_UI_StaffLocation_type") + " " + label;

@@ -2,8 +2,7 @@
  */
 package de.dfki.iui.basys.model.service;
 
-import de.dfki.iui.basys.model.base.IdentifiableEntity;
-
+import de.dfki.iui.basys.model.base.Entity;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -24,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface ServiceInstance extends IdentifiableEntity {
+public interface ServiceInstance extends Entity {
 	/**
 	 * Returns the value of the '<em><b>Service Description Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->

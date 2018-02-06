@@ -90,7 +90,7 @@ public class OrderStatusChangeEventItemProvider extends OrderStatusItemProvider 
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((OrderStatusChangeEvent)object).getOrderId();
+		String label = ((OrderStatusChangeEvent)object).getId();
 		return label == null || label.length() == 0 ?
 			getString("_UI_OrderStatusChangeEvent_type") :
 			getString("_UI_OrderStatusChangeEvent_type") + " " + label;

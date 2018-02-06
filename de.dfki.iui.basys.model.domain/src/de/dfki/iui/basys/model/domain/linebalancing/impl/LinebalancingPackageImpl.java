@@ -4,6 +4,8 @@ package de.dfki.iui.basys.model.domain.linebalancing.impl;
 
 import de.dfki.iui.basys.model.base.BasePackage;
 
+import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
+import de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl;
 import de.dfki.iui.basys.model.domain.linebalancing.LBLocations;
 import de.dfki.iui.basys.model.domain.linebalancing.LBProductInstance;
 import de.dfki.iui.basys.model.domain.linebalancing.LBStaff;
@@ -125,6 +127,7 @@ public class LinebalancingPackageImpl extends EPackageImpl implements Linebalanc
 		TopologyPackageImpl theTopologyPackage = (TopologyPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(TopologyPackage.eNS_URI) instanceof TopologyPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(TopologyPackage.eNS_URI) : TopologyPackage.eINSTANCE);
 		WorkerguidancePackageImpl theWorkerguidancePackage = (WorkerguidancePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkerguidancePackage.eNS_URI) instanceof WorkerguidancePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkerguidancePackage.eNS_URI) : WorkerguidancePackage.eINSTANCE);
 		WorkplanPackageImpl theWorkplanPackage = (WorkplanPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkplanPackage.eNS_URI) instanceof WorkplanPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkplanPackage.eNS_URI) : WorkplanPackage.eINSTANCE);
+		CapabilityPackageImpl theCapabilityPackage = (CapabilityPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CapabilityPackage.eNS_URI) instanceof CapabilityPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CapabilityPackage.eNS_URI) : CapabilityPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theLinebalancingPackage.createPackageContents();
@@ -134,6 +137,7 @@ public class LinebalancingPackageImpl extends EPackageImpl implements Linebalanc
 		theTopologyPackage.createPackageContents();
 		theWorkerguidancePackage.createPackageContents();
 		theWorkplanPackage.createPackageContents();
+		theCapabilityPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theLinebalancingPackage.initializePackageContents();
@@ -143,6 +147,7 @@ public class LinebalancingPackageImpl extends EPackageImpl implements Linebalanc
 		theTopologyPackage.initializePackageContents();
 		theWorkerguidancePackage.initializePackageContents();
 		theWorkplanPackage.initializePackageContents();
+		theCapabilityPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theLinebalancingPackage.freeze();
@@ -346,8 +351,8 @@ public class LinebalancingPackageImpl extends EPackageImpl implements Linebalanc
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		lbProductInstanceEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
-		lbStaffEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
+		lbProductInstanceEClass.getESuperTypes().add(theBasePackage.getEntity());
+		lbStaffEClass.getESuperTypes().add(theBasePackage.getEntity());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(lbProductInstanceEClass, LBProductInstance.class, "LBProductInstance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

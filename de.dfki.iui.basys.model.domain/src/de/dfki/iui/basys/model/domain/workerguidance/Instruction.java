@@ -2,8 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.workerguidance;
 
-import de.dfki.iui.basys.model.base.IdentifiableEntity;
-
+import de.dfki.iui.basys.model.base.Entity;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -24,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Instruction extends IdentifiableEntity {
+public interface Instruction extends Entity {
 	/**
 	 * Returns the value of the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->

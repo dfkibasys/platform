@@ -71,13 +71,13 @@ public interface StaffPackage extends EPackage {
 	int STAFF = 0;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STAFF__METADATA = BasePackage.IDENTIFIABLE_ENTITY__METADATA;
+	int STAFF__BINDING = BasePackage.ENTITY__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -86,7 +86,16 @@ public interface StaffPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STAFF__ID = BasePackage.IDENTIFIABLE_ENTITY__ID;
+	int STAFF__ID = BasePackage.ENTITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAFF__METADATA = BasePackage.ENTITY__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Firstname</b></em>' attribute.
@@ -95,7 +104,7 @@ public interface StaffPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STAFF__FIRSTNAME = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
+	int STAFF__FIRSTNAME = BasePackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Lastname</b></em>' attribute.
@@ -104,7 +113,7 @@ public interface StaffPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STAFF__LASTNAME = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 1;
+	int STAFF__LASTNAME = BasePackage.ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Birthdate</b></em>' attribute.
@@ -113,7 +122,7 @@ public interface StaffPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STAFF__BIRTHDATE = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 2;
+	int STAFF__BIRTHDATE = BasePackage.ENTITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Language</b></em>' attribute.
@@ -122,7 +131,7 @@ public interface StaffPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STAFF__LANGUAGE = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 3;
+	int STAFF__LANGUAGE = BasePackage.ENTITY_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Staff</em>' class.
@@ -131,7 +140,7 @@ public interface StaffPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STAFF_FEATURE_COUNT = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 4;
+	int STAFF_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Staff</em>' class.
@@ -140,7 +149,7 @@ public interface StaffPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STAFF_OPERATION_COUNT = BasePackage.IDENTIFIABLE_ENTITY_OPERATION_COUNT + 0;
+	int STAFF_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.staff.impl.StaffLocationImpl <em>Location</em>}' class.
@@ -151,6 +160,24 @@ public interface StaffPackage extends EPackage {
 	 * @generated
 	 */
 	int STAFF_LOCATION = 1;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAFF_LOCATION__BINDING = BasePackage.ENTITY__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAFF_LOCATION__ID = BasePackage.ENTITY__ID;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -215,6 +242,24 @@ public interface StaffPackage extends EPackage {
 	 * @generated
 	 */
 	int STAFF_LOCATION_CHANGE_EVENT = 2;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAFF_LOCATION_CHANGE_EVENT__BINDING = STAFF_LOCATION__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAFF_LOCATION_CHANGE_EVENT__ID = STAFF_LOCATION__ID;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -290,6 +335,24 @@ public interface StaffPackage extends EPackage {
 	int ABILITY = 3;
 
 	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABILITY__BINDING = BasePackage.ENTITY__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABILITY__ID = BasePackage.ENTITY__ID;
+
+	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -343,6 +406,24 @@ public interface StaffPackage extends EPackage {
 	 * @generated
 	 */
 	int WORKSTEP_SKILL = 4;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKSTEP_SKILL__BINDING = BasePackage.ENTITY__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKSTEP_SKILL__ID = BasePackage.ENTITY__ID;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -407,6 +488,24 @@ public interface StaffPackage extends EPackage {
 	 * @generated
 	 */
 	int STAFF_SKILLS = 5;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAFF_SKILLS__BINDING = BasePackage.ENTITY__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAFF_SKILLS__ID = BasePackage.ENTITY__ID;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.

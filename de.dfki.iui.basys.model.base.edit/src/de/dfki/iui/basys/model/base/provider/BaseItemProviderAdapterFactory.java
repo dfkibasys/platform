@@ -72,6 +72,29 @@ public class BaseItemProviderAdapterFactory extends BaseAdapterFactory implement
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.base.BObject} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected BObjectItemProvider bObjectItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.base.BObject}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createBObjectAdapter() {
+		if (bObjectItemProvider == null) {
+			bObjectItemProvider = new BObjectItemProvider(this);
+		}
+
+		return bObjectItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.base.Metadata} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -115,75 +138,6 @@ public class BaseItemProviderAdapterFactory extends BaseAdapterFactory implement
 		}
 
 		return entityItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.base.IdentifiableEntity} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected IdentifiableEntityItemProvider identifiableEntityItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link de.dfki.iui.basys.model.base.IdentifiableEntity}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createIdentifiableEntityAdapter() {
-		if (identifiableEntityItemProvider == null) {
-			identifiableEntityItemProvider = new IdentifiableEntityItemProvider(this);
-		}
-
-		return identifiableEntityItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.base.Event} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EventItemProvider eventItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link de.dfki.iui.basys.model.base.Event}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createEventAdapter() {
-		if (eventItemProvider == null) {
-			eventItemProvider = new EventItemProvider(this);
-		}
-
-		return eventItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.base.Capability} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected CapabilityItemProvider capabilityItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link de.dfki.iui.basys.model.base.Capability}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createCapabilityAdapter() {
-		if (capabilityItemProvider == null) {
-			capabilityItemProvider = new CapabilityItemProvider(this);
-		}
-
-		return capabilityItemProvider;
 	}
 
 	/**
@@ -308,11 +262,9 @@ public class BaseItemProviderAdapterFactory extends BaseAdapterFactory implement
 	 * @generated
 	 */
 	public void dispose() {
+		if (bObjectItemProvider != null) bObjectItemProvider.dispose();
 		if (metadataItemProvider != null) metadataItemProvider.dispose();
 		if (entityItemProvider != null) entityItemProvider.dispose();
-		if (identifiableEntityItemProvider != null) identifiableEntityItemProvider.dispose();
-		if (eventItemProvider != null) eventItemProvider.dispose();
-		if (capabilityItemProvider != null) capabilityItemProvider.dispose();
 		if (keyValuePairItemProvider != null) keyValuePairItemProvider.dispose();
 	}
 

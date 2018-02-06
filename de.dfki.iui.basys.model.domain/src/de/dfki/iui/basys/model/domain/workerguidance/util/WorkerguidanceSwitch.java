@@ -2,9 +2,8 @@
  */
 package de.dfki.iui.basys.model.domain.workerguidance.util;
 
+import de.dfki.iui.basys.model.base.BObject;
 import de.dfki.iui.basys.model.base.Entity;
-import de.dfki.iui.basys.model.base.IdentifiableEntity;
-
 import de.dfki.iui.basys.model.domain.workerguidance.*;
 
 import org.eclipse.emf.ecore.EObject;
@@ -72,24 +71,24 @@ public class WorkerguidanceSwitch<T> extends Switch<T> {
 			case WorkerguidancePackage.INSTRUCTION: {
 				Instruction instruction = (Instruction)theEObject;
 				T result = caseInstruction(instruction);
-				if (result == null) result = caseIdentifiableEntity(instruction);
 				if (result == null) result = caseEntity(instruction);
+				if (result == null) result = caseBObject(instruction);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case WorkerguidancePackage.MATERIAL: {
 				Material material = (Material)theEObject;
 				T result = caseMaterial(material);
-				if (result == null) result = caseIdentifiableEntity(material);
 				if (result == null) result = caseEntity(material);
+				if (result == null) result = caseBObject(material);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case WorkerguidancePackage.MEDIA: {
 				Media media = (Media)theEObject;
 				T result = caseMedia(media);
-				if (result == null) result = caseIdentifiableEntity(media);
 				if (result == null) result = caseEntity(media);
+				if (result == null) result = caseBObject(media);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -97,8 +96,8 @@ public class WorkerguidanceSwitch<T> extends Switch<T> {
 				Audio audio = (Audio)theEObject;
 				T result = caseAudio(audio);
 				if (result == null) result = caseMedia(audio);
-				if (result == null) result = caseIdentifiableEntity(audio);
 				if (result == null) result = caseEntity(audio);
+				if (result == null) result = caseBObject(audio);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -106,8 +105,8 @@ public class WorkerguidanceSwitch<T> extends Switch<T> {
 				Video video = (Video)theEObject;
 				T result = caseVideo(video);
 				if (result == null) result = caseMedia(video);
-				if (result == null) result = caseIdentifiableEntity(video);
 				if (result == null) result = caseEntity(video);
+				if (result == null) result = caseBObject(video);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -115,8 +114,8 @@ public class WorkerguidanceSwitch<T> extends Switch<T> {
 				Image image = (Image)theEObject;
 				T result = caseImage(image);
 				if (result == null) result = caseMedia(image);
-				if (result == null) result = caseIdentifiableEntity(image);
 				if (result == null) result = caseEntity(image);
+				if (result == null) result = caseBObject(image);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -215,6 +214,21 @@ public class WorkerguidanceSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>BObject</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>BObject</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBObject(BObject object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Entity</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -226,21 +240,6 @@ public class WorkerguidanceSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseEntity(Entity object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Identifiable Entity</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Identifiable Entity</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseIdentifiableEntity(IdentifiableEntity object) {
 		return null;
 	}
 

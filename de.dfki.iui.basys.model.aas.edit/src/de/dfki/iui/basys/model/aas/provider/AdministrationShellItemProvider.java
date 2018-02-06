@@ -7,8 +7,7 @@ import de.dfki.iui.basys.model.aas.AasFactory;
 import de.dfki.iui.basys.model.aas.AasPackage;
 import de.dfki.iui.basys.model.aas.AdministrationShell;
 
-import de.dfki.iui.basys.model.base.provider.IdentifiableEntityItemProvider;
-
+import de.dfki.iui.basys.model.base.provider.EntityItemProvider;
 import java.util.Collection;
 import java.util.List;
 
@@ -30,7 +29,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class AdministrationShellItemProvider extends IdentifiableEntityItemProvider {
+public class AdministrationShellItemProvider extends EntityItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

@@ -158,6 +158,7 @@ import de.dfki.iui.basys.model.domain.linebalancing.provider.LinebalancingItemPr
 
 import de.dfki.iui.basys.model.base.provider.BaseItemProviderAdapterFactory;
 
+import de.dfki.iui.basys.model.domain.capability.provider.CapabilityItemProviderAdapterFactory;
 import de.dfki.iui.basys.model.domain.order.presentation.DomainEditorPlugin;
 
 import de.dfki.iui.basys.model.domain.order.provider.OrderItemProviderAdapterFactory;
@@ -721,6 +722,7 @@ public class LinebalancingEditor
 		adapterFactory.addAdapterFactory(new WorkerguidanceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new WorkplanItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new LinebalancingItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new CapabilityItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new BaseItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 

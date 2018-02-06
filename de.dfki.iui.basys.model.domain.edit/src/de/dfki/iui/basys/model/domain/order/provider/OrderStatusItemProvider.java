@@ -141,7 +141,7 @@ public class OrderStatusItemProvider extends EntityItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((OrderStatus)object).getOrderId();
+		String label = ((OrderStatus)object).getId();
 		return label == null || label.length() == 0 ?
 			getString("_UI_OrderStatus_type") :
 			getString("_UI_OrderStatus_type") + " " + label;

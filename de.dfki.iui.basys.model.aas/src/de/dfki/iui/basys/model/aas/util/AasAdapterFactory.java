@@ -4,9 +4,8 @@ package de.dfki.iui.basys.model.aas.util;
 
 import de.dfki.iui.basys.model.aas.*;
 
+import de.dfki.iui.basys.model.base.BObject;
 import de.dfki.iui.basys.model.base.Entity;
-import de.dfki.iui.basys.model.base.IdentifiableEntity;
-
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 
@@ -91,12 +90,12 @@ public class AasAdapterFactory extends AdapterFactoryImpl {
 				return createOperationalServiceMappingAdapter();
 			}
 			@Override
-			public Adapter caseEntity(Entity object) {
-				return createEntityAdapter();
+			public Adapter caseBObject(BObject object) {
+				return createBObjectAdapter();
 			}
 			@Override
-			public Adapter caseIdentifiableEntity(IdentifiableEntity object) {
-				return createIdentifiableEntityAdapter();
+			public Adapter caseEntity(Entity object) {
+				return createEntityAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -189,6 +188,20 @@ public class AasAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.base.BObject <em>BObject</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.base.BObject
+	 * @generated
+	 */
+	public Adapter createBObjectAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.base.Entity <em>Entity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -199,20 +212,6 @@ public class AasAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createEntityAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.base.IdentifiableEntity <em>Identifiable Entity</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.dfki.iui.basys.model.base.IdentifiableEntity
-	 * @generated
-	 */
-	public Adapter createIdentifiableEntityAdapter() {
 		return null;
 	}
 

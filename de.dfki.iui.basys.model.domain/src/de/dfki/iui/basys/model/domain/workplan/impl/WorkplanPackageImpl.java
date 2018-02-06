@@ -4,6 +4,8 @@ package de.dfki.iui.basys.model.domain.workplan.impl;
 
 import de.dfki.iui.basys.model.base.BasePackage;
 
+import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
+import de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl;
 import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
 
 import de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl;
@@ -150,6 +152,7 @@ public class WorkplanPackageImpl extends EPackageImpl implements WorkplanPackage
 		TopologyPackageImpl theTopologyPackage = (TopologyPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(TopologyPackage.eNS_URI) instanceof TopologyPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(TopologyPackage.eNS_URI) : TopologyPackage.eINSTANCE);
 		WorkerguidancePackageImpl theWorkerguidancePackage = (WorkerguidancePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkerguidancePackage.eNS_URI) instanceof WorkerguidancePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkerguidancePackage.eNS_URI) : WorkerguidancePackage.eINSTANCE);
 		LinebalancingPackageImpl theLinebalancingPackage = (LinebalancingPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(LinebalancingPackage.eNS_URI) instanceof LinebalancingPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(LinebalancingPackage.eNS_URI) : LinebalancingPackage.eINSTANCE);
+		CapabilityPackageImpl theCapabilityPackage = (CapabilityPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CapabilityPackage.eNS_URI) instanceof CapabilityPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CapabilityPackage.eNS_URI) : CapabilityPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theWorkplanPackage.createPackageContents();
@@ -159,6 +162,7 @@ public class WorkplanPackageImpl extends EPackageImpl implements WorkplanPackage
 		theTopologyPackage.createPackageContents();
 		theWorkerguidancePackage.createPackageContents();
 		theLinebalancingPackage.createPackageContents();
+		theCapabilityPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theWorkplanPackage.initializePackageContents();
@@ -168,6 +172,7 @@ public class WorkplanPackageImpl extends EPackageImpl implements WorkplanPackage
 		theTopologyPackage.initializePackageContents();
 		theWorkerguidancePackage.initializePackageContents();
 		theLinebalancingPackage.initializePackageContents();
+		theCapabilityPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theWorkplanPackage.freeze();
@@ -435,8 +440,8 @@ public class WorkplanPackageImpl extends EPackageImpl implements WorkplanPackage
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		workplanInstanceEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
-		workstepInstanceEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
+		workplanInstanceEClass.getESuperTypes().add(theBasePackage.getEntity());
+		workstepInstanceEClass.getESuperTypes().add(theBasePackage.getEntity());
 		workstepInstanceStatusEClass.getESuperTypes().add(theBasePackage.getEntity());
 		workstepInstanceStatusChangeEventEClass.getESuperTypes().add(this.getWorkstepInstanceStatus());
 		durationEClass.getESuperTypes().add(theBasePackage.getEntity());

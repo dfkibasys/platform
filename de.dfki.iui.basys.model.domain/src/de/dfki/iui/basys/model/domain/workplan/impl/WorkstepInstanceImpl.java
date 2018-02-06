@@ -2,8 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.workplan.impl;
 
-import de.dfki.iui.basys.model.base.impl.IdentifiableEntityImpl;
-
+import de.dfki.iui.basys.model.base.impl.EntityImpl;
 import de.dfki.iui.basys.model.domain.workplan.WorkplanPackage;
 import de.dfki.iui.basys.model.domain.workplan.WorkstepInstance;
 
@@ -28,7 +27,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class WorkstepInstanceImpl extends IdentifiableEntityImpl implements WorkstepInstance {
+public class WorkstepInstanceImpl extends EntityImpl implements WorkstepInstance {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->

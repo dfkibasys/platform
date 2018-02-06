@@ -3,8 +3,7 @@
 package de.dfki.iui.basys.model.domain.topology.provider;
 
 
-import de.dfki.iui.basys.model.base.provider.IdentifiableEntityItemProvider;
-
+import de.dfki.iui.basys.model.base.provider.EntityItemProvider;
 import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
 
 import de.dfki.iui.basys.model.domain.topology.Enterprise;
@@ -30,7 +29,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class EnterpriseItemProvider extends IdentifiableEntityItemProvider {
+public class EnterpriseItemProvider extends EntityItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

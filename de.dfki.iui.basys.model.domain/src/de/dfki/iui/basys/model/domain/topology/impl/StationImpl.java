@@ -2,8 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.topology.impl;
 
-import de.dfki.iui.basys.model.base.impl.IdentifiableEntityImpl;
-
+import de.dfki.iui.basys.model.base.impl.EntityImpl;
 import de.dfki.iui.basys.model.domain.topology.DiscreteManufacturingEquipmentModule;
 import de.dfki.iui.basys.model.domain.topology.Station;
 import de.dfki.iui.basys.model.domain.topology.TopologyPackage;
@@ -33,7 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class StationImpl extends IdentifiableEntityImpl implements Station {
+public class StationImpl extends EntityImpl implements Station {
 	/**
 	 * The cached value of the '{@link #getEquipmentModules() <em>Equipment Modules</em>}' containment reference list.
 	 * <!-- begin-user-doc -->

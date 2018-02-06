@@ -70,13 +70,13 @@ public interface LinebalancingPackage extends EPackage {
 	int LB_PRODUCT_INSTANCE = 0;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LB_PRODUCT_INSTANCE__METADATA = BasePackage.IDENTIFIABLE_ENTITY__METADATA;
+	int LB_PRODUCT_INSTANCE__BINDING = BasePackage.ENTITY__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -85,7 +85,16 @@ public interface LinebalancingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LB_PRODUCT_INSTANCE__ID = BasePackage.IDENTIFIABLE_ENTITY__ID;
+	int LB_PRODUCT_INSTANCE__ID = BasePackage.ENTITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LB_PRODUCT_INSTANCE__METADATA = BasePackage.ENTITY__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Component Id</b></em>' attribute.
@@ -94,7 +103,7 @@ public interface LinebalancingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LB_PRODUCT_INSTANCE__COMPONENT_ID = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
+	int LB_PRODUCT_INSTANCE__COMPONENT_ID = BasePackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Workstep Instance Id</b></em>' attribute.
@@ -103,7 +112,7 @@ public interface LinebalancingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LB_PRODUCT_INSTANCE__WORKSTEP_INSTANCE_ID = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 1;
+	int LB_PRODUCT_INSTANCE__WORKSTEP_INSTANCE_ID = BasePackage.ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Remaining Time</b></em>' attribute.
@@ -112,7 +121,7 @@ public interface LinebalancingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LB_PRODUCT_INSTANCE__REMAINING_TIME = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 2;
+	int LB_PRODUCT_INSTANCE__REMAINING_TIME = BasePackage.ENTITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>LB Product Instance</em>' class.
@@ -121,7 +130,7 @@ public interface LinebalancingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LB_PRODUCT_INSTANCE_FEATURE_COUNT = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 3;
+	int LB_PRODUCT_INSTANCE_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>LB Product Instance</em>' class.
@@ -130,7 +139,7 @@ public interface LinebalancingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LB_PRODUCT_INSTANCE_OPERATION_COUNT = BasePackage.IDENTIFIABLE_ENTITY_OPERATION_COUNT + 0;
+	int LB_PRODUCT_INSTANCE_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.linebalancing.impl.LBStaffImpl <em>LB Staff</em>}' class.
@@ -143,13 +152,13 @@ public interface LinebalancingPackage extends EPackage {
 	int LB_STAFF = 1;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LB_STAFF__METADATA = BasePackage.IDENTIFIABLE_ENTITY__METADATA;
+	int LB_STAFF__BINDING = BasePackage.ENTITY__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -158,7 +167,16 @@ public interface LinebalancingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LB_STAFF__ID = BasePackage.IDENTIFIABLE_ENTITY__ID;
+	int LB_STAFF__ID = BasePackage.ENTITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LB_STAFF__METADATA = BasePackage.ENTITY__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Assignment</b></em>' attribute.
@@ -167,7 +185,7 @@ public interface LinebalancingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LB_STAFF__ASSIGNMENT = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
+	int LB_STAFF__ASSIGNMENT = BasePackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Component Id src</b></em>' attribute.
@@ -176,7 +194,7 @@ public interface LinebalancingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LB_STAFF__COMPONENT_ID_SRC = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 1;
+	int LB_STAFF__COMPONENT_ID_SRC = BasePackage.ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Component Id target</b></em>' attribute.
@@ -185,7 +203,7 @@ public interface LinebalancingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LB_STAFF__COMPONENT_ID_TARGET = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 2;
+	int LB_STAFF__COMPONENT_ID_TARGET = BasePackage.ENTITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Current Product Instance Id</b></em>' attribute.
@@ -194,7 +212,7 @@ public interface LinebalancingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LB_STAFF__CURRENT_PRODUCT_INSTANCE_ID = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 3;
+	int LB_STAFF__CURRENT_PRODUCT_INSTANCE_ID = BasePackage.ENTITY_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Remaining Movement Time</b></em>' attribute.
@@ -203,7 +221,7 @@ public interface LinebalancingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LB_STAFF__REMAINING_MOVEMENT_TIME = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 4;
+	int LB_STAFF__REMAINING_MOVEMENT_TIME = BasePackage.ENTITY_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>LB Staff</em>' class.
@@ -212,7 +230,7 @@ public interface LinebalancingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LB_STAFF_FEATURE_COUNT = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 5;
+	int LB_STAFF_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>LB Staff</em>' class.
@@ -221,7 +239,7 @@ public interface LinebalancingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LB_STAFF_OPERATION_COUNT = BasePackage.IDENTIFIABLE_ENTITY_OPERATION_COUNT + 0;
+	int LB_STAFF_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
 
 
 	/**

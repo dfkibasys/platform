@@ -2,7 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.linebalancing;
 
-import de.dfki.iui.basys.model.base.IdentifiableEntity;
+import de.dfki.iui.basys.model.base.Entity;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,7 +22,7 @@ import de.dfki.iui.basys.model.base.IdentifiableEntity;
  * @model
  * @generated
  */
-public interface LBProductInstance extends IdentifiableEntity {
+public interface LBProductInstance extends Entity {
 	/**
 	 * Returns the value of the '<em><b>Component Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->

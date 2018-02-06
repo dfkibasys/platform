@@ -3,8 +3,7 @@
 package de.dfki.iui.basys.model.domain.linebalancing.provider;
 
 
-import de.dfki.iui.basys.model.base.provider.IdentifiableEntityItemProvider;
-
+import de.dfki.iui.basys.model.base.provider.EntityItemProvider;
 import de.dfki.iui.basys.model.domain.linebalancing.LBStaff;
 import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
 
@@ -29,7 +28,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class LBStaffItemProvider extends IdentifiableEntityItemProvider {
+public class LBStaffItemProvider extends EntityItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

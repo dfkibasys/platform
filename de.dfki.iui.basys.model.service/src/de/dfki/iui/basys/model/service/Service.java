@@ -2,7 +2,7 @@
  */
 package de.dfki.iui.basys.model.service;
 
-import de.dfki.iui.basys.model.base.IdentifiableEntity;
+import de.dfki.iui.basys.model.base.Entity;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.ENamedElement;
@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.ENamedElement;
  *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL noSelfDependency='not dependencies->includes(self)'"
  * @generated
  */
-public interface Service extends ENamedElement, IdentifiableEntity {
+public interface Service extends ENamedElement, Entity {
 	/**
 	 * Returns the value of the '<em><b>Version</b></em>' attribute.
 	 * The default value is <code>""</code>.

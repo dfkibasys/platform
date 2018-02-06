@@ -2,8 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.workerguidance.impl;
 
-import de.dfki.iui.basys.model.base.impl.IdentifiableEntityImpl;
-
+import de.dfki.iui.basys.model.base.impl.EntityImpl;
 import de.dfki.iui.basys.model.domain.workerguidance.Instruction;
 import de.dfki.iui.basys.model.domain.workerguidance.WorkerguidancePackage;
 
@@ -34,7 +33,7 @@ import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
  *
  * @generated
  */
-public class InstructionImpl extends IdentifiableEntityImpl implements Instruction {
+public class InstructionImpl extends EntityImpl implements Instruction {
 	/**
 	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
 	 * <!-- begin-user-doc -->

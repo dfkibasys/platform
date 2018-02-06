@@ -4,6 +4,8 @@ package de.dfki.iui.basys.model.domain.product.impl;
 
 import de.dfki.iui.basys.model.base.BasePackage;
 
+import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
+import de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl;
 import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
 
 import de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl;
@@ -173,6 +175,7 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 		WorkerguidancePackageImpl theWorkerguidancePackage = (WorkerguidancePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkerguidancePackage.eNS_URI) instanceof WorkerguidancePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkerguidancePackage.eNS_URI) : WorkerguidancePackage.eINSTANCE);
 		WorkplanPackageImpl theWorkplanPackage = (WorkplanPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkplanPackage.eNS_URI) instanceof WorkplanPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkplanPackage.eNS_URI) : WorkplanPackage.eINSTANCE);
 		LinebalancingPackageImpl theLinebalancingPackage = (LinebalancingPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(LinebalancingPackage.eNS_URI) instanceof LinebalancingPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(LinebalancingPackage.eNS_URI) : LinebalancingPackage.eINSTANCE);
+		CapabilityPackageImpl theCapabilityPackage = (CapabilityPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CapabilityPackage.eNS_URI) instanceof CapabilityPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CapabilityPackage.eNS_URI) : CapabilityPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theProductPackage.createPackageContents();
@@ -182,6 +185,7 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 		theWorkerguidancePackage.createPackageContents();
 		theWorkplanPackage.createPackageContents();
 		theLinebalancingPackage.createPackageContents();
+		theCapabilityPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theProductPackage.initializePackageContents();
@@ -191,6 +195,7 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 		theWorkerguidancePackage.initializePackageContents();
 		theWorkplanPackage.initializePackageContents();
 		theLinebalancingPackage.initializePackageContents();
+		theCapabilityPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theProductPackage.freeze();
@@ -490,9 +495,9 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		productGroupEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
-		productVariantEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
-		productInstanceEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
+		productGroupEClass.getESuperTypes().add(theBasePackage.getEntity());
+		productVariantEClass.getESuperTypes().add(theBasePackage.getEntity());
+		productInstanceEClass.getESuperTypes().add(theBasePackage.getEntity());
 		productInstanceStatusEClass.getESuperTypes().add(theBasePackage.getEntity());
 		productInstanceStatusChangeEventEClass.getESuperTypes().add(this.getProductInstanceStatus());
 		productInstanceLocationEClass.getESuperTypes().add(theBasePackage.getEntity());

@@ -2,8 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.workplan.impl;
 
-import de.dfki.iui.basys.model.base.impl.IdentifiableEntityImpl;
-
+import de.dfki.iui.basys.model.base.impl.EntityImpl;
 import de.dfki.iui.basys.model.domain.workplan.WorkplanInstance;
 import de.dfki.iui.basys.model.domain.workplan.WorkplanPackage;
 import de.dfki.iui.basys.model.domain.workplan.WorkstepInstance;
@@ -37,7 +36,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class WorkplanInstanceImpl extends IdentifiableEntityImpl implements WorkplanInstance {
+public class WorkplanInstanceImpl extends EntityImpl implements WorkplanInstance {
 	/**
 	 * The default value of the '{@link #getProductInstanceId() <em>Product Instance Id</em>}' attribute.
 	 * <!-- begin-user-doc -->

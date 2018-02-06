@@ -5,8 +5,6 @@ package de.dfki.iui.basys.model.domain.workplan.provider;
 
 import de.dfki.iui.basys.model.domain.workplan.WorkplanPackage;
 import de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatusChangeEvent;
-
-import de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatusEnum;
 import java.util.Collection;
 import java.util.List;
 
@@ -91,8 +89,7 @@ public class WorkstepInstanceStatusChangeEventItemProvider extends WorkstepInsta
 	 */
 	@Override
 	public String getText(Object object) {
-		WorkstepInstanceStatusEnum labelValue = ((WorkstepInstanceStatusChangeEvent)object).getStatus();
-		String label = labelValue == null ? null : labelValue.toString();
+		String label = ((WorkstepInstanceStatusChangeEvent)object).getId();
 		return label == null || label.length() == 0 ?
 			getString("_UI_WorkstepInstanceStatusChangeEvent_type") :
 			getString("_UI_WorkstepInstanceStatusChangeEvent_type") + " " + label;

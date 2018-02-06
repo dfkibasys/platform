@@ -3,6 +3,7 @@
 package de.dfki.iui.basys.model.aas.provider;
 
 import de.dfki.iui.basys.model.base.provider.BaseEditPlugin;
+import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
 import de.dfki.iui.basys.model.service.provider.ServiceEditPlugin;
 
 import org.eclipse.emf.common.EMFPlugin;
@@ -46,6 +47,7 @@ public final class AasEditPlugin extends EMFPlugin {
 		     BaseEditPlugin.INSTANCE,
 		     EcoreEditPlugin.INSTANCE,
 		     ServiceEditPlugin.INSTANCE,
+		     DomainEditPlugin.INSTANCE,
 		   });
 	}
 

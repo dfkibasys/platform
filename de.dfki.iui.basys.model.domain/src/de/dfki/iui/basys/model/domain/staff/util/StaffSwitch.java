@@ -2,9 +2,8 @@
  */
 package de.dfki.iui.basys.model.domain.staff.util;
 
+import de.dfki.iui.basys.model.base.BObject;
 import de.dfki.iui.basys.model.base.Entity;
-import de.dfki.iui.basys.model.base.IdentifiableEntity;
-
 import de.dfki.iui.basys.model.domain.staff.*;
 
 import org.eclipse.emf.ecore.EObject;
@@ -72,8 +71,8 @@ public class StaffSwitch<T> extends Switch<T> {
 			case StaffPackage.STAFF: {
 				Staff staff = (Staff)theEObject;
 				T result = caseStaff(staff);
-				if (result == null) result = caseIdentifiableEntity(staff);
 				if (result == null) result = caseEntity(staff);
+				if (result == null) result = caseBObject(staff);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -81,6 +80,7 @@ public class StaffSwitch<T> extends Switch<T> {
 				StaffLocation staffLocation = (StaffLocation)theEObject;
 				T result = caseStaffLocation(staffLocation);
 				if (result == null) result = caseEntity(staffLocation);
+				if (result == null) result = caseBObject(staffLocation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -89,6 +89,7 @@ public class StaffSwitch<T> extends Switch<T> {
 				T result = caseStaffLocationChangeEvent(staffLocationChangeEvent);
 				if (result == null) result = caseStaffLocation(staffLocationChangeEvent);
 				if (result == null) result = caseEntity(staffLocationChangeEvent);
+				if (result == null) result = caseBObject(staffLocationChangeEvent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -96,6 +97,7 @@ public class StaffSwitch<T> extends Switch<T> {
 				Ability ability = (Ability)theEObject;
 				T result = caseAbility(ability);
 				if (result == null) result = caseEntity(ability);
+				if (result == null) result = caseBObject(ability);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -103,6 +105,7 @@ public class StaffSwitch<T> extends Switch<T> {
 				WorkstepSkill workstepSkill = (WorkstepSkill)theEObject;
 				T result = caseWorkstepSkill(workstepSkill);
 				if (result == null) result = caseEntity(workstepSkill);
+				if (result == null) result = caseBObject(workstepSkill);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -110,6 +113,7 @@ public class StaffSwitch<T> extends Switch<T> {
 				StaffSkills staffSkills = (StaffSkills)theEObject;
 				T result = caseStaffSkills(staffSkills);
 				if (result == null) result = caseEntity(staffSkills);
+				if (result == null) result = caseBObject(staffSkills);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -208,6 +212,21 @@ public class StaffSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>BObject</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>BObject</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBObject(BObject object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Entity</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -219,21 +238,6 @@ public class StaffSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseEntity(Entity object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Identifiable Entity</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Identifiable Entity</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseIdentifiableEntity(IdentifiableEntity object) {
 		return null;
 	}
 

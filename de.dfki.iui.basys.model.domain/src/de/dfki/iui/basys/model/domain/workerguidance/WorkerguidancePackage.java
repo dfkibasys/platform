@@ -69,13 +69,13 @@ public interface WorkerguidancePackage extends EPackage {
 	int INSTRUCTION = 0;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INSTRUCTION__METADATA = BasePackage.IDENTIFIABLE_ENTITY__METADATA;
+	int INSTRUCTION__BINDING = BasePackage.ENTITY__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -84,7 +84,16 @@ public interface WorkerguidancePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INSTRUCTION__ID = BasePackage.IDENTIFIABLE_ENTITY__ID;
+	int INSTRUCTION__ID = BasePackage.ENTITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTRUCTION__METADATA = BasePackage.ENTITY__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -93,7 +102,7 @@ public interface WorkerguidancePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INSTRUCTION__DESCRIPTION = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
+	int INSTRUCTION__DESCRIPTION = BasePackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Parameters</b></em>' attribute list.
@@ -102,7 +111,7 @@ public interface WorkerguidancePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INSTRUCTION__PARAMETERS = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 1;
+	int INSTRUCTION__PARAMETERS = BasePackage.ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Workstep Ids</b></em>' attribute list.
@@ -111,7 +120,7 @@ public interface WorkerguidancePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INSTRUCTION__WORKSTEP_IDS = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 2;
+	int INSTRUCTION__WORKSTEP_IDS = BasePackage.ENTITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Instruction</em>' class.
@@ -120,7 +129,7 @@ public interface WorkerguidancePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INSTRUCTION_FEATURE_COUNT = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 3;
+	int INSTRUCTION_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Instruction</em>' class.
@@ -129,7 +138,7 @@ public interface WorkerguidancePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INSTRUCTION_OPERATION_COUNT = BasePackage.IDENTIFIABLE_ENTITY_OPERATION_COUNT + 0;
+	int INSTRUCTION_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.workerguidance.impl.MaterialImpl <em>Material</em>}' class.
@@ -142,13 +151,13 @@ public interface WorkerguidancePackage extends EPackage {
 	int MATERIAL = 1;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MATERIAL__METADATA = BasePackage.IDENTIFIABLE_ENTITY__METADATA;
+	int MATERIAL__BINDING = BasePackage.ENTITY__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -157,7 +166,16 @@ public interface WorkerguidancePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MATERIAL__ID = BasePackage.IDENTIFIABLE_ENTITY__ID;
+	int MATERIAL__ID = BasePackage.ENTITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATERIAL__METADATA = BasePackage.ENTITY__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -166,7 +184,7 @@ public interface WorkerguidancePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MATERIAL__NAME = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
+	int MATERIAL__NAME = BasePackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Material</em>' class.
@@ -175,7 +193,7 @@ public interface WorkerguidancePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MATERIAL_FEATURE_COUNT = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 1;
+	int MATERIAL_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Material</em>' class.
@@ -184,7 +202,7 @@ public interface WorkerguidancePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MATERIAL_OPERATION_COUNT = BasePackage.IDENTIFIABLE_ENTITY_OPERATION_COUNT + 0;
+	int MATERIAL_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.workerguidance.impl.MediaImpl <em>Media</em>}' class.
@@ -197,13 +215,13 @@ public interface WorkerguidancePackage extends EPackage {
 	int MEDIA = 2;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MEDIA__METADATA = BasePackage.IDENTIFIABLE_ENTITY__METADATA;
+	int MEDIA__BINDING = BasePackage.ENTITY__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -212,7 +230,16 @@ public interface WorkerguidancePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MEDIA__ID = BasePackage.IDENTIFIABLE_ENTITY__ID;
+	int MEDIA__ID = BasePackage.ENTITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MEDIA__METADATA = BasePackage.ENTITY__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -221,7 +248,7 @@ public interface WorkerguidancePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MEDIA__TYPE = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
+	int MEDIA__TYPE = BasePackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>File Size</b></em>' attribute.
@@ -230,7 +257,7 @@ public interface WorkerguidancePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MEDIA__FILE_SIZE = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 1;
+	int MEDIA__FILE_SIZE = BasePackage.ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Checksum</b></em>' attribute.
@@ -239,7 +266,7 @@ public interface WorkerguidancePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MEDIA__CHECKSUM = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 2;
+	int MEDIA__CHECKSUM = BasePackage.ENTITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Location</b></em>' attribute.
@@ -248,7 +275,7 @@ public interface WorkerguidancePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MEDIA__LOCATION = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 3;
+	int MEDIA__LOCATION = BasePackage.ENTITY_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Entity Type</b></em>' attribute.
@@ -257,7 +284,7 @@ public interface WorkerguidancePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MEDIA__ENTITY_TYPE = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 4;
+	int MEDIA__ENTITY_TYPE = BasePackage.ENTITY_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Entity Ids</b></em>' attribute list.
@@ -266,7 +293,7 @@ public interface WorkerguidancePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MEDIA__ENTITY_IDS = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 5;
+	int MEDIA__ENTITY_IDS = BasePackage.ENTITY_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Tags</b></em>' attribute list.
@@ -275,7 +302,7 @@ public interface WorkerguidancePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MEDIA__TAGS = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 6;
+	int MEDIA__TAGS = BasePackage.ENTITY_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Locale</b></em>' attribute.
@@ -284,7 +311,7 @@ public interface WorkerguidancePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MEDIA__LOCALE = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 7;
+	int MEDIA__LOCALE = BasePackage.ENTITY_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of structural features of the '<em>Media</em>' class.
@@ -293,7 +320,7 @@ public interface WorkerguidancePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MEDIA_FEATURE_COUNT = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 8;
+	int MEDIA_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 8;
 
 	/**
 	 * The number of operations of the '<em>Media</em>' class.
@@ -302,7 +329,7 @@ public interface WorkerguidancePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MEDIA_OPERATION_COUNT = BasePackage.IDENTIFIABLE_ENTITY_OPERATION_COUNT + 0;
+	int MEDIA_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.workerguidance.impl.AudioImpl <em>Audio</em>}' class.
@@ -315,13 +342,13 @@ public interface WorkerguidancePackage extends EPackage {
 	int AUDIO = 3;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AUDIO__METADATA = MEDIA__METADATA;
+	int AUDIO__BINDING = MEDIA__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -331,6 +358,15 @@ public interface WorkerguidancePackage extends EPackage {
 	 * @ordered
 	 */
 	int AUDIO__ID = MEDIA__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AUDIO__METADATA = MEDIA__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -442,13 +478,13 @@ public interface WorkerguidancePackage extends EPackage {
 	int VIDEO = 4;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VIDEO__METADATA = MEDIA__METADATA;
+	int VIDEO__BINDING = MEDIA__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -458,6 +494,15 @@ public interface WorkerguidancePackage extends EPackage {
 	 * @ordered
 	 */
 	int VIDEO__ID = MEDIA__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIDEO__METADATA = MEDIA__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -587,13 +632,13 @@ public interface WorkerguidancePackage extends EPackage {
 	int IMAGE = 5;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IMAGE__METADATA = MEDIA__METADATA;
+	int IMAGE__BINDING = MEDIA__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -603,6 +648,15 @@ public interface WorkerguidancePackage extends EPackage {
 	 * @ordered
 	 */
 	int IMAGE__ID = MEDIA__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE__METADATA = MEDIA__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.

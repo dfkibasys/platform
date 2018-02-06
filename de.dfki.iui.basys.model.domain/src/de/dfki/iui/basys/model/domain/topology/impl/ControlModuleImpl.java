@@ -2,8 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.topology.impl;
 
-import de.dfki.iui.basys.model.base.impl.IdentifiableEntityImpl;
-
+import de.dfki.iui.basys.model.base.impl.EntityImpl;
 import de.dfki.iui.basys.model.domain.topology.ControlModule;
 import de.dfki.iui.basys.model.domain.topology.TopologyPackage;
 
@@ -32,7 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public abstract class ControlModuleImpl extends IdentifiableEntityImpl implements ControlModule {
+public abstract class ControlModuleImpl extends EntityImpl implements ControlModule {
 	/**
 	 * The cached value of the '{@link #getControlModules() <em>Control Modules</em>}' containment reference list.
 	 * <!-- begin-user-doc -->

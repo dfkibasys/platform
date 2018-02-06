@@ -2,8 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.workerguidance.impl;
 
-import de.dfki.iui.basys.model.base.impl.IdentifiableEntityImpl;
-
+import de.dfki.iui.basys.model.base.impl.EntityImpl;
 import de.dfki.iui.basys.model.domain.workerguidance.Media;
 import de.dfki.iui.basys.model.domain.workerguidance.WorkerguidancePackage;
 
@@ -39,7 +38,7 @@ import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
  *
  * @generated
  */
-public class MediaImpl extends IdentifiableEntityImpl implements Media {
+public class MediaImpl extends EntityImpl implements Media {
 	/**
 	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->

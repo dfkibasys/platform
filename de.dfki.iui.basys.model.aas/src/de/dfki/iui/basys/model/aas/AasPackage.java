@@ -71,13 +71,13 @@ public interface AasPackage extends EPackage {
 	int ADMINISTRATION_SHELL = 0;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ADMINISTRATION_SHELL__METADATA = BasePackage.IDENTIFIABLE_ENTITY__METADATA;
+	int ADMINISTRATION_SHELL__BINDING = BasePackage.ENTITY__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -86,7 +86,16 @@ public interface AasPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADMINISTRATION_SHELL__ID = BasePackage.IDENTIFIABLE_ENTITY__ID;
+	int ADMINISTRATION_SHELL__ID = BasePackage.ENTITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADMINISTRATION_SHELL__METADATA = BasePackage.ENTITY__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Asset Id</b></em>' attribute.
@@ -95,7 +104,7 @@ public interface AasPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADMINISTRATION_SHELL__ASSET_ID = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 0;
+	int ADMINISTRATION_SHELL__ASSET_ID = BasePackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Mappings</b></em>' containment reference list.
@@ -104,7 +113,7 @@ public interface AasPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADMINISTRATION_SHELL__MAPPINGS = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 1;
+	int ADMINISTRATION_SHELL__MAPPINGS = BasePackage.ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Operational Service Mappings</b></em>' containment reference list.
@@ -113,7 +122,7 @@ public interface AasPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADMINISTRATION_SHELL__OPERATIONAL_SERVICE_MAPPINGS = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 2;
+	int ADMINISTRATION_SHELL__OPERATIONAL_SERVICE_MAPPINGS = BasePackage.ENTITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Administration Shell</em>' class.
@@ -122,7 +131,7 @@ public interface AasPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADMINISTRATION_SHELL_FEATURE_COUNT = BasePackage.IDENTIFIABLE_ENTITY_FEATURE_COUNT + 3;
+	int ADMINISTRATION_SHELL_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Get</em>' operation.
@@ -131,7 +140,7 @@ public interface AasPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADMINISTRATION_SHELL___GET = BasePackage.IDENTIFIABLE_ENTITY_OPERATION_COUNT + 0;
+	int ADMINISTRATION_SHELL___GET = BasePackage.ENTITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Administration Shell</em>' class.
@@ -140,7 +149,7 @@ public interface AasPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ADMINISTRATION_SHELL_OPERATION_COUNT = BasePackage.IDENTIFIABLE_ENTITY_OPERATION_COUNT + 1;
+	int ADMINISTRATION_SHELL_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.aas.impl.InformationMappingImpl <em>Information Mapping</em>}' class.

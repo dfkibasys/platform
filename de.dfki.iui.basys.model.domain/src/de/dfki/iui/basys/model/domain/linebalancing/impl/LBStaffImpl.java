@@ -2,8 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.linebalancing.impl;
 
-import de.dfki.iui.basys.model.base.impl.IdentifiableEntityImpl;
-
+import de.dfki.iui.basys.model.base.impl.EntityImpl;
 import de.dfki.iui.basys.model.domain.linebalancing.LBStaff;
 import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
 
@@ -30,7 +29,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class LBStaffImpl extends IdentifiableEntityImpl implements LBStaff {
+public class LBStaffImpl extends EntityImpl implements LBStaff {
 	/**
 	 * The default value of the '{@link #getAssignment() <em>Assignment</em>}' attribute.
 	 * <!-- begin-user-doc -->

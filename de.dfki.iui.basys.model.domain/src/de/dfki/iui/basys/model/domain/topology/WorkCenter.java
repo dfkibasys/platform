@@ -2,7 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.topology;
 
-import de.dfki.iui.basys.model.base.IdentifiableEntity;
+import de.dfki.iui.basys.model.base.Entity;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,5 +14,5 @@ import de.dfki.iui.basys.model.base.IdentifiableEntity;
  * @model abstract="true"
  * @generated
  */
-public interface WorkCenter extends IdentifiableEntity {
+public interface WorkCenter extends Entity {
 } // WorkCenter

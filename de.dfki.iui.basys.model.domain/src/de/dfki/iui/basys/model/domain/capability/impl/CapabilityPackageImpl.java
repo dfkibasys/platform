@@ -4,10 +4,21 @@ package de.dfki.iui.basys.model.domain.capability.impl;
 
 import de.dfki.iui.basys.model.base.BasePackage;
 
+import de.dfki.iui.basys.model.domain.capability.AnEinpressen;
+import de.dfki.iui.basys.model.domain.capability.Beschichten;
 import de.dfki.iui.basys.model.domain.capability.Capability;
 import de.dfki.iui.basys.model.domain.capability.CapabilityFactory;
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
 
+import de.dfki.iui.basys.model.domain.capability.Fügen;
+import de.dfki.iui.basys.model.domain.capability.ManufacturingCapability;
+import de.dfki.iui.basys.model.domain.capability.Pressen;
+import de.dfki.iui.basys.model.domain.capability.QoSCapability;
+import de.dfki.iui.basys.model.domain.capability.Schrauben;
+import de.dfki.iui.basys.model.domain.capability.Stoffeigenschaften;
+import de.dfki.iui.basys.model.domain.capability.Trennen;
+import de.dfki.iui.basys.model.domain.capability.Umformen;
+import de.dfki.iui.basys.model.domain.capability.Urformen;
 import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
 
 import de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl;
@@ -36,6 +47,7 @@ import de.dfki.iui.basys.model.domain.workplan.WorkplanPackage;
 
 import de.dfki.iui.basys.model.domain.workplan.impl.WorkplanPackageImpl;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -54,6 +66,73 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * @generated
 	 */
 	private EClass capabilityEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass manufacturingCapabilityEClass = null;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass fügenEClass = null;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass pressenEClass = null;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass qoSCapabilityEClass = null;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass urformenEClass = null;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass umformenEClass = null;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass trennenEClass = null;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass beschichtenEClass = null;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass stoffeigenschaftenEClass = null;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass anEinpressenEClass = null;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass schraubenEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -156,6 +235,132 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getManufacturingCapability() {
+		return manufacturingCapabilityEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getFügen() {
+		return fügenEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getPressen() {
+		return pressenEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPressen_Druck() {
+		return (EAttribute)pressenEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPressen_Hub() {
+		return (EAttribute)pressenEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getQoSCapability() {
+		return qoSCapabilityEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getUrformen() {
+		return urformenEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getUmformen() {
+		return umformenEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTrennen() {
+		return trennenEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getBeschichten() {
+		return beschichtenEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getStoffeigenschaften() {
+		return stoffeigenschaftenEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAnEinpressen() {
+		return anEinpressenEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSchrauben() {
+		return schraubenEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSchrauben_Drehmoment() {
+		return (EAttribute)schraubenEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public CapabilityFactory getCapabilityFactory() {
 		return (CapabilityFactory)getEFactoryInstance();
 	}
@@ -180,6 +385,31 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 
 		// Create classes and their features
 		capabilityEClass = createEClass(CAPABILITY);
+
+		manufacturingCapabilityEClass = createEClass(MANUFACTURING_CAPABILITY);
+
+		fügenEClass = createEClass(FÜGEN);
+
+		pressenEClass = createEClass(PRESSEN);
+		createEAttribute(pressenEClass, PRESSEN__DRUCK);
+		createEAttribute(pressenEClass, PRESSEN__HUB);
+
+		qoSCapabilityEClass = createEClass(QO_SCAPABILITY);
+
+		urformenEClass = createEClass(URFORMEN);
+
+		umformenEClass = createEClass(UMFORMEN);
+
+		trennenEClass = createEClass(TRENNEN);
+
+		beschichtenEClass = createEClass(BESCHICHTEN);
+
+		stoffeigenschaftenEClass = createEClass(STOFFEIGENSCHAFTEN);
+
+		anEinpressenEClass = createEClass(AN_EINPRESSEN);
+
+		schraubenEClass = createEClass(SCHRAUBEN);
+		createEAttribute(schraubenEClass, SCHRAUBEN__DREHMOMENT);
 	}
 
 	/**
@@ -205,14 +435,54 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
 
+		// Obtain other dependent packages
+		BasePackage theBasePackage = (BasePackage)EPackage.Registry.INSTANCE.getEPackage(BasePackage.eNS_URI);
+
 		// Create type parameters
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		capabilityEClass.getESuperTypes().add(theBasePackage.getEntity());
+		manufacturingCapabilityEClass.getESuperTypes().add(this.getCapability());
+		fügenEClass.getESuperTypes().add(this.getManufacturingCapability());
+		pressenEClass.getESuperTypes().add(this.getAnEinpressen());
+		qoSCapabilityEClass.getESuperTypes().add(this.getCapability());
+		urformenEClass.getESuperTypes().add(this.getManufacturingCapability());
+		umformenEClass.getESuperTypes().add(this.getManufacturingCapability());
+		trennenEClass.getESuperTypes().add(this.getManufacturingCapability());
+		beschichtenEClass.getESuperTypes().add(this.getManufacturingCapability());
+		stoffeigenschaftenEClass.getESuperTypes().add(this.getManufacturingCapability());
+		anEinpressenEClass.getESuperTypes().add(this.getFügen());
+		schraubenEClass.getESuperTypes().add(this.getAnEinpressen());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(capabilityEClass, Capability.class, "Capability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(manufacturingCapabilityEClass, ManufacturingCapability.class, "ManufacturingCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(fügenEClass, Fügen.class, "Fügen", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(pressenEClass, Pressen.class, "Pressen", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPressen_Druck(), ecorePackage.getEInt(), "druck", null, 0, 1, Pressen.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPressen_Hub(), ecorePackage.getEInt(), "hub", null, 0, 1, Pressen.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(qoSCapabilityEClass, QoSCapability.class, "QoSCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(urformenEClass, Urformen.class, "Urformen", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(umformenEClass, Umformen.class, "Umformen", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(trennenEClass, Trennen.class, "Trennen", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(beschichtenEClass, Beschichten.class, "Beschichten", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(stoffeigenschaftenEClass, Stoffeigenschaften.class, "Stoffeigenschaften", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(anEinpressenEClass, AnEinpressen.class, "AnEinpressen", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(schraubenEClass, Schrauben.class, "Schrauben", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSchrauben_Drehmoment(), ecorePackage.getEInt(), "drehmoment", null, 0, 1, Schrauben.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -9,8 +9,6 @@ import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
 
 import de.dfki.iui.basys.model.domain.workplan.WorkplanPackage;
 import de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatus;
-import de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatusEnum;
-
 import java.util.Collection;
 import java.util.List;
 
@@ -144,8 +142,7 @@ public class WorkstepInstanceStatusItemProvider extends EntityItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		WorkstepInstanceStatusEnum labelValue = ((WorkstepInstanceStatus)object).getStatus();
-		String label = labelValue == null ? null : labelValue.toString();
+		String label = ((WorkstepInstanceStatus)object).getId();
 		return label == null || label.length() == 0 ?
 			getString("_UI_WorkstepInstanceStatus_type") :
 			getString("_UI_WorkstepInstanceStatus_type") + " " + label;

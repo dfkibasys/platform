@@ -2,8 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.linebalancing.impl;
 
-import de.dfki.iui.basys.model.base.impl.IdentifiableEntityImpl;
-
+import de.dfki.iui.basys.model.base.impl.EntityImpl;
 import de.dfki.iui.basys.model.domain.linebalancing.LBProductInstance;
 import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
 
@@ -28,7 +27,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class LBProductInstanceImpl extends IdentifiableEntityImpl implements LBProductInstance {
+public class LBProductInstanceImpl extends EntityImpl implements LBProductInstance {
 	/**
 	 * The default value of the '{@link #getComponentId() <em>Component Id</em>}' attribute.
 	 * <!-- begin-user-doc -->

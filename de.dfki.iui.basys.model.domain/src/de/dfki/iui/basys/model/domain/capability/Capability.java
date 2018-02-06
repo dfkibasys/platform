@@ -2,7 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.capability;
 
-import org.eclipse.emf.ecore.EObject;
+import de.dfki.iui.basys.model.base.Entity;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,5 +14,5 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Capability extends EObject {
+public interface Capability extends Entity {
 } // Capability

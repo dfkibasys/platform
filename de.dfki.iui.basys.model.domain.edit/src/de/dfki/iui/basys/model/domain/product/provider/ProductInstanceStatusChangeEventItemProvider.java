@@ -91,7 +91,7 @@ public class ProductInstanceStatusChangeEventItemProvider extends ProductInstanc
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ProductInstanceStatusChangeEvent)object).getProductInstanceId();
+		String label = ((ProductInstanceStatusChangeEvent)object).getId();
 		return label == null || label.length() == 0 ?
 			getString("_UI_ProductInstanceStatusChangeEvent_type") :
 			getString("_UI_ProductInstanceStatusChangeEvent_type") + " " + label;

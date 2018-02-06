@@ -2,8 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.staff.impl;
 
-import de.dfki.iui.basys.model.base.impl.IdentifiableEntityImpl;
-
+import de.dfki.iui.basys.model.base.impl.EntityImpl;
 import de.dfki.iui.basys.model.domain.staff.Staff;
 import de.dfki.iui.basys.model.domain.staff.StaffPackage;
 
@@ -31,7 +30,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class StaffImpl extends IdentifiableEntityImpl implements Staff {
+public class StaffImpl extends EntityImpl implements Staff {
 	/**
 	 * The default value of the '{@link #getFirstname() <em>Firstname</em>}' attribute.
 	 * <!-- begin-user-doc -->

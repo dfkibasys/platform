@@ -3,7 +3,6 @@
 package de.dfki.iui.basys.model.domain.product.provider;
 
 
-import de.dfki.iui.basys.model.domain.product.ProductInstanceDetectionEnum;
 import de.dfki.iui.basys.model.domain.product.ProductInstanceLocationChangeEvent;
 import de.dfki.iui.basys.model.domain.product.ProductPackage;
 
@@ -92,8 +91,7 @@ public class ProductInstanceLocationChangeEventItemProvider extends ProductInsta
 	 */
 	@Override
 	public String getText(Object object) {
-		ProductInstanceDetectionEnum labelValue = ((ProductInstanceLocationChangeEvent)object).getDetectionType();
-		String label = labelValue == null ? null : labelValue.toString();
+		String label = ((ProductInstanceLocationChangeEvent)object).getId();
 		return label == null || label.length() == 0 ?
 			getString("_UI_ProductInstanceLocationChangeEvent_type") :
 			getString("_UI_ProductInstanceLocationChangeEvent_type") + " " + label;

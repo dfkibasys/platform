@@ -2,12 +2,11 @@
  */
 package de.dfki.iui.basys.model.domain.capability.impl;
 
+import de.dfki.iui.basys.model.base.impl.EntityImpl;
 import de.dfki.iui.basys.model.domain.capability.Capability;
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
 
 import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -16,7 +15,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public class CapabilityImpl extends MinimalEObjectImpl.Container implements Capability {
+public class CapabilityImpl extends EntityImpl implements Capability {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -3,7 +3,6 @@
 package de.dfki.iui.basys.model.domain.staff.provider;
 
 
-import de.dfki.iui.basys.model.domain.staff.StaffDetectionEnum;
 import de.dfki.iui.basys.model.domain.staff.StaffLocationChangeEvent;
 import de.dfki.iui.basys.model.domain.staff.StaffPackage;
 
@@ -91,8 +90,7 @@ public class StaffLocationChangeEventItemProvider extends StaffLocationItemProvi
 	 */
 	@Override
 	public String getText(Object object) {
-		StaffDetectionEnum labelValue = ((StaffLocationChangeEvent)object).getDetectionType();
-		String label = labelValue == null ? null : labelValue.toString();
+		String label = ((StaffLocationChangeEvent)object).getId();
 		return label == null || label.length() == 0 ?
 			getString("_UI_StaffLocationChangeEvent_type") :
 			getString("_UI_StaffLocationChangeEvent_type") + " " + label;

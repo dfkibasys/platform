@@ -3,8 +3,7 @@
 package de.dfki.iui.basys.model.domain.workplan.provider;
 
 
-import de.dfki.iui.basys.model.base.provider.IdentifiableEntityItemProvider;
-
+import de.dfki.iui.basys.model.base.provider.EntityItemProvider;
 import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
 import de.dfki.iui.basys.model.domain.workplan.WorkplanInstance;
 import de.dfki.iui.basys.model.domain.workplan.WorkplanPackage;
@@ -27,7 +26,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class WorkplanInstanceItemProvider extends IdentifiableEntityItemProvider {
+public class WorkplanInstanceItemProvider extends EntityItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

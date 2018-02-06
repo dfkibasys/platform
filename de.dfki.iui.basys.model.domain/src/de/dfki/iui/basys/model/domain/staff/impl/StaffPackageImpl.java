@@ -4,6 +4,8 @@ package de.dfki.iui.basys.model.domain.staff.impl;
 
 import de.dfki.iui.basys.model.base.BasePackage;
 
+import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
+import de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl;
 import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
 
 import de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl;
@@ -166,6 +168,7 @@ public class StaffPackageImpl extends EPackageImpl implements StaffPackage {
 		WorkerguidancePackageImpl theWorkerguidancePackage = (WorkerguidancePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkerguidancePackage.eNS_URI) instanceof WorkerguidancePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkerguidancePackage.eNS_URI) : WorkerguidancePackage.eINSTANCE);
 		WorkplanPackageImpl theWorkplanPackage = (WorkplanPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkplanPackage.eNS_URI) instanceof WorkplanPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkplanPackage.eNS_URI) : WorkplanPackage.eINSTANCE);
 		LinebalancingPackageImpl theLinebalancingPackage = (LinebalancingPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(LinebalancingPackage.eNS_URI) instanceof LinebalancingPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(LinebalancingPackage.eNS_URI) : LinebalancingPackage.eINSTANCE);
+		CapabilityPackageImpl theCapabilityPackage = (CapabilityPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CapabilityPackage.eNS_URI) instanceof CapabilityPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CapabilityPackage.eNS_URI) : CapabilityPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theStaffPackage.createPackageContents();
@@ -175,6 +178,7 @@ public class StaffPackageImpl extends EPackageImpl implements StaffPackage {
 		theWorkerguidancePackage.createPackageContents();
 		theWorkplanPackage.createPackageContents();
 		theLinebalancingPackage.createPackageContents();
+		theCapabilityPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theStaffPackage.initializePackageContents();
@@ -184,6 +188,7 @@ public class StaffPackageImpl extends EPackageImpl implements StaffPackage {
 		theWorkerguidancePackage.initializePackageContents();
 		theWorkplanPackage.initializePackageContents();
 		theLinebalancingPackage.initializePackageContents();
+		theCapabilityPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theStaffPackage.freeze();
@@ -502,7 +507,7 @@ public class StaffPackageImpl extends EPackageImpl implements StaffPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		staffEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
+		staffEClass.getESuperTypes().add(theBasePackage.getEntity());
 		staffLocationEClass.getESuperTypes().add(theBasePackage.getEntity());
 		staffLocationChangeEventEClass.getESuperTypes().add(this.getStaffLocation());
 		abilityEClass.getESuperTypes().add(theBasePackage.getEntity());

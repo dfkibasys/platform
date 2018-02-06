@@ -120,7 +120,7 @@ public class AbilityItemProvider extends EntityItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Ability)object).getKey();
+		String label = ((Ability)object).getId();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Ability_type") :
 			getString("_UI_Ability_type") + " " + label;

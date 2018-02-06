@@ -143,7 +143,7 @@ public class WorkstepSkillItemProvider extends EntityItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((WorkstepSkill)object).getWorkstepId();
+		String label = ((WorkstepSkill)object).getId();
 		return label == null || label.length() == 0 ?
 			getString("_UI_WorkstepSkill_type") :
 			getString("_UI_WorkstepSkill_type") + " " + label;

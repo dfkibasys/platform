@@ -2,9 +2,8 @@
  */
 package de.dfki.iui.basys.model.domain.linebalancing.util;
 
+import de.dfki.iui.basys.model.base.BObject;
 import de.dfki.iui.basys.model.base.Entity;
-import de.dfki.iui.basys.model.base.IdentifiableEntity;
-
 import de.dfki.iui.basys.model.domain.linebalancing.*;
 
 import org.eclipse.emf.ecore.EObject;
@@ -72,16 +71,16 @@ public class LinebalancingSwitch<T> extends Switch<T> {
 			case LinebalancingPackage.LB_PRODUCT_INSTANCE: {
 				LBProductInstance lbProductInstance = (LBProductInstance)theEObject;
 				T result = caseLBProductInstance(lbProductInstance);
-				if (result == null) result = caseIdentifiableEntity(lbProductInstance);
 				if (result == null) result = caseEntity(lbProductInstance);
+				if (result == null) result = caseBObject(lbProductInstance);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case LinebalancingPackage.LB_STAFF: {
 				LBStaff lbStaff = (LBStaff)theEObject;
 				T result = caseLBStaff(lbStaff);
-				if (result == null) result = caseIdentifiableEntity(lbStaff);
 				if (result == null) result = caseEntity(lbStaff);
+				if (result == null) result = caseBObject(lbStaff);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -141,6 +140,21 @@ public class LinebalancingSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>BObject</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>BObject</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBObject(BObject object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Entity</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -152,21 +166,6 @@ public class LinebalancingSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseEntity(Entity object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Identifiable Entity</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Identifiable Entity</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseIdentifiableEntity(IdentifiableEntity object) {
 		return null;
 	}
 

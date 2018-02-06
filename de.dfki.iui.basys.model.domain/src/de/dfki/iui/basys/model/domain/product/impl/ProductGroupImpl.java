@@ -2,8 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.product.impl;
 
-import de.dfki.iui.basys.model.base.impl.IdentifiableEntityImpl;
-
+import de.dfki.iui.basys.model.base.impl.EntityImpl;
 import de.dfki.iui.basys.model.domain.product.ProductGroup;
 import de.dfki.iui.basys.model.domain.product.ProductPackage;
 
@@ -26,7 +25,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class ProductGroupImpl extends IdentifiableEntityImpl implements ProductGroup {
+public class ProductGroupImpl extends EntityImpl implements ProductGroup {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->

@@ -7,12 +7,12 @@
     <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
     <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
   </eAnnotations>
-  <eClassifiers xsi:type="ecore:EClass" name="LBProductInstance" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//IdentifiableEntity">
+  <eClassifiers xsi:type="ecore:EClass" name="LBProductInstance" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="componentId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="workstepInstanceId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="remainingTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="LBStaff" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//IdentifiableEntity">
+  <eClassifiers xsi:type="ecore:EClass" name="LBStaff" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="assignment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="componentId_src" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="componentId_target" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

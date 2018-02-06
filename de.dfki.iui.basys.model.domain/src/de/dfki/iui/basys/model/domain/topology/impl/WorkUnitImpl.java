@@ -2,8 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.topology.impl;
 
-import de.dfki.iui.basys.model.base.impl.IdentifiableEntityImpl;
-
+import de.dfki.iui.basys.model.base.impl.EntityImpl;
 import de.dfki.iui.basys.model.domain.topology.EquipmentModule;
 import de.dfki.iui.basys.model.domain.topology.TopologyPackage;
 import de.dfki.iui.basys.model.domain.topology.WorkUnit;
@@ -33,7 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public abstract class WorkUnitImpl extends IdentifiableEntityImpl implements WorkUnit {
+public abstract class WorkUnitImpl extends EntityImpl implements WorkUnit {
 	/**
 	 * The cached value of the '{@link #getEquipmentModules() <em>Equipment Modules</em>}' containment reference list.
 	 * <!-- begin-user-doc -->

@@ -2,8 +2,8 @@
  */
 package de.dfki.iui.basys.model.service.util;
 
+import de.dfki.iui.basys.model.base.BObject;
 import de.dfki.iui.basys.model.base.Entity;
-import de.dfki.iui.basys.model.base.IdentifiableEntity;
 import de.dfki.iui.basys.model.service.*;
 
 import org.eclipse.emf.ecore.EModelElement;
@@ -76,9 +76,9 @@ public class ServiceSwitch<T> extends Switch<T> {
 				ServiceDescription serviceDescription = (ServiceDescription)theEObject;
 				T result = caseServiceDescription(serviceDescription);
 				if (result == null) result = caseENamedElement(serviceDescription);
-				if (result == null) result = caseIdentifiableEntity(serviceDescription);
-				if (result == null) result = caseEModelElement(serviceDescription);
 				if (result == null) result = caseEntity(serviceDescription);
+				if (result == null) result = caseEModelElement(serviceDescription);
+				if (result == null) result = caseBObject(serviceDescription);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -122,16 +122,16 @@ public class ServiceSwitch<T> extends Switch<T> {
 			case ServicePackage.SERVICE_IMPLEMENTATION: {
 				ServiceImplementation serviceImplementation = (ServiceImplementation)theEObject;
 				T result = caseServiceImplementation(serviceImplementation);
-				if (result == null) result = caseIdentifiableEntity(serviceImplementation);
 				if (result == null) result = caseEntity(serviceImplementation);
+				if (result == null) result = caseBObject(serviceImplementation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ServicePackage.SERVICE_INSTANCE: {
 				ServiceInstance serviceInstance = (ServiceInstance)theEObject;
 				T result = caseServiceInstance(serviceInstance);
-				if (result == null) result = caseIdentifiableEntity(serviceInstance);
 				if (result == null) result = caseEntity(serviceInstance);
+				if (result == null) result = caseBObject(serviceInstance);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -340,6 +340,21 @@ public class ServiceSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>BObject</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>BObject</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBObject(BObject object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Entity</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -351,21 +366,6 @@ public class ServiceSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseEntity(Entity object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Identifiable Entity</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Identifiable Entity</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseIdentifiableEntity(IdentifiableEntity object) {
 		return null;
 	}
 

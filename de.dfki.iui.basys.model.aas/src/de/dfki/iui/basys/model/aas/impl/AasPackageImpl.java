@@ -12,6 +12,7 @@ import de.dfki.iui.basys.model.aas.ServiceCall;
 
 import de.dfki.iui.basys.model.base.BasePackage;
 
+import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
 import de.dfki.iui.basys.model.service.ServicePackage;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -114,7 +115,10 @@ public class AasPackageImpl extends EPackageImpl implements AasPackage {
 		isInited = true;
 
 		// Initialize simple dependencies
+		BasePackage.eINSTANCE.eClass();
+		EcorePackage.eINSTANCE.eClass();
 		ServicePackage.eINSTANCE.eClass();
+		CapabilityPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theAasPackage.createPackageContents();
@@ -378,7 +382,7 @@ public class AasPackageImpl extends EPackageImpl implements AasPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		administrationShellEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
+		administrationShellEClass.getESuperTypes().add(theBasePackage.getEntity());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(administrationShellEClass, AdministrationShell.class, "AdministrationShell", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

@@ -4,6 +4,7 @@ package de.dfki.iui.basys.model.base;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -58,6 +59,43 @@ public interface BasePackage extends EPackage {
 	BasePackage eINSTANCE = de.dfki.iui.basys.model.base.impl.BasePackageImpl.init();
 
 	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.base.impl.BObjectImpl <em>BObject</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.base.impl.BObjectImpl
+	 * @see de.dfki.iui.basys.model.base.impl.BasePackageImpl#getBObject()
+	 * @generated
+	 */
+	int BOBJECT = 0;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOBJECT__BINDING = 0;
+
+	/**
+	 * The number of structural features of the '<em>BObject</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOBJECT_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>BObject</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOBJECT_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.base.impl.MetadataImpl <em>Metadata</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -65,7 +103,7 @@ public interface BasePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.base.impl.BasePackageImpl#getMetadata()
 	 * @generated
 	 */
-	int METADATA = 0;
+	int METADATA = 1;
 
 	/**
 	 * The feature id for the '<em><b>Creator</b></em>' attribute.
@@ -120,53 +158,16 @@ public interface BasePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.base.impl.BasePackageImpl#getEntity()
 	 * @generated
 	 */
-	int ENTITY = 1;
+	int ENTITY = 2;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY__METADATA = 0;
-
-	/**
-	 * The number of structural features of the '<em>Entity</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY_FEATURE_COUNT = 1;
-
-	/**
-	 * The number of operations of the '<em>Entity</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.base.impl.IdentifiableEntityImpl <em>Identifiable Entity</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.base.impl.IdentifiableEntityImpl
-	 * @see de.dfki.iui.basys.model.base.impl.BasePackageImpl#getIdentifiableEntity()
-	 * @generated
-	 */
-	int IDENTIFIABLE_ENTITY = 2;
-
-	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IDENTIFIABLE_ENTITY__METADATA = ENTITY__METADATA;
+	int ENTITY__BINDING = BOBJECT__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -175,35 +176,7 @@ public interface BasePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IDENTIFIABLE_ENTITY__ID = ENTITY_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Identifiable Entity</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IDENTIFIABLE_ENTITY_FEATURE_COUNT = ENTITY_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Identifiable Entity</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IDENTIFIABLE_ENTITY_OPERATION_COUNT = ENTITY_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.base.impl.EventImpl <em>Event</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.base.impl.EventImpl
-	 * @see de.dfki.iui.basys.model.base.impl.BasePackageImpl#getEvent()
-	 * @generated
-	 */
-	int EVENT = 3;
+	int ENTITY__ID = BOBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -212,73 +185,25 @@ public interface BasePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT__METADATA = ENTITY__METADATA;
+	int ENTITY__METADATA = BOBJECT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Timestamp</b></em>' attribute.
+	 * The number of structural features of the '<em>Entity</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT__TIMESTAMP = ENTITY_FEATURE_COUNT + 0;
+	int ENTITY_FEATURE_COUNT = BOBJECT_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the '<em>Event</em>' class.
+	 * The number of operations of the '<em>Entity</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_FEATURE_COUNT = ENTITY_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Event</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_OPERATION_COUNT = ENTITY_OPERATION_COUNT + 0;
-
-
-	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.base.impl.CapabilityImpl <em>Capability</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.base.impl.CapabilityImpl
-	 * @see de.dfki.iui.basys.model.base.impl.BasePackageImpl#getCapability()
-	 * @generated
-	 */
-	int CAPABILITY = 4;
-
-	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CAPABILITY__METADATA = ENTITY__METADATA;
-
-	/**
-	 * The number of structural features of the '<em>Capability</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CAPABILITY_FEATURE_COUNT = ENTITY_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Capability</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CAPABILITY_OPERATION_COUNT = ENTITY_OPERATION_COUNT + 0;
-
+	int ENTITY_OPERATION_COUNT = BOBJECT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.base.impl.KeyValuePairImpl <em>Key Value Pair</em>}' class.
@@ -288,16 +213,7 @@ public interface BasePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.base.impl.BasePackageImpl#getKeyValuePair()
 	 * @generated
 	 */
-	int KEY_VALUE_PAIR = 5;
-
-	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int KEY_VALUE_PAIR__METADATA = ENTITY__METADATA;
+	int KEY_VALUE_PAIR = 3;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -306,7 +222,7 @@ public interface BasePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int KEY_VALUE_PAIR__KEY = ENTITY_FEATURE_COUNT + 0;
+	int KEY_VALUE_PAIR__KEY = 0;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -315,7 +231,7 @@ public interface BasePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int KEY_VALUE_PAIR__VALUE = ENTITY_FEATURE_COUNT + 1;
+	int KEY_VALUE_PAIR__VALUE = 1;
 
 	/**
 	 * The number of structural features of the '<em>Key Value Pair</em>' class.
@@ -324,7 +240,7 @@ public interface BasePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int KEY_VALUE_PAIR_FEATURE_COUNT = ENTITY_FEATURE_COUNT + 2;
+	int KEY_VALUE_PAIR_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Key Value Pair</em>' class.
@@ -333,8 +249,120 @@ public interface BasePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int KEY_VALUE_PAIR_OPERATION_COUNT = ENTITY_OPERATION_COUNT + 0;
+	int KEY_VALUE_PAIR_OPERATION_COUNT = 0;
 
+
+	/**
+	 * The meta object id for the '<em>BBoolean</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.base.datatypes.BBoolean
+	 * @see de.dfki.iui.basys.model.base.impl.BasePackageImpl#getBBoolean()
+	 * @generated
+	 */
+	int BBOOLEAN = 4;
+
+	/**
+	 * The meta object id for the '<em>BByte</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.base.datatypes.BByte
+	 * @see de.dfki.iui.basys.model.base.impl.BasePackageImpl#getBByte()
+	 * @generated
+	 */
+	int BBYTE = 5;
+
+	/**
+	 * The meta object id for the '<em>BChar</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.base.datatypes.BChar
+	 * @see de.dfki.iui.basys.model.base.impl.BasePackageImpl#getBChar()
+	 * @generated
+	 */
+	int BCHAR = 6;
+
+	/**
+	 * The meta object id for the '<em>BDouble</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.base.datatypes.BDouble
+	 * @see de.dfki.iui.basys.model.base.impl.BasePackageImpl#getBDouble()
+	 * @generated
+	 */
+	int BDOUBLE = 7;
+
+	/**
+	 * The meta object id for the '<em>BFloat</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.base.datatypes.BFloat
+	 * @see de.dfki.iui.basys.model.base.impl.BasePackageImpl#getBFloat()
+	 * @generated
+	 */
+	int BFLOAT = 8;
+
+	/**
+	 * The meta object id for the '<em>BInteger</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.base.datatypes.BInteger
+	 * @see de.dfki.iui.basys.model.base.impl.BasePackageImpl#getBInteger()
+	 * @generated
+	 */
+	int BINTEGER = 9;
+
+	/**
+	 * The meta object id for the '<em>BLong</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.base.datatypes.BLong
+	 * @see de.dfki.iui.basys.model.base.impl.BasePackageImpl#getBLong()
+	 * @generated
+	 */
+	int BLONG = 10;
+
+	/**
+	 * The meta object id for the '<em>BShort</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.base.datatypes.BShort
+	 * @see de.dfki.iui.basys.model.base.impl.BasePackageImpl#getBShort()
+	 * @generated
+	 */
+	int BSHORT = 11;
+
+	/**
+	 * The meta object id for the '<em>BString</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.base.datatypes.BString
+	 * @see de.dfki.iui.basys.model.base.impl.BasePackageImpl#getBString()
+	 * @generated
+	 */
+	int BSTRING = 12;
+
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.base.BObject <em>BObject</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>BObject</em>'.
+	 * @see de.dfki.iui.basys.model.base.BObject
+	 * @generated
+	 */
+	EClass getBObject();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.base.BObject#getBinding <em>Binding</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Binding</em>'.
+	 * @see de.dfki.iui.basys.model.base.BObject#getBinding()
+	 * @see #getBObject()
+	 * @generated
+	 */
+	EAttribute getBObject_Binding();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.base.Metadata <em>Metadata</em>}'.
@@ -390,6 +418,17 @@ public interface BasePackage extends EPackage {
 	EClass getEntity();
 
 	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.base.Entity#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see de.dfki.iui.basys.model.base.Entity#getId()
+	 * @see #getEntity()
+	 * @generated
+	 */
+	EAttribute getEntity_Id();
+
+	/**
 	 * Returns the meta object for the containment reference '{@link de.dfki.iui.basys.model.base.Entity#getMetadata <em>Metadata</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -399,58 +438,6 @@ public interface BasePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getEntity_Metadata();
-
-	/**
-	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.base.IdentifiableEntity <em>Identifiable Entity</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Identifiable Entity</em>'.
-	 * @see de.dfki.iui.basys.model.base.IdentifiableEntity
-	 * @generated
-	 */
-	EClass getIdentifiableEntity();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.base.IdentifiableEntity#getId <em>Id</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Id</em>'.
-	 * @see de.dfki.iui.basys.model.base.IdentifiableEntity#getId()
-	 * @see #getIdentifiableEntity()
-	 * @generated
-	 */
-	EAttribute getIdentifiableEntity_Id();
-
-	/**
-	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.base.Event <em>Event</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Event</em>'.
-	 * @see de.dfki.iui.basys.model.base.Event
-	 * @generated
-	 */
-	EClass getEvent();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.base.Event#getTimestamp <em>Timestamp</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Timestamp</em>'.
-	 * @see de.dfki.iui.basys.model.base.Event#getTimestamp()
-	 * @see #getEvent()
-	 * @generated
-	 */
-	EAttribute getEvent_Timestamp();
-
-	/**
-	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.base.Capability <em>Capability</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Capability</em>'.
-	 * @see de.dfki.iui.basys.model.base.Capability
-	 * @generated
-	 */
-	EClass getCapability();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.base.KeyValuePair <em>Key Value Pair</em>}'.
@@ -485,6 +472,105 @@ public interface BasePackage extends EPackage {
 	EAttribute getKeyValuePair_Value();
 
 	/**
+	 * Returns the meta object for data type '{@link de.dfki.iui.basys.model.base.datatypes.BBoolean <em>BBoolean</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>BBoolean</em>'.
+	 * @see de.dfki.iui.basys.model.base.datatypes.BBoolean
+	 * @model instanceClass="de.dfki.iui.basys.model.base.datatypes.BBoolean"
+	 * @generated
+	 */
+	EDataType getBBoolean();
+
+	/**
+	 * Returns the meta object for data type '{@link de.dfki.iui.basys.model.base.datatypes.BByte <em>BByte</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>BByte</em>'.
+	 * @see de.dfki.iui.basys.model.base.datatypes.BByte
+	 * @model instanceClass="de.dfki.iui.basys.model.base.datatypes.BByte"
+	 * @generated
+	 */
+	EDataType getBByte();
+
+	/**
+	 * Returns the meta object for data type '{@link de.dfki.iui.basys.model.base.datatypes.BChar <em>BChar</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>BChar</em>'.
+	 * @see de.dfki.iui.basys.model.base.datatypes.BChar
+	 * @model instanceClass="de.dfki.iui.basys.model.base.datatypes.BChar"
+	 * @generated
+	 */
+	EDataType getBChar();
+
+	/**
+	 * Returns the meta object for data type '{@link de.dfki.iui.basys.model.base.datatypes.BDouble <em>BDouble</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>BDouble</em>'.
+	 * @see de.dfki.iui.basys.model.base.datatypes.BDouble
+	 * @model instanceClass="de.dfki.iui.basys.model.base.datatypes.BDouble"
+	 * @generated
+	 */
+	EDataType getBDouble();
+
+	/**
+	 * Returns the meta object for data type '{@link de.dfki.iui.basys.model.base.datatypes.BFloat <em>BFloat</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>BFloat</em>'.
+	 * @see de.dfki.iui.basys.model.base.datatypes.BFloat
+	 * @model instanceClass="de.dfki.iui.basys.model.base.datatypes.BFloat"
+	 * @generated
+	 */
+	EDataType getBFloat();
+
+	/**
+	 * Returns the meta object for data type '{@link de.dfki.iui.basys.model.base.datatypes.BInteger <em>BInteger</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>BInteger</em>'.
+	 * @see de.dfki.iui.basys.model.base.datatypes.BInteger
+	 * @model instanceClass="de.dfki.iui.basys.model.base.datatypes.BInteger"
+	 * @generated
+	 */
+	EDataType getBInteger();
+
+	/**
+	 * Returns the meta object for data type '{@link de.dfki.iui.basys.model.base.datatypes.BLong <em>BLong</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>BLong</em>'.
+	 * @see de.dfki.iui.basys.model.base.datatypes.BLong
+	 * @model instanceClass="de.dfki.iui.basys.model.base.datatypes.BLong"
+	 * @generated
+	 */
+	EDataType getBLong();
+
+	/**
+	 * Returns the meta object for data type '{@link de.dfki.iui.basys.model.base.datatypes.BShort <em>BShort</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>BShort</em>'.
+	 * @see de.dfki.iui.basys.model.base.datatypes.BShort
+	 * @model instanceClass="de.dfki.iui.basys.model.base.datatypes.BShort"
+	 * @generated
+	 */
+	EDataType getBShort();
+
+	/**
+	 * Returns the meta object for data type '{@link de.dfki.iui.basys.model.base.datatypes.BString <em>BString</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>BString</em>'.
+	 * @see de.dfki.iui.basys.model.base.datatypes.BString
+	 * @model instanceClass="de.dfki.iui.basys.model.base.datatypes.BString"
+	 * @generated
+	 */
+	EDataType getBString();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -507,6 +593,24 @@ public interface BasePackage extends EPackage {
 	 * @generated
 	 */
 	interface Literals {
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.base.impl.BObjectImpl <em>BObject</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.base.impl.BObjectImpl
+		 * @see de.dfki.iui.basys.model.base.impl.BasePackageImpl#getBObject()
+		 * @generated
+		 */
+		EClass BOBJECT = eINSTANCE.getBObject();
+
+		/**
+		 * The meta object literal for the '<em><b>Binding</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BOBJECT__BINDING = eINSTANCE.getBObject_Binding();
+
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.base.impl.MetadataImpl <em>Metadata</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -552,58 +656,20 @@ public interface BasePackage extends EPackage {
 		EClass ENTITY = eINSTANCE.getEntity();
 
 		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ENTITY__ID = eINSTANCE.getEntity_Id();
+
+		/**
 		 * The meta object literal for the '<em><b>Metadata</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference ENTITY__METADATA = eINSTANCE.getEntity_Metadata();
-
-		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.base.impl.IdentifiableEntityImpl <em>Identifiable Entity</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.base.impl.IdentifiableEntityImpl
-		 * @see de.dfki.iui.basys.model.base.impl.BasePackageImpl#getIdentifiableEntity()
-		 * @generated
-		 */
-		EClass IDENTIFIABLE_ENTITY = eINSTANCE.getIdentifiableEntity();
-
-		/**
-		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute IDENTIFIABLE_ENTITY__ID = eINSTANCE.getIdentifiableEntity_Id();
-
-		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.base.impl.EventImpl <em>Event</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.base.impl.EventImpl
-		 * @see de.dfki.iui.basys.model.base.impl.BasePackageImpl#getEvent()
-		 * @generated
-		 */
-		EClass EVENT = eINSTANCE.getEvent();
-
-		/**
-		 * The meta object literal for the '<em><b>Timestamp</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute EVENT__TIMESTAMP = eINSTANCE.getEvent_Timestamp();
-
-		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.base.impl.CapabilityImpl <em>Capability</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.base.impl.CapabilityImpl
-		 * @see de.dfki.iui.basys.model.base.impl.BasePackageImpl#getCapability()
-		 * @generated
-		 */
-		EClass CAPABILITY = eINSTANCE.getCapability();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.base.impl.KeyValuePairImpl <em>Key Value Pair</em>}' class.
@@ -630,6 +696,96 @@ public interface BasePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute KEY_VALUE_PAIR__VALUE = eINSTANCE.getKeyValuePair_Value();
+
+		/**
+		 * The meta object literal for the '<em>BBoolean</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.base.datatypes.BBoolean
+		 * @see de.dfki.iui.basys.model.base.impl.BasePackageImpl#getBBoolean()
+		 * @generated
+		 */
+		EDataType BBOOLEAN = eINSTANCE.getBBoolean();
+
+		/**
+		 * The meta object literal for the '<em>BByte</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.base.datatypes.BByte
+		 * @see de.dfki.iui.basys.model.base.impl.BasePackageImpl#getBByte()
+		 * @generated
+		 */
+		EDataType BBYTE = eINSTANCE.getBByte();
+
+		/**
+		 * The meta object literal for the '<em>BChar</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.base.datatypes.BChar
+		 * @see de.dfki.iui.basys.model.base.impl.BasePackageImpl#getBChar()
+		 * @generated
+		 */
+		EDataType BCHAR = eINSTANCE.getBChar();
+
+		/**
+		 * The meta object literal for the '<em>BDouble</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.base.datatypes.BDouble
+		 * @see de.dfki.iui.basys.model.base.impl.BasePackageImpl#getBDouble()
+		 * @generated
+		 */
+		EDataType BDOUBLE = eINSTANCE.getBDouble();
+
+		/**
+		 * The meta object literal for the '<em>BFloat</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.base.datatypes.BFloat
+		 * @see de.dfki.iui.basys.model.base.impl.BasePackageImpl#getBFloat()
+		 * @generated
+		 */
+		EDataType BFLOAT = eINSTANCE.getBFloat();
+
+		/**
+		 * The meta object literal for the '<em>BInteger</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.base.datatypes.BInteger
+		 * @see de.dfki.iui.basys.model.base.impl.BasePackageImpl#getBInteger()
+		 * @generated
+		 */
+		EDataType BINTEGER = eINSTANCE.getBInteger();
+
+		/**
+		 * The meta object literal for the '<em>BLong</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.base.datatypes.BLong
+		 * @see de.dfki.iui.basys.model.base.impl.BasePackageImpl#getBLong()
+		 * @generated
+		 */
+		EDataType BLONG = eINSTANCE.getBLong();
+
+		/**
+		 * The meta object literal for the '<em>BShort</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.base.datatypes.BShort
+		 * @see de.dfki.iui.basys.model.base.impl.BasePackageImpl#getBShort()
+		 * @generated
+		 */
+		EDataType BSHORT = eINSTANCE.getBShort();
+
+		/**
+		 * The meta object literal for the '<em>BString</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.base.datatypes.BString
+		 * @see de.dfki.iui.basys.model.base.impl.BasePackageImpl#getBString()
+		 * @generated
+		 */
+		EDataType BSTRING = eINSTANCE.getBString();
 
 	}
 

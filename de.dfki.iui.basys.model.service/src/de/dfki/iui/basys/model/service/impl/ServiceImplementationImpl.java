@@ -2,8 +2,7 @@
  */
 package de.dfki.iui.basys.model.service.impl;
 
-import de.dfki.iui.basys.model.base.impl.IdentifiableEntityImpl;
-
+import de.dfki.iui.basys.model.base.impl.EntityImpl;
 import de.dfki.iui.basys.model.service.ServiceImplementation;
 import de.dfki.iui.basys.model.service.ServicePackage;
 
@@ -29,7 +28,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class ServiceImplementationImpl extends IdentifiableEntityImpl implements ServiceImplementation {
+public class ServiceImplementationImpl extends EntityImpl implements ServiceImplementation {
 	/**
 	 * The default value of the '{@link #getServiceDescriptionId() <em>Service Description Id</em>}' attribute.
 	 * <!-- begin-user-doc -->

@@ -2,7 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.product;
 
-import de.dfki.iui.basys.model.base.IdentifiableEntity;
+import de.dfki.iui.basys.model.base.Entity;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,7 +25,7 @@ import de.dfki.iui.basys.model.base.IdentifiableEntity;
  * @model
  * @generated
  */
-public interface ProductVariant extends IdentifiableEntity {
+public interface ProductVariant extends Entity {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->

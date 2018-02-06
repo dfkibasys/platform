@@ -13,7 +13,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,12 +22,31 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link de.dfki.iui.basys.model.base.impl.EntityImpl#getId <em>Id</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.base.impl.EntityImpl#getMetadata <em>Metadata</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class EntityImpl extends MinimalEObjectImpl.Container implements Entity {
+public class EntityImpl extends BObjectImpl implements Entity {
+	/**
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ID_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+	protected String id = ID_EDEFAULT;
 	/**
 	 * The cached value of the '{@link #getMetadata() <em>Metadata</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -56,6 +74,27 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity {
 	@Override
 	protected EClass eStaticClass() {
 		return BasePackage.Literals.ENTITY;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getId() {
+		return id;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setId(String newId) {
+		String oldId = id;
+		id = newId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, BasePackage.ENTITY__ID, oldId, id));
 	}
 
 	/**
@@ -123,6 +162,8 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case BasePackage.ENTITY__ID:
+				return getId();
 			case BasePackage.ENTITY__METADATA:
 				return getMetadata();
 		}
@@ -137,6 +178,9 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case BasePackage.ENTITY__ID:
+				setId((String)newValue);
+				return;
 			case BasePackage.ENTITY__METADATA:
 				setMetadata((Metadata)newValue);
 				return;
@@ -152,6 +196,9 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case BasePackage.ENTITY__ID:
+				setId(ID_EDEFAULT);
+				return;
 			case BasePackage.ENTITY__METADATA:
 				setMetadata((Metadata)null);
 				return;
@@ -167,10 +214,28 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case BasePackage.ENTITY__ID:
+				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case BasePackage.ENTITY__METADATA:
 				return metadata != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (id: ");
+		result.append(id);
+		result.append(')');
+		return result.toString();
 	}
 
 } //EntityImpl

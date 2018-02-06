@@ -6,8 +6,6 @@ package de.dfki.iui.basys.model.domain.product.provider;
 import de.dfki.iui.basys.model.base.provider.EntityItemProvider;
 
 import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
-
-import de.dfki.iui.basys.model.domain.product.ProductInstanceDetectionEnum;
 import de.dfki.iui.basys.model.domain.product.ProductInstanceLocation;
 import de.dfki.iui.basys.model.domain.product.ProductPackage;
 
@@ -144,8 +142,7 @@ public class ProductInstanceLocationItemProvider extends EntityItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		ProductInstanceDetectionEnum labelValue = ((ProductInstanceLocation)object).getDetectionType();
-		String label = labelValue == null ? null : labelValue.toString();
+		String label = ((ProductInstanceLocation)object).getId();
 		return label == null || label.length() == 0 ?
 			getString("_UI_ProductInstanceLocation_type") :
 			getString("_UI_ProductInstanceLocation_type") + " " + label;

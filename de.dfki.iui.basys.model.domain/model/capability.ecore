@@ -2,5 +2,21 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="capability" nsURI="http://www.dfki.de/iui/basys/model/capability"
     nsPrefix="capability">
-  <eClassifiers xsi:type="ecore:EClass" name="Capability"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Capability" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ManufacturingCapability" eSuperTypes="#//Capability"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Fügen" eSuperTypes="#//ManufacturingCapability"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Pressen" eSuperTypes="#//AnEinpressen">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="druck" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hub" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="QoSCapability" eSuperTypes="#//Capability"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Urformen" eSuperTypes="#//ManufacturingCapability"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Umformen" eSuperTypes="#//ManufacturingCapability"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Trennen" eSuperTypes="#//ManufacturingCapability"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Beschichten" eSuperTypes="#//ManufacturingCapability"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Stoffeigenschaften" eSuperTypes="#//ManufacturingCapability"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AnEinpressen" eSuperTypes="#//Fügen"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Schrauben" eSuperTypes="#//AnEinpressen">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="drehmoment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
 </ecore:EPackage>

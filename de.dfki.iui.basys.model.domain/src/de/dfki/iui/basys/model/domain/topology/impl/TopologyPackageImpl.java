@@ -4,6 +4,8 @@ package de.dfki.iui.basys.model.domain.topology.impl;
 
 import de.dfki.iui.basys.model.base.BasePackage;
 
+import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
+import de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl;
 import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
 
 import de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl;
@@ -500,6 +502,7 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		WorkerguidancePackageImpl theWorkerguidancePackage = (WorkerguidancePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkerguidancePackage.eNS_URI) instanceof WorkerguidancePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkerguidancePackage.eNS_URI) : WorkerguidancePackage.eINSTANCE);
 		WorkplanPackageImpl theWorkplanPackage = (WorkplanPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkplanPackage.eNS_URI) instanceof WorkplanPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkplanPackage.eNS_URI) : WorkplanPackage.eINSTANCE);
 		LinebalancingPackageImpl theLinebalancingPackage = (LinebalancingPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(LinebalancingPackage.eNS_URI) instanceof LinebalancingPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(LinebalancingPackage.eNS_URI) : LinebalancingPackage.eINSTANCE);
+		CapabilityPackageImpl theCapabilityPackage = (CapabilityPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CapabilityPackage.eNS_URI) instanceof CapabilityPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CapabilityPackage.eNS_URI) : CapabilityPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theTopologyPackage.createPackageContents();
@@ -509,6 +512,7 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		theWorkerguidancePackage.createPackageContents();
 		theWorkplanPackage.createPackageContents();
 		theLinebalancingPackage.createPackageContents();
+		theCapabilityPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theTopologyPackage.initializePackageContents();
@@ -518,6 +522,7 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		theWorkerguidancePackage.initializePackageContents();
 		theWorkplanPackage.initializePackageContents();
 		theLinebalancingPackage.initializePackageContents();
+		theCapabilityPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theTopologyPackage.freeze();
@@ -1308,21 +1313,21 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		enterpriseEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
-		siteEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
-		areaEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
-		workCenterEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
+		enterpriseEClass.getESuperTypes().add(theBasePackage.getEntity());
+		siteEClass.getESuperTypes().add(theBasePackage.getEntity());
+		areaEClass.getESuperTypes().add(theBasePackage.getEntity());
+		workCenterEClass.getESuperTypes().add(theBasePackage.getEntity());
 		processCellEClass.getESuperTypes().add(this.getWorkCenter());
 		productionUnitEClass.getESuperTypes().add(this.getWorkCenter());
 		productionLineEClass.getESuperTypes().add(this.getWorkCenter());
 		storageZoneEClass.getESuperTypes().add(this.getWorkCenter());
-		workUnitEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
+		workUnitEClass.getESuperTypes().add(theBasePackage.getEntity());
 		unitEClass.getESuperTypes().add(this.getWorkUnit());
 		workCellEClass.getESuperTypes().add(this.getWorkUnit());
 		storageUnitEClass.getESuperTypes().add(this.getWorkUnit());
-		equipmentModuleEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
-		controlModuleEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
-		stationEClass.getESuperTypes().add(theBasePackage.getIdentifiableEntity());
+		equipmentModuleEClass.getESuperTypes().add(theBasePackage.getEntity());
+		controlModuleEClass.getESuperTypes().add(theBasePackage.getEntity());
+		stationEClass.getESuperTypes().add(theBasePackage.getEntity());
 		assemblyStationEClass.getESuperTypes().add(this.getStation());
 		bufferStationEClass.getESuperTypes().add(this.getStation());
 		processUnitEClass.getESuperTypes().add(this.getWorkUnit());

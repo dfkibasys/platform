@@ -120,7 +120,7 @@ public class ProductInstanceStatusItemProvider extends EntityItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ProductInstanceStatus)object).getProductInstanceId();
+		String label = ((ProductInstanceStatus)object).getId();
 		return label == null || label.length() == 0 ?
 			getString("_UI_ProductInstanceStatus_type") :
 			getString("_UI_ProductInstanceStatus_type") + " " + label;

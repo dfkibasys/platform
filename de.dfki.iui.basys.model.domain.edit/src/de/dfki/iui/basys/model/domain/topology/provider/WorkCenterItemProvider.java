@@ -3,8 +3,7 @@
 package de.dfki.iui.basys.model.domain.topology.provider;
 
 
-import de.dfki.iui.basys.model.base.provider.IdentifiableEntityItemProvider;
-
+import de.dfki.iui.basys.model.base.provider.EntityItemProvider;
 import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
 
 import de.dfki.iui.basys.model.domain.topology.WorkCenter;
@@ -25,7 +24,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
  * <!-- end-user-doc -->
  * @generated
  */
-public class WorkCenterItemProvider extends IdentifiableEntityItemProvider {
+public class WorkCenterItemProvider extends EntityItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

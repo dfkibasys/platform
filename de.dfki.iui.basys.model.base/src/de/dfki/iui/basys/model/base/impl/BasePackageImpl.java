@@ -2,17 +2,28 @@
  */
 package de.dfki.iui.basys.model.base.impl;
 
+import de.dfki.iui.basys.model.base.BObject;
 import de.dfki.iui.basys.model.base.BaseFactory;
 import de.dfki.iui.basys.model.base.BasePackage;
-import de.dfki.iui.basys.model.base.Capability;
 import de.dfki.iui.basys.model.base.Entity;
-import de.dfki.iui.basys.model.base.Event;
-import de.dfki.iui.basys.model.base.IdentifiableEntity;
 import de.dfki.iui.basys.model.base.KeyValuePair;
 import de.dfki.iui.basys.model.base.Metadata;
 
+import de.dfki.iui.basys.model.base.datatypes.BBoolean;
+import de.dfki.iui.basys.model.base.datatypes.BByte;
+import de.dfki.iui.basys.model.base.datatypes.BChar;
+import de.dfki.iui.basys.model.base.datatypes.BDouble;
+import de.dfki.iui.basys.model.base.datatypes.BFloat;
+import de.dfki.iui.basys.model.base.datatypes.BInteger;
+import de.dfki.iui.basys.model.base.datatypes.BLong;
+import de.dfki.iui.basys.model.base.datatypes.BShort;
+import de.dfki.iui.basys.model.base.datatypes.BString;
+
+import de.dfki.iui.basys.model.pattern.PatternPackage;
+import de.dfki.iui.basys.model.pattern.impl.PatternPackageImpl;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -25,6 +36,13 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
  * @generated
  */
 public class BasePackageImpl extends EPackageImpl implements BasePackage {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass bObjectEClass = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -44,28 +62,70 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass identifiableEntityEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass eventEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass capabilityEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass keyValuePairEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType bBooleanEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType bByteEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType bCharEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType bDoubleEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType bFloatEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType bIntegerEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType bLongEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType bShortEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType bStringEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -113,11 +173,16 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 
 		isInited = true;
 
+		// Obtain or create and register interdependencies
+		PatternPackageImpl thePatternPackage = (PatternPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(PatternPackage.eNS_URI) instanceof PatternPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(PatternPackage.eNS_URI) : PatternPackage.eINSTANCE);
+
 		// Create package meta-data objects
 		theBasePackage.createPackageContents();
+		thePatternPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theBasePackage.initializePackageContents();
+		thePatternPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theBasePackage.freeze();
@@ -126,6 +191,24 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(BasePackage.eNS_URI, theBasePackage);
 		return theBasePackage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getBObject() {
+		return bObjectEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getBObject_Binding() {
+		return (EAttribute)bObjectEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -178,53 +261,17 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getEntity_Id() {
+		return (EAttribute)entityEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getEntity_Metadata() {
-		return (EReference)entityEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getIdentifiableEntity() {
-		return identifiableEntityEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getIdentifiableEntity_Id() {
-		return (EAttribute)identifiableEntityEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getEvent() {
-		return eventEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getEvent_Timestamp() {
-		return (EAttribute)eventEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getCapability() {
-		return capabilityEClass;
+		return (EReference)entityEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -259,6 +306,87 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EDataType getBBoolean() {
+		return bBooleanEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getBByte() {
+		return bByteEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getBChar() {
+		return bCharEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getBDouble() {
+		return bDoubleEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getBFloat() {
+		return bFloatEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getBInteger() {
+		return bIntegerEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getBLong() {
+		return bLongEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getBShort() {
+		return bShortEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getBString() {
+		return bStringEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public BaseFactory getBaseFactory() {
 		return (BaseFactory)getEFactoryInstance();
 	}
@@ -282,25 +410,32 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 		isCreated = true;
 
 		// Create classes and their features
+		bObjectEClass = createEClass(BOBJECT);
+		createEAttribute(bObjectEClass, BOBJECT__BINDING);
+
 		metadataEClass = createEClass(METADATA);
 		createEAttribute(metadataEClass, METADATA__CREATOR);
 		createEAttribute(metadataEClass, METADATA__CREATION_DATE);
 		createEAttribute(metadataEClass, METADATA__EXPIRY_DATE);
 
 		entityEClass = createEClass(ENTITY);
+		createEAttribute(entityEClass, ENTITY__ID);
 		createEReference(entityEClass, ENTITY__METADATA);
-
-		identifiableEntityEClass = createEClass(IDENTIFIABLE_ENTITY);
-		createEAttribute(identifiableEntityEClass, IDENTIFIABLE_ENTITY__ID);
-
-		eventEClass = createEClass(EVENT);
-		createEAttribute(eventEClass, EVENT__TIMESTAMP);
-
-		capabilityEClass = createEClass(CAPABILITY);
 
 		keyValuePairEClass = createEClass(KEY_VALUE_PAIR);
 		createEAttribute(keyValuePairEClass, KEY_VALUE_PAIR__KEY);
 		createEAttribute(keyValuePairEClass, KEY_VALUE_PAIR__VALUE);
+
+		// Create data types
+		bBooleanEDataType = createEDataType(BBOOLEAN);
+		bByteEDataType = createEDataType(BBYTE);
+		bCharEDataType = createEDataType(BCHAR);
+		bDoubleEDataType = createEDataType(BDOUBLE);
+		bFloatEDataType = createEDataType(BFLOAT);
+		bIntegerEDataType = createEDataType(BINTEGER);
+		bLongEDataType = createEDataType(BLONG);
+		bShortEDataType = createEDataType(BSHORT);
+		bStringEDataType = createEDataType(BSTRING);
 	}
 
 	/**
@@ -331,31 +466,35 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		identifiableEntityEClass.getESuperTypes().add(this.getEntity());
-		eventEClass.getESuperTypes().add(this.getEntity());
-		capabilityEClass.getESuperTypes().add(this.getEntity());
-		keyValuePairEClass.getESuperTypes().add(this.getEntity());
+		entityEClass.getESuperTypes().add(this.getBObject());
 
 		// Initialize classes, features, and operations; add parameters
+		initEClass(bObjectEClass, BObject.class, "BObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getBObject_Binding(), ecorePackage.getEString(), "binding", null, 0, 1, BObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(metadataEClass, Metadata.class, "Metadata", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMetadata_Creator(), ecorePackage.getEString(), "creator", null, 0, 1, Metadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMetadata_CreationDate(), ecorePackage.getEDate(), "creationDate", null, 0, 1, Metadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMetadata_ExpiryDate(), ecorePackage.getEDate(), "expiryDate", null, 0, 1, Metadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(entityEClass, Entity.class, "Entity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getEntity_Id(), ecorePackage.getEString(), "id", null, 1, 1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEntity_Metadata(), this.getMetadata(), null, "metadata", null, 0, 1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(identifiableEntityEClass, IdentifiableEntity.class, "IdentifiableEntity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getIdentifiableEntity_Id(), ecorePackage.getEString(), "id", null, 1, 1, IdentifiableEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(eventEClass, Event.class, "Event", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getEvent_Timestamp(), ecorePackage.getEDate(), "timestamp", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(capabilityEClass, Capability.class, "Capability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(keyValuePairEClass, KeyValuePair.class, "KeyValuePair", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getKeyValuePair_Key(), ecorePackage.getEString(), "key", null, 0, 1, KeyValuePair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getKeyValuePair_Value(), ecorePackage.getEString(), "value", null, 0, 1, KeyValuePair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		// Initialize data types
+		initEDataType(bBooleanEDataType, BBoolean.class, "BBoolean", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(bByteEDataType, BByte.class, "BByte", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(bCharEDataType, BChar.class, "BChar", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(bDoubleEDataType, BDouble.class, "BDouble", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(bFloatEDataType, BFloat.class, "BFloat", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(bIntegerEDataType, BInteger.class, "BInteger", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(bLongEDataType, BLong.class, "BLong", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(bShortEDataType, BShort.class, "BShort", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(bStringEDataType, BString.class, "BString", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -22,6 +22,15 @@ public interface BaseFactory extends EFactory {
 	BaseFactory eINSTANCE = de.dfki.iui.basys.model.base.impl.BaseFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>BObject</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>BObject</em>'.
+	 * @generated
+	 */
+	BObject createBObject();
+
+	/**
 	 * Returns a new object of class '<em>Metadata</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -38,33 +47,6 @@ public interface BaseFactory extends EFactory {
 	 * @generated
 	 */
 	Entity createEntity();
-
-	/**
-	 * Returns a new object of class '<em>Identifiable Entity</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Identifiable Entity</em>'.
-	 * @generated
-	 */
-	IdentifiableEntity createIdentifiableEntity();
-
-	/**
-	 * Returns a new object of class '<em>Event</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Event</em>'.
-	 * @generated
-	 */
-	Event createEvent();
-
-	/**
-	 * Returns a new object of class '<em>Capability</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Capability</em>'.
-	 * @generated
-	 */
-	Capability createCapability();
 
 	/**
 	 * Returns a new object of class '<em>Key Value Pair</em>'.

@@ -2,7 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.workerguidance;
 
-import de.dfki.iui.basys.model.base.IdentifiableEntity;
+import de.dfki.iui.basys.model.base.Entity;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,7 +20,7 @@ import de.dfki.iui.basys.model.base.IdentifiableEntity;
  * @model
  * @generated
  */
-public interface Material extends IdentifiableEntity {
+public interface Material extends Entity {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->

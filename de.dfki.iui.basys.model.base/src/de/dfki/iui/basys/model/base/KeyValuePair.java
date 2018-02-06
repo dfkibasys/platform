@@ -2,6 +2,8 @@
  */
 package de.dfki.iui.basys.model.base;
 
+import org.eclipse.emf.ecore.EObject;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -20,7 +22,7 @@ package de.dfki.iui.basys.model.base;
  * @model
  * @generated
  */
-public interface KeyValuePair extends Entity {
+public interface KeyValuePair extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Key</b></em>' attribute.
 	 * <!-- begin-user-doc -->

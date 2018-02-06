@@ -2,8 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.topology.impl;
 
-import de.dfki.iui.basys.model.base.impl.IdentifiableEntityImpl;
-
+import de.dfki.iui.basys.model.base.impl.EntityImpl;
 import de.dfki.iui.basys.model.domain.topology.Enterprise;
 import de.dfki.iui.basys.model.domain.topology.Site;
 import de.dfki.iui.basys.model.domain.topology.TopologyPackage;
@@ -33,7 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class EnterpriseImpl extends IdentifiableEntityImpl implements Enterprise {
+public class EnterpriseImpl extends EntityImpl implements Enterprise {
 	/**
 	 * The cached value of the '{@link #getSites() <em>Sites</em>}' containment reference list.
 	 * <!-- begin-user-doc -->

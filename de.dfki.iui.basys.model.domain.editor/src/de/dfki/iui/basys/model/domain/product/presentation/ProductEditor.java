@@ -158,6 +158,7 @@ import de.dfki.iui.basys.model.domain.product.provider.ProductItemProviderAdapte
 
 import de.dfki.iui.basys.model.base.provider.BaseItemProviderAdapterFactory;
 
+import de.dfki.iui.basys.model.domain.capability.provider.CapabilityItemProviderAdapterFactory;
 import de.dfki.iui.basys.model.domain.linebalancing.provider.LinebalancingItemProviderAdapterFactory;
 import de.dfki.iui.basys.model.domain.order.presentation.DomainEditorPlugin;
 
@@ -720,6 +721,7 @@ public class ProductEditor
 		adapterFactory.addAdapterFactory(new WorkerguidanceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new WorkplanItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new LinebalancingItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new CapabilityItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new BaseItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 

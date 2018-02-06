@@ -66,6 +66,12 @@ public class BaseSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
+			case BasePackage.BOBJECT: {
+				BObject bObject = (BObject)theEObject;
+				T result = caseBObject(bObject);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case BasePackage.METADATA: {
 				Metadata metadata = (Metadata)theEObject;
 				T result = caseMetadata(metadata);
@@ -75,39 +81,33 @@ public class BaseSwitch<T> extends Switch<T> {
 			case BasePackage.ENTITY: {
 				Entity entity = (Entity)theEObject;
 				T result = caseEntity(entity);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case BasePackage.IDENTIFIABLE_ENTITY: {
-				IdentifiableEntity identifiableEntity = (IdentifiableEntity)theEObject;
-				T result = caseIdentifiableEntity(identifiableEntity);
-				if (result == null) result = caseEntity(identifiableEntity);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case BasePackage.EVENT: {
-				Event event = (Event)theEObject;
-				T result = caseEvent(event);
-				if (result == null) result = caseEntity(event);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case BasePackage.CAPABILITY: {
-				Capability capability = (Capability)theEObject;
-				T result = caseCapability(capability);
-				if (result == null) result = caseEntity(capability);
+				if (result == null) result = caseBObject(entity);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case BasePackage.KEY_VALUE_PAIR: {
 				KeyValuePair keyValuePair = (KeyValuePair)theEObject;
 				T result = caseKeyValuePair(keyValuePair);
-				if (result == null) result = caseEntity(keyValuePair);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			default: return defaultCase(theEObject);
 		}
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>BObject</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>BObject</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBObject(BObject object) {
+		return null;
 	}
 
 	/**
@@ -137,51 +137,6 @@ public class BaseSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseEntity(Entity object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Identifiable Entity</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Identifiable Entity</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseIdentifiableEntity(IdentifiableEntity object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Event</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Event</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEvent(Event object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Capability</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Capability</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseCapability(Capability object) {
 		return null;
 	}
 

@@ -2,8 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.order;
 
-import de.dfki.iui.basys.model.base.IdentifiableEntity;
-
+import de.dfki.iui.basys.model.base.Entity;
 import java.util.Date;
 
 /**
@@ -31,7 +30,7 @@ import java.util.Date;
  * @model
  * @generated
  */
-public interface Order extends IdentifiableEntity {
+public interface Order extends Entity {
 	/**
 	 * Returns the value of the '<em><b>Product Variant Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
