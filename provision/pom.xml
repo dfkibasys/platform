@@ -111,7 +111,15 @@
 	      <groupId>org.eclipse.paho</groupId>
 	      <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
 	      <version>${paho-version}</version>
+		</dependency>	
+		
+		<!-- https://mvnrepository.com/artifact/com.eclipsesource/osgi-jaxrs-connector -->
+		<dependency>
+			<groupId>com.eclipsesource</groupId>
+			<artifactId>osgi-jaxrs-connector</artifactId>
+			<version>3.2.1</version>
 		</dependency>
+
 
 		<!-- https://mvnrepository.com/artifact/javax.inject/javax.inject -->
 		<!-- zur Nutzung von communication.mqtt im Wildfly -->
