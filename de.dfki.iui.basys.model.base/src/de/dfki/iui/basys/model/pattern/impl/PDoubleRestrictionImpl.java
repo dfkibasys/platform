@@ -1,26 +1,24 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
  */
 package de.dfki.iui.basys.model.pattern.impl;
 
-import de.dfki.iui.basys.model.base.datatypes.BDouble;
-
-import de.dfki.iui.basys.model.pattern.PDoubleRestriction;
-import de.dfki.iui.basys.model.pattern.PatternPackage;
-
-import java.lang.reflect.InvocationTargetException;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import de.dfki.iui.basys.model.base.datatypes.BDouble;
+import de.dfki.iui.basys.model.pattern.PDoubleRestriction;
+import de.dfki.iui.basys.model.pattern.PatternPackage;
+import java.lang.reflect.InvocationTargetException;
+
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>PDouble Restriction</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>PDouble Restriction</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
@@ -33,8 +31,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 public class PDoubleRestrictionImpl extends PNumberRestrictionImpl<BDouble> implements PDoubleRestriction {
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -43,8 +40,7 @@ public class PDoubleRestrictionImpl extends PNumberRestrictionImpl<BDouble> impl
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -52,8 +48,7 @@ public class PDoubleRestrictionImpl extends PNumberRestrictionImpl<BDouble> impl
 	protected BDouble value = VALUE_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected PDoubleRestrictionImpl() {
@@ -61,8 +56,7 @@ public class PDoubleRestrictionImpl extends PNumberRestrictionImpl<BDouble> impl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -71,10 +65,10 @@ public class PDoubleRestrictionImpl extends PNumberRestrictionImpl<BDouble> impl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BDouble getValue() {
 		return value;
 	}
@@ -92,10 +86,10 @@ public class PDoubleRestrictionImpl extends PNumberRestrictionImpl<BDouble> impl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSatisfiedBy(final Object value) {
 		Object newValue = value;
 		if (value instanceof Double || value instanceof de.dfki.iui.basys.model.base.datatypes.BDouble) {
@@ -107,10 +101,10 @@ public class PDoubleRestrictionImpl extends PNumberRestrictionImpl<BDouble> impl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object getDefaultValue(final Object defVal) {
 		if ( defVal != null ) {
 			return isSatisfiedBy( defVal ) ? defVal : null;
@@ -133,8 +127,7 @@ public class PDoubleRestrictionImpl extends PNumberRestrictionImpl<BDouble> impl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -147,8 +140,7 @@ public class PDoubleRestrictionImpl extends PNumberRestrictionImpl<BDouble> impl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -162,8 +154,7 @@ public class PDoubleRestrictionImpl extends PNumberRestrictionImpl<BDouble> impl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -177,8 +168,7 @@ public class PDoubleRestrictionImpl extends PNumberRestrictionImpl<BDouble> impl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -207,8 +197,7 @@ public class PDoubleRestrictionImpl extends PNumberRestrictionImpl<BDouble> impl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -222,4 +211,4 @@ public class PDoubleRestrictionImpl extends PNumberRestrictionImpl<BDouble> impl
 		return result.toString();
 	}
 
-} //PDoubleRestrictionImpl
+} // PDoubleRestrictionImpl

@@ -1,38 +1,39 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
  */
 package de.dfki.iui.basys.model.pattern.impl;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.BasicEList;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+import de.dfki.iui.basys.model.pattern.PEmptySlot;
 import de.dfki.iui.basys.model.pattern.PObject;
 import de.dfki.iui.basys.model.pattern.PPattern;
 import de.dfki.iui.basys.model.pattern.PSlot;
 import de.dfki.iui.basys.model.pattern.PValue;
 import de.dfki.iui.basys.model.pattern.PatternPackage;
-
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>PSlot</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>PSlot</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
@@ -47,8 +48,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class PSlotImpl extends MinimalEObjectImpl.Container implements PSlot {
 	/**
 	 * The cached value of the '{@link #getFeature() <em>Feature</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getFeature()
 	 * @generated
 	 * @ordered
@@ -57,8 +57,7 @@ public class PSlotImpl extends MinimalEObjectImpl.Container implements PSlot {
 
 	/**
 	 * The cached value of the '{@link #getRange() <em>Range</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getRange()
 	 * @generated
 	 * @ordered
@@ -67,8 +66,7 @@ public class PSlotImpl extends MinimalEObjectImpl.Container implements PSlot {
 
 	/**
 	 * The default value of the '{@link #getFeatureName() <em>Feature Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getFeatureName()
 	 * @generated
 	 * @ordered
@@ -76,8 +74,7 @@ public class PSlotImpl extends MinimalEObjectImpl.Container implements PSlot {
 	protected static final String FEATURE_NAME_EDEFAULT = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected PSlotImpl() {
@@ -85,8 +82,7 @@ public class PSlotImpl extends MinimalEObjectImpl.Container implements PSlot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -95,10 +91,10 @@ public class PSlotImpl extends MinimalEObjectImpl.Container implements PSlot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EStructuralFeature getFeature() {
 		if (feature != null && feature.eIsProxy()) {
 			InternalEObject oldFeature = (InternalEObject)feature;
@@ -112,8 +108,7 @@ public class PSlotImpl extends MinimalEObjectImpl.Container implements PSlot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EStructuralFeature basicGetFeature() {
@@ -121,10 +116,10 @@ public class PSlotImpl extends MinimalEObjectImpl.Container implements PSlot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setFeature(EStructuralFeature newFeature) {
 		EStructuralFeature oldFeature = feature;
 		feature = newFeature;
@@ -133,10 +128,10 @@ public class PSlotImpl extends MinimalEObjectImpl.Container implements PSlot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<PPattern> getRange() {
 		if (range == null) {
 			range = new EObjectContainmentEList<PPattern>(PPattern.class, this, PatternPackage.PSLOT__RANGE);
@@ -145,65 +140,77 @@ public class PSlotImpl extends MinimalEObjectImpl.Container implements PSlot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated NOT
 	 */
+	@Override
 	public String getFeatureName() {
-		// TODO: implement this method to return the 'Feature Name' attribute
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		if (getFeature() != null)
+			return getFeature().getName();
+		else
+			return null;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated NOT
 	 */
+	@Override
 	public PValue getRangeValue() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		if (getFeature() instanceof EAttribute && !getRange().isEmpty() && !(getRange().get(0) instanceof PEmptySlot))
+			return (PValue) (getRange().get(0));
+		return null;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated NOT
 	 */
+	@Override
 	public EList<PValue> getRangeValues() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		if (getFeature() instanceof EAttribute) {
+			EList result = new BasicEList<PValue>();
+			result.addAll(getRange());
+			return result;
+		}
+		return null;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated NOT
 	 */
+	@Override
 	public PObject getRangeObject() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		if (getFeature() instanceof EReference && !getRange().isEmpty())
+			return (PObject) (getRange().get(0));
+		return null;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated NOT
 	 */
+	@Override
 	public EList<PObject> getRangeObjects() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		if (getFeature() instanceof EReference) {
+			EList result = new BasicEList<PObject>();
+			result.addAll(getRange());
+			return result;
+		}
+		return null;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PSlot unify(final PSlot bg) {
 		PSlot co = this;
 		
@@ -276,8 +283,7 @@ public class PSlotImpl extends MinimalEObjectImpl.Container implements PSlot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -290,8 +296,7 @@ public class PSlotImpl extends MinimalEObjectImpl.Container implements PSlot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -309,8 +314,7 @@ public class PSlotImpl extends MinimalEObjectImpl.Container implements PSlot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -329,8 +333,7 @@ public class PSlotImpl extends MinimalEObjectImpl.Container implements PSlot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -347,8 +350,7 @@ public class PSlotImpl extends MinimalEObjectImpl.Container implements PSlot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -386,4 +388,4 @@ public class PSlotImpl extends MinimalEObjectImpl.Container implements PSlot {
 		return super.eInvoke(operationID, arguments);
 	}
 
-} //PSlotImpl
+} // PSlotImpl

@@ -2,22 +2,22 @@
  */
 package de.dfki.iui.basys.model.pattern.impl;
 
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+
 import de.dfki.iui.basys.model.pattern.PEmptySlot;
+import de.dfki.iui.basys.model.pattern.PPattern;
 import de.dfki.iui.basys.model.pattern.PatternPackage;
 
-import org.eclipse.emf.ecore.EClass;
-
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>PEmpty Slot</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>PEmpty Slot</b></em>'. <!-- end-user-doc -->
  *
  * @generated
  */
 public class PEmptySlotImpl extends PPatternImpl implements PEmptySlot {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected PEmptySlotImpl() {
@@ -25,8 +25,7 @@ public class PEmptySlotImpl extends PPatternImpl implements PEmptySlot {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -34,4 +33,16 @@ public class PEmptySlotImpl extends PPatternImpl implements PEmptySlot {
 		return PatternPackage.Literals.PEMPTY_SLOT;
 	}
 
-} //PEmptySlotImpl
+	@Override
+	public EObject createSkeleton() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PPattern unify(PPattern ppatt) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+} // PEmptySlotImpl

@@ -2,28 +2,21 @@
  */
 package de.dfki.iui.basys.model.pattern.impl;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import de.dfki.iui.basys.model.base.datatypes.BChar;
-
 import de.dfki.iui.basys.model.pattern.PCharRestriction;
 import de.dfki.iui.basys.model.pattern.PCharRestrictionEnum;
 import de.dfki.iui.basys.model.pattern.PRestriction;
 import de.dfki.iui.basys.model.pattern.PatternPackage;
-
 import java.lang.reflect.InvocationTargetException;
 
-import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>PChar Restriction</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>PChar Restriction</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
@@ -59,8 +52,7 @@ public class PCharRestrictionImpl extends MinimalEObjectImpl.Container implement
 
 	/**
 	 * The default value of the '{@link #isIgnoreCase() <em>Ignore Case</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #isIgnoreCase()
 	 * @generated
 	 * @ordered
@@ -69,8 +61,7 @@ public class PCharRestrictionImpl extends MinimalEObjectImpl.Container implement
 
 	/**
 	 * The cached value of the '{@link #isIgnoreCase() <em>Ignore Case</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #isIgnoreCase()
 	 * @generated
 	 * @ordered
@@ -79,8 +70,7 @@ public class PCharRestrictionImpl extends MinimalEObjectImpl.Container implement
 
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -89,8 +79,7 @@ public class PCharRestrictionImpl extends MinimalEObjectImpl.Container implement
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -99,8 +88,7 @@ public class PCharRestrictionImpl extends MinimalEObjectImpl.Container implement
 
 	/**
 	 * The default value of the '{@link #getFunction() <em>Function</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getFunction()
 	 * @generated
 	 * @ordered
@@ -109,8 +97,7 @@ public class PCharRestrictionImpl extends MinimalEObjectImpl.Container implement
 
 	/**
 	 * The cached value of the '{@link #getFunction() <em>Function</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getFunction()
 	 * @generated
 	 * @ordered
@@ -118,8 +105,7 @@ public class PCharRestrictionImpl extends MinimalEObjectImpl.Container implement
 	protected PCharRestrictionEnum function = FUNCTION_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected PCharRestrictionImpl() {
@@ -127,8 +113,7 @@ public class PCharRestrictionImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -158,19 +143,19 @@ public class PCharRestrictionImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isIgnoreCase() {
 		return ignoreCase;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setIgnoreCase(boolean newIgnoreCase) {
 		boolean oldIgnoreCase = ignoreCase;
 		ignoreCase = newIgnoreCase;
@@ -179,10 +164,10 @@ public class PCharRestrictionImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BChar getValue() {
 		return value;
 	}
@@ -200,19 +185,19 @@ public class PCharRestrictionImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PCharRestrictionEnum getFunction() {
 		return function;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setFunction(PCharRestrictionEnum newFunction) {
 		PCharRestrictionEnum oldFunction = function;
 		function = newFunction == null ? FUNCTION_EDEFAULT : newFunction;
@@ -221,10 +206,10 @@ public class PCharRestrictionImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSatisfiedBy(final Object value) {
 		Object newValue = value;
 		if (value instanceof Character || value instanceof de.dfki.iui.basys.model.base.datatypes.BChar) {
@@ -248,10 +233,10 @@ public class PCharRestrictionImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object getDefaultValue(final Object defVal) {
 		if ( defVal != null ) {
 					return isSatisfiedBy( defVal ) ? defVal : null;
@@ -269,10 +254,10 @@ public class PCharRestrictionImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PRestriction<?, ?> unify(final PRestriction<?, ?> bgrest) {
 		PCharRestriction co = this;
 		
@@ -342,8 +327,7 @@ public class PCharRestrictionImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -362,8 +346,7 @@ public class PCharRestrictionImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -386,8 +369,7 @@ public class PCharRestrictionImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -410,8 +392,7 @@ public class PCharRestrictionImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -448,8 +429,7 @@ public class PCharRestrictionImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -469,4 +449,4 @@ public class PCharRestrictionImpl extends MinimalEObjectImpl.Container implement
 		return result.toString();
 	}
 
-} //PCharRestrictionImpl
+} // PCharRestrictionImpl

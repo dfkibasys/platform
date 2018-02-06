@@ -1,6 +1,25 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
  */
 package de.dfki.iui.basys.model.pattern.impl;
+
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 import de.dfki.iui.basys.model.base.datatypes.BDataType;
 import de.dfki.iui.basys.model.pattern.PRestriction;
@@ -10,29 +29,9 @@ import de.dfki.iui.basys.model.pattern.PValueGen;
 import de.dfki.iui.basys.model.pattern.PatternFactory;
 import de.dfki.iui.basys.model.pattern.PatternPackage;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>PRestrictions</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>PRestrictions</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
@@ -47,8 +46,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class PRestrictionsImpl extends MinimalEObjectImpl.Container implements PRestrictions {
 	/**
 	 * The cached value of the '{@link #getRestriction() <em>Restriction</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getRestriction()
 	 * @generated
 	 * @ordered
@@ -56,9 +54,10 @@ public class PRestrictionsImpl extends MinimalEObjectImpl.Container implements P
 	protected EList<PRestriction<?, ?>> restriction;
 
 	/**
-	 * The cached value of the '{@link #getRestrictions() <em>Restrictions</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getRestrictions() <em>Restrictions</em>}
+	 * ' containment reference list. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
 	 * @see #getRestrictions()
 	 * @generated
 	 * @ordered
@@ -67,8 +66,7 @@ public class PRestrictionsImpl extends MinimalEObjectImpl.Container implements P
 
 	/**
 	 * The default value of the '{@link #getFunction() <em>Function</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getFunction()
 	 * @generated
 	 * @ordered
@@ -77,8 +75,7 @@ public class PRestrictionsImpl extends MinimalEObjectImpl.Container implements P
 
 	/**
 	 * The cached value of the '{@link #getFunction() <em>Function</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getFunction()
 	 * @generated
 	 * @ordered
@@ -86,8 +83,7 @@ public class PRestrictionsImpl extends MinimalEObjectImpl.Container implements P
 	protected PRestrictionsEnum function = FUNCTION_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected PRestrictionsImpl() {
@@ -95,8 +91,7 @@ public class PRestrictionsImpl extends MinimalEObjectImpl.Container implements P
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -105,10 +100,10 @@ public class PRestrictionsImpl extends MinimalEObjectImpl.Container implements P
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<PRestriction<?, ?>> getRestriction() {
 		if (restriction == null) {
 			restriction = new EObjectContainmentEList<PRestriction<?, ?>>(PRestriction.class, this, PatternPackage.PRESTRICTIONS__RESTRICTION);
@@ -117,10 +112,10 @@ public class PRestrictionsImpl extends MinimalEObjectImpl.Container implements P
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<PRestrictions> getRestrictions() {
 		if (restrictions == null) {
 			restrictions = new EObjectContainmentEList<PRestrictions>(PRestrictions.class, this, PatternPackage.PRESTRICTIONS__RESTRICTIONS);
@@ -129,19 +124,19 @@ public class PRestrictionsImpl extends MinimalEObjectImpl.Container implements P
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PRestrictionsEnum getFunction() {
 		return function;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setFunction(PRestrictionsEnum newFunction) {
 		PRestrictionsEnum oldFunction = function;
 		function = newFunction == null ? FUNCTION_EDEFAULT : newFunction;
@@ -150,10 +145,10 @@ public class PRestrictionsImpl extends MinimalEObjectImpl.Container implements P
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object getDefaultValue(final Object defVal_) {
 		Object defVal = defVal_;
 				PRestrictionsEnum f = getFunction();
@@ -195,10 +190,10 @@ public class PRestrictionsImpl extends MinimalEObjectImpl.Container implements P
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PRestrictions unify(final PRestrictions bg) {
 		PRestrictions co = this;
 		
@@ -294,8 +289,7 @@ public class PRestrictionsImpl extends MinimalEObjectImpl.Container implements P
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -310,8 +304,7 @@ public class PRestrictionsImpl extends MinimalEObjectImpl.Container implements P
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -328,8 +321,7 @@ public class PRestrictionsImpl extends MinimalEObjectImpl.Container implements P
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -352,8 +344,7 @@ public class PRestrictionsImpl extends MinimalEObjectImpl.Container implements P
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -373,8 +364,7 @@ public class PRestrictionsImpl extends MinimalEObjectImpl.Container implements P
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -391,8 +381,7 @@ public class PRestrictionsImpl extends MinimalEObjectImpl.Container implements P
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -407,8 +396,7 @@ public class PRestrictionsImpl extends MinimalEObjectImpl.Container implements P
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -422,4 +410,4 @@ public class PRestrictionsImpl extends MinimalEObjectImpl.Container implements P
 		return result.toString();
 	}
 
-} //PRestrictionsImpl
+} // PRestrictionsImpl

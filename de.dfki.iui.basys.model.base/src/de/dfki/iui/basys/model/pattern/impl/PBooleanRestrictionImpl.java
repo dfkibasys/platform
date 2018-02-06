@@ -1,29 +1,26 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
  */
 package de.dfki.iui.basys.model.pattern.impl;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import de.dfki.iui.basys.model.base.datatypes.BBoolean;
-
 import de.dfki.iui.basys.model.pattern.PBooleanRestriction;
 import de.dfki.iui.basys.model.pattern.PBooleanRestrictionEnum;
 import de.dfki.iui.basys.model.pattern.PRestriction;
 import de.dfki.iui.basys.model.pattern.PatternPackage;
-
 import java.lang.reflect.InvocationTargetException;
 
-import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>PBoolean Restriction</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>PBoolean Restriction</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
@@ -38,8 +35,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class PBooleanRestrictionImpl extends MinimalEObjectImpl.Container implements PBooleanRestriction {
 	/**
 	 * The default value of the '{@link #getExpression() <em>Expression</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getExpression()
 	 * @generated
 	 * @ordered
@@ -48,8 +44,7 @@ public class PBooleanRestrictionImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * The cached value of the '{@link #getExpression() <em>Expression</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getExpression()
 	 * @generated
 	 * @ordered
@@ -58,8 +53,7 @@ public class PBooleanRestrictionImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -68,8 +62,7 @@ public class PBooleanRestrictionImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -78,8 +71,7 @@ public class PBooleanRestrictionImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * The default value of the '{@link #getFunction() <em>Function</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getFunction()
 	 * @generated
 	 * @ordered
@@ -88,8 +80,7 @@ public class PBooleanRestrictionImpl extends MinimalEObjectImpl.Container implem
 
 	/**
 	 * The cached value of the '{@link #getFunction() <em>Function</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getFunction()
 	 * @generated
 	 * @ordered
@@ -97,8 +88,7 @@ public class PBooleanRestrictionImpl extends MinimalEObjectImpl.Container implem
 	protected PBooleanRestrictionEnum function = FUNCTION_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected PBooleanRestrictionImpl() {
@@ -106,8 +96,7 @@ public class PBooleanRestrictionImpl extends MinimalEObjectImpl.Container implem
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -116,19 +105,19 @@ public class PBooleanRestrictionImpl extends MinimalEObjectImpl.Container implem
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getExpression() {
 		return expression;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setExpression(String newExpression) {
 		String oldExpression = expression;
 		expression = newExpression;
@@ -137,19 +126,19 @@ public class PBooleanRestrictionImpl extends MinimalEObjectImpl.Container implem
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BBoolean getValue() {
 		return value;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setValue(BBoolean newValue) {
 		BBoolean oldValue = value;
 		value = newValue;
@@ -158,19 +147,19 @@ public class PBooleanRestrictionImpl extends MinimalEObjectImpl.Container implem
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PBooleanRestrictionEnum getFunction() {
 		return function;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setFunction(PBooleanRestrictionEnum newFunction) {
 		PBooleanRestrictionEnum oldFunction = function;
 		function = newFunction == null ? FUNCTION_EDEFAULT : newFunction;
@@ -179,10 +168,10 @@ public class PBooleanRestrictionImpl extends MinimalEObjectImpl.Container implem
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSatisfiedBy(final Object value_) {
 		Object value=value_;
 		if (value instanceof Boolean || value instanceof de.dfki.iui.basys.model.base.datatypes.BBoolean) {	
@@ -200,10 +189,10 @@ public class PBooleanRestrictionImpl extends MinimalEObjectImpl.Container implem
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object getDefaultValue(final Object defVal) {
 		if ( defVal != null ) {
 			return isSatisfiedBy( defVal ) ? defVal : null;
@@ -221,10 +210,10 @@ public class PBooleanRestrictionImpl extends MinimalEObjectImpl.Container implem
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PRestriction<?, ?> unify(PRestriction<?, ?> bg) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -232,8 +221,7 @@ public class PBooleanRestrictionImpl extends MinimalEObjectImpl.Container implem
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -250,8 +238,7 @@ public class PBooleanRestrictionImpl extends MinimalEObjectImpl.Container implem
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -271,8 +258,7 @@ public class PBooleanRestrictionImpl extends MinimalEObjectImpl.Container implem
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -292,8 +278,7 @@ public class PBooleanRestrictionImpl extends MinimalEObjectImpl.Container implem
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -328,8 +313,7 @@ public class PBooleanRestrictionImpl extends MinimalEObjectImpl.Container implem
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -347,4 +331,4 @@ public class PBooleanRestrictionImpl extends MinimalEObjectImpl.Container implem
 		return result.toString();
 	}
 
-} //PBooleanRestrictionImpl
+} // PBooleanRestrictionImpl

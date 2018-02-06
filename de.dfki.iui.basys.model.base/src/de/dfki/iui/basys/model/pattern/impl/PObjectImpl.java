@@ -1,38 +1,44 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
  */
 package de.dfki.iui.basys.model.pattern.impl;
 
-import de.dfki.iui.basys.model.pattern.PObject;
-import de.dfki.iui.basys.model.pattern.PPattern;
-import de.dfki.iui.basys.model.pattern.PSlot;
-import de.dfki.iui.basys.model.pattern.PatternPackage;
-
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Stack;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.slf4j.LoggerFactory;
+
+import de.dfki.iui.basys.model.pattern.PObject;
+import de.dfki.iui.basys.model.pattern.PPattern;
+import de.dfki.iui.basys.model.pattern.PSlot;
+import de.dfki.iui.basys.model.pattern.PValue;
+import de.dfki.iui.basys.model.pattern.PValueObject;
+import de.dfki.iui.basys.model.pattern.PatternPackage;
+import java.lang.reflect.InvocationTargetException;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>PObject</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>PObject</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
@@ -46,8 +52,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class PObjectImpl extends PPatternImpl implements PObject {
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getType()
 	 * @generated
 	 * @ordered
@@ -56,8 +61,7 @@ public class PObjectImpl extends PPatternImpl implements PObject {
 
 	/**
 	 * The cached value of the '{@link #getSlot() <em>Slot</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getSlot()
 	 * @generated
 	 * @ordered
@@ -65,8 +69,7 @@ public class PObjectImpl extends PPatternImpl implements PObject {
 	protected EList<PSlot> slot;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected PObjectImpl() {
@@ -74,8 +77,7 @@ public class PObjectImpl extends PPatternImpl implements PObject {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -84,10 +86,10 @@ public class PObjectImpl extends PPatternImpl implements PObject {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getType() {
 		if (type != null && type.eIsProxy()) {
 			InternalEObject oldType = (InternalEObject)type;
@@ -101,8 +103,7 @@ public class PObjectImpl extends PPatternImpl implements PObject {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass basicGetType() {
@@ -110,22 +111,47 @@ public class PObjectImpl extends PPatternImpl implements PObject {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated NOT
 	 */
+	@Override
 	public void setType(EClass newType) {
+		// @CUSTOM {
+		// using the following additional code it is ensured that the 'original'
+		// EClass is used and not a dynamic version
+		// if the given class is a member of a registered package, otherwise no
+		// change occur
+		// since a package does not have any 2 classes named equally it should
+		// work
+		if (newType != null && newType.getName() != null) {
+			if (newType.eIsProxy()) {
+				// dynamically loaded
+				newType = (EClass) EcoreUtil.resolve(newType, this);
+			}
+			Object o = EPackage.Registry.INSTANCE.get(newType.getEPackage().getNsURI());
+			EPackage p = (EPackage) (o instanceof EPackage.Descriptor ? ((EPackage.Descriptor) o).getEPackage() : o);
+			if (p != null) {
+				EClassifier cl = p.getEClassifier(newType.getName());
+				if (cl instanceof EClass) {
+					newType = (EClass) cl;
+				}
+			}
+		}
+		// }
+
 		EClass oldType = type;
 		type = newType;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, PatternPackage.POBJECT__TYPE, oldType, type));
+		}
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<PSlot> getSlot() {
 		if (slot == null) {
 			slot = new EObjectContainmentEList<PSlot>(PSlot.class, this, PatternPackage.POBJECT__SLOT);
@@ -134,30 +160,89 @@ public class PObjectImpl extends PPatternImpl implements PObject {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated NOT
 	 */
+	@Override
 	public PSlot getSlot(EStructuralFeature feature) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		for (PSlot slot : getSlot())
+			if (slot.getFeature() == feature)
+				return slot;
+		return null;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated NOT
 	 */
-	public PPattern unify(final PPattern ppatt) {
-		return unify( (PObject) ppatt );
+	@Override
+	public EObject createSkeleton() {
+		EObject result = null;
+
+		EClass cl;
+		PObject pobj = this;
+		EObject obj = null;
+		EObject tmp = null;
+		List<PObject> range;
+		List<PValue> rangev;
+		EStructuralFeature feat;
+		List<Object> l = new ArrayList<Object>();
+
+		boolean isMany;
+
+		cl = pobj.getType();
+		Stack<PObject> pobjs = new Stack<PObject>();
+		Stack<EObject> objs = new Stack<EObject>();
+		pobjs.add(pobj);
+		objs.add(result = cl.getEPackage().getEFactoryInstance().create(cl));
+
+		do {
+			pobj = pobjs.pop();
+			obj = objs.pop();
+			for (PSlot slot : pobj.getSlot()) {
+				if (isMany = (feat = slot.getFeature()).isMany()) {
+					l = (List<Object>) obj.eGet(feat);
+				}
+				if ((range = slot.getRangeObjects()) != null) {
+					for (PObject ptmp : range) {
+						cl = ptmp.getType();
+						if (!cl.isAbstract()) {
+							pobjs.add(ptmp);
+							objs.add(tmp = cl.getEPackage().getEFactoryInstance().create(cl));
+							if (isMany) {
+								l.add(tmp);
+							} else {
+								obj.eSet(feat, tmp);
+							}
+						}
+					}
+				} else if ((rangev = slot.getRangeValues()) != null) {
+					for (PValue val : rangev) {
+						PValueObject tmpValue = (PValueObject) val.createSkeleton();
+						if (tmpValue != null)
+							if (isMany) {
+								l.add(tmpValue.getValue());
+							} else {
+								if (feat.getName() == null) {
+									LoggerFactory.getLogger(getClass()).warn(String.format("No feature type for one slot in %s defined.", ((PObject) slot.eContainer()).getType().getName()));
+								} else {
+									obj.eSet(feat, tmpValue.getValue());
+								}
+							}
+					}
+				}
+			}
+		} while (!pobjs.isEmpty());
+		return result;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PObject unify(final PObject bg) {
 		PObject co = this;
 		
@@ -204,8 +289,7 @@ public class PObjectImpl extends PPatternImpl implements PObject {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -218,8 +302,7 @@ public class PObjectImpl extends PPatternImpl implements PObject {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -235,8 +318,7 @@ public class PObjectImpl extends PPatternImpl implements PObject {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -255,8 +337,7 @@ public class PObjectImpl extends PPatternImpl implements PObject {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -273,8 +354,7 @@ public class PObjectImpl extends PPatternImpl implements PObject {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -306,4 +386,13 @@ public class PObjectImpl extends PPatternImpl implements PObject {
 		return super.eInvoke(operationID, arguments);
 	}
 
-} //PObjectImpl
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public PPattern unify(final PPattern ppatt) {
+		return unify( (PObject) ppatt );
+	}
+
+} // PObjectImpl

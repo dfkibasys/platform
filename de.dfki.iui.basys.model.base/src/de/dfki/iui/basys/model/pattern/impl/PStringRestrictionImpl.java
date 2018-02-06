@@ -1,29 +1,26 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
  */
 package de.dfki.iui.basys.model.pattern.impl;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import de.dfki.iui.basys.model.base.datatypes.BString;
-
 import de.dfki.iui.basys.model.pattern.PRestriction;
 import de.dfki.iui.basys.model.pattern.PStringRestriction;
 import de.dfki.iui.basys.model.pattern.PStringRestrictionEnum;
 import de.dfki.iui.basys.model.pattern.PatternPackage;
-
 import java.lang.reflect.InvocationTargetException;
 
-import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>PString Restriction</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>PString Restriction</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
@@ -59,8 +56,7 @@ public class PStringRestrictionImpl extends MinimalEObjectImpl.Container impleme
 
 	/**
 	 * The default value of the '{@link #isIgnoreCase() <em>Ignore Case</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #isIgnoreCase()
 	 * @generated
 	 * @ordered
@@ -69,8 +65,7 @@ public class PStringRestrictionImpl extends MinimalEObjectImpl.Container impleme
 
 	/**
 	 * The cached value of the '{@link #isIgnoreCase() <em>Ignore Case</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #isIgnoreCase()
 	 * @generated
 	 * @ordered
@@ -79,8 +74,7 @@ public class PStringRestrictionImpl extends MinimalEObjectImpl.Container impleme
 
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -89,8 +83,7 @@ public class PStringRestrictionImpl extends MinimalEObjectImpl.Container impleme
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -99,8 +92,7 @@ public class PStringRestrictionImpl extends MinimalEObjectImpl.Container impleme
 
 	/**
 	 * The default value of the '{@link #getFunction() <em>Function</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getFunction()
 	 * @generated
 	 * @ordered
@@ -109,8 +101,7 @@ public class PStringRestrictionImpl extends MinimalEObjectImpl.Container impleme
 
 	/**
 	 * The cached value of the '{@link #getFunction() <em>Function</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getFunction()
 	 * @generated
 	 * @ordered
@@ -118,8 +109,7 @@ public class PStringRestrictionImpl extends MinimalEObjectImpl.Container impleme
 	protected PStringRestrictionEnum function = FUNCTION_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected PStringRestrictionImpl() {
@@ -127,8 +117,7 @@ public class PStringRestrictionImpl extends MinimalEObjectImpl.Container impleme
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -158,19 +147,19 @@ public class PStringRestrictionImpl extends MinimalEObjectImpl.Container impleme
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isIgnoreCase() {
 		return ignoreCase;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setIgnoreCase(boolean newIgnoreCase) {
 		boolean oldIgnoreCase = ignoreCase;
 		ignoreCase = newIgnoreCase;
@@ -179,10 +168,10 @@ public class PStringRestrictionImpl extends MinimalEObjectImpl.Container impleme
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BString getValue() {
 		return value;
 	}
@@ -200,19 +189,19 @@ public class PStringRestrictionImpl extends MinimalEObjectImpl.Container impleme
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PStringRestrictionEnum getFunction() {
 		return function;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setFunction(PStringRestrictionEnum newFunction) {
 		PStringRestrictionEnum oldFunction = function;
 		function = newFunction == null ? FUNCTION_EDEFAULT : newFunction;
@@ -221,10 +210,10 @@ public class PStringRestrictionImpl extends MinimalEObjectImpl.Container impleme
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSatisfiedBy(final Object value) {
 		if (value instanceof String || value instanceof de.dfki.iui.basys.model.base.datatypes.BString) {
 			String p = getValue().getValue();
@@ -254,10 +243,10 @@ public class PStringRestrictionImpl extends MinimalEObjectImpl.Container impleme
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object getDefaultValue(final Object defVal) {
 		if ( defVal != null ) {
 			return isSatisfiedBy( defVal ) ? defVal : null;
@@ -278,10 +267,10 @@ public class PStringRestrictionImpl extends MinimalEObjectImpl.Container impleme
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PRestriction<?, ?> unify(final PRestriction<?, ?> bgrest) {
 		PStringRestriction co = this;
 		
@@ -351,8 +340,7 @@ public class PStringRestrictionImpl extends MinimalEObjectImpl.Container impleme
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -371,8 +359,7 @@ public class PStringRestrictionImpl extends MinimalEObjectImpl.Container impleme
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -395,8 +382,7 @@ public class PStringRestrictionImpl extends MinimalEObjectImpl.Container impleme
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -419,8 +405,7 @@ public class PStringRestrictionImpl extends MinimalEObjectImpl.Container impleme
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -457,8 +442,7 @@ public class PStringRestrictionImpl extends MinimalEObjectImpl.Container impleme
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -478,4 +462,4 @@ public class PStringRestrictionImpl extends MinimalEObjectImpl.Container impleme
 		return result.toString();
 	}
 
-} //PStringRestrictionImpl
+} // PStringRestrictionImpl

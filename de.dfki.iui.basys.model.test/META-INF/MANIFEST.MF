@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1517934534324
+Build-Jdk: 1.8.0_131
+Built-By: dapo01
+Bundle-Description: Generated using Pax-Construct
+Bundle-DocURL: http://www.dfki.de
+Bundle-License: https://www.eclipse.org/legal/epl-v10.html
+Bundle-ManifestVersion: 2
+Bundle-Name: de.dfki.iui.basys.model.test
+Bundle-SymbolicName: de.dfki.iui.basys.model.test
+Bundle-Vendor: DFKI GmbH
+Bundle-Version: 1.0.0.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Tool: Bnd-3.3.0.201609221906

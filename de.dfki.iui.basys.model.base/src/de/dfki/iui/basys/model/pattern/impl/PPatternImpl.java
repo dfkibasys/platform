@@ -1,29 +1,27 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
  */
 package de.dfki.iui.basys.model.pattern.impl;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import de.dfki.iui.basys.common.emf.computation.MatchReport.MatchResult;
 import de.dfki.iui.basys.common.emf.computation.Matches;
 import de.dfki.iui.basys.model.pattern.PPattern;
 import de.dfki.iui.basys.model.pattern.PQuantorEnum;
 import de.dfki.iui.basys.model.pattern.PatternPackage;
-
 import java.lang.reflect.InvocationTargetException;
 
-import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>PPattern</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>PPattern</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
@@ -38,8 +36,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public abstract class PPatternImpl extends MinimalEObjectImpl.Container implements PPattern {
 	/**
 	 * The default value of the '{@link #getVarName() <em>Var Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getVarName()
 	 * @generated
 	 * @ordered
@@ -48,8 +45,7 @@ public abstract class PPatternImpl extends MinimalEObjectImpl.Container implemen
 
 	/**
 	 * The cached value of the '{@link #getVarName() <em>Var Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getVarName()
 	 * @generated
 	 * @ordered
@@ -58,8 +54,7 @@ public abstract class PPatternImpl extends MinimalEObjectImpl.Container implemen
 
 	/**
 	 * The default value of the '{@link #getInstIdx() <em>Inst Idx</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getInstIdx()
 	 * @generated
 	 * @ordered
@@ -68,8 +63,7 @@ public abstract class PPatternImpl extends MinimalEObjectImpl.Container implemen
 
 	/**
 	 * The cached value of the '{@link #getInstIdx() <em>Inst Idx</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getInstIdx()
 	 * @generated
 	 * @ordered
@@ -78,8 +72,7 @@ public abstract class PPatternImpl extends MinimalEObjectImpl.Container implemen
 
 	/**
 	 * The default value of the '{@link #getQuantor() <em>Quantor</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getQuantor()
 	 * @generated
 	 * @ordered
@@ -88,8 +81,7 @@ public abstract class PPatternImpl extends MinimalEObjectImpl.Container implemen
 
 	/**
 	 * The cached value of the '{@link #getQuantor() <em>Quantor</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getQuantor()
 	 * @generated
 	 * @ordered
@@ -97,8 +89,7 @@ public abstract class PPatternImpl extends MinimalEObjectImpl.Container implemen
 	protected PQuantorEnum quantor = QUANTOR_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected PPatternImpl() {
@@ -106,8 +97,7 @@ public abstract class PPatternImpl extends MinimalEObjectImpl.Container implemen
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -116,19 +106,19 @@ public abstract class PPatternImpl extends MinimalEObjectImpl.Container implemen
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getVarName() {
 		return varName;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setVarName(String newVarName) {
 		String oldVarName = varName;
 		varName = newVarName;
@@ -137,19 +127,19 @@ public abstract class PPatternImpl extends MinimalEObjectImpl.Container implemen
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getInstIdx() {
 		return instIdx;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setInstIdx(int newInstIdx) {
 		int oldInstIdx = instIdx;
 		instIdx = newInstIdx;
@@ -158,19 +148,19 @@ public abstract class PPatternImpl extends MinimalEObjectImpl.Container implemen
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PQuantorEnum getQuantor() {
 		return quantor;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setQuantor(PQuantorEnum newQuantor) {
 		PQuantorEnum oldQuantor = quantor;
 		quantor = newQuantor == null ? QUANTOR_EDEFAULT : newQuantor;
@@ -179,39 +169,36 @@ public abstract class PPatternImpl extends MinimalEObjectImpl.Container implemen
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean matches(final Object object) {
 		return Matches.matches(object, this).result == MatchResult.MATCH_SUCCESS;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EObject createSkeleton() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
+	// public boolean matches(Object object, MatchReport report) {
+	// return Matches.matches(object, this, report)
+	// }
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated NOT
 	 */
-	public PPattern unify(PPattern ppatt) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
+	@Override
+	abstract public EObject createSkeleton();
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated NOT
+	 */
+	@Override
+	abstract public PPattern unify(PPattern ppatt);
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -228,8 +215,7 @@ public abstract class PPatternImpl extends MinimalEObjectImpl.Container implemen
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -249,8 +235,7 @@ public abstract class PPatternImpl extends MinimalEObjectImpl.Container implemen
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -270,8 +255,7 @@ public abstract class PPatternImpl extends MinimalEObjectImpl.Container implemen
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -306,8 +290,7 @@ public abstract class PPatternImpl extends MinimalEObjectImpl.Container implemen
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -325,4 +308,4 @@ public abstract class PPatternImpl extends MinimalEObjectImpl.Container implemen
 		return result.toString();
 	}
 
-} //PPatternImpl
+} // PPatternImpl

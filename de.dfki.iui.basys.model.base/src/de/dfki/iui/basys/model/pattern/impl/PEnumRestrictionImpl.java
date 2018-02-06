@@ -1,30 +1,29 @@
 /**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
  */
 package de.dfki.iui.basys.model.pattern.impl;
 
-import de.dfki.iui.basys.model.pattern.PEnumRestriction;
-import de.dfki.iui.basys.model.pattern.PEnumRestrictionEnum;
-import de.dfki.iui.basys.model.pattern.PRestriction;
-import de.dfki.iui.basys.model.pattern.PatternPackage;
-
-import java.lang.reflect.InvocationTargetException;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import de.dfki.iui.basys.model.pattern.PEnumRestriction;
+import de.dfki.iui.basys.model.pattern.PEnumRestrictionEnum;
+import de.dfki.iui.basys.model.pattern.PRestriction;
+import de.dfki.iui.basys.model.pattern.PatternPackage;
+import java.lang.reflect.InvocationTargetException;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>PEnum Restriction</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>PEnum Restriction</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
@@ -40,8 +39,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class PEnumRestrictionImpl extends MinimalEObjectImpl.Container implements PEnumRestriction {
 	/**
 	 * The default value of the '{@link #getExpression() <em>Expression</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getExpression()
 	 * @generated
 	 * @ordered
@@ -50,8 +48,7 @@ public class PEnumRestrictionImpl extends MinimalEObjectImpl.Container implement
 
 	/**
 	 * The cached value of the '{@link #getExpression() <em>Expression</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getExpression()
 	 * @generated
 	 * @ordered
@@ -60,8 +57,7 @@ public class PEnumRestrictionImpl extends MinimalEObjectImpl.Container implement
 
 	/**
 	 * The default value of the '{@link #getFunction() <em>Function</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getFunction()
 	 * @generated
 	 * @ordered
@@ -70,8 +66,7 @@ public class PEnumRestrictionImpl extends MinimalEObjectImpl.Container implement
 
 	/**
 	 * The cached value of the '{@link #getFunction() <em>Function</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getFunction()
 	 * @generated
 	 * @ordered
@@ -80,8 +75,7 @@ public class PEnumRestrictionImpl extends MinimalEObjectImpl.Container implement
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -90,8 +84,8 @@ public class PEnumRestrictionImpl extends MinimalEObjectImpl.Container implement
 
 	/**
 	 * The cached value of the '{@link #getEnumDataType() <em>Enum Data Type</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getEnumDataType()
 	 * @generated
 	 * @ordered
@@ -99,8 +93,7 @@ public class PEnumRestrictionImpl extends MinimalEObjectImpl.Container implement
 	protected EEnum enumDataType;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected PEnumRestrictionImpl() {
@@ -108,8 +101,7 @@ public class PEnumRestrictionImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -118,19 +110,19 @@ public class PEnumRestrictionImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getExpression() {
 		return expression;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setExpression(String newExpression) {
 		String oldExpression = expression;
 		expression = newExpression;
@@ -139,31 +131,10 @@ public class PEnumRestrictionImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PEnumRestrictionEnum getFunction() {
-		return function;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setFunction(PEnumRestrictionEnum newFunction) {
-		PEnumRestrictionEnum oldFunction = function;
-		function = newFunction == null ? FUNCTION_EDEFAULT : newFunction;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PatternPackage.PENUM_RESTRICTION__FUNCTION, oldFunction, function));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	@Override
 	public EEnumLiteral getValue() {
 		if (value != null && value.eIsProxy()) {
 			InternalEObject oldValue = (InternalEObject)value;
@@ -177,8 +148,7 @@ public class PEnumRestrictionImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EEnumLiteral basicGetValue() {
@@ -186,10 +156,10 @@ public class PEnumRestrictionImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setValue(EEnumLiteral newValue) {
 		EEnumLiteral oldValue = value;
 		value = newValue;
@@ -198,10 +168,10 @@ public class PEnumRestrictionImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getEnumDataType() {
 		if (enumDataType != null && enumDataType.eIsProxy()) {
 			InternalEObject oldEnumDataType = (InternalEObject)enumDataType;
@@ -215,8 +185,7 @@ public class PEnumRestrictionImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EEnum basicGetEnumDataType() {
@@ -224,10 +193,10 @@ public class PEnumRestrictionImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEnumDataType(EEnum newEnumDataType) {
 		EEnum oldEnumDataType = enumDataType;
 		enumDataType = newEnumDataType;
@@ -236,10 +205,42 @@ public class PEnumRestrictionImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public void setValue(Object value) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public PEnumRestrictionEnum getFunction() {
+		return function;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setFunction(PEnumRestrictionEnum newFunction) {
+		PEnumRestrictionEnum oldFunction = function;
+		function = newFunction == null ? FUNCTION_EDEFAULT : newFunction;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PatternPackage.PENUM_RESTRICTION__FUNCTION, oldFunction, function));
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public boolean isSatisfiedBy(final Object value) {
 			if (value != null) {
 					Enumerator enumInst = getValue();
@@ -250,10 +251,10 @@ public class PEnumRestrictionImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object getDefaultValue(final Object defVal) {
 			if (defVal != null)
 					return isSatisfiedBy(defVal) ? defVal : null;
@@ -274,87 +275,7 @@ public class PEnumRestrictionImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public PRestriction<?, ?> unify(final PRestriction<?, ?> bgrest) {
-		PEnumRestriction co = this;
-		
-				if (bgrest instanceof PEnumRestriction) {
-					PEnumRestriction bg = (PEnumRestriction) bgrest;
-					switch (co.getFunction()) {
-					case EQUALS:
-						switch (bg.getFunction()) {
-						case EQUALS:
-							if (co.getValue() == null) {
-								co.setValue(bg.getValue());
-								return co;
-							}
-							if (bg.getValue() == null || co.getValue().equals(bg.getValue()) && co.getEnumDataType().equals(bg.getEnumDataType()))
-								return co;
-							break;
-						case NOT_EQUALS:
-							if (bg.getValue() == null)
-								return co;
-							if (co.getValue() == null) {
-								co.setFunction(bg.getFunction());
-								co.setEnumDataType(bg.getEnumDataType());
-								co.setValue(bg.getValue());
-								return co;
-							}
-							if (!co.getValue().equals(bg.getValue()))
-								return co;
-							break;
-						default:
-							break;
-						}
-						break;
-					case NOT_EQUALS:
-						switch (bg.getFunction()) {
-						case EQUALS:
-							if (bg.getValue() == null)
-								return co;
-							if (co.getValue() == null || !co.getValue().equals(bg.getValue())) {
-								co.setFunction(bg.getFunction());
-								co.setEnumDataType(bg.getEnumDataType());
-								co.setValue(bg.getValue());
-								return co;
-							}
-							break;
-						case NOT_EQUALS:
-							if (co.getValue() == null) {
-								co.setValue(bg.getValue());
-								return co;
-							}
-							if (bg.getValue() == null || co.getValue().equals(bg.getValue()) && co.getEnumDataType().equals(bg.getEnumDataType()))
-								return co;
-							break;
-						default:
-							break;
-						}
-						break;
-					default:
-						break;
-					}
-				}
-				return null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setValue(Object value) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -375,8 +296,7 @@ public class PEnumRestrictionImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -399,8 +319,7 @@ public class PEnumRestrictionImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -423,8 +342,7 @@ public class PEnumRestrictionImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -464,8 +382,7 @@ public class PEnumRestrictionImpl extends MinimalEObjectImpl.Container implement
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -481,4 +398,68 @@ public class PEnumRestrictionImpl extends MinimalEObjectImpl.Container implement
 		return result.toString();
 	}
 
-} //PEnumRestrictionImpl
+	@Override
+	public PRestriction<?, ?> unify(PRestriction<?, ?> bgrest) {
+		PEnumRestriction co = this;
+
+		if (bgrest instanceof PEnumRestriction) {
+			PEnumRestriction bg = (PEnumRestriction) bgrest;
+			switch (co.getFunction()) {
+			case EQUALS:
+				switch (bg.getFunction()) {
+				case EQUALS:
+					if (co.getValue() == null) {
+						co.setValue(bg.getValue());
+						return co;
+					}
+					if (bg.getValue() == null || co.getValue().equals(bg.getValue()) && co.getEnumDataType().equals(bg.getEnumDataType()))
+						return co;
+					break;
+				case NOT_EQUALS:
+					if (bg.getValue() == null)
+						return co;
+					if (co.getValue() == null) {
+						co.setFunction(bg.getFunction());
+						co.setEnumDataType(bg.getEnumDataType());
+						co.setValue(bg.getValue());
+						return co;
+					}
+					if (!co.getValue().equals(bg.getValue()))
+						return co;
+					break;
+				default:
+					break;
+				}
+				break;
+			case NOT_EQUALS:
+				switch (bg.getFunction()) {
+				case EQUALS:
+					if (bg.getValue() == null)
+						return co;
+					if (co.getValue() == null || !co.getValue().equals(bg.getValue())) {
+						co.setFunction(bg.getFunction());
+						co.setEnumDataType(bg.getEnumDataType());
+						co.setValue(bg.getValue());
+						return co;
+					}
+					break;
+				case NOT_EQUALS:
+					if (co.getValue() == null) {
+						co.setValue(bg.getValue());
+						return co;
+					}
+					if (bg.getValue() == null || co.getValue().equals(bg.getValue()) && co.getEnumDataType().equals(bg.getEnumDataType()))
+						return co;
+					break;
+				default:
+					break;
+				}
+				break;
+			default:
+				break;
+			}
+		}
+		return null;
+	}
+
+} // PEnumRestrictionImpl

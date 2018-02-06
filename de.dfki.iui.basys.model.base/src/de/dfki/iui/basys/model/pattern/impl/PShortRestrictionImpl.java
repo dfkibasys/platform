@@ -2,20 +2,15 @@
  */
 package de.dfki.iui.basys.model.pattern.impl;
 
-import de.dfki.iui.basys.model.base.datatypes.BShort;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import de.dfki.iui.basys.model.base.datatypes.BShort;
 import de.dfki.iui.basys.model.pattern.PShortRestriction;
 import de.dfki.iui.basys.model.pattern.PatternPackage;
-
 import java.lang.reflect.InvocationTargetException;
-
-import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->

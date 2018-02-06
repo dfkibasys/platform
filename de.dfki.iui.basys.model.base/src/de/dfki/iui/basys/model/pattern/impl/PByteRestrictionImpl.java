@@ -2,25 +2,19 @@
  */
 package de.dfki.iui.basys.model.pattern.impl;
 
-import de.dfki.iui.basys.model.base.datatypes.BByte;
-
-import de.dfki.iui.basys.model.pattern.PByteRestriction;
-import de.dfki.iui.basys.model.pattern.PatternPackage;
-
-import java.lang.reflect.InvocationTargetException;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import de.dfki.iui.basys.model.base.datatypes.BByte;
+import de.dfki.iui.basys.model.pattern.PByteRestriction;
+import de.dfki.iui.basys.model.pattern.PatternPackage;
+import java.lang.reflect.InvocationTargetException;
+
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>PByte Restriction</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>PByte Restriction</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
@@ -33,8 +27,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 public class PByteRestrictionImpl extends PNumberRestrictionImpl<BByte> implements PByteRestriction {
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -43,8 +36,7 @@ public class PByteRestrictionImpl extends PNumberRestrictionImpl<BByte> implemen
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -52,8 +44,7 @@ public class PByteRestrictionImpl extends PNumberRestrictionImpl<BByte> implemen
 	protected BByte value = VALUE_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected PByteRestrictionImpl() {
@@ -61,8 +52,7 @@ public class PByteRestrictionImpl extends PNumberRestrictionImpl<BByte> implemen
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -71,19 +61,19 @@ public class PByteRestrictionImpl extends PNumberRestrictionImpl<BByte> implemen
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BByte getValue() {
 		return value;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setValue(BByte newValue) {
 		BByte oldValue = value;
 		value = newValue;
@@ -92,10 +82,10 @@ public class PByteRestrictionImpl extends PNumberRestrictionImpl<BByte> implemen
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSatisfiedBy(final Object value) {
 		Object newValue = value;
 		if (value instanceof Byte || value instanceof de.dfki.iui.basys.model.base.datatypes.BByte) {
@@ -107,10 +97,10 @@ public class PByteRestrictionImpl extends PNumberRestrictionImpl<BByte> implemen
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object getDefaultValue(final Object defVal) {
 		if ( defVal != null ) {
 			return isSatisfiedBy( defVal ) ? defVal : null;
@@ -133,8 +123,7 @@ public class PByteRestrictionImpl extends PNumberRestrictionImpl<BByte> implemen
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -147,8 +136,7 @@ public class PByteRestrictionImpl extends PNumberRestrictionImpl<BByte> implemen
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -162,8 +150,7 @@ public class PByteRestrictionImpl extends PNumberRestrictionImpl<BByte> implemen
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -177,8 +164,7 @@ public class PByteRestrictionImpl extends PNumberRestrictionImpl<BByte> implemen
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -207,8 +193,7 @@ public class PByteRestrictionImpl extends PNumberRestrictionImpl<BByte> implemen
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -222,4 +207,4 @@ public class PByteRestrictionImpl extends PNumberRestrictionImpl<BByte> implemen
 		return result.toString();
 	}
 
-} //PByteRestrictionImpl
+} // PByteRestrictionImpl
