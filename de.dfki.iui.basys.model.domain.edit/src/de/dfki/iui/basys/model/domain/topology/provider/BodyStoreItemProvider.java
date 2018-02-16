@@ -64,7 +64,7 @@ public class BodyStoreItemProvider extends StorageItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((BodyStore)object).getId();
+		String label = ((BodyStore)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_BodyStore_type") :
 			getString("_UI_BodyStore_type") + " " + label;

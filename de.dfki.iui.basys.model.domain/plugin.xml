@@ -70,4 +70,44 @@
             genModel="model/domain.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated domain -->
+      <package
+            uri="http://www.dfki.de/iui/basys/model/process"
+            class="de.dfki.iui.basys.model.domain.process.ProcessPackage"
+            genModel="model/domain.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated domain -->
+      <package
+            uri="http://www.dfki.de/iui/basys/model/processinstance"
+            class="de.dfki.iui.basys.model.domain.processinstance.ProcessinstancePackage"
+            genModel="model/domain.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated domain -->
+      <package
+            uri="http://www.dfki.de/iui/basys/model/productinstance"
+            class="de.dfki.iui.basys.model.domain.productinstance.ProductinstancePackage"
+            genModel="model/domain.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated domain -->
+      <package
+            uri="http://www.dfki.de/iui/basys/model/workforce"
+            class="de.dfki.iui.basys.model.domain.workforce.WorkforcePackage"
+            genModel="model/domain.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated domain -->
+      <package
+            uri="http://www.dfki.de/iui/basys/model/material"
+            class="de.dfki.iui.basys.model.domain.material.MaterialPackage"
+            genModel="model/domain.genmodel"/>
+   </extension>
+
 </plugin>

@@ -64,7 +64,7 @@ public class StorageUnitItemProvider extends WorkUnitItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((StorageUnit)object).getId();
+		String label = ((StorageUnit)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_StorageUnit_type") :
 			getString("_UI_StorageUnit_type") + " " + label;

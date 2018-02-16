@@ -4,6 +4,7 @@ package de.dfki.iui.basys.model.domain.topology.provider;
 
 
 import de.dfki.iui.basys.model.base.provider.EntityItemProvider;
+
 import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
 
 import de.dfki.iui.basys.model.domain.topology.TopologyFactory;
@@ -93,7 +94,7 @@ public class WorkUnitItemProvider extends EntityItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((WorkUnit)object).getId();
+		String label = ((WorkUnit)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_WorkUnit_type") :
 			getString("_UI_WorkUnit_type") + " " + label;

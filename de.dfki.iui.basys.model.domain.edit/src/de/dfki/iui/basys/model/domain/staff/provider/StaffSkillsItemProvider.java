@@ -131,7 +131,7 @@ public class StaffSkillsItemProvider extends EntityItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((StaffSkills)object).getId();
+		String label = ((StaffSkills)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_StaffSkills_type") :
 			getString("_UI_StaffSkills_type") + " " + label;

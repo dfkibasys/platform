@@ -10,11 +10,16 @@ Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: de.dfki.iui.basys.model.domain.capability.presentation,
  de.dfki.iui.basys.model.domain.linebalancing.presentation,
+ de.dfki.iui.basys.model.domain.material.presentation,
  de.dfki.iui.basys.model.domain.order.presentation,
+ de.dfki.iui.basys.model.domain.process.presentation,
+ de.dfki.iui.basys.model.domain.processinstance.presentation,
  de.dfki.iui.basys.model.domain.product.presentation,
+ de.dfki.iui.basys.model.domain.productinstance.presentation,
  de.dfki.iui.basys.model.domain.staff.presentation,
  de.dfki.iui.basys.model.domain.topology.presentation,
  de.dfki.iui.basys.model.domain.workerguidance.presentation,
+ de.dfki.iui.basys.model.domain.workforce.presentation,
  de.dfki.iui.basys.model.domain.workplan.presentation
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,

@@ -3,6 +3,7 @@
 package de.dfki.iui.basys.model.domain.workplan.impl;
 
 import de.dfki.iui.basys.model.base.impl.EntityImpl;
+
 import de.dfki.iui.basys.model.domain.workplan.Duration;
 import de.dfki.iui.basys.model.domain.workplan.WorkplanPackage;
 

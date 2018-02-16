@@ -64,7 +64,7 @@ public class RollerbedItemProvider extends HorizontalTransportItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Rollerbed)object).getId();
+		String label = ((Rollerbed)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Rollerbed_type") :
 			getString("_UI_Rollerbed_type") + " " + label;

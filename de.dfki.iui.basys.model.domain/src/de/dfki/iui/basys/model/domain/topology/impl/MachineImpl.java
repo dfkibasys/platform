@@ -4,6 +4,7 @@ package de.dfki.iui.basys.model.domain.topology.impl;
 
 import de.dfki.iui.basys.model.domain.topology.Machine;
 import de.dfki.iui.basys.model.domain.topology.TopologyPackage;
+
 import org.eclipse.emf.ecore.EClass;
 
 /**

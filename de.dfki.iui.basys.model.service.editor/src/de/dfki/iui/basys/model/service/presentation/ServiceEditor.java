@@ -158,6 +158,7 @@ import de.dfki.iui.basys.model.service.provider.ServiceItemProviderAdapterFactor
 
 import de.dfki.iui.basys.model.base.provider.BaseItemProviderAdapterFactory;
 import de.dfki.iui.basys.model.domain.capability.provider.CapabilityItemProviderAdapterFactory;
+import de.dfki.iui.basys.model.pattern.provider.PatternItemProviderAdapterFactory;
 import org.eclipse.emf.ecore.provider.EcoreItemProviderAdapterFactory;
 
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
@@ -706,6 +707,7 @@ public class ServiceEditor
 		adapterFactory.addAdapterFactory(new BaseItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new CapabilityItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new EcoreItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new PatternItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
 		// Create the command stack that will notify this editor as commands are executed.

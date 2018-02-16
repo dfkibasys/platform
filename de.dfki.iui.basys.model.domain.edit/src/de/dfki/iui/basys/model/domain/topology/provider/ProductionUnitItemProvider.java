@@ -99,7 +99,7 @@ public class ProductionUnitItemProvider extends WorkCenterItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ProductionUnit)object).getId();
+		String label = ((ProductionUnit)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_ProductionUnit_type") :
 			getString("_UI_ProductionUnit_type") + " " + label;

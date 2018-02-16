@@ -64,7 +64,7 @@ public class BeschichtenItemProvider extends ManufacturingCapabilityItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Beschichten)object).getId();
+		String label = ((Beschichten)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Beschichten_type") :
 			getString("_UI_Beschichten_type") + " " + label;

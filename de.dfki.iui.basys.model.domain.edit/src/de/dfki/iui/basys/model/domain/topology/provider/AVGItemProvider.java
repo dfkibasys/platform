@@ -64,7 +64,7 @@ public class AVGItemProvider extends HorizontalTransportItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((AVG)object).getId();
+		String label = ((AVG)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_AVG_type") :
 			getString("_UI_AVG_type") + " " + label;

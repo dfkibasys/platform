@@ -34,4 +34,32 @@
       </editor>
    </extension>
 
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated base -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="de.dfki.iui.basys.model.pattern.presentation.PatternModelWizardID"
+            name="%_UI_PatternModelWizard_label"
+            class="de.dfki.iui.basys.model.pattern.presentation.PatternModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/PatternModelFile.gif">
+         <description>%_UI_PatternModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated base -->
+      <editor
+            id="de.dfki.iui.basys.model.pattern.presentation.PatternEditorID"
+            name="%_UI_PatternEditor_label"
+            icon="icons/full/obj16/PatternModelFile.gif"
+            extensions="pattern"
+            class="de.dfki.iui.basys.model.pattern.presentation.PatternEditor"
+            contributorClass="de.dfki.iui.basys.model.pattern.presentation.PatternActionBarContributor">
+      </editor>
+   </extension>
+
 </plugin>

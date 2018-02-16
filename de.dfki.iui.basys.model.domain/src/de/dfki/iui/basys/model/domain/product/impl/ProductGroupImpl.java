@@ -3,14 +3,22 @@
 package de.dfki.iui.basys.model.domain.product.impl;
 
 import de.dfki.iui.basys.model.base.impl.EntityImpl;
+
 import de.dfki.iui.basys.model.domain.product.ProductGroup;
 import de.dfki.iui.basys.model.domain.product.ProductPackage;
+import de.dfki.iui.basys.model.domain.product.ProductVariant;
 
-import org.eclipse.emf.common.notify.Notification;
+import java.util.Collection;
+
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,31 +28,21 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.dfki.iui.basys.model.domain.product.impl.ProductGroupImpl#getName <em>Name</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.product.impl.ProductGroupImpl#getProductVariants <em>Product Variants</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class ProductGroupImpl extends EntityImpl implements ProductGroup {
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * The cached value of the '{@link #getProductVariants() <em>Product Variants</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
+	 * @see #getProductVariants()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String name = NAME_EDEFAULT;
+	protected EList<ProductVariant> productVariants;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -70,8 +68,11 @@ public class ProductGroupImpl extends EntityImpl implements ProductGroup {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getName() {
-		return name;
+	public EList<ProductVariant> getProductVariants() {
+		if (productVariants == null) {
+			productVariants = new EObjectContainmentWithInverseEList<ProductVariant>(ProductVariant.class, this, ProductPackage.PRODUCT_GROUP__PRODUCT_VARIANTS, ProductPackage.PRODUCT_VARIANT__PRODUCT_GROUP);
+		}
+		return productVariants;
 	}
 
 	/**
@@ -79,11 +80,28 @@ public class ProductGroupImpl extends EntityImpl implements ProductGroup {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ProductPackage.PRODUCT_GROUP__NAME, oldName, name));
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ProductPackage.PRODUCT_GROUP__PRODUCT_VARIANTS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getProductVariants()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ProductPackage.PRODUCT_GROUP__PRODUCT_VARIANTS:
+				return ((InternalEList<?>)getProductVariants()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -94,8 +112,8 @@ public class ProductGroupImpl extends EntityImpl implements ProductGroup {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ProductPackage.PRODUCT_GROUP__NAME:
-				return getName();
+			case ProductPackage.PRODUCT_GROUP__PRODUCT_VARIANTS:
+				return getProductVariants();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -105,11 +123,13 @@ public class ProductGroupImpl extends EntityImpl implements ProductGroup {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ProductPackage.PRODUCT_GROUP__NAME:
-				setName((String)newValue);
+			case ProductPackage.PRODUCT_GROUP__PRODUCT_VARIANTS:
+				getProductVariants().clear();
+				getProductVariants().addAll((Collection<? extends ProductVariant>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -123,8 +143,8 @@ public class ProductGroupImpl extends EntityImpl implements ProductGroup {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ProductPackage.PRODUCT_GROUP__NAME:
-				setName(NAME_EDEFAULT);
+			case ProductPackage.PRODUCT_GROUP__PRODUCT_VARIANTS:
+				getProductVariants().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -138,26 +158,10 @@ public class ProductGroupImpl extends EntityImpl implements ProductGroup {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ProductPackage.PRODUCT_GROUP__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case ProductPackage.PRODUCT_GROUP__PRODUCT_VARIANTS:
+				return productVariants != null && !productVariants.isEmpty();
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
-		result.append(name);
-		result.append(')');
-		return result.toString();
 	}
 
 } //ProductGroupImpl

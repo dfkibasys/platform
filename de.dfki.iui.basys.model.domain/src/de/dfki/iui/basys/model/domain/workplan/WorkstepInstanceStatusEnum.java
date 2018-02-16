@@ -76,7 +76,9 @@ public enum WorkstepInstanceStatusEnum implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	ABORTED(5, "ABORTED", "ABORTED"), /**
+	ABORTED(5, "ABORTED", "ABORTED"),
+
+	/**
 	 * The '<em><b>RESUMED</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

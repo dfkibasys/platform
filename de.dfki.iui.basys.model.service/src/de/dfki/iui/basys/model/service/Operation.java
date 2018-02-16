@@ -2,7 +2,7 @@
  */
 package de.dfki.iui.basys.model.service;
 
-import de.dfki.iui.basys.model.domain.capability.Capability;
+import de.dfki.iui.basys.model.domain.capability.CapabilityAssertion;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EOperation;
 
@@ -26,7 +26,7 @@ public interface Operation extends EOperation {
 
 	/**
 	 * Returns the value of the '<em><b>Capabilities</b></em>' containment reference list.
-	 * The list contents are of type {@link de.dfki.iui.basys.model.domain.capability.Capability}.
+	 * The list contents are of type {@link de.dfki.iui.basys.model.domain.capability.CapabilityAssertion}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Capabilities</em>' containment reference list isn't clear,
@@ -38,5 +38,5 @@ public interface Operation extends EOperation {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Capability> getCapabilities();
+	EList<CapabilityAssertion> getCapabilities();
 } // Operation

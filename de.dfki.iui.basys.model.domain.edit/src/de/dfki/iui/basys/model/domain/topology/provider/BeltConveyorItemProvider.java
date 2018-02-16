@@ -64,7 +64,7 @@ public class BeltConveyorItemProvider extends ConveyorItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((BeltConveyor)object).getId();
+		String label = ((BeltConveyor)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_BeltConveyor_type") :
 			getString("_UI_BeltConveyor_type") + " " + label;

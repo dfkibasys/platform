@@ -4,8 +4,10 @@ package de.dfki.iui.basys.model.domain.product.provider;
 
 
 import de.dfki.iui.basys.model.base.provider.EntityItemProvider;
+
 import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
 
+import de.dfki.iui.basys.model.domain.product.ProductFactory;
 import de.dfki.iui.basys.model.domain.product.ProductPackage;
 import de.dfki.iui.basys.model.domain.product.ProductVariant;
 
@@ -17,9 +19,9 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -50,54 +52,38 @@ public class ProductVariantItemProvider extends EntityItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addNamePropertyDescriptor(object);
-			addProductGroupIdPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Name feature.
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ProductVariant_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ProductVariant_name_feature", "_UI_ProductVariant_type"),
-				 ProductPackage.Literals.PRODUCT_VARIANT__NAME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(ProductPackage.Literals.PRODUCT_VARIANT__BOM);
+		}
+		return childrenFeatures;
 	}
 
 	/**
-	 * This adds a property descriptor for the Product Group Id feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addProductGroupIdPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ProductVariant_productGroupId_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ProductVariant_productGroupId_feature", "_UI_ProductVariant_type"),
-				 ProductPackage.Literals.PRODUCT_VARIANT__PRODUCT_GROUP_ID,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
 	}
 
 	/**
@@ -138,9 +124,8 @@ public class ProductVariantItemProvider extends EntityItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ProductVariant.class)) {
-			case ProductPackage.PRODUCT_VARIANT__NAME:
-			case ProductPackage.PRODUCT_VARIANT__PRODUCT_GROUP_ID:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			case ProductPackage.PRODUCT_VARIANT__BOM:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -156,6 +141,11 @@ public class ProductVariantItemProvider extends EntityItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ProductPackage.Literals.PRODUCT_VARIANT__BOM,
+				 ProductFactory.eINSTANCE.createBillOfMaterial()));
 	}
 
 	/**

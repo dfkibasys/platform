@@ -14,6 +14,8 @@ import de.dfki.iui.basys.model.base.datatypes.BLong;
 import de.dfki.iui.basys.model.base.datatypes.BShort;
 import de.dfki.iui.basys.model.base.datatypes.BString;
 
+import java.util.Collection;
+import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -102,6 +104,10 @@ public class BaseFactoryImpl extends EFactoryImpl implements BaseFactory {
 				return createBShortFromString(eDataType, initialValue);
 			case BasePackage.BSTRING:
 				return createBStringFromString(eDataType, initialValue);
+			case BasePackage.LIST:
+				return createListFromString(eDataType, initialValue);
+			case BasePackage.COLLECTION:
+				return createCollectionFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -133,6 +139,10 @@ public class BaseFactoryImpl extends EFactoryImpl implements BaseFactory {
 				return convertBShortToString(eDataType, instanceValue);
 			case BasePackage.BSTRING:
 				return convertBStringToString(eDataType, instanceValue);
+			case BasePackage.LIST:
+				return convertListToString(eDataType, instanceValue);
+			case BasePackage.COLLECTION:
+				return convertCollectionToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -338,6 +348,42 @@ public class BaseFactoryImpl extends EFactoryImpl implements BaseFactory {
 	 */
 	public String convertBStringToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public List<?> createListFromString(EDataType eDataType, String initialValue) {
+		return (List<?>)super.createFromString(initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertListToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Collection<?> createCollectionFromString(EDataType eDataType, String initialValue) {
+		return (Collection<?>)super.createFromString(initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertCollectionToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(instanceValue);
 	}
 
 	/**

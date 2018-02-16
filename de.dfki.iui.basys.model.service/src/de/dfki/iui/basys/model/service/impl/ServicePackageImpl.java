@@ -4,9 +4,13 @@ package de.dfki.iui.basys.model.service.impl;
 
 import de.dfki.iui.basys.model.base.BasePackage;
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
+import de.dfki.iui.basys.model.pattern.PatternPackage;
+import de.dfki.iui.basys.model.service.EntityOperationEnum;
+import de.dfki.iui.basys.model.service.ManagedEntity;
 import de.dfki.iui.basys.model.service.Operation;
 import de.dfki.iui.basys.model.service.Property;
 import de.dfki.iui.basys.model.service.Publication;
+import de.dfki.iui.basys.model.service.QueueEndpoint;
 import de.dfki.iui.basys.model.service.RestEndpoint;
 import de.dfki.iui.basys.model.service.ServiceDescription;
 import de.dfki.iui.basys.model.service.ServiceEndpoint;
@@ -76,6 +80,13 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass managedEntityEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass serviceImplementationEClass = null;
 
 	/**
@@ -97,6 +108,13 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass queueEndpointEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass restEndpointEClass = null;
 
 	/**
@@ -105,6 +123,13 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 	 * @generated
 	 */
 	private EClass soapEndpointEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum entityOperationEnumEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -163,6 +188,7 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 		BasePackage.eINSTANCE.eClass();
 		CapabilityPackage.eINSTANCE.eClass();
 		EcorePackage.eINSTANCE.eClass();
+		PatternPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theServicePackage.createPackageContents();
@@ -265,6 +291,15 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getServiceDescription_ManagedEntities() {
+		return (EReference)serviceDescriptionEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getProperty() {
 		return propertyEClass;
 	}
@@ -330,6 +365,24 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 	 */
 	public EReference getSubscription_Capabilities() {
 		return (EReference)subscriptionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getManagedEntity() {
+		return managedEntityEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getManagedEntity_SupportedOperations() {
+		return (EAttribute)managedEntityEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -445,6 +498,24 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getQueueEndpoint() {
+		return queueEndpointEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getQueueEndpoint_Name() {
+		return (EAttribute)queueEndpointEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getRestEndpoint() {
 		return restEndpointEClass;
 	}
@@ -456,6 +527,15 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 	 */
 	public EClass getSoapEndpoint() {
 		return soapEndpointEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getEntityOperationEnum() {
+		return entityOperationEnumEEnum;
 	}
 
 	/**
@@ -503,6 +583,7 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 		createEReference(serviceDescriptionEClass, SERVICE_DESCRIPTION__PUBLICATIONS);
 		createEReference(serviceDescriptionEClass, SERVICE_DESCRIPTION__SUBSCRIPTIONS);
 		createEReference(serviceDescriptionEClass, SERVICE_DESCRIPTION__DEPENDENCIES);
+		createEReference(serviceDescriptionEClass, SERVICE_DESCRIPTION__MANAGED_ENTITIES);
 
 		propertyEClass = createEClass(PROPERTY);
 		createEReference(propertyEClass, PROPERTY__CAPABILITIES);
@@ -515,6 +596,9 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 
 		subscriptionEClass = createEClass(SUBSCRIPTION);
 		createEReference(subscriptionEClass, SUBSCRIPTION__CAPABILITIES);
+
+		managedEntityEClass = createEClass(MANAGED_ENTITY);
+		createEAttribute(managedEntityEClass, MANAGED_ENTITY__SUPPORTED_OPERATIONS);
 
 		serviceImplementationEClass = createEClass(SERVICE_IMPLEMENTATION);
 		createEAttribute(serviceImplementationEClass, SERVICE_IMPLEMENTATION__SERVICE_DESCRIPTION_ID);
@@ -531,11 +615,15 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 		createEAttribute(serviceEndpointEClass, SERVICE_ENDPOINT__IP_ADDRESS);
 		createEAttribute(serviceEndpointEClass, SERVICE_ENDPOINT__PORT);
 
+		queueEndpointEClass = createEClass(QUEUE_ENDPOINT);
+		createEAttribute(queueEndpointEClass, QUEUE_ENDPOINT__NAME);
+
 		restEndpointEClass = createEClass(REST_ENDPOINT);
 
 		soapEndpointEClass = createEClass(SOAP_ENDPOINT);
 
 		// Create enums
+		entityOperationEnumEEnum = createEEnum(ENTITY_OPERATION_ENUM);
 		serviceTypeEnumEEnum = createEEnum(SERVICE_TYPE_ENUM);
 	}
 
@@ -578,8 +666,10 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 		operationEClass.getESuperTypes().add(theEcorePackage.getEOperation());
 		publicationEClass.getESuperTypes().add(theEcorePackage.getETypedElement());
 		subscriptionEClass.getESuperTypes().add(theEcorePackage.getETypedElement());
+		managedEntityEClass.getESuperTypes().add(theEcorePackage.getETypedElement());
 		serviceImplementationEClass.getESuperTypes().add(theBasePackage.getEntity());
 		serviceInstanceEClass.getESuperTypes().add(theBasePackage.getEntity());
+		queueEndpointEClass.getESuperTypes().add(this.getServiceEndpoint());
 		restEndpointEClass.getESuperTypes().add(this.getServiceEndpoint());
 		soapEndpointEClass.getESuperTypes().add(this.getServiceEndpoint());
 
@@ -592,18 +682,22 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 		initEReference(getServiceDescription_Publications(), this.getPublication(), null, "publications", null, 0, -1, ServiceDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getServiceDescription_Subscriptions(), this.getSubscription(), null, "subscriptions", null, 0, -1, ServiceDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getServiceDescription_Dependencies(), this.getServiceDescription(), null, "dependencies", null, 0, -1, ServiceDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getServiceDescription_ManagedEntities(), this.getManagedEntity(), null, "managedEntities", null, 0, -1, ServiceDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(propertyEClass, Property.class, "Property", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getProperty_Capabilities(), theCapabilityPackage.getCapability(), null, "capabilities", null, 0, -1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(operationEClass, Operation.class, "Operation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOperation_Capabilities(), theCapabilityPackage.getCapability(), null, "capabilities", null, 0, -1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOperation_Capabilities(), theCapabilityPackage.getCapabilityAssertion(), null, "capabilities", null, 0, -1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(publicationEClass, Publication.class, "Publication", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPublication_Capabilities(), theCapabilityPackage.getCapability(), null, "capabilities", null, 0, -1, Publication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(subscriptionEClass, Subscription.class, "Subscription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSubscription_Capabilities(), theCapabilityPackage.getCapability(), null, "capabilities", null, 0, -1, Subscription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(managedEntityEClass, ManagedEntity.class, "ManagedEntity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getManagedEntity_SupportedOperations(), this.getEntityOperationEnum(), "supportedOperations", null, 0, -1, ManagedEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(serviceImplementationEClass, ServiceImplementation.class, "ServiceImplementation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getServiceImplementation_ServiceDescriptionId(), theEcorePackage.getEString(), "serviceDescriptionId", null, 0, 1, ServiceImplementation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -620,11 +714,20 @@ public class ServicePackageImpl extends EPackageImpl implements ServicePackage {
 		initEAttribute(getServiceEndpoint_IpAddress(), theEcorePackage.getEString(), "ipAddress", null, 0, 1, ServiceEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getServiceEndpoint_Port(), theEcorePackage.getEInt(), "port", null, 0, 1, ServiceEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(queueEndpointEClass, QueueEndpoint.class, "QueueEndpoint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getQueueEndpoint_Name(), theEcorePackage.getEString(), "name", null, 0, 1, QueueEndpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(restEndpointEClass, RestEndpoint.class, "RestEndpoint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(soapEndpointEClass, SoapEndpoint.class, "SoapEndpoint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize enums and add enum literals
+		initEEnum(entityOperationEnumEEnum, EntityOperationEnum.class, "EntityOperationEnum");
+		addEEnumLiteral(entityOperationEnumEEnum, EntityOperationEnum.CREATE);
+		addEEnumLiteral(entityOperationEnumEEnum, EntityOperationEnum.RETRIEVE);
+		addEEnumLiteral(entityOperationEnumEEnum, EntityOperationEnum.UPDATE);
+		addEEnumLiteral(entityOperationEnumEEnum, EntityOperationEnum.DELETE);
+
 		initEEnum(serviceTypeEnumEEnum, ServiceTypeEnum.class, "ServiceTypeEnum");
 		addEEnumLiteral(serviceTypeEnumEEnum, ServiceTypeEnum.DIGITAL_SERVICE);
 		addEEnumLiteral(serviceTypeEnumEEnum, ServiceTypeEnum.PHYSICAL_SERVICE);

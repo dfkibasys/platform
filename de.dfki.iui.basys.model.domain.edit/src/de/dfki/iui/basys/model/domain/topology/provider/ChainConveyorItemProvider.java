@@ -64,7 +64,7 @@ public class ChainConveyorItemProvider extends ConveyorItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ChainConveyor)object).getId();
+		String label = ((ChainConveyor)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_ChainConveyor_type") :
 			getString("_UI_ChainConveyor_type") + " " + label;

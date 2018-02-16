@@ -64,7 +64,7 @@ public class ProcessUnitItemProvider extends WorkUnitItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ProcessUnit)object).getId();
+		String label = ((ProcessUnit)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_ProcessUnit_type") :
 			getString("_UI_ProcessUnit_type") + " " + label;

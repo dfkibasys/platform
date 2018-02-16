@@ -64,7 +64,7 @@ public class CarrierHandlingSystemItemProvider extends TransportItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((CarrierHandlingSystem)object).getId();
+		String label = ((CarrierHandlingSystem)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_CarrierHandlingSystem_type") :
 			getString("_UI_CarrierHandlingSystem_type") + " " + label;

@@ -64,7 +64,7 @@ public class RollConveyorItemProvider extends ConveyorItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((RollConveyor)object).getId();
+		String label = ((RollConveyor)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_RollConveyor_type") :
 			getString("_UI_RollConveyor_type") + " " + label;

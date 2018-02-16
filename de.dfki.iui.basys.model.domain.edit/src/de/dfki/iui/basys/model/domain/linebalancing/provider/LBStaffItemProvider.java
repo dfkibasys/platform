@@ -4,6 +4,7 @@ package de.dfki.iui.basys.model.domain.linebalancing.provider;
 
 
 import de.dfki.iui.basys.model.base.provider.EntityItemProvider;
+
 import de.dfki.iui.basys.model.domain.linebalancing.LBStaff;
 import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
 
@@ -188,7 +189,7 @@ public class LBStaffItemProvider extends EntityItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((LBStaff)object).getId();
+		String label = ((LBStaff)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_LBStaff_type") :
 			getString("_UI_LBStaff_type") + " " + label;

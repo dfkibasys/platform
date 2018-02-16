@@ -22,6 +22,15 @@ public interface ProductFactory extends EFactory {
 	ProductFactory eINSTANCE = de.dfki.iui.basys.model.domain.product.impl.ProductFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Catalogue</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Catalogue</em>'.
+	 * @generated
+	 */
+	ProductCatalogue createProductCatalogue();
+
+	/**
 	 * Returns a new object of class '<em>Group</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -40,49 +49,22 @@ public interface ProductFactory extends EFactory {
 	ProductVariant createProductVariant();
 
 	/**
-	 * Returns a new object of class '<em>Instance</em>'.
+	 * Returns a new object of class '<em>Bill Of Material</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Instance</em>'.
+	 * @return a new object of class '<em>Bill Of Material</em>'.
 	 * @generated
 	 */
-	ProductInstance createProductInstance();
+	BillOfMaterial createBillOfMaterial();
 
 	/**
-	 * Returns a new object of class '<em>Instance Status</em>'.
+	 * Returns a new object of class '<em>BOM Entry</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Instance Status</em>'.
+	 * @return a new object of class '<em>BOM Entry</em>'.
 	 * @generated
 	 */
-	ProductInstanceStatus createProductInstanceStatus();
-
-	/**
-	 * Returns a new object of class '<em>Instance Status Change Event</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Instance Status Change Event</em>'.
-	 * @generated
-	 */
-	ProductInstanceStatusChangeEvent createProductInstanceStatusChangeEvent();
-
-	/**
-	 * Returns a new object of class '<em>Instance Location</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Instance Location</em>'.
-	 * @generated
-	 */
-	ProductInstanceLocation createProductInstanceLocation();
-
-	/**
-	 * Returns a new object of class '<em>Instance Location Change Event</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Instance Location Change Event</em>'.
-	 * @generated
-	 */
-	ProductInstanceLocationChangeEvent createProductInstanceLocationChangeEvent();
+	BOMEntry createBOMEntry();
 
 	/**
 	 * Returns the package supported by this factory.

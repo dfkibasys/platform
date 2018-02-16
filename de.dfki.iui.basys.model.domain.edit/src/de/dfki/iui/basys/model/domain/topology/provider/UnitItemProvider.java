@@ -64,7 +64,7 @@ public class UnitItemProvider extends WorkUnitItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Unit)object).getId();
+		String label = ((Unit)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Unit_type") :
 			getString("_UI_Unit_type") + " " + label;

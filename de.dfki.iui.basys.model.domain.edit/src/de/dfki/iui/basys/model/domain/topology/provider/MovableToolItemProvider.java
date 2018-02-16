@@ -64,7 +64,7 @@ public class MovableToolItemProvider extends ToolItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((MovableTool)object).getId();
+		String label = ((MovableTool)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_MovableTool_type") :
 			getString("_UI_MovableTool_type") + " " + label;

@@ -4,6 +4,7 @@ package de.dfki.iui.basys.model.domain.workplan.provider;
 
 
 import de.dfki.iui.basys.model.base.provider.EntityItemProvider;
+
 import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
 
 import de.dfki.iui.basys.model.domain.workplan.WorkplanPackage;
@@ -50,33 +51,10 @@ public class WorkstepInstanceItemProvider extends EntityItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addNamePropertyDescriptor(object);
 			addComponentIdPropertyDescriptor(object);
 			addIsAutomaticPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Name feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_WorkstepInstance_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_WorkstepInstance_name_feature", "_UI_WorkstepInstance_type"),
-				 WorkplanPackage.Literals.WORKSTEP_INSTANCE__NAME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
 	}
 
 	/**
@@ -161,7 +139,6 @@ public class WorkstepInstanceItemProvider extends EntityItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(WorkstepInstance.class)) {
-			case WorkplanPackage.WORKSTEP_INSTANCE__NAME:
 			case WorkplanPackage.WORKSTEP_INSTANCE__COMPONENT_ID:
 			case WorkplanPackage.WORKSTEP_INSTANCE__IS_AUTOMATIC:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

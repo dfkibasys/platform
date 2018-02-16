@@ -4,3 +4,13 @@
 
 Bundle-SymbolicName: ${bundle.symbolicName};singleton:=true
 Require-Bundle: org.eclipse.core.runtime, org.eclipse.emf.ecore;visibility:=reexport
+Export-Package: \
+	de.dfki.iui.basys.common.emf.computation,\
+	de.dfki.iui.basys.model.base,\
+	de.dfki.iui.basys.model.base.datatypes,\
+	de.dfki.iui.basys.model.base.impl,\
+	de.dfki.iui.basys.model.base.util,\
+	de.dfki.iui.basys.model.pattern,\
+	de.dfki.iui.basys.model.pattern.impl,\
+	de.dfki.iui.basys.model.pattern.util,\
+	de.dfki.iui.basys.model.util

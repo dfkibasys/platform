@@ -4,6 +4,7 @@ package de.dfki.iui.basys.model.domain.linebalancing.provider;
 
 
 import de.dfki.iui.basys.model.base.provider.EntityItemProvider;
+
 import de.dfki.iui.basys.model.domain.linebalancing.LBProductInstance;
 import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
 
@@ -142,7 +143,7 @@ public class LBProductInstanceItemProvider extends EntityItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((LBProductInstance)object).getId();
+		String label = ((LBProductInstance)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_LBProductInstance_type") :
 			getString("_UI_LBProductInstance_type") + " " + label;

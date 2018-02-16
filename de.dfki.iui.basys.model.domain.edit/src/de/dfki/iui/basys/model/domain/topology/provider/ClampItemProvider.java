@@ -64,7 +64,7 @@ public class ClampItemProvider extends FixtureItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Clamp)object).getId();
+		String label = ((Clamp)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Clamp_type") :
 			getString("_UI_Clamp_type") + " " + label;

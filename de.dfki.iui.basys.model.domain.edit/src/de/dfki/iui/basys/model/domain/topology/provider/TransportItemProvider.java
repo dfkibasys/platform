@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 /**
@@ -63,7 +64,7 @@ public class TransportItemProvider extends DiscreteManufacturingEquipmentModuleI
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Transport)object).getId();
+		String label = ((Transport)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Transport_type") :
 			getString("_UI_Transport_type") + " " + label;

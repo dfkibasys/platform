@@ -4,6 +4,7 @@ package de.dfki.iui.basys.model.domain.workplan.provider;
 
 
 import de.dfki.iui.basys.model.base.provider.EntityItemProvider;
+
 import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
 
 import de.dfki.iui.basys.model.domain.workplan.Duration;
@@ -28,8 +29,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class DurationItemProvider 
-	extends EntityItemProvider {
+public class DurationItemProvider extends EntityItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -166,7 +166,7 @@ public class DurationItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Duration)object).getId();
+		String label = ((Duration)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Duration_type") :
 			getString("_UI_Duration_type") + " " + label;

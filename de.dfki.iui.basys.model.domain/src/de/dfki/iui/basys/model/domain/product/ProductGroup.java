@@ -4,6 +4,8 @@ package de.dfki.iui.basys.model.domain.product;
 
 import de.dfki.iui.basys.model.base.Entity;
 
+import org.eclipse.emf.common.util.EList;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Group</b></em>'.
@@ -17,7 +19,7 @@ import de.dfki.iui.basys.model.base.Entity;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.dfki.iui.basys.model.domain.product.ProductGroup#getName <em>Name</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.product.ProductGroup#getProductVariants <em>Product Variants</em>}</li>
  * </ul>
  *
  * @see de.dfki.iui.basys.model.domain.product.ProductPackage#getProductGroup()
@@ -26,29 +28,21 @@ import de.dfki.iui.basys.model.base.Entity;
  */
 public interface ProductGroup extends Entity {
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * Returns the value of the '<em><b>Product Variants</b></em>' containment reference list.
+	 * The list contents are of type {@link de.dfki.iui.basys.model.domain.product.ProductVariant}.
+	 * It is bidirectional and its opposite is '{@link de.dfki.iui.basys.model.domain.product.ProductVariant#getProductGroup <em>Product Group</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Product Variants</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
-	 * @see de.dfki.iui.basys.model.domain.product.ProductPackage#getProductGroup_Name()
-	 * @model
+	 * @return the value of the '<em>Product Variants</em>' containment reference list.
+	 * @see de.dfki.iui.basys.model.domain.product.ProductPackage#getProductGroup_ProductVariants()
+	 * @see de.dfki.iui.basys.model.domain.product.ProductVariant#getProductGroup
+	 * @model opposite="productGroup" containment="true"
 	 * @generated
 	 */
-	String getName();
-
-	/**
-	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.product.ProductGroup#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
-	 * @generated
-	 */
-	void setName(String value);
+	EList<ProductVariant> getProductVariants();
 
 } // ProductGroup

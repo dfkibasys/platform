@@ -91,7 +91,7 @@ public class BufferStationItemProvider extends StationItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((BufferStation)object).getId();
+		String label = ((BufferStation)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_BufferStation_type") :
 			getString("_UI_BufferStation_type") + " " + label;

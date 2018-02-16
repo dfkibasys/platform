@@ -211,62 +211,7 @@ public class OperationItemProvider extends EOperationItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(ServicePackage.Literals.OPERATION__CAPABILITIES,
-				 CapabilityFactory.eINSTANCE.createCapability()));
-
-//		newChildDescriptors.add
-//			(createChildParameter
-//				(ServicePackage.Literals.OPERATION__CAPABILITIES,
-//				 CapabilityFactory.eINSTANCE.createManufacturingCapability()));
-//
-//		newChildDescriptors.add
-//			(createChildParameter
-//				(ServicePackage.Literals.OPERATION__CAPABILITIES,
-//				 CapabilityFactory.eINSTANCE.createFügen()));
-//
-//		newChildDescriptors.add
-//			(createChildParameter
-//				(ServicePackage.Literals.OPERATION__CAPABILITIES,
-//				 CapabilityFactory.eINSTANCE.createAnEinpressen()));
-//
-//		newChildDescriptors.add
-//			(createChildParameter
-//				(ServicePackage.Literals.OPERATION__CAPABILITIES,
-//				 CapabilityFactory.eINSTANCE.createPressen()));
-//
-//		newChildDescriptors.add
-//			(createChildParameter
-//				(ServicePackage.Literals.OPERATION__CAPABILITIES,
-//				 CapabilityFactory.eINSTANCE.createQoSCapability()));
-//
-//		newChildDescriptors.add
-//			(createChildParameter
-//				(ServicePackage.Literals.OPERATION__CAPABILITIES,
-//				 CapabilityFactory.eINSTANCE.createUrformen()));
-//
-//		newChildDescriptors.add
-//			(createChildParameter
-//				(ServicePackage.Literals.OPERATION__CAPABILITIES,
-//				 CapabilityFactory.eINSTANCE.createUmformen()));
-//
-//		newChildDescriptors.add
-//			(createChildParameter
-//				(ServicePackage.Literals.OPERATION__CAPABILITIES,
-//				 CapabilityFactory.eINSTANCE.createTrennen()));
-//
-//		newChildDescriptors.add
-//			(createChildParameter
-//				(ServicePackage.Literals.OPERATION__CAPABILITIES,
-//				 CapabilityFactory.eINSTANCE.createBeschichten()));
-//
-//		newChildDescriptors.add
-//			(createChildParameter
-//				(ServicePackage.Literals.OPERATION__CAPABILITIES,
-//				 CapabilityFactory.eINSTANCE.createStoffeigenschaften()));
-//
-//		newChildDescriptors.add
-//			(createChildParameter
-//				(ServicePackage.Literals.OPERATION__CAPABILITIES,
-//				 CapabilityFactory.eINSTANCE.createSchrauben()));
+				 CapabilityFactory.eINSTANCE.createCapabilityAssertion()));
 	}
 
 	/**

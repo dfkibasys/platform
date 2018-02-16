@@ -5,8 +5,25 @@
   </operations>
   <operations name="getServiceDescription">
     <eType xsi:type="ecore:EClass" href="http://www.dfki.de/iui/basys/model/service#//ServiceDescription"/>
-    <eParameters name="serviceDescriptionId">
+    <eParameters name="serviceDescriptionId" lowerBound="1">
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eParameters>
   </operations>
+  <operations name="addServiceDescription">
+    <eParameters name="serviceDescription" lowerBound="1">
+      <eType xsi:type="ecore:EClass" href="http://www.dfki.de/iui/basys/model/service#//ServiceDescription"/>
+    </eParameters>
+  </operations>
+  <operations name="removeServiceDescription">
+    <eParameters name="serviceDescriptionId" lowerBound="1">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eParameters>
+  </operations>
+  <managedEntities>
+    <eType xsi:type="ecore:EClass" href="http://www.dfki.de/iui/basys/model/service#//ServiceDescription"/>
+    <supportedOperations>CREATE</supportedOperations>
+    <supportedOperations>RETRIEVE</supportedOperations>
+    <supportedOperations>UPDATE</supportedOperations>
+    <supportedOperations>DELETE</supportedOperations>
+  </managedEntities>
 </service:ServiceDescription>

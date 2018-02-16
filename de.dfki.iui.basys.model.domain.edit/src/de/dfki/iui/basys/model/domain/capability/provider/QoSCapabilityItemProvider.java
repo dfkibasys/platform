@@ -64,7 +64,7 @@ public class QoSCapabilityItemProvider extends CapabilityItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((QoSCapability)object).getId();
+		String label = ((QoSCapability)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_QoSCapability_type") :
 			getString("_UI_QoSCapability_type") + " " + label;

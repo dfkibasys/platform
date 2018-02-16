@@ -16,6 +16,7 @@ package de.dfki.iui.basys.model.base;
  * </p>
  * <ul>
  *   <li>{@link de.dfki.iui.basys.model.base.Entity#getId <em>Id</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.base.Entity#getName <em>Name</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.base.Entity#getMetadata <em>Metadata</em>}</li>
  * </ul>
  *
@@ -49,6 +50,32 @@ public interface Entity extends BObject {
 	 * @generated
 	 */
 	void setId(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see #setName(String)
+	 * @see de.dfki.iui.basys.model.base.BasePackage#getEntity_Name()
+	 * @model
+	 * @generated
+	 */
+	String getName();
+
+	/**
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.base.Entity#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see #getName()
+	 * @generated
+	 */
+	void setName(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Metadata</b></em>' containment reference.

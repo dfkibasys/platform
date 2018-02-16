@@ -64,7 +64,7 @@ public class HorizontalTransportItemProvider extends TransportItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((HorizontalTransport)object).getId();
+		String label = ((HorizontalTransport)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_HorizontalTransport_type") :
 			getString("_UI_HorizontalTransport_type") + " " + label;

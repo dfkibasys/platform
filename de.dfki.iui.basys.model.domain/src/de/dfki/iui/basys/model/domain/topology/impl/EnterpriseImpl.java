@@ -3,6 +3,7 @@
 package de.dfki.iui.basys.model.domain.topology.impl;
 
 import de.dfki.iui.basys.model.base.impl.EntityImpl;
+
 import de.dfki.iui.basys.model.domain.topology.Enterprise;
 import de.dfki.iui.basys.model.domain.topology.Site;
 import de.dfki.iui.basys.model.domain.topology.TopologyPackage;

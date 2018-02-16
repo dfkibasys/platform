@@ -36,6 +36,12 @@
 			<groupId>de.dfki.iui.basys.model</groupId>
 			<artifactId>de.dfki.iui.basys.model.base</artifactId>
 			<version>${project.version}</version>
+			<type>bundle</type>			
+		</dependency>
+		<dependency>
+			<groupId>de.dfki.iui.basys.common</groupId>
+			<artifactId>de.dfki.iui.basys.common.emf</artifactId>
+			<version>${project.version}</version>
 			<type>bundle</type>
 		</dependency>
 	</dependencies>

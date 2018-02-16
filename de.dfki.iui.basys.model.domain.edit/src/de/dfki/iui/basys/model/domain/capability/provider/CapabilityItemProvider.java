@@ -4,7 +4,9 @@ package de.dfki.iui.basys.model.domain.capability.provider;
 
 
 import de.dfki.iui.basys.model.base.provider.EntityItemProvider;
+
 import de.dfki.iui.basys.model.domain.capability.Capability;
+
 import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
 
 import java.util.Collection;
@@ -14,6 +16,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 /**
@@ -22,8 +25,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
  * <!-- end-user-doc -->
  * @generated
  */
-public class CapabilityItemProvider 
-	extends EntityItemProvider {
+public class CapabilityItemProvider extends EntityItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -68,7 +70,7 @@ public class CapabilityItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Capability)object).getId();
+		String label = ((Capability)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Capability_type") :
 			getString("_UI_Capability_type") + " " + label;

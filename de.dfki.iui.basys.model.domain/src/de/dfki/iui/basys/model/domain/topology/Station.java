@@ -3,6 +3,7 @@
 package de.dfki.iui.basys.model.domain.topology;
 
 import de.dfki.iui.basys.model.base.Entity;
+
 import org.eclipse.emf.common.util.EList;
 
 /**

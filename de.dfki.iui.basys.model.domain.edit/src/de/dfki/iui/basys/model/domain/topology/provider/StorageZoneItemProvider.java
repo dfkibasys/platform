@@ -99,7 +99,7 @@ public class StorageZoneItemProvider extends WorkCenterItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((StorageZone)object).getId();
+		String label = ((StorageZone)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_StorageZone_type") :
 			getString("_UI_StorageZone_type") + " " + label;

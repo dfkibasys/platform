@@ -94,6 +94,10 @@ public class ServiceAdapterFactory extends AdapterFactoryImpl {
 				return createSubscriptionAdapter();
 			}
 			@Override
+			public Adapter caseManagedEntity(ManagedEntity object) {
+				return createManagedEntityAdapter();
+			}
+			@Override
 			public Adapter caseServiceImplementation(ServiceImplementation object) {
 				return createServiceImplementationAdapter();
 			}
@@ -104,6 +108,10 @@ public class ServiceAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseServiceEndpoint(ServiceEndpoint object) {
 				return createServiceEndpointAdapter();
+			}
+			@Override
+			public Adapter caseQueueEndpoint(QueueEndpoint object) {
+				return createQueueEndpointAdapter();
 			}
 			@Override
 			public Adapter caseRestEndpoint(RestEndpoint object) {
@@ -228,6 +236,20 @@ public class ServiceAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.service.ManagedEntity <em>Managed Entity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.service.ManagedEntity
+	 * @generated
+	 */
+	public Adapter createManagedEntityAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.service.ServiceImplementation <em>Implementation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -266,6 +288,20 @@ public class ServiceAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createServiceEndpointAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.service.QueueEndpoint <em>Queue Endpoint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.service.QueueEndpoint
+	 * @generated
+	 */
+	public Adapter createQueueEndpointAdapter() {
 		return null;
 	}
 

@@ -72,6 +72,29 @@ public class CapabilityItemProviderAdapterFactory extends CapabilityAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.CapabilityAssertion} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CapabilityAssertionItemProvider capabilityAssertionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.CapabilityAssertion}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCapabilityAssertionAdapter() {
+		if (capabilityAssertionItemProvider == null) {
+			capabilityAssertionItemProvider = new CapabilityAssertionItemProvider(this);
+		}
+
+		return capabilityAssertionItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.Capability} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -446,6 +469,7 @@ public class CapabilityItemProviderAdapterFactory extends CapabilityAdapterFacto
 	 * @generated
 	 */
 	public void dispose() {
+		if (capabilityAssertionItemProvider != null) capabilityAssertionItemProvider.dispose();
 		if (capabilityItemProvider != null) capabilityItemProvider.dispose();
 		if (manufacturingCapabilityItemProvider != null) manufacturingCapabilityItemProvider.dispose();
 		if (fügenItemProvider != null) fügenItemProvider.dispose();

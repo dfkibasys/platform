@@ -179,13 +179,22 @@ public interface BasePackage extends EPackage {
 	int ENTITY__ID = BOBJECT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY__NAME = BOBJECT_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY__METADATA = BOBJECT_FEATURE_COUNT + 1;
+	int ENTITY__METADATA = BOBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Entity</em>' class.
@@ -194,7 +203,7 @@ public interface BasePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_FEATURE_COUNT = BOBJECT_FEATURE_COUNT + 2;
+	int ENTITY_FEATURE_COUNT = BOBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Entity</em>' class.
@@ -344,6 +353,27 @@ public interface BasePackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '<em>List</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.util.List
+	 * @see de.dfki.iui.basys.model.base.impl.BasePackageImpl#getList()
+	 * @generated
+	 */
+	int LIST = 13;
+
+	/**
+	 * The meta object id for the '<em>Collection</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.util.Collection
+	 * @see de.dfki.iui.basys.model.base.impl.BasePackageImpl#getCollection()
+	 * @generated
+	 */
+	int COLLECTION = 14;
+
+
+	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.base.BObject <em>BObject</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -427,6 +457,17 @@ public interface BasePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getEntity_Id();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.base.Entity#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see de.dfki.iui.basys.model.base.Entity#getName()
+	 * @see #getEntity()
+	 * @generated
+	 */
+	EAttribute getEntity_Name();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link de.dfki.iui.basys.model.base.Entity#getMetadata <em>Metadata</em>}'.
@@ -571,6 +612,28 @@ public interface BasePackage extends EPackage {
 	EDataType getBString();
 
 	/**
+	 * Returns the meta object for data type '{@link java.util.List <em>List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>List</em>'.
+	 * @see java.util.List
+	 * @model instanceClass="java.util.List" typeParameters="T"
+	 * @generated
+	 */
+	EDataType getList();
+
+	/**
+	 * Returns the meta object for data type '{@link java.util.Collection <em>Collection</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Collection</em>'.
+	 * @see java.util.Collection
+	 * @model instanceClass="java.util.Collection" typeParameters="T"
+	 * @generated
+	 */
+	EDataType getCollection();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -662,6 +725,14 @@ public interface BasePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ENTITY__ID = eINSTANCE.getEntity_Id();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ENTITY__NAME = eINSTANCE.getEntity_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>Metadata</b></em>' containment reference feature.
@@ -786,6 +857,26 @@ public interface BasePackage extends EPackage {
 		 * @generated
 		 */
 		EDataType BSTRING = eINSTANCE.getBString();
+
+		/**
+		 * The meta object literal for the '<em>List</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.util.List
+		 * @see de.dfki.iui.basys.model.base.impl.BasePackageImpl#getList()
+		 * @generated
+		 */
+		EDataType LIST = eINSTANCE.getList();
+
+		/**
+		 * The meta object literal for the '<em>Collection</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.util.Collection
+		 * @see de.dfki.iui.basys.model.base.impl.BasePackageImpl#getCollection()
+		 * @generated
+		 */
+		EDataType COLLECTION = eINSTANCE.getCollection();
 
 	}
 

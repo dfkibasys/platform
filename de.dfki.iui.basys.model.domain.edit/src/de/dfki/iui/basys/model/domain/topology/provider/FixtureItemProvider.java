@@ -4,11 +4,13 @@ package de.dfki.iui.basys.model.domain.topology.provider;
 
 
 import de.dfki.iui.basys.model.domain.topology.Fixture;
+
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 /**
@@ -62,7 +64,7 @@ public class FixtureItemProvider extends DiscreteManufacturingEquipmentModuleIte
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Fixture)object).getId();
+		String label = ((Fixture)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Fixture_type") :
 			getString("_UI_Fixture_type") + " " + label;

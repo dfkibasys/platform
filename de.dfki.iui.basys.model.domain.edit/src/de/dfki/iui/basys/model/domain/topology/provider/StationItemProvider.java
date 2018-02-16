@@ -4,6 +4,7 @@ package de.dfki.iui.basys.model.domain.topology.provider;
 
 
 import de.dfki.iui.basys.model.base.provider.EntityItemProvider;
+
 import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
 
 import de.dfki.iui.basys.model.domain.topology.Station;
@@ -104,7 +105,7 @@ public class StationItemProvider extends EntityItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Station)object).getId();
+		String label = ((Station)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Station_type") :
 			getString("_UI_Station_type") + " " + label;

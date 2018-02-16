@@ -4,11 +4,13 @@ package de.dfki.iui.basys.model.domain.topology.provider;
 
 
 import de.dfki.iui.basys.model.domain.topology.Storage;
+
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 /**
@@ -62,7 +64,7 @@ public class StorageItemProvider extends DiscreteManufacturingEquipmentModuleIte
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Storage)object).getId();
+		String label = ((Storage)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Storage_type") :
 			getString("_UI_Storage_type") + " " + label;

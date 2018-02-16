@@ -4,6 +4,7 @@ package de.dfki.iui.basys.model.domain.order.provider;
 
 
 import de.dfki.iui.basys.model.base.provider.EntityItemProvider;
+
 import de.dfki.iui.basys.model.domain.order.Order;
 import de.dfki.iui.basys.model.domain.order.OrderFactory;
 import de.dfki.iui.basys.model.domain.order.OrderPackage;
@@ -17,6 +18,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
@@ -218,7 +220,7 @@ public class OrderItemProvider extends EntityItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Order)object).getId();
+		String label = ((Order)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Order_type") :
 			getString("_UI_Order_type") + " " + label;

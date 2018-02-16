@@ -99,7 +99,7 @@ public class WorkCellItemProvider extends WorkUnitItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((WorkCell)object).getId();
+		String label = ((WorkCell)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_WorkCell_type") :
 			getString("_UI_WorkCell_type") + " " + label;

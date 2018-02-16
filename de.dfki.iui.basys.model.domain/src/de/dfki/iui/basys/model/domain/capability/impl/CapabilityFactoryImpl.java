@@ -56,6 +56,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case CapabilityPackage.CAPABILITY_ASSERTION: return createCapabilityAssertion();
 			case CapabilityPackage.CAPABILITY: return createCapability();
 			case CapabilityPackage.MANUFACTURING_CAPABILITY: return createManufacturingCapability();
 			case CapabilityPackage.FÜGEN: return createFügen();
@@ -71,6 +72,16 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CapabilityAssertion createCapabilityAssertion() {
+		CapabilityAssertionImpl capabilityAssertion = new CapabilityAssertionImpl();
+		return capabilityAssertion;
 	}
 
 	/**

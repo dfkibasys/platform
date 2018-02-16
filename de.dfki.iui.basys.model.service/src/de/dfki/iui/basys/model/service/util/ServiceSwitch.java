@@ -119,6 +119,15 @@ public class ServiceSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ServicePackage.MANAGED_ENTITY: {
+				ManagedEntity managedEntity = (ManagedEntity)theEObject;
+				T result = caseManagedEntity(managedEntity);
+				if (result == null) result = caseETypedElement(managedEntity);
+				if (result == null) result = caseENamedElement(managedEntity);
+				if (result == null) result = caseEModelElement(managedEntity);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case ServicePackage.SERVICE_IMPLEMENTATION: {
 				ServiceImplementation serviceImplementation = (ServiceImplementation)theEObject;
 				T result = caseServiceImplementation(serviceImplementation);
@@ -138,6 +147,13 @@ public class ServiceSwitch<T> extends Switch<T> {
 			case ServicePackage.SERVICE_ENDPOINT: {
 				ServiceEndpoint serviceEndpoint = (ServiceEndpoint)theEObject;
 				T result = caseServiceEndpoint(serviceEndpoint);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ServicePackage.QUEUE_ENDPOINT: {
+				QueueEndpoint queueEndpoint = (QueueEndpoint)theEObject;
+				T result = caseQueueEndpoint(queueEndpoint);
+				if (result == null) result = caseServiceEndpoint(queueEndpoint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -235,6 +251,21 @@ public class ServiceSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Managed Entity</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Managed Entity</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseManagedEntity(ManagedEntity object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Implementation</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -276,6 +307,21 @@ public class ServiceSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseServiceEndpoint(ServiceEndpoint object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Queue Endpoint</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Queue Endpoint</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseQueueEndpoint(QueueEndpoint object) {
 		return null;
 	}
 

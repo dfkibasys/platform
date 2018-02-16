@@ -5,18 +5,34 @@ package de.dfki.iui.basys.model.domain.workerguidance.impl;
 import de.dfki.iui.basys.model.base.BasePackage;
 
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
+
 import de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl;
+
 import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
 
 import de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl;
 
+import de.dfki.iui.basys.model.domain.material.MaterialPackage;
+import de.dfki.iui.basys.model.domain.material.impl.MaterialPackageImpl;
 import de.dfki.iui.basys.model.domain.order.OrderPackage;
 
 import de.dfki.iui.basys.model.domain.order.impl.OrderPackageImpl;
 
+import de.dfki.iui.basys.model.domain.process.ProcessPackage;
+
+import de.dfki.iui.basys.model.domain.process.impl.ProcessPackageImpl;
+
+import de.dfki.iui.basys.model.domain.processinstance.ProcessinstancePackage;
+
+import de.dfki.iui.basys.model.domain.processinstance.impl.ProcessinstancePackageImpl;
+
 import de.dfki.iui.basys.model.domain.product.ProductPackage;
 
 import de.dfki.iui.basys.model.domain.product.impl.ProductPackageImpl;
+
+import de.dfki.iui.basys.model.domain.productinstance.ProductinstancePackage;
+
+import de.dfki.iui.basys.model.domain.productinstance.impl.ProductinstancePackageImpl;
 
 import de.dfki.iui.basys.model.domain.staff.StaffPackage;
 
@@ -27,17 +43,21 @@ import de.dfki.iui.basys.model.domain.topology.TopologyPackage;
 import de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl;
 
 import de.dfki.iui.basys.model.domain.workerguidance.Audio;
+import de.dfki.iui.basys.model.domain.workerguidance.Document;
 import de.dfki.iui.basys.model.domain.workerguidance.Image;
 import de.dfki.iui.basys.model.domain.workerguidance.Instruction;
-import de.dfki.iui.basys.model.domain.workerguidance.Material;
 import de.dfki.iui.basys.model.domain.workerguidance.Media;
 import de.dfki.iui.basys.model.domain.workerguidance.Video;
 import de.dfki.iui.basys.model.domain.workerguidance.WorkerguidanceFactory;
 import de.dfki.iui.basys.model.domain.workerguidance.WorkerguidancePackage;
 
+import de.dfki.iui.basys.model.domain.workforce.WorkforcePackage;
+import de.dfki.iui.basys.model.domain.workforce.impl.WorkforcePackageImpl;
 import de.dfki.iui.basys.model.domain.workplan.WorkplanPackage;
 
 import de.dfki.iui.basys.model.domain.workplan.impl.WorkplanPackageImpl;
+
+import de.dfki.iui.basys.model.pattern.PatternPackage;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -58,13 +78,6 @@ public class WorkerguidancePackageImpl extends EPackageImpl implements Workergui
 	 * @generated
 	 */
 	private EClass instructionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass materialEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -93,6 +106,13 @@ public class WorkerguidancePackageImpl extends EPackageImpl implements Workergui
 	 * @generated
 	 */
 	private EClass imageEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass documentEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -142,35 +162,51 @@ public class WorkerguidancePackageImpl extends EPackageImpl implements Workergui
 
 		// Initialize simple dependencies
 		BasePackage.eINSTANCE.eClass();
+		PatternPackage.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies
 		OrderPackageImpl theOrderPackage = (OrderPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(OrderPackage.eNS_URI) instanceof OrderPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(OrderPackage.eNS_URI) : OrderPackage.eINSTANCE);
-		ProductPackageImpl theProductPackage = (ProductPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ProductPackage.eNS_URI) instanceof ProductPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ProductPackage.eNS_URI) : ProductPackage.eINSTANCE);
 		StaffPackageImpl theStaffPackage = (StaffPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(StaffPackage.eNS_URI) instanceof StaffPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(StaffPackage.eNS_URI) : StaffPackage.eINSTANCE);
 		TopologyPackageImpl theTopologyPackage = (TopologyPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(TopologyPackage.eNS_URI) instanceof TopologyPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(TopologyPackage.eNS_URI) : TopologyPackage.eINSTANCE);
 		WorkplanPackageImpl theWorkplanPackage = (WorkplanPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkplanPackage.eNS_URI) instanceof WorkplanPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkplanPackage.eNS_URI) : WorkplanPackage.eINSTANCE);
 		LinebalancingPackageImpl theLinebalancingPackage = (LinebalancingPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(LinebalancingPackage.eNS_URI) instanceof LinebalancingPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(LinebalancingPackage.eNS_URI) : LinebalancingPackage.eINSTANCE);
 		CapabilityPackageImpl theCapabilityPackage = (CapabilityPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CapabilityPackage.eNS_URI) instanceof CapabilityPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CapabilityPackage.eNS_URI) : CapabilityPackage.eINSTANCE);
+		ProcessPackageImpl theProcessPackage = (ProcessPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ProcessPackage.eNS_URI) instanceof ProcessPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ProcessPackage.eNS_URI) : ProcessPackage.eINSTANCE);
+		ProcessinstancePackageImpl theProcessinstancePackage = (ProcessinstancePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ProcessinstancePackage.eNS_URI) instanceof ProcessinstancePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ProcessinstancePackage.eNS_URI) : ProcessinstancePackage.eINSTANCE);
+		ProductPackageImpl theProductPackage = (ProductPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ProductPackage.eNS_URI) instanceof ProductPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ProductPackage.eNS_URI) : ProductPackage.eINSTANCE);
+		ProductinstancePackageImpl theProductinstancePackage = (ProductinstancePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ProductinstancePackage.eNS_URI) instanceof ProductinstancePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ProductinstancePackage.eNS_URI) : ProductinstancePackage.eINSTANCE);
+		WorkforcePackageImpl theWorkforcePackage = (WorkforcePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkforcePackage.eNS_URI) instanceof WorkforcePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkforcePackage.eNS_URI) : WorkforcePackage.eINSTANCE);
+		MaterialPackageImpl theMaterialPackage = (MaterialPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(MaterialPackage.eNS_URI) instanceof MaterialPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(MaterialPackage.eNS_URI) : MaterialPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theWorkerguidancePackage.createPackageContents();
 		theOrderPackage.createPackageContents();
-		theProductPackage.createPackageContents();
 		theStaffPackage.createPackageContents();
 		theTopologyPackage.createPackageContents();
 		theWorkplanPackage.createPackageContents();
 		theLinebalancingPackage.createPackageContents();
 		theCapabilityPackage.createPackageContents();
+		theProcessPackage.createPackageContents();
+		theProcessinstancePackage.createPackageContents();
+		theProductPackage.createPackageContents();
+		theProductinstancePackage.createPackageContents();
+		theWorkforcePackage.createPackageContents();
+		theMaterialPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theWorkerguidancePackage.initializePackageContents();
 		theOrderPackage.initializePackageContents();
-		theProductPackage.initializePackageContents();
 		theStaffPackage.initializePackageContents();
 		theTopologyPackage.initializePackageContents();
 		theWorkplanPackage.initializePackageContents();
 		theLinebalancingPackage.initializePackageContents();
 		theCapabilityPackage.initializePackageContents();
+		theProcessPackage.initializePackageContents();
+		theProcessinstancePackage.initializePackageContents();
+		theProductPackage.initializePackageContents();
+		theProductinstancePackage.initializePackageContents();
+		theWorkforcePackage.initializePackageContents();
+		theMaterialPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theWorkerguidancePackage.freeze();
@@ -215,24 +251,6 @@ public class WorkerguidancePackageImpl extends EPackageImpl implements Workergui
 	 */
 	public EAttribute getInstruction_WorkstepIds() {
 		return (EAttribute)instructionEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getMaterial() {
-		return materialEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getMaterial_Name() {
-		return (EAttribute)materialEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -402,6 +420,15 @@ public class WorkerguidancePackageImpl extends EPackageImpl implements Workergui
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getDocument() {
+		return documentEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public WorkerguidanceFactory getWorkerguidanceFactory() {
 		return (WorkerguidanceFactory)getEFactoryInstance();
 	}
@@ -430,9 +457,6 @@ public class WorkerguidancePackageImpl extends EPackageImpl implements Workergui
 		createEAttribute(instructionEClass, INSTRUCTION__PARAMETERS);
 		createEAttribute(instructionEClass, INSTRUCTION__WORKSTEP_IDS);
 
-		materialEClass = createEClass(MATERIAL);
-		createEAttribute(materialEClass, MATERIAL__NAME);
-
 		mediaEClass = createEClass(MEDIA);
 		createEAttribute(mediaEClass, MEDIA__TYPE);
 		createEAttribute(mediaEClass, MEDIA__FILE_SIZE);
@@ -454,6 +478,8 @@ public class WorkerguidancePackageImpl extends EPackageImpl implements Workergui
 		imageEClass = createEClass(IMAGE);
 		createEAttribute(imageEClass, IMAGE__WIDTH);
 		createEAttribute(imageEClass, IMAGE__HEIGHT);
+
+		documentEClass = createEClass(DOCUMENT);
 	}
 
 	/**
@@ -488,20 +514,17 @@ public class WorkerguidancePackageImpl extends EPackageImpl implements Workergui
 
 		// Add supertypes to classes
 		instructionEClass.getESuperTypes().add(theBasePackage.getEntity());
-		materialEClass.getESuperTypes().add(theBasePackage.getEntity());
 		mediaEClass.getESuperTypes().add(theBasePackage.getEntity());
 		audioEClass.getESuperTypes().add(this.getMedia());
 		videoEClass.getESuperTypes().add(this.getMedia());
 		imageEClass.getESuperTypes().add(this.getMedia());
+		documentEClass.getESuperTypes().add(this.getMedia());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(instructionEClass, Instruction.class, "Instruction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getInstruction_Description(), ecorePackage.getEString(), "description", null, 0, 1, Instruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInstruction_Parameters(), ecorePackage.getEString(), "parameters", null, 0, -1, Instruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInstruction_WorkstepIds(), ecorePackage.getEString(), "workstepIds", null, 0, -1, Instruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(materialEClass, Material.class, "Material", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMaterial_Name(), ecorePackage.getEString(), "name", null, 0, 1, Material.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(mediaEClass, Media.class, "Media", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMedia_Type(), ecorePackage.getEString(), "type", null, 0, 1, Media.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -524,6 +547,8 @@ public class WorkerguidancePackageImpl extends EPackageImpl implements Workergui
 		initEClass(imageEClass, Image.class, "Image", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getImage_Width(), ecorePackage.getEInt(), "width", null, 0, 1, Image.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getImage_Height(), ecorePackage.getEInt(), "height", null, 0, 1, Image.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(documentEClass, Document.class, "Document", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

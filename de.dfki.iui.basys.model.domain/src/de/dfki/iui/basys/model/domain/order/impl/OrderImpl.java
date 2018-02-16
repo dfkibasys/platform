@@ -3,6 +3,7 @@
 package de.dfki.iui.basys.model.domain.order.impl;
 
 import de.dfki.iui.basys.model.base.impl.EntityImpl;
+
 import de.dfki.iui.basys.model.domain.order.Order;
 import de.dfki.iui.basys.model.domain.order.OrderPackage;
 import de.dfki.iui.basys.model.domain.order.OrderStatus;

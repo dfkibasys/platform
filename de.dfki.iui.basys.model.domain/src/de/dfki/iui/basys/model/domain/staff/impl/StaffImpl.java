@@ -3,6 +3,7 @@
 package de.dfki.iui.basys.model.domain.staff.impl;
 
 import de.dfki.iui.basys.model.base.impl.EntityImpl;
+
 import de.dfki.iui.basys.model.domain.staff.Staff;
 import de.dfki.iui.basys.model.domain.staff.StaffPackage;
 

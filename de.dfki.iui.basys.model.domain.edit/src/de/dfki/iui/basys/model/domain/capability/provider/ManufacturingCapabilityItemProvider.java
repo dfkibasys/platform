@@ -64,7 +64,7 @@ public class ManufacturingCapabilityItemProvider extends CapabilityItemProvider 
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ManufacturingCapability)object).getId();
+		String label = ((ManufacturingCapability)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_ManufacturingCapability_type") :
 			getString("_UI_ManufacturingCapability_type") + " " + label;

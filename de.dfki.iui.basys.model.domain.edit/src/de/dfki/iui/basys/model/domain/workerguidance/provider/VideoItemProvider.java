@@ -137,7 +137,7 @@ public class VideoItemProvider extends MediaItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Video)object).getId();
+		String label = ((Video)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Video_type") :
 			getString("_UI_Video_type") + " " + label;

@@ -5,11 +5,13 @@ package de.dfki.iui.basys.model.domain.workplan.provider;
 
 import de.dfki.iui.basys.model.domain.workplan.WorkplanPackage;
 import de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatusChangeEvent;
+
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
@@ -89,7 +91,7 @@ public class WorkstepInstanceStatusChangeEventItemProvider extends WorkstepInsta
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((WorkstepInstanceStatusChangeEvent)object).getId();
+		String label = ((WorkstepInstanceStatusChangeEvent)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_WorkstepInstanceStatusChangeEvent_type") :
 			getString("_UI_WorkstepInstanceStatusChangeEvent_type") + " " + label;

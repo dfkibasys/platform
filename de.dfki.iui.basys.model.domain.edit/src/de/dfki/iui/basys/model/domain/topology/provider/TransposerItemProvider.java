@@ -64,7 +64,7 @@ public class TransposerItemProvider extends TransportItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Transposer)object).getId();
+		String label = ((Transposer)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Transposer_type") :
 			getString("_UI_Transposer_type") + " " + label;

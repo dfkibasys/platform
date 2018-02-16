@@ -67,6 +67,15 @@ public interface ServiceFactory extends EFactory {
 	Subscription createSubscription();
 
 	/**
+	 * Returns a new object of class '<em>Managed Entity</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Managed Entity</em>'.
+	 * @generated
+	 */
+	ManagedEntity createManagedEntity();
+
+	/**
 	 * Returns a new object of class '<em>Implementation</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -92,6 +101,15 @@ public interface ServiceFactory extends EFactory {
 	 * @generated
 	 */
 	ServiceEndpoint createServiceEndpoint();
+
+	/**
+	 * Returns a new object of class '<em>Queue Endpoint</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Queue Endpoint</em>'.
+	 * @generated
+	 */
+	QueueEndpoint createQueueEndpoint();
 
 	/**
 	 * Returns a new object of class '<em>Rest Endpoint</em>'.

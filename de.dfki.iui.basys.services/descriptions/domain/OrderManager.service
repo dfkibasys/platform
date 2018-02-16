@@ -24,7 +24,7 @@
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eParameters>
   </operations>
-  <publications name="OrderStatusChangeEvent" topic="/order/{orderId}/status">
+  <publications name="OrderStatusChangeEvent">
     <eType xsi:type="ecore:EClass" href="http://www.dfki.de/iui/basys/model/order#//OrderStatusChangeEvent"/>
   </publications>
 </service:ServiceDescription>

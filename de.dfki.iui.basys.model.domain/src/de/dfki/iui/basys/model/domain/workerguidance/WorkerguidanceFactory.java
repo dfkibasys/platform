@@ -31,15 +31,6 @@ public interface WorkerguidanceFactory extends EFactory {
 	Instruction createInstruction();
 
 	/**
-	 * Returns a new object of class '<em>Material</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Material</em>'.
-	 * @generated
-	 */
-	Material createMaterial();
-
-	/**
 	 * Returns a new object of class '<em>Media</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -74,6 +65,15 @@ public interface WorkerguidanceFactory extends EFactory {
 	 * @generated
 	 */
 	Image createImage();
+
+	/**
+	 * Returns a new object of class '<em>Document</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Document</em>'.
+	 * @generated
+	 */
+	Document createDocument();
 
 	/**
 	 * Returns the package supported by this factory.

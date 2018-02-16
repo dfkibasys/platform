@@ -3,6 +3,7 @@
 package de.dfki.iui.basys.model.domain.linebalancing.impl;
 
 import de.dfki.iui.basys.model.base.impl.EntityImpl;
+
 import de.dfki.iui.basys.model.domain.linebalancing.LBStaff;
 import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
 

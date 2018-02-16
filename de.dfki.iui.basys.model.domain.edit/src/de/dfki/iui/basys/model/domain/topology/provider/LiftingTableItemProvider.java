@@ -64,7 +64,7 @@ public class LiftingTableItemProvider extends VerticalTransportItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((LiftingTable)object).getId();
+		String label = ((LiftingTable)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_LiftingTable_type") :
 			getString("_UI_LiftingTable_type") + " " + label;

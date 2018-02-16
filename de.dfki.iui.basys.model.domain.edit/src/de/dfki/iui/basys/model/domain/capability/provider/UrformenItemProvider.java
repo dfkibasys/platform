@@ -64,7 +64,7 @@ public class UrformenItemProvider extends ManufacturingCapabilityItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Urformen)object).getId();
+		String label = ((Urformen)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Urformen_type") :
 			getString("_UI_Urformen_type") + " " + label;

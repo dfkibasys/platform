@@ -57,11 +57,11 @@ public class WorkerguidanceFactoryImpl extends EFactoryImpl implements Workergui
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case WorkerguidancePackage.INSTRUCTION: return createInstruction();
-			case WorkerguidancePackage.MATERIAL: return createMaterial();
 			case WorkerguidancePackage.MEDIA: return createMedia();
 			case WorkerguidancePackage.AUDIO: return createAudio();
 			case WorkerguidancePackage.VIDEO: return createVideo();
 			case WorkerguidancePackage.IMAGE: return createImage();
+			case WorkerguidancePackage.DOCUMENT: return createDocument();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -75,16 +75,6 @@ public class WorkerguidanceFactoryImpl extends EFactoryImpl implements Workergui
 	public Instruction createInstruction() {
 		InstructionImpl instruction = new InstructionImpl();
 		return instruction;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Material createMaterial() {
-		MaterialImpl material = new MaterialImpl();
-		return material;
 	}
 
 	/**
@@ -125,6 +115,16 @@ public class WorkerguidanceFactoryImpl extends EFactoryImpl implements Workergui
 	public Image createImage() {
 		ImageImpl image = new ImageImpl();
 		return image;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Document createDocument() {
+		DocumentImpl document = new DocumentImpl();
+		return document;
 	}
 
 	/**

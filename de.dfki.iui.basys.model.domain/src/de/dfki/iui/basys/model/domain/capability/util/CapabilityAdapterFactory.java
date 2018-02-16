@@ -4,6 +4,7 @@ package de.dfki.iui.basys.model.domain.capability.util;
 
 import de.dfki.iui.basys.model.base.BObject;
 import de.dfki.iui.basys.model.base.Entity;
+
 import de.dfki.iui.basys.model.domain.capability.*;
 
 import org.eclipse.emf.common.notify.Adapter;
@@ -69,6 +70,10 @@ public class CapabilityAdapterFactory extends AdapterFactoryImpl {
 	 */
 	protected CapabilitySwitch<Adapter> modelSwitch =
 		new CapabilitySwitch<Adapter>() {
+			@Override
+			public Adapter caseCapabilityAssertion(CapabilityAssertion object) {
+				return createCapabilityAssertionAdapter();
+			}
 			@Override
 			public Adapter caseCapability(Capability object) {
 				return createCapabilityAdapter();
@@ -144,6 +149,20 @@ public class CapabilityAdapterFactory extends AdapterFactoryImpl {
 		return modelSwitch.doSwitch((EObject)target);
 	}
 
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.capability.CapabilityAssertion <em>Assertion</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.domain.capability.CapabilityAssertion
+	 * @generated
+	 */
+	public Adapter createCapabilityAssertionAdapter() {
+		return null;
+	}
 
 	/**
 	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.capability.Capability <em>Capability</em>}'.

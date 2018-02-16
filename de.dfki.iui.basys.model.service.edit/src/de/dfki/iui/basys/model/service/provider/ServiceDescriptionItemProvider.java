@@ -202,6 +202,7 @@ public class ServiceDescriptionItemProvider extends ENamedElementItemProvider {
 			childrenFeatures.add(ServicePackage.Literals.SERVICE_DESCRIPTION__OPERATIONS);
 			childrenFeatures.add(ServicePackage.Literals.SERVICE_DESCRIPTION__PUBLICATIONS);
 			childrenFeatures.add(ServicePackage.Literals.SERVICE_DESCRIPTION__SUBSCRIPTIONS);
+			childrenFeatures.add(ServicePackage.Literals.SERVICE_DESCRIPTION__MANAGED_ENTITIES);
 		}
 		return childrenFeatures;
 	}
@@ -268,6 +269,7 @@ public class ServiceDescriptionItemProvider extends ENamedElementItemProvider {
 			case ServicePackage.SERVICE_DESCRIPTION__OPERATIONS:
 			case ServicePackage.SERVICE_DESCRIPTION__PUBLICATIONS:
 			case ServicePackage.SERVICE_DESCRIPTION__SUBSCRIPTIONS:
+			case ServicePackage.SERVICE_DESCRIPTION__MANAGED_ENTITIES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -309,6 +311,11 @@ public class ServiceDescriptionItemProvider extends ENamedElementItemProvider {
 			(createChildParameter
 				(ServicePackage.Literals.SERVICE_DESCRIPTION__SUBSCRIPTIONS,
 				 ServiceFactory.eINSTANCE.createSubscription()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ServicePackage.Literals.SERVICE_DESCRIPTION__MANAGED_ENTITIES,
+				 ServiceFactory.eINSTANCE.createManagedEntity()));
 	}
 
 	/**

@@ -4,6 +4,7 @@ package de.dfki.iui.basys.model.domain.workerguidance.util;
 
 import de.dfki.iui.basys.model.base.BObject;
 import de.dfki.iui.basys.model.base.Entity;
+
 import de.dfki.iui.basys.model.domain.workerguidance.*;
 
 import org.eclipse.emf.common.notify.Adapter;
@@ -74,10 +75,6 @@ public class WorkerguidanceAdapterFactory extends AdapterFactoryImpl {
 				return createInstructionAdapter();
 			}
 			@Override
-			public Adapter caseMaterial(Material object) {
-				return createMaterialAdapter();
-			}
-			@Override
 			public Adapter caseMedia(Media object) {
 				return createMediaAdapter();
 			}
@@ -92,6 +89,10 @@ public class WorkerguidanceAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseImage(Image object) {
 				return createImageAdapter();
+			}
+			@Override
+			public Adapter caseDocument(Document object) {
+				return createDocumentAdapter();
 			}
 			@Override
 			public Adapter caseBObject(BObject object) {
@@ -132,20 +133,6 @@ public class WorkerguidanceAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createInstructionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.workerguidance.Material <em>Material</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.dfki.iui.basys.model.domain.workerguidance.Material
-	 * @generated
-	 */
-	public Adapter createMaterialAdapter() {
 		return null;
 	}
 
@@ -202,6 +189,20 @@ public class WorkerguidanceAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createImageAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.workerguidance.Document <em>Document</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.domain.workerguidance.Document
+	 * @generated
+	 */
+	public Adapter createDocumentAdapter() {
 		return null;
 	}
 

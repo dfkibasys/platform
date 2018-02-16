@@ -91,7 +91,7 @@ public class AudioItemProvider extends MediaItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Audio)object).getId();
+		String label = ((Audio)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Audio_type") :
 			getString("_UI_Audio_type") + " " + label;

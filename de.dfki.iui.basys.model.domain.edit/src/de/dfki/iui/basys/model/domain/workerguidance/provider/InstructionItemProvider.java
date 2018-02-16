@@ -4,6 +4,7 @@ package de.dfki.iui.basys.model.domain.workerguidance.provider;
 
 
 import de.dfki.iui.basys.model.base.provider.EntityItemProvider;
+
 import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
 
 import de.dfki.iui.basys.model.domain.workerguidance.Instruction;
@@ -142,7 +143,7 @@ public class InstructionItemProvider extends EntityItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Instruction)object).getId();
+		String label = ((Instruction)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Instruction_type") :
 			getString("_UI_Instruction_type") + " " + label;

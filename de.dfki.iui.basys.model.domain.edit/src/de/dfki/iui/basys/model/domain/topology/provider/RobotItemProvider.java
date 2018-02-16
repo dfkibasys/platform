@@ -4,11 +4,13 @@ package de.dfki.iui.basys.model.domain.topology.provider;
 
 
 import de.dfki.iui.basys.model.domain.topology.Robot;
+
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 /**
@@ -62,7 +64,7 @@ public class RobotItemProvider extends DiscreteManufacturingEquipmentModuleItemP
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Robot)object).getId();
+		String label = ((Robot)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Robot_type") :
 			getString("_UI_Robot_type") + " " + label;

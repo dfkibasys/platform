@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.ENamedElement;
  *   <li>{@link de.dfki.iui.basys.model.service.ServiceDescription#getPublications <em>Publications</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.service.ServiceDescription#getSubscriptions <em>Subscriptions</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.service.ServiceDescription#getDependencies <em>Dependencies</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.service.ServiceDescription#getManagedEntities <em>Managed Entities</em>}</li>
  * </ul>
  *
  * @see de.dfki.iui.basys.model.service.ServicePackage#getServiceDescription()
@@ -167,5 +168,21 @@ public interface ServiceDescription extends ENamedElement, Entity {
 	 * @generated
 	 */
 	EList<ServiceDescription> getDependencies();
+
+	/**
+	 * Returns the value of the '<em><b>Managed Entities</b></em>' containment reference list.
+	 * The list contents are of type {@link de.dfki.iui.basys.model.service.ManagedEntity}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Managed Entities</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Managed Entities</em>' containment reference list.
+	 * @see de.dfki.iui.basys.model.service.ServicePackage#getServiceDescription_ManagedEntities()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<ManagedEntity> getManagedEntities();
 
 } // ServiceDescription

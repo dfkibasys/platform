@@ -64,7 +64,7 @@ public class PalletConveyorItemProvider extends ConveyorItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((PalletConveyor)object).getId();
+		String label = ((PalletConveyor)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_PalletConveyor_type") :
 			getString("_UI_PalletConveyor_type") + " " + label;

@@ -4,6 +4,7 @@ package de.dfki.iui.basys.model.domain.product.util;
 
 import de.dfki.iui.basys.model.base.BObject;
 import de.dfki.iui.basys.model.base.Entity;
+
 import de.dfki.iui.basys.model.domain.product.*;
 
 import org.eclipse.emf.common.notify.Adapter;
@@ -70,6 +71,10 @@ public class ProductAdapterFactory extends AdapterFactoryImpl {
 	protected ProductSwitch<Adapter> modelSwitch =
 		new ProductSwitch<Adapter>() {
 			@Override
+			public Adapter caseProductCatalogue(ProductCatalogue object) {
+				return createProductCatalogueAdapter();
+			}
+			@Override
 			public Adapter caseProductGroup(ProductGroup object) {
 				return createProductGroupAdapter();
 			}
@@ -78,24 +83,12 @@ public class ProductAdapterFactory extends AdapterFactoryImpl {
 				return createProductVariantAdapter();
 			}
 			@Override
-			public Adapter caseProductInstance(ProductInstance object) {
-				return createProductInstanceAdapter();
+			public Adapter caseBillOfMaterial(BillOfMaterial object) {
+				return createBillOfMaterialAdapter();
 			}
 			@Override
-			public Adapter caseProductInstanceStatus(ProductInstanceStatus object) {
-				return createProductInstanceStatusAdapter();
-			}
-			@Override
-			public Adapter caseProductInstanceStatusChangeEvent(ProductInstanceStatusChangeEvent object) {
-				return createProductInstanceStatusChangeEventAdapter();
-			}
-			@Override
-			public Adapter caseProductInstanceLocation(ProductInstanceLocation object) {
-				return createProductInstanceLocationAdapter();
-			}
-			@Override
-			public Adapter caseProductInstanceLocationChangeEvent(ProductInstanceLocationChangeEvent object) {
-				return createProductInstanceLocationChangeEventAdapter();
+			public Adapter caseBOMEntry(BOMEntry object) {
+				return createBOMEntryAdapter();
 			}
 			@Override
 			public Adapter caseBObject(BObject object) {
@@ -126,6 +119,20 @@ public class ProductAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.product.ProductCatalogue <em>Catalogue</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.domain.product.ProductCatalogue
+	 * @generated
+	 */
+	public Adapter createProductCatalogueAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.product.ProductGroup <em>Group</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -154,72 +161,30 @@ public class ProductAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.product.ProductInstance <em>Instance</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.product.BillOfMaterial <em>Bill Of Material</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.dfki.iui.basys.model.domain.product.ProductInstance
+	 * @see de.dfki.iui.basys.model.domain.product.BillOfMaterial
 	 * @generated
 	 */
-	public Adapter createProductInstanceAdapter() {
+	public Adapter createBillOfMaterialAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.product.ProductInstanceStatus <em>Instance Status</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.product.BOMEntry <em>BOM Entry</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.dfki.iui.basys.model.domain.product.ProductInstanceStatus
+	 * @see de.dfki.iui.basys.model.domain.product.BOMEntry
 	 * @generated
 	 */
-	public Adapter createProductInstanceStatusAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.product.ProductInstanceStatusChangeEvent <em>Instance Status Change Event</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.dfki.iui.basys.model.domain.product.ProductInstanceStatusChangeEvent
-	 * @generated
-	 */
-	public Adapter createProductInstanceStatusChangeEventAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.product.ProductInstanceLocation <em>Instance Location</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.dfki.iui.basys.model.domain.product.ProductInstanceLocation
-	 * @generated
-	 */
-	public Adapter createProductInstanceLocationAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.product.ProductInstanceLocationChangeEvent <em>Instance Location Change Event</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.dfki.iui.basys.model.domain.product.ProductInstanceLocationChangeEvent
-	 * @generated
-	 */
-	public Adapter createProductInstanceLocationChangeEventAdapter() {
+	public Adapter createBOMEntryAdapter() {
 		return null;
 	}
 

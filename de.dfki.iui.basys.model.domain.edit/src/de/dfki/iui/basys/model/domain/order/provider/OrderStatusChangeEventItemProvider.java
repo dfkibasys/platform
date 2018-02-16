@@ -11,6 +11,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
@@ -90,7 +91,7 @@ public class OrderStatusChangeEventItemProvider extends OrderStatusItemProvider 
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((OrderStatusChangeEvent)object).getId();
+		String label = ((OrderStatusChangeEvent)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_OrderStatusChangeEvent_type") :
 			getString("_UI_OrderStatusChangeEvent_type") + " " + label;

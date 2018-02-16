@@ -64,7 +64,7 @@ public class TrennenItemProvider extends ManufacturingCapabilityItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Trennen)object).getId();
+		String label = ((Trennen)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Trennen_type") :
 			getString("_UI_Trennen_type") + " " + label;

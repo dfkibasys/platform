@@ -21,7 +21,6 @@ import java.util.Date;
  * @generated
  */
 public interface OrderStatusChangeEvent extends OrderStatus {
-
 	/**
 	 * Returns the value of the '<em><b>Timestamp</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -47,4 +46,5 @@ public interface OrderStatusChangeEvent extends OrderStatus {
 	 * @generated
 	 */
 	void setTimestamp(Date value);
+
 } // OrderStatusChangeEvent

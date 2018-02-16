@@ -88,6 +88,15 @@ public interface WorkplanPackage extends EPackage {
 	int WORKPLAN_INSTANCE__ID = BasePackage.ENTITY__ID;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKPLAN_INSTANCE__NAME = BasePackage.ENTITY__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -161,6 +170,15 @@ public interface WorkplanPackage extends EPackage {
 	int WORKSTEP_INSTANCE__ID = BasePackage.ENTITY__ID;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKSTEP_INSTANCE__NAME = BasePackage.ENTITY__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -170,22 +188,13 @@ public interface WorkplanPackage extends EPackage {
 	int WORKSTEP_INSTANCE__METADATA = BasePackage.ENTITY__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WORKSTEP_INSTANCE__NAME = BasePackage.ENTITY_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Component Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WORKSTEP_INSTANCE__COMPONENT_ID = BasePackage.ENTITY_FEATURE_COUNT + 1;
+	int WORKSTEP_INSTANCE__COMPONENT_ID = BasePackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Is Automatic</b></em>' attribute.
@@ -194,7 +203,7 @@ public interface WorkplanPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKSTEP_INSTANCE__IS_AUTOMATIC = BasePackage.ENTITY_FEATURE_COUNT + 2;
+	int WORKSTEP_INSTANCE__IS_AUTOMATIC = BasePackage.ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Workstep Instance</em>' class.
@@ -203,7 +212,7 @@ public interface WorkplanPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKSTEP_INSTANCE_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 3;
+	int WORKSTEP_INSTANCE_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Workstep Instance</em>' class.
@@ -241,6 +250,15 @@ public interface WorkplanPackage extends EPackage {
 	 * @ordered
 	 */
 	int WORKSTEP_INSTANCE_STATUS__ID = BasePackage.ENTITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKSTEP_INSTANCE_STATUS__NAME = BasePackage.ENTITY__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -323,6 +341,15 @@ public interface WorkplanPackage extends EPackage {
 	 * @ordered
 	 */
 	int WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT__ID = WORKSTEP_INSTANCE_STATUS__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKSTEP_INSTANCE_STATUS_CHANGE_EVENT__NAME = WORKSTEP_INSTANCE_STATUS__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -414,6 +441,15 @@ public interface WorkplanPackage extends EPackage {
 	 * @ordered
 	 */
 	int DURATION__ID = BasePackage.ENTITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DURATION__NAME = BasePackage.ENTITY__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -530,17 +566,6 @@ public interface WorkplanPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getWorkstepInstance();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstance#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see de.dfki.iui.basys.model.domain.workplan.WorkstepInstance#getName()
-	 * @see #getWorkstepInstance()
-	 * @generated
-	 */
-	EAttribute getWorkstepInstance_Name();
 
 	/**
 	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.workplan.WorkstepInstance#getComponentId <em>Component Id</em>}'.
@@ -750,14 +775,6 @@ public interface WorkplanPackage extends EPackage {
 		 * @generated
 		 */
 		EClass WORKSTEP_INSTANCE = eINSTANCE.getWorkstepInstance();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute WORKSTEP_INSTANCE__NAME = eINSTANCE.getWorkstepInstance_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>Component Id</b></em>' attribute feature.

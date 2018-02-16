@@ -7,6 +7,7 @@ import de.dfki.iui.basys.model.base.BasePackage;
 import de.dfki.iui.basys.model.base.Entity;
 import de.dfki.iui.basys.model.base.Metadata;
 
+import de.dfki.iui.basys.model.service.ManagedEntity;
 import de.dfki.iui.basys.model.service.Operation;
 import de.dfki.iui.basys.model.service.Property;
 import de.dfki.iui.basys.model.service.Publication;
@@ -51,6 +52,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionImpl#getPublications <em>Publications</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionImpl#getSubscriptions <em>Subscriptions</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionImpl#getDependencies <em>Dependencies</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.service.impl.ServiceDescriptionImpl#getManagedEntities <em>Managed Entities</em>}</li>
  * </ul>
  *
  * @generated
@@ -195,6 +197,16 @@ public class ServiceDescriptionImpl extends ENamedElementImpl implements Service
 	 * @ordered
 	 */
 	protected EList<ServiceDescription> dependencies;
+
+	/**
+	 * The cached value of the '{@link #getManagedEntities() <em>Managed Entities</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getManagedEntities()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ManagedEntity> managedEntities;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -408,6 +420,18 @@ public class ServiceDescriptionImpl extends ENamedElementImpl implements Service
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<ManagedEntity> getManagedEntities() {
+		if (managedEntities == null) {
+			managedEntities = new EObjectContainmentEList<ManagedEntity>(ManagedEntity.class, this, ServicePackage.SERVICE_DESCRIPTION__MANAGED_ENTITIES);
+		}
+		return managedEntities;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -421,6 +445,8 @@ public class ServiceDescriptionImpl extends ENamedElementImpl implements Service
 				return ((InternalEList<?>)getPublications()).basicRemove(otherEnd, msgs);
 			case ServicePackage.SERVICE_DESCRIPTION__SUBSCRIPTIONS:
 				return ((InternalEList<?>)getSubscriptions()).basicRemove(otherEnd, msgs);
+			case ServicePackage.SERVICE_DESCRIPTION__MANAGED_ENTITIES:
+				return ((InternalEList<?>)getManagedEntities()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -453,6 +479,8 @@ public class ServiceDescriptionImpl extends ENamedElementImpl implements Service
 				return getSubscriptions();
 			case ServicePackage.SERVICE_DESCRIPTION__DEPENDENCIES:
 				return getDependencies();
+			case ServicePackage.SERVICE_DESCRIPTION__MANAGED_ENTITIES:
+				return getManagedEntities();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -501,6 +529,10 @@ public class ServiceDescriptionImpl extends ENamedElementImpl implements Service
 				getDependencies().clear();
 				getDependencies().addAll((Collection<? extends ServiceDescription>)newValue);
 				return;
+			case ServicePackage.SERVICE_DESCRIPTION__MANAGED_ENTITIES:
+				getManagedEntities().clear();
+				getManagedEntities().addAll((Collection<? extends ManagedEntity>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -543,6 +575,9 @@ public class ServiceDescriptionImpl extends ENamedElementImpl implements Service
 			case ServicePackage.SERVICE_DESCRIPTION__DEPENDENCIES:
 				getDependencies().clear();
 				return;
+			case ServicePackage.SERVICE_DESCRIPTION__MANAGED_ENTITIES:
+				getManagedEntities().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -575,6 +610,8 @@ public class ServiceDescriptionImpl extends ENamedElementImpl implements Service
 				return subscriptions != null && !subscriptions.isEmpty();
 			case ServicePackage.SERVICE_DESCRIPTION__DEPENDENCIES:
 				return dependencies != null && !dependencies.isEmpty();
+			case ServicePackage.SERVICE_DESCRIPTION__MANAGED_ENTITIES:
+				return managedEntities != null && !managedEntities.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

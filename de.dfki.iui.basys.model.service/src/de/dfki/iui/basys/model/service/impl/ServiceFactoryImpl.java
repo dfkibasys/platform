@@ -62,9 +62,11 @@ public class ServiceFactoryImpl extends EFactoryImpl implements ServiceFactory {
 			case ServicePackage.OPERATION: return createOperation();
 			case ServicePackage.PUBLICATION: return createPublication();
 			case ServicePackage.SUBSCRIPTION: return createSubscription();
+			case ServicePackage.MANAGED_ENTITY: return createManagedEntity();
 			case ServicePackage.SERVICE_IMPLEMENTATION: return createServiceImplementation();
 			case ServicePackage.SERVICE_INSTANCE: return createServiceInstance();
 			case ServicePackage.SERVICE_ENDPOINT: return createServiceEndpoint();
+			case ServicePackage.QUEUE_ENDPOINT: return createQueueEndpoint();
 			case ServicePackage.REST_ENDPOINT: return createRestEndpoint();
 			case ServicePackage.SOAP_ENDPOINT: return createSoapEndpoint();
 			default:
@@ -80,6 +82,8 @@ public class ServiceFactoryImpl extends EFactoryImpl implements ServiceFactory {
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
+			case ServicePackage.ENTITY_OPERATION_ENUM:
+				return createEntityOperationEnumFromString(eDataType, initialValue);
 			case ServicePackage.SERVICE_TYPE_ENUM:
 				return createServiceTypeEnumFromString(eDataType, initialValue);
 			default:
@@ -95,6 +99,8 @@ public class ServiceFactoryImpl extends EFactoryImpl implements ServiceFactory {
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
+			case ServicePackage.ENTITY_OPERATION_ENUM:
+				return convertEntityOperationEnumToString(eDataType, instanceValue);
 			case ServicePackage.SERVICE_TYPE_ENUM:
 				return convertServiceTypeEnumToString(eDataType, instanceValue);
 			default:
@@ -157,6 +163,16 @@ public class ServiceFactoryImpl extends EFactoryImpl implements ServiceFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ManagedEntity createManagedEntity() {
+		ManagedEntityImpl managedEntity = new ManagedEntityImpl();
+		return managedEntity;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ServiceImplementation createServiceImplementation() {
 		ServiceImplementationImpl serviceImplementation = new ServiceImplementationImpl();
 		return serviceImplementation;
@@ -187,6 +203,16 @@ public class ServiceFactoryImpl extends EFactoryImpl implements ServiceFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public QueueEndpoint createQueueEndpoint() {
+		QueueEndpointImpl queueEndpoint = new QueueEndpointImpl();
+		return queueEndpoint;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public RestEndpoint createRestEndpoint() {
 		RestEndpointImpl restEndpoint = new RestEndpointImpl();
 		return restEndpoint;
@@ -200,6 +226,26 @@ public class ServiceFactoryImpl extends EFactoryImpl implements ServiceFactory {
 	public SoapEndpoint createSoapEndpoint() {
 		SoapEndpointImpl soapEndpoint = new SoapEndpointImpl();
 		return soapEndpoint;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EntityOperationEnum createEntityOperationEnumFromString(EDataType eDataType, String initialValue) {
+		EntityOperationEnum result = EntityOperationEnum.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertEntityOperationEnumToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

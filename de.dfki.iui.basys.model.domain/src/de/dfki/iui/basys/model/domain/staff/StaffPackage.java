@@ -89,6 +89,15 @@ public interface StaffPackage extends EPackage {
 	int STAFF__ID = BasePackage.ENTITY__ID;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAFF__NAME = BasePackage.ENTITY__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -180,6 +189,15 @@ public interface StaffPackage extends EPackage {
 	int STAFF_LOCATION__ID = BasePackage.ENTITY__ID;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAFF_LOCATION__NAME = BasePackage.ENTITY__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -260,6 +278,15 @@ public interface StaffPackage extends EPackage {
 	 * @ordered
 	 */
 	int STAFF_LOCATION_CHANGE_EVENT__ID = STAFF_LOCATION__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAFF_LOCATION_CHANGE_EVENT__NAME = STAFF_LOCATION__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -353,6 +380,15 @@ public interface StaffPackage extends EPackage {
 	int ABILITY__ID = BasePackage.ENTITY__ID;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABILITY__NAME = BasePackage.ENTITY__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -424,6 +460,15 @@ public interface StaffPackage extends EPackage {
 	 * @ordered
 	 */
 	int WORKSTEP_SKILL__ID = BasePackage.ENTITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKSTEP_SKILL__NAME = BasePackage.ENTITY__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -506,6 +551,15 @@ public interface StaffPackage extends EPackage {
 	 * @ordered
 	 */
 	int STAFF_SKILLS__ID = BasePackage.ENTITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAFF_SKILLS__NAME = BasePackage.ENTITY__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.

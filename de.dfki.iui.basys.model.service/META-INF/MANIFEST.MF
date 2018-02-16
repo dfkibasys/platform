@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1517934532416
+Bnd-LastModified: 1518817347675
 Build-Jdk: 1.8.0_131
 Built-By: dapo01
 Bundle-Description: Generated using Pax-Construct
@@ -25,15 +25,15 @@ Export-Package: de.dfki.iui.basys.model.service;version="1.0.0.SNAPSHOT"
  .util"
 Import-Package: de.dfki.iui.basys.model.base;version="[1.0,2)",de.dfki.i
  ui.basys.model.base.impl;version="[1.0,2)",de.dfki.iui.basys.model.doma
- in.capability;version="[1.0,2)",de.dfki.iui.basys.model.service;version
- ="[1.0,2)",de.dfki.iui.basys.model.service.impl;version="[1.0,2)",de.df
- ki.iui.basys.model.service.util;version="[1.0,2)",org.eclipse.emf.commo
- n.notify;resolution:=optional,org.eclipse.emf.common.notify.impl;resolu
- tion:=optional,org.eclipse.emf.common.util;resolution:=optional,org.ecl
- ipse.emf.ecore;resolution:=optional,org.eclipse.emf.ecore.impl;resoluti
- on:=optional,org.eclipse.emf.ecore.plugin;resolution:=optional,org.ecli
- pse.emf.ecore.resource;resolution:=optional,org.eclipse.emf.ecore.util;
- resolution:=optional
+ in.capability;version="[1.0,2)",de.dfki.iui.basys.model.pattern;version
+ ="[1.0,2)",de.dfki.iui.basys.model.service;version="[1.0,2)",de.dfki.iu
+ i.basys.model.service.impl;version="[1.0,2)",de.dfki.iui.basys.model.se
+ rvice.util;version="[1.0,2)",org.eclipse.emf.common.notify;resolution:=
+ optional,org.eclipse.emf.common.notify.impl;resolution:=optional,org.ec
+ lipse.emf.common.util;resolution:=optional,org.eclipse.emf.ecore;resolu
+ tion:=optional,org.eclipse.emf.ecore.impl;resolution:=optional,org.ecli
+ pse.emf.ecore.plugin;resolution:=optional,org.eclipse.emf.ecore.resourc
+ e;resolution:=optional,org.eclipse.emf.ecore.util;resolution:=optional
 Require-Bundle: org.eclipse.core.runtime, org.eclipse.emf.ecore;visibili
  ty:=reexport
 Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"

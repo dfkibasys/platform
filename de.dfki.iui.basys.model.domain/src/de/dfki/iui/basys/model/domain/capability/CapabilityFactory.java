@@ -22,6 +22,15 @@ public interface CapabilityFactory extends EFactory {
 	CapabilityFactory eINSTANCE = de.dfki.iui.basys.model.domain.capability.impl.CapabilityFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Assertion</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Assertion</em>'.
+	 * @generated
+	 */
+	CapabilityAssertion createCapabilityAssertion();
+
+	/**
 	 * Returns a new object of class '<em>Capability</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

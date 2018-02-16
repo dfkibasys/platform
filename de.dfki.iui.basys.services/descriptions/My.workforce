@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workforce:Workforce xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:workforce="http://www.dfki.de/iui/basys/model/workforce">
+  <agents xsi:type="workforce:Person" id="_TNe-IBMyEeiF0dM90lRpcg" name="Werner" gender=""/>
+  <agents xsi:type="workforce:Person" id="_XsKv8BMyEeiF0dM90lRpcg" name="Heinz" givenName="" gender=""/>
+  <agents xsi:type="workforce:Robot" id="_TNe-IRMyEeiF0dM90lRpcg" name="Mir 100"/>
+</workforce:Workforce>

@@ -3,6 +3,7 @@
 package de.dfki.iui.basys.model.domain.workplan.impl;
 
 import de.dfki.iui.basys.model.base.impl.EntityImpl;
+
 import de.dfki.iui.basys.model.domain.workplan.WorkplanPackage;
 import de.dfki.iui.basys.model.domain.workplan.WorkstepInstance;
 
@@ -20,7 +21,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.dfki.iui.basys.model.domain.workplan.impl.WorkstepInstanceImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.workplan.impl.WorkstepInstanceImpl#getComponentId <em>Component Id</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.workplan.impl.WorkstepInstanceImpl#isIsAutomatic <em>Is Automatic</em>}</li>
  * </ul>
@@ -28,26 +28,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * @generated
  */
 public class WorkstepInstanceImpl extends EntityImpl implements WorkstepInstance {
-	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String name = NAME_EDEFAULT;
-
 	/**
 	 * The default value of the '{@link #getComponentId() <em>Component Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -112,27 +92,6 @@ public class WorkstepInstanceImpl extends EntityImpl implements WorkstepInstance
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WorkplanPackage.WORKSTEP_INSTANCE__NAME, oldName, name));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String getComponentId() {
 		return componentId;
 	}
@@ -178,8 +137,6 @@ public class WorkstepInstanceImpl extends EntityImpl implements WorkstepInstance
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case WorkplanPackage.WORKSTEP_INSTANCE__NAME:
-				return getName();
 			case WorkplanPackage.WORKSTEP_INSTANCE__COMPONENT_ID:
 				return getComponentId();
 			case WorkplanPackage.WORKSTEP_INSTANCE__IS_AUTOMATIC:
@@ -196,9 +153,6 @@ public class WorkstepInstanceImpl extends EntityImpl implements WorkstepInstance
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case WorkplanPackage.WORKSTEP_INSTANCE__NAME:
-				setName((String)newValue);
-				return;
 			case WorkplanPackage.WORKSTEP_INSTANCE__COMPONENT_ID:
 				setComponentId((String)newValue);
 				return;
@@ -217,9 +171,6 @@ public class WorkstepInstanceImpl extends EntityImpl implements WorkstepInstance
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case WorkplanPackage.WORKSTEP_INSTANCE__NAME:
-				setName(NAME_EDEFAULT);
-				return;
 			case WorkplanPackage.WORKSTEP_INSTANCE__COMPONENT_ID:
 				setComponentId(COMPONENT_ID_EDEFAULT);
 				return;
@@ -238,8 +189,6 @@ public class WorkstepInstanceImpl extends EntityImpl implements WorkstepInstance
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case WorkplanPackage.WORKSTEP_INSTANCE__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case WorkplanPackage.WORKSTEP_INSTANCE__COMPONENT_ID:
 				return COMPONENT_ID_EDEFAULT == null ? componentId != null : !COMPONENT_ID_EDEFAULT.equals(componentId);
 			case WorkplanPackage.WORKSTEP_INSTANCE__IS_AUTOMATIC:
@@ -258,9 +207,7 @@ public class WorkstepInstanceImpl extends EntityImpl implements WorkstepInstance
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
-		result.append(name);
-		result.append(", componentId: ");
+		result.append(" (componentId: ");
 		result.append(componentId);
 		result.append(", isAutomatic: ");
 		result.append(isAutomatic);

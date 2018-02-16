@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,6 +24,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link de.dfki.iui.basys.model.base.impl.EntityImpl#getId <em>Id</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.base.impl.EntityImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.base.impl.EntityImpl#getMetadata <em>Metadata</em>}</li>
  * </ul>
  *
@@ -48,6 +50,24 @@ public class EntityImpl extends BObjectImpl implements Entity {
 	 */
 	protected String id = ID_EDEFAULT;
 	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+	/**
 	 * The cached value of the '{@link #getMetadata() <em>Metadata</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -60,10 +80,11 @@ public class EntityImpl extends BObjectImpl implements Entity {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected EntityImpl() {
 		super();
+		setId(EcoreUtil.generateUUID());
 	}
 
 	/**
@@ -95,6 +116,27 @@ public class EntityImpl extends BObjectImpl implements Entity {
 		id = newId;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, BasePackage.ENTITY__ID, oldId, id));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, BasePackage.ENTITY__NAME, oldName, name));
 	}
 
 	/**
@@ -164,6 +206,8 @@ public class EntityImpl extends BObjectImpl implements Entity {
 		switch (featureID) {
 			case BasePackage.ENTITY__ID:
 				return getId();
+			case BasePackage.ENTITY__NAME:
+				return getName();
 			case BasePackage.ENTITY__METADATA:
 				return getMetadata();
 		}
@@ -180,6 +224,9 @@ public class EntityImpl extends BObjectImpl implements Entity {
 		switch (featureID) {
 			case BasePackage.ENTITY__ID:
 				setId((String)newValue);
+				return;
+			case BasePackage.ENTITY__NAME:
+				setName((String)newValue);
 				return;
 			case BasePackage.ENTITY__METADATA:
 				setMetadata((Metadata)newValue);
@@ -199,6 +246,9 @@ public class EntityImpl extends BObjectImpl implements Entity {
 			case BasePackage.ENTITY__ID:
 				setId(ID_EDEFAULT);
 				return;
+			case BasePackage.ENTITY__NAME:
+				setName(NAME_EDEFAULT);
+				return;
 			case BasePackage.ENTITY__METADATA:
 				setMetadata((Metadata)null);
 				return;
@@ -216,6 +266,8 @@ public class EntityImpl extends BObjectImpl implements Entity {
 		switch (featureID) {
 			case BasePackage.ENTITY__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+			case BasePackage.ENTITY__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case BasePackage.ENTITY__METADATA:
 				return metadata != null;
 		}
@@ -234,6 +286,8 @@ public class EntityImpl extends BObjectImpl implements Entity {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (id: ");
 		result.append(id);
+		result.append(", name: ");
+		result.append(name);
 		result.append(')');
 		return result.toString();
 	}

@@ -64,7 +64,7 @@ public class LoaderItemProvider extends StorageItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Loader)object).getId();
+		String label = ((Loader)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Loader_type") :
 			getString("_UI_Loader_type") + " " + label;

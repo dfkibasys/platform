@@ -4,7 +4,9 @@ package de.dfki.iui.basys.model.domain.workplan.provider;
 
 
 import de.dfki.iui.basys.model.base.provider.EntityItemProvider;
+
 import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
+
 import de.dfki.iui.basys.model.domain.workplan.WorkplanInstance;
 import de.dfki.iui.basys.model.domain.workplan.WorkplanPackage;
 
@@ -15,6 +17,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
@@ -117,7 +120,7 @@ public class WorkplanInstanceItemProvider extends EntityItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((WorkplanInstance)object).getId();
+		String label = ((WorkplanInstance)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_WorkplanInstance_type") :
 			getString("_UI_WorkplanInstance_type") + " " + label;

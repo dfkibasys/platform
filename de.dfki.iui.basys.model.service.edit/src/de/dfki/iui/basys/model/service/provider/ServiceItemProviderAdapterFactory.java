@@ -187,6 +187,29 @@ public class ServiceItemProviderAdapterFactory extends ServiceAdapterFactory imp
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.service.ManagedEntity} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ManagedEntityItemProvider managedEntityItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.service.ManagedEntity}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createManagedEntityAdapter() {
+		if (managedEntityItemProvider == null) {
+			managedEntityItemProvider = new ManagedEntityItemProvider(this);
+		}
+
+		return managedEntityItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.service.ServiceImplementation} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -253,6 +276,29 @@ public class ServiceItemProviderAdapterFactory extends ServiceAdapterFactory imp
 		}
 
 		return serviceEndpointItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.service.QueueEndpoint} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected QueueEndpointItemProvider queueEndpointItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.service.QueueEndpoint}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createQueueEndpointAdapter() {
+		if (queueEndpointItemProvider == null) {
+			queueEndpointItemProvider = new QueueEndpointItemProvider(this);
+		}
+
+		return queueEndpointItemProvider;
 	}
 
 	/**
@@ -405,9 +451,11 @@ public class ServiceItemProviderAdapterFactory extends ServiceAdapterFactory imp
 		if (operationItemProvider != null) operationItemProvider.dispose();
 		if (publicationItemProvider != null) publicationItemProvider.dispose();
 		if (subscriptionItemProvider != null) subscriptionItemProvider.dispose();
+		if (managedEntityItemProvider != null) managedEntityItemProvider.dispose();
 		if (serviceImplementationItemProvider != null) serviceImplementationItemProvider.dispose();
 		if (serviceInstanceItemProvider != null) serviceInstanceItemProvider.dispose();
 		if (serviceEndpointItemProvider != null) serviceEndpointItemProvider.dispose();
+		if (queueEndpointItemProvider != null) queueEndpointItemProvider.dispose();
 		if (restEndpointItemProvider != null) restEndpointItemProvider.dispose();
 		if (soapEndpointItemProvider != null) soapEndpointItemProvider.dispose();
 	}

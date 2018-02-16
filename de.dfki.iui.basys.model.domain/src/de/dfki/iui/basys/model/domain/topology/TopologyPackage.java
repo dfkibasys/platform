@@ -87,6 +87,15 @@ public interface TopologyPackage extends EPackage {
 	int ENTERPRISE__ID = BasePackage.ENTITY__ID;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTERPRISE__NAME = BasePackage.ENTITY__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -149,6 +158,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int SITE__ID = BasePackage.ENTITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SITE__NAME = BasePackage.ENTITY__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -215,6 +233,15 @@ public interface TopologyPackage extends EPackage {
 	int AREA__ID = BasePackage.ENTITY__ID;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AREA__NAME = BasePackage.ENTITY__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -279,6 +306,15 @@ public interface TopologyPackage extends EPackage {
 	int WORK_CENTER__ID = BasePackage.ENTITY__ID;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORK_CENTER__NAME = BasePackage.ENTITY__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -332,6 +368,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROCESS_CELL__ID = WORK_CENTER__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_CELL__NAME = WORK_CENTER__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -398,6 +443,15 @@ public interface TopologyPackage extends EPackage {
 	int PRODUCTION_UNIT__ID = WORK_CENTER__ID;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCTION_UNIT__NAME = WORK_CENTER__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -460,6 +514,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int PRODUCTION_LINE__ID = WORK_CENTER__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCTION_LINE__NAME = WORK_CENTER__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -526,6 +589,15 @@ public interface TopologyPackage extends EPackage {
 	int STORAGE_ZONE__ID = WORK_CENTER__ID;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE_ZONE__NAME = WORK_CENTER__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -588,6 +660,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int WORK_UNIT__ID = BasePackage.ENTITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORK_UNIT__NAME = BasePackage.ENTITY__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -654,6 +735,15 @@ public interface TopologyPackage extends EPackage {
 	int UNIT__ID = WORK_UNIT__ID;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNIT__NAME = WORK_UNIT__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -716,6 +806,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int WORK_CELL__ID = WORK_UNIT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORK_CELL__NAME = WORK_UNIT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -791,6 +890,15 @@ public interface TopologyPackage extends EPackage {
 	int STORAGE_UNIT__ID = WORK_UNIT__ID;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE_UNIT__NAME = WORK_UNIT__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -853,6 +961,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int EQUIPMENT_MODULE__ID = BasePackage.ENTITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EQUIPMENT_MODULE__NAME = BasePackage.ENTITY__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -928,6 +1045,15 @@ public interface TopologyPackage extends EPackage {
 	int CONTROL_MODULE__ID = BasePackage.ENTITY__ID;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_MODULE__NAME = BasePackage.ENTITY__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -990,6 +1116,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int STATION__ID = BasePackage.ENTITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATION__NAME = BasePackage.ENTITY__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -1111,6 +1246,15 @@ public interface TopologyPackage extends EPackage {
 	int ASSEMBLY_STATION__ID = STATION__ID;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSEMBLY_STATION__NAME = STATION__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1173,6 +1317,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int BUFFER_STATION__ID = STATION__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUFFER_STATION__NAME = STATION__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -1248,6 +1401,15 @@ public interface TopologyPackage extends EPackage {
 	int PROCESS_UNIT__ID = WORK_UNIT__ID;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_UNIT__NAME = WORK_UNIT__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1310,6 +1472,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__ID = EQUIPMENT_MODULE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__NAME = EQUIPMENT_MODULE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -1385,6 +1556,15 @@ public interface TopologyPackage extends EPackage {
 	int TOOL__ID = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__ID;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOOL__NAME = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1456,6 +1636,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int STATIONARY_TOOL__ID = TOOL__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATIONARY_TOOL__NAME = TOOL__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -1531,6 +1720,15 @@ public interface TopologyPackage extends EPackage {
 	int MOVABLE_TOOL__ID = TOOL__ID;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVABLE_TOOL__NAME = TOOL__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1602,6 +1800,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int TRANSPORT__ID = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSPORT__NAME = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -1677,6 +1884,15 @@ public interface TopologyPackage extends EPackage {
 	int STORAGE__ID = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__ID;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE__NAME = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1748,6 +1964,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int FIXTURE__ID = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIXTURE__NAME = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -1823,6 +2048,15 @@ public interface TopologyPackage extends EPackage {
 	int GATE__ID = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__ID;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GATE__NAME = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1894,6 +2128,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int ROBOT__ID = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROBOT__NAME = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -1969,6 +2212,15 @@ public interface TopologyPackage extends EPackage {
 	int CARRIER__ID = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__ID;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARRIER__NAME = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2040,6 +2292,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE__ID = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE__NAME = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -2115,6 +2376,15 @@ public interface TopologyPackage extends EPackage {
 	int STATIC_OBJECT__ID = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__ID;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATIC_OBJECT__NAME = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2186,6 +2456,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int HORIZONTAL_TRANSPORT__ID = TRANSPORT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HORIZONTAL_TRANSPORT__NAME = TRANSPORT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -2261,6 +2540,15 @@ public interface TopologyPackage extends EPackage {
 	int TURNABLE__ID = HORIZONTAL_TRANSPORT__ID;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TURNABLE__NAME = HORIZONTAL_TRANSPORT__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2332,6 +2620,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONVEYOR__ID = HORIZONTAL_TRANSPORT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONVEYOR__NAME = HORIZONTAL_TRANSPORT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -2407,6 +2704,15 @@ public interface TopologyPackage extends EPackage {
 	int VERTICAL_TRANSPORT__ID = TRANSPORT__ID;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VERTICAL_TRANSPORT__NAME = TRANSPORT__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2478,6 +2784,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int LIFTING_TABLE__ID = VERTICAL_TRANSPORT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIFTING_TABLE__NAME = VERTICAL_TRANSPORT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -2553,6 +2868,15 @@ public interface TopologyPackage extends EPackage {
 	int AVG__ID = HORIZONTAL_TRANSPORT__ID;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AVG__NAME = HORIZONTAL_TRANSPORT__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2624,6 +2948,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int TRANSPOSER__ID = TRANSPORT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSPOSER__NAME = TRANSPORT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -2699,6 +3032,15 @@ public interface TopologyPackage extends EPackage {
 	int CARRIER_HANDLING_SYSTEM__ID = TRANSPORT__ID;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARRIER_HANDLING_SYSTEM__NAME = TRANSPORT__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2770,6 +3112,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int LIFT__ID = VERTICAL_TRANSPORT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIFT__NAME = VERTICAL_TRANSPORT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -2845,6 +3196,15 @@ public interface TopologyPackage extends EPackage {
 	int ROLLERBED__ID = HORIZONTAL_TRANSPORT__ID;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLLERBED__NAME = HORIZONTAL_TRANSPORT__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2916,6 +3276,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int LOADER__ID = STORAGE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOADER__NAME = STORAGE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -2991,6 +3360,15 @@ public interface TopologyPackage extends EPackage {
 	int UNLOADER__ID = STORAGE__ID;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNLOADER__NAME = STORAGE__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3062,6 +3440,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int BODY_STORE__ID = STORAGE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BODY_STORE__NAME = STORAGE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -3137,6 +3524,15 @@ public interface TopologyPackage extends EPackage {
 	int CLAMP__ID = FIXTURE__ID;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLAMP__NAME = FIXTURE__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3208,6 +3604,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int BELT_CONVEYOR__ID = CONVEYOR__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BELT_CONVEYOR__NAME = CONVEYOR__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -3283,6 +3688,15 @@ public interface TopologyPackage extends EPackage {
 	int ROLL_CONVEYOR__ID = CONVEYOR__ID;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLL_CONVEYOR__NAME = CONVEYOR__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3354,6 +3768,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int CHAIN_CONVEYOR__ID = CONVEYOR__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHAIN_CONVEYOR__NAME = CONVEYOR__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -3429,6 +3852,15 @@ public interface TopologyPackage extends EPackage {
 	int PALLET_CONVEYOR__ID = CONVEYOR__ID;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PALLET_CONVEYOR__NAME = CONVEYOR__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3500,6 +3932,15 @@ public interface TopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int OVERHEAD_CONVEYOR__ID = CONVEYOR__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OVERHEAD_CONVEYOR__NAME = CONVEYOR__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.

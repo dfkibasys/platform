@@ -4,6 +4,7 @@ package de.dfki.iui.basys.model.domain.staff.provider;
 
 
 import de.dfki.iui.basys.model.base.provider.EntityItemProvider;
+
 import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
 
 import de.dfki.iui.basys.model.domain.staff.Staff;
@@ -165,7 +166,7 @@ public class StaffItemProvider extends EntityItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Staff)object).getId();
+		String label = ((Staff)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Staff_type") :
 			getString("_UI_Staff_type") + " " + label;

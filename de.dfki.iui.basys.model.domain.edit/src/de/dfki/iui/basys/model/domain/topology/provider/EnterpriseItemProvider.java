@@ -4,6 +4,7 @@ package de.dfki.iui.basys.model.domain.topology.provider;
 
 
 import de.dfki.iui.basys.model.base.provider.EntityItemProvider;
+
 import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
 
 import de.dfki.iui.basys.model.domain.topology.Enterprise;
@@ -104,7 +105,7 @@ public class EnterpriseItemProvider extends EntityItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Enterprise)object).getId();
+		String label = ((Enterprise)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Enterprise_type") :
 			getString("_UI_Enterprise_type") + " " + label;

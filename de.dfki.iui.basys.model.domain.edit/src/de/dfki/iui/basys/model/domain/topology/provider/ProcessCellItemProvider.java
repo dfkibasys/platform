@@ -99,7 +99,7 @@ public class ProcessCellItemProvider extends WorkCenterItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ProcessCell)object).getId();
+		String label = ((ProcessCell)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_ProcessCell_type") :
 			getString("_UI_ProcessCell_type") + " " + label;

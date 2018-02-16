@@ -64,7 +64,7 @@ public class ConveyorItemProvider extends HorizontalTransportItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Conveyor)object).getId();
+		String label = ((Conveyor)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Conveyor_type") :
 			getString("_UI_Conveyor_type") + " " + label;

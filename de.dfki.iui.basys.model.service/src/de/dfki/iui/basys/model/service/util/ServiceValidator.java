@@ -106,16 +106,22 @@ public class ServiceValidator extends EObjectValidator {
 				return validatePublication((Publication)value, diagnostics, context);
 			case ServicePackage.SUBSCRIPTION:
 				return validateSubscription((Subscription)value, diagnostics, context);
+			case ServicePackage.MANAGED_ENTITY:
+				return validateManagedEntity((ManagedEntity)value, diagnostics, context);
 			case ServicePackage.SERVICE_IMPLEMENTATION:
 				return validateServiceImplementation((ServiceImplementation)value, diagnostics, context);
 			case ServicePackage.SERVICE_INSTANCE:
 				return validateServiceInstance((ServiceInstance)value, diagnostics, context);
 			case ServicePackage.SERVICE_ENDPOINT:
 				return validateServiceEndpoint((ServiceEndpoint)value, diagnostics, context);
+			case ServicePackage.QUEUE_ENDPOINT:
+				return validateQueueEndpoint((QueueEndpoint)value, diagnostics, context);
 			case ServicePackage.REST_ENDPOINT:
 				return validateRestEndpoint((RestEndpoint)value, diagnostics, context);
 			case ServicePackage.SOAP_ENDPOINT:
 				return validateSoapEndpoint((SoapEndpoint)value, diagnostics, context);
+			case ServicePackage.ENTITY_OPERATION_ENUM:
+				return validateEntityOperationEnum((EntityOperationEnum)value, diagnostics, context);
 			case ServicePackage.SERVICE_TYPE_ENUM:
 				return validateServiceTypeEnum((ServiceTypeEnum)value, diagnostics, context);
 			default:
@@ -272,6 +278,29 @@ public class ServiceValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateManagedEntity(ManagedEntity managedEntity, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(managedEntity, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(managedEntity, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(managedEntity, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(managedEntity, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(managedEntity, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(managedEntity, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(managedEntity, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(managedEntity, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(managedEntity, diagnostics, context);
+		if (result || diagnostics != null) result &= ecoreValidator.validateENamedElement_WellFormedName(managedEntity, diagnostics, context);
+		if (result || diagnostics != null) result &= ecoreValidator.validateETypedElement_ValidLowerBound(managedEntity, diagnostics, context);
+		if (result || diagnostics != null) result &= ecoreValidator.validateETypedElement_ValidUpperBound(managedEntity, diagnostics, context);
+		if (result || diagnostics != null) result &= ecoreValidator.validateETypedElement_ConsistentBounds(managedEntity, diagnostics, context);
+		if (result || diagnostics != null) result &= ecoreValidator.validateETypedElement_ValidType(managedEntity, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateServiceImplementation(ServiceImplementation serviceImplementation, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(serviceImplementation, diagnostics, context);
 	}
@@ -299,6 +328,15 @@ public class ServiceValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateQueueEndpoint(QueueEndpoint queueEndpoint, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(queueEndpoint, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateRestEndpoint(RestEndpoint restEndpoint, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(restEndpoint, diagnostics, context);
 	}
@@ -310,6 +348,15 @@ public class ServiceValidator extends EObjectValidator {
 	 */
 	public boolean validateSoapEndpoint(SoapEndpoint soapEndpoint, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(soapEndpoint, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateEntityOperationEnum(EntityOperationEnum entityOperationEnum, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
 	}
 
 	/**

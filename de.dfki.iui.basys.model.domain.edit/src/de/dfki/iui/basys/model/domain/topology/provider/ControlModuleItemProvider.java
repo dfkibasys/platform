@@ -4,6 +4,7 @@ package de.dfki.iui.basys.model.domain.topology.provider;
 
 
 import de.dfki.iui.basys.model.base.provider.EntityItemProvider;
+
 import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
 
 import de.dfki.iui.basys.model.domain.topology.ControlModule;
@@ -103,7 +104,7 @@ public class ControlModuleItemProvider extends EntityItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ControlModule)object).getId();
+		String label = ((ControlModule)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_ControlModule_type") :
 			getString("_UI_ControlModule_type") + " " + label;

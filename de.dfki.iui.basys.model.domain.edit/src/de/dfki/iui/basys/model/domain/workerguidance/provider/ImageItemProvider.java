@@ -114,7 +114,7 @@ public class ImageItemProvider extends MediaItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Image)object).getId();
+		String label = ((Image)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Image_type") :
 			getString("_UI_Image_type") + " " + label;

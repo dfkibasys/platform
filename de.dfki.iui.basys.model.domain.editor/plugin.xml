@@ -230,4 +230,144 @@
       </editor>
    </extension>
 
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated domain -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="de.dfki.iui.basys.model.domain.process.presentation.ProcessModelWizardID"
+            name="%_UI_ProcessModelWizard_label"
+            class="de.dfki.iui.basys.model.domain.process.presentation.ProcessModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/ProcessModelFile.gif">
+         <description>%_UI_ProcessModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated domain -->
+      <editor
+            id="de.dfki.iui.basys.model.domain.process.presentation.ProcessEditorID"
+            name="%_UI_ProcessEditor_label"
+            icon="icons/full/obj16/ProcessModelFile.gif"
+            extensions="process"
+            class="de.dfki.iui.basys.model.domain.process.presentation.ProcessEditor"
+            contributorClass="de.dfki.iui.basys.model.domain.process.presentation.ProcessActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated domain -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="de.dfki.iui.basys.model.domain.processinstance.presentation.ProcessinstanceModelWizardID"
+            name="%_UI_ProcessinstanceModelWizard_label"
+            class="de.dfki.iui.basys.model.domain.processinstance.presentation.ProcessinstanceModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/ProcessinstanceModelFile.gif">
+         <description>%_UI_ProcessinstanceModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated domain -->
+      <editor
+            id="de.dfki.iui.basys.model.domain.processinstance.presentation.ProcessinstanceEditorID"
+            name="%_UI_ProcessinstanceEditor_label"
+            icon="icons/full/obj16/ProcessinstanceModelFile.gif"
+            extensions="processinstance"
+            class="de.dfki.iui.basys.model.domain.processinstance.presentation.ProcessinstanceEditor"
+            contributorClass="de.dfki.iui.basys.model.domain.processinstance.presentation.ProcessinstanceActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated domain -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="de.dfki.iui.basys.model.domain.productinstance.presentation.ProductinstanceModelWizardID"
+            name="%_UI_ProductinstanceModelWizard_label"
+            class="de.dfki.iui.basys.model.domain.productinstance.presentation.ProductinstanceModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/ProductinstanceModelFile.gif">
+         <description>%_UI_ProductinstanceModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated domain -->
+      <editor
+            id="de.dfki.iui.basys.model.domain.productinstance.presentation.ProductinstanceEditorID"
+            name="%_UI_ProductinstanceEditor_label"
+            icon="icons/full/obj16/ProductinstanceModelFile.gif"
+            extensions="productinstance"
+            class="de.dfki.iui.basys.model.domain.productinstance.presentation.ProductinstanceEditor"
+            contributorClass="de.dfki.iui.basys.model.domain.productinstance.presentation.ProductinstanceActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated domain -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="de.dfki.iui.basys.model.domain.workforce.presentation.WorkforceModelWizardID"
+            name="%_UI_WorkforceModelWizard_label"
+            class="de.dfki.iui.basys.model.domain.workforce.presentation.WorkforceModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/WorkforceModelFile.gif">
+         <description>%_UI_WorkforceModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated domain -->
+      <editor
+            id="de.dfki.iui.basys.model.domain.workforce.presentation.WorkforceEditorID"
+            name="%_UI_WorkforceEditor_label"
+            icon="icons/full/obj16/WorkforceModelFile.gif"
+            extensions="workforce"
+            class="de.dfki.iui.basys.model.domain.workforce.presentation.WorkforceEditor"
+            contributorClass="de.dfki.iui.basys.model.domain.workforce.presentation.WorkforceActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated domain -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="de.dfki.iui.basys.model.domain.material.presentation.MaterialModelWizardID"
+            name="%_UI_MaterialModelWizard_label"
+            class="de.dfki.iui.basys.model.domain.material.presentation.MaterialModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/MaterialModelFile.gif">
+         <description>%_UI_MaterialModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated domain -->
+      <editor
+            id="de.dfki.iui.basys.model.domain.material.presentation.MaterialEditorID"
+            name="%_UI_MaterialEditor_label"
+            icon="icons/full/obj16/MaterialModelFile.gif"
+            extensions="material"
+            class="de.dfki.iui.basys.model.domain.material.presentation.MaterialEditor"
+            contributorClass="de.dfki.iui.basys.model.domain.material.presentation.MaterialActionBarContributor">
+      </editor>
+   </extension>
+
 </plugin>

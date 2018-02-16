@@ -64,7 +64,7 @@ public class OverheadConveyorItemProvider extends ConveyorItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((OverheadConveyor)object).getId();
+		String label = ((OverheadConveyor)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_OverheadConveyor_type") :
 			getString("_UI_OverheadConveyor_type") + " " + label;

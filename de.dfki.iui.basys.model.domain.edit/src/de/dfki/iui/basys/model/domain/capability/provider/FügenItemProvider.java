@@ -64,7 +64,7 @@ public class FügenItemProvider extends ManufacturingCapabilityItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Fügen)object).getId();
+		String label = ((Fügen)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Fügen_type") :
 			getString("_UI_Fügen_type") + " " + label;

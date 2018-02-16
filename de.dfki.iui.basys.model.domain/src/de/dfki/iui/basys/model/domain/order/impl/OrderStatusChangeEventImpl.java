@@ -4,7 +4,9 @@ package de.dfki.iui.basys.model.domain.order.impl;
 
 import de.dfki.iui.basys.model.domain.order.OrderPackage;
 import de.dfki.iui.basys.model.domain.order.OrderStatusChangeEvent;
+
 import java.util.Date;
+
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;

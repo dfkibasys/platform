@@ -95,29 +95,6 @@ public class WorkerguidanceItemProviderAdapterFactory extends WorkerguidanceAdap
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.workerguidance.Material} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected MaterialItemProvider materialItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.workerguidance.Material}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createMaterialAdapter() {
-		if (materialItemProvider == null) {
-			materialItemProvider = new MaterialItemProvider(this);
-		}
-
-		return materialItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.workerguidance.Media} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -207,6 +184,29 @@ public class WorkerguidanceItemProviderAdapterFactory extends WorkerguidanceAdap
 		}
 
 		return imageItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.workerguidance.Document} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DocumentItemProvider documentItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.workerguidance.Document}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDocumentAdapter() {
+		if (documentItemProvider == null) {
+			documentItemProvider = new DocumentItemProvider(this);
+		}
+
+		return documentItemProvider;
 	}
 
 	/**
@@ -309,11 +309,11 @@ public class WorkerguidanceItemProviderAdapterFactory extends WorkerguidanceAdap
 	 */
 	public void dispose() {
 		if (instructionItemProvider != null) instructionItemProvider.dispose();
-		if (materialItemProvider != null) materialItemProvider.dispose();
 		if (mediaItemProvider != null) mediaItemProvider.dispose();
 		if (audioItemProvider != null) audioItemProvider.dispose();
 		if (videoItemProvider != null) videoItemProvider.dispose();
 		if (imageItemProvider != null) imageItemProvider.dispose();
+		if (documentItemProvider != null) documentItemProvider.dispose();
 	}
 
 }

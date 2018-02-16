@@ -2,7 +2,7 @@
  */
 package de.dfki.iui.basys.model.service.impl;
 
-import de.dfki.iui.basys.model.domain.capability.Capability;
+import de.dfki.iui.basys.model.domain.capability.CapabilityAssertion;
 import de.dfki.iui.basys.model.service.Operation;
 import de.dfki.iui.basys.model.service.ServicePackage;
 
@@ -38,7 +38,7 @@ public class OperationImpl extends EOperationImpl implements Operation {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Capability> capabilities;
+	protected EList<CapabilityAssertion> capabilities;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -63,9 +63,9 @@ public class OperationImpl extends EOperationImpl implements Operation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Capability> getCapabilities() {
+	public EList<CapabilityAssertion> getCapabilities() {
 		if (capabilities == null) {
-			capabilities = new EObjectContainmentEList<Capability>(Capability.class, this, ServicePackage.OPERATION__CAPABILITIES);
+			capabilities = new EObjectContainmentEList<CapabilityAssertion>(CapabilityAssertion.class, this, ServicePackage.OPERATION__CAPABILITIES);
 		}
 		return capabilities;
 	}
@@ -109,7 +109,7 @@ public class OperationImpl extends EOperationImpl implements Operation {
 		switch (featureID) {
 			case ServicePackage.OPERATION__CAPABILITIES:
 				getCapabilities().clear();
-				getCapabilities().addAll((Collection<? extends Capability>)newValue);
+				getCapabilities().addAll((Collection<? extends CapabilityAssertion>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

@@ -179,13 +179,22 @@ public interface ServicePackage extends EPackage {
 	int SERVICE_DESCRIPTION__DEPENDENCIES = EcorePackage.ENAMED_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
+	 * The feature id for the '<em><b>Managed Entities</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVICE_DESCRIPTION__MANAGED_ENTITIES = EcorePackage.ENAMED_ELEMENT_FEATURE_COUNT + 10;
+
+	/**
 	 * The number of structural features of the '<em>Description</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SERVICE_DESCRIPTION_FEATURE_COUNT = EcorePackage.ENAMED_ELEMENT_FEATURE_COUNT + 10;
+	int SERVICE_DESCRIPTION_FEATURE_COUNT = EcorePackage.ENAMED_ELEMENT_FEATURE_COUNT + 11;
 
 	/**
 	 * The operation id for the '<em>Get EAnnotation</em>' operation.
@@ -814,6 +823,142 @@ public interface ServicePackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.service.impl.ManagedEntityImpl <em>Managed Entity</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.service.impl.ManagedEntityImpl
+	 * @see de.dfki.iui.basys.model.service.impl.ServicePackageImpl#getManagedEntity()
+	 * @generated
+	 */
+	int MANAGED_ENTITY = 5;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANAGED_ENTITY__EANNOTATIONS = EcorePackage.ETYPED_ELEMENT__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANAGED_ENTITY__NAME = EcorePackage.ETYPED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Ordered</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANAGED_ENTITY__ORDERED = EcorePackage.ETYPED_ELEMENT__ORDERED;
+
+	/**
+	 * The feature id for the '<em><b>Unique</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANAGED_ENTITY__UNIQUE = EcorePackage.ETYPED_ELEMENT__UNIQUE;
+
+	/**
+	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANAGED_ENTITY__LOWER_BOUND = EcorePackage.ETYPED_ELEMENT__LOWER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANAGED_ENTITY__UPPER_BOUND = EcorePackage.ETYPED_ELEMENT__UPPER_BOUND;
+
+	/**
+	 * The feature id for the '<em><b>Many</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANAGED_ENTITY__MANY = EcorePackage.ETYPED_ELEMENT__MANY;
+
+	/**
+	 * The feature id for the '<em><b>Required</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANAGED_ENTITY__REQUIRED = EcorePackage.ETYPED_ELEMENT__REQUIRED;
+
+	/**
+	 * The feature id for the '<em><b>EType</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANAGED_ENTITY__ETYPE = EcorePackage.ETYPED_ELEMENT__ETYPE;
+
+	/**
+	 * The feature id for the '<em><b>EGeneric Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANAGED_ENTITY__EGENERIC_TYPE = EcorePackage.ETYPED_ELEMENT__EGENERIC_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Supported Operations</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANAGED_ENTITY__SUPPORTED_OPERATIONS = EcorePackage.ETYPED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Managed Entity</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANAGED_ENTITY_FEATURE_COUNT = EcorePackage.ETYPED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANAGED_ENTITY___GET_EANNOTATION__STRING = EcorePackage.ETYPED_ELEMENT___GET_EANNOTATION__STRING;
+
+	/**
+	 * The number of operations of the '<em>Managed Entity</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANAGED_ENTITY_OPERATION_COUNT = EcorePackage.ETYPED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.service.impl.ServiceImplementationImpl <em>Implementation</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -821,7 +966,7 @@ public interface ServicePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.service.impl.ServicePackageImpl#getServiceImplementation()
 	 * @generated
 	 */
-	int SERVICE_IMPLEMENTATION = 5;
+	int SERVICE_IMPLEMENTATION = 6;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -912,7 +1057,7 @@ public interface ServicePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.service.impl.ServicePackageImpl#getServiceInstance()
 	 * @generated
 	 */
-	int SERVICE_INSTANCE = 6;
+	int SERVICE_INSTANCE = 7;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -994,7 +1139,7 @@ public interface ServicePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.service.impl.ServicePackageImpl#getServiceEndpoint()
 	 * @generated
 	 */
-	int SERVICE_ENDPOINT = 7;
+	int SERVICE_ENDPOINT = 8;
 
 	/**
 	 * The feature id for the '<em><b>Ip Address</b></em>' attribute.
@@ -1033,6 +1178,61 @@ public interface ServicePackage extends EPackage {
 	int SERVICE_ENDPOINT_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.service.impl.QueueEndpointImpl <em>Queue Endpoint</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.service.impl.QueueEndpointImpl
+	 * @see de.dfki.iui.basys.model.service.impl.ServicePackageImpl#getQueueEndpoint()
+	 * @generated
+	 */
+	int QUEUE_ENDPOINT = 9;
+
+	/**
+	 * The feature id for the '<em><b>Ip Address</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUEUE_ENDPOINT__IP_ADDRESS = SERVICE_ENDPOINT__IP_ADDRESS;
+
+	/**
+	 * The feature id for the '<em><b>Port</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUEUE_ENDPOINT__PORT = SERVICE_ENDPOINT__PORT;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUEUE_ENDPOINT__NAME = SERVICE_ENDPOINT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Queue Endpoint</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUEUE_ENDPOINT_FEATURE_COUNT = SERVICE_ENDPOINT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Queue Endpoint</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUEUE_ENDPOINT_OPERATION_COUNT = SERVICE_ENDPOINT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.service.impl.RestEndpointImpl <em>Rest Endpoint</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1040,7 +1240,7 @@ public interface ServicePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.service.impl.ServicePackageImpl#getRestEndpoint()
 	 * @generated
 	 */
-	int REST_ENDPOINT = 8;
+	int REST_ENDPOINT = 10;
 
 	/**
 	 * The feature id for the '<em><b>Ip Address</b></em>' attribute.
@@ -1086,7 +1286,7 @@ public interface ServicePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.service.impl.ServicePackageImpl#getSoapEndpoint()
 	 * @generated
 	 */
-	int SOAP_ENDPOINT = 9;
+	int SOAP_ENDPOINT = 11;
 
 	/**
 	 * The feature id for the '<em><b>Ip Address</b></em>' attribute.
@@ -1125,6 +1325,16 @@ public interface ServicePackage extends EPackage {
 	int SOAP_ENDPOINT_OPERATION_COUNT = SERVICE_ENDPOINT_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.service.EntityOperationEnum <em>Entity Operation Enum</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.service.EntityOperationEnum
+	 * @see de.dfki.iui.basys.model.service.impl.ServicePackageImpl#getEntityOperationEnum()
+	 * @generated
+	 */
+	int ENTITY_OPERATION_ENUM = 12;
+
+	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.service.ServiceTypeEnum <em>Type Enum</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1132,7 +1342,7 @@ public interface ServicePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.service.impl.ServicePackageImpl#getServiceTypeEnum()
 	 * @generated
 	 */
-	int SERVICE_TYPE_ENUM = 10;
+	int SERVICE_TYPE_ENUM = 13;
 
 
 	/**
@@ -1223,6 +1433,17 @@ public interface ServicePackage extends EPackage {
 	EReference getServiceDescription_Dependencies();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.service.ServiceDescription#getManagedEntities <em>Managed Entities</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Managed Entities</em>'.
+	 * @see de.dfki.iui.basys.model.service.ServiceDescription#getManagedEntities()
+	 * @see #getServiceDescription()
+	 * @generated
+	 */
+	EReference getServiceDescription_ManagedEntities();
+
+	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.service.Property <em>Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1305,6 +1526,27 @@ public interface ServicePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getSubscription_Capabilities();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.service.ManagedEntity <em>Managed Entity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Managed Entity</em>'.
+	 * @see de.dfki.iui.basys.model.service.ManagedEntity
+	 * @generated
+	 */
+	EClass getManagedEntity();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link de.dfki.iui.basys.model.service.ManagedEntity#getSupportedOperations <em>Supported Operations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Supported Operations</em>'.
+	 * @see de.dfki.iui.basys.model.service.ManagedEntity#getSupportedOperations()
+	 * @see #getManagedEntity()
+	 * @generated
+	 */
+	EAttribute getManagedEntity_SupportedOperations();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.service.ServiceImplementation <em>Implementation</em>}'.
@@ -1436,6 +1678,27 @@ public interface ServicePackage extends EPackage {
 	EAttribute getServiceEndpoint_Port();
 
 	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.service.QueueEndpoint <em>Queue Endpoint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Queue Endpoint</em>'.
+	 * @see de.dfki.iui.basys.model.service.QueueEndpoint
+	 * @generated
+	 */
+	EClass getQueueEndpoint();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.service.QueueEndpoint#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see de.dfki.iui.basys.model.service.QueueEndpoint#getName()
+	 * @see #getQueueEndpoint()
+	 * @generated
+	 */
+	EAttribute getQueueEndpoint_Name();
+
+	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.service.RestEndpoint <em>Rest Endpoint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1454,6 +1717,16 @@ public interface ServicePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getSoapEndpoint();
+
+	/**
+	 * Returns the meta object for enum '{@link de.dfki.iui.basys.model.service.EntityOperationEnum <em>Entity Operation Enum</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Entity Operation Enum</em>'.
+	 * @see de.dfki.iui.basys.model.service.EntityOperationEnum
+	 * @generated
+	 */
+	EEnum getEntityOperationEnum();
 
 	/**
 	 * Returns the meta object for enum '{@link de.dfki.iui.basys.model.service.ServiceTypeEnum <em>Type Enum</em>}'.
@@ -1555,6 +1828,14 @@ public interface ServicePackage extends EPackage {
 		EReference SERVICE_DESCRIPTION__DEPENDENCIES = eINSTANCE.getServiceDescription_Dependencies();
 
 		/**
+		 * The meta object literal for the '<em><b>Managed Entities</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SERVICE_DESCRIPTION__MANAGED_ENTITIES = eINSTANCE.getServiceDescription_ManagedEntities();
+
+		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.service.impl.PropertyImpl <em>Property</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1625,6 +1906,24 @@ public interface ServicePackage extends EPackage {
 		 * @generated
 		 */
 		EReference SUBSCRIPTION__CAPABILITIES = eINSTANCE.getSubscription_Capabilities();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.service.impl.ManagedEntityImpl <em>Managed Entity</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.service.impl.ManagedEntityImpl
+		 * @see de.dfki.iui.basys.model.service.impl.ServicePackageImpl#getManagedEntity()
+		 * @generated
+		 */
+		EClass MANAGED_ENTITY = eINSTANCE.getManagedEntity();
+
+		/**
+		 * The meta object literal for the '<em><b>Supported Operations</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MANAGED_ENTITY__SUPPORTED_OPERATIONS = eINSTANCE.getManagedEntity_SupportedOperations();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.service.impl.ServiceImplementationImpl <em>Implementation</em>}' class.
@@ -1729,6 +2028,24 @@ public interface ServicePackage extends EPackage {
 		EAttribute SERVICE_ENDPOINT__PORT = eINSTANCE.getServiceEndpoint_Port();
 
 		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.service.impl.QueueEndpointImpl <em>Queue Endpoint</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.service.impl.QueueEndpointImpl
+		 * @see de.dfki.iui.basys.model.service.impl.ServicePackageImpl#getQueueEndpoint()
+		 * @generated
+		 */
+		EClass QUEUE_ENDPOINT = eINSTANCE.getQueueEndpoint();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute QUEUE_ENDPOINT__NAME = eINSTANCE.getQueueEndpoint_Name();
+
+		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.service.impl.RestEndpointImpl <em>Rest Endpoint</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1747,6 +2064,16 @@ public interface ServicePackage extends EPackage {
 		 * @generated
 		 */
 		EClass SOAP_ENDPOINT = eINSTANCE.getSoapEndpoint();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.service.EntityOperationEnum <em>Entity Operation Enum</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.service.EntityOperationEnum
+		 * @see de.dfki.iui.basys.model.service.impl.ServicePackageImpl#getEntityOperationEnum()
+		 * @generated
+		 */
+		EEnum ENTITY_OPERATION_ENUM = eINSTANCE.getEntityOperationEnum();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.service.ServiceTypeEnum <em>Type Enum</em>}' enum.

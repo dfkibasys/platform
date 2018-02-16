@@ -64,7 +64,7 @@ public class VerticalTransportItemProvider extends TransportItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((VerticalTransport)object).getId();
+		String label = ((VerticalTransport)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_VerticalTransport_type") :
 			getString("_UI_VerticalTransport_type") + " " + label;

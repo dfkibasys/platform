@@ -4,6 +4,7 @@ package de.dfki.iui.basys.model.domain.capability.util;
 
 import de.dfki.iui.basys.model.base.BObject;
 import de.dfki.iui.basys.model.base.Entity;
+
 import de.dfki.iui.basys.model.domain.capability.*;
 
 import org.eclipse.emf.ecore.EObject;
@@ -68,6 +69,14 @@ public class CapabilitySwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
+			case CapabilityPackage.CAPABILITY_ASSERTION: {
+				CapabilityAssertion capabilityAssertion = (CapabilityAssertion)theEObject;
+				T result = caseCapabilityAssertion(capabilityAssertion);
+				if (result == null) result = caseEntity(capabilityAssertion);
+				if (result == null) result = caseBObject(capabilityAssertion);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case CapabilityPackage.CAPABILITY: {
 				Capability capability = (Capability)theEObject;
 				T result = caseCapability(capability);
@@ -191,6 +200,21 @@ public class CapabilitySwitch<T> extends Switch<T> {
 			}
 			default: return defaultCase(theEObject);
 		}
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Assertion</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Assertion</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCapabilityAssertion(CapabilityAssertion object) {
+		return null;
 	}
 
 	/**

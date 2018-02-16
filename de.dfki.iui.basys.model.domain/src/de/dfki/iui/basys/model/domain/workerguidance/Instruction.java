@@ -3,6 +3,7 @@
 package de.dfki.iui.basys.model.domain.workerguidance;
 
 import de.dfki.iui.basys.model.base.Entity;
+
 import org.eclipse.emf.common.util.EList;
 
 /**

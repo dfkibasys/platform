@@ -91,7 +91,7 @@ public class SchraubenItemProvider extends AnEinpressenItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Schrauben)object).getId();
+		String label = ((Schrauben)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Schrauben_type") :
 			getString("_UI_Schrauben_type") + " " + label;

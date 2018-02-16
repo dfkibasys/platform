@@ -3,6 +3,7 @@
 package de.dfki.iui.basys.model.domain.workerguidance.impl;
 
 import de.dfki.iui.basys.model.base.impl.EntityImpl;
+
 import de.dfki.iui.basys.model.domain.workerguidance.Media;
 import de.dfki.iui.basys.model.domain.workerguidance.WorkerguidancePackage;
 

@@ -114,7 +114,7 @@ public class PressenItemProvider extends AnEinpressenItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Pressen)object).getId();
+		String label = ((Pressen)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Pressen_type") :
 			getString("_UI_Pressen_type") + " " + label;

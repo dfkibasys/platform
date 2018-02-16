@@ -2,6 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.topology;
 
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Discrete Manufacturing Equipment Module</b></em>'.

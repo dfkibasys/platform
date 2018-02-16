@@ -28,6 +28,8 @@
         eType="#//Subscription" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="dependencies" upperBound="-1"
         eType="#//ServiceDescription"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="managedEntities" upperBound="-1"
+        eType="#//ManagedEntity" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Property" eSuperTypes="../../org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="capabilities" upperBound="-1"
@@ -36,7 +38,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Operation" eSuperTypes="../../org.eclipse.emf.ecore/model/Ecore.ecore#//EOperation">
     <eStructuralFeatures xsi:type="ecore:EReference" name="capabilities" upperBound="-1"
-        eType="ecore:EClass ../../de.dfki.iui.basys.model.domain/model/capability.ecore#//Capability"
+        eType="ecore:EClass ../../de.dfki.iui.basys.model.domain/model/capability.ecore#//CapabilityAssertion"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Publication" eSuperTypes="../../org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement">
@@ -48,6 +50,16 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="capabilities" upperBound="-1"
         eType="ecore:EClass ../../de.dfki.iui.basys.model.domain/model/capability.ecore#//Capability"
         containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ManagedEntity" eSuperTypes="../../org.eclipse.emf.ecore/model/Ecore.ecore#//ETypedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="supportedOperations" upperBound="-1"
+        eType="#//EntityOperationEnum"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EntityOperationEnum">
+    <eLiterals name="CREATE"/>
+    <eLiterals name="RETRIEVE"/>
+    <eLiterals name="UPDATE"/>
+    <eLiterals name="DELETE"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ServiceTypeEnum">
     <eLiterals name="DIGITAL_SERVICE"/>
@@ -70,6 +82,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="ServiceEndpoint">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ipAddress" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="port" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="QueueEndpoint" eSuperTypes="#//ServiceEndpoint">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RestEndpoint" eSuperTypes="#//ServiceEndpoint"/>
   <eClassifiers xsi:type="ecore:EClass" name="SoapEndpoint" eSuperTypes="#//ServiceEndpoint"/>

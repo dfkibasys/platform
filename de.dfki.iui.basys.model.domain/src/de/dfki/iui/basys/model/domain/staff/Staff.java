@@ -3,6 +3,7 @@
 package de.dfki.iui.basys.model.domain.staff;
 
 import de.dfki.iui.basys.model.base.Entity;
+
 import java.util.Date;
 
 /**

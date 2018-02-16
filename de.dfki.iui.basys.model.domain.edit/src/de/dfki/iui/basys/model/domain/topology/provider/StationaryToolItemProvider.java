@@ -64,7 +64,7 @@ public class StationaryToolItemProvider extends ToolItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((StationaryTool)object).getId();
+		String label = ((StationaryTool)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_StationaryTool_type") :
 			getString("_UI_StationaryTool_type") + " " + label;

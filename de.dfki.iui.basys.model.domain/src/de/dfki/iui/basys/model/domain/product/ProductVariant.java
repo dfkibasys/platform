@@ -17,8 +17,8 @@ import de.dfki.iui.basys.model.base.Entity;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.dfki.iui.basys.model.domain.product.ProductVariant#getName <em>Name</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.domain.product.ProductVariant#getProductGroupId <em>Product Group Id</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.product.ProductVariant#getProductGroup <em>Product Group</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.product.ProductVariant#getBom <em>Bom</em>}</li>
  * </ul>
  *
  * @see de.dfki.iui.basys.model.domain.product.ProductPackage#getProductVariant()
@@ -27,55 +27,57 @@ import de.dfki.iui.basys.model.base.Entity;
  */
 public interface ProductVariant extends Entity {
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * Returns the value of the '<em><b>Product Group</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link de.dfki.iui.basys.model.domain.product.ProductGroup#getProductVariants <em>Product Variants</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Product Group</em>' container reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
-	 * @see de.dfki.iui.basys.model.domain.product.ProductPackage#getProductVariant_Name()
-	 * @model
+	 * @return the value of the '<em>Product Group</em>' container reference.
+	 * @see #setProductGroup(ProductGroup)
+	 * @see de.dfki.iui.basys.model.domain.product.ProductPackage#getProductVariant_ProductGroup()
+	 * @see de.dfki.iui.basys.model.domain.product.ProductGroup#getProductVariants
+	 * @model opposite="productVariants" transient="false"
 	 * @generated
 	 */
-	String getName();
+	ProductGroup getProductGroup();
 
 	/**
-	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.product.ProductVariant#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.product.ProductVariant#getProductGroup <em>Product Group</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
+	 * @param value the new value of the '<em>Product Group</em>' container reference.
+	 * @see #getProductGroup()
 	 * @generated
 	 */
-	void setName(String value);
+	void setProductGroup(ProductGroup value);
 
 	/**
-	 * Returns the value of the '<em><b>Product Group Id</b></em>' attribute.
+	 * Returns the value of the '<em><b>Bom</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Product Group Id</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Bom</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Product Group Id</em>' attribute.
-	 * @see #setProductGroupId(String)
-	 * @see de.dfki.iui.basys.model.domain.product.ProductPackage#getProductVariant_ProductGroupId()
-	 * @model
+	 * @return the value of the '<em>Bom</em>' containment reference.
+	 * @see #setBom(BillOfMaterial)
+	 * @see de.dfki.iui.basys.model.domain.product.ProductPackage#getProductVariant_Bom()
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	String getProductGroupId();
+	BillOfMaterial getBom();
 
 	/**
-	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.product.ProductVariant#getProductGroupId <em>Product Group Id</em>}' attribute.
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.product.ProductVariant#getBom <em>Bom</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Product Group Id</em>' attribute.
-	 * @see #getProductGroupId()
+	 * @param value the new value of the '<em>Bom</em>' containment reference.
+	 * @see #getBom()
 	 * @generated
 	 */
-	void setProductGroupId(String value);
+	void setBom(BillOfMaterial value);
 
 } // ProductVariant

@@ -199,6 +199,11 @@ public class ServiceInstanceItemProvider extends EntityItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(ServicePackage.Literals.SERVICE_INSTANCE__ENDPOINTS,
+				 ServiceFactory.eINSTANCE.createQueueEndpoint()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ServicePackage.Literals.SERVICE_INSTANCE__ENDPOINTS,
 				 ServiceFactory.eINSTANCE.createRestEndpoint()));
 
 		newChildDescriptors.add

@@ -88,6 +88,15 @@ public interface LinebalancingPackage extends EPackage {
 	int LB_PRODUCT_INSTANCE__ID = BasePackage.ENTITY__ID;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LB_PRODUCT_INSTANCE__NAME = BasePackage.ENTITY__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -170,6 +179,15 @@ public interface LinebalancingPackage extends EPackage {
 	int LB_STAFF__ID = BasePackage.ENTITY__ID;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LB_STAFF__NAME = BasePackage.ENTITY__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -240,7 +258,6 @@ public interface LinebalancingPackage extends EPackage {
 	 * @ordered
 	 */
 	int LB_STAFF_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
-
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.linebalancing.impl.LBLocationsImpl <em>LB Locations</em>}' class.

@@ -87,6 +87,15 @@ public interface WorkerguidancePackage extends EPackage {
 	int INSTRUCTION__ID = BasePackage.ENTITY__ID;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTRUCTION__NAME = BasePackage.ENTITY__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -141,70 +150,6 @@ public interface WorkerguidancePackage extends EPackage {
 	int INSTRUCTION_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.workerguidance.impl.MaterialImpl <em>Material</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.workerguidance.impl.MaterialImpl
-	 * @see de.dfki.iui.basys.model.domain.workerguidance.impl.WorkerguidancePackageImpl#getMaterial()
-	 * @generated
-	 */
-	int MATERIAL = 1;
-
-	/**
-	 * The feature id for the '<em><b>Binding</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MATERIAL__BINDING = BasePackage.ENTITY__BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MATERIAL__ID = BasePackage.ENTITY__ID;
-
-	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MATERIAL__METADATA = BasePackage.ENTITY__METADATA;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MATERIAL__NAME = BasePackage.ENTITY_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Material</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MATERIAL_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Material</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MATERIAL_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.workerguidance.impl.MediaImpl <em>Media</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -212,7 +157,7 @@ public interface WorkerguidancePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.workerguidance.impl.WorkerguidancePackageImpl#getMedia()
 	 * @generated
 	 */
-	int MEDIA = 2;
+	int MEDIA = 1;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -231,6 +176,15 @@ public interface WorkerguidancePackage extends EPackage {
 	 * @ordered
 	 */
 	int MEDIA__ID = BasePackage.ENTITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MEDIA__NAME = BasePackage.ENTITY__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -339,7 +293,7 @@ public interface WorkerguidancePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.workerguidance.impl.WorkerguidancePackageImpl#getAudio()
 	 * @generated
 	 */
-	int AUDIO = 3;
+	int AUDIO = 2;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -358,6 +312,15 @@ public interface WorkerguidancePackage extends EPackage {
 	 * @ordered
 	 */
 	int AUDIO__ID = MEDIA__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AUDIO__NAME = MEDIA__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -475,7 +438,7 @@ public interface WorkerguidancePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.workerguidance.impl.WorkerguidancePackageImpl#getVideo()
 	 * @generated
 	 */
-	int VIDEO = 4;
+	int VIDEO = 3;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -494,6 +457,15 @@ public interface WorkerguidancePackage extends EPackage {
 	 * @ordered
 	 */
 	int VIDEO__ID = MEDIA__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIDEO__NAME = MEDIA__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -629,7 +601,7 @@ public interface WorkerguidancePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.workerguidance.impl.WorkerguidancePackageImpl#getImage()
 	 * @generated
 	 */
-	int IMAGE = 5;
+	int IMAGE = 4;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -648,6 +620,15 @@ public interface WorkerguidancePackage extends EPackage {
 	 * @ordered
 	 */
 	int IMAGE__ID = MEDIA__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMAGE__NAME = MEDIA__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -768,6 +749,143 @@ public interface WorkerguidancePackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.workerguidance.impl.DocumentImpl <em>Document</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.workerguidance.impl.DocumentImpl
+	 * @see de.dfki.iui.basys.model.domain.workerguidance.impl.WorkerguidancePackageImpl#getDocument()
+	 * @generated
+	 */
+	int DOCUMENT = 5;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__BINDING = MEDIA__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__ID = MEDIA__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__NAME = MEDIA__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__METADATA = MEDIA__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__TYPE = MEDIA__TYPE;
+
+	/**
+	 * The feature id for the '<em><b>File Size</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__FILE_SIZE = MEDIA__FILE_SIZE;
+
+	/**
+	 * The feature id for the '<em><b>Checksum</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__CHECKSUM = MEDIA__CHECKSUM;
+
+	/**
+	 * The feature id for the '<em><b>Location</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__LOCATION = MEDIA__LOCATION;
+
+	/**
+	 * The feature id for the '<em><b>Entity Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__ENTITY_TYPE = MEDIA__ENTITY_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Entity Ids</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__ENTITY_IDS = MEDIA__ENTITY_IDS;
+
+	/**
+	 * The feature id for the '<em><b>Tags</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__TAGS = MEDIA__TAGS;
+
+	/**
+	 * The feature id for the '<em><b>Locale</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__LOCALE = MEDIA__LOCALE;
+
+	/**
+	 * The number of structural features of the '<em>Document</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT_FEATURE_COUNT = MEDIA_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Document</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT_OPERATION_COUNT = MEDIA_OPERATION_COUNT + 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.workerguidance.Instruction <em>Instruction</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -809,27 +927,6 @@ public interface WorkerguidancePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getInstruction_WorkstepIds();
-
-	/**
-	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.workerguidance.Material <em>Material</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Material</em>'.
-	 * @see de.dfki.iui.basys.model.domain.workerguidance.Material
-	 * @generated
-	 */
-	EClass getMaterial();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.workerguidance.Material#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see de.dfki.iui.basys.model.domain.workerguidance.Material#getName()
-	 * @see #getMaterial()
-	 * @generated
-	 */
-	EAttribute getMaterial_Name();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.workerguidance.Media <em>Media</em>}'.
@@ -1026,6 +1123,16 @@ public interface WorkerguidancePackage extends EPackage {
 	EAttribute getImage_Height();
 
 	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.workerguidance.Document <em>Document</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Document</em>'.
+	 * @see de.dfki.iui.basys.model.domain.workerguidance.Document
+	 * @generated
+	 */
+	EClass getDocument();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1081,24 +1188,6 @@ public interface WorkerguidancePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute INSTRUCTION__WORKSTEP_IDS = eINSTANCE.getInstruction_WorkstepIds();
-
-		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.workerguidance.impl.MaterialImpl <em>Material</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.domain.workerguidance.impl.MaterialImpl
-		 * @see de.dfki.iui.basys.model.domain.workerguidance.impl.WorkerguidancePackageImpl#getMaterial()
-		 * @generated
-		 */
-		EClass MATERIAL = eINSTANCE.getMaterial();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MATERIAL__NAME = eINSTANCE.getMaterial_Name();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.workerguidance.impl.MediaImpl <em>Media</em>}' class.
@@ -1251,6 +1340,16 @@ public interface WorkerguidancePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute IMAGE__HEIGHT = eINSTANCE.getImage_Height();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.workerguidance.impl.DocumentImpl <em>Document</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.workerguidance.impl.DocumentImpl
+		 * @see de.dfki.iui.basys.model.domain.workerguidance.impl.WorkerguidancePackageImpl#getDocument()
+		 * @generated
+		 */
+		EClass DOCUMENT = eINSTANCE.getDocument();
 
 	}
 

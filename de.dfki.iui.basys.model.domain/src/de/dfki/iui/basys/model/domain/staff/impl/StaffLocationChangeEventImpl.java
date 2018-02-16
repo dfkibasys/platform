@@ -6,6 +6,7 @@ import de.dfki.iui.basys.model.domain.staff.StaffLocationChangeEvent;
 import de.dfki.iui.basys.model.domain.staff.StaffPackage;
 
 import java.util.Date;
+
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;

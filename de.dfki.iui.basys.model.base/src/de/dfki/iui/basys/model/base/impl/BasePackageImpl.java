@@ -21,6 +21,8 @@ import de.dfki.iui.basys.model.base.datatypes.BString;
 
 import de.dfki.iui.basys.model.pattern.PatternPackage;
 import de.dfki.iui.basys.model.pattern.impl.PatternPackageImpl;
+import java.util.Collection;
+import java.util.List;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -126,6 +128,20 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 	 * @generated
 	 */
 	private EDataType bStringEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType listEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType collectionEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -270,8 +286,17 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getEntity_Name() {
+		return (EAttribute)entityEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getEntity_Metadata() {
-		return (EReference)entityEClass.getEStructuralFeatures().get(1);
+		return (EReference)entityEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -387,6 +412,24 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EDataType getList() {
+		return listEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getCollection() {
+		return collectionEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public BaseFactory getBaseFactory() {
 		return (BaseFactory)getEFactoryInstance();
 	}
@@ -420,6 +463,7 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 
 		entityEClass = createEClass(ENTITY);
 		createEAttribute(entityEClass, ENTITY__ID);
+		createEAttribute(entityEClass, ENTITY__NAME);
 		createEReference(entityEClass, ENTITY__METADATA);
 
 		keyValuePairEClass = createEClass(KEY_VALUE_PAIR);
@@ -436,6 +480,8 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 		bLongEDataType = createEDataType(BLONG);
 		bShortEDataType = createEDataType(BSHORT);
 		bStringEDataType = createEDataType(BSTRING);
+		listEDataType = createEDataType(LIST);
+		collectionEDataType = createEDataType(COLLECTION);
 	}
 
 	/**
@@ -462,6 +508,8 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 		setNsURI(eNS_URI);
 
 		// Create type parameters
+		addETypeParameter(listEDataType, "T");
+		addETypeParameter(collectionEDataType, "T");
 
 		// Set bounds for type parameters
 
@@ -479,6 +527,7 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 
 		initEClass(entityEClass, Entity.class, "Entity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEntity_Id(), ecorePackage.getEString(), "id", null, 1, 1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEntity_Name(), ecorePackage.getEString(), "name", null, 0, 1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEntity_Metadata(), this.getMetadata(), null, "metadata", null, 0, 1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(keyValuePairEClass, KeyValuePair.class, "KeyValuePair", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -495,13 +544,32 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 		initEDataType(bLongEDataType, BLong.class, "BLong", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(bShortEDataType, BShort.class, "BShort", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(bStringEDataType, BString.class, "BString", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(listEDataType, List.class, "List", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(collectionEDataType, Collection.class, "Collection", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);
 
 		// Create annotations
+		// http://de.dfki.iui.mmds/CoreModel
+		createCoreModelAnnotations();
 		// http://www.eclipse.org/emf/2002/Ecore
 		createEcoreAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://de.dfki.iui.mmds/CoreModel</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createCoreModelAnnotations() {
+		String source = "http://de.dfki.iui.mmds/CoreModel";	
+		addAnnotation
+		  (this, 
+		   source, 
+		   new String[] {
+		   });
 	}
 
 	/**

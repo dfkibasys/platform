@@ -64,7 +64,7 @@ public class TurnableItemProvider extends HorizontalTransportItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Turnable)object).getId();
+		String label = ((Turnable)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Turnable_type") :
 			getString("_UI_Turnable_type") + " " + label;

@@ -4,6 +4,7 @@ package de.dfki.iui.basys.model.domain.workerguidance.util;
 
 import de.dfki.iui.basys.model.base.BObject;
 import de.dfki.iui.basys.model.base.Entity;
+
 import de.dfki.iui.basys.model.domain.workerguidance.*;
 
 import org.eclipse.emf.ecore.EObject;
@@ -76,14 +77,6 @@ public class WorkerguidanceSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case WorkerguidancePackage.MATERIAL: {
-				Material material = (Material)theEObject;
-				T result = caseMaterial(material);
-				if (result == null) result = caseEntity(material);
-				if (result == null) result = caseBObject(material);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case WorkerguidancePackage.MEDIA: {
 				Media media = (Media)theEObject;
 				T result = caseMedia(media);
@@ -119,6 +112,15 @@ public class WorkerguidanceSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case WorkerguidancePackage.DOCUMENT: {
+				Document document = (Document)theEObject;
+				T result = caseDocument(document);
+				if (result == null) result = caseMedia(document);
+				if (result == null) result = caseEntity(document);
+				if (result == null) result = caseBObject(document);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -135,21 +137,6 @@ public class WorkerguidanceSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseInstruction(Instruction object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Material</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Material</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseMaterial(Material object) {
 		return null;
 	}
 
@@ -210,6 +197,21 @@ public class WorkerguidanceSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseImage(Image object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Document</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Document</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDocument(Document object) {
 		return null;
 	}
 

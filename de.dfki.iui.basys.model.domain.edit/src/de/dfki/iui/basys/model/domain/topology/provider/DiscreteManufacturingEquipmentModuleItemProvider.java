@@ -4,11 +4,13 @@ package de.dfki.iui.basys.model.domain.topology.provider;
 
 
 import de.dfki.iui.basys.model.domain.topology.DiscreteManufacturingEquipmentModule;
+
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 /**
@@ -62,7 +64,7 @@ public class DiscreteManufacturingEquipmentModuleItemProvider extends EquipmentM
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((DiscreteManufacturingEquipmentModule)object).getId();
+		String label = ((DiscreteManufacturingEquipmentModule)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_DiscreteManufacturingEquipmentModule_type") :
 			getString("_UI_DiscreteManufacturingEquipmentModule_type") + " " + label;

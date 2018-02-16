@@ -4,6 +4,7 @@ package de.dfki.iui.basys.model.domain.linebalancing.util;
 
 import de.dfki.iui.basys.model.base.BObject;
 import de.dfki.iui.basys.model.base.Entity;
+
 import de.dfki.iui.basys.model.domain.linebalancing.*;
 
 import org.eclipse.emf.ecore.EObject;

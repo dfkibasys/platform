@@ -4,6 +4,7 @@ package de.dfki.iui.basys.model.domain.workerguidance.provider;
 
 
 import de.dfki.iui.basys.model.base.provider.EntityItemProvider;
+
 import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
 
 import de.dfki.iui.basys.model.domain.workerguidance.Media;
@@ -257,7 +258,7 @@ public class MediaItemProvider extends EntityItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Media)object).getId();
+		String label = ((Media)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Media_type") :
 			getString("_UI_Media_type") + " " + label;

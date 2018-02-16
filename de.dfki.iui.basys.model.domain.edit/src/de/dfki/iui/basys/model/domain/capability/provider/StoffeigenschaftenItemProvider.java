@@ -64,7 +64,7 @@ public class StoffeigenschaftenItemProvider extends ManufacturingCapabilityItemP
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Stoffeigenschaften)object).getId();
+		String label = ((Stoffeigenschaften)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Stoffeigenschaften_type") :
 			getString("_UI_Stoffeigenschaften_type") + " " + label;

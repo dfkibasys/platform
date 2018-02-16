@@ -21,7 +21,6 @@ import java.util.Date;
  * @generated
  */
 public interface StaffLocationChangeEvent extends StaffLocation {
-
 	/**
 	 * Returns the value of the '<em><b>Timestamp</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -47,4 +46,5 @@ public interface StaffLocationChangeEvent extends StaffLocation {
 	 * @generated
 	 */
 	void setTimestamp(Date value);
+
 } // StaffLocationChangeEvent

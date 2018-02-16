@@ -4,6 +4,7 @@ package de.dfki.iui.basys.model.domain.topology.provider;
 
 
 import de.dfki.iui.basys.model.base.provider.EntityItemProvider;
+
 import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
 
 import de.dfki.iui.basys.model.domain.topology.Area;
@@ -104,7 +105,7 @@ public class AreaItemProvider extends EntityItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Area)object).getId();
+		String label = ((Area)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Area_type") :
 			getString("_UI_Area_type") + " " + label;

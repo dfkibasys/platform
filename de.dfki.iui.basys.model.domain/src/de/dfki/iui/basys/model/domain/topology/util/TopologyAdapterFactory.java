@@ -4,6 +4,7 @@ package de.dfki.iui.basys.model.domain.topology.util;
 
 import de.dfki.iui.basys.model.base.BObject;
 import de.dfki.iui.basys.model.base.Entity;
+
 import de.dfki.iui.basys.model.domain.topology.*;
 
 import org.eclipse.emf.common.notify.Adapter;

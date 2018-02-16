@@ -5,18 +5,34 @@ package de.dfki.iui.basys.model.domain.workplan.impl;
 import de.dfki.iui.basys.model.base.BasePackage;
 
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
+
 import de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl;
+
 import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
 
 import de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl;
 
+import de.dfki.iui.basys.model.domain.material.MaterialPackage;
+import de.dfki.iui.basys.model.domain.material.impl.MaterialPackageImpl;
 import de.dfki.iui.basys.model.domain.order.OrderPackage;
 
 import de.dfki.iui.basys.model.domain.order.impl.OrderPackageImpl;
 
+import de.dfki.iui.basys.model.domain.process.ProcessPackage;
+
+import de.dfki.iui.basys.model.domain.process.impl.ProcessPackageImpl;
+
+import de.dfki.iui.basys.model.domain.processinstance.ProcessinstancePackage;
+
+import de.dfki.iui.basys.model.domain.processinstance.impl.ProcessinstancePackageImpl;
+
 import de.dfki.iui.basys.model.domain.product.ProductPackage;
 
 import de.dfki.iui.basys.model.domain.product.impl.ProductPackageImpl;
+
+import de.dfki.iui.basys.model.domain.productinstance.ProductinstancePackage;
+
+import de.dfki.iui.basys.model.domain.productinstance.impl.ProductinstancePackageImpl;
 
 import de.dfki.iui.basys.model.domain.staff.StaffPackage;
 
@@ -30,6 +46,8 @@ import de.dfki.iui.basys.model.domain.workerguidance.WorkerguidancePackage;
 
 import de.dfki.iui.basys.model.domain.workerguidance.impl.WorkerguidancePackageImpl;
 
+import de.dfki.iui.basys.model.domain.workforce.WorkforcePackage;
+import de.dfki.iui.basys.model.domain.workforce.impl.WorkforcePackageImpl;
 import de.dfki.iui.basys.model.domain.workplan.Duration;
 import de.dfki.iui.basys.model.domain.workplan.WorkplanFactory;
 import de.dfki.iui.basys.model.domain.workplan.WorkplanInstance;
@@ -38,6 +56,8 @@ import de.dfki.iui.basys.model.domain.workplan.WorkstepInstance;
 import de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatus;
 import de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatusChangeEvent;
 import de.dfki.iui.basys.model.domain.workplan.WorkstepInstanceStatusEnum;
+
+import de.dfki.iui.basys.model.pattern.PatternPackage;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -144,35 +164,51 @@ public class WorkplanPackageImpl extends EPackageImpl implements WorkplanPackage
 
 		// Initialize simple dependencies
 		BasePackage.eINSTANCE.eClass();
+		PatternPackage.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies
 		OrderPackageImpl theOrderPackage = (OrderPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(OrderPackage.eNS_URI) instanceof OrderPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(OrderPackage.eNS_URI) : OrderPackage.eINSTANCE);
-		ProductPackageImpl theProductPackage = (ProductPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ProductPackage.eNS_URI) instanceof ProductPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ProductPackage.eNS_URI) : ProductPackage.eINSTANCE);
 		StaffPackageImpl theStaffPackage = (StaffPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(StaffPackage.eNS_URI) instanceof StaffPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(StaffPackage.eNS_URI) : StaffPackage.eINSTANCE);
 		TopologyPackageImpl theTopologyPackage = (TopologyPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(TopologyPackage.eNS_URI) instanceof TopologyPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(TopologyPackage.eNS_URI) : TopologyPackage.eINSTANCE);
 		WorkerguidancePackageImpl theWorkerguidancePackage = (WorkerguidancePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkerguidancePackage.eNS_URI) instanceof WorkerguidancePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkerguidancePackage.eNS_URI) : WorkerguidancePackage.eINSTANCE);
 		LinebalancingPackageImpl theLinebalancingPackage = (LinebalancingPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(LinebalancingPackage.eNS_URI) instanceof LinebalancingPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(LinebalancingPackage.eNS_URI) : LinebalancingPackage.eINSTANCE);
 		CapabilityPackageImpl theCapabilityPackage = (CapabilityPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CapabilityPackage.eNS_URI) instanceof CapabilityPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CapabilityPackage.eNS_URI) : CapabilityPackage.eINSTANCE);
+		ProcessPackageImpl theProcessPackage = (ProcessPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ProcessPackage.eNS_URI) instanceof ProcessPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ProcessPackage.eNS_URI) : ProcessPackage.eINSTANCE);
+		ProcessinstancePackageImpl theProcessinstancePackage = (ProcessinstancePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ProcessinstancePackage.eNS_URI) instanceof ProcessinstancePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ProcessinstancePackage.eNS_URI) : ProcessinstancePackage.eINSTANCE);
+		ProductPackageImpl theProductPackage = (ProductPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ProductPackage.eNS_URI) instanceof ProductPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ProductPackage.eNS_URI) : ProductPackage.eINSTANCE);
+		ProductinstancePackageImpl theProductinstancePackage = (ProductinstancePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ProductinstancePackage.eNS_URI) instanceof ProductinstancePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ProductinstancePackage.eNS_URI) : ProductinstancePackage.eINSTANCE);
+		WorkforcePackageImpl theWorkforcePackage = (WorkforcePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkforcePackage.eNS_URI) instanceof WorkforcePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkforcePackage.eNS_URI) : WorkforcePackage.eINSTANCE);
+		MaterialPackageImpl theMaterialPackage = (MaterialPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(MaterialPackage.eNS_URI) instanceof MaterialPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(MaterialPackage.eNS_URI) : MaterialPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theWorkplanPackage.createPackageContents();
 		theOrderPackage.createPackageContents();
-		theProductPackage.createPackageContents();
 		theStaffPackage.createPackageContents();
 		theTopologyPackage.createPackageContents();
 		theWorkerguidancePackage.createPackageContents();
 		theLinebalancingPackage.createPackageContents();
 		theCapabilityPackage.createPackageContents();
+		theProcessPackage.createPackageContents();
+		theProcessinstancePackage.createPackageContents();
+		theProductPackage.createPackageContents();
+		theProductinstancePackage.createPackageContents();
+		theWorkforcePackage.createPackageContents();
+		theMaterialPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theWorkplanPackage.initializePackageContents();
 		theOrderPackage.initializePackageContents();
-		theProductPackage.initializePackageContents();
 		theStaffPackage.initializePackageContents();
 		theTopologyPackage.initializePackageContents();
 		theWorkerguidancePackage.initializePackageContents();
 		theLinebalancingPackage.initializePackageContents();
 		theCapabilityPackage.initializePackageContents();
+		theProcessPackage.initializePackageContents();
+		theProcessinstancePackage.initializePackageContents();
+		theProductPackage.initializePackageContents();
+		theProductinstancePackage.initializePackageContents();
+		theWorkforcePackage.initializePackageContents();
+		theMaterialPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theWorkplanPackage.freeze();
@@ -224,7 +260,7 @@ public class WorkplanPackageImpl extends EPackageImpl implements WorkplanPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getWorkstepInstance_Name() {
+	public EAttribute getWorkstepInstance_ComponentId() {
 		return (EAttribute)workstepInstanceEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -233,17 +269,8 @@ public class WorkplanPackageImpl extends EPackageImpl implements WorkplanPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getWorkstepInstance_ComponentId() {
-		return (EAttribute)workstepInstanceEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getWorkstepInstance_IsAutomatic() {
-		return (EAttribute)workstepInstanceEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)workstepInstanceEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -387,7 +414,6 @@ public class WorkplanPackageImpl extends EPackageImpl implements WorkplanPackage
 		createEReference(workplanInstanceEClass, WORKPLAN_INSTANCE__WORKSTEP_INSTANCES);
 
 		workstepInstanceEClass = createEClass(WORKSTEP_INSTANCE);
-		createEAttribute(workstepInstanceEClass, WORKSTEP_INSTANCE__NAME);
 		createEAttribute(workstepInstanceEClass, WORKSTEP_INSTANCE__COMPONENT_ID);
 		createEAttribute(workstepInstanceEClass, WORKSTEP_INSTANCE__IS_AUTOMATIC);
 
@@ -452,7 +478,6 @@ public class WorkplanPackageImpl extends EPackageImpl implements WorkplanPackage
 		initEReference(getWorkplanInstance_WorkstepInstances(), this.getWorkstepInstance(), null, "workstepInstances", null, 0, -1, WorkplanInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(workstepInstanceEClass, WorkstepInstance.class, "WorkstepInstance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getWorkstepInstance_Name(), ecorePackage.getEString(), "name", null, 0, 1, WorkstepInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getWorkstepInstance_ComponentId(), ecorePackage.getEString(), "componentId", null, 0, 1, WorkstepInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getWorkstepInstance_IsAutomatic(), ecorePackage.getEBoolean(), "isAutomatic", null, 0, 1, WorkstepInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

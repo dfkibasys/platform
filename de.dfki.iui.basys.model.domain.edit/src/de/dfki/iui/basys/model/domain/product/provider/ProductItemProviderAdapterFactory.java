@@ -72,6 +72,29 @@ public class ProductItemProviderAdapterFactory extends ProductAdapterFactory imp
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.product.ProductCatalogue} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ProductCatalogueItemProvider productCatalogueItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.product.ProductCatalogue}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createProductCatalogueAdapter() {
+		if (productCatalogueItemProvider == null) {
+			productCatalogueItemProvider = new ProductCatalogueItemProvider(this);
+		}
+
+		return productCatalogueItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.product.ProductGroup} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -118,118 +141,49 @@ public class ProductItemProviderAdapterFactory extends ProductAdapterFactory imp
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.product.ProductInstance} instances.
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.product.BillOfMaterial} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ProductInstanceItemProvider productInstanceItemProvider;
+	protected BillOfMaterialItemProvider billOfMaterialItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.product.ProductInstance}.
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.product.BillOfMaterial}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createProductInstanceAdapter() {
-		if (productInstanceItemProvider == null) {
-			productInstanceItemProvider = new ProductInstanceItemProvider(this);
+	public Adapter createBillOfMaterialAdapter() {
+		if (billOfMaterialItemProvider == null) {
+			billOfMaterialItemProvider = new BillOfMaterialItemProvider(this);
 		}
 
-		return productInstanceItemProvider;
+		return billOfMaterialItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.product.ProductInstanceStatus} instances.
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.product.BOMEntry} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ProductInstanceStatusItemProvider productInstanceStatusItemProvider;
+	protected BOMEntryItemProvider bomEntryItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.product.ProductInstanceStatus}.
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.product.BOMEntry}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createProductInstanceStatusAdapter() {
-		if (productInstanceStatusItemProvider == null) {
-			productInstanceStatusItemProvider = new ProductInstanceStatusItemProvider(this);
+	public Adapter createBOMEntryAdapter() {
+		if (bomEntryItemProvider == null) {
+			bomEntryItemProvider = new BOMEntryItemProvider(this);
 		}
 
-		return productInstanceStatusItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.product.ProductInstanceStatusChangeEvent} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ProductInstanceStatusChangeEventItemProvider productInstanceStatusChangeEventItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.product.ProductInstanceStatusChangeEvent}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createProductInstanceStatusChangeEventAdapter() {
-		if (productInstanceStatusChangeEventItemProvider == null) {
-			productInstanceStatusChangeEventItemProvider = new ProductInstanceStatusChangeEventItemProvider(this);
-		}
-
-		return productInstanceStatusChangeEventItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.product.ProductInstanceLocation} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ProductInstanceLocationItemProvider productInstanceLocationItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.product.ProductInstanceLocation}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createProductInstanceLocationAdapter() {
-		if (productInstanceLocationItemProvider == null) {
-			productInstanceLocationItemProvider = new ProductInstanceLocationItemProvider(this);
-		}
-
-		return productInstanceLocationItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.product.ProductInstanceLocationChangeEvent} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ProductInstanceLocationChangeEventItemProvider productInstanceLocationChangeEventItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.product.ProductInstanceLocationChangeEvent}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createProductInstanceLocationChangeEventAdapter() {
-		if (productInstanceLocationChangeEventItemProvider == null) {
-			productInstanceLocationChangeEventItemProvider = new ProductInstanceLocationChangeEventItemProvider(this);
-		}
-
-		return productInstanceLocationChangeEventItemProvider;
+		return bomEntryItemProvider;
 	}
 
 	/**
@@ -331,13 +285,11 @@ public class ProductItemProviderAdapterFactory extends ProductAdapterFactory imp
 	 * @generated
 	 */
 	public void dispose() {
+		if (productCatalogueItemProvider != null) productCatalogueItemProvider.dispose();
 		if (productGroupItemProvider != null) productGroupItemProvider.dispose();
 		if (productVariantItemProvider != null) productVariantItemProvider.dispose();
-		if (productInstanceItemProvider != null) productInstanceItemProvider.dispose();
-		if (productInstanceStatusItemProvider != null) productInstanceStatusItemProvider.dispose();
-		if (productInstanceStatusChangeEventItemProvider != null) productInstanceStatusChangeEventItemProvider.dispose();
-		if (productInstanceLocationItemProvider != null) productInstanceLocationItemProvider.dispose();
-		if (productInstanceLocationChangeEventItemProvider != null) productInstanceLocationChangeEventItemProvider.dispose();
+		if (billOfMaterialItemProvider != null) billOfMaterialItemProvider.dispose();
+		if (bomEntryItemProvider != null) bomEntryItemProvider.dispose();
 	}
 
 }

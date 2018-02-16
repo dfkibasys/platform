@@ -64,7 +64,7 @@ public class AnEinpressenItemProvider extends FügenItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((AnEinpressen)object).getId();
+		String label = ((AnEinpressen)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_AnEinpressen_type") :
 			getString("_UI_AnEinpressen_type") + " " + label;

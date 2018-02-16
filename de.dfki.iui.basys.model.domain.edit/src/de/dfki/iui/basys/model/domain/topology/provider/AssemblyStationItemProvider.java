@@ -64,7 +64,7 @@ public class AssemblyStationItemProvider extends StationItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((AssemblyStation)object).getId();
+		String label = ((AssemblyStation)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_AssemblyStation_type") :
 			getString("_UI_AssemblyStation_type") + " " + label;
