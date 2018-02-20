@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import de.dfki.iui.basys.model.pattern.PEmptySlot;
@@ -29,6 +28,7 @@ import de.dfki.iui.basys.model.pattern.PPattern;
 import de.dfki.iui.basys.model.pattern.PSlot;
 import de.dfki.iui.basys.model.pattern.PValue;
 import de.dfki.iui.basys.model.pattern.PatternPackage;
+import de.dfki.iui.basys.model.util.BasysEObjectImpl;
 import java.lang.reflect.InvocationTargetException;
 
 /**
@@ -45,7 +45,7 @@ import java.lang.reflect.InvocationTargetException;
  *
  * @generated
  */
-public class PSlotImpl extends MinimalEObjectImpl.Container implements PSlot {
+public class PSlotImpl extends BasysEObjectImpl implements PSlot {
 	/**
 	 * The cached value of the '{@link #getFeature() <em>Feature</em>}' reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

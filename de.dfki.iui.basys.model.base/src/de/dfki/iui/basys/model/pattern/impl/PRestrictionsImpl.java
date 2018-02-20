@@ -17,7 +17,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -28,6 +27,7 @@ import de.dfki.iui.basys.model.pattern.PRestrictionsEnum;
 import de.dfki.iui.basys.model.pattern.PValueGen;
 import de.dfki.iui.basys.model.pattern.PatternFactory;
 import de.dfki.iui.basys.model.pattern.PatternPackage;
+import de.dfki.iui.basys.model.util.BasysEObjectImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -43,7 +43,7 @@ import de.dfki.iui.basys.model.pattern.PatternPackage;
  *
  * @generated
  */
-public class PRestrictionsImpl extends MinimalEObjectImpl.Container implements PRestrictions {
+public class PRestrictionsImpl extends BasysEObjectImpl implements PRestrictions {
 	/**
 	 * The cached value of the '{@link #getRestriction() <em>Restriction</em>}' containment reference list.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

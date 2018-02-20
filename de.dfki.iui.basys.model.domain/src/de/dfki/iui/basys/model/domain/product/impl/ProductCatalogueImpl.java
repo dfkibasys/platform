@@ -6,6 +6,7 @@ import de.dfki.iui.basys.model.domain.product.ProductCatalogue;
 import de.dfki.iui.basys.model.domain.product.ProductGroup;
 import de.dfki.iui.basys.model.domain.product.ProductPackage;
 
+import de.dfki.iui.basys.model.util.BasysEObjectImpl;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -14,8 +15,6 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -32,7 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class ProductCatalogueImpl extends MinimalEObjectImpl.Container implements ProductCatalogue {
+public class ProductCatalogueImpl extends BasysEObjectImpl implements ProductCatalogue {
 	/**
 	 * The cached value of the '{@link #getProductGroups() <em>Product Groups</em>}' containment reference list.
 	 * <!-- begin-user-doc -->

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.dfki.iui.basys.model.domain/src" modelPluginID="de.dfki.iui.basys.model.domain"
-    modelName="Domain" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    modelName="Domain" modelPluginClass="" rootExtendsClass="de.dfki.iui.basys.model.util.BasysEObjectImpl"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
     providerRootExtendsClass="" usedGenPackages="../../de.dfki.iui.basys.model.base/model/base.genmodel#//base ../../de.dfki.iui.basys.model.base/model/base.genmodel#//pattern"
-    operationReflection="true" importOrganizing="true">
+    interfaceNamePattern="" classNamePattern="" operationReflection="true" importOrganizing="true">
   <foreignModel>order.ecore</foreignModel>
   <foreignModel>product.ecore</foreignModel>
   <foreignModel>staff.ecore</foreignModel>
@@ -18,8 +18,8 @@
   <foreignModel>productinstance.ecore</foreignModel>
   <foreignModel>workforce.ecore</foreignModel>
   <foreignModel>material.ecore</foreignModel>
-  <genPackages prefix="Order" basePackage="de.dfki.iui.basys.model.domain" disposableProviderFactory="true"
-      ecorePackage="order.ecore#/">
+  <genPackages prefix="Order" basePackage="de.dfki.iui.basys.model.domain" resource="XMI"
+      disposableProviderFactory="true" ecorePackage="order.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="order.ecore#//OrderStatusEnum">
       <genEnumLiterals ecoreEnumLiteral="order.ecore#//OrderStatusEnum/UNKNOWN"/>
       <genEnumLiterals ecoreEnumLiteral="order.ecore#//OrderStatusEnum/PLANNED"/>
@@ -45,8 +45,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute order.ecore#//OrderStatusChangeEvent/timestamp"/>
     </genClasses>
   </genPackages>
-  <genPackages prefix="Staff" basePackage="de.dfki.iui.basys.model.domain" disposableProviderFactory="true"
-      ecorePackage="staff.ecore#/">
+  <genPackages prefix="Staff" basePackage="de.dfki.iui.basys.model.domain" resource="XMI"
+      disposableProviderFactory="true" ecorePackage="staff.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="staff.ecore#//StaffDetectionEnum">
       <genEnumLiterals ecoreEnumLiteral="staff.ecore#//StaffDetectionEnum/UNKNOWN"/>
       <genEnumLiterals ecoreEnumLiteral="staff.ecore#//StaffDetectionEnum/PRESENT"/>
@@ -86,8 +86,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference staff.ecore#//StaffSkills/abilities"/>
     </genClasses>
   </genPackages>
-  <genPackages prefix="Topology" basePackage="de.dfki.iui.basys.model.domain" disposableProviderFactory="true"
-      ecorePackage="topology.ecore#/">
+  <genPackages prefix="Topology" basePackage="de.dfki.iui.basys.model.domain" resource="XMI"
+      disposableProviderFactory="true" contentTypeIdentifier="" ecorePackage="topology.ecore#/">
     <genClasses ecoreClass="topology.ecore#//Enterprise">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference topology.ecore#//Enterprise/sites"/>
     </genClasses>
@@ -171,7 +171,7 @@
     <genClasses ecoreClass="topology.ecore#//OverheadConveyor"/>
   </genPackages>
   <genPackages prefix="Workerguidance" basePackage="de.dfki.iui.basys.model.domain"
-      disposableProviderFactory="true" ecorePackage="workerguidance.ecore#/">
+      resource="XMI" disposableProviderFactory="true" ecorePackage="workerguidance.ecore#/">
     <genClasses ecoreClass="workerguidance.ecore#//Instruction">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workerguidance.ecore#//Instruction/description"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workerguidance.ecore#//Instruction/parameters"/>
@@ -201,8 +201,8 @@
     </genClasses>
     <genClasses ecoreClass="workerguidance.ecore#//Document"/>
   </genPackages>
-  <genPackages prefix="Workplan" basePackage="de.dfki.iui.basys.model.domain" disposableProviderFactory="true"
-      ecorePackage="workplan.ecore#/">
+  <genPackages prefix="Workplan" basePackage="de.dfki.iui.basys.model.domain" resource="XMI"
+      disposableProviderFactory="true" ecorePackage="workplan.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="workplan.ecore#//WorkstepInstanceStatusEnum">
       <genEnumLiterals ecoreEnumLiteral="workplan.ecore#//WorkstepInstanceStatusEnum/UNKNOWN"/>
       <genEnumLiterals ecoreEnumLiteral="workplan.ecore#//WorkstepInstanceStatusEnum/STARTED"/>
@@ -236,7 +236,7 @@
     </genClasses>
   </genPackages>
   <genPackages prefix="Linebalancing" basePackage="de.dfki.iui.basys.model.domain"
-      disposableProviderFactory="true" ecorePackage="linebalancing.ecore#/">
+      resource="XMI" disposableProviderFactory="true" ecorePackage="linebalancing.ecore#/">
     <genClasses ecoreClass="linebalancing.ecore#//LBProductInstance">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute linebalancing.ecore#//LBProductInstance/componentId"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute linebalancing.ecore#//LBProductInstance/workstepInstanceId"/>
@@ -254,8 +254,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference linebalancing.ecore#//LBLocations/productInstances"/>
     </genClasses>
   </genPackages>
-  <genPackages prefix="Capability" basePackage="de.dfki.iui.basys.model.domain" disposableProviderFactory="true"
-      ecorePackage="capability.ecore#/">
+  <genPackages prefix="Capability" basePackage="de.dfki.iui.basys.model.domain" resource="XMI"
+      disposableProviderFactory="true" ecorePackage="capability.ecore#/">
     <genClasses ecoreClass="capability.ecore#//CapabilityAssertion">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference capability.ecore#//CapabilityAssertion/pattern"/>
     </genClasses>
@@ -277,8 +277,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute capability.ecore#//Schrauben/drehmoment"/>
     </genClasses>
   </genPackages>
-  <genPackages prefix="Process" basePackage="de.dfki.iui.basys.model.domain" disposableProviderFactory="true"
-      ecorePackage="process.ecore#/">
+  <genPackages prefix="Process" basePackage="de.dfki.iui.basys.model.domain" resource="XMI"
+      disposableProviderFactory="true" ecorePackage="process.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="process.ecore#//GatewayTypeEnum">
       <genEnumLiterals ecoreEnumLiteral="process.ecore#//GatewayTypeEnum/OR"/>
       <genEnumLiterals ecoreEnumLiteral="process.ecore#//GatewayTypeEnum/AND"/>
@@ -377,7 +377,7 @@
     </genClasses>
   </genPackages>
   <genPackages prefix="Processinstance" basePackage="de.dfki.iui.basys.model.domain"
-      disposableProviderFactory="true" ecorePackage="processinstance.ecore#/">
+      resource="XMI" disposableProviderFactory="true" ecorePackage="processinstance.ecore#/">
     <genClasses ecoreClass="processinstance.ecore#//ProcessInstance">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute processinstance.ecore#//ProcessInstance/processDefinitionId"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute processinstance.ecore#//ProcessInstance/orderId"/>
@@ -385,8 +385,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute processinstance.ecore#//ProcessInstance/state"/>
     </genClasses>
   </genPackages>
-  <genPackages prefix="Product" basePackage="de.dfki.iui.basys.model.domain" disposableProviderFactory="true"
-      ecorePackage="product.ecore#/">
+  <genPackages prefix="Product" basePackage="de.dfki.iui.basys.model.domain" resource="XMI"
+      disposableProviderFactory="true" ecorePackage="product.ecore#/">
     <genClasses ecoreClass="product.ecore#//ProductCatalogue">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product.ecore#//ProductCatalogue/productGroups"/>
     </genClasses>
@@ -406,7 +406,7 @@
     </genClasses>
   </genPackages>
   <genPackages prefix="Productinstance" basePackage="de.dfki.iui.basys.model.domain"
-      disposableProviderFactory="true" ecorePackage="productinstance.ecore#/">
+      resource="XMI" disposableProviderFactory="true" ecorePackage="productinstance.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="productinstance.ecore#//ProductInstanceDetectionEnum">
       <genEnumLiterals ecoreEnumLiteral="productinstance.ecore#//ProductInstanceDetectionEnum/UNKNOWN"/>
       <genEnumLiterals ecoreEnumLiteral="productinstance.ecore#//ProductInstanceDetectionEnum/PRESENT"/>
@@ -442,8 +442,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute productinstance.ecore#//ProductInstanceLocationChangeEvent/timestamp"/>
     </genClasses>
   </genPackages>
-  <genPackages prefix="Workforce" basePackage="de.dfki.iui.basys.model.domain" disposableProviderFactory="true"
-      ecorePackage="workforce.ecore#/">
+  <genPackages prefix="Workforce" basePackage="de.dfki.iui.basys.model.domain" resource="XMI"
+      disposableProviderFactory="true" ecorePackage="workforce.ecore#/">
     <genClasses ecoreClass="workforce.ecore#//Workforce">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workforce.ecore#//Workforce/agents"/>
     </genClasses>
@@ -462,7 +462,8 @@
     </genClasses>
     <genClasses ecoreClass="workforce.ecore#//Organization"/>
   </genPackages>
-  <genPackages prefix="Material" basePackage="de.dfki.iui.basys.model.domain" ecorePackage="material.ecore#/">
+  <genPackages prefix="Material" basePackage="de.dfki.iui.basys.model.domain" resource="XMI"
+      ecorePackage="material.ecore#/">
     <genClasses ecoreClass="material.ecore#//MaterialCatalogue">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference material.ecore#//MaterialCatalogue/materialGroups"/>
     </genClasses>

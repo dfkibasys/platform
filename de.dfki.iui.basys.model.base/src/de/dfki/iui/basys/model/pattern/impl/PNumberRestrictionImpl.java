@@ -10,11 +10,11 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import de.dfki.iui.basys.model.pattern.PNumberRestriction;
 import de.dfki.iui.basys.model.pattern.PNumberRestrictionEnum;
 import de.dfki.iui.basys.model.pattern.PRestriction;
 import de.dfki.iui.basys.model.pattern.PatternPackage;
+import de.dfki.iui.basys.model.util.BasysEObjectImpl;
 import java.lang.reflect.InvocationTargetException;
 
 /**
@@ -31,7 +31,7 @@ import java.lang.reflect.InvocationTargetException;
  *
  * @generated
  */
-public abstract class PNumberRestrictionImpl<V> extends MinimalEObjectImpl.Container implements PNumberRestriction<V> {
+public abstract class PNumberRestrictionImpl<V> extends BasysEObjectImpl implements PNumberRestriction<V> {
 	/**
 	 * The default value of the '{@link #getExpression() <em>Expression</em>}' attribute.
 	 * <!-- begin-user-doc -->

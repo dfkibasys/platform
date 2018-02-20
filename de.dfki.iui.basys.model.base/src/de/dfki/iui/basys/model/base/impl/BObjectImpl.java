@@ -5,12 +5,12 @@ package de.dfki.iui.basys.model.base.impl;
 import de.dfki.iui.basys.model.base.BObject;
 import de.dfki.iui.basys.model.base.BasePackage;
 
+import de.dfki.iui.basys.model.util.BasysEObjectImpl;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public class BObjectImpl extends MinimalEObjectImpl.Container implements BObject {
+public class BObjectImpl extends BasysEObjectImpl implements BObject {
 	/**
 	 * The default value of the '{@link #getBinding() <em>Binding</em>}' attribute.
 	 * <!-- begin-user-doc -->

@@ -9,9 +9,9 @@ package de.dfki.iui.basys.model.pattern.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import de.dfki.iui.basys.model.pattern.PValueObject;
 import de.dfki.iui.basys.model.pattern.PatternPackage;
+import de.dfki.iui.basys.model.util.BasysEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,7 +26,7 @@ import de.dfki.iui.basys.model.pattern.PatternPackage;
  *
  * @generated
  */
-public class PValueObjectImpl extends MinimalEObjectImpl.Container implements PValueObject {
+public class PValueObjectImpl extends BasysEObjectImpl implements PValueObject {
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->

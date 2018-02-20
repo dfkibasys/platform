@@ -6,6 +6,7 @@ import de.dfki.iui.basys.model.domain.workforce.Agent;
 import de.dfki.iui.basys.model.domain.workforce.Workforce;
 import de.dfki.iui.basys.model.domain.workforce.WorkforcePackage;
 
+import de.dfki.iui.basys.model.util.BasysEObjectImpl;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -14,9 +15,6 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -33,7 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class WorkforceImpl extends MinimalEObjectImpl.Container implements Workforce {
+public class WorkforceImpl extends BasysEObjectImpl implements Workforce {
 	/**
 	 * The cached value of the '{@link #getAgents() <em>Agents</em>}' containment reference list.
 	 * <!-- begin-user-doc -->

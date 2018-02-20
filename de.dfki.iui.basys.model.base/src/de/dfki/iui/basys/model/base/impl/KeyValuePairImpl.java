@@ -5,12 +5,12 @@ package de.dfki.iui.basys.model.base.impl;
 import de.dfki.iui.basys.model.base.BasePackage;
 import de.dfki.iui.basys.model.base.KeyValuePair;
 
+import de.dfki.iui.basys.model.util.BasysEObjectImpl;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public class KeyValuePairImpl extends MinimalEObjectImpl.Container implements KeyValuePair {
+public class KeyValuePairImpl extends BasysEObjectImpl implements KeyValuePair {
 	/**
 	 * The default value of the '{@link #getKey() <em>Key</em>}' attribute.
 	 * <!-- begin-user-doc -->

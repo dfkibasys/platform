@@ -6,12 +6,12 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import de.dfki.iui.basys.model.base.datatypes.BChar;
 import de.dfki.iui.basys.model.pattern.PCharRestriction;
 import de.dfki.iui.basys.model.pattern.PCharRestrictionEnum;
 import de.dfki.iui.basys.model.pattern.PRestriction;
 import de.dfki.iui.basys.model.pattern.PatternPackage;
+import de.dfki.iui.basys.model.util.BasysEObjectImpl;
 import java.lang.reflect.InvocationTargetException;
 
 /**
@@ -29,7 +29,7 @@ import java.lang.reflect.InvocationTargetException;
  *
  * @generated
  */
-public class PCharRestrictionImpl extends MinimalEObjectImpl.Container implements PCharRestriction {
+public class PCharRestrictionImpl extends BasysEObjectImpl implements PCharRestriction {
 	/**
 	 * The default value of the '{@link #getExpression() <em>Expression</em>}' attribute.
 	 * <!-- begin-user-doc -->

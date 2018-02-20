@@ -14,12 +14,26 @@
             genModel="model/domain.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated domain -->
+      <parser
+            type="order"
+            class="de.dfki.iui.basys.model.domain.order.util.OrderResourceFactoryImpl"/>
+   </extension>
+
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated domain -->
       <package
             uri="http://www.dfki.de/iui/basys/model/product"
             class="de.dfki.iui.basys.model.domain.product.ProductPackage"
             genModel="model/domain.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated domain -->
+      <parser
+            type="product"
+            class="de.dfki.iui.basys.model.domain.product.util.ProductResourceFactoryImpl"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
@@ -30,12 +44,26 @@
             genModel="model/domain.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated domain -->
+      <parser
+            type="staff"
+            class="de.dfki.iui.basys.model.domain.staff.util.StaffResourceFactoryImpl"/>
+   </extension>
+
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated domain -->
       <package
             uri="http://www.dfki.de/iui/basys/model/topology"
             class="de.dfki.iui.basys.model.domain.topology.TopologyPackage"
             genModel="model/domain.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated domain -->
+      <parser
+            type="topology"
+            class="de.dfki.iui.basys.model.domain.topology.util.TopologyResourceFactoryImpl"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
@@ -46,12 +74,26 @@
             genModel="model/domain.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated domain -->
+      <parser
+            type="workerguidance"
+            class="de.dfki.iui.basys.model.domain.workerguidance.util.WorkerguidanceResourceFactoryImpl"/>
+   </extension>
+
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated domain -->
       <package
             uri="http://www.dfki.de/iui/basys/model/workplan"
             class="de.dfki.iui.basys.model.domain.workplan.WorkplanPackage"
             genModel="model/domain.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated domain -->
+      <parser
+            type="workplan"
+            class="de.dfki.iui.basys.model.domain.workplan.util.WorkplanResourceFactoryImpl"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
@@ -62,12 +104,26 @@
             genModel="model/domain.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated domain -->
+      <parser
+            type="linebalancing"
+            class="de.dfki.iui.basys.model.domain.linebalancing.util.LinebalancingResourceFactoryImpl"/>
+   </extension>
+
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated domain -->
       <package
             uri="http://www.dfki.de/iui/basys/model/capability"
             class="de.dfki.iui.basys.model.domain.capability.CapabilityPackage"
             genModel="model/domain.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated domain -->
+      <parser
+            type="capability"
+            class="de.dfki.iui.basys.model.domain.capability.util.CapabilityResourceFactoryImpl"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
@@ -78,12 +134,26 @@
             genModel="model/domain.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated domain -->
+      <parser
+            type="process"
+            class="de.dfki.iui.basys.model.domain.process.util.ProcessResourceFactoryImpl"/>
+   </extension>
+
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated domain -->
       <package
             uri="http://www.dfki.de/iui/basys/model/processinstance"
             class="de.dfki.iui.basys.model.domain.processinstance.ProcessinstancePackage"
             genModel="model/domain.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated domain -->
+      <parser
+            type="processinstance"
+            class="de.dfki.iui.basys.model.domain.processinstance.util.ProcessinstanceResourceFactoryImpl"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
@@ -94,6 +164,13 @@
             genModel="model/domain.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated domain -->
+      <parser
+            type="productinstance"
+            class="de.dfki.iui.basys.model.domain.productinstance.util.ProductinstanceResourceFactoryImpl"/>
+   </extension>
+
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated domain -->
       <package
@@ -102,12 +179,26 @@
             genModel="model/domain.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated domain -->
+      <parser
+            type="workforce"
+            class="de.dfki.iui.basys.model.domain.workforce.util.WorkforceResourceFactoryImpl"/>
+   </extension>
+
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated domain -->
       <package
             uri="http://www.dfki.de/iui/basys/model/material"
             class="de.dfki.iui.basys.model.domain.material.MaterialPackage"
             genModel="model/domain.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated domain -->
+      <parser
+            type="material"
+            class="de.dfki.iui.basys.model.domain.material.util.MaterialResourceFactoryImpl"/>
    </extension>
 
 </plugin>

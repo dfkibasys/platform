@@ -10,12 +10,12 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import de.dfki.iui.basys.model.base.datatypes.BBoolean;
 import de.dfki.iui.basys.model.pattern.PBooleanRestriction;
 import de.dfki.iui.basys.model.pattern.PBooleanRestrictionEnum;
 import de.dfki.iui.basys.model.pattern.PRestriction;
 import de.dfki.iui.basys.model.pattern.PatternPackage;
+import de.dfki.iui.basys.model.util.BasysEObjectImpl;
 import java.lang.reflect.InvocationTargetException;
 
 /**
@@ -32,7 +32,7 @@ import java.lang.reflect.InvocationTargetException;
  *
  * @generated
  */
-public class PBooleanRestrictionImpl extends MinimalEObjectImpl.Container implements PBooleanRestriction {
+public class PBooleanRestrictionImpl extends BasysEObjectImpl implements PBooleanRestriction {
 	/**
 	 * The default value of the '{@link #getExpression() <em>Expression</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

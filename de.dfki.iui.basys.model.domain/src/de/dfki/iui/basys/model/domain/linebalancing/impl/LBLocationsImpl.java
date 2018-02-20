@@ -7,6 +7,7 @@ import de.dfki.iui.basys.model.domain.linebalancing.LBProductInstance;
 import de.dfki.iui.basys.model.domain.linebalancing.LBStaff;
 import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
 
+import de.dfki.iui.basys.model.util.BasysEObjectImpl;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -15,9 +16,6 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -35,7 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class LBLocationsImpl extends MinimalEObjectImpl.Container implements LBLocations {
+public class LBLocationsImpl extends BasysEObjectImpl implements LBLocations {
 	/**
 	 * The cached value of the '{@link #getStaff() <em>Staff</em>}' containment reference list.
 	 * <!-- begin-user-doc -->

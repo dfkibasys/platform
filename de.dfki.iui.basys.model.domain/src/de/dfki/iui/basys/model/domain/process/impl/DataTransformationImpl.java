@@ -5,13 +5,12 @@ package de.dfki.iui.basys.model.domain.process.impl;
 import de.dfki.iui.basys.model.domain.process.DataTransformation;
 import de.dfki.iui.basys.model.domain.process.ProcessPackage;
 
+import de.dfki.iui.basys.model.util.BasysEObjectImpl;
 import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,7 +19,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public class DataTransformationImpl extends MinimalEObjectImpl.Container implements DataTransformation {
+public class DataTransformationImpl extends BasysEObjectImpl implements DataTransformation {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

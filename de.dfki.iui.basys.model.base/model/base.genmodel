@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.dfki.iui.basys.model.base/src" modelPluginID="de.dfki.iui.basys.model.base"
-    modelName="Base" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    modelName="Base" rootExtendsClass="de.dfki.iui.basys.model.util.BasysEObjectImpl"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
     operationReflection="true" importOrganizing="true">
   <foreignModel>base.ecore</foreignModel>
   <foreignModel>pattern.ecore</foreignModel>
-  <genPackages prefix="Base" basePackage="de.dfki.iui.basys.model" disposableProviderFactory="true"
-      ecorePackage="base.ecore#/">
+  <genPackages prefix="Base" basePackage="de.dfki.iui.basys.model" resource="XMI"
+      disposableProviderFactory="true" contentTypeIdentifier="" ecorePackage="base.ecore#/">
     <genDataTypes ecoreDataType="base.ecore#//BBoolean"/>
     <genDataTypes ecoreDataType="base.ecore#//BByte"/>
     <genDataTypes ecoreDataType="base.ecore#//BChar"/>
@@ -17,6 +17,12 @@
     <genDataTypes ecoreDataType="base.ecore#//BLong"/>
     <genDataTypes ecoreDataType="base.ecore#//BShort"/>
     <genDataTypes ecoreDataType="base.ecore#//BString"/>
+    <genDataTypes ecoreDataType="base.ecore#//List">
+      <genTypeParameters ecoreTypeParameter="base.ecore#//List/T"/>
+    </genDataTypes>
+    <genDataTypes ecoreDataType="base.ecore#//Collection">
+      <genTypeParameters ecoreTypeParameter="base.ecore#//Collection/T"/>
+    </genDataTypes>
     <genClasses ecoreClass="base.ecore#//BObject">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//BObject/binding"/>
     </genClasses>
@@ -26,18 +32,17 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//Metadata/expiryDate"/>
     </genClasses>
     <genClasses ecoreClass="base.ecore#//Entity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//Entity/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//Entity/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference base.ecore#//Entity/metadata"/>
-    </genClasses>
-    <genClasses ecoreClass="base.ecore#//IdentifiableEntity">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//IdentifiableEntity/id"/>
     </genClasses>
     <genClasses ecoreClass="base.ecore#//KeyValuePair">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//KeyValuePair/key"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute base.ecore#//KeyValuePair/value"/>
     </genClasses>
   </genPackages>
-  <genPackages prefix="Pattern" basePackage="de.dfki.iui.basys.model" disposableProviderFactory="true"
-      ecorePackage="pattern.ecore#/">
+  <genPackages prefix="Pattern" basePackage="de.dfki.iui.basys.model" resource="XMI"
+      disposableProviderFactory="true" ecorePackage="pattern.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="pattern.ecore#//Computation">
       <genEnumLiterals ecoreEnumLiteral="pattern.ecore#//Computation/SET"/>
       <genEnumLiterals ecoreEnumLiteral="pattern.ecore#//Computation/OVERLAY"/>
@@ -89,7 +94,18 @@
       <genEnumLiterals ecoreEnumLiteral="pattern.ecore#//PQuantorEnum/FOR_ALL"/>
     </genEnums>
     <genDataTypes ecoreDataType="pattern.ecore#//PEObjectArray"/>
-    <genClasses ecoreClass="pattern.ecore#//PEmptySlot"/>
+    <genClasses image="false" ecoreClass="pattern.ecore#//PPattern">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pattern.ecore#//PPattern/varName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pattern.ecore#//PPattern/instIdx"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pattern.ecore#//PPattern/quantor"/>
+      <genOperations ecoreOperation="pattern.ecore#//PPattern/matches">
+        <genParameters ecoreParameter="pattern.ecore#//PPattern/matches/object"/>
+      </genOperations>
+      <genOperations ecoreOperation="pattern.ecore#//PPattern/createSkeleton"/>
+      <genOperations ecoreOperation="pattern.ecore#//PPattern/unify">
+        <genParameters ecoreParameter="pattern.ecore#//PPattern/unify/ppatt"/>
+      </genOperations>
+    </genClasses>
     <genClasses ecoreClass="pattern.ecore#//PObject">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pattern.ecore#//PObject/type"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pattern.ecore#//PObject/slot"/>
@@ -104,6 +120,7 @@
         <genParameters ecoreParameter="pattern.ecore#//PObject/unify.1/bg"/>
       </genOperations>
     </genClasses>
+    <genClasses ecoreClass="pattern.ecore#//PEmptySlot"/>
     <genClasses ecoreClass="pattern.ecore#//PSlot">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pattern.ecore#//PSlot/feature"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pattern.ecore#//PSlot/range"/>
@@ -114,21 +131,6 @@
       <genOperations ecoreOperation="pattern.ecore#//PSlot/getRangeObjects"/>
       <genOperations ecoreOperation="pattern.ecore#//PSlot/unify">
         <genParameters ecoreParameter="pattern.ecore#//PSlot/unify/bg"/>
-      </genOperations>
-    </genClasses>
-    <genClasses ecoreClass="pattern.ecore#//PSubscription">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pattern.ecore#//PSubscription/patterns"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="pattern.ecore#//PPattern">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pattern.ecore#//PPattern/varName"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pattern.ecore#//PPattern/instIdx"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pattern.ecore#//PPattern/quantor"/>
-      <genOperations ecoreOperation="pattern.ecore#//PPattern/matches">
-        <genParameters ecoreParameter="pattern.ecore#//PPattern/matches/object"/>
-      </genOperations>
-      <genOperations ecoreOperation="pattern.ecore#//PPattern/createSkeleton"/>
-      <genOperations ecoreOperation="pattern.ecore#//PPattern/unify">
-        <genParameters ecoreParameter="pattern.ecore#//PPattern/unify/ppatt"/>
       </genOperations>
     </genClasses>
     <genClasses ecoreClass="pattern.ecore#//PValue">

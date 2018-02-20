@@ -14,11 +14,11 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import de.dfki.iui.basys.model.pattern.PEnumRestriction;
 import de.dfki.iui.basys.model.pattern.PEnumRestrictionEnum;
 import de.dfki.iui.basys.model.pattern.PRestriction;
 import de.dfki.iui.basys.model.pattern.PatternPackage;
+import de.dfki.iui.basys.model.util.BasysEObjectImpl;
 import java.lang.reflect.InvocationTargetException;
 
 /**
@@ -36,7 +36,7 @@ import java.lang.reflect.InvocationTargetException;
  *
  * @generated
  */
-public class PEnumRestrictionImpl extends MinimalEObjectImpl.Container implements PEnumRestriction {
+public class PEnumRestrictionImpl extends BasysEObjectImpl implements PEnumRestriction {
 	/**
 	 * The default value of the '{@link #getExpression() <em>Expression</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

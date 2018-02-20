@@ -11,12 +11,12 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import de.dfki.iui.basys.common.emf.computation.MatchReport.MatchResult;
 import de.dfki.iui.basys.common.emf.computation.Matches;
 import de.dfki.iui.basys.model.pattern.PPattern;
 import de.dfki.iui.basys.model.pattern.PQuantorEnum;
 import de.dfki.iui.basys.model.pattern.PatternPackage;
+import de.dfki.iui.basys.model.util.BasysEObjectImpl;
 import java.lang.reflect.InvocationTargetException;
 
 /**
@@ -33,7 +33,7 @@ import java.lang.reflect.InvocationTargetException;
  *
  * @generated
  */
-public abstract class PPatternImpl extends MinimalEObjectImpl.Container implements PPattern {
+public abstract class PPatternImpl extends BasysEObjectImpl implements PPattern {
 	/**
 	 * The default value of the '{@link #getVarName() <em>Var Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

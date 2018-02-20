@@ -5,12 +5,12 @@ package de.dfki.iui.basys.model.domain.topology.impl;
 import de.dfki.iui.basys.model.domain.topology.TopologyPackage;
 import de.dfki.iui.basys.model.domain.topology.Transition;
 
+import de.dfki.iui.basys.model.util.BasysEObjectImpl;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public class TransitionImpl extends MinimalEObjectImpl.Container implements Transition {
+public class TransitionImpl extends BasysEObjectImpl implements Transition {
 	/**
 	 * The default value of the '{@link #getComponentId_src() <em>Component Id src</em>}' attribute.
 	 * <!-- begin-user-doc -->

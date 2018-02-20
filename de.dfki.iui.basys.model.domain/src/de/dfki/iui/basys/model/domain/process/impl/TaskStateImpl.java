@@ -6,6 +6,7 @@ import de.dfki.iui.basys.model.domain.process.ProcessPackage;
 import de.dfki.iui.basys.model.domain.process.TaskState;
 import de.dfki.iui.basys.model.domain.process.TaskStateEnum;
 
+import de.dfki.iui.basys.model.util.BasysEObjectImpl;
 import java.lang.reflect.InvocationTargetException;
 
 import java.util.Date;
@@ -17,7 +18,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,7 +32,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public abstract class TaskStateImpl extends MinimalEObjectImpl.Container implements TaskState {
+public abstract class TaskStateImpl extends BasysEObjectImpl implements TaskState {
 	/**
 	 * The default value of the '{@link #getTimestamp() <em>Timestamp</em>}' attribute.
 	 * <!-- begin-user-doc -->

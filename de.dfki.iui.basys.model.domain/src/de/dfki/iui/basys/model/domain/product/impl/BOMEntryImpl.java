@@ -7,13 +7,13 @@ import de.dfki.iui.basys.model.domain.material.Material;
 import de.dfki.iui.basys.model.domain.product.BOMEntry;
 import de.dfki.iui.basys.model.domain.product.ProductPackage;
 
+import de.dfki.iui.basys.model.util.BasysEObjectImpl;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,7 +29,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public class BOMEntryImpl extends MinimalEObjectImpl.Container implements BOMEntry {
+public class BOMEntryImpl extends BasysEObjectImpl implements BOMEntry {
 	/**
 	 * The default value of the '{@link #getCount() <em>Count</em>}' attribute.
 	 * <!-- begin-user-doc -->
