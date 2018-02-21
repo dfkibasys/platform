@@ -38,33 +38,36 @@ public class BasysEObjectImpl extends Container {
 		return false;
 	}	
 	
-	@Override
+	@Override	
 	public EObject eResolveProxy(InternalEObject proxy) {
+		
+		//FIXME: Methode kann entfallen, Logik in BasysResourceImpl.getEObject(uriFragment) verschieben.
+		
 		//TODO: hier ggf. die ProxyURL überschreiben -> URIConverter?
 				
 		EObject resolved = super.eResolveProxy(proxy);
 		
-		if (resolved == proxy) {			
-			EClass eClass = proxy.eClass();
-			String id = proxy.eProxyURI().fragment();		
-					
-			//TODO: query a webservice for instance with ID id; for now, simulate answer
-			resolved = eClass.getEPackage().getEFactoryInstance().create(eClass);
-			
-			((BasysEObjectImpl)resolved).cachedProxyURI = proxy.eProxyURI();
-			
-			Metadata metadata = BaseFactory.eINSTANCE.createMetadata();
-			metadata.setCreator("Daniel");
-			metadata.setCreationDate(new Date());
-			//20 seconds 
-			metadata.setExpiryDate(new Date(metadata.getCreationDate().getTime() + 20 * 1000L));
-			
-
-			resolved.eSet(eClass.getEStructuralFeature("id"), id);
-			resolved.eSet(eClass.getEStructuralFeature("name"), id + " " + metadata.getExpiryDate().toString());
-			resolved.eSet(eClass.getEStructuralFeature("metadata"), metadata);
-			
-		}
+//		if (resolved == proxy) {			
+//			EClass eClass = proxy.eClass();
+//			String id = proxy.eProxyURI().fragment();		
+//					
+//			//TODO: query a webservice for instance with ID id; for now, simulate answer
+//			resolved = eClass.getEPackage().getEFactoryInstance().create(eClass);
+//			
+//			((BasysEObjectImpl)resolved).cachedProxyURI = proxy.eProxyURI();
+//			
+//			Metadata metadata = BaseFactory.eINSTANCE.createMetadata();
+//			metadata.setCreator("Daniel");
+//			metadata.setCreationDate(new Date());
+//			//20 seconds 
+//			metadata.setExpiryDate(new Date(metadata.getCreationDate().getTime() + 20 * 1000L));
+//			
+//
+//			resolved.eSet(eClass.getEStructuralFeature("id"), id);
+//			resolved.eSet(eClass.getEStructuralFeature("name"), id + " " + metadata.getExpiryDate().toString());
+//			resolved.eSet(eClass.getEStructuralFeature("metadata"), metadata);
+//			
+//		}
 		
 		return resolved;
 	}
