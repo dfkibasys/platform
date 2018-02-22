@@ -3,29 +3,30 @@
 package de.dfki.iui.basys.model.domain.product.provider;
 
 
-import de.dfki.iui.basys.model.domain.product.ProductVariant;
+import de.dfki.iui.basys.model.domain.product.AssemblyGroup;
 
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 /**
- * This is the item provider adapter for a {@link de.dfki.iui.basys.model.domain.product.ProductVariant} object.
+ * This is the item provider adapter for a {@link de.dfki.iui.basys.model.domain.product.AssemblyGroup} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ProductVariantItemProvider extends ManufacturedComponentItemProvider {
+public class AssemblyGroupItemProvider extends ManufacturedComponentItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProductVariantItemProvider(AdapterFactory adapterFactory) {
+	public AssemblyGroupItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -45,14 +46,14 @@ public class ProductVariantItemProvider extends ManufacturedComponentItemProvide
 	}
 
 	/**
-	 * This returns ProductVariant.gif.
+	 * This returns AssemblyGroup.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ProductVariant"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/AssemblyGroup"));
 	}
 
 	/**
@@ -63,10 +64,10 @@ public class ProductVariantItemProvider extends ManufacturedComponentItemProvide
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ProductVariant)object).getName();
+		String label = ((AssemblyGroup)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_ProductVariant_type") :
-			getString("_UI_ProductVariant_type") + " " + label;
+			getString("_UI_AssemblyGroup_type") :
+			getString("_UI_AssemblyGroup_type") + " " + label;
 	}
 	
 

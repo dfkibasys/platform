@@ -29,12 +29,14 @@
       <genEnumLiterals ecoreEnumLiteral="order.ecore#//OrderStatusEnum/ABORTED"/>
     </genEnums>
     <genClasses ecoreClass="order.ecore#//Order">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute order.ecore#//Order/productVariantId"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference order.ecore#//Order/manufacturedComponent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute order.ecore#//Order/quantity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute order.ecore#//Order/dueDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute order.ecore#//Order/priority"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute order.ecore#//Order/startDate"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute order.ecore#//Order/endDate"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute order.ecore#//Order/pieces"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute order.ecore#//Order/priority"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference order.ecore#//Order/status"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute order.ecore#//Order/customer"/>
     </genClasses>
     <genClasses ecoreClass="order.ecore#//OrderStatus">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute order.ecore#//OrderStatus/orderId"/>
@@ -260,6 +262,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference capability.ecore#//CapabilityAssertion/pattern"/>
     </genClasses>
     <genClasses ecoreClass="capability.ecore#//Capability"/>
+    <genClasses ecoreClass="capability.ecore#//HandlingCapability"/>
     <genClasses ecoreClass="capability.ecore#//ManufacturingCapability"/>
     <genClasses ecoreClass="capability.ecore#//Fügen"/>
     <genClasses ecoreClass="capability.ecore#//Pressen">
@@ -276,6 +279,8 @@
     <genClasses ecoreClass="capability.ecore#//Schrauben">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute capability.ecore#//Schrauben/drehmoment"/>
     </genClasses>
+    <genClasses ecoreClass="capability.ecore#//InformationTransferCapability"/>
+    <genClasses ecoreClass="capability.ecore#//ProvideInformation"/>
   </genPackages>
   <genPackages prefix="Process" basePackage="de.dfki.iui.basys.model.domain" resource="XMI"
       disposableProviderFactory="true" ecorePackage="process.ecore#/">
@@ -297,6 +302,7 @@
     <genClasses ecoreClass="process.ecore#//ProcessDefinition">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference process.ecore#//ProcessDefinition/nodes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference process.ecore#//ProcessDefinition/edges"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference process.ecore#//ProcessDefinition/productVariant"/>
     </genClasses>
     <genClasses image="false" ecoreClass="process.ecore#//Node">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference process.ecore#//Node/outgoing"/>
@@ -325,6 +331,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute process.ecore#//Task/uri"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference process.ecore#//Task/inputData"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference process.ecore#//Task/outputData"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference process.ecore#//Task/capabilityRequirement"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference process.ecore#//Task/usedmaterial"/>
     </genClasses>
     <genClasses ecoreClass="process.ecore#//DataFlow">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference process.ecore#//DataFlow/transformation"/>
@@ -375,14 +383,22 @@
     <genClasses ecoreClass="process.ecore#//TaskCancelled">
       <genOperations ecoreOperation="process.ecore#//TaskCancelled/toEnum"/>
     </genClasses>
+    <genClasses ecoreClass="process.ecore#//UsedMaterial">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute process.ecore#//UsedMaterial/count"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference process.ecore#//UsedMaterial/bomEntry"/>
+    </genClasses>
   </genPackages>
   <genPackages prefix="Processinstance" basePackage="de.dfki.iui.basys.model.domain"
       resource="XMI" disposableProviderFactory="true" ecorePackage="processinstance.ecore#/">
     <genClasses ecoreClass="processinstance.ecore#//ProcessInstance">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute processinstance.ecore#//ProcessInstance/processDefinitionId"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute processinstance.ecore#//ProcessInstance/orderId"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute processinstance.ecore#//ProcessInstance/productInstanceId"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference processinstance.ecore#//ProcessInstance/processDefinition"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference processinstance.ecore#//ProcessInstance/order"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference processinstance.ecore#//ProcessInstance/productInstance"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute processinstance.ecore#//ProcessInstance/state"/>
+    </genClasses>
+    <genClasses ecoreClass="processinstance.ecore#//TaskInstance">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute processinstance.ecore#//TaskInstance/state"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference processinstance.ecore#//TaskInstance/task"/>
     </genClasses>
   </genPackages>
   <genPackages prefix="Product" basePackage="de.dfki.iui.basys.model.domain" resource="XMI"
@@ -392,17 +408,26 @@
     </genClasses>
     <genClasses ecoreClass="product.ecore#//ProductGroup">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product.ecore#//ProductGroup/productVariants"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product.ecore#//ProductGroup/assemblyGroups"/>
     </genClasses>
     <genClasses ecoreClass="product.ecore#//ProductVariant">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference product.ecore#//ProductVariant/productGroup"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product.ecore#//ProductVariant/bom"/>
     </genClasses>
     <genClasses ecoreClass="product.ecore#//BillOfMaterial">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product.ecore#//BillOfMaterial/entries"/>
     </genClasses>
     <genClasses ecoreClass="product.ecore#//BOMEntry">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product.ecore#//BOMEntry/count"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product.ecore#//BOMEntry/material"/>
+    </genClasses>
+    <genClasses ecoreClass="product.ecore#//AssemblyGroup"/>
+    <genClasses ecoreClass="product.ecore#//AssemblyGroupEntry">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product.ecore#//AssemblyGroupEntry/assemblyGroup"/>
+    </genClasses>
+    <genClasses ecoreClass="product.ecore#//ComponentEntry">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product.ecore#//ComponentEntry/material"/>
+    </genClasses>
+    <genClasses ecoreClass="product.ecore#//ManufacturedComponent">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product.ecore#//ManufacturedComponent/bom"/>
     </genClasses>
   </genPackages>
   <genPackages prefix="Productinstance" basePackage="de.dfki.iui.basys.model.domain"
@@ -422,8 +447,8 @@
       <genEnumLiterals ecoreEnumLiteral="productinstance.ecore#//ProductInstanceStatusEnum/IO"/>
     </genEnums>
     <genClasses ecoreClass="productinstance.ecore#//ProductInstance">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute productinstance.ecore#//ProductInstance/productVariantId"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute productinstance.ecore#//ProductInstance/orderId"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference productinstance.ecore#//ProductInstance/productVariant"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference productinstance.ecore#//ProductInstance/order"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute productinstance.ecore#//ProductInstance/serialNumber"/>
     </genClasses>
     <genClasses ecoreClass="productinstance.ecore#//ProductInstanceStatus">

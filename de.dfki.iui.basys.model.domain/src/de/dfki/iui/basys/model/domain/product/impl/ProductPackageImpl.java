@@ -26,8 +26,12 @@ import de.dfki.iui.basys.model.domain.processinstance.ProcessinstancePackage;
 
 import de.dfki.iui.basys.model.domain.processinstance.impl.ProcessinstancePackageImpl;
 
+import de.dfki.iui.basys.model.domain.product.AssemblyGroup;
+import de.dfki.iui.basys.model.domain.product.AssemblyGroupEntry;
 import de.dfki.iui.basys.model.domain.product.BOMEntry;
 import de.dfki.iui.basys.model.domain.product.BillOfMaterial;
+import de.dfki.iui.basys.model.domain.product.ComponentEntry;
+import de.dfki.iui.basys.model.domain.product.ManufacturedComponent;
 import de.dfki.iui.basys.model.domain.product.ProductCatalogue;
 import de.dfki.iui.basys.model.domain.product.ProductFactory;
 import de.dfki.iui.basys.model.domain.product.ProductGroup;
@@ -106,6 +110,34 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 	 * @generated
 	 */
 	private EClass bomEntryEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass assemblyGroupEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass assemblyGroupEntryEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass componentEntryEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass manufacturedComponentEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -251,6 +283,15 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getProductGroup_AssemblyGroups() {
+		return (EReference)productGroupEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getProductVariant() {
 		return productVariantEClass;
 	}
@@ -262,15 +303,6 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 	 */
 	public EReference getProductVariant_ProductGroup() {
 		return (EReference)productVariantEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getProductVariant_Bom() {
-		return (EReference)productVariantEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -314,8 +346,62 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getBOMEntry_Material() {
-		return (EReference)bomEntryEClass.getEStructuralFeatures().get(1);
+	public EClass getAssemblyGroup() {
+		return assemblyGroupEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAssemblyGroupEntry() {
+		return assemblyGroupEntryEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAssemblyGroupEntry_AssemblyGroup() {
+		return (EReference)assemblyGroupEntryEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getComponentEntry() {
+		return componentEntryEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getComponentEntry_Material() {
+		return (EReference)componentEntryEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getManufacturedComponent() {
+		return manufacturedComponentEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getManufacturedComponent_Bom() {
+		return (EReference)manufacturedComponentEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -351,17 +437,27 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 
 		productGroupEClass = createEClass(PRODUCT_GROUP);
 		createEReference(productGroupEClass, PRODUCT_GROUP__PRODUCT_VARIANTS);
+		createEReference(productGroupEClass, PRODUCT_GROUP__ASSEMBLY_GROUPS);
 
 		productVariantEClass = createEClass(PRODUCT_VARIANT);
 		createEReference(productVariantEClass, PRODUCT_VARIANT__PRODUCT_GROUP);
-		createEReference(productVariantEClass, PRODUCT_VARIANT__BOM);
 
 		billOfMaterialEClass = createEClass(BILL_OF_MATERIAL);
 		createEReference(billOfMaterialEClass, BILL_OF_MATERIAL__ENTRIES);
 
 		bomEntryEClass = createEClass(BOM_ENTRY);
 		createEAttribute(bomEntryEClass, BOM_ENTRY__COUNT);
-		createEReference(bomEntryEClass, BOM_ENTRY__MATERIAL);
+
+		assemblyGroupEClass = createEClass(ASSEMBLY_GROUP);
+
+		assemblyGroupEntryEClass = createEClass(ASSEMBLY_GROUP_ENTRY);
+		createEReference(assemblyGroupEntryEClass, ASSEMBLY_GROUP_ENTRY__ASSEMBLY_GROUP);
+
+		componentEntryEClass = createEClass(COMPONENT_ENTRY);
+		createEReference(componentEntryEClass, COMPONENT_ENTRY__MATERIAL);
+
+		manufacturedComponentEClass = createEClass(MANUFACTURED_COMPONENT);
+		createEReference(manufacturedComponentEClass, MANUFACTURED_COMPONENT__BOM);
 	}
 
 	/**
@@ -397,8 +493,12 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 
 		// Add supertypes to classes
 		productGroupEClass.getESuperTypes().add(theBasePackage.getEntity());
-		productVariantEClass.getESuperTypes().add(theBasePackage.getEntity());
+		productVariantEClass.getESuperTypes().add(this.getManufacturedComponent());
 		billOfMaterialEClass.getESuperTypes().add(theBasePackage.getEntity());
+		assemblyGroupEClass.getESuperTypes().add(this.getManufacturedComponent());
+		assemblyGroupEntryEClass.getESuperTypes().add(this.getBOMEntry());
+		componentEntryEClass.getESuperTypes().add(this.getBOMEntry());
+		manufacturedComponentEClass.getESuperTypes().add(theBasePackage.getEntity());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(productCatalogueEClass, ProductCatalogue.class, "ProductCatalogue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -406,17 +506,27 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage {
 
 		initEClass(productGroupEClass, ProductGroup.class, "ProductGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getProductGroup_ProductVariants(), this.getProductVariant(), this.getProductVariant_ProductGroup(), "productVariants", null, 0, -1, ProductGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProductGroup_AssemblyGroups(), this.getAssemblyGroup(), null, "assemblyGroups", null, 0, -1, ProductGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(productVariantEClass, ProductVariant.class, "ProductVariant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getProductVariant_ProductGroup(), this.getProductGroup(), this.getProductGroup_ProductVariants(), "productGroup", null, 0, 1, ProductVariant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProductVariant_Bom(), this.getBillOfMaterial(), null, "bom", null, 1, 1, ProductVariant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(billOfMaterialEClass, BillOfMaterial.class, "BillOfMaterial", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getBillOfMaterial_Entries(), this.getBOMEntry(), null, "entries", null, 0, -1, BillOfMaterial.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(bomEntryEClass, BOMEntry.class, "BOMEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getBOMEntry_Count(), ecorePackage.getEInt(), "count", null, 1, 1, BOMEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getBOMEntry_Material(), theMaterialPackage.getMaterial(), null, "material", null, 1, 1, BOMEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(assemblyGroupEClass, AssemblyGroup.class, "AssemblyGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(assemblyGroupEntryEClass, AssemblyGroupEntry.class, "AssemblyGroupEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getAssemblyGroupEntry_AssemblyGroup(), this.getAssemblyGroup(), null, "assemblyGroup", null, 1, 1, AssemblyGroupEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(componentEntryEClass, ComponentEntry.class, "ComponentEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getComponentEntry_Material(), theMaterialPackage.getMaterial(), null, "material", null, 1, 1, ComponentEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(manufacturedComponentEClass, ManufacturedComponent.class, "ManufacturedComponent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getManufacturedComponent_Bom(), this.getBillOfMaterial(), null, "bom", null, 1, 1, ManufacturedComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -187,6 +187,98 @@ public class ProductItemProviderAdapterFactory extends ProductAdapterFactory imp
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.product.AssemblyGroup} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AssemblyGroupItemProvider assemblyGroupItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.product.AssemblyGroup}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAssemblyGroupAdapter() {
+		if (assemblyGroupItemProvider == null) {
+			assemblyGroupItemProvider = new AssemblyGroupItemProvider(this);
+		}
+
+		return assemblyGroupItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.product.AssemblyGroupEntry} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AssemblyGroupEntryItemProvider assemblyGroupEntryItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.product.AssemblyGroupEntry}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAssemblyGroupEntryAdapter() {
+		if (assemblyGroupEntryItemProvider == null) {
+			assemblyGroupEntryItemProvider = new AssemblyGroupEntryItemProvider(this);
+		}
+
+		return assemblyGroupEntryItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.product.ComponentEntry} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ComponentEntryItemProvider componentEntryItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.product.ComponentEntry}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createComponentEntryAdapter() {
+		if (componentEntryItemProvider == null) {
+			componentEntryItemProvider = new ComponentEntryItemProvider(this);
+		}
+
+		return componentEntryItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.product.ManufacturedComponent} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ManufacturedComponentItemProvider manufacturedComponentItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.product.ManufacturedComponent}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createManufacturedComponentAdapter() {
+		if (manufacturedComponentItemProvider == null) {
+			manufacturedComponentItemProvider = new ManufacturedComponentItemProvider(this);
+		}
+
+		return manufacturedComponentItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -290,6 +382,10 @@ public class ProductItemProviderAdapterFactory extends ProductAdapterFactory imp
 		if (productVariantItemProvider != null) productVariantItemProvider.dispose();
 		if (billOfMaterialItemProvider != null) billOfMaterialItemProvider.dispose();
 		if (bomEntryItemProvider != null) bomEntryItemProvider.dispose();
+		if (assemblyGroupItemProvider != null) assemblyGroupItemProvider.dispose();
+		if (assemblyGroupEntryItemProvider != null) assemblyGroupEntryItemProvider.dispose();
+		if (componentEntryItemProvider != null) componentEntryItemProvider.dispose();
+		if (manufacturedComponentItemProvider != null) manufacturedComponentItemProvider.dispose();
 	}
 
 }

@@ -152,13 +152,22 @@ public interface ProductPackage extends EPackage {
 	int PRODUCT_GROUP__PRODUCT_VARIANTS = BasePackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Assembly Groups</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_GROUP__ASSEMBLY_GROUPS = BasePackage.ENTITY_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Group</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_GROUP_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 1;
+	int PRODUCT_GROUP_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Group</em>' class.
@@ -168,6 +177,79 @@ public interface ProductPackage extends EPackage {
 	 * @ordered
 	 */
 	int PRODUCT_GROUP_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.product.impl.ManufacturedComponentImpl <em>Manufactured Component</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.product.impl.ManufacturedComponentImpl
+	 * @see de.dfki.iui.basys.model.domain.product.impl.ProductPackageImpl#getManufacturedComponent()
+	 * @generated
+	 */
+	int MANUFACTURED_COMPONENT = 8;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANUFACTURED_COMPONENT__BINDING = BasePackage.ENTITY__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANUFACTURED_COMPONENT__ID = BasePackage.ENTITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANUFACTURED_COMPONENT__NAME = BasePackage.ENTITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANUFACTURED_COMPONENT__METADATA = BasePackage.ENTITY__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Bom</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANUFACTURED_COMPONENT__BOM = BasePackage.ENTITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Manufactured Component</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANUFACTURED_COMPONENT_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Manufactured Component</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANUFACTURED_COMPONENT_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.product.impl.ProductVariantImpl <em>Variant</em>}' class.
@@ -186,7 +268,7 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_VARIANT__BINDING = BasePackage.ENTITY__BINDING;
+	int PRODUCT_VARIANT__BINDING = MANUFACTURED_COMPONENT__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -195,7 +277,7 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_VARIANT__ID = BasePackage.ENTITY__ID;
+	int PRODUCT_VARIANT__ID = MANUFACTURED_COMPONENT__ID;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -204,7 +286,7 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_VARIANT__NAME = BasePackage.ENTITY__NAME;
+	int PRODUCT_VARIANT__NAME = MANUFACTURED_COMPONENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -213,16 +295,7 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_VARIANT__METADATA = BasePackage.ENTITY__METADATA;
-
-	/**
-	 * The feature id for the '<em><b>Product Group</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRODUCT_VARIANT__PRODUCT_GROUP = BasePackage.ENTITY_FEATURE_COUNT + 0;
+	int PRODUCT_VARIANT__METADATA = MANUFACTURED_COMPONENT__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Bom</b></em>' containment reference.
@@ -231,7 +304,16 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_VARIANT__BOM = BasePackage.ENTITY_FEATURE_COUNT + 1;
+	int PRODUCT_VARIANT__BOM = MANUFACTURED_COMPONENT__BOM;
+
+	/**
+	 * The feature id for the '<em><b>Product Group</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_VARIANT__PRODUCT_GROUP = MANUFACTURED_COMPONENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Variant</em>' class.
@@ -240,7 +322,7 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_VARIANT_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 2;
+	int PRODUCT_VARIANT_FEATURE_COUNT = MANUFACTURED_COMPONENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Variant</em>' class.
@@ -249,7 +331,7 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_VARIANT_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
+	int PRODUCT_VARIANT_OPERATION_COUNT = MANUFACTURED_COMPONENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.product.impl.BillOfMaterialImpl <em>Bill Of Material</em>}' class.
@@ -344,22 +426,13 @@ public interface ProductPackage extends EPackage {
 	int BOM_ENTRY__COUNT = 0;
 
 	/**
-	 * The feature id for the '<em><b>Material</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOM_ENTRY__MATERIAL = 1;
-
-	/**
 	 * The number of structural features of the '<em>BOM Entry</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOM_ENTRY_FEATURE_COUNT = 2;
+	int BOM_ENTRY_FEATURE_COUNT = 1;
 
 	/**
 	 * The number of operations of the '<em>BOM Entry</em>' class.
@@ -369,6 +442,171 @@ public interface ProductPackage extends EPackage {
 	 * @ordered
 	 */
 	int BOM_ENTRY_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.product.impl.AssemblyGroupImpl <em>Assembly Group</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.product.impl.AssemblyGroupImpl
+	 * @see de.dfki.iui.basys.model.domain.product.impl.ProductPackageImpl#getAssemblyGroup()
+	 * @generated
+	 */
+	int ASSEMBLY_GROUP = 5;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSEMBLY_GROUP__BINDING = MANUFACTURED_COMPONENT__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSEMBLY_GROUP__ID = MANUFACTURED_COMPONENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSEMBLY_GROUP__NAME = MANUFACTURED_COMPONENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSEMBLY_GROUP__METADATA = MANUFACTURED_COMPONENT__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Bom</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSEMBLY_GROUP__BOM = MANUFACTURED_COMPONENT__BOM;
+
+	/**
+	 * The number of structural features of the '<em>Assembly Group</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSEMBLY_GROUP_FEATURE_COUNT = MANUFACTURED_COMPONENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Assembly Group</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSEMBLY_GROUP_OPERATION_COUNT = MANUFACTURED_COMPONENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.product.impl.AssemblyGroupEntryImpl <em>Assembly Group Entry</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.product.impl.AssemblyGroupEntryImpl
+	 * @see de.dfki.iui.basys.model.domain.product.impl.ProductPackageImpl#getAssemblyGroupEntry()
+	 * @generated
+	 */
+	int ASSEMBLY_GROUP_ENTRY = 6;
+
+	/**
+	 * The feature id for the '<em><b>Count</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSEMBLY_GROUP_ENTRY__COUNT = BOM_ENTRY__COUNT;
+
+	/**
+	 * The feature id for the '<em><b>Assembly Group</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSEMBLY_GROUP_ENTRY__ASSEMBLY_GROUP = BOM_ENTRY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Assembly Group Entry</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSEMBLY_GROUP_ENTRY_FEATURE_COUNT = BOM_ENTRY_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Assembly Group Entry</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSEMBLY_GROUP_ENTRY_OPERATION_COUNT = BOM_ENTRY_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.product.impl.ComponentEntryImpl <em>Component Entry</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.product.impl.ComponentEntryImpl
+	 * @see de.dfki.iui.basys.model.domain.product.impl.ProductPackageImpl#getComponentEntry()
+	 * @generated
+	 */
+	int COMPONENT_ENTRY = 7;
+
+	/**
+	 * The feature id for the '<em><b>Count</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_ENTRY__COUNT = BOM_ENTRY__COUNT;
+
+	/**
+	 * The feature id for the '<em><b>Material</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_ENTRY__MATERIAL = BOM_ENTRY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Component Entry</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_ENTRY_FEATURE_COUNT = BOM_ENTRY_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Component Entry</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_ENTRY_OPERATION_COUNT = BOM_ENTRY_OPERATION_COUNT + 0;
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.product.ProductCatalogue <em>Catalogue</em>}'.
@@ -413,6 +651,17 @@ public interface ProductPackage extends EPackage {
 	EReference getProductGroup_ProductVariants();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.domain.product.ProductGroup#getAssemblyGroups <em>Assembly Groups</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Assembly Groups</em>'.
+	 * @see de.dfki.iui.basys.model.domain.product.ProductGroup#getAssemblyGroups()
+	 * @see #getProductGroup()
+	 * @generated
+	 */
+	EReference getProductGroup_AssemblyGroups();
+
+	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.product.ProductVariant <em>Variant</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -432,17 +681,6 @@ public interface ProductPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getProductVariant_ProductGroup();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link de.dfki.iui.basys.model.domain.product.ProductVariant#getBom <em>Bom</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Bom</em>'.
-	 * @see de.dfki.iui.basys.model.domain.product.ProductVariant#getBom()
-	 * @see #getProductVariant()
-	 * @generated
-	 */
-	EReference getProductVariant_Bom();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.product.BillOfMaterial <em>Bill Of Material</em>}'.
@@ -487,15 +725,77 @@ public interface ProductPackage extends EPackage {
 	EAttribute getBOMEntry_Count();
 
 	/**
-	 * Returns the meta object for the reference '{@link de.dfki.iui.basys.model.domain.product.BOMEntry#getMaterial <em>Material</em>}'.
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.product.AssemblyGroup <em>Assembly Group</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Assembly Group</em>'.
+	 * @see de.dfki.iui.basys.model.domain.product.AssemblyGroup
+	 * @generated
+	 */
+	EClass getAssemblyGroup();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.product.AssemblyGroupEntry <em>Assembly Group Entry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Assembly Group Entry</em>'.
+	 * @see de.dfki.iui.basys.model.domain.product.AssemblyGroupEntry
+	 * @generated
+	 */
+	EClass getAssemblyGroupEntry();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.dfki.iui.basys.model.domain.product.AssemblyGroupEntry#getAssemblyGroup <em>Assembly Group</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Assembly Group</em>'.
+	 * @see de.dfki.iui.basys.model.domain.product.AssemblyGroupEntry#getAssemblyGroup()
+	 * @see #getAssemblyGroupEntry()
+	 * @generated
+	 */
+	EReference getAssemblyGroupEntry_AssemblyGroup();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.product.ComponentEntry <em>Component Entry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Component Entry</em>'.
+	 * @see de.dfki.iui.basys.model.domain.product.ComponentEntry
+	 * @generated
+	 */
+	EClass getComponentEntry();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.dfki.iui.basys.model.domain.product.ComponentEntry#getMaterial <em>Material</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Material</em>'.
-	 * @see de.dfki.iui.basys.model.domain.product.BOMEntry#getMaterial()
-	 * @see #getBOMEntry()
+	 * @see de.dfki.iui.basys.model.domain.product.ComponentEntry#getMaterial()
+	 * @see #getComponentEntry()
 	 * @generated
 	 */
-	EReference getBOMEntry_Material();
+	EReference getComponentEntry_Material();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.product.ManufacturedComponent <em>Manufactured Component</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Manufactured Component</em>'.
+	 * @see de.dfki.iui.basys.model.domain.product.ManufacturedComponent
+	 * @generated
+	 */
+	EClass getManufacturedComponent();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link de.dfki.iui.basys.model.domain.product.ManufacturedComponent#getBom <em>Bom</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Bom</em>'.
+	 * @see de.dfki.iui.basys.model.domain.product.ManufacturedComponent#getBom()
+	 * @see #getManufacturedComponent()
+	 * @generated
+	 */
+	EReference getManufacturedComponent_Bom();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -557,6 +857,14 @@ public interface ProductPackage extends EPackage {
 		EReference PRODUCT_GROUP__PRODUCT_VARIANTS = eINSTANCE.getProductGroup_ProductVariants();
 
 		/**
+		 * The meta object literal for the '<em><b>Assembly Groups</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PRODUCT_GROUP__ASSEMBLY_GROUPS = eINSTANCE.getProductGroup_AssemblyGroups();
+
+		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.product.impl.ProductVariantImpl <em>Variant</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -573,14 +881,6 @@ public interface ProductPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PRODUCT_VARIANT__PRODUCT_GROUP = eINSTANCE.getProductVariant_ProductGroup();
-
-		/**
-		 * The meta object literal for the '<em><b>Bom</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PRODUCT_VARIANT__BOM = eINSTANCE.getProductVariant_Bom();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.product.impl.BillOfMaterialImpl <em>Bill Of Material</em>}' class.
@@ -619,12 +919,68 @@ public interface ProductPackage extends EPackage {
 		EAttribute BOM_ENTRY__COUNT = eINSTANCE.getBOMEntry_Count();
 
 		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.product.impl.AssemblyGroupImpl <em>Assembly Group</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.product.impl.AssemblyGroupImpl
+		 * @see de.dfki.iui.basys.model.domain.product.impl.ProductPackageImpl#getAssemblyGroup()
+		 * @generated
+		 */
+		EClass ASSEMBLY_GROUP = eINSTANCE.getAssemblyGroup();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.product.impl.AssemblyGroupEntryImpl <em>Assembly Group Entry</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.product.impl.AssemblyGroupEntryImpl
+		 * @see de.dfki.iui.basys.model.domain.product.impl.ProductPackageImpl#getAssemblyGroupEntry()
+		 * @generated
+		 */
+		EClass ASSEMBLY_GROUP_ENTRY = eINSTANCE.getAssemblyGroupEntry();
+
+		/**
+		 * The meta object literal for the '<em><b>Assembly Group</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ASSEMBLY_GROUP_ENTRY__ASSEMBLY_GROUP = eINSTANCE.getAssemblyGroupEntry_AssemblyGroup();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.product.impl.ComponentEntryImpl <em>Component Entry</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.product.impl.ComponentEntryImpl
+		 * @see de.dfki.iui.basys.model.domain.product.impl.ProductPackageImpl#getComponentEntry()
+		 * @generated
+		 */
+		EClass COMPONENT_ENTRY = eINSTANCE.getComponentEntry();
+
+		/**
 		 * The meta object literal for the '<em><b>Material</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference BOM_ENTRY__MATERIAL = eINSTANCE.getBOMEntry_Material();
+		EReference COMPONENT_ENTRY__MATERIAL = eINSTANCE.getComponentEntry_Material();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.product.impl.ManufacturedComponentImpl <em>Manufactured Component</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.product.impl.ManufacturedComponentImpl
+		 * @see de.dfki.iui.basys.model.domain.product.impl.ProductPackageImpl#getManufacturedComponent()
+		 * @generated
+		 */
+		EClass MANUFACTURED_COMPONENT = eINSTANCE.getManufacturedComponent();
+
+		/**
+		 * The meta object literal for the '<em><b>Bom</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MANUFACTURED_COMPONENT__BOM = eINSTANCE.getManufacturedComponent_Bom();
 
 	}
 

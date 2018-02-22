@@ -20,7 +20,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -69,6 +68,7 @@ public class ProductGroupItemProvider extends EntityItemProvider {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ProductPackage.Literals.PRODUCT_GROUP__PRODUCT_VARIANTS);
+			childrenFeatures.add(ProductPackage.Literals.PRODUCT_GROUP__ASSEMBLY_GROUPS);
 		}
 		return childrenFeatures;
 	}
@@ -125,6 +125,7 @@ public class ProductGroupItemProvider extends EntityItemProvider {
 
 		switch (notification.getFeatureID(ProductGroup.class)) {
 			case ProductPackage.PRODUCT_GROUP__PRODUCT_VARIANTS:
+			case ProductPackage.PRODUCT_GROUP__ASSEMBLY_GROUPS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -146,6 +147,11 @@ public class ProductGroupItemProvider extends EntityItemProvider {
 			(createChildParameter
 				(ProductPackage.Literals.PRODUCT_GROUP__PRODUCT_VARIANTS,
 				 ProductFactory.eINSTANCE.createProductVariant()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ProductPackage.Literals.PRODUCT_GROUP__ASSEMBLY_GROUPS,
+				 ProductFactory.eINSTANCE.createAssemblyGroup()));
 	}
 
 	/**

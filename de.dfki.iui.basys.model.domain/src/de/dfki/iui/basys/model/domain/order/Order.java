@@ -4,7 +4,7 @@ package de.dfki.iui.basys.model.domain.order;
 
 import de.dfki.iui.basys.model.base.Entity;
 
-import de.dfki.iui.basys.model.domain.product.ProductVariant;
+import de.dfki.iui.basys.model.domain.product.ManufacturedComponent;
 import java.util.Date;
 
 /**
@@ -20,13 +20,14 @@ import java.util.Date;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.dfki.iui.basys.model.domain.order.Order#getProductVariant <em>Product Variant</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.order.Order#getManufacturedComponent <em>Manufactured Component</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.order.Order#getQuantity <em>Quantity</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.order.Order#getDueDate <em>Due Date</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.order.Order#getPriority <em>Priority</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.order.Order#getStartDate <em>Start Date</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.order.Order#getEndDate <em>End Date</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.order.Order#getStatus <em>Status</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.order.Order#getCustomer <em>Customer</em>}</li>
  * </ul>
  *
  * @see de.dfki.iui.basys.model.domain.order.OrderPackage#getOrder()
@@ -35,30 +36,30 @@ import java.util.Date;
  */
 public interface Order extends Entity {
 	/**
-	 * Returns the value of the '<em><b>Product Variant</b></em>' reference.
+	 * Returns the value of the '<em><b>Manufactured Component</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Product Variant</em>' reference isn't clear,
+	 * If the meaning of the '<em>Manufactured Component</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Product Variant</em>' reference.
-	 * @see #setProductVariant(ProductVariant)
-	 * @see de.dfki.iui.basys.model.domain.order.OrderPackage#getOrder_ProductVariant()
+	 * @return the value of the '<em>Manufactured Component</em>' reference.
+	 * @see #setManufacturedComponent(ManufacturedComponent)
+	 * @see de.dfki.iui.basys.model.domain.order.OrderPackage#getOrder_ManufacturedComponent()
 	 * @model required="true"
 	 * @generated
 	 */
-	ProductVariant getProductVariant();
+	ManufacturedComponent getManufacturedComponent();
 
 	/**
-	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.order.Order#getProductVariant <em>Product Variant</em>}' reference.
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.order.Order#getManufacturedComponent <em>Manufactured Component</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Product Variant</em>' reference.
-	 * @see #getProductVariant()
+	 * @param value the new value of the '<em>Manufactured Component</em>' reference.
+	 * @see #getManufacturedComponent()
 	 * @generated
 	 */
-	void setProductVariant(ProductVariant value);
+	void setManufacturedComponent(ManufacturedComponent value);
 
 	/**
 	 * Returns the value of the '<em><b>Quantity</b></em>' attribute.
@@ -194,6 +195,9 @@ public interface Order extends Entity {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * TODO: Überarbeiten
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Status</em>' containment reference.
 	 * @see #setStatus(OrderStatus)
 	 * @see de.dfki.iui.basys.model.domain.order.OrderPackage#getOrder_Status()
@@ -211,5 +215,31 @@ public interface Order extends Entity {
 	 * @generated
 	 */
 	void setStatus(OrderStatus value);
+
+	/**
+	 * Returns the value of the '<em><b>Customer</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Customer</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Customer</em>' attribute.
+	 * @see #setCustomer(String)
+	 * @see de.dfki.iui.basys.model.domain.order.OrderPackage#getOrder_Customer()
+	 * @model
+	 * @generated
+	 */
+	String getCustomer();
+
+	/**
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.order.Order#getCustomer <em>Customer</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Customer</em>' attribute.
+	 * @see #getCustomer()
+	 * @generated
+	 */
+	void setCustomer(String value);
 
 } // Order

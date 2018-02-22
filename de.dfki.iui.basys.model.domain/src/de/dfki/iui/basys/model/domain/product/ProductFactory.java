@@ -67,6 +67,42 @@ public interface ProductFactory extends EFactory {
 	BOMEntry createBOMEntry();
 
 	/**
+	 * Returns a new object of class '<em>Assembly Group</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Assembly Group</em>'.
+	 * @generated
+	 */
+	AssemblyGroup createAssemblyGroup();
+
+	/**
+	 * Returns a new object of class '<em>Assembly Group Entry</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Assembly Group Entry</em>'.
+	 * @generated
+	 */
+	AssemblyGroupEntry createAssemblyGroupEntry();
+
+	/**
+	 * Returns a new object of class '<em>Component Entry</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Component Entry</em>'.
+	 * @generated
+	 */
+	ComponentEntry createComponentEntry();
+
+	/**
+	 * Returns a new object of class '<em>Manufactured Component</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Manufactured Component</em>'.
+	 * @generated
+	 */
+	ManufacturedComponent createManufacturedComponent();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

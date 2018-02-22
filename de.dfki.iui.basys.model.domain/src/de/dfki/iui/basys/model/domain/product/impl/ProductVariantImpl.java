@@ -2,9 +2,6 @@
  */
 package de.dfki.iui.basys.model.domain.product.impl;
 
-import de.dfki.iui.basys.model.base.impl.EntityImpl;
-
-import de.dfki.iui.basys.model.domain.product.BillOfMaterial;
 import de.dfki.iui.basys.model.domain.product.ProductGroup;
 import de.dfki.iui.basys.model.domain.product.ProductPackage;
 import de.dfki.iui.basys.model.domain.product.ProductVariant;
@@ -28,22 +25,11 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * </p>
  * <ul>
  *   <li>{@link de.dfki.iui.basys.model.domain.product.impl.ProductVariantImpl#getProductGroup <em>Product Group</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.domain.product.impl.ProductVariantImpl#getBom <em>Bom</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ProductVariantImpl extends EntityImpl implements ProductVariant {
-	/**
-	 * The cached value of the '{@link #getBom() <em>Bom</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getBom()
-	 * @generated
-	 * @ordered
-	 */
-	protected BillOfMaterial bom;
-
+public class ProductVariantImpl extends ManufacturedComponentImpl implements ProductVariant {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -109,49 +95,6 @@ public class ProductVariantImpl extends EntityImpl implements ProductVariant {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BillOfMaterial getBom() {
-		return bom;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetBom(BillOfMaterial newBom, NotificationChain msgs) {
-		BillOfMaterial oldBom = bom;
-		bom = newBom;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ProductPackage.PRODUCT_VARIANT__BOM, oldBom, newBom);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setBom(BillOfMaterial newBom) {
-		if (newBom != bom) {
-			NotificationChain msgs = null;
-			if (bom != null)
-				msgs = ((InternalEObject)bom).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ProductPackage.PRODUCT_VARIANT__BOM, null, msgs);
-			if (newBom != null)
-				msgs = ((InternalEObject)newBom).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ProductPackage.PRODUCT_VARIANT__BOM, null, msgs);
-			msgs = basicSetBom(newBom, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ProductPackage.PRODUCT_VARIANT__BOM, newBom, newBom));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -173,8 +116,6 @@ public class ProductVariantImpl extends EntityImpl implements ProductVariant {
 		switch (featureID) {
 			case ProductPackage.PRODUCT_VARIANT__PRODUCT_GROUP:
 				return basicSetProductGroup(null, msgs);
-			case ProductPackage.PRODUCT_VARIANT__BOM:
-				return basicSetBom(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -203,8 +144,6 @@ public class ProductVariantImpl extends EntityImpl implements ProductVariant {
 		switch (featureID) {
 			case ProductPackage.PRODUCT_VARIANT__PRODUCT_GROUP:
 				return getProductGroup();
-			case ProductPackage.PRODUCT_VARIANT__BOM:
-				return getBom();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -219,9 +158,6 @@ public class ProductVariantImpl extends EntityImpl implements ProductVariant {
 		switch (featureID) {
 			case ProductPackage.PRODUCT_VARIANT__PRODUCT_GROUP:
 				setProductGroup((ProductGroup)newValue);
-				return;
-			case ProductPackage.PRODUCT_VARIANT__BOM:
-				setBom((BillOfMaterial)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -238,9 +174,6 @@ public class ProductVariantImpl extends EntityImpl implements ProductVariant {
 			case ProductPackage.PRODUCT_VARIANT__PRODUCT_GROUP:
 				setProductGroup((ProductGroup)null);
 				return;
-			case ProductPackage.PRODUCT_VARIANT__BOM:
-				setBom((BillOfMaterial)null);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -255,8 +188,6 @@ public class ProductVariantImpl extends EntityImpl implements ProductVariant {
 		switch (featureID) {
 			case ProductPackage.PRODUCT_VARIANT__PRODUCT_GROUP:
 				return getProductGroup() != null;
-			case ProductPackage.PRODUCT_VARIANT__BOM:
-				return bom != null;
 		}
 		return super.eIsSet(featureID);
 	}

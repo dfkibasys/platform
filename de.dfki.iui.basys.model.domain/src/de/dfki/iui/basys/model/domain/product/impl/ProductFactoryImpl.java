@@ -61,6 +61,10 @@ public class ProductFactoryImpl extends EFactoryImpl implements ProductFactory {
 			case ProductPackage.PRODUCT_VARIANT: return createProductVariant();
 			case ProductPackage.BILL_OF_MATERIAL: return createBillOfMaterial();
 			case ProductPackage.BOM_ENTRY: return createBOMEntry();
+			case ProductPackage.ASSEMBLY_GROUP: return createAssemblyGroup();
+			case ProductPackage.ASSEMBLY_GROUP_ENTRY: return createAssemblyGroupEntry();
+			case ProductPackage.COMPONENT_ENTRY: return createComponentEntry();
+			case ProductPackage.MANUFACTURED_COMPONENT: return createManufacturedComponent();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -114,6 +118,46 @@ public class ProductFactoryImpl extends EFactoryImpl implements ProductFactory {
 	public BOMEntry createBOMEntry() {
 		BOMEntryImpl bomEntry = new BOMEntryImpl();
 		return bomEntry;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AssemblyGroup createAssemblyGroup() {
+		AssemblyGroupImpl assemblyGroup = new AssemblyGroupImpl();
+		return assemblyGroup;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AssemblyGroupEntry createAssemblyGroupEntry() {
+		AssemblyGroupEntryImpl assemblyGroupEntry = new AssemblyGroupEntryImpl();
+		return assemblyGroupEntry;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ComponentEntry createComponentEntry() {
+		ComponentEntryImpl componentEntry = new ComponentEntryImpl();
+		return componentEntry;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ManufacturedComponent createManufacturedComponent() {
+		ManufacturedComponentImpl manufacturedComponent = new ManufacturedComponentImpl();
+		return manufacturedComponent;
 	}
 
 	/**

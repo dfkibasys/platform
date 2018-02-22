@@ -8,7 +8,7 @@ import de.dfki.iui.basys.model.domain.order.Order;
 import de.dfki.iui.basys.model.domain.order.OrderPackage;
 import de.dfki.iui.basys.model.domain.order.OrderStatus;
 
-import de.dfki.iui.basys.model.domain.product.ProductVariant;
+import de.dfki.iui.basys.model.domain.product.ManufacturedComponent;
 import java.util.Date;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -27,27 +27,28 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.dfki.iui.basys.model.domain.order.impl.OrderImpl#getProductVariant <em>Product Variant</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.order.impl.OrderImpl#getManufacturedComponent <em>Manufactured Component</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.order.impl.OrderImpl#getQuantity <em>Quantity</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.order.impl.OrderImpl#getDueDate <em>Due Date</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.order.impl.OrderImpl#getPriority <em>Priority</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.order.impl.OrderImpl#getStartDate <em>Start Date</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.order.impl.OrderImpl#getEndDate <em>End Date</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.order.impl.OrderImpl#getStatus <em>Status</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.order.impl.OrderImpl#getCustomer <em>Customer</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class OrderImpl extends EntityImpl implements Order {
 	/**
-	 * The cached value of the '{@link #getProductVariant() <em>Product Variant</em>}' reference.
+	 * The cached value of the '{@link #getManufacturedComponent() <em>Manufactured Component</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getProductVariant()
+	 * @see #getManufacturedComponent()
 	 * @generated
 	 * @ordered
 	 */
-	protected ProductVariant productVariant;
+	protected ManufacturedComponent manufacturedComponent;
 
 	/**
 	 * The default value of the '{@link #getQuantity() <em>Quantity</em>}' attribute.
@@ -160,6 +161,26 @@ public class OrderImpl extends EntityImpl implements Order {
 	protected OrderStatus status;
 
 	/**
+	 * The default value of the '{@link #getCustomer() <em>Customer</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCustomer()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String CUSTOMER_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getCustomer() <em>Customer</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCustomer()
+	 * @generated
+	 * @ordered
+	 */
+	protected String customer = CUSTOMER_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -183,16 +204,16 @@ public class OrderImpl extends EntityImpl implements Order {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProductVariant getProductVariant() {
-		if (productVariant != null && productVariant.eIsProxy()) {
-			InternalEObject oldProductVariant = (InternalEObject)productVariant;
-			productVariant = (ProductVariant)eResolveProxy(oldProductVariant);
-			if (productVariant != oldProductVariant) {
+	public ManufacturedComponent getManufacturedComponent() {
+		if (manufacturedComponent != null && manufacturedComponent.eIsProxy()) {
+			InternalEObject oldManufacturedComponent = (InternalEObject)manufacturedComponent;
+			manufacturedComponent = (ManufacturedComponent)eResolveProxy(oldManufacturedComponent);
+			if (manufacturedComponent != oldManufacturedComponent) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OrderPackage.ORDER__PRODUCT_VARIANT, oldProductVariant, productVariant));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OrderPackage.ORDER__MANUFACTURED_COMPONENT, oldManufacturedComponent, manufacturedComponent));
 			}
 		}
-		return productVariant;
+		return manufacturedComponent;
 	}
 
 	/**
@@ -200,8 +221,8 @@ public class OrderImpl extends EntityImpl implements Order {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProductVariant basicGetProductVariant() {
-		return productVariant;
+	public ManufacturedComponent basicGetManufacturedComponent() {
+		return manufacturedComponent;
 	}
 
 	/**
@@ -209,11 +230,11 @@ public class OrderImpl extends EntityImpl implements Order {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setProductVariant(ProductVariant newProductVariant) {
-		ProductVariant oldProductVariant = productVariant;
-		productVariant = newProductVariant;
+	public void setManufacturedComponent(ManufacturedComponent newManufacturedComponent) {
+		ManufacturedComponent oldManufacturedComponent = manufacturedComponent;
+		manufacturedComponent = newManufacturedComponent;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OrderPackage.ORDER__PRODUCT_VARIANT, oldProductVariant, productVariant));
+			eNotify(new ENotificationImpl(this, Notification.SET, OrderPackage.ORDER__MANUFACTURED_COMPONENT, oldManufacturedComponent, manufacturedComponent));
 	}
 
 	/**
@@ -369,6 +390,27 @@ public class OrderImpl extends EntityImpl implements Order {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getCustomer() {
+		return customer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCustomer(String newCustomer) {
+		String oldCustomer = customer;
+		customer = newCustomer;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, OrderPackage.ORDER__CUSTOMER, oldCustomer, customer));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -386,9 +428,9 @@ public class OrderImpl extends EntityImpl implements Order {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case OrderPackage.ORDER__PRODUCT_VARIANT:
-				if (resolve) return getProductVariant();
-				return basicGetProductVariant();
+			case OrderPackage.ORDER__MANUFACTURED_COMPONENT:
+				if (resolve) return getManufacturedComponent();
+				return basicGetManufacturedComponent();
 			case OrderPackage.ORDER__QUANTITY:
 				return getQuantity();
 			case OrderPackage.ORDER__DUE_DATE:
@@ -401,6 +443,8 @@ public class OrderImpl extends EntityImpl implements Order {
 				return getEndDate();
 			case OrderPackage.ORDER__STATUS:
 				return getStatus();
+			case OrderPackage.ORDER__CUSTOMER:
+				return getCustomer();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -413,8 +457,8 @@ public class OrderImpl extends EntityImpl implements Order {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case OrderPackage.ORDER__PRODUCT_VARIANT:
-				setProductVariant((ProductVariant)newValue);
+			case OrderPackage.ORDER__MANUFACTURED_COMPONENT:
+				setManufacturedComponent((ManufacturedComponent)newValue);
 				return;
 			case OrderPackage.ORDER__QUANTITY:
 				setQuantity((Integer)newValue);
@@ -434,6 +478,9 @@ public class OrderImpl extends EntityImpl implements Order {
 			case OrderPackage.ORDER__STATUS:
 				setStatus((OrderStatus)newValue);
 				return;
+			case OrderPackage.ORDER__CUSTOMER:
+				setCustomer((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -446,8 +493,8 @@ public class OrderImpl extends EntityImpl implements Order {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case OrderPackage.ORDER__PRODUCT_VARIANT:
-				setProductVariant((ProductVariant)null);
+			case OrderPackage.ORDER__MANUFACTURED_COMPONENT:
+				setManufacturedComponent((ManufacturedComponent)null);
 				return;
 			case OrderPackage.ORDER__QUANTITY:
 				setQuantity(QUANTITY_EDEFAULT);
@@ -467,6 +514,9 @@ public class OrderImpl extends EntityImpl implements Order {
 			case OrderPackage.ORDER__STATUS:
 				setStatus((OrderStatus)null);
 				return;
+			case OrderPackage.ORDER__CUSTOMER:
+				setCustomer(CUSTOMER_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -479,8 +529,8 @@ public class OrderImpl extends EntityImpl implements Order {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case OrderPackage.ORDER__PRODUCT_VARIANT:
-				return productVariant != null;
+			case OrderPackage.ORDER__MANUFACTURED_COMPONENT:
+				return manufacturedComponent != null;
 			case OrderPackage.ORDER__QUANTITY:
 				return quantity != QUANTITY_EDEFAULT;
 			case OrderPackage.ORDER__DUE_DATE:
@@ -493,6 +543,8 @@ public class OrderImpl extends EntityImpl implements Order {
 				return END_DATE_EDEFAULT == null ? endDate != null : !END_DATE_EDEFAULT.equals(endDate);
 			case OrderPackage.ORDER__STATUS:
 				return status != null;
+			case OrderPackage.ORDER__CUSTOMER:
+				return CUSTOMER_EDEFAULT == null ? customer != null : !CUSTOMER_EDEFAULT.equals(customer);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -517,6 +569,8 @@ public class OrderImpl extends EntityImpl implements Order {
 		result.append(startDate);
 		result.append(", endDate: ");
 		result.append(endDate);
+		result.append(", customer: ");
+		result.append(customer);
 		result.append(')');
 		return result.toString();
 	}

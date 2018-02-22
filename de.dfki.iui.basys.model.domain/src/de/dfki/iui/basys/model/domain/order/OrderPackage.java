@@ -107,13 +107,13 @@ public interface OrderPackage extends EPackage {
 	int ORDER__METADATA = BasePackage.ENTITY__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Product Variant</b></em>' reference.
+	 * The feature id for the '<em><b>Manufactured Component</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ORDER__PRODUCT_VARIANT = BasePackage.ENTITY_FEATURE_COUNT + 0;
+	int ORDER__MANUFACTURED_COMPONENT = BasePackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Quantity</b></em>' attribute.
@@ -170,13 +170,22 @@ public interface OrderPackage extends EPackage {
 	int ORDER__STATUS = BasePackage.ENTITY_FEATURE_COUNT + 6;
 
 	/**
+	 * The feature id for the '<em><b>Customer</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORDER__CUSTOMER = BasePackage.ENTITY_FEATURE_COUNT + 7;
+
+	/**
 	 * The number of structural features of the '<em>Order</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ORDER_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 7;
+	int ORDER_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 8;
 
 	/**
 	 * The number of operations of the '<em>Order</em>' class.
@@ -400,15 +409,15 @@ public interface OrderPackage extends EPackage {
 	EClass getOrder();
 
 	/**
-	 * Returns the meta object for the reference '{@link de.dfki.iui.basys.model.domain.order.Order#getProductVariant <em>Product Variant</em>}'.
+	 * Returns the meta object for the reference '{@link de.dfki.iui.basys.model.domain.order.Order#getManufacturedComponent <em>Manufactured Component</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Product Variant</em>'.
-	 * @see de.dfki.iui.basys.model.domain.order.Order#getProductVariant()
+	 * @return the meta object for the reference '<em>Manufactured Component</em>'.
+	 * @see de.dfki.iui.basys.model.domain.order.Order#getManufacturedComponent()
 	 * @see #getOrder()
 	 * @generated
 	 */
-	EReference getOrder_ProductVariant();
+	EReference getOrder_ManufacturedComponent();
 
 	/**
 	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.order.Order#getQuantity <em>Quantity</em>}'.
@@ -475,6 +484,17 @@ public interface OrderPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getOrder_Status();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.order.Order#getCustomer <em>Customer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Customer</em>'.
+	 * @see de.dfki.iui.basys.model.domain.order.Order#getCustomer()
+	 * @see #getOrder()
+	 * @generated
+	 */
+	EAttribute getOrder_Customer();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.order.OrderStatus <em>Status</em>}'.
@@ -584,12 +604,12 @@ public interface OrderPackage extends EPackage {
 		EClass ORDER = eINSTANCE.getOrder();
 
 		/**
-		 * The meta object literal for the '<em><b>Product Variant</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Manufactured Component</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ORDER__PRODUCT_VARIANT = eINSTANCE.getOrder_ProductVariant();
+		EReference ORDER__MANUFACTURED_COMPONENT = eINSTANCE.getOrder_ManufacturedComponent();
 
 		/**
 		 * The meta object literal for the '<em><b>Quantity</b></em>' attribute feature.
@@ -638,6 +658,14 @@ public interface OrderPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ORDER__STATUS = eINSTANCE.getOrder_Status();
+
+		/**
+		 * The meta object literal for the '<em><b>Customer</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ORDER__CUSTOMER = eINSTANCE.getOrder_Customer();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.order.impl.OrderStatusImpl <em>Status</em>}' class.

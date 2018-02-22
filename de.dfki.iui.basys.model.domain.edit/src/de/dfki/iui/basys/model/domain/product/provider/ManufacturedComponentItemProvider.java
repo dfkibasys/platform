@@ -3,9 +3,12 @@
 package de.dfki.iui.basys.model.domain.product.provider;
 
 
+import de.dfki.iui.basys.model.base.provider.EntityItemProvider;
+
 import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
 
-import de.dfki.iui.basys.model.domain.product.BOMEntry;
+import de.dfki.iui.basys.model.domain.product.ManufacturedComponent;
+import de.dfki.iui.basys.model.domain.product.ProductFactory;
 import de.dfki.iui.basys.model.domain.product.ProductPackage;
 
 import java.util.Collection;
@@ -16,38 +19,25 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link de.dfki.iui.basys.model.domain.product.BOMEntry} object.
+ * This is the item provider adapter for a {@link de.dfki.iui.basys.model.domain.product.ManufacturedComponent} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class BOMEntryItemProvider 
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+public class ManufacturedComponentItemProvider extends EntityItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BOMEntryItemProvider(AdapterFactory adapterFactory) {
+	public ManufacturedComponentItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -62,42 +52,49 @@ public class BOMEntryItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addCountPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Count feature.
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addCountPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_BOMEntry_count_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_BOMEntry_count_feature", "_UI_BOMEntry_type"),
-				 ProductPackage.Literals.BOM_ENTRY__COUNT,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(ProductPackage.Literals.MANUFACTURED_COMPONENT__BOM);
+		}
+		return childrenFeatures;
 	}
 
 	/**
-	 * This returns BOMEntry.gif.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
+	}
+
+	/**
+	 * This returns ManufacturedComponent.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/BOMEntry"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ManufacturedComponent"));
 	}
 
 	/**
@@ -108,8 +105,10 @@ public class BOMEntryItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		BOMEntry bomEntry = (BOMEntry)object;
-		return getString("_UI_BOMEntry_type") + " " + bomEntry.getCount();
+		String label = ((ManufacturedComponent)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_ManufacturedComponent_type") :
+			getString("_UI_ManufacturedComponent_type") + " " + label;
 	}
 	
 
@@ -124,9 +123,9 @@ public class BOMEntryItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(BOMEntry.class)) {
-			case ProductPackage.BOM_ENTRY__COUNT:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+		switch (notification.getFeatureID(ManufacturedComponent.class)) {
+			case ProductPackage.MANUFACTURED_COMPONENT__BOM:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -142,6 +141,11 @@ public class BOMEntryItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ProductPackage.Literals.MANUFACTURED_COMPONENT__BOM,
+				 ProductFactory.eINSTANCE.createBillOfMaterial()));
 	}
 
 	/**

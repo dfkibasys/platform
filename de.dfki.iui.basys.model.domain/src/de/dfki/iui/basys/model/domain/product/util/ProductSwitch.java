@@ -86,6 +86,7 @@ public class ProductSwitch<T> extends Switch<T> {
 			case ProductPackage.PRODUCT_VARIANT: {
 				ProductVariant productVariant = (ProductVariant)theEObject;
 				T result = caseProductVariant(productVariant);
+				if (result == null) result = caseManufacturedComponent(productVariant);
 				if (result == null) result = caseEntity(productVariant);
 				if (result == null) result = caseBObject(productVariant);
 				if (result == null) result = defaultCase(theEObject);
@@ -102,6 +103,37 @@ public class ProductSwitch<T> extends Switch<T> {
 			case ProductPackage.BOM_ENTRY: {
 				BOMEntry bomEntry = (BOMEntry)theEObject;
 				T result = caseBOMEntry(bomEntry);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ProductPackage.ASSEMBLY_GROUP: {
+				AssemblyGroup assemblyGroup = (AssemblyGroup)theEObject;
+				T result = caseAssemblyGroup(assemblyGroup);
+				if (result == null) result = caseManufacturedComponent(assemblyGroup);
+				if (result == null) result = caseEntity(assemblyGroup);
+				if (result == null) result = caseBObject(assemblyGroup);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ProductPackage.ASSEMBLY_GROUP_ENTRY: {
+				AssemblyGroupEntry assemblyGroupEntry = (AssemblyGroupEntry)theEObject;
+				T result = caseAssemblyGroupEntry(assemblyGroupEntry);
+				if (result == null) result = caseBOMEntry(assemblyGroupEntry);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ProductPackage.COMPONENT_ENTRY: {
+				ComponentEntry componentEntry = (ComponentEntry)theEObject;
+				T result = caseComponentEntry(componentEntry);
+				if (result == null) result = caseBOMEntry(componentEntry);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ProductPackage.MANUFACTURED_COMPONENT: {
+				ManufacturedComponent manufacturedComponent = (ManufacturedComponent)theEObject;
+				T result = caseManufacturedComponent(manufacturedComponent);
+				if (result == null) result = caseEntity(manufacturedComponent);
+				if (result == null) result = caseBObject(manufacturedComponent);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -181,6 +213,66 @@ public class ProductSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseBOMEntry(BOMEntry object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Assembly Group</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Assembly Group</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAssemblyGroup(AssemblyGroup object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Assembly Group Entry</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Assembly Group Entry</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAssemblyGroupEntry(AssemblyGroupEntry object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Component Entry</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Component Entry</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseComponentEntry(ComponentEntry object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Manufactured Component</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Manufactured Component</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseManufacturedComponent(ManufacturedComponent object) {
 		return null;
 	}
 

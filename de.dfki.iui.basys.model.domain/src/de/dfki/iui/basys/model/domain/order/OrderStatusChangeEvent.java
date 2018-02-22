@@ -9,6 +9,10 @@ import java.util.Date;
  * A representation of the model object '<em><b>Status Change Event</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * TODO: Überarbeiten
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
  * </p>

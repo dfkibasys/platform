@@ -91,6 +91,22 @@ public class ProductAdapterFactory extends AdapterFactoryImpl {
 				return createBOMEntryAdapter();
 			}
 			@Override
+			public Adapter caseAssemblyGroup(AssemblyGroup object) {
+				return createAssemblyGroupAdapter();
+			}
+			@Override
+			public Adapter caseAssemblyGroupEntry(AssemblyGroupEntry object) {
+				return createAssemblyGroupEntryAdapter();
+			}
+			@Override
+			public Adapter caseComponentEntry(ComponentEntry object) {
+				return createComponentEntryAdapter();
+			}
+			@Override
+			public Adapter caseManufacturedComponent(ManufacturedComponent object) {
+				return createManufacturedComponentAdapter();
+			}
+			@Override
 			public Adapter caseBObject(BObject object) {
 				return createBObjectAdapter();
 			}
@@ -185,6 +201,62 @@ public class ProductAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createBOMEntryAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.product.AssemblyGroup <em>Assembly Group</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.domain.product.AssemblyGroup
+	 * @generated
+	 */
+	public Adapter createAssemblyGroupAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.product.AssemblyGroupEntry <em>Assembly Group Entry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.domain.product.AssemblyGroupEntry
+	 * @generated
+	 */
+	public Adapter createAssemblyGroupEntryAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.product.ComponentEntry <em>Component Entry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.domain.product.ComponentEntry
+	 * @generated
+	 */
+	public Adapter createComponentEntryAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.product.ManufacturedComponent <em>Manufactured Component</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.domain.product.ManufacturedComponent
+	 * @generated
+	 */
+	public Adapter createManufacturedComponentAdapter() {
 		return null;
 	}
 

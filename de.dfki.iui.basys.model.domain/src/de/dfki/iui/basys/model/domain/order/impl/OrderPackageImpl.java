@@ -217,7 +217,7 @@ public class OrderPackageImpl extends EPackageImpl implements OrderPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOrder_ProductVariant() {
+	public EReference getOrder_ManufacturedComponent() {
 		return (EReference)orderEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -273,6 +273,15 @@ public class OrderPackageImpl extends EPackageImpl implements OrderPackage {
 	 */
 	public EReference getOrder_Status() {
 		return (EReference)orderEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOrder_Customer() {
+		return (EAttribute)orderEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -367,13 +376,14 @@ public class OrderPackageImpl extends EPackageImpl implements OrderPackage {
 
 		// Create classes and their features
 		orderEClass = createEClass(ORDER);
-		createEReference(orderEClass, ORDER__PRODUCT_VARIANT);
+		createEReference(orderEClass, ORDER__MANUFACTURED_COMPONENT);
 		createEAttribute(orderEClass, ORDER__QUANTITY);
 		createEAttribute(orderEClass, ORDER__DUE_DATE);
 		createEAttribute(orderEClass, ORDER__PRIORITY);
 		createEAttribute(orderEClass, ORDER__START_DATE);
 		createEAttribute(orderEClass, ORDER__END_DATE);
 		createEReference(orderEClass, ORDER__STATUS);
+		createEAttribute(orderEClass, ORDER__CUSTOMER);
 
 		orderStatusEClass = createEClass(ORDER_STATUS);
 		createEAttribute(orderStatusEClass, ORDER_STATUS__ORDER_ID);
@@ -425,13 +435,14 @@ public class OrderPackageImpl extends EPackageImpl implements OrderPackage {
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(orderEClass, Order.class, "Order", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOrder_ProductVariant(), theProductPackage.getProductVariant(), null, "productVariant", null, 1, 1, Order.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOrder_ManufacturedComponent(), theProductPackage.getManufacturedComponent(), null, "manufacturedComponent", null, 1, 1, Order.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOrder_Quantity(), ecorePackage.getEInt(), "quantity", null, 0, 1, Order.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOrder_DueDate(), ecorePackage.getEDate(), "dueDate", null, 0, 1, Order.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOrder_Priority(), ecorePackage.getEInt(), "priority", null, 0, 1, Order.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOrder_StartDate(), ecorePackage.getEDate(), "startDate", null, 0, 1, Order.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOrder_EndDate(), ecorePackage.getEDate(), "endDate", null, 0, 1, Order.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOrder_Status(), this.getOrderStatus(), null, "status", null, 0, 1, Order.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOrder_Customer(), ecorePackage.getEString(), "customer", null, 0, 1, Order.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(orderStatusEClass, OrderStatus.class, "OrderStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOrderStatus_OrderId(), ecorePackage.getEString(), "orderId", null, 0, 1, OrderStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -20,6 +20,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link de.dfki.iui.basys.model.domain.product.ProductGroup#getProductVariants <em>Product Variants</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.product.ProductGroup#getAssemblyGroups <em>Assembly Groups</em>}</li>
  * </ul>
  *
  * @see de.dfki.iui.basys.model.domain.product.ProductPackage#getProductGroup()
@@ -44,5 +45,21 @@ public interface ProductGroup extends Entity {
 	 * @generated
 	 */
 	EList<ProductVariant> getProductVariants();
+
+	/**
+	 * Returns the value of the '<em><b>Assembly Groups</b></em>' containment reference list.
+	 * The list contents are of type {@link de.dfki.iui.basys.model.domain.product.AssemblyGroup}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Assembly Groups</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Assembly Groups</em>' containment reference list.
+	 * @see de.dfki.iui.basys.model.domain.product.ProductPackage#getProductGroup_AssemblyGroups()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<AssemblyGroup> getAssemblyGroups();
 
 } // ProductGroup

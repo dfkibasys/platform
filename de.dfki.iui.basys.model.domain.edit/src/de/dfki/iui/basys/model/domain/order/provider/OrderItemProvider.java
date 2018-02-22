@@ -52,30 +52,31 @@ public class OrderItemProvider extends EntityItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addProductVariantPropertyDescriptor(object);
+			addManufacturedComponentPropertyDescriptor(object);
 			addQuantityPropertyDescriptor(object);
 			addDueDatePropertyDescriptor(object);
 			addPriorityPropertyDescriptor(object);
 			addStartDatePropertyDescriptor(object);
 			addEndDatePropertyDescriptor(object);
+			addCustomerPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Product Variant feature.
+	 * This adds a property descriptor for the Manufactured Component feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addProductVariantPropertyDescriptor(Object object) {
+	protected void addManufacturedComponentPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Order_productVariant_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Order_productVariant_feature", "_UI_Order_type"),
-				 OrderPackage.Literals.ORDER__PRODUCT_VARIANT,
+				 getString("_UI_Order_manufacturedComponent_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Order_manufacturedComponent_feature", "_UI_Order_type"),
+				 OrderPackage.Literals.ORDER__MANUFACTURED_COMPONENT,
 				 true,
 				 false,
 				 true,
@@ -164,6 +165,28 @@ public class OrderItemProvider extends EntityItemProvider {
 				 getString("_UI_Order_endDate_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Order_endDate_feature", "_UI_Order_type"),
 				 OrderPackage.Literals.ORDER__END_DATE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Customer feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCustomerPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Order_customer_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Order_customer_feature", "_UI_Order_type"),
+				 OrderPackage.Literals.ORDER__CUSTOMER,
 				 true,
 				 false,
 				 false,
@@ -267,6 +290,7 @@ public class OrderItemProvider extends EntityItemProvider {
 			case OrderPackage.ORDER__PRIORITY:
 			case OrderPackage.ORDER__START_DATE:
 			case OrderPackage.ORDER__END_DATE:
+			case OrderPackage.ORDER__CUSTOMER:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case OrderPackage.ORDER__STATUS:
