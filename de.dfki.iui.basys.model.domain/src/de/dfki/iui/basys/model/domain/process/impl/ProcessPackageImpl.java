@@ -403,6 +403,15 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getProcessDefinition_ProductVariant() {
+		return (EReference)processDefinitionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getNode() {
 		return nodeEClass;
 	}
@@ -594,6 +603,15 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 	 */
 	public EReference getTask_OutputData() {
 		return (EReference)taskEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTask_CapabilityRequirement() {
+		return (EReference)taskEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -951,6 +969,7 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 		processDefinitionEClass = createEClass(PROCESS_DEFINITION);
 		createEReference(processDefinitionEClass, PROCESS_DEFINITION__NODES);
 		createEReference(processDefinitionEClass, PROCESS_DEFINITION__EDGES);
+		createEReference(processDefinitionEClass, PROCESS_DEFINITION__PRODUCT_VARIANT);
 
 		nodeEClass = createEClass(NODE);
 		createEReference(nodeEClass, NODE__OUTGOING);
@@ -980,6 +999,7 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 		createEAttribute(taskEClass, TASK__URI);
 		createEReference(taskEClass, TASK__INPUT_DATA);
 		createEReference(taskEClass, TASK__OUTPUT_DATA);
+		createEReference(taskEClass, TASK__CAPABILITY_REQUIREMENT);
 
 		dataFlowEClass = createEClass(DATA_FLOW);
 		createEReference(dataFlowEClass, DATA_FLOW__TRANSFORMATION);
@@ -1058,7 +1078,9 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 
 		// Obtain other dependent packages
 		BasePackage theBasePackage = (BasePackage)EPackage.Registry.INSTANCE.getEPackage(BasePackage.eNS_URI);
+		ProductPackage theProductPackage = (ProductPackage)EPackage.Registry.INSTANCE.getEPackage(ProductPackage.eNS_URI);
 		XMLTypePackage theXMLTypePackage = (XMLTypePackage)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
+		CapabilityPackage theCapabilityPackage = (CapabilityPackage)EPackage.Registry.INSTANCE.getEPackage(CapabilityPackage.eNS_URI);
 		PatternPackage thePatternPackage = (PatternPackage)EPackage.Registry.INSTANCE.getEPackage(PatternPackage.eNS_URI);
 
 		// Create type parameters
@@ -1089,6 +1111,7 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 		initEClass(processDefinitionEClass, ProcessDefinition.class, "ProcessDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getProcessDefinition_Nodes(), this.getNode(), null, "nodes", null, 0, -1, ProcessDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProcessDefinition_Edges(), this.getEdge(), null, "edges", null, 0, -1, ProcessDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcessDefinition_ProductVariant(), theProductPackage.getProductVariant(), null, "productVariant", null, 0, 1, ProcessDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(nodeEClass, Node.class, "Node", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getNode_Outgoing(), this.getEdge(), this.getEdge_SourceRef(), "outgoing", null, 0, -1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1118,6 +1141,7 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 		initEAttribute(getTask_Uri(), theXMLTypePackage.getString(), "uri", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTask_InputData(), this.getData(), null, "inputData", null, 0, -1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTask_OutputData(), this.getData(), null, "outputData", null, 0, -1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTask_CapabilityRequirement(), theCapabilityPackage.getManufacturingCapability(), null, "capabilityRequirement", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dataFlowEClass, DataFlow.class, "DataFlow", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDataFlow_Transformation(), this.getDataTransformation(), null, "transformation", null, 0, 1, DataFlow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -58,6 +58,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -191,8 +192,8 @@ public class ProcessinstancePackageImpl extends EPackageImpl implements Processi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getProcessInstance_ProcessDefinitionId() {
-		return (EAttribute)processInstanceEClass.getEStructuralFeatures().get(0);
+	public EReference getProcessInstance_ProcessDefinition() {
+		return (EReference)processInstanceEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -200,8 +201,8 @@ public class ProcessinstancePackageImpl extends EPackageImpl implements Processi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getProcessInstance_OrderId() {
-		return (EAttribute)processInstanceEClass.getEStructuralFeatures().get(1);
+	public EReference getProcessInstance_Order() {
+		return (EReference)processInstanceEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -209,8 +210,8 @@ public class ProcessinstancePackageImpl extends EPackageImpl implements Processi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getProcessInstance_ProductInstanceId() {
-		return (EAttribute)processInstanceEClass.getEStructuralFeatures().get(2);
+	public EReference getProcessInstance_ProductInstance() {
+		return (EReference)processInstanceEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -251,9 +252,9 @@ public class ProcessinstancePackageImpl extends EPackageImpl implements Processi
 
 		// Create classes and their features
 		processInstanceEClass = createEClass(PROCESS_INSTANCE);
-		createEAttribute(processInstanceEClass, PROCESS_INSTANCE__PROCESS_DEFINITION_ID);
-		createEAttribute(processInstanceEClass, PROCESS_INSTANCE__ORDER_ID);
-		createEAttribute(processInstanceEClass, PROCESS_INSTANCE__PRODUCT_INSTANCE_ID);
+		createEReference(processInstanceEClass, PROCESS_INSTANCE__PROCESS_DEFINITION);
+		createEReference(processInstanceEClass, PROCESS_INSTANCE__ORDER);
+		createEReference(processInstanceEClass, PROCESS_INSTANCE__PRODUCT_INSTANCE);
 		createEAttribute(processInstanceEClass, PROCESS_INSTANCE__STATE);
 	}
 
@@ -282,6 +283,9 @@ public class ProcessinstancePackageImpl extends EPackageImpl implements Processi
 
 		// Obtain other dependent packages
 		BasePackage theBasePackage = (BasePackage)EPackage.Registry.INSTANCE.getEPackage(BasePackage.eNS_URI);
+		ProcessPackage theProcessPackage = (ProcessPackage)EPackage.Registry.INSTANCE.getEPackage(ProcessPackage.eNS_URI);
+		OrderPackage theOrderPackage = (OrderPackage)EPackage.Registry.INSTANCE.getEPackage(OrderPackage.eNS_URI);
+		ProductinstancePackage theProductinstancePackage = (ProductinstancePackage)EPackage.Registry.INSTANCE.getEPackage(ProductinstancePackage.eNS_URI);
 
 		// Create type parameters
 
@@ -292,9 +296,9 @@ public class ProcessinstancePackageImpl extends EPackageImpl implements Processi
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(processInstanceEClass, ProcessInstance.class, "ProcessInstance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getProcessInstance_ProcessDefinitionId(), ecorePackage.getEString(), "processDefinitionId", null, 0, 1, ProcessInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getProcessInstance_OrderId(), ecorePackage.getEString(), "orderId", null, 0, 1, ProcessInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getProcessInstance_ProductInstanceId(), ecorePackage.getEString(), "productInstanceId", null, 0, 1, ProcessInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcessInstance_ProcessDefinition(), theProcessPackage.getProcessDefinition(), null, "processDefinition", null, 1, 1, ProcessInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcessInstance_Order(), theOrderPackage.getOrder(), null, "order", null, 1, 1, ProcessInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcessInstance_ProductInstance(), theProductinstancePackage.getProductInstance(), null, "productInstance", null, 0, 1, ProcessInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProcessInstance_State(), ecorePackage.getEString(), "state", null, 0, 1, ProcessInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource

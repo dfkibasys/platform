@@ -929,6 +929,135 @@ public interface CapabilityPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.InformationTransferCapabilityImpl <em>Information Transfer Capability</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.InformationTransferCapabilityImpl
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getInformationTransferCapability()
+	 * @generated
+	 */
+	int INFORMATION_TRANSFER_CAPABILITY = 13;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_TRANSFER_CAPABILITY__BINDING = CAPABILITY__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_TRANSFER_CAPABILITY__ID = CAPABILITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_TRANSFER_CAPABILITY__NAME = CAPABILITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_TRANSFER_CAPABILITY__METADATA = CAPABILITY__METADATA;
+
+	/**
+	 * The number of structural features of the '<em>Information Transfer Capability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_TRANSFER_CAPABILITY_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Information Transfer Capability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_TRANSFER_CAPABILITY_OPERATION_COUNT = CAPABILITY_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.ProvideInformationImpl <em>Provide Information</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.ProvideInformationImpl
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getProvideInformation()
+	 * @generated
+	 */
+	int PROVIDE_INFORMATION = 14;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROVIDE_INFORMATION__BINDING = INFORMATION_TRANSFER_CAPABILITY__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROVIDE_INFORMATION__ID = INFORMATION_TRANSFER_CAPABILITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROVIDE_INFORMATION__NAME = INFORMATION_TRANSFER_CAPABILITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROVIDE_INFORMATION__METADATA = INFORMATION_TRANSFER_CAPABILITY__METADATA;
+
+	/**
+	 * The number of structural features of the '<em>Provide Information</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROVIDE_INFORMATION_FEATURE_COUNT = INFORMATION_TRANSFER_CAPABILITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Provide Information</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROVIDE_INFORMATION_OPERATION_COUNT = INFORMATION_TRANSFER_CAPABILITY_OPERATION_COUNT + 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.CapabilityAssertion <em>Assertion</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1101,6 +1230,26 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSchrauben_Drehmoment();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.InformationTransferCapability <em>Information Transfer Capability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Information Transfer Capability</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.InformationTransferCapability
+	 * @generated
+	 */
+	EClass getInformationTransferCapability();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.ProvideInformation <em>Provide Information</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Provide Information</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.ProvideInformation
+	 * @generated
+	 */
+	EClass getProvideInformation();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1286,6 +1435,26 @@ public interface CapabilityPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SCHRAUBEN__DREHMOMENT = eINSTANCE.getSchrauben_Drehmoment();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.InformationTransferCapabilityImpl <em>Information Transfer Capability</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.InformationTransferCapabilityImpl
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getInformationTransferCapability()
+		 * @generated
+		 */
+		EClass INFORMATION_TRANSFER_CAPABILITY = eINSTANCE.getInformationTransferCapability();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.ProvideInformationImpl <em>Provide Information</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.ProvideInformationImpl
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getProvideInformation()
+		 * @generated
+		 */
+		EClass PROVIDE_INFORMATION = eINSTANCE.getProvideInformation();
 
 	}
 

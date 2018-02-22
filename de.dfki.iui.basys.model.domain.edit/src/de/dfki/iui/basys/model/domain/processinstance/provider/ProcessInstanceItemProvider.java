@@ -51,76 +51,76 @@ public class ProcessInstanceItemProvider extends EntityItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addProcessDefinitionIdPropertyDescriptor(object);
-			addOrderIdPropertyDescriptor(object);
-			addProductInstanceIdPropertyDescriptor(object);
+			addProcessDefinitionPropertyDescriptor(object);
+			addOrderPropertyDescriptor(object);
+			addProductInstancePropertyDescriptor(object);
 			addStatePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Process Definition Id feature.
+	 * This adds a property descriptor for the Process Definition feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addProcessDefinitionIdPropertyDescriptor(Object object) {
+	protected void addProcessDefinitionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ProcessInstance_processDefinitionId_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ProcessInstance_processDefinitionId_feature", "_UI_ProcessInstance_type"),
-				 ProcessinstancePackage.Literals.PROCESS_INSTANCE__PROCESS_DEFINITION_ID,
+				 getString("_UI_ProcessInstance_processDefinition_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ProcessInstance_processDefinition_feature", "_UI_ProcessInstance_type"),
+				 ProcessinstancePackage.Literals.PROCESS_INSTANCE__PROCESS_DEFINITION,
 				 true,
 				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 true,
+				 null,
 				 null,
 				 null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Order Id feature.
+	 * This adds a property descriptor for the Order feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addOrderIdPropertyDescriptor(Object object) {
+	protected void addOrderPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ProcessInstance_orderId_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ProcessInstance_orderId_feature", "_UI_ProcessInstance_type"),
-				 ProcessinstancePackage.Literals.PROCESS_INSTANCE__ORDER_ID,
+				 getString("_UI_ProcessInstance_order_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ProcessInstance_order_feature", "_UI_ProcessInstance_type"),
+				 ProcessinstancePackage.Literals.PROCESS_INSTANCE__ORDER,
 				 true,
 				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 true,
+				 null,
 				 null,
 				 null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Product Instance Id feature.
+	 * This adds a property descriptor for the Product Instance feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addProductInstanceIdPropertyDescriptor(Object object) {
+	protected void addProductInstancePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ProcessInstance_productInstanceId_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ProcessInstance_productInstanceId_feature", "_UI_ProcessInstance_type"),
-				 ProcessinstancePackage.Literals.PROCESS_INSTANCE__PRODUCT_INSTANCE_ID,
+				 getString("_UI_ProcessInstance_productInstance_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ProcessInstance_productInstance_feature", "_UI_ProcessInstance_type"),
+				 ProcessinstancePackage.Literals.PROCESS_INSTANCE__PRODUCT_INSTANCE,
 				 true,
 				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 true,
+				 null,
 				 null,
 				 null));
 	}
@@ -185,9 +185,6 @@ public class ProcessInstanceItemProvider extends EntityItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ProcessInstance.class)) {
-			case ProcessinstancePackage.PROCESS_INSTANCE__PROCESS_DEFINITION_ID:
-			case ProcessinstancePackage.PROCESS_INSTANCE__ORDER_ID:
-			case ProcessinstancePackage.PROCESS_INSTANCE__PRODUCT_INSTANCE_ID:
 			case ProcessinstancePackage.PROCESS_INSTANCE__STATE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;

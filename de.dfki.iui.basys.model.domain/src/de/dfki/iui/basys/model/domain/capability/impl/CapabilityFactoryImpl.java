@@ -69,6 +69,8 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 			case CapabilityPackage.STOFFEIGENSCHAFTEN: return createStoffeigenschaften();
 			case CapabilityPackage.AN_EINPRESSEN: return createAnEinpressen();
 			case CapabilityPackage.SCHRAUBEN: return createSchrauben();
+			case CapabilityPackage.INFORMATION_TRANSFER_CAPABILITY: return createInformationTransferCapability();
+			case CapabilityPackage.PROVIDE_INFORMATION: return createProvideInformation();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -202,6 +204,26 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	public Schrauben createSchrauben() {
 		SchraubenImpl schrauben = new SchraubenImpl();
 		return schrauben;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InformationTransferCapability createInformationTransferCapability() {
+		InformationTransferCapabilityImpl informationTransferCapability = new InformationTransferCapabilityImpl();
+		return informationTransferCapability;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ProvideInformation createProvideInformation() {
+		ProvideInformationImpl provideInformation = new ProvideInformationImpl();
+		return provideInformation;
 	}
 
 	/**

@@ -139,6 +139,24 @@ public interface CapabilityFactory extends EFactory {
 	Schrauben createSchrauben();
 
 	/**
+	 * Returns a new object of class '<em>Information Transfer Capability</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Information Transfer Capability</em>'.
+	 * @generated
+	 */
+	InformationTransferCapability createInformationTransferCapability();
+
+	/**
+	 * Returns a new object of class '<em>Provide Information</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Provide Information</em>'.
+	 * @generated
+	 */
+	ProvideInformation createProvideInformation();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

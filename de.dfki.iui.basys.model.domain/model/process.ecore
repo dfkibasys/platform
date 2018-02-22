@@ -13,6 +13,7 @@
         eType="#//Node" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="edges" upperBound="-1"
         eType="#//Edge" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="productVariant" eType="ecore:EClass product.ecore#//ProductVariant"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Node" abstract="true" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
     <eStructuralFeatures xsi:type="ecore:EReference" name="outgoing" upperBound="-1"
@@ -70,6 +71,10 @@
         eType="#//Data" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outputData" upperBound="-1"
         eType="#//Data" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityRequirement"
+        eType="ecore:EClass capability.ecore#//ManufacturingCapability" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="usedmaterial" upperBound="-1"
+        eType="#//UsedMaterial"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataFlow" eSuperTypes="#//Edge">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -175,5 +180,10 @@
     <eLiterals name="SUCCESSFUL" value="5"/>
     <eLiterals name="FAILED" value="6"/>
     <eLiterals name="CANCELLED" value="7"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UsedMaterial">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="count" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bomEntry" lowerBound="1"
+        eType="ecore:EClass product.ecore#//BOMEntry"/>
   </eClassifiers>
 </ecore:EPackage>

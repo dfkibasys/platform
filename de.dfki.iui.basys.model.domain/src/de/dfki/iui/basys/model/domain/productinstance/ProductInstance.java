@@ -3,6 +3,8 @@
 package de.dfki.iui.basys.model.domain.productinstance;
 
 import de.dfki.iui.basys.model.base.Entity;
+import de.dfki.iui.basys.model.domain.order.Order;
+import de.dfki.iui.basys.model.domain.product.ProductVariant;
 
 /**
  * <!-- begin-user-doc -->
@@ -17,8 +19,8 @@ import de.dfki.iui.basys.model.base.Entity;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.dfki.iui.basys.model.domain.productinstance.ProductInstance#getProductVariantId <em>Product Variant Id</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.domain.productinstance.ProductInstance#getOrderId <em>Order Id</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.productinstance.ProductInstance#getProductVariant <em>Product Variant</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.productinstance.ProductInstance#getOrder <em>Order</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.productinstance.ProductInstance#getSerialNumber <em>Serial Number</em>}</li>
  * </ul>
  *
@@ -28,56 +30,56 @@ import de.dfki.iui.basys.model.base.Entity;
  */
 public interface ProductInstance extends Entity {
 	/**
-	 * Returns the value of the '<em><b>Product Variant Id</b></em>' attribute.
+	 * Returns the value of the '<em><b>Product Variant</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Product Variant Id</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Product Variant</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Product Variant Id</em>' attribute.
-	 * @see #setProductVariantId(String)
-	 * @see de.dfki.iui.basys.model.domain.productinstance.ProductinstancePackage#getProductInstance_ProductVariantId()
-	 * @model
+	 * @return the value of the '<em>Product Variant</em>' reference.
+	 * @see #setProductVariant(ProductVariant)
+	 * @see de.dfki.iui.basys.model.domain.productinstance.ProductinstancePackage#getProductInstance_ProductVariant()
+	 * @model required="true"
 	 * @generated
 	 */
-	String getProductVariantId();
+	ProductVariant getProductVariant();
 
 	/**
-	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.productinstance.ProductInstance#getProductVariantId <em>Product Variant Id</em>}' attribute.
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.productinstance.ProductInstance#getProductVariant <em>Product Variant</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Product Variant Id</em>' attribute.
-	 * @see #getProductVariantId()
+	 * @param value the new value of the '<em>Product Variant</em>' reference.
+	 * @see #getProductVariant()
 	 * @generated
 	 */
-	void setProductVariantId(String value);
+	void setProductVariant(ProductVariant value);
 
 	/**
-	 * Returns the value of the '<em><b>Order Id</b></em>' attribute.
+	 * Returns the value of the '<em><b>Order</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Order Id</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Order</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Order Id</em>' attribute.
-	 * @see #setOrderId(String)
-	 * @see de.dfki.iui.basys.model.domain.productinstance.ProductinstancePackage#getProductInstance_OrderId()
-	 * @model
+	 * @return the value of the '<em>Order</em>' reference.
+	 * @see #setOrder(Order)
+	 * @see de.dfki.iui.basys.model.domain.productinstance.ProductinstancePackage#getProductInstance_Order()
+	 * @model required="true"
 	 * @generated
 	 */
-	String getOrderId();
+	Order getOrder();
 
 	/**
-	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.productinstance.ProductInstance#getOrderId <em>Order Id</em>}' attribute.
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.productinstance.ProductInstance#getOrder <em>Order</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Order Id</em>' attribute.
-	 * @see #getOrderId()
+	 * @param value the new value of the '<em>Order</em>' reference.
+	 * @see #getOrder()
 	 * @generated
 	 */
-	void setOrderId(String value);
+	void setOrder(Order value);
 
 	/**
 	 * Returns the value of the '<em><b>Serial Number</b></em>' attribute.

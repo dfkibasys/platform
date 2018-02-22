@@ -7,5 +7,6 @@
   <materialGroups id="_b9ZKAhMxEeiF0dM90lRpcg" name="Screws">
     <materials id="_b9ZKAxMxEeiF0dM90lRpcg" name="Screw 4x6"/>
     <materials id="_b9ZKAxMxEeiF0dM90lRpcg" name="Screw 4x8"/>
+    <materials id="_b9ZKAxMxEeiF0dM90lRpcg" name="Screw 4x10"/>
   </materialGroups>
 </material:MaterialCatalogue>

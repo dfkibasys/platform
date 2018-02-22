@@ -2,6 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.process;
 
+import de.dfki.iui.basys.model.domain.capability.ManufacturingCapability;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -18,6 +19,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link de.dfki.iui.basys.model.domain.process.Task#getUri <em>Uri</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.process.Task#getInputData <em>Input Data</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.process.Task#getOutputData <em>Output Data</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.process.Task#getCapabilityRequirement <em>Capability Requirement</em>}</li>
  * </ul>
  *
  * @see de.dfki.iui.basys.model.domain.process.ProcessPackage#getTask()
@@ -136,5 +138,31 @@ public interface Task extends FlowNode {
 	 * @generated
 	 */
 	EList<Data> getOutputData();
+
+	/**
+	 * Returns the value of the '<em><b>Capability Requirement</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Capability Requirement</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Capability Requirement</em>' containment reference.
+	 * @see #setCapabilityRequirement(ManufacturingCapability)
+	 * @see de.dfki.iui.basys.model.domain.process.ProcessPackage#getTask_CapabilityRequirement()
+	 * @model containment="true"
+	 * @generated
+	 */
+	ManufacturingCapability getCapabilityRequirement();
+
+	/**
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.process.Task#getCapabilityRequirement <em>Capability Requirement</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Capability Requirement</em>' containment reference.
+	 * @see #getCapabilityRequirement()
+	 * @generated
+	 */
+	void setCapabilityRequirement(ManufacturingCapability value);
 
 } // Task

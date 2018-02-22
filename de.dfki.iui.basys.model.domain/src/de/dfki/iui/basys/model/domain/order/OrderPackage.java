@@ -107,40 +107,31 @@ public interface OrderPackage extends EPackage {
 	int ORDER__METADATA = BasePackage.ENTITY__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Product Variant Id</b></em>' attribute.
+	 * The feature id for the '<em><b>Product Variant</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ORDER__PRODUCT_VARIANT_ID = BasePackage.ENTITY_FEATURE_COUNT + 0;
+	int ORDER__PRODUCT_VARIANT = BasePackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Start Date</b></em>' attribute.
+	 * The feature id for the '<em><b>Quantity</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ORDER__START_DATE = BasePackage.ENTITY_FEATURE_COUNT + 1;
+	int ORDER__QUANTITY = BasePackage.ENTITY_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>End Date</b></em>' attribute.
+	 * The feature id for the '<em><b>Due Date</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ORDER__END_DATE = BasePackage.ENTITY_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Pieces</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ORDER__PIECES = BasePackage.ENTITY_FEATURE_COUNT + 3;
+	int ORDER__DUE_DATE = BasePackage.ENTITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Priority</b></em>' attribute.
@@ -149,7 +140,25 @@ public interface OrderPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ORDER__PRIORITY = BasePackage.ENTITY_FEATURE_COUNT + 4;
+	int ORDER__PRIORITY = BasePackage.ENTITY_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Start Date</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORDER__START_DATE = BasePackage.ENTITY_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>End Date</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORDER__END_DATE = BasePackage.ENTITY_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Status</b></em>' containment reference.
@@ -158,7 +167,7 @@ public interface OrderPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ORDER__STATUS = BasePackage.ENTITY_FEATURE_COUNT + 5;
+	int ORDER__STATUS = BasePackage.ENTITY_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of structural features of the '<em>Order</em>' class.
@@ -167,7 +176,7 @@ public interface OrderPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ORDER_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 6;
+	int ORDER_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of operations of the '<em>Order</em>' class.
@@ -391,15 +400,37 @@ public interface OrderPackage extends EPackage {
 	EClass getOrder();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.order.Order#getProductVariantId <em>Product Variant Id</em>}'.
+	 * Returns the meta object for the reference '{@link de.dfki.iui.basys.model.domain.order.Order#getProductVariant <em>Product Variant</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Product Variant Id</em>'.
-	 * @see de.dfki.iui.basys.model.domain.order.Order#getProductVariantId()
+	 * @return the meta object for the reference '<em>Product Variant</em>'.
+	 * @see de.dfki.iui.basys.model.domain.order.Order#getProductVariant()
 	 * @see #getOrder()
 	 * @generated
 	 */
-	EAttribute getOrder_ProductVariantId();
+	EReference getOrder_ProductVariant();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.order.Order#getQuantity <em>Quantity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Quantity</em>'.
+	 * @see de.dfki.iui.basys.model.domain.order.Order#getQuantity()
+	 * @see #getOrder()
+	 * @generated
+	 */
+	EAttribute getOrder_Quantity();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.order.Order#getDueDate <em>Due Date</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Due Date</em>'.
+	 * @see de.dfki.iui.basys.model.domain.order.Order#getDueDate()
+	 * @see #getOrder()
+	 * @generated
+	 */
+	EAttribute getOrder_DueDate();
 
 	/**
 	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.order.Order#getStartDate <em>Start Date</em>}'.
@@ -422,17 +453,6 @@ public interface OrderPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getOrder_EndDate();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.order.Order#getPieces <em>Pieces</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Pieces</em>'.
-	 * @see de.dfki.iui.basys.model.domain.order.Order#getPieces()
-	 * @see #getOrder()
-	 * @generated
-	 */
-	EAttribute getOrder_Pieces();
 
 	/**
 	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.order.Order#getPriority <em>Priority</em>}'.
@@ -564,12 +584,28 @@ public interface OrderPackage extends EPackage {
 		EClass ORDER = eINSTANCE.getOrder();
 
 		/**
-		 * The meta object literal for the '<em><b>Product Variant Id</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Product Variant</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ORDER__PRODUCT_VARIANT_ID = eINSTANCE.getOrder_ProductVariantId();
+		EReference ORDER__PRODUCT_VARIANT = eINSTANCE.getOrder_ProductVariant();
+
+		/**
+		 * The meta object literal for the '<em><b>Quantity</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ORDER__QUANTITY = eINSTANCE.getOrder_Quantity();
+
+		/**
+		 * The meta object literal for the '<em><b>Due Date</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ORDER__DUE_DATE = eINSTANCE.getOrder_DueDate();
 
 		/**
 		 * The meta object literal for the '<em><b>Start Date</b></em>' attribute feature.
@@ -586,14 +622,6 @@ public interface OrderPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ORDER__END_DATE = eINSTANCE.getOrder_EndDate();
-
-		/**
-		 * The meta object literal for the '<em><b>Pieces</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ORDER__PIECES = eINSTANCE.getOrder_Pieces();
 
 		/**
 		 * The meta object literal for the '<em><b>Priority</b></em>' attribute feature.

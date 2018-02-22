@@ -4,6 +4,7 @@ package de.dfki.iui.basys.model.domain.process;
 
 import de.dfki.iui.basys.model.base.Entity;
 
+import de.dfki.iui.basys.model.domain.product.ProductVariant;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -17,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link de.dfki.iui.basys.model.domain.process.ProcessDefinition#getNodes <em>Nodes</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.process.ProcessDefinition#getEdges <em>Edges</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.process.ProcessDefinition#getProductVariant <em>Product Variant</em>}</li>
  * </ul>
  *
  * @see de.dfki.iui.basys.model.domain.process.ProcessPackage#getProcessDefinition()
@@ -55,5 +57,31 @@ public interface ProcessDefinition extends Entity {
 	 * @generated
 	 */
 	EList<Edge> getEdges();
+
+	/**
+	 * Returns the value of the '<em><b>Product Variant</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Product Variant</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Product Variant</em>' reference.
+	 * @see #setProductVariant(ProductVariant)
+	 * @see de.dfki.iui.basys.model.domain.process.ProcessPackage#getProcessDefinition_ProductVariant()
+	 * @model
+	 * @generated
+	 */
+	ProductVariant getProductVariant();
+
+	/**
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.process.ProcessDefinition#getProductVariant <em>Product Variant</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Product Variant</em>' reference.
+	 * @see #getProductVariant()
+	 * @generated
+	 */
+	void setProductVariant(ProductVariant value);
 
 } // ProcessDefinition

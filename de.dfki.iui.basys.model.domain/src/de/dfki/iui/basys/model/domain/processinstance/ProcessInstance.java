@@ -3,6 +3,9 @@
 package de.dfki.iui.basys.model.domain.processinstance;
 
 import de.dfki.iui.basys.model.base.Entity;
+import de.dfki.iui.basys.model.domain.order.Order;
+import de.dfki.iui.basys.model.domain.process.ProcessDefinition;
+import de.dfki.iui.basys.model.domain.productinstance.ProductInstance;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,9 +16,9 @@ import de.dfki.iui.basys.model.base.Entity;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.dfki.iui.basys.model.domain.processinstance.ProcessInstance#getProcessDefinitionId <em>Process Definition Id</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.domain.processinstance.ProcessInstance#getOrderId <em>Order Id</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.domain.processinstance.ProcessInstance#getProductInstanceId <em>Product Instance Id</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.processinstance.ProcessInstance#getProcessDefinition <em>Process Definition</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.processinstance.ProcessInstance#getOrder <em>Order</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.processinstance.ProcessInstance#getProductInstance <em>Product Instance</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.processinstance.ProcessInstance#getState <em>State</em>}</li>
  * </ul>
  *
@@ -25,82 +28,82 @@ import de.dfki.iui.basys.model.base.Entity;
  */
 public interface ProcessInstance extends Entity {
 	/**
-	 * Returns the value of the '<em><b>Process Definition Id</b></em>' attribute.
+	 * Returns the value of the '<em><b>Process Definition</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Process Definition Id</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Process Definition</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Process Definition Id</em>' attribute.
-	 * @see #setProcessDefinitionId(String)
-	 * @see de.dfki.iui.basys.model.domain.processinstance.ProcessinstancePackage#getProcessInstance_ProcessDefinitionId()
-	 * @model
+	 * @return the value of the '<em>Process Definition</em>' reference.
+	 * @see #setProcessDefinition(ProcessDefinition)
+	 * @see de.dfki.iui.basys.model.domain.processinstance.ProcessinstancePackage#getProcessInstance_ProcessDefinition()
+	 * @model required="true"
 	 * @generated
 	 */
-	String getProcessDefinitionId();
+	ProcessDefinition getProcessDefinition();
 
 	/**
-	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.processinstance.ProcessInstance#getProcessDefinitionId <em>Process Definition Id</em>}' attribute.
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.processinstance.ProcessInstance#getProcessDefinition <em>Process Definition</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Process Definition Id</em>' attribute.
-	 * @see #getProcessDefinitionId()
+	 * @param value the new value of the '<em>Process Definition</em>' reference.
+	 * @see #getProcessDefinition()
 	 * @generated
 	 */
-	void setProcessDefinitionId(String value);
+	void setProcessDefinition(ProcessDefinition value);
 
 	/**
-	 * Returns the value of the '<em><b>Order Id</b></em>' attribute.
+	 * Returns the value of the '<em><b>Order</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Order Id</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Order</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Order Id</em>' attribute.
-	 * @see #setOrderId(String)
-	 * @see de.dfki.iui.basys.model.domain.processinstance.ProcessinstancePackage#getProcessInstance_OrderId()
-	 * @model
+	 * @return the value of the '<em>Order</em>' reference.
+	 * @see #setOrder(Order)
+	 * @see de.dfki.iui.basys.model.domain.processinstance.ProcessinstancePackage#getProcessInstance_Order()
+	 * @model required="true"
 	 * @generated
 	 */
-	String getOrderId();
+	Order getOrder();
 
 	/**
-	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.processinstance.ProcessInstance#getOrderId <em>Order Id</em>}' attribute.
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.processinstance.ProcessInstance#getOrder <em>Order</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Order Id</em>' attribute.
-	 * @see #getOrderId()
+	 * @param value the new value of the '<em>Order</em>' reference.
+	 * @see #getOrder()
 	 * @generated
 	 */
-	void setOrderId(String value);
+	void setOrder(Order value);
 
 	/**
-	 * Returns the value of the '<em><b>Product Instance Id</b></em>' attribute.
+	 * Returns the value of the '<em><b>Product Instance</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Product Instance Id</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Product Instance</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Product Instance Id</em>' attribute.
-	 * @see #setProductInstanceId(String)
-	 * @see de.dfki.iui.basys.model.domain.processinstance.ProcessinstancePackage#getProcessInstance_ProductInstanceId()
+	 * @return the value of the '<em>Product Instance</em>' reference.
+	 * @see #setProductInstance(ProductInstance)
+	 * @see de.dfki.iui.basys.model.domain.processinstance.ProcessinstancePackage#getProcessInstance_ProductInstance()
 	 * @model
 	 * @generated
 	 */
-	String getProductInstanceId();
+	ProductInstance getProductInstance();
 
 	/**
-	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.processinstance.ProcessInstance#getProductInstanceId <em>Product Instance Id</em>}' attribute.
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.processinstance.ProcessInstance#getProductInstance <em>Product Instance</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Product Instance Id</em>' attribute.
-	 * @see #getProductInstanceId()
+	 * @param value the new value of the '<em>Product Instance</em>' reference.
+	 * @see #getProductInstance()
 	 * @generated
 	 */
-	void setProductInstanceId(String value);
+	void setProductInstance(ProductInstance value);
 
 	/**
 	 * Returns the value of the '<em><b>State</b></em>' attribute.

@@ -8,6 +8,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -106,22 +107,22 @@ public interface ProductinstancePackage extends EPackage {
 	int PRODUCT_INSTANCE__METADATA = BasePackage.ENTITY__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Product Variant Id</b></em>' attribute.
+	 * The feature id for the '<em><b>Product Variant</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_INSTANCE__PRODUCT_VARIANT_ID = BasePackage.ENTITY_FEATURE_COUNT + 0;
+	int PRODUCT_INSTANCE__PRODUCT_VARIANT = BasePackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Order Id</b></em>' attribute.
+	 * The feature id for the '<em><b>Order</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_INSTANCE__ORDER_ID = BasePackage.ENTITY_FEATURE_COUNT + 1;
+	int PRODUCT_INSTANCE__ORDER = BasePackage.ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Serial Number</b></em>' attribute.
@@ -546,26 +547,26 @@ public interface ProductinstancePackage extends EPackage {
 	EClass getProductInstance();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.productinstance.ProductInstance#getProductVariantId <em>Product Variant Id</em>}'.
+	 * Returns the meta object for the reference '{@link de.dfki.iui.basys.model.domain.productinstance.ProductInstance#getProductVariant <em>Product Variant</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Product Variant Id</em>'.
-	 * @see de.dfki.iui.basys.model.domain.productinstance.ProductInstance#getProductVariantId()
+	 * @return the meta object for the reference '<em>Product Variant</em>'.
+	 * @see de.dfki.iui.basys.model.domain.productinstance.ProductInstance#getProductVariant()
 	 * @see #getProductInstance()
 	 * @generated
 	 */
-	EAttribute getProductInstance_ProductVariantId();
+	EReference getProductInstance_ProductVariant();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.productinstance.ProductInstance#getOrderId <em>Order Id</em>}'.
+	 * Returns the meta object for the reference '{@link de.dfki.iui.basys.model.domain.productinstance.ProductInstance#getOrder <em>Order</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Order Id</em>'.
-	 * @see de.dfki.iui.basys.model.domain.productinstance.ProductInstance#getOrderId()
+	 * @return the meta object for the reference '<em>Order</em>'.
+	 * @see de.dfki.iui.basys.model.domain.productinstance.ProductInstance#getOrder()
 	 * @see #getProductInstance()
 	 * @generated
 	 */
-	EAttribute getProductInstance_OrderId();
+	EReference getProductInstance_Order();
 
 	/**
 	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.productinstance.ProductInstance#getSerialNumber <em>Serial Number</em>}'.
@@ -749,20 +750,20 @@ public interface ProductinstancePackage extends EPackage {
 		EClass PRODUCT_INSTANCE = eINSTANCE.getProductInstance();
 
 		/**
-		 * The meta object literal for the '<em><b>Product Variant Id</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Product Variant</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PRODUCT_INSTANCE__PRODUCT_VARIANT_ID = eINSTANCE.getProductInstance_ProductVariantId();
+		EReference PRODUCT_INSTANCE__PRODUCT_VARIANT = eINSTANCE.getProductInstance_ProductVariant();
 
 		/**
-		 * The meta object literal for the '<em><b>Order Id</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Order</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PRODUCT_INSTANCE__ORDER_ID = eINSTANCE.getProductInstance_OrderId();
+		EReference PRODUCT_INSTANCE__ORDER = eINSTANCE.getProductInstance_Order();
 
 		/**
 		 * The meta object literal for the '<em><b>Serial Number</b></em>' attribute feature.

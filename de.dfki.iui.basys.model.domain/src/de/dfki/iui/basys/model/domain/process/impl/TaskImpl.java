@@ -2,6 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.process.impl;
 
+import de.dfki.iui.basys.model.domain.capability.ManufacturingCapability;
 import de.dfki.iui.basys.model.domain.process.Data;
 import de.dfki.iui.basys.model.domain.process.ProcessPackage;
 import de.dfki.iui.basys.model.domain.process.Task;
@@ -34,6 +35,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link de.dfki.iui.basys.model.domain.process.impl.TaskImpl#getUri <em>Uri</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.process.impl.TaskImpl#getInputData <em>Input Data</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.process.impl.TaskImpl#getOutputData <em>Output Data</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.process.impl.TaskImpl#getCapabilityRequirement <em>Capability Requirement</em>}</li>
  * </ul>
  *
  * @generated
@@ -118,6 +120,16 @@ public class TaskImpl extends FlowNodeImpl implements Task {
 	 * @ordered
 	 */
 	protected EList<Data> outputData;
+
+	/**
+	 * The cached value of the '{@link #getCapabilityRequirement() <em>Capability Requirement</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCapabilityRequirement()
+	 * @generated
+	 * @ordered
+	 */
+	protected ManufacturingCapability capabilityRequirement;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -230,6 +242,49 @@ public class TaskImpl extends FlowNodeImpl implements Task {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ManufacturingCapability getCapabilityRequirement() {
+		return capabilityRequirement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetCapabilityRequirement(ManufacturingCapability newCapabilityRequirement, NotificationChain msgs) {
+		ManufacturingCapability oldCapabilityRequirement = capabilityRequirement;
+		capabilityRequirement = newCapabilityRequirement;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ProcessPackage.TASK__CAPABILITY_REQUIREMENT, oldCapabilityRequirement, newCapabilityRequirement);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCapabilityRequirement(ManufacturingCapability newCapabilityRequirement) {
+		if (newCapabilityRequirement != capabilityRequirement) {
+			NotificationChain msgs = null;
+			if (capabilityRequirement != null)
+				msgs = ((InternalEObject)capabilityRequirement).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ProcessPackage.TASK__CAPABILITY_REQUIREMENT, null, msgs);
+			if (newCapabilityRequirement != null)
+				msgs = ((InternalEObject)newCapabilityRequirement).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ProcessPackage.TASK__CAPABILITY_REQUIREMENT, null, msgs);
+			msgs = basicSetCapabilityRequirement(newCapabilityRequirement, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ProcessPackage.TASK__CAPABILITY_REQUIREMENT, newCapabilityRequirement, newCapabilityRequirement));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -237,6 +292,8 @@ public class TaskImpl extends FlowNodeImpl implements Task {
 				return ((InternalEList<?>)getInputData()).basicRemove(otherEnd, msgs);
 			case ProcessPackage.TASK__OUTPUT_DATA:
 				return ((InternalEList<?>)getOutputData()).basicRemove(otherEnd, msgs);
+			case ProcessPackage.TASK__CAPABILITY_REQUIREMENT:
+				return basicSetCapabilityRequirement(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -259,6 +316,8 @@ public class TaskImpl extends FlowNodeImpl implements Task {
 				return getInputData();
 			case ProcessPackage.TASK__OUTPUT_DATA:
 				return getOutputData();
+			case ProcessPackage.TASK__CAPABILITY_REQUIREMENT:
+				return getCapabilityRequirement();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -289,6 +348,9 @@ public class TaskImpl extends FlowNodeImpl implements Task {
 				getOutputData().clear();
 				getOutputData().addAll((Collection<? extends Data>)newValue);
 				return;
+			case ProcessPackage.TASK__CAPABILITY_REQUIREMENT:
+				setCapabilityRequirement((ManufacturingCapability)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -316,6 +378,9 @@ public class TaskImpl extends FlowNodeImpl implements Task {
 			case ProcessPackage.TASK__OUTPUT_DATA:
 				getOutputData().clear();
 				return;
+			case ProcessPackage.TASK__CAPABILITY_REQUIREMENT:
+				setCapabilityRequirement((ManufacturingCapability)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -338,6 +403,8 @@ public class TaskImpl extends FlowNodeImpl implements Task {
 				return inputData != null && !inputData.isEmpty();
 			case ProcessPackage.TASK__OUTPUT_DATA:
 				return outputData != null && !outputData.isEmpty();
+			case ProcessPackage.TASK__CAPABILITY_REQUIREMENT:
+				return capabilityRequirement != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -126,13 +126,22 @@ public interface ProcessPackage extends EPackage {
 	int PROCESS_DEFINITION__EDGES = BasePackage.ENTITY_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Product Variant</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_DEFINITION__PRODUCT_VARIANT = BasePackage.ENTITY_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Definition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROCESS_DEFINITION_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 2;
+	int PROCESS_DEFINITION_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Definition</em>' class.
@@ -799,13 +808,22 @@ public interface ProcessPackage extends EPackage {
 	int TASK__OUTPUT_DATA = FLOW_NODE_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Capability Requirement</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK__CAPABILITY_REQUIREMENT = FLOW_NODE_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>Task</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_FEATURE_COUNT = FLOW_NODE_FEATURE_COUNT + 5;
+	int TASK_FEATURE_COUNT = FLOW_NODE_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of operations of the '<em>Task</em>' class.
@@ -1603,6 +1621,17 @@ public interface ProcessPackage extends EPackage {
 	EReference getProcessDefinition_Edges();
 
 	/**
+	 * Returns the meta object for the reference '{@link de.dfki.iui.basys.model.domain.process.ProcessDefinition#getProductVariant <em>Product Variant</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Product Variant</em>'.
+	 * @see de.dfki.iui.basys.model.domain.process.ProcessDefinition#getProductVariant()
+	 * @see #getProcessDefinition()
+	 * @generated
+	 */
+	EReference getProcessDefinition_ProductVariant();
+
+	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.process.Node <em>Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1836,6 +1865,17 @@ public interface ProcessPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTask_OutputData();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link de.dfki.iui.basys.model.domain.process.Task#getCapabilityRequirement <em>Capability Requirement</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Capability Requirement</em>'.
+	 * @see de.dfki.iui.basys.model.domain.process.Task#getCapabilityRequirement()
+	 * @see #getTask()
+	 * @generated
+	 */
+	EReference getTask_CapabilityRequirement();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.process.DataFlow <em>Data Flow</em>}'.
@@ -2258,6 +2298,14 @@ public interface ProcessPackage extends EPackage {
 		EReference PROCESS_DEFINITION__EDGES = eINSTANCE.getProcessDefinition_Edges();
 
 		/**
+		 * The meta object literal for the '<em><b>Product Variant</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROCESS_DEFINITION__PRODUCT_VARIANT = eINSTANCE.getProcessDefinition_ProductVariant();
+
+		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.process.impl.NodeImpl <em>Node</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2446,6 +2494,14 @@ public interface ProcessPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TASK__OUTPUT_DATA = eINSTANCE.getTask_OutputData();
+
+		/**
+		 * The meta object literal for the '<em><b>Capability Requirement</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TASK__CAPABILITY_REQUIREMENT = eINSTANCE.getTask_CapabilityRequirement();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.process.impl.DataFlowImpl <em>Data Flow</em>}' class.

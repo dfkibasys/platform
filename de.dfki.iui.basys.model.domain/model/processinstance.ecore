@@ -9,9 +9,14 @@
     <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
   </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="ProcessInstance" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="processDefinitionId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="orderId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="productInstanceId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="processDefinition" lowerBound="1"
+        eType="ecore:EClass process.ecore#//ProcessDefinition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="order" lowerBound="1" eType="ecore:EClass order.ecore#//Order"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="productInstance" eType="ecore:EClass productinstance.ecore#//ProductInstance"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TaskInstance" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" eType="ecore:EEnum process.ecore#//TaskStateEnum"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="task" lowerBound="1" eType="ecore:EClass process.ecore#//Task"/>
   </eClassifiers>
 </ecore:EPackage>

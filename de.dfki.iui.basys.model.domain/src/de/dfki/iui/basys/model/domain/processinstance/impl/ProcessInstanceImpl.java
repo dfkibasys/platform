@@ -4,13 +4,17 @@ package de.dfki.iui.basys.model.domain.processinstance.impl;
 
 import de.dfki.iui.basys.model.base.impl.EntityImpl;
 
+import de.dfki.iui.basys.model.domain.order.Order;
+import de.dfki.iui.basys.model.domain.process.ProcessDefinition;
 import de.dfki.iui.basys.model.domain.processinstance.ProcessInstance;
 import de.dfki.iui.basys.model.domain.processinstance.ProcessinstancePackage;
 
+import de.dfki.iui.basys.model.domain.productinstance.ProductInstance;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
@@ -21,9 +25,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.dfki.iui.basys.model.domain.processinstance.impl.ProcessInstanceImpl#getProcessDefinitionId <em>Process Definition Id</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.domain.processinstance.impl.ProcessInstanceImpl#getOrderId <em>Order Id</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.domain.processinstance.impl.ProcessInstanceImpl#getProductInstanceId <em>Product Instance Id</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.processinstance.impl.ProcessInstanceImpl#getProcessDefinition <em>Process Definition</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.processinstance.impl.ProcessInstanceImpl#getOrder <em>Order</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.processinstance.impl.ProcessInstanceImpl#getProductInstance <em>Product Instance</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.processinstance.impl.ProcessInstanceImpl#getState <em>State</em>}</li>
  * </ul>
  *
@@ -31,64 +35,34 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class ProcessInstanceImpl extends EntityImpl implements ProcessInstance {
 	/**
-	 * The default value of the '{@link #getProcessDefinitionId() <em>Process Definition Id</em>}' attribute.
+	 * The cached value of the '{@link #getProcessDefinition() <em>Process Definition</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getProcessDefinitionId()
+	 * @see #getProcessDefinition()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String PROCESS_DEFINITION_ID_EDEFAULT = null;
+	protected ProcessDefinition processDefinition;
 
 	/**
-	 * The cached value of the '{@link #getProcessDefinitionId() <em>Process Definition Id</em>}' attribute.
+	 * The cached value of the '{@link #getOrder() <em>Order</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getProcessDefinitionId()
+	 * @see #getOrder()
 	 * @generated
 	 * @ordered
 	 */
-	protected String processDefinitionId = PROCESS_DEFINITION_ID_EDEFAULT;
+	protected Order order;
 
 	/**
-	 * The default value of the '{@link #getOrderId() <em>Order Id</em>}' attribute.
+	 * The cached value of the '{@link #getProductInstance() <em>Product Instance</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOrderId()
+	 * @see #getProductInstance()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String ORDER_ID_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getOrderId() <em>Order Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOrderId()
-	 * @generated
-	 * @ordered
-	 */
-	protected String orderId = ORDER_ID_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getProductInstanceId() <em>Product Instance Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getProductInstanceId()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String PRODUCT_INSTANCE_ID_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getProductInstanceId() <em>Product Instance Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getProductInstanceId()
-	 * @generated
-	 * @ordered
-	 */
-	protected String productInstanceId = PRODUCT_INSTANCE_ID_EDEFAULT;
+	protected ProductInstance productInstance;
 
 	/**
 	 * The default value of the '{@link #getState() <em>State</em>}' attribute.
@@ -134,8 +108,16 @@ public class ProcessInstanceImpl extends EntityImpl implements ProcessInstance {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getProcessDefinitionId() {
-		return processDefinitionId;
+	public ProcessDefinition getProcessDefinition() {
+		if (processDefinition != null && processDefinition.eIsProxy()) {
+			InternalEObject oldProcessDefinition = (InternalEObject)processDefinition;
+			processDefinition = (ProcessDefinition)eResolveProxy(oldProcessDefinition);
+			if (processDefinition != oldProcessDefinition) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProcessinstancePackage.PROCESS_INSTANCE__PROCESS_DEFINITION, oldProcessDefinition, processDefinition));
+			}
+		}
+		return processDefinition;
 	}
 
 	/**
@@ -143,11 +125,20 @@ public class ProcessInstanceImpl extends EntityImpl implements ProcessInstance {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setProcessDefinitionId(String newProcessDefinitionId) {
-		String oldProcessDefinitionId = processDefinitionId;
-		processDefinitionId = newProcessDefinitionId;
+	public ProcessDefinition basicGetProcessDefinition() {
+		return processDefinition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setProcessDefinition(ProcessDefinition newProcessDefinition) {
+		ProcessDefinition oldProcessDefinition = processDefinition;
+		processDefinition = newProcessDefinition;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ProcessinstancePackage.PROCESS_INSTANCE__PROCESS_DEFINITION_ID, oldProcessDefinitionId, processDefinitionId));
+			eNotify(new ENotificationImpl(this, Notification.SET, ProcessinstancePackage.PROCESS_INSTANCE__PROCESS_DEFINITION, oldProcessDefinition, processDefinition));
 	}
 
 	/**
@@ -155,8 +146,16 @@ public class ProcessInstanceImpl extends EntityImpl implements ProcessInstance {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getOrderId() {
-		return orderId;
+	public Order getOrder() {
+		if (order != null && order.eIsProxy()) {
+			InternalEObject oldOrder = (InternalEObject)order;
+			order = (Order)eResolveProxy(oldOrder);
+			if (order != oldOrder) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProcessinstancePackage.PROCESS_INSTANCE__ORDER, oldOrder, order));
+			}
+		}
+		return order;
 	}
 
 	/**
@@ -164,11 +163,20 @@ public class ProcessInstanceImpl extends EntityImpl implements ProcessInstance {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setOrderId(String newOrderId) {
-		String oldOrderId = orderId;
-		orderId = newOrderId;
+	public Order basicGetOrder() {
+		return order;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOrder(Order newOrder) {
+		Order oldOrder = order;
+		order = newOrder;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ProcessinstancePackage.PROCESS_INSTANCE__ORDER_ID, oldOrderId, orderId));
+			eNotify(new ENotificationImpl(this, Notification.SET, ProcessinstancePackage.PROCESS_INSTANCE__ORDER, oldOrder, order));
 	}
 
 	/**
@@ -176,8 +184,16 @@ public class ProcessInstanceImpl extends EntityImpl implements ProcessInstance {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getProductInstanceId() {
-		return productInstanceId;
+	public ProductInstance getProductInstance() {
+		if (productInstance != null && productInstance.eIsProxy()) {
+			InternalEObject oldProductInstance = (InternalEObject)productInstance;
+			productInstance = (ProductInstance)eResolveProxy(oldProductInstance);
+			if (productInstance != oldProductInstance) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProcessinstancePackage.PROCESS_INSTANCE__PRODUCT_INSTANCE, oldProductInstance, productInstance));
+			}
+		}
+		return productInstance;
 	}
 
 	/**
@@ -185,11 +201,20 @@ public class ProcessInstanceImpl extends EntityImpl implements ProcessInstance {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setProductInstanceId(String newProductInstanceId) {
-		String oldProductInstanceId = productInstanceId;
-		productInstanceId = newProductInstanceId;
+	public ProductInstance basicGetProductInstance() {
+		return productInstance;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setProductInstance(ProductInstance newProductInstance) {
+		ProductInstance oldProductInstance = productInstance;
+		productInstance = newProductInstance;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ProcessinstancePackage.PROCESS_INSTANCE__PRODUCT_INSTANCE_ID, oldProductInstanceId, productInstanceId));
+			eNotify(new ENotificationImpl(this, Notification.SET, ProcessinstancePackage.PROCESS_INSTANCE__PRODUCT_INSTANCE, oldProductInstance, productInstance));
 	}
 
 	/**
@@ -221,12 +246,15 @@ public class ProcessInstanceImpl extends EntityImpl implements ProcessInstance {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ProcessinstancePackage.PROCESS_INSTANCE__PROCESS_DEFINITION_ID:
-				return getProcessDefinitionId();
-			case ProcessinstancePackage.PROCESS_INSTANCE__ORDER_ID:
-				return getOrderId();
-			case ProcessinstancePackage.PROCESS_INSTANCE__PRODUCT_INSTANCE_ID:
-				return getProductInstanceId();
+			case ProcessinstancePackage.PROCESS_INSTANCE__PROCESS_DEFINITION:
+				if (resolve) return getProcessDefinition();
+				return basicGetProcessDefinition();
+			case ProcessinstancePackage.PROCESS_INSTANCE__ORDER:
+				if (resolve) return getOrder();
+				return basicGetOrder();
+			case ProcessinstancePackage.PROCESS_INSTANCE__PRODUCT_INSTANCE:
+				if (resolve) return getProductInstance();
+				return basicGetProductInstance();
 			case ProcessinstancePackage.PROCESS_INSTANCE__STATE:
 				return getState();
 		}
@@ -241,14 +269,14 @@ public class ProcessInstanceImpl extends EntityImpl implements ProcessInstance {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ProcessinstancePackage.PROCESS_INSTANCE__PROCESS_DEFINITION_ID:
-				setProcessDefinitionId((String)newValue);
+			case ProcessinstancePackage.PROCESS_INSTANCE__PROCESS_DEFINITION:
+				setProcessDefinition((ProcessDefinition)newValue);
 				return;
-			case ProcessinstancePackage.PROCESS_INSTANCE__ORDER_ID:
-				setOrderId((String)newValue);
+			case ProcessinstancePackage.PROCESS_INSTANCE__ORDER:
+				setOrder((Order)newValue);
 				return;
-			case ProcessinstancePackage.PROCESS_INSTANCE__PRODUCT_INSTANCE_ID:
-				setProductInstanceId((String)newValue);
+			case ProcessinstancePackage.PROCESS_INSTANCE__PRODUCT_INSTANCE:
+				setProductInstance((ProductInstance)newValue);
 				return;
 			case ProcessinstancePackage.PROCESS_INSTANCE__STATE:
 				setState((String)newValue);
@@ -265,14 +293,14 @@ public class ProcessInstanceImpl extends EntityImpl implements ProcessInstance {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ProcessinstancePackage.PROCESS_INSTANCE__PROCESS_DEFINITION_ID:
-				setProcessDefinitionId(PROCESS_DEFINITION_ID_EDEFAULT);
+			case ProcessinstancePackage.PROCESS_INSTANCE__PROCESS_DEFINITION:
+				setProcessDefinition((ProcessDefinition)null);
 				return;
-			case ProcessinstancePackage.PROCESS_INSTANCE__ORDER_ID:
-				setOrderId(ORDER_ID_EDEFAULT);
+			case ProcessinstancePackage.PROCESS_INSTANCE__ORDER:
+				setOrder((Order)null);
 				return;
-			case ProcessinstancePackage.PROCESS_INSTANCE__PRODUCT_INSTANCE_ID:
-				setProductInstanceId(PRODUCT_INSTANCE_ID_EDEFAULT);
+			case ProcessinstancePackage.PROCESS_INSTANCE__PRODUCT_INSTANCE:
+				setProductInstance((ProductInstance)null);
 				return;
 			case ProcessinstancePackage.PROCESS_INSTANCE__STATE:
 				setState(STATE_EDEFAULT);
@@ -289,12 +317,12 @@ public class ProcessInstanceImpl extends EntityImpl implements ProcessInstance {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ProcessinstancePackage.PROCESS_INSTANCE__PROCESS_DEFINITION_ID:
-				return PROCESS_DEFINITION_ID_EDEFAULT == null ? processDefinitionId != null : !PROCESS_DEFINITION_ID_EDEFAULT.equals(processDefinitionId);
-			case ProcessinstancePackage.PROCESS_INSTANCE__ORDER_ID:
-				return ORDER_ID_EDEFAULT == null ? orderId != null : !ORDER_ID_EDEFAULT.equals(orderId);
-			case ProcessinstancePackage.PROCESS_INSTANCE__PRODUCT_INSTANCE_ID:
-				return PRODUCT_INSTANCE_ID_EDEFAULT == null ? productInstanceId != null : !PRODUCT_INSTANCE_ID_EDEFAULT.equals(productInstanceId);
+			case ProcessinstancePackage.PROCESS_INSTANCE__PROCESS_DEFINITION:
+				return processDefinition != null;
+			case ProcessinstancePackage.PROCESS_INSTANCE__ORDER:
+				return order != null;
+			case ProcessinstancePackage.PROCESS_INSTANCE__PRODUCT_INSTANCE:
+				return productInstance != null;
 			case ProcessinstancePackage.PROCESS_INSTANCE__STATE:
 				return STATE_EDEFAULT == null ? state != null : !STATE_EDEFAULT.equals(state);
 		}
@@ -311,13 +339,7 @@ public class ProcessInstanceImpl extends EntityImpl implements ProcessInstance {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (processDefinitionId: ");
-		result.append(processDefinitionId);
-		result.append(", orderId: ");
-		result.append(orderId);
-		result.append(", productInstanceId: ");
-		result.append(productInstanceId);
-		result.append(", state: ");
+		result.append(" (state: ");
 		result.append(state);
 		result.append(')');
 		return result.toString();

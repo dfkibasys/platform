@@ -123,6 +123,14 @@ public class CapabilityAdapterFactory extends AdapterFactoryImpl {
 				return createSchraubenAdapter();
 			}
 			@Override
+			public Adapter caseInformationTransferCapability(InformationTransferCapability object) {
+				return createInformationTransferCapabilityAdapter();
+			}
+			@Override
+			public Adapter caseProvideInformation(ProvideInformation object) {
+				return createProvideInformationAdapter();
+			}
+			@Override
 			public Adapter caseBObject(BObject object) {
 				return createBObjectAdapter();
 			}
@@ -329,6 +337,34 @@ public class CapabilityAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSchraubenAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.capability.InformationTransferCapability <em>Information Transfer Capability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.domain.capability.InformationTransferCapability
+	 * @generated
+	 */
+	public Adapter createInformationTransferCapabilityAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.capability.ProvideInformation <em>Provide Information</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.domain.capability.ProvideInformation
+	 * @generated
+	 */
+	public Adapter createProvideInformationAdapter() {
 		return null;
 	}
 

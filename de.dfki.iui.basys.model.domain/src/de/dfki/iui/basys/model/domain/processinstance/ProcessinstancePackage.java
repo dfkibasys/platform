@@ -7,6 +7,7 @@ import de.dfki.iui.basys.model.base.BasePackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -105,31 +106,31 @@ public interface ProcessinstancePackage extends EPackage {
 	int PROCESS_INSTANCE__METADATA = BasePackage.ENTITY__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Process Definition Id</b></em>' attribute.
+	 * The feature id for the '<em><b>Process Definition</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROCESS_INSTANCE__PROCESS_DEFINITION_ID = BasePackage.ENTITY_FEATURE_COUNT + 0;
+	int PROCESS_INSTANCE__PROCESS_DEFINITION = BasePackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Order Id</b></em>' attribute.
+	 * The feature id for the '<em><b>Order</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROCESS_INSTANCE__ORDER_ID = BasePackage.ENTITY_FEATURE_COUNT + 1;
+	int PROCESS_INSTANCE__ORDER = BasePackage.ENTITY_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Product Instance Id</b></em>' attribute.
+	 * The feature id for the '<em><b>Product Instance</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROCESS_INSTANCE__PRODUCT_INSTANCE_ID = BasePackage.ENTITY_FEATURE_COUNT + 2;
+	int PROCESS_INSTANCE__PRODUCT_INSTANCE = BasePackage.ENTITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>State</b></em>' attribute.
@@ -170,37 +171,37 @@ public interface ProcessinstancePackage extends EPackage {
 	EClass getProcessInstance();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.processinstance.ProcessInstance#getProcessDefinitionId <em>Process Definition Id</em>}'.
+	 * Returns the meta object for the reference '{@link de.dfki.iui.basys.model.domain.processinstance.ProcessInstance#getProcessDefinition <em>Process Definition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Process Definition Id</em>'.
-	 * @see de.dfki.iui.basys.model.domain.processinstance.ProcessInstance#getProcessDefinitionId()
+	 * @return the meta object for the reference '<em>Process Definition</em>'.
+	 * @see de.dfki.iui.basys.model.domain.processinstance.ProcessInstance#getProcessDefinition()
 	 * @see #getProcessInstance()
 	 * @generated
 	 */
-	EAttribute getProcessInstance_ProcessDefinitionId();
+	EReference getProcessInstance_ProcessDefinition();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.processinstance.ProcessInstance#getOrderId <em>Order Id</em>}'.
+	 * Returns the meta object for the reference '{@link de.dfki.iui.basys.model.domain.processinstance.ProcessInstance#getOrder <em>Order</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Order Id</em>'.
-	 * @see de.dfki.iui.basys.model.domain.processinstance.ProcessInstance#getOrderId()
+	 * @return the meta object for the reference '<em>Order</em>'.
+	 * @see de.dfki.iui.basys.model.domain.processinstance.ProcessInstance#getOrder()
 	 * @see #getProcessInstance()
 	 * @generated
 	 */
-	EAttribute getProcessInstance_OrderId();
+	EReference getProcessInstance_Order();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.processinstance.ProcessInstance#getProductInstanceId <em>Product Instance Id</em>}'.
+	 * Returns the meta object for the reference '{@link de.dfki.iui.basys.model.domain.processinstance.ProcessInstance#getProductInstance <em>Product Instance</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Product Instance Id</em>'.
-	 * @see de.dfki.iui.basys.model.domain.processinstance.ProcessInstance#getProductInstanceId()
+	 * @return the meta object for the reference '<em>Product Instance</em>'.
+	 * @see de.dfki.iui.basys.model.domain.processinstance.ProcessInstance#getProductInstance()
 	 * @see #getProcessInstance()
 	 * @generated
 	 */
-	EAttribute getProcessInstance_ProductInstanceId();
+	EReference getProcessInstance_ProductInstance();
 
 	/**
 	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.processinstance.ProcessInstance#getState <em>State</em>}'.
@@ -247,28 +248,28 @@ public interface ProcessinstancePackage extends EPackage {
 		EClass PROCESS_INSTANCE = eINSTANCE.getProcessInstance();
 
 		/**
-		 * The meta object literal for the '<em><b>Process Definition Id</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Process Definition</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PROCESS_INSTANCE__PROCESS_DEFINITION_ID = eINSTANCE.getProcessInstance_ProcessDefinitionId();
+		EReference PROCESS_INSTANCE__PROCESS_DEFINITION = eINSTANCE.getProcessInstance_ProcessDefinition();
 
 		/**
-		 * The meta object literal for the '<em><b>Order Id</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Order</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PROCESS_INSTANCE__ORDER_ID = eINSTANCE.getProcessInstance_OrderId();
+		EReference PROCESS_INSTANCE__ORDER = eINSTANCE.getProcessInstance_Order();
 
 		/**
-		 * The meta object literal for the '<em><b>Product Instance Id</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Product Instance</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PROCESS_INSTANCE__PRODUCT_INSTANCE_ID = eINSTANCE.getProcessInstance_ProductInstanceId();
+		EReference PROCESS_INSTANCE__PRODUCT_INSTANCE = eINSTANCE.getProcessInstance_ProductInstance();
 
 		/**
 		 * The meta object literal for the '<em><b>State</b></em>' attribute feature.

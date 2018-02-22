@@ -198,6 +198,25 @@ public class CapabilitySwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case CapabilityPackage.INFORMATION_TRANSFER_CAPABILITY: {
+				InformationTransferCapability informationTransferCapability = (InformationTransferCapability)theEObject;
+				T result = caseInformationTransferCapability(informationTransferCapability);
+				if (result == null) result = caseCapability(informationTransferCapability);
+				if (result == null) result = caseEntity(informationTransferCapability);
+				if (result == null) result = caseBObject(informationTransferCapability);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CapabilityPackage.PROVIDE_INFORMATION: {
+				ProvideInformation provideInformation = (ProvideInformation)theEObject;
+				T result = caseProvideInformation(provideInformation);
+				if (result == null) result = caseInformationTransferCapability(provideInformation);
+				if (result == null) result = caseCapability(provideInformation);
+				if (result == null) result = caseEntity(provideInformation);
+				if (result == null) result = caseBObject(provideInformation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -394,6 +413,36 @@ public class CapabilitySwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseSchrauben(Schrauben object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Information Transfer Capability</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Information Transfer Capability</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseInformationTransferCapability(InformationTransferCapability object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Provide Information</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Provide Information</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseProvideInformation(ProvideInformation object) {
 		return null;
 	}
 

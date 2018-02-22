@@ -3,6 +3,7 @@
 package de.dfki.iui.basys.model.domain.process.provider;
 
 
+import de.dfki.iui.basys.model.domain.capability.CapabilityFactory;
 import de.dfki.iui.basys.model.domain.process.ProcessFactory;
 import de.dfki.iui.basys.model.domain.process.ProcessPackage;
 import de.dfki.iui.basys.model.domain.process.Task;
@@ -135,6 +136,7 @@ public class TaskItemProvider extends FlowNodeItemProvider {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ProcessPackage.Literals.TASK__INPUT_DATA);
 			childrenFeatures.add(ProcessPackage.Literals.TASK__OUTPUT_DATA);
+			childrenFeatures.add(ProcessPackage.Literals.TASK__CAPABILITY_REQUIREMENT);
 		}
 		return childrenFeatures;
 	}
@@ -197,6 +199,7 @@ public class TaskItemProvider extends FlowNodeItemProvider {
 				return;
 			case ProcessPackage.TASK__INPUT_DATA:
 			case ProcessPackage.TASK__OUTPUT_DATA:
+			case ProcessPackage.TASK__CAPABILITY_REQUIREMENT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -223,6 +226,56 @@ public class TaskItemProvider extends FlowNodeItemProvider {
 			(createChildParameter
 				(ProcessPackage.Literals.TASK__OUTPUT_DATA,
 				 ProcessFactory.eINSTANCE.createData()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ProcessPackage.Literals.TASK__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createManufacturingCapability()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ProcessPackage.Literals.TASK__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createFügen()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ProcessPackage.Literals.TASK__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createAnEinpressen()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ProcessPackage.Literals.TASK__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createPressen()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ProcessPackage.Literals.TASK__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createUrformen()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ProcessPackage.Literals.TASK__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createUmformen()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ProcessPackage.Literals.TASK__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createTrennen()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ProcessPackage.Literals.TASK__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createBeschichten()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ProcessPackage.Literals.TASK__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createStoffeigenschaften()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ProcessPackage.Literals.TASK__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createSchrauben()));
 	}
 
 	/**

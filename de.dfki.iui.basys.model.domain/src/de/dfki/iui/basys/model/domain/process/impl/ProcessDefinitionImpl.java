@@ -9,8 +9,10 @@ import de.dfki.iui.basys.model.domain.process.Node;
 import de.dfki.iui.basys.model.domain.process.ProcessDefinition;
 import de.dfki.iui.basys.model.domain.process.ProcessPackage;
 
+import de.dfki.iui.basys.model.domain.product.ProductVariant;
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -18,6 +20,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -31,6 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link de.dfki.iui.basys.model.domain.process.impl.ProcessDefinitionImpl#getNodes <em>Nodes</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.process.impl.ProcessDefinitionImpl#getEdges <em>Edges</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.process.impl.ProcessDefinitionImpl#getProductVariant <em>Product Variant</em>}</li>
  * </ul>
  *
  * @generated
@@ -55,6 +59,16 @@ public class ProcessDefinitionImpl extends EntityImpl implements ProcessDefiniti
 	 * @ordered
 	 */
 	protected EList<Edge> edges;
+
+	/**
+	 * The cached value of the '{@link #getProductVariant() <em>Product Variant</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getProductVariant()
+	 * @generated
+	 * @ordered
+	 */
+	protected ProductVariant productVariant;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -104,6 +118,44 @@ public class ProcessDefinitionImpl extends EntityImpl implements ProcessDefiniti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ProductVariant getProductVariant() {
+		if (productVariant != null && productVariant.eIsProxy()) {
+			InternalEObject oldProductVariant = (InternalEObject)productVariant;
+			productVariant = (ProductVariant)eResolveProxy(oldProductVariant);
+			if (productVariant != oldProductVariant) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProcessPackage.PROCESS_DEFINITION__PRODUCT_VARIANT, oldProductVariant, productVariant));
+			}
+		}
+		return productVariant;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ProductVariant basicGetProductVariant() {
+		return productVariant;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setProductVariant(ProductVariant newProductVariant) {
+		ProductVariant oldProductVariant = productVariant;
+		productVariant = newProductVariant;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ProcessPackage.PROCESS_DEFINITION__PRODUCT_VARIANT, oldProductVariant, productVariant));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -127,6 +179,9 @@ public class ProcessDefinitionImpl extends EntityImpl implements ProcessDefiniti
 				return getNodes();
 			case ProcessPackage.PROCESS_DEFINITION__EDGES:
 				return getEdges();
+			case ProcessPackage.PROCESS_DEFINITION__PRODUCT_VARIANT:
+				if (resolve) return getProductVariant();
+				return basicGetProductVariant();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -148,6 +203,9 @@ public class ProcessDefinitionImpl extends EntityImpl implements ProcessDefiniti
 				getEdges().clear();
 				getEdges().addAll((Collection<? extends Edge>)newValue);
 				return;
+			case ProcessPackage.PROCESS_DEFINITION__PRODUCT_VARIANT:
+				setProductVariant((ProductVariant)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -166,6 +224,9 @@ public class ProcessDefinitionImpl extends EntityImpl implements ProcessDefiniti
 			case ProcessPackage.PROCESS_DEFINITION__EDGES:
 				getEdges().clear();
 				return;
+			case ProcessPackage.PROCESS_DEFINITION__PRODUCT_VARIANT:
+				setProductVariant((ProductVariant)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -182,6 +243,8 @@ public class ProcessDefinitionImpl extends EntityImpl implements ProcessDefiniti
 				return nodes != null && !nodes.isEmpty();
 			case ProcessPackage.PROCESS_DEFINITION__EDGES:
 				return edges != null && !edges.isEmpty();
+			case ProcessPackage.PROCESS_DEFINITION__PRODUCT_VARIANT:
+				return productVariant != null;
 		}
 		return super.eIsSet(featureID);
 	}

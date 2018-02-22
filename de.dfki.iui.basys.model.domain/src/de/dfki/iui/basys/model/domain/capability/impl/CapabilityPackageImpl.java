@@ -11,8 +11,10 @@ import de.dfki.iui.basys.model.domain.capability.CapabilityAssertion;
 import de.dfki.iui.basys.model.domain.capability.CapabilityFactory;
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
 import de.dfki.iui.basys.model.domain.capability.Fügen;
+import de.dfki.iui.basys.model.domain.capability.InformationTransferCapability;
 import de.dfki.iui.basys.model.domain.capability.ManufacturingCapability;
 import de.dfki.iui.basys.model.domain.capability.Pressen;
+import de.dfki.iui.basys.model.domain.capability.ProvideInformation;
 import de.dfki.iui.basys.model.domain.capability.QoSCapability;
 import de.dfki.iui.basys.model.domain.capability.Schrauben;
 import de.dfki.iui.basys.model.domain.capability.Stoffeigenschaften;
@@ -170,6 +172,20 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * @generated
 	 */
 	private EClass schraubenEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass informationTransferCapabilityEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass provideInformationEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -432,6 +448,24 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getInformationTransferCapability() {
+		return informationTransferCapabilityEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getProvideInformation() {
+		return provideInformationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public CapabilityFactory getCapabilityFactory() {
 		return (CapabilityFactory)getEFactoryInstance();
 	}
@@ -484,6 +518,10 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 
 		schraubenEClass = createEClass(SCHRAUBEN);
 		createEAttribute(schraubenEClass, SCHRAUBEN__DREHMOMENT);
+
+		informationTransferCapabilityEClass = createEClass(INFORMATION_TRANSFER_CAPABILITY);
+
+		provideInformationEClass = createEClass(PROVIDE_INFORMATION);
 	}
 
 	/**
@@ -531,6 +569,8 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		stoffeigenschaftenEClass.getESuperTypes().add(this.getManufacturingCapability());
 		anEinpressenEClass.getESuperTypes().add(this.getFügen());
 		schraubenEClass.getESuperTypes().add(this.getAnEinpressen());
+		informationTransferCapabilityEClass.getESuperTypes().add(this.getCapability());
+		provideInformationEClass.getESuperTypes().add(this.getInformationTransferCapability());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(capabilityAssertionEClass, CapabilityAssertion.class, "CapabilityAssertion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -562,6 +602,10 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 
 		initEClass(schraubenEClass, Schrauben.class, "Schrauben", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSchrauben_Drehmoment(), ecorePackage.getEInt(), "drehmoment", null, 0, 1, Schrauben.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(informationTransferCapabilityEClass, InformationTransferCapability.class, "InformationTransferCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(provideInformationEClass, ProvideInformation.class, "ProvideInformation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

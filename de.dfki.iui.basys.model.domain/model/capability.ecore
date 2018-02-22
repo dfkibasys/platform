@@ -13,6 +13,7 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Capability" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HandlingCapability" eSuperTypes="#//Capability"/>
   <eClassifiers xsi:type="ecore:EClass" name="ManufacturingCapability" eSuperTypes="#//Capability"/>
   <eClassifiers xsi:type="ecore:EClass" name="Fügen" eSuperTypes="#//ManufacturingCapability"/>
   <eClassifiers xsi:type="ecore:EClass" name="Pressen" eSuperTypes="#//AnEinpressen">
@@ -29,4 +30,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="Schrauben" eSuperTypes="#//AnEinpressen">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="drehmoment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InformationTransferCapability" eSuperTypes="#//Capability"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ProvideInformation" eSuperTypes="#//InformationTransferCapability"/>
 </ecore:EPackage>

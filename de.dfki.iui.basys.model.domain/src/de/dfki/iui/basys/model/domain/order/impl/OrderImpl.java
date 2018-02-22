@@ -8,6 +8,7 @@ import de.dfki.iui.basys.model.domain.order.Order;
 import de.dfki.iui.basys.model.domain.order.OrderPackage;
 import de.dfki.iui.basys.model.domain.order.OrderStatus;
 
+import de.dfki.iui.basys.model.domain.product.ProductVariant;
 import java.util.Date;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -26,11 +27,12 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.dfki.iui.basys.model.domain.order.impl.OrderImpl#getProductVariantId <em>Product Variant Id</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.order.impl.OrderImpl#getProductVariant <em>Product Variant</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.order.impl.OrderImpl#getQuantity <em>Quantity</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.order.impl.OrderImpl#getDueDate <em>Due Date</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.order.impl.OrderImpl#getPriority <em>Priority</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.order.impl.OrderImpl#getStartDate <em>Start Date</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.order.impl.OrderImpl#getEndDate <em>End Date</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.domain.order.impl.OrderImpl#getPieces <em>Pieces</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.domain.order.impl.OrderImpl#getPriority <em>Priority</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.order.impl.OrderImpl#getStatus <em>Status</em>}</li>
  * </ul>
  *
@@ -38,24 +40,74 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class OrderImpl extends EntityImpl implements Order {
 	/**
-	 * The default value of the '{@link #getProductVariantId() <em>Product Variant Id</em>}' attribute.
+	 * The cached value of the '{@link #getProductVariant() <em>Product Variant</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getProductVariantId()
+	 * @see #getProductVariant()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String PRODUCT_VARIANT_ID_EDEFAULT = null;
+	protected ProductVariant productVariant;
 
 	/**
-	 * The cached value of the '{@link #getProductVariantId() <em>Product Variant Id</em>}' attribute.
+	 * The default value of the '{@link #getQuantity() <em>Quantity</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getProductVariantId()
+	 * @see #getQuantity()
 	 * @generated
 	 * @ordered
 	 */
-	protected String productVariantId = PRODUCT_VARIANT_ID_EDEFAULT;
+	protected static final int QUANTITY_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getQuantity() <em>Quantity</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getQuantity()
+	 * @generated
+	 * @ordered
+	 */
+	protected int quantity = QUANTITY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getDueDate() <em>Due Date</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDueDate()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Date DUE_DATE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getDueDate() <em>Due Date</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDueDate()
+	 * @generated
+	 * @ordered
+	 */
+	protected Date dueDate = DUE_DATE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPriority() <em>Priority</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPriority()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int PRIORITY_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getPriority() <em>Priority</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPriority()
+	 * @generated
+	 * @ordered
+	 */
+	protected int priority = PRIORITY_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getStartDate() <em>Start Date</em>}' attribute.
@@ -98,46 +150,6 @@ public class OrderImpl extends EntityImpl implements Order {
 	protected Date endDate = END_DATE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getPieces() <em>Pieces</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPieces()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int PIECES_EDEFAULT = 0;
-
-	/**
-	 * The cached value of the '{@link #getPieces() <em>Pieces</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPieces()
-	 * @generated
-	 * @ordered
-	 */
-	protected int pieces = PIECES_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getPriority() <em>Priority</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPriority()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int PRIORITY_EDEFAULT = 0;
-
-	/**
-	 * The cached value of the '{@link #getPriority() <em>Priority</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPriority()
-	 * @generated
-	 * @ordered
-	 */
-	protected int priority = PRIORITY_EDEFAULT;
-
-	/**
 	 * The cached value of the '{@link #getStatus() <em>Status</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -171,8 +183,16 @@ public class OrderImpl extends EntityImpl implements Order {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getProductVariantId() {
-		return productVariantId;
+	public ProductVariant getProductVariant() {
+		if (productVariant != null && productVariant.eIsProxy()) {
+			InternalEObject oldProductVariant = (InternalEObject)productVariant;
+			productVariant = (ProductVariant)eResolveProxy(oldProductVariant);
+			if (productVariant != oldProductVariant) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OrderPackage.ORDER__PRODUCT_VARIANT, oldProductVariant, productVariant));
+			}
+		}
+		return productVariant;
 	}
 
 	/**
@@ -180,11 +200,62 @@ public class OrderImpl extends EntityImpl implements Order {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setProductVariantId(String newProductVariantId) {
-		String oldProductVariantId = productVariantId;
-		productVariantId = newProductVariantId;
+	public ProductVariant basicGetProductVariant() {
+		return productVariant;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setProductVariant(ProductVariant newProductVariant) {
+		ProductVariant oldProductVariant = productVariant;
+		productVariant = newProductVariant;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OrderPackage.ORDER__PRODUCT_VARIANT_ID, oldProductVariantId, productVariantId));
+			eNotify(new ENotificationImpl(this, Notification.SET, OrderPackage.ORDER__PRODUCT_VARIANT, oldProductVariant, productVariant));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getQuantity() {
+		return quantity;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setQuantity(int newQuantity) {
+		int oldQuantity = quantity;
+		quantity = newQuantity;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, OrderPackage.ORDER__QUANTITY, oldQuantity, quantity));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Date getDueDate() {
+		return dueDate;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDueDate(Date newDueDate) {
+		Date oldDueDate = dueDate;
+		dueDate = newDueDate;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, OrderPackage.ORDER__DUE_DATE, oldDueDate, dueDate));
 	}
 
 	/**
@@ -227,27 +298,6 @@ public class OrderImpl extends EntityImpl implements Order {
 		endDate = newEndDate;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, OrderPackage.ORDER__END_DATE, oldEndDate, endDate));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public int getPieces() {
-		return pieces;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setPieces(int newPieces) {
-		int oldPieces = pieces;
-		pieces = newPieces;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OrderPackage.ORDER__PIECES, oldPieces, pieces));
 	}
 
 	/**
@@ -336,16 +386,19 @@ public class OrderImpl extends EntityImpl implements Order {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case OrderPackage.ORDER__PRODUCT_VARIANT_ID:
-				return getProductVariantId();
+			case OrderPackage.ORDER__PRODUCT_VARIANT:
+				if (resolve) return getProductVariant();
+				return basicGetProductVariant();
+			case OrderPackage.ORDER__QUANTITY:
+				return getQuantity();
+			case OrderPackage.ORDER__DUE_DATE:
+				return getDueDate();
+			case OrderPackage.ORDER__PRIORITY:
+				return getPriority();
 			case OrderPackage.ORDER__START_DATE:
 				return getStartDate();
 			case OrderPackage.ORDER__END_DATE:
 				return getEndDate();
-			case OrderPackage.ORDER__PIECES:
-				return getPieces();
-			case OrderPackage.ORDER__PRIORITY:
-				return getPriority();
 			case OrderPackage.ORDER__STATUS:
 				return getStatus();
 		}
@@ -360,20 +413,23 @@ public class OrderImpl extends EntityImpl implements Order {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case OrderPackage.ORDER__PRODUCT_VARIANT_ID:
-				setProductVariantId((String)newValue);
+			case OrderPackage.ORDER__PRODUCT_VARIANT:
+				setProductVariant((ProductVariant)newValue);
+				return;
+			case OrderPackage.ORDER__QUANTITY:
+				setQuantity((Integer)newValue);
+				return;
+			case OrderPackage.ORDER__DUE_DATE:
+				setDueDate((Date)newValue);
+				return;
+			case OrderPackage.ORDER__PRIORITY:
+				setPriority((Integer)newValue);
 				return;
 			case OrderPackage.ORDER__START_DATE:
 				setStartDate((Date)newValue);
 				return;
 			case OrderPackage.ORDER__END_DATE:
 				setEndDate((Date)newValue);
-				return;
-			case OrderPackage.ORDER__PIECES:
-				setPieces((Integer)newValue);
-				return;
-			case OrderPackage.ORDER__PRIORITY:
-				setPriority((Integer)newValue);
 				return;
 			case OrderPackage.ORDER__STATUS:
 				setStatus((OrderStatus)newValue);
@@ -390,20 +446,23 @@ public class OrderImpl extends EntityImpl implements Order {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case OrderPackage.ORDER__PRODUCT_VARIANT_ID:
-				setProductVariantId(PRODUCT_VARIANT_ID_EDEFAULT);
+			case OrderPackage.ORDER__PRODUCT_VARIANT:
+				setProductVariant((ProductVariant)null);
+				return;
+			case OrderPackage.ORDER__QUANTITY:
+				setQuantity(QUANTITY_EDEFAULT);
+				return;
+			case OrderPackage.ORDER__DUE_DATE:
+				setDueDate(DUE_DATE_EDEFAULT);
+				return;
+			case OrderPackage.ORDER__PRIORITY:
+				setPriority(PRIORITY_EDEFAULT);
 				return;
 			case OrderPackage.ORDER__START_DATE:
 				setStartDate(START_DATE_EDEFAULT);
 				return;
 			case OrderPackage.ORDER__END_DATE:
 				setEndDate(END_DATE_EDEFAULT);
-				return;
-			case OrderPackage.ORDER__PIECES:
-				setPieces(PIECES_EDEFAULT);
-				return;
-			case OrderPackage.ORDER__PRIORITY:
-				setPriority(PRIORITY_EDEFAULT);
 				return;
 			case OrderPackage.ORDER__STATUS:
 				setStatus((OrderStatus)null);
@@ -420,16 +479,18 @@ public class OrderImpl extends EntityImpl implements Order {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case OrderPackage.ORDER__PRODUCT_VARIANT_ID:
-				return PRODUCT_VARIANT_ID_EDEFAULT == null ? productVariantId != null : !PRODUCT_VARIANT_ID_EDEFAULT.equals(productVariantId);
+			case OrderPackage.ORDER__PRODUCT_VARIANT:
+				return productVariant != null;
+			case OrderPackage.ORDER__QUANTITY:
+				return quantity != QUANTITY_EDEFAULT;
+			case OrderPackage.ORDER__DUE_DATE:
+				return DUE_DATE_EDEFAULT == null ? dueDate != null : !DUE_DATE_EDEFAULT.equals(dueDate);
+			case OrderPackage.ORDER__PRIORITY:
+				return priority != PRIORITY_EDEFAULT;
 			case OrderPackage.ORDER__START_DATE:
 				return START_DATE_EDEFAULT == null ? startDate != null : !START_DATE_EDEFAULT.equals(startDate);
 			case OrderPackage.ORDER__END_DATE:
 				return END_DATE_EDEFAULT == null ? endDate != null : !END_DATE_EDEFAULT.equals(endDate);
-			case OrderPackage.ORDER__PIECES:
-				return pieces != PIECES_EDEFAULT;
-			case OrderPackage.ORDER__PRIORITY:
-				return priority != PRIORITY_EDEFAULT;
 			case OrderPackage.ORDER__STATUS:
 				return status != null;
 		}
@@ -446,16 +507,16 @@ public class OrderImpl extends EntityImpl implements Order {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (productVariantId: ");
-		result.append(productVariantId);
+		result.append(" (quantity: ");
+		result.append(quantity);
+		result.append(", dueDate: ");
+		result.append(dueDate);
+		result.append(", priority: ");
+		result.append(priority);
 		result.append(", startDate: ");
 		result.append(startDate);
 		result.append(", endDate: ");
 		result.append(endDate);
-		result.append(", pieces: ");
-		result.append(pieces);
-		result.append(", priority: ");
-		result.append(priority);
 		result.append(')');
 		return result.toString();
 	}

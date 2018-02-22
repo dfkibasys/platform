@@ -65,6 +65,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -240,8 +241,8 @@ public class ProductinstancePackageImpl extends EPackageImpl implements Producti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getProductInstance_ProductVariantId() {
-		return (EAttribute)productInstanceEClass.getEStructuralFeatures().get(0);
+	public EReference getProductInstance_ProductVariant() {
+		return (EReference)productInstanceEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -249,8 +250,8 @@ public class ProductinstancePackageImpl extends EPackageImpl implements Producti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getProductInstance_OrderId() {
-		return (EAttribute)productInstanceEClass.getEStructuralFeatures().get(1);
+	public EReference getProductInstance_Order() {
+		return (EReference)productInstanceEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -408,8 +409,8 @@ public class ProductinstancePackageImpl extends EPackageImpl implements Producti
 
 		// Create classes and their features
 		productInstanceEClass = createEClass(PRODUCT_INSTANCE);
-		createEAttribute(productInstanceEClass, PRODUCT_INSTANCE__PRODUCT_VARIANT_ID);
-		createEAttribute(productInstanceEClass, PRODUCT_INSTANCE__ORDER_ID);
+		createEReference(productInstanceEClass, PRODUCT_INSTANCE__PRODUCT_VARIANT);
+		createEReference(productInstanceEClass, PRODUCT_INSTANCE__ORDER);
 		createEAttribute(productInstanceEClass, PRODUCT_INSTANCE__SERIAL_NUMBER);
 
 		productInstanceStatusEClass = createEClass(PRODUCT_INSTANCE_STATUS);
@@ -457,6 +458,8 @@ public class ProductinstancePackageImpl extends EPackageImpl implements Producti
 
 		// Obtain other dependent packages
 		BasePackage theBasePackage = (BasePackage)EPackage.Registry.INSTANCE.getEPackage(BasePackage.eNS_URI);
+		ProductPackage theProductPackage = (ProductPackage)EPackage.Registry.INSTANCE.getEPackage(ProductPackage.eNS_URI);
+		OrderPackage theOrderPackage = (OrderPackage)EPackage.Registry.INSTANCE.getEPackage(OrderPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -471,8 +474,8 @@ public class ProductinstancePackageImpl extends EPackageImpl implements Producti
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(productInstanceEClass, ProductInstance.class, "ProductInstance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getProductInstance_ProductVariantId(), ecorePackage.getEString(), "productVariantId", null, 0, 1, ProductInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getProductInstance_OrderId(), ecorePackage.getEString(), "orderId", null, 0, 1, ProductInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProductInstance_ProductVariant(), theProductPackage.getProductVariant(), null, "productVariant", null, 1, 1, ProductInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProductInstance_Order(), theOrderPackage.getOrder(), null, "order", null, 1, 1, ProductInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProductInstance_SerialNumber(), ecorePackage.getEString(), "serialNumber", null, 0, 1, ProductInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(productInstanceStatusEClass, ProductInstanceStatus.class, "ProductInstanceStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

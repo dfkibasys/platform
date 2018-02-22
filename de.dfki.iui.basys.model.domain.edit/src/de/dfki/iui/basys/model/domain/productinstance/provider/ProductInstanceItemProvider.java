@@ -51,53 +51,53 @@ public class ProductInstanceItemProvider extends EntityItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addProductVariantIdPropertyDescriptor(object);
-			addOrderIdPropertyDescriptor(object);
+			addProductVariantPropertyDescriptor(object);
+			addOrderPropertyDescriptor(object);
 			addSerialNumberPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Product Variant Id feature.
+	 * This adds a property descriptor for the Product Variant feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addProductVariantIdPropertyDescriptor(Object object) {
+	protected void addProductVariantPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ProductInstance_productVariantId_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ProductInstance_productVariantId_feature", "_UI_ProductInstance_type"),
-				 ProductinstancePackage.Literals.PRODUCT_INSTANCE__PRODUCT_VARIANT_ID,
+				 getString("_UI_ProductInstance_productVariant_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ProductInstance_productVariant_feature", "_UI_ProductInstance_type"),
+				 ProductinstancePackage.Literals.PRODUCT_INSTANCE__PRODUCT_VARIANT,
 				 true,
 				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 true,
+				 null,
 				 null,
 				 null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Order Id feature.
+	 * This adds a property descriptor for the Order feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addOrderIdPropertyDescriptor(Object object) {
+	protected void addOrderPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ProductInstance_orderId_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ProductInstance_orderId_feature", "_UI_ProductInstance_type"),
-				 ProductinstancePackage.Literals.PRODUCT_INSTANCE__ORDER_ID,
+				 getString("_UI_ProductInstance_order_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ProductInstance_order_feature", "_UI_ProductInstance_type"),
+				 ProductinstancePackage.Literals.PRODUCT_INSTANCE__ORDER,
 				 true,
 				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 true,
+				 null,
 				 null,
 				 null));
 	}
@@ -162,8 +162,6 @@ public class ProductInstanceItemProvider extends EntityItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ProductInstance.class)) {
-			case ProductinstancePackage.PRODUCT_INSTANCE__PRODUCT_VARIANT_ID:
-			case ProductinstancePackage.PRODUCT_INSTANCE__ORDER_ID:
 			case ProductinstancePackage.PRODUCT_INSTANCE__SERIAL_NUMBER:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;

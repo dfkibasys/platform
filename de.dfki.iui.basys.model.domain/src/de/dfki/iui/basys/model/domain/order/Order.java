@@ -4,6 +4,7 @@ package de.dfki.iui.basys.model.domain.order;
 
 import de.dfki.iui.basys.model.base.Entity;
 
+import de.dfki.iui.basys.model.domain.product.ProductVariant;
 import java.util.Date;
 
 /**
@@ -19,11 +20,12 @@ import java.util.Date;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.dfki.iui.basys.model.domain.order.Order#getProductVariantId <em>Product Variant Id</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.order.Order#getProductVariant <em>Product Variant</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.order.Order#getQuantity <em>Quantity</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.order.Order#getDueDate <em>Due Date</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.order.Order#getPriority <em>Priority</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.order.Order#getStartDate <em>Start Date</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.order.Order#getEndDate <em>End Date</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.domain.order.Order#getPieces <em>Pieces</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.domain.order.Order#getPriority <em>Priority</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.order.Order#getStatus <em>Status</em>}</li>
  * </ul>
  *
@@ -33,30 +35,81 @@ import java.util.Date;
  */
 public interface Order extends Entity {
 	/**
-	 * Returns the value of the '<em><b>Product Variant Id</b></em>' attribute.
+	 * Returns the value of the '<em><b>Product Variant</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Product Variant Id</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Product Variant</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Product Variant Id</em>' attribute.
-	 * @see #setProductVariantId(String)
-	 * @see de.dfki.iui.basys.model.domain.order.OrderPackage#getOrder_ProductVariantId()
+	 * @return the value of the '<em>Product Variant</em>' reference.
+	 * @see #setProductVariant(ProductVariant)
+	 * @see de.dfki.iui.basys.model.domain.order.OrderPackage#getOrder_ProductVariant()
+	 * @model required="true"
+	 * @generated
+	 */
+	ProductVariant getProductVariant();
+
+	/**
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.order.Order#getProductVariant <em>Product Variant</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Product Variant</em>' reference.
+	 * @see #getProductVariant()
+	 * @generated
+	 */
+	void setProductVariant(ProductVariant value);
+
+	/**
+	 * Returns the value of the '<em><b>Quantity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Quantity</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Quantity</em>' attribute.
+	 * @see #setQuantity(int)
+	 * @see de.dfki.iui.basys.model.domain.order.OrderPackage#getOrder_Quantity()
 	 * @model
 	 * @generated
 	 */
-	String getProductVariantId();
+	int getQuantity();
 
 	/**
-	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.order.Order#getProductVariantId <em>Product Variant Id</em>}' attribute.
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.order.Order#getQuantity <em>Quantity</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Product Variant Id</em>' attribute.
-	 * @see #getProductVariantId()
+	 * @param value the new value of the '<em>Quantity</em>' attribute.
+	 * @see #getQuantity()
 	 * @generated
 	 */
-	void setProductVariantId(String value);
+	void setQuantity(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Due Date</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * reales Enddatum
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Due Date</em>' attribute.
+	 * @see #setDueDate(Date)
+	 * @see de.dfki.iui.basys.model.domain.order.OrderPackage#getOrder_DueDate()
+	 * @model
+	 * @generated
+	 */
+	Date getDueDate();
+
+	/**
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.order.Order#getDueDate <em>Due Date</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Due Date</em>' attribute.
+	 * @see #getDueDate()
+	 * @generated
+	 */
+	void setDueDate(Date value);
 
 	/**
 	 * Returns the value of the '<em><b>Start Date</b></em>' attribute.
@@ -107,32 +160,6 @@ public interface Order extends Entity {
 	 * @generated
 	 */
 	void setEndDate(Date value);
-
-	/**
-	 * Returns the value of the '<em><b>Pieces</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Pieces</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Pieces</em>' attribute.
-	 * @see #setPieces(int)
-	 * @see de.dfki.iui.basys.model.domain.order.OrderPackage#getOrder_Pieces()
-	 * @model
-	 * @generated
-	 */
-	int getPieces();
-
-	/**
-	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.order.Order#getPieces <em>Pieces</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Pieces</em>' attribute.
-	 * @see #getPieces()
-	 * @generated
-	 */
-	void setPieces(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Priority</b></em>' attribute.

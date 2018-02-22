@@ -217,8 +217,8 @@ public class OrderPackageImpl extends EPackageImpl implements OrderPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOrder_ProductVariantId() {
-		return (EAttribute)orderEClass.getEStructuralFeatures().get(0);
+	public EReference getOrder_ProductVariant() {
+		return (EReference)orderEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -226,7 +226,7 @@ public class OrderPackageImpl extends EPackageImpl implements OrderPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOrder_StartDate() {
+	public EAttribute getOrder_Quantity() {
 		return (EAttribute)orderEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -235,7 +235,7 @@ public class OrderPackageImpl extends EPackageImpl implements OrderPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOrder_EndDate() {
+	public EAttribute getOrder_DueDate() {
 		return (EAttribute)orderEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -244,16 +244,7 @@ public class OrderPackageImpl extends EPackageImpl implements OrderPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOrder_Pieces() {
-		return (EAttribute)orderEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getOrder_Priority() {
+	public EAttribute getOrder_StartDate() {
 		return (EAttribute)orderEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -262,8 +253,26 @@ public class OrderPackageImpl extends EPackageImpl implements OrderPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getOrder_EndDate() {
+		return (EAttribute)orderEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOrder_Priority() {
+		return (EAttribute)orderEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getOrder_Status() {
-		return (EReference)orderEClass.getEStructuralFeatures().get(5);
+		return (EReference)orderEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -358,11 +367,12 @@ public class OrderPackageImpl extends EPackageImpl implements OrderPackage {
 
 		// Create classes and their features
 		orderEClass = createEClass(ORDER);
-		createEAttribute(orderEClass, ORDER__PRODUCT_VARIANT_ID);
+		createEReference(orderEClass, ORDER__PRODUCT_VARIANT);
+		createEAttribute(orderEClass, ORDER__QUANTITY);
+		createEAttribute(orderEClass, ORDER__DUE_DATE);
+		createEAttribute(orderEClass, ORDER__PRIORITY);
 		createEAttribute(orderEClass, ORDER__START_DATE);
 		createEAttribute(orderEClass, ORDER__END_DATE);
-		createEAttribute(orderEClass, ORDER__PIECES);
-		createEAttribute(orderEClass, ORDER__PRIORITY);
 		createEReference(orderEClass, ORDER__STATUS);
 
 		orderStatusEClass = createEClass(ORDER_STATUS);
@@ -402,6 +412,7 @@ public class OrderPackageImpl extends EPackageImpl implements OrderPackage {
 
 		// Obtain other dependent packages
 		BasePackage theBasePackage = (BasePackage)EPackage.Registry.INSTANCE.getEPackage(BasePackage.eNS_URI);
+		ProductPackage theProductPackage = (ProductPackage)EPackage.Registry.INSTANCE.getEPackage(ProductPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -414,11 +425,12 @@ public class OrderPackageImpl extends EPackageImpl implements OrderPackage {
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(orderEClass, Order.class, "Order", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getOrder_ProductVariantId(), ecorePackage.getEString(), "productVariantId", null, 0, 1, Order.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOrder_ProductVariant(), theProductPackage.getProductVariant(), null, "productVariant", null, 1, 1, Order.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOrder_Quantity(), ecorePackage.getEInt(), "quantity", null, 0, 1, Order.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOrder_DueDate(), ecorePackage.getEDate(), "dueDate", null, 0, 1, Order.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOrder_Priority(), ecorePackage.getEInt(), "priority", null, 0, 1, Order.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOrder_StartDate(), ecorePackage.getEDate(), "startDate", null, 0, 1, Order.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOrder_EndDate(), ecorePackage.getEDate(), "endDate", null, 0, 1, Order.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getOrder_Pieces(), ecorePackage.getEInt(), "pieces", null, 0, 1, Order.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getOrder_Priority(), ecorePackage.getEInt(), "priority", null, 0, 1, Order.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOrder_Status(), this.getOrderStatus(), null, "status", null, 0, 1, Order.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(orderStatusEClass, OrderStatus.class, "OrderStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

@@ -4,6 +4,8 @@ package de.dfki.iui.basys.model.domain.productinstance.impl;
 
 import de.dfki.iui.basys.model.base.impl.EntityImpl;
 
+import de.dfki.iui.basys.model.domain.order.Order;
+import de.dfki.iui.basys.model.domain.product.ProductVariant;
 import de.dfki.iui.basys.model.domain.productinstance.ProductInstance;
 import de.dfki.iui.basys.model.domain.productinstance.ProductinstancePackage;
 
@@ -11,6 +13,7 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
@@ -21,8 +24,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.dfki.iui.basys.model.domain.productinstance.impl.ProductInstanceImpl#getProductVariantId <em>Product Variant Id</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.domain.productinstance.impl.ProductInstanceImpl#getOrderId <em>Order Id</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.productinstance.impl.ProductInstanceImpl#getProductVariant <em>Product Variant</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.productinstance.impl.ProductInstanceImpl#getOrder <em>Order</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.productinstance.impl.ProductInstanceImpl#getSerialNumber <em>Serial Number</em>}</li>
  * </ul>
  *
@@ -30,44 +33,24 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class ProductInstanceImpl extends EntityImpl implements ProductInstance {
 	/**
-	 * The default value of the '{@link #getProductVariantId() <em>Product Variant Id</em>}' attribute.
+	 * The cached value of the '{@link #getProductVariant() <em>Product Variant</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getProductVariantId()
+	 * @see #getProductVariant()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String PRODUCT_VARIANT_ID_EDEFAULT = null;
+	protected ProductVariant productVariant;
 
 	/**
-	 * The cached value of the '{@link #getProductVariantId() <em>Product Variant Id</em>}' attribute.
+	 * The cached value of the '{@link #getOrder() <em>Order</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getProductVariantId()
+	 * @see #getOrder()
 	 * @generated
 	 * @ordered
 	 */
-	protected String productVariantId = PRODUCT_VARIANT_ID_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getOrderId() <em>Order Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOrderId()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String ORDER_ID_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getOrderId() <em>Order Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOrderId()
-	 * @generated
-	 * @ordered
-	 */
-	protected String orderId = ORDER_ID_EDEFAULT;
+	protected Order order;
 
 	/**
 	 * The default value of the '{@link #getSerialNumber() <em>Serial Number</em>}' attribute.
@@ -113,8 +96,16 @@ public class ProductInstanceImpl extends EntityImpl implements ProductInstance {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getProductVariantId() {
-		return productVariantId;
+	public ProductVariant getProductVariant() {
+		if (productVariant != null && productVariant.eIsProxy()) {
+			InternalEObject oldProductVariant = (InternalEObject)productVariant;
+			productVariant = (ProductVariant)eResolveProxy(oldProductVariant);
+			if (productVariant != oldProductVariant) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProductinstancePackage.PRODUCT_INSTANCE__PRODUCT_VARIANT, oldProductVariant, productVariant));
+			}
+		}
+		return productVariant;
 	}
 
 	/**
@@ -122,11 +113,20 @@ public class ProductInstanceImpl extends EntityImpl implements ProductInstance {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setProductVariantId(String newProductVariantId) {
-		String oldProductVariantId = productVariantId;
-		productVariantId = newProductVariantId;
+	public ProductVariant basicGetProductVariant() {
+		return productVariant;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setProductVariant(ProductVariant newProductVariant) {
+		ProductVariant oldProductVariant = productVariant;
+		productVariant = newProductVariant;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ProductinstancePackage.PRODUCT_INSTANCE__PRODUCT_VARIANT_ID, oldProductVariantId, productVariantId));
+			eNotify(new ENotificationImpl(this, Notification.SET, ProductinstancePackage.PRODUCT_INSTANCE__PRODUCT_VARIANT, oldProductVariant, productVariant));
 	}
 
 	/**
@@ -134,8 +134,16 @@ public class ProductInstanceImpl extends EntityImpl implements ProductInstance {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getOrderId() {
-		return orderId;
+	public Order getOrder() {
+		if (order != null && order.eIsProxy()) {
+			InternalEObject oldOrder = (InternalEObject)order;
+			order = (Order)eResolveProxy(oldOrder);
+			if (order != oldOrder) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProductinstancePackage.PRODUCT_INSTANCE__ORDER, oldOrder, order));
+			}
+		}
+		return order;
 	}
 
 	/**
@@ -143,11 +151,20 @@ public class ProductInstanceImpl extends EntityImpl implements ProductInstance {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setOrderId(String newOrderId) {
-		String oldOrderId = orderId;
-		orderId = newOrderId;
+	public Order basicGetOrder() {
+		return order;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOrder(Order newOrder) {
+		Order oldOrder = order;
+		order = newOrder;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ProductinstancePackage.PRODUCT_INSTANCE__ORDER_ID, oldOrderId, orderId));
+			eNotify(new ENotificationImpl(this, Notification.SET, ProductinstancePackage.PRODUCT_INSTANCE__ORDER, oldOrder, order));
 	}
 
 	/**
@@ -179,10 +196,12 @@ public class ProductInstanceImpl extends EntityImpl implements ProductInstance {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ProductinstancePackage.PRODUCT_INSTANCE__PRODUCT_VARIANT_ID:
-				return getProductVariantId();
-			case ProductinstancePackage.PRODUCT_INSTANCE__ORDER_ID:
-				return getOrderId();
+			case ProductinstancePackage.PRODUCT_INSTANCE__PRODUCT_VARIANT:
+				if (resolve) return getProductVariant();
+				return basicGetProductVariant();
+			case ProductinstancePackage.PRODUCT_INSTANCE__ORDER:
+				if (resolve) return getOrder();
+				return basicGetOrder();
 			case ProductinstancePackage.PRODUCT_INSTANCE__SERIAL_NUMBER:
 				return getSerialNumber();
 		}
@@ -197,11 +216,11 @@ public class ProductInstanceImpl extends EntityImpl implements ProductInstance {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ProductinstancePackage.PRODUCT_INSTANCE__PRODUCT_VARIANT_ID:
-				setProductVariantId((String)newValue);
+			case ProductinstancePackage.PRODUCT_INSTANCE__PRODUCT_VARIANT:
+				setProductVariant((ProductVariant)newValue);
 				return;
-			case ProductinstancePackage.PRODUCT_INSTANCE__ORDER_ID:
-				setOrderId((String)newValue);
+			case ProductinstancePackage.PRODUCT_INSTANCE__ORDER:
+				setOrder((Order)newValue);
 				return;
 			case ProductinstancePackage.PRODUCT_INSTANCE__SERIAL_NUMBER:
 				setSerialNumber((String)newValue);
@@ -218,11 +237,11 @@ public class ProductInstanceImpl extends EntityImpl implements ProductInstance {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ProductinstancePackage.PRODUCT_INSTANCE__PRODUCT_VARIANT_ID:
-				setProductVariantId(PRODUCT_VARIANT_ID_EDEFAULT);
+			case ProductinstancePackage.PRODUCT_INSTANCE__PRODUCT_VARIANT:
+				setProductVariant((ProductVariant)null);
 				return;
-			case ProductinstancePackage.PRODUCT_INSTANCE__ORDER_ID:
-				setOrderId(ORDER_ID_EDEFAULT);
+			case ProductinstancePackage.PRODUCT_INSTANCE__ORDER:
+				setOrder((Order)null);
 				return;
 			case ProductinstancePackage.PRODUCT_INSTANCE__SERIAL_NUMBER:
 				setSerialNumber(SERIAL_NUMBER_EDEFAULT);
@@ -239,10 +258,10 @@ public class ProductInstanceImpl extends EntityImpl implements ProductInstance {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ProductinstancePackage.PRODUCT_INSTANCE__PRODUCT_VARIANT_ID:
-				return PRODUCT_VARIANT_ID_EDEFAULT == null ? productVariantId != null : !PRODUCT_VARIANT_ID_EDEFAULT.equals(productVariantId);
-			case ProductinstancePackage.PRODUCT_INSTANCE__ORDER_ID:
-				return ORDER_ID_EDEFAULT == null ? orderId != null : !ORDER_ID_EDEFAULT.equals(orderId);
+			case ProductinstancePackage.PRODUCT_INSTANCE__PRODUCT_VARIANT:
+				return productVariant != null;
+			case ProductinstancePackage.PRODUCT_INSTANCE__ORDER:
+				return order != null;
 			case ProductinstancePackage.PRODUCT_INSTANCE__SERIAL_NUMBER:
 				return SERIAL_NUMBER_EDEFAULT == null ? serialNumber != null : !SERIAL_NUMBER_EDEFAULT.equals(serialNumber);
 		}
@@ -259,11 +278,7 @@ public class ProductInstanceImpl extends EntityImpl implements ProductInstance {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (productVariantId: ");
-		result.append(productVariantId);
-		result.append(", orderId: ");
-		result.append(orderId);
-		result.append(", serialNumber: ");
+		result.append(" (serialNumber: ");
 		result.append(serialNumber);
 		result.append(')');
 		return result.toString();

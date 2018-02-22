@@ -371,6 +371,52 @@ public class CapabilityItemProviderAdapterFactory extends CapabilityAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.InformationTransferCapability} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InformationTransferCapabilityItemProvider informationTransferCapabilityItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.InformationTransferCapability}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createInformationTransferCapabilityAdapter() {
+		if (informationTransferCapabilityItemProvider == null) {
+			informationTransferCapabilityItemProvider = new InformationTransferCapabilityItemProvider(this);
+		}
+
+		return informationTransferCapabilityItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.ProvideInformation} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ProvideInformationItemProvider provideInformationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.ProvideInformation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createProvideInformationAdapter() {
+		if (provideInformationItemProvider == null) {
+			provideInformationItemProvider = new ProvideInformationItemProvider(this);
+		}
+
+		return provideInformationItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -482,6 +528,8 @@ public class CapabilityItemProviderAdapterFactory extends CapabilityAdapterFacto
 		if (stoffeigenschaftenItemProvider != null) stoffeigenschaftenItemProvider.dispose();
 		if (anEinpressenItemProvider != null) anEinpressenItemProvider.dispose();
 		if (schraubenItemProvider != null) schraubenItemProvider.dispose();
+		if (informationTransferCapabilityItemProvider != null) informationTransferCapabilityItemProvider.dispose();
+		if (provideInformationItemProvider != null) provideInformationItemProvider.dispose();
 	}
 
 }

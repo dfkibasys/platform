@@ -52,29 +52,74 @@ public class OrderItemProvider extends EntityItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addProductVariantIdPropertyDescriptor(object);
+			addProductVariantPropertyDescriptor(object);
+			addQuantityPropertyDescriptor(object);
+			addDueDatePropertyDescriptor(object);
+			addPriorityPropertyDescriptor(object);
 			addStartDatePropertyDescriptor(object);
 			addEndDatePropertyDescriptor(object);
-			addPiecesPropertyDescriptor(object);
-			addPriorityPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Product Variant Id feature.
+	 * This adds a property descriptor for the Product Variant feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addProductVariantIdPropertyDescriptor(Object object) {
+	protected void addProductVariantPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Order_productVariantId_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Order_productVariantId_feature", "_UI_Order_type"),
-				 OrderPackage.Literals.ORDER__PRODUCT_VARIANT_ID,
+				 getString("_UI_Order_productVariant_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Order_productVariant_feature", "_UI_Order_type"),
+				 OrderPackage.Literals.ORDER__PRODUCT_VARIANT,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Quantity feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addQuantityPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Order_quantity_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Order_quantity_feature", "_UI_Order_type"),
+				 OrderPackage.Literals.ORDER__QUANTITY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Due Date feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDueDatePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Order_dueDate_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Order_dueDate_feature", "_UI_Order_type"),
+				 OrderPackage.Literals.ORDER__DUE_DATE,
 				 true,
 				 false,
 				 false,
@@ -123,28 +168,6 @@ public class OrderItemProvider extends EntityItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Pieces feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPiecesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Order_pieces_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Order_pieces_feature", "_UI_Order_type"),
-				 OrderPackage.Literals.ORDER__PIECES,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -239,11 +262,11 @@ public class OrderItemProvider extends EntityItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Order.class)) {
-			case OrderPackage.ORDER__PRODUCT_VARIANT_ID:
+			case OrderPackage.ORDER__QUANTITY:
+			case OrderPackage.ORDER__DUE_DATE:
+			case OrderPackage.ORDER__PRIORITY:
 			case OrderPackage.ORDER__START_DATE:
 			case OrderPackage.ORDER__END_DATE:
-			case OrderPackage.ORDER__PIECES:
-			case OrderPackage.ORDER__PRIORITY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case OrderPackage.ORDER__STATUS:
