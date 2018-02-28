@@ -1,7 +1,4 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1518817347675
-Build-Jdk: 1.8.0_131
-Built-By: dapo01
 Bundle-Description: Generated using Pax-Construct
 Bundle-DocURL: http://www.dfki.de
 Bundle-License: https://www.eclipse.org/legal/epl-v10.html
@@ -28,12 +25,14 @@ Import-Package: de.dfki.iui.basys.model.base;version="[1.0,2)",de.dfki.i
  in.capability;version="[1.0,2)",de.dfki.iui.basys.model.pattern;version
  ="[1.0,2)",de.dfki.iui.basys.model.service;version="[1.0,2)",de.dfki.iu
  i.basys.model.service.impl;version="[1.0,2)",de.dfki.iui.basys.model.se
- rvice.util;version="[1.0,2)",org.eclipse.emf.common.notify;resolution:=
- optional,org.eclipse.emf.common.notify.impl;resolution:=optional,org.ec
- lipse.emf.common.util;resolution:=optional,org.eclipse.emf.ecore;resolu
- tion:=optional,org.eclipse.emf.ecore.impl;resolution:=optional,org.ecli
- pse.emf.ecore.plugin;resolution:=optional,org.eclipse.emf.ecore.resourc
- e;resolution:=optional,org.eclipse.emf.ecore.util;resolution:=optional
+ rvice.util;version="[1.0,2)",org.eclipse.emf.common.notify,org.eclipse.
+ emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecor
+ e,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.plugin,org.eclipse.e
+ mf.ecore.resource,org.eclipse.emf.ecore.util
+Include-Resource: model/service.ecore=model/service.ecore,model/service.
+ genmodel=model/service.genmodel,plugin.properties=plugin.properties,plu
+ gin.xml=plugin.xml
+Private-Package: model
 Require-Bundle: org.eclipse.core.runtime, org.eclipse.emf.ecore;visibili
  ty:=reexport
 Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
