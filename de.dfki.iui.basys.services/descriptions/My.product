@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product:ProductCatalogue xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:product="http://www.dfki.de/iui/basys/model/product">
-  <productGroups id="_x1GdIBMxEeiF0dM90lRpcg" name="">
+<product:ProductCatalogue xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:product="http://www.dfki.de/iui/basys/model/product">
+  <productGroups id="_x1GdIBMxEeiF0dM90lRpcg" name="My Product Group">
     <productVariants id="_x1HEMBMxEeiF0dM90lRpcg" name="Green">
       <bom id="_x1HrQBMxEeiF0dM90lRpcg">
-        <entries count="1">
+        <entries xsi:type="product:AssemblyGroupEntry" count="1" assemblyGroup="_GatPARfvEeiFXpgxq7lDdg"/>
+        <entries xsi:type="product:ComponentEntry" count="1">
           <material href="http://basys.dfki.de/model/My.material#_b9ZKABMxEeiF0dM90lRpcg"/>
-        </entries>
-        <entries count="4">
-          <material href="http://basys.dfki.de/model/My.material#_b9ZKAxMxEeiF0dM90lRpcg"/>
         </entries>
       </bom>
     </productVariants>
     <productVariants id="_x1ISUBMxEeiF0dM90lRpcg" name="Red">
       <bom id="_x1ISURMxEeiF0dM90lRpcg">
-        <entries count="1">
+        <entries xsi:type="product:AssemblyGroupEntry" count="1" assemblyGroup="_GatPARfvEeiFXpgxq7lDdg"/>
+        <entries xsi:type="product:ComponentEntry" count="2">
           <material href="http://basys.dfki.de/model/My.material#_b9ZKARMxEeiF0dM90lRpcg"/>
-        </entries>
-        <entries count="4">
-          <material href="http://basys.dfki.de/model/My.material#_b9ZKAxMxEeiF0dM90lRpcg"/>
         </entries>
       </bom>
     </productVariants>
+    <assemblyGroups id="_GatPARfvEeiFXpgxq7lDdg" name="My Assembly Group">
+      <bom id="_I-eMQBfvEeiFXpgxq7lDdg">
+        <entries xsi:type="product:ComponentEntry" count="1">
+          <material href="http://basys.dfki.de/model/My.material#_b9ZKAxMxEeiF0dM90lRpcg"/>
+        </entries>
+        <entries xsi:type="product:ComponentEntry" count="4">
+          <material href="http://basys.dfki.de/model/My.material#_b9ZKAxMxEeiF0dM90lRpcg"/>
+        </entries>
+      </bom>
+    </assemblyGroups>
   </productGroups>
 </product:ProductCatalogue>

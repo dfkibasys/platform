@@ -62,11 +62,5 @@ public class BasysResourceImpl extends XMIResourceImpl {
 		
 	}
 	
-	
-	@Override
-	protected EObject getEObjectByID(String id) {
-		// TODO Auto-generated method stub
-		return super.getEObjectByID(id);
-	}
 
 } //ProductResourceImpl

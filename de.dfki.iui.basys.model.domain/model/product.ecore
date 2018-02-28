@@ -25,8 +25,8 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="In BaSys braucht man wohl schon noch einen ProductType, dann sollte die Variante darauf verweisen. Braucht man hier eine BOM? TODO: Kommentar erneut prüfen."/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="productGroup" eType="#//ProductGroup"
-        eOpposite="#//ProductGroup/productVariants"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="productGroup" lowerBound="1"
+        eType="#//ProductGroup" eOpposite="#//ProductGroup/productVariants"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BillOfMaterial" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
     <eStructuralFeatures xsi:type="ecore:EReference" name="entries" upperBound="-1"
