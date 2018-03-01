@@ -20,13 +20,12 @@ Export-Package: de.dfki.iui.basys.model.aas;version="1.0.0.SNAPSHOT";use
  eclipse.emf.common.notify.impl,org.eclipse.emf.ecore,org.eclipse.emf.ec
  ore.util"
 Import-Package: de.dfki.iui.basys.model.aas;version="[1.0,2)",de.dfki.iu
- i.basys.model.aas.impl;version="[1.0,2)",de.dfki.iui.basys.model.base;v
- ersion="[1.0,2)",de.dfki.iui.basys.model.base.impl;version="[1.0,2)",de
- .dfki.iui.basys.model.domain.capability;version="[1.0,2)",de.dfki.iui.b
- asys.model.service;version="[1.0,2)",org.eclipse.emf.common.notify,org.
- eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.
- emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.plugin,org.e
- clipse.emf.ecore.resource,org.eclipse.emf.ecore.util
+ i.basys.model.aas.impl;version="[1.0,2)",de.dfki.iui.basys.model.base,d
+ e.dfki.iui.basys.model.base.impl,de.dfki.iui.basys.model.domain.capabil
+ ity,de.dfki.iui.basys.model.service,org.eclipse.emf.common.notify,org.e
+ clipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.e
+ mf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.plugin,org.ec
+ lipse.emf.ecore.resource,org.eclipse.emf.ecore.util
 Include-Resource: model/aas.aird=model/aas.aird,model/aas.ecore=model/aa
  s.ecore,model/aas.genmodel=model/aas.genmodel,plugin.properties=plugin.
  properties,plugin.xml=plugin.xml

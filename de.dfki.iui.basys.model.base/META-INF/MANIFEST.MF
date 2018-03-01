@@ -8,8 +8,8 @@ Bundle-SymbolicName: de.dfki.iui.basys.model.base;singleton:=true
 Bundle-Vendor: DFKI GmbH
 Bundle-Version: 1.0.0.SNAPSHOT
 Created-By: Apache Maven Bundle Plugin
-Export-Package: de.dfki.iui.basys.common.emf.computation;version="1.0.0.
- SNAPSHOT";uses:="de.dfki.iui.basys.model.pattern,org.eclipse.emf.ecore"
+Export-Package: de.dfki.iui.basys.common.emf.computation;uses:="de.dfki.
+ iui.basys.model.pattern,org.eclipse.emf.ecore";version="1.0.0.SNAPSHOT"
  ,de.dfki.iui.basys.model.base;uses:="org.eclipse.emf.ecore";version="1.
  0.0.SNAPSHOT",de.dfki.iui.basys.model.base.datatypes;version="1.0.0.SNA
  PSHOT",de.dfki.iui.basys.model.base.impl;uses:="de.dfki.iui.basys.model
@@ -34,16 +34,16 @@ Export-Package: de.dfki.iui.basys.common.emf.computation;version="1.0.0.
  SNAPSHOT",de.dfki.iui.basys.model.util;uses:="org.eclipse.emf.common.ut
  il,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.eco
  re.xmi.impl";version="1.0.0.SNAPSHOT"
-Import-Package: de.dfki.iui.basys.common.emf;version="[1.0,2)",de.dfki.i
- ui.basys.common.emf.computation;version="[1.0,2)",de.dfki.iui.basys.mod
- el.base,de.dfki.iui.basys.model.base.datatypes,de.dfki.iui.basys.model.
- base.impl,de.dfki.iui.basys.model.pattern,de.dfki.iui.basys.model.patte
- rn.impl,de.dfki.iui.basys.model.util,org.eclipse.emf.common.notify,org.
- eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.
- emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.plugin,org.e
- clipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclip
- se.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl;resolution:=optional,o
- rg.slf4j;version="[1.7,2)";resolution:=optional
+Import-Package: de.dfki.iui.basys.common.emf,de.dfki.iui.basys.common.em
+ f.computation,de.dfki.iui.basys.model.base,de.dfki.iui.basys.model.base
+ .datatypes,de.dfki.iui.basys.model.base.impl,de.dfki.iui.basys.model.pa
+ ttern,de.dfki.iui.basys.model.pattern.impl,de.dfki.iui.basys.model.util
+ ,org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.e
+ clipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl
+ ,org.eclipse.emf.ecore.plugin,org.eclipse.emf.ecore.resource,org.eclips
+ e.emf.ecore.resource.impl,org.eclipse.emf.ecore.util,org.eclipse.emf.ec
+ ore.xmi.impl;resolution:=optional,org.slf4j;version="[1.7,2)";resolutio
+ n:=optional
 Include-Resource: model/base.ecore=model/base.ecore,model/base.genmodel=
  model/base.genmodel,model/pattern.aird=model/pattern.aird,model/pattern
  .ecore=model/pattern.ecore,plugin.properties=plugin.properties,plugin.x

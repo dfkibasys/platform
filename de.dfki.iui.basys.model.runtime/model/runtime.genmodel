@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.dfki.iui.basys.model.runtime/src" modelPluginID="de.dfki.iui.basys.model.runtime"
+    modelName="Runtime" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    featureMapWrapperClass="" importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0"
+    copyrightFields="false" usedGenPackages="../../de.dfki.iui.basys.model.base/model/base.genmodel#//base ../../de.dfki.iui.basys.model.base/model/base.genmodel#//pattern ../../de.dfki.iui.basys.model.domain/model/domain.genmodel#//capability ../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>communication.ecore</foreignModel>
+  <foreignModel>service.ecore</foreignModel>
+  <genPackages prefix="Communication" basePackage="de.dfki.iui.basys.model.runtime"
+      disposableProviderFactory="true" ecorePackage="communication.ecore#/">
+    <genDataTypes ecoreDataType="communication.ecore#//CommunicationException"/>
+    <genDataTypes ecoreDataType="communication.ecore#//ChannelPoolException"/>
+    <genDataTypes ecoreDataType="communication.ecore#//ProviderException"/>
+    <genDataTypes ecoreDataType="communication.ecore#//MessageException"/>
+    <genDataTypes ecoreDataType="communication.ecore#//ClientException"/>
+    <genDataTypes ecoreDataType="communication.ecore#//ChannelException"/>
+    <genClasses ecoreClass="communication.ecore#//Client">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference communication.ecore#//Client/authentication"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference communication.ecore#//Client/pools"/>
+      <genOperations ecoreOperation="communication.ecore#//Client/connect"/>
+      <genOperations ecoreOperation="communication.ecore#//Client/disconnect"/>
+      <genOperations ecoreOperation="communication.ecore#//Client/isConnected"/>
+      <genOperations ecoreOperation="communication.ecore#//Client/getChannel">
+        <genParameters ecoreParameter="communication.ecore#//Client/getChannel/id"/>
+      </genOperations>
+      <genOperations ecoreOperation="communication.ecore#//Client/sendMessage">
+        <genParameters ecoreParameter="communication.ecore#//Client/sendMessage/channelId"/>
+        <genParameters ecoreParameter="communication.ecore#//Client/sendMessage/msg"/>
+      </genOperations>
+      <genOperations ecoreOperation="communication.ecore#//Client/sendRequest">
+        <genParameters ecoreParameter="communication.ecore#//Client/sendRequest/channelId"/>
+        <genParameters ecoreParameter="communication.ecore#//Client/sendRequest/req"/>
+        <genParameters ecoreParameter="communication.ecore#//Client/sendRequest/cb"/>
+      </genOperations>
+      <genOperations ecoreOperation="communication.ecore#//Client/sendRequest.1">
+        <genParameters ecoreParameter="communication.ecore#//Client/sendRequest.1/channelId"/>
+        <genParameters ecoreParameter="communication.ecore#//Client/sendRequest.1/req"/>
+      </genOperations>
+      <genOperations ecoreOperation="communication.ecore#//Client/sendNotification">
+        <genParameters ecoreParameter="communication.ecore#//Client/sendNotification/channelId"/>
+        <genParameters ecoreParameter="communication.ecore#//Client/sendNotification/not"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="communication.ecore#//ChannelPool">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference communication.ecore#//ChannelPool/channels"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference communication.ecore#//ChannelPool/provider"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute communication.ecore#//ChannelPool/uri"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference communication.ecore#//ChannelPool/client"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute communication.ecore#//ChannelPool/connected"/>
+      <genOperations ecoreOperation="communication.ecore#//ChannelPool/connect"/>
+      <genOperations ecoreOperation="communication.ecore#//ChannelPool/disconnect"/>
+      <genOperations ecoreOperation="communication.ecore#//ChannelPool/getChannel">
+        <genParameters ecoreParameter="communication.ecore#//ChannelPool/getChannel/id"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="communication.ecore#//Channel">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference communication.ecore#//Channel/listener"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference communication.ecore#//Channel/pool"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute communication.ecore#//Channel/open.1"/>
+      <genOperations ecoreOperation="communication.ecore#//Channel/open"/>
+      <genOperations ecoreOperation="communication.ecore#//Channel/close"/>
+      <genOperations ecoreOperation="communication.ecore#//Channel/sendMessage">
+        <genParameters ecoreParameter="communication.ecore#//Channel/sendMessage/msg"/>
+      </genOperations>
+      <genOperations ecoreOperation="communication.ecore#//Channel/sendNotification">
+        <genParameters ecoreParameter="communication.ecore#//Channel/sendNotification/not"/>
+      </genOperations>
+      <genOperations ecoreOperation="communication.ecore#//Channel/sendRequest">
+        <genParameters ecoreParameter="communication.ecore#//Channel/sendRequest/req"/>
+      </genOperations>
+      <genOperations ecoreOperation="communication.ecore#//Channel/sendRequest.1">
+        <genParameters ecoreParameter="communication.ecore#//Channel/sendRequest.1/req"/>
+        <genParameters ecoreParameter="communication.ecore#//Channel/sendRequest.1/cb"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="communication.ecore#//Topic"/>
+    <genClasses ecoreClass="communication.ecore#//Queue"/>
+    <genClasses ecoreClass="communication.ecore#//DirectLink"/>
+    <genClasses image="false" ecoreClass="communication.ecore#//ChannelListener">
+      <genOperations ecoreOperation="communication.ecore#//ChannelListener/handleMessage">
+        <genParameters ecoreParameter="communication.ecore#//ChannelListener/handleMessage/msg"/>
+      </genOperations>
+      <genOperations ecoreOperation="communication.ecore#//ChannelListener/handleNotification">
+        <genParameters ecoreParameter="communication.ecore#//ChannelListener/handleNotification/not"/>
+      </genOperations>
+      <genOperations ecoreOperation="communication.ecore#//ChannelListener/handleRequest">
+        <genParameters ecoreParameter="communication.ecore#//ChannelListener/handleRequest/req"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="communication.ecore#//CommunicationProvider">
+      <genOperations ecoreOperation="communication.ecore#//CommunicationProvider/doConnect">
+        <genParameters ecoreParameter="communication.ecore#//CommunicationProvider/doConnect/pool"/>
+      </genOperations>
+      <genOperations ecoreOperation="communication.ecore#//CommunicationProvider/doDisconnect">
+        <genParameters ecoreParameter="communication.ecore#//CommunicationProvider/doDisconnect/pool"/>
+      </genOperations>
+      <genOperations ecoreOperation="communication.ecore#//CommunicationProvider/doOpenChannel">
+        <genParameters ecoreParameter="communication.ecore#//CommunicationProvider/doOpenChannel/channel"/>
+      </genOperations>
+      <genOperations ecoreOperation="communication.ecore#//CommunicationProvider/doCloseChannel">
+        <genParameters ecoreParameter="communication.ecore#//CommunicationProvider/doCloseChannel/channel"/>
+      </genOperations>
+      <genOperations ecoreOperation="communication.ecore#//CommunicationProvider/doSendMessage">
+        <genParameters ecoreParameter="communication.ecore#//CommunicationProvider/doSendMessage/channel"/>
+        <genParameters ecoreParameter="communication.ecore#//CommunicationProvider/doSendMessage/msg"/>
+      </genOperations>
+      <genOperations ecoreOperation="communication.ecore#//CommunicationProvider/doSendRequest">
+        <genParameters ecoreParameter="communication.ecore#//CommunicationProvider/doSendRequest/channel"/>
+        <genParameters ecoreParameter="communication.ecore#//CommunicationProvider/doSendRequest/req"/>
+        <genParameters ecoreParameter="communication.ecore#//CommunicationProvider/doSendRequest/cb"/>
+      </genOperations>
+      <genOperations ecoreOperation="communication.ecore#//CommunicationProvider/doSendRequest.1">
+        <genParameters ecoreParameter="communication.ecore#//CommunicationProvider/doSendRequest.1/channel"/>
+        <genParameters ecoreParameter="communication.ecore#//CommunicationProvider/doSendRequest.1/req"/>
+      </genOperations>
+      <genOperations ecoreOperation="communication.ecore#//CommunicationProvider/doSendNotification">
+        <genParameters ecoreParameter="communication.ecore#//CommunicationProvider/doSendNotification/channel"/>
+        <genParameters ecoreParameter="communication.ecore#//CommunicationProvider/doSendNotification/not"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="communication.ecore#//Message">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute communication.ecore#//Message/payload"/>
+    </genClasses>
+    <genClasses ecoreClass="communication.ecore#//Notification"/>
+    <genClasses ecoreClass="communication.ecore#//Response"/>
+    <genClasses ecoreClass="communication.ecore#//Request"/>
+    <genClasses image="false" ecoreClass="communication.ecore#//ResponseCallback">
+      <genOperations ecoreOperation="communication.ecore#//ResponseCallback/handleResponse">
+        <genParameters ecoreParameter="communication.ecore#//ResponseCallback/handleResponse/res"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="communication.ecore#//Authentication">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute communication.ecore#//Authentication/username"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute communication.ecore#//Authentication/password"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute communication.ecore#//Authentication/certificate"/>
+    </genClasses>
+  </genPackages>
+  <genPackages prefix="Service" basePackage="de.dfki.iui.basys.model.runtime" disposableProviderFactory="true"
+      ecorePackage="service.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="service.ecore#//EntityOperationEnum">
+      <genEnumLiterals ecoreEnumLiteral="service.ecore#//EntityOperationEnum/CREATE"/>
+      <genEnumLiterals ecoreEnumLiteral="service.ecore#//EntityOperationEnum/RETRIEVE"/>
+      <genEnumLiterals ecoreEnumLiteral="service.ecore#//EntityOperationEnum/UPDATE"/>
+      <genEnumLiterals ecoreEnumLiteral="service.ecore#//EntityOperationEnum/DELETE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="service.ecore#//ServiceTypeEnum">
+      <genEnumLiterals ecoreEnumLiteral="service.ecore#//ServiceTypeEnum/DIGITAL_SERVICE"/>
+      <genEnumLiterals ecoreEnumLiteral="service.ecore#//ServiceTypeEnum/PHYSICAL_SERVICE"/>
+    </genEnums>
+    <genClasses ecoreClass="service.ecore#//ServiceDescription">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute service.ecore#//ServiceDescription/version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute service.ecore#//ServiceDescription/serviceType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference service.ecore#//ServiceDescription/properties"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference service.ecore#//ServiceDescription/operations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference service.ecore#//ServiceDescription/publications"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference service.ecore#//ServiceDescription/subscriptions"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference service.ecore#//ServiceDescription/dependencies"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference service.ecore#//ServiceDescription/managedEntities"/>
+    </genClasses>
+    <genClasses ecoreClass="service.ecore#//Property">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference service.ecore#//Property/capabilities"/>
+    </genClasses>
+    <genClasses ecoreClass="service.ecore#//Operation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference service.ecore#//Operation/capabilities"/>
+    </genClasses>
+    <genClasses ecoreClass="service.ecore#//Publication">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference service.ecore#//Publication/capabilities"/>
+    </genClasses>
+    <genClasses ecoreClass="service.ecore#//Subscription">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference service.ecore#//Subscription/capabilities"/>
+    </genClasses>
+    <genClasses ecoreClass="service.ecore#//ManagedEntity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute service.ecore#//ManagedEntity/supportedOperations"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

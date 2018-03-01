@@ -21,6 +21,7 @@
 		<module>de.dfki.iui.basys.model.base</module>
 		<module>de.dfki.iui.basys.model.domain</module>
 		<module>de.dfki.iui.basys.model.service</module>
+		<module>de.dfki.iui.basys.model.runtime</module>
 		<module>de.dfki.iui.basys.model.aas</module>
 		<module>de.dfki.iui.basys.model.test</module>
 	</modules>

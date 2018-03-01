@@ -29,7 +29,7 @@
 			classpath -->
 		<dependency>
 			<type>pom</type>
-			<groupId>${parent.groupId}</groupId>
+			<groupId>${project.parent.groupId}</groupId>
 			<artifactId>provision</artifactId>
 			<optional>true</optional>
 		</dependency>
