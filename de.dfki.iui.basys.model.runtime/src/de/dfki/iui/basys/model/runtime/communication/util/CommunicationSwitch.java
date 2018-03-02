@@ -78,6 +78,8 @@ public class CommunicationSwitch<T> extends Switch<T> {
 			case CommunicationPackage.CHANNEL_POOL: {
 				ChannelPool channelPool = (ChannelPool)theEObject;
 				T result = caseChannelPool(channelPool);
+				if (result == null) result = caseEntity(channelPool);
+				if (result == null) result = caseBObject(channelPool);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -86,33 +88,6 @@ public class CommunicationSwitch<T> extends Switch<T> {
 				T result = caseChannel(channel);
 				if (result == null) result = caseEntity(channel);
 				if (result == null) result = caseBObject(channel);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CommunicationPackage.TOPIC: {
-				Topic topic = (Topic)theEObject;
-				T result = caseTopic(topic);
-				if (result == null) result = caseChannel(topic);
-				if (result == null) result = caseEntity(topic);
-				if (result == null) result = caseBObject(topic);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CommunicationPackage.QUEUE: {
-				Queue queue = (Queue)theEObject;
-				T result = caseQueue(queue);
-				if (result == null) result = caseChannel(queue);
-				if (result == null) result = caseEntity(queue);
-				if (result == null) result = caseBObject(queue);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CommunicationPackage.DIRECT_LINK: {
-				DirectLink directLink = (DirectLink)theEObject;
-				T result = caseDirectLink(directLink);
-				if (result == null) result = caseChannel(directLink);
-				if (result == null) result = caseEntity(directLink);
-				if (result == null) result = caseBObject(directLink);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -221,51 +196,6 @@ public class CommunicationSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseChannel(Channel object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Topic</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Topic</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseTopic(Topic object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Queue</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Queue</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseQueue(Queue object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Direct Link</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Direct Link</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseDirectLink(DirectLink object) {
 		return null;
 	}
 

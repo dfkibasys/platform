@@ -40,31 +40,13 @@ public interface CommunicationFactory extends EFactory {
 	ChannelPool createChannelPool();
 
 	/**
-	 * Returns a new object of class '<em>Topic</em>'.
+	 * Returns a new object of class '<em>Channel</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Topic</em>'.
+	 * @return a new object of class '<em>Channel</em>'.
 	 * @generated
 	 */
-	Topic createTopic();
-
-	/**
-	 * Returns a new object of class '<em>Queue</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Queue</em>'.
-	 * @generated
-	 */
-	Queue createQueue();
-
-	/**
-	 * Returns a new object of class '<em>Direct Link</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Direct Link</em>'.
-	 * @generated
-	 */
-	DirectLink createDirectLink();
+	Channel createChannel();
 
 	/**
 	 * Returns a new object of class '<em>Message</em>'.

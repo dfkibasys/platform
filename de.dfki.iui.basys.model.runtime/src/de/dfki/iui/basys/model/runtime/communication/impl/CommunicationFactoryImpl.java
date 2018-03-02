@@ -66,9 +66,7 @@ public class CommunicationFactoryImpl extends EFactoryImpl implements Communicat
 		switch (eClass.getClassifierID()) {
 			case CommunicationPackage.CLIENT: return createClient();
 			case CommunicationPackage.CHANNEL_POOL: return createChannelPool();
-			case CommunicationPackage.TOPIC: return createTopic();
-			case CommunicationPackage.QUEUE: return createQueue();
-			case CommunicationPackage.DIRECT_LINK: return createDirectLink();
+			case CommunicationPackage.CHANNEL: return createChannel();
 			case CommunicationPackage.MESSAGE: return createMessage();
 			case CommunicationPackage.NOTIFICATION: return createNotification();
 			case CommunicationPackage.RESPONSE: return createResponse();
@@ -154,29 +152,9 @@ public class CommunicationFactoryImpl extends EFactoryImpl implements Communicat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Topic createTopic() {
-		TopicImpl topic = new TopicImpl();
-		return topic;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Queue createQueue() {
-		QueueImpl queue = new QueueImpl();
-		return queue;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public DirectLink createDirectLink() {
-		DirectLinkImpl directLink = new DirectLinkImpl();
-		return directLink;
+	public Channel createChannel() {
+		ChannelImpl channel = new ChannelImpl();
+		return channel;
 	}
 
 	/**

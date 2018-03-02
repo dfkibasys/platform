@@ -32,12 +32,15 @@
       <eParameters name="channelId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="not" eType="#//Notification"/>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="authentication" upperBound="-1"
-        eType="#//Authentication" containment="true"/>
+    <eOperations name="getPool" eType="#//ChannelPool">
+      <eParameters name="id" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="authentication" eType="#//Authentication"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="pools" upperBound="-1"
         eType="#//ChannelPool" eOpposite="#//ChannelPool/client"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ChannelPool">
+  <eClassifiers xsi:type="ecore:EClass" name="ChannelPool" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
     <eOperations name="connect" eExceptions="#//ChannelPoolException"/>
     <eOperations name="disconnect" eExceptions="#//ChannelPoolException"/>
     <eOperations name="getChannel" eType="#//Channel">
@@ -53,7 +56,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="connected" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         changeable="false"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Channel" abstract="true" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
+  <eClassifiers xsi:type="ecore:EClass" name="Channel" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
     <eOperations name="open" eExceptions="#//ChannelException"/>
     <eOperations name="close" eExceptions="#//ChannelException"/>
     <eOperations name="sendMessage" eExceptions="#//ChannelException">
@@ -69,16 +72,13 @@
       <eParameters name="req" eType="#//Request"/>
       <eParameters name="cb" eType="#//ResponseCallback"/>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="listener" eType="#//ChannelListener"
-        changeable="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="listener" eType="#//ChannelListener"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="pool" lowerBound="1" eType="#//ChannelPool"
         eOpposite="#//ChannelPool/channels"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="open" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         changeable="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="queued" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Topic" eSuperTypes="#//Channel"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Queue" eSuperTypes="#//Channel"/>
-  <eClassifiers xsi:type="ecore:EClass" name="DirectLink" eSuperTypes="#//Channel"/>
   <eClassifiers xsi:type="ecore:EClass" name="ChannelListener" abstract="true" interface="true">
     <eOperations name="handleMessage">
       <eParameters name="msg" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

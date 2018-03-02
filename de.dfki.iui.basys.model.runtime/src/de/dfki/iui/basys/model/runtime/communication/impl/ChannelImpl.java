@@ -36,11 +36,12 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link de.dfki.iui.basys.model.runtime.communication.impl.ChannelImpl#getListener <em>Listener</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.runtime.communication.impl.ChannelImpl#getPool <em>Pool</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.runtime.communication.impl.ChannelImpl#isOpen <em>Open</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.runtime.communication.impl.ChannelImpl#isQueued <em>Queued</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class ChannelImpl extends EntityImpl implements Channel {
+public class ChannelImpl extends EntityImpl implements Channel {
 	/**
 	 * The cached value of the '{@link #getListener() <em>Listener</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -80,6 +81,26 @@ public abstract class ChannelImpl extends EntityImpl implements Channel {
 	 * @ordered
 	 */
 	protected boolean open = OPEN_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isQueued() <em>Queued</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isQueued()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean QUEUED_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isQueued() <em>Queued</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isQueued()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean queued = QUEUED_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -124,6 +145,18 @@ public abstract class ChannelImpl extends EntityImpl implements Channel {
 	 */
 	public ChannelListener basicGetListener() {
 		return listener;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setListener(ChannelListener newListener) {
+		ChannelListener oldListener = listener;
+		listener = newListener;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CommunicationPackage.CHANNEL__LISTENER, oldListener, listener));
 	}
 
 	/**
@@ -235,6 +268,27 @@ public abstract class ChannelImpl extends EntityImpl implements Channel {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isQueued() {
+		return queued;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setQueued(boolean newQueued) {
+		boolean oldQueued = queued;
+		queued = newQueued;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CommunicationPackage.CHANNEL__QUEUED, oldQueued, queued));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public void sendMessage(String msg) throws ChannelException {
@@ -342,6 +396,8 @@ public abstract class ChannelImpl extends EntityImpl implements Channel {
 				return basicGetPool();
 			case CommunicationPackage.CHANNEL__OPEN:
 				return isOpen();
+			case CommunicationPackage.CHANNEL__QUEUED:
+				return isQueued();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -354,8 +410,14 @@ public abstract class ChannelImpl extends EntityImpl implements Channel {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case CommunicationPackage.CHANNEL__LISTENER:
+				setListener((ChannelListener)newValue);
+				return;
 			case CommunicationPackage.CHANNEL__POOL:
 				setPool((ChannelPool)newValue);
+				return;
+			case CommunicationPackage.CHANNEL__QUEUED:
+				setQueued((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -369,8 +431,14 @@ public abstract class ChannelImpl extends EntityImpl implements Channel {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case CommunicationPackage.CHANNEL__LISTENER:
+				setListener((ChannelListener)null);
+				return;
 			case CommunicationPackage.CHANNEL__POOL:
 				setPool((ChannelPool)null);
+				return;
+			case CommunicationPackage.CHANNEL__QUEUED:
+				setQueued(QUEUED_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -390,6 +458,8 @@ public abstract class ChannelImpl extends EntityImpl implements Channel {
 				return pool != null;
 			case CommunicationPackage.CHANNEL__OPEN:
 				return open != OPEN_EDEFAULT;
+			case CommunicationPackage.CHANNEL__QUEUED:
+				return queued != QUEUED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -465,6 +535,8 @@ public abstract class ChannelImpl extends EntityImpl implements Channel {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (open: ");
 		result.append(open);
+		result.append(", queued: ");
+		result.append(queued);
 		result.append(')');
 		return result.toString();
 	}

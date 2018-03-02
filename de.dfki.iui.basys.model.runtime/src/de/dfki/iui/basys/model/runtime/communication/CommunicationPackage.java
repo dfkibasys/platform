@@ -99,16 +99,7 @@ public interface CommunicationPackage extends EPackage {
 	int CLIENT__NAME = BasePackage.ENTITY__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLIENT__METADATA = BasePackage.ENTITY__METADATA;
-
-	/**
-	 * The feature id for the '<em><b>Authentication</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Authentication</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -207,13 +198,22 @@ public interface CommunicationPackage extends EPackage {
 	int CLIENT___SEND_NOTIFICATION__STRING_NOTIFICATION = BasePackage.ENTITY_OPERATION_COUNT + 7;
 
 	/**
+	 * The operation id for the '<em>Get Pool</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLIENT___GET_POOL__STRING = BasePackage.ENTITY_OPERATION_COUNT + 8;
+
+	/**
 	 * The number of operations of the '<em>Client</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CLIENT_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 8;
+	int CLIENT_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 9;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.communication.impl.ChannelPoolImpl <em>Channel Pool</em>}' class.
@@ -226,13 +226,40 @@ public interface CommunicationPackage extends EPackage {
 	int CHANNEL_POOL = 1;
 
 	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANNEL_POOL__BINDING = BasePackage.ENTITY__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANNEL_POOL__ID = BasePackage.ENTITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANNEL_POOL__NAME = BasePackage.ENTITY__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Channels</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CHANNEL_POOL__CHANNELS = 0;
+	int CHANNEL_POOL__CHANNELS = BasePackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Provider</b></em>' reference.
@@ -241,7 +268,7 @@ public interface CommunicationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHANNEL_POOL__PROVIDER = 1;
+	int CHANNEL_POOL__PROVIDER = BasePackage.ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -250,7 +277,7 @@ public interface CommunicationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHANNEL_POOL__URI = 2;
+	int CHANNEL_POOL__URI = BasePackage.ENTITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Client</b></em>' reference.
@@ -259,7 +286,7 @@ public interface CommunicationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHANNEL_POOL__CLIENT = 3;
+	int CHANNEL_POOL__CLIENT = BasePackage.ENTITY_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Connected</b></em>' attribute.
@@ -268,7 +295,7 @@ public interface CommunicationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHANNEL_POOL__CONNECTED = 4;
+	int CHANNEL_POOL__CONNECTED = BasePackage.ENTITY_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Channel Pool</em>' class.
@@ -277,7 +304,7 @@ public interface CommunicationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHANNEL_POOL_FEATURE_COUNT = 5;
+	int CHANNEL_POOL_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 5;
 
 	/**
 	 * The operation id for the '<em>Connect</em>' operation.
@@ -286,7 +313,7 @@ public interface CommunicationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHANNEL_POOL___CONNECT = 0;
+	int CHANNEL_POOL___CONNECT = BasePackage.ENTITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Disconnect</em>' operation.
@@ -295,7 +322,7 @@ public interface CommunicationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHANNEL_POOL___DISCONNECT = 1;
+	int CHANNEL_POOL___DISCONNECT = BasePackage.ENTITY_OPERATION_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Get Channel</em>' operation.
@@ -304,7 +331,7 @@ public interface CommunicationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHANNEL_POOL___GET_CHANNEL__STRING = 2;
+	int CHANNEL_POOL___GET_CHANNEL__STRING = BasePackage.ENTITY_OPERATION_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Channel Pool</em>' class.
@@ -313,7 +340,7 @@ public interface CommunicationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHANNEL_POOL_OPERATION_COUNT = 3;
+	int CHANNEL_POOL_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.communication.impl.ChannelImpl <em>Channel</em>}' class.
@@ -353,15 +380,6 @@ public interface CommunicationPackage extends EPackage {
 	int CHANNEL__NAME = BasePackage.ENTITY__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHANNEL__METADATA = BasePackage.ENTITY__METADATA;
-
-	/**
 	 * The feature id for the '<em><b>Listener</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -389,13 +407,22 @@ public interface CommunicationPackage extends EPackage {
 	int CHANNEL__OPEN = BasePackage.ENTITY_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Queued</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANNEL__QUEUED = BasePackage.ENTITY_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Channel</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CHANNEL_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 3;
+	int CHANNEL_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>Open</em>' operation.
@@ -461,441 +488,6 @@ public interface CommunicationPackage extends EPackage {
 	int CHANNEL_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 6;
 
 	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.communication.impl.TopicImpl <em>Topic</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.runtime.communication.impl.TopicImpl
-	 * @see de.dfki.iui.basys.model.runtime.communication.impl.CommunicationPackageImpl#getTopic()
-	 * @generated
-	 */
-	int TOPIC = 3;
-
-	/**
-	 * The feature id for the '<em><b>Binding</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TOPIC__BINDING = CHANNEL__BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TOPIC__ID = CHANNEL__ID;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TOPIC__NAME = CHANNEL__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TOPIC__METADATA = CHANNEL__METADATA;
-
-	/**
-	 * The feature id for the '<em><b>Listener</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TOPIC__LISTENER = CHANNEL__LISTENER;
-
-	/**
-	 * The feature id for the '<em><b>Pool</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TOPIC__POOL = CHANNEL__POOL;
-
-	/**
-	 * The feature id for the '<em><b>Open</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TOPIC__OPEN = CHANNEL__OPEN;
-
-	/**
-	 * The number of structural features of the '<em>Topic</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TOPIC_FEATURE_COUNT = CHANNEL_FEATURE_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Open</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TOPIC___OPEN = CHANNEL___OPEN;
-
-	/**
-	 * The operation id for the '<em>Close</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TOPIC___CLOSE = CHANNEL___CLOSE;
-
-	/**
-	 * The operation id for the '<em>Send Message</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TOPIC___SEND_MESSAGE__STRING = CHANNEL___SEND_MESSAGE__STRING;
-
-	/**
-	 * The operation id for the '<em>Send Notification</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TOPIC___SEND_NOTIFICATION__NOTIFICATION = CHANNEL___SEND_NOTIFICATION__NOTIFICATION;
-
-	/**
-	 * The operation id for the '<em>Send Request</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TOPIC___SEND_REQUEST__REQUEST = CHANNEL___SEND_REQUEST__REQUEST;
-
-	/**
-	 * The operation id for the '<em>Send Request</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TOPIC___SEND_REQUEST__REQUEST_RESPONSECALLBACK = CHANNEL___SEND_REQUEST__REQUEST_RESPONSECALLBACK;
-
-	/**
-	 * The number of operations of the '<em>Topic</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TOPIC_OPERATION_COUNT = CHANNEL_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.communication.impl.QueueImpl <em>Queue</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.runtime.communication.impl.QueueImpl
-	 * @see de.dfki.iui.basys.model.runtime.communication.impl.CommunicationPackageImpl#getQueue()
-	 * @generated
-	 */
-	int QUEUE = 4;
-
-	/**
-	 * The feature id for the '<em><b>Binding</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QUEUE__BINDING = CHANNEL__BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QUEUE__ID = CHANNEL__ID;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QUEUE__NAME = CHANNEL__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QUEUE__METADATA = CHANNEL__METADATA;
-
-	/**
-	 * The feature id for the '<em><b>Listener</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QUEUE__LISTENER = CHANNEL__LISTENER;
-
-	/**
-	 * The feature id for the '<em><b>Pool</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QUEUE__POOL = CHANNEL__POOL;
-
-	/**
-	 * The feature id for the '<em><b>Open</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QUEUE__OPEN = CHANNEL__OPEN;
-
-	/**
-	 * The number of structural features of the '<em>Queue</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QUEUE_FEATURE_COUNT = CHANNEL_FEATURE_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Open</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QUEUE___OPEN = CHANNEL___OPEN;
-
-	/**
-	 * The operation id for the '<em>Close</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QUEUE___CLOSE = CHANNEL___CLOSE;
-
-	/**
-	 * The operation id for the '<em>Send Message</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QUEUE___SEND_MESSAGE__STRING = CHANNEL___SEND_MESSAGE__STRING;
-
-	/**
-	 * The operation id for the '<em>Send Notification</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QUEUE___SEND_NOTIFICATION__NOTIFICATION = CHANNEL___SEND_NOTIFICATION__NOTIFICATION;
-
-	/**
-	 * The operation id for the '<em>Send Request</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QUEUE___SEND_REQUEST__REQUEST = CHANNEL___SEND_REQUEST__REQUEST;
-
-	/**
-	 * The operation id for the '<em>Send Request</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QUEUE___SEND_REQUEST__REQUEST_RESPONSECALLBACK = CHANNEL___SEND_REQUEST__REQUEST_RESPONSECALLBACK;
-
-	/**
-	 * The number of operations of the '<em>Queue</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QUEUE_OPERATION_COUNT = CHANNEL_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.communication.impl.DirectLinkImpl <em>Direct Link</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.runtime.communication.impl.DirectLinkImpl
-	 * @see de.dfki.iui.basys.model.runtime.communication.impl.CommunicationPackageImpl#getDirectLink()
-	 * @generated
-	 */
-	int DIRECT_LINK = 5;
-
-	/**
-	 * The feature id for the '<em><b>Binding</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIRECT_LINK__BINDING = CHANNEL__BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIRECT_LINK__ID = CHANNEL__ID;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIRECT_LINK__NAME = CHANNEL__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIRECT_LINK__METADATA = CHANNEL__METADATA;
-
-	/**
-	 * The feature id for the '<em><b>Listener</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIRECT_LINK__LISTENER = CHANNEL__LISTENER;
-
-	/**
-	 * The feature id for the '<em><b>Pool</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIRECT_LINK__POOL = CHANNEL__POOL;
-
-	/**
-	 * The feature id for the '<em><b>Open</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIRECT_LINK__OPEN = CHANNEL__OPEN;
-
-	/**
-	 * The number of structural features of the '<em>Direct Link</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIRECT_LINK_FEATURE_COUNT = CHANNEL_FEATURE_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Open</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIRECT_LINK___OPEN = CHANNEL___OPEN;
-
-	/**
-	 * The operation id for the '<em>Close</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIRECT_LINK___CLOSE = CHANNEL___CLOSE;
-
-	/**
-	 * The operation id for the '<em>Send Message</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIRECT_LINK___SEND_MESSAGE__STRING = CHANNEL___SEND_MESSAGE__STRING;
-
-	/**
-	 * The operation id for the '<em>Send Notification</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIRECT_LINK___SEND_NOTIFICATION__NOTIFICATION = CHANNEL___SEND_NOTIFICATION__NOTIFICATION;
-
-	/**
-	 * The operation id for the '<em>Send Request</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIRECT_LINK___SEND_REQUEST__REQUEST = CHANNEL___SEND_REQUEST__REQUEST;
-
-	/**
-	 * The operation id for the '<em>Send Request</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIRECT_LINK___SEND_REQUEST__REQUEST_RESPONSECALLBACK = CHANNEL___SEND_REQUEST__REQUEST_RESPONSECALLBACK;
-
-	/**
-	 * The number of operations of the '<em>Direct Link</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIRECT_LINK_OPERATION_COUNT = CHANNEL_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.communication.ChannelListener <em>Channel Listener</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -903,7 +495,7 @@ public interface CommunicationPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.communication.impl.CommunicationPackageImpl#getChannelListener()
 	 * @generated
 	 */
-	int CHANNEL_LISTENER = 6;
+	int CHANNEL_LISTENER = 3;
 
 	/**
 	 * The number of structural features of the '<em>Channel Listener</em>' class.
@@ -958,7 +550,7 @@ public interface CommunicationPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.communication.impl.CommunicationPackageImpl#getCommunicationProvider()
 	 * @generated
 	 */
-	int COMMUNICATION_PROVIDER = 7;
+	int COMMUNICATION_PROVIDER = 4;
 
 	/**
 	 * The number of structural features of the '<em>Provider</em>' class.
@@ -1058,7 +650,7 @@ public interface CommunicationPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.communication.impl.CommunicationPackageImpl#getMessage()
 	 * @generated
 	 */
-	int MESSAGE = 8;
+	int MESSAGE = 5;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -1086,15 +678,6 @@ public interface CommunicationPackage extends EPackage {
 	 * @ordered
 	 */
 	int MESSAGE__NAME = BasePackage.ENTITY__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MESSAGE__METADATA = BasePackage.ENTITY__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Payload</b></em>' attribute.
@@ -1131,7 +714,7 @@ public interface CommunicationPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.communication.impl.CommunicationPackageImpl#getNotification()
 	 * @generated
 	 */
-	int NOTIFICATION = 9;
+	int NOTIFICATION = 6;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -1159,15 +742,6 @@ public interface CommunicationPackage extends EPackage {
 	 * @ordered
 	 */
 	int NOTIFICATION__NAME = MESSAGE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NOTIFICATION__METADATA = MESSAGE__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Payload</b></em>' attribute.
@@ -1204,7 +778,7 @@ public interface CommunicationPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.communication.impl.CommunicationPackageImpl#getResponse()
 	 * @generated
 	 */
-	int RESPONSE = 10;
+	int RESPONSE = 7;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -1232,15 +806,6 @@ public interface CommunicationPackage extends EPackage {
 	 * @ordered
 	 */
 	int RESPONSE__NAME = MESSAGE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESPONSE__METADATA = MESSAGE__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Payload</b></em>' attribute.
@@ -1277,7 +842,7 @@ public interface CommunicationPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.communication.impl.CommunicationPackageImpl#getRequest()
 	 * @generated
 	 */
-	int REQUEST = 11;
+	int REQUEST = 8;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -1305,15 +870,6 @@ public interface CommunicationPackage extends EPackage {
 	 * @ordered
 	 */
 	int REQUEST__NAME = MESSAGE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REQUEST__METADATA = MESSAGE__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Payload</b></em>' attribute.
@@ -1350,7 +906,7 @@ public interface CommunicationPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.communication.impl.CommunicationPackageImpl#getResponseCallback()
 	 * @generated
 	 */
-	int RESPONSE_CALLBACK = 12;
+	int RESPONSE_CALLBACK = 9;
 
 	/**
 	 * The number of structural features of the '<em>Response Callback</em>' class.
@@ -1387,7 +943,7 @@ public interface CommunicationPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.communication.impl.CommunicationPackageImpl#getAuthentication()
 	 * @generated
 	 */
-	int AUTHENTICATION = 13;
+	int AUTHENTICATION = 10;
 
 	/**
 	 * The feature id for the '<em><b>Username</b></em>' attribute.
@@ -1442,7 +998,7 @@ public interface CommunicationPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.communication.impl.CommunicationPackageImpl#getCommunicationException()
 	 * @generated
 	 */
-	int COMMUNICATION_EXCEPTION = 14;
+	int COMMUNICATION_EXCEPTION = 11;
 
 	/**
 	 * The meta object id for the '<em>Channel Pool Exception</em>' data type.
@@ -1452,7 +1008,7 @@ public interface CommunicationPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.communication.impl.CommunicationPackageImpl#getChannelPoolException()
 	 * @generated
 	 */
-	int CHANNEL_POOL_EXCEPTION = 15;
+	int CHANNEL_POOL_EXCEPTION = 12;
 
 	/**
 	 * The meta object id for the '<em>Provider Exception</em>' data type.
@@ -1462,7 +1018,7 @@ public interface CommunicationPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.communication.impl.CommunicationPackageImpl#getProviderException()
 	 * @generated
 	 */
-	int PROVIDER_EXCEPTION = 16;
+	int PROVIDER_EXCEPTION = 13;
 
 	/**
 	 * The meta object id for the '<em>Message Exception</em>' data type.
@@ -1472,7 +1028,7 @@ public interface CommunicationPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.communication.impl.CommunicationPackageImpl#getMessageException()
 	 * @generated
 	 */
-	int MESSAGE_EXCEPTION = 17;
+	int MESSAGE_EXCEPTION = 14;
 
 	/**
 	 * The meta object id for the '<em>Client Exception</em>' data type.
@@ -1482,7 +1038,7 @@ public interface CommunicationPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.communication.impl.CommunicationPackageImpl#getClientException()
 	 * @generated
 	 */
-	int CLIENT_EXCEPTION = 18;
+	int CLIENT_EXCEPTION = 15;
 
 	/**
 	 * The meta object id for the '<em>Channel Exception</em>' data type.
@@ -1492,7 +1048,7 @@ public interface CommunicationPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.communication.impl.CommunicationPackageImpl#getChannelException()
 	 * @generated
 	 */
-	int CHANNEL_EXCEPTION = 19;
+	int CHANNEL_EXCEPTION = 16;
 
 
 	/**
@@ -1506,10 +1062,10 @@ public interface CommunicationPackage extends EPackage {
 	EClass getClient();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.runtime.communication.Client#getAuthentication <em>Authentication</em>}'.
+	 * Returns the meta object for the containment reference '{@link de.dfki.iui.basys.model.runtime.communication.Client#getAuthentication <em>Authentication</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Authentication</em>'.
+	 * @return the meta object for the containment reference '<em>Authentication</em>'.
 	 * @see de.dfki.iui.basys.model.runtime.communication.Client#getAuthentication()
 	 * @see #getClient()
 	 * @generated
@@ -1606,6 +1162,16 @@ public interface CommunicationPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getClient__SendNotification__String_Notification();
+
+	/**
+	 * Returns the meta object for the '{@link de.dfki.iui.basys.model.runtime.communication.Client#getPool(java.lang.String) <em>Get Pool</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Pool</em>' operation.
+	 * @see de.dfki.iui.basys.model.runtime.communication.Client#getPool(java.lang.String)
+	 * @generated
+	 */
+	EOperation getClient__GetPool__String();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.runtime.communication.ChannelPool <em>Channel Pool</em>}'.
@@ -1746,6 +1312,17 @@ public interface CommunicationPackage extends EPackage {
 	EAttribute getChannel_Open();
 
 	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.runtime.communication.Channel#isQueued <em>Queued</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Queued</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.communication.Channel#isQueued()
+	 * @see #getChannel()
+	 * @generated
+	 */
+	EAttribute getChannel_Queued();
+
+	/**
 	 * Returns the meta object for the '{@link de.dfki.iui.basys.model.runtime.communication.Channel#open() <em>Open</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1804,36 +1381,6 @@ public interface CommunicationPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getChannel__SendRequest__Request_ResponseCallback();
-
-	/**
-	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.runtime.communication.Topic <em>Topic</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Topic</em>'.
-	 * @see de.dfki.iui.basys.model.runtime.communication.Topic
-	 * @generated
-	 */
-	EClass getTopic();
-
-	/**
-	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.runtime.communication.Queue <em>Queue</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Queue</em>'.
-	 * @see de.dfki.iui.basys.model.runtime.communication.Queue
-	 * @generated
-	 */
-	EClass getQueue();
-
-	/**
-	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.runtime.communication.DirectLink <em>Direct Link</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Direct Link</em>'.
-	 * @see de.dfki.iui.basys.model.runtime.communication.DirectLink
-	 * @generated
-	 */
-	EClass getDirectLink();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.runtime.communication.ChannelListener <em>Channel Listener</em>}'.
@@ -2179,7 +1726,7 @@ public interface CommunicationPackage extends EPackage {
 		EClass CLIENT = eINSTANCE.getClient();
 
 		/**
-		 * The meta object literal for the '<em><b>Authentication</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Authentication</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -2257,6 +1804,14 @@ public interface CommunicationPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation CLIENT___SEND_NOTIFICATION__STRING_NOTIFICATION = eINSTANCE.getClient__SendNotification__String_Notification();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Pool</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CLIENT___GET_POOL__STRING = eINSTANCE.getClient__GetPool__String();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.runtime.communication.impl.ChannelPoolImpl <em>Channel Pool</em>}' class.
@@ -2367,6 +1922,14 @@ public interface CommunicationPackage extends EPackage {
 		EAttribute CHANNEL__OPEN = eINSTANCE.getChannel_Open();
 
 		/**
+		 * The meta object literal for the '<em><b>Queued</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CHANNEL__QUEUED = eINSTANCE.getChannel_Queued();
+
+		/**
 		 * The meta object literal for the '<em><b>Open</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2413,36 +1976,6 @@ public interface CommunicationPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation CHANNEL___SEND_REQUEST__REQUEST_RESPONSECALLBACK = eINSTANCE.getChannel__SendRequest__Request_ResponseCallback();
-
-		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.runtime.communication.impl.TopicImpl <em>Topic</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.runtime.communication.impl.TopicImpl
-		 * @see de.dfki.iui.basys.model.runtime.communication.impl.CommunicationPackageImpl#getTopic()
-		 * @generated
-		 */
-		EClass TOPIC = eINSTANCE.getTopic();
-
-		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.runtime.communication.impl.QueueImpl <em>Queue</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.runtime.communication.impl.QueueImpl
-		 * @see de.dfki.iui.basys.model.runtime.communication.impl.CommunicationPackageImpl#getQueue()
-		 * @generated
-		 */
-		EClass QUEUE = eINSTANCE.getQueue();
-
-		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.runtime.communication.impl.DirectLinkImpl <em>Direct Link</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.runtime.communication.impl.DirectLinkImpl
-		 * @see de.dfki.iui.basys.model.runtime.communication.impl.CommunicationPackageImpl#getDirectLink()
-		 * @generated
-		 */
-		EClass DIRECT_LINK = eINSTANCE.getDirectLink();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.runtime.communication.ChannelListener <em>Channel Listener</em>}' class.

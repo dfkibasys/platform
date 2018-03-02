@@ -81,18 +81,6 @@ public class CommunicationAdapterFactory extends AdapterFactoryImpl {
 				return createChannelAdapter();
 			}
 			@Override
-			public Adapter caseTopic(Topic object) {
-				return createTopicAdapter();
-			}
-			@Override
-			public Adapter caseQueue(Queue object) {
-				return createQueueAdapter();
-			}
-			@Override
-			public Adapter caseDirectLink(DirectLink object) {
-				return createDirectLinkAdapter();
-			}
-			@Override
 			public Adapter caseChannelListener(ChannelListener object) {
 				return createChannelListenerAdapter();
 			}
@@ -191,48 +179,6 @@ public class CommunicationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createChannelAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.runtime.communication.Topic <em>Topic</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.dfki.iui.basys.model.runtime.communication.Topic
-	 * @generated
-	 */
-	public Adapter createTopicAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.runtime.communication.Queue <em>Queue</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.dfki.iui.basys.model.runtime.communication.Queue
-	 * @generated
-	 */
-	public Adapter createQueueAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.runtime.communication.DirectLink <em>Direct Link</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.dfki.iui.basys.model.runtime.communication.DirectLink
-	 * @generated
-	 */
-	public Adapter createDirectLinkAdapter() {
 		return null;
 	}
 

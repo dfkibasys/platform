@@ -27,20 +27,30 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface Client extends Entity {
 	/**
-	 * Returns the value of the '<em><b>Authentication</b></em>' containment reference list.
-	 * The list contents are of type {@link de.dfki.iui.basys.model.runtime.communication.Authentication}.
+	 * Returns the value of the '<em><b>Authentication</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Authentication</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Authentication</em>' containment reference list.
+	 * @return the value of the '<em>Authentication</em>' containment reference.
+	 * @see #setAuthentication(Authentication)
 	 * @see de.dfki.iui.basys.model.runtime.communication.CommunicationPackage#getClient_Authentication()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Authentication> getAuthentication();
+	Authentication getAuthentication();
+
+	/**
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.runtime.communication.Client#getAuthentication <em>Authentication</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Authentication</em>' containment reference.
+	 * @see #getAuthentication()
+	 * @generated
+	 */
+	void setAuthentication(Authentication value);
 
 	/**
 	 * Returns the value of the '<em><b>Pools</b></em>' reference list.
@@ -123,5 +133,13 @@ public interface Client extends Entity {
 	 * @generated
 	 */
 	void sendNotification(String channelId, Notification not) throws ClientException;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	ChannelPool getPool(String id);
 
 } // Client

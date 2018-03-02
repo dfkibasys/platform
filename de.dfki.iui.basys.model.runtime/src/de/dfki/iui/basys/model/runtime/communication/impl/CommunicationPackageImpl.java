@@ -16,15 +16,11 @@ import de.dfki.iui.basys.model.runtime.communication.Client;
 import de.dfki.iui.basys.model.runtime.communication.CommunicationFactory;
 import de.dfki.iui.basys.model.runtime.communication.CommunicationPackage;
 import de.dfki.iui.basys.model.runtime.communication.CommunicationProvider;
-import de.dfki.iui.basys.model.runtime.communication.DirectLink;
 import de.dfki.iui.basys.model.runtime.communication.Message;
 import de.dfki.iui.basys.model.runtime.communication.Notification;
-import de.dfki.iui.basys.model.runtime.communication.Queue;
 import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.communication.Response;
 import de.dfki.iui.basys.model.runtime.communication.ResponseCallback;
-import de.dfki.iui.basys.model.runtime.communication.Topic;
-
 import de.dfki.iui.basys.model.runtime.communication.exceptions.ChannelException;
 import de.dfki.iui.basys.model.runtime.communication.exceptions.ChannelPoolException;
 import de.dfki.iui.basys.model.runtime.communication.exceptions.ClientException;
@@ -73,27 +69,6 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 	 * @generated
 	 */
 	private EClass channelEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass topicEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass queueEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass directLinkEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -369,6 +344,15 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getClient__GetPool__String() {
+		return clientEClass.getEOperations().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getChannelPool() {
 		return channelPoolEClass;
 	}
@@ -486,6 +470,15 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getChannel_Queued() {
+		return (EAttribute)channelEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EOperation getChannel__Open() {
 		return channelEClass.getEOperations().get(0);
 	}
@@ -533,33 +526,6 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 	 */
 	public EOperation getChannel__SendRequest__Request_ResponseCallback() {
 		return channelEClass.getEOperations().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getTopic() {
-		return topicEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getQueue() {
-		return queueEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getDirectLink() {
-		return directLinkEClass;
 	}
 
 	/**
@@ -871,6 +837,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 		createEOperation(clientEClass, CLIENT___SEND_REQUEST__STRING_REQUEST_RESPONSECALLBACK);
 		createEOperation(clientEClass, CLIENT___SEND_REQUEST__STRING_REQUEST);
 		createEOperation(clientEClass, CLIENT___SEND_NOTIFICATION__STRING_NOTIFICATION);
+		createEOperation(clientEClass, CLIENT___GET_POOL__STRING);
 
 		channelPoolEClass = createEClass(CHANNEL_POOL);
 		createEReference(channelPoolEClass, CHANNEL_POOL__CHANNELS);
@@ -886,18 +853,13 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 		createEReference(channelEClass, CHANNEL__LISTENER);
 		createEReference(channelEClass, CHANNEL__POOL);
 		createEAttribute(channelEClass, CHANNEL__OPEN);
+		createEAttribute(channelEClass, CHANNEL__QUEUED);
 		createEOperation(channelEClass, CHANNEL___OPEN);
 		createEOperation(channelEClass, CHANNEL___CLOSE);
 		createEOperation(channelEClass, CHANNEL___SEND_MESSAGE__STRING);
 		createEOperation(channelEClass, CHANNEL___SEND_NOTIFICATION__NOTIFICATION);
 		createEOperation(channelEClass, CHANNEL___SEND_REQUEST__REQUEST);
 		createEOperation(channelEClass, CHANNEL___SEND_REQUEST__REQUEST_RESPONSECALLBACK);
-
-		topicEClass = createEClass(TOPIC);
-
-		queueEClass = createEClass(QUEUE);
-
-		directLinkEClass = createEClass(DIRECT_LINK);
 
 		channelListenerEClass = createEClass(CHANNEL_LISTENER);
 		createEOperation(channelListenerEClass, CHANNEL_LISTENER___HANDLE_MESSAGE__STRING);
@@ -965,6 +927,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 
 		// Obtain other dependent packages
 		BasePackage theBasePackage = (BasePackage)EPackage.Registry.INSTANCE.getEPackage(BasePackage.eNS_URI);
+		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 
 		// Create type parameters
 
@@ -972,10 +935,8 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 
 		// Add supertypes to classes
 		clientEClass.getESuperTypes().add(theBasePackage.getEntity());
+		channelPoolEClass.getESuperTypes().add(theBasePackage.getEntity());
 		channelEClass.getESuperTypes().add(theBasePackage.getEntity());
-		topicEClass.getESuperTypes().add(this.getChannel());
-		queueEClass.getESuperTypes().add(this.getChannel());
-		directLinkEClass.getESuperTypes().add(this.getChannel());
 		messageEClass.getESuperTypes().add(theBasePackage.getEntity());
 		notificationEClass.getESuperTypes().add(this.getMessage());
 		responseEClass.getESuperTypes().add(this.getMessage());
@@ -983,7 +944,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(clientEClass, Client.class, "Client", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getClient_Authentication(), this.getAuthentication(), null, "authentication", null, 0, -1, Client.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getClient_Authentication(), this.getAuthentication(), null, "authentication", null, 0, 1, Client.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getClient_Pools(), this.getChannelPool(), this.getChannelPool_Client(), "pools", null, 0, -1, Client.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		EOperation op = initEOperation(getClient__Connect(), null, "connect", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -1018,6 +979,9 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 		addEParameter(op, this.getNotification(), "not", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEException(op, this.getClientException());
 
+		op = initEOperation(getClient__GetPool__String(), this.getChannelPool(), "getPool", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theEcorePackage.getEString(), "id", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(channelPoolEClass, ChannelPool.class, "ChannelPool", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getChannelPool_Channels(), this.getChannel(), this.getChannel_Pool(), "channels", null, 0, -1, ChannelPool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getChannelPool_Provider(), this.getCommunicationProvider(), null, "provider", null, 1, 1, ChannelPool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1034,10 +998,11 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 		op = initEOperation(getChannelPool__GetChannel__String(), this.getChannel(), "getChannel", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "id", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(channelEClass, Channel.class, "Channel", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getChannel_Listener(), this.getChannelListener(), null, "listener", null, 0, 1, Channel.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(channelEClass, Channel.class, "Channel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getChannel_Listener(), this.getChannelListener(), null, "listener", null, 0, 1, Channel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getChannel_Pool(), this.getChannelPool(), this.getChannelPool_Channels(), "pool", null, 1, 1, Channel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getChannel_Open(), ecorePackage.getEBoolean(), "open", null, 0, 1, Channel.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getChannel_Queued(), theEcorePackage.getEBoolean(), "queued", null, 0, 1, Channel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = initEOperation(getChannel__Open(), null, "open", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEException(op, this.getChannelException());
@@ -1061,12 +1026,6 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 		addEParameter(op, this.getRequest(), "req", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getResponseCallback(), "cb", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEException(op, this.getChannelException());
-
-		initEClass(topicEClass, Topic.class, "Topic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(queueEClass, Queue.class, "Queue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(directLinkEClass, DirectLink.class, "DirectLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(channelListenerEClass, ChannelListener.class, "ChannelListener", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

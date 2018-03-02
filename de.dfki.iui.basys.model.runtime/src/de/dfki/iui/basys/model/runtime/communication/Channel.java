@@ -18,10 +18,11 @@ import de.dfki.iui.basys.model.runtime.communication.exceptions.ChannelException
  *   <li>{@link de.dfki.iui.basys.model.runtime.communication.Channel#getListener <em>Listener</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.runtime.communication.Channel#getPool <em>Pool</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.runtime.communication.Channel#isOpen <em>Open</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.runtime.communication.Channel#isQueued <em>Queued</em>}</li>
  * </ul>
  *
  * @see de.dfki.iui.basys.model.runtime.communication.CommunicationPackage#getChannel()
- * @model abstract="true"
+ * @model
  * @generated
  */
 public interface Channel extends Entity {
@@ -34,11 +35,22 @@ public interface Channel extends Entity {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Listener</em>' reference.
+	 * @see #setListener(ChannelListener)
 	 * @see de.dfki.iui.basys.model.runtime.communication.CommunicationPackage#getChannel_Listener()
-	 * @model changeable="false"
+	 * @model
 	 * @generated
 	 */
 	ChannelListener getListener();
+
+	/**
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.runtime.communication.Channel#getListener <em>Listener</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Listener</em>' reference.
+	 * @see #getListener()
+	 * @generated
+	 */
+	void setListener(ChannelListener value);
 
 	/**
 	 * Returns the value of the '<em><b>Pool</b></em>' reference.
@@ -82,6 +94,32 @@ public interface Channel extends Entity {
 	 * @generated
 	 */
 	boolean isOpen();
+
+	/**
+	 * Returns the value of the '<em><b>Queued</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Queued</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Queued</em>' attribute.
+	 * @see #setQueued(boolean)
+	 * @see de.dfki.iui.basys.model.runtime.communication.CommunicationPackage#getChannel_Queued()
+	 * @model
+	 * @generated
+	 */
+	boolean isQueued();
+
+	/**
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.runtime.communication.Channel#isQueued <em>Queued</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Queued</em>' attribute.
+	 * @see #isQueued()
+	 * @generated
+	 */
+	void setQueued(boolean value);
 
 	/**
 	 * <!-- begin-user-doc -->

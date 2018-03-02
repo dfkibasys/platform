@@ -167,36 +167,37 @@ Export-Package: de.dfki.iui.basys.model.domain.capability;version="1.0.0
  mpl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.e
  core.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore
  .util"
-Import-Package: de.dfki.iui.basys.model.base,de.dfki.iui.basys.model.bas
- e.impl,de.dfki.iui.basys.model.domain.capability;version="[1.0,2)",de.d
- fki.iui.basys.model.domain.capability.impl;version="[1.0,2)",de.dfki.iu
- i.basys.model.domain.linebalancing;version="[1.0,2)",de.dfki.iui.basys.
- model.domain.linebalancing.impl;version="[1.0,2)",de.dfki.iui.basys.mod
- el.domain.material;version="[1.0,2)",de.dfki.iui.basys.model.domain.mat
- erial.impl;version="[1.0,2)",de.dfki.iui.basys.model.domain.order;versi
- on="[1.0,2)",de.dfki.iui.basys.model.domain.order.impl;version="[1.0,2)
- ",de.dfki.iui.basys.model.domain.process;version="[1.0,2)",de.dfki.iui.
- basys.model.domain.process.impl;version="[1.0,2)",de.dfki.iui.basys.mod
- el.domain.process.util;version="[1.0,2)",de.dfki.iui.basys.model.domain
- .processinstance;version="[1.0,2)",de.dfki.iui.basys.model.domain.proce
- ssinstance.impl;version="[1.0,2)",de.dfki.iui.basys.model.domain.produc
- t;version="[1.0,2)",de.dfki.iui.basys.model.domain.product.impl;version
- ="[1.0,2)",de.dfki.iui.basys.model.domain.productinstance;version="[1.0
- ,2)",de.dfki.iui.basys.model.domain.productinstance.impl;version="[1.0,
- 2)",de.dfki.iui.basys.model.domain.staff;version="[1.0,2)",de.dfki.iui.
- basys.model.domain.staff.impl;version="[1.0,2)",de.dfki.iui.basys.model
- .domain.topology;version="[1.0,2)",de.dfki.iui.basys.model.domain.topol
- ogy.impl;version="[1.0,2)",de.dfki.iui.basys.model.domain.workerguidanc
- e;version="[1.0,2)",de.dfki.iui.basys.model.domain.workerguidance.impl;
- version="[1.0,2)",de.dfki.iui.basys.model.domain.workforce;version="[1.
- 0,2)",de.dfki.iui.basys.model.domain.workforce.impl;version="[1.0,2)",d
- e.dfki.iui.basys.model.domain.workplan;version="[1.0,2)",de.dfki.iui.ba
- sys.model.domain.workplan.impl;version="[1.0,2)",de.dfki.iui.basys.mode
- l.pattern,de.dfki.iui.basys.model.util,org.eclipse.emf.common.notify,or
- g.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclips
- e.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.plugin,org
- .eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.ecl
- ipse.emf.ecore.util,org.eclipse.emf.ecore.xml.type
+Import-Package: de.dfki.iui.basys.model.base;version="[1.0,2)",de.dfki.i
+ ui.basys.model.base.impl;version="[1.0,2)",de.dfki.iui.basys.model.doma
+ in.capability;version="[1.0,2)",de.dfki.iui.basys.model.domain.capabili
+ ty.impl;version="[1.0,2)",de.dfki.iui.basys.model.domain.linebalancing;
+ version="[1.0,2)",de.dfki.iui.basys.model.domain.linebalancing.impl;ver
+ sion="[1.0,2)",de.dfki.iui.basys.model.domain.material;version="[1.0,2)
+ ",de.dfki.iui.basys.model.domain.material.impl;version="[1.0,2)",de.dfk
+ i.iui.basys.model.domain.order;version="[1.0,2)",de.dfki.iui.basys.mode
+ l.domain.order.impl;version="[1.0,2)",de.dfki.iui.basys.model.domain.pr
+ ocess;version="[1.0,2)",de.dfki.iui.basys.model.domain.process.impl;ver
+ sion="[1.0,2)",de.dfki.iui.basys.model.domain.process.util;version="[1.
+ 0,2)",de.dfki.iui.basys.model.domain.processinstance;version="[1.0,2)",
+ de.dfki.iui.basys.model.domain.processinstance.impl;version="[1.0,2)",d
+ e.dfki.iui.basys.model.domain.product;version="[1.0,2)",de.dfki.iui.bas
+ ys.model.domain.product.impl;version="[1.0,2)",de.dfki.iui.basys.model.
+ domain.productinstance;version="[1.0,2)",de.dfki.iui.basys.model.domain
+ .productinstance.impl;version="[1.0,2)",de.dfki.iui.basys.model.domain.
+ staff;version="[1.0,2)",de.dfki.iui.basys.model.domain.staff.impl;versi
+ on="[1.0,2)",de.dfki.iui.basys.model.domain.topology;version="[1.0,2)",
+ de.dfki.iui.basys.model.domain.topology.impl;version="[1.0,2)",de.dfki.
+ iui.basys.model.domain.workerguidance;version="[1.0,2)",de.dfki.iui.bas
+ ys.model.domain.workerguidance.impl;version="[1.0,2)",de.dfki.iui.basys
+ .model.domain.workforce;version="[1.0,2)",de.dfki.iui.basys.model.domai
+ n.workforce.impl;version="[1.0,2)",de.dfki.iui.basys.model.domain.workp
+ lan;version="[1.0,2)",de.dfki.iui.basys.model.domain.workplan.impl;vers
+ ion="[1.0,2)",de.dfki.iui.basys.model.pattern;version="[1.0,2)",de.dfki
+ .iui.basys.model.util;version="[1.0,2)",org.eclipse.emf.common.notify,o
+ rg.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclip
+ se.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.plugin,or
+ g.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.ec
+ lipse.emf.ecore.util,org.eclipse.emf.ecore.xml.type
 Include-Resource: model/capability.ecore=model/capability.ecore,model/do
  main.aird=model/domain.aird,model/domain.genmodel=model/domain.genmodel
  ,model/linebalancing.ecore=model/linebalancing.ecore,model/material.eco

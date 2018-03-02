@@ -2,6 +2,7 @@
  */
 package de.dfki.iui.basys.model.runtime.communication.impl;
 
+import de.dfki.iui.basys.model.base.impl.EntityImpl;
 import de.dfki.iui.basys.model.runtime.communication.Channel;
 import de.dfki.iui.basys.model.runtime.communication.ChannelPool;
 import de.dfki.iui.basys.model.runtime.communication.Client;
@@ -23,8 +24,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -45,7 +44,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class ChannelPoolImpl extends MinimalEObjectImpl.Container implements ChannelPool {
+public class ChannelPoolImpl extends EntityImpl implements ChannelPool {
 	/**
 	 * The cached value of the '{@link #getChannels() <em>Channels</em>}' reference list.
 	 * <!-- begin-user-doc -->

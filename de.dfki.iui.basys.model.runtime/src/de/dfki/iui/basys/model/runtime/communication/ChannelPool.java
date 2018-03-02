@@ -2,11 +2,10 @@
  */
 package de.dfki.iui.basys.model.runtime.communication;
 
+import de.dfki.iui.basys.model.base.Entity;
 import de.dfki.iui.basys.model.runtime.communication.exceptions.ChannelPoolException;
 
 import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,7 +27,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface ChannelPool extends EObject {
+public interface ChannelPool extends Entity {
 	/**
 	 * Returns the value of the '<em><b>Channels</b></em>' reference list.
 	 * The list contents are of type {@link de.dfki.iui.basys.model.runtime.communication.Channel}.

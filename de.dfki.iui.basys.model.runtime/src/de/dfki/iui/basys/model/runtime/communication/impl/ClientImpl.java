@@ -26,7 +26,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -46,14 +46,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class ClientImpl extends EntityImpl implements Client {
 	/**
-	 * The cached value of the '{@link #getAuthentication() <em>Authentication</em>}' containment reference list.
+	 * The cached value of the '{@link #getAuthentication() <em>Authentication</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getAuthentication()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Authentication> authentication;
+	protected Authentication authentication;
 
 	/**
 	 * The cached value of the '{@link #getPools() <em>Pools</em>}' reference list.
@@ -101,11 +101,42 @@ public class ClientImpl extends EntityImpl implements Client {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Authentication> getAuthentication() {
-		if (authentication == null) {
-			authentication = new EObjectContainmentEList<Authentication>(Authentication.class, this, CommunicationPackage.CLIENT__AUTHENTICATION);
-		}
+	public Authentication getAuthentication() {
 		return authentication;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetAuthentication(Authentication newAuthentication, NotificationChain msgs) {
+		Authentication oldAuthentication = authentication;
+		authentication = newAuthentication;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, org.eclipse.emf.common.notify.Notification.SET, CommunicationPackage.CLIENT__AUTHENTICATION, oldAuthentication, newAuthentication);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAuthentication(Authentication newAuthentication) {
+		if (newAuthentication != authentication) {
+			NotificationChain msgs = null;
+			if (authentication != null)
+				msgs = ((InternalEObject)authentication).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CommunicationPackage.CLIENT__AUTHENTICATION, null, msgs);
+			if (newAuthentication != null)
+				msgs = ((InternalEObject)newAuthentication).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CommunicationPackage.CLIENT__AUTHENTICATION, null, msgs);
+			msgs = basicSetAuthentication(newAuthentication, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, org.eclipse.emf.common.notify.Notification.SET, CommunicationPackage.CLIENT__AUTHENTICATION, newAuthentication, newAuthentication));
 	}
 
 	/**
@@ -220,6 +251,21 @@ public class ClientImpl extends EntityImpl implements Client {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public ChannelPool getPool(String id) {
+		Iterator<ChannelPool> it = getPools().iterator();
+		while (it.hasNext()) {
+			ChannelPool pool = (ChannelPool) it.next();			
+			if (pool.getId().equals(id))
+				return pool;			
+		}		
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -241,7 +287,7 @@ public class ClientImpl extends EntityImpl implements Client {
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case CommunicationPackage.CLIENT__AUTHENTICATION:
-				return ((InternalEList<?>)getAuthentication()).basicRemove(otherEnd, msgs);
+				return basicSetAuthentication(null, msgs);
 			case CommunicationPackage.CLIENT__POOLS:
 				return ((InternalEList<?>)getPools()).basicRemove(otherEnd, msgs);
 		}
@@ -274,8 +320,7 @@ public class ClientImpl extends EntityImpl implements Client {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CommunicationPackage.CLIENT__AUTHENTICATION:
-				getAuthentication().clear();
-				getAuthentication().addAll((Collection<? extends Authentication>)newValue);
+				setAuthentication((Authentication)newValue);
 				return;
 			case CommunicationPackage.CLIENT__POOLS:
 				getPools().clear();
@@ -294,7 +339,7 @@ public class ClientImpl extends EntityImpl implements Client {
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case CommunicationPackage.CLIENT__AUTHENTICATION:
-				getAuthentication().clear();
+				setAuthentication((Authentication)null);
 				return;
 			case CommunicationPackage.CLIENT__POOLS:
 				getPools().clear();
@@ -312,7 +357,7 @@ public class ClientImpl extends EntityImpl implements Client {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case CommunicationPackage.CLIENT__AUTHENTICATION:
-				return authentication != null && !authentication.isEmpty();
+				return authentication != null;
 			case CommunicationPackage.CLIENT__POOLS:
 				return pools != null && !pools.isEmpty();
 		}
@@ -378,6 +423,8 @@ public class ClientImpl extends EntityImpl implements Client {
 				catch (Throwable throwable) {
 					throw new InvocationTargetException(throwable);
 				}
+			case CommunicationPackage.CLIENT___GET_POOL__STRING:
+				return getPool((String)arguments.get(0));
 		}
 		return super.eInvoke(operationID, arguments);
 	}
