@@ -99,6 +99,15 @@ public interface CommunicationPackage extends EPackage {
 	int CLIENT__NAME = BasePackage.ENTITY__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLIENT__METADATA = BasePackage.ENTITY__METADATA;
+
+	/**
 	 * The feature id for the '<em><b>Authentication</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -253,6 +262,15 @@ public interface CommunicationPackage extends EPackage {
 	int CHANNEL_POOL__NAME = BasePackage.ENTITY__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANNEL_POOL__METADATA = BasePackage.ENTITY__METADATA;
+
+	/**
 	 * The feature id for the '<em><b>Channels</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -378,6 +396,15 @@ public interface CommunicationPackage extends EPackage {
 	 * @ordered
 	 */
 	int CHANNEL__NAME = BasePackage.ENTITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANNEL__METADATA = BasePackage.ENTITY__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Listener</b></em>' reference.
@@ -543,10 +570,10 @@ public interface CommunicationPackage extends EPackage {
 	int CHANNEL_LISTENER_OPERATION_COUNT = 3;
 
 	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.communication.impl.CommunicationProviderImpl <em>Provider</em>}' class.
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.communication.CommunicationProvider <em>Provider</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.runtime.communication.impl.CommunicationProviderImpl
+	 * @see de.dfki.iui.basys.model.runtime.communication.CommunicationProvider
 	 * @see de.dfki.iui.basys.model.runtime.communication.impl.CommunicationPackageImpl#getCommunicationProvider()
 	 * @generated
 	 */
@@ -680,6 +707,15 @@ public interface CommunicationPackage extends EPackage {
 	int MESSAGE__NAME = BasePackage.ENTITY__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE__METADATA = BasePackage.ENTITY__METADATA;
+
+	/**
 	 * The feature id for the '<em><b>Payload</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -742,6 +778,15 @@ public interface CommunicationPackage extends EPackage {
 	 * @ordered
 	 */
 	int NOTIFICATION__NAME = MESSAGE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOTIFICATION__METADATA = MESSAGE__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Payload</b></em>' attribute.
@@ -808,6 +853,15 @@ public interface CommunicationPackage extends EPackage {
 	int RESPONSE__NAME = MESSAGE__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESPONSE__METADATA = MESSAGE__METADATA;
+
+	/**
 	 * The feature id for the '<em><b>Payload</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -870,6 +924,15 @@ public interface CommunicationPackage extends EPackage {
 	 * @ordered
 	 */
 	int REQUEST__NAME = MESSAGE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUEST__METADATA = MESSAGE__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Payload</b></em>' attribute.
@@ -2012,10 +2075,10 @@ public interface CommunicationPackage extends EPackage {
 		EOperation CHANNEL_LISTENER___HANDLE_REQUEST__REQUEST = eINSTANCE.getChannelListener__HandleRequest__Request();
 
 		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.runtime.communication.impl.CommunicationProviderImpl <em>Provider</em>}' class.
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.runtime.communication.CommunicationProvider <em>Provider</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.runtime.communication.impl.CommunicationProviderImpl
+		 * @see de.dfki.iui.basys.model.runtime.communication.CommunicationProvider
 		 * @see de.dfki.iui.basys.model.runtime.communication.impl.CommunicationPackageImpl#getCommunicationProvider()
 		 * @generated
 		 */

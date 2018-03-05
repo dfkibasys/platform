@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see de.dfki.iui.basys.model.runtime.communication.CommunicationPackage#getResponseCallback()
  * @model interface="true" abstract="true"
- * @generated
+ * @generated not
  */
 public interface ResponseCallback extends EObject {
 	/**

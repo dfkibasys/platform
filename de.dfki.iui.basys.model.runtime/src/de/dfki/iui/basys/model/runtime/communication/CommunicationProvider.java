@@ -13,10 +13,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  *
  * @see de.dfki.iui.basys.model.runtime.communication.CommunicationPackage#getCommunicationProvider()
- * @model abstract="true"
- * @generated
+ * @model interface="true" abstract="true"
+ * @generated NOT
  */
-public interface CommunicationProvider extends EObject {
+public interface CommunicationProvider {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

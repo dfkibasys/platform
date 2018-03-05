@@ -149,17 +149,17 @@ public class ChannelPoolImpl extends EntityImpl implements ChannelPool {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public CommunicationProvider getProvider() {
-		if (provider != null && provider.eIsProxy()) {
-			InternalEObject oldProvider = (InternalEObject)provider;
-			provider = (CommunicationProvider)eResolveProxy(oldProvider);
-			if (provider != oldProvider) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CommunicationPackage.CHANNEL_POOL__PROVIDER, oldProvider, provider));
-			}
-		}
+//		if (provider != null && provider.eIsProxy()) {
+//			InternalEObject oldProvider = (InternalEObject)provider;
+//			provider = (CommunicationProvider)eResolveProxy(oldProvider);
+//			if (provider != oldProvider) {
+//				if (eNotificationRequired())
+//					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CommunicationPackage.CHANNEL_POOL__PROVIDER, oldProvider, provider));
+//			}
+//		}
 		return provider;
 	}
 
@@ -175,13 +175,13 @@ public class ChannelPoolImpl extends EntityImpl implements ChannelPool {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public void setProvider(CommunicationProvider newProvider) {
-		CommunicationProvider oldProvider = provider;
+//		CommunicationProvider oldProvider = provider;
 		provider = newProvider;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CommunicationPackage.CHANNEL_POOL__PROVIDER, oldProvider, provider));
+//		if (eNotificationRequired())
+//			eNotify(new ENotificationImpl(this, Notification.SET, CommunicationPackage.CHANNEL_POOL__PROVIDER, oldProvider, provider));
 	}
 
 	/**

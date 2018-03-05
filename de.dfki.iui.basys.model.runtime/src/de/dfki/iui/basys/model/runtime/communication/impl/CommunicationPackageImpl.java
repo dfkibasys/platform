@@ -1038,7 +1038,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 		op = initEOperation(getChannelListener__HandleRequest__Request(), null, "handleRequest", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getRequest(), "req", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(communicationProviderEClass, CommunicationProvider.class, "CommunicationProvider", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(communicationProviderEClass, CommunicationProvider.class, "CommunicationProvider", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		op = initEOperation(getCommunicationProvider__DoConnect__ChannelPool(), null, "doConnect", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getChannelPool(), "pool", 0, 1, IS_UNIQUE, IS_ORDERED);

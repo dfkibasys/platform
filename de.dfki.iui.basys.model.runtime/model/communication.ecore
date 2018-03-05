@@ -90,7 +90,8 @@
       <eParameters name="req" eType="#//Request"/>
     </eOperations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CommunicationProvider" abstract="true">
+  <eClassifiers xsi:type="ecore:EClass" name="CommunicationProvider" abstract="true"
+      interface="true">
     <eOperations name="doConnect" eExceptions="#//ProviderException">
       <eParameters name="pool" eType="#//ChannelPool"/>
     </eOperations>

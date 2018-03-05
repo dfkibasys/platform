@@ -124,17 +124,17 @@ public class ChannelImpl extends EntityImpl implements Channel {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public ChannelListener getListener() {
-		if (listener != null && listener.eIsProxy()) {
-			InternalEObject oldListener = (InternalEObject)listener;
-			listener = (ChannelListener)eResolveProxy(oldListener);
-			if (listener != oldListener) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CommunicationPackage.CHANNEL__LISTENER, oldListener, listener));
-			}
-		}
+//		if (listener != null && listener.eIsProxy()) {
+//			InternalEObject oldListener = (InternalEObject)listener;
+//			listener = (ChannelListener)eResolveProxy(oldListener);
+//			if (listener != oldListener) {
+//				if (eNotificationRequired())
+//					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CommunicationPackage.CHANNEL__LISTENER, oldListener, listener));
+//			}
+//		}
 		return listener;
 	}
 
@@ -150,13 +150,13 @@ public class ChannelImpl extends EntityImpl implements Channel {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public void setListener(ChannelListener newListener) {
-		ChannelListener oldListener = listener;
+//		ChannelListener oldListener = listener;
 		listener = newListener;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CommunicationPackage.CHANNEL__LISTENER, oldListener, listener));
+//		if (eNotificationRequired())
+//			eNotify(new ENotificationImpl(this, Notification.SET, CommunicationPackage.CHANNEL__LISTENER, oldListener, listener));
 	}
 
 	/**

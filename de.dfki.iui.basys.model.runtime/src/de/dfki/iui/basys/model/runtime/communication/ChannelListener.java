@@ -2,8 +2,6 @@
  */
 package de.dfki.iui.basys.model.runtime.communication;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Channel Listener</b></em>'.
@@ -12,9 +10,9 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see de.dfki.iui.basys.model.runtime.communication.CommunicationPackage#getChannelListener()
  * @model interface="true" abstract="true"
- * @generated
+ * @generated NOT
  */
-public interface ChannelListener extends EObject {
+public interface ChannelListener {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
