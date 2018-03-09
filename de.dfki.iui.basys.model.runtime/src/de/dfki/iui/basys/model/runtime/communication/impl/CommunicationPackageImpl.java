@@ -686,6 +686,15 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getResponse_RequestId() {
+		return (EAttribute)responseEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getRequest() {
 		return requestEClass;
 	}
@@ -882,6 +891,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 		notificationEClass = createEClass(NOTIFICATION);
 
 		responseEClass = createEClass(RESPONSE);
+		createEAttribute(responseEClass, RESPONSE__REQUEST_ID);
 
 		requestEClass = createEClass(REQUEST);
 
@@ -1035,7 +1045,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 		op = initEOperation(getChannelListener__HandleNotification__Notification(), null, "handleNotification", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getNotification(), "not", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = initEOperation(getChannelListener__HandleRequest__Request(), null, "handleRequest", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getChannelListener__HandleRequest__Request(), this.getResponse(), "handleRequest", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getRequest(), "req", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(communicationProviderEClass, CommunicationProvider.class, "CommunicationProvider", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1083,6 +1093,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 		initEClass(notificationEClass, Notification.class, "Notification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(responseEClass, Response.class, "Response", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getResponse_RequestId(), theEcorePackage.getEString(), "requestId", null, 0, 1, Response.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(requestEClass, Request.class, "Request", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

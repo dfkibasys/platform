@@ -871,13 +871,22 @@ public interface CommunicationPackage extends EPackage {
 	int RESPONSE__PAYLOAD = MESSAGE__PAYLOAD;
 
 	/**
+	 * The feature id for the '<em><b>Request Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESPONSE__REQUEST_ID = MESSAGE_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Response</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESPONSE_FEATURE_COUNT = MESSAGE_FEATURE_COUNT + 0;
+	int RESPONSE_FEATURE_COUNT = MESSAGE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Response</em>' class.
@@ -1617,6 +1626,17 @@ public interface CommunicationPackage extends EPackage {
 	EClass getResponse();
 
 	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.runtime.communication.Response#getRequestId <em>Request Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Request Id</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.communication.Response#getRequestId()
+	 * @see #getResponse()
+	 * @generated
+	 */
+	EAttribute getResponse_RequestId();
+
+	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.runtime.communication.Request <em>Request</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2185,6 +2205,14 @@ public interface CommunicationPackage extends EPackage {
 		 * @generated
 		 */
 		EClass RESPONSE = eINSTANCE.getResponse();
+
+		/**
+		 * The meta object literal for the '<em><b>Request Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RESPONSE__REQUEST_ID = eINSTANCE.getResponse_RequestId();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.runtime.communication.impl.RequestImpl <em>Request</em>}' class.

@@ -86,7 +86,7 @@
     <eOperations name="handleNotification">
       <eParameters name="not" eType="#//Notification"/>
     </eOperations>
-    <eOperations name="handleRequest">
+    <eOperations name="handleRequest" eType="#//Response">
       <eParameters name="req" eType="#//Request"/>
     </eOperations>
   </eClassifiers>
@@ -126,7 +126,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="payload" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Notification" eSuperTypes="#//Message"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Response" eSuperTypes="#//Message"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Response" eSuperTypes="#//Message">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="requestId" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Request" eSuperTypes="#//Message"/>
   <eClassifiers xsi:type="ecore:EClass" name="ResponseCallback" abstract="true" interface="true">
     <eOperations name="handleResponse">

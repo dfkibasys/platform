@@ -35,6 +35,6 @@ public interface ChannelListener {
 	 * @model
 	 * @generated
 	 */
-	void handleRequest(Request req);
+	Response handleRequest(Request req);
 
 } // ChannelListener
