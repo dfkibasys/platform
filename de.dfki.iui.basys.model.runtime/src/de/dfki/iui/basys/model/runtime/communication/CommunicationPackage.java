@@ -661,13 +661,22 @@ public interface CommunicationPackage extends EPackage {
 	int COMMUNICATION_PROVIDER___DO_SEND_NOTIFICATION__CHANNEL_NOTIFICATION = 7;
 
 	/**
+	 * The operation id for the '<em>Support Queued Channels</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PROVIDER___SUPPORT_QUEUED_CHANNELS = 8;
+
+	/**
 	 * The number of operations of the '<em>Provider</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMMUNICATION_PROVIDER_OPERATION_COUNT = 8;
+	int COMMUNICATION_PROVIDER_OPERATION_COUNT = 9;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.communication.impl.MessageImpl <em>Message</em>}' class.
@@ -1585,6 +1594,16 @@ public interface CommunicationPackage extends EPackage {
 	EOperation getCommunicationProvider__DoSendNotification__Channel_Notification();
 
 	/**
+	 * Returns the meta object for the '{@link de.dfki.iui.basys.model.runtime.communication.CommunicationProvider#supportQueuedChannels() <em>Support Queued Channels</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Support Queued Channels</em>' operation.
+	 * @see de.dfki.iui.basys.model.runtime.communication.CommunicationProvider#supportQueuedChannels()
+	 * @generated
+	 */
+	EOperation getCommunicationProvider__SupportQueuedChannels();
+
+	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.runtime.communication.Message <em>Message</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2167,6 +2186,14 @@ public interface CommunicationPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation COMMUNICATION_PROVIDER___DO_SEND_NOTIFICATION__CHANNEL_NOTIFICATION = eINSTANCE.getCommunicationProvider__DoSendNotification__Channel_Notification();
+
+		/**
+		 * The meta object literal for the '<em><b>Support Queued Channels</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation COMMUNICATION_PROVIDER___SUPPORT_QUEUED_CHANNELS = eINSTANCE.getCommunicationProvider__SupportQueuedChannels();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.runtime.communication.impl.MessageImpl <em>Message</em>}' class.

@@ -3,7 +3,6 @@
 package de.dfki.iui.basys.model.runtime.communication;
 
 import de.dfki.iui.basys.model.runtime.communication.exceptions.ProviderException;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -80,5 +79,13 @@ public interface CommunicationProvider {
 	 * @generated
 	 */
 	void doSendNotification(Channel channel, Notification not) throws ProviderException;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean supportQueuedChannels();
 
 } // CommunicationProvider

@@ -650,6 +650,15 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getCommunicationProvider__SupportQueuedChannels() {
+		return communicationProviderEClass.getEOperations().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getMessage() {
 		return messageEClass;
 	}
@@ -884,6 +893,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 		createEOperation(communicationProviderEClass, COMMUNICATION_PROVIDER___DO_SEND_REQUEST__CHANNEL_REQUEST_RESPONSECALLBACK);
 		createEOperation(communicationProviderEClass, COMMUNICATION_PROVIDER___DO_SEND_REQUEST__CHANNEL_REQUEST);
 		createEOperation(communicationProviderEClass, COMMUNICATION_PROVIDER___DO_SEND_NOTIFICATION__CHANNEL_NOTIFICATION);
+		createEOperation(communicationProviderEClass, COMMUNICATION_PROVIDER___SUPPORT_QUEUED_CHANNELS);
 
 		messageEClass = createEClass(MESSAGE);
 		createEAttribute(messageEClass, MESSAGE__PAYLOAD);
@@ -1086,6 +1096,8 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 		addEParameter(op, this.getChannel(), "channel", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getNotification(), "not", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEException(op, this.getProviderException());
+
+		initEOperation(getCommunicationProvider__SupportQueuedChannels(), theEcorePackage.getEBoolean(), "supportQueuedChannels", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(messageEClass, Message.class, "Message", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMessage_Payload(), ecorePackage.getEString(), "payload", null, 0, 1, Message.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
