@@ -8,9 +8,9 @@ public interface WaitStatesHandler {
 
 	void onComplete();
 
-	void onHold();
+	void onHeld();
 
-	void onSuspend();
+	void onSuspended();
 
 	void onAborted();
 

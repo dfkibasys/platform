@@ -56,7 +56,7 @@
           </onentry>
           <transition event="lifecycle.events.start" target="STARTING"/>
         </state>
-        <state id="STARTING">
+        <state id="STARTING">6
           <onentry>
             <script>unit.onStarting()</script>
           </onentry>

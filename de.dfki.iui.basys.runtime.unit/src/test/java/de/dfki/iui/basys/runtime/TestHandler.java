@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import de.dfki.iui.basys.runtime.unit.packml.ActiveStatesHandler;
 import de.dfki.iui.basys.runtime.unit.packml.PackMLUnit;
 import de.dfki.iui.basys.runtime.unit.packml.State;
+import de.dfki.iui.basys.runtime.unit.packml.WaitStatesHandler;
 import junit.framework.TestCase;
 
 public class TestHandler implements ActiveStatesHandler {

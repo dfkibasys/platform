@@ -245,17 +245,17 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 	};
 	
 	@Override
-	public void onHold() {
-		LOGGER.info("onHold");		
+	public void onHeld() {
+		LOGGER.info("onHeld");		
 		if (waitHandler != null)
-			waitHandler.onHold();
+			waitHandler.onHeld();
 	};
 
 	@Override
-	public void onSuspend() {
-		LOGGER.info("onSuspend");
+	public void onSuspended() {
+		LOGGER.info("onSuspended");
 		if (waitHandler != null)
-			waitHandler.onSuspend();
+			waitHandler.onSuspended();
 	};
 
 	@Override

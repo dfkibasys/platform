@@ -5,8 +5,11 @@ import org.slf4j.LoggerFactory;
 
 import de.dfki.iui.basys.communication.ClientFactory;
 import de.dfki.iui.basys.communication.provider.MqttCommunicationProvider;
+import de.dfki.iui.basys.model.runtime.communication.Channel;
+import de.dfki.iui.basys.model.runtime.communication.ChannelPool;
 import de.dfki.iui.basys.model.runtime.communication.Client;
 import de.dfki.iui.basys.model.runtime.communication.CommunicationProvider;
+import de.dfki.iui.basys.model.runtime.communication.Notification;
 import de.dfki.iui.basys.runtime.unit.packml.ActiveStatesHandler;
 import de.dfki.iui.basys.runtime.unit.packml.PackMLUnit;
 import de.dfki.iui.basys.runtime.unit.packml.WaitStatesHandler;
@@ -21,8 +24,8 @@ public abstract class AbstractComponent implements ActiveStatesHandler, WaitStat
 	
 	protected ClientFactory cf = ClientFactory.getInstance();
 	protected Client client;
-	protected String connectionString;
-	protected CommunicationProvider provider;
+	protected String connectionString;	
+	protected Channel channel;
 	
 	public AbstractComponent(String id) {
 		this.id = id;
@@ -61,11 +64,11 @@ public abstract class AbstractComponent implements ActiveStatesHandler, WaitStat
 		if (client == null) {		
 			client = cf.createClient(id, cf.createAuthentication(id, "secret", null));
 			//TODO: either discover automatically or set externally
-			//TODO: configure channelPool (MQTT usage and connectionString) externally
 			connectionString = "tcp://iot.eclipse.org:1883";		
-			provider = new MqttCommunicationProvider();
-			cf.connectChannelPool(client, connectionString, provider);
-			
+			//TODO: configure channelPool (MQTT/JMS usage and connectionString) externally
+			CommunicationProvider provider = new MqttCommunicationProvider();
+			ChannelPool pool = cf.connectChannelPool(client, connectionString, provider);
+			channel = cf.openComponentChannel(pool, id, provider.supportQueuedChannels(), new ComponentChannelListener(this));
 			//TODO: register service at service registry
 		}
 	}
@@ -76,10 +79,7 @@ public abstract class AbstractComponent implements ActiveStatesHandler, WaitStat
 			client.disconnect();
 			client = null;
 		}
-	}
-
-	//TODO: Code for communicating with the Basys Middleware: process incoming requests, notify task completion and errors back
-	
+	}	
 
 	/*
 	 * default WaitStatesHandler implementation -> notify Basys Middleware
@@ -87,38 +87,44 @@ public abstract class AbstractComponent implements ActiveStatesHandler, WaitStat
 	
 	@Override
 	public void onStopped() {
-		// TODO Auto-generated method stub
-		
+		//TODO: something like:Notification not = createStatusUpdate();
+		Notification not = cf.createNotification("stopped");
+		channel.sendNotification(not);
 	}
 
 	@Override
 	public void onIdle() {
-		// TODO Auto-generated method stub
-		
+		//TODO: something like:Notification not = createStatusUpdate();
+		Notification not = cf.createNotification("idle");
+		channel.sendNotification(not);
 	}
 
 	@Override
 	public void onComplete() {
-		// TODO Auto-generated method stub
-		
+		//TODO: something like:Notification not = createStatusUpdate();
+		Notification not = cf.createNotification("complete");
+		channel.sendNotification(not);
 	}
 
 	@Override
-	public void onHold() {
-		// TODO Auto-generated method stub
-		
+	public void onHeld() {
+		//TODO: something like:Notification not = createStatusUpdate();
+		Notification not = cf.createNotification("held");
+		channel.sendNotification(not);
 	}
 
 	@Override
-	public void onSuspend() {
-		// TODO Auto-generated method stub
-		
+	public void onSuspended() {
+		//TODO: something like:Notification not = createStatusUpdate();
+		Notification not = cf.createNotification("suspended");
+		channel.sendNotification(not);
 	}
 
 	@Override
 	public void onAborted() {
-		// TODO Auto-generated method stub
-		
+		//TODO: something like:Notification not = createStatusUpdate();
+		Notification not = cf.createNotification("aborted");
+		channel.sendNotification(not);
 	}
 
 }
