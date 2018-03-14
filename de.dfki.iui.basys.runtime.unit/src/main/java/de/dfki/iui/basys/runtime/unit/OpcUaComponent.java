@@ -10,10 +10,24 @@ public class OpcUaComponent extends AbstractComponent {
 	// TODO: Code for communicating with the actual device, here via OPC-UA.
 	// Could also be done in some kind of "IntegrationProvider" implementation.
 
+
+	@Override
+	public void connectToDevice() {
+		// TODO Auto-generated method stub
+		super.connectToDevice();
+	}
+	
+	@Override
+	public void disconnectFromDevice() {
+		// TODO Auto-generated method stub
+		super.disconnectFromDevice();
+	}
+	
+	
 	/*
 	 * default ActiveStatesHandler implementation -> trigger logic on device
 	 */
-
+	
 	@Override
 	public void onResetting() {
 		// TODO Auto-generated method stub

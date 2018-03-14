@@ -3,9 +3,9 @@ package de.dfki.iui.basys.runtime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.dfki.iui.basys.runtime.unit.ActiveStatesHandler;
-import de.dfki.iui.basys.runtime.unit.PackMLUnit;
-import de.dfki.iui.basys.runtime.unit.State;
+import de.dfki.iui.basys.runtime.unit.packml.ActiveStatesHandler;
+import de.dfki.iui.basys.runtime.unit.packml.PackMLUnit;
+import de.dfki.iui.basys.runtime.unit.packml.State;
 import junit.framework.TestCase;
 
 public class TestHandler implements ActiveStatesHandler {

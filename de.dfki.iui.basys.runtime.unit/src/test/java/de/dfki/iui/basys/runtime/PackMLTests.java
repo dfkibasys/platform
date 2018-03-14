@@ -4,8 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import junit.framework.TestCase;
 import de.dfki.iui.basys.runtime.TestHandler.Path;
-import de.dfki.iui.basys.runtime.unit.PackMLUnit;
-import de.dfki.iui.basys.runtime.unit.State;
+import de.dfki.iui.basys.runtime.unit.packml.PackMLUnit;
+import de.dfki.iui.basys.runtime.unit.packml.State;
 
 public class PackMLTests extends TestCase {
 

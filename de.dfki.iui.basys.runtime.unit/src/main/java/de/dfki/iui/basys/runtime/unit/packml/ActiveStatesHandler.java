@@ -1,4 +1,4 @@
-package de.dfki.iui.basys.runtime.unit;
+package de.dfki.iui.basys.runtime.unit.packml;
 
 public interface ActiveStatesHandler {
 

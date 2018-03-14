@@ -11,6 +11,19 @@ public class TecsComponent extends AbstractComponent {
 	// Could also be done in some kind of "IntegrationProvider" implementation.
 	
 
+	@Override
+	public void connectToDevice() {
+		// TODO Auto-generated method stub
+		super.connectToDevice();
+	}
+	
+	@Override
+	public void disconnectFromDevice() {
+		// TODO Auto-generated method stub
+		super.disconnectFromDevice();
+	}
+	
+
 	/*
 	 * default ActiveStatesHandler implementation -> trigger logic on device
 	 */
