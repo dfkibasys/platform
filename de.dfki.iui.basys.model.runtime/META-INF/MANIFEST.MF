@@ -40,12 +40,9 @@ Import-Package: de.dfki.iui.basys.model.base;version="[1.0,2)",de.dfki.i
  0,2)",de.dfki.iui.basys.model.runtime.service;version="[1.0,2)",de.dfki
  .iui.basys.model.runtime.service.impl;version="[1.0,2)",de.dfki.iui.bas
  ys.model.runtime.service.util;version="[1.0,2)",org.eclipse.emf.common.
- notify;resolution:=optional,org.eclipse.emf.common.notify.impl;resoluti
- on:=optional,org.eclipse.emf.common.util;resolution:=optional,org.eclip
- se.emf.ecore;resolution:=optional,org.eclipse.emf.ecore.impl;resolution
- :=optional,org.eclipse.emf.ecore.plugin;resolution:=optional,org.eclips
- e.emf.ecore.resource;resolution:=optional,org.eclipse.emf.ecore.util;re
- solution:=optional
+ notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,o
+ rg.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.p
+ lugin,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.util
 Include-Resource: model/communication.ecore=model/communication.ecore,mo
  del/representations.aird=model/representations.aird,model/runtime.genmo
  del=model/runtime.genmodel,model/service.ecore=model/service.ecore,plug
