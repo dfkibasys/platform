@@ -155,6 +155,10 @@ public class ProcessAdapterFactory extends AdapterFactoryImpl {
 				return createTaskCancelledAdapter();
 			}
 			@Override
+			public Adapter caseUsedMaterial(UsedMaterial object) {
+				return createUsedMaterialAdapter();
+			}
+			@Override
 			public Adapter caseBObject(BObject object) {
 				return createBObjectAdapter();
 			}
@@ -473,6 +477,20 @@ public class ProcessAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTaskCancelledAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.process.UsedMaterial <em>Used Material</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.domain.process.UsedMaterial
+	 * @generated
+	 */
+	public Adapter createUsedMaterialAdapter() {
 		return null;
 	}
 

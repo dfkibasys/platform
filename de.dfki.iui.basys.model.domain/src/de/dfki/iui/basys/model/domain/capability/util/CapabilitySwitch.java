@@ -85,6 +85,15 @@ public class CapabilitySwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case CapabilityPackage.HANDLING_CAPABILITY: {
+				HandlingCapability handlingCapability = (HandlingCapability)theEObject;
+				T result = caseHandlingCapability(handlingCapability);
+				if (result == null) result = caseCapability(handlingCapability);
+				if (result == null) result = caseEntity(handlingCapability);
+				if (result == null) result = caseBObject(handlingCapability);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case CapabilityPackage.MANUFACTURING_CAPABILITY: {
 				ManufacturingCapability manufacturingCapability = (ManufacturingCapability)theEObject;
 				T result = caseManufacturingCapability(manufacturingCapability);
@@ -248,6 +257,21 @@ public class CapabilitySwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseCapability(Capability object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Handling Capability</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Handling Capability</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseHandlingCapability(HandlingCapability object) {
 		return null;
 	}
 

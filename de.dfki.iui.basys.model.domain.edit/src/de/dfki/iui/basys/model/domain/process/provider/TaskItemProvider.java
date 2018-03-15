@@ -52,6 +52,7 @@ public class TaskItemProvider extends FlowNodeItemProvider {
 			addMinIterationsPropertyDescriptor(object);
 			addMaxIterationsPropertyDescriptor(object);
 			addUriPropertyDescriptor(object);
+			addUsedmaterialPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -118,6 +119,28 @@ public class TaskItemProvider extends FlowNodeItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Usedmaterial feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addUsedmaterialPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Task_usedmaterial_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Task_usedmaterial_feature", "_UI_Task_type"),
+				 ProcessPackage.Literals.TASK__USEDMATERIAL,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}

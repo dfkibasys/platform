@@ -74,6 +74,7 @@ public class ProcessFactoryImpl extends EFactoryImpl implements ProcessFactory {
 			case ProcessPackage.TASK_SUCCESSFUL: return createTaskSuccessful();
 			case ProcessPackage.TASK_FAILED: return createTaskFailed();
 			case ProcessPackage.TASK_CANCELLED: return createTaskCancelled();
+			case ProcessPackage.USED_MATERIAL: return createUsedMaterial();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -281,6 +282,16 @@ public class ProcessFactoryImpl extends EFactoryImpl implements ProcessFactory {
 	public TaskCancelled createTaskCancelled() {
 		TaskCancelledImpl taskCancelled = new TaskCancelledImpl();
 		return taskCancelled;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public UsedMaterial createUsedMaterial() {
+		UsedMaterialImpl usedMaterial = new UsedMaterialImpl();
+		return usedMaterial;
 	}
 
 	/**

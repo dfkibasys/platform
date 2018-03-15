@@ -817,13 +817,22 @@ public interface ProcessPackage extends EPackage {
 	int TASK__CAPABILITY_REQUIREMENT = FLOW_NODE_FEATURE_COUNT + 5;
 
 	/**
+	 * The feature id for the '<em><b>Usedmaterial</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK__USEDMATERIAL = FLOW_NODE_FEATURE_COUNT + 6;
+
+	/**
 	 * The number of structural features of the '<em>Task</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_FEATURE_COUNT = FLOW_NODE_FEATURE_COUNT + 6;
+	int TASK_FEATURE_COUNT = FLOW_NODE_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of operations of the '<em>Task</em>' class.
@@ -1568,6 +1577,52 @@ public interface ProcessPackage extends EPackage {
 	int TASK_CANCELLED_OPERATION_COUNT = TASK_FINISHED_OPERATION_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.process.impl.UsedMaterialImpl <em>Used Material</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.process.impl.UsedMaterialImpl
+	 * @see de.dfki.iui.basys.model.domain.process.impl.ProcessPackageImpl#getUsedMaterial()
+	 * @generated
+	 */
+	int USED_MATERIAL = 21;
+
+	/**
+	 * The feature id for the '<em><b>Count</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USED_MATERIAL__COUNT = 0;
+
+	/**
+	 * The feature id for the '<em><b>Bom Entry</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USED_MATERIAL__BOM_ENTRY = 1;
+
+	/**
+	 * The number of structural features of the '<em>Used Material</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USED_MATERIAL_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Used Material</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USED_MATERIAL_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.process.GatewayTypeEnum <em>Gateway Type Enum</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1575,7 +1630,7 @@ public interface ProcessPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.process.impl.ProcessPackageImpl#getGatewayTypeEnum()
 	 * @generated
 	 */
-	int GATEWAY_TYPE_ENUM = 21;
+	int GATEWAY_TYPE_ENUM = 22;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.process.TaskStateEnum <em>Task State Enum</em>}' enum.
@@ -1585,7 +1640,7 @@ public interface ProcessPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.process.impl.ProcessPackageImpl#getTaskStateEnum()
 	 * @generated
 	 */
-	int TASK_STATE_ENUM = 22;
+	int TASK_STATE_ENUM = 23;
 
 
 	/**
@@ -1876,6 +1931,17 @@ public interface ProcessPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTask_CapabilityRequirement();
+
+	/**
+	 * Returns the meta object for the reference list '{@link de.dfki.iui.basys.model.domain.process.Task#getUsedmaterial <em>Usedmaterial</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Usedmaterial</em>'.
+	 * @see de.dfki.iui.basys.model.domain.process.Task#getUsedmaterial()
+	 * @see #getTask()
+	 * @generated
+	 */
+	EReference getTask_Usedmaterial();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.process.DataFlow <em>Data Flow</em>}'.
@@ -2229,6 +2295,38 @@ public interface ProcessPackage extends EPackage {
 	EOperation getTaskCancelled__ToEnum();
 
 	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.process.UsedMaterial <em>Used Material</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Used Material</em>'.
+	 * @see de.dfki.iui.basys.model.domain.process.UsedMaterial
+	 * @generated
+	 */
+	EClass getUsedMaterial();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.process.UsedMaterial#getCount <em>Count</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Count</em>'.
+	 * @see de.dfki.iui.basys.model.domain.process.UsedMaterial#getCount()
+	 * @see #getUsedMaterial()
+	 * @generated
+	 */
+	EAttribute getUsedMaterial_Count();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.dfki.iui.basys.model.domain.process.UsedMaterial#getBomEntry <em>Bom Entry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Bom Entry</em>'.
+	 * @see de.dfki.iui.basys.model.domain.process.UsedMaterial#getBomEntry()
+	 * @see #getUsedMaterial()
+	 * @generated
+	 */
+	EReference getUsedMaterial_BomEntry();
+
+	/**
 	 * Returns the meta object for enum '{@link de.dfki.iui.basys.model.domain.process.GatewayTypeEnum <em>Gateway Type Enum</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2502,6 +2600,14 @@ public interface ProcessPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TASK__CAPABILITY_REQUIREMENT = eINSTANCE.getTask_CapabilityRequirement();
+
+		/**
+		 * The meta object literal for the '<em><b>Usedmaterial</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TASK__USEDMATERIAL = eINSTANCE.getTask_Usedmaterial();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.process.impl.DataFlowImpl <em>Data Flow</em>}' class.
@@ -2800,6 +2906,32 @@ public interface ProcessPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation TASK_CANCELLED___TO_ENUM = eINSTANCE.getTaskCancelled__ToEnum();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.process.impl.UsedMaterialImpl <em>Used Material</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.process.impl.UsedMaterialImpl
+		 * @see de.dfki.iui.basys.model.domain.process.impl.ProcessPackageImpl#getUsedMaterial()
+		 * @generated
+		 */
+		EClass USED_MATERIAL = eINSTANCE.getUsedMaterial();
+
+		/**
+		 * The meta object literal for the '<em><b>Count</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute USED_MATERIAL__COUNT = eINSTANCE.getUsedMaterial_Count();
+
+		/**
+		 * The meta object literal for the '<em><b>Bom Entry</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference USED_MATERIAL__BOM_ENTRY = eINSTANCE.getUsedMaterial_BomEntry();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.process.GatewayTypeEnum <em>Gateway Type Enum</em>}' enum.

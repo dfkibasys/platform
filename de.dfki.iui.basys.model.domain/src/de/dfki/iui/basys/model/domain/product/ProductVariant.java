@@ -36,7 +36,7 @@ public interface ProductVariant extends ManufacturedComponent {
 	 * @see #setProductGroup(ProductGroup)
 	 * @see de.dfki.iui.basys.model.domain.product.ProductPackage#getProductVariant_ProductGroup()
 	 * @see de.dfki.iui.basys.model.domain.product.ProductGroup#getProductVariants
-	 * @model opposite="productVariants" transient="false"
+	 * @model opposite="productVariants" required="true" transient="false"
 	 * @generated
 	 */
 	ProductGroup getProductGroup();

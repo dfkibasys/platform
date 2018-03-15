@@ -197,6 +197,70 @@ public interface CapabilityPackage extends EPackage {
 	int CAPABILITY_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.HandlingCapabilityImpl <em>Handling Capability</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.HandlingCapabilityImpl
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getHandlingCapability()
+	 * @generated
+	 */
+	int HANDLING_CAPABILITY = 2;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HANDLING_CAPABILITY__BINDING = CAPABILITY__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HANDLING_CAPABILITY__ID = CAPABILITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HANDLING_CAPABILITY__NAME = CAPABILITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HANDLING_CAPABILITY__METADATA = CAPABILITY__METADATA;
+
+	/**
+	 * The number of structural features of the '<em>Handling Capability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HANDLING_CAPABILITY_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Handling Capability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HANDLING_CAPABILITY_OPERATION_COUNT = CAPABILITY_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.ManufacturingCapabilityImpl <em>Manufacturing Capability</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -204,7 +268,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getManufacturingCapability()
 	 * @generated
 	 */
-	int MANUFACTURING_CAPABILITY = 2;
+	int MANUFACTURING_CAPABILITY = 3;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -268,7 +332,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getFügen()
 	 * @generated
 	 */
-	int FÜGEN = 3;
+	int FÜGEN = 4;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -332,7 +396,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getAnEinpressen()
 	 * @generated
 	 */
-	int AN_EINPRESSEN = 11;
+	int AN_EINPRESSEN = 12;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -396,7 +460,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getPressen()
 	 * @generated
 	 */
-	int PRESSEN = 4;
+	int PRESSEN = 5;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -478,7 +542,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getQoSCapability()
 	 * @generated
 	 */
-	int QO_SCAPABILITY = 5;
+	int QO_SCAPABILITY = 6;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -542,7 +606,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getUrformen()
 	 * @generated
 	 */
-	int URFORMEN = 6;
+	int URFORMEN = 7;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -606,7 +670,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getUmformen()
 	 * @generated
 	 */
-	int UMFORMEN = 7;
+	int UMFORMEN = 8;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -670,7 +734,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getTrennen()
 	 * @generated
 	 */
-	int TRENNEN = 8;
+	int TRENNEN = 9;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -734,7 +798,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getBeschichten()
 	 * @generated
 	 */
-	int BESCHICHTEN = 9;
+	int BESCHICHTEN = 10;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -798,7 +862,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getStoffeigenschaften()
 	 * @generated
 	 */
-	int STOFFEIGENSCHAFTEN = 10;
+	int STOFFEIGENSCHAFTEN = 11;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -862,7 +926,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getSchrauben()
 	 * @generated
 	 */
-	int SCHRAUBEN = 12;
+	int SCHRAUBEN = 13;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -936,7 +1000,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getInformationTransferCapability()
 	 * @generated
 	 */
-	int INFORMATION_TRANSFER_CAPABILITY = 13;
+	int INFORMATION_TRANSFER_CAPABILITY = 14;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -1000,7 +1064,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getProvideInformation()
 	 * @generated
 	 */
-	int PROVIDE_INFORMATION = 14;
+	int PROVIDE_INFORMATION = 15;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -1087,6 +1151,16 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getCapability();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.HandlingCapability <em>Handling Capability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Handling Capability</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.HandlingCapability
+	 * @generated
+	 */
+	EClass getHandlingCapability();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.ManufacturingCapability <em>Manufacturing Capability</em>}'.
@@ -1301,6 +1375,16 @@ public interface CapabilityPackage extends EPackage {
 		 * @generated
 		 */
 		EClass CAPABILITY = eINSTANCE.getCapability();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.HandlingCapabilityImpl <em>Handling Capability</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.HandlingCapabilityImpl
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getHandlingCapability()
+		 * @generated
+		 */
+		EClass HANDLING_CAPABILITY = eINSTANCE.getHandlingCapability();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.ManufacturingCapabilityImpl <em>Manufacturing Capability</em>}' class.

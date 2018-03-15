@@ -161,6 +161,89 @@ public interface ProcessinstancePackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.processinstance.impl.TaskInstanceImpl <em>Task Instance</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.processinstance.impl.TaskInstanceImpl
+	 * @see de.dfki.iui.basys.model.domain.processinstance.impl.ProcessinstancePackageImpl#getTaskInstance()
+	 * @generated
+	 */
+	int TASK_INSTANCE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK_INSTANCE__BINDING = BasePackage.ENTITY__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK_INSTANCE__ID = BasePackage.ENTITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK_INSTANCE__NAME = BasePackage.ENTITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK_INSTANCE__METADATA = BasePackage.ENTITY__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>State</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK_INSTANCE__STATE = BasePackage.ENTITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Task</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK_INSTANCE__TASK = BasePackage.ENTITY_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Task Instance</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK_INSTANCE_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Task Instance</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK_INSTANCE_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.processinstance.ProcessInstance <em>Process Instance</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -213,6 +296,38 @@ public interface ProcessinstancePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getProcessInstance_State();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.processinstance.TaskInstance <em>Task Instance</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Task Instance</em>'.
+	 * @see de.dfki.iui.basys.model.domain.processinstance.TaskInstance
+	 * @generated
+	 */
+	EClass getTaskInstance();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.processinstance.TaskInstance#getState <em>State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>State</em>'.
+	 * @see de.dfki.iui.basys.model.domain.processinstance.TaskInstance#getState()
+	 * @see #getTaskInstance()
+	 * @generated
+	 */
+	EAttribute getTaskInstance_State();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.dfki.iui.basys.model.domain.processinstance.TaskInstance#getTask <em>Task</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Task</em>'.
+	 * @see de.dfki.iui.basys.model.domain.processinstance.TaskInstance#getTask()
+	 * @see #getTaskInstance()
+	 * @generated
+	 */
+	EReference getTaskInstance_Task();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -278,6 +393,32 @@ public interface ProcessinstancePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PROCESS_INSTANCE__STATE = eINSTANCE.getProcessInstance_State();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.processinstance.impl.TaskInstanceImpl <em>Task Instance</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.processinstance.impl.TaskInstanceImpl
+		 * @see de.dfki.iui.basys.model.domain.processinstance.impl.ProcessinstancePackageImpl#getTaskInstance()
+		 * @generated
+		 */
+		EClass TASK_INSTANCE = eINSTANCE.getTaskInstance();
+
+		/**
+		 * The meta object literal for the '<em><b>State</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TASK_INSTANCE__STATE = eINSTANCE.getTaskInstance_State();
+
+		/**
+		 * The meta object literal for the '<em><b>Task</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TASK_INSTANCE__TASK = eINSTANCE.getTaskInstance_Task();
 
 	}
 

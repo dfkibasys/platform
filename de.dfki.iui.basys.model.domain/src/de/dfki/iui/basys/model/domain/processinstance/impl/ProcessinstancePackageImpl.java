@@ -26,6 +26,7 @@ import de.dfki.iui.basys.model.domain.processinstance.ProcessInstance;
 import de.dfki.iui.basys.model.domain.processinstance.ProcessinstanceFactory;
 import de.dfki.iui.basys.model.domain.processinstance.ProcessinstancePackage;
 
+import de.dfki.iui.basys.model.domain.processinstance.TaskInstance;
 import de.dfki.iui.basys.model.domain.product.ProductPackage;
 
 import de.dfki.iui.basys.model.domain.product.impl.ProductPackageImpl;
@@ -74,6 +75,13 @@ public class ProcessinstancePackageImpl extends EPackageImpl implements Processi
 	 * @generated
 	 */
 	private EClass processInstanceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass taskInstanceEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -228,6 +236,33 @@ public class ProcessinstancePackageImpl extends EPackageImpl implements Processi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getTaskInstance() {
+		return taskInstanceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTaskInstance_State() {
+		return (EAttribute)taskInstanceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTaskInstance_Task() {
+		return (EReference)taskInstanceEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ProcessinstanceFactory getProcessinstanceFactory() {
 		return (ProcessinstanceFactory)getEFactoryInstance();
 	}
@@ -256,6 +291,10 @@ public class ProcessinstancePackageImpl extends EPackageImpl implements Processi
 		createEReference(processInstanceEClass, PROCESS_INSTANCE__ORDER);
 		createEReference(processInstanceEClass, PROCESS_INSTANCE__PRODUCT_INSTANCE);
 		createEAttribute(processInstanceEClass, PROCESS_INSTANCE__STATE);
+
+		taskInstanceEClass = createEClass(TASK_INSTANCE);
+		createEAttribute(taskInstanceEClass, TASK_INSTANCE__STATE);
+		createEReference(taskInstanceEClass, TASK_INSTANCE__TASK);
 	}
 
 	/**
@@ -293,6 +332,7 @@ public class ProcessinstancePackageImpl extends EPackageImpl implements Processi
 
 		// Add supertypes to classes
 		processInstanceEClass.getESuperTypes().add(theBasePackage.getEntity());
+		taskInstanceEClass.getESuperTypes().add(theBasePackage.getEntity());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(processInstanceEClass, ProcessInstance.class, "ProcessInstance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -300,6 +340,10 @@ public class ProcessinstancePackageImpl extends EPackageImpl implements Processi
 		initEReference(getProcessInstance_Order(), theOrderPackage.getOrder(), null, "order", null, 1, 1, ProcessInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProcessInstance_ProductInstance(), theProductinstancePackage.getProductInstance(), null, "productInstance", null, 0, 1, ProcessInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProcessInstance_State(), ecorePackage.getEString(), "state", null, 0, 1, ProcessInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(taskInstanceEClass, TaskInstance.class, "TaskInstance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTaskInstance_State(), theProcessPackage.getTaskStateEnum(), "state", null, 0, 1, TaskInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTaskInstance_Task(), theProcessPackage.getTask(), null, "task", null, 1, 1, TaskInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

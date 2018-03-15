@@ -44,6 +44,7 @@ import de.dfki.iui.basys.model.domain.process.TaskState;
 import de.dfki.iui.basys.model.domain.process.TaskStateEnum;
 import de.dfki.iui.basys.model.domain.process.TaskSuccessful;
 
+import de.dfki.iui.basys.model.domain.process.UsedMaterial;
 import de.dfki.iui.basys.model.domain.process.util.ProcessValidator;
 
 import de.dfki.iui.basys.model.domain.processinstance.ProcessinstancePackage;
@@ -243,6 +244,13 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 	 * @generated
 	 */
 	private EClass taskCancelledEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass usedMaterialEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -619,6 +627,15 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getTask_Usedmaterial() {
+		return (EReference)taskEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDataFlow() {
 		return dataFlowEClass;
 	}
@@ -925,6 +942,33 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getUsedMaterial() {
+		return usedMaterialEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getUsedMaterial_Count() {
+		return (EAttribute)usedMaterialEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getUsedMaterial_BomEntry() {
+		return (EReference)usedMaterialEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getGatewayTypeEnum() {
 		return gatewayTypeEnumEEnum;
 	}
@@ -1000,6 +1044,7 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 		createEReference(taskEClass, TASK__INPUT_DATA);
 		createEReference(taskEClass, TASK__OUTPUT_DATA);
 		createEReference(taskEClass, TASK__CAPABILITY_REQUIREMENT);
+		createEReference(taskEClass, TASK__USEDMATERIAL);
 
 		dataFlowEClass = createEClass(DATA_FLOW);
 		createEReference(dataFlowEClass, DATA_FLOW__TRANSFORMATION);
@@ -1047,6 +1092,10 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 
 		taskCancelledEClass = createEClass(TASK_CANCELLED);
 		createEOperation(taskCancelledEClass, TASK_CANCELLED___TO_ENUM);
+
+		usedMaterialEClass = createEClass(USED_MATERIAL);
+		createEAttribute(usedMaterialEClass, USED_MATERIAL__COUNT);
+		createEReference(usedMaterialEClass, USED_MATERIAL__BOM_ENTRY);
 
 		// Create enums
 		gatewayTypeEnumEEnum = createEEnum(GATEWAY_TYPE_ENUM);
@@ -1142,6 +1191,7 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 		initEReference(getTask_InputData(), this.getData(), null, "inputData", null, 0, -1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTask_OutputData(), this.getData(), null, "outputData", null, 0, -1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTask_CapabilityRequirement(), theCapabilityPackage.getManufacturingCapability(), null, "capabilityRequirement", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTask_Usedmaterial(), this.getUsedMaterial(), null, "usedmaterial", null, 0, -1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dataFlowEClass, DataFlow.class, "DataFlow", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDataFlow_Transformation(), this.getDataTransformation(), null, "transformation", null, 0, 1, DataFlow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1200,6 +1250,10 @@ public class ProcessPackageImpl extends EPackageImpl implements ProcessPackage {
 		initEClass(taskCancelledEClass, TaskCancelled.class, "TaskCancelled", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEOperation(getTaskCancelled__ToEnum(), this.getTaskStateEnum(), "toEnum", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(usedMaterialEClass, UsedMaterial.class, "UsedMaterial", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getUsedMaterial_Count(), ecorePackage.getEInt(), "count", null, 0, 1, UsedMaterial.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUsedMaterial_BomEntry(), theProductPackage.getBOMEntry(), null, "bomEntry", null, 1, 1, UsedMaterial.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(gatewayTypeEnumEEnum, GatewayTypeEnum.class, "GatewayTypeEnum");

@@ -57,6 +57,7 @@ public class ProcessinstanceFactoryImpl extends EFactoryImpl implements Processi
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case ProcessinstancePackage.PROCESS_INSTANCE: return createProcessInstance();
+			case ProcessinstancePackage.TASK_INSTANCE: return createTaskInstance();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -70,6 +71,16 @@ public class ProcessinstanceFactoryImpl extends EFactoryImpl implements Processi
 	public ProcessInstance createProcessInstance() {
 		ProcessInstanceImpl processInstance = new ProcessInstanceImpl();
 		return processInstance;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TaskInstance createTaskInstance() {
+		TaskInstanceImpl taskInstance = new TaskInstanceImpl();
+		return taskInstance;
 	}
 
 	/**

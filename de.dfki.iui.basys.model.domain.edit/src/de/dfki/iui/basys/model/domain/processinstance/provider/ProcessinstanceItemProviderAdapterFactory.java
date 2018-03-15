@@ -95,6 +95,29 @@ public class ProcessinstanceItemProviderAdapterFactory extends ProcessinstanceAd
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.processinstance.TaskInstance} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TaskInstanceItemProvider taskInstanceItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.processinstance.TaskInstance}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTaskInstanceAdapter() {
+		if (taskInstanceItemProvider == null) {
+			taskInstanceItemProvider = new TaskInstanceItemProvider(this);
+		}
+
+		return taskInstanceItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -194,6 +217,7 @@ public class ProcessinstanceItemProviderAdapterFactory extends ProcessinstanceAd
 	 */
 	public void dispose() {
 		if (processInstanceItemProvider != null) processInstanceItemProvider.dispose();
+		if (taskInstanceItemProvider != null) taskInstanceItemProvider.dispose();
 	}
 
 }

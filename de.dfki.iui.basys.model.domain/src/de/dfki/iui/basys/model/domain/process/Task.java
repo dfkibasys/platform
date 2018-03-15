@@ -20,6 +20,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link de.dfki.iui.basys.model.domain.process.Task#getInputData <em>Input Data</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.process.Task#getOutputData <em>Output Data</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.process.Task#getCapabilityRequirement <em>Capability Requirement</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.process.Task#getUsedmaterial <em>Usedmaterial</em>}</li>
  * </ul>
  *
  * @see de.dfki.iui.basys.model.domain.process.ProcessPackage#getTask()
@@ -164,5 +165,21 @@ public interface Task extends FlowNode {
 	 * @generated
 	 */
 	void setCapabilityRequirement(ManufacturingCapability value);
+
+	/**
+	 * Returns the value of the '<em><b>Usedmaterial</b></em>' reference list.
+	 * The list contents are of type {@link de.dfki.iui.basys.model.domain.process.UsedMaterial}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Usedmaterial</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Usedmaterial</em>' reference list.
+	 * @see de.dfki.iui.basys.model.domain.process.ProcessPackage#getTask_Usedmaterial()
+	 * @model
+	 * @generated
+	 */
+	EList<UsedMaterial> getUsedmaterial();
 
 } // Task

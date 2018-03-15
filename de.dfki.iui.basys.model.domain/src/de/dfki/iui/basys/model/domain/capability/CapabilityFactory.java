@@ -40,6 +40,15 @@ public interface CapabilityFactory extends EFactory {
 	Capability createCapability();
 
 	/**
+	 * Returns a new object of class '<em>Handling Capability</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Handling Capability</em>'.
+	 * @generated
+	 */
+	HandlingCapability createHandlingCapability();
+
+	/**
 	 * Returns a new object of class '<em>Manufacturing Capability</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

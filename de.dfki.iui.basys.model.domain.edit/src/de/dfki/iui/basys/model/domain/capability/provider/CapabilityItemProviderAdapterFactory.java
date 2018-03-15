@@ -118,6 +118,29 @@ public class CapabilityItemProviderAdapterFactory extends CapabilityAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.HandlingCapability} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected HandlingCapabilityItemProvider handlingCapabilityItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.HandlingCapability}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createHandlingCapabilityAdapter() {
+		if (handlingCapabilityItemProvider == null) {
+			handlingCapabilityItemProvider = new HandlingCapabilityItemProvider(this);
+		}
+
+		return handlingCapabilityItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.ManufacturingCapability} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -517,6 +540,7 @@ public class CapabilityItemProviderAdapterFactory extends CapabilityAdapterFacto
 	public void dispose() {
 		if (capabilityAssertionItemProvider != null) capabilityAssertionItemProvider.dispose();
 		if (capabilityItemProvider != null) capabilityItemProvider.dispose();
+		if (handlingCapabilityItemProvider != null) handlingCapabilityItemProvider.dispose();
 		if (manufacturingCapabilityItemProvider != null) manufacturingCapabilityItemProvider.dispose();
 		if (fügenItemProvider != null) fügenItemProvider.dispose();
 		if (pressenItemProvider != null) pressenItemProvider.dispose();

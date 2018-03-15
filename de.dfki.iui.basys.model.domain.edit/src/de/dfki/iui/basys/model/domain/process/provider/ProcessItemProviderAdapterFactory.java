@@ -463,6 +463,29 @@ public class ProcessItemProviderAdapterFactory extends ProcessAdapterFactory imp
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.process.UsedMaterial} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected UsedMaterialItemProvider usedMaterialItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.process.UsedMaterial}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createUsedMaterialAdapter() {
+		if (usedMaterialItemProvider == null) {
+			usedMaterialItemProvider = new UsedMaterialItemProvider(this);
+		}
+
+		return usedMaterialItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -578,6 +601,7 @@ public class ProcessItemProviderAdapterFactory extends ProcessAdapterFactory imp
 		if (taskSuccessfulItemProvider != null) taskSuccessfulItemProvider.dispose();
 		if (taskFailedItemProvider != null) taskFailedItemProvider.dispose();
 		if (taskCancelledItemProvider != null) taskCancelledItemProvider.dispose();
+		if (usedMaterialItemProvider != null) usedMaterialItemProvider.dispose();
 	}
 
 }

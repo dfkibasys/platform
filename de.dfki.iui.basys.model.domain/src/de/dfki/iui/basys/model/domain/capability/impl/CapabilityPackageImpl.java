@@ -11,6 +11,7 @@ import de.dfki.iui.basys.model.domain.capability.CapabilityAssertion;
 import de.dfki.iui.basys.model.domain.capability.CapabilityFactory;
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
 import de.dfki.iui.basys.model.domain.capability.Fügen;
+import de.dfki.iui.basys.model.domain.capability.HandlingCapability;
 import de.dfki.iui.basys.model.domain.capability.InformationTransferCapability;
 import de.dfki.iui.basys.model.domain.capability.ManufacturingCapability;
 import de.dfki.iui.basys.model.domain.capability.Pressen;
@@ -95,6 +96,13 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * @generated
 	 */
 	private EClass capabilityEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass handlingCapabilityEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -322,6 +330,15 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getHandlingCapability() {
+		return handlingCapabilityEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getManufacturingCapability() {
 		return manufacturingCapabilityEClass;
 	}
@@ -494,6 +511,8 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 
 		capabilityEClass = createEClass(CAPABILITY);
 
+		handlingCapabilityEClass = createEClass(HANDLING_CAPABILITY);
+
 		manufacturingCapabilityEClass = createEClass(MANUFACTURING_CAPABILITY);
 
 		fügenEClass = createEClass(FÜGEN);
@@ -558,6 +577,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		// Add supertypes to classes
 		capabilityAssertionEClass.getESuperTypes().add(theBasePackage.getEntity());
 		capabilityEClass.getESuperTypes().add(theBasePackage.getEntity());
+		handlingCapabilityEClass.getESuperTypes().add(this.getCapability());
 		manufacturingCapabilityEClass.getESuperTypes().add(this.getCapability());
 		fügenEClass.getESuperTypes().add(this.getManufacturingCapability());
 		pressenEClass.getESuperTypes().add(this.getAnEinpressen());
@@ -577,6 +597,8 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		initEReference(getCapabilityAssertion_Pattern(), thePatternPackage.getPObject(), null, "pattern", null, 0, 1, CapabilityAssertion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(capabilityEClass, Capability.class, "Capability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(handlingCapabilityEClass, HandlingCapability.class, "HandlingCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(manufacturingCapabilityEClass, ManufacturingCapability.class, "ManufacturingCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

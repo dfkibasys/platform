@@ -7,6 +7,7 @@ import de.dfki.iui.basys.model.domain.process.Data;
 import de.dfki.iui.basys.model.domain.process.ProcessPackage;
 import de.dfki.iui.basys.model.domain.process.Task;
 
+import de.dfki.iui.basys.model.domain.process.UsedMaterial;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -20,6 +21,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -36,6 +38,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link de.dfki.iui.basys.model.domain.process.impl.TaskImpl#getInputData <em>Input Data</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.process.impl.TaskImpl#getOutputData <em>Output Data</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.process.impl.TaskImpl#getCapabilityRequirement <em>Capability Requirement</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.process.impl.TaskImpl#getUsedmaterial <em>Usedmaterial</em>}</li>
  * </ul>
  *
  * @generated
@@ -130,6 +133,16 @@ public class TaskImpl extends FlowNodeImpl implements Task {
 	 * @ordered
 	 */
 	protected ManufacturingCapability capabilityRequirement;
+
+	/**
+	 * The cached value of the '{@link #getUsedmaterial() <em>Usedmaterial</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUsedmaterial()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<UsedMaterial> usedmaterial;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -285,6 +298,18 @@ public class TaskImpl extends FlowNodeImpl implements Task {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<UsedMaterial> getUsedmaterial() {
+		if (usedmaterial == null) {
+			usedmaterial = new EObjectResolvingEList<UsedMaterial>(UsedMaterial.class, this, ProcessPackage.TASK__USEDMATERIAL);
+		}
+		return usedmaterial;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -318,6 +343,8 @@ public class TaskImpl extends FlowNodeImpl implements Task {
 				return getOutputData();
 			case ProcessPackage.TASK__CAPABILITY_REQUIREMENT:
 				return getCapabilityRequirement();
+			case ProcessPackage.TASK__USEDMATERIAL:
+				return getUsedmaterial();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -351,6 +378,10 @@ public class TaskImpl extends FlowNodeImpl implements Task {
 			case ProcessPackage.TASK__CAPABILITY_REQUIREMENT:
 				setCapabilityRequirement((ManufacturingCapability)newValue);
 				return;
+			case ProcessPackage.TASK__USEDMATERIAL:
+				getUsedmaterial().clear();
+				getUsedmaterial().addAll((Collection<? extends UsedMaterial>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -381,6 +412,9 @@ public class TaskImpl extends FlowNodeImpl implements Task {
 			case ProcessPackage.TASK__CAPABILITY_REQUIREMENT:
 				setCapabilityRequirement((ManufacturingCapability)null);
 				return;
+			case ProcessPackage.TASK__USEDMATERIAL:
+				getUsedmaterial().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -405,6 +439,8 @@ public class TaskImpl extends FlowNodeImpl implements Task {
 				return outputData != null && !outputData.isEmpty();
 			case ProcessPackage.TASK__CAPABILITY_REQUIREMENT:
 				return capabilityRequirement != null;
+			case ProcessPackage.TASK__USEDMATERIAL:
+				return usedmaterial != null && !usedmaterial.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

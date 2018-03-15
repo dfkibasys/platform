@@ -128,6 +128,8 @@ public class ProcessValidator extends EObjectValidator {
 				return validateTaskFailed((TaskFailed)value, diagnostics, context);
 			case ProcessPackage.TASK_CANCELLED:
 				return validateTaskCancelled((TaskCancelled)value, diagnostics, context);
+			case ProcessPackage.USED_MATERIAL:
+				return validateUsedMaterial((UsedMaterial)value, diagnostics, context);
 			case ProcessPackage.GATEWAY_TYPE_ENUM:
 				return validateGatewayTypeEnum((GatewayTypeEnum)value, diagnostics, context);
 			case ProcessPackage.TASK_STATE_ENUM:
@@ -441,6 +443,15 @@ public class ProcessValidator extends EObjectValidator {
 	 */
 	public boolean validateTaskCancelled(TaskCancelled taskCancelled, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(taskCancelled, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateUsedMaterial(UsedMaterial usedMaterial, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(usedMaterial, diagnostics, context);
 	}
 
 	/**

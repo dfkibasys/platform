@@ -31,6 +31,15 @@ public interface ProcessinstanceFactory extends EFactory {
 	ProcessInstance createProcessInstance();
 
 	/**
+	 * Returns a new object of class '<em>Task Instance</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Task Instance</em>'.
+	 * @generated
+	 */
+	TaskInstance createTaskInstance();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

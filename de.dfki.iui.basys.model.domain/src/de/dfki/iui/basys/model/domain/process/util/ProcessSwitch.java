@@ -237,6 +237,12 @@ public class ProcessSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ProcessPackage.USED_MATERIAL: {
+				UsedMaterial usedMaterial = (UsedMaterial)theEObject;
+				T result = caseUsedMaterial(usedMaterial);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -553,6 +559,21 @@ public class ProcessSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseTaskCancelled(TaskCancelled object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Used Material</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Used Material</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseUsedMaterial(UsedMaterial object) {
 		return null;
 	}
 

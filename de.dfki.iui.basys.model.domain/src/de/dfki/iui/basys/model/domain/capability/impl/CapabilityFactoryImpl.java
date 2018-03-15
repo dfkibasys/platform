@@ -58,6 +58,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 		switch (eClass.getClassifierID()) {
 			case CapabilityPackage.CAPABILITY_ASSERTION: return createCapabilityAssertion();
 			case CapabilityPackage.CAPABILITY: return createCapability();
+			case CapabilityPackage.HANDLING_CAPABILITY: return createHandlingCapability();
 			case CapabilityPackage.MANUFACTURING_CAPABILITY: return createManufacturingCapability();
 			case CapabilityPackage.FÜGEN: return createFügen();
 			case CapabilityPackage.PRESSEN: return createPressen();
@@ -94,6 +95,16 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	public Capability createCapability() {
 		CapabilityImpl capability = new CapabilityImpl();
 		return capability;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public HandlingCapability createHandlingCapability() {
+		HandlingCapabilityImpl handlingCapability = new HandlingCapabilityImpl();
+		return handlingCapability;
 	}
 
 	/**

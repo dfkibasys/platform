@@ -465,8 +465,25 @@ public class OrderPackageImpl extends EPackageImpl implements OrderPackage {
 		createResource(eNS_URI);
 
 		// Create annotations
+		// http://de.dfki.iui.mmds/CoreModel
+		createCoreModelAnnotations();
 		// http://www.eclipse.org/emf/2002/Ecore
 		createEcoreAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://de.dfki.iui.mmds/CoreModel</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createCoreModelAnnotations() {
+		String source = "http://de.dfki.iui.mmds/CoreModel";	
+		addAnnotation
+		  (this, 
+		   source, 
+		   new String[] {
+		   });
 	}
 
 	/**

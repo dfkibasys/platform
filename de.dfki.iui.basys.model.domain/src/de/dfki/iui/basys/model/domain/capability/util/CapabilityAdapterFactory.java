@@ -79,6 +79,10 @@ public class CapabilityAdapterFactory extends AdapterFactoryImpl {
 				return createCapabilityAdapter();
 			}
 			@Override
+			public Adapter caseHandlingCapability(HandlingCapability object) {
+				return createHandlingCapabilityAdapter();
+			}
+			@Override
 			public Adapter caseManufacturingCapability(ManufacturingCapability object) {
 				return createManufacturingCapabilityAdapter();
 			}
@@ -183,6 +187,20 @@ public class CapabilityAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createCapabilityAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.capability.HandlingCapability <em>Handling Capability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.domain.capability.HandlingCapability
+	 * @generated
+	 */
+	public Adapter createHandlingCapabilityAdapter() {
 		return null;
 	}
 

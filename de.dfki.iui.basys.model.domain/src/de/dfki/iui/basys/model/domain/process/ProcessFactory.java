@@ -175,6 +175,15 @@ public interface ProcessFactory extends EFactory {
 	TaskCancelled createTaskCancelled();
 
 	/**
+	 * Returns a new object of class '<em>Used Material</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Used Material</em>'.
+	 * @generated
+	 */
+	UsedMaterial createUsedMaterial();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
