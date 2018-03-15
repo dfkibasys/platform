@@ -44,8 +44,6 @@
 		<module>provision</module>
 		<module>../common</module>
 		<module>../models</module>
-		<module>../communication</module>
-		<module>../workbench</module>
 		<module>../runtime</module>
 		<module>../services</module>
 	</modules>

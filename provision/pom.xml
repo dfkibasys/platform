@@ -28,7 +28,6 @@
 		<jackson-version>2.9.2</jackson-version>
 		<emfjson-version>0.13.0</emfjson-version>
 		<emfjson-jackson-version>1.0.1</emfjson-jackson-version>
-		<paho-version>1.2.0</paho-version>
 		<slf4j-version>1.7.25</slf4j-version>		
 	</properties>
 	
@@ -106,12 +105,7 @@
 			<version>${slf4j-version}</version>
 		</dependency>
 				
-		<!-- Eclipse Paho MQTT Client Library -->
-		<dependency>
-	      <groupId>org.eclipse.paho</groupId>
-	      <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
-	      <version>${paho-version}</version>
-		</dependency>	
+
 		
 		<!-- https://mvnrepository.com/artifact/com.eclipsesource.jaxrs/publisher/5.3.1 -->
 		<dependency>
