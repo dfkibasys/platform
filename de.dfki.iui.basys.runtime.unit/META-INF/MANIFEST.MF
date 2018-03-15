@@ -9,18 +9,19 @@ Bundle-Vendor: DFKI GmbH
 Bundle-Version: 1.0.0.SNAPSHOT
 Created-By: Apache Maven Bundle Plugin
 Export-Package: de.dfki.iui.basys.runtime.unit;version="1.0.0.SNAPSHOT";
- uses:="de.dfki.iui.basys.communication,de.dfki.iui.basys.model.runtime.
- communication,de.dfki.iui.basys.runtime.unit.packml,org.slf4j",de.dfki.
- iui.basys.runtime.unit.packml;version="1.0.0.SNAPSHOT";uses:="org.slf4j
- "
-Import-Package: de.dfki.iui.basys.communication,de.dfki.iui.basys.commun
- ication.provider,de.dfki.iui.basys.model.runtime.communication,de.dfki.
- iui.basys.runtime,de.dfki.iui.basys.runtime.unit.packml;version="[1.0,2
- )",javax.xml.stream,org.apache.commons.scxml2;version="[2.0,3)",org.apa
- che.commons.scxml2.env;version="[2.0,3)",org.apache.commons.scxml2.env.
- jexl;version="[2.0,3)",org.apache.commons.scxml2.io;version="[2.0,3)",o
- rg.apache.commons.scxml2.model;version="[2.0,3)",org.slf4j;version="[1.
- 7,2)";resolution:=optional
+ uses:="de.dfki.iui.basys.model.runtime.communication,de.dfki.iui.basys.
+ runtime.communication,de.dfki.iui.basys.runtime.unit.packml,org.slf4j",
+ de.dfki.iui.basys.runtime.unit.packml;version="1.0.0.SNAPSHOT";uses:="o
+ rg.slf4j"
+Import-Package: de.dfki.iui.basys.model.runtime.communication;version="[
+ 1.0,2)",de.dfki.iui.basys.runtime,de.dfki.iui.basys.runtime.communicati
+ on;version="[1.0,2)",de.dfki.iui.basys.runtime.communication.provider;v
+ ersion="[1.0,2)",de.dfki.iui.basys.runtime.unit.packml;version="[1.0,2)
+ ",javax.xml.stream,org.apache.commons.scxml2;version="[2.0,3)",org.apac
+ he.commons.scxml2.env;version="[2.0,3)",org.apache.commons.scxml2.env.j
+ exl;version="[2.0,3)",org.apache.commons.scxml2.io;version="[2.0,3)",or
+ g.apache.commons.scxml2.model;version="[2.0,3)",org.slf4j;version="[1.7
+ ,2)"
 Include-Resource: packml-first-layer-scxml.xml=src/main/resources/packml
  -first-layer-scxml.xml,packml-second-layer-scxml.xml=src/main/resources
  /packml-second-layer-scxml.xml,packml.scxml=src/main/resources/packml.s

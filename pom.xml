@@ -17,6 +17,7 @@
   <packaging>pom</packaging>
 
   <modules>
+    <module>de.dfki.iui.basys.runtime.communication</module>
     <module>de.dfki.iui.basys.runtime.unit</module>
   </modules>
 

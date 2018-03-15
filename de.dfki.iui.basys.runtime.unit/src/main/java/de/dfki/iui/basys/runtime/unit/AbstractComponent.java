@@ -3,8 +3,8 @@ package de.dfki.iui.basys.runtime.unit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.dfki.iui.basys.communication.ClientFactory;
-import de.dfki.iui.basys.communication.provider.MqttCommunicationProvider;
+import de.dfki.iui.basys.runtime.communication.ClientFactory;
+import de.dfki.iui.basys.runtime.communication.provider.MqttCommunicationProvider;
 import de.dfki.iui.basys.model.runtime.communication.Channel;
 import de.dfki.iui.basys.model.runtime.communication.ChannelPool;
 import de.dfki.iui.basys.model.runtime.communication.Client;
@@ -16,7 +16,7 @@ import de.dfki.iui.basys.runtime.unit.packml.WaitStatesHandler;
 
 public abstract class AbstractComponent implements ActiveStatesHandler, WaitStatesHandler {
 	
-	protected final Logger LOGGER = LoggerFactory.getLogger(AbstractComponent.class.getName());
+	protected final Logger LOGGER = LoggerFactory.getLogger(AbstractComponent.class);
 	
 	protected String id;
 	
