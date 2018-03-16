@@ -11,8 +11,8 @@
 	</parent>
 
 	<properties>
-		<bundle.symbolicName>de.dfki.iui.basys.runtime.unit</bundle.symbolicName>
-		<bundle.namespace>de.dfki.iui.basys.runtime.unit</bundle.namespace>
+		<bundle.symbolicName>de.dfki.iui.basys.runtime.component</bundle.symbolicName>
+		<bundle.namespace>de.dfki.iui.basys.runtime.component</bundle.namespace>
 		<commons-io-version>2.6</commons-io-version>
 		<jackson-version>2.9.2</jackson-version>
 		<emfjson-version>0.13.0</emfjson-version>
@@ -21,7 +21,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.dfki.iui.basys.runtime</groupId>
-	<artifactId>de.dfki.iui.basys.runtime.unit</artifactId>
+	<artifactId>de.dfki.iui.basys.runtime.component</artifactId>
 
 	<name>${bundle.symbolicName}</name>
 

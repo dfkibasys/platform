@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>de.dfki.iui.basys.common.scxml</name>
+	<name>de.dfki.iui.basys.runtime.component</name>
 	<comment>Generated using Pax-Construct</comment>
 	<projects>
 	</projects>
