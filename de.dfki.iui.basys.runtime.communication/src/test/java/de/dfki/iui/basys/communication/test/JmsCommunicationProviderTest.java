@@ -23,13 +23,13 @@ import de.dfki.iui.basys.model.runtime.communication.Notification;
 import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.communication.Response;
 import de.dfki.iui.basys.runtime.communication.ClientFactory;
+import de.dfki.iui.basys.runtime.communication.provider.JmsCommunicationProvider;
 import de.dfki.iui.basys.runtime.communication.provider.MqttCommunicationProvider;
-import de.dfki.iui.basys.runtime.communication.provider.jms.JmsCommunicationProvider;
 import junit.framework.TestCase;
 
-public class JMSCommunicationProviderTest extends TestCase {
+public class JmsCommunicationProviderTest extends TestCase {
 
-	protected final Logger LOGGER = LoggerFactory.getLogger(JMSCommunicationProviderTest.class.getName());
+	protected final Logger LOGGER = LoggerFactory.getLogger(JmsCommunicationProviderTest.class);
 	
 	String brokerUri = "vm://localhost?broker.persistent=false";
 	

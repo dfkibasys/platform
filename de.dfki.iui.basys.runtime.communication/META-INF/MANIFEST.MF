@@ -12,33 +12,17 @@ Export-Package: de.dfki.iui.basys.runtime.communication;version="1.0.0.S
  NAPSHOT";uses:="de.dfki.iui.basys.model.runtime.communication",de.dfki.
  iui.basys.runtime.communication.provider;version="1.0.0.SNAPSHOT";uses:
  ="de.dfki.iui.basys.model.runtime.communication,de.dfki.iui.basys.model
- .runtime.communication.exceptions,org.slf4j",de.dfki.iui.basys.runtime.
- communication.provider.jms;version="1.0.0.SNAPSHOT";uses:="de.dfki.iui.
- basys.model.runtime.communication,de.dfki.iui.basys.model.runtime.commu
- nication.exceptions,org.slf4j",de.dfki.iui.basys.runtime.communication.
- provider.jms.destination;version="1.0.0.SNAPSHOT";uses:="javax.jms",de.
- dfki.iui.basys.runtime.communication.provider.jms.helper;version="1.0.0
- .SNAPSHOT";uses:="de.dfki.iui.basys.runtime.communication.provider.jms.
- destination",de.dfki.iui.basys.runtime.communication.provider.jms.liste
- ner;version="1.0.0.SNAPSHOT";uses:="de.dfki.iui.basys.runtime.communica
- tion.provider.jms.destination"
+ .runtime.communication.exceptions,org.slf4j"
 Import-Package: com.fasterxml.jackson.core;version="[2.9,3)",com.fasterx
  ml.jackson.databind;version="[2.9,3)",de.dfki.iui.basys.common.emf;vers
  ion="[1.0,2)",de.dfki.iui.basys.model.runtime.communication;version="[1
  .0,2)",de.dfki.iui.basys.model.runtime.communication.exceptions;version
  ="[1.0,2)",de.dfki.iui.basys.runtime.communication;version="[1.0,2)",de
- .dfki.iui.basys.runtime.communication.provider;version="[1.0,2)",de.dfk
- i.iui.basys.runtime.communication.provider.jms;version="[1.0,2)",de.dfk
- i.iui.basys.runtime.communication.provider.jms.destination;version="[1.
- 0,2)",de.dfki.iui.basys.runtime.communication.provider.jms.helper;versi
- on="[1.0,2)",javax.jms,org.apache.activemq,org.eclipse.emf.common.util,
- org.eclipse.emf.ecore,org.eclipse.paho.client.mqttv3;version="[1.2,2)",
- org.eclipse.paho.client.mqttv3.persist;version="[1.2,2)",org.slf4j;vers
- ion="[1.7,2)"
+ .dfki.iui.basys.runtime.communication.provider;version="[1.0,2)",javax.
+ jms,org.apache.activemq,org.eclipse.emf.common.util,org.eclipse.emf.eco
+ re,org.eclipse.paho.client.mqttv3;version="[1.2,2)",org.eclipse.paho.cl
+ ient.mqttv3.persist;version="[1.2,2)",org.slf4j;version="[1.7,2)"
 Private-Package: de.dfki.iui.basys.runtime.communication,de.dfki.iui.bas
- ys.runtime.communication.provider.jms.destination,de.dfki.iui.basys.run
- time.communication.provider.jms.helper,de.dfki.iui.basys.runtime.commun
- ication.provider.jms,de.dfki.iui.basys.runtime.communication.provider.j
- ms.listener,de.dfki.iui.basys.runtime.communication.provider
+ ys.runtime.communication.provider
 Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
 Tool: Bnd-3.3.0.201609221906

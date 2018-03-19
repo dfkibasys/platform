@@ -11,9 +11,9 @@ import de.dfki.iui.basys.model.runtime.communication.CommunicationProvider;
 import de.dfki.iui.basys.model.runtime.communication.Notification;
 import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.communication.Response;
+import de.dfki.iui.basys.runtime.communication.provider.JmsCommunicationProvider;
 import de.dfki.iui.basys.runtime.communication.provider.MqttCommunicationProvider;
-import de.dfki.iui.basys.runtime.communication.provider.WsCommunicationProvider;
-import de.dfki.iui.basys.runtime.communication.provider.jms.JmsCommunicationProvider;;
+import de.dfki.iui.basys.runtime.communication.provider.WsCommunicationProvider;;
 
 public class ClientFactory {
 		

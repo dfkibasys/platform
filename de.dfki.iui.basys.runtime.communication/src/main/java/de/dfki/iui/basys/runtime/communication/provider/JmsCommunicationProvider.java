@@ -1,4 +1,4 @@
-package de.dfki.iui.basys.runtime.communication.provider.jms;
+package de.dfki.iui.basys.runtime.communication.provider;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -34,10 +34,6 @@ import de.dfki.iui.basys.model.runtime.communication.Response;
 import de.dfki.iui.basys.model.runtime.communication.ResponseCallback;
 import de.dfki.iui.basys.model.runtime.communication.exceptions.ProviderException;
 import de.dfki.iui.basys.runtime.communication.ClientFactory;
-import de.dfki.iui.basys.runtime.communication.provider.jms.destination.JmsDestination;
-import de.dfki.iui.basys.runtime.communication.provider.jms.destination.JmsQueue;
-import de.dfki.iui.basys.runtime.communication.provider.jms.destination.JmsTopic;
-import de.dfki.iui.basys.runtime.communication.provider.jms.helper.ChannelHelper;
 
 public class JmsCommunicationProvider implements CommunicationProvider {
 
@@ -123,28 +119,28 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 	public void doOpenChannel(Channel channel) throws ProviderException {
 		LOGGER.info("doOpenChannel: " + channel.getName());
 
+		JmsDestination internalDestination = this.destinations.get(channel.getName());
+
+		if (internalDestination == null) {
+			internalDestination = new JmsDestination(channel.getName());
+			this.destinations.put(channel.getName(), internalDestination);
+		}
+
+		if (internalDestination.getMessageConsumer() != null) {
+			return;
+		}
+		
 		if (channel.isQueued()) {
-
-			JmsQueue internalQueue = (JmsQueue) this.destinations.get(channel.getName());
-
-			if (internalQueue == null) {
-				internalQueue = ChannelHelper.createQueue(channel.getName());
-				this.destinations.put(channel.getName(), internalQueue);
-			}
-
-			if (internalQueue.getMessageConsumer() != null) {
-				return;
-			}
 
 			Queue jmsQueue;
 			try {
-				jmsQueue = session.createQueue(internalQueue.getName());
+				jmsQueue = session.createQueue(internalDestination.getName());
 				MessageConsumer consumer = session.createConsumer(jmsQueue);
-				internalQueue.setMessageConsumer(consumer);
+				internalDestination.setMessageConsumer(consumer);
 
-				Queue jmsQueueProduce = session.createQueue(internalQueue.getName());
+				Queue jmsQueueProduce = session.createQueue(internalDestination.getName());
 				MessageProducer jmsProducer = session.createProducer(jmsQueueProduce);
-				internalQueue.setMessageProducer(jmsProducer);
+				internalDestination.setMessageProducer(jmsProducer);
 				
 				if (channel.getListener() == null) {
 					return;
@@ -188,26 +184,16 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 			}
 
 		} else {
-			JmsTopic internal_topic = (JmsTopic) this.destinations.get(channel.getName());
-
-			if (internal_topic == null) {
-				internal_topic = ChannelHelper.createTopic(channel.getName());
-				this.destinations.put(channel.getName(), internal_topic);
-			}
-
-			if (internal_topic.getMessageConsumer() != null) {
-				return;
-			}
 
 			Topic jmsTopic;
 			try {
-				jmsTopic = session.createTopic(internal_topic.getName());
+				jmsTopic = session.createTopic(internalDestination.getName());
 				MessageConsumer consumer = session.createConsumer(jmsTopic);
-				internal_topic.setMessageConsumer(consumer);
+				internalDestination.setMessageConsumer(consumer);
 
-				Topic jmsTopicProducer = session.createTopic(internal_topic.getName());
+				Topic jmsTopicProducer = session.createTopic(internalDestination.getName());
 				MessageProducer jmsProducer = session.createProducer(jmsTopicProducer);
-				internal_topic.setMessageProducer(jmsProducer);
+				internalDestination.setMessageProducer(jmsProducer);
 
 
 				if (channel.getListener() == null) {
@@ -352,6 +338,40 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	class JmsDestination  {
+
+		private MessageConsumer messageConsumer;
+		private MessageProducer messageProducer;
+		
+		private String name;
+
+		public String getName() {
+			return this.name;
+		}
+
+		public JmsDestination(String name) {
+			this.name = name;
+		}
+		
+		public void setMessageConsumer(MessageConsumer messageConsumer) {
+			this.messageConsumer = messageConsumer;
+		}
+
+		public MessageConsumer getMessageConsumer() {
+			return messageConsumer;
+		}
+		
+		public void setMessageProducer(MessageProducer messageProducer) {
+			this.messageProducer = messageProducer;
+		}
+		
+		public MessageProducer getMessageProducer() {
+			return messageProducer;
+		}
+		
+
 	}
 
 	class SyncResponseCallback implements ResponseCallback {

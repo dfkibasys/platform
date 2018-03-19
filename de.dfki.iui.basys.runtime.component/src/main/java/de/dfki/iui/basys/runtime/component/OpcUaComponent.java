@@ -23,6 +23,26 @@ public class OpcUaComponent extends DeviceComponent {
 		super.disconnectFromDevice();
 	}
 	
+	protected int readIntVariable(String varName) {
+		return 0;
+	}
+	
+	protected String readStringVariable(String varName) {
+		return "";
+	}
+	
+	protected void writeIntVariable(String varName, int value) {
+		
+	}
+	
+	protected void writeStringVariable(String varName, String value) {
+		
+	}
+		
+	protected void invokeMethod(String methodName) {
+		
+	}
+	
 	
 	/*
 	 * default ActiveStatesHandler implementation -> trigger logic on device
