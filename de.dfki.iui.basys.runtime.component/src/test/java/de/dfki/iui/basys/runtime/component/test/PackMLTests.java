@@ -1,11 +1,11 @@
-package de.dfki.iui.basys.runtime.component;
+package de.dfki.iui.basys.runtime.component.test;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import junit.framework.TestCase;
-import de.dfki.iui.basys.runtime.component.TestHandler.Path;
 import de.dfki.iui.basys.runtime.component.packml.PackMLUnit;
 import de.dfki.iui.basys.runtime.component.packml.State;
+import de.dfki.iui.basys.runtime.component.test.TestHandler.Path;
 
 public class PackMLTests extends TestCase {
 

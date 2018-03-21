@@ -1,4 +1,4 @@
-package de.dfki.iui.basys.runtime.component;
+package de.dfki.iui.basys.runtime.component.test;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

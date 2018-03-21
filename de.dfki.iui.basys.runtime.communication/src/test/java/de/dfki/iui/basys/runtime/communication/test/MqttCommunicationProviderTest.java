@@ -1,4 +1,4 @@
-package de.dfki.iui.basys.communication.test;
+package de.dfki.iui.basys.runtime.communication.test;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.UUID;
@@ -23,15 +23,14 @@ import de.dfki.iui.basys.model.runtime.communication.Notification;
 import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.communication.Response;
 import de.dfki.iui.basys.runtime.communication.ClientFactory;
-import de.dfki.iui.basys.runtime.communication.provider.JmsCommunicationProvider;
 import de.dfki.iui.basys.runtime.communication.provider.MqttCommunicationProvider;
 import junit.framework.TestCase;
 
-public class JmsCommunicationProviderTest extends TestCase {
+public class MqttCommunicationProviderTest extends TestCase {
 
-	protected final Logger LOGGER = LoggerFactory.getLogger(JmsCommunicationProviderTest.class);
+	protected final Logger LOGGER = LoggerFactory.getLogger(MqttCommunicationProviderTest.class.getName());
 	
-	String brokerUri = "vm://localhost?broker.persistent=false";
+	String brokerUri = "tcp://iot.eclipse.org:1883";
 	
 	ClientFactory fac = ClientFactory.getInstance();
 	
@@ -46,10 +45,10 @@ public class JmsCommunicationProviderTest extends TestCase {
 		client_1 = fac.createClient("client_1", null);
 		client_2 = fac.createClient("client_2", null);
 
-		cp_11 = fac.connectChannelPool(client_1, brokerUri, new JmsCommunicationProvider());
-		cp_12 = fac.connectChannelPool(client_1, brokerUri, new JmsCommunicationProvider());
-		cp_21 = fac.connectChannelPool(client_2, brokerUri, new JmsCommunicationProvider());
-		cp_22 = fac.connectChannelPool(client_2, brokerUri, new JmsCommunicationProvider());
+		cp_11 = fac.connectChannelPool(client_1, brokerUri, new MqttCommunicationProvider());
+		cp_12 = fac.connectChannelPool(client_1, brokerUri, new MqttCommunicationProvider());
+		cp_21 = fac.connectChannelPool(client_2, brokerUri, new MqttCommunicationProvider());
+		cp_22 = fac.connectChannelPool(client_2, brokerUri, new MqttCommunicationProvider());
 	}
 
 	protected void tearDown() throws Exception {
