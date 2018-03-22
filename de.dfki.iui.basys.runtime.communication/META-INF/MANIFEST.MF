@@ -10,9 +10,10 @@ Bundle-Version: 1.0.0.SNAPSHOT
 Created-By: Apache Maven Bundle Plugin
 Export-Package: de.dfki.iui.basys.runtime.communication;version="1.0.0.S
  NAPSHOT";uses:="de.dfki.iui.basys.model.runtime.communication",de.dfki.
- iui.basys.runtime.communication.provider;version="1.0.0.SNAPSHOT";uses:
- ="de.dfki.iui.basys.model.runtime.communication,de.dfki.iui.basys.model
- .runtime.communication.exceptions,org.slf4j"
+ iui.basys.runtime.communication.connector;version="1.0.0.SNAPSHOT";uses
+ :="javax.jms",de.dfki.iui.basys.runtime.communication.provider;version=
+ "1.0.0.SNAPSHOT";uses:="de.dfki.iui.basys.model.runtime.communication,d
+ e.dfki.iui.basys.model.runtime.communication.exceptions,org.slf4j"
 Import-Package: com.fasterxml.jackson.core;version="[2.9,3)",com.fasterx
  ml.jackson.databind;version="[2.9,3)",de.dfki.iui.basys.common.emf;vers
  ion="[1.0,2)",de.dfki.iui.basys.model.runtime.communication;version="[1
@@ -23,6 +24,7 @@ Import-Package: com.fasterxml.jackson.core;version="[2.9,3)",com.fasterx
  re,org.eclipse.paho.client.mqttv3;version="[1.2,2)",org.eclipse.paho.cl
  ient.mqttv3.persist;version="[1.2,2)",org.slf4j;version="[1.7,2)"
 Private-Package: de.dfki.iui.basys.runtime.communication,de.dfki.iui.bas
- ys.runtime.communication.provider
+ ys.runtime.communication.connector,de.dfki.iui.basys.runtime.communicat
+ ion.provider
 Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
 Tool: Bnd-3.3.0.201609221906

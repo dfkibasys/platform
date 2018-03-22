@@ -1,49 +1,34 @@
 package de.dfki.iui.basys.runtime.component.registry;
 
 public class InstanceDetails {
-	private String		  productName;
-    private String        description;
-    private int 		  drillPower;
+	
+	private String		  inChannel;
+	private String		  outChannel;
 
     public InstanceDetails()
     {
-        this("", " ", 0);
+        this("", "");
     }
 
-    public InstanceDetails(String productName, String description, int drillPower)
+    public InstanceDetails(String inChannel, String outChannel)
     {
-    	this.productName = productName;
-        this.description = description;
-        this.drillPower = drillPower;
+    	this.inChannel = inChannel;
+        this.outChannel = outChannel;
     }
     
-    public void setProductName(String productName)
-    {
-    	this.productName = productName;
-    }
+    public String getInChannel() {
+		return inChannel;
+	}
     
-    public String getProductName()
-    {
-    	return productName;
-    }
+    public void setInChannel(String inChannel) {
+		this.inChannel = inChannel;
+	}
     
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
-
-    public String getDescription()
-    {
-        return description;
-    }
+    public String getOutChannel() {
+		return outChannel;
+	}
     
-    public void setDrillPower(int drillPower)
-    {
-    	this.drillPower = drillPower;
-    }
-    
-    public int getDrillPower()
-    {
-    	return this.drillPower;
-    }
+    public void setOutChannel(String outChannel) {
+		this.outChannel = outChannel;
+	}
 }

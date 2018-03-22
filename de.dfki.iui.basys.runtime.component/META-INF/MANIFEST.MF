@@ -10,18 +10,26 @@ Bundle-Version: 1.0.0.SNAPSHOT
 Created-By: Apache Maven Bundle Plugin
 Export-Package: de.dfki.iui.basys.runtime.component;version="1.0.0.SNAPS
  HOT";uses:="de.dfki.iui.basys.model.runtime.communication,de.dfki.iui.b
- asys.runtime.communication,de.dfki.iui.basys.runtime.component.packml,o
- rg.slf4j",de.dfki.iui.basys.runtime.component.packml;version="1.0.0.SNA
- PSHOT";uses:="org.slf4j"
+ asys.runtime.communication,de.dfki.iui.basys.runtime.component.packml,d
+ e.dfki.iui.basys.runtime.component.registry,org.slf4j",de.dfki.iui.basy
+ s.runtime.component.packml;version="1.0.0.SNAPSHOT";uses:="org.slf4j",d
+ e.dfki.iui.basys.runtime.component.registry;version="1.0.0.SNAPSHOT";us
+ es:="de.dfki.iui.basys.runtime.component,org.apache.curator.framework,o
+ rg.apache.curator.x.discovery"
 Import-Package: de.dfki.iui.basys.model.runtime.communication;version="[
  1.0,2)",de.dfki.iui.basys.runtime.communication;version="[1.0,2)",de.df
  ki.iui.basys.runtime.communication.provider;version="[1.0,2)",de.dfki.i
  ui.basys.runtime.component;version="[1.0,2)",de.dfki.iui.basys.runtime.
- component.packml;version="[1.0,2)",javax.xml.stream,org.apache.commons.
- scxml2;version="[2.0,3)",org.apache.commons.scxml2.env;version="[2.0,3)
- ",org.apache.commons.scxml2.env.jexl;version="[2.0,3)",org.apache.commo
- ns.scxml2.io;version="[2.0,3)",org.apache.commons.scxml2.model;version=
- "[2.0,3)",org.slf4j;version="[1.7,2)"
+ component.packml;version="[1.0,2)",de.dfki.iui.basys.runtime.component.
+ registry;version="[1.0,2)",javax.xml.stream,org.apache.commons.scxml2;v
+ ersion="[2.0,3)",org.apache.commons.scxml2.env;version="[2.0,3)",org.ap
+ ache.commons.scxml2.env.jexl;version="[2.0,3)",org.apache.commons.scxml
+ 2.io;version="[2.0,3)",org.apache.commons.scxml2.model;version="[2.0,3)
+ ",org.apache.curator;version="[4.0,5)",org.apache.curator.framework;ver
+ sion="[4.0,5)",org.apache.curator.retry;version="[4.0,5)",org.apache.cu
+ rator.utils;version="[4.0,5)",org.apache.curator.x.discovery;version="[
+ 4.0,5)",org.apache.curator.x.discovery.details;version="[4.0,5)",org.sl
+ f4j;version="[1.7,2)"
 Include-Resource: packml-first-layer-scxml.xml=src/main/resources/packml
  -first-layer-scxml.xml,packml-second-layer-scxml.xml=src/main/resources
  /packml-second-layer-scxml.xml,packml.scxml=src/main/resources/packml.s

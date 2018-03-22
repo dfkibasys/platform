@@ -18,8 +18,6 @@ import org.apache.commons.scxml2.model.SCXML;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.dfki.iui.basys.runtime.component.test.TestHandler;
-
 public class PackML {
 
 	protected final Logger LOGGER = LoggerFactory.getLogger(PackML.class.getName());
