@@ -1,5 +1,7 @@
 package de.dfki.iui.basys.runtime.component.registry;
 
+import java.util.List;
+
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.retry.ExponentialBackoffRetry;
@@ -34,6 +36,18 @@ public class ZookeeperServiceRegistry implements ServiceRegistry {
 			throw new ServiceRegistrationException(e);
 		}
 			
+	}
+
+	@Override
+	public List<InstanceDetails> getServices(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public InstanceDetails getService(String id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

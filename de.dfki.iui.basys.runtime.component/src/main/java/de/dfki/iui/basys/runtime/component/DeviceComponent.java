@@ -8,6 +8,7 @@ import de.dfki.iui.basys.runtime.component.packml.Mode;
 import de.dfki.iui.basys.runtime.component.packml.PackMLUnit;
 import de.dfki.iui.basys.runtime.component.packml.State;
 import de.dfki.iui.basys.runtime.component.packml.WaitStatesHandler;
+import de.dfki.iui.basys.runtime.component.registry.ServiceRegistry;
 import de.dfki.iui.basys.runtime.communication.ClientFactory;
 import de.dfki.iui.basys.model.runtime.communication.Channel;
 import de.dfki.iui.basys.model.runtime.communication.Client;
@@ -24,10 +25,16 @@ public abstract class DeviceComponent extends ServiceComponent implements Active
 	protected String connectionString;
 	protected Channel channel;
 
-	protected final Status status = new Status();
+	protected String deviceConnectionString;
+	protected boolean connectedToDevice = false;
 
 	public DeviceComponent(String id) {
 		super(id);
+	}
+	
+	public DeviceComponent(String id, ServiceRegistry registry) {
+		super(id, registry);
+		// TODO Auto-generated constructor stub
 	}
 
 	public void activate() {
@@ -49,8 +56,16 @@ public abstract class DeviceComponent extends ServiceComponent implements Active
 		unit.dispose();
 	}
 
-	public Status getStatus() {
-		return status;
+	public State getState() {
+		return unit.getState();
+	}
+	
+	public Mode getMode() {
+		return unit.getMode();
+	}
+
+	public boolean isConnectedToDevice() {
+		return connectedToDevice;
 	}
 	
 	public void connectToDevice() {
@@ -72,6 +87,7 @@ public abstract class DeviceComponent extends ServiceComponent implements Active
 	@Override
 	public void onStopped() {
 		// TODO: something like:Notification not = createStatusUpdate();
+		Status status = new Status();
 		Notification not = cf.createNotification("stopped");
 		channel.sendNotification(not);
 	}
@@ -113,24 +129,6 @@ public abstract class DeviceComponent extends ServiceComponent implements Active
 
 	public class Status {
 
-		private boolean connected = false;
-
-
-		public boolean isConnected() {
-			return connected;
-		}
-		
-		protected void setConnected(boolean connected) {
-			this.connected = connected;
-		}
-
-		public State getState() {
-			return unit.getState();
-		}
-		
-		public Mode getMode() {
-			return unit.getMode();
-		}
 		
 	}
 

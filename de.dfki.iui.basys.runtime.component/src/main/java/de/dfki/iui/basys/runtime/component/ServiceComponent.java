@@ -23,7 +23,7 @@ public abstract class ServiceComponent {
 
 	protected ClientFactory cf = ClientFactory.getInstance();
 	protected Client client;
-	protected String connectionString = "tcp://iot.eclipse.org:1883";
+	protected String basysConnectionString = "tcp://iot.eclipse.org:1883";
 	protected Channel channel;
 	protected ServiceRegistry registry;
 	protected ServiceRegistration registration;
@@ -52,7 +52,7 @@ public abstract class ServiceComponent {
 
 			// TODO: configure channelPool (MQTT/JMS usage and connectionString) externally
 			CommunicationProvider provider = new MqttCommunicationProvider();
-			ChannelPool pool = cf.connectChannelPool(client, connectionString, provider);
+			ChannelPool pool = cf.connectChannelPool(client, basysConnectionString, provider);
 			channel = cf.openComponentChannel(pool, id, provider.supportQueuedChannels(),
 					new ComponentChannelListener(this));
 			register();

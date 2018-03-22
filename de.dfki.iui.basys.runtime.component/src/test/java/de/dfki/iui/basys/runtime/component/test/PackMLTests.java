@@ -9,7 +9,7 @@ import de.dfki.iui.basys.runtime.component.test.TestHandler.Path;
 
 public class PackMLTests extends TestCase {
 
-	protected final Logger LOGGER = LoggerFactory.getLogger(PackMLTests.class.getName());
+	protected final Logger LOGGER = LoggerFactory.getLogger(PackMLTests.class);
 	
 	TestHandler handler;
 	PackMLUnit unit;
