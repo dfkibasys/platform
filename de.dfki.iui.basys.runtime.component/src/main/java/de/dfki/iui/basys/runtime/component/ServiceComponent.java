@@ -37,6 +37,10 @@ public abstract class ServiceComponent {
 		this.registry = registry;
 	}
 
+	public String getId() {
+		return id;
+	}
+	
 	public void activate() {
 		connectToBasys();
 	}

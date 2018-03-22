@@ -10,6 +10,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import de.dfki.iui.basys.runtime.component.OpcUaComponent;
+import de.dfki.iui.basys.runtime.component.packml.State;
 
 public class OpcUaComponentTest {
 
@@ -31,19 +32,28 @@ public class OpcUaComponentTest {
 
 	@Test
 	public void testOpcUaConnection() {
-		OpcUaComponent service = new OpcUaComponent("opcua-component");
-		assertTrue(!service.isConnectedToDevice());
-		service.connectToDevice();
-		assertTrue(service.isConnectedToDevice());		
+		OpcUaComponent component = new OpcUaComponent("opcua-component");
+		assertTrue(!component.isConnectedToDevice());
 		
-
-	    final NodeId NODE_VARIABLE_OUT = new NodeId(1, 50195);
+		component.connectToDevice();
+		assertTrue(component.isConnectedToDevice());
 		
-		short value = service.readValue(NODE_VARIABLE_OUT);
-		assertEquals(0, value);
-		
-		service.disconnectFromDevice();
-		assertTrue(!service.isConnectedToDevice());
+		component.disconnectFromDevice();
+		assertTrue(!component.isConnectedToDevice());
 	}
 
+	@Test
+	public void testComponentLifecycle() {
+		OpcUaComponent component = new OpcUaComponent("opcua-component");
+		assertTrue(!component.isConnectedToDevice());
+		component.activate();
+		assertTrue(component.isConnectedToDevice());		
+		assertEquals(State.IDLE, component.getState());
+		component.start();
+		//concurrency...
+		assertEquals(State.COMPLETE, component.getState());
+		component.deactivate();
+		assertTrue(!component.isConnectedToDevice());
+	}
+	
 }

@@ -49,9 +49,9 @@ public class ServiceRegistryTest {
 
 		// TODO: implement test
 		// Step 1: register 3 different services
-		TestDeviceComponent service1 = new TestDeviceComponent("service1", registry);
-		TestDeviceComponent service2 = new TestDeviceComponent("service2", registry);		
-		TestDeviceComponent service3 = new TestDeviceComponent("service3", registry);
+		TestOpcUaComponent service1 = new TestOpcUaComponent("service1", registry);
+		TestOpcUaComponent service2 = new TestOpcUaComponent("service2", registry);		
+		TestOpcUaComponent service3 = new TestOpcUaComponent("service3", registry);
 
 		service1.activate();
 		service2.activate();
