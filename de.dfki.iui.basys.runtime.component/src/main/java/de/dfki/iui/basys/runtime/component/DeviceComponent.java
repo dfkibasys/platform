@@ -17,9 +17,8 @@ import de.dfki.iui.basys.model.runtime.communication.Channel;
 import de.dfki.iui.basys.model.runtime.communication.Client;
 import de.dfki.iui.basys.model.runtime.communication.Notification;
 
-public abstract class DeviceComponent extends ServiceComponent implements StatusInterface, CommandInterface, ActiveStatesHandler, WaitStatesHandler {
-
-	protected final Logger LOGGER = LoggerFactory.getLogger(DeviceComponent.class);
+public abstract class DeviceComponent extends ServiceComponent
+		implements StatusInterface, CommandInterface, ActiveStatesHandler, WaitStatesHandler {
 
 	protected PackMLUnit unit;
 
@@ -29,7 +28,7 @@ public abstract class DeviceComponent extends ServiceComponent implements Status
 	public DeviceComponent(String id) {
 		super(id);
 	}
-	
+
 	public DeviceComponent(String id, ServiceRegistry registry) {
 		super(id, registry);
 		// TODO Auto-generated constructor stub
@@ -42,7 +41,8 @@ public abstract class DeviceComponent extends ServiceComponent implements Status
 		unit.initialize();
 
 		connectToDevice();
-		// if device connection is established, ideally perform unit.stop() and unit.reset():
+		// if device connection is established, ideally perform unit.stop() and
+		// unit.reset():
 		// STOPPED -> RESETTING -> IDLE = ready for production
 		if (connectedToDevice) {
 			unit.stop();
@@ -54,89 +54,88 @@ public abstract class DeviceComponent extends ServiceComponent implements Status
 
 	public void deactivate() {
 		super.deactivate();
-		
+
 		if (connectedToDevice) {
 			unit.stop();
 		}
 		disconnectFromDevice();
-		
+
 		unit.dispose();
 	}
 
 	public boolean isConnectedToDevice() {
 		return connectedToDevice;
 	}
-	
+
 	public void connectToDevice() {
-		// Try to connect to actual device or enter some kind of simulation mode	
+		// Try to connect to actual device or enter some kind of simulation mode
 	}
 
 	public void disconnectFromDevice() {
-		
+
 	}
-	
+
 	/*
 	 * StatusInterface
 	 */
-		
-	@Override	
+
+	@Override
 	public State getState() {
 		return unit.getState();
 	}
-	
+
 	@Override
 	public Mode getMode() {
 		return unit.getMode();
 	}
-	
+
 	@Override
 	public UnitConfiguration getConfig() {
 		return unit.getConfig();
 	}
-	
 
 	/*
 	 * CommandInterface
-	 */	
+	 */
 
 	@Override
 	public void setMode(Mode mode) {
-		// TODO Auto-generated method stub		
+		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void setConfig(UnitConfiguration config) {
-		// TODO Auto-generated method stub		
+		// TODO Auto-generated method stub
 	}
-	
+
 	@Override
 	public void reset() {
-		unit.reset();		
+		unit.reset();
 	}
 
 	@Override
 	public void start() {
-		unit.start();		
+		unit.start();
 	}
 
 	@Override
 	public void stop() {
-		unit.stop();		
+		unit.stop();
 	}
 
 	@Override
 	public void hold() {
-		unit.hold();		
+		unit.hold();
 	}
 
 	@Override
 	public void unhold() {
-		unit.unhold();		
+		unit.unhold();
 	}
 
 	@Override
 	public void suspend() {
-		unit.suspend();		
+		unit.suspend();
 	}
 
 	@Override
@@ -153,7 +152,7 @@ public abstract class DeviceComponent extends ServiceComponent implements Status
 	public void clear() {
 		unit.clear();
 	}
-	
+
 	/*
 	 * default WaitStatesHandler implementation -> notify Basys Middleware
 	 */
@@ -161,49 +160,59 @@ public abstract class DeviceComponent extends ServiceComponent implements Status
 	@Override
 	public void onStopped() {
 		// TODO: something like:Notification not = createStatusUpdate();
-		Notification not = cf.createNotification("stopped");
-		channel.sendNotification(not);
+		if (channel != null && channel.isOpen()) {
+			Notification not = cf.createNotification("stopped");
+			channel.sendNotification(not);
+		}
 	}
 
 	@Override
 	public void onIdle() {
 		// TODO: something like:Notification not = createStatusUpdate();
-		Notification not = cf.createNotification("idle");
-		channel.sendNotification(not);
+		if (channel != null && channel.isOpen()) {
+			Notification not = cf.createNotification("idle");
+			channel.sendNotification(not);
+		}
 	}
 
 	@Override
 	public void onComplete() {
 		// TODO: something like:Notification not = createStatusUpdate();
-		Notification not = cf.createNotification("complete");
-		channel.sendNotification(not);
+		if (channel != null && channel.isOpen()) {
+			Notification not = cf.createNotification("complete");
+			channel.sendNotification(not);
+		}
 	}
 
 	@Override
 	public void onHeld() {
 		// TODO: something like:Notification not = createStatusUpdate();
-		Notification not = cf.createNotification("held");
-		channel.sendNotification(not);
+		if (channel != null && channel.isOpen()) {
+			Notification not = cf.createNotification("held");
+			channel.sendNotification(not);
+		}
 	}
 
 	@Override
 	public void onSuspended() {
 		// TODO: something like:Notification not = createStatusUpdate();
-		Notification not = cf.createNotification("suspended");
-		channel.sendNotification(not);
+		if (channel != null && channel.isOpen()) {
+			Notification not = cf.createNotification("suspended");
+			channel.sendNotification(not);
+		}
 	}
 
 	@Override
 	public void onAborted() {
 		// TODO: something like:Notification not = createStatusUpdate();
-		Notification not = cf.createNotification("aborted");
-		channel.sendNotification(not);
+		if (channel != null && channel.isOpen()) {
+			Notification not = cf.createNotification("aborted");
+			channel.sendNotification(not);
+		}
 	}
 
 	public class Status {
 
-		
 	}
-
 
 }

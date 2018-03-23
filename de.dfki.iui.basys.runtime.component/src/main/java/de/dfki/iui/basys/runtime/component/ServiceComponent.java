@@ -17,7 +17,7 @@ import de.dfki.iui.basys.model.runtime.communication.CommunicationProvider;
 
 public abstract class ServiceComponent {
 
-	protected final Logger LOGGER = LoggerFactory.getLogger(ServiceComponent.class);
+	protected final Logger LOGGER = LoggerFactory.getLogger(getClass());
 
 	protected String id;
 

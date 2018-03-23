@@ -56,13 +56,13 @@ public class KeyStoreLoader {
             KeyPair keyPair = SelfSignedCertificateGenerator.generateRsaKeyPair(2048);
 
             SelfSignedCertificateBuilder builder = new SelfSignedCertificateBuilder(keyPair)
-                .setCommonName("Eclipse Milo Example Client")
-                .setOrganization("digitalpetri")
-                .setOrganizationalUnit("dev")
-                .setLocalityName("Folsom")
-                .setStateName("CA")
-                .setCountryCode("US")
-                .setApplicationUri("urn:eclipse:milo:examples:client")
+                .setCommonName("BaSys 4.0 OPC-UA Component")
+                .setOrganization("DFKI GmbH")
+                .setOrganizationalUnit("IUI")
+                .setLocalityName("Saarbrücken")
+                .setStateName("SAL")
+                .setCountryCode("DE")
+                .setApplicationUri("urn:de:dfki:iui:basys:runtime:component:opcuacient")
                 .addDnsName("localhost")
                 .addIpAddress("127.0.0.1");
 

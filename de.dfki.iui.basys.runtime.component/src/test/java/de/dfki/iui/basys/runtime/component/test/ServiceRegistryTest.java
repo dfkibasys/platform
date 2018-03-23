@@ -16,7 +16,7 @@ import de.dfki.iui.basys.runtime.component.registry.ZookeeperServiceRegistry;
 
 public class ServiceRegistryTest {
 
-	protected final Logger LOGGER = LoggerFactory.getLogger(ServiceRegistryTest.class);
+	protected final Logger LOGGER = LoggerFactory.getLogger(getClass());
 	private static final String PATH = "/discovery/myproducts";
 	
 	private ZookeeperServiceRegistry registry;

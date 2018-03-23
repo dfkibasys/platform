@@ -44,7 +44,7 @@ public class OpcUaComponentTest {
 
 	@Test
 	public void testComponentLifecycle() {
-		OpcUaComponent component = new OpcUaComponent("opcua-component");
+		OpcUaComponent component = new TestOpcUaComponent("opcua-component");
 		assertTrue(!component.isConnectedToDevice());
 		component.activate();
 		assertTrue(component.isConnectedToDevice());		
