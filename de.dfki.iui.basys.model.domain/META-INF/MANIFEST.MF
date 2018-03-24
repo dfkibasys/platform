@@ -109,64 +109,74 @@ Export-Package: de.dfki.iui.basys.model.domain.capability;version="1.0.0
  de.dfki.iui.basys.model.util,org.eclipse.emf.common.notify,org.eclipse.
  emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecor
  e,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,or
- g.eclipse.emf.ecore.util",de.dfki.iui.basys.model.domain.staff;version=
- "1.0.0.SNAPSHOT";uses:="de.dfki.iui.basys.model.base,org.eclipse.emf.co
- mmon.util,org.eclipse.emf.ecore",de.dfki.iui.basys.model.domain.staff.i
- mpl;version="1.0.0.SNAPSHOT";uses:="de.dfki.iui.basys.model.base.impl,d
- e.dfki.iui.basys.model.domain.staff,org.eclipse.emf.common.notify,org.e
- clipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl
- ",de.dfki.iui.basys.model.domain.staff.util;version="1.0.0.SNAPSHOT";us
- es:="de.dfki.iui.basys.model.base,de.dfki.iui.basys.model.domain.staff,
- de.dfki.iui.basys.model.util,org.eclipse.emf.common.notify,org.eclipse.
- emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecor
- e,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,or
- g.eclipse.emf.ecore.util",de.dfki.iui.basys.model.domain.topology;versi
+ g.eclipse.emf.ecore.util",de.dfki.iui.basys.model.domain.roletopology;v
+ ersion="1.0.0.SNAPSHOT";uses:="de.dfki.iui.basys.model.base,org.eclipse
+ .emf.common.util,org.eclipse.emf.ecore",de.dfki.iui.basys.model.domain.
+ roletopology.impl;version="1.0.0.SNAPSHOT";uses:="de.dfki.iui.basys.mod
+ el.base.impl,de.dfki.iui.basys.model.domain.roletopology,de.dfki.iui.ba
+ sys.model.util,org.eclipse.emf.common.notify,org.eclipse.emf.common.uti
+ l,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl",de.dfki.iui.basys.m
+ odel.domain.roletopology.util;version="1.0.0.SNAPSHOT";uses:="de.dfki.i
+ ui.basys.model.base,de.dfki.iui.basys.model.domain.roletopology,org.ecl
+ ipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse.e
+ mf.ecore,org.eclipse.emf.ecore.util",de.dfki.iui.basys.model.domain.sta
+ ff;version="1.0.0.SNAPSHOT";uses:="de.dfki.iui.basys.model.base,org.ecl
+ ipse.emf.common.util,org.eclipse.emf.ecore",de.dfki.iui.basys.model.dom
+ ain.staff.impl;version="1.0.0.SNAPSHOT";uses:="de.dfki.iui.basys.model.
+ base.impl,de.dfki.iui.basys.model.domain.staff,org.eclipse.emf.common.n
+ otify,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf
+ .ecore.impl",de.dfki.iui.basys.model.domain.staff.util;version="1.0.0.S
+ NAPSHOT";uses:="de.dfki.iui.basys.model.base,de.dfki.iui.basys.model.do
+ main.staff,de.dfki.iui.basys.model.util,org.eclipse.emf.common.notify,o
+ rg.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclip
+ se.emf.ecore,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resou
+ rce.impl,org.eclipse.emf.ecore.util",de.dfki.iui.basys.model.domain.top
+ ology;version="1.0.0.SNAPSHOT";uses:="de.dfki.iui.basys.model.base,org.
+ eclipse.emf.common.util,org.eclipse.emf.ecore",de.dfki.iui.basys.model.
+ domain.topology.impl;version="1.0.0.SNAPSHOT";uses:="de.dfki.iui.basys.
+ model.base.impl,de.dfki.iui.basys.model.domain.topology,de.dfki.iui.bas
+ ys.model.util,org.eclipse.emf.common.notify,org.eclipse.emf.common.util
+ ,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl",de.dfki.iui.basys.mo
+ del.domain.topology.util;version="1.0.0.SNAPSHOT";uses:="de.dfki.iui.ba
+ sys.model.base,de.dfki.iui.basys.model.domain.topology,de.dfki.iui.basy
+ s.model.util,org.eclipse.emf.common.notify,org.eclipse.emf.common.notif
+ y.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.em
+ f.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ec
+ ore.util",de.dfki.iui.basys.model.domain.workerguidance;version="1.0.0.
+ SNAPSHOT";uses:="de.dfki.iui.basys.model.base,org.eclipse.emf.common.ut
+ il,org.eclipse.emf.ecore",de.dfki.iui.basys.model.domain.workerguidance
+ .impl;version="1.0.0.SNAPSHOT";uses:="de.dfki.iui.basys.model.base.impl
+ ,de.dfki.iui.basys.model.domain.workerguidance,org.eclipse.emf.common.u
+ til,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl",de.dfki.iui.basys
+ .model.domain.workerguidance.util;version="1.0.0.SNAPSHOT";uses:="de.df
+ ki.iui.basys.model.base,de.dfki.iui.basys.model.domain.workerguidance,d
+ e.dfki.iui.basys.model.util,org.eclipse.emf.common.notify,org.eclipse.e
+ mf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore
+ ,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org
+ .eclipse.emf.ecore.util",de.dfki.iui.basys.model.domain.workforce;versi
  on="1.0.0.SNAPSHOT";uses:="de.dfki.iui.basys.model.base,org.eclipse.emf
- .common.util,org.eclipse.emf.ecore",de.dfki.iui.basys.model.domain.topo
- logy.impl;version="1.0.0.SNAPSHOT";uses:="de.dfki.iui.basys.model.base.
- impl,de.dfki.iui.basys.model.domain.topology,de.dfki.iui.basys.model.ut
- il,org.eclipse.emf.common.notify,org.eclipse.emf.common.util,org.eclips
- e.emf.ecore,org.eclipse.emf.ecore.impl",de.dfki.iui.basys.model.domain.
- topology.util;version="1.0.0.SNAPSHOT";uses:="de.dfki.iui.basys.model.b
- ase,de.dfki.iui.basys.model.domain.topology,de.dfki.iui.basys.model.uti
- l,org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.
- eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.res
- ource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore.util",d
- e.dfki.iui.basys.model.domain.workerguidance;version="1.0.0.SNAPSHOT";u
- ses:="de.dfki.iui.basys.model.base,org.eclipse.emf.common.util,org.ecli
- pse.emf.ecore",de.dfki.iui.basys.model.domain.workerguidance.impl;versi
- on="1.0.0.SNAPSHOT";uses:="de.dfki.iui.basys.model.base.impl,de.dfki.iu
- i.basys.model.domain.workerguidance,org.eclipse.emf.common.util,org.ecl
- ipse.emf.ecore,org.eclipse.emf.ecore.impl",de.dfki.iui.basys.model.doma
- in.workerguidance.util;version="1.0.0.SNAPSHOT";uses:="de.dfki.iui.basy
- s.model.base,de.dfki.iui.basys.model.domain.workerguidance,de.dfki.iui.
- basys.model.util,org.eclipse.emf.common.notify,org.eclipse.emf.common.n
- otify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclips
- e.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.em
- f.ecore.util",de.dfki.iui.basys.model.domain.workforce;version="1.0.0.S
- NAPSHOT";uses:="de.dfki.iui.basys.model.base,org.eclipse.emf.common.uti
- l,org.eclipse.emf.ecore",de.dfki.iui.basys.model.domain.workforce.impl;
- version="1.0.0.SNAPSHOT";uses:="de.dfki.iui.basys.model.base.impl,de.df
- ki.iui.basys.model.domain.workforce,de.dfki.iui.basys.model.util,org.ec
- lipse.emf.common.notify,org.eclipse.emf.common.util,org.eclipse.emf.eco
- re,org.eclipse.emf.ecore.impl",de.dfki.iui.basys.model.domain.workforce
- .util;version="1.0.0.SNAPSHOT";uses:="de.dfki.iui.basys.model.base,de.d
- fki.iui.basys.model.domain.workforce,de.dfki.iui.basys.model.util,org.e
- clipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse
- .emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.resource,o
- rg.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore.util",de.dfki.
- iui.basys.model.domain.workplan;version="1.0.0.SNAPSHOT";uses:="de.dfki
- .iui.basys.model.base,org.eclipse.emf.common.util,org.eclipse.emf.ecore
- ",de.dfki.iui.basys.model.domain.workplan.impl;version="1.0.0.SNAPSHOT"
- ;uses:="de.dfki.iui.basys.model.base.impl,de.dfki.iui.basys.model.domai
- n.workplan,org.eclipse.emf.common.notify,org.eclipse.emf.common.util,or
- g.eclipse.emf.ecore,org.eclipse.emf.ecore.impl",de.dfki.iui.basys.model
- .domain.workplan.util;version="1.0.0.SNAPSHOT";uses:="de.dfki.iui.basys
- .model.base,de.dfki.iui.basys.model.domain.workplan,de.dfki.iui.basys.m
- odel.util,org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.i
- mpl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.e
- core.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore
- .util"
+ .common.util,org.eclipse.emf.ecore",de.dfki.iui.basys.model.domain.work
+ force.impl;version="1.0.0.SNAPSHOT";uses:="de.dfki.iui.basys.model.base
+ .impl,de.dfki.iui.basys.model.domain.workforce,de.dfki.iui.basys.model.
+ util,org.eclipse.emf.common.notify,org.eclipse.emf.common.util,org.ecli
+ pse.emf.ecore,org.eclipse.emf.ecore.impl",de.dfki.iui.basys.model.domai
+ n.workforce.util;version="1.0.0.SNAPSHOT";uses:="de.dfki.iui.basys.mode
+ l.base,de.dfki.iui.basys.model.domain.workforce,de.dfki.iui.basys.model
+ .util,org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,
+ org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore
+ .resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore.uti
+ l",de.dfki.iui.basys.model.domain.workplan;version="1.0.0.SNAPSHOT";use
+ s:="de.dfki.iui.basys.model.base,org.eclipse.emf.common.util,org.eclips
+ e.emf.ecore",de.dfki.iui.basys.model.domain.workplan.impl;version="1.0.
+ 0.SNAPSHOT";uses:="de.dfki.iui.basys.model.base.impl,de.dfki.iui.basys.
+ model.domain.workplan,org.eclipse.emf.common.notify,org.eclipse.emf.com
+ mon.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl",de.dfki.iui.
+ basys.model.domain.workplan.util;version="1.0.0.SNAPSHOT";uses:="de.dfk
+ i.iui.basys.model.base,de.dfki.iui.basys.model.domain.workplan,de.dfki.
+ iui.basys.model.util,org.eclipse.emf.common.notify,org.eclipse.emf.comm
+ on.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.ec
+ lipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclips
+ e.emf.ecore.util"
 Import-Package: de.dfki.iui.basys.model.base;version="[1.0,2)",de.dfki.i
  ui.basys.model.base.impl;version="[1.0,2)",de.dfki.iui.basys.model.doma
  in.capability;version="[1.0,2)",de.dfki.iui.basys.model.domain.capabili
@@ -184,31 +194,35 @@ Import-Package: de.dfki.iui.basys.model.base;version="[1.0,2)",de.dfki.i
  ys.model.domain.product.impl;version="[1.0,2)",de.dfki.iui.basys.model.
  domain.productinstance;version="[1.0,2)",de.dfki.iui.basys.model.domain
  .productinstance.impl;version="[1.0,2)",de.dfki.iui.basys.model.domain.
- staff;version="[1.0,2)",de.dfki.iui.basys.model.domain.staff.impl;versi
- on="[1.0,2)",de.dfki.iui.basys.model.domain.topology;version="[1.0,2)",
- de.dfki.iui.basys.model.domain.topology.impl;version="[1.0,2)",de.dfki.
- iui.basys.model.domain.workerguidance;version="[1.0,2)",de.dfki.iui.bas
- ys.model.domain.workerguidance.impl;version="[1.0,2)",de.dfki.iui.basys
- .model.domain.workforce;version="[1.0,2)",de.dfki.iui.basys.model.domai
- n.workforce.impl;version="[1.0,2)",de.dfki.iui.basys.model.domain.workp
- lan;version="[1.0,2)",de.dfki.iui.basys.model.domain.workplan.impl;vers
- ion="[1.0,2)",de.dfki.iui.basys.model.pattern;version="[1.0,2)",de.dfki
- .iui.basys.model.util;version="[1.0,2)",org.eclipse.emf.common.notify,o
- rg.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclip
- se.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.plugin,or
- g.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.ec
- lipse.emf.ecore.util,org.eclipse.emf.ecore.xml.type
+ roletopology;version="[1.0,2)",de.dfki.iui.basys.model.domain.roletopol
+ ogy.impl;version="[1.0,2)",de.dfki.iui.basys.model.domain.staff;version
+ ="[1.0,2)",de.dfki.iui.basys.model.domain.staff.impl;version="[1.0,2)",
+ de.dfki.iui.basys.model.domain.topology;version="[1.0,2)",de.dfki.iui.b
+ asys.model.domain.topology.impl;version="[1.0,2)",de.dfki.iui.basys.mod
+ el.domain.workerguidance;version="[1.0,2)",de.dfki.iui.basys.model.doma
+ in.workerguidance.impl;version="[1.0,2)",de.dfki.iui.basys.model.domain
+ .workforce;version="[1.0,2)",de.dfki.iui.basys.model.domain.workforce.i
+ mpl;version="[1.0,2)",de.dfki.iui.basys.model.domain.workplan;version="
+ [1.0,2)",de.dfki.iui.basys.model.domain.workplan.impl;version="[1.0,2)"
+ ,de.dfki.iui.basys.model.pattern;version="[1.0,2)",de.dfki.iui.basys.mo
+ del.util;version="[1.0,2)",org.eclipse.emf.common.notify,org.eclipse.em
+ f.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,
+ org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.plugin,org.eclipse.emf
+ .ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.emf.eco
+ re.util,org.eclipse.emf.ecore.xml.type
 Include-Resource: model/capability.ecore=model/capability.ecore,model/do
  main.aird=model/domain.aird,model/domain.genmodel=model/domain.genmodel
  ,model/linebalancing.ecore=model/linebalancing.ecore,model/material.eco
  re=model/material.ecore,model/order.ecore=model/order.ecore,model/proce
  ss.ecore=model/process.ecore,model/processinstance.ecore=model/processi
  nstance.ecore,model/product.ecore=model/product.ecore,model/productinst
- ance.ecore=model/productinstance.ecore,model/staff.ecore=model/staff.ec
- ore,model/topology.ecore=model/topology.ecore,model/workerguidance.ecor
- e=model/workerguidance.ecore,model/workforce.ecore=model/workforce.ecor
- e,model/workplan.ecore=model/workplan.ecore,plugin.properties=plugin.pr
- operties,plugin.xml=plugin.xml
+ ance.ecore=model/productinstance.ecore,model/resource.ecore=model/resou
+ rce.ecore,model/resourceinstance.ecore=model/resourceinstance.ecore,mod
+ el/roletopology.ecore=model/roletopology.ecore,model/staff.ecore=model/
+ staff.ecore,model/topology.ecore=model/topology.ecore,model/workerguida
+ nce.ecore=model/workerguidance.ecore,model/workforce.ecore=model/workfo
+ rce.ecore,model/workplan.ecore=model/workplan.ecore,plugin.properties=p
+ lugin.properties,plugin.xml=plugin.xml
 Private-Package: model
 Require-Bundle: org.eclipse.core.runtime, org.eclipse.emf.ecore;visibili
  ty:=reexport
