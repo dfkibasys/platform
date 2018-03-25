@@ -19,7 +19,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see de.dfki.iui.basys.model.domain.topology.TopologyPackage#getControlModule()
- * @model abstract="true"
+ * @model
  * @generated
  */
 public interface ControlModule extends Entity {

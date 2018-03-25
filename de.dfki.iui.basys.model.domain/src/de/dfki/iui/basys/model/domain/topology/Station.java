@@ -3,7 +3,6 @@
 package de.dfki.iui.basys.model.domain.topology;
 
 import de.dfki.iui.basys.model.base.Entity;
-
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -29,7 +28,7 @@ import org.eclipse.emf.common.util.EList;
 public interface Station extends Entity {
 	/**
 	 * Returns the value of the '<em><b>Equipment Modules</b></em>' containment reference list.
-	 * The list contents are of type {@link de.dfki.iui.basys.model.domain.topology.DiscreteManufacturingEquipmentModule}.
+	 * The list contents are of type {@link de.dfki.iui.basys.model.domain.topology.EquipmentModule}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Equipment Modules</em>' containment reference list isn't clear,
@@ -41,6 +40,6 @@ public interface Station extends Entity {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<DiscreteManufacturingEquipmentModule> getEquipmentModules();
+	EList<EquipmentModule> getEquipmentModules();
 
 } // Station

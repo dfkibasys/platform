@@ -8,6 +8,7 @@ import de.dfki.iui.basys.model.base.provider.EntityItemProvider;
 import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
 
 import de.dfki.iui.basys.model.domain.topology.ControlModule;
+import de.dfki.iui.basys.model.domain.topology.TopologyFactory;
 import de.dfki.iui.basys.model.domain.topology.TopologyPackage;
 
 import java.util.Collection;
@@ -140,6 +141,11 @@ public class ControlModuleItemProvider extends EntityItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.CONTROL_MODULE__CONTROL_MODULES,
+				 TopologyFactory.eINSTANCE.createControlModule()));
 	}
 
 	/**

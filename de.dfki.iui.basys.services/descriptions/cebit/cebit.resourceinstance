@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resourceinstance:ResourceInstanceRepository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:resourceinstance="http://www.dfki.de/iui/basys/model/resourceinstance">
+  <resourceInstances id="_SE5NIDB4Eei1bbwBPPZWOA" name="Festo">
+    <resourceType href="cebit.resource#_yIFSQjB3Eei1bbwBPPZWOA"/>
+    <role href="cebit.topology#_6CV9oDB4Eei1bbwBPPZWOA"/>
+  </resourceInstances>
+</resourceinstance:ResourceInstanceRepository>

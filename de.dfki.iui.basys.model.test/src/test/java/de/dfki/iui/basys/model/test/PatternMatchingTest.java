@@ -8,6 +8,7 @@ import de.dfki.iui.basys.model.base.datatypes.BInteger;
 import de.dfki.iui.basys.model.domain.capability.*;
 import de.dfki.iui.basys.model.pattern.*;
 import junit.framework.TestCase;
+import org.eclipse.emf.ecore.EClass;
 
 public class PatternMatchingTest extends TestCase {
 
@@ -17,9 +18,11 @@ public class PatternMatchingTest extends TestCase {
 		super.setUp();
 		
 		
-		
 		PObject pressenPattern = PatternFactory.eINSTANCE.createPObject();
-		pressenPattern.setType(CapabilityPackage.eINSTANCE.getPressen());
+		
+		EClass pressenClass = CapabilityPackage.eINSTANCE.getPressen();
+		
+		pressenPattern.setType(pressenClass);
 
 		PSlot pressenDruck = PatternFactory.eINSTANCE.createPSlot();
 		pressenDruck.setFeature(CapabilityPackage.eINSTANCE.getPressen_Druck());		
@@ -77,7 +80,6 @@ public class PatternMatchingTest extends TestCase {
 	}
 	
 	public void testMatchCapability2() {
-		
 		Pressen pressen = CapabilityFactory.eINSTANCE.createPressen();
 		pressen.setDruck(99);
 		pressen.setHub(50);				

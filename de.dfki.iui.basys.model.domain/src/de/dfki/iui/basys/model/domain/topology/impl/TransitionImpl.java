@@ -6,6 +6,7 @@ import de.dfki.iui.basys.model.domain.topology.TopologyPackage;
 import de.dfki.iui.basys.model.domain.topology.Transition;
 
 import de.dfki.iui.basys.model.util.BasysEObjectImpl;
+
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;

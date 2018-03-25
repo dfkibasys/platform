@@ -170,6 +170,8 @@ import de.dfki.iui.basys.model.domain.processinstance.provider.ProcessinstanceIt
 import de.dfki.iui.basys.model.domain.product.provider.ProductItemProviderAdapterFactory;
 
 import de.dfki.iui.basys.model.domain.productinstance.provider.ProductinstanceItemProviderAdapterFactory;
+import de.dfki.iui.basys.model.domain.resourceinstance.provider.ResourceinstanceItemProviderAdapterFactory;
+import de.dfki.iui.basys.model.domain.roletopology.provider.RoletopologyItemProviderAdapterFactory;
 import de.dfki.iui.basys.model.domain.staff.provider.StaffItemProviderAdapterFactory;
 
 import de.dfki.iui.basys.model.domain.topology.provider.TopologyItemProviderAdapterFactory;
@@ -723,6 +725,7 @@ public class CapabilityEditor
 
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new OrderItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new ProductItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new StaffItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new TopologyItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new WorkerguidanceItemProviderAdapterFactory());
@@ -731,10 +734,12 @@ public class CapabilityEditor
 		adapterFactory.addAdapterFactory(new CapabilityItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ProcessItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ProcessinstanceItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new ProductItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ProductinstanceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new WorkforceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new MaterialItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new RoletopologyItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new de.dfki.iui.basys.model.domain.resource.provider.ResourceItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new ResourceinstanceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new BaseItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new PatternItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());

@@ -32,7 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public abstract class ControlModuleImpl extends EntityImpl implements ControlModule {
+public class ControlModuleImpl extends EntityImpl implements ControlModule {
 	/**
 	 * The cached value of the '{@link #getControlModules() <em>Control Modules</em>}' containment reference list.
 	 * <!-- begin-user-doc -->

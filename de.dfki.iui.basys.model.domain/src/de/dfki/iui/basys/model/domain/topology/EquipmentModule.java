@@ -4,6 +4,10 @@ package de.dfki.iui.basys.model.domain.topology;
 
 import de.dfki.iui.basys.model.base.Entity;
 
+import de.dfki.iui.basys.model.domain.capability.Capability;
+
+import de.dfki.iui.basys.model.domain.resource.ResourceType;
+import de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstance;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -21,10 +25,13 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link de.dfki.iui.basys.model.domain.topology.EquipmentModule#getControlModules <em>Control Modules</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.topology.EquipmentModule#getEquipmentModules <em>Equipment Modules</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.topology.EquipmentModule#getCapabilityRequirement <em>Capability Requirement</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.topology.EquipmentModule#getAssignedResourceType <em>Assigned Resource Type</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.topology.EquipmentModule#getAssignedResourceInstance <em>Assigned Resource Instance</em>}</li>
  * </ul>
  *
  * @see de.dfki.iui.basys.model.domain.topology.TopologyPackage#getEquipmentModule()
- * @model abstract="true"
+ * @model
  * @generated
  */
 public interface EquipmentModule extends Entity {
@@ -58,5 +65,85 @@ public interface EquipmentModule extends Entity {
 	 * @generated
 	 */
 	EList<EquipmentModule> getEquipmentModules();
+
+	/**
+	 * Returns the value of the '<em><b>Capability Requirement</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Capability Requirement</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Capability Requirement</em>' containment reference.
+	 * @see #setCapabilityRequirement(Capability)
+	 * @see de.dfki.iui.basys.model.domain.topology.TopologyPackage#getEquipmentModule_CapabilityRequirement()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Capability getCapabilityRequirement();
+
+	/**
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.topology.EquipmentModule#getCapabilityRequirement <em>Capability Requirement</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Capability Requirement</em>' containment reference.
+	 * @see #getCapabilityRequirement()
+	 * @generated
+	 */
+	void setCapabilityRequirement(Capability value);
+
+	/**
+	 * Returns the value of the '<em><b>Assigned Resource Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Assigned Resource Type</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Assigned Resource Type</em>' reference.
+	 * @see #setAssignedResourceType(ResourceType)
+	 * @see de.dfki.iui.basys.model.domain.topology.TopologyPackage#getEquipmentModule_AssignedResourceType()
+	 * @model
+	 * @generated
+	 */
+	ResourceType getAssignedResourceType();
+
+	/**
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.topology.EquipmentModule#getAssignedResourceType <em>Assigned Resource Type</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Assigned Resource Type</em>' reference.
+	 * @see #getAssignedResourceType()
+	 * @generated
+	 */
+	void setAssignedResourceType(ResourceType value);
+
+	/**
+	 * Returns the value of the '<em><b>Assigned Resource Instance</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstance#getRole <em>Role</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Assigned Resource Instance</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Assigned Resource Instance</em>' reference.
+	 * @see #setAssignedResourceInstance(ResourceInstance)
+	 * @see de.dfki.iui.basys.model.domain.topology.TopologyPackage#getEquipmentModule_AssignedResourceInstance()
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstance#getRole
+	 * @model opposite="role"
+	 * @generated
+	 */
+	ResourceInstance getAssignedResourceInstance();
+
+	/**
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.topology.EquipmentModule#getAssignedResourceInstance <em>Assigned Resource Instance</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Assigned Resource Instance</em>' reference.
+	 * @see #getAssignedResourceInstance()
+	 * @generated
+	 */
+	void setAssignedResourceInstance(ResourceInstance value);
 
 } // EquipmentModule
