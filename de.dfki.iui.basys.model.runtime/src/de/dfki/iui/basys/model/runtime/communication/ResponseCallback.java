@@ -2,8 +2,6 @@
  */
 package de.dfki.iui.basys.model.runtime.communication;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Response Callback</b></em>'.

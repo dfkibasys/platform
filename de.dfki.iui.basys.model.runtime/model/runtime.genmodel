@@ -3,10 +3,9 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.dfki.iui.basys.model.runtime/src" modelPluginID="de.dfki.iui.basys.model.runtime"
     modelName="Runtime" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     featureMapWrapperClass="" importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0"
-    copyrightFields="false" usedGenPackages="../../de.dfki.iui.basys.model.base/model/base.genmodel#//base ../../de.dfki.iui.basys.model.base/model/base.genmodel#//pattern ../../de.dfki.iui.basys.model.domain/model/domain.genmodel#//capability ../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"
+    copyrightFields="false" usedGenPackages="../../de.dfki.iui.basys.model.base/model/base.genmodel#//base ../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"
     operationReflection="true" importOrganizing="true">
   <foreignModel>communication.ecore</foreignModel>
-  <foreignModel>service.ecore</foreignModel>
   <genPackages prefix="Communication" basePackage="de.dfki.iui.basys.model.runtime"
       disposableProviderFactory="true" ecorePackage="communication.ecore#/">
     <genDataTypes ecoreDataType="communication.ecore#//CommunicationException"/>
@@ -41,6 +40,9 @@
         <genParameters ecoreParameter="communication.ecore#//Client/sendNotification/channelId"/>
         <genParameters ecoreParameter="communication.ecore#//Client/sendNotification/not"/>
       </genOperations>
+      <genOperations ecoreOperation="communication.ecore#//Client/getPool">
+        <genParameters ecoreParameter="communication.ecore#//Client/getPool/id"/>
+      </genOperations>
     </genClasses>
     <genClasses ecoreClass="communication.ecore#//ChannelPool">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference communication.ecore#//ChannelPool/channels"/>
@@ -58,6 +60,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference communication.ecore#//Channel/listener"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference communication.ecore#//Channel/pool"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute communication.ecore#//Channel/open.1"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute communication.ecore#//Channel/queued"/>
       <genOperations ecoreOperation="communication.ecore#//Channel/open"/>
       <genOperations ecoreOperation="communication.ecore#//Channel/close"/>
       <genOperations ecoreOperation="communication.ecore#//Channel/sendMessage">
@@ -74,9 +77,6 @@
         <genParameters ecoreParameter="communication.ecore#//Channel/sendRequest.1/cb"/>
       </genOperations>
     </genClasses>
-    <genClasses ecoreClass="communication.ecore#//Topic"/>
-    <genClasses ecoreClass="communication.ecore#//Queue"/>
-    <genClasses ecoreClass="communication.ecore#//DirectLink"/>
     <genClasses image="false" ecoreClass="communication.ecore#//ChannelListener">
       <genOperations ecoreOperation="communication.ecore#//ChannelListener/handleMessage">
         <genParameters ecoreParameter="communication.ecore#//ChannelListener/handleMessage/msg"/>
@@ -118,12 +118,15 @@
         <genParameters ecoreParameter="communication.ecore#//CommunicationProvider/doSendNotification/channel"/>
         <genParameters ecoreParameter="communication.ecore#//CommunicationProvider/doSendNotification/not"/>
       </genOperations>
+      <genOperations ecoreOperation="communication.ecore#//CommunicationProvider/supportQueuedChannels"/>
     </genClasses>
     <genClasses ecoreClass="communication.ecore#//Message">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute communication.ecore#//Message/payload"/>
     </genClasses>
     <genClasses ecoreClass="communication.ecore#//Notification"/>
-    <genClasses ecoreClass="communication.ecore#//Response"/>
+    <genClasses ecoreClass="communication.ecore#//Response">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute communication.ecore#//Response/requestId"/>
+    </genClasses>
     <genClasses ecoreClass="communication.ecore#//Request"/>
     <genClasses image="false" ecoreClass="communication.ecore#//ResponseCallback">
       <genOperations ecoreOperation="communication.ecore#//ResponseCallback/handleResponse">
@@ -134,44 +137,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute communication.ecore#//Authentication/username"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute communication.ecore#//Authentication/password"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute communication.ecore#//Authentication/certificate"/>
-    </genClasses>
-  </genPackages>
-  <genPackages prefix="Service" basePackage="de.dfki.iui.basys.model.runtime" disposableProviderFactory="true"
-      ecorePackage="service.ecore#/">
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="service.ecore#//EntityOperationEnum">
-      <genEnumLiterals ecoreEnumLiteral="service.ecore#//EntityOperationEnum/CREATE"/>
-      <genEnumLiterals ecoreEnumLiteral="service.ecore#//EntityOperationEnum/RETRIEVE"/>
-      <genEnumLiterals ecoreEnumLiteral="service.ecore#//EntityOperationEnum/UPDATE"/>
-      <genEnumLiterals ecoreEnumLiteral="service.ecore#//EntityOperationEnum/DELETE"/>
-    </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="service.ecore#//ServiceTypeEnum">
-      <genEnumLiterals ecoreEnumLiteral="service.ecore#//ServiceTypeEnum/DIGITAL_SERVICE"/>
-      <genEnumLiterals ecoreEnumLiteral="service.ecore#//ServiceTypeEnum/PHYSICAL_SERVICE"/>
-    </genEnums>
-    <genClasses ecoreClass="service.ecore#//ServiceDescription">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute service.ecore#//ServiceDescription/version"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute service.ecore#//ServiceDescription/serviceType"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference service.ecore#//ServiceDescription/properties"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference service.ecore#//ServiceDescription/operations"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference service.ecore#//ServiceDescription/publications"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference service.ecore#//ServiceDescription/subscriptions"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference service.ecore#//ServiceDescription/dependencies"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference service.ecore#//ServiceDescription/managedEntities"/>
-    </genClasses>
-    <genClasses ecoreClass="service.ecore#//Property">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference service.ecore#//Property/capabilities"/>
-    </genClasses>
-    <genClasses ecoreClass="service.ecore#//Operation">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference service.ecore#//Operation/capabilities"/>
-    </genClasses>
-    <genClasses ecoreClass="service.ecore#//Publication">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference service.ecore#//Publication/capabilities"/>
-    </genClasses>
-    <genClasses ecoreClass="service.ecore#//Subscription">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference service.ecore#//Subscription/capabilities"/>
-    </genClasses>
-    <genClasses ecoreClass="service.ecore#//ManagedEntity">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute service.ecore#//ManagedEntity/supportedOperations"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

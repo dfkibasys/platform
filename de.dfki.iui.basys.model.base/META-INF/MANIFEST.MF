@@ -42,8 +42,8 @@ Import-Package: de.dfki.iui.basys.common.emf;version="[1.0,2)",de.dfki.i
  eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.
  emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.plugin,org.e
  clipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclip
- se.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl;resolution:=optional,o
- rg.slf4j;version="[1.7,2)";resolution:=optional
+ se.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl,org.slf4j;version="[1.
+ 7,2)";resolution:=optional
 Include-Resource: model/base.ecore=model/base.ecore,model/base.genmodel=
  model/base.genmodel,model/pattern.aird=model/pattern.aird,model/pattern
  .ecore=model/pattern.ecore,plugin.properties=plugin.properties,plugin.x

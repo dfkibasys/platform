@@ -3,11 +3,6 @@
 package de.dfki.iui.basys.model.runtime.communication.impl;
 
 import de.dfki.iui.basys.model.base.BasePackage;
-
-import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
-
-import de.dfki.iui.basys.model.pattern.PatternPackage;
-
 import de.dfki.iui.basys.model.runtime.communication.Authentication;
 import de.dfki.iui.basys.model.runtime.communication.Channel;
 import de.dfki.iui.basys.model.runtime.communication.ChannelListener;
@@ -27,11 +22,6 @@ import de.dfki.iui.basys.model.runtime.communication.exceptions.ClientException;
 import de.dfki.iui.basys.model.runtime.communication.exceptions.CommunicationException;
 import de.dfki.iui.basys.model.runtime.communication.exceptions.MessageException;
 import de.dfki.iui.basys.model.runtime.communication.exceptions.ProviderException;
-
-import de.dfki.iui.basys.model.runtime.service.ServicePackage;
-
-import de.dfki.iui.basys.model.runtime.service.impl.ServicePackageImpl;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -216,20 +206,13 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 
 		// Initialize simple dependencies
 		BasePackage.eINSTANCE.eClass();
-		PatternPackage.eINSTANCE.eClass();
-		CapabilityPackage.eINSTANCE.eClass();
 		EcorePackage.eINSTANCE.eClass();
-
-		// Obtain or create and register interdependencies
-		ServicePackageImpl theServicePackage = (ServicePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ServicePackage.eNS_URI) instanceof ServicePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ServicePackage.eNS_URI) : ServicePackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theCommunicationPackage.createPackageContents();
-		theServicePackage.createPackageContents();
 
 		// Initialize created meta-data
 		theCommunicationPackage.initializePackageContents();
-		theServicePackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theCommunicationPackage.freeze();

@@ -38,11 +38,5 @@
 			<version>${project.version}</version>
 			<type>bundle</type>
 		</dependency>
-		<dependency>
-			<groupId>de.dfki.iui.basys.model</groupId>
-			<artifactId>de.dfki.iui.basys.model.domain</artifactId>
-			<version>${project.version}</version>
-			<type>bundle</type>
-		</dependency>
 	</dependencies>
 </project>

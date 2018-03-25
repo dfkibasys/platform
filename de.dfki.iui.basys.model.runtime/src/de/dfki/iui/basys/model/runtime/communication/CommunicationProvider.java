@@ -3,7 +3,6 @@
 package de.dfki.iui.basys.model.runtime.communication;
 
 import de.dfki.iui.basys.model.runtime.communication.exceptions.ProviderException;
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->

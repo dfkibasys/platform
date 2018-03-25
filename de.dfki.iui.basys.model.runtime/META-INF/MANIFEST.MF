@@ -20,33 +20,19 @@ Export-Package: de.dfki.iui.basys.model.runtime.communication;version="1
  ,de.dfki.iui.basys.model.runtime.communication.util;version="1.0.0.SNAP
  SHOT";uses:="de.dfki.iui.basys.model.base,de.dfki.iui.basys.model.runti
  me.communication,org.eclipse.emf.common.notify,org.eclipse.emf.common.n
- otify.impl,org.eclipse.emf.ecore,org.eclipse.emf.ecore.util",de.dfki.iu
- i.basys.model.runtime.service;version="1.0.0.SNAPSHOT";uses:="de.dfki.i
- ui.basys.model.domain.capability,org.eclipse.emf.common.util,org.eclips
- e.emf.ecore",de.dfki.iui.basys.model.runtime.service.impl;version="1.0.
- 0.SNAPSHOT";uses:="de.dfki.iui.basys.model.domain.capability,de.dfki.iu
- i.basys.model.runtime.service,org.eclipse.emf.common.notify,org.eclipse
- .emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl",de.d
- fki.iui.basys.model.runtime.service.util;version="1.0.0.SNAPSHOT";uses:
- ="de.dfki.iui.basys.model.runtime.service,org.eclipse.emf.common.notify
- ,org.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.ecl
- ipse.emf.ecore,org.eclipse.emf.ecore.util"
+ otify.impl,org.eclipse.emf.ecore,org.eclipse.emf.ecore.util"
 Import-Package: de.dfki.iui.basys.model.base;version="[1.0,2)",de.dfki.i
- ui.basys.model.base.impl;version="[1.0,2)",de.dfki.iui.basys.model.doma
- in.capability;version="[1.0,2)",de.dfki.iui.basys.model.pattern;version
- ="[1.0,2)",de.dfki.iui.basys.model.runtime.communication;version="[1.0,
- 2)",de.dfki.iui.basys.model.runtime.communication.exceptions;version="[
- 1.0,2)",de.dfki.iui.basys.model.runtime.communication.impl;version="[1.
- 0,2)",de.dfki.iui.basys.model.runtime.service;version="[1.0,2)",de.dfki
- .iui.basys.model.runtime.service.impl;version="[1.0,2)",de.dfki.iui.bas
- ys.model.runtime.service.util;version="[1.0,2)",org.eclipse.emf.common.
- notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,o
- rg.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.p
- lugin,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.util
+ ui.basys.model.base.impl;version="[1.0,2)",de.dfki.iui.basys.model.runt
+ ime.communication;version="[1.0,2)",de.dfki.iui.basys.model.runtime.com
+ munication.exceptions;version="[1.0,2)",de.dfki.iui.basys.model.runtime
+ .communication.impl;version="[1.0,2)",org.eclipse.emf.common.notify,org
+ .eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse
+ .emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.plugin,org.
+ eclipse.emf.ecore.resource,org.eclipse.emf.ecore.util
 Include-Resource: model/communication.ecore=model/communication.ecore,mo
  del/representations.aird=model/representations.aird,model/runtime.genmo
- del=model/runtime.genmodel,model/service.ecore=model/service.ecore,plug
- in.properties=plugin.properties,plugin.xml=plugin.xml
+ del=model/runtime.genmodel,plugin.properties=plugin.properties,plugin.x
+ ml=plugin.xml
 Private-Package: model
 Require-Bundle: org.eclipse.core.runtime, org.eclipse.emf.ecore;visibili
  ty:=reexport
