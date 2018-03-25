@@ -3,8 +3,7 @@
 package de.dfki.iui.basys.model.domain.topology.impl;
 
 import de.dfki.iui.basys.model.base.impl.EntityImpl;
-
-import de.dfki.iui.basys.model.domain.topology.DiscreteManufacturingEquipmentModule;
+import de.dfki.iui.basys.model.domain.topology.EquipmentModule;
 import de.dfki.iui.basys.model.domain.topology.Station;
 import de.dfki.iui.basys.model.domain.topology.TopologyPackage;
 
@@ -42,7 +41,7 @@ public class StationImpl extends EntityImpl implements Station {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<DiscreteManufacturingEquipmentModule> equipmentModules;
+	protected EList<EquipmentModule> equipmentModules;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -68,9 +67,9 @@ public class StationImpl extends EntityImpl implements Station {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<DiscreteManufacturingEquipmentModule> getEquipmentModules() {
+	public EList<EquipmentModule> getEquipmentModules() {
 		if (equipmentModules == null) {
-			equipmentModules = new EObjectContainmentEList<DiscreteManufacturingEquipmentModule>(DiscreteManufacturingEquipmentModule.class, this, TopologyPackage.STATION__EQUIPMENT_MODULES);
+			equipmentModules = new EObjectContainmentEList<EquipmentModule>(EquipmentModule.class, this, TopologyPackage.STATION__EQUIPMENT_MODULES);
 		}
 		return equipmentModules;
 	}
@@ -114,7 +113,7 @@ public class StationImpl extends EntityImpl implements Station {
 		switch (featureID) {
 			case TopologyPackage.STATION__EQUIPMENT_MODULES:
 				getEquipmentModules().clear();
-				getEquipmentModules().addAll((Collection<? extends DiscreteManufacturingEquipmentModule>)newValue);
+				getEquipmentModules().addAll((Collection<? extends EquipmentModule>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

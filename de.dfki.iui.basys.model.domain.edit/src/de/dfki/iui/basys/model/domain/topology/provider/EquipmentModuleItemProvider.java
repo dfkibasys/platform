@@ -5,6 +5,8 @@ package de.dfki.iui.basys.model.domain.topology.provider;
 
 import de.dfki.iui.basys.model.base.provider.EntityItemProvider;
 
+import de.dfki.iui.basys.model.domain.capability.CapabilityFactory;
+
 import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
 
 import de.dfki.iui.basys.model.domain.topology.EquipmentModule;
@@ -21,6 +23,7 @@ import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -52,8 +55,54 @@ public class EquipmentModuleItemProvider extends EntityItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addAssignedResourceTypePropertyDescriptor(object);
+			addAssignedResourceInstancePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Assigned Resource Type feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAssignedResourceTypePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_EquipmentModule_assignedResourceType_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_EquipmentModule_assignedResourceType_feature", "_UI_EquipmentModule_type"),
+				 TopologyPackage.Literals.EQUIPMENT_MODULE__ASSIGNED_RESOURCE_TYPE,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Assigned Resource Instance feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAssignedResourceInstancePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_EquipmentModule_assignedResourceInstance_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_EquipmentModule_assignedResourceInstance_feature", "_UI_EquipmentModule_type"),
+				 TopologyPackage.Literals.EQUIPMENT_MODULE__ASSIGNED_RESOURCE_INSTANCE,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -70,6 +119,7 @@ public class EquipmentModuleItemProvider extends EntityItemProvider {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(TopologyPackage.Literals.EQUIPMENT_MODULE__CONTROL_MODULES);
 			childrenFeatures.add(TopologyPackage.Literals.EQUIPMENT_MODULE__EQUIPMENT_MODULES);
+			childrenFeatures.add(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT);
 		}
 		return childrenFeatures;
 	}
@@ -127,6 +177,7 @@ public class EquipmentModuleItemProvider extends EntityItemProvider {
 		switch (notification.getFeatureID(EquipmentModule.class)) {
 			case TopologyPackage.EQUIPMENT_MODULE__CONTROL_MODULES:
 			case TopologyPackage.EQUIPMENT_MODULE__EQUIPMENT_MODULES:
+			case TopologyPackage.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -146,158 +197,88 @@ public class EquipmentModuleItemProvider extends EntityItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(TopologyPackage.Literals.EQUIPMENT_MODULE__EQUIPMENT_MODULES,
-				 TopologyFactory.eINSTANCE.createDiscreteManufacturingEquipmentModule()));
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CONTROL_MODULES,
+				 TopologyFactory.eINSTANCE.createControlModule()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(TopologyPackage.Literals.EQUIPMENT_MODULE__EQUIPMENT_MODULES,
-				 TopologyFactory.eINSTANCE.createTool()));
+				 TopologyFactory.eINSTANCE.createEquipmentModule()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(TopologyPackage.Literals.EQUIPMENT_MODULE__EQUIPMENT_MODULES,
-				 TopologyFactory.eINSTANCE.createStationaryTool()));
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createCapability()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(TopologyPackage.Literals.EQUIPMENT_MODULE__EQUIPMENT_MODULES,
-				 TopologyFactory.eINSTANCE.createMovableTool()));
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createHandlingCapability()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(TopologyPackage.Literals.EQUIPMENT_MODULE__EQUIPMENT_MODULES,
-				 TopologyFactory.eINSTANCE.createTransport()));
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createManufacturingCapability()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(TopologyPackage.Literals.EQUIPMENT_MODULE__EQUIPMENT_MODULES,
-				 TopologyFactory.eINSTANCE.createStorage()));
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createFügen()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(TopologyPackage.Literals.EQUIPMENT_MODULE__EQUIPMENT_MODULES,
-				 TopologyFactory.eINSTANCE.createFixture()));
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createAnEinpressen()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(TopologyPackage.Literals.EQUIPMENT_MODULE__EQUIPMENT_MODULES,
-				 TopologyFactory.eINSTANCE.createGate()));
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createPressen()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(TopologyPackage.Literals.EQUIPMENT_MODULE__EQUIPMENT_MODULES,
-				 TopologyFactory.eINSTANCE.createRobot()));
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createQoSCapability()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(TopologyPackage.Literals.EQUIPMENT_MODULE__EQUIPMENT_MODULES,
-				 TopologyFactory.eINSTANCE.createCarrier()));
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createUrformen()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(TopologyPackage.Literals.EQUIPMENT_MODULE__EQUIPMENT_MODULES,
-				 TopologyFactory.eINSTANCE.createMachine()));
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createUmformen()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(TopologyPackage.Literals.EQUIPMENT_MODULE__EQUIPMENT_MODULES,
-				 TopologyFactory.eINSTANCE.createStaticObject()));
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createTrennen()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(TopologyPackage.Literals.EQUIPMENT_MODULE__EQUIPMENT_MODULES,
-				 TopologyFactory.eINSTANCE.createHorizontalTransport()));
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createBeschichten()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(TopologyPackage.Literals.EQUIPMENT_MODULE__EQUIPMENT_MODULES,
-				 TopologyFactory.eINSTANCE.createTurnable()));
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createStoffeigenschaften()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(TopologyPackage.Literals.EQUIPMENT_MODULE__EQUIPMENT_MODULES,
-				 TopologyFactory.eINSTANCE.createConveyor()));
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createSchrauben()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(TopologyPackage.Literals.EQUIPMENT_MODULE__EQUIPMENT_MODULES,
-				 TopologyFactory.eINSTANCE.createVerticalTransport()));
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createInformationTransferCapability()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(TopologyPackage.Literals.EQUIPMENT_MODULE__EQUIPMENT_MODULES,
-				 TopologyFactory.eINSTANCE.createLiftingTable()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TopologyPackage.Literals.EQUIPMENT_MODULE__EQUIPMENT_MODULES,
-				 TopologyFactory.eINSTANCE.createAVG()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TopologyPackage.Literals.EQUIPMENT_MODULE__EQUIPMENT_MODULES,
-				 TopologyFactory.eINSTANCE.createTransposer()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TopologyPackage.Literals.EQUIPMENT_MODULE__EQUIPMENT_MODULES,
-				 TopologyFactory.eINSTANCE.createCarrierHandlingSystem()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TopologyPackage.Literals.EQUIPMENT_MODULE__EQUIPMENT_MODULES,
-				 TopologyFactory.eINSTANCE.createLift()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TopologyPackage.Literals.EQUIPMENT_MODULE__EQUIPMENT_MODULES,
-				 TopologyFactory.eINSTANCE.createRollerbed()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TopologyPackage.Literals.EQUIPMENT_MODULE__EQUIPMENT_MODULES,
-				 TopologyFactory.eINSTANCE.createLoader()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TopologyPackage.Literals.EQUIPMENT_MODULE__EQUIPMENT_MODULES,
-				 TopologyFactory.eINSTANCE.createUnloader()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TopologyPackage.Literals.EQUIPMENT_MODULE__EQUIPMENT_MODULES,
-				 TopologyFactory.eINSTANCE.createBodyStore()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TopologyPackage.Literals.EQUIPMENT_MODULE__EQUIPMENT_MODULES,
-				 TopologyFactory.eINSTANCE.createClamp()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TopologyPackage.Literals.EQUIPMENT_MODULE__EQUIPMENT_MODULES,
-				 TopologyFactory.eINSTANCE.createBeltConveyor()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TopologyPackage.Literals.EQUIPMENT_MODULE__EQUIPMENT_MODULES,
-				 TopologyFactory.eINSTANCE.createRollConveyor()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TopologyPackage.Literals.EQUIPMENT_MODULE__EQUIPMENT_MODULES,
-				 TopologyFactory.eINSTANCE.createChainConveyor()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TopologyPackage.Literals.EQUIPMENT_MODULE__EQUIPMENT_MODULES,
-				 TopologyFactory.eINSTANCE.createPalletConveyor()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TopologyPackage.Literals.EQUIPMENT_MODULE__EQUIPMENT_MODULES,
-				 TopologyFactory.eINSTANCE.createOverheadConveyor()));
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createProvideInformation()));
 	}
 
 	/**

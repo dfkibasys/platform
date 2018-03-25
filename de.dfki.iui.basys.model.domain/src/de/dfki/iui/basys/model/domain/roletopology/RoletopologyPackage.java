@@ -96,6 +96,15 @@ public interface RoletopologyPackage extends EPackage {
 	int ENTERPRISE__NAME = BasePackage.ENTITY__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTERPRISE__METADATA = BasePackage.ENTITY__METADATA;
+
+	/**
 	 * The feature id for the '<em><b>Sites</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -160,6 +169,15 @@ public interface RoletopologyPackage extends EPackage {
 	int SITE__NAME = BasePackage.ENTITY__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SITE__METADATA = BasePackage.ENTITY__METADATA;
+
+	/**
 	 * The feature id for the '<em><b>Areas</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -222,6 +240,15 @@ public interface RoletopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int AREA__NAME = BasePackage.ENTITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AREA__METADATA = BasePackage.ENTITY__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Work Centers</b></em>' containment reference list.
@@ -297,6 +324,15 @@ public interface RoletopologyPackage extends EPackage {
 	int WORK_CENTER__NAME = BasePackage.ENTITY__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORK_CENTER__METADATA = BasePackage.ENTITY__METADATA;
+
+	/**
 	 * The number of structural features of the '<em>Work Center</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -352,6 +388,15 @@ public interface RoletopologyPackage extends EPackage {
 	int PROCESS_CELL__NAME = WORK_CENTER__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_CELL__METADATA = WORK_CENTER__METADATA;
+
+	/**
 	 * The number of structural features of the '<em>Process Cell</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -405,6 +450,15 @@ public interface RoletopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int PRODUCTION_UNIT__NAME = WORK_CENTER__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCTION_UNIT__METADATA = WORK_CENTER__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Units</b></em>' containment reference list.
@@ -471,6 +525,15 @@ public interface RoletopologyPackage extends EPackage {
 	int PRODUCTION_LINE__NAME = WORK_CENTER__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCTION_LINE__METADATA = WORK_CENTER__METADATA;
+
+	/**
 	 * The feature id for the '<em><b>Work Cells</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -533,6 +596,15 @@ public interface RoletopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int STORAGE_ZONE__NAME = WORK_CENTER__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE_ZONE__METADATA = WORK_CENTER__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Storage Units</b></em>' containment reference list.
@@ -599,6 +671,15 @@ public interface RoletopologyPackage extends EPackage {
 	int WORK_UNIT__NAME = BasePackage.ENTITY__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORK_UNIT__METADATA = BasePackage.ENTITY__METADATA;
+
+	/**
 	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -663,6 +744,15 @@ public interface RoletopologyPackage extends EPackage {
 	int UNIT__NAME = WORK_UNIT__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNIT__METADATA = WORK_UNIT__METADATA;
+
+	/**
 	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -725,6 +815,15 @@ public interface RoletopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int WORK_CELL__NAME = WORK_UNIT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORK_CELL__METADATA = WORK_UNIT__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
@@ -800,6 +899,15 @@ public interface RoletopologyPackage extends EPackage {
 	int STORAGE_UNIT__NAME = WORK_UNIT__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE_UNIT__METADATA = WORK_UNIT__METADATA;
+
+	/**
 	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -862,6 +970,15 @@ public interface RoletopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int EQUIPMENT_MODULE__NAME = BasePackage.ENTITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EQUIPMENT_MODULE__METADATA = BasePackage.ENTITY__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
@@ -937,6 +1054,15 @@ public interface RoletopologyPackage extends EPackage {
 	int CONTROL_MODULE__NAME = BasePackage.ENTITY__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_MODULE__METADATA = BasePackage.ENTITY__METADATA;
+
+	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -999,6 +1125,15 @@ public interface RoletopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int STATION__NAME = BasePackage.ENTITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATION__METADATA = BasePackage.ENTITY__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
@@ -1118,6 +1253,15 @@ public interface RoletopologyPackage extends EPackage {
 	 * @ordered
 	 */
 	int DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__NAME = EQUIPMENT_MODULE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA = EQUIPMENT_MODULE__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.

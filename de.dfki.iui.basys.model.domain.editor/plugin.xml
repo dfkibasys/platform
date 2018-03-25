@@ -398,4 +398,60 @@
       </editor>
    </extension>
 
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated domain -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="de.dfki.iui.basys.model.domain.resource.presentation.ResourceModelWizardID"
+            name="%_UI_ResourceModelWizard_label"
+            class="de.dfki.iui.basys.model.domain.resource.presentation.ResourceModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/ResourceModelFile.gif">
+         <description>%_UI_ResourceModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated domain -->
+      <editor
+            id="de.dfki.iui.basys.model.domain.resource.presentation.ResourceEditorID"
+            name="%_UI_ResourceEditor_label"
+            icon="icons/full/obj16/ResourceModelFile.gif"
+            extensions="resource"
+            class="de.dfki.iui.basys.model.domain.resource.presentation.ResourceEditor"
+            contributorClass="de.dfki.iui.basys.model.domain.resource.presentation.ResourceActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated domain -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="de.dfki.iui.basys.model.domain.resourceinstance.presentation.ResourceinstanceModelWizardID"
+            name="%_UI_ResourceinstanceModelWizard_label"
+            class="de.dfki.iui.basys.model.domain.resourceinstance.presentation.ResourceinstanceModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/ResourceinstanceModelFile.gif">
+         <description>%_UI_ResourceinstanceModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated domain -->
+      <editor
+            id="de.dfki.iui.basys.model.domain.resourceinstance.presentation.ResourceinstanceEditorID"
+            name="%_UI_ResourceinstanceEditor_label"
+            icon="icons/full/obj16/ResourceinstanceModelFile.gif"
+            extensions="resourceinstance"
+            class="de.dfki.iui.basys.model.domain.resourceinstance.presentation.ResourceinstanceEditor"
+            contributorClass="de.dfki.iui.basys.model.domain.resourceinstance.presentation.ResourceinstanceActionBarContributor">
+      </editor>
+   </extension>
+
 </plugin>

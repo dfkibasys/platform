@@ -13,7 +13,9 @@ import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
 import de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl;
 
 import de.dfki.iui.basys.model.domain.material.MaterialPackage;
+
 import de.dfki.iui.basys.model.domain.material.impl.MaterialPackageImpl;
+
 import de.dfki.iui.basys.model.domain.order.OrderPackage;
 
 import de.dfki.iui.basys.model.domain.order.impl.OrderPackageImpl;
@@ -34,58 +36,36 @@ import de.dfki.iui.basys.model.domain.productinstance.ProductinstancePackage;
 
 import de.dfki.iui.basys.model.domain.productinstance.impl.ProductinstancePackageImpl;
 
+import de.dfki.iui.basys.model.domain.resource.ResourcePackage;
+import de.dfki.iui.basys.model.domain.resource.impl.ResourcePackageImpl;
+import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage;
+import de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceinstancePackageImpl;
+import de.dfki.iui.basys.model.domain.roletopology.RoletopologyPackage;
+
+import de.dfki.iui.basys.model.domain.roletopology.impl.RoletopologyPackageImpl;
+
 import de.dfki.iui.basys.model.domain.staff.StaffPackage;
 
 import de.dfki.iui.basys.model.domain.staff.impl.StaffPackageImpl;
 
 import de.dfki.iui.basys.model.domain.topology.Area;
 import de.dfki.iui.basys.model.domain.topology.AssemblyStation;
-import de.dfki.iui.basys.model.domain.topology.BeltConveyor;
-import de.dfki.iui.basys.model.domain.topology.BodyStore;
 import de.dfki.iui.basys.model.domain.topology.BufferStation;
-import de.dfki.iui.basys.model.domain.topology.Carrier;
-import de.dfki.iui.basys.model.domain.topology.CarrierHandlingSystem;
-import de.dfki.iui.basys.model.domain.topology.ChainConveyor;
-import de.dfki.iui.basys.model.domain.topology.Clamp;
 import de.dfki.iui.basys.model.domain.topology.ControlModule;
-import de.dfki.iui.basys.model.domain.topology.Conveyor;
-import de.dfki.iui.basys.model.domain.topology.DiscreteManufacturingEquipmentModule;
 import de.dfki.iui.basys.model.domain.topology.Enterprise;
 import de.dfki.iui.basys.model.domain.topology.EquipmentModule;
-import de.dfki.iui.basys.model.domain.topology.Fixture;
-import de.dfki.iui.basys.model.domain.topology.Gate;
-import de.dfki.iui.basys.model.domain.topology.HorizontalTransport;
-import de.dfki.iui.basys.model.domain.topology.Lift;
-import de.dfki.iui.basys.model.domain.topology.LiftingTable;
-import de.dfki.iui.basys.model.domain.topology.Loader;
-import de.dfki.iui.basys.model.domain.topology.Machine;
-import de.dfki.iui.basys.model.domain.topology.MovableTool;
-import de.dfki.iui.basys.model.domain.topology.OverheadConveyor;
-import de.dfki.iui.basys.model.domain.topology.PalletConveyor;
 import de.dfki.iui.basys.model.domain.topology.ProcessCell;
 import de.dfki.iui.basys.model.domain.topology.ProcessUnit;
 import de.dfki.iui.basys.model.domain.topology.ProductionLine;
 import de.dfki.iui.basys.model.domain.topology.ProductionUnit;
-import de.dfki.iui.basys.model.domain.topology.Robot;
-import de.dfki.iui.basys.model.domain.topology.RollConveyor;
-import de.dfki.iui.basys.model.domain.topology.Rollerbed;
 import de.dfki.iui.basys.model.domain.topology.Site;
-import de.dfki.iui.basys.model.domain.topology.StaticObject;
 import de.dfki.iui.basys.model.domain.topology.Station;
-import de.dfki.iui.basys.model.domain.topology.StationaryTool;
-import de.dfki.iui.basys.model.domain.topology.Storage;
 import de.dfki.iui.basys.model.domain.topology.StorageUnit;
 import de.dfki.iui.basys.model.domain.topology.StorageZone;
-import de.dfki.iui.basys.model.domain.topology.Tool;
 import de.dfki.iui.basys.model.domain.topology.TopologyFactory;
 import de.dfki.iui.basys.model.domain.topology.TopologyPackage;
 import de.dfki.iui.basys.model.domain.topology.Transition;
-import de.dfki.iui.basys.model.domain.topology.Transport;
-import de.dfki.iui.basys.model.domain.topology.Transposer;
-import de.dfki.iui.basys.model.domain.topology.Turnable;
 import de.dfki.iui.basys.model.domain.topology.Unit;
-import de.dfki.iui.basys.model.domain.topology.Unloader;
-import de.dfki.iui.basys.model.domain.topology.VerticalTransport;
 import de.dfki.iui.basys.model.domain.topology.WorkCell;
 import de.dfki.iui.basys.model.domain.topology.WorkCenter;
 import de.dfki.iui.basys.model.domain.topology.WorkUnit;
@@ -95,7 +75,9 @@ import de.dfki.iui.basys.model.domain.workerguidance.WorkerguidancePackage;
 import de.dfki.iui.basys.model.domain.workerguidance.impl.WorkerguidancePackageImpl;
 
 import de.dfki.iui.basys.model.domain.workforce.WorkforcePackage;
+
 import de.dfki.iui.basys.model.domain.workforce.impl.WorkforcePackageImpl;
+
 import de.dfki.iui.basys.model.domain.workplan.WorkplanPackage;
 
 import de.dfki.iui.basys.model.domain.workplan.impl.WorkplanPackageImpl;
@@ -250,223 +232,6 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 	private EClass processUnitEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass discreteManufacturingEquipmentModuleEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass toolEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass stationaryToolEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass movableToolEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass transportEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass storageEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass fixtureEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass gateEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass robotEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass carrierEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass machineEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass staticObjectEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass turnableEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass conveyorEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass liftingTableEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass avgEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass transposerEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass carrierHandlingSystemEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass liftEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass verticalTransportEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass horizontalTransportEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass rollerbedEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass loaderEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass unloaderEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass bodyStoreEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass clampEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass beltConveyorEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass rollConveyorEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass chainConveyorEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass palletConveyorEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass overheadConveyorEClass = null;
-
-	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -518,6 +283,7 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 
 		// Obtain or create and register interdependencies
 		OrderPackageImpl theOrderPackage = (OrderPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(OrderPackage.eNS_URI) instanceof OrderPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(OrderPackage.eNS_URI) : OrderPackage.eINSTANCE);
+		ProductPackageImpl theProductPackage = (ProductPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ProductPackage.eNS_URI) instanceof ProductPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ProductPackage.eNS_URI) : ProductPackage.eINSTANCE);
 		StaffPackageImpl theStaffPackage = (StaffPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(StaffPackage.eNS_URI) instanceof StaffPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(StaffPackage.eNS_URI) : StaffPackage.eINSTANCE);
 		WorkerguidancePackageImpl theWorkerguidancePackage = (WorkerguidancePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkerguidancePackage.eNS_URI) instanceof WorkerguidancePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkerguidancePackage.eNS_URI) : WorkerguidancePackage.eINSTANCE);
 		WorkplanPackageImpl theWorkplanPackage = (WorkplanPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkplanPackage.eNS_URI) instanceof WorkplanPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkplanPackage.eNS_URI) : WorkplanPackage.eINSTANCE);
@@ -525,14 +291,17 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		CapabilityPackageImpl theCapabilityPackage = (CapabilityPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CapabilityPackage.eNS_URI) instanceof CapabilityPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CapabilityPackage.eNS_URI) : CapabilityPackage.eINSTANCE);
 		ProcessPackageImpl theProcessPackage = (ProcessPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ProcessPackage.eNS_URI) instanceof ProcessPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ProcessPackage.eNS_URI) : ProcessPackage.eINSTANCE);
 		ProcessinstancePackageImpl theProcessinstancePackage = (ProcessinstancePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ProcessinstancePackage.eNS_URI) instanceof ProcessinstancePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ProcessinstancePackage.eNS_URI) : ProcessinstancePackage.eINSTANCE);
-		ProductPackageImpl theProductPackage = (ProductPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ProductPackage.eNS_URI) instanceof ProductPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ProductPackage.eNS_URI) : ProductPackage.eINSTANCE);
 		ProductinstancePackageImpl theProductinstancePackage = (ProductinstancePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ProductinstancePackage.eNS_URI) instanceof ProductinstancePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ProductinstancePackage.eNS_URI) : ProductinstancePackage.eINSTANCE);
 		WorkforcePackageImpl theWorkforcePackage = (WorkforcePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkforcePackage.eNS_URI) instanceof WorkforcePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkforcePackage.eNS_URI) : WorkforcePackage.eINSTANCE);
 		MaterialPackageImpl theMaterialPackage = (MaterialPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(MaterialPackage.eNS_URI) instanceof MaterialPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(MaterialPackage.eNS_URI) : MaterialPackage.eINSTANCE);
+		RoletopologyPackageImpl theRoletopologyPackage = (RoletopologyPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(RoletopologyPackage.eNS_URI) instanceof RoletopologyPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(RoletopologyPackage.eNS_URI) : RoletopologyPackage.eINSTANCE);
+		ResourcePackageImpl theResourcePackage = (ResourcePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ResourcePackage.eNS_URI) instanceof ResourcePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ResourcePackage.eNS_URI) : ResourcePackage.eINSTANCE);
+		ResourceinstancePackageImpl theResourceinstancePackage = (ResourceinstancePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ResourceinstancePackage.eNS_URI) instanceof ResourceinstancePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ResourceinstancePackage.eNS_URI) : ResourceinstancePackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theTopologyPackage.createPackageContents();
 		theOrderPackage.createPackageContents();
+		theProductPackage.createPackageContents();
 		theStaffPackage.createPackageContents();
 		theWorkerguidancePackage.createPackageContents();
 		theWorkplanPackage.createPackageContents();
@@ -540,14 +309,17 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		theCapabilityPackage.createPackageContents();
 		theProcessPackage.createPackageContents();
 		theProcessinstancePackage.createPackageContents();
-		theProductPackage.createPackageContents();
 		theProductinstancePackage.createPackageContents();
 		theWorkforcePackage.createPackageContents();
 		theMaterialPackage.createPackageContents();
+		theRoletopologyPackage.createPackageContents();
+		theResourcePackage.createPackageContents();
+		theResourceinstancePackage.createPackageContents();
 
 		// Initialize created meta-data
 		theTopologyPackage.initializePackageContents();
 		theOrderPackage.initializePackageContents();
+		theProductPackage.initializePackageContents();
 		theStaffPackage.initializePackageContents();
 		theWorkerguidancePackage.initializePackageContents();
 		theWorkplanPackage.initializePackageContents();
@@ -555,10 +327,12 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		theCapabilityPackage.initializePackageContents();
 		theProcessPackage.initializePackageContents();
 		theProcessinstancePackage.initializePackageContents();
-		theProductPackage.initializePackageContents();
 		theProductinstancePackage.initializePackageContents();
 		theWorkforcePackage.initializePackageContents();
 		theMaterialPackage.initializePackageContents();
+		theRoletopologyPackage.initializePackageContents();
+		theResourcePackage.initializePackageContents();
+		theResourceinstancePackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theTopologyPackage.freeze();
@@ -630,6 +404,15 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 	 */
 	public EClass getWorkCenter() {
 		return workCenterEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getWorkCenter_EquipmentModules() {
+		return (EReference)workCenterEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -790,6 +573,33 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getEquipmentModule_CapabilityRequirement() {
+		return (EReference)equipmentModuleEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getEquipmentModule_AssignedResourceType() {
+		return (EReference)equipmentModuleEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getEquipmentModule_AssignedResourceInstance() {
+		return (EReference)equipmentModuleEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getControlModule() {
 		return controlModuleEClass;
 	}
@@ -898,285 +708,6 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getDiscreteManufacturingEquipmentModule() {
-		return discreteManufacturingEquipmentModuleEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getTool() {
-		return toolEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getStationaryTool() {
-		return stationaryToolEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getMovableTool() {
-		return movableToolEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getTransport() {
-		return transportEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getStorage() {
-		return storageEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getFixture() {
-		return fixtureEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getGate() {
-		return gateEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getRobot() {
-		return robotEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getCarrier() {
-		return carrierEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getMachine() {
-		return machineEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getStaticObject() {
-		return staticObjectEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getTurnable() {
-		return turnableEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getConveyor() {
-		return conveyorEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getLiftingTable() {
-		return liftingTableEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getAVG() {
-		return avgEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getTransposer() {
-		return transposerEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getCarrierHandlingSystem() {
-		return carrierHandlingSystemEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getLift() {
-		return liftEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getVerticalTransport() {
-		return verticalTransportEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getHorizontalTransport() {
-		return horizontalTransportEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getRollerbed() {
-		return rollerbedEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getLoader() {
-		return loaderEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getUnloader() {
-		return unloaderEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getBodyStore() {
-		return bodyStoreEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getClamp() {
-		return clampEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getBeltConveyor() {
-		return beltConveyorEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getRollConveyor() {
-		return rollConveyorEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getChainConveyor() {
-		return chainConveyorEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getPalletConveyor() {
-		return palletConveyorEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getOverheadConveyor() {
-		return overheadConveyorEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public TopologyFactory getTopologyFactory() {
 		return (TopologyFactory)getEFactoryInstance();
 	}
@@ -1210,6 +741,7 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		createEReference(areaEClass, AREA__WORK_CENTERS);
 
 		workCenterEClass = createEClass(WORK_CENTER);
+		createEReference(workCenterEClass, WORK_CENTER__EQUIPMENT_MODULES);
 
 		processCellEClass = createEClass(PROCESS_CELL);
 		createEReference(processCellEClass, PROCESS_CELL__PROCESS_UNITS);
@@ -1236,6 +768,9 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		equipmentModuleEClass = createEClass(EQUIPMENT_MODULE);
 		createEReference(equipmentModuleEClass, EQUIPMENT_MODULE__CONTROL_MODULES);
 		createEReference(equipmentModuleEClass, EQUIPMENT_MODULE__EQUIPMENT_MODULES);
+		createEReference(equipmentModuleEClass, EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT);
+		createEReference(equipmentModuleEClass, EQUIPMENT_MODULE__ASSIGNED_RESOURCE_TYPE);
+		createEReference(equipmentModuleEClass, EQUIPMENT_MODULE__ASSIGNED_RESOURCE_INSTANCE);
 
 		controlModuleEClass = createEClass(CONTROL_MODULE);
 		createEReference(controlModuleEClass, CONTROL_MODULE__CONTROL_MODULES);
@@ -1254,68 +789,6 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		createEAttribute(bufferStationEClass, BUFFER_STATION__CAPACITY);
 
 		processUnitEClass = createEClass(PROCESS_UNIT);
-
-		discreteManufacturingEquipmentModuleEClass = createEClass(DISCRETE_MANUFACTURING_EQUIPMENT_MODULE);
-
-		toolEClass = createEClass(TOOL);
-
-		stationaryToolEClass = createEClass(STATIONARY_TOOL);
-
-		movableToolEClass = createEClass(MOVABLE_TOOL);
-
-		transportEClass = createEClass(TRANSPORT);
-
-		storageEClass = createEClass(STORAGE);
-
-		fixtureEClass = createEClass(FIXTURE);
-
-		gateEClass = createEClass(GATE);
-
-		robotEClass = createEClass(ROBOT);
-
-		carrierEClass = createEClass(CARRIER);
-
-		machineEClass = createEClass(MACHINE);
-
-		staticObjectEClass = createEClass(STATIC_OBJECT);
-
-		turnableEClass = createEClass(TURNABLE);
-
-		conveyorEClass = createEClass(CONVEYOR);
-
-		liftingTableEClass = createEClass(LIFTING_TABLE);
-
-		avgEClass = createEClass(AVG);
-
-		transposerEClass = createEClass(TRANSPOSER);
-
-		carrierHandlingSystemEClass = createEClass(CARRIER_HANDLING_SYSTEM);
-
-		liftEClass = createEClass(LIFT);
-
-		verticalTransportEClass = createEClass(VERTICAL_TRANSPORT);
-
-		horizontalTransportEClass = createEClass(HORIZONTAL_TRANSPORT);
-
-		rollerbedEClass = createEClass(ROLLERBED);
-
-		loaderEClass = createEClass(LOADER);
-
-		unloaderEClass = createEClass(UNLOADER);
-
-		bodyStoreEClass = createEClass(BODY_STORE);
-
-		clampEClass = createEClass(CLAMP);
-
-		beltConveyorEClass = createEClass(BELT_CONVEYOR);
-
-		rollConveyorEClass = createEClass(ROLL_CONVEYOR);
-
-		chainConveyorEClass = createEClass(CHAIN_CONVEYOR);
-
-		palletConveyorEClass = createEClass(PALLET_CONVEYOR);
-
-		overheadConveyorEClass = createEClass(OVERHEAD_CONVEYOR);
 	}
 
 	/**
@@ -1343,6 +816,9 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 
 		// Obtain other dependent packages
 		BasePackage theBasePackage = (BasePackage)EPackage.Registry.INSTANCE.getEPackage(BasePackage.eNS_URI);
+		CapabilityPackage theCapabilityPackage = (CapabilityPackage)EPackage.Registry.INSTANCE.getEPackage(CapabilityPackage.eNS_URI);
+		ResourcePackage theResourcePackage = (ResourcePackage)EPackage.Registry.INSTANCE.getEPackage(ResourcePackage.eNS_URI);
+		ResourceinstancePackage theResourceinstancePackage = (ResourceinstancePackage)EPackage.Registry.INSTANCE.getEPackage(ResourceinstancePackage.eNS_URI);
 
 		// Create type parameters
 
@@ -1367,37 +843,6 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		assemblyStationEClass.getESuperTypes().add(this.getStation());
 		bufferStationEClass.getESuperTypes().add(this.getStation());
 		processUnitEClass.getESuperTypes().add(this.getWorkUnit());
-		discreteManufacturingEquipmentModuleEClass.getESuperTypes().add(this.getEquipmentModule());
-		toolEClass.getESuperTypes().add(this.getDiscreteManufacturingEquipmentModule());
-		stationaryToolEClass.getESuperTypes().add(this.getTool());
-		movableToolEClass.getESuperTypes().add(this.getTool());
-		transportEClass.getESuperTypes().add(this.getDiscreteManufacturingEquipmentModule());
-		storageEClass.getESuperTypes().add(this.getDiscreteManufacturingEquipmentModule());
-		fixtureEClass.getESuperTypes().add(this.getDiscreteManufacturingEquipmentModule());
-		gateEClass.getESuperTypes().add(this.getDiscreteManufacturingEquipmentModule());
-		robotEClass.getESuperTypes().add(this.getDiscreteManufacturingEquipmentModule());
-		carrierEClass.getESuperTypes().add(this.getDiscreteManufacturingEquipmentModule());
-		machineEClass.getESuperTypes().add(this.getDiscreteManufacturingEquipmentModule());
-		staticObjectEClass.getESuperTypes().add(this.getDiscreteManufacturingEquipmentModule());
-		turnableEClass.getESuperTypes().add(this.getHorizontalTransport());
-		conveyorEClass.getESuperTypes().add(this.getHorizontalTransport());
-		liftingTableEClass.getESuperTypes().add(this.getVerticalTransport());
-		avgEClass.getESuperTypes().add(this.getHorizontalTransport());
-		transposerEClass.getESuperTypes().add(this.getTransport());
-		carrierHandlingSystemEClass.getESuperTypes().add(this.getTransport());
-		liftEClass.getESuperTypes().add(this.getVerticalTransport());
-		verticalTransportEClass.getESuperTypes().add(this.getTransport());
-		horizontalTransportEClass.getESuperTypes().add(this.getTransport());
-		rollerbedEClass.getESuperTypes().add(this.getHorizontalTransport());
-		loaderEClass.getESuperTypes().add(this.getStorage());
-		unloaderEClass.getESuperTypes().add(this.getStorage());
-		bodyStoreEClass.getESuperTypes().add(this.getStorage());
-		clampEClass.getESuperTypes().add(this.getFixture());
-		beltConveyorEClass.getESuperTypes().add(this.getConveyor());
-		rollConveyorEClass.getESuperTypes().add(this.getConveyor());
-		chainConveyorEClass.getESuperTypes().add(this.getConveyor());
-		palletConveyorEClass.getESuperTypes().add(this.getConveyor());
-		overheadConveyorEClass.getESuperTypes().add(this.getConveyor());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(enterpriseEClass, Enterprise.class, "Enterprise", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1410,6 +855,7 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		initEReference(getArea_WorkCenters(), this.getWorkCenter(), null, "workCenters", null, 0, -1, Area.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(workCenterEClass, WorkCenter.class, "WorkCenter", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getWorkCenter_EquipmentModules(), this.getEquipmentModule(), null, "equipmentModules", null, 0, -1, WorkCenter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(processCellEClass, ProcessCell.class, "ProcessCell", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getProcessCell_ProcessUnits(), this.getProcessUnit(), null, "processUnits", null, 1, -1, ProcessCell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1433,15 +879,18 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 
 		initEClass(storageUnitEClass, StorageUnit.class, "StorageUnit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(equipmentModuleEClass, EquipmentModule.class, "EquipmentModule", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(equipmentModuleEClass, EquipmentModule.class, "EquipmentModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEquipmentModule_ControlModules(), this.getControlModule(), null, "controlModules", null, 0, -1, EquipmentModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEquipmentModule_EquipmentModules(), this.getEquipmentModule(), null, "equipmentModules", null, 0, -1, EquipmentModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEquipmentModule_CapabilityRequirement(), theCapabilityPackage.getCapability(), null, "capabilityRequirement", null, 0, 1, EquipmentModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEquipmentModule_AssignedResourceType(), theResourcePackage.getResourceType(), null, "assignedResourceType", null, 0, 1, EquipmentModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEquipmentModule_AssignedResourceInstance(), theResourceinstancePackage.getResourceInstance(), theResourceinstancePackage.getResourceInstance_Role(), "assignedResourceInstance", null, 0, 1, EquipmentModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(controlModuleEClass, ControlModule.class, "ControlModule", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(controlModuleEClass, ControlModule.class, "ControlModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getControlModule_ControlModules(), this.getControlModule(), null, "controlModules", null, 0, -1, ControlModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(stationEClass, Station.class, "Station", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getStation_EquipmentModules(), this.getDiscreteManufacturingEquipmentModule(), null, "equipmentModules", null, 0, -1, Station.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStation_EquipmentModules(), this.getEquipmentModule(), null, "equipmentModules", null, 0, -1, Station.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(transitionEClass, Transition.class, "Transition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTransition_ComponentId_src(), ecorePackage.getEString(), "componentId_src", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1454,68 +903,6 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		initEAttribute(getBufferStation_Capacity(), ecorePackage.getEInt(), "capacity", null, 0, 1, BufferStation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(processUnitEClass, ProcessUnit.class, "ProcessUnit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(discreteManufacturingEquipmentModuleEClass, DiscreteManufacturingEquipmentModule.class, "DiscreteManufacturingEquipmentModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(toolEClass, Tool.class, "Tool", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(stationaryToolEClass, StationaryTool.class, "StationaryTool", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(movableToolEClass, MovableTool.class, "MovableTool", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(transportEClass, Transport.class, "Transport", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(storageEClass, Storage.class, "Storage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(fixtureEClass, Fixture.class, "Fixture", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(gateEClass, Gate.class, "Gate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(robotEClass, Robot.class, "Robot", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(carrierEClass, Carrier.class, "Carrier", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(machineEClass, Machine.class, "Machine", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(staticObjectEClass, StaticObject.class, "StaticObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(turnableEClass, Turnable.class, "Turnable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(conveyorEClass, Conveyor.class, "Conveyor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(liftingTableEClass, LiftingTable.class, "LiftingTable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(avgEClass, de.dfki.iui.basys.model.domain.topology.AVG.class, "AVG", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(transposerEClass, Transposer.class, "Transposer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(carrierHandlingSystemEClass, CarrierHandlingSystem.class, "CarrierHandlingSystem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(liftEClass, Lift.class, "Lift", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(verticalTransportEClass, VerticalTransport.class, "VerticalTransport", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(horizontalTransportEClass, HorizontalTransport.class, "HorizontalTransport", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(rollerbedEClass, Rollerbed.class, "Rollerbed", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(loaderEClass, Loader.class, "Loader", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(unloaderEClass, Unloader.class, "Unloader", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(bodyStoreEClass, BodyStore.class, "BodyStore", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(clampEClass, Clamp.class, "Clamp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(beltConveyorEClass, BeltConveyor.class, "BeltConveyor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(rollConveyorEClass, RollConveyor.class, "RollConveyor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(chainConveyorEClass, ChainConveyor.class, "ChainConveyor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(palletConveyorEClass, PalletConveyor.class, "PalletConveyor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(overheadConveyorEClass, OverheadConveyor.class, "OverheadConveyor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

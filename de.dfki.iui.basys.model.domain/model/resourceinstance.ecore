@@ -21,6 +21,8 @@
         eType="ecore:EClass resource.ecore#//ResourceType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityApplications"
         upperBound="-1" eType="#//CapabilityApplication" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="role" eType="ecore:EClass topology.ecore#//EquipmentModule"
+        eOpposite="topology.ecore#//EquipmentModule/assignedResourceInstance"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CapabilityApplication">
     <eStructuralFeatures xsi:type="ecore:EReference" name="bomEntries" upperBound="-1"

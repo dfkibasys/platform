@@ -209,4 +209,34 @@
             genModel="model/domain.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated domain -->
+      <package
+            uri="http://www.dfki.de/iui/basys/model/resource"
+            class="de.dfki.iui.basys.model.domain.resource.ResourcePackage"
+            genModel="model/domain.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated domain -->
+      <parser
+            type="resource"
+            class="de.dfki.iui.basys.model.domain.resource.util.ResourceResourceFactoryImpl"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated domain -->
+      <package
+            uri="http://www.dfki.de/iui/basys/model/resourceinstance"
+            class="de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage"
+            genModel="model/domain.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated domain -->
+      <parser
+            type="resourceinstance"
+            class="de.dfki.iui.basys.model.domain.resourceinstance.util.ResourceinstanceResourceFactoryImpl"/>
+   </extension>
+
 </plugin>

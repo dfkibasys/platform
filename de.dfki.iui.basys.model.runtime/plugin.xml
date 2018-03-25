@@ -14,12 +14,26 @@
             genModel="model/runtime.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated runtime -->
+      <parser
+            type="communication"
+            class="de.dfki.iui.basys.model.runtime.communication.util.CommunicationResourceFactoryImpl"/>
+   </extension>
+
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated runtime -->
       <package
             uri="http://www.dfki.de/iui/basys/model/runtime/service"
             class="de.dfki.iui.basys.model.runtime.service.ServicePackage"
             genModel="model/runtime.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated runtime -->
+      <parser
+            type="service"
+            class="de.dfki.iui.basys.model.runtime.service.util.ServiceResourceFactoryImpl"/>
    </extension>
 
 </plugin>

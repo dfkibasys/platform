@@ -16,7 +16,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityAssertion" eType="ecore:EClass capability.ecore#//CapabilityAssertion"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityRequirement"
-        eType="ecore:EClass capability.ecore#//Capability"/>
+        eType="ecore:EClass capability.ecore#//Capability" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DiscreteManufacturingEquipmentModule"
       eSuperTypes="#//ResourceType"/>

@@ -3,16 +3,17 @@
 package de.dfki.iui.basys.model.domain.topology.util;
 
 import org.eclipse.emf.common.util.URI;
-import de.dfki.iui.basys.model.util.BasysResourceImpl;
+
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Resource </b> associated with the package.
  * <!-- end-user-doc -->
  * @see de.dfki.iui.basys.model.domain.topology.util.TopologyResourceFactoryImpl
- * @generated NOT
+ * @generated
  */
-public class TopologyResourceImpl extends BasysResourceImpl {
+public class TopologyResourceImpl extends XMIResourceImpl {
 	/**
 	 * Creates an instance of the resource.
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
   <foreignModel>communication.ecore</foreignModel>
   <foreignModel>service.ecore</foreignModel>
   <genPackages prefix="Communication" basePackage="de.dfki.iui.basys.model.runtime"
-      disposableProviderFactory="true" ecorePackage="communication.ecore#/">
+      resource="XMI" disposableProviderFactory="true" ecorePackage="communication.ecore#/">
     <genDataTypes ecoreDataType="communication.ecore#//CommunicationException"/>
     <genDataTypes ecoreDataType="communication.ecore#//ChannelPoolException"/>
     <genDataTypes ecoreDataType="communication.ecore#//ProviderException"/>
@@ -41,6 +41,9 @@
         <genParameters ecoreParameter="communication.ecore#//Client/sendNotification/channelId"/>
         <genParameters ecoreParameter="communication.ecore#//Client/sendNotification/not"/>
       </genOperations>
+      <genOperations ecoreOperation="communication.ecore#//Client/getPool">
+        <genParameters ecoreParameter="communication.ecore#//Client/getPool/id"/>
+      </genOperations>
     </genClasses>
     <genClasses ecoreClass="communication.ecore#//ChannelPool">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference communication.ecore#//ChannelPool/channels"/>
@@ -58,6 +61,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference communication.ecore#//Channel/listener"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference communication.ecore#//Channel/pool"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute communication.ecore#//Channel/open.1"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute communication.ecore#//Channel/queued"/>
       <genOperations ecoreOperation="communication.ecore#//Channel/open"/>
       <genOperations ecoreOperation="communication.ecore#//Channel/close"/>
       <genOperations ecoreOperation="communication.ecore#//Channel/sendMessage">
@@ -74,9 +78,6 @@
         <genParameters ecoreParameter="communication.ecore#//Channel/sendRequest.1/cb"/>
       </genOperations>
     </genClasses>
-    <genClasses ecoreClass="communication.ecore#//Topic"/>
-    <genClasses ecoreClass="communication.ecore#//Queue"/>
-    <genClasses ecoreClass="communication.ecore#//DirectLink"/>
     <genClasses image="false" ecoreClass="communication.ecore#//ChannelListener">
       <genOperations ecoreOperation="communication.ecore#//ChannelListener/handleMessage">
         <genParameters ecoreParameter="communication.ecore#//ChannelListener/handleMessage/msg"/>
@@ -118,12 +119,15 @@
         <genParameters ecoreParameter="communication.ecore#//CommunicationProvider/doSendNotification/channel"/>
         <genParameters ecoreParameter="communication.ecore#//CommunicationProvider/doSendNotification/not"/>
       </genOperations>
+      <genOperations ecoreOperation="communication.ecore#//CommunicationProvider/supportQueuedChannels"/>
     </genClasses>
     <genClasses ecoreClass="communication.ecore#//Message">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute communication.ecore#//Message/payload"/>
     </genClasses>
     <genClasses ecoreClass="communication.ecore#//Notification"/>
-    <genClasses ecoreClass="communication.ecore#//Response"/>
+    <genClasses ecoreClass="communication.ecore#//Response">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute communication.ecore#//Response/requestId"/>
+    </genClasses>
     <genClasses ecoreClass="communication.ecore#//Request"/>
     <genClasses image="false" ecoreClass="communication.ecore#//ResponseCallback">
       <genOperations ecoreOperation="communication.ecore#//ResponseCallback/handleResponse">
@@ -136,8 +140,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute communication.ecore#//Authentication/certificate"/>
     </genClasses>
   </genPackages>
-  <genPackages prefix="Service" basePackage="de.dfki.iui.basys.model.runtime" disposableProviderFactory="true"
-      ecorePackage="service.ecore#/">
+  <genPackages prefix="Service" basePackage="de.dfki.iui.basys.model.runtime" resource="XMI"
+      disposableProviderFactory="true" ecorePackage="service.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="service.ecore#//EntityOperationEnum">
       <genEnumLiterals ecoreEnumLiteral="service.ecore#//EntityOperationEnum/CREATE"/>
       <genEnumLiterals ecoreEnumLiteral="service.ecore#//EntityOperationEnum/RETRIEVE"/>

@@ -36,6 +36,10 @@ import de.dfki.iui.basys.model.domain.productinstance.ProductinstancePackage;
 
 import de.dfki.iui.basys.model.domain.productinstance.impl.ProductinstancePackageImpl;
 
+import de.dfki.iui.basys.model.domain.resource.ResourcePackage;
+import de.dfki.iui.basys.model.domain.resource.impl.ResourcePackageImpl;
+import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage;
+import de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceinstancePackageImpl;
 import de.dfki.iui.basys.model.domain.roletopology.Area;
 import de.dfki.iui.basys.model.domain.roletopology.ControlModule;
 import de.dfki.iui.basys.model.domain.roletopology.DiscreteManufacturingEquipmentModule;
@@ -285,6 +289,8 @@ public class RoletopologyPackageImpl extends EPackageImpl implements Roletopolog
 		ProductinstancePackageImpl theProductinstancePackage = (ProductinstancePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ProductinstancePackage.eNS_URI) instanceof ProductinstancePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ProductinstancePackage.eNS_URI) : ProductinstancePackage.eINSTANCE);
 		WorkforcePackageImpl theWorkforcePackage = (WorkforcePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkforcePackage.eNS_URI) instanceof WorkforcePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkforcePackage.eNS_URI) : WorkforcePackage.eINSTANCE);
 		MaterialPackageImpl theMaterialPackage = (MaterialPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(MaterialPackage.eNS_URI) instanceof MaterialPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(MaterialPackage.eNS_URI) : MaterialPackage.eINSTANCE);
+		ResourcePackageImpl theResourcePackage = (ResourcePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ResourcePackage.eNS_URI) instanceof ResourcePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ResourcePackage.eNS_URI) : ResourcePackage.eINSTANCE);
+		ResourceinstancePackageImpl theResourceinstancePackage = (ResourceinstancePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ResourceinstancePackage.eNS_URI) instanceof ResourceinstancePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ResourceinstancePackage.eNS_URI) : ResourceinstancePackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theRoletopologyPackage.createPackageContents();
@@ -301,6 +307,8 @@ public class RoletopologyPackageImpl extends EPackageImpl implements Roletopolog
 		theProductinstancePackage.createPackageContents();
 		theWorkforcePackage.createPackageContents();
 		theMaterialPackage.createPackageContents();
+		theResourcePackage.createPackageContents();
+		theResourceinstancePackage.createPackageContents();
 
 		// Initialize created meta-data
 		theRoletopologyPackage.initializePackageContents();
@@ -317,6 +325,8 @@ public class RoletopologyPackageImpl extends EPackageImpl implements Roletopolog
 		theProductinstancePackage.initializePackageContents();
 		theWorkforcePackage.initializePackageContents();
 		theMaterialPackage.initializePackageContents();
+		theResourcePackage.initializePackageContents();
+		theResourceinstancePackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theRoletopologyPackage.freeze();

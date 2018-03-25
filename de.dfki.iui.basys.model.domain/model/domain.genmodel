@@ -529,7 +529,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute roletopology.ecore#//Requirement/unit"/>
     </genClasses>
   </genPackages>
-  <genPackages prefix="Resource" ecorePackage="resource.ecore#/">
+  <genPackages prefix="Resource" basePackage="de.dfki.iui.basys.model.domain" resource="XMI"
+      ecorePackage="resource.ecore#/">
     <genClasses ecoreClass="resource.ecore#//ResourceTypeCatalogue">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference resource.ecore#//ResourceTypeCatalogue/resourceTypes"/>
     </genClasses>
@@ -569,13 +570,18 @@
     <genClasses ecoreClass="resource.ecore#//PalletConveyor"/>
     <genClasses ecoreClass="resource.ecore#//OverheadConveyor"/>
   </genPackages>
-  <genPackages prefix="Resourceinstance" ecorePackage="resourceinstance.ecore#/">
+  <genPackages prefix="Resourceinstance" basePackage="de.dfki.iui.basys.model.domain"
+      resource="XMI" ecorePackage="resourceinstance.ecore#/">
     <genClasses ecoreClass="resourceinstance.ecore#//ResourceInstanceRepository">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference resourceinstance.ecore#//ResourceInstanceRepository/resourceInstances"/>
     </genClasses>
     <genClasses ecoreClass="resourceinstance.ecore#//ResourceInstance">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute resourceinstance.ecore#//ResourceInstance/serialNumber"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference resourceinstance.ecore#//ResourceInstance/resourceType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference resourceinstance.ecore#//ResourceInstance/capabilityApplications"/>
+    </genClasses>
+    <genClasses ecoreClass="resourceinstance.ecore#//CapabilityApplication">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference resourceinstance.ecore#//CapabilityApplication/bomEntries"/>
     </genClasses>
     <genClasses ecoreClass="resourceinstance.ecore#//ResourceInstanceStatus">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute resourceinstance.ecore#//ResourceInstanceStatus/resourceInstanceId"/>
