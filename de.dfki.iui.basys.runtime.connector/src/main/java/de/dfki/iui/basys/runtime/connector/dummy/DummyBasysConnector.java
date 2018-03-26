@@ -13,22 +13,20 @@ public class DummyBasysConnector implements BasysConnector {
 	protected String inTopic;
 	protected String outTopic;
 
-	protected String resourceId;
+	protected int resourceId;
 
 	protected DummyBasysConnectorReactStatus reactStatus = DummyBasysConnectorReactStatus.IO;
-
-	protected DummyBasysConnectorStatus status = DummyBasysConnectorStatus.NOT_STARTED;
 
 	// JMS
 	Session session;
 	MessageProducer sender;
 	MessageConsumer receiver;
 
-	public DummyBasysConnector(String connectorInTopic, String connectorOutTopic, String resourceID, Session session)
+	public DummyBasysConnector(String connectorInTopic, String connectorOutTopic, int resourceId, Session session)
 			throws JMSException {
 		this.inTopic = connectorInTopic;
 		this.outTopic = connectorOutTopic;
-		this.resourceId = resourceID;
+		this.resourceId = resourceId;
 
 		this.session = session;
 
@@ -56,7 +54,7 @@ public class DummyBasysConnector implements BasysConnector {
 	}
 
 	@Override
-	public String getResourceId() {
+	public int getResourceId() {
 		return this.resourceId;
 	}
 

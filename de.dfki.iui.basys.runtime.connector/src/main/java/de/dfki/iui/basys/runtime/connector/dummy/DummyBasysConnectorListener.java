@@ -5,6 +5,8 @@ import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
 
+import de.dfki.iui.basys.runtime.connector.BasysConnector;
+import de.dfki.iui.basys.runtime.connector.BasysConnectorException;
 import de.dfki.iui.basys.runtime.connector.MessageFactory;
 
 public class DummyBasysConnectorListener implements MessageListener {
@@ -26,31 +28,87 @@ public class DummyBasysConnectorListener implements MessageListener {
 		}
 	}
 
-	private void handleMessage(Message message) throws JMSException {
-		String ATSMsgType = message.getStringProperty("ATSMsgType");
-		String resourceID = message.getStringProperty("ResourceId");
+	
+	private void _handleMessage(Message message) throws JMSException, BasysConnectorException {
+		String atsMessageType = message.getStringProperty(BasysConnector.ATSMsgType);
+		int resourceID = message.getIntProperty(BasysConnector.ResourceId);
+		
+        if(atsMessageType ==null || !atsMessageType.matches("^MSG.*")) {
+            throw new BasysConnectorException("ATSMsgType not set correctly: "+ atsMessageType);
+        }
+                                                        
+        int msgId = Integer.parseInt(atsMessageType.substring(3, atsMessageType.length()));
+		
+		
+		if (resourceID != connector.resourceId) {
+			return;
+		}
+		
+		String content = ((TextMessage)message).getText();
+		
+		switch (msgId) {
+		case 10: // execute job
+			handleMSG10(resourceID, content);
+			break;
+		case 13: // ACK
+			handleMSG13(resourceID, content);
+			break;
+		case 16: // abort running job
+			handleMSG16(resourceID, content);
+			break;
+		case 19: // ACK
+			handleMSG19(resourceID, content);
+			break;
+		default:
+		}
+	
+	}
 
-		if (!resourceID.equals(connector.resourceId)) {
+	private void handleMSG10(int resourceID, String content) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void handleMSG13(int resourceID, String content) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	private void handleMSG16(int resourceID, String content) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	private void handleMSG19(int resourceID, String content) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	private void handleMessage(Message message) throws JMSException {
+		String atsMessageType = message.getStringProperty(BasysConnector.ATSMsgType);
+		int resourceID = message.getIntProperty(BasysConnector.ResourceId);
+
+		if (resourceID != connector.resourceId) {
 			return;
 		}
 
 		switch (connector.reactStatus) {
 		case IO:
-			handleIO(resourceID, ATSMsgType);
+			handleIO(resourceID, atsMessageType);
 			break;
 		case NIO:
-			handleNIO(resourceID, ATSMsgType);
+			handleNIO(resourceID, atsMessageType);
 			break;
 		case ABORT:
-			handleAbort(resourceID, ATSMsgType);
+			handleAbort(resourceID, atsMessageType);
 			break;
 		case ABORT_NOT_POSSIBLE:
-			handleAbortNotPossible(resourceID, ATSMsgType);
+			handleAbortNotPossible(resourceID, atsMessageType);
 			break;
 		}
 	}
 
-	private void handleIO(String resourceID, String aTSMsgType) throws JMSException {
+	private void handleIO(int resourceID, String aTSMsgType) throws JMSException {
 		switch (aTSMsgType) {
 		case "MSG10": {
 			TextMessage msg11 = messageFactory.createMSG11(resourceID);
@@ -65,7 +123,7 @@ public class DummyBasysConnectorListener implements MessageListener {
 		}
 	}
 
-	private void handleNIO(String resourceID, String aTSMsgType) throws JMSException {
+	private void handleNIO(int resourceID, String aTSMsgType) throws JMSException {
 		switch (aTSMsgType) {
 		case "MSG10": {
 			TextMessage msg11 = messageFactory.createMSG11(resourceID);
@@ -80,7 +138,7 @@ public class DummyBasysConnectorListener implements MessageListener {
 		}
 	}
 
-	private void handleAbort(String resourceID, String aTSMsgType) throws JMSException {
+	private void handleAbort(int resourceID, String aTSMsgType) throws JMSException {
 		switch (aTSMsgType) {
 		case "MSG10": {
 			TextMessage msg11 = messageFactory.createMSG11(resourceID);
@@ -100,7 +158,7 @@ public class DummyBasysConnectorListener implements MessageListener {
 		}
 	}
 
-	private void handleAbortNotPossible(String resourceID, String aTSMsgType) throws JMSException {
+	private void handleAbortNotPossible(int resourceID, String aTSMsgType) throws JMSException {
 		switch (aTSMsgType) {
 		case "MSG10": {
 			TextMessage msg11 = messageFactory.createMSG11(resourceID);

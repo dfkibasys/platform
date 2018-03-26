@@ -21,6 +21,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import de.dfki.iui.basys.runtime.connector.BasysConnector;
 import de.dfki.iui.basys.runtime.connector.MessageFactory;
 import de.dfki.iui.basys.runtime.connector.dummy.DummyBasysConnector;
 import de.dfki.iui.basys.runtime.connector.dummy.DummyBasysConnectorReactStatus;
@@ -39,7 +40,7 @@ public class BasysConnectorTest {
 	// Data
 	private String connectorInTopic = ".In";
 	private String connectorOutTopic = ".Out";
-	private String resourceID = "123";
+	private int resourceID = 2000815;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -238,8 +239,8 @@ public class BasysConnectorTest {
 			TextMessage received = (TextMessage)receivedList.remove();
 
 			try {
-				return received.getStringProperty("ATSMsgType").equals(expected.getStringProperty("ATSMsgType"))
-						&& received.getStringProperty("ResourceId").equals(expected.getStringProperty("ResourceId")) &&
+				return received.getStringProperty(BasysConnector.ATSMsgType).equals(expected.getStringProperty(BasysConnector.ATSMsgType))
+						&& received.getIntProperty(BasysConnector.ResourceId) == expected.getIntProperty(BasysConnector.ResourceId) &&
 						received.getText().equals(expected.getText());
 			} catch (JMSException e) {
 				e.printStackTrace();
