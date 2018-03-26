@@ -56,6 +56,7 @@ public class ResourcetypeFactoryImpl extends EFactoryImpl implements Resourcetyp
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case ResourcetypePackage.RESOURCE_TYPE_CATALOGUE_COLLECTION: return createResourceTypeCatalogueCollection();
 			case ResourcetypePackage.RESOURCE_TYPE_CATALOGUE: return createResourceTypeCatalogue();
 			case ResourcetypePackage.RESOURCE_TYPE: return createResourceType();
 			case ResourcetypePackage.DISCRETE_MANUFACTURING_EQUIPMENT_MODULE: return createDiscreteManufacturingEquipmentModule();
@@ -92,6 +93,16 @@ public class ResourcetypeFactoryImpl extends EFactoryImpl implements Resourcetyp
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ResourceTypeCatalogueCollection createResourceTypeCatalogueCollection() {
+		ResourceTypeCatalogueCollectionImpl resourceTypeCatalogueCollection = new ResourceTypeCatalogueCollectionImpl();
+		return resourceTypeCatalogueCollection;
 	}
 
 	/**

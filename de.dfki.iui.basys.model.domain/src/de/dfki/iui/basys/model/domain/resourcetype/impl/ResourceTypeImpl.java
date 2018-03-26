@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link de.dfki.iui.basys.model.domain.resourcetype.impl.ResourceTypeImpl#getCapabilityAssertion <em>Capability Assertion</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.resourcetype.impl.ResourceTypeImpl#getCapabilityRequirement <em>Capability Requirement</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.resourcetype.impl.ResourceTypeImpl#getDocumentation <em>Documentation</em>}</li>
  * </ul>
  *
  * @generated
@@ -52,6 +53,26 @@ public class ResourceTypeImpl extends EntityImpl implements ResourceType {
 	 * @ordered
 	 */
 	protected Capability capabilityRequirement;
+
+	/**
+	 * The default value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDocumentation()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String DOCUMENTATION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDocumentation()
+	 * @generated
+	 * @ordered
+	 */
+	protected String documentation = DOCUMENTATION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -163,6 +184,27 @@ public class ResourceTypeImpl extends EntityImpl implements ResourceType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getDocumentation() {
+		return documentation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDocumentation(String newDocumentation) {
+		String oldDocumentation = documentation;
+		documentation = newDocumentation;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ResourcetypePackage.RESOURCE_TYPE__DOCUMENTATION, oldDocumentation, documentation));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -186,6 +228,8 @@ public class ResourceTypeImpl extends EntityImpl implements ResourceType {
 				return getCapabilityAssertion();
 			case ResourcetypePackage.RESOURCE_TYPE__CAPABILITY_REQUIREMENT:
 				return getCapabilityRequirement();
+			case ResourcetypePackage.RESOURCE_TYPE__DOCUMENTATION:
+				return getDocumentation();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -203,6 +247,9 @@ public class ResourceTypeImpl extends EntityImpl implements ResourceType {
 				return;
 			case ResourcetypePackage.RESOURCE_TYPE__CAPABILITY_REQUIREMENT:
 				setCapabilityRequirement((Capability)newValue);
+				return;
+			case ResourcetypePackage.RESOURCE_TYPE__DOCUMENTATION:
+				setDocumentation((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -222,6 +269,9 @@ public class ResourceTypeImpl extends EntityImpl implements ResourceType {
 			case ResourcetypePackage.RESOURCE_TYPE__CAPABILITY_REQUIREMENT:
 				setCapabilityRequirement((Capability)null);
 				return;
+			case ResourcetypePackage.RESOURCE_TYPE__DOCUMENTATION:
+				setDocumentation(DOCUMENTATION_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -238,8 +288,26 @@ public class ResourceTypeImpl extends EntityImpl implements ResourceType {
 				return capabilityAssertion != null;
 			case ResourcetypePackage.RESOURCE_TYPE__CAPABILITY_REQUIREMENT:
 				return capabilityRequirement != null;
+			case ResourcetypePackage.RESOURCE_TYPE__DOCUMENTATION:
+				return DOCUMENTATION_EDEFAULT == null ? documentation != null : !DOCUMENTATION_EDEFAULT.equals(documentation);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (documentation: ");
+		result.append(documentation);
+		result.append(')');
+		return result.toString();
 	}
 
 } //ResourceTypeImpl

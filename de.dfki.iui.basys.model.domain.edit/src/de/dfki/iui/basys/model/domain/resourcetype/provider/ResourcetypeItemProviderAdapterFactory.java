@@ -71,6 +71,29 @@ public class ResourcetypeItemProviderAdapterFactory extends ResourcetypeAdapterF
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.resourcetype.ResourceTypeCatalogueCollection} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ResourceTypeCatalogueCollectionItemProvider resourceTypeCatalogueCollectionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.resourcetype.ResourceTypeCatalogueCollection}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createResourceTypeCatalogueCollectionAdapter() {
+		if (resourceTypeCatalogueCollectionItemProvider == null) {
+			resourceTypeCatalogueCollectionItemProvider = new ResourceTypeCatalogueCollectionItemProvider(this);
+		}
+
+		return resourceTypeCatalogueCollectionItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.resourcetype.ResourceTypeCatalogue} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

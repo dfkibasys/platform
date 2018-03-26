@@ -1,4 +1,4 @@
-package de.dfki.iui.basys.common.emf.computation;
+package de.dfki.iui.basys.model.base.computation;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,8 +18,8 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.dfki.iui.basys.common.emf.computation.MatchReport.MatchResult;
 import de.dfki.iui.basys.common.emf.EmfPersistence;
+import de.dfki.iui.basys.model.base.computation.MatchReport.MatchResult;
 import de.dfki.iui.basys.model.pattern.PEmptySlot;
 import de.dfki.iui.basys.model.pattern.PObject;
 import de.dfki.iui.basys.model.pattern.PPattern;

@@ -8,15 +8,22 @@
     <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
     <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
   </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="ResourceTypeCatalogueCollection">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="catalogues" upperBound="-1"
+        eType="#//ResourceTypeCatalogue" containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ResourceTypeCatalogue">
     <eStructuralFeatures xsi:type="ecore:EReference" name="resourceTypes" upperBound="-1"
         eType="#//ResourceType" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="manufacturer" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ResourceType" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
     <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityAssertion" eType="ecore:EClass capability.ecore#//CapabilityAssertion"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityRequirement"
         eType="ecore:EClass capability.ecore#//Capability" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="documentation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DiscreteManufacturingEquipmentModule"
       eSuperTypes="#//ResourceType"/>

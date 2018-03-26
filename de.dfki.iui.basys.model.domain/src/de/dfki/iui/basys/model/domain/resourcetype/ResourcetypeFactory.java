@@ -22,6 +22,15 @@ public interface ResourcetypeFactory extends EFactory {
 	ResourcetypeFactory eINSTANCE = de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypeFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Resource Type Catalogue Collection</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Resource Type Catalogue Collection</em>'.
+	 * @generated
+	 */
+	ResourceTypeCatalogueCollection createResourceTypeCatalogueCollection();
+
+	/**
 	 * Returns a new object of class '<em>Resource Type Catalogue</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

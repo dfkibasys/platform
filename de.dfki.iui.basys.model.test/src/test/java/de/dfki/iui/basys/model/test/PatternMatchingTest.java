@@ -2,8 +2,8 @@ package de.dfki.iui.basys.model.test;
 
 import java.util.UUID;
 
-import de.dfki.iui.basys.common.emf.computation.*;
-import de.dfki.iui.basys.common.emf.computation.MatchReport.MatchResult;
+import de.dfki.iui.basys.model.base.computation.*;
+import de.dfki.iui.basys.model.base.computation.MatchReport.MatchResult;
 import de.dfki.iui.basys.model.base.datatypes.BInteger;
 import de.dfki.iui.basys.model.domain.capability.*;
 import de.dfki.iui.basys.model.pattern.*;

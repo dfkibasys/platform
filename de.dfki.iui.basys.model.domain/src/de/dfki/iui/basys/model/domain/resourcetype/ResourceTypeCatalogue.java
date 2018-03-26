@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link de.dfki.iui.basys.model.domain.resourcetype.ResourceTypeCatalogue#getResourceTypes <em>Resource Types</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.resourcetype.ResourceTypeCatalogue#getManufacturer <em>Manufacturer</em>}</li>
  * </ul>
  *
  * @see de.dfki.iui.basys.model.domain.resourcetype.ResourcetypePackage#getResourceTypeCatalogue()
@@ -38,5 +39,31 @@ public interface ResourceTypeCatalogue extends EObject {
 	 * @generated
 	 */
 	EList<ResourceType> getResourceTypes();
+
+	/**
+	 * Returns the value of the '<em><b>Manufacturer</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Manufacturer</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Manufacturer</em>' attribute.
+	 * @see #setManufacturer(String)
+	 * @see de.dfki.iui.basys.model.domain.resourcetype.ResourcetypePackage#getResourceTypeCatalogue_Manufacturer()
+	 * @model required="true"
+	 * @generated
+	 */
+	String getManufacturer();
+
+	/**
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.resourcetype.ResourceTypeCatalogue#getManufacturer <em>Manufacturer</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Manufacturer</em>' attribute.
+	 * @see #getManufacturer()
+	 * @generated
+	 */
+	void setManufacturer(String value);
 
 } // ResourceTypeCatalogue

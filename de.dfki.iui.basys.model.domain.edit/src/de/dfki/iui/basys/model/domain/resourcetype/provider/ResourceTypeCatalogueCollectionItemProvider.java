@@ -3,13 +3,10 @@
 package de.dfki.iui.basys.model.domain.resourcetype.provider;
 
 
-import de.dfki.iui.basys.model.base.provider.EntityItemProvider;
-
-import de.dfki.iui.basys.model.domain.capability.CapabilityFactory;
-
 import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
 
-import de.dfki.iui.basys.model.domain.resourcetype.ResourceType;
+import de.dfki.iui.basys.model.domain.resourcetype.ResourceTypeCatalogueCollection;
+import de.dfki.iui.basys.model.domain.resourcetype.ResourcetypeFactory;
 import de.dfki.iui.basys.model.domain.resourcetype.ResourcetypePackage;
 
 import java.util.Collection;
@@ -22,25 +19,36 @@ import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.IItemPropertySource;
+import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
+import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link de.dfki.iui.basys.model.domain.resourcetype.ResourceType} object.
+ * This is the item provider adapter for a {@link de.dfki.iui.basys.model.domain.resourcetype.ResourceTypeCatalogueCollection} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ResourceTypeItemProvider extends EntityItemProvider {
+public class ResourceTypeCatalogueCollectionItemProvider 
+	extends ItemProviderAdapter
+	implements
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
+		IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ResourceTypeItemProvider(AdapterFactory adapterFactory) {
+	public ResourceTypeCatalogueCollectionItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -55,54 +63,8 @@ public class ResourceTypeItemProvider extends EntityItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addCapabilityRequirementPropertyDescriptor(object);
-			addDocumentationPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Capability Requirement feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addCapabilityRequirementPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ResourceType_capabilityRequirement_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ResourceType_capabilityRequirement_feature", "_UI_ResourceType_type"),
-				 ResourcetypePackage.Literals.RESOURCE_TYPE__CAPABILITY_REQUIREMENT,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Documentation feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addDocumentationPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ResourceType_documentation_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ResourceType_documentation_feature", "_UI_ResourceType_type"),
-				 ResourcetypePackage.Literals.RESOURCE_TYPE__DOCUMENTATION,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
 	}
 
 	/**
@@ -117,7 +79,7 @@ public class ResourceTypeItemProvider extends EntityItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(ResourcetypePackage.Literals.RESOURCE_TYPE__CAPABILITY_ASSERTION);
+			childrenFeatures.add(ResourcetypePackage.Literals.RESOURCE_TYPE_CATALOGUE_COLLECTION__CATALOGUES);
 		}
 		return childrenFeatures;
 	}
@@ -136,14 +98,14 @@ public class ResourceTypeItemProvider extends EntityItemProvider {
 	}
 
 	/**
-	 * This returns ResourceType.gif.
+	 * This returns ResourceTypeCatalogueCollection.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ResourceType"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ResourceTypeCatalogueCollection"));
 	}
 
 	/**
@@ -154,10 +116,7 @@ public class ResourceTypeItemProvider extends EntityItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ResourceType)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_ResourceType_type") :
-			getString("_UI_ResourceType_type") + " " + label;
+		return getString("_UI_ResourceTypeCatalogueCollection_type");
 	}
 	
 
@@ -172,11 +131,8 @@ public class ResourceTypeItemProvider extends EntityItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ResourceType.class)) {
-			case ResourcetypePackage.RESOURCE_TYPE__DOCUMENTATION:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case ResourcetypePackage.RESOURCE_TYPE__CAPABILITY_ASSERTION:
+		switch (notification.getFeatureID(ResourceTypeCatalogueCollection.class)) {
+			case ResourcetypePackage.RESOURCE_TYPE_CATALOGUE_COLLECTION__CATALOGUES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -196,8 +152,8 @@ public class ResourceTypeItemProvider extends EntityItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ResourcetypePackage.Literals.RESOURCE_TYPE__CAPABILITY_ASSERTION,
-				 CapabilityFactory.eINSTANCE.createCapabilityAssertion()));
+				(ResourcetypePackage.Literals.RESOURCE_TYPE_CATALOGUE_COLLECTION__CATALOGUES,
+				 ResourcetypeFactory.eINSTANCE.createResourceTypeCatalogue()));
 	}
 
 	/**

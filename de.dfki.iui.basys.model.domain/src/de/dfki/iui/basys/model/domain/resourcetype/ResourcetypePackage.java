@@ -4,6 +4,7 @@ package de.dfki.iui.basys.model.domain.resourcetype;
 
 import de.dfki.iui.basys.model.base.BasePackage;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -59,6 +60,43 @@ public interface ResourcetypePackage extends EPackage {
 	ResourcetypePackage eINSTANCE = de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl.init();
 
 	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.resourcetype.impl.ResourceTypeCatalogueCollectionImpl <em>Resource Type Catalogue Collection</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.resourcetype.impl.ResourceTypeCatalogueCollectionImpl
+	 * @see de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl#getResourceTypeCatalogueCollection()
+	 * @generated
+	 */
+	int RESOURCE_TYPE_CATALOGUE_COLLECTION = 0;
+
+	/**
+	 * The feature id for the '<em><b>Catalogues</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_TYPE_CATALOGUE_COLLECTION__CATALOGUES = 0;
+
+	/**
+	 * The number of structural features of the '<em>Resource Type Catalogue Collection</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_TYPE_CATALOGUE_COLLECTION_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Resource Type Catalogue Collection</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_TYPE_CATALOGUE_COLLECTION_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.resourcetype.impl.ResourceTypeCatalogueImpl <em>Resource Type Catalogue</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -66,7 +104,7 @@ public interface ResourcetypePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl#getResourceTypeCatalogue()
 	 * @generated
 	 */
-	int RESOURCE_TYPE_CATALOGUE = 0;
+	int RESOURCE_TYPE_CATALOGUE = 1;
 
 	/**
 	 * The feature id for the '<em><b>Resource Types</b></em>' containment reference list.
@@ -78,13 +116,22 @@ public interface ResourcetypePackage extends EPackage {
 	int RESOURCE_TYPE_CATALOGUE__RESOURCE_TYPES = 0;
 
 	/**
+	 * The feature id for the '<em><b>Manufacturer</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_TYPE_CATALOGUE__MANUFACTURER = 1;
+
+	/**
 	 * The number of structural features of the '<em>Resource Type Catalogue</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_TYPE_CATALOGUE_FEATURE_COUNT = 1;
+	int RESOURCE_TYPE_CATALOGUE_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Resource Type Catalogue</em>' class.
@@ -103,7 +150,7 @@ public interface ResourcetypePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl#getResourceType()
 	 * @generated
 	 */
-	int RESOURCE_TYPE = 1;
+	int RESOURCE_TYPE = 2;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -160,13 +207,22 @@ public interface ResourcetypePackage extends EPackage {
 	int RESOURCE_TYPE__CAPABILITY_REQUIREMENT = BasePackage.ENTITY_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_TYPE__DOCUMENTATION = BasePackage.ENTITY_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Resource Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_TYPE_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 2;
+	int RESOURCE_TYPE_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Resource Type</em>' class.
@@ -185,7 +241,7 @@ public interface ResourcetypePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl#getDiscreteManufacturingEquipmentModule()
 	 * @generated
 	 */
-	int DISCRETE_MANUFACTURING_EQUIPMENT_MODULE = 2;
+	int DISCRETE_MANUFACTURING_EQUIPMENT_MODULE = 3;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -242,6 +298,15 @@ public interface ResourcetypePackage extends EPackage {
 	int DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT = RESOURCE_TYPE__CAPABILITY_REQUIREMENT;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__DOCUMENTATION = RESOURCE_TYPE__DOCUMENTATION;
+
+	/**
 	 * The number of structural features of the '<em>Discrete Manufacturing Equipment Module</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -267,7 +332,7 @@ public interface ResourcetypePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl#getTool()
 	 * @generated
 	 */
-	int TOOL = 3;
+	int TOOL = 4;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -324,6 +389,15 @@ public interface ResourcetypePackage extends EPackage {
 	int TOOL__CAPABILITY_REQUIREMENT = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOOL__DOCUMENTATION = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__DOCUMENTATION;
+
+	/**
 	 * The number of structural features of the '<em>Tool</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -349,7 +423,7 @@ public interface ResourcetypePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl#getStationaryTool()
 	 * @generated
 	 */
-	int STATIONARY_TOOL = 4;
+	int STATIONARY_TOOL = 5;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -406,6 +480,15 @@ public interface ResourcetypePackage extends EPackage {
 	int STATIONARY_TOOL__CAPABILITY_REQUIREMENT = TOOL__CAPABILITY_REQUIREMENT;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATIONARY_TOOL__DOCUMENTATION = TOOL__DOCUMENTATION;
+
+	/**
 	 * The number of structural features of the '<em>Stationary Tool</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -431,7 +514,7 @@ public interface ResourcetypePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl#getMovableTool()
 	 * @generated
 	 */
-	int MOVABLE_TOOL = 5;
+	int MOVABLE_TOOL = 6;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -488,6 +571,15 @@ public interface ResourcetypePackage extends EPackage {
 	int MOVABLE_TOOL__CAPABILITY_REQUIREMENT = TOOL__CAPABILITY_REQUIREMENT;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVABLE_TOOL__DOCUMENTATION = TOOL__DOCUMENTATION;
+
+	/**
 	 * The number of structural features of the '<em>Movable Tool</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -513,7 +605,7 @@ public interface ResourcetypePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl#getTransport()
 	 * @generated
 	 */
-	int TRANSPORT = 6;
+	int TRANSPORT = 7;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -570,6 +662,15 @@ public interface ResourcetypePackage extends EPackage {
 	int TRANSPORT__CAPABILITY_REQUIREMENT = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSPORT__DOCUMENTATION = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__DOCUMENTATION;
+
+	/**
 	 * The number of structural features of the '<em>Transport</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -595,7 +696,7 @@ public interface ResourcetypePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl#getStorage()
 	 * @generated
 	 */
-	int STORAGE = 7;
+	int STORAGE = 8;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -652,6 +753,15 @@ public interface ResourcetypePackage extends EPackage {
 	int STORAGE__CAPABILITY_REQUIREMENT = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE__DOCUMENTATION = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__DOCUMENTATION;
+
+	/**
 	 * The number of structural features of the '<em>Storage</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -677,7 +787,7 @@ public interface ResourcetypePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl#getFixture()
 	 * @generated
 	 */
-	int FIXTURE = 8;
+	int FIXTURE = 9;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -734,6 +844,15 @@ public interface ResourcetypePackage extends EPackage {
 	int FIXTURE__CAPABILITY_REQUIREMENT = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIXTURE__DOCUMENTATION = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__DOCUMENTATION;
+
+	/**
 	 * The number of structural features of the '<em>Fixture</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -759,7 +878,7 @@ public interface ResourcetypePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl#getGate()
 	 * @generated
 	 */
-	int GATE = 9;
+	int GATE = 10;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -816,6 +935,15 @@ public interface ResourcetypePackage extends EPackage {
 	int GATE__CAPABILITY_REQUIREMENT = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GATE__DOCUMENTATION = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__DOCUMENTATION;
+
+	/**
 	 * The number of structural features of the '<em>Gate</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -841,7 +969,7 @@ public interface ResourcetypePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl#getRobot()
 	 * @generated
 	 */
-	int ROBOT = 10;
+	int ROBOT = 11;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -898,6 +1026,15 @@ public interface ResourcetypePackage extends EPackage {
 	int ROBOT__CAPABILITY_REQUIREMENT = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROBOT__DOCUMENTATION = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__DOCUMENTATION;
+
+	/**
 	 * The number of structural features of the '<em>Robot</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -923,7 +1060,7 @@ public interface ResourcetypePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl#getCarrier()
 	 * @generated
 	 */
-	int CARRIER = 11;
+	int CARRIER = 12;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -980,6 +1117,15 @@ public interface ResourcetypePackage extends EPackage {
 	int CARRIER__CAPABILITY_REQUIREMENT = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARRIER__DOCUMENTATION = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__DOCUMENTATION;
+
+	/**
 	 * The number of structural features of the '<em>Carrier</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1005,7 +1151,7 @@ public interface ResourcetypePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl#getMachine()
 	 * @generated
 	 */
-	int MACHINE = 12;
+	int MACHINE = 13;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -1062,6 +1208,15 @@ public interface ResourcetypePackage extends EPackage {
 	int MACHINE__CAPABILITY_REQUIREMENT = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE__DOCUMENTATION = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__DOCUMENTATION;
+
+	/**
 	 * The number of structural features of the '<em>Machine</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1087,7 +1242,7 @@ public interface ResourcetypePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl#getStaticObject()
 	 * @generated
 	 */
-	int STATIC_OBJECT = 13;
+	int STATIC_OBJECT = 14;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -1144,6 +1299,15 @@ public interface ResourcetypePackage extends EPackage {
 	int STATIC_OBJECT__CAPABILITY_REQUIREMENT = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATIC_OBJECT__DOCUMENTATION = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__DOCUMENTATION;
+
+	/**
 	 * The number of structural features of the '<em>Static Object</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1169,7 +1333,7 @@ public interface ResourcetypePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl#getHorizontalTransport()
 	 * @generated
 	 */
-	int HORIZONTAL_TRANSPORT = 22;
+	int HORIZONTAL_TRANSPORT = 23;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -1226,6 +1390,15 @@ public interface ResourcetypePackage extends EPackage {
 	int HORIZONTAL_TRANSPORT__CAPABILITY_REQUIREMENT = TRANSPORT__CAPABILITY_REQUIREMENT;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HORIZONTAL_TRANSPORT__DOCUMENTATION = TRANSPORT__DOCUMENTATION;
+
+	/**
 	 * The number of structural features of the '<em>Horizontal Transport</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1251,7 +1424,7 @@ public interface ResourcetypePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl#getTurnable()
 	 * @generated
 	 */
-	int TURNABLE = 14;
+	int TURNABLE = 15;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -1308,6 +1481,15 @@ public interface ResourcetypePackage extends EPackage {
 	int TURNABLE__CAPABILITY_REQUIREMENT = HORIZONTAL_TRANSPORT__CAPABILITY_REQUIREMENT;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TURNABLE__DOCUMENTATION = HORIZONTAL_TRANSPORT__DOCUMENTATION;
+
+	/**
 	 * The number of structural features of the '<em>Turnable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1333,7 +1515,7 @@ public interface ResourcetypePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl#getConveyor()
 	 * @generated
 	 */
-	int CONVEYOR = 15;
+	int CONVEYOR = 16;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -1390,6 +1572,15 @@ public interface ResourcetypePackage extends EPackage {
 	int CONVEYOR__CAPABILITY_REQUIREMENT = HORIZONTAL_TRANSPORT__CAPABILITY_REQUIREMENT;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONVEYOR__DOCUMENTATION = HORIZONTAL_TRANSPORT__DOCUMENTATION;
+
+	/**
 	 * The number of structural features of the '<em>Conveyor</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1415,7 +1606,7 @@ public interface ResourcetypePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl#getVerticalTransport()
 	 * @generated
 	 */
-	int VERTICAL_TRANSPORT = 21;
+	int VERTICAL_TRANSPORT = 22;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -1472,6 +1663,15 @@ public interface ResourcetypePackage extends EPackage {
 	int VERTICAL_TRANSPORT__CAPABILITY_REQUIREMENT = TRANSPORT__CAPABILITY_REQUIREMENT;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VERTICAL_TRANSPORT__DOCUMENTATION = TRANSPORT__DOCUMENTATION;
+
+	/**
 	 * The number of structural features of the '<em>Vertical Transport</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1497,7 +1697,7 @@ public interface ResourcetypePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl#getLiftingTable()
 	 * @generated
 	 */
-	int LIFTING_TABLE = 16;
+	int LIFTING_TABLE = 17;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -1554,6 +1754,15 @@ public interface ResourcetypePackage extends EPackage {
 	int LIFTING_TABLE__CAPABILITY_REQUIREMENT = VERTICAL_TRANSPORT__CAPABILITY_REQUIREMENT;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIFTING_TABLE__DOCUMENTATION = VERTICAL_TRANSPORT__DOCUMENTATION;
+
+	/**
 	 * The number of structural features of the '<em>Lifting Table</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1579,7 +1788,7 @@ public interface ResourcetypePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl#getAVG()
 	 * @generated
 	 */
-	int AVG = 17;
+	int AVG = 18;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -1636,6 +1845,15 @@ public interface ResourcetypePackage extends EPackage {
 	int AVG__CAPABILITY_REQUIREMENT = HORIZONTAL_TRANSPORT__CAPABILITY_REQUIREMENT;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AVG__DOCUMENTATION = HORIZONTAL_TRANSPORT__DOCUMENTATION;
+
+	/**
 	 * The number of structural features of the '<em>AVG</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1661,7 +1879,7 @@ public interface ResourcetypePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl#getTransposer()
 	 * @generated
 	 */
-	int TRANSPOSER = 18;
+	int TRANSPOSER = 19;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -1718,6 +1936,15 @@ public interface ResourcetypePackage extends EPackage {
 	int TRANSPOSER__CAPABILITY_REQUIREMENT = TRANSPORT__CAPABILITY_REQUIREMENT;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSPOSER__DOCUMENTATION = TRANSPORT__DOCUMENTATION;
+
+	/**
 	 * The number of structural features of the '<em>Transposer</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1743,7 +1970,7 @@ public interface ResourcetypePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl#getCarrierHandlingSystem()
 	 * @generated
 	 */
-	int CARRIER_HANDLING_SYSTEM = 19;
+	int CARRIER_HANDLING_SYSTEM = 20;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -1800,6 +2027,15 @@ public interface ResourcetypePackage extends EPackage {
 	int CARRIER_HANDLING_SYSTEM__CAPABILITY_REQUIREMENT = TRANSPORT__CAPABILITY_REQUIREMENT;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARRIER_HANDLING_SYSTEM__DOCUMENTATION = TRANSPORT__DOCUMENTATION;
+
+	/**
 	 * The number of structural features of the '<em>Carrier Handling System</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1825,7 +2061,7 @@ public interface ResourcetypePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl#getLift()
 	 * @generated
 	 */
-	int LIFT = 20;
+	int LIFT = 21;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -1882,6 +2118,15 @@ public interface ResourcetypePackage extends EPackage {
 	int LIFT__CAPABILITY_REQUIREMENT = VERTICAL_TRANSPORT__CAPABILITY_REQUIREMENT;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIFT__DOCUMENTATION = VERTICAL_TRANSPORT__DOCUMENTATION;
+
+	/**
 	 * The number of structural features of the '<em>Lift</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1907,7 +2152,7 @@ public interface ResourcetypePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl#getRollerbed()
 	 * @generated
 	 */
-	int ROLLERBED = 23;
+	int ROLLERBED = 24;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -1964,6 +2209,15 @@ public interface ResourcetypePackage extends EPackage {
 	int ROLLERBED__CAPABILITY_REQUIREMENT = HORIZONTAL_TRANSPORT__CAPABILITY_REQUIREMENT;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLLERBED__DOCUMENTATION = HORIZONTAL_TRANSPORT__DOCUMENTATION;
+
+	/**
 	 * The number of structural features of the '<em>Rollerbed</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1989,7 +2243,7 @@ public interface ResourcetypePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl#getLoader()
 	 * @generated
 	 */
-	int LOADER = 24;
+	int LOADER = 25;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -2046,6 +2300,15 @@ public interface ResourcetypePackage extends EPackage {
 	int LOADER__CAPABILITY_REQUIREMENT = STORAGE__CAPABILITY_REQUIREMENT;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOADER__DOCUMENTATION = STORAGE__DOCUMENTATION;
+
+	/**
 	 * The number of structural features of the '<em>Loader</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2071,7 +2334,7 @@ public interface ResourcetypePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl#getUnloader()
 	 * @generated
 	 */
-	int UNLOADER = 25;
+	int UNLOADER = 26;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -2128,6 +2391,15 @@ public interface ResourcetypePackage extends EPackage {
 	int UNLOADER__CAPABILITY_REQUIREMENT = STORAGE__CAPABILITY_REQUIREMENT;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNLOADER__DOCUMENTATION = STORAGE__DOCUMENTATION;
+
+	/**
 	 * The number of structural features of the '<em>Unloader</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2153,7 +2425,7 @@ public interface ResourcetypePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl#getBodyStore()
 	 * @generated
 	 */
-	int BODY_STORE = 26;
+	int BODY_STORE = 27;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -2210,6 +2482,15 @@ public interface ResourcetypePackage extends EPackage {
 	int BODY_STORE__CAPABILITY_REQUIREMENT = STORAGE__CAPABILITY_REQUIREMENT;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BODY_STORE__DOCUMENTATION = STORAGE__DOCUMENTATION;
+
+	/**
 	 * The number of structural features of the '<em>Body Store</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2235,7 +2516,7 @@ public interface ResourcetypePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl#getClamp()
 	 * @generated
 	 */
-	int CLAMP = 27;
+	int CLAMP = 28;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -2292,6 +2573,15 @@ public interface ResourcetypePackage extends EPackage {
 	int CLAMP__CAPABILITY_REQUIREMENT = FIXTURE__CAPABILITY_REQUIREMENT;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLAMP__DOCUMENTATION = FIXTURE__DOCUMENTATION;
+
+	/**
 	 * The number of structural features of the '<em>Clamp</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2317,7 +2607,7 @@ public interface ResourcetypePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl#getBeltConveyor()
 	 * @generated
 	 */
-	int BELT_CONVEYOR = 28;
+	int BELT_CONVEYOR = 29;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -2374,6 +2664,15 @@ public interface ResourcetypePackage extends EPackage {
 	int BELT_CONVEYOR__CAPABILITY_REQUIREMENT = CONVEYOR__CAPABILITY_REQUIREMENT;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BELT_CONVEYOR__DOCUMENTATION = CONVEYOR__DOCUMENTATION;
+
+	/**
 	 * The number of structural features of the '<em>Belt Conveyor</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2399,7 +2698,7 @@ public interface ResourcetypePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl#getRollConveyor()
 	 * @generated
 	 */
-	int ROLL_CONVEYOR = 29;
+	int ROLL_CONVEYOR = 30;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -2456,6 +2755,15 @@ public interface ResourcetypePackage extends EPackage {
 	int ROLL_CONVEYOR__CAPABILITY_REQUIREMENT = CONVEYOR__CAPABILITY_REQUIREMENT;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLL_CONVEYOR__DOCUMENTATION = CONVEYOR__DOCUMENTATION;
+
+	/**
 	 * The number of structural features of the '<em>Roll Conveyor</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2481,7 +2789,7 @@ public interface ResourcetypePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl#getChainConveyor()
 	 * @generated
 	 */
-	int CHAIN_CONVEYOR = 30;
+	int CHAIN_CONVEYOR = 31;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -2538,6 +2846,15 @@ public interface ResourcetypePackage extends EPackage {
 	int CHAIN_CONVEYOR__CAPABILITY_REQUIREMENT = CONVEYOR__CAPABILITY_REQUIREMENT;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHAIN_CONVEYOR__DOCUMENTATION = CONVEYOR__DOCUMENTATION;
+
+	/**
 	 * The number of structural features of the '<em>Chain Conveyor</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2563,7 +2880,7 @@ public interface ResourcetypePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl#getPalletConveyor()
 	 * @generated
 	 */
-	int PALLET_CONVEYOR = 31;
+	int PALLET_CONVEYOR = 32;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -2620,6 +2937,15 @@ public interface ResourcetypePackage extends EPackage {
 	int PALLET_CONVEYOR__CAPABILITY_REQUIREMENT = CONVEYOR__CAPABILITY_REQUIREMENT;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PALLET_CONVEYOR__DOCUMENTATION = CONVEYOR__DOCUMENTATION;
+
+	/**
 	 * The number of structural features of the '<em>Pallet Conveyor</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2645,7 +2971,7 @@ public interface ResourcetypePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl#getOverheadConveyor()
 	 * @generated
 	 */
-	int OVERHEAD_CONVEYOR = 32;
+	int OVERHEAD_CONVEYOR = 33;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -2702,6 +3028,15 @@ public interface ResourcetypePackage extends EPackage {
 	int OVERHEAD_CONVEYOR__CAPABILITY_REQUIREMENT = CONVEYOR__CAPABILITY_REQUIREMENT;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OVERHEAD_CONVEYOR__DOCUMENTATION = CONVEYOR__DOCUMENTATION;
+
+	/**
 	 * The number of structural features of the '<em>Overhead Conveyor</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2719,6 +3054,27 @@ public interface ResourcetypePackage extends EPackage {
 	 */
 	int OVERHEAD_CONVEYOR_OPERATION_COUNT = CONVEYOR_OPERATION_COUNT + 0;
 
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.resourcetype.ResourceTypeCatalogueCollection <em>Resource Type Catalogue Collection</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Resource Type Catalogue Collection</em>'.
+	 * @see de.dfki.iui.basys.model.domain.resourcetype.ResourceTypeCatalogueCollection
+	 * @generated
+	 */
+	EClass getResourceTypeCatalogueCollection();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.domain.resourcetype.ResourceTypeCatalogueCollection#getCatalogues <em>Catalogues</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Catalogues</em>'.
+	 * @see de.dfki.iui.basys.model.domain.resourcetype.ResourceTypeCatalogueCollection#getCatalogues()
+	 * @see #getResourceTypeCatalogueCollection()
+	 * @generated
+	 */
+	EReference getResourceTypeCatalogueCollection_Catalogues();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.resourcetype.ResourceTypeCatalogue <em>Resource Type Catalogue</em>}'.
@@ -2740,6 +3096,17 @@ public interface ResourcetypePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getResourceTypeCatalogue_ResourceTypes();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.resourcetype.ResourceTypeCatalogue#getManufacturer <em>Manufacturer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Manufacturer</em>'.
+	 * @see de.dfki.iui.basys.model.domain.resourcetype.ResourceTypeCatalogue#getManufacturer()
+	 * @see #getResourceTypeCatalogue()
+	 * @generated
+	 */
+	EAttribute getResourceTypeCatalogue_Manufacturer();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.resourcetype.ResourceType <em>Resource Type</em>}'.
@@ -2772,6 +3139,17 @@ public interface ResourcetypePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getResourceType_CapabilityRequirement();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.resourcetype.ResourceType#getDocumentation <em>Documentation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Documentation</em>'.
+	 * @see de.dfki.iui.basys.model.domain.resourcetype.ResourceType#getDocumentation()
+	 * @see #getResourceType()
+	 * @generated
+	 */
+	EAttribute getResourceType_Documentation();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.resourcetype.DiscreteManufacturingEquipmentModule <em>Discrete Manufacturing Equipment Module</em>}'.
@@ -3107,6 +3485,24 @@ public interface ResourcetypePackage extends EPackage {
 	 */
 	interface Literals {
 		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.resourcetype.impl.ResourceTypeCatalogueCollectionImpl <em>Resource Type Catalogue Collection</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.resourcetype.impl.ResourceTypeCatalogueCollectionImpl
+		 * @see de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl#getResourceTypeCatalogueCollection()
+		 * @generated
+		 */
+		EClass RESOURCE_TYPE_CATALOGUE_COLLECTION = eINSTANCE.getResourceTypeCatalogueCollection();
+
+		/**
+		 * The meta object literal for the '<em><b>Catalogues</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RESOURCE_TYPE_CATALOGUE_COLLECTION__CATALOGUES = eINSTANCE.getResourceTypeCatalogueCollection_Catalogues();
+
+		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.resourcetype.impl.ResourceTypeCatalogueImpl <em>Resource Type Catalogue</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3123,6 +3519,14 @@ public interface ResourcetypePackage extends EPackage {
 		 * @generated
 		 */
 		EReference RESOURCE_TYPE_CATALOGUE__RESOURCE_TYPES = eINSTANCE.getResourceTypeCatalogue_ResourceTypes();
+
+		/**
+		 * The meta object literal for the '<em><b>Manufacturer</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RESOURCE_TYPE_CATALOGUE__MANUFACTURER = eINSTANCE.getResourceTypeCatalogue_Manufacturer();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.resourcetype.impl.ResourceTypeImpl <em>Resource Type</em>}' class.
@@ -3149,6 +3553,14 @@ public interface ResourcetypePackage extends EPackage {
 		 * @generated
 		 */
 		EReference RESOURCE_TYPE__CAPABILITY_REQUIREMENT = eINSTANCE.getResourceType_CapabilityRequirement();
+
+		/**
+		 * The meta object literal for the '<em><b>Documentation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RESOURCE_TYPE__DOCUMENTATION = eINSTANCE.getResourceType_Documentation();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.resourcetype.impl.DiscreteManufacturingEquipmentModuleImpl <em>Discrete Manufacturing Equipment Module</em>}' class.

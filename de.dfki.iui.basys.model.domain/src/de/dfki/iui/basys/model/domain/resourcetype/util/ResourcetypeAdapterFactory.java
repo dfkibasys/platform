@@ -71,6 +71,10 @@ public class ResourcetypeAdapterFactory extends AdapterFactoryImpl {
 	protected ResourcetypeSwitch<Adapter> modelSwitch =
 		new ResourcetypeSwitch<Adapter>() {
 			@Override
+			public Adapter caseResourceTypeCatalogueCollection(ResourceTypeCatalogueCollection object) {
+				return createResourceTypeCatalogueCollectionAdapter();
+			}
+			@Override
 			public Adapter caseResourceTypeCatalogue(ResourceTypeCatalogue object) {
 				return createResourceTypeCatalogueAdapter();
 			}
@@ -229,6 +233,20 @@ public class ResourcetypeAdapterFactory extends AdapterFactoryImpl {
 		return modelSwitch.doSwitch((EObject)target);
 	}
 
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.resourcetype.ResourceTypeCatalogueCollection <em>Resource Type Catalogue Collection</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.domain.resourcetype.ResourceTypeCatalogueCollection
+	 * @generated
+	 */
+	public Adapter createResourceTypeCatalogueCollectionAdapter() {
+		return null;
+	}
 
 	/**
 	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.resourcetype.ResourceTypeCatalogue <em>Resource Type Catalogue</em>}'.

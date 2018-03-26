@@ -1,4 +1,4 @@
-package de.dfki.iui.basys.common.emf.computation;
+package de.dfki.iui.basys.model.base.computation;
 
 import java.io.IOException;
 import java.util.HashMap;

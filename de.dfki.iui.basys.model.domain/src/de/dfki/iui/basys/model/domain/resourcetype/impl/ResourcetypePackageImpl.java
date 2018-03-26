@@ -60,6 +60,7 @@ import de.dfki.iui.basys.model.domain.resourcetype.OverheadConveyor;
 import de.dfki.iui.basys.model.domain.resourcetype.PalletConveyor;
 import de.dfki.iui.basys.model.domain.resourcetype.ResourceType;
 import de.dfki.iui.basys.model.domain.resourcetype.ResourceTypeCatalogue;
+import de.dfki.iui.basys.model.domain.resourcetype.ResourceTypeCatalogueCollection;
 import de.dfki.iui.basys.model.domain.resourcetype.ResourcetypeFactory;
 import de.dfki.iui.basys.model.domain.resourcetype.ResourcetypePackage;
 import de.dfki.iui.basys.model.domain.resourcetype.Robot;
@@ -101,6 +102,7 @@ import de.dfki.iui.basys.model.domain.workplan.impl.WorkplanPackageImpl;
 
 import de.dfki.iui.basys.model.pattern.PatternPackage;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -114,6 +116,13 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
  * @generated
  */
 public class ResourcetypePackageImpl extends EPackageImpl implements ResourcetypePackage {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass resourceTypeCatalogueCollectionEClass = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -462,6 +471,24 @@ public class ResourcetypePackageImpl extends EPackageImpl implements Resourcetyp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getResourceTypeCatalogueCollection() {
+		return resourceTypeCatalogueCollectionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getResourceTypeCatalogueCollection_Catalogues() {
+		return (EReference)resourceTypeCatalogueCollectionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getResourceTypeCatalogue() {
 		return resourceTypeCatalogueEClass;
 	}
@@ -473,6 +500,15 @@ public class ResourcetypePackageImpl extends EPackageImpl implements Resourcetyp
 	 */
 	public EReference getResourceTypeCatalogue_ResourceTypes() {
 		return (EReference)resourceTypeCatalogueEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getResourceTypeCatalogue_Manufacturer() {
+		return (EAttribute)resourceTypeCatalogueEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -500,6 +536,15 @@ public class ResourcetypePackageImpl extends EPackageImpl implements Resourcetyp
 	 */
 	public EReference getResourceType_CapabilityRequirement() {
 		return (EReference)resourceTypeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getResourceType_Documentation() {
+		return (EAttribute)resourceTypeEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -809,12 +854,17 @@ public class ResourcetypePackageImpl extends EPackageImpl implements Resourcetyp
 		isCreated = true;
 
 		// Create classes and their features
+		resourceTypeCatalogueCollectionEClass = createEClass(RESOURCE_TYPE_CATALOGUE_COLLECTION);
+		createEReference(resourceTypeCatalogueCollectionEClass, RESOURCE_TYPE_CATALOGUE_COLLECTION__CATALOGUES);
+
 		resourceTypeCatalogueEClass = createEClass(RESOURCE_TYPE_CATALOGUE);
 		createEReference(resourceTypeCatalogueEClass, RESOURCE_TYPE_CATALOGUE__RESOURCE_TYPES);
+		createEAttribute(resourceTypeCatalogueEClass, RESOURCE_TYPE_CATALOGUE__MANUFACTURER);
 
 		resourceTypeEClass = createEClass(RESOURCE_TYPE);
 		createEReference(resourceTypeEClass, RESOURCE_TYPE__CAPABILITY_ASSERTION);
 		createEReference(resourceTypeEClass, RESOURCE_TYPE__CAPABILITY_REQUIREMENT);
+		createEAttribute(resourceTypeEClass, RESOURCE_TYPE__DOCUMENTATION);
 
 		discreteManufacturingEquipmentModuleEClass = createEClass(DISCRETE_MANUFACTURING_EQUIPMENT_MODULE);
 
@@ -945,12 +995,17 @@ public class ResourcetypePackageImpl extends EPackageImpl implements Resourcetyp
 		overheadConveyorEClass.getESuperTypes().add(this.getConveyor());
 
 		// Initialize classes, features, and operations; add parameters
+		initEClass(resourceTypeCatalogueCollectionEClass, ResourceTypeCatalogueCollection.class, "ResourceTypeCatalogueCollection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getResourceTypeCatalogueCollection_Catalogues(), this.getResourceTypeCatalogue(), null, "catalogues", null, 0, -1, ResourceTypeCatalogueCollection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(resourceTypeCatalogueEClass, ResourceTypeCatalogue.class, "ResourceTypeCatalogue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getResourceTypeCatalogue_ResourceTypes(), this.getResourceType(), null, "resourceTypes", null, 0, -1, ResourceTypeCatalogue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getResourceTypeCatalogue_Manufacturer(), ecorePackage.getEString(), "manufacturer", null, 1, 1, ResourceTypeCatalogue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(resourceTypeEClass, ResourceType.class, "ResourceType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getResourceType_CapabilityAssertion(), theCapabilityPackage.getCapabilityAssertion(), null, "capabilityAssertion", null, 0, 1, ResourceType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getResourceType_CapabilityRequirement(), theCapabilityPackage.getCapability(), null, "capabilityRequirement", null, 0, 1, ResourceType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getResourceType_Documentation(), ecorePackage.getEString(), "documentation", null, 0, 1, ResourceType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(discreteManufacturingEquipmentModuleEClass, DiscreteManufacturingEquipmentModule.class, "DiscreteManufacturingEquipmentModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

@@ -11,8 +11,9 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import de.dfki.iui.basys.common.emf.computation.MatchReport.MatchResult;
-import de.dfki.iui.basys.common.emf.computation.Matches;
+
+import de.dfki.iui.basys.model.base.computation.Matches;
+import de.dfki.iui.basys.model.base.computation.MatchReport.MatchResult;
 import de.dfki.iui.basys.model.pattern.PPattern;
 import de.dfki.iui.basys.model.pattern.PQuantorEnum;
 import de.dfki.iui.basys.model.pattern.PatternPackage;

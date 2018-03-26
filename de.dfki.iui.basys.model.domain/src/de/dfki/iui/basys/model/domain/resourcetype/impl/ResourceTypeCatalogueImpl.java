@@ -10,6 +10,7 @@ import de.dfki.iui.basys.model.util.BasysEObjectImpl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -17,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -29,6 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link de.dfki.iui.basys.model.domain.resourcetype.impl.ResourceTypeCatalogueImpl#getResourceTypes <em>Resource Types</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.resourcetype.impl.ResourceTypeCatalogueImpl#getManufacturer <em>Manufacturer</em>}</li>
  * </ul>
  *
  * @generated
@@ -43,6 +46,25 @@ public class ResourceTypeCatalogueImpl extends BasysEObjectImpl implements Resou
 	 * @ordered
 	 */
 	protected EList<ResourceType> resourceTypes;
+
+	/**
+	 * The default value of the '{@link #getManufacturer() <em>Manufacturer</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getManufacturer()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String MANUFACTURER_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getManufacturer() <em>Manufacturer</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getManufacturer()
+	 * @generated
+	 * @ordered
+	 */
+	protected String manufacturer = MANUFACTURER_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -80,6 +102,27 @@ public class ResourceTypeCatalogueImpl extends BasysEObjectImpl implements Resou
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getManufacturer() {
+		return manufacturer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setManufacturer(String newManufacturer) {
+		String oldManufacturer = manufacturer;
+		manufacturer = newManufacturer;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ResourcetypePackage.RESOURCE_TYPE_CATALOGUE__MANUFACTURER, oldManufacturer, manufacturer));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -99,6 +142,8 @@ public class ResourceTypeCatalogueImpl extends BasysEObjectImpl implements Resou
 		switch (featureID) {
 			case ResourcetypePackage.RESOURCE_TYPE_CATALOGUE__RESOURCE_TYPES:
 				return getResourceTypes();
+			case ResourcetypePackage.RESOURCE_TYPE_CATALOGUE__MANUFACTURER:
+				return getManufacturer();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -116,6 +161,9 @@ public class ResourceTypeCatalogueImpl extends BasysEObjectImpl implements Resou
 				getResourceTypes().clear();
 				getResourceTypes().addAll((Collection<? extends ResourceType>)newValue);
 				return;
+			case ResourcetypePackage.RESOURCE_TYPE_CATALOGUE__MANUFACTURER:
+				setManufacturer((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -131,6 +179,9 @@ public class ResourceTypeCatalogueImpl extends BasysEObjectImpl implements Resou
 			case ResourcetypePackage.RESOURCE_TYPE_CATALOGUE__RESOURCE_TYPES:
 				getResourceTypes().clear();
 				return;
+			case ResourcetypePackage.RESOURCE_TYPE_CATALOGUE__MANUFACTURER:
+				setManufacturer(MANUFACTURER_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -145,8 +196,26 @@ public class ResourceTypeCatalogueImpl extends BasysEObjectImpl implements Resou
 		switch (featureID) {
 			case ResourcetypePackage.RESOURCE_TYPE_CATALOGUE__RESOURCE_TYPES:
 				return resourceTypes != null && !resourceTypes.isEmpty();
+			case ResourcetypePackage.RESOURCE_TYPE_CATALOGUE__MANUFACTURER:
+				return MANUFACTURER_EDEFAULT == null ? manufacturer != null : !MANUFACTURER_EDEFAULT.equals(manufacturer);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (manufacturer: ");
+		result.append(manufacturer);
+		result.append(')');
+		return result.toString();
 	}
 
 } //ResourceTypeCatalogueImpl

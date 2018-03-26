@@ -3,17 +3,22 @@
 package de.dfki.iui.basys.model.domain.topology.provider;
 
 
+import de.dfki.iui.basys.model.base.computation.MatchReport;
+import de.dfki.iui.basys.model.base.computation.Matches;
+import de.dfki.iui.basys.model.base.computation.MatchReport.MatchResult;
 import de.dfki.iui.basys.model.base.provider.EntityItemProvider;
 
 import de.dfki.iui.basys.model.domain.capability.CapabilityFactory;
 
 import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
-
+import de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstance;
+import de.dfki.iui.basys.model.domain.resourcetype.ResourceType;
 import de.dfki.iui.basys.model.domain.topology.EquipmentModule;
 import de.dfki.iui.basys.model.domain.topology.TopologyFactory;
 import de.dfki.iui.basys.model.domain.topology.TopologyPackage;
 
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -25,6 +30,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -65,12 +71,25 @@ public class EquipmentModuleItemProvider extends EntityItemProvider {
 	 * This adds a property descriptor for the Assigned Resource Type feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addAssignedResourceTypePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+//		itemPropertyDescriptors.add
+//			(createItemPropertyDescriptor
+//				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+//				 getResourceLocator(),
+//				 getString("_UI_EquipmentModule_assignedResourceType_feature"),
+//				 getString("_UI_PropertyDescriptor_description", "_UI_EquipmentModule_assignedResourceType_feature", "_UI_EquipmentModule_type"),
+//				 TopologyPackage.Literals.EQUIPMENT_MODULE__ASSIGNED_RESOURCE_TYPE,
+//				 true,
+//				 false,
+//				 true,
+//				 null,
+//				 null,
+//				 null));
+		
+		itemPropertyDescriptors.add(new ItemPropertyDescriptor(
+				((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_EquipmentModule_assignedResourceType_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_EquipmentModule_assignedResourceType_feature", "_UI_EquipmentModule_type"),
@@ -80,19 +99,62 @@ public class EquipmentModuleItemProvider extends EntityItemProvider {
 				 true,
 				 null,
 				 null,
-				 null));
+				 null) {
+			@Override
+			public Collection<?> getChoiceOfValues(Object object) {
+				
+				EquipmentModule e = (EquipmentModule) object;
+				Collection<?> result = super.getChoiceOfValues(object);
+				List<ResourceType> filtered = new LinkedList<>();
+				
+				result.forEach(type -> {
+					if (type == null) {
+						//filtered.add((ResourceType) type);
+						return;
+					}
+					
+					ResourceType t = (ResourceType) type;
+					
+					if (t.getCapabilityAssertion() == null) return;
+					
+					if (e.getCapabilityRequirement() != null) {
+						MatchReport report = Matches.matches(e.getCapabilityRequirement(), t.getCapabilityAssertion().getPattern());
+						if (report.result == MatchResult.MATCH_SUCCESS) {
+							filtered.add(t);
+						}
+					} else {
+						filtered.add(t);
+					}
+				});				
+				
+				return filtered;
+			}
+		});
 	}
 
 	/**
 	 * This adds a property descriptor for the Assigned Resource Instance feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addAssignedResourceInstancePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+//		itemPropertyDescriptors.add
+//			(createItemPropertyDescriptor
+//				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+//				 getResourceLocator(),
+//				 getString("_UI_EquipmentModule_assignedResourceInstance_feature"),
+//				 getString("_UI_PropertyDescriptor_description", "_UI_EquipmentModule_assignedResourceInstance_feature", "_UI_EquipmentModule_type"),
+//				 TopologyPackage.Literals.EQUIPMENT_MODULE__ASSIGNED_RESOURCE_INSTANCE,
+//				 true,
+//				 false,
+//				 true,
+//				 null,
+//				 null,
+//				 null));
+		
+		itemPropertyDescriptors.add(new ItemPropertyDescriptor(
+				((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_EquipmentModule_assignedResourceInstance_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_EquipmentModule_assignedResourceInstance_feature", "_UI_EquipmentModule_type"),
@@ -102,7 +164,51 @@ public class EquipmentModuleItemProvider extends EntityItemProvider {
 				 true,
 				 null,
 				 null,
-				 null));
+				 null) {
+			@Override
+			public Collection<?> getChoiceOfValues(Object object) {
+				
+				EquipmentModule e = (EquipmentModule) object;
+				Collection<?> result = super.getChoiceOfValues(object);
+				List<ResourceInstance> filtered = new LinkedList<>();
+				
+				result.forEach(instance -> {
+					ResourceInstance i = (ResourceInstance) instance;
+					ResourceType t = i.getResourceType();
+					
+					if (t == null || t.getCapabilityAssertion() == null) return;
+					
+					if (e.getAssignedResourceType() != null && e.getCapabilityRequirement() != null) {
+						if (e.getAssignedResourceType().equals(i.getResourceType())) {
+							MatchReport report = Matches.matches(e.getCapabilityRequirement(), i.getResourceType().getCapabilityAssertion().getPattern());
+							if (report.result == MatchResult.MATCH_SUCCESS) {
+								filtered.add(i);
+							}
+						}
+					} else if (e.getCapabilityRequirement() != null) {						
+						MatchReport report = Matches.matches(e.getCapabilityRequirement(), i.getResourceType().getCapabilityAssertion().getPattern());
+						if (report.result == MatchResult.MATCH_SUCCESS) {
+							filtered.add(i);
+						}
+					} else {
+						filtered.add(i);
+					}
+					
+					if (i.getResourceType() != null) {							
+						if (e.getCapabilityRequirement() != null) {
+							MatchReport report = Matches.matches(e.getCapabilityRequirement(), i.getResourceType().getCapabilityAssertion().getPattern());
+							if (report.result == MatchResult.MATCH_SUCCESS) {
+								filtered.add(i);
+							}
+						} else {
+							filtered.add(i);
+						}
+					}
+				});				
+				
+				return filtered;
+			}
+		});
 	}
 
 	/**
