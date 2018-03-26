@@ -1,11 +1,10 @@
 package de.dfki.iui.basys.runtime.connector;
 
-public class BasysConnector {
+public interface BasysConnector {
 
-	protected String inTopic;
-	protected String outTopic;
+	String getInTopic();
 
-	protected String resourceId;
-	
-	
+	String getOutTopic();
+
+	String getResourceId();
 }

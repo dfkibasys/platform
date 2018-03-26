@@ -13,13 +13,13 @@ public class MessageFactory {
 	}
 
 
-	public TextMessage createMSG(String atsMsgType, int resourceId, String payload) {
+	public TextMessage createMSG(String atsMsgType, String resourceId, String payload) {
 		TextMessage msg = null;
 
 		try {
 			msg = session.createTextMessage();
 			msg.setStringProperty("ATSMsgType", atsMsgType);
-			msg.setIntProperty("ResourceId", resourceId);
+			msg.setStringProperty("ResourceId", resourceId);
 			msg.setText(payload);
 		} catch (JMSException e) {
 			// TODO Auto-generated catch block
@@ -29,13 +29,13 @@ public class MessageFactory {
 		return msg;
 	}
 
-	public TextMessage createMSG(String atsMsgType, int resourceId) {
+	public TextMessage createMSG(String atsMsgType, String resourceId) {
 		String text = "<Message><Parameter name=\"reserve\" value=\"0\" /></Message>";
 		TextMessage msg = createMSG(atsMsgType, resourceId, text);
 		return msg;
 	}
 
-	public TextMessage createMSG10(int resourceId, int functionId, int capType) {
+	public TextMessage createMSG10(String resourceId, int functionId, int capType) {
 		String text = 
 				"<Message>"
 				+ "<Parameter name=\"functionID\" value=\"" + functionId + "\" />"
@@ -48,12 +48,12 @@ public class MessageFactory {
 		return msg;
 	}
 
-	public TextMessage createMSG11(int resourceId) {
+	public TextMessage createMSG11(String resourceId) {
 		TextMessage msg = createMSG("MSG11", resourceId);
 		return msg;
 	}
 
-	public TextMessage createMSG12(int resourceId, int jobStatus, int jobErrorCode) {
+	public TextMessage createMSG12(String resourceId, int jobStatus, int jobErrorCode) {
 		String text = 
 				"<Message>"
 				+ "<Parameter name=\"jobStatus\" value=\"" + jobStatus + "\" />"
@@ -63,7 +63,7 @@ public class MessageFactory {
 		return msg;
 	}
 
-	public TextMessage createMSG13(int resourceId, int jobStatus, int jobErrorCode) {
+	public TextMessage createMSG13(String resourceId, int jobStatus, int jobErrorCode) {
 		String text = 
 				"<Message>"
 				+ "<Parameter name=\"jobStatus\" value=\"" + jobStatus + "\" />"
@@ -73,22 +73,22 @@ public class MessageFactory {
 		return msg;
 	}
 
-	public TextMessage createMSG16(int resourceId) {
+	public TextMessage createMSG16(String resourceId) {
 		TextMessage msg = createMSG("MSG16", resourceId);
 		return msg;
 	}
 
-	public TextMessage createMSG17(int resourceId) {
+	public TextMessage createMSG17(String resourceId) {
 		TextMessage msg = createMSG("MSG17", resourceId);
 		return msg;
 	}
 
-	public TextMessage createMSG18(int resourceId) {
+	public TextMessage createMSG18(String resourceId) {
 		TextMessage msg = createMSG("MSG18", resourceId);
 		return msg;
 	}
 
-	public TextMessage createMSG19(int resourceId) {
+	public TextMessage createMSG19(String resourceId) {
 		TextMessage msg = createMSG("MSG19", resourceId);
 		return msg;
 	}
