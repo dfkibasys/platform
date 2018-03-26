@@ -5,8 +5,6 @@ package de.dfki.iui.basys.model.domain.topology.impl;
 import de.dfki.iui.basys.model.base.impl.EntityImpl;
 
 import de.dfki.iui.basys.model.domain.capability.Capability;
-
-import de.dfki.iui.basys.model.domain.resource.ResourceType;
 import de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstance;
 import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage;
 import de.dfki.iui.basys.model.domain.topology.ControlModule;
@@ -84,7 +82,7 @@ public class EquipmentModuleImpl extends EntityImpl implements EquipmentModule {
 	 * @generated
 	 * @ordered
 	 */
-	protected ResourceType assignedResourceType;
+	protected de.dfki.iui.basys.model.domain.resourcetype.ResourceType assignedResourceType;
 
 	/**
 	 * The cached value of the '{@link #getAssignedResourceInstance() <em>Assigned Resource Instance</em>}' reference.
@@ -187,10 +185,10 @@ public class EquipmentModuleImpl extends EntityImpl implements EquipmentModule {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ResourceType getAssignedResourceType() {
+	public de.dfki.iui.basys.model.domain.resourcetype.ResourceType getAssignedResourceType() {
 		if (assignedResourceType != null && assignedResourceType.eIsProxy()) {
 			InternalEObject oldAssignedResourceType = (InternalEObject)assignedResourceType;
-			assignedResourceType = (ResourceType)eResolveProxy(oldAssignedResourceType);
+			assignedResourceType = (de.dfki.iui.basys.model.domain.resourcetype.ResourceType)eResolveProxy(oldAssignedResourceType);
 			if (assignedResourceType != oldAssignedResourceType) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TopologyPackage.EQUIPMENT_MODULE__ASSIGNED_RESOURCE_TYPE, oldAssignedResourceType, assignedResourceType));
@@ -204,7 +202,7 @@ public class EquipmentModuleImpl extends EntityImpl implements EquipmentModule {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ResourceType basicGetAssignedResourceType() {
+	public de.dfki.iui.basys.model.domain.resourcetype.ResourceType basicGetAssignedResourceType() {
 		return assignedResourceType;
 	}
 
@@ -213,8 +211,8 @@ public class EquipmentModuleImpl extends EntityImpl implements EquipmentModule {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setAssignedResourceType(ResourceType newAssignedResourceType) {
-		ResourceType oldAssignedResourceType = assignedResourceType;
+	public void setAssignedResourceType(de.dfki.iui.basys.model.domain.resourcetype.ResourceType newAssignedResourceType) {
+		de.dfki.iui.basys.model.domain.resourcetype.ResourceType oldAssignedResourceType = assignedResourceType;
 		assignedResourceType = newAssignedResourceType;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, TopologyPackage.EQUIPMENT_MODULE__ASSIGNED_RESOURCE_TYPE, oldAssignedResourceType, assignedResourceType));
@@ -361,7 +359,7 @@ public class EquipmentModuleImpl extends EntityImpl implements EquipmentModule {
 				setCapabilityRequirement((Capability)newValue);
 				return;
 			case TopologyPackage.EQUIPMENT_MODULE__ASSIGNED_RESOURCE_TYPE:
-				setAssignedResourceType((ResourceType)newValue);
+				setAssignedResourceType((de.dfki.iui.basys.model.domain.resourcetype.ResourceType)newValue);
 				return;
 			case TopologyPackage.EQUIPMENT_MODULE__ASSIGNED_RESOURCE_INSTANCE:
 				setAssignedResourceInstance((ResourceInstance)newValue);
@@ -388,7 +386,7 @@ public class EquipmentModuleImpl extends EntityImpl implements EquipmentModule {
 				setCapabilityRequirement((Capability)null);
 				return;
 			case TopologyPackage.EQUIPMENT_MODULE__ASSIGNED_RESOURCE_TYPE:
-				setAssignedResourceType((ResourceType)null);
+				setAssignedResourceType((de.dfki.iui.basys.model.domain.resourcetype.ResourceType)null);
 				return;
 			case TopologyPackage.EQUIPMENT_MODULE__ASSIGNED_RESOURCE_INSTANCE:
 				setAssignedResourceInstance((ResourceInstance)null);

@@ -3,9 +3,6 @@
 package de.dfki.iui.basys.model.domain.resourceinstance.impl;
 
 import de.dfki.iui.basys.model.base.impl.EntityImpl;
-
-import de.dfki.iui.basys.model.domain.resource.ResourceType;
-
 import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityApplication;
 import de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstance;
 import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage;
@@ -72,7 +69,7 @@ public class ResourceInstanceImpl extends EntityImpl implements ResourceInstance
 	 * @generated
 	 * @ordered
 	 */
-	protected ResourceType resourceType;
+	protected de.dfki.iui.basys.model.domain.resourcetype.ResourceType resourceType;
 
 	/**
 	 * The cached value of the '{@link #getCapabilityApplications() <em>Capability Applications</em>}' containment reference list.
@@ -139,10 +136,10 @@ public class ResourceInstanceImpl extends EntityImpl implements ResourceInstance
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ResourceType getResourceType() {
+	public de.dfki.iui.basys.model.domain.resourcetype.ResourceType getResourceType() {
 		if (resourceType != null && resourceType.eIsProxy()) {
 			InternalEObject oldResourceType = (InternalEObject)resourceType;
-			resourceType = (ResourceType)eResolveProxy(oldResourceType);
+			resourceType = (de.dfki.iui.basys.model.domain.resourcetype.ResourceType)eResolveProxy(oldResourceType);
 			if (resourceType != oldResourceType) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ResourceinstancePackage.RESOURCE_INSTANCE__RESOURCE_TYPE, oldResourceType, resourceType));
@@ -156,7 +153,7 @@ public class ResourceInstanceImpl extends EntityImpl implements ResourceInstance
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ResourceType basicGetResourceType() {
+	public de.dfki.iui.basys.model.domain.resourcetype.ResourceType basicGetResourceType() {
 		return resourceType;
 	}
 
@@ -165,8 +162,8 @@ public class ResourceInstanceImpl extends EntityImpl implements ResourceInstance
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setResourceType(ResourceType newResourceType) {
-		ResourceType oldResourceType = resourceType;
+	public void setResourceType(de.dfki.iui.basys.model.domain.resourcetype.ResourceType newResourceType) {
+		de.dfki.iui.basys.model.domain.resourcetype.ResourceType oldResourceType = resourceType;
 		resourceType = newResourceType;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ResourceinstancePackage.RESOURCE_INSTANCE__RESOURCE_TYPE, oldResourceType, resourceType));
@@ -311,7 +308,7 @@ public class ResourceInstanceImpl extends EntityImpl implements ResourceInstance
 				setSerialNumber((String)newValue);
 				return;
 			case ResourceinstancePackage.RESOURCE_INSTANCE__RESOURCE_TYPE:
-				setResourceType((ResourceType)newValue);
+				setResourceType((de.dfki.iui.basys.model.domain.resourcetype.ResourceType)newValue);
 				return;
 			case ResourceinstancePackage.RESOURCE_INSTANCE__CAPABILITY_APPLICATIONS:
 				getCapabilityApplications().clear();
@@ -336,7 +333,7 @@ public class ResourceInstanceImpl extends EntityImpl implements ResourceInstance
 				setSerialNumber(SERIAL_NUMBER_EDEFAULT);
 				return;
 			case ResourceinstancePackage.RESOURCE_INSTANCE__RESOURCE_TYPE:
-				setResourceType((ResourceType)null);
+				setResourceType((de.dfki.iui.basys.model.domain.resourcetype.ResourceType)null);
 				return;
 			case ResourceinstancePackage.RESOURCE_INSTANCE__CAPABILITY_APPLICATIONS:
 				getCapabilityApplications().clear();

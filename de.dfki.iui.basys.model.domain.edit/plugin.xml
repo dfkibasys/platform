@@ -22,8 +22,8 @@
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated domain -->
       <factory
-            uri="http://www.dfki.de/iui/basys/model/product"
-            class="de.dfki.iui.basys.model.domain.product.provider.ProductItemProviderAdapterFactory"
+            uri="http://www.dfki.de/iui/basys/model/productdefinition"
+            class="de.dfki.iui.basys.model.domain.productdefinition.provider.ProductdefinitionItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider
@@ -113,8 +113,8 @@
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated domain -->
       <factory
-            uri="http://www.dfki.de/iui/basys/model/process"
-            class="de.dfki.iui.basys.model.domain.process.provider.ProcessItemProviderAdapterFactory"
+            uri="http://www.dfki.de/iui/basys/model/processdefinition"
+            class="de.dfki.iui.basys.model.domain.processdefinition.provider.ProcessdefinitionItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider
@@ -191,8 +191,8 @@
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated domain -->
       <factory
-            uri="http://www.dfki.de/iui/basys/model/resource"
-            class="de.dfki.iui.basys.model.domain.resource.provider.ResourceItemProviderAdapterFactory"
+            uri="http://www.dfki.de/iui/basys/model/resourcetype"
+            class="de.dfki.iui.basys.model.domain.resourcetype.provider.ResourcetypeItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider

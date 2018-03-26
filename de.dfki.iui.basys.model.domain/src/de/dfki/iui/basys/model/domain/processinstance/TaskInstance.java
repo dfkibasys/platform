@@ -4,9 +4,6 @@ package de.dfki.iui.basys.model.domain.processinstance;
 
 import de.dfki.iui.basys.model.base.Entity;
 
-import de.dfki.iui.basys.model.domain.process.Task;
-import de.dfki.iui.basys.model.domain.process.TaskStateEnum;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Task Instance</b></em>'.
@@ -27,7 +24,7 @@ import de.dfki.iui.basys.model.domain.process.TaskStateEnum;
 public interface TaskInstance extends Entity {
 	/**
 	 * Returns the value of the '<em><b>State</b></em>' attribute.
-	 * The literals are from the enumeration {@link de.dfki.iui.basys.model.domain.process.TaskStateEnum}.
+	 * The literals are from the enumeration {@link de.dfki.iui.basys.model.domain.processdefinition.TaskStateEnum}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>State</em>' attribute isn't clear,
@@ -35,24 +32,24 @@ public interface TaskInstance extends Entity {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>State</em>' attribute.
-	 * @see de.dfki.iui.basys.model.domain.process.TaskStateEnum
-	 * @see #setState(TaskStateEnum)
+	 * @see de.dfki.iui.basys.model.domain.processdefinition.TaskStateEnum
+	 * @see #setState(de.dfki.iui.basys.model.domain.processdefinition.TaskStateEnum)
 	 * @see de.dfki.iui.basys.model.domain.processinstance.ProcessinstancePackage#getTaskInstance_State()
 	 * @model
 	 * @generated
 	 */
-	TaskStateEnum getState();
+	de.dfki.iui.basys.model.domain.processdefinition.TaskStateEnum getState();
 
 	/**
 	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.processinstance.TaskInstance#getState <em>State</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>State</em>' attribute.
-	 * @see de.dfki.iui.basys.model.domain.process.TaskStateEnum
+	 * @see de.dfki.iui.basys.model.domain.processdefinition.TaskStateEnum
 	 * @see #getState()
 	 * @generated
 	 */
-	void setState(TaskStateEnum value);
+	void setState(de.dfki.iui.basys.model.domain.processdefinition.TaskStateEnum value);
 
 	/**
 	 * Returns the value of the '<em><b>Task</b></em>' reference.
@@ -63,12 +60,12 @@ public interface TaskInstance extends Entity {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Task</em>' reference.
-	 * @see #setTask(Task)
+	 * @see #setTask(de.dfki.iui.basys.model.domain.processdefinition.Task)
 	 * @see de.dfki.iui.basys.model.domain.processinstance.ProcessinstancePackage#getTaskInstance_Task()
 	 * @model required="true"
 	 * @generated
 	 */
-	Task getTask();
+	de.dfki.iui.basys.model.domain.processdefinition.Task getTask();
 
 	/**
 	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.processinstance.TaskInstance#getTask <em>Task</em>}' reference.
@@ -78,6 +75,6 @@ public interface TaskInstance extends Entity {
 	 * @see #getTask()
 	 * @generated
 	 */
-	void setTask(Task value);
+	void setTask(de.dfki.iui.basys.model.domain.processdefinition.Task value);
 
 } // TaskInstance

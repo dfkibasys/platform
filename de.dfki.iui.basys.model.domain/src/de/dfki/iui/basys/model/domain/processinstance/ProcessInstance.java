@@ -4,7 +4,6 @@ package de.dfki.iui.basys.model.domain.processinstance;
 
 import de.dfki.iui.basys.model.base.Entity;
 import de.dfki.iui.basys.model.domain.order.Order;
-import de.dfki.iui.basys.model.domain.process.ProcessDefinition;
 import de.dfki.iui.basys.model.domain.productinstance.ProductInstance;
 
 /**
@@ -36,12 +35,12 @@ public interface ProcessInstance extends Entity {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Process Definition</em>' reference.
-	 * @see #setProcessDefinition(ProcessDefinition)
+	 * @see #setProcessDefinition(de.dfki.iui.basys.model.domain.processdefinition.ProcessDefinition)
 	 * @see de.dfki.iui.basys.model.domain.processinstance.ProcessinstancePackage#getProcessInstance_ProcessDefinition()
 	 * @model required="true"
 	 * @generated
 	 */
-	ProcessDefinition getProcessDefinition();
+	de.dfki.iui.basys.model.domain.processdefinition.ProcessDefinition getProcessDefinition();
 
 	/**
 	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.processinstance.ProcessInstance#getProcessDefinition <em>Process Definition</em>}' reference.
@@ -51,7 +50,7 @@ public interface ProcessInstance extends Entity {
 	 * @see #getProcessDefinition()
 	 * @generated
 	 */
-	void setProcessDefinition(ProcessDefinition value);
+	void setProcessDefinition(de.dfki.iui.basys.model.domain.processdefinition.ProcessDefinition value);
 
 	/**
 	 * Returns the value of the '<em><b>Order</b></em>' reference.

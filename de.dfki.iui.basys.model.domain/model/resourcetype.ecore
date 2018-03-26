@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="resourcetype" nsURI="http://www.dfki.de/iui/basys/model/resourcetype"
+    nsPrefix="resourcetype">
+  <eAnnotations source="http://de.dfki.iui.mmds/CoreModel"/>
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
+    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
+    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="ResourceTypeCatalogue">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resourceTypes" upperBound="-1"
+        eType="#//ResourceType" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ResourceType" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityAssertion" eType="ecore:EClass capability.ecore#//CapabilityAssertion"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityRequirement"
+        eType="ecore:EClass capability.ecore#//Capability" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DiscreteManufacturingEquipmentModule"
+      eSuperTypes="#//ResourceType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Tool" eSuperTypes="#//DiscreteManufacturingEquipmentModule"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StationaryTool" eSuperTypes="#//Tool"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MovableTool" eSuperTypes="#//Tool"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Transport" eSuperTypes="#//DiscreteManufacturingEquipmentModule"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Storage" eSuperTypes="#//DiscreteManufacturingEquipmentModule"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Fixture" eSuperTypes="#//DiscreteManufacturingEquipmentModule"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Gate" eSuperTypes="#//DiscreteManufacturingEquipmentModule"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Robot" eSuperTypes="#//DiscreteManufacturingEquipmentModule"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Carrier" eSuperTypes="#//DiscreteManufacturingEquipmentModule"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Machine" eSuperTypes="#//DiscreteManufacturingEquipmentModule"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StaticObject" eSuperTypes="#//DiscreteManufacturingEquipmentModule"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Turnable" eSuperTypes="#//HorizontalTransport"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Conveyor" eSuperTypes="#//HorizontalTransport"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LiftingTable" eSuperTypes="#//VerticalTransport"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AVG" eSuperTypes="#//HorizontalTransport"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Transposer" eSuperTypes="#//Transport"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CarrierHandlingSystem" eSuperTypes="#//Transport"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Lift" eSuperTypes="#//VerticalTransport"/>
+  <eClassifiers xsi:type="ecore:EClass" name="VerticalTransport" eSuperTypes="#//Transport"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HorizontalTransport" eSuperTypes="#//Transport"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Rollerbed" eSuperTypes="#//HorizontalTransport"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Loader" eSuperTypes="#//Storage"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Unloader" eSuperTypes="#//Storage"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BodyStore" eSuperTypes="#//Storage"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Clamp" eSuperTypes="#//Fixture"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BeltConveyor" eSuperTypes="#//Conveyor"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RollConveyor" eSuperTypes="#//Conveyor"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ChainConveyor" eSuperTypes="#//Conveyor"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PalletConveyor" eSuperTypes="#//Conveyor"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OverheadConveyor" eSuperTypes="#//Conveyor"/>
+</ecore:EPackage>

@@ -2,8 +2,6 @@
  */
 package de.dfki.iui.basys.model.domain.resourceinstance.impl;
 
-import de.dfki.iui.basys.model.domain.product.BOMEntry;
-
 import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityApplication;
 import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage;
 
@@ -39,7 +37,7 @@ public class CapabilityApplicationImpl extends BasysEObjectImpl implements Capab
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<BOMEntry> bomEntries;
+	protected EList<de.dfki.iui.basys.model.domain.productdefinition.BOMEntry> bomEntries;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -65,9 +63,9 @@ public class CapabilityApplicationImpl extends BasysEObjectImpl implements Capab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<BOMEntry> getBomEntries() {
+	public EList<de.dfki.iui.basys.model.domain.productdefinition.BOMEntry> getBomEntries() {
 		if (bomEntries == null) {
-			bomEntries = new EObjectResolvingEList<BOMEntry>(BOMEntry.class, this, ResourceinstancePackage.CAPABILITY_APPLICATION__BOM_ENTRIES);
+			bomEntries = new EObjectResolvingEList<de.dfki.iui.basys.model.domain.productdefinition.BOMEntry>(de.dfki.iui.basys.model.domain.productdefinition.BOMEntry.class, this, ResourceinstancePackage.CAPABILITY_APPLICATION__BOM_ENTRIES);
 		}
 		return bomEntries;
 	}
@@ -97,7 +95,7 @@ public class CapabilityApplicationImpl extends BasysEObjectImpl implements Capab
 		switch (featureID) {
 			case ResourceinstancePackage.CAPABILITY_APPLICATION__BOM_ENTRIES:
 				getBomEntries().clear();
-				getBomEntries().addAll((Collection<? extends BOMEntry>)newValue);
+				getBomEntries().addAll((Collection<? extends de.dfki.iui.basys.model.domain.productdefinition.BOMEntry>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

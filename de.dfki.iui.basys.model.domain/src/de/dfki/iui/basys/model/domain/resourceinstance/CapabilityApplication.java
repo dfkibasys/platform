@@ -2,8 +2,6 @@
  */
 package de.dfki.iui.basys.model.domain.resourceinstance;
 
-import de.dfki.iui.basys.model.domain.product.BOMEntry;
-
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -27,7 +25,7 @@ import org.eclipse.emf.ecore.EObject;
 public interface CapabilityApplication extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Bom Entries</b></em>' reference list.
-	 * The list contents are of type {@link de.dfki.iui.basys.model.domain.product.BOMEntry}.
+	 * The list contents are of type {@link de.dfki.iui.basys.model.domain.productdefinition.BOMEntry}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Bom Entries</em>' reference list isn't clear,
@@ -39,6 +37,6 @@ public interface CapabilityApplication extends EObject {
 	 * @model
 	 * @generated
 	 */
-	EList<BOMEntry> getBomEntries();
+	EList<de.dfki.iui.basys.model.domain.productdefinition.BOMEntry> getBomEntries();
 
 } // CapabilityApplication

@@ -61,7 +61,7 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityRequirement"
         eType="ecore:EClass capability.ecore#//Capability" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="assignedResourceType" eType="ecore:EClass resource.ecore#//ResourceType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="assignedResourceType" eType="ecore:EClass resourcetype.ecore#//ResourceType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="assignedResourceInstance"
         eType="ecore:EClass resourceinstance.ecore#//ResourceInstance" eOpposite="resourceinstance.ecore#//ResourceInstance/role"/>
   </eClassifiers>

@@ -5,8 +5,6 @@ package de.dfki.iui.basys.model.domain.topology;
 import de.dfki.iui.basys.model.base.Entity;
 
 import de.dfki.iui.basys.model.domain.capability.Capability;
-
-import de.dfki.iui.basys.model.domain.resource.ResourceType;
 import de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstance;
 import org.eclipse.emf.common.util.EList;
 
@@ -101,12 +99,12 @@ public interface EquipmentModule extends Entity {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Assigned Resource Type</em>' reference.
-	 * @see #setAssignedResourceType(ResourceType)
+	 * @see #setAssignedResourceType(de.dfki.iui.basys.model.domain.resourcetype.ResourceType)
 	 * @see de.dfki.iui.basys.model.domain.topology.TopologyPackage#getEquipmentModule_AssignedResourceType()
 	 * @model
 	 * @generated
 	 */
-	ResourceType getAssignedResourceType();
+	de.dfki.iui.basys.model.domain.resourcetype.ResourceType getAssignedResourceType();
 
 	/**
 	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.topology.EquipmentModule#getAssignedResourceType <em>Assigned Resource Type</em>}' reference.
@@ -116,7 +114,7 @@ public interface EquipmentModule extends Entity {
 	 * @see #getAssignedResourceType()
 	 * @generated
 	 */
-	void setAssignedResourceType(ResourceType value);
+	void setAssignedResourceType(de.dfki.iui.basys.model.domain.resourcetype.ResourceType value);
 
 	/**
 	 * Returns the value of the '<em><b>Assigned Resource Instance</b></em>' reference.

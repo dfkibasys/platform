@@ -5,7 +5,6 @@ package de.dfki.iui.basys.model.domain.productinstance.impl;
 import de.dfki.iui.basys.model.base.impl.EntityImpl;
 
 import de.dfki.iui.basys.model.domain.order.Order;
-import de.dfki.iui.basys.model.domain.product.ProductVariant;
 import de.dfki.iui.basys.model.domain.productinstance.ProductInstance;
 import de.dfki.iui.basys.model.domain.productinstance.ProductinstancePackage;
 
@@ -40,7 +39,7 @@ public class ProductInstanceImpl extends EntityImpl implements ProductInstance {
 	 * @generated
 	 * @ordered
 	 */
-	protected ProductVariant productVariant;
+	protected de.dfki.iui.basys.model.domain.productdefinition.ProductVariant productVariant;
 
 	/**
 	 * The cached value of the '{@link #getOrder() <em>Order</em>}' reference.
@@ -96,10 +95,10 @@ public class ProductInstanceImpl extends EntityImpl implements ProductInstance {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProductVariant getProductVariant() {
+	public de.dfki.iui.basys.model.domain.productdefinition.ProductVariant getProductVariant() {
 		if (productVariant != null && productVariant.eIsProxy()) {
 			InternalEObject oldProductVariant = (InternalEObject)productVariant;
-			productVariant = (ProductVariant)eResolveProxy(oldProductVariant);
+			productVariant = (de.dfki.iui.basys.model.domain.productdefinition.ProductVariant)eResolveProxy(oldProductVariant);
 			if (productVariant != oldProductVariant) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProductinstancePackage.PRODUCT_INSTANCE__PRODUCT_VARIANT, oldProductVariant, productVariant));
@@ -113,7 +112,7 @@ public class ProductInstanceImpl extends EntityImpl implements ProductInstance {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProductVariant basicGetProductVariant() {
+	public de.dfki.iui.basys.model.domain.productdefinition.ProductVariant basicGetProductVariant() {
 		return productVariant;
 	}
 
@@ -122,8 +121,8 @@ public class ProductInstanceImpl extends EntityImpl implements ProductInstance {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setProductVariant(ProductVariant newProductVariant) {
-		ProductVariant oldProductVariant = productVariant;
+	public void setProductVariant(de.dfki.iui.basys.model.domain.productdefinition.ProductVariant newProductVariant) {
+		de.dfki.iui.basys.model.domain.productdefinition.ProductVariant oldProductVariant = productVariant;
 		productVariant = newProductVariant;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ProductinstancePackage.PRODUCT_INSTANCE__PRODUCT_VARIANT, oldProductVariant, productVariant));
@@ -217,7 +216,7 @@ public class ProductInstanceImpl extends EntityImpl implements ProductInstance {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ProductinstancePackage.PRODUCT_INSTANCE__PRODUCT_VARIANT:
-				setProductVariant((ProductVariant)newValue);
+				setProductVariant((de.dfki.iui.basys.model.domain.productdefinition.ProductVariant)newValue);
 				return;
 			case ProductinstancePackage.PRODUCT_INSTANCE__ORDER:
 				setOrder((Order)newValue);
@@ -238,7 +237,7 @@ public class ProductInstanceImpl extends EntityImpl implements ProductInstance {
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ProductinstancePackage.PRODUCT_INSTANCE__PRODUCT_VARIANT:
-				setProductVariant((ProductVariant)null);
+				setProductVariant((de.dfki.iui.basys.model.domain.productdefinition.ProductVariant)null);
 				return;
 			case ProductinstancePackage.PRODUCT_INSTANCE__ORDER:
 				setOrder((Order)null);

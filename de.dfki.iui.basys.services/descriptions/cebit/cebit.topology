@@ -12,7 +12,7 @@
           </stations>
           <stations id="_2jROsTB4Eei1bbwBPPZWOA" name="S3">
             <equipmentModules id="_6CV9oDB4Eei1bbwBPPZWOA" name="Deckelaufleger">
-              <assignedResourceType href="cebit.resource#_yIFSQjB3Eei1bbwBPPZWOA"/>
+              <assignedResourceType href="cebit.resourcetype#_yIFSQjB3Eei1bbwBPPZWOA"/>
               <assignedResourceInstance href="cebit.resourceinstance#_SE5NIDB4Eei1bbwBPPZWOA"/>
             </equipmentModules>
             <equipmentModules id="_AzQQwDB5Eei1bbwBPPZWOA" name="Werkerführung"/>

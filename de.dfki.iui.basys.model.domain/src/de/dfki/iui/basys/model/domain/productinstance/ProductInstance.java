@@ -4,7 +4,6 @@ package de.dfki.iui.basys.model.domain.productinstance;
 
 import de.dfki.iui.basys.model.base.Entity;
 import de.dfki.iui.basys.model.domain.order.Order;
-import de.dfki.iui.basys.model.domain.product.ProductVariant;
 
 /**
  * <!-- begin-user-doc -->
@@ -38,12 +37,12 @@ public interface ProductInstance extends Entity {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Product Variant</em>' reference.
-	 * @see #setProductVariant(ProductVariant)
+	 * @see #setProductVariant(de.dfki.iui.basys.model.domain.productdefinition.ProductVariant)
 	 * @see de.dfki.iui.basys.model.domain.productinstance.ProductinstancePackage#getProductInstance_ProductVariant()
 	 * @model required="true"
 	 * @generated
 	 */
-	ProductVariant getProductVariant();
+	de.dfki.iui.basys.model.domain.productdefinition.ProductVariant getProductVariant();
 
 	/**
 	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.productinstance.ProductInstance#getProductVariant <em>Product Variant</em>}' reference.
@@ -53,7 +52,7 @@ public interface ProductInstance extends Entity {
 	 * @see #getProductVariant()
 	 * @generated
 	 */
-	void setProductVariant(ProductVariant value);
+	void setProductVariant(de.dfki.iui.basys.model.domain.productdefinition.ProductVariant value);
 
 	/**
 	 * Returns the value of the '<em><b>Order</b></em>' reference.

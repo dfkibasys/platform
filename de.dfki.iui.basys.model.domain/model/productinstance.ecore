@@ -13,7 +13,7 @@
       <details key="documentation" value="Eine auftragsbezogene, sich in der Fertigung befindliche oder gefertigte Instanz einer bestimmten Produktvariante."/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="productVariant" lowerBound="1"
-        eType="ecore:EClass product.ecore#//ProductVariant"/>
+        eType="ecore:EClass productdefinition.ecore#//ProductVariant"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="order" lowerBound="1" eType="ecore:EClass order.ecore#//Order"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="serialNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>

@@ -17,27 +17,20 @@ import de.dfki.iui.basys.model.domain.material.impl.MaterialPackageImpl;
 import de.dfki.iui.basys.model.domain.order.OrderPackage;
 
 import de.dfki.iui.basys.model.domain.order.impl.OrderPackageImpl;
-
-import de.dfki.iui.basys.model.domain.process.ProcessPackage;
-
-import de.dfki.iui.basys.model.domain.process.impl.ProcessPackageImpl;
-
+import de.dfki.iui.basys.model.domain.processdefinition.ProcessdefinitionPackage;
+import de.dfki.iui.basys.model.domain.processdefinition.impl.ProcessdefinitionPackageImpl;
 import de.dfki.iui.basys.model.domain.processinstance.ProcessinstancePackage;
 
 import de.dfki.iui.basys.model.domain.processinstance.impl.ProcessinstancePackageImpl;
-
-import de.dfki.iui.basys.model.domain.product.ProductPackage;
-
-import de.dfki.iui.basys.model.domain.product.impl.ProductPackageImpl;
-
+import de.dfki.iui.basys.model.domain.productdefinition.ProductdefinitionPackage;
+import de.dfki.iui.basys.model.domain.productdefinition.impl.ProductdefinitionPackageImpl;
 import de.dfki.iui.basys.model.domain.productinstance.ProductinstancePackage;
 
 import de.dfki.iui.basys.model.domain.productinstance.impl.ProductinstancePackageImpl;
-
-import de.dfki.iui.basys.model.domain.resource.ResourcePackage;
-import de.dfki.iui.basys.model.domain.resource.impl.ResourcePackageImpl;
 import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage;
 import de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceinstancePackageImpl;
+import de.dfki.iui.basys.model.domain.resourcetype.ResourcetypePackage;
+import de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl;
 import de.dfki.iui.basys.model.domain.roletopology.RoletopologyPackage;
 import de.dfki.iui.basys.model.domain.roletopology.impl.RoletopologyPackageImpl;
 import de.dfki.iui.basys.model.domain.staff.StaffPackage;
@@ -175,55 +168,55 @@ public class WorkforcePackageImpl extends EPackageImpl implements WorkforcePacka
 
 		// Obtain or create and register interdependencies
 		OrderPackageImpl theOrderPackage = (OrderPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(OrderPackage.eNS_URI) instanceof OrderPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(OrderPackage.eNS_URI) : OrderPackage.eINSTANCE);
-		ProductPackageImpl theProductPackage = (ProductPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ProductPackage.eNS_URI) instanceof ProductPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ProductPackage.eNS_URI) : ProductPackage.eINSTANCE);
+		ProductdefinitionPackageImpl theProductdefinitionPackage = (ProductdefinitionPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ProductdefinitionPackage.eNS_URI) instanceof ProductdefinitionPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ProductdefinitionPackage.eNS_URI) : ProductdefinitionPackage.eINSTANCE);
 		StaffPackageImpl theStaffPackage = (StaffPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(StaffPackage.eNS_URI) instanceof StaffPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(StaffPackage.eNS_URI) : StaffPackage.eINSTANCE);
 		TopologyPackageImpl theTopologyPackage = (TopologyPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(TopologyPackage.eNS_URI) instanceof TopologyPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(TopologyPackage.eNS_URI) : TopologyPackage.eINSTANCE);
 		WorkerguidancePackageImpl theWorkerguidancePackage = (WorkerguidancePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkerguidancePackage.eNS_URI) instanceof WorkerguidancePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkerguidancePackage.eNS_URI) : WorkerguidancePackage.eINSTANCE);
 		WorkplanPackageImpl theWorkplanPackage = (WorkplanPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkplanPackage.eNS_URI) instanceof WorkplanPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkplanPackage.eNS_URI) : WorkplanPackage.eINSTANCE);
 		LinebalancingPackageImpl theLinebalancingPackage = (LinebalancingPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(LinebalancingPackage.eNS_URI) instanceof LinebalancingPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(LinebalancingPackage.eNS_URI) : LinebalancingPackage.eINSTANCE);
 		CapabilityPackageImpl theCapabilityPackage = (CapabilityPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CapabilityPackage.eNS_URI) instanceof CapabilityPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CapabilityPackage.eNS_URI) : CapabilityPackage.eINSTANCE);
-		ProcessPackageImpl theProcessPackage = (ProcessPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ProcessPackage.eNS_URI) instanceof ProcessPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ProcessPackage.eNS_URI) : ProcessPackage.eINSTANCE);
+		ProcessdefinitionPackageImpl theProcessdefinitionPackage = (ProcessdefinitionPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ProcessdefinitionPackage.eNS_URI) instanceof ProcessdefinitionPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ProcessdefinitionPackage.eNS_URI) : ProcessdefinitionPackage.eINSTANCE);
 		ProcessinstancePackageImpl theProcessinstancePackage = (ProcessinstancePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ProcessinstancePackage.eNS_URI) instanceof ProcessinstancePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ProcessinstancePackage.eNS_URI) : ProcessinstancePackage.eINSTANCE);
 		ProductinstancePackageImpl theProductinstancePackage = (ProductinstancePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ProductinstancePackage.eNS_URI) instanceof ProductinstancePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ProductinstancePackage.eNS_URI) : ProductinstancePackage.eINSTANCE);
 		MaterialPackageImpl theMaterialPackage = (MaterialPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(MaterialPackage.eNS_URI) instanceof MaterialPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(MaterialPackage.eNS_URI) : MaterialPackage.eINSTANCE);
 		RoletopologyPackageImpl theRoletopologyPackage = (RoletopologyPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(RoletopologyPackage.eNS_URI) instanceof RoletopologyPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(RoletopologyPackage.eNS_URI) : RoletopologyPackage.eINSTANCE);
-		ResourcePackageImpl theResourcePackage = (ResourcePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ResourcePackage.eNS_URI) instanceof ResourcePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ResourcePackage.eNS_URI) : ResourcePackage.eINSTANCE);
+		ResourcetypePackageImpl theResourcetypePackage = (ResourcetypePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ResourcetypePackage.eNS_URI) instanceof ResourcetypePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ResourcetypePackage.eNS_URI) : ResourcetypePackage.eINSTANCE);
 		ResourceinstancePackageImpl theResourceinstancePackage = (ResourceinstancePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ResourceinstancePackage.eNS_URI) instanceof ResourceinstancePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ResourceinstancePackage.eNS_URI) : ResourceinstancePackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theWorkforcePackage.createPackageContents();
 		theOrderPackage.createPackageContents();
-		theProductPackage.createPackageContents();
+		theProductdefinitionPackage.createPackageContents();
 		theStaffPackage.createPackageContents();
 		theTopologyPackage.createPackageContents();
 		theWorkerguidancePackage.createPackageContents();
 		theWorkplanPackage.createPackageContents();
 		theLinebalancingPackage.createPackageContents();
 		theCapabilityPackage.createPackageContents();
-		theProcessPackage.createPackageContents();
+		theProcessdefinitionPackage.createPackageContents();
 		theProcessinstancePackage.createPackageContents();
 		theProductinstancePackage.createPackageContents();
 		theMaterialPackage.createPackageContents();
 		theRoletopologyPackage.createPackageContents();
-		theResourcePackage.createPackageContents();
+		theResourcetypePackage.createPackageContents();
 		theResourceinstancePackage.createPackageContents();
 
 		// Initialize created meta-data
 		theWorkforcePackage.initializePackageContents();
 		theOrderPackage.initializePackageContents();
-		theProductPackage.initializePackageContents();
+		theProductdefinitionPackage.initializePackageContents();
 		theStaffPackage.initializePackageContents();
 		theTopologyPackage.initializePackageContents();
 		theWorkerguidancePackage.initializePackageContents();
 		theWorkplanPackage.initializePackageContents();
 		theLinebalancingPackage.initializePackageContents();
 		theCapabilityPackage.initializePackageContents();
-		theProcessPackage.initializePackageContents();
+		theProcessdefinitionPackage.initializePackageContents();
 		theProcessinstancePackage.initializePackageContents();
 		theProductinstancePackage.initializePackageContents();
 		theMaterialPackage.initializePackageContents();
 		theRoletopologyPackage.initializePackageContents();
-		theResourcePackage.initializePackageContents();
+		theResourcetypePackage.initializePackageContents();
 		theResourceinstancePackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed

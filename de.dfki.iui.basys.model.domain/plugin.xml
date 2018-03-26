@@ -24,16 +24,16 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated domain -->
       <package
-            uri="http://www.dfki.de/iui/basys/model/product"
-            class="de.dfki.iui.basys.model.domain.product.ProductPackage"
+            uri="http://www.dfki.de/iui/basys/model/productdefinition"
+            class="de.dfki.iui.basys.model.domain.productdefinition.ProductdefinitionPackage"
             genModel="model/domain.genmodel"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.extension_parser">
       <!-- @generated domain -->
       <parser
-            type="product"
-            class="de.dfki.iui.basys.model.domain.product.util.ProductResourceFactoryImpl"/>
+            type="productdefinition"
+            class="de.dfki.iui.basys.model.domain.productdefinition.util.ProductdefinitionResourceFactoryImpl"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
@@ -129,16 +129,16 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated domain -->
       <package
-            uri="http://www.dfki.de/iui/basys/model/process"
-            class="de.dfki.iui.basys.model.domain.process.ProcessPackage"
+            uri="http://www.dfki.de/iui/basys/model/processdefinition"
+            class="de.dfki.iui.basys.model.domain.processdefinition.ProcessdefinitionPackage"
             genModel="model/domain.genmodel"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.extension_parser">
       <!-- @generated domain -->
       <parser
-            type="process"
-            class="de.dfki.iui.basys.model.domain.process.util.ProcessResourceFactoryImpl"/>
+            type="processdefinition"
+            class="de.dfki.iui.basys.model.domain.processdefinition.util.ProcessdefinitionResourceFactoryImpl"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
@@ -212,16 +212,16 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated domain -->
       <package
-            uri="http://www.dfki.de/iui/basys/model/resource"
-            class="de.dfki.iui.basys.model.domain.resource.ResourcePackage"
+            uri="http://www.dfki.de/iui/basys/model/resourcetype"
+            class="de.dfki.iui.basys.model.domain.resourcetype.ResourcetypePackage"
             genModel="model/domain.genmodel"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.extension_parser">
       <!-- @generated domain -->
       <parser
-            type="resource"
-            class="de.dfki.iui.basys.model.domain.resource.util.ResourceResourceFactoryImpl"/>
+            type="resourcetype"
+            class="de.dfki.iui.basys.model.domain.resourcetype.util.ResourcetypeResourceFactoryImpl"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">

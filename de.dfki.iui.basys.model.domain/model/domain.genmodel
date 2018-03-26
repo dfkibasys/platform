@@ -6,20 +6,20 @@
     providerRootExtendsClass="" usedGenPackages="../../de.dfki.iui.basys.model.base/model/base.genmodel#//base ../../de.dfki.iui.basys.model.base/model/base.genmodel#//pattern"
     interfaceNamePattern="" classNamePattern="" operationReflection="true" importOrganizing="true">
   <foreignModel>order.ecore</foreignModel>
-  <foreignModel>product.ecore</foreignModel>
+  <foreignModel>productdefinition.ecore</foreignModel>
   <foreignModel>staff.ecore</foreignModel>
   <foreignModel>topology.ecore</foreignModel>
   <foreignModel>workerguidance.ecore</foreignModel>
   <foreignModel>workplan.ecore</foreignModel>
   <foreignModel>linebalancing.ecore</foreignModel>
   <foreignModel>capability.ecore</foreignModel>
-  <foreignModel>process.ecore</foreignModel>
+  <foreignModel>processdefinition.ecore</foreignModel>
   <foreignModel>processinstance.ecore</foreignModel>
   <foreignModel>productinstance.ecore</foreignModel>
   <foreignModel>workforce.ecore</foreignModel>
   <foreignModel>material.ecore</foreignModel>
   <foreignModel>roletopology.ecore</foreignModel>
-  <foreignModel>resource.ecore</foreignModel>
+  <foreignModel>resourcetype.ecore</foreignModel>
   <foreignModel>resourceinstance.ecore</foreignModel>
   <genPackages prefix="Order" basePackage="de.dfki.iui.basys.model.domain" resource="XMI"
       disposableProviderFactory="true" ecorePackage="order.ecore#/">
@@ -50,33 +50,33 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute order.ecore#//OrderStatusChangeEvent/timestamp"/>
     </genClasses>
   </genPackages>
-  <genPackages prefix="Product" basePackage="de.dfki.iui.basys.model.domain" resource="XMI"
-      disposableProviderFactory="true" ecorePackage="product.ecore#/">
-    <genClasses ecoreClass="product.ecore#//ProductCatalogue">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product.ecore#//ProductCatalogue/productGroups"/>
+  <genPackages prefix="Productdefinition" basePackage="de.dfki.iui.basys.model.domain"
+      resource="XMI" disposableProviderFactory="true" ecorePackage="productdefinition.ecore#/">
+    <genClasses ecoreClass="productdefinition.ecore#//ProductCatalogue">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference productdefinition.ecore#//ProductCatalogue/productGroups"/>
     </genClasses>
-    <genClasses ecoreClass="product.ecore#//ProductGroup">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product.ecore#//ProductGroup/productVariants"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product.ecore#//ProductGroup/assemblyGroups"/>
+    <genClasses ecoreClass="productdefinition.ecore#//ProductGroup">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference productdefinition.ecore#//ProductGroup/productVariants"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference productdefinition.ecore#//ProductGroup/assemblyGroups"/>
     </genClasses>
-    <genClasses ecoreClass="product.ecore#//ProductVariant">
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference product.ecore#//ProductVariant/productGroup"/>
+    <genClasses ecoreClass="productdefinition.ecore#//ProductVariant">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference productdefinition.ecore#//ProductVariant/productGroup"/>
     </genClasses>
-    <genClasses ecoreClass="product.ecore#//BillOfMaterial">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product.ecore#//BillOfMaterial/entries"/>
+    <genClasses ecoreClass="productdefinition.ecore#//BillOfMaterial">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference productdefinition.ecore#//BillOfMaterial/entries"/>
     </genClasses>
-    <genClasses ecoreClass="product.ecore#//BOMEntry">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product.ecore#//BOMEntry/count"/>
+    <genClasses ecoreClass="productdefinition.ecore#//BOMEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute productdefinition.ecore#//BOMEntry/count"/>
     </genClasses>
-    <genClasses ecoreClass="product.ecore#//AssemblyGroup"/>
-    <genClasses ecoreClass="product.ecore#//AssemblyGroupEntry">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product.ecore#//AssemblyGroupEntry/assemblyGroup"/>
+    <genClasses ecoreClass="productdefinition.ecore#//AssemblyGroup"/>
+    <genClasses ecoreClass="productdefinition.ecore#//AssemblyGroupEntry">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference productdefinition.ecore#//AssemblyGroupEntry/assemblyGroup"/>
     </genClasses>
-    <genClasses ecoreClass="product.ecore#//ComponentEntry">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product.ecore#//ComponentEntry/material"/>
+    <genClasses ecoreClass="productdefinition.ecore#//ComponentEntry">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference productdefinition.ecore#//ComponentEntry/material"/>
     </genClasses>
-    <genClasses ecoreClass="product.ecore#//ManufacturedComponent">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product.ecore#//ManufacturedComponent/bom"/>
+    <genClasses ecoreClass="productdefinition.ecore#//ManufacturedComponent">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference productdefinition.ecore#//ManufacturedComponent/bom"/>
     </genClasses>
   </genPackages>
   <genPackages prefix="Staff" basePackage="de.dfki.iui.basys.model.domain" resource="XMI"
@@ -131,7 +131,9 @@
     <genClasses ecoreClass="topology.ecore#//Area">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference topology.ecore#//Area/workCenters"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="topology.ecore#//WorkCenter"/>
+    <genClasses image="false" ecoreClass="topology.ecore#//WorkCenter">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference topology.ecore#//WorkCenter/equipmentModules"/>
+    </genClasses>
     <genClasses ecoreClass="topology.ecore#//ProcessCell">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference topology.ecore#//ProcessCell/processUnits"/>
     </genClasses>
@@ -286,110 +288,110 @@
     <genClasses ecoreClass="capability.ecore#//InformationTransferCapability"/>
     <genClasses ecoreClass="capability.ecore#//ProvideInformation"/>
   </genPackages>
-  <genPackages prefix="Process" basePackage="de.dfki.iui.basys.model.domain" resource="XMI"
-      disposableProviderFactory="true" ecorePackage="process.ecore#/">
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="process.ecore#//GatewayTypeEnum">
-      <genEnumLiterals ecoreEnumLiteral="process.ecore#//GatewayTypeEnum/OR"/>
-      <genEnumLiterals ecoreEnumLiteral="process.ecore#//GatewayTypeEnum/AND"/>
-      <genEnumLiterals ecoreEnumLiteral="process.ecore#//GatewayTypeEnum/XOR"/>
+  <genPackages prefix="Processdefinition" basePackage="de.dfki.iui.basys.model.domain"
+      resource="XMI" disposableProviderFactory="true" ecorePackage="processdefinition.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="processdefinition.ecore#//GatewayTypeEnum">
+      <genEnumLiterals ecoreEnumLiteral="processdefinition.ecore#//GatewayTypeEnum/OR"/>
+      <genEnumLiterals ecoreEnumLiteral="processdefinition.ecore#//GatewayTypeEnum/AND"/>
+      <genEnumLiterals ecoreEnumLiteral="processdefinition.ecore#//GatewayTypeEnum/XOR"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="process.ecore#//TaskStateEnum">
-      <genEnumLiterals ecoreEnumLiteral="process.ecore#//TaskStateEnum/INACTIVE"/>
-      <genEnumLiterals ecoreEnumLiteral="process.ecore#//TaskStateEnum/ACTIVE"/>
-      <genEnumLiterals ecoreEnumLiteral="process.ecore#//TaskStateEnum/EXECUTING"/>
-      <genEnumLiterals ecoreEnumLiteral="process.ecore#//TaskStateEnum/PAUSED"/>
-      <genEnumLiterals ecoreEnumLiteral="process.ecore#//TaskStateEnum/FINISHED"/>
-      <genEnumLiterals ecoreEnumLiteral="process.ecore#//TaskStateEnum/SUCCESSFUL"/>
-      <genEnumLiterals ecoreEnumLiteral="process.ecore#//TaskStateEnum/FAILED"/>
-      <genEnumLiterals ecoreEnumLiteral="process.ecore#//TaskStateEnum/CANCELLED"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="processdefinition.ecore#//TaskStateEnum">
+      <genEnumLiterals ecoreEnumLiteral="processdefinition.ecore#//TaskStateEnum/INACTIVE"/>
+      <genEnumLiterals ecoreEnumLiteral="processdefinition.ecore#//TaskStateEnum/ACTIVE"/>
+      <genEnumLiterals ecoreEnumLiteral="processdefinition.ecore#//TaskStateEnum/EXECUTING"/>
+      <genEnumLiterals ecoreEnumLiteral="processdefinition.ecore#//TaskStateEnum/PAUSED"/>
+      <genEnumLiterals ecoreEnumLiteral="processdefinition.ecore#//TaskStateEnum/FINISHED"/>
+      <genEnumLiterals ecoreEnumLiteral="processdefinition.ecore#//TaskStateEnum/SUCCESSFUL"/>
+      <genEnumLiterals ecoreEnumLiteral="processdefinition.ecore#//TaskStateEnum/FAILED"/>
+      <genEnumLiterals ecoreEnumLiteral="processdefinition.ecore#//TaskStateEnum/CANCELLED"/>
     </genEnums>
-    <genClasses ecoreClass="process.ecore#//ProcessDefinition">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference process.ecore#//ProcessDefinition/nodes"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference process.ecore#//ProcessDefinition/edges"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference process.ecore#//ProcessDefinition/productVariant"/>
+    <genClasses ecoreClass="processdefinition.ecore#//ProcessDefinition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference processdefinition.ecore#//ProcessDefinition/nodes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference processdefinition.ecore#//ProcessDefinition/edges"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference processdefinition.ecore#//ProcessDefinition/productVariant"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="process.ecore#//Node">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference process.ecore#//Node/outgoing"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference process.ecore#//Node/incoming"/>
+    <genClasses image="false" ecoreClass="processdefinition.ecore#//Node">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference processdefinition.ecore#//Node/outgoing"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference processdefinition.ecore#//Node/incoming"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="process.ecore#//Edge">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference process.ecore#//Edge/sourceRef"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference process.ecore#//Edge/targetRef"/>
+    <genClasses image="false" ecoreClass="processdefinition.ecore#//Edge">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference processdefinition.ecore#//Edge/sourceRef"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference processdefinition.ecore#//Edge/targetRef"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="process.ecore#//FlowNode"/>
-    <genClasses ecoreClass="process.ecore#//TaskFlow">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute process.ecore#//TaskFlow/sourceState"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute process.ecore#//TaskFlow/targetState"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute process.ecore#//TaskFlow/condition"/>
+    <genClasses image="false" ecoreClass="processdefinition.ecore#//FlowNode"/>
+    <genClasses ecoreClass="processdefinition.ecore#//TaskFlow">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute processdefinition.ecore#//TaskFlow/sourceState"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute processdefinition.ecore#//TaskFlow/targetState"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute processdefinition.ecore#//TaskFlow/condition"/>
     </genClasses>
-    <genClasses ecoreClass="process.ecore#//TaskDependency">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute process.ecore#//TaskDependency/sourceState"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute process.ecore#//TaskDependency/targetState"/>
+    <genClasses ecoreClass="processdefinition.ecore#//TaskDependency">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute processdefinition.ecore#//TaskDependency/sourceState"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute processdefinition.ecore#//TaskDependency/targetState"/>
     </genClasses>
-    <genClasses ecoreClass="process.ecore#//Gateway">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute process.ecore#//Gateway/type"/>
+    <genClasses ecoreClass="processdefinition.ecore#//Gateway">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute processdefinition.ecore#//Gateway/type"/>
     </genClasses>
-    <genClasses ecoreClass="process.ecore#//Task">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute process.ecore#//Task/minIterations"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute process.ecore#//Task/maxIterations"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute process.ecore#//Task/uri"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference process.ecore#//Task/inputData"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference process.ecore#//Task/outputData"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference process.ecore#//Task/capabilityRequirement"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference process.ecore#//Task/usedmaterial"/>
+    <genClasses ecoreClass="processdefinition.ecore#//Task">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute processdefinition.ecore#//Task/minIterations"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute processdefinition.ecore#//Task/maxIterations"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute processdefinition.ecore#//Task/uri"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference processdefinition.ecore#//Task/inputData"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference processdefinition.ecore#//Task/outputData"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference processdefinition.ecore#//Task/capabilityRequirement"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference processdefinition.ecore#//Task/usedmaterial"/>
     </genClasses>
-    <genClasses ecoreClass="process.ecore#//DataFlow">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference process.ecore#//DataFlow/transformation"/>
+    <genClasses ecoreClass="processdefinition.ecore#//DataFlow">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference processdefinition.ecore#//DataFlow/transformation"/>
     </genClasses>
-    <genClasses ecoreClass="process.ecore#//Data">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute process.ecore#//Data/availableOn"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference process.ecore#//Data/taskRef"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference process.ecore#//Data/pattern"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute process.ecore#//Data/instance"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference process.ecore#//Data/mappings"/>
+    <genClasses ecoreClass="processdefinition.ecore#//Data">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute processdefinition.ecore#//Data/availableOn"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference processdefinition.ecore#//Data/taskRef"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference processdefinition.ecore#//Data/pattern"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute processdefinition.ecore#//Data/instance"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference processdefinition.ecore#//Data/mappings"/>
     </genClasses>
-    <genClasses ecoreClass="process.ecore#//DataMapping">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute process.ecore#//DataMapping/sourceName"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute process.ecore#//DataMapping/sourcePath"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute process.ecore#//DataMapping/targetName"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute process.ecore#//DataMapping/targetPath"/>
+    <genClasses ecoreClass="processdefinition.ecore#//DataMapping">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute processdefinition.ecore#//DataMapping/sourceName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute processdefinition.ecore#//DataMapping/sourcePath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute processdefinition.ecore#//DataMapping/targetName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute processdefinition.ecore#//DataMapping/targetPath"/>
     </genClasses>
-    <genClasses ecoreClass="process.ecore#//DataTransformation">
-      <genOperations ecoreOperation="process.ecore#//DataTransformation/apply">
-        <genParameters ecoreParameter="process.ecore#//DataTransformation/apply/instance"/>
+    <genClasses ecoreClass="processdefinition.ecore#//DataTransformation">
+      <genOperations ecoreOperation="processdefinition.ecore#//DataTransformation/apply">
+        <genParameters ecoreParameter="processdefinition.ecore#//DataTransformation/apply/instance"/>
       </genOperations>
     </genClasses>
-    <genClasses image="false" ecoreClass="process.ecore#//TaskState">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute process.ecore#//TaskState/timestamp"/>
-      <genOperations ecoreOperation="process.ecore#//TaskState/toEnum"/>
+    <genClasses image="false" ecoreClass="processdefinition.ecore#//TaskState">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute processdefinition.ecore#//TaskState/timestamp"/>
+      <genOperations ecoreOperation="processdefinition.ecore#//TaskState/toEnum"/>
     </genClasses>
-    <genClasses ecoreClass="process.ecore#//TaskInactive">
-      <genOperations ecoreOperation="process.ecore#//TaskInactive/toEnum"/>
+    <genClasses ecoreClass="processdefinition.ecore#//TaskInactive">
+      <genOperations ecoreOperation="processdefinition.ecore#//TaskInactive/toEnum"/>
     </genClasses>
-    <genClasses ecoreClass="process.ecore#//TaskActive">
-      <genOperations ecoreOperation="process.ecore#//TaskActive/toEnum"/>
+    <genClasses ecoreClass="processdefinition.ecore#//TaskActive">
+      <genOperations ecoreOperation="processdefinition.ecore#//TaskActive/toEnum"/>
     </genClasses>
-    <genClasses ecoreClass="process.ecore#//TaskPaused">
-      <genOperations ecoreOperation="process.ecore#//TaskPaused/toEnum"/>
+    <genClasses ecoreClass="processdefinition.ecore#//TaskPaused">
+      <genOperations ecoreOperation="processdefinition.ecore#//TaskPaused/toEnum"/>
     </genClasses>
-    <genClasses ecoreClass="process.ecore#//TaskExecuting">
-      <genOperations ecoreOperation="process.ecore#//TaskExecuting/toEnum"/>
+    <genClasses ecoreClass="processdefinition.ecore#//TaskExecuting">
+      <genOperations ecoreOperation="processdefinition.ecore#//TaskExecuting/toEnum"/>
     </genClasses>
-    <genClasses ecoreClass="process.ecore#//TaskFinished">
-      <genOperations ecoreOperation="process.ecore#//TaskFinished/toEnum"/>
+    <genClasses ecoreClass="processdefinition.ecore#//TaskFinished">
+      <genOperations ecoreOperation="processdefinition.ecore#//TaskFinished/toEnum"/>
     </genClasses>
-    <genClasses ecoreClass="process.ecore#//TaskSuccessful">
-      <genOperations ecoreOperation="process.ecore#//TaskSuccessful/toEnum"/>
+    <genClasses ecoreClass="processdefinition.ecore#//TaskSuccessful">
+      <genOperations ecoreOperation="processdefinition.ecore#//TaskSuccessful/toEnum"/>
     </genClasses>
-    <genClasses ecoreClass="process.ecore#//TaskFailed">
-      <genOperations ecoreOperation="process.ecore#//TaskFailed/toEnum"/>
+    <genClasses ecoreClass="processdefinition.ecore#//TaskFailed">
+      <genOperations ecoreOperation="processdefinition.ecore#//TaskFailed/toEnum"/>
     </genClasses>
-    <genClasses ecoreClass="process.ecore#//TaskCancelled">
-      <genOperations ecoreOperation="process.ecore#//TaskCancelled/toEnum"/>
+    <genClasses ecoreClass="processdefinition.ecore#//TaskCancelled">
+      <genOperations ecoreOperation="processdefinition.ecore#//TaskCancelled/toEnum"/>
     </genClasses>
-    <genClasses ecoreClass="process.ecore#//UsedMaterial">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute process.ecore#//UsedMaterial/count"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference process.ecore#//UsedMaterial/bomEntry"/>
+    <genClasses ecoreClass="processdefinition.ecore#//UsedMaterial">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute processdefinition.ecore#//UsedMaterial/count"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference processdefinition.ecore#//UsedMaterial/bomEntry"/>
     </genClasses>
   </genPackages>
   <genPackages prefix="Processinstance" basePackage="de.dfki.iui.basys.model.domain"
@@ -529,46 +531,46 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute roletopology.ecore#//Requirement/unit"/>
     </genClasses>
   </genPackages>
-  <genPackages prefix="Resource" basePackage="de.dfki.iui.basys.model.domain" resource="XMI"
-      ecorePackage="resource.ecore#/">
-    <genClasses ecoreClass="resource.ecore#//ResourceTypeCatalogue">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference resource.ecore#//ResourceTypeCatalogue/resourceTypes"/>
+  <genPackages prefix="Resourcetype" basePackage="de.dfki.iui.basys.model.domain"
+      resource="XMI" ecorePackage="resourcetype.ecore#/">
+    <genClasses ecoreClass="resourcetype.ecore#//ResourceTypeCatalogue">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference resourcetype.ecore#//ResourceTypeCatalogue/resourceTypes"/>
     </genClasses>
-    <genClasses ecoreClass="resource.ecore#//ResourceType">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference resource.ecore#//ResourceType/capabilityAssertion"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference resource.ecore#//ResourceType/capabilityRequirement"/>
+    <genClasses ecoreClass="resourcetype.ecore#//ResourceType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference resourcetype.ecore#//ResourceType/capabilityAssertion"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference resourcetype.ecore#//ResourceType/capabilityRequirement"/>
     </genClasses>
-    <genClasses ecoreClass="resource.ecore#//DiscreteManufacturingEquipmentModule"/>
-    <genClasses ecoreClass="resource.ecore#//Tool"/>
-    <genClasses ecoreClass="resource.ecore#//StationaryTool"/>
-    <genClasses ecoreClass="resource.ecore#//MovableTool"/>
-    <genClasses ecoreClass="resource.ecore#//Transport"/>
-    <genClasses ecoreClass="resource.ecore#//Storage"/>
-    <genClasses ecoreClass="resource.ecore#//Fixture"/>
-    <genClasses ecoreClass="resource.ecore#//Gate"/>
-    <genClasses ecoreClass="resource.ecore#//Robot"/>
-    <genClasses ecoreClass="resource.ecore#//Carrier"/>
-    <genClasses ecoreClass="resource.ecore#//Machine"/>
-    <genClasses ecoreClass="resource.ecore#//StaticObject"/>
-    <genClasses ecoreClass="resource.ecore#//Turnable"/>
-    <genClasses ecoreClass="resource.ecore#//Conveyor"/>
-    <genClasses ecoreClass="resource.ecore#//LiftingTable"/>
-    <genClasses ecoreClass="resource.ecore#//AVG"/>
-    <genClasses ecoreClass="resource.ecore#//Transposer"/>
-    <genClasses ecoreClass="resource.ecore#//CarrierHandlingSystem"/>
-    <genClasses ecoreClass="resource.ecore#//Lift"/>
-    <genClasses ecoreClass="resource.ecore#//VerticalTransport"/>
-    <genClasses ecoreClass="resource.ecore#//HorizontalTransport"/>
-    <genClasses ecoreClass="resource.ecore#//Rollerbed"/>
-    <genClasses ecoreClass="resource.ecore#//Loader"/>
-    <genClasses ecoreClass="resource.ecore#//Unloader"/>
-    <genClasses ecoreClass="resource.ecore#//BodyStore"/>
-    <genClasses ecoreClass="resource.ecore#//Clamp"/>
-    <genClasses ecoreClass="resource.ecore#//BeltConveyor"/>
-    <genClasses ecoreClass="resource.ecore#//RollConveyor"/>
-    <genClasses ecoreClass="resource.ecore#//ChainConveyor"/>
-    <genClasses ecoreClass="resource.ecore#//PalletConveyor"/>
-    <genClasses ecoreClass="resource.ecore#//OverheadConveyor"/>
+    <genClasses ecoreClass="resourcetype.ecore#//DiscreteManufacturingEquipmentModule"/>
+    <genClasses ecoreClass="resourcetype.ecore#//Tool"/>
+    <genClasses ecoreClass="resourcetype.ecore#//StationaryTool"/>
+    <genClasses ecoreClass="resourcetype.ecore#//MovableTool"/>
+    <genClasses ecoreClass="resourcetype.ecore#//Transport"/>
+    <genClasses ecoreClass="resourcetype.ecore#//Storage"/>
+    <genClasses ecoreClass="resourcetype.ecore#//Fixture"/>
+    <genClasses ecoreClass="resourcetype.ecore#//Gate"/>
+    <genClasses ecoreClass="resourcetype.ecore#//Robot"/>
+    <genClasses ecoreClass="resourcetype.ecore#//Carrier"/>
+    <genClasses ecoreClass="resourcetype.ecore#//Machine"/>
+    <genClasses ecoreClass="resourcetype.ecore#//StaticObject"/>
+    <genClasses ecoreClass="resourcetype.ecore#//Turnable"/>
+    <genClasses ecoreClass="resourcetype.ecore#//Conveyor"/>
+    <genClasses ecoreClass="resourcetype.ecore#//LiftingTable"/>
+    <genClasses ecoreClass="resourcetype.ecore#//AVG"/>
+    <genClasses ecoreClass="resourcetype.ecore#//Transposer"/>
+    <genClasses ecoreClass="resourcetype.ecore#//CarrierHandlingSystem"/>
+    <genClasses ecoreClass="resourcetype.ecore#//Lift"/>
+    <genClasses ecoreClass="resourcetype.ecore#//VerticalTransport"/>
+    <genClasses ecoreClass="resourcetype.ecore#//HorizontalTransport"/>
+    <genClasses ecoreClass="resourcetype.ecore#//Rollerbed"/>
+    <genClasses ecoreClass="resourcetype.ecore#//Loader"/>
+    <genClasses ecoreClass="resourcetype.ecore#//Unloader"/>
+    <genClasses ecoreClass="resourcetype.ecore#//BodyStore"/>
+    <genClasses ecoreClass="resourcetype.ecore#//Clamp"/>
+    <genClasses ecoreClass="resourcetype.ecore#//BeltConveyor"/>
+    <genClasses ecoreClass="resourcetype.ecore#//RollConveyor"/>
+    <genClasses ecoreClass="resourcetype.ecore#//ChainConveyor"/>
+    <genClasses ecoreClass="resourcetype.ecore#//PalletConveyor"/>
+    <genClasses ecoreClass="resourcetype.ecore#//OverheadConveyor"/>
   </genPackages>
   <genPackages prefix="Resourceinstance" basePackage="de.dfki.iui.basys.model.domain"
       resource="XMI" ecorePackage="resourceinstance.ecore#/">
@@ -579,6 +581,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute resourceinstance.ecore#//ResourceInstance/serialNumber"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference resourceinstance.ecore#//ResourceInstance/resourceType"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference resourceinstance.ecore#//ResourceInstance/capabilityApplications"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference resourceinstance.ecore#//ResourceInstance/role"/>
     </genClasses>
     <genClasses ecoreClass="resourceinstance.ecore#//CapabilityApplication">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference resourceinstance.ecore#//CapabilityApplication/bomEntries"/>

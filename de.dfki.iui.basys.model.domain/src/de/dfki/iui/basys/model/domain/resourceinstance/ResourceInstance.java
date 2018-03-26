@@ -3,9 +3,6 @@
 package de.dfki.iui.basys.model.domain.resourceinstance;
 
 import de.dfki.iui.basys.model.base.Entity;
-
-import de.dfki.iui.basys.model.domain.resource.ResourceType;
-
 import de.dfki.iui.basys.model.domain.topology.EquipmentModule;
 import org.eclipse.emf.common.util.EList;
 
@@ -68,12 +65,12 @@ public interface ResourceInstance extends Entity {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Resource Type</em>' reference.
-	 * @see #setResourceType(ResourceType)
+	 * @see #setResourceType(de.dfki.iui.basys.model.domain.resourcetype.ResourceType)
 	 * @see de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage#getResourceInstance_ResourceType()
 	 * @model required="true"
 	 * @generated
 	 */
-	ResourceType getResourceType();
+	de.dfki.iui.basys.model.domain.resourcetype.ResourceType getResourceType();
 
 	/**
 	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstance#getResourceType <em>Resource Type</em>}' reference.
@@ -83,7 +80,7 @@ public interface ResourceInstance extends Entity {
 	 * @see #getResourceType()
 	 * @generated
 	 */
-	void setResourceType(ResourceType value);
+	void setResourceType(de.dfki.iui.basys.model.domain.resourcetype.ResourceType value);
 
 	/**
 	 * Returns the value of the '<em><b>Capability Applications</b></em>' containment reference list.
