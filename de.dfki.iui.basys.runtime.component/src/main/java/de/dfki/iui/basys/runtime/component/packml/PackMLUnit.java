@@ -14,6 +14,8 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 	private boolean initialized = false;
 
 	private PackML packml = null;
+
+	private Mode mode = Mode.PRODUCTION;	
 	
 	private UnitConfiguration config;	
 
@@ -57,29 +59,40 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 
 	@Override
 	public Mode getMode() {
-		return packml.getMode();
+		return mode;
 	}
 
 	@Override
 	public UnitConfiguration getConfig() {
 		return config;
 	}
-	
 
 	/*
 	 * CommandInterface
 	 */
 
-	@Override
-	public synchronized void setMode(Mode mode) {
-		packml.setMode(mode);
+	public void setMode(Mode mode) throws PackMLException {
+		State state = getState();
+		if (mode == Mode.MANUAL && state == State.ABORTED) {
+			this.mode = mode;
+		} else if (state == State.STOPPED) {
+			this.mode = mode;
+		} else {
+			// illegal state
+			LOGGER.error(String.format("Cannot change to mode %s in state %s", mode, state));
+			throw new PackMLException(String.format("Cannot change to mode %s in state %s", mode, state));
+		}
 	}
 
 	@Override
-	public synchronized void setConfig(UnitConfiguration config) {
+	public synchronized void setConfig(UnitConfiguration config) throws PackMLException {
 		if (getState() == State.IDLE) {
 			this.config = config;
-		}		
+		} else {
+			// illegal state
+			LOGGER.error(String.format("Cannot set config in state %s", getState()));
+			throw new PackMLException(String.format("Cannot set config in state %s", getState()));
+		}	
 	}
 
 	@Override

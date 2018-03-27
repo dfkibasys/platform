@@ -44,12 +44,10 @@ public class OpcUaComponent extends DeviceComponent {
 
 	public OpcUaComponent(String id) {
 		super(id);
-		// TODO Auto-generated constructor stub
 	}
 
-	public OpcUaComponent(String id, ServiceRegistry registry) {
-		super(id, registry);
-		// TODO Auto-generated constructor stub
+	public OpcUaComponent(ComponentConfiguration config) {
+		super(config);
 	}
 
 	// TODO: Code for communicating with the actual device, here via OPC-UA.

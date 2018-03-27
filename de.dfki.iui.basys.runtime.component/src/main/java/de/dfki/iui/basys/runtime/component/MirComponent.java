@@ -6,13 +6,12 @@ public class MirComponent extends TecsComponent {
 
 	public MirComponent(String id) {
 		super(id);
-		// TODO Auto-generated constructor stub
 	}
 	
-	public MirComponent(String id, ServiceRegistry registry) {
-		super(id, registry);
-		// TODO Auto-generated constructor stub
+	public MirComponent(ComponentConfiguration config) {
+		super(config);
 	}
+
 
 	//protected MIRClient client;
 	

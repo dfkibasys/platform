@@ -22,15 +22,12 @@ public class PackML {
 
 	protected final Logger LOGGER = LoggerFactory.getLogger(PackML.class.getName());
 		
-	private Mode mode = Mode.PRODUCTION;
-
 	private PackMLUnit unit = null;
 
 	private boolean initialized = false;
 
 	private SCXML scxml = null;
 	private SCXMLExecutor exec = null;
-	///////////////////////////////
 
 	public PackML(PackMLUnit unit) {
 		this.unit = unit;
@@ -74,22 +71,6 @@ public class PackML {
 		EnterableState state = exec.getStatus().getStates().toArray(new EnterableState[0])[0];
 		State result = State.valueOf(state.getId());
 		return result;
-	}
-
-	public Mode getMode() {
-		return mode;
-	}
-
-	public void setMode(Mode mode){
-		State state = getState();
-		if (mode == Mode.MANUAL && state == State.ABORTED) {
-			this.mode = mode;
-		} else if (state == State.STOPPED) {
-			this.mode = mode;
-		} else {
-			// illegal state
-			LOGGER.warn("Cannot change mode in state " + state);
-		}
 	}
 
 	public void raiseLifecycleEvent(String event) {

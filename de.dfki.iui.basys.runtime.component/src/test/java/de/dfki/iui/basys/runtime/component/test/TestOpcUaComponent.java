@@ -5,6 +5,7 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.StatusCode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.OpcUaComponent;
 import de.dfki.iui.basys.runtime.component.opcua.OpcUaException;
 import de.dfki.iui.basys.runtime.component.registry.ServiceRegistry;
@@ -21,13 +22,12 @@ public class TestOpcUaComponent extends OpcUaComponent {
 	
 	public TestOpcUaComponent(String id) {
 		super(id);
-		// TODO Auto-generated constructor stub
 	}
 
-	public TestOpcUaComponent(String id, ServiceRegistry registry) {
-		super(id, registry);
-		// TODO Auto-generated constructor stub
+	public TestOpcUaComponent(ComponentConfiguration config) {
+		super(config);
 	}
+
 
 	@Override
 	public void onResetting() {

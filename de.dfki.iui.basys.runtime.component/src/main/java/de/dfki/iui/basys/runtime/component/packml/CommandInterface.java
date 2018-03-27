@@ -2,9 +2,9 @@ package de.dfki.iui.basys.runtime.component.packml;
 
 public interface CommandInterface {
 	
-	void setMode(Mode mode);
+	void setMode(Mode mode) throws PackMLException;
 	
-	void setConfig(UnitConfiguration config);
+	void setConfig(UnitConfiguration config) throws PackMLException;
 	
 	void reset();
 	void start();

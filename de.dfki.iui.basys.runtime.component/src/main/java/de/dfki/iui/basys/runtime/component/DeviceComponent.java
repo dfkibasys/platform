@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import de.dfki.iui.basys.runtime.component.packml.ActiveStatesHandler;
 import de.dfki.iui.basys.runtime.component.packml.CommandInterface;
 import de.dfki.iui.basys.runtime.component.packml.Mode;
+import de.dfki.iui.basys.runtime.component.packml.PackMLException;
 import de.dfki.iui.basys.runtime.component.packml.PackMLUnit;
 import de.dfki.iui.basys.runtime.component.packml.State;
 import de.dfki.iui.basys.runtime.component.packml.StatusInterface;
@@ -30,12 +31,13 @@ public abstract class DeviceComponent extends ServiceComponent
 		super(id);
 	}
 
-	public DeviceComponent(String id, ServiceRegistry registry) {
-		super(id, registry);
-		// TODO Auto-generated constructor stub
+	public DeviceComponent(ComponentConfiguration config) {
+		super(config);
 	}
 
-	public void activate() {
+	public void activate(ComponentContext context) {
+		super.activate(context);
+		
 		unit = new PackMLUnit(id);
 		unit.setActiveStatesHandler(this);
 		unit.setWaitStatesHandler(this);
@@ -49,8 +51,6 @@ public abstract class DeviceComponent extends ServiceComponent
 			unit.stop();
 			unit.reset();
 		}
-
-		super.activate();
 	}
 
 	public void deactivate() {
@@ -100,13 +100,29 @@ public abstract class DeviceComponent extends ServiceComponent
 	 */
 
 	@Override
-	public void setMode(Mode mode) {
-		// TODO Auto-generated method stub
+	public void setMode(Mode mode) throws PackMLException {
+		if (getMode() == mode) return;
+		
+		unit.setMode(mode);
+		
+		if (outChannel != null && outChannel.isOpen()) {
+			Notification not = cf.createNotification("mode_changed");
+			outChannel.sendNotification(not);
+		}
+		if (registration != null)
+		{
+			try {
+				registration.update();
+			} catch (ServiceRegistrationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 	@Override
-	public void setConfig(UnitConfiguration config) {
-		// TODO Auto-generated method stub
+	public void setConfig(UnitConfiguration config) throws PackMLException {
+		unit.setConfig(config);
 	}
 
 	@Override
@@ -161,9 +177,9 @@ public abstract class DeviceComponent extends ServiceComponent
 	@Override
 	public void onStopped() {
 		// TODO: something like:Notification not = createStatusUpdate();
-		if (channel != null && channel.isOpen()) {
+		if (outChannel != null && outChannel.isOpen()) {
 			Notification not = cf.createNotification("stopped");
-			channel.sendNotification(not);
+			outChannel.sendNotification(not);
 		}
 		if (registration != null)
 		{
@@ -179,9 +195,9 @@ public abstract class DeviceComponent extends ServiceComponent
 	@Override
 	public void onIdle() {
 		// TODO: something like:Notification not = createStatusUpdate();
-		if (channel != null && channel.isOpen()) {
+		if (outChannel != null && outChannel.isOpen()) {
 			Notification not = cf.createNotification("idle");
-			channel.sendNotification(not);
+			outChannel.sendNotification(not);
 		}
 		if (registration != null)
 		{
@@ -197,9 +213,9 @@ public abstract class DeviceComponent extends ServiceComponent
 	@Override
 	public void onComplete() {
 		// TODO: something like:Notification not = createStatusUpdate();
-		if (channel != null && channel.isOpen()) {
+		if (outChannel != null && outChannel.isOpen()) {
 			Notification not = cf.createNotification("complete");
-			channel.sendNotification(not);
+			outChannel.sendNotification(not);
 		}
 		if (registration != null)
 		{
@@ -215,9 +231,9 @@ public abstract class DeviceComponent extends ServiceComponent
 	@Override
 	public void onHeld() {
 		// TODO: something like:Notification not = createStatusUpdate();
-		if (channel != null && channel.isOpen()) {
+		if (outChannel != null && outChannel.isOpen()) {
 			Notification not = cf.createNotification("held");
-			channel.sendNotification(not);
+			outChannel.sendNotification(not);
 		}
 		if (registration != null)
 		{
@@ -233,9 +249,9 @@ public abstract class DeviceComponent extends ServiceComponent
 	@Override
 	public void onSuspended() {
 		// TODO: something like:Notification not = createStatusUpdate();
-		if (channel != null && channel.isOpen()) {
+		if (outChannel != null && outChannel.isOpen()) {
 			Notification not = cf.createNotification("suspended");
-			channel.sendNotification(not);
+			outChannel.sendNotification(not);
 		}
 		if (registration != null)
 		{
@@ -251,9 +267,9 @@ public abstract class DeviceComponent extends ServiceComponent
 	@Override
 	public void onAborted() {
 		// TODO: something like:Notification not = createStatusUpdate();
-		if (channel != null && channel.isOpen()) {
+		if (outChannel != null && outChannel.isOpen()) {
 			Notification not = cf.createNotification("aborted");
-			channel.sendNotification(not);
+			outChannel.sendNotification(not);
 		}
 		if (registration != null)
 		{

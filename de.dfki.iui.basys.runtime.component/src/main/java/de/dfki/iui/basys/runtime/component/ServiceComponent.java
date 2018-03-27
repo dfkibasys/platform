@@ -2,9 +2,12 @@ package de.dfki.iui.basys.runtime.component;
 
 import java.io.IOException;
 
+import javax.security.auth.callback.ConfirmationCallback;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import de.dfki.iui.basys.runtime.communication.provider.JmsCommunicationProvider;
 import de.dfki.iui.basys.runtime.communication.provider.MqttCommunicationProvider;
 import de.dfki.iui.basys.runtime.component.registry.ServiceRegistration;
 import de.dfki.iui.basys.runtime.component.registry.ServiceRegistrationException;
@@ -21,51 +24,70 @@ public abstract class ServiceComponent {
 
 	protected String id;
 
+	protected ComponentConfiguration componentConfig;
+	protected ComponentContext context;
+	
 	protected ClientFactory cf = ClientFactory.getInstance();
 	protected Client client;
 	protected String basysConnectionString = "tcp://iot.eclipse.org:1883";
-	protected Channel channel;
+	protected Channel inChannel;
+	protected Channel outChannel;
 	protected ServiceRegistry registry;
 	protected ServiceRegistration registration;
 
 	public ServiceComponent(String id) {
-		this(id, null);
+		this.id = id;
 	}
 
-	public ServiceComponent(String id, ServiceRegistry registry) {
-		this.id = id;
-		this.registry = registry;
+	public ServiceComponent(ComponentConfiguration config) {		
+		this.id = config.getId();
+		this.componentConfig = config;		
 	}
 
 	public String getId() {
 		return id;
 	}
 	
-	public void activate() {
+	public void activate(ComponentContext context) {
+		this.context = context;
 		connectToBasys();
+		register();
 	}
 
 	public void deactivate() {
+		unregister();
 		disconnectFromBasys();
 	}
 
-	public void connectToBasys() {
-		if (client == null) {
+	protected void connectToBasys() {		
+		ChannelPool pool = context.getSharedChannelPool();
+		
+		if (pool == null) {	
+			CommunicationProvider provider = null;
+			switch (componentConfig.getCommunicationProvider()) {
+			case JMS:
+				provider = new JmsCommunicationProvider();
+				break;
+			case MQTT:
+				provider = new MqttCommunicationProvider();
+				break;
+			default:
+				break;
+			}
+			
 			client = cf.createClient(id, cf.createAuthentication(id, "secret", null));
-			// TODO: either discover automatically or set externally
-
-			// TODO: configure channelPool (MQTT/JMS usage and connectionString) externally
-			CommunicationProvider provider = new MqttCommunicationProvider();
-			ChannelPool pool = cf.connectChannelPool(client, basysConnectionString, provider);
-			channel = cf.openComponentChannel(pool, id, provider.supportQueuedChannels(),
-					new ComponentChannelListener(this));
-			register();
+			pool = cf.connectChannelPool(client, basysConnectionString, provider);
 		}
+
+		inChannel = cf.openChannel(pool, componentConfig.getInChannel(), false, new ComponentChannelListener(this));
+		outChannel = cf.openChannel(pool, componentConfig.getOutChannel(), false, null);		
 	}
 
-	public void disconnectFromBasys() {
+	protected void disconnectFromBasys() {
+		inChannel.close();
+		outChannel.close();
+		
 		if (client != null) {
-			unregister();
 			client.disconnect();
 			client = null;
 		}

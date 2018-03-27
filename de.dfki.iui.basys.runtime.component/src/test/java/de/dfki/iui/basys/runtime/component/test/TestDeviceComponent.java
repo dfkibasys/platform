@@ -1,13 +1,17 @@
 package de.dfki.iui.basys.runtime.component.test;
 
+import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.DeviceComponent;
 import de.dfki.iui.basys.runtime.component.registry.ServiceRegistry;
 
 public class TestDeviceComponent extends DeviceComponent {
 
-	public TestDeviceComponent(String id, ServiceRegistry registry) {
-		super(id, registry);
-		// TODO Auto-generated constructor stub
+	public TestDeviceComponent(String id) {
+		super(id);
+	}
+	
+	public TestDeviceComponent(ComponentConfiguration config) {
+		super(config);
 	}
 
 	@Override

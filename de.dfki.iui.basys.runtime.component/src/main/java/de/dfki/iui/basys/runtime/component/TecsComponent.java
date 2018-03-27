@@ -6,13 +6,12 @@ public class TecsComponent extends DeviceComponent {
 
 	public TecsComponent(String id) {
 		super(id);
-		// TODO Auto-generated constructor stub
 	}
 	
-	public TecsComponent(String id, ServiceRegistry registry) {
-		super(id, registry);
-		// TODO Auto-generated constructor stub
+	public TecsComponent(ComponentConfiguration config) {
+		super(config);
 	}
+
 	
 	// TODO: Code for communicating with the actual device, here via TECS. 
 	// Could also be done in some kind of "IntegrationProvider" implementation.

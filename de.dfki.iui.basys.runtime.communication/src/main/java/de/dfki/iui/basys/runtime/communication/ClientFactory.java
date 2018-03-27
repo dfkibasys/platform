@@ -122,11 +122,6 @@ public class ClientFactory {
 
 		return channel;
 	}
-
-	public Channel openComponentChannel(ChannelPool pool, String name, boolean queued, ChannelListener listener) {
-		String channelName = "basys/component/"+name;
-		return openChannel(pool,channelName, queued, listener);
-	}
 	
 	public String createResponseTopic(Request req) {
 		return "response/"+req.getId();
