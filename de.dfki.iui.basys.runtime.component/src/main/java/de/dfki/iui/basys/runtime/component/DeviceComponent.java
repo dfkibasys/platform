@@ -11,6 +11,7 @@ import de.dfki.iui.basys.runtime.component.packml.State;
 import de.dfki.iui.basys.runtime.component.packml.StatusInterface;
 import de.dfki.iui.basys.runtime.component.packml.UnitConfiguration;
 import de.dfki.iui.basys.runtime.component.packml.WaitStatesHandler;
+import de.dfki.iui.basys.runtime.component.registry.ServiceRegistrationException;
 import de.dfki.iui.basys.runtime.component.registry.ServiceRegistry;
 import de.dfki.iui.basys.runtime.communication.ClientFactory;
 import de.dfki.iui.basys.model.runtime.communication.Channel;
@@ -164,6 +165,15 @@ public abstract class DeviceComponent extends ServiceComponent
 			Notification not = cf.createNotification("stopped");
 			channel.sendNotification(not);
 		}
+		if (registration != null)
+		{
+			try {
+				registration.update();
+			} catch (ServiceRegistrationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 	@Override
@@ -172,6 +182,15 @@ public abstract class DeviceComponent extends ServiceComponent
 		if (channel != null && channel.isOpen()) {
 			Notification not = cf.createNotification("idle");
 			channel.sendNotification(not);
+		}
+		if (registration != null)
+		{
+			try {
+				registration.update();
+			} catch (ServiceRegistrationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -182,6 +201,15 @@ public abstract class DeviceComponent extends ServiceComponent
 			Notification not = cf.createNotification("complete");
 			channel.sendNotification(not);
 		}
+		if (registration != null)
+		{
+			try {
+				registration.update();
+			} catch (ServiceRegistrationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 	@Override
@@ -190,6 +218,15 @@ public abstract class DeviceComponent extends ServiceComponent
 		if (channel != null && channel.isOpen()) {
 			Notification not = cf.createNotification("held");
 			channel.sendNotification(not);
+		}
+		if (registration != null)
+		{
+			try {
+				registration.update();
+			} catch (ServiceRegistrationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -200,6 +237,15 @@ public abstract class DeviceComponent extends ServiceComponent
 			Notification not = cf.createNotification("suspended");
 			channel.sendNotification(not);
 		}
+		if (registration != null)
+		{
+			try {
+				registration.update();
+			} catch (ServiceRegistrationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 	@Override
@@ -208,6 +254,15 @@ public abstract class DeviceComponent extends ServiceComponent
 		if (channel != null && channel.isOpen()) {
 			Notification not = cf.createNotification("aborted");
 			channel.sendNotification(not);
+		}
+		if (registration != null)
+		{
+			try {
+				registration.update();
+			} catch (ServiceRegistrationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 

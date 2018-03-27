@@ -1,49 +1,15 @@
-package de.dfki.iui.basys.runtime.component;
+package de.dfki.iui.basys.runtime.component.test;
 
+import de.dfki.iui.basys.runtime.component.DeviceComponent;
 import de.dfki.iui.basys.runtime.component.registry.ServiceRegistry;
 
-public class TecsComponent extends DeviceComponent {
+public class TestDeviceComponent extends DeviceComponent {
 
-	public TecsComponent(String id) {
-		super(id);
-		// TODO Auto-generated constructor stub
-	}
-	
-	public TecsComponent(String id, ServiceRegistry registry) {
+	public TestDeviceComponent(String id, ServiceRegistry registry) {
 		super(id, registry);
 		// TODO Auto-generated constructor stub
 	}
-	
-	// TODO: Code for communicating with the actual device, here via TECS. 
-	// Could also be done in some kind of "IntegrationProvider" implementation.
-	
-	// protected TSocket socket;
-	// TBinaryProtocol protocol;
-	// protected String host;
-	// protected int port;
 
-	@Override
-	public void connectToDevice() {
-		// TODO Auto-generated method stub
-		super.connectToDevice();
-		
-		//socket = new TSocket(host,port);
-		//protocol = new TBinaryProtocol(socket);
-	}
-	
-	@Override
-	public void disconnectFromDevice() {
-		// TODO Auto-generated method stub
-		super.disconnectFromDevice();
-		
-		// socket.close();		
-	}
-	
-
-	/*
-	 * default ActiveStatesHandler implementation -> trigger logic on device
-	 */
-	
 	@Override
 	public void onResetting() {
 		// TODO Auto-generated method stub
@@ -109,7 +75,5 @@ public class TecsComponent extends DeviceComponent {
 		// TODO Auto-generated method stub
 
 	}
-	
-
 
 }
