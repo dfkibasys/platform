@@ -124,7 +124,7 @@ public class ClientFactory {
 	}
 	
 	public String createResponseTopic(Request req) {
-		return "response/"+req.getId();
+		return "response#"+req.getId();
 	}
 
 }

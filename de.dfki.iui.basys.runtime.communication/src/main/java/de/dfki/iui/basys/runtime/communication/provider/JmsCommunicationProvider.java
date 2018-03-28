@@ -56,6 +56,12 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 
 		LOGGER.info("doConnect ChannelPool: " + poolId);
 		Authentication auth = pool.getClient().getAuthentication();
+		
+
+		if (pool.getUri() == null) {
+			pool.setUri("vm://localhost?broker.persistent=false");
+			LOGGER.warn(String.format("ConnectionString not specified, using VM internal default %s", pool.getUri()));
+		}
 
 		ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory(pool.getUri());
 
@@ -115,14 +121,18 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 
 	}
 
+	private String getJmsChannelName(Channel channel) {
+		return channel.getName().replaceAll("#", ".");
+	}
+	
 	@Override
-	public void doOpenChannel(Channel channel) throws ProviderException {
+	public void doOpenChannel(Channel channel) throws ProviderException {		
 		LOGGER.info("doOpenChannel: " + channel.getName());
 
 		JmsDestination internalDestination = this.destinations.get(channel.getName());
 
 		if (internalDestination == null) {
-			internalDestination = new JmsDestination(channel.getName());
+			internalDestination = new JmsDestination(getJmsChannelName(channel));
 			this.destinations.put(channel.getName(), internalDestination);
 		}
 

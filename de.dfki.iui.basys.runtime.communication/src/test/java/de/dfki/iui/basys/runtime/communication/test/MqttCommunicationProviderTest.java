@@ -29,8 +29,9 @@ import junit.framework.TestCase;
 public class MqttCommunicationProviderTest extends TestCase {
 
 	protected final Logger LOGGER = LoggerFactory.getLogger(MqttCommunicationProviderTest.class.getName());
-	
-	String brokerUri = "tcp://iot.eclipse.org:1883";
+
+	//String brokerUri = "tcp://iot.eclipse.org:1883";
+	String brokerUri = null;
 	
 	ClientFactory fac = ClientFactory.getInstance();
 	
@@ -158,10 +159,10 @@ public class MqttCommunicationProviderTest extends TestCase {
 		TestChannelListener tester_1 = new TestChannelListener(message);
 		TestChannelListener tester_2 = new TestChannelListener(message);
 		
-		Channel ch_1_sender = fac.openChannel(cp_11, prefix+"/channel_1", false, null);		
+		Channel ch_1_sender = fac.openChannel(cp_11, prefix+"#channel_1", false, null);		
 		//Channel ch_2_sender = fac.openChannel(cp_21, "channel_2", false, null);
 		
-		Channel ch_1_receiver = fac.openChannel(cp_21, prefix+"/channel_1", false, tester_1);		
+		Channel ch_1_receiver = fac.openChannel(cp_21, prefix+"#channel_1", false, tester_1);		
 		//Channel ch_2_receiver = fac.openChannel(cp_21, "channel_2", false, tester_2);
 
 		ch_1_sender.sendMessage(message);
@@ -186,10 +187,10 @@ public class MqttCommunicationProviderTest extends TestCase {
 		TestChannelListener tester_1 = new TestChannelListener(message);
 		TestChannelListener tester_2 = new TestChannelListener(message);
 		
-		Channel ch_1_sender = fac.openChannel(cp_11, prefix+"/channel_1", false, null);		
+		Channel ch_1_sender = fac.openChannel(cp_11, prefix+"#channel_1", false, null);		
 		//Channel ch_2_sender = fac.openChannel(cp_21, "channel_2", false, null);
 		
-		Channel ch_1_receiver = fac.openChannel(cp_21, prefix+"/channel_1", false, tester_1);		
+		Channel ch_1_receiver = fac.openChannel(cp_21, prefix+"#channel_1", false, tester_1);		
 		//Channel ch_2_receiver = fac.openChannel(cp_21, "channel_2", false, tester_2);
 
 		Notification not = fac.createNotification(message);
@@ -214,13 +215,9 @@ public class MqttCommunicationProviderTest extends TestCase {
 		String prefix = UUID.randomUUID().toString();
 		
 		TestChannelListener tester_1 = new TestChannelListener(message);
-		TestChannelListener tester_2 = new TestChannelListener(message);
 		
-		Channel ch_1_sender = fac.openChannel(cp_11, prefix+"/channel_1", false, null);		
-		//Channel ch_2_sender = fac.openChannel(cp_21, "channel_2", false, null);
-		
-		Channel ch_1_receiver = fac.openChannel(cp_21, prefix+"/channel_1", false, tester_1);		
-		//Channel ch_2_receiver = fac.openChannel(cp_21, "channel_2", false, tester_2);
+		Channel ch_1_sender = fac.openChannel(cp_11, prefix+"#channel_1", false, null);			
+		Channel ch_1_receiver = fac.openChannel(cp_21, prefix+"#channel_1", false, tester_1);	
 
 		Request req = fac.createRequest(message);
 		

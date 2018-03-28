@@ -36,10 +36,20 @@ import de.dfki.iui.basys.model.runtime.communication.Message;
 
 public class MqttCommunicationProvider implements CommunicationProvider {
 
-	protected final Logger LOGGER = LoggerFactory.getLogger(MqttCommunicationProvider.class.getName());
+	protected final Logger LOGGER = LoggerFactory.getLogger(getClass());
 	
 	IMqttAsyncClient mqttClient = null;
 
+	private static String toTopic(Channel channel) {
+		return toTopic(channel.getName());
+	}
+	
+	private static String toTopic(String channelName) {
+		if (channelName == null)
+			return null;
+		return channelName.replaceAll("#", "/");
+	}
+	
 	@Override
 	public void doConnect(ChannelPool pool) throws ProviderException {
 
@@ -51,6 +61,12 @@ public class MqttCommunicationProvider implements CommunicationProvider {
 		MemoryPersistence persistence = new MemoryPersistence();
 		final MqttConnectOptions options = new MqttConnectOptions();
 		options.setCleanSession(true);
+		
+		if (pool.getUri() == null) {			
+			pool.setUri("tcp://iot.eclipse.org:1883");
+			LOGGER.warn(String.format("ConnectionString not specified, using public default %s", pool.getUri()));
+		}
+		
 		try {
 
 			mqttClient = new MqttAsyncClient(pool.getUri(), poolId, persistence);
@@ -92,12 +108,14 @@ public class MqttCommunicationProvider implements CommunicationProvider {
 
 		LOGGER.info("doOpenChannel: " + channel.getName());
 
+		String topic = toTopic(channel); 
+		
 		if (channel.isQueued())
 			throw new ProviderException("MQTT does not support queued channels");
 
 		if (channel.getListener() != null) {
 			try {
-				mqttClient.subscribe(channel.getName(), 2, new IMqttMessageListener() {
+				mqttClient.subscribe(topic, 2, new IMqttMessageListener() {
 					// TODO: unterscheiden handleNotification/Request
 					@Override
 					public void messageArrived(String topic, MqttMessage message) throws Exception {
@@ -148,9 +166,11 @@ public class MqttCommunicationProvider implements CommunicationProvider {
 
 		LOGGER.info("doCloseChannel: " + channel.getName());
 		
+		String topic = toTopic(channel); 
+		
 		if (channel.getListener() != null) {
 			try {
-				mqttClient.unsubscribe(channel.getName()).waitForCompletion();
+				mqttClient.unsubscribe(topic).waitForCompletion();
 			} catch (MqttException e) {
 				throw new ProviderException("Cannot unsubscribe from topic \"" + channel.getName() + "\"", e);
 			}
@@ -197,12 +217,12 @@ public class MqttCommunicationProvider implements CommunicationProvider {
 		LOGGER.info("doSendRequest: " + channel.getName());
 		try {
 			String payload = JsonUtils.toJsonString(req);
-			String responseTopic = ClientFactory.getInstance().createResponseTopic(req);
+			String responseTopic =  ClientFactory.getInstance().createResponseTopic(req);
 			MqttProtocolMessage message = new MqttProtocolMessage();
 			message.setPayload(payload);
 			message.setResponseTopic(responseTopic);
-
-			mqttClient.subscribe(message.getResponseTopic(), 2, new IMqttMessageListener() {
+			String t = message.getResponseTopic();
+			mqttClient.subscribe(t, 2, new IMqttMessageListener() {
 
 				@Override
 				public void messageArrived(String topic, MqttMessage message) throws Exception {
@@ -251,11 +271,13 @@ public class MqttCommunicationProvider implements CommunicationProvider {
 		message.setPayload(msg.toMqttPayload().getBytes(StandardCharsets.UTF_8));
 		message.setQos(2);
 
+		String topic = toTopic(channel); 
+		
 		try {
-			mqttClient.publish(channel.getName(), message).waitForCompletion();
+			mqttClient.publish(topic, message).waitForCompletion();
 		} catch (MqttException e) {
 			throw new ProviderException(
-					"Cannot publish MQTT message with payload \"" + msg + "\" to topic \"" + channel.getName() + "\"",
+					"Cannot publish MQTT message with payload \"" + msg + "\" to topic \"" + topic + "\"",
 					e);
 		}
 	}
@@ -308,7 +330,7 @@ public class MqttCommunicationProvider implements CommunicationProvider {
 		}
 
 		public void setResponseTopic(String responseTopic) {
-			this.responseTopic = responseTopic;
+			this.responseTopic = toTopic(responseTopic);
 		}
 
 		public String toMqttPayload() {
