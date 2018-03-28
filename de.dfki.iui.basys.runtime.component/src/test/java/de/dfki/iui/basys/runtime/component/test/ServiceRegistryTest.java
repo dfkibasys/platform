@@ -12,6 +12,11 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import de.dfki.iui.basys.model.runtime.communication.ChannelPool;
+import de.dfki.iui.basys.model.runtime.communication.Client;
+import de.dfki.iui.basys.runtime.communication.ClientFactory;
+import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.OpcUaComponent;
 import de.dfki.iui.basys.runtime.component.packml.Mode;
 import de.dfki.iui.basys.runtime.component.packml.State;
@@ -25,6 +30,9 @@ public class ServiceRegistryTest {
 	private static final String PATH = "/discovery/myproducts";
 	
 	private ZookeeperServiceRegistry registry;
+	private Client communicationClient;
+	private ChannelPool sharedPool;
+	private ComponentContext context;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -40,12 +48,19 @@ public class ServiceRegistryTest {
 	public void setUp() throws Exception {
 		registry = new ZookeeperServiceRegistry();
 		registry.activate();
+		
+		communicationClient = ClientFactory.getInstance().createClient("client", null);
+		sharedPool = ClientFactory.getInstance().connectJmsChannelPool(communicationClient, null);
+		
+		context = new ComponentContext().setServiceRegistry(registry).setSharedChannelPool(sharedPool);
 	}
 
 	@After
 	public void tearDown() throws Exception {
 		registry.deactivate();
 		registry = null;
+		
+		communicationClient.disconnect();
 	}
 	
 	@Test
@@ -54,11 +69,13 @@ public class ServiceRegistryTest {
 
 		// TODO: implement test
 		// Step 1: register 3 different services
-		TestDeviceComponent service1 = new TestDeviceComponent("service1", registry);
-		TestDeviceComponent service2 = new TestDeviceComponent("service2", registry);		
-		TestDeviceComponent service3 = new TestDeviceComponent("service3", registry);
+		
+		
+		TestDeviceComponent service1 = new TestDeviceComponent("service1");
+		TestDeviceComponent service2 = new TestDeviceComponent("service2");		
+		TestDeviceComponent service3 = new TestDeviceComponent("service3");
 
-		service1.activate();
+		service1.activate(context);
 		InstanceDetails details1 = registry.getService(service1.getId());
 		assertNotNull(details1);
 		
@@ -66,11 +83,11 @@ public class ServiceRegistryTest {
 		details1 = registry.getService(service1.getId());
 		assertEquals(State.IDLE, details1.getCurrentState());
 		
-		service2.activate();
+		service2.activate(context);
 		InstanceDetails details2 = registry.getService(service2.getId());
 		assertNotNull(details2);
 		
-		service3.activate();
+		service3.activate(context);
 		InstanceDetails details3 = registry.getService(service3.getId());
 		assertNotNull(details3);
 

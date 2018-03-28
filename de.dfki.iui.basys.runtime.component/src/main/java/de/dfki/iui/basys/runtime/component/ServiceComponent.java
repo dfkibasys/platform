@@ -26,7 +26,7 @@ public abstract class ServiceComponent {
 
 	protected ComponentConfiguration componentConfig;
 	protected ComponentContext context;
-	
+
 	protected ClientFactory cf = ClientFactory.getInstance();
 	protected Client client;
 	protected String basysConnectionString = "tcp://iot.eclipse.org:1883";
@@ -37,17 +37,19 @@ public abstract class ServiceComponent {
 
 	public ServiceComponent(String id) {
 		this.id = id;
+		this.componentConfig = new ComponentConfiguration().setId(id).setInChannel(String.format("basys#%s#in", id))
+				.setOutChannel(String.format("basys#%s#out", id));
 	}
 
-	public ServiceComponent(ComponentConfiguration config) {		
+	public ServiceComponent(ComponentConfiguration config) {
 		this.id = config.getId();
-		this.componentConfig = config;		
+		this.componentConfig = config;
 	}
 
 	public String getId() {
 		return id;
 	}
-	
+
 	public void activate(ComponentContext context) {
 		this.context = context;
 		connectToBasys();
@@ -59,10 +61,10 @@ public abstract class ServiceComponent {
 		disconnectFromBasys();
 	}
 
-	protected void connectToBasys() {		
+	protected void connectToBasys() {
 		ChannelPool pool = context.getSharedChannelPool();
-		
-		if (pool == null) {	
+
+		if (pool == null) {
 			CommunicationProvider provider = null;
 			switch (componentConfig.getCommunicationProvider()) {
 			case JMS:
@@ -74,19 +76,19 @@ public abstract class ServiceComponent {
 			default:
 				break;
 			}
-			
+
 			client = cf.createClient(id, cf.createAuthentication(id, "secret", null));
 			pool = cf.connectChannelPool(client, basysConnectionString, provider);
 		}
 
 		inChannel = cf.openChannel(pool, componentConfig.getInChannel(), false, new ComponentChannelListener(this));
-		outChannel = cf.openChannel(pool, componentConfig.getOutChannel(), false, null);		
+		outChannel = cf.openChannel(pool, componentConfig.getOutChannel(), false, null);
 	}
 
 	protected void disconnectFromBasys() {
 		inChannel.close();
 		outChannel.close();
-		
+
 		if (client != null) {
 			client.disconnect();
 			client = null;
