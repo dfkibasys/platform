@@ -395,6 +395,15 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getArea_EquipmentModules() {
+		return (EReference)areaEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getWorkCenter() {
 		return workCenterEClass;
 	}
@@ -732,6 +741,7 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 
 		areaEClass = createEClass(AREA);
 		createEReference(areaEClass, AREA__WORK_CENTERS);
+		createEReference(areaEClass, AREA__EQUIPMENT_MODULES);
 
 		workCenterEClass = createEClass(WORK_CENTER);
 		createEReference(workCenterEClass, WORK_CENTER__EQUIPMENT_MODULES);
@@ -846,6 +856,7 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 
 		initEClass(areaEClass, Area.class, "Area", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getArea_WorkCenters(), this.getWorkCenter(), null, "workCenters", null, 0, -1, Area.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getArea_EquipmentModules(), this.getEquipmentModule(), null, "equipmentModules", null, 0, -1, Area.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(workCenterEClass, WorkCenter.class, "WorkCenter", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getWorkCenter_EquipmentModules(), this.getEquipmentModule(), null, "equipmentModules", null, 0, -1, WorkCenter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

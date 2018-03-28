@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link de.dfki.iui.basys.model.domain.topology.Area#getWorkCenters <em>Work Centers</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.topology.Area#getEquipmentModules <em>Equipment Modules</em>}</li>
  * </ul>
  *
  * @see de.dfki.iui.basys.model.domain.topology.TopologyPackage#getArea()
@@ -38,5 +39,21 @@ public interface Area extends Entity {
 	 * @generated
 	 */
 	EList<WorkCenter> getWorkCenters();
+
+	/**
+	 * Returns the value of the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * The list contents are of type {@link de.dfki.iui.basys.model.domain.topology.EquipmentModule}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Equipment Modules</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Equipment Modules</em>' containment reference list.
+	 * @see de.dfki.iui.basys.model.domain.topology.TopologyPackage#getArea_EquipmentModules()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<EquipmentModule> getEquipmentModules();
 
 } // Area

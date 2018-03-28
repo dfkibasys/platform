@@ -22,4 +22,7 @@
   <resourceInstances id="_I4a_oDD-EeiuBvcKgWzd3Q" name="My Panda">
     <resourceType href="cebit.resourcetype#_0xCaqTD9EeiuBvcKgWzd3Q"/>
   </resourceInstances>
+  <resourceInstances id="_rUJzsDJhEei1p5hKOf5Slw" name="My MiR 100">
+    <resourceType href="cebit.resourcetype#_ZRW8sjJhEei1p5hKOf5Slw"/>
+  </resourceInstances>
 </resourceinstance:ResourceInstanceRepository>

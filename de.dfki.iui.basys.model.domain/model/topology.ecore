@@ -13,6 +13,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="Area" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
     <eStructuralFeatures xsi:type="ecore:EReference" name="workCenters" upperBound="-1"
         eType="#//WorkCenter" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="equipmentModules" upperBound="-1"
+        eType="#//EquipmentModule" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WorkCenter" abstract="true" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
     <eStructuralFeatures xsi:type="ecore:EReference" name="equipmentModules" upperBound="-1"

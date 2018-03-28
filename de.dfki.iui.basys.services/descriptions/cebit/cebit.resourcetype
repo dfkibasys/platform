@@ -33,4 +33,7 @@
   <catalogues manufacturer="Franka Emika">
     <resourceTypes xsi:type="resourcetype:Robot" id="_0xCaqTD9EeiuBvcKgWzd3Q" name="Panda"/>
   </catalogues>
+  <catalogues manufacturer="Smart Robotics">
+    <resourceTypes xsi:type="resourcetype:AVG" id="_ZRW8sjJhEei1p5hKOf5Slw" name="MiR 100"/>
+  </catalogues>
 </resourcetype:ResourceTypeCatalogueCollection>

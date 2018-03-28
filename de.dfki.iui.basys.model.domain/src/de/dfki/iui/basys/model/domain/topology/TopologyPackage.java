@@ -260,13 +260,22 @@ public interface TopologyPackage extends EPackage {
 	int AREA__WORK_CENTERS = BasePackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AREA__EQUIPMENT_MODULES = BasePackage.ENTITY_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Area</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AREA_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 1;
+	int AREA_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Area</em>' class.
@@ -1582,6 +1591,17 @@ public interface TopologyPackage extends EPackage {
 	EReference getArea_WorkCenters();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.domain.topology.Area#getEquipmentModules <em>Equipment Modules</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Equipment Modules</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.Area#getEquipmentModules()
+	 * @see #getArea()
+	 * @generated
+	 */
+	EReference getArea_EquipmentModules();
+
+	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.WorkCenter <em>Work Center</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2015,6 +2035,14 @@ public interface TopologyPackage extends EPackage {
 		 * @generated
 		 */
 		EReference AREA__WORK_CENTERS = eINSTANCE.getArea_WorkCenters();
+
+		/**
+		 * The meta object literal for the '<em><b>Equipment Modules</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference AREA__EQUIPMENT_MODULES = eINSTANCE.getArea_EquipmentModules();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.WorkCenterImpl <em>Work Center</em>}' class.

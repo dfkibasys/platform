@@ -69,6 +69,7 @@ public class AreaItemProvider extends EntityItemProvider {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(TopologyPackage.Literals.AREA__WORK_CENTERS);
+			childrenFeatures.add(TopologyPackage.Literals.AREA__EQUIPMENT_MODULES);
 		}
 		return childrenFeatures;
 	}
@@ -125,6 +126,7 @@ public class AreaItemProvider extends EntityItemProvider {
 
 		switch (notification.getFeatureID(Area.class)) {
 			case TopologyPackage.AREA__WORK_CENTERS:
+			case TopologyPackage.AREA__EQUIPMENT_MODULES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -161,6 +163,11 @@ public class AreaItemProvider extends EntityItemProvider {
 			(createChildParameter
 				(TopologyPackage.Literals.AREA__WORK_CENTERS,
 				 TopologyFactory.eINSTANCE.createStorageZone()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.AREA__EQUIPMENT_MODULES,
+				 TopologyFactory.eINSTANCE.createEquipmentModule()));
 	}
 
 	/**
