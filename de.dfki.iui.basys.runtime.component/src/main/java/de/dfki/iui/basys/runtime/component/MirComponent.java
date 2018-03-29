@@ -16,8 +16,7 @@ public class MirComponent extends TecsComponent {
 	//protected MIRClient client;
 	
 	@Override
-	public void connectToDevice() {
-		// TODO Auto-generated method stub
+	public void connectToDevice() throws ServiceComponentException {
 		super.connectToDevice();
 		//client = new MIRClient(protocol);
 		//client.open();
@@ -26,9 +25,8 @@ public class MirComponent extends TecsComponent {
 	
 	@Override
 	public void disconnectFromDevice() {
-		// TODO Auto-generated method stub
-		super.disconnectFromDevice();
 		//client.close();		
+		super.disconnectFromDevice();
 	}
 
 	@Override

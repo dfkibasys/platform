@@ -2,10 +2,10 @@ package de.dfki.iui.basys.runtime.component;
 
 public class ComponentConfiguration {
 	
-	enum CommunicationProviderEnum { NONE, MQTT, JMS }
+	public enum CommunicationProviderEnum { NONE, MQTT, JMS }
 	
 
-	private CommunicationProviderEnum communicationProvider;
+	private CommunicationProviderEnum communicationProvider = CommunicationProviderEnum.JMS;
 	private String id;
 	private String basysConnectionString;
 	private String implementationJavaClass;
@@ -78,6 +78,8 @@ public class ComponentConfiguration {
 	 */
 	public ComponentConfiguration setId(String id) {
 		this.id = id;
+		this.inChannel = id + "#in";
+		this.outChannel = id + "#out";
 		return this;
 	}
 	

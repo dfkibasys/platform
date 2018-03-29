@@ -18,8 +18,8 @@ Export-Package: de.dfki.iui.basys.runtime.component;version="1.0.0.SNAPS
  ys.runtime.component.opcua;version="1.0.0.SNAPSHOT",de.dfki.iui.basys.r
  untime.component.packml;version="1.0.0.SNAPSHOT";uses:="org.slf4j",de.d
  fki.iui.basys.runtime.component.registry;version="1.0.0.SNAPSHOT";uses:
- ="de.dfki.iui.basys.runtime.component,org.apache.curator.framework,org.
- apache.curator.x.discovery"
+ ="de.dfki.iui.basys.runtime.component,de.dfki.iui.basys.runtime.compone
+ nt.packml,org.apache.curator.framework,org.apache.curator.x.discovery"
 Import-Package: de.dfki.iui.basys.model.runtime.communication,de.dfki.iu
  i.basys.runtime.communication,de.dfki.iui.basys.runtime.communication.p
  rovider,de.dfki.iui.basys.runtime.component;version="[1.0,2)",de.dfki.i
@@ -34,17 +34,14 @@ Import-Package: de.dfki.iui.basys.model.runtime.communication,de.dfki.iu
  che.curator.utils;version="[4.0,5)",org.apache.curator.x.discovery;vers
  ion="[4.0,5)",org.apache.curator.x.discovery.details;version="[4.0,5)",
  org.eclipse.milo.opcua.sdk.client;version="[0.2,1)",org.eclipse.milo.op
- cua.sdk.client.api;version="[0.2,1)",org.eclipse.milo.opcua.sdk.client.
- api.config;version="[0.2,1)",org.eclipse.milo.opcua.sdk.client.api.iden
- tity;version="[0.2,1)",org.eclipse.milo.opcua.sdk.server.util;version="
- [0.2,1)",org.eclipse.milo.opcua.stack.client;version="[0.2,1)",org.ecli
- pse.milo.opcua.stack.core;version="[0.2,1)",org.eclipse.milo.opcua.stac
- k.core.security;version="[0.2,1)",org.eclipse.milo.opcua.stack.core.typ
- es.builtin;version="[0.2,1)",org.eclipse.milo.opcua.stack.core.types.bu
- iltin.unsigned;version="[0.2,1)",org.eclipse.milo.opcua.stack.core.type
- s.enumerated;version="[0.2,1)",org.eclipse.milo.opcua.stack.core.types.
- structured;version="[0.2,1)",org.eclipse.milo.opcua.stack.core.util;ver
- sion="[0.2,1)",org.slf4j;version="[1.7,2)"
+ cua.sdk.client.api.identity;version="[0.2,1)",org.eclipse.milo.opcua.sd
+ k.server.util;version="[0.2,1)",org.eclipse.milo.opcua.stack.core;versi
+ on="[0.2,1)",org.eclipse.milo.opcua.stack.core.security;version="[0.2,1
+ )",org.eclipse.milo.opcua.stack.core.types.builtin;version="[0.2,1)",or
+ g.eclipse.milo.opcua.stack.core.types.enumerated;version="[0.2,1)",org.
+ eclipse.milo.opcua.stack.core.types.structured;version="[0.2,1)",org.ec
+ lipse.milo.opcua.stack.core.util;version="[0.2,1)",org.slf4j;version="[
+ 1.7,2)"
 Include-Resource: packml-first-layer-scxml.xml=src/main/resources/packml
  -first-layer-scxml.xml,packml-second-layer-scxml.xml=src/main/resources
  /packml-second-layer-scxml.xml,packml.scxml=src/main/resources/packml.s

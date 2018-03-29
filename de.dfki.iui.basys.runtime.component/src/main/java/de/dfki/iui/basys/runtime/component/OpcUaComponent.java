@@ -35,9 +35,6 @@ import de.dfki.iui.basys.runtime.component.registry.ServiceRegistry;
 
 public class OpcUaComponent extends DeviceComponent {
 
-	public static final String HOST = System.getProperty("opcua.host", "localhost");
-	public static final int PORT = Integer.getInteger("opcua.port", 4841);
-
 	protected OpcUaClient opcuaClient;
 	protected SecurityPolicy opcuaSecurityPolicy = SecurityPolicy.None;
 	protected IdentityProvider opcuaIdentityProvider = AnonymousProvider.INSTANCE;
@@ -53,19 +50,12 @@ public class OpcUaComponent extends DeviceComponent {
 	// TODO: Code for communicating with the actual device, here via OPC-UA.
 
 	@Override
-	public void connectToDevice() {
-		this.deviceConnectionString = String.format("opc.tcp://%s:%s", HOST, PORT);
-		super.connectToDevice();
-
+	public void connectToDevice() throws ServiceComponentException {
 		try {
-			opcuaClient = createClient();
+			opcuaClient = createClient(componentConfig.getDeviceConnectionString());
 			opcuaClient.connect().whenComplete((c, ex) -> this.connectedToDevice = true).get();
-		} catch (InterruptedException | ExecutionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception  e) {
+			throw new ServiceComponentException(e);
 		}
 	}
 
@@ -78,8 +68,6 @@ public class OpcUaComponent extends DeviceComponent {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		super.disconnectFromDevice();
 	}
 
 	public SecurityPolicy getSecurityPolicy() {
@@ -98,7 +86,7 @@ public class OpcUaComponent extends DeviceComponent {
 		this.opcuaIdentityProvider = opcuaIdentityProvider;
 	}
 
-	private OpcUaClient createClient() throws Exception {
+	private OpcUaClient createClient(String connectionString) throws Exception {
 		File securityTempDir = new File(System.getProperty("java.io.tmpdir"), "security");
 		if (!securityTempDir.exists() && !securityTempDir.mkdirs()) {
 			throw new Exception("unable to create security dir: " + securityTempDir);
@@ -112,10 +100,10 @@ public class OpcUaComponent extends DeviceComponent {
 		EndpointDescription[] endpoints;
 
 		try {
-			endpoints = UaTcpStackClient.getEndpoints(deviceConnectionString).get();
+			endpoints = UaTcpStackClient.getEndpoints(connectionString).get();
 		} catch (Throwable ex) {
 			// try the explicit discovery endpoint as well
-			String discoveryUrl = deviceConnectionString + "/discovery";
+			String discoveryUrl = connectionString + "/discovery";
 			LOGGER.info("Trying explicit discovery URL: {}", discoveryUrl);
 			endpoints = UaTcpStackClient.getEndpoints(discoveryUrl).get();
 		}

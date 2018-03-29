@@ -30,6 +30,7 @@ public class InstanceDetails {
 		this.id = component.getId();
 
 		if (component instanceof DeviceComponent) {
+			//FIXME: Fehlerursache bei ServiceRegistryTest
 			this.currentState = ((DeviceComponent) component).getState();
 			this.currentMode = ((DeviceComponent) component).getMode();
 		}

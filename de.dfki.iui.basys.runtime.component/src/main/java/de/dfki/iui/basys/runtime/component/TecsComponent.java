@@ -22,19 +22,13 @@ public class TecsComponent extends DeviceComponent {
 	// protected int port;
 
 	@Override
-	public void connectToDevice() {
-		// TODO Auto-generated method stub
-		super.connectToDevice();
-		
+	public void connectToDevice() throws ServiceComponentException {
 		//socket = new TSocket(host,port);
 		//protocol = new TBinaryProtocol(socket);
 	}
 	
 	@Override
-	public void disconnectFromDevice() {
-		// TODO Auto-generated method stub
-		super.disconnectFromDevice();
-		
+	public void disconnectFromDevice() {	
 		// socket.close();		
 	}
 	

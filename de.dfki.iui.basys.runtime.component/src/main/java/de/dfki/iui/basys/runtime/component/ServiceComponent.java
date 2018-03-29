@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 
 import de.dfki.iui.basys.runtime.communication.provider.JmsCommunicationProvider;
 import de.dfki.iui.basys.runtime.communication.provider.MqttCommunicationProvider;
+import de.dfki.iui.basys.runtime.component.ComponentConfiguration.CommunicationProviderEnum;
 import de.dfki.iui.basys.runtime.component.registry.ServiceRegistration;
 import de.dfki.iui.basys.runtime.component.registry.ServiceRegistrationException;
 import de.dfki.iui.basys.runtime.component.registry.ServiceRegistry;
@@ -29,10 +30,8 @@ public abstract class ServiceComponent {
 
 	protected ClientFactory cf = ClientFactory.getInstance();
 	protected Client client;
-	protected String basysConnectionString = "tcp://iot.eclipse.org:1883";
 	protected Channel inChannel;
 	protected Channel outChannel;
-	protected ServiceRegistry registry;
 	protected ServiceRegistration registration;
 
 	public ServiceComponent(String id) {
@@ -52,13 +51,17 @@ public abstract class ServiceComponent {
 
 	public void activate(ComponentContext context) {
 		this.context = context;
-		connectToBasys();
-		register();
+		if (componentConfig.getCommunicationProvider() != CommunicationProviderEnum.NONE) {
+			connectToBasys();
+			register();
+		}
 	}
 
 	public void deactivate() {
-		unregister();
-		disconnectFromBasys();
+		if (componentConfig.getCommunicationProvider() != CommunicationProviderEnum.NONE) {
+			unregister();
+			disconnectFromBasys();
+		}
 	}
 
 	protected void connectToBasys() {
@@ -78,7 +81,7 @@ public abstract class ServiceComponent {
 			}
 
 			client = cf.createClient(id, cf.createAuthentication(id, "secret", null));
-			pool = cf.connectChannelPool(client, basysConnectionString, provider);
+			pool = cf.connectChannelPool(client, componentConfig.getBasysConnectionString(), provider);
 		}
 
 		inChannel = cf.openChannel(pool, componentConfig.getInChannel(), false, new ComponentChannelListener(this));
@@ -96,9 +99,9 @@ public abstract class ServiceComponent {
 	}
 
 	protected void register() {
-		if (registry != null) {
+		if (context.getServiceRegistry() != null) {
 			try {
-				registration = registry.createRegistration(this);
+				registration = context.getServiceRegistry().createRegistration(this);
 				registration.register();
 			} catch (ServiceRegistrationException e) {
 				// TODO Auto-generated catch block

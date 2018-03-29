@@ -18,6 +18,7 @@ import de.dfki.iui.basys.runtime.communication.ClientFactory;
 import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.OpcUaComponent;
+import de.dfki.iui.basys.runtime.component.ComponentConfiguration.CommunicationProviderEnum;
 import de.dfki.iui.basys.runtime.component.packml.Mode;
 import de.dfki.iui.basys.runtime.component.packml.State;
 import de.dfki.iui.basys.runtime.component.registry.InstanceDetails;
@@ -65,15 +66,28 @@ public class ServiceRegistryTest {
 	
 	@Test
 	public void testRegisterServicesAndList() {
+		LOGGER.info("testRegisterServicesAndList - start");
+		
 		//fail("Not yet implemented");
 
 		// TODO: implement test
 		// Step 1: register 3 different services
 		
+		ComponentConfiguration config1 = new ComponentConfiguration()
+				.setId("service1")
+				.setCommunicationProvider(CommunicationProviderEnum.JMS);		
 		
-		TestDeviceComponent service1 = new TestDeviceComponent("service1");
-		TestDeviceComponent service2 = new TestDeviceComponent("service2");		
-		TestDeviceComponent service3 = new TestDeviceComponent("service3");
+		ComponentConfiguration config2 = new ComponentConfiguration()
+				.setId("service2")
+				.setCommunicationProvider(CommunicationProviderEnum.JMS);		
+				
+		ComponentConfiguration config3 = new ComponentConfiguration()
+				.setId("service3")
+				.setCommunicationProvider(CommunicationProviderEnum.JMS);		
+		
+		TestDeviceComponent service1 = new TestDeviceComponent(config1);
+		TestDeviceComponent service2 = new TestDeviceComponent(config2);		
+		TestDeviceComponent service3 = new TestDeviceComponent(config3);
 
 		service1.activate(context);
 		InstanceDetails details1 = registry.getService(service1.getId());

@@ -24,7 +24,6 @@ public abstract class DeviceComponent extends ServiceComponent
 
 	protected PackMLUnit unit;
 
-	protected String deviceConnectionString;
 	protected boolean connectedToDevice = false;
 
 	public DeviceComponent(String id) {
@@ -35,31 +34,48 @@ public abstract class DeviceComponent extends ServiceComponent
 		super(config);
 	}
 
-	public void activate(ComponentContext context) {
-		super.activate(context);
-		
+	public void activate(ComponentContext context) {		
+		//PackML FSA has to be created and initialized before component registration via super.activate() 
+		//TODO: expand PackML to represent also active and inactivate states from a service perspective in order to generate a complete event trace in the middleware
 		unit = new PackMLUnit(id);
 		unit.setActiveStatesHandler(this);
 		unit.setWaitStatesHandler(this);
 		unit.initialize();
 
-		connectToDevice();
-		// if device connection is established, ideally perform unit.stop() and
-		// unit.reset():
-		// STOPPED -> RESETTING -> IDLE = ready for production
-		if (connectedToDevice) {
-			unit.stop();
-			unit.reset();
+		
+		super.activate(context);
+
+		if (componentConfig.getDeviceConnectionString() != null) {			
+			try {
+				connectToDevice();
+				connectedToDevice = true;	
+			} catch (ServiceComponentException e) {
+				LOGGER.error(e.getMessage());
+				e.printStackTrace();
+			}		
+		} else {
+			LOGGER.warn("no device connection string provided, enter simulation mode");
+			// enter some kind of simulation mode like so: 
+			//unit.setActiveStatesHandler(simulationActHandler);
+			//unit.setWaitStatesHandler(simulationWaitHandler);
 		}
+		
+		// make unit ready for production
+		unit.stop();
+		unit.reset();
 	}
 
 	public void deactivate() {
-		super.deactivate();
+		
+		// regardless of connection to real device (e.g. in simulation) do:
+		unit.stop();		
 
-		if (connectedToDevice) {
-			unit.stop();
+		super.deactivate();
+		
+		if (connectedToDevice) {			
+			disconnectFromDevice();
+			connectedToDevice = false;
 		}
-		disconnectFromDevice();
 
 		unit.dispose();
 	}
@@ -68,14 +84,9 @@ public abstract class DeviceComponent extends ServiceComponent
 		return connectedToDevice;
 	}
 
-	public void connectToDevice() {
-		// Try to connect to actual device or enter some kind of simulation mode
-	}
+	public abstract void connectToDevice() throws ServiceComponentException;
 
-	public void disconnectFromDevice() {
-
-	}
-
+	public abstract void disconnectFromDevice();// throws ServiceComponentException;
 	/*
 	 * StatusInterface
 	 */

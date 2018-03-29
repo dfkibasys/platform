@@ -2,6 +2,7 @@ package de.dfki.iui.basys.runtime.component.test;
 
 import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.DeviceComponent;
+import de.dfki.iui.basys.runtime.component.ServiceComponentException;
 import de.dfki.iui.basys.runtime.component.registry.ServiceRegistry;
 
 public class TestDeviceComponent extends DeviceComponent {
@@ -13,7 +14,19 @@ public class TestDeviceComponent extends DeviceComponent {
 	public TestDeviceComponent(ComponentConfiguration config) {
 		super(config);
 	}
+	
+	@Override
+	public void connectToDevice() throws ServiceComponentException {
+		// TODO Auto-generated method stub
+		
+	}
 
+	@Override
+	public void disconnectFromDevice() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	@Override
 	public void onResetting() {
 		// TODO Auto-generated method stub
