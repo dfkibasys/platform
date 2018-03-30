@@ -20,28 +20,36 @@ Export-Package: de.dfki.iui.basys.runtime.component;version="1.0.0.SNAPS
  fki.iui.basys.runtime.component.registry;version="1.0.0.SNAPSHOT";uses:
  ="de.dfki.iui.basys.runtime.component,de.dfki.iui.basys.runtime.compone
  nt.packml,org.apache.curator.framework,org.apache.curator.x.discovery"
-Import-Package: de.dfki.iui.basys.model.runtime.communication,de.dfki.iu
- i.basys.runtime.communication,de.dfki.iui.basys.runtime.communication.p
- rovider,de.dfki.iui.basys.runtime.component;version="[1.0,2)",de.dfki.i
- ui.basys.runtime.component.opcua;version="[1.0,2)",de.dfki.iui.basys.ru
- ntime.component.packml;version="[1.0,2)",de.dfki.iui.basys.runtime.comp
- onent.registry;version="[1.0,2)",javax.xml.stream,org.apache.commons.sc
- xml2;version="[2.0,3)",org.apache.commons.scxml2.env;version="[2.0,3)",
- org.apache.commons.scxml2.env.jexl;version="[2.0,3)",org.apache.commons
- .scxml2.io;version="[2.0,3)",org.apache.commons.scxml2.model;version="[
- 2.0,3)",org.apache.curator;version="[4.0,5)",org.apache.curator.framewo
- rk;version="[4.0,5)",org.apache.curator.retry;version="[4.0,5)",org.apa
- che.curator.utils;version="[4.0,5)",org.apache.curator.x.discovery;vers
- ion="[4.0,5)",org.apache.curator.x.discovery.details;version="[4.0,5)",
- org.eclipse.milo.opcua.sdk.client;version="[0.2,1)",org.eclipse.milo.op
- cua.sdk.client.api.identity;version="[0.2,1)",org.eclipse.milo.opcua.sd
- k.server.util;version="[0.2,1)",org.eclipse.milo.opcua.stack.core;versi
- on="[0.2,1)",org.eclipse.milo.opcua.stack.core.security;version="[0.2,1
- )",org.eclipse.milo.opcua.stack.core.types.builtin;version="[0.2,1)",or
- g.eclipse.milo.opcua.stack.core.types.enumerated;version="[0.2,1)",org.
- eclipse.milo.opcua.stack.core.types.structured;version="[0.2,1)",org.ec
- lipse.milo.opcua.stack.core.util;version="[0.2,1)",org.slf4j;version="[
- 1.7,2)"
+Import-Package: de.dfki.iui.basys.model.runtime.communication,
+ de.dfki.iui.basys.runtime.communication,
+ de.dfki.iui.basys.runtime.communication.provider,
+ de.dfki.iui.basys.runtime.component;version="[1.0,2)",
+ de.dfki.iui.basys.runtime.component.opcua;version="[1.0,2)",
+ de.dfki.iui.basys.runtime.component.packml;version="[1.0,2)",
+ de.dfki.iui.basys.runtime.component.registry;version="[1.0,2)",
+ javax.xml.stream,
+ junit.framework;version="4.12.0",
+ org.apache.commons.scxml2;version="[2.0,3)",
+ org.apache.commons.scxml2.env;version="[2.0,3)",
+ org.apache.commons.scxml2.env.jexl;version="[2.0,3)",
+ org.apache.commons.scxml2.io;version="[2.0,3)",
+ org.apache.commons.scxml2.model;version="[2.0,3)",
+ org.apache.curator;version="[4.0,5)",
+ org.apache.curator.framework;version="[4.0,5)",
+ org.apache.curator.retry;version="[4.0,5)",
+ org.apache.curator.utils;version="[4.0,5)",
+ org.apache.curator.x.discovery;version="[4.0,5)",
+ org.apache.curator.x.discovery.details;version="[4.0,5)",
+ org.eclipse.milo.opcua.sdk.client;version="[0.2,1)",
+ org.eclipse.milo.opcua.sdk.client.api.identity;version="[0.2,1)",
+ org.eclipse.milo.opcua.sdk.server.util;version="[0.2,1)",
+ org.eclipse.milo.opcua.stack.core;version="[0.2,1)",
+ org.eclipse.milo.opcua.stack.core.security;version="[0.2,1)",
+ org.eclipse.milo.opcua.stack.core.types.builtin;version="[0.2,1)",
+ org.eclipse.milo.opcua.stack.core.types.enumerated;version="[0.2,1)",
+ org.eclipse.milo.opcua.stack.core.types.structured;version="[0.2,1)",
+ org.eclipse.milo.opcua.stack.core.util;version="[0.2,1)",
+ org.slf4j;version="[1.7,2)"
 Include-Resource: packml-first-layer-scxml.xml=src/main/resources/packml
  -first-layer-scxml.xml,packml-second-layer-scxml.xml=src/main/resources
  /packml-second-layer-scxml.xml,packml.scxml=src/main/resources/packml.s

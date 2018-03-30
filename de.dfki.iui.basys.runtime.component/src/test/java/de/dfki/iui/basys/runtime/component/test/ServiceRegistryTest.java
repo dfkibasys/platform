@@ -25,15 +25,7 @@ import de.dfki.iui.basys.runtime.component.registry.InstanceDetails;
 import de.dfki.iui.basys.runtime.component.registry.ServiceRegistry;
 import de.dfki.iui.basys.runtime.component.registry.ZookeeperServiceRegistry;
 
-public class ServiceRegistryTest {
-
-	protected final Logger LOGGER = LoggerFactory.getLogger(getClass());
-	private static final String PATH = "/discovery/myproducts";
-	
-	private ZookeeperServiceRegistry registry;
-	private Client communicationClient;
-	private ChannelPool sharedPool;
-	private ComponentContext context;
+public class ServiceRegistryTest extends BaseComponentTest {
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -47,21 +39,12 @@ public class ServiceRegistryTest {
 
 	@Before
 	public void setUp() throws Exception {
-		registry = new ZookeeperServiceRegistry();
-		registry.activate();
-		
-		communicationClient = ClientFactory.getInstance().createClient("client", null);
-		sharedPool = ClientFactory.getInstance().connectJmsChannelPool(communicationClient, null);
-		
-		context = new ComponentContext().setServiceRegistry(registry).setSharedChannelPool(sharedPool);
+		super.setUp();
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		registry.deactivate();
-		registry = null;
-		
-		communicationClient.disconnect();
+		super.tearDown();
 	}
 	
 	@Test

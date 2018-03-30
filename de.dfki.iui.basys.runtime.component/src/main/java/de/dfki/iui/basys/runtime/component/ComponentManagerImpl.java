@@ -13,10 +13,10 @@ import de.dfki.iui.basys.runtime.component.registry.ZookeeperServiceRegistry;
 public class ComponentManagerImpl implements ComponentManager {
 
 	private Map<String, ServiceComponent> serviceComponents = new HashMap<>();
-	private ComponentContext context = new ComponentContext();
+	private ComponentContext context;
 
-	public ComponentManagerImpl() {
-		context.setServiceRegistry(new ZookeeperServiceRegistry());
+	public ComponentManagerImpl(ComponentContext context) {
+		this.context = context;
 	}
 	
 	@Override

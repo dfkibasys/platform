@@ -1,9 +1,5 @@
 package de.dfki.iui.basys.runtime.component;
 
-import java.io.IOException;
-
-import javax.security.auth.callback.ConfirmationCallback;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,7 +8,6 @@ import de.dfki.iui.basys.runtime.communication.provider.MqttCommunicationProvide
 import de.dfki.iui.basys.runtime.component.ComponentConfiguration.CommunicationProviderEnum;
 import de.dfki.iui.basys.runtime.component.registry.ServiceRegistration;
 import de.dfki.iui.basys.runtime.component.registry.ServiceRegistrationException;
-import de.dfki.iui.basys.runtime.component.registry.ServiceRegistry;
 import de.dfki.iui.basys.runtime.communication.ClientFactory;
 import de.dfki.iui.basys.model.runtime.communication.Channel;
 import de.dfki.iui.basys.model.runtime.communication.ChannelPool;
