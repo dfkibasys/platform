@@ -1,4 +1,4 @@
-package de.dfki.iui.basys.runtime.component.packml;
+package de.dfki.iui.basys.runtime.component.device.packml;
 
 public class PackMLException extends Exception {
 

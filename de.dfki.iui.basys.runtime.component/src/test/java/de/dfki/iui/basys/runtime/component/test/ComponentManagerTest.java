@@ -10,13 +10,11 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.ComponentManager;
-import de.dfki.iui.basys.runtime.component.ComponentManagerException;
 import de.dfki.iui.basys.runtime.component.ComponentManagerImpl;
-import de.dfki.iui.basys.runtime.component.ServiceComponent;
+import de.dfki.iui.basys.runtime.component.manager.ComponentManagerException;
+import de.dfki.iui.basys.runtime.component.BasysComponent;
 import de.dfki.iui.basys.runtime.component.registry.InstanceDetails;
-import de.dfki.iui.basys.runtime.component.ComponentConfiguration.CommunicationProviderEnum;
 
 public class ComponentManagerTest extends BaseComponentTest {
 	
@@ -45,23 +43,10 @@ public class ComponentManagerTest extends BaseComponentTest {
 
 	@Test
 	public void testAddGetRemoveServiceComponent() {
-		ComponentConfiguration config1 = new ComponentConfiguration()
-				.setId("service1")
-				.setImplementationJavaClass("de.dfki.iui.basys.runtime.component.test.TestDeviceComponent")
-				.setCommunicationProvider(CommunicationProviderEnum.JMS);		
-		
-		ComponentConfiguration config2 = new ComponentConfiguration()
-				.setId("service2")
-				.setImplementationJavaClass("de.dfki.iui.basys.runtime.component.test.TestDeviceComponent")
-				.setCommunicationProvider(CommunicationProviderEnum.JMS);		
-				
-		ComponentConfiguration config3 = new ComponentConfiguration()
-				.setId("service3")
-				.setImplementationJavaClass("de.dfki.iui.basys.runtime.component.test.TestDeviceComponent")
-				.setCommunicationProvider(CommunicationProviderEnum.JMS);	
+
 
 		try {
-			List<ServiceComponent> components = componentManager.getServiceComponents();
+			List<BasysComponent> components = componentManager.getServiceComponents();
 			assertEquals(0,components.size());
 			
 			componentManager.addServiceComponent(config1);

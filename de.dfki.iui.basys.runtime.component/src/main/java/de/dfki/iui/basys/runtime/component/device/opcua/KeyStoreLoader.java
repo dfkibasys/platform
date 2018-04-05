@@ -11,7 +11,7 @@
  *   http://www.eclipse.org/org/documents/edl-v10.html.
  */
 
-package de.dfki.iui.basys.runtime.component.opcua;
+package de.dfki.iui.basys.runtime.component.device.opcua;
 
 import java.io.File;
 import java.io.FileInputStream;

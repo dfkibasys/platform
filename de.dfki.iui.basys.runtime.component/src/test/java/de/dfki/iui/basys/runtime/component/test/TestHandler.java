@@ -3,10 +3,10 @@ package de.dfki.iui.basys.runtime.component.test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.dfki.iui.basys.runtime.component.packml.ActiveStatesHandler;
-import de.dfki.iui.basys.runtime.component.packml.PackMLUnit;
-import de.dfki.iui.basys.runtime.component.packml.State;
-import de.dfki.iui.basys.runtime.component.packml.WaitStatesHandler;
+import de.dfki.iui.basys.runtime.component.device.packml.ActiveStatesHandler;
+import de.dfki.iui.basys.runtime.component.device.packml.PackMLUnit;
+import de.dfki.iui.basys.runtime.component.device.packml.State;
+import de.dfki.iui.basys.runtime.component.device.packml.WaitStatesHandler;
 import junit.framework.TestCase;
 
 public class TestHandler implements ActiveStatesHandler {

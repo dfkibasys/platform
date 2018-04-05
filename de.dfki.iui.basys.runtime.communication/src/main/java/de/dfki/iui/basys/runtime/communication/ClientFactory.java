@@ -1,6 +1,9 @@
 package de.dfki.iui.basys.runtime.communication;
 
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+
 import de.dfki.iui.basys.model.runtime.communication.Authentication;
 import de.dfki.iui.basys.model.runtime.communication.Channel;
 import de.dfki.iui.basys.model.runtime.communication.ChannelListener;
@@ -11,9 +14,10 @@ import de.dfki.iui.basys.model.runtime.communication.CommunicationProvider;
 import de.dfki.iui.basys.model.runtime.communication.Notification;
 import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.communication.Response;
+import de.dfki.iui.basys.model.runtime.communication.exceptions.CommunicationException;
 import de.dfki.iui.basys.runtime.communication.provider.JmsCommunicationProvider;
 import de.dfki.iui.basys.runtime.communication.provider.MqttCommunicationProvider;
-import de.dfki.iui.basys.runtime.communication.provider.WsCommunicationProvider;;
+import de.dfki.iui.basys.runtime.communication.provider.WsCommunicationProvider;
 
 public class ClientFactory {
 		
@@ -59,8 +63,8 @@ public class ClientFactory {
 		client.setName(name);
 		client.setAuthentication(auth);
 		return client;
-	}
-
+	}	
+	
 	public ChannelPool createChannelPool(String uri, CommunicationProvider provider) {
 		ChannelPool pool = CommunicationFactory.eINSTANCE.createChannelPool();
 		pool.setUri(uri);
@@ -75,6 +79,32 @@ public class ClientFactory {
 
 		return pool;
 	}
+	
+	public ChannelPool createChannelPool(String uri, String communicationProviderImplementationJavaClass) {
+		Class c = null;
+		try {
+			c = Class.forName(communicationProviderImplementationJavaClass);
+		} catch (ClassNotFoundException e) {
+			throw new CommunicationException(e);
+		}
+
+		CommunicationProvider provider;
+		try {
+			provider = (CommunicationProvider) c.newInstance();
+			return createChannelPool(uri,provider);
+		} catch (InstantiationException | IllegalAccessException e) {
+			throw new CommunicationException(e);
+		}
+	}
+
+	public ChannelPool connectChannelPool(Client client, String uri, String communicationProviderImplementationJavaClass) {
+		ChannelPool pool = createChannelPool(uri, communicationProviderImplementationJavaClass);
+		client.getPools().add(pool);
+		pool.connect();
+
+		return pool;
+	}
+	
 	
 	public ChannelPool createJmsChannelPool(String uri) {
 		CommunicationProvider provider = new JmsCommunicationProvider();

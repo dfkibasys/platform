@@ -8,24 +8,33 @@ Bundle-SymbolicName: de.dfki.iui.basys.runtime.component
 Bundle-Vendor: DFKI GmbH
 Bundle-Version: 1.0.0.SNAPSHOT
 Created-By: Apache Maven Bundle Plugin
-Export-Package: de.dfki.iui.basys.runtime.component;version="1.0.0.SNAPS
- HOT";uses:="de.dfki.iui.basys.model.runtime.communication,de.dfki.iui.b
- asys.runtime.communication,de.dfki.iui.basys.runtime.component.opcua,de
- .dfki.iui.basys.runtime.component.packml,de.dfki.iui.basys.runtime.comp
- onent.registry,org.eclipse.milo.opcua.sdk.client,org.eclipse.milo.opcua
- .sdk.client.api.identity,org.eclipse.milo.opcua.stack.core.security,org
- .eclipse.milo.opcua.stack.core.types.builtin,org.slf4j",de.dfki.iui.bas
- ys.runtime.component.opcua;version="1.0.0.SNAPSHOT",de.dfki.iui.basys.r
- untime.component.packml;version="1.0.0.SNAPSHOT";uses:="org.slf4j",de.d
- fki.iui.basys.runtime.component.registry;version="1.0.0.SNAPSHOT";uses:
- ="de.dfki.iui.basys.runtime.component,de.dfki.iui.basys.runtime.compone
- nt.packml,org.apache.curator.framework,org.apache.curator.x.discovery"
+Export-Package: de.dfki.iui.basys.runtime.component;version="1.0.0.SNAPSHOT";
+  uses:="de.dfki.iui.basys.model.runtime.communication,
+   de.dfki.iui.basys.runtime.communication,
+   de.dfki.iui.basys.runtime.component.opcua,
+   de.dfki.iui.basys.runtime.component.packml,
+   de.dfki.iui.basys.runtime.component.registry,
+   org.eclipse.milo.opcua.sdk.client,
+   org.eclipse.milo.opcua.sdk.client.api.identity,
+   org.eclipse.milo.opcua.stack.core.security,
+   org.eclipse.milo.opcua.stack.core.types.builtin,
+   org.slf4j",
+ de.dfki.iui.basys.runtime.component.device.opcua;version="1.0.0.SNAPSHOT",
+ de.dfki.iui.basys.runtime.component.device.packml;version="1.0.0.SNAPSHOT";uses:="org.slf4j",
+ de.dfki.iui.basys.runtime.component.manager,
+ de.dfki.iui.basys.runtime.component.registry;version="1.0.0.SNAPSHOT";
+  uses:="de.dfki.iui.basys.runtime.component,
+   de.dfki.iui.basys.runtime.component.packml,
+   org.apache.curator.framework,
+   org.apache.curator.x.discovery"
 Import-Package: de.dfki.iui.basys.model.runtime.communication,
+ de.dfki.iui.basys.model.runtime.component,
+ de.dfki.iui.basys.model.runtime.component.impl,
  de.dfki.iui.basys.runtime.communication,
  de.dfki.iui.basys.runtime.communication.provider,
  de.dfki.iui.basys.runtime.component;version="[1.0,2)",
- de.dfki.iui.basys.runtime.component.opcua;version="[1.0,2)",
- de.dfki.iui.basys.runtime.component.packml;version="[1.0,2)",
+ de.dfki.iui.basys.runtime.component.device.opcua;version="[1.0,2)",
+ de.dfki.iui.basys.runtime.component.device.packml;version="[1.0,2)",
  de.dfki.iui.basys.runtime.component.registry;version="[1.0,2)",
  javax.xml.stream,
  junit.framework;version="4.12.0",

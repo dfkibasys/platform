@@ -12,11 +12,12 @@ import javax.jms.Topic;
 import org.json.JSONObject;
 import org.json.XML;
 
+import de.dfki.iui.basys.runtime.component.BasysComponent;
 import de.dfki.iui.basys.runtime.connector.dummy.DummyBasysConnector;
 import de.dfki.iui.basys.runtime.connector.dummy.DummyBasysConnectorListener;
 import de.dfki.iui.basys.runtime.connector.dummy.DummyBasysConnectorReactStatus;
 
-public class BasysConnectorImpl implements BasysConnector, MessageListener {
+public class BasysConnectorImpl extends BasysComponent implements BasysConnector, MessageListener {
 
 	protected String inTopic;
 	protected String outTopic;

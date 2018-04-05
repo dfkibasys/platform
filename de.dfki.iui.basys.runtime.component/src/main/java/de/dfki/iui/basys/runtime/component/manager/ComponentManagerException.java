@@ -1,4 +1,4 @@
-package de.dfki.iui.basys.runtime.component;
+package de.dfki.iui.basys.runtime.component.manager;
 
 public class ComponentManagerException extends Exception {
 

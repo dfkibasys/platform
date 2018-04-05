@@ -1,12 +1,11 @@
-package de.dfki.iui.basys.runtime.component;
+package de.dfki.iui.basys.runtime.component.device;
 
-import de.dfki.iui.basys.runtime.component.registry.ServiceRegistry;
+import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.runtime.component.ComponentException;
 
-public class MirComponent extends TecsComponent {
+public class MirComponent extends TecsDeviceComponent {
 
-	public MirComponent(String id) {
-		super(id);
-	}
+	
 	
 	public MirComponent(ComponentConfiguration config) {
 		super(config);
@@ -16,17 +15,17 @@ public class MirComponent extends TecsComponent {
 	//protected MIRClient client;
 	
 	@Override
-	public void connectToDevice() throws ServiceComponentException {
-		super.connectToDevice();
+	public void connectToExternal() throws ComponentException {
+		super.connectToExternal();
 		//client = new MIRClient(protocol);
 		//client.open();
 		
 	}
 	
 	@Override
-	public void disconnectFromDevice() {
+	public void disconnectFromExternal() {
 		//client.close();		
-		super.disconnectFromDevice();
+		super.disconnectFromExternal();
 	}
 
 	@Override

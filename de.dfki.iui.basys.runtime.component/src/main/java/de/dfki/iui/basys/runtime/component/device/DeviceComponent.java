@@ -1,34 +1,28 @@
-package de.dfki.iui.basys.runtime.component;
+package de.dfki.iui.basys.runtime.component.device;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import de.dfki.iui.basys.runtime.component.packml.ActiveStatesHandler;
-import de.dfki.iui.basys.runtime.component.packml.CommandInterface;
-import de.dfki.iui.basys.runtime.component.packml.Mode;
-import de.dfki.iui.basys.runtime.component.packml.PackMLException;
-import de.dfki.iui.basys.runtime.component.packml.PackMLUnit;
-import de.dfki.iui.basys.runtime.component.packml.State;
-import de.dfki.iui.basys.runtime.component.packml.StatusInterface;
-import de.dfki.iui.basys.runtime.component.packml.UnitConfiguration;
-import de.dfki.iui.basys.runtime.component.packml.WaitStatesHandler;
-import de.dfki.iui.basys.runtime.component.registry.ServiceRegistrationException;
-import de.dfki.iui.basys.runtime.component.registry.ServiceRegistry;
-import de.dfki.iui.basys.runtime.communication.ClientFactory;
-import de.dfki.iui.basys.model.runtime.communication.Channel;
-import de.dfki.iui.basys.model.runtime.communication.Client;
 import de.dfki.iui.basys.model.runtime.communication.Notification;
+import de.dfki.iui.basys.runtime.component.BaseComponent;
+import de.dfki.iui.basys.runtime.component.ComponentContext;
+import de.dfki.iui.basys.runtime.component.device.packml.ActiveStatesHandler;
+import de.dfki.iui.basys.runtime.component.device.packml.CommandInterface;
+import de.dfki.iui.basys.runtime.component.device.packml.Mode;
+import de.dfki.iui.basys.runtime.component.device.packml.PackMLException;
+import de.dfki.iui.basys.runtime.component.device.packml.PackMLUnit;
+import de.dfki.iui.basys.runtime.component.device.packml.State;
+import de.dfki.iui.basys.runtime.component.device.packml.StatusInterface;
+import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
+import de.dfki.iui.basys.runtime.component.device.packml.WaitStatesHandler;
+import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.runtime.component.registry.ComponentRegistrationException;
 
-public abstract class DeviceComponent extends ServiceComponent
+
+public abstract class DeviceComponent extends BaseComponent
 		implements StatusInterface, CommandInterface, ActiveStatesHandler, WaitStatesHandler {
-
+	
 	protected PackMLUnit unit;
 
 	protected boolean connectedToDevice = false;
-
-	public DeviceComponent(String id) {
-		super(id);
-	}
+	
 
 	public DeviceComponent(ComponentConfiguration config) {
 		super(config);
@@ -37,28 +31,12 @@ public abstract class DeviceComponent extends ServiceComponent
 	public void activate(ComponentContext context) {		
 		//PackML FSA has to be created and initialized before component registration via super.activate() 
 		//TODO: expand PackML to represent also active and inactivate states from a service perspective in order to generate a complete event trace in the middleware
-		unit = new PackMLUnit(id);
+		unit = new PackMLUnit(getId());
 		unit.setActiveStatesHandler(this);
 		unit.setWaitStatesHandler(this);
 		unit.initialize();
-
 		
 		super.activate(context);
-
-		if (componentConfig.getDeviceConnectionString() != null) {			
-			try {
-				connectToDevice();
-				connectedToDevice = true;	
-			} catch (ServiceComponentException e) {
-				LOGGER.error(e.getMessage());
-				e.printStackTrace();
-			}		
-		} else {
-			LOGGER.warn("no device connection string provided, enter simulation mode");
-			// enter some kind of simulation mode like so: 
-			//unit.setActiveStatesHandler(simulationActHandler);
-			//unit.setWaitStatesHandler(simulationWaitHandler);
-		}
 		
 		// make unit ready for production
 		unit.stop();
@@ -71,11 +49,6 @@ public abstract class DeviceComponent extends ServiceComponent
 		unit.stop();		
 
 		super.deactivate();
-		
-		if (connectedToDevice) {			
-			disconnectFromDevice();
-			connectedToDevice = false;
-		}
 
 		unit.dispose();
 	}
@@ -84,9 +57,6 @@ public abstract class DeviceComponent extends ServiceComponent
 		return connectedToDevice;
 	}
 
-	public abstract void connectToDevice() throws ServiceComponentException;
-
-	public abstract void disconnectFromDevice();// throws ServiceComponentException;
 	/*
 	 * StatusInterface
 	 */
@@ -102,8 +72,8 @@ public abstract class DeviceComponent extends ServiceComponent
 	}
 
 	@Override
-	public UnitConfiguration getConfig() {
-		return unit.getConfig();
+	public UnitConfiguration getUnitConfig() {
+		return unit.getUnitConfig();
 	}
 
 	/*
@@ -124,7 +94,7 @@ public abstract class DeviceComponent extends ServiceComponent
 		{
 			try {
 				registration.update();
-			} catch (ServiceRegistrationException e) {
+			} catch (ComponentRegistrationException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -132,8 +102,8 @@ public abstract class DeviceComponent extends ServiceComponent
 	}
 
 	@Override
-	public void setConfig(UnitConfiguration config) throws PackMLException {
-		unit.setConfig(config);
+	public void setUnitConfig(UnitConfiguration config) throws PackMLException {
+		unit.setUnitConfig(config);
 	}
 
 	@Override
@@ -196,7 +166,7 @@ public abstract class DeviceComponent extends ServiceComponent
 		{
 			try {
 				registration.update();
-			} catch (ServiceRegistrationException e) {
+			} catch (ComponentRegistrationException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -214,7 +184,7 @@ public abstract class DeviceComponent extends ServiceComponent
 		{
 			try {
 				registration.update();
-			} catch (ServiceRegistrationException e) {
+			} catch (ComponentRegistrationException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -232,7 +202,7 @@ public abstract class DeviceComponent extends ServiceComponent
 		{
 			try {
 				registration.update();
-			} catch (ServiceRegistrationException e) {
+			} catch (ComponentRegistrationException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -250,7 +220,7 @@ public abstract class DeviceComponent extends ServiceComponent
 		{
 			try {
 				registration.update();
-			} catch (ServiceRegistrationException e) {
+			} catch (ComponentRegistrationException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -268,7 +238,7 @@ public abstract class DeviceComponent extends ServiceComponent
 		{
 			try {
 				registration.update();
-			} catch (ServiceRegistrationException e) {
+			} catch (ComponentRegistrationException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -286,7 +256,7 @@ public abstract class DeviceComponent extends ServiceComponent
 		{
 			try {
 				registration.update();
-			} catch (ServiceRegistrationException e) {
+			} catch (ComponentRegistrationException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}

@@ -6,11 +6,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
-import de.dfki.iui.basys.runtime.component.OpcUaComponent;
-import de.dfki.iui.basys.runtime.component.opcua.OpcUaException;
+import de.dfki.iui.basys.runtime.component.device.OpcUaDeviceComponent;
+import de.dfki.iui.basys.runtime.component.device.opcua.OpcUaException;
 import de.dfki.iui.basys.runtime.component.registry.ServiceRegistry;
 
-public class TestOpcUaComponent extends OpcUaComponent {
+public class TestOpcUaComponent extends OpcUaDeviceComponent {
 	
 	final NodeId NODE_VARIABLE_IN = new NodeId(1, 50190);
 	final NodeId NODE_VARIABLE_OUT = new NodeId(1, 50195);

@@ -1,14 +1,12 @@
-package de.dfki.iui.basys.runtime.component;
+package de.dfki.iui.basys.runtime.component.device;
 
-import de.dfki.iui.basys.runtime.component.registry.ServiceRegistry;
+import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.runtime.component.ComponentException;
 
-public class TecsComponent extends DeviceComponent {
+public class TecsDeviceComponent extends DeviceComponent {
 
-	public TecsComponent(String id) {
-		super(id);
-	}
-	
-	public TecsComponent(ComponentConfiguration config) {
+
+	public TecsDeviceComponent(ComponentConfiguration config) {
 		super(config);
 	}
 
@@ -22,13 +20,13 @@ public class TecsComponent extends DeviceComponent {
 	// protected int port;
 
 	@Override
-	public void connectToDevice() throws ServiceComponentException {
+	public void connectToExternal() throws ComponentException {
 		//socket = new TSocket(host,port);
 		//protocol = new TBinaryProtocol(socket);
 	}
 	
 	@Override
-	public void disconnectFromDevice() {	
+	public void disconnectFromExternal() {	
 		// socket.close();		
 	}
 	

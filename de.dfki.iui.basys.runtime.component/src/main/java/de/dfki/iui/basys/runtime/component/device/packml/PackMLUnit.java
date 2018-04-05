@@ -1,4 +1,4 @@
-package de.dfki.iui.basys.runtime.component.packml;
+package de.dfki.iui.basys.runtime.component.device.packml;
 
 import java.util.Map;
 
@@ -63,7 +63,7 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 	}
 
 	@Override
-	public UnitConfiguration getConfig() {
+	public UnitConfiguration getUnitConfig() {
 		return config;
 	}
 
@@ -85,7 +85,7 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 	}
 
 	@Override
-	public synchronized void setConfig(UnitConfiguration config) throws PackMLException {
+	public synchronized void setUnitConfig(UnitConfiguration config) throws PackMLException {
 		if (getState() == State.IDLE) {
 			this.config = config;
 		} else {

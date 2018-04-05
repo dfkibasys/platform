@@ -1,7 +1,6 @@
-package de.dfki.iui.basys.runtime.component;
+package de.dfki.iui.basys.runtime.component.device;
 
-import static java.util.Arrays.asList;
-import static java.util.Collections.nCopies;
+
 import static org.eclipse.milo.opcua.stack.core.types.builtin.unsigned.Unsigned.uint;
 import static org.eclipse.milo.opcua.stack.core.util.ConversionUtil.l;
 
@@ -29,38 +28,35 @@ import org.eclipse.milo.opcua.stack.core.types.enumerated.TimestampsToReturn;
 import org.eclipse.milo.opcua.stack.core.types.structured.CallMethodRequest;
 import org.eclipse.milo.opcua.stack.core.types.structured.EndpointDescription;
 
-import de.dfki.iui.basys.runtime.component.opcua.KeyStoreLoader;
-import de.dfki.iui.basys.runtime.component.opcua.OpcUaException;
-import de.dfki.iui.basys.runtime.component.registry.ServiceRegistry;
+import de.dfki.iui.basys.runtime.component.device.opcua.KeyStoreLoader;
+import de.dfki.iui.basys.runtime.component.device.opcua.OpcUaException;
+import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.runtime.component.ComponentException;
 
-public class OpcUaComponent extends DeviceComponent {
+public class OpcUaDeviceComponent extends DeviceComponent {
 
 	protected OpcUaClient opcuaClient;
 	protected SecurityPolicy opcuaSecurityPolicy = SecurityPolicy.None;
 	protected IdentityProvider opcuaIdentityProvider = AnonymousProvider.INSTANCE;
 
-	public OpcUaComponent(String id) {
-		super(id);
-	}
-
-	public OpcUaComponent(ComponentConfiguration config) {
+	public OpcUaDeviceComponent(ComponentConfiguration config) {
 		super(config);
 	}
 
 	// TODO: Code for communicating with the actual device, here via OPC-UA.
 
 	@Override
-	public void connectToDevice() throws ServiceComponentException {
+	public void connectToExternal() throws ComponentException {
 		try {
-			opcuaClient = createClient(componentConfig.getDeviceConnectionString());
+			opcuaClient = createClient(componentConfig.getExternalConnectionString());
 			opcuaClient.connect().whenComplete((c, ex) -> this.connectedToDevice = true).get();
 		} catch (Exception  e) {
-			throw new ServiceComponentException(e);
+			throw new ComponentException(e);
 		}
 	}
 
 	@Override
-	public void disconnectFromDevice() {
+	public void disconnectFromExternal() {
 		try {
 			opcuaClient.disconnect().whenComplete((c, ex) -> this.connectedToDevice = false).get();
 			opcuaClient = null;

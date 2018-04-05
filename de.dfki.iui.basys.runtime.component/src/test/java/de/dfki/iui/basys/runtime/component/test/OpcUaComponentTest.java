@@ -10,14 +10,13 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
-import de.dfki.iui.basys.runtime.component.OpcUaComponent;
-import de.dfki.iui.basys.runtime.component.ServiceComponentException;
-import de.dfki.iui.basys.runtime.component.ComponentConfiguration.CommunicationProviderEnum;
-import de.dfki.iui.basys.runtime.component.packml.State;
+import de.dfki.iui.basys.runtime.component.device.OpcUaDeviceComponent;
+import de.dfki.iui.basys.runtime.component.device.packml.State;
+import de.dfki.iui.basys.runtime.component.ne.ComponentException;
 
 public class OpcUaComponentTest {
-
-	OpcUaComponent component;
+	
+	ComponentConfiguration opcuaConfig;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -29,11 +28,10 @@ public class OpcUaComponentTest {
 
 	@Before
 	public void setUp() throws Exception {
-		ComponentConfiguration config = new ComponentConfiguration()
+		opcuaConfig = new ComponentConfiguration()
 				.setId("test-opcua-component")
-				.setCommunicationProvider(CommunicationProviderEnum.NONE)
-				.setDeviceConnectionString(String.format("opc.tcp://%s:%s", "localhost", 4841));
-		component = new TestOpcUaComponent(config);
+				.setCommunicationProviderImplementationJavaClass(null)
+				.setDeviceConnectionString(String.format("opc.tcp://%s:%s", "localhost", 4841));		
 	}
 
 	@After
@@ -42,10 +40,11 @@ public class OpcUaComponentTest {
 
 	@Test
 	public void testOpcUaConnection() {
+		OpcUaDeviceComponent component = new TestOpcUaComponent(opcuaConfig);
 		assertTrue(!component.isConnectedToDevice());		
 		try {
 			component.connectToDevice();
-		} catch (ServiceComponentException e) {
+		} catch (ComponentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -56,6 +55,7 @@ public class OpcUaComponentTest {
 
 	@Test
 	public void testComponentLifecycle() {
+		OpcUaDeviceComponent component = new TestOpcUaComponent(opcuaConfig);
 		assertTrue(!component.isConnectedToDevice());
 		component.activate(null);
 		assertTrue(component.isConnectedToDevice());
