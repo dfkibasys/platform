@@ -38,7 +38,9 @@ public class ZookeeperComponentRegistration implements ComponentRegistration {
 		UriSpec uriSpec = new UriSpec("{scheme}://foo.com:{port}");
 		try {
 			ServiceInstance<ComponentInfo> inst = ServiceInstance.<ComponentInfo>builder()
-					.name(component.getCategory().getName()).id(component.getId()).payload(componentInfo)
+					.name(component.getCategory().getName())
+					.id(component.getId())
+					.payload(componentInfo)
 					.port((int) (65535 * Math.random())) // in a real application, you'd use a common port
 					.uriSpec(uriSpec).build();
 			return inst;

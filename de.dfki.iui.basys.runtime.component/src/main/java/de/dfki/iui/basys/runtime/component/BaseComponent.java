@@ -126,8 +126,10 @@ public class BaseComponent implements Component {
 	}
 
 	protected void disconnectFromBasys() {
-		inChannel.close();
-		outChannel.close();
+		if (inChannel != null)
+			inChannel.close();
+		if (outChannel != null)
+			outChannel.close();
 
 		if (privateClient != null) {
 			privateClient.disconnect();

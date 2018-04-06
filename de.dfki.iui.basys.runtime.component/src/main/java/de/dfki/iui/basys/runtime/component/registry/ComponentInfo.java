@@ -1,10 +1,17 @@
 package de.dfki.iui.basys.runtime.component.registry;
 
+import com.fasterxml.jackson.annotation.JsonRootName;
+
 import de.dfki.iui.basys.runtime.component.device.packml.Mode;
 import de.dfki.iui.basys.runtime.component.device.packml.State;
 
+@JsonRootName("componentInfo")
 public class ComponentInfo {
 
+	public ComponentInfo() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	private String id;
 	private String name;
 	private String category;

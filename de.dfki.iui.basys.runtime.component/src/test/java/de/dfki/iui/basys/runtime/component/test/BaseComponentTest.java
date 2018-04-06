@@ -111,12 +111,16 @@ public class BaseComponentTest {
 
 	@After
 	public void tearDown() throws Exception {
+		componentManager.deactivate();
+		componentManager = null;
+		
+		communicationClient.disconnect();
+		communicationClient = null;
+				
 		registry.deactivate();
 		registry = null;
 		
-		communicationClient.disconnect();
-		
-		componentManager.deactivate();
+		context = null;
 	}
 	
 	

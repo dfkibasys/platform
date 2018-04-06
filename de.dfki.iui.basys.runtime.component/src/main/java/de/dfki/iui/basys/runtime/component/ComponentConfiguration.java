@@ -79,7 +79,7 @@ public class ComponentConfiguration {
 	public static class Builder {
 		private String componentId;
 		private String componentName;
-		private ComponentCategory componentCategory;
+		private ComponentCategory componentCategory = ComponentCategory.NONE;
 		private String componentImplementationJavaClass;
 		private String communicationProviderImplementationJavaClass;
 		private String communicationProviderConnectionString;

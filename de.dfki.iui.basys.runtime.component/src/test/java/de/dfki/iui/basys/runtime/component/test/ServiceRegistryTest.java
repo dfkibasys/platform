@@ -74,8 +74,8 @@ public class ServiceRegistryTest extends BaseComponentTest {
 		ComponentInfo details3 = registry.getComponentById(service3.getCategory(), service3.getId());
 		assertNotNull(details3);
 
-		List<ComponentInfo> services = registry.getComponents(ComponentCategory.DEVICE_COMPONENT);
-		assertEquals(3, services.size());
+		List<ComponentInfo> services = registry.getComponents(ComponentCategory.NONE);
+		assertEquals(3+2, services.size()); // component-manager & component-registry are also registered
 
 		service1.deactivate();
 		details1 = registry.getComponentById(service1.getCategory(), service1.getId());
