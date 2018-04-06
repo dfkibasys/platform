@@ -19,10 +19,7 @@ import de.dfki.iui.basys.runtime.component.registry.ComponentRegistrationExcepti
 public abstract class DeviceComponent extends BaseComponent
 		implements StatusInterface, CommandInterface, ActiveStatesHandler, WaitStatesHandler {
 	
-	protected PackMLUnit unit;
-
-	protected boolean connectedToDevice = false;
-	
+	protected PackMLUnit packmlUnit;
 
 	public DeviceComponent(ComponentConfiguration config) {
 		super(config);
@@ -31,31 +28,28 @@ public abstract class DeviceComponent extends BaseComponent
 	public void activate(ComponentContext context) {		
 		//PackML FSA has to be created and initialized before component registration via super.activate() 
 		//TODO: expand PackML to represent also active and inactivate states from a service perspective in order to generate a complete event trace in the middleware
-		unit = new PackMLUnit(getId());
-		unit.setActiveStatesHandler(this);
-		unit.setWaitStatesHandler(this);
-		unit.initialize();
+		packmlUnit = new PackMLUnit(getId());
+		packmlUnit.setActiveStatesHandler(this);
+		packmlUnit.setWaitStatesHandler(this);
+		packmlUnit.initialize();
 		
 		super.activate(context);
 		
 		// make unit ready for production
-		unit.stop();
-		unit.reset();
+		packmlUnit.stop();
+		packmlUnit.reset();
 	}
 
 	public void deactivate() {
 		
 		// regardless of connection to real device (e.g. in simulation) do:
-		unit.stop();		
+		packmlUnit.stop();		
 
 		super.deactivate();
 
-		unit.dispose();
+		packmlUnit.dispose();
 	}
 
-	public boolean isConnectedToDevice() {
-		return connectedToDevice;
-	}
 
 	/*
 	 * StatusInterface
@@ -63,17 +57,17 @@ public abstract class DeviceComponent extends BaseComponent
 
 	@Override
 	public State getState() {
-		return unit.getState();
+		return packmlUnit.getState();
 	}
 
 	@Override
 	public Mode getMode() {
-		return unit.getMode();
+		return packmlUnit.getMode();
 	}
 
 	@Override
 	public UnitConfiguration getUnitConfig() {
-		return unit.getUnitConfig();
+		return packmlUnit.getUnitConfig();
 	}
 
 	/*
@@ -84,7 +78,7 @@ public abstract class DeviceComponent extends BaseComponent
 	public void setMode(Mode mode) throws PackMLException {
 		if (getMode() == mode) return;
 		
-		unit.setMode(mode);
+		packmlUnit.setMode(mode);
 		
 		if (outChannel != null && outChannel.isOpen()) {
 			Notification not = cf.createNotification("mode_changed");
@@ -103,52 +97,52 @@ public abstract class DeviceComponent extends BaseComponent
 
 	@Override
 	public void setUnitConfig(UnitConfiguration config) throws PackMLException {
-		unit.setUnitConfig(config);
+		packmlUnit.setUnitConfig(config);
 	}
 
 	@Override
 	public void reset() {
-		unit.reset();
+		packmlUnit.reset();
 	}
 
 	@Override
 	public void start() {
-		unit.start();
+		packmlUnit.start();
 	}
 
 	@Override
 	public void stop() {
-		unit.stop();
+		packmlUnit.stop();
 	}
 
 	@Override
 	public void hold() {
-		unit.hold();
+		packmlUnit.hold();
 	}
 
 	@Override
 	public void unhold() {
-		unit.unhold();
+		packmlUnit.unhold();
 	}
 
 	@Override
 	public void suspend() {
-		unit.suspend();
+		packmlUnit.suspend();
 	}
 
 	@Override
 	public void unsuspend() {
-		unit.unsuspend();
+		packmlUnit.unsuspend();
 	}
 
 	@Override
 	public void abort() {
-		unit.abort();
+		packmlUnit.abort();
 	}
 
 	@Override
 	public void clear() {
-		unit.clear();
+		packmlUnit.clear();
 	}
 
 	/*

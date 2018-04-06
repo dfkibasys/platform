@@ -5,6 +5,7 @@ import org.apache.curator.x.discovery.ServiceInstance;
 import org.apache.curator.x.discovery.UriSpec;
 
 import de.dfki.iui.basys.runtime.component.Component;
+import de.dfki.iui.basys.runtime.component.ComponentCategory;
 
 public class ZookeeperComponentRegistration implements ComponentRegistration {
 
@@ -24,11 +25,13 @@ public class ZookeeperComponentRegistration implements ComponentRegistration {
 		ComponentInfo componentInfo = new ComponentInfo.Builder()
 				.id(component.getId())
 				.name(component.getName())
-				.category(component.getCategory().getName())
+				.category(component.getCategory().toString())
 				.communicationProvider(component.getConfig().getCommunicationProviderImplementationJavaClass())
 				.connectionString(component.getConfig().getCommunicationProviderConnectionString())
 				.inChannel(component.getConfig().getInChannelName())
 				.outChannel(component.getConfig().getOutChannelName())
+				.currentState(component.getState())
+				.currentMode(component.getMode())
 				.build();
 		// in a real application, you'd have a convention of some kind for the URI
 		// layout

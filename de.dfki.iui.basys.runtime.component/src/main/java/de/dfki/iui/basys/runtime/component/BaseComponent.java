@@ -6,6 +6,8 @@ import org.slf4j.LoggerFactory;
 
 import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.ComponentException;
+import de.dfki.iui.basys.runtime.component.device.packml.Mode;
+import de.dfki.iui.basys.runtime.component.device.packml.State;
 import de.dfki.iui.basys.runtime.component.registry.ComponentRegistration;
 import de.dfki.iui.basys.runtime.component.registry.ComponentRegistrationException;
 import de.dfki.iui.basys.runtime.communication.ClientFactory;
@@ -54,6 +56,16 @@ public class BaseComponent implements Component {
 	}
 	
 	@Override
+	public State getState() {
+		return State.EXECUTE;
+	}
+
+	@Override
+	public Mode getMode() {
+		return Mode.PRODUCTION;
+	}
+	
+	@Override
 	public void activate(ComponentContext context) {
 		this.context = context;
 		
@@ -72,7 +84,7 @@ public class BaseComponent implements Component {
 //			//unit.setActiveStatesHandler(simulationActHandler);
 //			//unit.setWaitStatesHandler(simulationWaitHandler);
 //		}
-		
+				
 		if (context.getSharedChannelPool() != null || componentConfig.getCommunicationProviderImplementationJavaClass() != null) {
 			connectToBasys();
 			register();
@@ -107,8 +119,10 @@ public class BaseComponent implements Component {
 			pool = cf.connectChannelPool(privateClient, componentConfig.getCommunicationProviderConnectionString(), componentConfig.getCommunicationProviderImplementationJavaClass());
 		}
 
-		inChannel = cf.openChannel(pool, componentConfig.getInChannelName(), false, new ComponentChannelListener(this));
-		outChannel = cf.openChannel(pool, componentConfig.getOutChannelName(), false, null);
+		if (componentConfig.getInChannelName() != null)
+			inChannel = cf.openChannel(pool, componentConfig.getInChannelName(), false, new ComponentChannelListener(this));
+		if (componentConfig.getOutChannelName() != null)
+			outChannel = cf.openChannel(pool, componentConfig.getOutChannelName(), false, null);
 	}
 
 	protected void disconnectFromBasys() {

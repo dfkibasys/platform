@@ -20,20 +20,26 @@ import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.device.OpcUaDeviceComponent;
 import de.dfki.iui.basys.runtime.component.device.packml.Mode;
 import de.dfki.iui.basys.runtime.component.device.packml.State;
+import de.dfki.iui.basys.runtime.component.manager.ComponentManager;
+import de.dfki.iui.basys.runtime.component.manager.ComponentManagerImpl;
+import de.dfki.iui.basys.runtime.component.registry.ComponentRegistry;
 import de.dfki.iui.basys.runtime.component.registry.ZookeeperComponentRegistry;
 
 public class BaseComponentTest {
 
 	protected final Logger LOGGER = LoggerFactory.getLogger(getClass());
 	
-	protected ZookeeperComponentRegistry registry;
+	protected ComponentRegistry registry;
+	protected ComponentManager componentManager;
+	
 	protected Client communicationClient;
 	protected ChannelPool sharedPool;
 	protected ComponentContext context;
-	protected ComponentConfiguration config1, config2, config3; 
+	protected ComponentConfiguration config1, config2, config3, registryConfig, managerConfig; 
 	
-	
-	protected static final String jmsProviderImplementationJavaClass = "de.dfki.iui.basys.runtime.communication.provider.JmsCommunicationProvider";
+
+	protected static final String communicationProviderImplementationJavaClass = "de.dfki.iui.basys.runtime.communication.provider.JmsCommunicationProvider";
+	protected static final String communicationProviderConnectionString = "vm://localhost?broker.persistent=false";
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -47,41 +53,60 @@ public class BaseComponentTest {
 
 	@Before
 	public void setUp() throws Exception {
-		ComponentConfiguration regConfig = new ComponentConfiguration.Builder()
-				.componentId("registry")
-				.componentName("registry")
-				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.component.test.TestDeviceComponent")
-				.communicationProviderImplementationJavaClass(jmsProviderImplementationJavaClass)
+		registryConfig = new ComponentConfiguration.Builder()
+				.componentId("component-registry")
+				.componentName("component-registry")
+				.communicationProviderImplementationJavaClass(communicationProviderImplementationJavaClass)
+				.communicationProviderConnectionString(communicationProviderConnectionString)
 				.externalConnectionString(ZookeeperComponentRegistry.defaultConnectionString)
 				.build();	
-		registry = new ZookeeperComponentRegistry(regConfig);
-		registry.activate(null);
+
+		managerConfig = new ComponentConfiguration.Builder()
+				.componentId("component-manager")
+				.componentName("component-manager")
+				.communicationProviderImplementationJavaClass(communicationProviderImplementationJavaClass)
+				.communicationProviderConnectionString(communicationProviderConnectionString)
+				.build();	
+		
+		config1 = new ComponentConfiguration.Builder()
+				.componentId("component-1")
+				.componentName("component-1")
+				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.component.test.TestDeviceComponent")
+				.communicationProviderImplementationJavaClass(communicationProviderImplementationJavaClass)
+				.communicationProviderConnectionString(communicationProviderConnectionString)
+				.build();		
+		
+		config2 = new ComponentConfiguration.Builder()
+				.componentId("component-2")
+				.componentName("component-2")
+				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.component.test.TestDeviceComponent")
+				.communicationProviderImplementationJavaClass(communicationProviderImplementationJavaClass)
+				.communicationProviderConnectionString(communicationProviderConnectionString)
+				.build();	
+				
+		config3 = new ComponentConfiguration.Builder()
+				.componentId("component-3")
+				.componentName("component-3")
+				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.component.test.TestDeviceComponent")
+				.communicationProviderImplementationJavaClass(communicationProviderImplementationJavaClass)
+				.communicationProviderConnectionString(communicationProviderConnectionString)
+				.build();	
+		
+		
+		
+
 		
 		communicationClient = ClientFactory.getInstance().createClient("client", null);
 		sharedPool = ClientFactory.getInstance().connectJmsChannelPool(communicationClient, null);
 		
+		registry = new ZookeeperComponentRegistry(registryConfig);
+		
 		context = new ComponentContext.Builder().componentRegistry(registry).sharedChannelPool(sharedPool).build();
 		
-		config1 = new ComponentConfiguration.Builder()
-				.componentId("service1")
-				.componentName("service1")
-				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.component.test.TestDeviceComponent")
-				.communicationProviderImplementationJavaClass(jmsProviderImplementationJavaClass)
-				.build();		
+		registry.activate(context);
 		
-		config2 = new ComponentConfiguration.Builder()
-				.componentId("service2")
-				.componentName("service2")
-				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.component.test.TestDeviceComponent")
-				.communicationProviderImplementationJavaClass(jmsProviderImplementationJavaClass)
-				.build();	
-				
-		config3 = new ComponentConfiguration.Builder()
-				.componentId("service3")
-				.componentName("service3")
-				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.component.test.TestDeviceComponent")
-				.communicationProviderImplementationJavaClass(jmsProviderImplementationJavaClass)
-				.build();	
+		componentManager = new ComponentManagerImpl(managerConfig);
+		componentManager.activate(context);
 	}
 
 	@After
@@ -90,6 +115,8 @@ public class BaseComponentTest {
 		registry = null;
 		
 		communicationClient.disconnect();
+		
+		componentManager.deactivate();
 	}
 	
 	

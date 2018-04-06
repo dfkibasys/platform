@@ -39,6 +39,7 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 
 	protected final Logger LOGGER = LoggerFactory.getLogger(JmsCommunicationProvider.class.getName());
 
+	public static final String defaultConnectionString = "vm://localhost?broker.persistent=false";
 	private Connection connection = null;
 	private Session session;
 
@@ -59,7 +60,7 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 		
 
 		if (pool.getUri() == null) {
-			pool.setUri("vm://localhost?broker.persistent=false");
+			pool.setUri(defaultConnectionString);
 			LOGGER.warn(String.format("ConnectionString not specified, using VM internal default %s", pool.getUri()));
 		}
 

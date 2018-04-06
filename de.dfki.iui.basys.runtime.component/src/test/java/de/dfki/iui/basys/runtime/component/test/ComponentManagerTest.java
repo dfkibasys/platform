@@ -10,15 +10,13 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import de.dfki.iui.basys.runtime.component.ComponentManager;
-import de.dfki.iui.basys.runtime.component.ComponentManagerImpl;
+import de.dfki.iui.basys.runtime.component.manager.ComponentManager;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManagerException;
-import de.dfki.iui.basys.runtime.component.BasysComponent;
-import de.dfki.iui.basys.runtime.component.registry.InstanceDetails;
+import de.dfki.iui.basys.runtime.component.manager.ComponentManagerImpl;
+import de.dfki.iui.basys.runtime.component.registry.ComponentInfo;
+import de.dfki.iui.basys.runtime.component.Component;
 
 public class ComponentManagerTest extends BaseComponentTest {
-	
-	protected ComponentManager componentManager;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -33,7 +31,6 @@ public class ComponentManagerTest extends BaseComponentTest {
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
-		componentManager = new ComponentManagerImpl(context);
 	}
 
 	@After
@@ -44,48 +41,47 @@ public class ComponentManagerTest extends BaseComponentTest {
 	@Test
 	public void testAddGetRemoveServiceComponent() {
 
-
 		try {
-			List<BasysComponent> components = componentManager.getServiceComponents();
+			List<Component> components = componentManager.getLocalComponents();
 			assertEquals(0,components.size());
 			
-			componentManager.addServiceComponent(config1);
-			components = componentManager.getServiceComponents();
+			componentManager.createLocalComponent(config1);
+			components = componentManager.getLocalComponents();
 			assertEquals(1,components.size());
-			InstanceDetails details1 = registry.getService(config1.getId());
+			ComponentInfo details1 = registry.getComponentById(config1.getComponentCategory(), config1.getComponentId());
 			assertNotNull(details1);
 			
-			componentManager.addServiceComponent(config2);
-			components = componentManager.getServiceComponents();
+			componentManager.createLocalComponent(config2);
+			components = componentManager.getLocalComponents();
 			assertEquals(2,components.size());
-			InstanceDetails details2 = registry.getService(config2.getId());
+			ComponentInfo details2 = registry.getComponentById(config1.getComponentCategory(),config2.getComponentId());
 			assertNotNull(details2);
 
-			componentManager.addServiceComponent(config3);			
-			components = componentManager.getServiceComponents();
+			componentManager.createLocalComponent(config3);			
+			components = componentManager.getLocalComponents();
 			assertEquals(3,components.size());
-			InstanceDetails details3 = registry.getService(config3.getId());
+			ComponentInfo details3 = registry.getComponentById(config1.getComponentCategory(),config3.getComponentId());
 			assertNotNull(details3);
 
-			components = componentManager.getServiceComponents();
+			components = componentManager.getLocalComponents();
 			assertEquals(3,components.size());
 			
-			componentManager.removeServiceComponent(config1.getId());
-			components = componentManager.getServiceComponents();
+			componentManager.deleteLocalComponent(config1.getComponentId());
+			components = componentManager.getLocalComponents();
 			assertEquals(2,components.size());
-			details1 = registry.getService(config1.getId());
+			details1 = registry.getComponentById(config1.getComponentCategory(),config1.getComponentId());
 			assertNull(details1);
 			
-			componentManager.removeServiceComponent(config2.getId());
-			components = componentManager.getServiceComponents();
+			componentManager.deleteLocalComponent(config2.getComponentId());
+			components = componentManager.getLocalComponents();
 			assertEquals(1,components.size());
-			details2 = registry.getService(config2.getId());
+			details2 = registry.getComponentById(config1.getComponentCategory(),config2.getComponentId());
 			assertNull(details2);
 			
-			componentManager.removeServiceComponent(config3.getId());
-			components = componentManager.getServiceComponents();
+			componentManager.deleteLocalComponent(config3.getComponentId());
+			components = componentManager.getLocalComponents();
 			assertEquals(0,components.size());
-			details3 = registry.getService(config3.getId());
+			details3 = registry.getComponentById(config1.getComponentCategory(),config3.getComponentId());
 			assertNull(details3);			
 		} catch (ComponentManagerException e) {
 			// TODO Auto-generated catch block

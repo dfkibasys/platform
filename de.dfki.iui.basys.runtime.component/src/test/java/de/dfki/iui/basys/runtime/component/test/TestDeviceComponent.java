@@ -1,30 +1,13 @@
 package de.dfki.iui.basys.runtime.component.test;
 
 import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
-import de.dfki.iui.basys.runtime.component.device.DeviceComponente;
-import de.dfki.iui.basys.runtime.component.ne.ComponentException;
-import de.dfki.iui.basys.runtime.component.registry.ServiceRegistry;
+import de.dfki.iui.basys.runtime.component.device.DeviceComponent;
+import de.dfki.iui.basys.runtime.component.ComponentException;
 
-public class TestDeviceComponent extends DeviceComponente {
+public class TestDeviceComponent extends DeviceComponent {
 
-	public TestDeviceComponent(String id) {
-		super(id);
-	}
-	
 	public TestDeviceComponent(ComponentConfiguration config) {
 		super(config);
-	}
-	
-	@Override
-	public void connectToDevice() throws ComponentException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void disconnectFromDevice() {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	@Override

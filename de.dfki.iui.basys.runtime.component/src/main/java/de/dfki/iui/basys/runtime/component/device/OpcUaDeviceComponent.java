@@ -49,7 +49,8 @@ public class OpcUaDeviceComponent extends DeviceComponent {
 	public void connectToExternal() throws ComponentException {
 		try {
 			opcuaClient = createClient(componentConfig.getExternalConnectionString());
-			opcuaClient.connect().whenComplete((c, ex) -> this.connectedToDevice = true).get();
+			//opcuaClient.connect().whenComplete((c, ex) -> this.isConnectedToExternal() = true).get();
+			opcuaClient.connect().get();
 		} catch (Exception  e) {
 			throw new ComponentException(e);
 		}
@@ -58,7 +59,8 @@ public class OpcUaDeviceComponent extends DeviceComponent {
 	@Override
 	public void disconnectFromExternal() {
 		try {
-			opcuaClient.disconnect().whenComplete((c, ex) -> this.connectedToDevice = false).get();
+			//opcuaClient.disconnect().whenComplete((c, ex) -> this.connectedToDevice = false).get();
+			opcuaClient.disconnect().get();
 			opcuaClient = null;
 		} catch (InterruptedException | ExecutionException e) {
 			// TODO Auto-generated catch block

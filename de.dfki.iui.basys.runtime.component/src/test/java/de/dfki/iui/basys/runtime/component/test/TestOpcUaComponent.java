@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.device.OpcUaDeviceComponent;
 import de.dfki.iui.basys.runtime.component.device.opcua.OpcUaException;
-import de.dfki.iui.basys.runtime.component.registry.ServiceRegistry;
 
 public class TestOpcUaComponent extends OpcUaDeviceComponent {
 	
@@ -20,10 +19,6 @@ public class TestOpcUaComponent extends OpcUaDeviceComponent {
 
 	private short result = 0;
 	
-	public TestOpcUaComponent(String id) {
-		super(id);
-	}
-
 	public TestOpcUaComponent(ComponentConfiguration config) {
 		super(config);
 	}

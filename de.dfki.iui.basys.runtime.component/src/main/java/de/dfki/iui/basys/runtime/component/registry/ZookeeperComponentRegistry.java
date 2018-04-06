@@ -15,6 +15,7 @@ import org.apache.curator.x.discovery.details.JsonInstanceSerializer;
 
 import de.dfki.iui.basys.runtime.component.BaseComponent;
 import de.dfki.iui.basys.runtime.component.Component;
+import de.dfki.iui.basys.runtime.component.ComponentCategory;
 import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 
@@ -72,9 +73,9 @@ public class ZookeeperComponentRegistry extends BaseComponent implements Compone
 	}
 
 	@Override
-	public List<ComponentInfo> getComponents(String category) {
+	public List<ComponentInfo> getComponents(ComponentCategory category) {
 		try {			
-			Collection<ServiceInstance<ComponentInfo>> instances = serviceDiscovery.queryForInstances(category);
+			Collection<ServiceInstance<ComponentInfo>> instances = serviceDiscovery.queryForInstances(category.toString());
 			List<ComponentInfo> result = new ArrayList<>(instances.size());
 			instances.forEach(i -> result.add(i.getPayload()));
 			return result;
@@ -85,9 +86,9 @@ public class ZookeeperComponentRegistry extends BaseComponent implements Compone
 	}
 
 	@Override
-	public ComponentInfo getComponentById(String category, String id) {
+	public ComponentInfo getComponentById(ComponentCategory category, String id) {
 		try {
-			ServiceInstance<ComponentInfo> instance = serviceDiscovery.queryForInstance(category, id);
+			ServiceInstance<ComponentInfo> instance = serviceDiscovery.queryForInstance(category.toString(), id);
 			if (instance != null) 
 				return instance.getPayload();				 
 		} catch (Exception e) {
@@ -97,7 +98,7 @@ public class ZookeeperComponentRegistry extends BaseComponent implements Compone
 	}
 
 	@Override
-	public ComponentInfo getComponentByName(String category, String name) {
+	public ComponentInfo getComponentByName(ComponentCategory category, String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
