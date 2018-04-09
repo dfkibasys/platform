@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="component" nsURI="http://www.dfki.de/iui/basys/model/component"
+    nsPrefix="component">
+  <eAnnotations source="http://de.dfki.iui.mmds/CoreModel"/>
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
+    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
+    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="Component" abstract="true" interface="true">
+    <eOperations name="getId" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eOperations name="getName" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eOperations name="getCategory" eType="#//ComponentCategory"/>
+    <eOperations name="activate">
+      <eParameters name="context" eType="#//ComponentContext"/>
+    </eOperations>
+    <eOperations name="deactivate"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ComponentConfiguration">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="componentId" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="componentName" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="componentCategory" eType="#//ComponentCategory"
+        defaultValueLiteral="NONE"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="componentImplementationJavaClass"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="communicationProviderImplementationJavaClass"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="communicationProviderConnectionString"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="inChannelName" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="outChannelName" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="externalConnectionString"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ComponentManager" abstract="true" interface="true"
+      eSuperTypes="#//Component">
+    <eOperations name="getLocalComponents" upperBound="-1" eType="#//Component"/>
+    <eOperations name="getLocalComponentById" eType="#//Component">
+      <eParameters name="id" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    </eOperations>
+    <eOperations name="getLocalComponentByName" eType="#//Component">
+      <eParameters name="name" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    </eOperations>
+    <eOperations name="createLocalComponent" eExceptions="#//ComponentManagerException">
+      <eParameters name="config" eType="#//ComponentConfiguration"/>
+    </eOperations>
+    <eOperations name="deleteLocalComponent" eExceptions="#//ComponentManagerException">
+      <eParameters name="id" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ComponentRegistry" abstract="true" interface="true"
+      eSuperTypes="#//Component">
+    <eOperations name="createRegistration" eType="#//ComponentRegistration" eExceptions="#//ComponentRegistrationException">
+      <eParameters name="instance" eType="#//Component"/>
+    </eOperations>
+    <eOperations name="getComponents" upperBound="-1" eType="#//ComponentDescription">
+      <eParameters name="category" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    </eOperations>
+    <eOperations name="getComponentById" eType="#//ComponentDescription">
+      <eParameters name="category" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+      <eParameters name="id" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    </eOperations>
+    <eOperations name="getComponentByName" eType="#//ComponentDescription">
+      <eParameters name="category" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+      <eParameters name="name" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ComponentRegistration" abstract="true"
+      interface="true">
+    <eOperations name="register" eExceptions="#//ComponentRegistrationException"/>
+    <eOperations name="update" eExceptions="#//ComponentRegistrationException"/>
+    <eOperations name="unregister" eExceptions="#//ComponentRegistrationException"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ComponentContext" abstract="true" interface="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="componentRegistry" eType="#//ComponentRegistry"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sharedChannelPool" eType="ecore:EClass communication.ecore#//ChannelPool"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="ComponentException" instanceClassName="de.dfki.iui.basys.model.runtime.component.exceptions.ComponentException"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="ComponentManagerException" instanceClassName="de.dfki.iui.basys.model.runtime.component.exceptions.ComponentManagerException"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="ComponentRegistrationException" instanceClassName="de.dfki.iui.basys.model.runtime.component.exceptions.ComponentRegistrationException"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="ComponentCategory">
+    <eLiterals name="NONE"/>
+    <eLiterals name="SERVICE_COMPONENT" value="1"/>
+    <eLiterals name="DEVICE_COMPONENT" value="2"/>
+    <eLiterals name="MANAGEMENT_COMPONENT" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ComponentDescription" abstract="true"
+      interface="true"/>
+</ecore:EPackage>
