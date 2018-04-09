@@ -3,6 +3,7 @@ package de.dfki.iui.basys.runtime.connector.test;
 import static org.junit.Assert.assertTrue;
 
 import java.util.LinkedList;
+import java.util.UUID;
 
 import javax.jms.Connection;
 import javax.jms.JMSException;
@@ -21,12 +22,14 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import de.dfki.iui.basys.runtime.component.ComponentCategory;
+import de.dfki.iui.basys.runtime.component.registry.ZookeeperComponentRegistry;
+import de.dfki.iui.basys.runtime.component.test.BaseComponentTest;
 import de.dfki.iui.basys.runtime.connector.BasysConnector;
+import de.dfki.iui.basys.runtime.connector.BasysConnectorConfiguration;
 import de.dfki.iui.basys.runtime.connector.MessageFactory;
-import de.dfki.iui.basys.runtime.connector.dummy.DummyBasysConnector;
-import de.dfki.iui.basys.runtime.connector.dummy.DummyBasysConnectorReactStatus;
 
-public class BasysConnectorTest {
+public class BasysConnectorTest extends BaseComponentTest {
 
 	private static final String brokerUri = "vm://localhost?broker.persistent=false";
 	private static Connection connection = null;
@@ -35,12 +38,9 @@ public class BasysConnectorTest {
 	private MessageProducer wfe_sender;
 	private MessageConsumer wfe_receiver;
 
-	private DummyBasysConnector connector;
-
 	// Data
-	private String connectorInTopic = ".In";
-	private String connectorOutTopic = ".Out";
-	private int resourceID = 2000815;
+	private String connectorComponentId;
+	private int caaResourceId = 2000815;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -58,14 +58,33 @@ public class BasysConnectorTest {
 
 	@Before
 	public void setUp() throws Exception {
-		session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-		connector = new DummyBasysConnector(connectorInTopic, connectorOutTopic, resourceID, session);
+		connectorComponentId = UUID.randomUUID().toString();
+		
+		BasysConnectorConfiguration connectorConfig = (BasysConnectorConfiguration) new BasysConnectorConfiguration.Builder()
+				.caaResourceId(caaResourceId)
+				.caaInTopic("Caa.In")
+				.caaOutTopic("Caa.Out")
+				.componentId(connectorComponentId)
+				.componentName("basys-connector")
+				.componentCategory(ComponentCategory.SERVICE_COMPONENT)
+				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.connector.test.TestBasysConnector")
+				.communicationProviderImplementationJavaClass(communicationProviderImplementationJavaClass)
+				.communicationProviderConnectionString(communicationProviderConnectionString)
+				//.inChannelName("connector.in")
+				//.outChannelName("connector.out")
+				.externalConnectionString(brokerUri)
+				.build();
+				
+		
+		componentManager.createLocalComponent(connectorConfig);
+		
+		session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);		
 		messageFactory = new MessageFactory(session);
 
-		Topic jmsTopicProducer = session.createTopic(connectorInTopic);
+		Topic jmsTopicProducer = session.createTopic(connectorConfig.getCaaInTopic());
 		wfe_sender = session.createProducer(jmsTopicProducer);
 
-		Topic jmsTopicConsumer = session.createTopic(connectorOutTopic);
+		Topic jmsTopicConsumer = session.createTopic(connectorConfig.getCaaOutTopic());
 		wfe_receiver = session.createConsumer(jmsTopicConsumer);
 	}
 
@@ -74,18 +93,18 @@ public class BasysConnectorTest {
 		wfe_sender.close();
 		wfe_receiver.close();
 		session.close();
+		
+		componentManager.deleteLocalComponent(connectorComponentId);
 	}
 
 	@Test
 	public void testExecutionIO() {
-		connector.setReactStatus(DummyBasysConnectorReactStatus.IO);
-
 		TestListener testCallback = new TestListener();
 
-		TextMessage msg10 = messageFactory.createMSG10(resourceID, 0, 0);
-		TextMessage msg11 = messageFactory.createMSG11(resourceID);
-		TextMessage msg12 = messageFactory.createMSG12(resourceID, 1, 0);
-		TextMessage msg13 = messageFactory.createMSG13(resourceID, 1, 0);
+		TextMessage msg10 = messageFactory.createMSG10(caaResourceId, 0, 0);
+		TextMessage msg11 = messageFactory.createMSG11(caaResourceId);
+		TextMessage msg12 = messageFactory.createMSG12(caaResourceId, 1, 0);
+		TextMessage msg13 = messageFactory.createMSG13(caaResourceId, 1, 0);
 
 		try {
 			wfe_receiver.setMessageListener(testCallback);
@@ -109,14 +128,13 @@ public class BasysConnectorTest {
 
 	@Test
 	public void testExecutionNIO() {
-		connector.setReactStatus(DummyBasysConnectorReactStatus.NIO);
 
 		TestListener testCallback = new TestListener();
 
-		TextMessage msg10 = messageFactory.createMSG10(resourceID, 0, 0);
-		TextMessage msg11 = messageFactory.createMSG11(resourceID);
-		TextMessage msg12 = messageFactory.createMSG12(resourceID, 2, 0);
-		TextMessage msg13 = messageFactory.createMSG13(resourceID, 2, 0);
+		TextMessage msg10 = messageFactory.createMSG10(caaResourceId, 0, 0);
+		TextMessage msg11 = messageFactory.createMSG11(caaResourceId);
+		TextMessage msg12 = messageFactory.createMSG12(caaResourceId, 2, 0);
+		TextMessage msg13 = messageFactory.createMSG13(caaResourceId, 2, 0);
 
 		try {
 			wfe_receiver.setMessageListener(testCallback);
@@ -140,16 +158,15 @@ public class BasysConnectorTest {
 
 	@Test
 	public void testExecutionAbortSuccess() {
-		connector.setReactStatus(DummyBasysConnectorReactStatus.ABORT);
 
 		TestListener testCallback = new TestListener();
 
-		TextMessage msg10 = messageFactory.createMSG10(resourceID, 0, 0);
-		TextMessage msg11 = messageFactory.createMSG11(resourceID);
-		TextMessage msg16 = messageFactory.createMSG16(resourceID);
-		TextMessage msg17 = messageFactory.createMSG17(resourceID);
-		TextMessage msg18 = messageFactory.createMSG18(resourceID);
-		TextMessage msg19 = messageFactory.createMSG19(resourceID);
+		TextMessage msg10 = messageFactory.createMSG10(caaResourceId, 0, 0);
+		TextMessage msg11 = messageFactory.createMSG11(caaResourceId);
+		TextMessage msg16 = messageFactory.createMSG16(caaResourceId);
+		TextMessage msg17 = messageFactory.createMSG17(caaResourceId);
+		TextMessage msg18 = messageFactory.createMSG18(caaResourceId);
+		TextMessage msg19 = messageFactory.createMSG19(caaResourceId);
 
 		try {
 			wfe_receiver.setMessageListener(testCallback);
@@ -184,16 +201,15 @@ public class BasysConnectorTest {
 
 	@Test
 	public void testExecutionAbortNotPossible() {
-		connector.setReactStatus(DummyBasysConnectorReactStatus.ABORT_NOT_POSSIBLE);
 
 		TestListener testCallback = new TestListener();
 
-		TextMessage msg10 = messageFactory.createMSG10(resourceID, 0, 0);
-		TextMessage msg11 = messageFactory.createMSG11(resourceID);
-		TextMessage msg16 = messageFactory.createMSG16(resourceID);
-		TextMessage msg17 = messageFactory.createMSG17(resourceID);
-		TextMessage msg12 = messageFactory.createMSG12(resourceID, 2, 0);
-		TextMessage msg13 = messageFactory.createMSG13(resourceID, 2, 0);
+		TextMessage msg10 = messageFactory.createMSG10(caaResourceId, 0, 0);
+		TextMessage msg11 = messageFactory.createMSG11(caaResourceId);
+		TextMessage msg16 = messageFactory.createMSG16(caaResourceId);
+		TextMessage msg17 = messageFactory.createMSG17(caaResourceId);
+		TextMessage msg12 = messageFactory.createMSG12(caaResourceId, 2, 0);
+		TextMessage msg13 = messageFactory.createMSG13(caaResourceId, 2, 0);
 
 		try {
 			wfe_receiver.setMessageListener(testCallback);

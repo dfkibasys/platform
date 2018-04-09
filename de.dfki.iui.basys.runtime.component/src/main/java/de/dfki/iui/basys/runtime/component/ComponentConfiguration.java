@@ -138,7 +138,7 @@ public class ComponentConfiguration {
 		}
 	}
 
-	private ComponentConfiguration(Builder builder) {
+	protected ComponentConfiguration(Builder builder) {
 		this.componentId = builder.componentId;
 		this.componentName = builder.componentName;
 		this.componentCategory = builder.componentCategory;

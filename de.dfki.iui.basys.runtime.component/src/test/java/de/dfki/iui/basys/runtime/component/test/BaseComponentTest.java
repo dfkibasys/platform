@@ -60,14 +60,14 @@ public class BaseComponentTest {
 				.communicationProviderConnectionString(communicationProviderConnectionString)
 				.externalConnectionString(ZookeeperComponentRegistry.defaultConnectionString)
 				.build();	
-
+		
 		managerConfig = new ComponentConfiguration.Builder()
 				.componentId("component-manager")
 				.componentName("component-manager")
 				.communicationProviderImplementationJavaClass(communicationProviderImplementationJavaClass)
 				.communicationProviderConnectionString(communicationProviderConnectionString)
 				.build();	
-		
+
 		config1 = new ComponentConfiguration.Builder()
 				.componentId("component-1")
 				.componentName("component-1")

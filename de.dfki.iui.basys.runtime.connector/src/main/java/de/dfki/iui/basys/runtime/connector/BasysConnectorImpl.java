@@ -1,5 +1,6 @@
 package de.dfki.iui.basys.runtime.connector;
 
+import javax.jms.Connection;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageConsumer;
@@ -9,78 +10,78 @@ import javax.jms.Session;
 import javax.jms.TextMessage;
 import javax.jms.Topic;
 
+import org.apache.activemq.ActiveMQConnectionFactory;
 import org.json.JSONObject;
 import org.json.XML;
 
-import de.dfki.iui.basys.runtime.component.BasysComponent;
-import de.dfki.iui.basys.runtime.connector.dummy.DummyBasysConnector;
-import de.dfki.iui.basys.runtime.connector.dummy.DummyBasysConnectorListener;
-import de.dfki.iui.basys.runtime.connector.dummy.DummyBasysConnectorReactStatus;
+import de.dfki.iui.basys.runtime.component.ComponentException;
+import de.dfki.iui.basys.runtime.component.service.ServiceComponent;
 
-public class BasysConnectorImpl extends BasysComponent implements BasysConnector, MessageListener {
-
-	protected String inTopic;
-	protected String outTopic;
-
-	protected int resourceId;
-
-	private MessageFactory messageFactory;
+public class BasysConnectorImpl extends ServiceComponent implements BasysConnector, MessageListener {
 
 	// JMS
+	Connection connection;
 	Session session;
 	MessageProducer sender;
 	MessageConsumer receiver;
-
-	public BasysConnectorImpl(String connectorInTopic, String connectorOutTopic, int resourceId, Session session)
-			throws JMSException {
-		this.inTopic = connectorInTopic;
-		this.outTopic = connectorOutTopic;
-		this.resourceId = resourceId;
-
-		this.session = session;
-		this.messageFactory = new MessageFactory(session);
+	private MessageFactory messageFactory;
+	
+	public BasysConnectorImpl(BasysConnectorConfiguration config) {
+		super(config);
 	}
 
-	public void activate() {
-
+	@Override
+	public void connectToExternal() throws ComponentException {
+		ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory(getConfig().getExternalConnectionString());
 		try {
-			Topic jmsTopicProducer = session.createTopic(outTopic);
+			connection = connectionFactory.createConnection();
+			connection.setClientID(getId());
+			connection.start();
+			
+			session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+			messageFactory = new MessageFactory(session);
+			
+			Topic jmsTopicProducer = session.createTopic(getCaaOutTopic());
 			sender = session.createProducer(jmsTopicProducer);
 
-			Topic jmsTopicConsumer = session.createTopic(inTopic);
+			Topic jmsTopicConsumer = session.createTopic(getCaaInTopic());
 			receiver = session.createConsumer(jmsTopicConsumer);
 
 			receiver.setMessageListener(this);
+			
 		} catch (JMSException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new ComponentException(e);
 		}
 
 	}
-
-	public void deactivate() {
+	
+	@Override
+	public void disconnectFromExternal() {
 		try {
 			sender.close();
 			receiver.close();
+			session.close();
+			connection.close();
+			messageFactory = null;
 		} catch (JMSException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
+
 	@Override
-	public String getInTopic() {
-		return inTopic;
+	public String getCaaInTopic() {
+		return ((BasysConnectorConfiguration)getConfig()).getCaaInTopic();
 	}
 
 	@Override
-	public String getOutTopic() {
-		return outTopic;
+	public String getCaaOutTopic() {
+		return ((BasysConnectorConfiguration)getConfig()).getCaaOutTopic();
 	}
 
 	@Override
-	public int getResourceId() {
-		return resourceId;
+	public int getCaaResourceId() {
+		return ((BasysConnectorConfiguration)getConfig()).getCaaResourceId();
 	}
 
 	@Override
@@ -96,7 +97,7 @@ public class BasysConnectorImpl extends BasysComponent implements BasysConnector
 
 			int msgId = Integer.parseInt(atsMessageType.substring(3, atsMessageType.length()));
 
-			if (resourceID != this.resourceId) {
+			if (resourceID != getCaaResourceId()) {
 				return;
 			}
 
@@ -132,7 +133,7 @@ public class BasysConnectorImpl extends BasysComponent implements BasysConnector
 		
 		// TODO: perform job
 
-		TextMessage msg11 = messageFactory.createMSG11(resourceId);
+		TextMessage msg11 = messageFactory.createMSG11(getCaaResourceId());
 		try {
 			sender.send(msg11);
 		} catch (JMSException e) {
@@ -151,7 +152,7 @@ public class BasysConnectorImpl extends BasysComponent implements BasysConnector
 	
 		// TODO: cancel job
 
-		TextMessage msg17 = messageFactory.createMSG17(resourceId);
+		TextMessage msg17 = messageFactory.createMSG17(getCaaResourceId());
 		try {
 			sender.send(msg17);
 		} catch (JMSException e) {
