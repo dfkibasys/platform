@@ -13,6 +13,8 @@ public class ZookeeperComponentRegistration implements ComponentRegistration {
 
 	private final Component registeredComponent;
 	private ServiceInstance<ComponentInfo> registeredInstance;
+	
+	private boolean registered;
 
 	public ZookeeperComponentRegistration(ServiceDiscovery<ComponentInfo> serviceDiscovery, Component component)
 			throws Exception {
@@ -60,6 +62,7 @@ public class ZookeeperComponentRegistration implements ComponentRegistration {
 		try {
 			registeredInstance = createServiceInstance(registeredComponent);
 			serviceDiscovery.registerService(registeredInstance);
+			registered = true;
 		} catch (Exception e) {
 			throw new ComponentRegistrationException(e);
 		}
@@ -74,8 +77,10 @@ public class ZookeeperComponentRegistration implements ComponentRegistration {
 	@Override
 	public void update() throws ComponentRegistrationException {
 		try {
-			registeredInstance = createServiceInstance(registeredComponent);
-			serviceDiscovery.updateService(registeredInstance);
+			if (registered) {
+				registeredInstance = createServiceInstance(registeredComponent);
+				serviceDiscovery.updateService(registeredInstance);
+			}
 		} catch (Exception e) {
 			throw new ComponentRegistrationException(e);
 		}
@@ -92,6 +97,7 @@ public class ZookeeperComponentRegistration implements ComponentRegistration {
 		try {
 			serviceDiscovery.unregisterService(registeredInstance);
 			registeredInstance = null;
+			registered = false;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			throw new ComponentRegistrationException(e);

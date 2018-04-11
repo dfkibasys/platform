@@ -399,15 +399,17 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 	public void onStopped() {
 		LOGGER.info("onStopped");	
 		if (waitHandler != null) {
-			CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
+			waitHandler.onStopped();
 			
-			executor.submit(()-> {
-				waitHandler.onStopped();
-				cf.complete(true);
-				return null;
-			});
-			
-			waitForCompletion(cf);
+//			CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
+//			
+//			executor.submit(()-> {
+//				waitHandler.onStopped();
+//				cf.complete(true);
+//				return null;
+//			});
+//			
+//			waitForCompletion(cf);
 		}			
 	};
 
@@ -415,15 +417,17 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 	public void onIdle() {
 		LOGGER.info("onIdle");	
 		if (waitHandler != null) {
-			CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
+			waitHandler.onIdle();
 			
-			executor.submit(()-> {
-				waitHandler.onIdle();
-				cf.complete(true);
-				return null;
-			});
-			
-			waitForCompletion(cf);
+//			CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
+//			
+//			executor.submit(()-> {
+//				waitHandler.onIdle();
+//				cf.complete(true);
+//				return null;
+//			});
+//			
+//			waitForCompletion(cf);
 		}	
 	};
 
@@ -431,15 +435,17 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 	public void onComplete() {
 		LOGGER.info("onComplete");
 		if (waitHandler != null) {
-			CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
+			waitHandler.onComplete();
 			
-			executor.submit(()-> {
-				waitHandler.onComplete();
-				cf.complete(true);
-				return null;
-			});
-			
-			waitForCompletion(cf);
+//			CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
+//			
+//			executor.submit(()-> {
+//				waitHandler.onComplete();
+//				cf.complete(true);
+//				return null;
+//			});
+//			
+//			waitForCompletion(cf);
 		}	
 	};
 	
@@ -447,15 +453,17 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 	public void onHeld() {
 		LOGGER.info("onHeld");		
 		if (waitHandler != null) {
-			CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
+			waitHandler.onHeld();
 			
-			executor.submit(()-> {
-				waitHandler.onHeld();
-				cf.complete(true);
-				return null;
-			});
-			
-			waitForCompletion(cf);
+//			CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
+//			
+//			executor.submit(()-> {
+//				waitHandler.onHeld();
+//				cf.complete(true);
+//				return null;
+//			});
+//			
+//			waitForCompletion(cf);
 		}	
 	};
 
@@ -463,15 +471,17 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 	public void onSuspended() {
 		LOGGER.info("onSuspended");
 		if (waitHandler != null) {
-			CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
+			waitHandler.onSuspended();
 			
-			executor.submit(()-> {
-				waitHandler.onSuspended();
-				cf.complete(true);
-				return null;
-			});
-			
-			waitForCompletion(cf);
+//			CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
+//			
+//			executor.submit(()-> {
+//				waitHandler.onSuspended();
+//				cf.complete(true);
+//				return null;
+//			});
+//			
+//			waitForCompletion(cf);
 		}	
 	};
 
@@ -479,15 +489,17 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 	public void onAborted() {
 		LOGGER.info("onAborted");		
 		if (waitHandler != null) {
-			CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
+			waitHandler.onAborted();
 			
-			executor.submit(()-> {
-				waitHandler.onAborted();
-				cf.complete(true);
-				return null;
-			});
-			
-			waitForCompletion(cf);
+//			CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
+//			
+//			executor.submit(()-> {
+//				waitHandler.onAborted();
+//				cf.complete(true);
+//				return null;
+//			});
+//			
+//			waitForCompletion(cf);
 		}	
 	};
 

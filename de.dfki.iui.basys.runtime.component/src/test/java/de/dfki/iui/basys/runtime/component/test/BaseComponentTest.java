@@ -3,6 +3,7 @@ package de.dfki.iui.basys.runtime.component.test;
 import static org.junit.Assert.*;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -123,5 +124,13 @@ public class BaseComponentTest {
 		context = null;
 	}
 	
+	protected void sleep(long seconds) {
+		try {
+			TimeUnit.MILLISECONDS.sleep(seconds*1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 }

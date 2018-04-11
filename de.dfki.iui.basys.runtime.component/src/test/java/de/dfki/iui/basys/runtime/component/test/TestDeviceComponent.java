@@ -1,5 +1,7 @@
 package de.dfki.iui.basys.runtime.component.test;
 
+import java.util.concurrent.TimeUnit;
+
 import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.device.DeviceComponent;
 import de.dfki.iui.basys.runtime.component.test.TestHandler.Path;
@@ -15,96 +17,68 @@ public class TestDeviceComponent extends DeviceComponent {
 		super(config);
 	}
 	
+	protected void sleep(long seconds) {
+		try {
+			TimeUnit.MILLISECONDS.sleep(seconds*1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	@Override
 	public void onResetting() {
-		// TODO Auto-generated method stub
-
+		sleep(1);
 	}
 
 	@Override
 	public void onStarting() {
-		// TODO Auto-generated method stub
-
+		sleep(1);
 	}
 
 	@Override
 	public void onExecute() {
-		
-		
-		
-		switch (path) {
-		case HOLD:
-			hold();
-			break;
-		case SUSPEND:
-			suspend();
-			break;
-		case STOP_ON_ERROR:
-			stop();
-			break;
-		case STOP_ON_EMERGENCY:
-			abort();
-			break;
-		case NORMAL:
-		default:
-			break;
-		}
-
+		sleep(2);
 	}
 
 	@Override
 	public void onCompleting() {
-		// TODO Auto-generated method stub
-
+		sleep(1);
 	}
 
 	@Override
 	public void onHolding() {
-		// TODO Auto-generated method stub
-
+		sleep(1);
 	}
 
 	@Override
 	public void onUnholding() {
-		// TODO Auto-generated method stub
-
+		sleep(1);
 	}
 
 	@Override
 	public void onSuspending() {
-		// TODO Auto-generated method stub
-
+		sleep(1);
 	}
 
 	@Override
 	public void onUnsuspending() {
-		// TODO Auto-generated method stub
-
+		sleep(1);
 	}
 
 	@Override
 	public void onAborting() {
-		// TODO Auto-generated method stub
-
-	}
-	
-	@Override
-	public void onAborted() {
-		// TODO Auto-generated method stub
-		super.onAborted();
-		clear();
+		sleep(1);
 	}
 
 	@Override
 	public void onClearing() {
-		// TODO Auto-generated method stub
-
+		sleep(1);
 	}
 
 	@Override
 	public void onStopping() {
-		// TODO Auto-generated method stub
-
+		sleep(1);
 	}
 
 }

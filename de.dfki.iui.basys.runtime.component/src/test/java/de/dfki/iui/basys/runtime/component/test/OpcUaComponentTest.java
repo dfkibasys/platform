@@ -56,11 +56,9 @@ public class OpcUaComponentTest {
 		assertTrue(!component.isConnectedToExternal());
 
 		component.activate(emptyContext);
-
 		assertTrue(component.isConnectedToExternal());
 		
-		component.deactivate();
-		
+		component.deactivate();		
 		assertTrue(!component.isConnectedToExternal());
 	}
 
@@ -70,8 +68,10 @@ public class OpcUaComponentTest {
 		assertTrue(!component.isConnectedToExternal());
 
 		component.activate(emptyContext);		
-		
 		assertTrue(component.isConnectedToExternal());
+		
+		assertEquals(State.STOPPED, component.getState());
+		component.reset();
 		sleep(5);
 		
 		assertEquals(State.IDLE, component.getState());
@@ -79,8 +79,10 @@ public class OpcUaComponentTest {
 		sleep(5);	
 		
 		assertEquals(State.COMPLETE, component.getState());
+		component.stop();
+		sleep(5);	
+		
 		component.deactivate();
-
 		assertTrue(!component.isConnectedToExternal());
 	}
 

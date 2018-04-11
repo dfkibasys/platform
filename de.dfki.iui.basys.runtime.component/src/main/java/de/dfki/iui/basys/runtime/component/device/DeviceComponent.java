@@ -1,5 +1,7 @@
 package de.dfki.iui.basys.runtime.component.device;
 
+import java.util.concurrent.TimeUnit;
+
 import de.dfki.iui.basys.model.runtime.communication.Notification;
 import de.dfki.iui.basys.runtime.component.BaseComponent;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
@@ -26,18 +28,29 @@ public abstract class DeviceComponent extends BaseComponent
 		super(config);
 	}
 
-	public void activate(ComponentContext context) throws ComponentException {		
-		//PackML FSA has to be created and initialized before component registration via super.activate() 
-		//TODO: expand PackML to represent also active and inactivate states from a service perspective in order to generate a complete event trace in the middleware
-		packmlUnit = new PackMLUnit(getId());
-		packmlUnit.setActiveStatesHandler(this);
-		packmlUnit.setWaitStatesHandler(this);
+	public void activate(ComponentContext context) throws ComponentException {	
+
+		NotifyingStatesHandlerFacade handler = new NotifyingStatesHandlerFacade(this);
+
+		packmlUnit = new PackMLUnit(getId());		
+		packmlUnit.setActiveStatesHandler(handler);
+		packmlUnit.setWaitStatesHandler(handler);
 		packmlUnit.initialize();
 		
 		super.activate(context);
 		
 		// make unit ready for production
-		packmlUnit.reset();
+		//no, should be done from outside
+//		packmlUnit.reset();
+//		
+//		while (getState() != State.IDLE) {
+//			try {
+//				TimeUnit.MILLISECONDS.sleep(500);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		}
 		
 		LOGGER.info("activated");
 	}
@@ -45,8 +58,18 @@ public abstract class DeviceComponent extends BaseComponent
 	public void deactivate() throws ComponentException {
 		
 		// regardless of connection to real device (e.g. in simulation) do:
-		packmlUnit.stop();		
-
+		// no, should be done from outside
+//		packmlUnit.stop();		
+//
+//		while (getState() != State.STOPPED) {
+//			try {
+//				TimeUnit.MILLISECONDS.sleep(500);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		}
+		
 		super.deactivate();
 
 		packmlUnit.dispose();
@@ -149,15 +172,14 @@ public abstract class DeviceComponent extends BaseComponent
 		packmlUnit.clear();
 	}
 
-	/*
-	 * default WaitStatesHandler implementation -> notify Basys Middleware
-	 */
-
-	@Override
-	public void onStopped() {
+	protected void notifyAndUpdateRegistration() {
 		// TODO: something like:Notification not = createStatusUpdate();
+		String state = getState().toString();
+		
+		LOGGER.info(String.format("device with id %s is now in state %s", getId(), state));
+		
 		if (outChannel != null && outChannel.isOpen()) {
-			Notification not = cf.createNotification("stopped");
+			Notification not = cf.createNotification(state);
 			outChannel.sendNotification(not);
 		}
 		if (registration != null)
@@ -169,100 +191,42 @@ public abstract class DeviceComponent extends BaseComponent
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	/*
+	 * default WaitStatesHandler implementation -> notify Basys Middleware
+	 */
+	
+	@Override
+	public void onStopped() {
+	
 	}
 
 	@Override
 	public void onIdle() {
-		// TODO: something like:Notification not = createStatusUpdate();
-		if (outChannel != null && outChannel.isOpen()) {
-			Notification not = cf.createNotification("idle");
-			outChannel.sendNotification(not);
-		}
-		if (registration != null)
-		{
-			try {
-				registration.update();
-			} catch (ComponentRegistrationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+	
 	}
 
 	@Override
 	public void onComplete() {
-		// TODO: something like:Notification not = createStatusUpdate();
-		if (outChannel != null && outChannel.isOpen()) {
-			Notification not = cf.createNotification("complete");
-			outChannel.sendNotification(not);
-		}
-		if (registration != null)
-		{
-			try {
-				registration.update();
-			} catch (ComponentRegistrationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+	
 	}
 
 	@Override
 	public void onHeld() {
-		// TODO: something like:Notification not = createStatusUpdate();
-		if (outChannel != null && outChannel.isOpen()) {
-			Notification not = cf.createNotification("held");
-			outChannel.sendNotification(not);
-		}
-		if (registration != null)
-		{
-			try {
-				registration.update();
-			} catch (ComponentRegistrationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+	
 	}
 
 	@Override
 	public void onSuspended() {
-		// TODO: something like:Notification not = createStatusUpdate();
-		if (outChannel != null && outChannel.isOpen()) {
-			Notification not = cf.createNotification("suspended");
-			outChannel.sendNotification(not);
-		}
-		if (registration != null)
-		{
-			try {
-				registration.update();
-			} catch (ComponentRegistrationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+	
 	}
 
 	@Override
 	public void onAborted() {
-		// TODO: something like:Notification not = createStatusUpdate();
-		if (outChannel != null && outChannel.isOpen()) {
-			Notification not = cf.createNotification("aborted");
-			outChannel.sendNotification(not);
-		}
-		if (registration != null)
-		{
-			try {
-				registration.update();
-			} catch (ComponentRegistrationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+	
 	}
-
-	public class Status {
-
-	}
+	
+	
 
 }
