@@ -3,7 +3,6 @@ package de.dfki.iui.basys.runtime.component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.packml.Mode;
@@ -26,7 +25,7 @@ public class BaseComponent implements Component {
 	protected Client privateClient;
 	protected Channel inChannel;
 	protected Channel outChannel;
-	
+
 	protected ComponentRegistration registration;
 
 	private boolean connectedToExternal = false;
@@ -34,7 +33,7 @@ public class BaseComponent implements Component {
 	public BaseComponent(ComponentConfiguration config) {
 		this.componentConfig = config;
 	}
-	
+
 	@Override
 	public String getId() {
 		return componentConfig.getComponentId();
@@ -44,17 +43,17 @@ public class BaseComponent implements Component {
 	public String getName() {
 		return componentConfig.getComponentName();
 	}
-	
+
 	@Override
 	public ComponentCategory getCategory() {
 		return componentConfig.getComponentCategory();
 	}
-	
+
 	@Override
 	public ComponentConfiguration getConfig() {
 		return componentConfig;
 	}
-	
+
 	@Override
 	public State getState() {
 		return State.EXECUTE;
@@ -64,40 +63,53 @@ public class BaseComponent implements Component {
 	public Mode getMode() {
 		return Mode.PRODUCTION;
 	}
-	
+
 	@Override
-	public void activate(ComponentContext context) {
-		this.context = context;
+	public void activate(ComponentContext context) throws ComponentException {
+		if (context == null)
+			throw new ComponentException("Context must not be null!");
 		
-		if (componentConfig.getExternalConnectionString() != null) {			
+		this.context = context;
+
+		if (componentConfig.getExternalConnectionString() != null) {
 			try {
 				connectToExternal();
-				connectedToExternal = true;	
+				connectedToExternal = true;
 			} catch (ComponentException e) {
 				LOGGER.error(e.getMessage());
 				e.printStackTrace();
-			}		
-		} 
-//		else {
-//			LOGGER.warn("no device connection string provided, enter simulation mode");
-//			// enter some kind of simulation mode like so: 
-//			//unit.setActiveStatesHandler(simulationActHandler);
-//			//unit.setWaitStatesHandler(simulationWaitHandler);
-//		}
-				
-		if (context.getSharedChannelPool() != null || componentConfig.getCommunicationProviderImplementationJavaClass() != null) {
+			}
+		}
+		// else {
+		// LOGGER.warn("no device connection string provided, enter simulation mode");
+		// // enter some kind of simulation mode like so:
+		// //unit.setActiveStatesHandler(simulationActHandler);
+		// //unit.setWaitStatesHandler(simulationWaitHandler);
+		// }
+
+		if (context.getSharedChannelPool() != null
+				|| componentConfig.getCommunicationProviderImplementationJavaClass() != null) {
 			connectToBasys();
-			register();
+			try {
+				register();
+			} catch (ComponentRegistrationException e) {
+				throw new ComponentException(e);
+			}
 		}
 	}
 
 	@Override
-	public void deactivate() {
-		if (context.getSharedChannelPool() != null || componentConfig.getCommunicationProviderImplementationJavaClass() !=null) {
-			unregister();
+	public void deactivate() throws ComponentException {
+		if (context.getSharedChannelPool() != null
+				|| componentConfig.getCommunicationProviderImplementationJavaClass() != null) {
+			try {
+				unregister();
+			} catch (ComponentRegistrationException e) {
+				throw new ComponentException(e);
+			}
 			disconnectFromBasys();
 		}
-		if (connectedToExternal) {			
+		if (connectedToExternal) {
 			disconnectFromExternal();
 			connectedToExternal = false;
 		}
@@ -107,20 +119,24 @@ public class BaseComponent implements Component {
 		return connectedToExternal;
 	}
 
-	public void connectToExternal() throws ComponentException {};
+	public void connectToExternal() throws ComponentException {
+	};
 
-	public void disconnectFromExternal() {};
-	
+	public void disconnectFromExternal() {
+	};
+
 	protected void connectToBasys() {
 		ChannelPool pool = context.getSharedChannelPool();
 
 		if (pool == null) {
 			privateClient = cf.createClient(getId(), cf.createAuthentication(getId(), "secret", null));
-			pool = cf.connectChannelPool(privateClient, componentConfig.getCommunicationProviderConnectionString(), componentConfig.getCommunicationProviderImplementationJavaClass());
+			pool = cf.connectChannelPool(privateClient, componentConfig.getCommunicationProviderConnectionString(),
+					componentConfig.getCommunicationProviderImplementationJavaClass());
 		}
 
 		if (componentConfig.getInChannelName() != null)
-			inChannel = cf.openChannel(pool, componentConfig.getInChannelName(), false, new ComponentChannelListener(this));
+			inChannel = cf.openChannel(pool, componentConfig.getInChannelName(), false,
+					new ComponentChannelListener(this));
 		if (componentConfig.getOutChannelName() != null)
 			outChannel = cf.openChannel(pool, componentConfig.getOutChannelName(), false, null);
 	}
@@ -137,26 +153,16 @@ public class BaseComponent implements Component {
 		}
 	}
 
-	protected void register() {
+	protected void register() throws ComponentRegistrationException {
 		if (context.getComponentRegistry() != null) {
-			try {
-				registration = context.getComponentRegistry().createRegistration(this);
-				registration.register();
-			} catch (ComponentRegistrationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			registration = context.getComponentRegistry().createRegistration(this);
+			registration.register();
 		}
 	}
 
-	protected void unregister() {
+	protected void unregister() throws ComponentRegistrationException {
 		if (registration != null) {
-			try {
-				registration.unregister();
-			} catch (ComponentRegistrationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			registration.unregister();
 		}
 	}
 

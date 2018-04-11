@@ -1,5 +1,7 @@
 package de.dfki.iui.basys.runtime.component.test;
 
+import java.util.concurrent.TimeUnit;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,23 +33,35 @@ public class TestHandler implements ActiveStatesHandler {
 		unit.dispose();
 	}
 	
+	private void sleep(double seconds) {
+		try {
+			TimeUnit.MILLISECONDS.sleep((long)(seconds*100));
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	@Override
 	public void onResetting() {
 		LOGGER.info("onResetting");
-		TestCase.assertEquals(unit.getState(), State.RESETTING);
+		TestCase.assertEquals(State.RESETTING, unit.getState());
+		sleep(1);
+		
 	}
 
 	@Override
 	public void onStarting() {
 		LOGGER.info("onStarting");
-		TestCase.assertEquals(unit.getState(), State.STARTING);
-
+		TestCase.assertEquals(State.STARTING, unit.getState());
+		sleep(1);
 	}
 
 	@Override
 	public void onExecute() {
 		LOGGER.info("onExecute");
-		TestCase.assertEquals(unit.getState(), State.EXECUTE);
+		TestCase.assertEquals(State.EXECUTE, unit.getState());
+		sleep(1);
 		
 		switch (path) {
 		case HOLD:
@@ -60,71 +74,65 @@ public class TestHandler implements ActiveStatesHandler {
 		default:
 			break;
 		}
-		
-//		try {
-//			Thread.currentThread().sleep(5000);
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		//sleep(1);
 	}
 
 	@Override
 	public void onCompleting() {
 		LOGGER.info("onCompleting");
-		TestCase.assertEquals(unit.getState(), State.COMPLETING);
-
+		TestCase.assertEquals(State.COMPLETING, unit.getState());
+		sleep(1);
 	}
 
 	@Override
 	public void onHolding() {
 		LOGGER.info("onHolding");
-		TestCase.assertEquals(unit.getState(), State.HOLDING);
-
+		TestCase.assertEquals(State.HOLDING, unit.getState());
+		sleep(1);
 	}
 
 	@Override
 	public void onUnholding() {
 		LOGGER.info("onUnholding");
-		TestCase.assertEquals(unit.getState(), State.UNHOLDING);
+		TestCase.assertEquals(State.UNHOLDING, unit.getState());
 		path = Path.NORMAL;
-
+		sleep(1);
 	}
 
 	@Override
 	public void onSuspending() {
 		LOGGER.info("onSuspending");
-		TestCase.assertEquals(unit.getState(), State.SUSPENDING);
-
+		TestCase.assertEquals(State.SUSPENDING, unit.getState());
+		sleep(1);
 	}
 
 	@Override
 	public void onUnsuspending() {
-		TestCase.assertEquals(unit.getState(), State.UNSUSPENDING);
+		TestCase.assertEquals(State.UNSUSPENDING, unit.getState());
 		LOGGER.info("onUnsuspending");
 		path = Path.NORMAL;
-
+		sleep(1);
 	}
 
 	@Override
 	public void onAborting() {
-		TestCase.assertEquals(unit.getState(), State.ABORTING);
+		TestCase.assertEquals(State.ABORTING, unit.getState());
 		LOGGER.info("onAborting");
-
+		sleep(1);
 	}
 
 	@Override
 	public void onClearing() {
-		TestCase.assertEquals(unit.getState(), State.CLEARING);
+		TestCase.assertEquals(State.CLEARING, unit.getState());
 		LOGGER.info("onClearing");
-
+		sleep(1);
 	}
 
 	@Override
 	public void onStopping() {
-		TestCase.assertEquals(unit.getState(), State.STOPPING);
+		TestCase.assertEquals(State.STOPPING, unit.getState());
 		LOGGER.info("onStopping");
-
+		sleep(1);
 	}
 
 }

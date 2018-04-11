@@ -10,11 +10,12 @@ import java.util.Map;
 import de.dfki.iui.basys.runtime.component.BaseComponent;
 import de.dfki.iui.basys.runtime.component.Component;
 import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.runtime.component.ComponentException;
 
 public class ComponentManagerImpl extends BaseComponent implements ComponentManager {
 
 	private Map<String, Component> components = new HashMap<>();
-	
+
 	public ComponentManagerImpl(ComponentConfiguration config) {
 		super(config);
 	}
@@ -24,22 +25,19 @@ public class ComponentManagerImpl extends BaseComponent implements ComponentMana
 		return new ArrayList<Component>(components.values());
 	}
 
-
 	@Override
 	public Component getLocalComponentById(String id) {
 		return components.get(id);
 	}
-
 
 	@Override
 	public Component getLocalComponentByName(String name) {
 		for (Component component : components.values()) {
 			if (component.getName().equals(name))
 				return component;
-		}		
+		}
 		return null;
 	}
-
 
 	@Override
 	public void createLocalComponent(ComponentConfiguration config) throws ComponentManagerException {
@@ -55,23 +53,28 @@ public class ComponentManagerImpl extends BaseComponent implements ComponentMana
 		try {
 			Constructor<Component> constructor = c.getConstructor(ComponentConfiguration.class);
 			component = constructor.newInstance(config);
-			components.put(component.getId(), component);				
+			components.put(component.getId(), component);
+
+			component.activate(context);
 		} catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException
-				| IllegalArgumentException | InvocationTargetException e) {
+				| IllegalArgumentException | InvocationTargetException | ComponentException e) {
 			throw new ComponentManagerException(e);
 		}
 
-		component.activate(context);		
 	}
-
 
 	@Override
 	public void deleteLocalComponent(String id) throws ComponentManagerException {
 		Component c = components.remove(id);
-		if (c != null)
-			c.deactivate();
-		else 
+		if (c == null)
 			throw new ComponentManagerException(String.format("No component registered with id %s", id));
+
+		try {
+			c.deactivate();
+		} catch (ComponentException e) {
+			throw new ComponentManagerException(e);
+		}
+
 	}
 
 }

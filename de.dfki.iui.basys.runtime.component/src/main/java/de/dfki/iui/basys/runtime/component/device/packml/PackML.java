@@ -51,7 +51,8 @@ public class PackML {
 				exec.getRootContext().set("unit", unit);
 				exec.getRootContext().set("Mode", Mode.class);
 
-				exec.go();
+				//exec.go();
+				exec.run();
 
 				initialized = true;
 			} catch (IOException | ModelException | XMLStreamException e) {
@@ -63,6 +64,7 @@ public class PackML {
 
 	public void dispose() {
 		if (initialized) {
+			raiseLifecycleEvent("dispose");
 			initialized = false;
 		}
 	}
@@ -74,11 +76,12 @@ public class PackML {
 	}
 
 	public void raiseLifecycleEvent(String event) {
-		try {
-			exec.triggerEvent(new EventBuilder("lifecycle.events." + event, TriggerEvent.SIGNAL_EVENT).build());
-		} catch (ModelException e) {
-			e.printStackTrace();
-		}
+		exec.addEvent(new EventBuilder("lifecycle.events." + event, TriggerEvent.SIGNAL_EVENT).build());
+//		try {
+//			exec.triggerEvent(new EventBuilder("lifecycle.events." + event, TriggerEvent.SIGNAL_EVENT).build());			
+//		} catch (ModelException e) {
+//			e.printStackTrace();
+//		}
 	}
 
 }

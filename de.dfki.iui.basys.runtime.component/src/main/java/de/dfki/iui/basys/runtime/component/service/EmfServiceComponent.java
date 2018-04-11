@@ -2,18 +2,15 @@ package de.dfki.iui.basys.runtime.component.service;
 
 import java.io.IOException;
 
-import org.bouncycastle.math.ec.ECCurve.Config;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.osgi.service.component.annotations.Activate;
 
 import de.dfki.iui.basys.common.emf.EmfPersistence;
 import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
-import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 
 public class EmfServiceComponent extends ServiceComponent {

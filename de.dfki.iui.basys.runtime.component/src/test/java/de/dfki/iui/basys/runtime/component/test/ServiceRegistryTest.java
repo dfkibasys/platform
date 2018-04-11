@@ -18,6 +18,7 @@ import de.dfki.iui.basys.runtime.communication.ClientFactory;
 import de.dfki.iui.basys.runtime.component.ComponentCategory;
 import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
+import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.OpcUaDeviceComponent;
 import de.dfki.iui.basys.runtime.component.device.packml.Mode;
 import de.dfki.iui.basys.runtime.component.device.packml.State;
@@ -46,7 +47,7 @@ public class ServiceRegistryTest extends BaseComponentTest {
 	}
 
 	@Test
-	public void testRegisterServicesAndList() {
+	public void testRegisterServicesAndList() throws ComponentException {
 		LOGGER.info("testRegisterServicesAndList - start");
 
 		// fail("Not yet implemented");

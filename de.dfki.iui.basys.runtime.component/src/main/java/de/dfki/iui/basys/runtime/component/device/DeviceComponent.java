@@ -3,6 +3,7 @@ package de.dfki.iui.basys.runtime.component.device;
 import de.dfki.iui.basys.model.runtime.communication.Notification;
 import de.dfki.iui.basys.runtime.component.BaseComponent;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
+import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.packml.ActiveStatesHandler;
 import de.dfki.iui.basys.runtime.component.device.packml.CommandInterface;
 import de.dfki.iui.basys.runtime.component.device.packml.Mode;
@@ -25,7 +26,7 @@ public abstract class DeviceComponent extends BaseComponent
 		super(config);
 	}
 
-	public void activate(ComponentContext context) {		
+	public void activate(ComponentContext context) throws ComponentException {		
 		//PackML FSA has to be created and initialized before component registration via super.activate() 
 		//TODO: expand PackML to represent also active and inactivate states from a service perspective in order to generate a complete event trace in the middleware
 		packmlUnit = new PackMLUnit(getId());
@@ -36,11 +37,12 @@ public abstract class DeviceComponent extends BaseComponent
 		super.activate(context);
 		
 		// make unit ready for production
-		packmlUnit.stop();
 		packmlUnit.reset();
+		
+		LOGGER.info("activated");
 	}
 
-	public void deactivate() {
+	public void deactivate() throws ComponentException {
 		
 		// regardless of connection to real device (e.g. in simulation) do:
 		packmlUnit.stop();		
@@ -48,6 +50,8 @@ public abstract class DeviceComponent extends BaseComponent
 		super.deactivate();
 
 		packmlUnit.dispose();
+
+		LOGGER.info("deactivated");
 	}
 
 

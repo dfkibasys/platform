@@ -2,6 +2,11 @@ package de.dfki.iui.basys.runtime.connector;
 
 public class BasysConnectorException extends Exception {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6853493769551877843L;
+
 	public BasysConnectorException() {
 		super();
 		// TODO Auto-generated constructor stub

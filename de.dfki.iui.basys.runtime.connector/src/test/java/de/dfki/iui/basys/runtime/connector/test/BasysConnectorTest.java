@@ -24,7 +24,6 @@ import org.junit.Test;
 
 import de.dfki.iui.basys.runtime.component.ComponentCategory;
 import de.dfki.iui.basys.runtime.component.registry.ZookeeperComponentRegistry;
-import de.dfki.iui.basys.runtime.component.test.BaseComponentTest;
 import de.dfki.iui.basys.runtime.connector.BasysConnector;
 import de.dfki.iui.basys.runtime.connector.BasysConnectorConfiguration;
 import de.dfki.iui.basys.runtime.connector.MessageFactory;

@@ -9,12 +9,11 @@ Bundle-Vendor: DFKI GmbH
 Bundle-Version: 1.0.0.SNAPSHOT
 Created-By: Apache Maven Bundle Plugin
 Export-Package: de.dfki.iui.basys.runtime.connector;version="1.0.0.SNAPS
- HOT";uses:="javax.jms",de.dfki.iui.basys.runtime.connector.dummy;versio
- n="1.0.0.SNAPSHOT";uses:="de.dfki.iui.basys.runtime.connector,javax.jms
- "
-Import-Package: de.dfki.iui.basys.runtime.connector;version="[1.0,2)",ja
- vax.jms
-Private-Package: de.dfki.iui.basys.runtime.connector,de.dfki.iui.basys.r
- untime.connector.dummy
+ HOT";uses:="de.dfki.iui.basys.runtime.component,de.dfki.iui.basys.runti
+ me.component.service,javax.jms"
+Import-Package: de.dfki.iui.basys.runtime.component,de.dfki.iui.basys.ru
+ ntime.component.service,javax.jms,org.apache.activemq,org.json;version=
+ "[20180130.0,20180131)"
+Private-Package: de.dfki.iui.basys.runtime.connector
 Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
 Tool: Bnd-3.3.0.201609221906
