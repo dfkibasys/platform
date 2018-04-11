@@ -1,8 +1,9 @@
 package de.dfki.iui.basys.runtime.connector.test;
 
+import java.util.concurrent.TimeUnit;
+
 import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.device.DeviceComponent;
-import de.dfki.iui.basys.runtime.component.ComponentException;
 
 public class TestDeviceComponent extends DeviceComponent {
 
@@ -10,70 +11,68 @@ public class TestDeviceComponent extends DeviceComponent {
 		super(config);
 	}
 	
+	protected void sleep(long seconds) {
+		try {
+			TimeUnit.MILLISECONDS.sleep(seconds*1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	@Override
 	public void onResetting() {
-		// TODO Auto-generated method stub
-
+		sleep(1);
 	}
 
 	@Override
 	public void onStarting() {
-		// TODO Auto-generated method stub
-
+		sleep(1);
 	}
 
 	@Override
 	public void onExecute() {
-		// TODO Auto-generated method stub
-
+		sleep(2);
 	}
 
 	@Override
 	public void onCompleting() {
-		// TODO Auto-generated method stub
-
+		sleep(1);
 	}
 
 	@Override
 	public void onHolding() {
-		// TODO Auto-generated method stub
-
+		sleep(1);
 	}
 
 	@Override
 	public void onUnholding() {
-		// TODO Auto-generated method stub
-
+		sleep(1);
 	}
 
 	@Override
 	public void onSuspending() {
-		// TODO Auto-generated method stub
-
+		sleep(1);
 	}
 
 	@Override
 	public void onUnsuspending() {
-		// TODO Auto-generated method stub
-
+		sleep(1);
 	}
 
 	@Override
 	public void onAborting() {
-		// TODO Auto-generated method stub
-
+		sleep(1);
 	}
 
 	@Override
 	public void onClearing() {
-		// TODO Auto-generated method stub
-
+		sleep(1);
 	}
 
 	@Override
 	public void onStopping() {
-		// TODO Auto-generated method stub
-
+		sleep(1);
 	}
 
 }
