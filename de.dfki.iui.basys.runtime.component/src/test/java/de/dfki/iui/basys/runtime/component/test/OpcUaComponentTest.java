@@ -2,6 +2,8 @@ package de.dfki.iui.basys.runtime.component.test;
 
 import static org.junit.Assert.*;
 
+import java.util.concurrent.TimeUnit;
+
 import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -38,6 +40,16 @@ public class OpcUaComponentTest {
 	public void tearDown() throws Exception {
 	}
 
+	private void sleep(long seconds) {
+		try {
+			TimeUnit.MILLISECONDS.sleep(seconds*1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
 	@Test
 	public void testOpcUaConnection() throws ComponentException {
 		OpcUaDeviceComponent component = new TestOpcUaComponent(opcuaConfig);
@@ -46,7 +58,6 @@ public class OpcUaComponentTest {
 		component.activate(emptyContext);
 
 		assertTrue(component.isConnectedToExternal());
-		assertEquals(State.IDLE, component.getState());
 		
 		component.deactivate();
 		
@@ -58,16 +69,16 @@ public class OpcUaComponentTest {
 		OpcUaDeviceComponent component = new TestOpcUaComponent(opcuaConfig);
 		assertTrue(!component.isConnectedToExternal());
 
-		component.activate(emptyContext);
-
-		
+		component.activate(emptyContext);		
 		
 		assertTrue(component.isConnectedToExternal());
+		sleep(5);
+		
 		assertEquals(State.IDLE, component.getState());
-		component.start();
-		// concurrency...
+		component.start();		
+		sleep(5);	
+		
 		assertEquals(State.COMPLETE, component.getState());
-
 		component.deactivate();
 
 		assertTrue(!component.isConnectedToExternal());
