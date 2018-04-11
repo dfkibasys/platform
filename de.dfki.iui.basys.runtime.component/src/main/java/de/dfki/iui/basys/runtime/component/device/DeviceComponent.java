@@ -1,8 +1,15 @@
 package de.dfki.iui.basys.runtime.component.device;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import org.eclipse.emf.ecore.EObject;
+
+import de.dfki.iui.basys.common.emf.JsonUtils;
+import de.dfki.iui.basys.model.domain.capability.Capability;
 import de.dfki.iui.basys.model.runtime.communication.Notification;
+import de.dfki.iui.basys.model.runtime.communication.Request;
+import de.dfki.iui.basys.model.runtime.communication.Response;
 import de.dfki.iui.basys.runtime.component.BaseComponent;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.ComponentException;
@@ -95,6 +102,31 @@ public abstract class DeviceComponent extends BaseComponent
 	@Override
 	public UnitConfiguration getUnitConfig() {
 		return packmlUnit.getUnitConfig();
+	}
+	
+	@Override
+	public Response handleRequest(Request req) {
+		try {
+			EObject ob = JsonUtils.fromJsonString(req.getPayload(), EObject.class);
+			if (ob instanceof Capability) {
+				boolean status = handleCapabilityRequest((Capability)ob);
+			} else {
+				
+			}
+			return cf.createResponse(req.getId(), "io");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return cf.createResponse(req.getId(), "nio");
+		}
+	}
+
+	public boolean handleCapabilityRequest(Capability ob) {
+		// "translate"
+		// set config
+		// start();		
+		// es sollte eine Art Status zurückgegeben werden, der ausdrückt, ob und wann der Request angenommen/in Auftrag gegeben wurde.
+		return true;
 	}
 
 	/*

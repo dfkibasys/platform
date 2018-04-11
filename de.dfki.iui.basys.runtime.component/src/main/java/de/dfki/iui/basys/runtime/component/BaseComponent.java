@@ -11,10 +11,14 @@ import de.dfki.iui.basys.runtime.component.registry.ComponentRegistration;
 import de.dfki.iui.basys.runtime.component.registry.ComponentRegistrationException;
 import de.dfki.iui.basys.runtime.communication.ClientFactory;
 import de.dfki.iui.basys.model.runtime.communication.Channel;
+import de.dfki.iui.basys.model.runtime.communication.ChannelListener;
 import de.dfki.iui.basys.model.runtime.communication.ChannelPool;
 import de.dfki.iui.basys.model.runtime.communication.Client;
+import de.dfki.iui.basys.model.runtime.communication.Notification;
+import de.dfki.iui.basys.model.runtime.communication.Request;
+import de.dfki.iui.basys.model.runtime.communication.Response;
 
-public class BaseComponent implements Component {
+public class BaseComponent implements Component, ChannelListener {
 
 	protected final Logger LOGGER = LoggerFactory.getLogger(getClass());
 
@@ -68,7 +72,7 @@ public class BaseComponent implements Component {
 	public void activate(ComponentContext context) throws ComponentException {
 		if (context == null)
 			throw new ComponentException("Context must not be null!");
-		
+
 		this.context = context;
 
 		if (componentConfig.getExternalConnectionString() != null) {
@@ -135,8 +139,7 @@ public class BaseComponent implements Component {
 		}
 
 		if (componentConfig.getInChannelName() != null)
-			inChannel = cf.openChannel(pool, componentConfig.getInChannelName(), false,
-					new ComponentChannelListener(this));
+			inChannel = cf.openChannel(pool, componentConfig.getInChannelName(), false, this);
 		if (componentConfig.getOutChannelName() != null)
 			outChannel = cf.openChannel(pool, componentConfig.getOutChannelName(), false, null);
 	}
@@ -164,6 +167,24 @@ public class BaseComponent implements Component {
 		if (registration != null) {
 			registration.unregister();
 		}
+	}
+
+	@Override
+	public void handleMessage(String msg) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void handleNotification(Notification not) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Response handleRequest(Request req) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
