@@ -1,4 +1,4 @@
-package de.dfki.iui.basys.runtime.component.manager;
+package de.dfki.iui.basys.runtime.component.manager.impl;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -11,6 +11,8 @@ import de.dfki.iui.basys.runtime.component.BaseComponent;
 import de.dfki.iui.basys.runtime.component.Component;
 import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.ComponentException;
+import de.dfki.iui.basys.runtime.component.manager.ComponentManager;
+import de.dfki.iui.basys.runtime.component.manager.ComponentManagerException;
 
 public class ComponentManagerImpl extends BaseComponent implements ComponentManager {
 

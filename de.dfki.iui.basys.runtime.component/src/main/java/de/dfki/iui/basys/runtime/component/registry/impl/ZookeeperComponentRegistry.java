@@ -1,4 +1,4 @@
-package de.dfki.iui.basys.runtime.component.registry;
+package de.dfki.iui.basys.runtime.component.registry.impl;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -18,6 +18,10 @@ import de.dfki.iui.basys.runtime.component.Component;
 import de.dfki.iui.basys.runtime.component.ComponentCategory;
 import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.ComponentException;
+import de.dfki.iui.basys.runtime.component.registry.ComponentInfo;
+import de.dfki.iui.basys.runtime.component.registry.ComponentRegistration;
+import de.dfki.iui.basys.runtime.component.registry.ComponentRegistrationException;
+import de.dfki.iui.basys.runtime.component.registry.ComponentRegistry;
 
 public class ZookeeperComponentRegistry extends BaseComponent implements ComponentRegistry {
 

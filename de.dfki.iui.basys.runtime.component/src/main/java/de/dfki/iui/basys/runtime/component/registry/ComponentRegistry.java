@@ -5,7 +5,7 @@ import java.util.List;
 import de.dfki.iui.basys.runtime.component.Component;
 import de.dfki.iui.basys.runtime.component.ComponentCategory;
 
-public interface ComponentRegistry extends Component {
+public interface ComponentRegistry {
 
 	ComponentRegistration createRegistration(Component instance) throws ComponentRegistrationException;
 

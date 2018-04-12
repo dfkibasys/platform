@@ -22,16 +22,16 @@ import de.dfki.iui.basys.runtime.component.device.OpcUaDeviceComponent;
 import de.dfki.iui.basys.runtime.component.device.packml.Mode;
 import de.dfki.iui.basys.runtime.component.device.packml.State;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManager;
-import de.dfki.iui.basys.runtime.component.manager.ComponentManagerImpl;
+import de.dfki.iui.basys.runtime.component.manager.impl.ComponentManagerImpl;
 import de.dfki.iui.basys.runtime.component.registry.ComponentRegistry;
-import de.dfki.iui.basys.runtime.component.registry.ZookeeperComponentRegistry;
+import de.dfki.iui.basys.runtime.component.registry.impl.ZookeeperComponentRegistry;
 
 public class BaseComponentTest {
 
 	protected final Logger LOGGER = LoggerFactory.getLogger(getClass());
 	
-	protected ComponentRegistry registry;
-	protected ComponentManager componentManager;
+	protected ZookeeperComponentRegistry registry;
+	protected ComponentManagerImpl componentManager;
 	
 	protected Client communicationClient;
 	protected ChannelPool sharedPool;

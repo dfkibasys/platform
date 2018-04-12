@@ -12,7 +12,7 @@ import org.junit.Test;
 
 import de.dfki.iui.basys.runtime.component.manager.ComponentManager;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManagerException;
-import de.dfki.iui.basys.runtime.component.manager.ComponentManagerImpl;
+import de.dfki.iui.basys.runtime.component.manager.impl.ComponentManagerImpl;
 import de.dfki.iui.basys.runtime.component.registry.ComponentInfo;
 import de.dfki.iui.basys.runtime.component.Component;
 

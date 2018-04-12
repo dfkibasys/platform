@@ -17,7 +17,7 @@ import java.util.List;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface ComponentManager extends Component {
+public interface ComponentManager {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
