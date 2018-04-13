@@ -6,14 +6,16 @@ import org.eclipse.emf.common.util.URI;
 
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 
+import de.dfki.iui.basys.model.util.BasysResourceImpl;
+
 /**
  * <!-- begin-user-doc -->
  * The <b>Resource </b> associated with the package.
  * <!-- end-user-doc -->
  * @see de.dfki.iui.basys.model.domain.resourcetype.util.ResourcetypeResourceFactoryImpl
- * @generated
+ * @generated NOT
  */
-public class ResourcetypeResourceImpl extends XMIResourceImpl {
+public class ResourcetypeResourceImpl extends BasysResourceImpl {
 	/**
 	 * Creates an instance of the resource.
 	 * <!-- begin-user-doc -->

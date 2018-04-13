@@ -20,14 +20,15 @@ Export-Package: de.dfki.iui.basys.model.service;version="1.0.0.SNAPSHOT"
  rvice,org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,
  org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore
  .util"
-Import-Package: de.dfki.iui.basys.model.base,de.dfki.iui.basys.model.bas
- e.impl,de.dfki.iui.basys.model.domain.capability,de.dfki.iui.basys.mode
- l.pattern,de.dfki.iui.basys.model.service;version="[1.0,2)",de.dfki.iui
- .basys.model.service.impl;version="[1.0,2)",de.dfki.iui.basys.model.ser
- vice.util;version="[1.0,2)",org.eclipse.emf.common.notify,org.eclipse.e
- mf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore
- ,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.plugin,org.eclipse.em
- f.ecore.resource,org.eclipse.emf.ecore.util
+Import-Package: de.dfki.iui.basys.model.base;version="[1.0,2)",de.dfki.i
+ ui.basys.model.base.impl;version="[1.0,2)",de.dfki.iui.basys.model.doma
+ in.capability;version="[1.0,2)",de.dfki.iui.basys.model.pattern;version
+ ="[1.0,2)",de.dfki.iui.basys.model.service;version="[1.0,2)",de.dfki.iu
+ i.basys.model.service.impl;version="[1.0,2)",de.dfki.iui.basys.model.se
+ rvice.util;version="[1.0,2)",org.eclipse.emf.common.notify,org.eclipse.
+ emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecor
+ e,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.plugin,org.eclipse.e
+ mf.ecore.resource,org.eclipse.emf.ecore.util
 Include-Resource: model/service.ecore=model/service.ecore,model/service.
  genmodel=model/service.genmodel,plugin.properties=plugin.properties,plu
  gin.xml=plugin.xml
