@@ -46,6 +46,12 @@
 			<artifactId>de.dfki.iui.basys.runtime.component</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+				
+		<dependency>
+			<groupId>de.dfki.iui.basys.service</groupId>
+			<artifactId>de.dfki.iui.basys.service.democontent</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/com.eclipsesource.jaxrs/publisher/5.3.1 -->
 		<dependency>

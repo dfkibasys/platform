@@ -1,0 +1,32 @@
+Manifest-Version: 1.0
+Bundle-Description: Generated using Pax-Construct
+Bundle-DocURL: http://www.dfki.de
+Bundle-License: https://www.eclipse.org/legal/epl-v10.html
+Bundle-ManifestVersion: 2
+Bundle-Name: de.dfki.iui.basys.runtime.component.device.opcua
+Bundle-SymbolicName: de.dfki.iui.basys.runtime.component.device.opcua
+Bundle-Vendor: DFKI GmbH
+Bundle-Version: 1.0.0.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: de.dfki.iui.basys.runtime.component.device.opcua;version
+ ="1.0.0.SNAPSHOT";uses:="de.dfki.iui.basys.runtime.component,de.dfki.iu
+ i.basys.runtime.component.device,org.eclipse.milo.opcua.sdk.client,org.
+ eclipse.milo.opcua.sdk.client.api.identity,org.eclipse.milo.opcua.stack
+ .core.security,org.eclipse.milo.opcua.stack.core.types.builtin"
+Import-Package: de.dfki.iui.basys.runtime.component;version="[1.0,2)",de
+ .dfki.iui.basys.runtime.component.device;version="[1.0,2)",org.eclipse.
+ milo.opcua.sdk.client;version="[0.2,1)",org.eclipse.milo.opcua.sdk.clie
+ nt.api.config;version="[0.2,1)",org.eclipse.milo.opcua.sdk.client.api.i
+ dentity;version="[0.2,1)",org.eclipse.milo.opcua.sdk.server.util;versio
+ n="[0.2,1)",org.eclipse.milo.opcua.stack.client;version="[0.2,1)",org.e
+ clipse.milo.opcua.stack.core;version="[0.2,1)",org.eclipse.milo.opcua.s
+ tack.core.security;version="[0.2,1)",org.eclipse.milo.opcua.stack.core.
+ types.builtin;version="[0.2,1)",org.eclipse.milo.opcua.stack.core.types
+ .builtin.unsigned;version="[0.2,1)",org.eclipse.milo.opcua.stack.core.t
+ ypes.enumerated;version="[0.2,1)",org.eclipse.milo.opcua.stack.core.typ
+ es.structured;version="[0.2,1)",org.eclipse.milo.opcua.stack.core.util;
+ version="[0.2,1)",org.slf4j;version="[1.7,2)"
+Include-Resource: readme.txt=src/main/resources/readme.txt
+Private-Package: de.dfki.iui.basys.runtime.component.device.opcua
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Tool: Bnd-3.3.0.201609221906

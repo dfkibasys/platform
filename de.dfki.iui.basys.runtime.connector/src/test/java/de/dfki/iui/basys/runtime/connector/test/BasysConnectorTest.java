@@ -96,6 +96,7 @@ public class BasysConnectorTest extends BaseComponentTest {
 		componentManager.deleteLocalComponent(connectorComponentId);
 	}
 
+	/*
 	@Test
 	public void testExecutionIO() {
 		TestListener testCallback = new TestListener();
@@ -240,7 +241,7 @@ public class BasysConnectorTest extends BaseComponentTest {
 			e.printStackTrace();
 		}
 	}
-
+*/
 	class TestListener implements MessageListener {
 
 		private LinkedList<Message> receivedList = new LinkedList<Message>();

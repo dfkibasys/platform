@@ -16,66 +16,53 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 
+import de.dfki.iui.basys.model.domain.capability.Capability;
+import de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceinstancePackageImpl;
+import de.dfki.iui.basys.model.domain.resourceinstance.util.ResourceinstanceResourceFactoryImpl;
 import de.dfki.iui.basys.model.domain.resourcetype.ResourceType;
 import de.dfki.iui.basys.model.domain.resourcetype.ResourceTypeCatalogue;
+import de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl;
+import de.dfki.iui.basys.model.domain.resourcetype.util.ResourcetypeResourceFactoryImpl;
 import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.service.EmfServiceComponent;
-import de.dfki.iui.basys.runtime.services.ResourceTypeCatalogueManager;
+import de.dfki.iui.basys.runtime.services.ResourceTypeManager;
 
-public class ResourceTypeCatalogueManagerImpl extends EmfServiceComponent implements ResourceTypeCatalogueManager {
+public class ResourceTypeManagerImpl extends EmfServiceComponent implements ResourceTypeManager {
 
-	public ResourceTypeCatalogueManagerImpl(ComponentConfiguration config) {
+	public ResourceTypeManagerImpl(ComponentConfiguration config) {
 		super(config);
-		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public List<ResourceTypeCatalogue> getAllResourceTypeCatalogues() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ResourceTypeCatalogue getTypeCatalogue(String manufacturer) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<ResourceType> getAllResourceTypes(String manufacturer) {
-		// TODO Auto-generated method stub
-		return null;
+		ResourcetypePackageImpl.init();
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("resourcetype", new ResourcetypeResourceFactoryImpl());
+	
 	}
 
 	@Override
 	public ResourceType getResourceType(String id) {
+		return getEntity(id);
+	}
+
+	@Override
+	public ResourceType getResourceTypeByName(String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Response getAllResourceTypeCataloguesRest() {
+	public List<ResourceType> getResourceTypesByManufacturer(String manufacturer) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Response getTypeCatalogueRest(String manufacturer) {
+	public List<ResourceType> getResourceTypesByCapability(Capability capability) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Response getAllResourceTypesRest(String manufacturer) {
+	public List<ResourceType> getAllResourceTypes() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public Response getResourceTypeRest(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 
 }

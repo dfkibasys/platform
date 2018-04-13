@@ -21,6 +21,7 @@
     <module>de.dfki.iui.basys.runtime.component</module>
     <module>de.dfki.iui.basys.runtime.component.device.opcua</module>
     <module>de.dfki.iui.basys.runtime.connector</module>
+    <module>de.dfki.iui.basys.runtime.services</module>
   </modules>
 
 </project>
