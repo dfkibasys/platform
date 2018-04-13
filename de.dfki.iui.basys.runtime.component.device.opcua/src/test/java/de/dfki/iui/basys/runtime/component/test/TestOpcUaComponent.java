@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
-import de.dfki.iui.basys.runtime.component.device.OpcUaDeviceComponent;
+import de.dfki.iui.basys.runtime.component.device.opcua.OpcUaDeviceComponent;
 import de.dfki.iui.basys.runtime.component.device.opcua.OpcUaException;
 
 public class TestOpcUaComponent extends OpcUaDeviceComponent {

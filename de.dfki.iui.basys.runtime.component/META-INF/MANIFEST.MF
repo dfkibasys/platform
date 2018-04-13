@@ -15,48 +15,38 @@ Export-Package: de.dfki.iui.basys.runtime.component;version="1.0.0.SNAPS
  ui.basys.runtime.component.device;version="1.0.0.SNAPSHOT";uses:="de.df
  ki.iui.basys.model.domain.capability,de.dfki.iui.basys.model.runtime.co
  mmunication,de.dfki.iui.basys.runtime.component,de.dfki.iui.basys.runti
- me.component.device.opcua,de.dfki.iui.basys.runtime.component.device.pa
- ckml,org.eclipse.milo.opcua.sdk.client,org.eclipse.milo.opcua.sdk.clien
- t.api.identity,org.eclipse.milo.opcua.stack.core.security,org.eclipse.m
- ilo.opcua.stack.core.types.builtin",de.dfki.iui.basys.runtime.component
- .device.opcua;version="1.0.0.SNAPSHOT",de.dfki.iui.basys.runtime.compon
- ent.device.packml;version="1.0.0.SNAPSHOT";uses:="org.slf4j",de.dfki.iu
- i.basys.runtime.component.manager;version="1.0.0.SNAPSHOT";uses:="de.df
- ki.iui.basys.runtime.component",de.dfki.iui.basys.runtime.component.reg
- istry;version="1.0.0.SNAPSHOT";uses:="com.fasterxml.jackson.annotation,
- de.dfki.iui.basys.runtime.component,de.dfki.iui.basys.runtime.component
- .device.packml,org.apache.curator.framework,org.apache.curator.x.discov
- ery",de.dfki.iui.basys.runtime.component.service;version="1.0.0.SNAPSHO
- T";uses:="de.dfki.iui.basys.runtime.component,org.eclipse.emf.ecore,org
- .eclipse.emf.ecore.resource"
+ me.component.device.packml",de.dfki.iui.basys.runtime.component.device.
+ packml;version="1.0.0.SNAPSHOT";uses:="org.slf4j",de.dfki.iui.basys.run
+ time.component.manager;version="1.0.0.SNAPSHOT";uses:="de.dfki.iui.basy
+ s.runtime.component",de.dfki.iui.basys.runtime.component.manager.impl;v
+ ersion="1.0.0.SNAPSHOT";uses:="de.dfki.iui.basys.runtime.component,de.d
+ fki.iui.basys.runtime.component.manager",de.dfki.iui.basys.runtime.comp
+ onent.registry;version="1.0.0.SNAPSHOT";uses:="com.fasterxml.jackson.an
+ notation,de.dfki.iui.basys.runtime.component,de.dfki.iui.basys.runtime.
+ component.device.packml",de.dfki.iui.basys.runtime.component.registry.i
+ mpl;version="1.0.0.SNAPSHOT";uses:="de.dfki.iui.basys.runtime.component
+ ,de.dfki.iui.basys.runtime.component.registry,org.apache.curator.framew
+ ork,org.apache.curator.x.discovery",de.dfki.iui.basys.runtime.component
+ .service;version="1.0.0.SNAPSHOT";uses:="de.dfki.iui.basys.runtime.comp
+ onent,org.eclipse.emf.ecore,org.eclipse.emf.ecore.resource"
 Import-Package: com.fasterxml.jackson.annotation;version="[2.9,3)",de.df
  ki.iui.basys.common.emf;version="[1.0,2)",de.dfki.iui.basys.model.domai
  n.capability;version="[1.0,2)",de.dfki.iui.basys.model.runtime.communic
  ation;version="[1.0,2)",de.dfki.iui.basys.runtime.communication;version
  ="[1.0,2)",de.dfki.iui.basys.runtime.component;version="[1.0,2)",de.dfk
- i.iui.basys.runtime.component.device.opcua;version="[1.0,2)",de.dfki.iu
- i.basys.runtime.component.device.packml;version="[1.0,2)",de.dfki.iui.b
- asys.runtime.component.registry;version="[1.0,2)",javax.xml.stream,org.
- apache.commons.scxml2;version="[2.0,3)",org.apache.commons.scxml2.env;v
- ersion="[2.0,3)",org.apache.commons.scxml2.env.jexl;version="[2.0,3)",o
- rg.apache.commons.scxml2.io;version="[2.0,3)",org.apache.commons.scxml2
- .model;version="[2.0,3)",org.apache.curator;version="[4.0,5)",org.apach
- e.curator.framework;version="[4.0,5)",org.apache.curator.retry;version=
- "[4.0,5)",org.apache.curator.utils;version="[4.0,5)",org.apache.curator
- .x.discovery;version="[4.0,5)",org.apache.curator.x.discovery.details;v
- ersion="[4.0,5)",org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.
- eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.ecli
- pse.milo.opcua.sdk.client;version="[0.2,1)",org.eclipse.milo.opcua.sdk.
- client.api.config;version="[0.2,1)",org.eclipse.milo.opcua.sdk.client.a
- pi.identity;version="[0.2,1)",org.eclipse.milo.opcua.sdk.server.util;ve
- rsion="[0.2,1)",org.eclipse.milo.opcua.stack.client;version="[0.2,1)",o
- rg.eclipse.milo.opcua.stack.core;version="[0.2,1)",org.eclipse.milo.opc
- ua.stack.core.security;version="[0.2,1)",org.eclipse.milo.opcua.stack.c
- ore.types.builtin;version="[0.2,1)",org.eclipse.milo.opcua.stack.core.t
- ypes.builtin.unsigned;version="[0.2,1)",org.eclipse.milo.opcua.stack.co
- re.types.enumerated;version="[0.2,1)",org.eclipse.milo.opcua.stack.core
- .types.structured;version="[0.2,1)",org.eclipse.milo.opcua.stack.core.u
- til;version="[0.2,1)",org.slf4j;version="[1.7,2)"
+ i.iui.basys.runtime.component.device.packml;version="[1.0,2)",de.dfki.i
+ ui.basys.runtime.component.manager;version="[1.0,2)",de.dfki.iui.basys.
+ runtime.component.registry;version="[1.0,2)",javax.xml.stream,org.apach
+ e.commons.scxml2;version="[2.0,3)",org.apache.commons.scxml2.env;versio
+ n="[2.0,3)",org.apache.commons.scxml2.env.jexl;version="[2.0,3)",org.ap
+ ache.commons.scxml2.io;version="[2.0,3)",org.apache.commons.scxml2.mode
+ l;version="[2.0,3)",org.apache.curator;version="[4.0,5)",org.apache.cur
+ ator.framework;version="[4.0,5)",org.apache.curator.retry;version="[4.0
+ ,5)",org.apache.curator.utils;version="[4.0,5)",org.apache.curator.x.di
+ scovery;version="[4.0,5)",org.apache.curator.x.discovery.details;versio
+ n="[4.0,5)",org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclip
+ se.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.slf4j;ver
+ sion="[1.7,2)"
 Include-Resource: packml-first-layer-scxml.xml=src/main/resources/packml
  -first-layer-scxml.xml,packml-second-layer-scxml.xml=src/main/resources
  /packml-second-layer-scxml.xml,packml.scxml=src/main/resources/packml.s

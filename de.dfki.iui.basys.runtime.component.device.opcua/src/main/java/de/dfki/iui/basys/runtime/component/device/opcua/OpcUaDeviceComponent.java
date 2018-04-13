@@ -1,4 +1,4 @@
-package de.dfki.iui.basys.runtime.component.device;
+package de.dfki.iui.basys.runtime.component.device.opcua;
 
 
 import static org.eclipse.milo.opcua.stack.core.types.builtin.unsigned.Unsigned.uint;
@@ -28,10 +28,9 @@ import org.eclipse.milo.opcua.stack.core.types.enumerated.TimestampsToReturn;
 import org.eclipse.milo.opcua.stack.core.types.structured.CallMethodRequest;
 import org.eclipse.milo.opcua.stack.core.types.structured.EndpointDescription;
 
-import de.dfki.iui.basys.runtime.component.device.opcua.KeyStoreLoader;
-import de.dfki.iui.basys.runtime.component.device.opcua.OpcUaException;
 import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.ComponentException;
+import de.dfki.iui.basys.runtime.component.device.DeviceComponent;
 
 public class OpcUaDeviceComponent extends DeviceComponent {
 
