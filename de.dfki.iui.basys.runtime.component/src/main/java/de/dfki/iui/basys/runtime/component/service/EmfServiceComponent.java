@@ -1,6 +1,5 @@
 package de.dfki.iui.basys.runtime.component.service;
 
-
 import java.io.IOException;
 
 import org.eclipse.emf.common.util.TreeIterator;
@@ -18,41 +17,34 @@ public class EmfServiceComponent extends ServiceComponent {
 
 	protected ResourceSet resourceSet;
 	URI uri;
-	
+
 	public EmfServiceComponent(ComponentConfiguration config) {
 		super(config);
 		resourceSet = new ResourceSetImpl();
-		//TODO configure URIConverter URIMap
+		// TODO configure URIConverter URIMap
 	}
-	
-	@Override
-	public void connectToExternal() throws ComponentException {		
-		String resourceUri = getConfig().getExternalConnectionString();
-		uri = URI.createFileURI(resourceUri);
-		Resource resource = resourceSet.createResource(uri);
-//		if (resource == null) {
-//			uri = URI.createPlatformPluginURI(resourceUri,true);
-//			resource = resourceSet.createResource(uri);
-//		}
 
-		
+	@Override
+	public void connectToExternal() throws ComponentException {
+		String resourceUri = getConfig().getExternalConnectionString();
+		uri = URI.createURI(resourceUri);
+		Resource resource = resourceSet.createResource(uri);
 		try {
 			EmfPersistence.read(resource, null);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Override
 	public void disconnectFromExternal() {
 		resourceSet = null;
 	}
-	
 
 	protected <T extends EObject> T getEntity(String id) {
 		return (T) resourceSet.getEObject(uri.appendFragment(id), true);
 	}
-	
+
 	protected EObject findEntity(String property, String value) {
 		TreeIterator<EObject> it = resourceSet.getEObject(uri, true).eAllContents();
 		while (it.hasNext()) {
@@ -64,5 +56,4 @@ public class EmfServiceComponent extends ServiceComponent {
 		return null;
 	}
 
-	
 }

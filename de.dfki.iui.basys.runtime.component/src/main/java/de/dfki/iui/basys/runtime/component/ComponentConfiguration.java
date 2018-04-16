@@ -12,7 +12,9 @@ public class ComponentConfiguration {
 	private String outChannelName;
 	private String externalConnectionString;
 
-	
+	public ComponentConfiguration() {
+	}
+
 	/**
 	 * @return the componentId
 	 */
@@ -107,8 +109,7 @@ public class ComponentConfiguration {
 			return this;
 		}
 
-		public Builder communicationProviderImplementationJavaClass(
-				String communicationProviderImplementationJavaClass) {
+		public Builder communicationProviderImplementationJavaClass(String communicationProviderImplementationJavaClass) {
 			this.communicationProviderImplementationJavaClass = communicationProviderImplementationJavaClass;
 			return this;
 		}

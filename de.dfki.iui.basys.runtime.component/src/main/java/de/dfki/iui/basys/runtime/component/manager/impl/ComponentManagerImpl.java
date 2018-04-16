@@ -55,14 +55,21 @@ public class ComponentManagerImpl extends BaseComponent implements ComponentMana
 		try {
 			Constructor<Component> constructor = c.getConstructor(ComponentConfiguration.class);
 			component = constructor.newInstance(config);
-			components.put(component.getId(), component);
+			addLocalComponent(component);
 
-			component.activate(context);
-		} catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException
-				| IllegalArgumentException | InvocationTargetException | ComponentException e) {
+		} catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			throw new ComponentManagerException(e);
 		}
+	}
 
+	@Override
+	public void addLocalComponent(Component component) throws ComponentManagerException {
+		components.put(component.getId(), component);
+		try {
+			component.activate(context);
+		} catch (ComponentException e) {
+			throw new ComponentManagerException(e);
+		}
 	}
 
 	@Override

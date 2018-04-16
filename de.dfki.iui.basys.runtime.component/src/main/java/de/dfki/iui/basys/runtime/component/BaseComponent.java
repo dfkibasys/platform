@@ -3,13 +3,6 @@ package de.dfki.iui.basys.runtime.component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
-import de.dfki.iui.basys.runtime.component.ComponentException;
-import de.dfki.iui.basys.runtime.component.device.packml.Mode;
-import de.dfki.iui.basys.runtime.component.device.packml.State;
-import de.dfki.iui.basys.runtime.component.registry.ComponentRegistration;
-import de.dfki.iui.basys.runtime.component.registry.ComponentRegistrationException;
-import de.dfki.iui.basys.runtime.communication.ClientFactory;
 import de.dfki.iui.basys.model.runtime.communication.Channel;
 import de.dfki.iui.basys.model.runtime.communication.ChannelListener;
 import de.dfki.iui.basys.model.runtime.communication.ChannelPool;
@@ -17,6 +10,11 @@ import de.dfki.iui.basys.model.runtime.communication.Client;
 import de.dfki.iui.basys.model.runtime.communication.Notification;
 import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.communication.Response;
+import de.dfki.iui.basys.runtime.communication.ClientFactory;
+import de.dfki.iui.basys.runtime.component.device.packml.Mode;
+import de.dfki.iui.basys.runtime.component.device.packml.State;
+import de.dfki.iui.basys.runtime.component.registry.ComponentRegistration;
+import de.dfki.iui.basys.runtime.component.registry.ComponentRegistrationException;
 
 public class BaseComponent implements Component, ChannelListener {
 
@@ -91,8 +89,7 @@ public class BaseComponent implements Component, ChannelListener {
 		// //unit.setWaitStatesHandler(simulationWaitHandler);
 		// }
 
-		if (context.getSharedChannelPool() != null
-				|| componentConfig.getCommunicationProviderImplementationJavaClass() != null) {
+		if (context.getSharedChannelPool() != null || componentConfig.getCommunicationProviderImplementationJavaClass() != null) {
 			connectToBasys();
 			try {
 				register();
@@ -104,8 +101,7 @@ public class BaseComponent implements Component, ChannelListener {
 
 	@Override
 	public void deactivate() throws ComponentException {
-		if (context.getSharedChannelPool() != null
-				|| componentConfig.getCommunicationProviderImplementationJavaClass() != null) {
+		if (context.getSharedChannelPool() != null || componentConfig.getCommunicationProviderImplementationJavaClass() != null) {
 			try {
 				unregister();
 			} catch (ComponentRegistrationException e) {
@@ -134,13 +130,12 @@ public class BaseComponent implements Component, ChannelListener {
 
 		if (pool == null) {
 			privateClient = cf.createClient(getId(), cf.createAuthentication(getId(), "secret", null));
-			pool = cf.connectChannelPool(privateClient, componentConfig.getCommunicationProviderConnectionString(),
-					componentConfig.getCommunicationProviderImplementationJavaClass());
+			pool = cf.connectChannelPool(privateClient, componentConfig.getCommunicationProviderConnectionString(), componentConfig.getCommunicationProviderImplementationJavaClass());
 		}
 
-		if (componentConfig.getInChannelName() != null)
+		if (componentConfig.getInChannelName() != null && !componentConfig.getInChannelName().equals(""))
 			inChannel = cf.openChannel(pool, componentConfig.getInChannelName(), false, this);
-		if (componentConfig.getOutChannelName() != null)
+		if (componentConfig.getOutChannelName() != null && !componentConfig.getOutChannelName().equals(""))
 			outChannel = cf.openChannel(pool, componentConfig.getOutChannelName(), false, null);
 	}
 
@@ -172,13 +167,13 @@ public class BaseComponent implements Component, ChannelListener {
 	@Override
 	public void handleMessage(String msg) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void handleNotification(Notification not) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

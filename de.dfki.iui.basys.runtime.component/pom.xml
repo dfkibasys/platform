@@ -55,6 +55,12 @@
 			<version>${scxml.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>de.dfki.iui.basys.deployment</groupId>
+			<artifactId>org.apache.curator.client</artifactId>
+			<version>${curator.version}</version>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.apache.curator/curator-framework -->
 		<dependency>
 			<groupId>org.apache.curator</groupId>
