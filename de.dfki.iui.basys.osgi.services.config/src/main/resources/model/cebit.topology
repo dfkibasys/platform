@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<topology:Enterprise xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:capability="http://www.dfki.de/iui/basys/model/capability" xmlns:topology="http://www.dfki.de/iui/basys/model/topology" id="_mkrEADB4Eei1bbwBPPZWOA" name="DemoEnterprise">
+  <sites id="_m9aUIDB4Eei1bbwBPPZWOA" name="CeBIT Hannover">
+    <areas id="_nb0HYDB4Eei1bbwBPPZWOA" name="Stand A.123">
+      <workCenters xsi:type="topology:ProductionLine" id="_nuSXcjB4Eei1bbwBPPZWOA" name="Montage">
+        <workCells id="_zr-RcTB4Eei1bbwBPPZWOA" name="Endmontage">
+          <stations id="_1yPaZzB4Eei1bbwBPPZWOA" name="S1">
+            <equipmentModules id="_5cpPkDB4Eei1bbwBPPZWOA" name="Presse"/>
+          </stations>
+          <stations id="_2P5mwTB4Eei1bbwBPPZWOA" name="S2">
+            <equipmentModules id="_5vbBoDB4Eei1bbwBPPZWOA" name="Schrauber"/>
+          </stations>
+          <stations id="_2jROsTB4Eei1bbwBPPZWOA" name="S3">
+            <equipmentModules id="_6CV9oDB4Eei1bbwBPPZWOA" name="Deckelaufleger">
+              <capabilityRequirement xsi:type="capability:Pressen" id="_LmHydzDyEeixrJ0x1ZWKig" druck="50"/>
+              <assignedResourceType href="cebit.resourcetype#_yIFSQjB3Eei1bbwBPPZWOA"/>
+              <assignedResourceInstance href="cebit.resourceinstance#_SE5NIDB4Eei1bbwBPPZWOA"/>
+            </equipmentModules>
+            <equipmentModules binding="" id="_AzQQwDB5Eei1bbwBPPZWOA" name="Werkerführung"/>
+          </stations>
+        </workCells>
+        <workCells id="_C-v38TB5Eei1bbwBPPZWOA" name="Qualitätssicherung">
+          <stations id="_F6qPdzB5Eei1bbwBPPZWOA" name="Inspektion">
+            <equipmentModules id="_HlgntTB5Eei1bbwBPPZWOA" name="Positioniereinheit"/>
+            <equipmentModules id="_IvknEDB5Eei1bbwBPPZWOA" name="Sichtkontrolle"/>
+          </stations>
+        </workCells>
+      </workCenters>
+      <workCenters xsi:type="topology:StorageZone" id="_NQFk4zB5Eei1bbwBPPZWOA" name="Colastation">
+        <storageUnits id="_O8321zB5Eei1bbwBPPZWOA" name="">
+          <equipmentModules id="_ROxA8zB5Eei1bbwBPPZWOA" name="Positioniereinheit"/>
+        </storageUnits>
+      </workCenters>
+    </areas>
+  </sites>
+</topology:Enterprise>
