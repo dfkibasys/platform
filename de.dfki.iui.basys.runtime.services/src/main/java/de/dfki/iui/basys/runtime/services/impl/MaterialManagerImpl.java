@@ -28,4 +28,9 @@ public class MaterialManagerImpl extends EmfServiceComponent implements Material
 		return null;
 	}
 
+	@Override
+	public void addMaterial(Material material) {
+
+	}
+
 }
