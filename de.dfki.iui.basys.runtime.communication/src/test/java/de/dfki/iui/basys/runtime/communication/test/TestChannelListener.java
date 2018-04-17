@@ -16,13 +16,13 @@ public class TestChannelListener implements ChannelListener {
 	String expectedMessage;
 
 	public TestChannelListener() {
-	
+
 	}
-	
+
 	public TestChannelListener(String msg) {
 		expectedMessage = msg;
 	}
-	
+
 	public boolean isSuccess() {
 		return success;
 	}
@@ -34,7 +34,7 @@ public class TestChannelListener implements ChannelListener {
 	public void setExpectedMessage(String expectedMessage) {
 		this.expectedMessage = expectedMessage;
 	}
-	
+
 	@Override
 	public void handleMessage(String msg) {
 		LOGGER.info("handleMessage: " + msg);
@@ -54,7 +54,7 @@ public class TestChannelListener implements ChannelListener {
 		LOGGER.info("handleRequest: " + req.getPayload());
 		if (req.getPayload().equals(expectedMessage))
 			success = true;
-		
+
 		Response response = ClientFactory.getInstance().createResponse(req.getId(), expectedMessage.toUpperCase());
 		return response;
 	}

@@ -11,9 +11,9 @@ Created-By: Apache Maven Bundle Plugin
 Export-Package: de.dfki.iui.basys.runtime.connector;version="1.0.0.SNAPS
  HOT";uses:="de.dfki.iui.basys.runtime.component,de.dfki.iui.basys.runti
  me.component.service,javax.jms"
-Import-Package: de.dfki.iui.basys.runtime.component,de.dfki.iui.basys.ru
- ntime.component.service,javax.jms;version="[1.1,2)",org.apache.activemq
- ;version="[5.15,6)",org.json;version="[20180130.0,20180131)"
+Import-Package: de.dfki.iui.basys.runtime.component;version="[1.0,2)",de
+ .dfki.iui.basys.runtime.component.service;version="[1.0,2)",javax.jms;v
+ ersion="[1.1,2)",org.apache.activemq;version="[5.15,6)",org.json;versio
+ n="[20180130.0,20180131)"
 Private-Package: de.dfki.iui.basys.runtime.connector
-Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
-Tool: Bnd-3.3.0.201609221906
+Tool: Bnd-2.1.0.20130426-122213

@@ -33,20 +33,16 @@ Import-Package: com.fasterxml.jackson.annotation;version="[2.9,3)",de.df
  ki.iui.basys.common.emf;version="[1.0,2)",de.dfki.iui.basys.model.domai
  n.capability;version="[1.0,2)",de.dfki.iui.basys.model.runtime.communic
  ation;version="[1.0,2)",de.dfki.iui.basys.runtime.communication;version
- ="[1.0,2)",de.dfki.iui.basys.runtime.component;version="[1.0,2)",de.dfk
- i.iui.basys.runtime.component.device.packml;version="[1.0,2)",de.dfki.i
- ui.basys.runtime.component.manager;version="[1.0,2)",de.dfki.iui.basys.
- runtime.component.registry;version="[1.0,2)",javax.xml.stream,org.apach
- e.commons.scxml2;version="[2.0,3)",org.apache.commons.scxml2.env;versio
- n="[2.0,3)",org.apache.commons.scxml2.env.jexl;version="[2.0,3)",org.ap
- ache.commons.scxml2.io;version="[2.0,3)",org.apache.commons.scxml2.mode
- l;version="[2.0,3)",org.apache.curator;version="[4.0,5)",org.apache.cur
- ator.framework;version="[4.0,5)",org.apache.curator.retry;version="[4.0
- ,5)",org.apache.curator.utils;version="[4.0,5)",org.apache.curator.x.di
- scovery;version="[4.0,5)",org.apache.curator.x.discovery.details;versio
- n="[4.0,5)",org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclip
- se.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.slf4j;ver
- sion="[1.7,2)"
+ ="[1.0,2)",javax.xml.stream,org.apache.commons.scxml2;version="[2.0,3)"
+ ,org.apache.commons.scxml2.env;version="[2.0,3)",org.apache.commons.scx
+ ml2.env.jexl;version="[2.0,3)",org.apache.commons.scxml2.io;version="[2
+ .0,3)",org.apache.commons.scxml2.model;version="[2.0,3)",org.apache.cur
+ ator;version="[4.0,5)",org.apache.curator.framework;version="[4.0,5)",o
+ rg.apache.curator.retry;version="[4.0,5)",org.apache.curator.utils;vers
+ ion="[4.0,5)",org.apache.curator.x.discovery;version="[4.0,5)",org.apac
+ he.curator.x.discovery.details;version="[4.0,5)",org.eclipse.emf.common
+ .util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.resource,org.eclipse.
+ emf.ecore.resource.impl,org.slf4j;version="[1.7,2)"
 Include-Resource: packml-first-layer-scxml.xml=src/main/resources/packml
  -first-layer-scxml.xml,packml-second-layer-scxml.xml=src/main/resources
  /packml-second-layer-scxml.xml,packml.scxml=src/main/resources/packml.s
@@ -65,6 +61,6 @@ Include-Resource: packml-first-layer-scxml.xml=src/main/resources/packml
  s/packml-suspending-scxml.xml,states/packml-unholding-scxml.xml=src/mai
  n/resources/states/packml-unholding-scxml.xml,states/packml-unsuspendin
  g-scxml.xml=src/main/resources/states/packml-unsuspending-scxml.xml
-Private-Package: states
-Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
-Tool: Bnd-3.3.0.201609221906
+Private-Package: packml-first-layer-scxml.xml,packml-second-layer-scxml.
+ xml,packml.scxml,readme.txt,states
+Tool: Bnd-2.1.0.20130426-122213
