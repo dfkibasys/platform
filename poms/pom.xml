@@ -37,15 +37,7 @@
         <plugin>
           <groupId>org.apache.felix</groupId>
           <artifactId>maven-bundle-plugin</artifactId>
-          <version>1.4.3</version>
-		   <configuration>
-			<archive>
-				<addMavenDescriptor>false</addMavenDescriptor>
-			</archive> 
-			<instructions>   
-			  <_removeheaders>Bnd-LastModified, Built-By, Build-Jdk</_removeheaders>
-			</instructions>
-			</configuration>
+          <version>2.4.0</version>
         </plugin>
       </plugins>
     </pluginManagement>
