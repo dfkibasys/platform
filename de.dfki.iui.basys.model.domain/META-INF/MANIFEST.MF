@@ -213,43 +213,13 @@ Export-Package: de.dfki.iui.basys.model.domain.capability;version="1.0.0
  rg.eclipse.emf.ecore,org.eclipse.emf.ecore.resource,org.eclipse.emf.eco
  re.resource.impl,org.eclipse.emf.ecore.util"
 Import-Package: de.dfki.iui.basys.model.base;version="[1.0,2)",de.dfki.i
- ui.basys.model.base.impl;version="[1.0,2)",de.dfki.iui.basys.model.doma
- in.capability;version="[1.0,2)",de.dfki.iui.basys.model.domain.capabili
- ty.impl;version="[1.0,2)",de.dfki.iui.basys.model.domain.linebalancing;
- version="[1.0,2)",de.dfki.iui.basys.model.domain.linebalancing.impl;ver
- sion="[1.0,2)",de.dfki.iui.basys.model.domain.material;version="[1.0,2)
- ",de.dfki.iui.basys.model.domain.material.impl;version="[1.0,2)",de.dfk
- i.iui.basys.model.domain.order;version="[1.0,2)",de.dfki.iui.basys.mode
- l.domain.order.impl;version="[1.0,2)",de.dfki.iui.basys.model.domain.pr
- ocessdefinition;version="[1.0,2)",de.dfki.iui.basys.model.domain.proces
- sdefinition.impl;version="[1.0,2)",de.dfki.iui.basys.model.domain.proce
- ssdefinition.util;version="[1.0,2)",de.dfki.iui.basys.model.domain.proc
- essinstance;version="[1.0,2)",de.dfki.iui.basys.model.domain.processins
- tance.impl;version="[1.0,2)",de.dfki.iui.basys.model.domain.productdefi
- nition;version="[1.0,2)",de.dfki.iui.basys.model.domain.productdefiniti
- on.impl;version="[1.0,2)",de.dfki.iui.basys.model.domain.productinstanc
- e;version="[1.0,2)",de.dfki.iui.basys.model.domain.productinstance.impl
- ;version="[1.0,2)",de.dfki.iui.basys.model.domain.resourceinstance;vers
- ion="[1.0,2)",de.dfki.iui.basys.model.domain.resourceinstance.impl;vers
- ion="[1.0,2)",de.dfki.iui.basys.model.domain.resourcetype;version="[1.0
- ,2)",de.dfki.iui.basys.model.domain.resourcetype.impl;version="[1.0,2)"
- ,de.dfki.iui.basys.model.domain.roletopology;version="[1.0,2)",de.dfki.
- iui.basys.model.domain.roletopology.impl;version="[1.0,2)",de.dfki.iui.
- basys.model.domain.staff;version="[1.0,2)",de.dfki.iui.basys.model.doma
- in.staff.impl;version="[1.0,2)",de.dfki.iui.basys.model.domain.topology
- ;version="[1.0,2)",de.dfki.iui.basys.model.domain.topology.impl;version
- ="[1.0,2)",de.dfki.iui.basys.model.domain.workerguidance;version="[1.0,
- 2)",de.dfki.iui.basys.model.domain.workerguidance.impl;version="[1.0,2)
- ",de.dfki.iui.basys.model.domain.workforce;version="[1.0,2)",de.dfki.iu
- i.basys.model.domain.workforce.impl;version="[1.0,2)",de.dfki.iui.basys
- .model.domain.workplan;version="[1.0,2)",de.dfki.iui.basys.model.domain
- .workplan.impl;version="[1.0,2)",de.dfki.iui.basys.model.pattern;versio
- n="[1.0,2)",de.dfki.iui.basys.model.util;version="[1.0,2)",org.eclipse.
- emf.common.notify,org.eclipse.emf.common.notify.impl,org.eclipse.emf.co
- mmon.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.
- emf.ecore.plugin,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.r
- esource.impl,org.eclipse.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl,
- org.eclipse.emf.ecore.xml.type
+ ui.basys.model.base.impl;version="[1.0,2)",de.dfki.iui.basys.model.patt
+ ern;version="[1.0,2)",de.dfki.iui.basys.model.util;version="[1.0,2)",or
+ g.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl,org.ecli
+ pse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.impl,or
+ g.eclipse.emf.ecore.plugin,org.eclipse.emf.ecore.resource,org.eclipse.e
+ mf.ecore.resource.impl,org.eclipse.emf.ecore.util,org.eclipse.emf.ecore
+ .xmi.impl,org.eclipse.emf.ecore.xml.type
 Include-Resource: model/capability.ecore=model/capability.ecore,model/do
  main.aird=model/domain.aird,model/domain.genmodel=model/domain.genmodel
  ,model/layout.ecore=model/layout.ecore,model/linebalancing.ecore=model/
@@ -264,8 +234,7 @@ Include-Resource: model/capability.ecore=model/capability.ecore,model/do
  del/workerguidance.ecore=model/workerguidance.ecore,model/workforce.eco
  re=model/workforce.ecore,model/workplan.ecore=model/workplan.ecore,plug
  in.properties=plugin.properties,plugin.xml=plugin.xml
-Private-Package: model
+Private-Package: model,plugin.properties,plugin.xml
 Require-Bundle: org.eclipse.core.runtime, org.eclipse.emf.ecore;visibili
  ty:=reexport
-Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
-Tool: Bnd-3.3.0.201609221906
+Tool: Bnd-2.1.0.20130426-122213

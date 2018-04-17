@@ -19,19 +19,17 @@ Export-Package: de.dfki.iui.basys.model.aas;version="1.0.0.SNAPSHOT";use
  del.aas,de.dfki.iui.basys.model.base,org.eclipse.emf.common.notify,org.
  eclipse.emf.common.notify.impl,org.eclipse.emf.ecore,org.eclipse.emf.ec
  ore.util"
-Import-Package: de.dfki.iui.basys.model.aas;version="[1.0,2)",de.dfki.iu
- i.basys.model.aas.impl;version="[1.0,2)",de.dfki.iui.basys.model.base;v
- ersion="[1.0,2)",de.dfki.iui.basys.model.base.impl;version="[1.0,2)",de
- .dfki.iui.basys.model.domain.capability;version="[1.0,2)",de.dfki.iui.b
- asys.model.service;version="[1.0,2)",org.eclipse.emf.common.notify,org.
- eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse.
- emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.plugin,org.e
- clipse.emf.ecore.resource,org.eclipse.emf.ecore.util
+Import-Package: de.dfki.iui.basys.model.base;version="[1.0,2)",de.dfki.i
+ ui.basys.model.base.impl;version="[1.0,2)",de.dfki.iui.basys.model.doma
+ in.capability;version="[1.0,2)",de.dfki.iui.basys.model.service;version
+ ="[1.0,2)",org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.
+ impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.
+ ecore.impl,org.eclipse.emf.ecore.plugin,org.eclipse.emf.ecore.resource,
+ org.eclipse.emf.ecore.util
 Include-Resource: model/aas.aird=model/aas.aird,model/aas.ecore=model/aa
  s.ecore,model/aas.genmodel=model/aas.genmodel,plugin.properties=plugin.
  properties,plugin.xml=plugin.xml
-Private-Package: model
+Private-Package: model,plugin.properties,plugin.xml
 Require-Bundle: org.eclipse.core.runtime, org.eclipse.emf.ecore;visibili
  ty:=reexport
-Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
-Tool: Bnd-3.3.0.201609221906
+Tool: Bnd-2.1.0.20130426-122213

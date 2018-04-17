@@ -18,8 +18,6 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.dfki.iui.basys.model</groupId>
 	<artifactId>de.dfki.iui.basys.model.test</artifactId>
-	<version>1.0-SNAPSHOT</version>
-
 	<name>${bundle.symbolicName}</name>
 
 	<packaging>bundle</packaging>

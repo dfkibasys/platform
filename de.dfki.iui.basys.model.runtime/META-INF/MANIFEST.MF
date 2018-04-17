@@ -22,25 +22,18 @@ Export-Package: de.dfki.iui.basys.model.runtime.communication;version="1
  me.communication,org.eclipse.emf.common.notify,org.eclipse.emf.common.n
  otify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclips
  e.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.em
- f.ecore.util,org.eclipse.emf.ecore.xmi.impl",de.dfki.iui.basys.model.ru
- ntime.service.util;version="1.0.0.SNAPSHOT";uses:="org.eclipse.emf.comm
- on.util,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.i
- mpl,org.eclipse.emf.ecore.xmi.impl"
+ f.ecore.util,org.eclipse.emf.ecore.xmi.impl"
 Import-Package: de.dfki.iui.basys.model.base;version="[1.0,2)",de.dfki.i
- ui.basys.model.base.impl;version="[1.0,2)",de.dfki.iui.basys.model.runt
- ime.communication;version="[1.0,2)",de.dfki.iui.basys.model.runtime.com
- munication.exceptions;version="[1.0,2)",de.dfki.iui.basys.model.runtime
- .communication.impl;version="[1.0,2)",org.eclipse.emf.common.notify,org
- .eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.eclipse
- .emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.plugin,org.
- eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.ecli
- pse.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl
+ ui.basys.model.base.impl;version="[1.0,2)",org.eclipse.emf.common.notif
+ y,org.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.ec
+ lipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.plugin
+ ,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org
+ .eclipse.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl
 Include-Resource: model/communication.ecore=model/communication.ecore,mo
- del/representations.aird=model/representations.aird,model/runtime.genmo
- del=model/runtime.genmodel,plugin.properties=plugin.properties,plugin.x
- ml=plugin.xml
-Private-Package: model
+ del/component.ecore=model/component.ecore,model/representations.aird=mo
+ del/representations.aird,model/runtime.genmodel=model/runtime.genmodel,
+ plugin.properties=plugin.properties,plugin.xml=plugin.xml
+Private-Package: model,plugin.properties,plugin.xml
 Require-Bundle: org.eclipse.core.runtime, org.eclipse.emf.ecore;visibili
  ty:=reexport
-Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
-Tool: Bnd-3.3.0.201609221906
+Tool: Bnd-2.1.0.20130426-122213
