@@ -1,22 +1,20 @@
 package de.dfki.iui.basys.runtime.component.device;
 
-import de.dfki.iui.basys.model.runtime.communication.Notification;
 import de.dfki.iui.basys.runtime.component.device.packml.ActiveStatesHandler;
 import de.dfki.iui.basys.runtime.component.device.packml.WaitStatesHandler;
-import de.dfki.iui.basys.runtime.component.registry.ComponentRegistrationException;
 
 public class NotifyingStatesHandlerFacade implements ActiveStatesHandler, WaitStatesHandler {
 
-	DeviceComponent component;	
-	
+	DeviceComponent component;
+
 	public NotifyingStatesHandlerFacade(DeviceComponent component) {
-		this.component = component; 
+		this.component = component;
 	}
 
 	/*
 	 * default WaitStatesHandler implementation -> notify Basys Middleware
 	 */
-	
+
 	@Override
 	public void onStopped() {
 		component.notifyAndUpdateRegistration();
@@ -52,14 +50,14 @@ public class NotifyingStatesHandlerFacade implements ActiveStatesHandler, WaitSt
 		component.notifyAndUpdateRegistration();
 		component.onAborted();
 	}
-	
+
 	/*
-	 * default ActiveStatesHandler implementation -> notify Basys Middleware 
+	 * default ActiveStatesHandler implementation -> notify Basys Middleware
 	 */
-	
+
 	@Override
 	public void onResetting() {
-		component.notifyAndUpdateRegistration();		
+		component.notifyAndUpdateRegistration();
 		component.onResetting();
 	}
 
