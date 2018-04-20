@@ -2,7 +2,7 @@ package de.dfki.iui.basys.runtime.services;
 
 import java.util.List;
 
-import de.dfki.iui.basys.model.domain.roletopology.ProductionLine;
+import de.dfki.iui.basys.model.domain.topology.ProductionLine;
 import de.dfki.iui.basys.model.domain.topology.Area;
 import de.dfki.iui.basys.model.domain.topology.Enterprise;
 import de.dfki.iui.basys.model.domain.topology.EquipmentModule;
@@ -61,6 +61,9 @@ public interface TopologyManager {
 
 	EquipmentModule getEquipmentModule(String id);
 	EquipmentModule getEquipmentModuleByName(String name);
+	//gibt id des EquipmentModules zurück
+	String addEquipmentModule(EquipmentModule equipmentModule, String parentId);
+	void removeEquipmentModule(String equipmentModuleId);
 
 	List<EquipmentModule> getEquipmentModulesByStation(String stationId);
 	List<EquipmentModule> getEquipmentModulesByStationName(String stationName);

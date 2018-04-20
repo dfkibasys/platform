@@ -65,4 +65,16 @@ public class ResourceInstanceManagerImpl extends EmfServiceComponent implements 
 		return null;
 	}
 
+	@Override
+	public String addResourceInstance(ResourceInstance resourceInstance) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void removeResourceInstance(String id) {
+		// TODO Auto-generated method stub
+
+	}
+
 }

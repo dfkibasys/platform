@@ -2,7 +2,7 @@ package de.dfki.iui.basys.runtime.services.impl;
 
 import java.util.List;
 
-import de.dfki.iui.basys.model.domain.roletopology.ProductionLine;
+import de.dfki.iui.basys.model.domain.topology.ProductionLine;
 import de.dfki.iui.basys.model.domain.topology.Area;
 import de.dfki.iui.basys.model.domain.topology.Enterprise;
 import de.dfki.iui.basys.model.domain.topology.EquipmentModule;
@@ -334,6 +334,18 @@ public class TopologyManagerImpl extends EmfServiceComponent implements Topology
 	public List<EquipmentModule> getAllEquipmentModulesByAreaName(String areaName) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public String addEquipmentModule(EquipmentModule equipmentModule, String parentId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void removeEquipmentModule(String equipmentModuleId) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

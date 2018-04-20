@@ -2,39 +2,57 @@ package de.dfki.iui.basys.runtime.services;
 
 import java.util.List;
 
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 
 import de.dfki.iui.basys.model.domain.capability.Capability;
 import de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstance;
 
-//@Path("/resourceinstance")
+@Path("/resourceinstance")
 public interface ResourceInstanceManager {
 
-	ResourceInstance getResourceInstance(String id);
-	
-	ResourceInstance  getResourceInstanceByName(String name);
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/{resourceInstanceId}")
+	ResourceInstance getResourceInstance(@PathParam("resourceInstanceId") String id);
 
-	List<ResourceInstance> getResourceInstancesByType(String typeId);
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/name/{resourceInstanceName}")
+	ResourceInstance getResourceInstanceByName(@PathParam("resourceInstanceName") String name);
 
-	List<ResourceInstance> getResourceInstancesByTypeName(String typeName);
-	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/type/{resourceTypeId}")
+	List<ResourceInstance> getResourceInstancesByType(@PathParam("resourceTypeId") String typeId);
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/type/name/{resourceTypeName}")
+	List<ResourceInstance> getResourceInstancesByTypeName(@PathParam("resourceTypeName") String typeName);
+
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	List<ResourceInstance> getResourceInstancesByCapability(Capability capability);
-	
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/")
 	List<ResourceInstance> getAllResourceInstances();
 
-//	@GET
-//	@Produces(MediaType.APPLICATION_JSON)
-//	@Path("/")
-//	Response getAllResourceInstancesRest();
-//
-//	
-//	@GET
-//	@Produces(MediaType.APPLICATION_JSON)
-//	@Path("/{resourceInstanceId}")
-//	Response getResourceInstanceRest(@PathParam("resourceInstanceId") String id);
+	// gibt id der ResourceInstance zurück
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	String addResourceInstance(ResourceInstance resourceInstance);
+
+	@DELETE
+	@Path("/{resourceInstanceId}")
+	void removeResourceInstance(@PathParam("resourceInstanceId") String id);
 }

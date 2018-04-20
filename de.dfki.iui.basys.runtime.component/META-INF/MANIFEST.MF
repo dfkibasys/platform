@@ -42,7 +42,8 @@ Import-Package: com.fasterxml.jackson.annotation;version="[2.9,3)",de.df
  ion="[4.0,5)",org.apache.curator.x.discovery;version="[4.0,5)",org.apac
  he.curator.x.discovery.details;version="[4.0,5)",org.eclipse.emf.common
  .util,org.eclipse.emf.ecore,org.eclipse.emf.ecore.resource,org.eclipse.
- emf.ecore.resource.impl,org.slf4j;version="[1.7,2)"
+ emf.ecore.resource.impl,org.eclipse.emf.ecore.util,org.slf4j;version="[
+ 1.7,2)"
 Include-Resource: packml-first-layer-scxml.xml=src/main/resources/packml
  -first-layer-scxml.xml,packml-second-layer-scxml.xml=src/main/resources
  /packml-second-layer-scxml.xml,packml.scxml=src/main/resources/packml.s
