@@ -1,25 +1,20 @@
 package de.dfki.iui.basys.runtime.component.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import de.dfki.iui.basys.model.runtime.communication.ChannelPool;
-import de.dfki.iui.basys.model.runtime.communication.Client;
-import de.dfki.iui.basys.runtime.communication.ClientFactory;
 import de.dfki.iui.basys.runtime.component.ComponentCategory;
-import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
-import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.ComponentException;
-import de.dfki.iui.basys.runtime.component.device.packml.Mode;
 import de.dfki.iui.basys.runtime.component.device.packml.State;
 import de.dfki.iui.basys.runtime.component.registry.ComponentInfo;
 
@@ -35,18 +30,20 @@ public class ServiceRegistryTest extends BaseComponentTest {
 		// not really needed
 	}
 
+	@Override
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
 	}
 
+	@Override
 	@After
 	public void tearDown() throws Exception {
 		super.tearDown();
 	}
 
 	@Test
-	public void testRegisterServicesAndList() throws ComponentException {
+	public void testRegisterServicesAndList() throws ComponentException, InterruptedException {
 		LOGGER.info("testRegisterServicesAndList - start");
 
 		// fail("Not yet implemented");
@@ -73,9 +70,15 @@ public class ServiceRegistryTest extends BaseComponentTest {
 		assertNotNull(details3);
 		assertEquals(config3.getComponentId(), details3.getId());
 				
-		List<ComponentInfo> services = registry.getComponents(ComponentCategory.NONE);
-		assertEquals(3+2, services.size()); // component-manager & component-registry are also registered
+		List<ComponentInfo> services = registry.getComponents(ComponentCategory.DEVICE_COMPONENT);
+		assertEquals(3, services.size()); // component-manager & component-registry are also registered
 
+		service1.reset();
+		service2.reset();
+		service3.reset();
+		
+		TimeUnit.SECONDS.sleep(3);
+		
 		service1.deactivate();
 		details1 = registry.getComponentById(service1.getCategory(), service1.getId());
 		assertNull(details1);
