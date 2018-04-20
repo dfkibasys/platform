@@ -12,6 +12,7 @@ import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.component.annotations.Reference;
 
 import de.dfki.iui.basys.model.domain.material.Material;
+import de.dfki.iui.basys.model.domain.material.MaterialGroup;
 import de.dfki.iui.basys.osgi.services.BasysOsgiComponent;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManager;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManagerException;
@@ -22,25 +23,27 @@ import de.dfki.iui.basys.runtime.services.impl.MaterialManagerImpl;
 public final class MaterialManagerServiceImpl extends BasysOsgiComponent implements MaterialManager {
 
 	ComponentManager componentManager;
-	MaterialManagerImpl manager;
+	MaterialManagerImpl impl;
 
 	public MaterialManagerServiceImpl() {
 		LOGGER.info("MaterialManagerServiceImpl created");
 	}
 
+	@Override
 	@Activate
 	public void activate(ComponentContext context, Map<String, Object> properties) {
 		super.activate(context, properties);
 
-		manager = new MaterialManagerImpl(config);
+		impl = new MaterialManagerImpl(config);
 		try {
-			componentManager.addLocalComponent(manager);
+			componentManager.addLocalComponent(impl);
 		} catch (ComponentManagerException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
+	@Override
 	@Modified
 	public void modified(ComponentContext context, Map<String, Object> properties) {
 		if (super.context == null)
@@ -49,6 +52,7 @@ public final class MaterialManagerServiceImpl extends BasysOsgiComponent impleme
 		super.modified(context, properties);
 	}
 
+	@Override
 	@Deactivate
 	public void deactivate(ComponentContext context, int reason) {
 		super.deactivate(context, reason);
@@ -63,38 +67,56 @@ public final class MaterialManagerServiceImpl extends BasysOsgiComponent impleme
 		this.componentManager = null;
 	}
 
-	@Override
-	public Material getMaterial(String id) {
-		Material result = manager.getMaterial(id);
-		return result;
-	}
 
+	/*
+	 * MaterialManager interface
+	 */
+	
 	@Override
 	public List<Material> getAllMaterials() {
-		return manager.getAllMaterials();
+		return impl.getAllMaterials();
 	}
 
 	@Override
-	public void addMaterial(Material material) {
-		manager.addMaterial(material);
+	public Material getMaterial(String id) {
+		return impl.getMaterial(id);
 	}
 
-	// @Override
-	// public Response getMaterials() {
-	// return Response.ok("{\"all\": \"materials\"}").build();
-	// }
-	//
-	// @Override
-	// public Response getMaterial(String id) {
-	//
-	// return responseBuilder(getEntity(id));
-	//
-	// }
-	//
-	// @Override
-	// public Response getAllMaterials() {
-	// // TODO Auto-generated method stub
-	// return null;
-	// }
+	@Override
+	public void deleteMaterial(String id) {
+		impl.deleteMaterial(id);
+	}
+
+	@Override
+	public List<MaterialGroup> getMaterialGroups() {
+		return impl.getMaterialGroups();
+	}
+
+	@Override
+	public String addMaterialGroup(MaterialGroup materialGroup) {
+		return impl.addMaterialGroup(materialGroup);
+	}
+
+	@Override
+	public MaterialGroup getMaterialGroup(String id) {
+		return impl.getMaterialGroup(id);
+	}
+
+	@Override
+	public void deleteMaterialGroup(String id) {
+		impl.deleteMaterialGroup(id);		
+	}
+
+	@Override
+	public String addMaterialToGroup(Material material, String materialGroupId) {
+		return impl.addMaterialToGroup(material, materialGroupId);
+	}
+
+	@Override
+	public String addMaterialGroupToGroup(MaterialGroup materialGroup, String materialGroupId) {
+		return impl.addMaterialGroupToGroup(materialGroup, materialGroupId);
+	}
+
+
 
 }
