@@ -2,6 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.resourceinstance;
 
+import de.dfki.iui.basys.model.domain.productdefinition.BOMEntry;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -37,6 +38,6 @@ public interface CapabilityApplication extends EObject {
 	 * @model
 	 * @generated
 	 */
-	EList<de.dfki.iui.basys.model.domain.productdefinition.BOMEntry> getBomEntries();
+	EList<BOMEntry> getBomEntries();
 
 } // CapabilityApplication

@@ -204,14 +204,6 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated domain -->
       <package
-            uri="http://www.dfki.de/iui/basys/model/roletopology"
-            class="de.dfki.iui.basys.model.domain.roletopology.RoletopologyPackage"
-            genModel="model/domain.genmodel"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated domain -->
-      <package
             uri="http://www.dfki.de/iui/basys/model/resourcetype"
             class="de.dfki.iui.basys.model.domain.resourcetype.ResourcetypePackage"
             genModel="model/domain.genmodel"/>

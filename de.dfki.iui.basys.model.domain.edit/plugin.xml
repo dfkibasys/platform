@@ -178,19 +178,6 @@
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated domain -->
       <factory
-            uri="http://www.dfki.de/iui/basys/model/roletopology"
-            class="de.dfki.iui.basys.model.domain.roletopology.provider.RoletopologyItemProviderAdapterFactory"
-            supportedTypes=
-              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
-               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
-               org.eclipse.emf.edit.provider.ITreeItemContentProvider
-               org.eclipse.emf.edit.provider.IItemLabelProvider
-               org.eclipse.emf.edit.provider.IItemPropertySource"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
-      <!-- @generated domain -->
-      <factory
             uri="http://www.dfki.de/iui/basys/model/resourcetype"
             class="de.dfki.iui.basys.model.domain.resourcetype.provider.ResourcetypeItemProviderAdapterFactory"
             supportedTypes=

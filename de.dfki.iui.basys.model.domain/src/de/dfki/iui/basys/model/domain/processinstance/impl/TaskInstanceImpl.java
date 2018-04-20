@@ -3,6 +3,8 @@
 package de.dfki.iui.basys.model.domain.processinstance.impl;
 
 import de.dfki.iui.basys.model.base.impl.EntityImpl;
+import de.dfki.iui.basys.model.domain.processdefinition.Task;
+import de.dfki.iui.basys.model.domain.processdefinition.TaskStateEnum;
 import de.dfki.iui.basys.model.domain.processinstance.ProcessinstancePackage;
 import de.dfki.iui.basys.model.domain.processinstance.TaskInstance;
 
@@ -36,7 +38,7 @@ public class TaskInstanceImpl extends EntityImpl implements TaskInstance {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final de.dfki.iui.basys.model.domain.processdefinition.TaskStateEnum STATE_EDEFAULT = de.dfki.iui.basys.model.domain.processdefinition.TaskStateEnum.INACTIVE;
+	protected static final TaskStateEnum STATE_EDEFAULT = TaskStateEnum.INACTIVE;
 
 	/**
 	 * The cached value of the '{@link #getState() <em>State</em>}' attribute.
@@ -46,7 +48,7 @@ public class TaskInstanceImpl extends EntityImpl implements TaskInstance {
 	 * @generated
 	 * @ordered
 	 */
-	protected de.dfki.iui.basys.model.domain.processdefinition.TaskStateEnum state = STATE_EDEFAULT;
+	protected TaskStateEnum state = STATE_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getTask() <em>Task</em>}' reference.
@@ -56,7 +58,7 @@ public class TaskInstanceImpl extends EntityImpl implements TaskInstance {
 	 * @generated
 	 * @ordered
 	 */
-	protected de.dfki.iui.basys.model.domain.processdefinition.Task task;
+	protected Task task;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -82,7 +84,7 @@ public class TaskInstanceImpl extends EntityImpl implements TaskInstance {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public de.dfki.iui.basys.model.domain.processdefinition.TaskStateEnum getState() {
+	public TaskStateEnum getState() {
 		return state;
 	}
 
@@ -91,8 +93,8 @@ public class TaskInstanceImpl extends EntityImpl implements TaskInstance {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setState(de.dfki.iui.basys.model.domain.processdefinition.TaskStateEnum newState) {
-		de.dfki.iui.basys.model.domain.processdefinition.TaskStateEnum oldState = state;
+	public void setState(TaskStateEnum newState) {
+		TaskStateEnum oldState = state;
 		state = newState == null ? STATE_EDEFAULT : newState;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ProcessinstancePackage.TASK_INSTANCE__STATE, oldState, state));
@@ -103,10 +105,10 @@ public class TaskInstanceImpl extends EntityImpl implements TaskInstance {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public de.dfki.iui.basys.model.domain.processdefinition.Task getTask() {
+	public Task getTask() {
 		if (task != null && task.eIsProxy()) {
 			InternalEObject oldTask = (InternalEObject)task;
-			task = (de.dfki.iui.basys.model.domain.processdefinition.Task)eResolveProxy(oldTask);
+			task = (Task)eResolveProxy(oldTask);
 			if (task != oldTask) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProcessinstancePackage.TASK_INSTANCE__TASK, oldTask, task));
@@ -120,7 +122,7 @@ public class TaskInstanceImpl extends EntityImpl implements TaskInstance {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public de.dfki.iui.basys.model.domain.processdefinition.Task basicGetTask() {
+	public Task basicGetTask() {
 		return task;
 	}
 
@@ -129,8 +131,8 @@ public class TaskInstanceImpl extends EntityImpl implements TaskInstance {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTask(de.dfki.iui.basys.model.domain.processdefinition.Task newTask) {
-		de.dfki.iui.basys.model.domain.processdefinition.Task oldTask = task;
+	public void setTask(Task newTask) {
+		Task oldTask = task;
 		task = newTask;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ProcessinstancePackage.TASK_INSTANCE__TASK, oldTask, task));
@@ -162,10 +164,10 @@ public class TaskInstanceImpl extends EntityImpl implements TaskInstance {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ProcessinstancePackage.TASK_INSTANCE__STATE:
-				setState((de.dfki.iui.basys.model.domain.processdefinition.TaskStateEnum)newValue);
+				setState((TaskStateEnum)newValue);
 				return;
 			case ProcessinstancePackage.TASK_INSTANCE__TASK:
-				setTask((de.dfki.iui.basys.model.domain.processdefinition.Task)newValue);
+				setTask((Task)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -183,7 +185,7 @@ public class TaskInstanceImpl extends EntityImpl implements TaskInstance {
 				setState(STATE_EDEFAULT);
 				return;
 			case ProcessinstancePackage.TASK_INSTANCE__TASK:
-				setTask((de.dfki.iui.basys.model.domain.processdefinition.Task)null);
+				setTask((Task)null);
 				return;
 		}
 		super.eUnset(featureID);

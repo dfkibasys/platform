@@ -3,6 +3,7 @@
 package de.dfki.iui.basys.model.domain.order;
 
 import de.dfki.iui.basys.model.base.Entity;
+import de.dfki.iui.basys.model.domain.productdefinition.ManufacturedComponent;
 import java.util.Date;
 
 /**
@@ -42,12 +43,12 @@ public interface Order extends Entity {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Manufactured Component</em>' reference.
-	 * @see #setManufacturedComponent(de.dfki.iui.basys.model.domain.productdefinition.ManufacturedComponent)
+	 * @see #setManufacturedComponent(ManufacturedComponent)
 	 * @see de.dfki.iui.basys.model.domain.order.OrderPackage#getOrder_ManufacturedComponent()
 	 * @model required="true"
 	 * @generated
 	 */
-	de.dfki.iui.basys.model.domain.productdefinition.ManufacturedComponent getManufacturedComponent();
+	ManufacturedComponent getManufacturedComponent();
 
 	/**
 	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.order.Order#getManufacturedComponent <em>Manufactured Component</em>}' reference.
@@ -57,7 +58,7 @@ public interface Order extends Entity {
 	 * @see #getManufacturedComponent()
 	 * @generated
 	 */
-	void setManufacturedComponent(de.dfki.iui.basys.model.domain.productdefinition.ManufacturedComponent value);
+	void setManufacturedComponent(ManufacturedComponent value);
 
 	/**
 	 * Returns the value of the '<em><b>Quantity</b></em>' attribute.

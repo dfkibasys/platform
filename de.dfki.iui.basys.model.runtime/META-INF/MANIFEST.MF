@@ -23,12 +23,12 @@ Export-Package: de.dfki.iui.basys.model.runtime.communication;version="1
  otify.impl,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclips
  e.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org.eclipse.em
  f.ecore.util,org.eclipse.emf.ecore.xmi.impl"
-Import-Package: de.dfki.iui.basys.model.base;version="[1.0,2)",de.dfki.i
- ui.basys.model.base.impl;version="[1.0,2)",org.eclipse.emf.common.notif
- y,org.eclipse.emf.common.notify.impl,org.eclipse.emf.common.util,org.ec
- lipse.emf.ecore,org.eclipse.emf.ecore.impl,org.eclipse.emf.ecore.plugin
- ,org.eclipse.emf.ecore.resource,org.eclipse.emf.ecore.resource.impl,org
- .eclipse.emf.ecore.util,org.eclipse.emf.ecore.xmi.impl
+Import-Package: de.dfki.iui.basys.model.base,de.dfki.iui.basys.model.bas
+ e.impl,org.eclipse.emf.common.notify,org.eclipse.emf.common.notify.impl
+ ,org.eclipse.emf.common.util,org.eclipse.emf.ecore,org.eclipse.emf.ecor
+ e.impl,org.eclipse.emf.ecore.plugin,org.eclipse.emf.ecore.resource,org.
+ eclipse.emf.ecore.resource.impl,org.eclipse.emf.ecore.util,org.eclipse.
+ emf.ecore.xmi.impl
 Include-Resource: model/communication.ecore=model/communication.ecore,mo
  del/component.ecore=model/component.ecore,model/representations.aird=mo
  del/representations.aird,model/runtime.genmodel=model/runtime.genmodel,

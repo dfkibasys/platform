@@ -5,6 +5,7 @@ package de.dfki.iui.basys.model.domain.processinstance.impl;
 import de.dfki.iui.basys.model.base.impl.EntityImpl;
 
 import de.dfki.iui.basys.model.domain.order.Order;
+import de.dfki.iui.basys.model.domain.processdefinition.ProcessDefinition;
 import de.dfki.iui.basys.model.domain.processinstance.ProcessInstance;
 import de.dfki.iui.basys.model.domain.processinstance.ProcessinstancePackage;
 
@@ -41,7 +42,7 @@ public class ProcessInstanceImpl extends EntityImpl implements ProcessInstance {
 	 * @generated
 	 * @ordered
 	 */
-	protected de.dfki.iui.basys.model.domain.processdefinition.ProcessDefinition processDefinition;
+	protected ProcessDefinition processDefinition;
 
 	/**
 	 * The cached value of the '{@link #getOrder() <em>Order</em>}' reference.
@@ -107,10 +108,10 @@ public class ProcessInstanceImpl extends EntityImpl implements ProcessInstance {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public de.dfki.iui.basys.model.domain.processdefinition.ProcessDefinition getProcessDefinition() {
+	public ProcessDefinition getProcessDefinition() {
 		if (processDefinition != null && processDefinition.eIsProxy()) {
 			InternalEObject oldProcessDefinition = (InternalEObject)processDefinition;
-			processDefinition = (de.dfki.iui.basys.model.domain.processdefinition.ProcessDefinition)eResolveProxy(oldProcessDefinition);
+			processDefinition = (ProcessDefinition)eResolveProxy(oldProcessDefinition);
 			if (processDefinition != oldProcessDefinition) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProcessinstancePackage.PROCESS_INSTANCE__PROCESS_DEFINITION, oldProcessDefinition, processDefinition));
@@ -124,7 +125,7 @@ public class ProcessInstanceImpl extends EntityImpl implements ProcessInstance {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public de.dfki.iui.basys.model.domain.processdefinition.ProcessDefinition basicGetProcessDefinition() {
+	public ProcessDefinition basicGetProcessDefinition() {
 		return processDefinition;
 	}
 
@@ -133,8 +134,8 @@ public class ProcessInstanceImpl extends EntityImpl implements ProcessInstance {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setProcessDefinition(de.dfki.iui.basys.model.domain.processdefinition.ProcessDefinition newProcessDefinition) {
-		de.dfki.iui.basys.model.domain.processdefinition.ProcessDefinition oldProcessDefinition = processDefinition;
+	public void setProcessDefinition(ProcessDefinition newProcessDefinition) {
+		ProcessDefinition oldProcessDefinition = processDefinition;
 		processDefinition = newProcessDefinition;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ProcessinstancePackage.PROCESS_INSTANCE__PROCESS_DEFINITION, oldProcessDefinition, processDefinition));
@@ -269,7 +270,7 @@ public class ProcessInstanceImpl extends EntityImpl implements ProcessInstance {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ProcessinstancePackage.PROCESS_INSTANCE__PROCESS_DEFINITION:
-				setProcessDefinition((de.dfki.iui.basys.model.domain.processdefinition.ProcessDefinition)newValue);
+				setProcessDefinition((ProcessDefinition)newValue);
 				return;
 			case ProcessinstancePackage.PROCESS_INSTANCE__ORDER:
 				setOrder((Order)newValue);
@@ -293,7 +294,7 @@ public class ProcessInstanceImpl extends EntityImpl implements ProcessInstance {
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ProcessinstancePackage.PROCESS_INSTANCE__PROCESS_DEFINITION:
-				setProcessDefinition((de.dfki.iui.basys.model.domain.processdefinition.ProcessDefinition)null);
+				setProcessDefinition((ProcessDefinition)null);
 				return;
 			case ProcessinstancePackage.PROCESS_INSTANCE__ORDER:
 				setOrder((Order)null);

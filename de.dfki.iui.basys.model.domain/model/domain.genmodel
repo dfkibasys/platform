@@ -18,7 +18,6 @@
   <foreignModel>productinstance.ecore</foreignModel>
   <foreignModel>workforce.ecore</foreignModel>
   <foreignModel>material.ecore</foreignModel>
-  <foreignModel>roletopology.ecore</foreignModel>
   <foreignModel>resourcetype.ecore</foreignModel>
   <foreignModel>resourceinstance.ecore</foreignModel>
   <genPackages prefix="Order" basePackage="de.dfki.iui.basys.model.domain" resource="XMI"
@@ -130,6 +129,7 @@
     </genClasses>
     <genClasses ecoreClass="topology.ecore#//Area">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference topology.ecore#//Area/workCenters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference topology.ecore#//Area/equipmentModules"/>
     </genClasses>
     <genClasses image="false" ecoreClass="topology.ecore#//WorkCenter">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference topology.ecore#//WorkCenter/equipmentModules"/>
@@ -424,7 +424,7 @@
       <genEnumLiterals ecoreEnumLiteral="productinstance.ecore#//ProductInstanceStatusEnum/IO"/>
     </genEnums>
     <genClasses ecoreClass="productinstance.ecore#//ProductInstance">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference productinstance.ecore#//ProductInstance/productVariant"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference productinstance.ecore#//ProductInstance/manufacturedComponent"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference productinstance.ecore#//ProductInstance/order"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute productinstance.ecore#//ProductInstance/serialNumber"/>
     </genClasses>
@@ -475,70 +475,19 @@
     </genClasses>
     <genClasses ecoreClass="material.ecore#//Material"/>
   </genPackages>
-  <genPackages prefix="Roletopology" basePackage="de.dfki.iui.basys.model.domain"
-      disposableProviderFactory="true" ecorePackage="roletopology.ecore#/">
-    <genClasses ecoreClass="roletopology.ecore#//Enterprise">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference roletopology.ecore#//Enterprise/sites"/>
-    </genClasses>
-    <genClasses ecoreClass="roletopology.ecore#//Site">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference roletopology.ecore#//Site/areas"/>
-    </genClasses>
-    <genClasses ecoreClass="roletopology.ecore#//Area">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference roletopology.ecore#//Area/workCenters"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference roletopology.ecore#//Area/discretemanufacturingequipmentmodules"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="roletopology.ecore#//WorkCenter"/>
-    <genClasses ecoreClass="roletopology.ecore#//ProcessCell"/>
-    <genClasses ecoreClass="roletopology.ecore#//ProductionUnit">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference roletopology.ecore#//ProductionUnit/units"/>
-    </genClasses>
-    <genClasses ecoreClass="roletopology.ecore#//ProductionLine">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference roletopology.ecore#//ProductionLine/workCells"/>
-    </genClasses>
-    <genClasses ecoreClass="roletopology.ecore#//StorageZone">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference roletopology.ecore#//StorageZone/storageUnits"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="roletopology.ecore#//WorkUnit">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference roletopology.ecore#//WorkUnit/equipmentModules"/>
-    </genClasses>
-    <genClasses ecoreClass="roletopology.ecore#//Unit"/>
-    <genClasses ecoreClass="roletopology.ecore#//WorkCell">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference roletopology.ecore#//WorkCell/stations"/>
-    </genClasses>
-    <genClasses ecoreClass="roletopology.ecore#//StorageUnit"/>
-    <genClasses image="false" ecoreClass="roletopology.ecore#//EquipmentModule">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference roletopology.ecore#//EquipmentModule/controlModules"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference roletopology.ecore#//EquipmentModule/equipmentModules"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="roletopology.ecore#//ControlModule">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference roletopology.ecore#//ControlModule/controlModules"/>
-    </genClasses>
-    <genClasses ecoreClass="roletopology.ecore#//Station">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference roletopology.ecore#//Station/equipmentModules"/>
-    </genClasses>
-    <genClasses ecoreClass="roletopology.ecore#//Transition">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute roletopology.ecore#//Transition/componentId_src"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute roletopology.ecore#//Transition/componentId_target"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute roletopology.ecore#//Transition/distance"/>
-    </genClasses>
-    <genClasses ecoreClass="roletopology.ecore#//DiscreteManufacturingEquipmentModule">
-      <genFeatures property="None" children="true" createChild="true" propertySortChoices="true"
-          ecoreFeature="ecore:EReference roletopology.ecore#//DiscreteManufacturingEquipmentModule/requirements"/>
-    </genClasses>
-    <genClasses ecoreClass="roletopology.ecore#//Requirement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute roletopology.ecore#//Requirement/property"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute roletopology.ecore#//Requirement/valueRange"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute roletopology.ecore#//Requirement/unit"/>
-    </genClasses>
-  </genPackages>
   <genPackages prefix="Resourcetype" basePackage="de.dfki.iui.basys.model.domain"
       resource="XMI" ecorePackage="resourcetype.ecore#/">
+    <genClasses ecoreClass="resourcetype.ecore#//ResourceTypeCatalogueCollection">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference resourcetype.ecore#//ResourceTypeCatalogueCollection/catalogues"/>
+    </genClasses>
     <genClasses ecoreClass="resourcetype.ecore#//ResourceTypeCatalogue">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference resourcetype.ecore#//ResourceTypeCatalogue/resourceTypes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute resourcetype.ecore#//ResourceTypeCatalogue/manufacturer"/>
     </genClasses>
     <genClasses ecoreClass="resourcetype.ecore#//ResourceType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference resourcetype.ecore#//ResourceType/capabilityAssertion"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference resourcetype.ecore#//ResourceType/capabilityRequirement"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute resourcetype.ecore#//ResourceType/documentation"/>
     </genClasses>
     <genClasses ecoreClass="resourcetype.ecore#//DiscreteManufacturingEquipmentModule"/>
     <genClasses ecoreClass="resourcetype.ecore#//Tool"/>

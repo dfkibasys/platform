@@ -4,6 +4,7 @@ package de.dfki.iui.basys.model.domain.productinstance;
 
 import de.dfki.iui.basys.model.base.Entity;
 import de.dfki.iui.basys.model.domain.order.Order;
+import de.dfki.iui.basys.model.domain.productdefinition.ManufacturedComponent;
 
 /**
  * <!-- begin-user-doc -->
@@ -18,7 +19,7 @@ import de.dfki.iui.basys.model.domain.order.Order;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.dfki.iui.basys.model.domain.productinstance.ProductInstance#getProductVariant <em>Product Variant</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.productinstance.ProductInstance#getManufacturedComponent <em>Manufactured Component</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.productinstance.ProductInstance#getOrder <em>Order</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.productinstance.ProductInstance#getSerialNumber <em>Serial Number</em>}</li>
  * </ul>
@@ -29,30 +30,30 @@ import de.dfki.iui.basys.model.domain.order.Order;
  */
 public interface ProductInstance extends Entity {
 	/**
-	 * Returns the value of the '<em><b>Product Variant</b></em>' reference.
+	 * Returns the value of the '<em><b>Manufactured Component</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Product Variant</em>' reference isn't clear,
+	 * If the meaning of the '<em>Manufactured Component</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Product Variant</em>' reference.
-	 * @see #setProductVariant(de.dfki.iui.basys.model.domain.productdefinition.ProductVariant)
-	 * @see de.dfki.iui.basys.model.domain.productinstance.ProductinstancePackage#getProductInstance_ProductVariant()
+	 * @return the value of the '<em>Manufactured Component</em>' reference.
+	 * @see #setManufacturedComponent(ManufacturedComponent)
+	 * @see de.dfki.iui.basys.model.domain.productinstance.ProductinstancePackage#getProductInstance_ManufacturedComponent()
 	 * @model required="true"
 	 * @generated
 	 */
-	de.dfki.iui.basys.model.domain.productdefinition.ProductVariant getProductVariant();
+	ManufacturedComponent getManufacturedComponent();
 
 	/**
-	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.productinstance.ProductInstance#getProductVariant <em>Product Variant</em>}' reference.
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.productinstance.ProductInstance#getManufacturedComponent <em>Manufactured Component</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Product Variant</em>' reference.
-	 * @see #getProductVariant()
+	 * @param value the new value of the '<em>Manufactured Component</em>' reference.
+	 * @see #getManufacturedComponent()
 	 * @generated
 	 */
-	void setProductVariant(de.dfki.iui.basys.model.domain.productdefinition.ProductVariant value);
+	void setManufacturedComponent(ManufacturedComponent value);
 
 	/**
 	 * Returns the value of the '<em><b>Order</b></em>' reference.

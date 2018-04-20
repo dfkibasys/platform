@@ -3,6 +3,8 @@
 package de.dfki.iui.basys.model.domain.processinstance;
 
 import de.dfki.iui.basys.model.base.Entity;
+import de.dfki.iui.basys.model.domain.processdefinition.Task;
+import de.dfki.iui.basys.model.domain.processdefinition.TaskStateEnum;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,12 +35,12 @@ public interface TaskInstance extends Entity {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>State</em>' attribute.
 	 * @see de.dfki.iui.basys.model.domain.processdefinition.TaskStateEnum
-	 * @see #setState(de.dfki.iui.basys.model.domain.processdefinition.TaskStateEnum)
+	 * @see #setState(TaskStateEnum)
 	 * @see de.dfki.iui.basys.model.domain.processinstance.ProcessinstancePackage#getTaskInstance_State()
 	 * @model
 	 * @generated
 	 */
-	de.dfki.iui.basys.model.domain.processdefinition.TaskStateEnum getState();
+	TaskStateEnum getState();
 
 	/**
 	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.processinstance.TaskInstance#getState <em>State</em>}' attribute.
@@ -49,7 +51,7 @@ public interface TaskInstance extends Entity {
 	 * @see #getState()
 	 * @generated
 	 */
-	void setState(de.dfki.iui.basys.model.domain.processdefinition.TaskStateEnum value);
+	void setState(TaskStateEnum value);
 
 	/**
 	 * Returns the value of the '<em><b>Task</b></em>' reference.
@@ -60,12 +62,12 @@ public interface TaskInstance extends Entity {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Task</em>' reference.
-	 * @see #setTask(de.dfki.iui.basys.model.domain.processdefinition.Task)
+	 * @see #setTask(Task)
 	 * @see de.dfki.iui.basys.model.domain.processinstance.ProcessinstancePackage#getTaskInstance_Task()
 	 * @model required="true"
 	 * @generated
 	 */
-	de.dfki.iui.basys.model.domain.processdefinition.Task getTask();
+	Task getTask();
 
 	/**
 	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.processinstance.TaskInstance#getTask <em>Task</em>}' reference.
@@ -75,6 +77,6 @@ public interface TaskInstance extends Entity {
 	 * @see #getTask()
 	 * @generated
 	 */
-	void setTask(de.dfki.iui.basys.model.domain.processdefinition.Task value);
+	void setTask(Task value);
 
 } // TaskInstance

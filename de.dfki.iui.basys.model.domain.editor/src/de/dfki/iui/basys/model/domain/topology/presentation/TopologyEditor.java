@@ -175,8 +175,6 @@ import de.dfki.iui.basys.model.domain.productinstance.provider.ProductinstanceIt
 import de.dfki.iui.basys.model.domain.resourceinstance.provider.ResourceinstanceItemProviderAdapterFactory;
 
 import de.dfki.iui.basys.model.domain.resourcetype.provider.ResourcetypeItemProviderAdapterFactory;
-import de.dfki.iui.basys.model.domain.roletopology.provider.RoletopologyItemProviderAdapterFactory;
-
 import de.dfki.iui.basys.model.domain.staff.provider.StaffItemProviderAdapterFactory;
 
 import de.dfki.iui.basys.model.domain.workerguidance.provider.WorkerguidanceItemProviderAdapterFactory;
@@ -742,7 +740,6 @@ public class TopologyEditor
 		adapterFactory.addAdapterFactory(new ProductinstanceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new WorkforceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new MaterialItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new RoletopologyItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ResourcetypeItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ResourceinstanceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new BaseItemProviderAdapterFactory());

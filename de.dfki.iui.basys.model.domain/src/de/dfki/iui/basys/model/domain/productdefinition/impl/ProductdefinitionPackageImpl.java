@@ -51,11 +51,6 @@ import de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceinstancePack
 import de.dfki.iui.basys.model.domain.resourcetype.ResourcetypePackage;
 
 import de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl;
-
-import de.dfki.iui.basys.model.domain.roletopology.RoletopologyPackage;
-
-import de.dfki.iui.basys.model.domain.roletopology.impl.RoletopologyPackageImpl;
-
 import de.dfki.iui.basys.model.domain.staff.StaffPackage;
 
 import de.dfki.iui.basys.model.domain.staff.impl.StaffPackageImpl;
@@ -218,7 +213,6 @@ public class ProductdefinitionPackageImpl extends EPackageImpl implements Produc
 		ProductinstancePackageImpl theProductinstancePackage = (ProductinstancePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ProductinstancePackage.eNS_URI) instanceof ProductinstancePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ProductinstancePackage.eNS_URI) : ProductinstancePackage.eINSTANCE);
 		WorkforcePackageImpl theWorkforcePackage = (WorkforcePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkforcePackage.eNS_URI) instanceof WorkforcePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkforcePackage.eNS_URI) : WorkforcePackage.eINSTANCE);
 		MaterialPackageImpl theMaterialPackage = (MaterialPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(MaterialPackage.eNS_URI) instanceof MaterialPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(MaterialPackage.eNS_URI) : MaterialPackage.eINSTANCE);
-		RoletopologyPackageImpl theRoletopologyPackage = (RoletopologyPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(RoletopologyPackage.eNS_URI) instanceof RoletopologyPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(RoletopologyPackage.eNS_URI) : RoletopologyPackage.eINSTANCE);
 		ResourcetypePackageImpl theResourcetypePackage = (ResourcetypePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ResourcetypePackage.eNS_URI) instanceof ResourcetypePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ResourcetypePackage.eNS_URI) : ResourcetypePackage.eINSTANCE);
 		ResourceinstancePackageImpl theResourceinstancePackage = (ResourceinstancePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ResourceinstancePackage.eNS_URI) instanceof ResourceinstancePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ResourceinstancePackage.eNS_URI) : ResourceinstancePackage.eINSTANCE);
 
@@ -236,7 +230,6 @@ public class ProductdefinitionPackageImpl extends EPackageImpl implements Produc
 		theProductinstancePackage.createPackageContents();
 		theWorkforcePackage.createPackageContents();
 		theMaterialPackage.createPackageContents();
-		theRoletopologyPackage.createPackageContents();
 		theResourcetypePackage.createPackageContents();
 		theResourceinstancePackage.createPackageContents();
 
@@ -254,7 +247,6 @@ public class ProductdefinitionPackageImpl extends EPackageImpl implements Produc
 		theProductinstancePackage.initializePackageContents();
 		theWorkforcePackage.initializePackageContents();
 		theMaterialPackage.initializePackageContents();
-		theRoletopologyPackage.initializePackageContents();
 		theResourcetypePackage.initializePackageContents();
 		theResourceinstancePackage.initializePackageContents();
 

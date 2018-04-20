@@ -7,6 +7,7 @@ import de.dfki.iui.basys.model.base.impl.EntityImpl;
 import de.dfki.iui.basys.model.domain.order.Order;
 import de.dfki.iui.basys.model.domain.order.OrderPackage;
 import de.dfki.iui.basys.model.domain.order.OrderStatus;
+import de.dfki.iui.basys.model.domain.productdefinition.ManufacturedComponent;
 import java.util.Date;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -46,7 +47,7 @@ public class OrderImpl extends EntityImpl implements Order {
 	 * @generated
 	 * @ordered
 	 */
-	protected de.dfki.iui.basys.model.domain.productdefinition.ManufacturedComponent manufacturedComponent;
+	protected ManufacturedComponent manufacturedComponent;
 
 	/**
 	 * The default value of the '{@link #getQuantity() <em>Quantity</em>}' attribute.
@@ -202,10 +203,10 @@ public class OrderImpl extends EntityImpl implements Order {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public de.dfki.iui.basys.model.domain.productdefinition.ManufacturedComponent getManufacturedComponent() {
+	public ManufacturedComponent getManufacturedComponent() {
 		if (manufacturedComponent != null && manufacturedComponent.eIsProxy()) {
 			InternalEObject oldManufacturedComponent = (InternalEObject)manufacturedComponent;
-			manufacturedComponent = (de.dfki.iui.basys.model.domain.productdefinition.ManufacturedComponent)eResolveProxy(oldManufacturedComponent);
+			manufacturedComponent = (ManufacturedComponent)eResolveProxy(oldManufacturedComponent);
 			if (manufacturedComponent != oldManufacturedComponent) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OrderPackage.ORDER__MANUFACTURED_COMPONENT, oldManufacturedComponent, manufacturedComponent));
@@ -219,7 +220,7 @@ public class OrderImpl extends EntityImpl implements Order {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public de.dfki.iui.basys.model.domain.productdefinition.ManufacturedComponent basicGetManufacturedComponent() {
+	public ManufacturedComponent basicGetManufacturedComponent() {
 		return manufacturedComponent;
 	}
 
@@ -228,8 +229,8 @@ public class OrderImpl extends EntityImpl implements Order {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setManufacturedComponent(de.dfki.iui.basys.model.domain.productdefinition.ManufacturedComponent newManufacturedComponent) {
-		de.dfki.iui.basys.model.domain.productdefinition.ManufacturedComponent oldManufacturedComponent = manufacturedComponent;
+	public void setManufacturedComponent(ManufacturedComponent newManufacturedComponent) {
+		ManufacturedComponent oldManufacturedComponent = manufacturedComponent;
 		manufacturedComponent = newManufacturedComponent;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, OrderPackage.ORDER__MANUFACTURED_COMPONENT, oldManufacturedComponent, manufacturedComponent));
@@ -456,7 +457,7 @@ public class OrderImpl extends EntityImpl implements Order {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case OrderPackage.ORDER__MANUFACTURED_COMPONENT:
-				setManufacturedComponent((de.dfki.iui.basys.model.domain.productdefinition.ManufacturedComponent)newValue);
+				setManufacturedComponent((ManufacturedComponent)newValue);
 				return;
 			case OrderPackage.ORDER__QUANTITY:
 				setQuantity((Integer)newValue);
@@ -492,7 +493,7 @@ public class OrderImpl extends EntityImpl implements Order {
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case OrderPackage.ORDER__MANUFACTURED_COMPONENT:
-				setManufacturedComponent((de.dfki.iui.basys.model.domain.productdefinition.ManufacturedComponent)null);
+				setManufacturedComponent((ManufacturedComponent)null);
 				return;
 			case OrderPackage.ORDER__QUANTITY:
 				setQuantity(QUANTITY_EDEFAULT);

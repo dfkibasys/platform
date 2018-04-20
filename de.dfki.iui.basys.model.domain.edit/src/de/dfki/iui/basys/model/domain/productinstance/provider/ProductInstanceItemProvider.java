@@ -51,7 +51,7 @@ public class ProductInstanceItemProvider extends EntityItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addProductVariantPropertyDescriptor(object);
+			addManufacturedComponentPropertyDescriptor(object);
 			addOrderPropertyDescriptor(object);
 			addSerialNumberPropertyDescriptor(object);
 		}
@@ -59,19 +59,19 @@ public class ProductInstanceItemProvider extends EntityItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Product Variant feature.
+	 * This adds a property descriptor for the Manufactured Component feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addProductVariantPropertyDescriptor(Object object) {
+	protected void addManufacturedComponentPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ProductInstance_productVariant_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ProductInstance_productVariant_feature", "_UI_ProductInstance_type"),
-				 ProductinstancePackage.Literals.PRODUCT_INSTANCE__PRODUCT_VARIANT,
+				 getString("_UI_ProductInstance_manufacturedComponent_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ProductInstance_manufacturedComponent_feature", "_UI_ProductInstance_type"),
+				 ProductinstancePackage.Literals.PRODUCT_INSTANCE__MANUFACTURED_COMPONENT,
 				 true,
 				 false,
 				 true,

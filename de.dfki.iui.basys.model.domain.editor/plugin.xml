@@ -376,34 +376,6 @@
             id="org.eclipse.emf.ecore.Wizard.category.ID"
             name="%_UI_Wizard_category"/>
       <wizard
-            id="de.dfki.iui.basys.model.domain.roletopology.presentation.RoletopologyModelWizardID"
-            name="%_UI_RoletopologyModelWizard_label"
-            class="de.dfki.iui.basys.model.domain.roletopology.presentation.RoletopologyModelWizard"
-            category="org.eclipse.emf.ecore.Wizard.category.ID"
-            icon="icons/full/obj16/RoletopologyModelFile.gif">
-         <description>%_UI_RoletopologyModelWizard_description</description>
-         <selection class="org.eclipse.core.resources.IResource"/>
-      </wizard>
-   </extension>
-
-   <extension point="org.eclipse.ui.editors">
-      <!-- @generated domain -->
-      <editor
-            id="de.dfki.iui.basys.model.domain.roletopology.presentation.RoletopologyEditorID"
-            name="%_UI_RoletopologyEditor_label"
-            icon="icons/full/obj16/RoletopologyModelFile.gif"
-            extensions="roletopology"
-            class="de.dfki.iui.basys.model.domain.roletopology.presentation.RoletopologyEditor"
-            contributorClass="de.dfki.iui.basys.model.domain.roletopology.presentation.RoletopologyActionBarContributor">
-      </editor>
-   </extension>
-
-   <extension point="org.eclipse.ui.newWizards">
-      <!-- @generated domain -->
-      <category
-            id="org.eclipse.emf.ecore.Wizard.category.ID"
-            name="%_UI_Wizard_category"/>
-      <wizard
             id="de.dfki.iui.basys.model.domain.resourcetype.presentation.ResourcetypeModelWizardID"
             name="%_UI_ResourcetypeModelWizard_label"
             class="de.dfki.iui.basys.model.domain.resourcetype.presentation.ResourcetypeModelWizard"

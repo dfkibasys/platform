@@ -107,13 +107,13 @@ public interface ProductinstancePackage extends EPackage {
 	int PRODUCT_INSTANCE__METADATA = BasePackage.ENTITY__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Product Variant</b></em>' reference.
+	 * The feature id for the '<em><b>Manufactured Component</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_INSTANCE__PRODUCT_VARIANT = BasePackage.ENTITY_FEATURE_COUNT + 0;
+	int PRODUCT_INSTANCE__MANUFACTURED_COMPONENT = BasePackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Order</b></em>' reference.
@@ -547,15 +547,15 @@ public interface ProductinstancePackage extends EPackage {
 	EClass getProductInstance();
 
 	/**
-	 * Returns the meta object for the reference '{@link de.dfki.iui.basys.model.domain.productinstance.ProductInstance#getProductVariant <em>Product Variant</em>}'.
+	 * Returns the meta object for the reference '{@link de.dfki.iui.basys.model.domain.productinstance.ProductInstance#getManufacturedComponent <em>Manufactured Component</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Product Variant</em>'.
-	 * @see de.dfki.iui.basys.model.domain.productinstance.ProductInstance#getProductVariant()
+	 * @return the meta object for the reference '<em>Manufactured Component</em>'.
+	 * @see de.dfki.iui.basys.model.domain.productinstance.ProductInstance#getManufacturedComponent()
 	 * @see #getProductInstance()
 	 * @generated
 	 */
-	EReference getProductInstance_ProductVariant();
+	EReference getProductInstance_ManufacturedComponent();
 
 	/**
 	 * Returns the meta object for the reference '{@link de.dfki.iui.basys.model.domain.productinstance.ProductInstance#getOrder <em>Order</em>}'.
@@ -750,12 +750,12 @@ public interface ProductinstancePackage extends EPackage {
 		EClass PRODUCT_INSTANCE = eINSTANCE.getProductInstance();
 
 		/**
-		 * The meta object literal for the '<em><b>Product Variant</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Manufactured Component</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PRODUCT_INSTANCE__PRODUCT_VARIANT = eINSTANCE.getProductInstance_ProductVariant();
+		EReference PRODUCT_INSTANCE__MANUFACTURED_COMPONENT = eINSTANCE.getProductInstance_ManufacturedComponent();
 
 		/**
 		 * The meta object literal for the '<em><b>Order</b></em>' reference feature.

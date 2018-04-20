@@ -37,8 +37,6 @@ import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage;
 import de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceinstancePackageImpl;
 import de.dfki.iui.basys.model.domain.resourcetype.ResourcetypePackage;
 import de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl;
-import de.dfki.iui.basys.model.domain.roletopology.RoletopologyPackage;
-import de.dfki.iui.basys.model.domain.roletopology.impl.RoletopologyPackageImpl;
 import de.dfki.iui.basys.model.domain.staff.StaffPackage;
 
 import de.dfki.iui.basys.model.domain.staff.impl.StaffPackageImpl;
@@ -186,7 +184,6 @@ public class ProductinstancePackageImpl extends EPackageImpl implements Producti
 		ProcessinstancePackageImpl theProcessinstancePackage = (ProcessinstancePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ProcessinstancePackage.eNS_URI) instanceof ProcessinstancePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ProcessinstancePackage.eNS_URI) : ProcessinstancePackage.eINSTANCE);
 		WorkforcePackageImpl theWorkforcePackage = (WorkforcePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkforcePackage.eNS_URI) instanceof WorkforcePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkforcePackage.eNS_URI) : WorkforcePackage.eINSTANCE);
 		MaterialPackageImpl theMaterialPackage = (MaterialPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(MaterialPackage.eNS_URI) instanceof MaterialPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(MaterialPackage.eNS_URI) : MaterialPackage.eINSTANCE);
-		RoletopologyPackageImpl theRoletopologyPackage = (RoletopologyPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(RoletopologyPackage.eNS_URI) instanceof RoletopologyPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(RoletopologyPackage.eNS_URI) : RoletopologyPackage.eINSTANCE);
 		ResourcetypePackageImpl theResourcetypePackage = (ResourcetypePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ResourcetypePackage.eNS_URI) instanceof ResourcetypePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ResourcetypePackage.eNS_URI) : ResourcetypePackage.eINSTANCE);
 		ResourceinstancePackageImpl theResourceinstancePackage = (ResourceinstancePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ResourceinstancePackage.eNS_URI) instanceof ResourceinstancePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ResourceinstancePackage.eNS_URI) : ResourceinstancePackage.eINSTANCE);
 
@@ -204,7 +201,6 @@ public class ProductinstancePackageImpl extends EPackageImpl implements Producti
 		theProcessinstancePackage.createPackageContents();
 		theWorkforcePackage.createPackageContents();
 		theMaterialPackage.createPackageContents();
-		theRoletopologyPackage.createPackageContents();
 		theResourcetypePackage.createPackageContents();
 		theResourceinstancePackage.createPackageContents();
 
@@ -222,7 +218,6 @@ public class ProductinstancePackageImpl extends EPackageImpl implements Producti
 		theProcessinstancePackage.initializePackageContents();
 		theWorkforcePackage.initializePackageContents();
 		theMaterialPackage.initializePackageContents();
-		theRoletopologyPackage.initializePackageContents();
 		theResourcetypePackage.initializePackageContents();
 		theResourceinstancePackage.initializePackageContents();
 
@@ -249,7 +244,7 @@ public class ProductinstancePackageImpl extends EPackageImpl implements Producti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getProductInstance_ProductVariant() {
+	public EReference getProductInstance_ManufacturedComponent() {
 		return (EReference)productInstanceEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -417,7 +412,7 @@ public class ProductinstancePackageImpl extends EPackageImpl implements Producti
 
 		// Create classes and their features
 		productInstanceEClass = createEClass(PRODUCT_INSTANCE);
-		createEReference(productInstanceEClass, PRODUCT_INSTANCE__PRODUCT_VARIANT);
+		createEReference(productInstanceEClass, PRODUCT_INSTANCE__MANUFACTURED_COMPONENT);
 		createEReference(productInstanceEClass, PRODUCT_INSTANCE__ORDER);
 		createEAttribute(productInstanceEClass, PRODUCT_INSTANCE__SERIAL_NUMBER);
 
@@ -482,7 +477,7 @@ public class ProductinstancePackageImpl extends EPackageImpl implements Producti
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(productInstanceEClass, ProductInstance.class, "ProductInstance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getProductInstance_ProductVariant(), theProductdefinitionPackage.getProductVariant(), null, "productVariant", null, 1, 1, ProductInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProductInstance_ManufacturedComponent(), theProductdefinitionPackage.getManufacturedComponent(), null, "manufacturedComponent", null, 1, 1, ProductInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProductInstance_Order(), theOrderPackage.getOrder(), null, "order", null, 1, 1, ProductInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProductInstance_SerialNumber(), ecorePackage.getEString(), "serialNumber", null, 0, 1, ProductInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

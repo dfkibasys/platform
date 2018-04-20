@@ -5,6 +5,7 @@ package de.dfki.iui.basys.model.domain.productinstance.impl;
 import de.dfki.iui.basys.model.base.impl.EntityImpl;
 
 import de.dfki.iui.basys.model.domain.order.Order;
+import de.dfki.iui.basys.model.domain.productdefinition.ManufacturedComponent;
 import de.dfki.iui.basys.model.domain.productinstance.ProductInstance;
 import de.dfki.iui.basys.model.domain.productinstance.ProductinstancePackage;
 
@@ -23,7 +24,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.dfki.iui.basys.model.domain.productinstance.impl.ProductInstanceImpl#getProductVariant <em>Product Variant</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.productinstance.impl.ProductInstanceImpl#getManufacturedComponent <em>Manufactured Component</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.productinstance.impl.ProductInstanceImpl#getOrder <em>Order</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.productinstance.impl.ProductInstanceImpl#getSerialNumber <em>Serial Number</em>}</li>
  * </ul>
@@ -32,14 +33,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class ProductInstanceImpl extends EntityImpl implements ProductInstance {
 	/**
-	 * The cached value of the '{@link #getProductVariant() <em>Product Variant</em>}' reference.
+	 * The cached value of the '{@link #getManufacturedComponent() <em>Manufactured Component</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getProductVariant()
+	 * @see #getManufacturedComponent()
 	 * @generated
 	 * @ordered
 	 */
-	protected de.dfki.iui.basys.model.domain.productdefinition.ProductVariant productVariant;
+	protected ManufacturedComponent manufacturedComponent;
 
 	/**
 	 * The cached value of the '{@link #getOrder() <em>Order</em>}' reference.
@@ -95,16 +96,16 @@ public class ProductInstanceImpl extends EntityImpl implements ProductInstance {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public de.dfki.iui.basys.model.domain.productdefinition.ProductVariant getProductVariant() {
-		if (productVariant != null && productVariant.eIsProxy()) {
-			InternalEObject oldProductVariant = (InternalEObject)productVariant;
-			productVariant = (de.dfki.iui.basys.model.domain.productdefinition.ProductVariant)eResolveProxy(oldProductVariant);
-			if (productVariant != oldProductVariant) {
+	public ManufacturedComponent getManufacturedComponent() {
+		if (manufacturedComponent != null && manufacturedComponent.eIsProxy()) {
+			InternalEObject oldManufacturedComponent = (InternalEObject)manufacturedComponent;
+			manufacturedComponent = (ManufacturedComponent)eResolveProxy(oldManufacturedComponent);
+			if (manufacturedComponent != oldManufacturedComponent) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProductinstancePackage.PRODUCT_INSTANCE__PRODUCT_VARIANT, oldProductVariant, productVariant));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProductinstancePackage.PRODUCT_INSTANCE__MANUFACTURED_COMPONENT, oldManufacturedComponent, manufacturedComponent));
 			}
 		}
-		return productVariant;
+		return manufacturedComponent;
 	}
 
 	/**
@@ -112,8 +113,8 @@ public class ProductInstanceImpl extends EntityImpl implements ProductInstance {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public de.dfki.iui.basys.model.domain.productdefinition.ProductVariant basicGetProductVariant() {
-		return productVariant;
+	public ManufacturedComponent basicGetManufacturedComponent() {
+		return manufacturedComponent;
 	}
 
 	/**
@@ -121,11 +122,11 @@ public class ProductInstanceImpl extends EntityImpl implements ProductInstance {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setProductVariant(de.dfki.iui.basys.model.domain.productdefinition.ProductVariant newProductVariant) {
-		de.dfki.iui.basys.model.domain.productdefinition.ProductVariant oldProductVariant = productVariant;
-		productVariant = newProductVariant;
+	public void setManufacturedComponent(ManufacturedComponent newManufacturedComponent) {
+		ManufacturedComponent oldManufacturedComponent = manufacturedComponent;
+		manufacturedComponent = newManufacturedComponent;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ProductinstancePackage.PRODUCT_INSTANCE__PRODUCT_VARIANT, oldProductVariant, productVariant));
+			eNotify(new ENotificationImpl(this, Notification.SET, ProductinstancePackage.PRODUCT_INSTANCE__MANUFACTURED_COMPONENT, oldManufacturedComponent, manufacturedComponent));
 	}
 
 	/**
@@ -195,9 +196,9 @@ public class ProductInstanceImpl extends EntityImpl implements ProductInstance {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ProductinstancePackage.PRODUCT_INSTANCE__PRODUCT_VARIANT:
-				if (resolve) return getProductVariant();
-				return basicGetProductVariant();
+			case ProductinstancePackage.PRODUCT_INSTANCE__MANUFACTURED_COMPONENT:
+				if (resolve) return getManufacturedComponent();
+				return basicGetManufacturedComponent();
 			case ProductinstancePackage.PRODUCT_INSTANCE__ORDER:
 				if (resolve) return getOrder();
 				return basicGetOrder();
@@ -215,8 +216,8 @@ public class ProductInstanceImpl extends EntityImpl implements ProductInstance {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ProductinstancePackage.PRODUCT_INSTANCE__PRODUCT_VARIANT:
-				setProductVariant((de.dfki.iui.basys.model.domain.productdefinition.ProductVariant)newValue);
+			case ProductinstancePackage.PRODUCT_INSTANCE__MANUFACTURED_COMPONENT:
+				setManufacturedComponent((ManufacturedComponent)newValue);
 				return;
 			case ProductinstancePackage.PRODUCT_INSTANCE__ORDER:
 				setOrder((Order)newValue);
@@ -236,8 +237,8 @@ public class ProductInstanceImpl extends EntityImpl implements ProductInstance {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ProductinstancePackage.PRODUCT_INSTANCE__PRODUCT_VARIANT:
-				setProductVariant((de.dfki.iui.basys.model.domain.productdefinition.ProductVariant)null);
+			case ProductinstancePackage.PRODUCT_INSTANCE__MANUFACTURED_COMPONENT:
+				setManufacturedComponent((ManufacturedComponent)null);
 				return;
 			case ProductinstancePackage.PRODUCT_INSTANCE__ORDER:
 				setOrder((Order)null);
@@ -257,8 +258,8 @@ public class ProductInstanceImpl extends EntityImpl implements ProductInstance {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ProductinstancePackage.PRODUCT_INSTANCE__PRODUCT_VARIANT:
-				return productVariant != null;
+			case ProductinstancePackage.PRODUCT_INSTANCE__MANUFACTURED_COMPONENT:
+				return manufacturedComponent != null;
 			case ProductinstancePackage.PRODUCT_INSTANCE__ORDER:
 				return order != null;
 			case ProductinstancePackage.PRODUCT_INSTANCE__SERIAL_NUMBER:
