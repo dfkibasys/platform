@@ -39,4 +39,4 @@ buildNumber.properties
 # Eclipse IDE settings
 .settings/
 
-/MANIFEST.MF
+MANIFEST.MF
