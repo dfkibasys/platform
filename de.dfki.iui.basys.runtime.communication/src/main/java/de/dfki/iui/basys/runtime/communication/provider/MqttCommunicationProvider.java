@@ -21,18 +21,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import de.dfki.iui.basys.common.emf.JsonUtils;
 import de.dfki.iui.basys.model.runtime.communication.Authentication;
 import de.dfki.iui.basys.model.runtime.communication.Channel;
-import de.dfki.iui.basys.model.runtime.communication.ChannelListener;
 import de.dfki.iui.basys.model.runtime.communication.ChannelPool;
-import de.dfki.iui.basys.model.runtime.communication.CommunicationFactory;
-import de.dfki.iui.basys.model.runtime.communication.CommunicationPackage;
+import de.dfki.iui.basys.model.runtime.communication.CommunicationProvider;
+import de.dfki.iui.basys.model.runtime.communication.Message;
 import de.dfki.iui.basys.model.runtime.communication.Notification;
 import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.communication.Response;
 import de.dfki.iui.basys.model.runtime.communication.ResponseCallback;
 import de.dfki.iui.basys.model.runtime.communication.exceptions.ProviderException;
 import de.dfki.iui.basys.runtime.communication.ClientFactory;
-import de.dfki.iui.basys.model.runtime.communication.CommunicationProvider;
-import de.dfki.iui.basys.model.runtime.communication.Message;
 
 public class MqttCommunicationProvider implements CommunicationProvider {
 
@@ -63,7 +60,7 @@ public class MqttCommunicationProvider implements CommunicationProvider {
 		options.setCleanSession(true);
 		
 		if (pool.getUri() == null) {			
-			pool.setUri("tcp://iot.eclipse.org:1883");
+			pool.setUri("tcp://lns-90165.sb.dfki.de:1883");
 			LOGGER.warn(String.format("ConnectionString not specified, using public default %s", pool.getUri()));
 		}
 		
