@@ -56,8 +56,8 @@
 		</dependency>
 
 		<dependency>
-			<groupId>de.dfki.iui.basys.deployment</groupId>
-			<artifactId>org.apache.curator.client</artifactId>
+			<groupId>org.apache.curator</groupId>
+			<artifactId>curator-client</artifactId>
 			<version>${curator.version}</version>
 		</dependency>
 
