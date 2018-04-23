@@ -43,12 +43,15 @@
 			<artifactId>de.dfki.iui.basys.runtime.services</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-				
+		
+		<!-- https://mvnrepository.com/artifact/org.osgi/org.osgi.service.component.annotations -->
 		<dependency>
-			<groupId>de.dfki.iui.basys.service</groupId>
-			<artifactId>de.dfki.iui.basys.service.democontent</artifactId>
-			<version>${project.version}</version>
+		    <groupId>org.osgi</groupId>
+		    <artifactId>org.osgi.service.component.annotations</artifactId>
+		    <version>1.4.0</version>
+		    <scope>provided</scope>
 		</dependency>
+				
 		
 		<!-- https://mvnrepository.com/artifact/com.eclipsesource.jaxrs/publisher/5.3.1 -->
 		<dependency>
