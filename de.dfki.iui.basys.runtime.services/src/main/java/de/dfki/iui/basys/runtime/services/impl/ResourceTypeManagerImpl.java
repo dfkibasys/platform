@@ -4,6 +4,7 @@ import java.util.List;
 
 import de.dfki.iui.basys.model.domain.capability.Capability;
 import de.dfki.iui.basys.model.domain.resourcetype.ResourceType;
+import de.dfki.iui.basys.model.domain.resourcetype.ResourcetypePackage;
 import de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl;
 import de.dfki.iui.basys.model.domain.resourcetype.util.ResourcetypeResourceFactoryImpl;
 import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
@@ -15,7 +16,8 @@ public class ResourceTypeManagerImpl extends EmfServiceComponent implements Reso
 	public ResourceTypeManagerImpl(ComponentConfiguration config) {
 		super(config);
 		ResourcetypePackageImpl.init();
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("resourcetype", new ResourcetypeResourceFactoryImpl());
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("resourcetype",
+				new ResourcetypeResourceFactoryImpl());
 
 	}
 
@@ -44,8 +46,7 @@ public class ResourceTypeManagerImpl extends EmfServiceComponent implements Reso
 
 	@Override
 	public List<ResourceType> getAllResourceTypes() {
-		// TODO Auto-generated method stub
-		return null;
+		return getAllEntities(ResourcetypePackage.eINSTANCE.getResourceType(), false);
 	}
 
 }

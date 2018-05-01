@@ -3,6 +3,7 @@ package de.dfki.iui.basys.runtime.services.impl;
 import java.util.List;
 
 import de.dfki.iui.basys.model.domain.order.Order;
+import de.dfki.iui.basys.model.domain.order.OrderPackage;
 import de.dfki.iui.basys.model.domain.order.impl.OrderPackageImpl;
 import de.dfki.iui.basys.model.domain.order.util.OrderResourceFactoryImpl;
 import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
@@ -30,8 +31,7 @@ public class OrderManagerImpl extends EmfServiceComponent implements OrderManage
 
 	@Override
 	public List<Order> getAllOrders() {
-		// TODO Auto-generated method stub
-		return null;
+		return getAllEntities(OrderPackage.eINSTANCE.getOrder(), false);
 	}
 
 }

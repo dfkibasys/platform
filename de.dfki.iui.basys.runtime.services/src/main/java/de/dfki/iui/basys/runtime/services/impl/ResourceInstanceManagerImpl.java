@@ -21,7 +21,8 @@ public class ResourceInstanceManagerImpl extends EmfServiceComponent implements 
 	public ResourceInstanceManagerImpl(ComponentConfiguration config) {
 		super(config);
 		ResourceinstancePackageImpl.init();
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("resourceinstance", new ResourceinstanceResourceFactoryImpl());
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("resourceinstance",
+				new ResourceinstanceResourceFactoryImpl());
 	}
 
 	@Override
@@ -73,8 +74,7 @@ public class ResourceInstanceManagerImpl extends EmfServiceComponent implements 
 
 	@Override
 	public void removeResourceInstance(String id) {
-		// TODO Auto-generated method stub
-
+		deleteEntity(id);
 	}
 
 }

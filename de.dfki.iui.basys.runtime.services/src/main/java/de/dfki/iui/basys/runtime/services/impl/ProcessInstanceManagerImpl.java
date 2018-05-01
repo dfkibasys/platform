@@ -3,11 +3,11 @@ package de.dfki.iui.basys.runtime.services.impl;
 import java.util.List;
 
 import de.dfki.iui.basys.model.domain.processinstance.ProcessInstance;
+import de.dfki.iui.basys.model.domain.processinstance.ProcessinstancePackage;
 import de.dfki.iui.basys.model.domain.processinstance.impl.ProcessinstancePackageImpl;
 import de.dfki.iui.basys.model.domain.processinstance.util.ProcessinstanceResourceFactoryImpl;
 import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.service.EmfServiceComponent;
-import de.dfki.iui.basys.runtime.services.ProcessDefinitionManager;
 import de.dfki.iui.basys.runtime.services.ProcessInstanceManager;
 
 public class ProcessInstanceManagerImpl extends EmfServiceComponent implements ProcessInstanceManager {
@@ -20,8 +20,7 @@ public class ProcessInstanceManagerImpl extends EmfServiceComponent implements P
 
 	@Override
 	public ProcessInstance getProcessInstance(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return getEntity(id);
 	}
 
 	@Override
@@ -32,8 +31,7 @@ public class ProcessInstanceManagerImpl extends EmfServiceComponent implements P
 
 	@Override
 	public List<ProcessInstance> getAllProcessInstances() {
-		// TODO Auto-generated method stub
-		return null;
+		return getAllEntities(ProcessinstancePackage.eINSTANCE.getProcessInstance(), false);
 	}
 
 }

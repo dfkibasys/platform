@@ -3,6 +3,7 @@ package de.dfki.iui.basys.runtime.services.impl;
 import java.util.List;
 
 import de.dfki.iui.basys.model.domain.productdefinition.ProductVariant;
+import de.dfki.iui.basys.model.domain.productdefinition.ProductdefinitionPackage;
 import de.dfki.iui.basys.model.domain.productdefinition.impl.ProductdefinitionPackageImpl;
 import de.dfki.iui.basys.model.domain.productdefinition.util.ProductdefinitionResourceFactoryImpl;
 import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
@@ -36,8 +37,7 @@ public class ProductDefinitionManagerImpl extends EmfServiceComponent implements
 
 	@Override
 	public List<ProductVariant> getAllProductVariants() {
-		// TODO Auto-generated method stub
-		return null;
+		return getAllEntities(ProductdefinitionPackage.eINSTANCE.getProductVariant(), false);
 	}
 
 }
