@@ -3,13 +3,16 @@ package de.dfki.iui.basys.runtime.services;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import de.dfki.iui.basys.model.domain.resourcetype.ResourceType;
 import de.dfki.iui.basys.model.domain.topology.Area;
 import de.dfki.iui.basys.model.domain.topology.Enterprise;
 import de.dfki.iui.basys.model.domain.topology.EquipmentModule;
@@ -69,7 +72,9 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 	@Test
 	public void testGetSites() {
 		List<Site> sites = service.getSites();
-
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
+		
+		testSites(sites, expectedIds);
 	}
 
 	@Test
@@ -96,7 +101,9 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 		// TODO:set properties
 		String siteId = "";
 		List<Area> areas = service.getAreasBySite(siteId);
-
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
+		
+		testAreas(areas, expectedIds);
 	}
 
 	@Test
@@ -104,13 +111,18 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 		// TODO:set properties
 		String siteName = "";
 		List<Area> areas = service.getAreasBySiteName(siteName);
-
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
+		
+		testAreas(areas, expectedIds);
 	}
 
 	@Test
 	public void testGetAllAreas() {
 		// TODO:set properties
 		List<Area> areas = service.getAllAreas();
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
+		
+		testAreas(areas, expectedIds);
 	}
 
 	@Test
@@ -138,6 +150,9 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 		// TODO:set properties
 		String areaId = "";
 		List<WorkCenter> workCenters = service.getWorkCentersByArea(areaId);
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
+		
+		testWorkCenters(workCenters, expectedIds);
 
 	}
 
@@ -146,6 +161,9 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 		// TODO:set properties
 		String areaName = "";
 		List<WorkCenter> workCenters = service.getWorkCentersByAreaName(areaName);
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
+		
+		testWorkCenters(workCenters, expectedIds);
 
 	}
 
@@ -154,6 +172,9 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 		// TODO:set properties
 		String siteId = "";
 		List<WorkCenter> workCenters = service.getWorkCentersBySite(siteId);
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
+		
+		testWorkCenters(workCenters, expectedIds);
 
 	}
 
@@ -162,6 +183,9 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 		// TODO:set properties
 		String siteName = "";
 		List<WorkCenter> workCenters = service.getPWorkCentersBySiteName(siteName);
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
+		
+		testWorkCenters(workCenters, expectedIds);
 
 	}
 
@@ -190,6 +214,9 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 		// TODO:set properties
 		String areaId = "";
 		List<ProductionLine> productionLines = service.getProductionLinesByArea(areaId);
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
+		
+		testProductionLines(productionLines, expectedIds);
 	}
 
 	@Test
@@ -197,6 +224,9 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 		// TODO:set properties
 		String areaName = "";
 		List<ProductionLine> productionLines = service.getProductionLinesByAreaName(areaName);
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
+		
+		testProductionLines(productionLines, expectedIds);
 	}
 
 	@Test
@@ -204,6 +234,9 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 		// TODO:set properties
 		String siteId = "";
 		List<ProductionLine> productionLines = service.getProductionLinesBySite(siteId);
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
+		
+		testProductionLines(productionLines, expectedIds);
 	}
 
 	@Test
@@ -211,6 +244,9 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 		// TODO:set properties
 		String siteName = "";
 		List<ProductionLine> productionLines = service.getProductionLinesBySiteName(siteName);
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
+		
+		testProductionLines(productionLines, expectedIds);
 	}
 
 	@Test
@@ -238,7 +274,9 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 		// TODO:set properties
 		String areaId = "";
 		List<StorageZone> storageZones = service.getStorageZonesByArea(areaId);
-
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
+		
+		testStorageZones(storageZones, expectedIds);
 	}
 
 	@Test
@@ -246,7 +284,9 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 		// TODO:set properties
 		String areaName = "";
 		List<StorageZone> storageZones = service.getStorageZonesByAreaName(areaName);
-
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
+		
+		testStorageZones(storageZones, expectedIds);
 	}
 
 	@Test
@@ -254,7 +294,9 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 		// TODO:set properties
 		String siteId = "";
 		List<StorageZone> storageZones = service.getStorageZonesBySite(siteId);
-
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
+		
+		testStorageZones(storageZones, expectedIds);
 	}
 
 	@Test
@@ -262,7 +304,9 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 		// TODO:set properties
 		String siteName = "";
 		List<StorageZone> storageZones = service.getStorageZonesBySiteName(siteName);
-
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
+		
+		testStorageZones(storageZones, expectedIds);
 	}
 
 	@Test
@@ -290,7 +334,9 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 		// TODO:set properties
 		String productionLineId = "";
 		List<WorkCell> workCells = service.getWorkCellsByProductionLine(productionLineId);
-
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
+		
+		testWorkCells(workCells, expectedIds);
 	}
 
 	@Test
@@ -298,7 +344,9 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 		// TODO:set properties
 		String productionLineName = "";
 		List<WorkCell> workCells = service.getWorkCellsByProductionLineName(productionLineName);
-
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
+		
+		testWorkCells(workCells, expectedIds);
 	}
 
 	@Test
@@ -326,7 +374,9 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 		// TODO:set properties
 		String workCellId = "";
 		List<Station> stations = service.getStationsByWorkCell(workCellId);
-
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
+		
+		testStations(stations, expectedIds);
 	}
 
 	@Test
@@ -334,7 +384,9 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 		// TODO:set properties
 		String workCellName = "";
 		List<Station> stations = service.getStationsByWorkCellName(workCellName);
-
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
+		
+		testStations(stations, expectedIds);
 	}
 
 	@Test
@@ -342,7 +394,9 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 		// TODO:set properties
 		String productionLineId = "";
 		List<Station> stations = service.getStationsByProductionLine(productionLineId);
-
+	List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
+		
+		testStations(stations, expectedIds);
 	}
 
 	@Test
@@ -350,7 +404,9 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 		// TODO:set properties
 		String productionLineName = "";
 		List<Station> stations = service.getStationsByProductionLineName(productionLineName);
-
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
+		
+		testStations(stations, expectedIds);
 	}
 
 	@Test
@@ -360,7 +416,7 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 		EquipmentModule equipmentModule = service.getEquipmentModule(id);
 
 		assertEquals(id, equipmentModule.getId());
-		assertEquals("UR3", equipmentModule.getName());
+		assertEquals("", equipmentModule.getName());
 	}
 
 	@Test
@@ -388,7 +444,9 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 		// TODO:set properties
 		String stationId = "";
 		List<EquipmentModule> equipmentModules = service.getEquipmentModulesByStation(stationId);
-
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
+		
+		testEquipmentModules(equipmentModules, expectedIds);
 	}
 
 	@Test
@@ -396,7 +454,9 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 		// TODO:set properties
 		String stationName = "";
 		List<EquipmentModule> equipmentModules = service.getEquipmentModulesByStationName(stationName);
-
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
+		
+		testEquipmentModules(equipmentModules, expectedIds);
 	}
 
 	@Test
@@ -404,7 +464,9 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 		// TODO:set properties
 		String workCellId = "";
 		List<EquipmentModule> equipmentModules = service.getEquipmentModulesByWorkUnit(workCellId);
-
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
+		
+		testEquipmentModules(equipmentModules, expectedIds);
 	}
 
 	@Test
@@ -412,7 +474,9 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 		// TODO:set properties
 		String workCellName = "";
 		List<EquipmentModule> equipmentModules = service.getEquipmentModulesByWorkUnitName(workCellName);
-
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
+		
+		testEquipmentModules(equipmentModules, expectedIds);
 	}
 
 	@Test
@@ -420,7 +484,9 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 		// TODO:set properties
 		String workCellId = "";
 		List<EquipmentModule> equipmentModules = service.getAllEquipmentModulesByWorkUnit(workCellId);
-
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
+		
+		testEquipmentModules(equipmentModules, expectedIds);
 	}
 
 	@Test
@@ -428,7 +494,9 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 		// TODO:set properties
 		String workCellName = "";
 		List<EquipmentModule> equipmentModules = service.getAllEquipmentModulesByWorkUnitName(workCellName);
-
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
+		
+		testEquipmentModules(equipmentModules, expectedIds);
 	}
 
 	@Test
@@ -436,7 +504,9 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 		// TODO:set properties
 		String workCenterId = "";
 		List<EquipmentModule> equipmentModules = service.getEquipmentModulesByWorkCenter(workCenterId);
-
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
+		
+		testEquipmentModules(equipmentModules, expectedIds);
 	}
 
 	@Test
@@ -444,7 +514,9 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 		// TODO:set properties
 		String workCenterName = "";
 		List<EquipmentModule> equipmentModules = service.getEquipmentModulesByWorkCenterName(workCenterName);
-
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
+		
+		testEquipmentModules(equipmentModules, expectedIds);
 	}
 
 	@Test
@@ -452,7 +524,9 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 		// TODO:set properties
 		String workCenterId = "";
 		List<EquipmentModule> equipmentModules = service.getAllEquipmentModulesByWorkCenter(workCenterId);
-
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
+		
+		testEquipmentModules(equipmentModules, expectedIds);
 	}
 
 	@Test
@@ -460,7 +534,9 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 		// TODO:set properties
 		String workCenterName = "";
 		List<EquipmentModule> equipmentModules = service.getAllEquipmentModulesByWorkCenterName(workCenterName);
-
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
+		
+		testEquipmentModules(equipmentModules, expectedIds);
 	}
 
 	@Test
@@ -468,7 +544,9 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 		// TODO:set properties
 		String areaId = "";
 		List<EquipmentModule> equipmentModules = service.getEquipmentModulesByArea(areaId);
-
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
+		
+		testEquipmentModules(equipmentModules, expectedIds);
 	}
 
 	@Test
@@ -476,7 +554,9 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 		// TODO:set properties
 		String areaName = "";
 		List<EquipmentModule> equipmentModules = service.getEquipmentModulesByAreaName(areaName);
-
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
+		
+		testEquipmentModules(equipmentModules, expectedIds);
 	}
 
 	@Test
@@ -484,7 +564,9 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 		// TODO:set properties
 		String areaId = "";
 		List<EquipmentModule> equipmentModules = service.getAllEquipmentModulesByArea(areaId);
-
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
+		
+		testEquipmentModules(equipmentModules, expectedIds);
 	}
 
 	@Test
@@ -492,7 +574,82 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 		// TODO:set properties
 		String areaName = "";
 		List<EquipmentModule> equipmentModules = service.getAllEquipmentModulesByAreaName(areaName);
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
+		
+		testEquipmentModules(equipmentModules, expectedIds);
+	}
+	
+	//------------------------
+	
+	private void testEquipmentModules(List<EquipmentModule> modules , List<String> expectedIds) {
+		assertNotNull(modules);
+		List<String> ids = modules.stream().map(equipmentModule -> equipmentModule.getId()).sorted().collect(Collectors.toList());
 
+		expectedIds.stream().sorted().collect(Collectors.toList());
+		
+		Assert.assertArrayEquals(expectedIds.toArray(), ids.toArray());
+	}
+	
+	private void testStations(List<Station> stations , List<String> expectedIds) {
+		assertNotNull(stations);
+		List<String> ids = stations.stream().map(equipmentModule -> equipmentModule.getId()).sorted().collect(Collectors.toList());
+
+		expectedIds.stream().sorted().collect(Collectors.toList());
+		
+		Assert.assertArrayEquals(expectedIds.toArray(), ids.toArray());
+	}
+	
+	private void testWorkCells(List<WorkCell> workCells , List<String> expectedIds) {
+		assertNotNull(workCells);
+		List<String> ids = workCells.stream().map(equipmentModule -> equipmentModule.getId()).sorted().collect(Collectors.toList());
+
+		expectedIds.stream().sorted().collect(Collectors.toList());
+		
+		Assert.assertArrayEquals(expectedIds.toArray(), ids.toArray());
+	}
+	
+	private void testStorageZones(List<StorageZone> storageZones , List<String> expectedIds) {
+		assertNotNull(storageZones);
+		List<String> ids = storageZones.stream().map(equipmentModule -> equipmentModule.getId()).sorted().collect(Collectors.toList());
+
+		expectedIds.stream().sorted().collect(Collectors.toList());
+		
+		Assert.assertArrayEquals(expectedIds.toArray(), ids.toArray());
+	}
+	
+	private void testProductionLines(List<ProductionLine> productionLines , List<String> expectedIds) {
+		assertNotNull(productionLines);
+		List<String> ids = productionLines.stream().map(equipmentModule -> equipmentModule.getId()).sorted().collect(Collectors.toList());
+
+		expectedIds.stream().sorted().collect(Collectors.toList());
+		
+		Assert.assertArrayEquals(expectedIds.toArray(), ids.toArray());
 	}
 
+	private void testWorkCenters(List<WorkCenter> workCenters , List<String> expectedIds) {
+		assertNotNull(workCenters);
+		List<String> ids = workCenters.stream().map(equipmentModule -> equipmentModule.getId()).sorted().collect(Collectors.toList());
+
+		expectedIds.stream().sorted().collect(Collectors.toList());
+		
+		Assert.assertArrayEquals(expectedIds.toArray(), ids.toArray());
+	}
+	
+	private void testAreas(List<Area> areas , List<String> expectedIds) {
+		assertNotNull(areas);
+		List<String> ids = areas.stream().map(equipmentModule -> equipmentModule.getId()).sorted().collect(Collectors.toList());
+
+		expectedIds.stream().sorted().collect(Collectors.toList());
+		
+		Assert.assertArrayEquals(expectedIds.toArray(), ids.toArray());
+	}
+	
+	private void testSites(List<Site> sites , List<String> expectedIds) {
+		assertNotNull(sites);
+		List<String> ids = sites.stream().map(equipmentModule -> equipmentModule.getId()).sorted().collect(Collectors.toList());
+
+		expectedIds.stream().sorted().collect(Collectors.toList());
+		
+		Assert.assertArrayEquals(expectedIds.toArray(), ids.toArray());
+	}
 }
