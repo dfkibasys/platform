@@ -12,6 +12,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.ComponentRequestStatus;
 import de.dfki.iui.basys.model.runtime.component.State;
 import de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
@@ -19,7 +20,6 @@ import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.opcua.FestoComponent;
 import de.dfki.iui.basys.runtime.component.device.opcua.FestoUnitConfiguration;
 import de.dfki.iui.basys.runtime.component.device.opcua.OpcUaDeviceComponent;
-import de.dfki.iui.basys.runtime.component.device.packml.PackMLException;
 
 public class FestoComponentTest {
 
@@ -81,14 +81,10 @@ public class FestoComponentTest {
 		
 		assertEquals(State.IDLE, component.getState());
 
-		try {
-			FestoUnitConfiguration config = new FestoUnitConfiguration();		
-			config.setLidNumber((short) 0);
-			component.setUnitConfig(config);
-		} catch (PackMLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
+		FestoUnitConfiguration config = new FestoUnitConfiguration();		
+		config.setLidNumber((short) 0);
+		ComponentRequestStatus status = component.setUnitConfig(config);
+		
 		component.start();		
 		sleep(2);	
 		assertEquals(State.EXECUTE, component.getState());
@@ -115,14 +111,9 @@ public class FestoComponentTest {
 		
 		//assertEquals(State.IDLE, component.getState());
 
-		try {
-			FestoUnitConfiguration config = new FestoUnitConfiguration();		
-			config.setLidNumber((short) 0);
-			component.setUnitConfig(config);
-		} catch (PackMLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		FestoUnitConfiguration config = new FestoUnitConfiguration();		
+		config.setLidNumber((short) 0);
+		ComponentRequestStatus status = component.setUnitConfig(config);
 		
 		component.start();		
 		sleep(5);	

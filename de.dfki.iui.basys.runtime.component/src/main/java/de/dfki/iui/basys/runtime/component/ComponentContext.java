@@ -5,8 +5,8 @@ import de.dfki.iui.basys.runtime.component.registry.ComponentRegistry;
 
 public class ComponentContext {
 
-	ComponentRegistry componentRegistry;
-	ChannelPool sharedChannelPool;
+	private ComponentRegistry componentRegistry;
+	private ChannelPool sharedChannelPool;
 
 	/**
 	 * @return the serviceRegistry
@@ -20,6 +20,14 @@ public class ComponentContext {
 	 */
 	public ChannelPool getSharedChannelPool() {
 		return sharedChannelPool;
+	}
+	
+	public void setComponentRegistry(ComponentRegistry componentRegistry) {
+		this.componentRegistry = componentRegistry;
+	}
+	
+	public void setSharedChannelPool(ChannelPool sharedChannelPool) {
+		this.sharedChannelPool = sharedChannelPool;
 	}
 
 	public static class Builder {
@@ -44,5 +52,10 @@ public class ComponentContext {
 	private ComponentContext(Builder builder) {
 		this.componentRegistry = builder.componentRegistry;
 		this.sharedChannelPool = builder.sharedChannelPool;
+	}
+	
+	public ComponentContext(ComponentContext context) {
+		this.componentRegistry = context.componentRegistry;
+		this.sharedChannelPool = context.sharedChannelPool;
 	}
 }

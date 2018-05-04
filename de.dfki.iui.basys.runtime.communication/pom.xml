@@ -29,7 +29,7 @@
 
 		<dependency>
 			<groupId>de.dfki.iui.basys.common</groupId>
-			<artifactId>de.dfki.iui.basys.common.emf</artifactId>
+			<artifactId>de.dfki.iui.basys.common.emf.json</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 

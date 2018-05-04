@@ -83,6 +83,8 @@ public class BaseComponentTest {
 				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.component.test.TestDeviceComponent")
 				.communicationProviderImplementationJavaClass(communicationProviderImplementationJavaClass)
 				.communicationProviderConnectionString(communicationProviderConnectionString)
+				.inChannelName("component1#in")
+				.outChannelName("component1#out")
 				.build();		
 		
 		config2 = new ComponentConfigurationImpl.Builder()
@@ -92,6 +94,8 @@ public class BaseComponentTest {
 				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.component.test.TestDeviceComponent")
 				.communicationProviderImplementationJavaClass(communicationProviderImplementationJavaClass)
 				.communicationProviderConnectionString(communicationProviderConnectionString)
+				.inChannelName("component2#in")
+				.outChannelName("component2#out")
 				.build();	
 				
 		config3 = new ComponentConfigurationImpl.Builder()
@@ -101,6 +105,8 @@ public class BaseComponentTest {
 				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.component.test.TestDeviceComponent")
 				.communicationProviderImplementationJavaClass(communicationProviderImplementationJavaClass)
 				.communicationProviderConnectionString(communicationProviderConnectionString)
+				.inChannelName("component3#in")
+				.outChannelName("component3#out")
 				.build();	
 		
 		

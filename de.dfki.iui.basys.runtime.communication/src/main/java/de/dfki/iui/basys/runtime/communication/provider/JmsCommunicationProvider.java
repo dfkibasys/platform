@@ -21,7 +21,7 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.dfki.iui.basys.common.emf.JsonUtils;
+import de.dfki.iui.basys.common.emf.json.JsonUtils;
 import de.dfki.iui.basys.model.runtime.communication.Authentication;
 import de.dfki.iui.basys.model.runtime.communication.Channel;
 import de.dfki.iui.basys.model.runtime.communication.ChannelPool;
@@ -87,7 +87,7 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 					try {
 						String correlationId = textMessage.getJMSCorrelationID();
 						ResponseCallback listener = requestCorrelations.get(correlationId);
-						Response response = JsonUtils.fromJsonString(textMessage.getText(), Response.class);
+						Response response = JsonUtils.fromString(textMessage.getText(), Response.class);
 						listener.handleResponse(response);
 						requestCorrelations.remove(correlationId);
 					} catch (JMSException e) {
@@ -164,12 +164,12 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 
 						try {
 							de.dfki.iui.basys.model.runtime.communication.Message incomingMessage = JsonUtils
-									.fromJsonString(textMessage.getText(),
+									.fromString(textMessage.getText(),
 											de.dfki.iui.basys.model.runtime.communication.Message.class);
 							if (textMessage.getJMSCorrelationID() != null) {
 								Request req = (Request) incomingMessage;
 								Response res = channel.getListener().handleRequest(req);
-								String payload = JsonUtils.toJsonString(res);
+								String payload = JsonUtils.toString(res);
 
 								TextMessage responseMessage = session.createTextMessage();
 								responseMessage.setText(payload);
@@ -217,12 +217,12 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 						TextMessage textMessage = (TextMessage) message;
 						try {
 							de.dfki.iui.basys.model.runtime.communication.Message incomingMessage = JsonUtils
-									.fromJsonString(textMessage.getText(),
+									.fromString(textMessage.getText(),
 											de.dfki.iui.basys.model.runtime.communication.Message.class);
 							if (textMessage.getJMSCorrelationID() != null) {
 								Request req = (Request) incomingMessage;
 								Response res = channel.getListener().handleRequest(req);
-								String payload = JsonUtils.toJsonString(res);
+								String payload = JsonUtils.toString(res);
 
 								TextMessage responseMessage = session.createTextMessage();
 								responseMessage.setText(payload);
@@ -276,7 +276,7 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 				.createNotification(payload);
 
 		try {
-			String payloadString = JsonUtils.toJsonString(message);
+			String payloadString = JsonUtils.toString(message);
 			Message jmsMsg = session.createTextMessage(payloadString);
 //			if (internal_destination.getMessageProducer() == null) {
 //				Topic jmsTopic = session.createTopic(channel.getName());
@@ -299,7 +299,7 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 		JmsDestination internal_destination = this.destinations.get(channel.getId());
 
 		try {
-			String payload = JsonUtils.toJsonString(req);
+			String payload = JsonUtils.toString(req);
 			Message jmsMsg = session.createTextMessage(payload);
 			String correlationId = UUID.randomUUID().toString();
 			jmsMsg.setJMSCorrelationID(correlationId);
@@ -335,7 +335,7 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 		JmsDestination internal_destination = this.destinations.get(channel.getId());
 
 		try {
-			String payload = JsonUtils.toJsonString(not);
+			String payload = JsonUtils.toString(not);
 			Message jmsMsg = session.createTextMessage(payload);
 //			if (internal_destination.getMessageProducer() == null) {
 //				Topic jmsTopic = session.createTopic(internal_destination.getName());

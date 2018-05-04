@@ -75,7 +75,8 @@ public class BaseComponent implements Component, ChannelListener {
 		if (context == null)
 			throw new ComponentException("Context must not be null!");
 
-		this.context = context;
+		// use copy constructor. if sharedChannelPool is null, it can be set afterwards for reuse in dependent components, e.g. DeviceComponentController
+		this.context = new ComponentContext(context);
 
 		if (componentConfig.getExternalConnectionString() != null) {
 			try {
@@ -135,6 +136,7 @@ public class BaseComponent implements Component, ChannelListener {
 		if (pool == null) {
 			privateClient = cf.createClient(getId(), cf.createAuthentication(getId(), "secret", null));
 			pool = cf.connectChannelPool(privateClient, componentConfig.getCommunicationProviderConnectionString(), componentConfig.getCommunicationProviderImplementationJavaClass());
+			context.setSharedChannelPool(pool);
 		}
 
 		statusChannel = cf.openChannel(pool, statusChannelName, false, null);

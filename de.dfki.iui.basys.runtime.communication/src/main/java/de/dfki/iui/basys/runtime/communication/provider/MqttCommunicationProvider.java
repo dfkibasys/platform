@@ -18,7 +18,7 @@ import org.slf4j.LoggerFactory;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import de.dfki.iui.basys.common.emf.JsonUtils;
+import de.dfki.iui.basys.common.emf.json.JsonUtils;
 import de.dfki.iui.basys.model.runtime.communication.Authentication;
 import de.dfki.iui.basys.model.runtime.communication.Channel;
 import de.dfki.iui.basys.model.runtime.communication.ChannelPool;
@@ -122,7 +122,7 @@ public class MqttCommunicationProvider implements CommunicationProvider {
 						MqttProtocolMessage mqttProtocolMessage = objectMapper.readValue(mqttPayload,
 								MqttProtocolMessage.class);
 
-						Message incomingMessage = JsonUtils.fromJsonString(mqttProtocolMessage.getPayload(),
+						Message incomingMessage = JsonUtils.fromString(mqttProtocolMessage.getPayload(),
 								Message.class);
 
 						if (mqttProtocolMessage.getResponseTopic() != null) {
@@ -130,7 +130,7 @@ public class MqttCommunicationProvider implements CommunicationProvider {
 							Response res = channel.getListener().handleRequest(req);
 
 							try {
-								String payload = JsonUtils.toJsonString(res);
+								String payload = JsonUtils.toString(res);
 								MqttProtocolMessage mqttMessage = new MqttProtocolMessage();
 								mqttMessage.setPayload(payload);
 								Channel responseChannel = ClientFactory.getInstance()
@@ -182,7 +182,7 @@ public class MqttCommunicationProvider implements CommunicationProvider {
 		Message message = ClientFactory.getInstance().createNotification(msg);
 
 		try {
-			String payload = JsonUtils.toJsonString(message);
+			String payload = JsonUtils.toString(message);
 			MqttProtocolMessage mqttMessage = new MqttProtocolMessage();
 			mqttMessage.setPayload(payload);
 			doSendMessage(channel, mqttMessage);
@@ -198,7 +198,7 @@ public class MqttCommunicationProvider implements CommunicationProvider {
 		
 		LOGGER.info("doSendNotification: " + channel.getName());		
 		try {
-			String payload = JsonUtils.toJsonString(not);
+			String payload = JsonUtils.toString(not);
 			MqttProtocolMessage mqttMessage = new MqttProtocolMessage();
 			mqttMessage.setPayload(payload);
 			doSendMessage(channel, mqttMessage);
@@ -213,7 +213,7 @@ public class MqttCommunicationProvider implements CommunicationProvider {
 
 		LOGGER.info("doSendRequest: " + channel.getName());
 		try {
-			String payload = JsonUtils.toJsonString(req);
+			String payload = JsonUtils.toString(req);
 			String responseTopic =  ClientFactory.getInstance().createResponseTopic(req);
 			MqttProtocolMessage message = new MqttProtocolMessage();
 			message.setPayload(payload);
@@ -229,7 +229,7 @@ public class MqttCommunicationProvider implements CommunicationProvider {
 					MqttProtocolMessage mqttProtocolMessage = objectMapper.readValue(mqttPayload,
 							MqttProtocolMessage.class);
 
-					Response response = JsonUtils.fromJsonString(mqttProtocolMessage.getPayload(), Response.class);
+					Response response = JsonUtils.fromString(mqttProtocolMessage.getPayload(), Response.class);
 					cb.handleResponse(response);
 					mqttClient.unsubscribe(topic);
 				}

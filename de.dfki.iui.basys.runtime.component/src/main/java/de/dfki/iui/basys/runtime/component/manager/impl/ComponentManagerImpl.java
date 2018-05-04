@@ -12,7 +12,7 @@ import java.util.Map;
 
 import org.apache.commons.io.filefilter.SuffixFileFilter;
 
-import de.dfki.iui.basys.common.emf.JsonUtils;
+import de.dfki.iui.basys.common.emf.json.JsonUtils;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.BaseComponent;
 import de.dfki.iui.basys.runtime.component.Component;

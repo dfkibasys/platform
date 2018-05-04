@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import org.eclipse.emf.ecore.EObject;
 
-import de.dfki.iui.basys.common.emf.JsonUtils;
+import de.dfki.iui.basys.common.emf.json.JsonUtils;
 import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.communication.Response;
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
@@ -120,7 +120,7 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 	public Response handleRequest(Request request) {
 		ComponentRequestStatus status = null;
 		try {
-			EObject ob = JsonUtils.fromJsonString(request.getPayload(), EObject.class);
+			EObject ob = JsonUtils.fromString(request.getPayload(), EObject.class);
 			if (ob instanceof ComponentRequest) {
 				ComponentRequest cr = (ComponentRequest) ob;
 
@@ -142,13 +142,13 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 			} else {
 				status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.REJECTED).message("unknown request").build();
 			}
-			String payload = JsonUtils.toJsonString(status);
+			String payload = JsonUtils.toString(status);
 			return cf.createResponse(request.getId(), payload);
 		} catch (IOException e) {
 			e.printStackTrace();
 			status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.REJECTED).message(e.getMessage()).build();
 			try {
-				String payload = JsonUtils.toJsonString(status);
+				String payload = JsonUtils.toString(status);
 				return cf.createResponse(request.getId(), payload);
 			} catch (IOException e1) {
 				e1.printStackTrace();
