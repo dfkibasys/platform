@@ -31,6 +31,12 @@
 	<dependencies>
 
 		<dependency>
+			<groupId>de.dfki.iui.basys.common</groupId>
+			<artifactId>de.dfki.iui.basys.common.emf</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+		<dependency>
 			<groupId>de.dfki.iui.basys.model</groupId>
 			<artifactId>de.dfki.iui.basys.model.domain</artifactId>
 			<version>${project.version}</version>
@@ -82,18 +88,12 @@
 			<version>${jexl.version}</version>
 		</dependency>
 
-		<!-- Redeclare our dependency on Bouncy Castle because we use SelfSignedCertificateBuilder -->
+		<!-- https://mvnrepository.com/artifact/com.eclipsesource.jaxrs/publisher/5.3.1 -->
 		<dependency>
-			<groupId>org.bouncycastle</groupId>
-			<artifactId>bcprov-jdk15on</artifactId>
-			<version>1.58</version>
+			<groupId>com.eclipsesource.jaxrs</groupId>
+			<artifactId>publisher</artifactId>
+			<version>5.3.1</version>
 		</dependency>
-		<dependency>
-			<groupId>org.bouncycastle</groupId>
-			<artifactId>bcpkix-jdk15on</artifactId>
-			<version>1.58</version>
-		</dependency>
-
 
 		<!-- comment to remove all imported (non-local) bundles from your compilation 
 			classpath -->

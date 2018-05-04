@@ -1,27 +1,19 @@
 package de.dfki.iui.basys.runtime.connector.test;
 
-import static org.junit.Assert.*;
-
-import java.util.List;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import de.dfki.iui.basys.model.runtime.communication.ChannelPool;
 import de.dfki.iui.basys.model.runtime.communication.Client;
+import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl;
 import de.dfki.iui.basys.runtime.communication.ClientFactory;
-import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
-import de.dfki.iui.basys.runtime.component.device.packml.Mode;
-import de.dfki.iui.basys.runtime.component.device.packml.State;
-import de.dfki.iui.basys.runtime.component.manager.ComponentManager;
 import de.dfki.iui.basys.runtime.component.manager.impl.ComponentManagerImpl;
-import de.dfki.iui.basys.runtime.component.registry.ComponentRegistry;
 import de.dfki.iui.basys.runtime.component.registry.impl.ZookeeperComponentRegistry;
 
 public class BaseComponentTest {
@@ -52,7 +44,7 @@ public class BaseComponentTest {
 
 	@Before
 	public void setUp() throws Exception {
-		registryConfig = new ComponentConfiguration.Builder()
+		registryConfig = new ComponentConfigurationImpl.Builder()
 				.componentId("component-registry")
 				.componentName("component-registry")
 				.communicationProviderImplementationJavaClass(communicationProviderImplementationJavaClass)
@@ -60,14 +52,14 @@ public class BaseComponentTest {
 				.externalConnectionString(ZookeeperComponentRegistry.defaultConnectionString)
 				.build();	
 		
-		managerConfig = new ComponentConfiguration.Builder()
+		managerConfig = new ComponentConfigurationImpl.Builder()
 				.componentId("component-manager")
 				.componentName("component-manager")
 				.communicationProviderImplementationJavaClass(communicationProviderImplementationJavaClass)
 				.communicationProviderConnectionString(communicationProviderConnectionString)
 				.build();	
 
-		config1 = new ComponentConfiguration.Builder()
+		config1 = new ComponentConfigurationImpl.Builder()
 				.componentId("component-1")
 				.componentName("component-1")
 				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.component.test.TestDeviceComponent")
@@ -75,7 +67,7 @@ public class BaseComponentTest {
 				.communicationProviderConnectionString(communicationProviderConnectionString)
 				.build();		
 		
-		config2 = new ComponentConfiguration.Builder()
+		config2 = new ComponentConfigurationImpl.Builder()
 				.componentId("component-2")
 				.componentName("component-2")
 				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.component.test.TestDeviceComponent")
@@ -83,7 +75,7 @@ public class BaseComponentTest {
 				.communicationProviderConnectionString(communicationProviderConnectionString)
 				.build();	
 				
-		config3 = new ComponentConfiguration.Builder()
+		config3 = new ComponentConfigurationImpl.Builder()
 				.componentId("component-3")
 				.componentName("component-3")
 				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.component.test.TestDeviceComponent")

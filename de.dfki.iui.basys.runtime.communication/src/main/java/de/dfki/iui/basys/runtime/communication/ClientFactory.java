@@ -1,9 +1,5 @@
 package de.dfki.iui.basys.runtime.communication;
 
-
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-
 import de.dfki.iui.basys.model.runtime.communication.Authentication;
 import de.dfki.iui.basys.model.runtime.communication.Channel;
 import de.dfki.iui.basys.model.runtime.communication.ChannelListener;
@@ -20,35 +16,37 @@ import de.dfki.iui.basys.runtime.communication.provider.MqttCommunicationProvide
 import de.dfki.iui.basys.runtime.communication.provider.WsCommunicationProvider;
 
 public class ClientFactory {
-		
+
 	private static ClientFactory _instance;
+
 	public static ClientFactory getInstance() {
 		if (_instance == null)
 			_instance = new ClientFactory();
-		return _instance;			
+		return _instance;
 	}
-	
-	protected ClientFactory() {}
-	
+
+	protected ClientFactory() {
+	}
+
 	public Notification createNotification(String payload) {
 		Notification not = CommunicationFactory.eINSTANCE.createNotification();
 		not.setPayload(payload);
 		return not;
 	}
-	
+
 	public Request createRequest(String payload) {
 		Request req = CommunicationFactory.eINSTANCE.createRequest();
 		req.setPayload(payload);
 		return req;
 	}
-	
+
 	public Response createResponse(String requestId, String payload) {
 		Response res = CommunicationFactory.eINSTANCE.createResponse();
 		res.setRequestId(requestId);
 		res.setPayload(payload);
 		return res;
 	}
-	
+
 	public Authentication createAuthentication(String username, String password, String cert) {
 		Authentication auth = CommunicationFactory.eINSTANCE.createAuthentication();
 		auth.setUsername(username);
@@ -63,8 +61,8 @@ public class ClientFactory {
 		client.setName(name);
 		client.setAuthentication(auth);
 		return client;
-	}	
-	
+	}
+
 	public ChannelPool createChannelPool(String uri, CommunicationProvider provider) {
 		ChannelPool pool = CommunicationFactory.eINSTANCE.createChannelPool();
 		pool.setUri(uri);
@@ -79,7 +77,7 @@ public class ClientFactory {
 
 		return pool;
 	}
-	
+
 	public ChannelPool createChannelPool(String uri, String communicationProviderImplementationJavaClass) {
 		Class c = null;
 		try {
@@ -91,7 +89,7 @@ public class ClientFactory {
 		CommunicationProvider provider;
 		try {
 			provider = (CommunicationProvider) c.newInstance();
-			return createChannelPool(uri,provider);
+			return createChannelPool(uri, provider);
 		} catch (InstantiationException | IllegalAccessException e) {
 			throw new CommunicationException(e);
 		}
@@ -104,8 +102,7 @@ public class ClientFactory {
 
 		return pool;
 	}
-	
-	
+
 	public ChannelPool createJmsChannelPool(String uri) {
 		CommunicationProvider provider = new JmsCommunicationProvider();
 		return createChannelPool(uri, provider);
@@ -125,7 +122,7 @@ public class ClientFactory {
 		CommunicationProvider provider = new MqttCommunicationProvider();
 		return connectChannelPool(client, uri, provider);
 	}
-	
+
 	public ChannelPool createWsChannelPool(String uri) {
 		CommunicationProvider provider = new WsCommunicationProvider();
 		return createChannelPool(uri, provider);
@@ -146,15 +143,21 @@ public class ClientFactory {
 	}
 
 	public Channel openChannel(ChannelPool pool, String name, boolean queued, ChannelListener listener) {
+
+//		Channel channel = pool.getChannelByName(name);
+//		if (channel == null) {
+//			channel = createChannel(name, queued, listener);
+//			pool.getChannels().add(channel);
+//		}
 		Channel channel = createChannel(name, queued, listener);
 		pool.getChannels().add(channel);
 		channel.open();
 
 		return channel;
 	}
-	
+
 	public String createResponseTopic(Request req) {
-		return "response#"+req.getId();
+		return "response#" + req.getId();
 	}
 
 }

@@ -5,7 +5,7 @@ import java.util.List;
 import de.dfki.iui.basys.model.domain.order.Order;
 import de.dfki.iui.basys.model.domain.order.impl.OrderPackageImpl;
 import de.dfki.iui.basys.model.domain.order.util.OrderResourceFactoryImpl;
-import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.service.EmfServiceComponent;
 import de.dfki.iui.basys.runtime.services.OrderManager;
 

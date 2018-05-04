@@ -13,8 +13,9 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import de.dfki.iui.basys.common.emf.EmfPersistence;
-import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 
 public class EmfServiceComponent extends ServiceComponent {

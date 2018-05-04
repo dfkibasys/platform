@@ -2,10 +2,10 @@ package de.dfki.iui.basys.runtime.services.impl;
 
 import java.util.List;
 
-import de.dfki.iui.basys.model.domain.topology.ProductionLine;
 import de.dfki.iui.basys.model.domain.topology.Area;
 import de.dfki.iui.basys.model.domain.topology.Enterprise;
 import de.dfki.iui.basys.model.domain.topology.EquipmentModule;
+import de.dfki.iui.basys.model.domain.topology.ProductionLine;
 import de.dfki.iui.basys.model.domain.topology.Site;
 import de.dfki.iui.basys.model.domain.topology.Station;
 import de.dfki.iui.basys.model.domain.topology.StorageZone;
@@ -13,7 +13,7 @@ import de.dfki.iui.basys.model.domain.topology.WorkCell;
 import de.dfki.iui.basys.model.domain.topology.WorkCenter;
 import de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl;
 import de.dfki.iui.basys.model.domain.topology.util.TopologyResourceFactoryImpl;
-import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.service.EmfServiceComponent;
 import de.dfki.iui.basys.runtime.services.TopologyManager;
 

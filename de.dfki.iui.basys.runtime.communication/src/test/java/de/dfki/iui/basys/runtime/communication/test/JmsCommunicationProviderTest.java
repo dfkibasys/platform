@@ -1,6 +1,7 @@
 package de.dfki.iui.basys.runtime.communication.test;
 
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +28,7 @@ public class JmsCommunicationProviderTest extends TestCase {
 	Client client_1, client_2;
 	ChannelPool cp_11, cp_12, cp_21, cp_22;
 
+	@Override
 	protected void setUp() throws Exception {
 		super.setUp();
 
@@ -41,6 +43,7 @@ public class JmsCommunicationProviderTest extends TestCase {
 		cp_22 = fac.connectChannelPool(client_2, brokerUri, new JmsCommunicationProvider());
 	}
 
+	@Override
 	protected void tearDown() throws Exception {
 		super.tearDown();
 
@@ -179,7 +182,8 @@ public class JmsCommunicationProviderTest extends TestCase {
 		Channel ch_1_sender = fac.openChannel(cp_11, prefix + "#channel_1", false, null);
 		// Channel ch_2_sender = fac.openChannel(cp_21, "channel_2", false, null);
 
-		Channel ch_1_receiver = fac.openChannel(cp_21, prefix + "#channel_1", false, tester_1);
+		Channel ch_1_receiver_1 = fac.openChannel(cp_21, prefix + "#channel_1", false, tester_1);
+		Channel ch_1_receiver_2 = fac.openChannel(cp_21, prefix + "#channel_1", false, tester_2);
 		// Channel ch_2_receiver = fac.openChannel(cp_21, "channel_2", false, tester_2);
 
 		Notification not = fac.createNotification(message);
@@ -187,14 +191,14 @@ public class JmsCommunicationProviderTest extends TestCase {
 		ch_1_sender.sendNotification(not);
 
 		try {
-			Thread.currentThread().join(1000);
+			TimeUnit.SECONDS.sleep(1);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 		assertTrue(tester_1.isSuccess());
-		// assertTrue(tester_2.isSuccess());
+		assertTrue(tester_2.isSuccess());
 	}
 
 	public void testSendRequestSync() {

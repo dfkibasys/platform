@@ -1,13 +1,11 @@
 package de.dfki.iui.basys.runtime.communication.provider;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 import javax.jms.Connection;
-import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageConsumer;
@@ -39,7 +37,8 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 
 	protected final Logger LOGGER = LoggerFactory.getLogger(JmsCommunicationProvider.class.getName());
 
-	public static final String defaultConnectionString = "vm://localhost?broker.persistent=false";
+	//public static final String defaultConnectionString = "vm://localhost?broker.persistent=false";
+	public static final String defaultConnectionString = "tcp://lns-90165.sb.dfki.de:61616";
 	private Connection connection = null;
 	private Session session;
 
@@ -130,11 +129,11 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 	public void doOpenChannel(Channel channel) throws ProviderException {		
 		LOGGER.info("doOpenChannel: " + channel.getName());
 
-		JmsDestination internalDestination = this.destinations.get(channel.getName());
+		JmsDestination internalDestination = this.destinations.get(channel.getId());
 
 		if (internalDestination == null) {
 			internalDestination = new JmsDestination(getJmsChannelName(channel));
-			this.destinations.put(channel.getName(), internalDestination);
+			this.destinations.put(channel.getId(), internalDestination);
 		}
 
 		if (internalDestination.getMessageConsumer() != null) {
@@ -253,24 +252,25 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 
 	@Override
 	public void doCloseChannel(Channel channel) throws ProviderException {
-		JmsDestination internal_destination = (JmsDestination) this.destinations.get(channel.getName());
+		JmsDestination internal_destination = this.destinations.get(channel.getId());
 
 		if (internal_destination.getMessageConsumer() != null) {
 			try {
 				internal_destination.getMessageConsumer().close();
 			} catch (JMSException e) {
-				throw new ProviderException("Cannot close channel \"" + channel.getName() + "\"", e);
+				throw new ProviderException("Cannot close channel " + channel.getId() + " ("+ channel.getName() + ")", e);
 			}
 		}
 
-		this.destinations.remove(channel.getName());
+		this.destinations.remove(channel.getId());
+		
 	}
 
 	@Override
 	public void doSendMessage(Channel channel, String payload) throws ProviderException {
 		LOGGER.info("doSendMessage: " + channel.getName());
 
-		JmsDestination internal_destination = (JmsDestination) this.destinations.get(channel.getName());
+		JmsDestination internal_destination = this.destinations.get(channel.getId());
 
 		de.dfki.iui.basys.model.runtime.communication.Message message = ClientFactory.getInstance()
 				.createNotification(payload);
@@ -278,11 +278,11 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 		try {
 			String payloadString = JsonUtils.toJsonString(message);
 			Message jmsMsg = session.createTextMessage(payloadString);
-			if (internal_destination.getMessageProducer() == null) {
-				Topic jmsTopic = session.createTopic(channel.getName());
-				MessageProducer jmsProducer = session.createProducer(jmsTopic);
-				internal_destination.setMessageProducer(jmsProducer);
-			}
+//			if (internal_destination.getMessageProducer() == null) {
+//				Topic jmsTopic = session.createTopic(channel.getName());
+//				MessageProducer jmsProducer = session.createProducer(jmsTopic);
+//				internal_destination.setMessageProducer(jmsProducer);
+//			}
 			internal_destination.getMessageProducer().send(jmsMsg);
 		} catch (JMSException e) {
 			throw new ProviderException("Message could not be published on " + channel.getName() + ".", e);
@@ -296,7 +296,7 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 	public void doSendRequest(Channel channel, Request req, ResponseCallback cb) throws ProviderException {
 		LOGGER.info("doSendRequest: " + channel.getName());
 
-		JmsDestination internal_destination = this.destinations.get(channel.getName());
+		JmsDestination internal_destination = this.destinations.get(channel.getId());
 
 		try {
 			String payload = JsonUtils.toJsonString(req);
@@ -321,7 +321,6 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 			try {
 				cb.wait();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
@@ -333,22 +332,22 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 	public void doSendNotification(Channel channel, Notification not) throws ProviderException {
 		LOGGER.info("doSendNotification: " + channel.getName());
 
-		JmsDestination internal_destination = (JmsDestination) this.destinations.get(channel.getName());
+		JmsDestination internal_destination = this.destinations.get(channel.getId());
 
 		try {
 			String payload = JsonUtils.toJsonString(not);
 			Message jmsMsg = session.createTextMessage(payload);
-			if (internal_destination.getMessageProducer() == null) {
-				Topic jmsTopic = session.createTopic(channel.getName());
-				MessageProducer jmsProducer = session.createProducer(jmsTopic);
-				internal_destination.setMessageProducer(jmsProducer);
-			}
+//			if (internal_destination.getMessageProducer() == null) {
+//				Topic jmsTopic = session.createTopic(internal_destination.getName());
+//				MessageProducer jmsProducer = session.createProducer(jmsTopic);
+//				internal_destination.setMessageProducer(jmsProducer);
+//			}
 			internal_destination.getMessageProducer().send(jmsMsg);
+		} catch (IOException e) {
+			LOGGER.error(e.getMessage(),e);
 		} catch (JMSException e) {
 			throw new ProviderException("Message could not be published on " + channel.getName() + ".", e);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		} 
 	}
 	
 	class JmsDestination  {

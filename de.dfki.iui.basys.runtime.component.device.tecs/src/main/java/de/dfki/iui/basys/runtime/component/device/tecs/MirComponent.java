@@ -1,7 +1,11 @@
 package de.dfki.iui.basys.runtime.component.device.tecs;
 
-import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
+import org.apache.thrift.TException;
+
+import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.ComponentException;
+import de.dfki.iui.hrc.generalrobots.Path;
+import de.dfki.iui.hrc.mir100.MIR.Client;
 
 public class MirComponent extends TecsDeviceComponent {
 
@@ -12,11 +16,17 @@ public class MirComponent extends TecsDeviceComponent {
 	}
 
 
-	//protected MIRClient client;
+	protected Client client;
 	
 	@Override
 	public void connectToExternal() throws ComponentException {
 		super.connectToExternal();
+		try {
+			Path p = client.getPath();
+		} catch (TException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		//client = new MIRClient(protocol);
 		//client.open();
 		

@@ -1,6 +1,7 @@
 package de.dfki.iui.basys.runtime.component.device.opcua;
 
 
+import static com.google.common.collect.Lists.newArrayList;
 import static org.eclipse.milo.opcua.stack.core.types.builtin.unsigned.Unsigned.uint;
 import static org.eclipse.milo.opcua.stack.core.util.ConversionUtil.l;
 
@@ -10,11 +11,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.function.BiConsumer;
 
 import org.eclipse.milo.opcua.sdk.client.OpcUaClient;
 import org.eclipse.milo.opcua.sdk.client.api.config.OpcUaClientConfig;
 import org.eclipse.milo.opcua.sdk.client.api.identity.AnonymousProvider;
 import org.eclipse.milo.opcua.sdk.client.api.identity.IdentityProvider;
+import org.eclipse.milo.opcua.sdk.client.api.subscriptions.UaMonitoredItem;
+import org.eclipse.milo.opcua.sdk.client.api.subscriptions.UaSubscription;
 import org.eclipse.milo.opcua.stack.client.UaTcpStackClient;
 import org.eclipse.milo.opcua.stack.core.AttributeId;
 import org.eclipse.milo.opcua.stack.core.UaException;
@@ -22,22 +27,30 @@ import org.eclipse.milo.opcua.stack.core.security.SecurityPolicy;
 import org.eclipse.milo.opcua.stack.core.types.builtin.DataValue;
 import org.eclipse.milo.opcua.stack.core.types.builtin.LocalizedText;
 import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;
+import org.eclipse.milo.opcua.stack.core.types.builtin.QualifiedName;
 import org.eclipse.milo.opcua.stack.core.types.builtin.StatusCode;
 import org.eclipse.milo.opcua.stack.core.types.builtin.Variant;
+import org.eclipse.milo.opcua.stack.core.types.builtin.unsigned.UInteger;
+import org.eclipse.milo.opcua.stack.core.types.enumerated.MonitoringMode;
 import org.eclipse.milo.opcua.stack.core.types.enumerated.TimestampsToReturn;
 import org.eclipse.milo.opcua.stack.core.types.structured.CallMethodRequest;
 import org.eclipse.milo.opcua.stack.core.types.structured.EndpointDescription;
+import org.eclipse.milo.opcua.stack.core.types.structured.MonitoredItemCreateRequest;
+import org.eclipse.milo.opcua.stack.core.types.structured.MonitoringParameters;
+import org.eclipse.milo.opcua.stack.core.types.structured.ReadValueId;
 
-import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.ComponentException;
-import de.dfki.iui.basys.runtime.component.device.DeviceComponent;
+import de.dfki.iui.basys.runtime.component.device.AsyncDeviceComponent;
 
-public class OpcUaDeviceComponent extends DeviceComponent {
+public class OpcUaDeviceComponent extends AsyncDeviceComponent {
 
 	protected OpcUaClient opcuaClient;
 	protected SecurityPolicy opcuaSecurityPolicy = SecurityPolicy.None;
 	protected IdentityProvider opcuaIdentityProvider = AnonymousProvider.INSTANCE;
 
+    private final AtomicLong clientHandles = new AtomicLong(1L);
+    
 	public OpcUaDeviceComponent(ComponentConfiguration config) {
 		super(config);
 	}
@@ -170,6 +183,15 @@ public class OpcUaDeviceComponent extends DeviceComponent {
 			throw new OpcUaException(e);
 		}
 	}
+
+//	public <T> T invokeVoidMethod(final NodeId objectNode, final NodeId methodNode, final Object... inputs) throws OpcUaException  {
+//		try {
+//			return (T) _invokeMethod(objectNode, methodNode, inputs).get();
+//		} catch (InterruptedException | ExecutionException e) {
+//			throw new OpcUaException(e);
+//		}
+//	}
+	
 	
 	public <T> CompletableFuture<T> _invokeMethod(final NodeId objectNode, final NodeId methodNode, final Object... inputs) {
 
@@ -183,8 +205,12 @@ public class OpcUaDeviceComponent extends DeviceComponent {
 			final StatusCode statusCode = result.getStatusCode();
 
 			if (statusCode.isGood()) {
-				final T value = (T) l(result.getOutputArguments()).get(0).getValue();
-				return CompletableFuture.completedFuture(value);
+				if (result.getOutputArguments() != null && result.getOutputArguments().length > 0) {				
+					final T value = (T) l(result.getOutputArguments()).get(0).getValue();
+					return CompletableFuture.completedFuture(value);
+				} else {
+					return CompletableFuture.completedFuture(null);
+				}
 			} else {
 				final CompletableFuture<T> f = new CompletableFuture<>();
 				f.completeExceptionally(new UaException(statusCode));
@@ -193,74 +219,92 @@ public class OpcUaDeviceComponent extends DeviceComponent {
 		});
 	}
 
-	/*
-	 * default ActiveStatesHandler implementation -> trigger logic on device
-	 */
+//	public CompletableFuture<Void> _invokeVoidMethod(final NodeId objectNode, final NodeId methodNode, final Object... inputs) {
+//
+//		Variant[] inVariants = new Variant[inputs.length];
+//		for (int i = 0; i < inputs.length; i++) {
+//			inVariants[i] = new Variant(inputs[i]);
+//		}
+//		final CallMethodRequest request = new CallMethodRequest(objectNode, methodNode, inVariants);
+//
+//		return opcuaClient.call(request).thenCompose(result -> {
+//			final StatusCode statusCode = result.getStatusCode();
+//
+//			if (statusCode.isGood()) {
+//				return CompletableFuture.completedFuture(null);
+//			} else {
+//				final CompletableFuture<Void> f = new CompletableFuture<>();
+//				f.completeExceptionally(new UaException(statusCode));
+//				return f;
+//			}
+//		});
+//	}
 
-	@Override
-	public void onResetting() {
-		LOGGER.info("onResetting");
+	
+    public void subscribeToValue(NodeId node) throws Exception {
+  
 
-	}
+        // create a subscription @ 1000ms
+        UaSubscription subscription = opcuaClient.getSubscriptionManager().createSubscription(1000.0).get();
 
-	@Override
-	public void onStarting() {
-		LOGGER.info("onResetting");
+        // subscribe to the Value attribute of the server's CurrentTime node
+        ReadValueId readValueId = new ReadValueId(
+            node,
+            AttributeId.Value.uid(), null, QualifiedName.NULL_VALUE);
 
-	}
+        // important: client handle must be unique per item
+        UInteger clientHandle = uint(clientHandles.getAndIncrement());
 
-	@Override
-	public void onExecute() {
-		LOGGER.info("onResetting");
+        MonitoringParameters parameters = new MonitoringParameters(
+            clientHandle,
+            1000.0,     // sampling interval
+            null,       // filter, null means use default
+            uint(10),   // queue size
+            true        // discard oldest
+        );
 
-	}
+        MonitoredItemCreateRequest request = new MonitoredItemCreateRequest(
+            readValueId, MonitoringMode.Reporting, parameters);
 
-	@Override
-	public void onCompleting() {
-		LOGGER.info("onResetting");
+        // when creating items in MonitoringMode.Reporting this callback is where each item needs to have its
+        // value/event consumer hooked up. The alternative is to create the item in sampling mode, hook up the
+        // consumer after the creation call completes, and then change the mode for all items to reporting.
+        BiConsumer<UaMonitoredItem, Integer> onItemCreated =
+            (item, id) -> item.setValueConsumer(this::onSubscriptionValue);
 
-	}
+        List<UaMonitoredItem> items = subscription.createMonitoredItems(
+            TimestampsToReturn.Both,
+            newArrayList(request),
+            onItemCreated
+        ).get();
 
-	@Override
-	public void onHolding() {
-		LOGGER.info("onResetting");
+        for (UaMonitoredItem item : items) {
+            if (item.getStatusCode().isGood()) {
+                LOGGER.info("item created for nodeId={}", item.getReadValueId().getNodeId());
+            } else {
+                LOGGER.warn(
+                    "failed to create item for nodeId={} (status={})",
+                    item.getReadValueId().getNodeId(), item.getStatusCode());
+            }
+        }
 
-	}
+    }
 
-	@Override
-	public void onUnholding() {
-		LOGGER.info("onResetting");
-
-	}
-
-	@Override
-	public void onSuspending() {
-		LOGGER.info("onResetting");
-
-	}
-
-	@Override
-	public void onUnsuspending() {
-		LOGGER.info("onResetting");
-
-	}
-
-	@Override
-	public void onAborting() {
-		LOGGER.info("onResetting");
-
-	}
-
-	@Override
-	public void onClearing() {
-		LOGGER.info("onResetting");
-
-	}
-
-	@Override
-	public void onStopping() {
-		LOGGER.info("onResetting");
-
-	}
+    protected void onSubscriptionValue(UaMonitoredItem item, DataValue value) {
+        LOGGER.info(
+                "subscription value received: item={}, value={}",
+                item.getReadValueId().getNodeId(), value.getValue());
+        
+        System.out.println("subscription value received: item="+ item.getReadValueId().getNodeId() + ", value=" + value.getValue() + " (" + getState() + ")");
+    }
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

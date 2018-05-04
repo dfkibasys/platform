@@ -8,7 +8,7 @@ import de.dfki.iui.basys.model.domain.material.MaterialGroup;
 import de.dfki.iui.basys.model.domain.material.MaterialPackage;
 import de.dfki.iui.basys.model.domain.material.impl.MaterialPackageImpl;
 import de.dfki.iui.basys.model.domain.material.util.MaterialResourceFactoryImpl;
-import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.service.EmfServiceComponent;
 import de.dfki.iui.basys.runtime.services.MaterialManager;
 

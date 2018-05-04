@@ -5,7 +5,7 @@ import java.util.List;
 import de.dfki.iui.basys.model.domain.processdefinition.ProcessDefinition;
 import de.dfki.iui.basys.model.domain.processdefinition.impl.ProcessdefinitionPackageImpl;
 import de.dfki.iui.basys.model.domain.processdefinition.util.ProcessdefinitionResourceFactoryImpl;
-import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.service.EmfServiceComponent;
 import de.dfki.iui.basys.runtime.services.ProcessDefinitionManager;
 

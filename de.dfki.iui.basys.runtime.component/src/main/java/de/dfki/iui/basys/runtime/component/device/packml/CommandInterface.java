@@ -1,18 +1,29 @@
 package de.dfki.iui.basys.runtime.component.device.packml;
 
+import de.dfki.iui.basys.model.runtime.component.ComponentRequestStatus;
+import de.dfki.iui.basys.model.runtime.component.ControlMode;
+
 public interface CommandInterface {
-	
-	void setMode(Mode mode) throws PackMLException;
-	
-	void setUnitConfig(UnitConfiguration config) throws PackMLException;
-	
-	void reset();
-	void start();
-	void stop();
-	void hold();
-	void unhold();
-	void suspend();
-	void unsuspend();
-	void abort();
-	void clear();
+
+	ComponentRequestStatus setMode(ControlMode mode);
+
+	ComponentRequestStatus setUnitConfig(UnitConfiguration config);
+
+	ComponentRequestStatus reset();
+
+	ComponentRequestStatus start();
+
+	ComponentRequestStatus stop();
+
+	ComponentRequestStatus hold();
+
+	ComponentRequestStatus unhold();
+
+	ComponentRequestStatus suspend();
+
+	ComponentRequestStatus unsuspend();
+
+	ComponentRequestStatus abort();
+
+	ComponentRequestStatus clear();
 }

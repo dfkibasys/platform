@@ -10,15 +10,17 @@ import de.dfki.iui.basys.model.runtime.communication.Client;
 import de.dfki.iui.basys.model.runtime.communication.Notification;
 import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.communication.Response;
+import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
+import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.ControlMode;
+import de.dfki.iui.basys.model.runtime.component.State;
 import de.dfki.iui.basys.runtime.communication.ClientFactory;
-import de.dfki.iui.basys.runtime.component.device.packml.Mode;
-import de.dfki.iui.basys.runtime.component.device.packml.State;
 import de.dfki.iui.basys.runtime.component.registry.ComponentRegistration;
 import de.dfki.iui.basys.runtime.component.registry.ComponentRegistrationException;
 
 public class BaseComponent implements Component, ChannelListener {
 
-	protected final Logger LOGGER = LoggerFactory.getLogger(getClass());
+	protected final Logger LOGGER = LoggerFactory.getLogger(getClass().getName());
 
 	protected ComponentConfiguration componentConfig;
 	protected ComponentContext context;
@@ -27,6 +29,8 @@ public class BaseComponent implements Component, ChannelListener {
 	protected Client privateClient;
 	protected Channel inChannel;
 	protected Channel outChannel;
+	protected Channel statusChannel;
+	// protected Channel telemetryChannel;
 
 	protected ComponentRegistration registration;
 
@@ -62,8 +66,8 @@ public class BaseComponent implements Component, ChannelListener {
 	}
 
 	@Override
-	public Mode getMode() {
-		return Mode.PRODUCTION;
+	public ControlMode getMode() {
+		return ControlMode.PRODUCTION;
 	}
 
 	@Override
@@ -133,6 +137,9 @@ public class BaseComponent implements Component, ChannelListener {
 			pool = cf.connectChannelPool(privateClient, componentConfig.getCommunicationProviderConnectionString(), componentConfig.getCommunicationProviderImplementationJavaClass());
 		}
 
+		statusChannel = cf.openChannel(pool, statusChannelName, false, null);
+		// telemetryChannel = cf.openChannel(pool, componentConfig.getComponentId() + "#telemetry" , false, null);
+
 		if (componentConfig.getInChannelName() != null && !componentConfig.getInChannelName().equals(""))
 			inChannel = cf.openChannel(pool, componentConfig.getInChannelName(), false, this);
 		if (componentConfig.getOutChannelName() != null && !componentConfig.getOutChannelName().equals(""))
@@ -144,6 +151,8 @@ public class BaseComponent implements Component, ChannelListener {
 			inChannel.close();
 		if (outChannel != null)
 			outChannel.close();
+		if (statusChannel != null)
+			statusChannel.close();
 
 		if (privateClient != null) {
 			privateClient.disconnect();
@@ -163,6 +172,10 @@ public class BaseComponent implements Component, ChannelListener {
 			registration.unregister();
 		}
 	}
+
+	/*
+	 * ChannelListener interface
+	 */
 
 	@Override
 	public void handleMessage(String msg) {

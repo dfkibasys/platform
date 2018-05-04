@@ -17,37 +17,37 @@ public class NotifyingStatesHandlerFacade implements ActiveStatesHandler, WaitSt
 
 	@Override
 	public void onStopped() {
-		component.notifyAndUpdateRegistration();
+		component.updateRegistrationAndNotify();
 		component.onStopped();
 	}
 
 	@Override
 	public void onIdle() {
-		component.notifyAndUpdateRegistration();
+		component.updateRegistrationAndNotify();
 		component.onIdle();
 	}
 
 	@Override
 	public void onComplete() {
-		component.notifyAndUpdateRegistration();
+		component.updateRegistrationAndNotify();
 		component.onComplete();
 	}
 
 	@Override
 	public void onHeld() {
-		component.notifyAndUpdateRegistration();
+		component.updateRegistrationAndNotify();
 		component.onHeld();
 	}
 
 	@Override
 	public void onSuspended() {
-		component.notifyAndUpdateRegistration();
+		component.updateRegistrationAndNotify();
 		component.onSuspended();
 	}
 
 	@Override
 	public void onAborted() {
-		component.notifyAndUpdateRegistration();
+		component.updateRegistrationAndNotify();
 		component.onAborted();
 	}
 
@@ -57,67 +57,67 @@ public class NotifyingStatesHandlerFacade implements ActiveStatesHandler, WaitSt
 
 	@Override
 	public void onResetting() {
-		component.notifyAndUpdateRegistration();
+		component.updateRegistrationAndNotify();
 		component.onResetting();
 	}
 
 	@Override
 	public void onStarting() {
-		component.notifyAndUpdateRegistration();
+		component.updateRegistrationAndNotify();
 		component.onStarting();
 	}
 
 	@Override
 	public void onExecute() {
-		component.notifyAndUpdateRegistration();
+		component.updateRegistrationAndNotify();
 		component.onExecute();
 	}
 
 	@Override
 	public void onCompleting() {
-		component.notifyAndUpdateRegistration();
+		component.updateRegistrationAndNotify();
 		component.onCompleting();
 	}
 
 	@Override
 	public void onHolding() {
-		component.notifyAndUpdateRegistration();
+		component.updateRegistrationAndNotify();
 		component.onHolding();
 	}
 
 	@Override
 	public void onUnholding() {
-		component.notifyAndUpdateRegistration();
+		component.updateRegistrationAndNotify();
 		component.onUnholding();
 	}
 
 	@Override
 	public void onSuspending() {
-		component.notifyAndUpdateRegistration();
+		component.updateRegistrationAndNotify();
 		component.onSuspending();
 	}
 
 	@Override
 	public void onUnsuspending() {
-		component.notifyAndUpdateRegistration();
+		component.updateRegistrationAndNotify();
 		component.onUnsuspending();
 	}
 
 	@Override
 	public void onAborting() {
-		component.notifyAndUpdateRegistration();
+		component.updateRegistrationAndNotify();
 		component.onAborting();
 	}
 
 	@Override
 	public void onClearing() {
-		component.notifyAndUpdateRegistration();
+		component.updateRegistrationAndNotify();
 		component.onClearing();
 	}
 
 	@Override
 	public void onStopping() {
-		component.notifyAndUpdateRegistration();
+		component.updateRegistrationAndNotify();
 		component.onStopping();
 	}
 

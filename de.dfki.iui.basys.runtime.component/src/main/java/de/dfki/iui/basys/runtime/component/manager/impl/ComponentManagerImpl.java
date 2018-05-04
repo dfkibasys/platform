@@ -1,5 +1,8 @@
 package de.dfki.iui.basys.runtime.component.manager.impl;
 
+import java.io.File;
+import java.io.FileFilter;
+import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -7,9 +10,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.io.filefilter.SuffixFileFilter;
+
+import de.dfki.iui.basys.common.emf.JsonUtils;
+import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.BaseComponent;
 import de.dfki.iui.basys.runtime.component.Component;
-import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManager;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManagerException;
@@ -84,6 +90,30 @@ public class ComponentManagerImpl extends BaseComponent implements ComponentMana
 			throw new ComponentManagerException(e);
 		}
 
+	}
+
+	@Override
+	public void createLocalComponent(File configFile) throws ComponentManagerException {
+		try {
+			ComponentConfiguration config = JsonUtils.fromFile(configFile, ComponentConfiguration.class);
+			createLocalComponent(config);
+		} catch (IOException e) {
+			throw new ComponentManagerException(e);
+		}
+	}
+
+	@Override
+	public void createLocalComponents(File configFolder, boolean recursive) throws ComponentManagerException {
+
+		FileFilter filter = new SuffixFileFilter("json");
+		
+		for (File entry : configFolder.listFiles(filter)) {
+			if (entry.isDirectory() && recursive) {
+				createLocalComponents(entry, recursive);
+			} else {
+				createLocalComponent(entry);
+			}
+		}
 	}
 
 }
