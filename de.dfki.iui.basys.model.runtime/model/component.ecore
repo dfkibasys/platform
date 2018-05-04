@@ -8,14 +8,24 @@
     <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
     <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
   </eAnnotations>
-  <eClassifiers xsi:type="ecore:EClass" name="Component" abstract="true" interface="true">
-    <eOperations name="getId" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
-    <eOperations name="getName" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
-    <eOperations name="getCategory" eType="#//ComponentCategory"/>
-    <eOperations name="activate">
-      <eParameters name="context" eType="#//ComponentContext"/>
-    </eOperations>
-    <eOperations name="deactivate"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ComponentInfo">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="componentId" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="componentName" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="componentCategory" eType="#//ComponentCategory"
+        defaultValueLiteral="NONE"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="inChannelName" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="outChannelName" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="currentState" eType="#//State"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="currentMode" eType="#//ControlMode"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="communicationProvider"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="connectionString" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ComponentCategory">
+    <eLiterals name="NONE"/>
+    <eLiterals name="SERVICE_COMPONENT" value="1"/>
+    <eLiterals name="DEVICE_COMPONENT" value="2"/>
+    <eLiterals name="MANAGEMENT_COMPONENT" value="3"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ComponentConfiguration">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="componentId" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
@@ -33,58 +43,70 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="externalConnectionString"
         eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ComponentManager" abstract="true" interface="true"
-      eSuperTypes="#//Component">
-    <eOperations name="getLocalComponents" upperBound="-1" eType="#//Component"/>
-    <eOperations name="getLocalComponentById" eType="#//Component">
-      <eParameters name="id" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
-    </eOperations>
-    <eOperations name="getLocalComponentByName" eType="#//Component">
-      <eParameters name="name" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
-    </eOperations>
-    <eOperations name="createLocalComponent" eExceptions="#//ComponentManagerException">
-      <eParameters name="config" eType="#//ComponentConfiguration"/>
-    </eOperations>
-    <eOperations name="deleteLocalComponent" eExceptions="#//ComponentManagerException">
-      <eParameters name="id" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
-    </eOperations>
+  <eClassifiers xsi:type="ecore:EEnum" name="State">
+    <eLiterals name="UNDEFINED"/>
+    <eLiterals name="CLEARING" value="1"/>
+    <eLiterals name="STOPPED" value="2"/>
+    <eLiterals name="STARTING" value="3"/>
+    <eLiterals name="IDLE" value="3"/>
+    <eLiterals name="SUSPENDED" value="5"/>
+    <eLiterals name="EXECUTE" value="6"/>
+    <eLiterals name="STOPPING" value="7"/>
+    <eLiterals name="ABORTING" value="8"/>
+    <eLiterals name="ABORTED" value="9"/>
+    <eLiterals name="HOLDING" value="10"/>
+    <eLiterals name="HELD" value="11"/>
+    <eLiterals name="UNHOLDING" value="12"/>
+    <eLiterals name="SUSPENDING" value="13"/>
+    <eLiterals name="UNSUSPENDING" value="14"/>
+    <eLiterals name="RESETTING" value="15"/>
+    <eLiterals name="COMPLETING" value="16"/>
+    <eLiterals name="COMPLETE" value="17"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ComponentRegistry" abstract="true" interface="true"
-      eSuperTypes="#//Component">
-    <eOperations name="createRegistration" eType="#//ComponentRegistration" eExceptions="#//ComponentRegistrationException">
-      <eParameters name="instance" eType="#//Component"/>
-    </eOperations>
-    <eOperations name="getComponents" upperBound="-1" eType="#//ComponentDescription">
-      <eParameters name="category" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
-    </eOperations>
-    <eOperations name="getComponentById" eType="#//ComponentDescription">
-      <eParameters name="category" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
-      <eParameters name="id" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
-    </eOperations>
-    <eOperations name="getComponentByName" eType="#//ComponentDescription">
-      <eParameters name="category" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
-      <eParameters name="name" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
-    </eOperations>
+  <eClassifiers xsi:type="ecore:EEnum" name="ControlMode">
+    <eLiterals name="UNDEFINED"/>
+    <eLiterals name="PRODUCTION" value="1"/>
+    <eLiterals name="MAINTENANCE" value="2"/>
+    <eLiterals name="MANUAL" value="3"/>
+    <eLiterals name="CHANGE_OVER" value="4"/>
+    <eLiterals name="CLEAN" value="5"/>
+    <eLiterals name="SET_UP" value="6"/>
+    <eLiterals name="EMPTY_OUT" value="7"/>
+    <eLiterals name="SIMULATION" value="8"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ComponentRegistration" abstract="true"
-      interface="true">
-    <eOperations name="register" eExceptions="#//ComponentRegistrationException"/>
-    <eOperations name="update" eExceptions="#//ComponentRegistrationException"/>
-    <eOperations name="unregister" eExceptions="#//ComponentRegistrationException"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="ControlCommand">
+    <eLiterals name="NO_COMMAND" literal="NO_COMMAND"/>
+    <eLiterals name="RESET" value="1"/>
+    <eLiterals name="START" value="2"/>
+    <eLiterals name="STOP" value="3"/>
+    <eLiterals name="HOLD" value="4"/>
+    <eLiterals name="UNHOLD" value="5" literal="UNHOLD"/>
+    <eLiterals name="SUSPEND" value="6"/>
+    <eLiterals name="UNSUSPEND" value="7"/>
+    <eLiterals name="ABORT" value="8"/>
+    <eLiterals name="CLEAR" value="9"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ComponentContext" abstract="true" interface="true">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="componentRegistry" eType="#//ComponentRegistry"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="sharedChannelPool" eType="ecore:EClass communication.ecore#//ChannelPool"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ComponentRequest" abstract="true" interface="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="componentId" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EDataType" name="ComponentException" instanceClassName="de.dfki.iui.basys.model.runtime.component.exceptions.ComponentException"/>
-  <eClassifiers xsi:type="ecore:EDataType" name="ComponentManagerException" instanceClassName="de.dfki.iui.basys.model.runtime.component.exceptions.ComponentManagerException"/>
-  <eClassifiers xsi:type="ecore:EDataType" name="ComponentRegistrationException" instanceClassName="de.dfki.iui.basys.model.runtime.component.exceptions.ComponentRegistrationException"/>
-  <eClassifiers xsi:type="ecore:EEnum" name="ComponentCategory">
-    <eLiterals name="NONE"/>
-    <eLiterals name="SERVICE_COMPONENT" value="1"/>
-    <eLiterals name="DEVICE_COMPONENT" value="2"/>
-    <eLiterals name="MANAGEMENT_COMPONENT" value="3"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CommandRequest" eSuperTypes="#//ComponentRequest">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="controlCommand" eType="#//ControlCommand"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ComponentDescription" abstract="true"
-      interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ChangeModeRequest" eSuperTypes="#//ComponentRequest">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mode" eType="#//ControlMode"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CapabilityRequest" eSuperTypes="#//ComponentRequest">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capability" eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ComponentRequestStatus">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="componentId" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" eType="#//RequestStatus"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="message" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RequestStatus">
+    <eLiterals name="UNDEFINED"/>
+    <eLiterals name="ACCEPTED" value="1"/>
+    <eLiterals name="REJECTED" value="2"/>
+  </eClassifiers>
 </ecore:EPackage>

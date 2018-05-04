@@ -122,10 +122,10 @@ public class ProductdefinitionSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ProductdefinitionPackage.COMPONENT_ENTRY: {
-				ComponentEntry componentEntry = (ComponentEntry)theEObject;
-				T result = caseComponentEntry(componentEntry);
-				if (result == null) result = caseBOMEntry(componentEntry);
+			case ProductdefinitionPackage.MATERIAL_ENTRY: {
+				MaterialEntry materialEntry = (MaterialEntry)theEObject;
+				T result = caseMaterialEntry(materialEntry);
+				if (result == null) result = caseBOMEntry(materialEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -247,17 +247,17 @@ public class ProductdefinitionSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Component Entry</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Material Entry</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Component Entry</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Material Entry</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseComponentEntry(ComponentEntry object) {
+	public T caseMaterialEntry(MaterialEntry object) {
 		return null;
 	}
 

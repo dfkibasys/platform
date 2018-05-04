@@ -5,6 +5,7 @@ package de.dfki.iui.basys.model.domain.capability.impl;
 import de.dfki.iui.basys.model.domain.capability.*;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -57,23 +58,58 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case CapabilityPackage.CAPABILITY_ASSERTION: return createCapabilityAssertion();
+			case CapabilityPackage.CAPABILITY_REQUEST: return createCapabilityRequest();
 			case CapabilityPackage.CAPABILITY: return createCapability();
 			case CapabilityPackage.HANDLING_CAPABILITY: return createHandlingCapability();
 			case CapabilityPackage.MANUFACTURING_CAPABILITY: return createManufacturingCapability();
 			case CapabilityPackage.FÜGEN: return createFügen();
-			case CapabilityPackage.PRESSEN: return createPressen();
-			case CapabilityPackage.QO_SCAPABILITY: return createQoSCapability();
+			case CapabilityPackage.PRESSING: return createPressing();
 			case CapabilityPackage.URFORMEN: return createUrformen();
 			case CapabilityPackage.UMFORMEN: return createUmformen();
 			case CapabilityPackage.TRENNEN: return createTrennen();
 			case CapabilityPackage.BESCHICHTEN: return createBeschichten();
 			case CapabilityPackage.STOFFEIGENSCHAFTEN: return createStoffeigenschaften();
 			case CapabilityPackage.AN_EINPRESSEN: return createAnEinpressen();
-			case CapabilityPackage.SCHRAUBEN: return createSchrauben();
-			case CapabilityPackage.INFORMATION_TRANSFER_CAPABILITY: return createInformationTransferCapability();
-			case CapabilityPackage.PROVIDE_INFORMATION: return createProvideInformation();
+			case CapabilityPackage.SCREWING: return createScrewing();
+			case CapabilityPackage.PRODUCTION_CAPABILITY: return createProductionCapability();
+			case CapabilityPackage.LOGISTICS_CAPABILITY: return createLogisticsCapability();
+			case CapabilityPackage.PICK_AND_PLACE: return createPickAndPlace();
+			case CapabilityPackage.TRANSPORT: return createTransport();
+			case CapabilityPackage.STORE: return createStore();
+			case CapabilityPackage.QO_SCAPABILITY: return createQoSCapability();
+			case CapabilityPackage.INSPECT: return createInspect();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object createFromString(EDataType eDataType, String initialValue) {
+		switch (eDataType.getClassifierID()) {
+			case CapabilityPackage.LOAD_CARRIER_UNIT_ENUM:
+				return createLoadCarrierUnitEnumFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String convertToString(EDataType eDataType, Object instanceValue) {
+		switch (eDataType.getClassifierID()) {
+			case CapabilityPackage.LOAD_CARRIER_UNIT_ENUM:
+				return convertLoadCarrierUnitEnumToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -85,6 +121,16 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	public CapabilityAssertion createCapabilityAssertion() {
 		CapabilityAssertionImpl capabilityAssertion = new CapabilityAssertionImpl();
 		return capabilityAssertion;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CapabilityRequest createCapabilityRequest() {
+		CapabilityRequestImpl capabilityRequest = new CapabilityRequestImpl();
+		return capabilityRequest;
 	}
 
 	/**
@@ -132,9 +178,9 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Pressen createPressen() {
-		PressenImpl pressen = new PressenImpl();
-		return pressen;
+	public Pressing createPressing() {
+		PressingImpl pressing = new PressingImpl();
+		return pressing;
 	}
 
 	/**
@@ -145,6 +191,36 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	public QoSCapability createQoSCapability() {
 		QoSCapabilityImpl qoSCapability = new QoSCapabilityImpl();
 		return qoSCapability;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Inspect createInspect() {
+		InspectImpl inspect = new InspectImpl();
+		return inspect;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LoadCarrierUnitEnum createLoadCarrierUnitEnumFromString(EDataType eDataType, String initialValue) {
+		LoadCarrierUnitEnum result = LoadCarrierUnitEnum.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertLoadCarrierUnitEnumToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**
@@ -212,9 +288,9 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Schrauben createSchrauben() {
-		SchraubenImpl schrauben = new SchraubenImpl();
-		return schrauben;
+	public Screwing createScrewing() {
+		ScrewingImpl screwing = new ScrewingImpl();
+		return screwing;
 	}
 
 	/**
@@ -222,9 +298,9 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InformationTransferCapability createInformationTransferCapability() {
-		InformationTransferCapabilityImpl informationTransferCapability = new InformationTransferCapabilityImpl();
-		return informationTransferCapability;
+	public ProductionCapability createProductionCapability() {
+		ProductionCapabilityImpl productionCapability = new ProductionCapabilityImpl();
+		return productionCapability;
 	}
 
 	/**
@@ -232,9 +308,39 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProvideInformation createProvideInformation() {
-		ProvideInformationImpl provideInformation = new ProvideInformationImpl();
-		return provideInformation;
+	public LogisticsCapability createLogisticsCapability() {
+		LogisticsCapabilityImpl logisticsCapability = new LogisticsCapabilityImpl();
+		return logisticsCapability;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PickAndPlace createPickAndPlace() {
+		PickAndPlaceImpl pickAndPlace = new PickAndPlaceImpl();
+		return pickAndPlace;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Transport createTransport() {
+		TransportImpl transport = new TransportImpl();
+		return transport;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Store createStore() {
+		StoreImpl store = new StoreImpl();
+		return store;
 	}
 
 	/**

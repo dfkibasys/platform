@@ -164,29 +164,6 @@ public class ProductdefinitionItemProviderAdapterFactory extends Productdefiniti
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.productdefinition.BOMEntry} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected BOMEntryItemProvider bomEntryItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.productdefinition.BOMEntry}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createBOMEntryAdapter() {
-		if (bomEntryItemProvider == null) {
-			bomEntryItemProvider = new BOMEntryItemProvider(this);
-		}
-
-		return bomEntryItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.productdefinition.AssemblyGroup} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -233,49 +210,26 @@ public class ProductdefinitionItemProviderAdapterFactory extends Productdefiniti
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.productdefinition.ComponentEntry} instances.
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.productdefinition.MaterialEntry} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ComponentEntryItemProvider componentEntryItemProvider;
+	protected MaterialEntryItemProvider materialEntryItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.productdefinition.ComponentEntry}.
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.productdefinition.MaterialEntry}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createComponentEntryAdapter() {
-		if (componentEntryItemProvider == null) {
-			componentEntryItemProvider = new ComponentEntryItemProvider(this);
+	public Adapter createMaterialEntryAdapter() {
+		if (materialEntryItemProvider == null) {
+			materialEntryItemProvider = new MaterialEntryItemProvider(this);
 		}
 
-		return componentEntryItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.productdefinition.ManufacturedComponent} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ManufacturedComponentItemProvider manufacturedComponentItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.productdefinition.ManufacturedComponent}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createManufacturedComponentAdapter() {
-		if (manufacturedComponentItemProvider == null) {
-			manufacturedComponentItemProvider = new ManufacturedComponentItemProvider(this);
-		}
-
-		return manufacturedComponentItemProvider;
+		return materialEntryItemProvider;
 	}
 
 	/**
@@ -381,11 +335,9 @@ public class ProductdefinitionItemProviderAdapterFactory extends Productdefiniti
 		if (productGroupItemProvider != null) productGroupItemProvider.dispose();
 		if (productVariantItemProvider != null) productVariantItemProvider.dispose();
 		if (billOfMaterialItemProvider != null) billOfMaterialItemProvider.dispose();
-		if (bomEntryItemProvider != null) bomEntryItemProvider.dispose();
 		if (assemblyGroupItemProvider != null) assemblyGroupItemProvider.dispose();
 		if (assemblyGroupEntryItemProvider != null) assemblyGroupEntryItemProvider.dispose();
-		if (componentEntryItemProvider != null) componentEntryItemProvider.dispose();
-		if (manufacturedComponentItemProvider != null) manufacturedComponentItemProvider.dispose();
+		if (materialEntryItemProvider != null) materialEntryItemProvider.dispose();
 	}
 
 }

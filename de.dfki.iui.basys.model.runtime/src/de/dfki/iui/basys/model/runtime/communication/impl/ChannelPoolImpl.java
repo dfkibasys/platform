@@ -2,30 +2,26 @@
  */
 package de.dfki.iui.basys.model.runtime.communication.impl;
 
+import java.lang.reflect.InvocationTargetException;
+import java.util.Collection;
+import java.util.Iterator;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import de.dfki.iui.basys.model.base.impl.EntityImpl;
 import de.dfki.iui.basys.model.runtime.communication.Channel;
 import de.dfki.iui.basys.model.runtime.communication.ChannelPool;
 import de.dfki.iui.basys.model.runtime.communication.Client;
 import de.dfki.iui.basys.model.runtime.communication.CommunicationPackage;
 import de.dfki.iui.basys.model.runtime.communication.CommunicationProvider;
-
 import de.dfki.iui.basys.model.runtime.communication.exceptions.ChannelPoolException;
-import java.lang.reflect.InvocationTargetException;
-
-import java.util.Collection;
-import java.util.Iterator;
-
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -139,6 +135,7 @@ public class ChannelPoolImpl extends EntityImpl implements ChannelPool {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Channel> getChannels() {
 		if (channels == null) {
 			channels = new EObjectWithInverseResolvingEList<Channel>(Channel.class, this, CommunicationPackage.CHANNEL_POOL__CHANNELS, CommunicationPackage.CHANNEL__POOL);
@@ -151,6 +148,7 @@ public class ChannelPoolImpl extends EntityImpl implements ChannelPool {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public CommunicationProvider getProvider() {
 //		if (provider != null && provider.eIsProxy()) {
 //			InternalEObject oldProvider = (InternalEObject)provider;
@@ -177,6 +175,7 @@ public class ChannelPoolImpl extends EntityImpl implements ChannelPool {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public void setProvider(CommunicationProvider newProvider) {
 //		CommunicationProvider oldProvider = provider;
 		provider = newProvider;
@@ -189,6 +188,7 @@ public class ChannelPoolImpl extends EntityImpl implements ChannelPool {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getUri() {
 		return uri;
 	}
@@ -198,6 +198,7 @@ public class ChannelPoolImpl extends EntityImpl implements ChannelPool {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setUri(String newUri) {
 		String oldUri = uri;
 		uri = newUri;
@@ -210,6 +211,7 @@ public class ChannelPoolImpl extends EntityImpl implements ChannelPool {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Client getClient() {
 		if (client != null && client.eIsProxy()) {
 			InternalEObject oldClient = (InternalEObject)client;
@@ -251,6 +253,7 @@ public class ChannelPoolImpl extends EntityImpl implements ChannelPool {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setClient(Client newClient) {
 		if (newClient != client) {
 			NotificationChain msgs = null;
@@ -270,6 +273,7 @@ public class ChannelPoolImpl extends EntityImpl implements ChannelPool {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public void connect() throws ChannelPoolException {
 		if (isConnected())
 			return;
@@ -288,6 +292,7 @@ public class ChannelPoolImpl extends EntityImpl implements ChannelPool {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public void disconnect() throws ChannelPoolException {
 		if (!isConnected())
 			return;
@@ -306,13 +311,14 @@ public class ChannelPoolImpl extends EntityImpl implements ChannelPool {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public Channel getChannel(String id) {
 		if (!isConnected())
 			return null;
 		
 		Iterator<Channel> it = getChannels().iterator();
 		while (it.hasNext()) {
-			Channel channel = (Channel) it.next();
+			Channel channel = it.next();
 			if (channel.getId().equals(id))
 				return channel;			
 		}
@@ -323,8 +329,29 @@ public class ChannelPoolImpl extends EntityImpl implements ChannelPool {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public Channel getChannelByName(String name) {
+		if (!isConnected())
+			return null;
+		
+		Iterator<Channel> it = getChannels().iterator();
+		while (it.hasNext()) {
+			Channel channel = it.next();
+			if (channel.getName().equals(name))
+				return channel;			
+		}
+		
+		return null;
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isConnected() {
 		return connected;
 	}

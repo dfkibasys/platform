@@ -3,35 +3,27 @@
 package de.dfki.iui.basys.model.domain.topology.provider;
 
 
-import de.dfki.iui.basys.model.base.computation.MatchReport;
-import de.dfki.iui.basys.model.base.computation.Matches;
-import de.dfki.iui.basys.model.base.computation.MatchReport.MatchResult;
-import de.dfki.iui.basys.model.base.provider.EntityItemProvider;
-
-import de.dfki.iui.basys.model.domain.capability.CapabilityFactory;
-
-import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
-import de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstance;
-import de.dfki.iui.basys.model.domain.resourcetype.ResourceType;
-import de.dfki.iui.basys.model.domain.topology.EquipmentModule;
-import de.dfki.iui.basys.model.domain.topology.TopologyFactory;
-import de.dfki.iui.basys.model.domain.topology.TopologyPackage;
-
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import de.dfki.iui.basys.model.base.provider.EntityItemProvider;
+import de.dfki.iui.basys.model.domain.capability.CapabilityFactory;
+import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
+import de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstance;
+import de.dfki.iui.basys.model.domain.resourcetype.ResourceType;
+import de.dfki.iui.basys.model.domain.topology.EquipmentModule;
+import de.dfki.iui.basys.model.domain.topology.TopologyFactory;
+import de.dfki.iui.basys.model.domain.topology.TopologyPackage;
 
 /**
  * This is the item provider adapter for a {@link de.dfki.iui.basys.model.domain.topology.EquipmentModule} object.
@@ -107,27 +99,28 @@ public class EquipmentModuleItemProvider extends EntityItemProvider {
 				Collection<?> result = super.getChoiceOfValues(object);
 				List<ResourceType> filtered = new LinkedList<>();
 				
-				result.forEach(type -> {
-					if (type == null) {
-						//filtered.add((ResourceType) type);
-						return;
-					}
-					
-					ResourceType t = (ResourceType) type;
-					
-					if (t.getCapabilityAssertion() == null) return;
-					
-					if (e.getCapabilityRequirement() != null) {
-						MatchReport report = Matches.matches(e.getCapabilityRequirement(), t.getCapabilityAssertion().getPattern());
-						if (report.result == MatchResult.MATCH_SUCCESS) {
-							filtered.add(t);
-						}
-					} else {
-						filtered.add(t);
-					}
-				});				
-				
-				return filtered;
+//				result.forEach(type -> {
+//					if (type == null) {
+//						//filtered.add((ResourceType) type);
+//						return;
+//					}
+//					
+//					ResourceType t = (ResourceType) type;
+//					
+//					if (t.getCapabilityAssertion() == null) return;
+//					
+//					if (e.getCapabilityRequirement() != null) {
+//						MatchReport report = Matches.matches(e.getCapabilityRequirement(), t.getCapabilityAssertion().getPattern());
+//						if (report.result == MatchResult.MATCH_SUCCESS) {
+//							filtered.add(t);
+//						}
+//					} else {
+//						filtered.add(t);
+//					}
+//				});				
+//				
+//				return filtered;
+				return result;
 			}
 		});
 	}
@@ -172,41 +165,42 @@ public class EquipmentModuleItemProvider extends EntityItemProvider {
 				Collection<?> result = super.getChoiceOfValues(object);
 				List<ResourceInstance> filtered = new LinkedList<>();
 				
-				result.forEach(instance -> {
-					ResourceInstance i = (ResourceInstance) instance;
-					ResourceType t = i.getResourceType();
-					
-					if (t == null || t.getCapabilityAssertion() == null) return;
-					
-					if (e.getAssignedResourceType() != null && e.getCapabilityRequirement() != null) {
-						if (e.getAssignedResourceType().equals(i.getResourceType())) {
-							MatchReport report = Matches.matches(e.getCapabilityRequirement(), i.getResourceType().getCapabilityAssertion().getPattern());
-							if (report.result == MatchResult.MATCH_SUCCESS) {
-								filtered.add(i);
-							}
-						}
-					} else if (e.getCapabilityRequirement() != null) {						
-						MatchReport report = Matches.matches(e.getCapabilityRequirement(), i.getResourceType().getCapabilityAssertion().getPattern());
-						if (report.result == MatchResult.MATCH_SUCCESS) {
-							filtered.add(i);
-						}
-					} else {
-						filtered.add(i);
-					}
-					
-					if (i.getResourceType() != null) {							
-						if (e.getCapabilityRequirement() != null) {
-							MatchReport report = Matches.matches(e.getCapabilityRequirement(), i.getResourceType().getCapabilityAssertion().getPattern());
-							if (report.result == MatchResult.MATCH_SUCCESS) {
-								filtered.add(i);
-							}
-						} else {
-							filtered.add(i);
-						}
-					}
-				});				
-				
-				return filtered;
+//				result.forEach(instance -> {
+//					ResourceInstance i = (ResourceInstance) instance;
+//					ResourceType t = i.getResourceType();
+//					
+//					if (t == null || t.getCapabilityAssertion() == null) return;
+//					
+//					if (e.getAssignedResourceType() != null && e.getCapabilityRequirement() != null) {
+//						if (e.getAssignedResourceType().equals(i.getResourceType())) {
+//							MatchReport report = Matches.matches(e.getCapabilityRequirement(), i.getResourceType().getCapabilityAssertion().getPattern());
+//							if (report.result == MatchResult.MATCH_SUCCESS) {
+//								filtered.add(i);
+//							}
+//						}
+//					} else if (e.getCapabilityRequirement() != null) {						
+//						MatchReport report = Matches.matches(e.getCapabilityRequirement(), i.getResourceType().getCapabilityAssertion().getPattern());
+//						if (report.result == MatchResult.MATCH_SUCCESS) {
+//							filtered.add(i);
+//						}
+//					} else {
+//						filtered.add(i);
+//					}
+//					
+//					if (i.getResourceType() != null) {							
+//						if (e.getCapabilityRequirement() != null) {
+//							MatchReport report = Matches.matches(e.getCapabilityRequirement(), i.getResourceType().getCapabilityAssertion().getPattern());
+//							if (report.result == MatchResult.MATCH_SUCCESS) {
+//								filtered.add(i);
+//							}
+//						} else {
+//							filtered.add(i);
+//						}
+//					}
+//				});				
+//				
+//				return filtered;
+				return result;
 			}
 		});
 	}
@@ -324,6 +318,11 @@ public class EquipmentModuleItemProvider extends EntityItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createProductionCapability()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
 				 CapabilityFactory.eINSTANCE.createManufacturingCapability()));
 
 		newChildDescriptors.add
@@ -339,12 +338,7 @@ public class EquipmentModuleItemProvider extends EntityItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
-				 CapabilityFactory.eINSTANCE.createPressen()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
-				 CapabilityFactory.eINSTANCE.createQoSCapability()));
+				 CapabilityFactory.eINSTANCE.createPressing()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -374,17 +368,37 @@ public class EquipmentModuleItemProvider extends EntityItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
-				 CapabilityFactory.eINSTANCE.createSchrauben()));
+				 CapabilityFactory.eINSTANCE.createScrewing()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
-				 CapabilityFactory.eINSTANCE.createInformationTransferCapability()));
+				 CapabilityFactory.eINSTANCE.createLogisticsCapability()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
-				 CapabilityFactory.eINSTANCE.createProvideInformation()));
+				 CapabilityFactory.eINSTANCE.createPickAndPlace()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createTransport()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createStore()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createQoSCapability()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createInspect()));
 	}
 
 	/**

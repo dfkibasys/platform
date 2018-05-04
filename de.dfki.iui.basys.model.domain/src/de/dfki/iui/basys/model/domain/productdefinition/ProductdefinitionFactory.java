@@ -58,15 +58,6 @@ public interface ProductdefinitionFactory extends EFactory {
 	BillOfMaterial createBillOfMaterial();
 
 	/**
-	 * Returns a new object of class '<em>BOM Entry</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>BOM Entry</em>'.
-	 * @generated
-	 */
-	BOMEntry createBOMEntry();
-
-	/**
 	 * Returns a new object of class '<em>Assembly Group</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -85,22 +76,13 @@ public interface ProductdefinitionFactory extends EFactory {
 	AssemblyGroupEntry createAssemblyGroupEntry();
 
 	/**
-	 * Returns a new object of class '<em>Component Entry</em>'.
+	 * Returns a new object of class '<em>Material Entry</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Component Entry</em>'.
+	 * @return a new object of class '<em>Material Entry</em>'.
 	 * @generated
 	 */
-	ComponentEntry createComponentEntry();
-
-	/**
-	 * Returns a new object of class '<em>Manufactured Component</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Manufactured Component</em>'.
-	 * @generated
-	 */
-	ManufacturedComponent createManufacturedComponent();
+	MaterialEntry createMaterialEntry();
 
 	/**
 	 * Returns the package supported by this factory.

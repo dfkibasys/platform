@@ -5,8 +5,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" eType="#//LayoutElement"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="LayoutElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="referencedStation" eType="ecore:EClass topology.ecore#//Station"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LayoutElement" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="topologyElement" eType="ecore:EClass topology.ecore#//TopologyElement"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="dimension"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="position"/>
   </eClassifiers>

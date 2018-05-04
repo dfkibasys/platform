@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class ManufacturingCapabilityImpl extends CapabilityImpl implements ManufacturingCapability {
+public class ManufacturingCapabilityImpl extends ProductionCapabilityImpl implements ManufacturingCapability {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -3,8 +3,6 @@
 package de.dfki.iui.basys.model.domain.topology;
 
 import de.dfki.iui.basys.model.base.BasePackage;
-
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -59,14 +57,14 @@ public interface TopologyPackage extends EPackage {
 	TopologyPackage eINSTANCE = de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.EnterpriseImpl <em>Enterprise</em>}' class.
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.TopologyElement <em>Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.topology.impl.EnterpriseImpl
-	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getEnterprise()
+	 * @see de.dfki.iui.basys.model.domain.topology.TopologyElement
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getTopologyElement()
 	 * @generated
 	 */
-	int ENTERPRISE = 0;
+	int TOPOLOGY_ELEMENT = 0;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -75,7 +73,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTERPRISE__BINDING = BasePackage.ENTITY__BINDING;
+	int TOPOLOGY_ELEMENT__BINDING = BasePackage.ENTITY__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -84,7 +82,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTERPRISE__ID = BasePackage.ENTITY__ID;
+	int TOPOLOGY_ELEMENT__ID = BasePackage.ENTITY__ID;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -93,7 +91,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTERPRISE__NAME = BasePackage.ENTITY__NAME;
+	int TOPOLOGY_ELEMENT__NAME = BasePackage.ENTITY__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -102,7 +100,71 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTERPRISE__METADATA = BasePackage.ENTITY__METADATA;
+	int TOPOLOGY_ELEMENT__METADATA = BasePackage.ENTITY__METADATA;
+
+	/**
+	 * The number of structural features of the '<em>Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOPOLOGY_ELEMENT_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOPOLOGY_ELEMENT_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.EnterpriseImpl <em>Enterprise</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.EnterpriseImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getEnterprise()
+	 * @generated
+	 */
+	int ENTERPRISE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTERPRISE__BINDING = TOPOLOGY_ELEMENT__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTERPRISE__ID = TOPOLOGY_ELEMENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTERPRISE__NAME = TOPOLOGY_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTERPRISE__METADATA = TOPOLOGY_ELEMENT__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Sites</b></em>' containment reference list.
@@ -111,7 +173,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTERPRISE__SITES = BasePackage.ENTITY_FEATURE_COUNT + 0;
+	int ENTERPRISE__SITES = TOPOLOGY_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Enterprise</em>' class.
@@ -120,7 +182,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTERPRISE_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 1;
+	int ENTERPRISE_FEATURE_COUNT = TOPOLOGY_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Enterprise</em>' class.
@@ -129,7 +191,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTERPRISE_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
+	int ENTERPRISE_OPERATION_COUNT = TOPOLOGY_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.SiteImpl <em>Site</em>}' class.
@@ -139,7 +201,7 @@ public interface TopologyPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getSite()
 	 * @generated
 	 */
-	int SITE = 1;
+	int SITE = 2;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -148,7 +210,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SITE__BINDING = BasePackage.ENTITY__BINDING;
+	int SITE__BINDING = TOPOLOGY_ELEMENT__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -157,7 +219,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SITE__ID = BasePackage.ENTITY__ID;
+	int SITE__ID = TOPOLOGY_ELEMENT__ID;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -166,7 +228,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SITE__NAME = BasePackage.ENTITY__NAME;
+	int SITE__NAME = TOPOLOGY_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -175,7 +237,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SITE__METADATA = BasePackage.ENTITY__METADATA;
+	int SITE__METADATA = TOPOLOGY_ELEMENT__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Areas</b></em>' containment reference list.
@@ -184,7 +246,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SITE__AREAS = BasePackage.ENTITY_FEATURE_COUNT + 0;
+	int SITE__AREAS = TOPOLOGY_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Site</em>' class.
@@ -193,7 +255,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SITE_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 1;
+	int SITE_FEATURE_COUNT = TOPOLOGY_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Site</em>' class.
@@ -202,7 +264,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SITE_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
+	int SITE_OPERATION_COUNT = TOPOLOGY_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.AreaImpl <em>Area</em>}' class.
@@ -212,7 +274,7 @@ public interface TopologyPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getArea()
 	 * @generated
 	 */
-	int AREA = 2;
+	int AREA = 3;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -221,7 +283,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AREA__BINDING = BasePackage.ENTITY__BINDING;
+	int AREA__BINDING = TOPOLOGY_ELEMENT__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -230,7 +292,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AREA__ID = BasePackage.ENTITY__ID;
+	int AREA__ID = TOPOLOGY_ELEMENT__ID;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -239,7 +301,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AREA__NAME = BasePackage.ENTITY__NAME;
+	int AREA__NAME = TOPOLOGY_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -248,7 +310,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AREA__METADATA = BasePackage.ENTITY__METADATA;
+	int AREA__METADATA = TOPOLOGY_ELEMENT__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Work Centers</b></em>' containment reference list.
@@ -257,7 +319,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AREA__WORK_CENTERS = BasePackage.ENTITY_FEATURE_COUNT + 0;
+	int AREA__WORK_CENTERS = TOPOLOGY_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
@@ -266,7 +328,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AREA__EQUIPMENT_MODULES = BasePackage.ENTITY_FEATURE_COUNT + 1;
+	int AREA__EQUIPMENT_MODULES = TOPOLOGY_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Area</em>' class.
@@ -275,7 +337,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AREA_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 2;
+	int AREA_FEATURE_COUNT = TOPOLOGY_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Area</em>' class.
@@ -284,7 +346,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AREA_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
+	int AREA_OPERATION_COUNT = TOPOLOGY_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.WorkCenterImpl <em>Work Center</em>}' class.
@@ -294,7 +356,7 @@ public interface TopologyPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getWorkCenter()
 	 * @generated
 	 */
-	int WORK_CENTER = 3;
+	int WORK_CENTER = 4;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -367,7 +429,7 @@ public interface TopologyPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getProcessCell()
 	 * @generated
 	 */
-	int PROCESS_CELL = 4;
+	int PROCESS_CELL = 5;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -449,7 +511,7 @@ public interface TopologyPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getProductionUnit()
 	 * @generated
 	 */
-	int PRODUCTION_UNIT = 5;
+	int PRODUCTION_UNIT = 6;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -531,7 +593,7 @@ public interface TopologyPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getProductionLine()
 	 * @generated
 	 */
-	int PRODUCTION_LINE = 6;
+	int PRODUCTION_LINE = 7;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -613,7 +675,7 @@ public interface TopologyPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getStorageZone()
 	 * @generated
 	 */
-	int STORAGE_ZONE = 7;
+	int STORAGE_ZONE = 8;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -695,7 +757,7 @@ public interface TopologyPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getWorkUnit()
 	 * @generated
 	 */
-	int WORK_UNIT = 8;
+	int WORK_UNIT = 9;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -704,7 +766,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORK_UNIT__BINDING = BasePackage.ENTITY__BINDING;
+	int WORK_UNIT__BINDING = TOPOLOGY_ELEMENT__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -713,7 +775,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORK_UNIT__ID = BasePackage.ENTITY__ID;
+	int WORK_UNIT__ID = TOPOLOGY_ELEMENT__ID;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -722,7 +784,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORK_UNIT__NAME = BasePackage.ENTITY__NAME;
+	int WORK_UNIT__NAME = TOPOLOGY_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -731,7 +793,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORK_UNIT__METADATA = BasePackage.ENTITY__METADATA;
+	int WORK_UNIT__METADATA = TOPOLOGY_ELEMENT__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
@@ -740,7 +802,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORK_UNIT__EQUIPMENT_MODULES = BasePackage.ENTITY_FEATURE_COUNT + 0;
+	int WORK_UNIT__EQUIPMENT_MODULES = TOPOLOGY_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Work Unit</em>' class.
@@ -749,7 +811,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORK_UNIT_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 1;
+	int WORK_UNIT_FEATURE_COUNT = TOPOLOGY_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Work Unit</em>' class.
@@ -758,7 +820,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORK_UNIT_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
+	int WORK_UNIT_OPERATION_COUNT = TOPOLOGY_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.UnitImpl <em>Unit</em>}' class.
@@ -768,7 +830,7 @@ public interface TopologyPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getUnit()
 	 * @generated
 	 */
-	int UNIT = 9;
+	int UNIT = 10;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -841,7 +903,193 @@ public interface TopologyPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getWorkCell()
 	 * @generated
 	 */
-	int WORK_CELL = 10;
+	int WORK_CELL = 13;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.StorageUnitImpl <em>Storage Unit</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.StorageUnitImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getStorageUnit()
+	 * @generated
+	 */
+	int STORAGE_UNIT = 12;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.EquipmentModuleImpl <em>Equipment Module</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.EquipmentModuleImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getEquipmentModule()
+	 * @generated
+	 */
+	int EQUIPMENT_MODULE = 14;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.ControlModuleImpl <em>Control Module</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.ControlModuleImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getControlModule()
+	 * @generated
+	 */
+	int CONTROL_MODULE = 15;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.StationImpl <em>Station</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.StationImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getStation()
+	 * @generated
+	 */
+	int STATION = 16;
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.TopologyElement <em>Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Element</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.TopologyElement
+	 * @generated
+	 */
+	EClass getTopologyElement();
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.ProcessUnitImpl <em>Process Unit</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.ProcessUnitImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getProcessUnit()
+	 * @generated
+	 */
+	int PROCESS_UNIT = 11;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_UNIT__BINDING = WORK_UNIT__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_UNIT__ID = WORK_UNIT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_UNIT__NAME = WORK_UNIT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_UNIT__METADATA = WORK_UNIT__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_UNIT__EQUIPMENT_MODULES = WORK_UNIT__EQUIPMENT_MODULES;
+
+	/**
+	 * The number of structural features of the '<em>Process Unit</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_UNIT_FEATURE_COUNT = WORK_UNIT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Process Unit</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_UNIT_OPERATION_COUNT = WORK_UNIT_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE_UNIT__BINDING = WORK_UNIT__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE_UNIT__ID = WORK_UNIT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE_UNIT__NAME = WORK_UNIT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE_UNIT__METADATA = WORK_UNIT__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE_UNIT__EQUIPMENT_MODULES = WORK_UNIT__EQUIPMENT_MODULES;
+
+	/**
+	 * The number of structural features of the '<em>Storage Unit</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE_UNIT_FEATURE_COUNT = WORK_UNIT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Storage Unit</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE_UNIT_OPERATION_COUNT = WORK_UNIT_OPERATION_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -916,23 +1164,13 @@ public interface TopologyPackage extends EPackage {
 	int WORK_CELL_OPERATION_COUNT = WORK_UNIT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.StorageUnitImpl <em>Storage Unit</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.topology.impl.StorageUnitImpl
-	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getStorageUnit()
-	 * @generated
-	 */
-	int STORAGE_UNIT = 11;
-
-	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STORAGE_UNIT__BINDING = WORK_UNIT__BINDING;
+	int EQUIPMENT_MODULE__BINDING = TOPOLOGY_ELEMENT__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -941,7 +1179,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STORAGE_UNIT__ID = WORK_UNIT__ID;
+	int EQUIPMENT_MODULE__ID = TOPOLOGY_ELEMENT__ID;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -950,7 +1188,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STORAGE_UNIT__NAME = WORK_UNIT__NAME;
+	int EQUIPMENT_MODULE__NAME = TOPOLOGY_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -959,80 +1197,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STORAGE_UNIT__METADATA = WORK_UNIT__METADATA;
-
-	/**
-	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STORAGE_UNIT__EQUIPMENT_MODULES = WORK_UNIT__EQUIPMENT_MODULES;
-
-	/**
-	 * The number of structural features of the '<em>Storage Unit</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STORAGE_UNIT_FEATURE_COUNT = WORK_UNIT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Storage Unit</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STORAGE_UNIT_OPERATION_COUNT = WORK_UNIT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.EquipmentModuleImpl <em>Equipment Module</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.topology.impl.EquipmentModuleImpl
-	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getEquipmentModule()
-	 * @generated
-	 */
-	int EQUIPMENT_MODULE = 12;
-
-	/**
-	 * The feature id for the '<em><b>Binding</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EQUIPMENT_MODULE__BINDING = BasePackage.ENTITY__BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EQUIPMENT_MODULE__ID = BasePackage.ENTITY__ID;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EQUIPMENT_MODULE__NAME = BasePackage.ENTITY__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EQUIPMENT_MODULE__METADATA = BasePackage.ENTITY__METADATA;
+	int EQUIPMENT_MODULE__METADATA = TOPOLOGY_ELEMENT__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
@@ -1041,7 +1206,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EQUIPMENT_MODULE__CONTROL_MODULES = BasePackage.ENTITY_FEATURE_COUNT + 0;
+	int EQUIPMENT_MODULE__CONTROL_MODULES = TOPOLOGY_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
@@ -1050,7 +1215,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EQUIPMENT_MODULE__EQUIPMENT_MODULES = BasePackage.ENTITY_FEATURE_COUNT + 1;
+	int EQUIPMENT_MODULE__EQUIPMENT_MODULES = TOPOLOGY_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Capability Requirement</b></em>' containment reference.
@@ -1059,7 +1224,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT = BasePackage.ENTITY_FEATURE_COUNT + 2;
+	int EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT = TOPOLOGY_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Assigned Resource Type</b></em>' reference.
@@ -1068,7 +1233,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EQUIPMENT_MODULE__ASSIGNED_RESOURCE_TYPE = BasePackage.ENTITY_FEATURE_COUNT + 3;
+	int EQUIPMENT_MODULE__ASSIGNED_RESOURCE_TYPE = TOPOLOGY_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Assigned Resource Instance</b></em>' reference.
@@ -1077,7 +1242,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EQUIPMENT_MODULE__ASSIGNED_RESOURCE_INSTANCE = BasePackage.ENTITY_FEATURE_COUNT + 4;
+	int EQUIPMENT_MODULE__ASSIGNED_RESOURCE_INSTANCE = TOPOLOGY_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Equipment Module</em>' class.
@@ -1086,7 +1251,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EQUIPMENT_MODULE_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 5;
+	int EQUIPMENT_MODULE_FEATURE_COUNT = TOPOLOGY_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Equipment Module</em>' class.
@@ -1095,17 +1260,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EQUIPMENT_MODULE_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.ControlModuleImpl <em>Control Module</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.topology.impl.ControlModuleImpl
-	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getControlModule()
-	 * @generated
-	 */
-	int CONTROL_MODULE = 13;
+	int EQUIPMENT_MODULE_OPERATION_COUNT = TOPOLOGY_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -1114,7 +1269,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTROL_MODULE__BINDING = BasePackage.ENTITY__BINDING;
+	int CONTROL_MODULE__BINDING = TOPOLOGY_ELEMENT__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1123,7 +1278,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTROL_MODULE__ID = BasePackage.ENTITY__ID;
+	int CONTROL_MODULE__ID = TOPOLOGY_ELEMENT__ID;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1132,7 +1287,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTROL_MODULE__NAME = BasePackage.ENTITY__NAME;
+	int CONTROL_MODULE__NAME = TOPOLOGY_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -1141,7 +1296,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTROL_MODULE__METADATA = BasePackage.ENTITY__METADATA;
+	int CONTROL_MODULE__METADATA = TOPOLOGY_ELEMENT__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
@@ -1150,7 +1305,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTROL_MODULE__CONTROL_MODULES = BasePackage.ENTITY_FEATURE_COUNT + 0;
+	int CONTROL_MODULE__CONTROL_MODULES = TOPOLOGY_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Control Module</em>' class.
@@ -1159,7 +1314,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTROL_MODULE_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 1;
+	int CONTROL_MODULE_FEATURE_COUNT = TOPOLOGY_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Control Module</em>' class.
@@ -1168,17 +1323,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTROL_MODULE_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.StationImpl <em>Station</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.topology.impl.StationImpl
-	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getStation()
-	 * @generated
-	 */
-	int STATION = 14;
+	int CONTROL_MODULE_OPERATION_COUNT = TOPOLOGY_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -1187,7 +1332,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATION__BINDING = BasePackage.ENTITY__BINDING;
+	int STATION__BINDING = TOPOLOGY_ELEMENT__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1196,7 +1341,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATION__ID = BasePackage.ENTITY__ID;
+	int STATION__ID = TOPOLOGY_ELEMENT__ID;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1205,7 +1350,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATION__NAME = BasePackage.ENTITY__NAME;
+	int STATION__NAME = TOPOLOGY_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -1214,7 +1359,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATION__METADATA = BasePackage.ENTITY__METADATA;
+	int STATION__METADATA = TOPOLOGY_ELEMENT__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
@@ -1223,7 +1368,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATION__EQUIPMENT_MODULES = BasePackage.ENTITY_FEATURE_COUNT + 0;
+	int STATION__EQUIPMENT_MODULES = TOPOLOGY_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Station</em>' class.
@@ -1232,7 +1377,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATION_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 1;
+	int STATION_FEATURE_COUNT = TOPOLOGY_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Station</em>' class.
@@ -1241,290 +1386,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATION_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.TransitionImpl <em>Transition</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.topology.impl.TransitionImpl
-	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getTransition()
-	 * @generated
-	 */
-	int TRANSITION = 15;
-
-	/**
-	 * The feature id for the '<em><b>Component Id src</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSITION__COMPONENT_ID_SRC = 0;
-
-	/**
-	 * The feature id for the '<em><b>Component Id target</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSITION__COMPONENT_ID_TARGET = 1;
-
-	/**
-	 * The feature id for the '<em><b>Distance</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSITION__DISTANCE = 2;
-
-	/**
-	 * The number of structural features of the '<em>Transition</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSITION_FEATURE_COUNT = 3;
-
-	/**
-	 * The number of operations of the '<em>Transition</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSITION_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.AssemblyStationImpl <em>Assembly Station</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.topology.impl.AssemblyStationImpl
-	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getAssemblyStation()
-	 * @generated
-	 */
-	int ASSEMBLY_STATION = 16;
-
-	/**
-	 * The feature id for the '<em><b>Binding</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSEMBLY_STATION__BINDING = STATION__BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSEMBLY_STATION__ID = STATION__ID;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSEMBLY_STATION__NAME = STATION__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSEMBLY_STATION__METADATA = STATION__METADATA;
-
-	/**
-	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSEMBLY_STATION__EQUIPMENT_MODULES = STATION__EQUIPMENT_MODULES;
-
-	/**
-	 * The number of structural features of the '<em>Assembly Station</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSEMBLY_STATION_FEATURE_COUNT = STATION_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Assembly Station</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ASSEMBLY_STATION_OPERATION_COUNT = STATION_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.BufferStationImpl <em>Buffer Station</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.topology.impl.BufferStationImpl
-	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getBufferStation()
-	 * @generated
-	 */
-	int BUFFER_STATION = 17;
-
-	/**
-	 * The feature id for the '<em><b>Binding</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUFFER_STATION__BINDING = STATION__BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUFFER_STATION__ID = STATION__ID;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUFFER_STATION__NAME = STATION__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUFFER_STATION__METADATA = STATION__METADATA;
-
-	/**
-	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUFFER_STATION__EQUIPMENT_MODULES = STATION__EQUIPMENT_MODULES;
-
-	/**
-	 * The feature id for the '<em><b>Capacity</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUFFER_STATION__CAPACITY = STATION_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Buffer Station</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUFFER_STATION_FEATURE_COUNT = STATION_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Buffer Station</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUFFER_STATION_OPERATION_COUNT = STATION_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.ProcessUnitImpl <em>Process Unit</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.topology.impl.ProcessUnitImpl
-	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getProcessUnit()
-	 * @generated
-	 */
-	int PROCESS_UNIT = 18;
-
-	/**
-	 * The feature id for the '<em><b>Binding</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROCESS_UNIT__BINDING = WORK_UNIT__BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROCESS_UNIT__ID = WORK_UNIT__ID;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROCESS_UNIT__NAME = WORK_UNIT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROCESS_UNIT__METADATA = WORK_UNIT__METADATA;
-
-	/**
-	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROCESS_UNIT__EQUIPMENT_MODULES = WORK_UNIT__EQUIPMENT_MODULES;
-
-	/**
-	 * The number of structural features of the '<em>Process Unit</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROCESS_UNIT_FEATURE_COUNT = WORK_UNIT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Process Unit</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROCESS_UNIT_OPERATION_COUNT = WORK_UNIT_OPERATION_COUNT + 0;
+	int STATION_OPERATION_COUNT = TOPOLOGY_ELEMENT_OPERATION_COUNT + 0;
 
 
 	/**
@@ -1876,80 +1738,6 @@ public interface TopologyPackage extends EPackage {
 	EReference getStation_EquipmentModules();
 
 	/**
-	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.Transition <em>Transition</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Transition</em>'.
-	 * @see de.dfki.iui.basys.model.domain.topology.Transition
-	 * @generated
-	 */
-	EClass getTransition();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.topology.Transition#getComponentId_src <em>Component Id src</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Component Id src</em>'.
-	 * @see de.dfki.iui.basys.model.domain.topology.Transition#getComponentId_src()
-	 * @see #getTransition()
-	 * @generated
-	 */
-	EAttribute getTransition_ComponentId_src();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.topology.Transition#getComponentId_target <em>Component Id target</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Component Id target</em>'.
-	 * @see de.dfki.iui.basys.model.domain.topology.Transition#getComponentId_target()
-	 * @see #getTransition()
-	 * @generated
-	 */
-	EAttribute getTransition_ComponentId_target();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.topology.Transition#getDistance <em>Distance</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Distance</em>'.
-	 * @see de.dfki.iui.basys.model.domain.topology.Transition#getDistance()
-	 * @see #getTransition()
-	 * @generated
-	 */
-	EAttribute getTransition_Distance();
-
-	/**
-	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.AssemblyStation <em>Assembly Station</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Assembly Station</em>'.
-	 * @see de.dfki.iui.basys.model.domain.topology.AssemblyStation
-	 * @generated
-	 */
-	EClass getAssemblyStation();
-
-	/**
-	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.BufferStation <em>Buffer Station</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Buffer Station</em>'.
-	 * @see de.dfki.iui.basys.model.domain.topology.BufferStation
-	 * @generated
-	 */
-	EClass getBufferStation();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.topology.BufferStation#getCapacity <em>Capacity</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Capacity</em>'.
-	 * @see de.dfki.iui.basys.model.domain.topology.BufferStation#getCapacity()
-	 * @see #getBufferStation()
-	 * @generated
-	 */
-	EAttribute getBufferStation_Capacity();
-
-	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.ProcessUnit <em>Process Unit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1982,6 +1770,16 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 */
 	interface Literals {
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.TopologyElement <em>Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.topology.TopologyElement
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getTopologyElement()
+		 * @generated
+		 */
+		EClass TOPOLOGY_ELEMENT = eINSTANCE.getTopologyElement();
+
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.EnterpriseImpl <em>Enterprise</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -2275,68 +2073,6 @@ public interface TopologyPackage extends EPackage {
 		 * @generated
 		 */
 		EReference STATION__EQUIPMENT_MODULES = eINSTANCE.getStation_EquipmentModules();
-
-		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.TransitionImpl <em>Transition</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.domain.topology.impl.TransitionImpl
-		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getTransition()
-		 * @generated
-		 */
-		EClass TRANSITION = eINSTANCE.getTransition();
-
-		/**
-		 * The meta object literal for the '<em><b>Component Id src</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TRANSITION__COMPONENT_ID_SRC = eINSTANCE.getTransition_ComponentId_src();
-
-		/**
-		 * The meta object literal for the '<em><b>Component Id target</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TRANSITION__COMPONENT_ID_TARGET = eINSTANCE.getTransition_ComponentId_target();
-
-		/**
-		 * The meta object literal for the '<em><b>Distance</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TRANSITION__DISTANCE = eINSTANCE.getTransition_Distance();
-
-		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.AssemblyStationImpl <em>Assembly Station</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.domain.topology.impl.AssemblyStationImpl
-		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getAssemblyStation()
-		 * @generated
-		 */
-		EClass ASSEMBLY_STATION = eINSTANCE.getAssemblyStation();
-
-		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.BufferStationImpl <em>Buffer Station</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.domain.topology.impl.BufferStationImpl
-		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getBufferStation()
-		 * @generated
-		 */
-		EClass BUFFER_STATION = eINSTANCE.getBufferStation();
-
-		/**
-		 * The meta object literal for the '<em><b>Capacity</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute BUFFER_STATION__CAPACITY = eINSTANCE.getBufferStation_Capacity();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.ProcessUnitImpl <em>Process Unit</em>}' class.

@@ -58,9 +58,10 @@ public class ResourceinstanceFactoryImpl extends EFactoryImpl implements Resourc
 		switch (eClass.getClassifierID()) {
 			case ResourceinstancePackage.RESOURCE_INSTANCE_REPOSITORY: return createResourceInstanceRepository();
 			case ResourceinstancePackage.RESOURCE_INSTANCE: return createResourceInstance();
-			case ResourceinstancePackage.CAPABILITY_APPLICATION: return createCapabilityApplication();
 			case ResourceinstancePackage.RESOURCE_INSTANCE_STATUS: return createResourceInstanceStatus();
 			case ResourceinstancePackage.RESOURCE_INSTANCE_STATUS_CHANGE_EVENT: return createResourceInstanceStatusChangeEvent();
+			case ResourceinstancePackage.CAPABILITY_APPLICATION: return createCapabilityApplication();
+			case ResourceinstancePackage.CAPABILITY_VARIANT: return createCapabilityVariant();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -94,6 +95,16 @@ public class ResourceinstanceFactoryImpl extends EFactoryImpl implements Resourc
 	public CapabilityApplication createCapabilityApplication() {
 		CapabilityApplicationImpl capabilityApplication = new CapabilityApplicationImpl();
 		return capabilityApplication;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CapabilityVariant createCapabilityVariant() {
+		CapabilityVariantImpl capabilityVariant = new CapabilityVariantImpl();
+		return capabilityVariant;
 	}
 
 	/**

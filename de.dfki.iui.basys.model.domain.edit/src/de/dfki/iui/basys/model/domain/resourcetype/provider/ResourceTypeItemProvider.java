@@ -55,32 +55,9 @@ public class ResourceTypeItemProvider extends EntityItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addCapabilityRequirementPropertyDescriptor(object);
 			addDocumentationPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Capability Requirement feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addCapabilityRequirementPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ResourceType_capabilityRequirement_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ResourceType_capabilityRequirement_feature", "_UI_ResourceType_type"),
-				 ResourcetypePackage.Literals.RESOURCE_TYPE__CAPABILITY_REQUIREMENT,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
 	}
 
 	/**
@@ -117,7 +94,7 @@ public class ResourceTypeItemProvider extends EntityItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(ResourcetypePackage.Literals.RESOURCE_TYPE__CAPABILITY_ASSERTION);
+			childrenFeatures.add(ResourcetypePackage.Literals.RESOURCE_TYPE__CAPABILITY_ASSERTIONS);
 		}
 		return childrenFeatures;
 	}
@@ -176,7 +153,7 @@ public class ResourceTypeItemProvider extends EntityItemProvider {
 			case ResourcetypePackage.RESOURCE_TYPE__DOCUMENTATION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case ResourcetypePackage.RESOURCE_TYPE__CAPABILITY_ASSERTION:
+			case ResourcetypePackage.RESOURCE_TYPE__CAPABILITY_ASSERTIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -196,7 +173,7 @@ public class ResourceTypeItemProvider extends EntityItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ResourcetypePackage.Literals.RESOURCE_TYPE__CAPABILITY_ASSERTION,
+				(ResourcetypePackage.Literals.RESOURCE_TYPE__CAPABILITY_ASSERTIONS,
 				 CapabilityFactory.eINSTANCE.createCapabilityAssertion()));
 	}
 

@@ -77,6 +77,12 @@ public class CapabilitySwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case CapabilityPackage.CAPABILITY_REQUEST: {
+				CapabilityRequest capabilityRequest = (CapabilityRequest)theEObject;
+				T result = caseCapabilityRequest(capabilityRequest);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case CapabilityPackage.CAPABILITY: {
 				Capability capability = (Capability)theEObject;
 				T result = caseCapability(capability);
@@ -97,6 +103,7 @@ public class CapabilitySwitch<T> extends Switch<T> {
 			case CapabilityPackage.MANUFACTURING_CAPABILITY: {
 				ManufacturingCapability manufacturingCapability = (ManufacturingCapability)theEObject;
 				T result = caseManufacturingCapability(manufacturingCapability);
+				if (result == null) result = caseProductionCapability(manufacturingCapability);
 				if (result == null) result = caseCapability(manufacturingCapability);
 				if (result == null) result = caseEntity(manufacturingCapability);
 				if (result == null) result = caseBObject(manufacturingCapability);
@@ -107,21 +114,151 @@ public class CapabilitySwitch<T> extends Switch<T> {
 				Fügen fügen = (Fügen)theEObject;
 				T result = caseFügen(fügen);
 				if (result == null) result = caseManufacturingCapability(fügen);
+				if (result == null) result = caseProductionCapability(fügen);
 				if (result == null) result = caseCapability(fügen);
 				if (result == null) result = caseEntity(fügen);
 				if (result == null) result = caseBObject(fügen);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CapabilityPackage.PRESSEN: {
-				Pressen pressen = (Pressen)theEObject;
-				T result = casePressen(pressen);
-				if (result == null) result = caseAnEinpressen(pressen);
-				if (result == null) result = caseFügen(pressen);
-				if (result == null) result = caseManufacturingCapability(pressen);
-				if (result == null) result = caseCapability(pressen);
-				if (result == null) result = caseEntity(pressen);
-				if (result == null) result = caseBObject(pressen);
+			case CapabilityPackage.PRESSING: {
+				Pressing pressing = (Pressing)theEObject;
+				T result = casePressing(pressing);
+				if (result == null) result = caseAnEinpressen(pressing);
+				if (result == null) result = caseFügen(pressing);
+				if (result == null) result = caseManufacturingCapability(pressing);
+				if (result == null) result = caseProductionCapability(pressing);
+				if (result == null) result = caseCapability(pressing);
+				if (result == null) result = caseEntity(pressing);
+				if (result == null) result = caseBObject(pressing);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CapabilityPackage.URFORMEN: {
+				Urformen urformen = (Urformen)theEObject;
+				T result = caseUrformen(urformen);
+				if (result == null) result = caseManufacturingCapability(urformen);
+				if (result == null) result = caseProductionCapability(urformen);
+				if (result == null) result = caseCapability(urformen);
+				if (result == null) result = caseEntity(urformen);
+				if (result == null) result = caseBObject(urformen);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CapabilityPackage.UMFORMEN: {
+				Umformen umformen = (Umformen)theEObject;
+				T result = caseUmformen(umformen);
+				if (result == null) result = caseManufacturingCapability(umformen);
+				if (result == null) result = caseProductionCapability(umformen);
+				if (result == null) result = caseCapability(umformen);
+				if (result == null) result = caseEntity(umformen);
+				if (result == null) result = caseBObject(umformen);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CapabilityPackage.TRENNEN: {
+				Trennen trennen = (Trennen)theEObject;
+				T result = caseTrennen(trennen);
+				if (result == null) result = caseManufacturingCapability(trennen);
+				if (result == null) result = caseProductionCapability(trennen);
+				if (result == null) result = caseCapability(trennen);
+				if (result == null) result = caseEntity(trennen);
+				if (result == null) result = caseBObject(trennen);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CapabilityPackage.BESCHICHTEN: {
+				Beschichten beschichten = (Beschichten)theEObject;
+				T result = caseBeschichten(beschichten);
+				if (result == null) result = caseManufacturingCapability(beschichten);
+				if (result == null) result = caseProductionCapability(beschichten);
+				if (result == null) result = caseCapability(beschichten);
+				if (result == null) result = caseEntity(beschichten);
+				if (result == null) result = caseBObject(beschichten);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CapabilityPackage.STOFFEIGENSCHAFTEN: {
+				Stoffeigenschaften stoffeigenschaften = (Stoffeigenschaften)theEObject;
+				T result = caseStoffeigenschaften(stoffeigenschaften);
+				if (result == null) result = caseManufacturingCapability(stoffeigenschaften);
+				if (result == null) result = caseProductionCapability(stoffeigenschaften);
+				if (result == null) result = caseCapability(stoffeigenschaften);
+				if (result == null) result = caseEntity(stoffeigenschaften);
+				if (result == null) result = caseBObject(stoffeigenschaften);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CapabilityPackage.AN_EINPRESSEN: {
+				AnEinpressen anEinpressen = (AnEinpressen)theEObject;
+				T result = caseAnEinpressen(anEinpressen);
+				if (result == null) result = caseFügen(anEinpressen);
+				if (result == null) result = caseManufacturingCapability(anEinpressen);
+				if (result == null) result = caseProductionCapability(anEinpressen);
+				if (result == null) result = caseCapability(anEinpressen);
+				if (result == null) result = caseEntity(anEinpressen);
+				if (result == null) result = caseBObject(anEinpressen);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CapabilityPackage.SCREWING: {
+				Screwing screwing = (Screwing)theEObject;
+				T result = caseScrewing(screwing);
+				if (result == null) result = caseAnEinpressen(screwing);
+				if (result == null) result = caseFügen(screwing);
+				if (result == null) result = caseManufacturingCapability(screwing);
+				if (result == null) result = caseProductionCapability(screwing);
+				if (result == null) result = caseCapability(screwing);
+				if (result == null) result = caseEntity(screwing);
+				if (result == null) result = caseBObject(screwing);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CapabilityPackage.PRODUCTION_CAPABILITY: {
+				ProductionCapability productionCapability = (ProductionCapability)theEObject;
+				T result = caseProductionCapability(productionCapability);
+				if (result == null) result = caseCapability(productionCapability);
+				if (result == null) result = caseEntity(productionCapability);
+				if (result == null) result = caseBObject(productionCapability);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CapabilityPackage.LOGISTICS_CAPABILITY: {
+				LogisticsCapability logisticsCapability = (LogisticsCapability)theEObject;
+				T result = caseLogisticsCapability(logisticsCapability);
+				if (result == null) result = caseCapability(logisticsCapability);
+				if (result == null) result = caseEntity(logisticsCapability);
+				if (result == null) result = caseBObject(logisticsCapability);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CapabilityPackage.PICK_AND_PLACE: {
+				PickAndPlace pickAndPlace = (PickAndPlace)theEObject;
+				T result = casePickAndPlace(pickAndPlace);
+				if (result == null) result = caseLogisticsCapability(pickAndPlace);
+				if (result == null) result = caseCapability(pickAndPlace);
+				if (result == null) result = caseEntity(pickAndPlace);
+				if (result == null) result = caseBObject(pickAndPlace);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CapabilityPackage.TRANSPORT: {
+				Transport transport = (Transport)theEObject;
+				T result = caseTransport(transport);
+				if (result == null) result = caseLogisticsCapability(transport);
+				if (result == null) result = caseCapability(transport);
+				if (result == null) result = caseEntity(transport);
+				if (result == null) result = caseBObject(transport);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CapabilityPackage.STORE: {
+				Store store = (Store)theEObject;
+				T result = caseStore(store);
+				if (result == null) result = caseLogisticsCapability(store);
+				if (result == null) result = caseCapability(store);
+				if (result == null) result = caseEntity(store);
+				if (result == null) result = caseBObject(store);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -134,95 +271,13 @@ public class CapabilitySwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CapabilityPackage.URFORMEN: {
-				Urformen urformen = (Urformen)theEObject;
-				T result = caseUrformen(urformen);
-				if (result == null) result = caseManufacturingCapability(urformen);
-				if (result == null) result = caseCapability(urformen);
-				if (result == null) result = caseEntity(urformen);
-				if (result == null) result = caseBObject(urformen);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CapabilityPackage.UMFORMEN: {
-				Umformen umformen = (Umformen)theEObject;
-				T result = caseUmformen(umformen);
-				if (result == null) result = caseManufacturingCapability(umformen);
-				if (result == null) result = caseCapability(umformen);
-				if (result == null) result = caseEntity(umformen);
-				if (result == null) result = caseBObject(umformen);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CapabilityPackage.TRENNEN: {
-				Trennen trennen = (Trennen)theEObject;
-				T result = caseTrennen(trennen);
-				if (result == null) result = caseManufacturingCapability(trennen);
-				if (result == null) result = caseCapability(trennen);
-				if (result == null) result = caseEntity(trennen);
-				if (result == null) result = caseBObject(trennen);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CapabilityPackage.BESCHICHTEN: {
-				Beschichten beschichten = (Beschichten)theEObject;
-				T result = caseBeschichten(beschichten);
-				if (result == null) result = caseManufacturingCapability(beschichten);
-				if (result == null) result = caseCapability(beschichten);
-				if (result == null) result = caseEntity(beschichten);
-				if (result == null) result = caseBObject(beschichten);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CapabilityPackage.STOFFEIGENSCHAFTEN: {
-				Stoffeigenschaften stoffeigenschaften = (Stoffeigenschaften)theEObject;
-				T result = caseStoffeigenschaften(stoffeigenschaften);
-				if (result == null) result = caseManufacturingCapability(stoffeigenschaften);
-				if (result == null) result = caseCapability(stoffeigenschaften);
-				if (result == null) result = caseEntity(stoffeigenschaften);
-				if (result == null) result = caseBObject(stoffeigenschaften);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CapabilityPackage.AN_EINPRESSEN: {
-				AnEinpressen anEinpressen = (AnEinpressen)theEObject;
-				T result = caseAnEinpressen(anEinpressen);
-				if (result == null) result = caseFügen(anEinpressen);
-				if (result == null) result = caseManufacturingCapability(anEinpressen);
-				if (result == null) result = caseCapability(anEinpressen);
-				if (result == null) result = caseEntity(anEinpressen);
-				if (result == null) result = caseBObject(anEinpressen);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CapabilityPackage.SCHRAUBEN: {
-				Schrauben schrauben = (Schrauben)theEObject;
-				T result = caseSchrauben(schrauben);
-				if (result == null) result = caseAnEinpressen(schrauben);
-				if (result == null) result = caseFügen(schrauben);
-				if (result == null) result = caseManufacturingCapability(schrauben);
-				if (result == null) result = caseCapability(schrauben);
-				if (result == null) result = caseEntity(schrauben);
-				if (result == null) result = caseBObject(schrauben);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CapabilityPackage.INFORMATION_TRANSFER_CAPABILITY: {
-				InformationTransferCapability informationTransferCapability = (InformationTransferCapability)theEObject;
-				T result = caseInformationTransferCapability(informationTransferCapability);
-				if (result == null) result = caseCapability(informationTransferCapability);
-				if (result == null) result = caseEntity(informationTransferCapability);
-				if (result == null) result = caseBObject(informationTransferCapability);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CapabilityPackage.PROVIDE_INFORMATION: {
-				ProvideInformation provideInformation = (ProvideInformation)theEObject;
-				T result = caseProvideInformation(provideInformation);
-				if (result == null) result = caseInformationTransferCapability(provideInformation);
-				if (result == null) result = caseCapability(provideInformation);
-				if (result == null) result = caseEntity(provideInformation);
-				if (result == null) result = caseBObject(provideInformation);
+			case CapabilityPackage.INSPECT: {
+				Inspect inspect = (Inspect)theEObject;
+				T result = caseInspect(inspect);
+				if (result == null) result = caseQoSCapability(inspect);
+				if (result == null) result = caseCapability(inspect);
+				if (result == null) result = caseEntity(inspect);
+				if (result == null) result = caseBObject(inspect);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -242,6 +297,21 @@ public class CapabilitySwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseCapabilityAssertion(CapabilityAssertion object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Request</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Request</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCapabilityRequest(CapabilityRequest object) {
 		return null;
 	}
 
@@ -306,17 +376,17 @@ public class CapabilitySwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Pressen</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Pressing</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Pressen</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Pressing</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T casePressen(Pressen object) {
+	public T casePressing(Pressing object) {
 		return null;
 	}
 
@@ -332,6 +402,21 @@ public class CapabilitySwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseQoSCapability(QoSCapability object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Inspect</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Inspect</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseInspect(Inspect object) {
 		return null;
 	}
 
@@ -426,47 +511,92 @@ public class CapabilitySwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Schrauben</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Screwing</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Schrauben</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Screwing</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseSchrauben(Schrauben object) {
+	public T caseScrewing(Screwing object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Information Transfer Capability</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Production Capability</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Information Transfer Capability</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Production Capability</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseInformationTransferCapability(InformationTransferCapability object) {
+	public T caseProductionCapability(ProductionCapability object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Provide Information</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Logistics Capability</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Provide Information</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Logistics Capability</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseProvideInformation(ProvideInformation object) {
+	public T caseLogisticsCapability(LogisticsCapability object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Pick And Place</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Pick And Place</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePickAndPlace(PickAndPlace object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Transport</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Transport</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTransport(Transport object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Store</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Store</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStore(Store object) {
 		return null;
 	}
 

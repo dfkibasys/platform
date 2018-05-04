@@ -19,7 +19,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ManufacturingCapabilityItemProvider extends CapabilityItemProvider {
+public class ManufacturingCapabilityItemProvider extends ProductionCapabilityItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

@@ -145,17 +145,12 @@ public class BillOfMaterialItemProvider extends EntityItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(ProductdefinitionPackage.Literals.BILL_OF_MATERIAL__ENTRIES,
-				 ProductdefinitionFactory.eINSTANCE.createBOMEntry()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ProductdefinitionPackage.Literals.BILL_OF_MATERIAL__ENTRIES,
 				 ProductdefinitionFactory.eINSTANCE.createAssemblyGroupEntry()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(ProductdefinitionPackage.Literals.BILL_OF_MATERIAL__ENTRIES,
-				 ProductdefinitionFactory.eINSTANCE.createComponentEntry()));
+				 ProductdefinitionFactory.eINSTANCE.createMaterialEntry()));
 	}
 
 	/**

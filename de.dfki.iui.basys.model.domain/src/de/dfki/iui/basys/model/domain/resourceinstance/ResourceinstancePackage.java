@@ -204,34 +204,17 @@ public interface ResourceinstancePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceinstancePackageImpl#getCapabilityApplication()
 	 * @generated
 	 */
-	int CAPABILITY_APPLICATION = 2;
+	int CAPABILITY_APPLICATION = 4;
 
 	/**
-	 * The feature id for the '<em><b>Bom Entries</b></em>' reference list.
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.resourceinstance.impl.CapabilityVariantImpl <em>Capability Variant</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.impl.CapabilityVariantImpl
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceinstancePackageImpl#getCapabilityVariant()
 	 * @generated
-	 * @ordered
 	 */
-	int CAPABILITY_APPLICATION__BOM_ENTRIES = 0;
-
-	/**
-	 * The number of structural features of the '<em>Capability Application</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CAPABILITY_APPLICATION_FEATURE_COUNT = 1;
-
-	/**
-	 * The number of operations of the '<em>Capability Application</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CAPABILITY_APPLICATION_OPERATION_COUNT = 0;
+	int CAPABILITY_VARIANT = 5;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceInstanceStatusImpl <em>Resource Instance Status</em>}' class.
@@ -241,7 +224,7 @@ public interface ResourceinstancePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceinstancePackageImpl#getResourceInstanceStatus()
 	 * @generated
 	 */
-	int RESOURCE_INSTANCE_STATUS = 3;
+	int RESOURCE_INSTANCE_STATUS = 2;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -314,7 +297,7 @@ public interface ResourceinstancePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceinstancePackageImpl#getResourceInstanceStatusChangeEvent()
 	 * @generated
 	 */
-	int RESOURCE_INSTANCE_STATUS_CHANGE_EVENT = 4;
+	int RESOURCE_INSTANCE_STATUS_CHANGE_EVENT = 3;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -387,6 +370,78 @@ public interface ResourceinstancePackage extends EPackage {
 	 * @ordered
 	 */
 	int RESOURCE_INSTANCE_STATUS_CHANGE_EVENT_OPERATION_COUNT = RESOURCE_INSTANCE_STATUS_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Capability Assertion</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_APPLICATION__CAPABILITY_ASSERTION = 0;
+
+	/**
+	 * The feature id for the '<em><b>Variants</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_APPLICATION__VARIANTS = 1;
+
+	/**
+	 * The number of structural features of the '<em>Capability Application</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_APPLICATION_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Capability Application</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_APPLICATION_OPERATION_COUNT = 0;
+
+	/**
+	 * The feature id for the '<em><b>Capability</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_VARIANT__CAPABILITY = 0;
+
+	/**
+	 * The feature id for the '<em><b>Bom Entries</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_VARIANT__BOM_ENTRIES = 1;
+
+	/**
+	 * The number of structural features of the '<em>Capability Variant</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_VARIANT_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Capability Variant</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_VARIANT_OPERATION_COUNT = 0;
 
 
 	/**
@@ -475,15 +530,58 @@ public interface ResourceinstancePackage extends EPackage {
 	EClass getCapabilityApplication();
 
 	/**
-	 * Returns the meta object for the reference list '{@link de.dfki.iui.basys.model.domain.resourceinstance.CapabilityApplication#getBomEntries <em>Bom Entries</em>}'.
+	 * Returns the meta object for the reference '{@link de.dfki.iui.basys.model.domain.resourceinstance.CapabilityApplication#getCapabilityAssertion <em>Capability Assertion</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Bom Entries</em>'.
-	 * @see de.dfki.iui.basys.model.domain.resourceinstance.CapabilityApplication#getBomEntries()
+	 * @return the meta object for the reference '<em>Capability Assertion</em>'.
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.CapabilityApplication#getCapabilityAssertion()
 	 * @see #getCapabilityApplication()
 	 * @generated
 	 */
-	EReference getCapabilityApplication_BomEntries();
+	EReference getCapabilityApplication_CapabilityAssertion();
+
+	/**
+	 * Returns the meta object for the reference list '{@link de.dfki.iui.basys.model.domain.resourceinstance.CapabilityApplication#getVariants <em>Variants</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Variants</em>'.
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.CapabilityApplication#getVariants()
+	 * @see #getCapabilityApplication()
+	 * @generated
+	 */
+	EReference getCapabilityApplication_Variants();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant <em>Capability Variant</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Capability Variant</em>'.
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant
+	 * @generated
+	 */
+	EClass getCapabilityVariant();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant#getCapability <em>Capability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Capability</em>'.
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant#getCapability()
+	 * @see #getCapabilityVariant()
+	 * @generated
+	 */
+	EReference getCapabilityVariant_Capability();
+
+	/**
+	 * Returns the meta object for the reference list '{@link de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant#getBomEntries <em>Bom Entries</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Bom Entries</em>'.
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant#getBomEntries()
+	 * @see #getCapabilityVariant()
+	 * @generated
+	 */
+	EReference getCapabilityVariant_BomEntries();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstanceStatus <em>Resource Instance Status</em>}'.
@@ -621,12 +719,46 @@ public interface ResourceinstancePackage extends EPackage {
 		EClass CAPABILITY_APPLICATION = eINSTANCE.getCapabilityApplication();
 
 		/**
+		 * The meta object literal for the '<em><b>Capability Assertion</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CAPABILITY_APPLICATION__CAPABILITY_ASSERTION = eINSTANCE.getCapabilityApplication_CapabilityAssertion();
+
+		/**
+		 * The meta object literal for the '<em><b>Variants</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CAPABILITY_APPLICATION__VARIANTS = eINSTANCE.getCapabilityApplication_Variants();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.resourceinstance.impl.CapabilityVariantImpl <em>Capability Variant</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.resourceinstance.impl.CapabilityVariantImpl
+		 * @see de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceinstancePackageImpl#getCapabilityVariant()
+		 * @generated
+		 */
+		EClass CAPABILITY_VARIANT = eINSTANCE.getCapabilityVariant();
+
+		/**
+		 * The meta object literal for the '<em><b>Capability</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CAPABILITY_VARIANT__CAPABILITY = eINSTANCE.getCapabilityVariant_Capability();
+
+		/**
 		 * The meta object literal for the '<em><b>Bom Entries</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CAPABILITY_APPLICATION__BOM_ENTRIES = eINSTANCE.getCapabilityApplication_BomEntries();
+		EReference CAPABILITY_VARIANT__BOM_ENTRIES = eINSTANCE.getCapabilityVariant_BomEntries();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceInstanceStatusImpl <em>Resource Instance Status</em>}' class.

@@ -3,22 +3,21 @@
 package de.dfki.iui.basys.model.service.provider;
 
 
-import de.dfki.iui.basys.model.domain.capability.CapabilityFactory;
-import de.dfki.iui.basys.model.service.ServicePackage;
-import de.dfki.iui.basys.model.service.Subscription;
-
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.provider.EGenericTypeItemProvider;
 import org.eclipse.emf.ecore.provider.ETypedElementItemProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import de.dfki.iui.basys.model.domain.capability.CapabilityFactory;
+import de.dfki.iui.basys.model.service.ServicePackage;
+import de.dfki.iui.basys.model.service.Subscription;
 
 /**
  * This is the item provider adapter for a {@link de.dfki.iui.basys.model.service.Subscription} object.
@@ -189,7 +188,7 @@ public class SubscriptionItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(ServicePackage.Literals.SUBSCRIPTION__CAPABILITIES,
-				 CapabilityFactory.eINSTANCE.createPressen()));
+				 CapabilityFactory.eINSTANCE.createPressing()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -224,7 +223,7 @@ public class SubscriptionItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(ServicePackage.Literals.SUBSCRIPTION__CAPABILITIES,
-				 CapabilityFactory.eINSTANCE.createSchrauben()));
+				 CapabilityFactory.eINSTANCE.createScrewing()));
 	}
 
 	/**

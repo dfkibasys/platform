@@ -3,23 +3,20 @@
 package de.dfki.iui.basys.model.service.provider;
 
 
-import de.dfki.iui.basys.model.domain.capability.CapabilityFactory;
-import de.dfki.iui.basys.model.service.Property;
-
-import de.dfki.iui.basys.model.service.ServicePackage;
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.provider.ETypedElementItemProvider;
-
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import de.dfki.iui.basys.model.domain.capability.CapabilityFactory;
+import de.dfki.iui.basys.model.service.Property;
+import de.dfki.iui.basys.model.service.ServicePackage;
 
 /**
  * This is the item provider adapter for a {@link de.dfki.iui.basys.model.service.Property} object.
@@ -162,7 +159,7 @@ public class PropertyItemProvider extends ETypedElementItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(ServicePackage.Literals.PROPERTY__CAPABILITIES,
-				 CapabilityFactory.eINSTANCE.createPressen()));
+				 CapabilityFactory.eINSTANCE.createPressing()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -197,7 +194,7 @@ public class PropertyItemProvider extends ETypedElementItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(ServicePackage.Literals.PROPERTY__CAPABILITIES,
-				 CapabilityFactory.eINSTANCE.createSchrauben()));
+				 CapabilityFactory.eINSTANCE.createScrewing()));
 	}
 
 	/**

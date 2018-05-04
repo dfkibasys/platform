@@ -13,5 +13,5 @@ package de.dfki.iui.basys.model.domain.capability;
  * @model
  * @generated
  */
-public interface ManufacturingCapability extends Capability {
+public interface ManufacturingCapability extends ProductionCapability {
 } // ManufacturingCapability

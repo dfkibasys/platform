@@ -517,7 +517,7 @@ public class ResourcetypePackageImpl extends EPackageImpl implements Resourcetyp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getResourceType_CapabilityAssertion() {
+	public EReference getResourceType_CapabilityAssertions() {
 		return (EReference)resourceTypeEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -526,17 +526,8 @@ public class ResourcetypePackageImpl extends EPackageImpl implements Resourcetyp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getResourceType_CapabilityRequirement() {
-		return (EReference)resourceTypeEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getResourceType_Documentation() {
-		return (EAttribute)resourceTypeEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)resourceTypeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -854,8 +845,7 @@ public class ResourcetypePackageImpl extends EPackageImpl implements Resourcetyp
 		createEAttribute(resourceTypeCatalogueEClass, RESOURCE_TYPE_CATALOGUE__MANUFACTURER);
 
 		resourceTypeEClass = createEClass(RESOURCE_TYPE);
-		createEReference(resourceTypeEClass, RESOURCE_TYPE__CAPABILITY_ASSERTION);
-		createEReference(resourceTypeEClass, RESOURCE_TYPE__CAPABILITY_REQUIREMENT);
+		createEReference(resourceTypeEClass, RESOURCE_TYPE__CAPABILITY_ASSERTIONS);
 		createEAttribute(resourceTypeEClass, RESOURCE_TYPE__DOCUMENTATION);
 
 		discreteManufacturingEquipmentModuleEClass = createEClass(DISCRETE_MANUFACTURING_EQUIPMENT_MODULE);
@@ -995,8 +985,7 @@ public class ResourcetypePackageImpl extends EPackageImpl implements Resourcetyp
 		initEAttribute(getResourceTypeCatalogue_Manufacturer(), ecorePackage.getEString(), "manufacturer", null, 1, 1, ResourceTypeCatalogue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(resourceTypeEClass, ResourceType.class, "ResourceType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getResourceType_CapabilityAssertion(), theCapabilityPackage.getCapabilityAssertion(), null, "capabilityAssertion", null, 0, 1, ResourceType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getResourceType_CapabilityRequirement(), theCapabilityPackage.getCapability(), null, "capabilityRequirement", null, 0, 1, ResourceType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getResourceType_CapabilityAssertions(), theCapabilityPackage.getCapabilityAssertion(), null, "capabilityAssertions", null, 0, -1, ResourceType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getResourceType_Documentation(), ecorePackage.getEString(), "documentation", null, 0, 1, ResourceType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(discreteManufacturingEquipmentModuleEClass, DiscreteManufacturingEquipmentModule.class, "DiscreteManufacturingEquipmentModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

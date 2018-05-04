@@ -2,10 +2,10 @@
  */
 package de.dfki.iui.basys.model.runtime.communication;
 
+import org.eclipse.emf.common.util.EList;
+
 import de.dfki.iui.basys.model.base.Entity;
 import de.dfki.iui.basys.model.runtime.communication.exceptions.ChannelPoolException;
-
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -164,5 +164,13 @@ public interface ChannelPool extends Entity {
 	 * @generated
 	 */
 	Channel getChannel(String id);
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	Channel getChannelByName(String name);
 
 } // ChannelPool

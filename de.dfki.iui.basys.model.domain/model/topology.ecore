@@ -2,15 +2,17 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="topology" nsURI="http://www.dfki.de/iui/basys/model/topology"
     nsPrefix="topology">
-  <eClassifiers xsi:type="ecore:EClass" name="Enterprise" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
+  <eClassifiers xsi:type="ecore:EClass" name="TopologyElement" abstract="true" interface="true"
+      eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Enterprise" eSuperTypes="#//TopologyElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="sites" lowerBound="1" upperBound="-1"
         eType="#//Site" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Site" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
+  <eClassifiers xsi:type="ecore:EClass" name="Site" eSuperTypes="#//TopologyElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="areas" upperBound="-1"
         eType="#//Area" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Area" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
+  <eClassifiers xsi:type="ecore:EClass" name="Area" eSuperTypes="#//TopologyElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="workCenters" upperBound="-1"
         eType="#//WorkCenter" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="equipmentModules" upperBound="-1"
@@ -39,17 +41,18 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="storageUnits" lowerBound="1"
         upperBound="-1" eType="#//StorageUnit" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WorkUnit" abstract="true" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
+  <eClassifiers xsi:type="ecore:EClass" name="WorkUnit" abstract="true" eSuperTypes="#//TopologyElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="equipmentModules" upperBound="-1"
         eType="#//EquipmentModule" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Unit" eSuperTypes="#//WorkUnit"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ProcessUnit" eSuperTypes="#//WorkUnit"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StorageUnit" eSuperTypes="#//WorkUnit"/>
   <eClassifiers xsi:type="ecore:EClass" name="WorkCell" eSuperTypes="#//WorkUnit">
     <eStructuralFeatures xsi:type="ecore:EReference" name="stations" upperBound="-1"
         eType="#//Station" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="StorageUnit" eSuperTypes="#//WorkUnit"/>
-  <eClassifiers xsi:type="ecore:EClass" name="EquipmentModule" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
+  <eClassifiers xsi:type="ecore:EClass" name="EquipmentModule" eSuperTypes="#//TopologyElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Ehemals ResourceInstance, TODO: mobile Betriebsmittel, z.B. Cobots"/>
     </eAnnotations>
@@ -67,25 +70,15 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="assignedResourceInstance"
         eType="ecore:EClass resourceinstance.ecore#//ResourceInstance" eOpposite="resourceinstance.ecore#//ResourceInstance/role"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ControlModule" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
+  <eClassifiers xsi:type="ecore:EClass" name="ControlModule" eSuperTypes="#//TopologyElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="controlModules" upperBound="-1"
         eType="#//ControlModule" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Station" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
+  <eClassifiers xsi:type="ecore:EClass" name="Station" eSuperTypes="#//TopologyElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Äquivalent zu oder Spezialisierung zu WorkCell?"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="equipmentModules" upperBound="-1"
         eType="#//EquipmentModule" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Transition">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="componentId_src" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="componentId_target" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="distance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AssemblyStation" eSuperTypes="#//Station"/>
-  <eClassifiers xsi:type="ecore:EClass" name="BufferStation" eSuperTypes="#//Station">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="capacity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ProcessUnit" eSuperTypes="#//WorkUnit"/>
 </ecore:EPackage>

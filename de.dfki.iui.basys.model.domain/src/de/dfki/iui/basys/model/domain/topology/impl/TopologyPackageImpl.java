@@ -38,8 +38,6 @@ import de.dfki.iui.basys.model.domain.staff.StaffPackage;
 import de.dfki.iui.basys.model.domain.staff.impl.StaffPackageImpl;
 
 import de.dfki.iui.basys.model.domain.topology.Area;
-import de.dfki.iui.basys.model.domain.topology.AssemblyStation;
-import de.dfki.iui.basys.model.domain.topology.BufferStation;
 import de.dfki.iui.basys.model.domain.topology.ControlModule;
 import de.dfki.iui.basys.model.domain.topology.Enterprise;
 import de.dfki.iui.basys.model.domain.topology.EquipmentModule;
@@ -51,9 +49,9 @@ import de.dfki.iui.basys.model.domain.topology.Site;
 import de.dfki.iui.basys.model.domain.topology.Station;
 import de.dfki.iui.basys.model.domain.topology.StorageUnit;
 import de.dfki.iui.basys.model.domain.topology.StorageZone;
+import de.dfki.iui.basys.model.domain.topology.TopologyElement;
 import de.dfki.iui.basys.model.domain.topology.TopologyFactory;
 import de.dfki.iui.basys.model.domain.topology.TopologyPackage;
-import de.dfki.iui.basys.model.domain.topology.Transition;
 import de.dfki.iui.basys.model.domain.topology.Unit;
 import de.dfki.iui.basys.model.domain.topology.WorkCell;
 import de.dfki.iui.basys.model.domain.topology.WorkCenter;
@@ -72,8 +70,6 @@ import de.dfki.iui.basys.model.domain.workplan.WorkplanPackage;
 import de.dfki.iui.basys.model.domain.workplan.impl.WorkplanPackageImpl;
 
 import de.dfki.iui.basys.model.pattern.PatternPackage;
-
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -87,6 +83,13 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
  * @generated
  */
 public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass topologyElementEClass = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -191,27 +194,6 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 	 * @generated
 	 */
 	private EClass stationEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass transitionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass assemblyStationEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass bufferStationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -327,6 +309,15 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(TopologyPackage.eNS_URI, theTopologyPackage);
 		return theTopologyPackage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTopologyElement() {
+		return topologyElementEClass;
 	}
 
 	/**
@@ -631,69 +622,6 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getTransition() {
-		return transitionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTransition_ComponentId_src() {
-		return (EAttribute)transitionEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTransition_ComponentId_target() {
-		return (EAttribute)transitionEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTransition_Distance() {
-		return (EAttribute)transitionEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getAssemblyStation() {
-		return assemblyStationEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getBufferStation() {
-		return bufferStationEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getBufferStation_Capacity() {
-		return (EAttribute)bufferStationEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getProcessUnit() {
 		return processUnitEClass;
 	}
@@ -726,6 +654,8 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		isCreated = true;
 
 		// Create classes and their features
+		topologyElementEClass = createEClass(TOPOLOGY_ELEMENT);
+
 		enterpriseEClass = createEClass(ENTERPRISE);
 		createEReference(enterpriseEClass, ENTERPRISE__SITES);
 
@@ -756,10 +686,12 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 
 		unitEClass = createEClass(UNIT);
 
-		workCellEClass = createEClass(WORK_CELL);
-		createEReference(workCellEClass, WORK_CELL__STATIONS);
+		processUnitEClass = createEClass(PROCESS_UNIT);
 
 		storageUnitEClass = createEClass(STORAGE_UNIT);
+
+		workCellEClass = createEClass(WORK_CELL);
+		createEReference(workCellEClass, WORK_CELL__STATIONS);
 
 		equipmentModuleEClass = createEClass(EQUIPMENT_MODULE);
 		createEReference(equipmentModuleEClass, EQUIPMENT_MODULE__CONTROL_MODULES);
@@ -773,18 +705,6 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 
 		stationEClass = createEClass(STATION);
 		createEReference(stationEClass, STATION__EQUIPMENT_MODULES);
-
-		transitionEClass = createEClass(TRANSITION);
-		createEAttribute(transitionEClass, TRANSITION__COMPONENT_ID_SRC);
-		createEAttribute(transitionEClass, TRANSITION__COMPONENT_ID_TARGET);
-		createEAttribute(transitionEClass, TRANSITION__DISTANCE);
-
-		assemblyStationEClass = createEClass(ASSEMBLY_STATION);
-
-		bufferStationEClass = createEClass(BUFFER_STATION);
-		createEAttribute(bufferStationEClass, BUFFER_STATION__CAPACITY);
-
-		processUnitEClass = createEClass(PROCESS_UNIT);
 	}
 
 	/**
@@ -821,26 +741,27 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		enterpriseEClass.getESuperTypes().add(theBasePackage.getEntity());
-		siteEClass.getESuperTypes().add(theBasePackage.getEntity());
-		areaEClass.getESuperTypes().add(theBasePackage.getEntity());
+		topologyElementEClass.getESuperTypes().add(theBasePackage.getEntity());
+		enterpriseEClass.getESuperTypes().add(this.getTopologyElement());
+		siteEClass.getESuperTypes().add(this.getTopologyElement());
+		areaEClass.getESuperTypes().add(this.getTopologyElement());
 		workCenterEClass.getESuperTypes().add(theBasePackage.getEntity());
 		processCellEClass.getESuperTypes().add(this.getWorkCenter());
 		productionUnitEClass.getESuperTypes().add(this.getWorkCenter());
 		productionLineEClass.getESuperTypes().add(this.getWorkCenter());
 		storageZoneEClass.getESuperTypes().add(this.getWorkCenter());
-		workUnitEClass.getESuperTypes().add(theBasePackage.getEntity());
+		workUnitEClass.getESuperTypes().add(this.getTopologyElement());
 		unitEClass.getESuperTypes().add(this.getWorkUnit());
-		workCellEClass.getESuperTypes().add(this.getWorkUnit());
-		storageUnitEClass.getESuperTypes().add(this.getWorkUnit());
-		equipmentModuleEClass.getESuperTypes().add(theBasePackage.getEntity());
-		controlModuleEClass.getESuperTypes().add(theBasePackage.getEntity());
-		stationEClass.getESuperTypes().add(theBasePackage.getEntity());
-		assemblyStationEClass.getESuperTypes().add(this.getStation());
-		bufferStationEClass.getESuperTypes().add(this.getStation());
 		processUnitEClass.getESuperTypes().add(this.getWorkUnit());
+		storageUnitEClass.getESuperTypes().add(this.getWorkUnit());
+		workCellEClass.getESuperTypes().add(this.getWorkUnit());
+		equipmentModuleEClass.getESuperTypes().add(this.getTopologyElement());
+		controlModuleEClass.getESuperTypes().add(this.getTopologyElement());
+		stationEClass.getESuperTypes().add(this.getTopologyElement());
 
 		// Initialize classes, features, and operations; add parameters
+		initEClass(topologyElementEClass, TopologyElement.class, "TopologyElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(enterpriseEClass, Enterprise.class, "Enterprise", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEnterprise_Sites(), this.getSite(), null, "sites", null, 1, -1, Enterprise.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -871,10 +792,12 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 
 		initEClass(unitEClass, Unit.class, "Unit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(workCellEClass, WorkCell.class, "WorkCell", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getWorkCell_Stations(), this.getStation(), null, "stations", null, 0, -1, WorkCell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(processUnitEClass, ProcessUnit.class, "ProcessUnit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(storageUnitEClass, StorageUnit.class, "StorageUnit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(workCellEClass, WorkCell.class, "WorkCell", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getWorkCell_Stations(), this.getStation(), null, "stations", null, 0, -1, WorkCell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(equipmentModuleEClass, EquipmentModule.class, "EquipmentModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEquipmentModule_ControlModules(), this.getControlModule(), null, "controlModules", null, 0, -1, EquipmentModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -888,18 +811,6 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 
 		initEClass(stationEClass, Station.class, "Station", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getStation_EquipmentModules(), this.getEquipmentModule(), null, "equipmentModules", null, 0, -1, Station.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(transitionEClass, Transition.class, "Transition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTransition_ComponentId_src(), ecorePackage.getEString(), "componentId_src", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTransition_ComponentId_target(), ecorePackage.getEString(), "componentId_target", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTransition_Distance(), ecorePackage.getEFloat(), "distance", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(assemblyStationEClass, AssemblyStation.class, "AssemblyStation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(bufferStationEClass, BufferStation.class, "BufferStation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getBufferStation_Capacity(), ecorePackage.getEInt(), "capacity", null, 0, 1, BufferStation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(processUnitEClass, ProcessUnit.class, "ProcessUnit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

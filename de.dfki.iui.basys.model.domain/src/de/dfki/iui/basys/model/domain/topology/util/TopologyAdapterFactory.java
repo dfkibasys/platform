@@ -71,6 +71,10 @@ public class TopologyAdapterFactory extends AdapterFactoryImpl {
 	protected TopologySwitch<Adapter> modelSwitch =
 		new TopologySwitch<Adapter>() {
 			@Override
+			public Adapter caseTopologyElement(TopologyElement object) {
+				return createTopologyElementAdapter();
+			}
+			@Override
 			public Adapter caseEnterprise(Enterprise object) {
 				return createEnterpriseAdapter();
 			}
@@ -111,12 +115,16 @@ public class TopologyAdapterFactory extends AdapterFactoryImpl {
 				return createUnitAdapter();
 			}
 			@Override
-			public Adapter caseWorkCell(WorkCell object) {
-				return createWorkCellAdapter();
+			public Adapter caseProcessUnit(ProcessUnit object) {
+				return createProcessUnitAdapter();
 			}
 			@Override
 			public Adapter caseStorageUnit(StorageUnit object) {
 				return createStorageUnitAdapter();
+			}
+			@Override
+			public Adapter caseWorkCell(WorkCell object) {
+				return createWorkCellAdapter();
 			}
 			@Override
 			public Adapter caseEquipmentModule(EquipmentModule object) {
@@ -129,22 +137,6 @@ public class TopologyAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseStation(Station object) {
 				return createStationAdapter();
-			}
-			@Override
-			public Adapter caseTransition(Transition object) {
-				return createTransitionAdapter();
-			}
-			@Override
-			public Adapter caseAssemblyStation(AssemblyStation object) {
-				return createAssemblyStationAdapter();
-			}
-			@Override
-			public Adapter caseBufferStation(BufferStation object) {
-				return createBufferStationAdapter();
-			}
-			@Override
-			public Adapter caseProcessUnit(ProcessUnit object) {
-				return createProcessUnitAdapter();
 			}
 			@Override
 			public Adapter caseBObject(BObject object) {
@@ -173,6 +165,20 @@ public class TopologyAdapterFactory extends AdapterFactoryImpl {
 		return modelSwitch.doSwitch((EObject)target);
 	}
 
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.topology.TopologyElement <em>Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.domain.topology.TopologyElement
+	 * @generated
+	 */
+	public Adapter createTopologyElementAdapter() {
+		return null;
+	}
 
 	/**
 	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.topology.Enterprise <em>Enterprise</em>}'.
@@ -381,48 +387,6 @@ public class TopologyAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createStationAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.topology.Transition <em>Transition</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.dfki.iui.basys.model.domain.topology.Transition
-	 * @generated
-	 */
-	public Adapter createTransitionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.topology.AssemblyStation <em>Assembly Station</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.dfki.iui.basys.model.domain.topology.AssemblyStation
-	 * @generated
-	 */
-	public Adapter createAssemblyStationAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.topology.BufferStation <em>Buffer Station</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.dfki.iui.basys.model.domain.topology.BufferStation
-	 * @generated
-	 */
-	public Adapter createBufferStationAdapter() {
 		return null;
 	}
 

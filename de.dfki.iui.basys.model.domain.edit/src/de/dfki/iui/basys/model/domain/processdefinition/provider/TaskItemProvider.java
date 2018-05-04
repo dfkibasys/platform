@@ -269,7 +269,7 @@ public class TaskItemProvider extends FlowNodeItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(ProcessdefinitionPackage.Literals.TASK__CAPABILITY_REQUIREMENT,
-				 CapabilityFactory.eINSTANCE.createPressen()));
+				 CapabilityFactory.eINSTANCE.createPressing()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -299,7 +299,7 @@ public class TaskItemProvider extends FlowNodeItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(ProcessdefinitionPackage.Literals.TASK__CAPABILITY_REQUIREMENT,
-				 CapabilityFactory.eINSTANCE.createSchrauben()));
+				 CapabilityFactory.eINSTANCE.createScrewing()));
 	}
 
 	/**

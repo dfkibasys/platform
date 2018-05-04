@@ -6,6 +6,7 @@ package de.dfki.iui.basys.model.domain.capability.provider;
 import de.dfki.iui.basys.model.base.provider.EntityItemProvider;
 
 import de.dfki.iui.basys.model.domain.capability.CapabilityAssertion;
+import de.dfki.iui.basys.model.domain.capability.CapabilityFactory;
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
 
 import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
@@ -21,7 +22,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -70,6 +70,7 @@ public class CapabilityAssertionItemProvider extends EntityItemProvider {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(CapabilityPackage.Literals.CAPABILITY_ASSERTION__PATTERN);
+			childrenFeatures.add(CapabilityPackage.Literals.CAPABILITY_ASSERTION__PREREQUISITES);
 		}
 		return childrenFeatures;
 	}
@@ -126,6 +127,7 @@ public class CapabilityAssertionItemProvider extends EntityItemProvider {
 
 		switch (notification.getFeatureID(CapabilityAssertion.class)) {
 			case CapabilityPackage.CAPABILITY_ASSERTION__PATTERN:
+			case CapabilityPackage.CAPABILITY_ASSERTION__PREREQUISITES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -147,6 +149,11 @@ public class CapabilityAssertionItemProvider extends EntityItemProvider {
 			(createChildParameter
 				(CapabilityPackage.Literals.CAPABILITY_ASSERTION__PATTERN,
 				 PatternFactory.eINSTANCE.createPObject()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_ASSERTION__PREREQUISITES,
+				 CapabilityFactory.eINSTANCE.createCapabilityAssertion()));
 	}
 
 	/**

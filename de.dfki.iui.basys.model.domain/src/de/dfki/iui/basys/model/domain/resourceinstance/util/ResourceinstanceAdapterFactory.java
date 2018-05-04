@@ -79,16 +79,20 @@ public class ResourceinstanceAdapterFactory extends AdapterFactoryImpl {
 				return createResourceInstanceAdapter();
 			}
 			@Override
-			public Adapter caseCapabilityApplication(CapabilityApplication object) {
-				return createCapabilityApplicationAdapter();
-			}
-			@Override
 			public Adapter caseResourceInstanceStatus(ResourceInstanceStatus object) {
 				return createResourceInstanceStatusAdapter();
 			}
 			@Override
 			public Adapter caseResourceInstanceStatusChangeEvent(ResourceInstanceStatusChangeEvent object) {
 				return createResourceInstanceStatusChangeEventAdapter();
+			}
+			@Override
+			public Adapter caseCapabilityApplication(CapabilityApplication object) {
+				return createCapabilityApplicationAdapter();
+			}
+			@Override
+			public Adapter caseCapabilityVariant(CapabilityVariant object) {
+				return createCapabilityVariantAdapter();
 			}
 			@Override
 			public Adapter caseBObject(BObject object) {
@@ -157,6 +161,20 @@ public class ResourceinstanceAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createCapabilityApplicationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant <em>Capability Variant</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant
+	 * @generated
+	 */
+	public Adapter createCapabilityVariantAdapter() {
 		return null;
 	}
 

@@ -27,24 +27,28 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="productGroup" lowerBound="1"
         eType="#//ProductGroup" eOpposite="#//ProductGroup/productVariants"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="assemblyGroups" upperBound="-1"
+        eType="#//AssemblyGroup" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BillOfMaterial" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
     <eStructuralFeatures xsi:type="ecore:EReference" name="entries" upperBound="-1"
         eType="#//BOMEntry" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="BOMEntry">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="count" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BOMEntry" abstract="true" interface="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="count" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AssemblyGroup" eSuperTypes="#//ManufacturedComponent"/>
   <eClassifiers xsi:type="ecore:EClass" name="AssemblyGroupEntry" eSuperTypes="#//BOMEntry">
     <eStructuralFeatures xsi:type="ecore:EReference" name="assemblyGroup" lowerBound="1"
         eType="#//AssemblyGroup"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ComponentEntry" eSuperTypes="#//BOMEntry">
+  <eClassifiers xsi:type="ecore:EClass" name="MaterialEntry" eSuperTypes="#//BOMEntry">
     <eStructuralFeatures xsi:type="ecore:EReference" name="material" lowerBound="1"
         eType="ecore:EClass material.ecore#//Material"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ManufacturedComponent" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
+  <eClassifiers xsi:type="ecore:EClass" name="ManufacturedComponent" abstract="true"
+      interface="true" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
     <eStructuralFeatures xsi:type="ecore:EReference" name="bom" lowerBound="1" eType="#//BillOfMaterial"
         containment="true"/>
   </eClassifiers>

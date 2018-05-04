@@ -49,6 +49,15 @@ public interface ResourceinstanceFactory extends EFactory {
 	CapabilityApplication createCapabilityApplication();
 
 	/**
+	 * Returns a new object of class '<em>Capability Variant</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Capability Variant</em>'.
+	 * @generated
+	 */
+	CapabilityVariant createCapabilityVariant();
+
+	/**
 	 * Returns a new object of class '<em>Resource Instance Status</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

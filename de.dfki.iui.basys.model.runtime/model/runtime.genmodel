@@ -6,6 +6,7 @@
     copyrightFields="false" usedGenPackages="../../de.dfki.iui.basys.model.base/model/base.genmodel#//base ../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"
     operationReflection="true" importOrganizing="true">
   <foreignModel>communication.ecore</foreignModel>
+  <foreignModel>component.ecore</foreignModel>
   <genPackages prefix="Communication" basePackage="de.dfki.iui.basys.model.runtime"
       disposableProviderFactory="true" ecorePackage="communication.ecore#/">
     <genDataTypes ecoreDataType="communication.ecore#//CommunicationException"/>
@@ -54,6 +55,9 @@
       <genOperations ecoreOperation="communication.ecore#//ChannelPool/disconnect"/>
       <genOperations ecoreOperation="communication.ecore#//ChannelPool/getChannel">
         <genParameters ecoreParameter="communication.ecore#//ChannelPool/getChannel/id"/>
+      </genOperations>
+      <genOperations ecoreOperation="communication.ecore#//ChannelPool/getChannelByName">
+        <genParameters ecoreParameter="communication.ecore#//ChannelPool/getChannelByName/name"/>
       </genOperations>
     </genClasses>
     <genClasses ecoreClass="communication.ecore#//Channel">
@@ -137,6 +141,66 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute communication.ecore#//Authentication/username"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute communication.ecore#//Authentication/password"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute communication.ecore#//Authentication/certificate"/>
+    </genClasses>
+  </genPackages>
+  <genPackages prefix="Component" basePackage="de.dfki.iui.basys.model.runtime" disposableProviderFactory="true"
+      ecorePackage="component.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="component.ecore#//ComponentCategory">
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ComponentCategory/NONE"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ComponentCategory/SERVICE_COMPONENT"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ComponentCategory/DEVICE_COMPONENT"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ComponentCategory/MANAGEMENT_COMPONENT"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="component.ecore#//ComponentState">
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ComponentState/STOPPED"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ComponentState/RESETTING"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ComponentState/IDLE"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ComponentState/STARTING"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ComponentState/EXECUTE"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ComponentState/COMPLETING"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ComponentState/COMPLETE"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ComponentState/STOPPING"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ComponentState/HOLDING"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ComponentState/HELD"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ComponentState/UNHOLDING"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ComponentState/SUSPENDING"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ComponentState/SUSPENDED"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ComponentState/UNSUSPENDING"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ComponentState/ABORTING"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ComponentState/ABORTED"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ComponentState/CLEARING"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="component.ecore#//ComponentMode">
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ComponentMode/PRODUCTION"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ComponentMode/MAINTENANCE"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ComponentMode/MANUAL"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ComponentMode/CHANGE_OVER"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ComponentMode/CLEAN"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ComponentMode/SET_UP"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ComponentMode/EMPTY_OUT"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ComponentMode/SIMULATION"/>
+    </genEnums>
+    <genClasses image="false" ecoreClass="component.ecore#//ComponentInfo">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentInfo/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentInfo/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentInfo/category"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentInfo/inChannelName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentInfo/outChannelName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentInfo/currentState"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentInfo/currentMode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentInfo/communicationProvider"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentInfo/connectionString"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="component.ecore#//ComponentConfiguration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentConfiguration/componentId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentConfiguration/componentName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentConfiguration/componentCategory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentConfiguration/componentImplementationJavaClass"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentConfiguration/communicationProviderImplementationJavaClass"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentConfiguration/communicationProviderConnectionString"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentConfiguration/inChannelName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentConfiguration/outChannelName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentConfiguration/externalConnectionString"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

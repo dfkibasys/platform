@@ -8,10 +8,8 @@ import de.dfki.iui.basys.model.domain.capability.CapabilityAssertion;
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
 
 import de.dfki.iui.basys.model.pattern.PObject;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -26,6 +24,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link de.dfki.iui.basys.model.domain.capability.impl.CapabilityAssertionImpl#getPattern <em>Pattern</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.capability.impl.CapabilityAssertionImpl#getPrerequisites <em>Prerequisites</em>}</li>
  * </ul>
  *
  * @generated
@@ -40,6 +39,16 @@ public class CapabilityAssertionImpl extends EntityImpl implements CapabilityAss
 	 * @ordered
 	 */
 	protected PObject pattern;
+
+	/**
+	 * The cached value of the '{@link #getPrerequisites() <em>Prerequisites</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPrerequisites()
+	 * @generated
+	 * @ordered
+	 */
+	protected CapabilityAssertion prerequisites;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -108,11 +117,56 @@ public class CapabilityAssertionImpl extends EntityImpl implements CapabilityAss
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public CapabilityAssertion getPrerequisites() {
+		return prerequisites;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetPrerequisites(CapabilityAssertion newPrerequisites, NotificationChain msgs) {
+		CapabilityAssertion oldPrerequisites = prerequisites;
+		prerequisites = newPrerequisites;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CapabilityPackage.CAPABILITY_ASSERTION__PREREQUISITES, oldPrerequisites, newPrerequisites);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPrerequisites(CapabilityAssertion newPrerequisites) {
+		if (newPrerequisites != prerequisites) {
+			NotificationChain msgs = null;
+			if (prerequisites != null)
+				msgs = ((InternalEObject)prerequisites).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CapabilityPackage.CAPABILITY_ASSERTION__PREREQUISITES, null, msgs);
+			if (newPrerequisites != null)
+				msgs = ((InternalEObject)newPrerequisites).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CapabilityPackage.CAPABILITY_ASSERTION__PREREQUISITES, null, msgs);
+			msgs = basicSetPrerequisites(newPrerequisites, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CapabilityPackage.CAPABILITY_ASSERTION__PREREQUISITES, newPrerequisites, newPrerequisites));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case CapabilityPackage.CAPABILITY_ASSERTION__PATTERN:
 				return basicSetPattern(null, msgs);
+			case CapabilityPackage.CAPABILITY_ASSERTION__PREREQUISITES:
+				return basicSetPrerequisites(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -127,6 +181,8 @@ public class CapabilityAssertionImpl extends EntityImpl implements CapabilityAss
 		switch (featureID) {
 			case CapabilityPackage.CAPABILITY_ASSERTION__PATTERN:
 				return getPattern();
+			case CapabilityPackage.CAPABILITY_ASSERTION__PREREQUISITES:
+				return getPrerequisites();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -136,11 +192,15 @@ public class CapabilityAssertionImpl extends EntityImpl implements CapabilityAss
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CapabilityPackage.CAPABILITY_ASSERTION__PATTERN:
 				setPattern((PObject)newValue);
+				return;
+			case CapabilityPackage.CAPABILITY_ASSERTION__PREREQUISITES:
+				setPrerequisites((CapabilityAssertion)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -157,6 +217,9 @@ public class CapabilityAssertionImpl extends EntityImpl implements CapabilityAss
 			case CapabilityPackage.CAPABILITY_ASSERTION__PATTERN:
 				setPattern((PObject)null);
 				return;
+			case CapabilityPackage.CAPABILITY_ASSERTION__PREREQUISITES:
+				setPrerequisites((CapabilityAssertion)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -171,6 +234,8 @@ public class CapabilityAssertionImpl extends EntityImpl implements CapabilityAss
 		switch (featureID) {
 			case CapabilityPackage.CAPABILITY_ASSERTION__PATTERN:
 				return pattern != null;
+			case CapabilityPackage.CAPABILITY_ASSERTION__PREREQUISITES:
+				return prerequisites != null;
 		}
 		return super.eIsSet(featureID);
 	}

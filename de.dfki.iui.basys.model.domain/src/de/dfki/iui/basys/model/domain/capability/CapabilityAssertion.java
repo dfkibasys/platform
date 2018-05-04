@@ -16,6 +16,7 @@ import de.dfki.iui.basys.model.pattern.PObject;
  * </p>
  * <ul>
  *   <li>{@link de.dfki.iui.basys.model.domain.capability.CapabilityAssertion#getPattern <em>Pattern</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.capability.CapabilityAssertion#getPrerequisites <em>Prerequisites</em>}</li>
  * </ul>
  *
  * @see de.dfki.iui.basys.model.domain.capability.CapabilityPackage#getCapabilityAssertion()
@@ -48,5 +49,31 @@ public interface CapabilityAssertion extends Entity {
 	 * @generated
 	 */
 	void setPattern(PObject value);
+
+	/**
+	 * Returns the value of the '<em><b>Prerequisites</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Prerequisites</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Prerequisites</em>' containment reference.
+	 * @see #setPrerequisites(CapabilityAssertion)
+	 * @see de.dfki.iui.basys.model.domain.capability.CapabilityPackage#getCapabilityAssertion_Prerequisites()
+	 * @model containment="true"
+	 * @generated
+	 */
+	CapabilityAssertion getPrerequisites();
+
+	/**
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.capability.CapabilityAssertion#getPrerequisites <em>Prerequisites</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Prerequisites</em>' containment reference.
+	 * @see #getPrerequisites()
+	 * @generated
+	 */
+	void setPrerequisites(CapabilityAssertion value);
 
 } // CapabilityAssertion

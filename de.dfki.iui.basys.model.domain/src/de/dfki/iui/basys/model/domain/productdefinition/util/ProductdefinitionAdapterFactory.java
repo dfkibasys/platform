@@ -99,8 +99,8 @@ public class ProductdefinitionAdapterFactory extends AdapterFactoryImpl {
 				return createAssemblyGroupEntryAdapter();
 			}
 			@Override
-			public Adapter caseComponentEntry(ComponentEntry object) {
-				return createComponentEntryAdapter();
+			public Adapter caseMaterialEntry(MaterialEntry object) {
+				return createMaterialEntryAdapter();
 			}
 			@Override
 			public Adapter caseManufacturedComponent(ManufacturedComponent object) {
@@ -233,16 +233,16 @@ public class ProductdefinitionAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.productdefinition.ComponentEntry <em>Component Entry</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.productdefinition.MaterialEntry <em>Material Entry</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.dfki.iui.basys.model.domain.productdefinition.ComponentEntry
+	 * @see de.dfki.iui.basys.model.domain.productdefinition.MaterialEntry
 	 * @generated
 	 */
-	public Adapter createComponentEntryAdapter() {
+	public Adapter createMaterialEntryAdapter() {
 		return null;
 	}
 

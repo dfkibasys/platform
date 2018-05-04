@@ -6,6 +6,7 @@ import de.dfki.iui.basys.model.base.BasePackage;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -115,13 +116,22 @@ public interface CapabilityPackage extends EPackage {
 	int CAPABILITY_ASSERTION__PATTERN = BasePackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Prerequisites</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_ASSERTION__PREREQUISITES = BasePackage.ENTITY_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Assertion</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_ASSERTION_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 1;
+	int CAPABILITY_ASSERTION_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Assertion</em>' class.
@@ -133,6 +143,88 @@ public interface CapabilityPackage extends EPackage {
 	int CAPABILITY_ASSERTION_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.CapabilityRequestImpl <em>Request</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityRequestImpl
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getCapabilityRequest()
+	 * @generated
+	 */
+	int CAPABILITY_REQUEST = 1;
+
+	/**
+	 * The feature id for the '<em><b>Who</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_REQUEST__WHO = 0;
+
+	/**
+	 * The feature id for the '<em><b>What</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_REQUEST__WHAT = 1;
+
+	/**
+	 * The feature id for the '<em><b>Whom</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_REQUEST__WHOM = 2;
+
+	/**
+	 * The feature id for the '<em><b>Where</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_REQUEST__WHERE = 3;
+
+	/**
+	 * The feature id for the '<em><b>When</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_REQUEST__WHEN = 4;
+
+	/**
+	 * The feature id for the '<em><b>How</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_REQUEST__HOW = 5;
+
+	/**
+	 * The number of structural features of the '<em>Request</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_REQUEST_FEATURE_COUNT = 6;
+
+	/**
+	 * The number of operations of the '<em>Request</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_REQUEST_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.CapabilityImpl <em>Capability</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -140,7 +232,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getCapability()
 	 * @generated
 	 */
-	int CAPABILITY = 1;
+	int CAPABILITY = 2;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -204,7 +296,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getHandlingCapability()
 	 * @generated
 	 */
-	int HANDLING_CAPABILITY = 2;
+	int HANDLING_CAPABILITY = 3;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -261,14 +353,14 @@ public interface CapabilityPackage extends EPackage {
 	int HANDLING_CAPABILITY_OPERATION_COUNT = CAPABILITY_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.ManufacturingCapabilityImpl <em>Manufacturing Capability</em>}' class.
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.ProductionCapabilityImpl <em>Production Capability</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.capability.impl.ManufacturingCapabilityImpl
-	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getManufacturingCapability()
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.ProductionCapabilityImpl
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getProductionCapability()
 	 * @generated
 	 */
-	int MANUFACTURING_CAPABILITY = 3;
+	int PRODUCTION_CAPABILITY = 14;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -277,7 +369,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MANUFACTURING_CAPABILITY__BINDING = CAPABILITY__BINDING;
+	int PRODUCTION_CAPABILITY__BINDING = CAPABILITY__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -286,7 +378,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MANUFACTURING_CAPABILITY__ID = CAPABILITY__ID;
+	int PRODUCTION_CAPABILITY__ID = CAPABILITY__ID;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -295,7 +387,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MANUFACTURING_CAPABILITY__NAME = CAPABILITY__NAME;
+	int PRODUCTION_CAPABILITY__NAME = CAPABILITY__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -304,7 +396,71 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MANUFACTURING_CAPABILITY__METADATA = CAPABILITY__METADATA;
+	int PRODUCTION_CAPABILITY__METADATA = CAPABILITY__METADATA;
+
+	/**
+	 * The number of structural features of the '<em>Production Capability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCTION_CAPABILITY_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Production Capability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCTION_CAPABILITY_OPERATION_COUNT = CAPABILITY_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.ManufacturingCapabilityImpl <em>Manufacturing Capability</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.ManufacturingCapabilityImpl
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getManufacturingCapability()
+	 * @generated
+	 */
+	int MANUFACTURING_CAPABILITY = 4;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANUFACTURING_CAPABILITY__BINDING = PRODUCTION_CAPABILITY__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANUFACTURING_CAPABILITY__ID = PRODUCTION_CAPABILITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANUFACTURING_CAPABILITY__NAME = PRODUCTION_CAPABILITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANUFACTURING_CAPABILITY__METADATA = PRODUCTION_CAPABILITY__METADATA;
 
 	/**
 	 * The number of structural features of the '<em>Manufacturing Capability</em>' class.
@@ -313,7 +469,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MANUFACTURING_CAPABILITY_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 0;
+	int MANUFACTURING_CAPABILITY_FEATURE_COUNT = PRODUCTION_CAPABILITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Manufacturing Capability</em>' class.
@@ -322,7 +478,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MANUFACTURING_CAPABILITY_OPERATION_COUNT = CAPABILITY_OPERATION_COUNT + 0;
+	int MANUFACTURING_CAPABILITY_OPERATION_COUNT = PRODUCTION_CAPABILITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.FügenImpl <em>Fügen</em>}' class.
@@ -332,7 +488,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getFügen()
 	 * @generated
 	 */
-	int FÜGEN = 4;
+	int FÜGEN = 5;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -453,14 +609,14 @@ public interface CapabilityPackage extends EPackage {
 	int AN_EINPRESSEN_OPERATION_COUNT = FÜGEN_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.PressenImpl <em>Pressen</em>}' class.
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.PressingImpl <em>Pressing</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.capability.impl.PressenImpl
-	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getPressen()
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.PressingImpl
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getPressing()
 	 * @generated
 	 */
-	int PRESSEN = 5;
+	int PRESSING = 6;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -469,7 +625,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRESSEN__BINDING = AN_EINPRESSEN__BINDING;
+	int PRESSING__BINDING = AN_EINPRESSEN__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -478,7 +634,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRESSEN__ID = AN_EINPRESSEN__ID;
+	int PRESSING__ID = AN_EINPRESSEN__ID;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -487,7 +643,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRESSEN__NAME = AN_EINPRESSEN__NAME;
+	int PRESSING__NAME = AN_EINPRESSEN__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -496,43 +652,43 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRESSEN__METADATA = AN_EINPRESSEN__METADATA;
+	int PRESSING__METADATA = AN_EINPRESSEN__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Druck</b></em>' attribute.
+	 * The feature id for the '<em><b>Pressure</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRESSEN__DRUCK = AN_EINPRESSEN_FEATURE_COUNT + 0;
+	int PRESSING__PRESSURE = AN_EINPRESSEN_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Hub</b></em>' attribute.
+	 * The feature id for the '<em><b>Stroke</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRESSEN__HUB = AN_EINPRESSEN_FEATURE_COUNT + 1;
+	int PRESSING__STROKE = AN_EINPRESSEN_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Pressen</em>' class.
+	 * The number of structural features of the '<em>Pressing</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRESSEN_FEATURE_COUNT = AN_EINPRESSEN_FEATURE_COUNT + 2;
+	int PRESSING_FEATURE_COUNT = AN_EINPRESSEN_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of operations of the '<em>Pressen</em>' class.
+	 * The number of operations of the '<em>Pressing</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRESSEN_OPERATION_COUNT = AN_EINPRESSEN_OPERATION_COUNT + 0;
+	int PRESSING_OPERATION_COUNT = AN_EINPRESSEN_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.QoSCapabilityImpl <em>Qo SCapability</em>}' class.
@@ -542,61 +698,27 @@ public interface CapabilityPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getQoSCapability()
 	 * @generated
 	 */
-	int QO_SCAPABILITY = 6;
+	int QO_SCAPABILITY = 19;
 
 	/**
-	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.InspectImpl <em>Inspect</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.InspectImpl
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getInspect()
 	 * @generated
-	 * @ordered
 	 */
-	int QO_SCAPABILITY__BINDING = CAPABILITY__BINDING;
+	int INSPECT = 20;
 
 	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.LoadCarrierUnitEnum <em>Load Carrier Unit Enum</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.capability.LoadCarrierUnitEnum
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getLoadCarrierUnitEnum()
 	 * @generated
-	 * @ordered
 	 */
-	int QO_SCAPABILITY__ID = CAPABILITY__ID;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QO_SCAPABILITY__NAME = CAPABILITY__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QO_SCAPABILITY__METADATA = CAPABILITY__METADATA;
-
-	/**
-	 * The number of structural features of the '<em>Qo SCapability</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QO_SCAPABILITY_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Qo SCapability</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QO_SCAPABILITY_OPERATION_COUNT = CAPABILITY_OPERATION_COUNT + 0;
+	int LOAD_CARRIER_UNIT_ENUM = 21;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.UrformenImpl <em>Urformen</em>}' class.
@@ -919,14 +1041,14 @@ public interface CapabilityPackage extends EPackage {
 	int STOFFEIGENSCHAFTEN_OPERATION_COUNT = MANUFACTURING_CAPABILITY_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.SchraubenImpl <em>Schrauben</em>}' class.
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.ScrewingImpl <em>Screwing</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.capability.impl.SchraubenImpl
-	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getSchrauben()
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.ScrewingImpl
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getScrewing()
 	 * @generated
 	 */
-	int SCHRAUBEN = 13;
+	int SCREWING = 13;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -935,7 +1057,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCHRAUBEN__BINDING = AN_EINPRESSEN__BINDING;
+	int SCREWING__BINDING = AN_EINPRESSEN__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -944,7 +1066,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCHRAUBEN__ID = AN_EINPRESSEN__ID;
+	int SCREWING__ID = AN_EINPRESSEN__ID;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -953,7 +1075,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCHRAUBEN__NAME = AN_EINPRESSEN__NAME;
+	int SCREWING__NAME = AN_EINPRESSEN__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -962,45 +1084,44 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCHRAUBEN__METADATA = AN_EINPRESSEN__METADATA;
+	int SCREWING__METADATA = AN_EINPRESSEN__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Drehmoment</b></em>' attribute.
+	 * The feature id for the '<em><b>Torque</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCHRAUBEN__DREHMOMENT = AN_EINPRESSEN_FEATURE_COUNT + 0;
+	int SCREWING__TORQUE = AN_EINPRESSEN_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Schrauben</em>' class.
+	 * The number of structural features of the '<em>Screwing</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCHRAUBEN_FEATURE_COUNT = AN_EINPRESSEN_FEATURE_COUNT + 1;
+	int SCREWING_FEATURE_COUNT = AN_EINPRESSEN_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Schrauben</em>' class.
+	 * The number of operations of the '<em>Screwing</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCHRAUBEN_OPERATION_COUNT = AN_EINPRESSEN_OPERATION_COUNT + 0;
-
+	int SCREWING_OPERATION_COUNT = AN_EINPRESSEN_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.InformationTransferCapabilityImpl <em>Information Transfer Capability</em>}' class.
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.LogisticsCapabilityImpl <em>Logistics Capability</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.capability.impl.InformationTransferCapabilityImpl
-	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getInformationTransferCapability()
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.LogisticsCapabilityImpl
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getLogisticsCapability()
 	 * @generated
 	 */
-	int INFORMATION_TRANSFER_CAPABILITY = 14;
+	int LOGISTICS_CAPABILITY = 15;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -1009,7 +1130,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INFORMATION_TRANSFER_CAPABILITY__BINDING = CAPABILITY__BINDING;
+	int LOGISTICS_CAPABILITY__BINDING = CAPABILITY__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1018,7 +1139,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INFORMATION_TRANSFER_CAPABILITY__ID = CAPABILITY__ID;
+	int LOGISTICS_CAPABILITY__ID = CAPABILITY__ID;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1027,7 +1148,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INFORMATION_TRANSFER_CAPABILITY__NAME = CAPABILITY__NAME;
+	int LOGISTICS_CAPABILITY__NAME = CAPABILITY__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -1036,35 +1157,62 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INFORMATION_TRANSFER_CAPABILITY__METADATA = CAPABILITY__METADATA;
+	int LOGISTICS_CAPABILITY__METADATA = CAPABILITY__METADATA;
 
 	/**
-	 * The number of structural features of the '<em>Information Transfer Capability</em>' class.
+	 * The feature id for the '<em><b>Load Carrier Unit</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INFORMATION_TRANSFER_CAPABILITY_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 0;
+	int LOGISTICS_CAPABILITY__LOAD_CARRIER_UNIT = CAPABILITY_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of operations of the '<em>Information Transfer Capability</em>' class.
+	 * The feature id for the '<em><b>Capacity</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INFORMATION_TRANSFER_CAPABILITY_OPERATION_COUNT = CAPABILITY_OPERATION_COUNT + 0;
+	int LOGISTICS_CAPABILITY__CAPACITY = CAPABILITY_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.ProvideInformationImpl <em>Provide Information</em>}' class.
+	 * The feature id for the '<em><b>Weight</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.capability.impl.ProvideInformationImpl
-	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getProvideInformation()
+	 * @generated
+	 * @ordered
+	 */
+	int LOGISTICS_CAPABILITY__WEIGHT = CAPABILITY_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Logistics Capability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGISTICS_CAPABILITY_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Logistics Capability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGISTICS_CAPABILITY_OPERATION_COUNT = CAPABILITY_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.PickAndPlaceImpl <em>Pick And Place</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.PickAndPlaceImpl
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getPickAndPlace()
 	 * @generated
 	 */
-	int PROVIDE_INFORMATION = 15;
+	int PICK_AND_PLACE = 16;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -1073,7 +1221,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROVIDE_INFORMATION__BINDING = INFORMATION_TRANSFER_CAPABILITY__BINDING;
+	int PICK_AND_PLACE__BINDING = LOGISTICS_CAPABILITY__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1082,7 +1230,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROVIDE_INFORMATION__ID = INFORMATION_TRANSFER_CAPABILITY__ID;
+	int PICK_AND_PLACE__ID = LOGISTICS_CAPABILITY__ID;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1091,7 +1239,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROVIDE_INFORMATION__NAME = INFORMATION_TRANSFER_CAPABILITY__NAME;
+	int PICK_AND_PLACE__NAME = LOGISTICS_CAPABILITY__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -1100,26 +1248,360 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROVIDE_INFORMATION__METADATA = INFORMATION_TRANSFER_CAPABILITY__METADATA;
+	int PICK_AND_PLACE__METADATA = LOGISTICS_CAPABILITY__METADATA;
 
 	/**
-	 * The number of structural features of the '<em>Provide Information</em>' class.
+	 * The feature id for the '<em><b>Load Carrier Unit</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROVIDE_INFORMATION_FEATURE_COUNT = INFORMATION_TRANSFER_CAPABILITY_FEATURE_COUNT + 0;
+	int PICK_AND_PLACE__LOAD_CARRIER_UNIT = LOGISTICS_CAPABILITY__LOAD_CARRIER_UNIT;
 
 	/**
-	 * The number of operations of the '<em>Provide Information</em>' class.
+	 * The feature id for the '<em><b>Capacity</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROVIDE_INFORMATION_OPERATION_COUNT = INFORMATION_TRANSFER_CAPABILITY_OPERATION_COUNT + 0;
+	int PICK_AND_PLACE__CAPACITY = LOGISTICS_CAPABILITY__CAPACITY;
 
+	/**
+	 * The feature id for the '<em><b>Weight</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PICK_AND_PLACE__WEIGHT = LOGISTICS_CAPABILITY__WEIGHT;
+
+	/**
+	 * The feature id for the '<em><b>Distance</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PICK_AND_PLACE__DISTANCE = LOGISTICS_CAPABILITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Pick And Place</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PICK_AND_PLACE_FEATURE_COUNT = LOGISTICS_CAPABILITY_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Pick And Place</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PICK_AND_PLACE_OPERATION_COUNT = LOGISTICS_CAPABILITY_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.TransportImpl <em>Transport</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.TransportImpl
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getTransport()
+	 * @generated
+	 */
+	int TRANSPORT = 17;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSPORT__BINDING = LOGISTICS_CAPABILITY__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSPORT__ID = LOGISTICS_CAPABILITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSPORT__NAME = LOGISTICS_CAPABILITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSPORT__METADATA = LOGISTICS_CAPABILITY__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Load Carrier Unit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSPORT__LOAD_CARRIER_UNIT = LOGISTICS_CAPABILITY__LOAD_CARRIER_UNIT;
+
+	/**
+	 * The feature id for the '<em><b>Capacity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSPORT__CAPACITY = LOGISTICS_CAPABILITY__CAPACITY;
+
+	/**
+	 * The feature id for the '<em><b>Weight</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSPORT__WEIGHT = LOGISTICS_CAPABILITY__WEIGHT;
+
+	/**
+	 * The feature id for the '<em><b>Distance</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSPORT__DISTANCE = LOGISTICS_CAPABILITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Transport</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSPORT_FEATURE_COUNT = LOGISTICS_CAPABILITY_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Transport</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSPORT_OPERATION_COUNT = LOGISTICS_CAPABILITY_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.StoreImpl <em>Store</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.StoreImpl
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getStore()
+	 * @generated
+	 */
+	int STORE = 18;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORE__BINDING = LOGISTICS_CAPABILITY__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORE__ID = LOGISTICS_CAPABILITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORE__NAME = LOGISTICS_CAPABILITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORE__METADATA = LOGISTICS_CAPABILITY__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Load Carrier Unit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORE__LOAD_CARRIER_UNIT = LOGISTICS_CAPABILITY__LOAD_CARRIER_UNIT;
+
+	/**
+	 * The feature id for the '<em><b>Capacity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORE__CAPACITY = LOGISTICS_CAPABILITY__CAPACITY;
+
+	/**
+	 * The feature id for the '<em><b>Weight</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORE__WEIGHT = LOGISTICS_CAPABILITY__WEIGHT;
+
+	/**
+	 * The number of structural features of the '<em>Store</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORE_FEATURE_COUNT = LOGISTICS_CAPABILITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Store</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORE_OPERATION_COUNT = LOGISTICS_CAPABILITY_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QO_SCAPABILITY__BINDING = CAPABILITY__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QO_SCAPABILITY__ID = CAPABILITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QO_SCAPABILITY__NAME = CAPABILITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QO_SCAPABILITY__METADATA = CAPABILITY__METADATA;
+
+	/**
+	 * The number of structural features of the '<em>Qo SCapability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QO_SCAPABILITY_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Qo SCapability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QO_SCAPABILITY_OPERATION_COUNT = CAPABILITY_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSPECT__BINDING = QO_SCAPABILITY__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSPECT__ID = QO_SCAPABILITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSPECT__NAME = QO_SCAPABILITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSPECT__METADATA = QO_SCAPABILITY__METADATA;
+
+	/**
+	 * The number of structural features of the '<em>Inspect</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSPECT_FEATURE_COUNT = QO_SCAPABILITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Inspect</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSPECT_OPERATION_COUNT = QO_SCAPABILITY_OPERATION_COUNT + 0;
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.CapabilityAssertion <em>Assertion</em>}'.
@@ -1141,6 +1623,93 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getCapabilityAssertion_Pattern();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link de.dfki.iui.basys.model.domain.capability.CapabilityAssertion#getPrerequisites <em>Prerequisites</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Prerequisites</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.CapabilityAssertion#getPrerequisites()
+	 * @see #getCapabilityAssertion()
+	 * @generated
+	 */
+	EReference getCapabilityAssertion_Prerequisites();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.CapabilityRequest <em>Request</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Request</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.CapabilityRequest
+	 * @generated
+	 */
+	EClass getCapabilityRequest();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link de.dfki.iui.basys.model.domain.capability.CapabilityRequest#getWho <em>Who</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Who</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.CapabilityRequest#getWho()
+	 * @see #getCapabilityRequest()
+	 * @generated
+	 */
+	EReference getCapabilityRequest_Who();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link de.dfki.iui.basys.model.domain.capability.CapabilityRequest#getWhat <em>What</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>What</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.CapabilityRequest#getWhat()
+	 * @see #getCapabilityRequest()
+	 * @generated
+	 */
+	EReference getCapabilityRequest_What();
+
+	/**
+	 * Returns the meta object for the reference list '{@link de.dfki.iui.basys.model.domain.capability.CapabilityRequest#getWhom <em>Whom</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Whom</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.CapabilityRequest#getWhom()
+	 * @see #getCapabilityRequest()
+	 * @generated
+	 */
+	EReference getCapabilityRequest_Whom();
+
+	/**
+	 * Returns the meta object for the reference list '{@link de.dfki.iui.basys.model.domain.capability.CapabilityRequest#getWhere <em>Where</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Where</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.CapabilityRequest#getWhere()
+	 * @see #getCapabilityRequest()
+	 * @generated
+	 */
+	EReference getCapabilityRequest_Where();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.capability.CapabilityRequest#getWhen <em>When</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>When</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.CapabilityRequest#getWhen()
+	 * @see #getCapabilityRequest()
+	 * @generated
+	 */
+	EAttribute getCapabilityRequest_When();
+
+	/**
+	 * Returns the meta object for the reference list '{@link de.dfki.iui.basys.model.domain.capability.CapabilityRequest#getHow <em>How</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>How</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.CapabilityRequest#getHow()
+	 * @see #getCapabilityRequest()
+	 * @generated
+	 */
+	EReference getCapabilityRequest_How();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.Capability <em>Capability</em>}'.
@@ -1183,36 +1752,36 @@ public interface CapabilityPackage extends EPackage {
 	EClass getFügen();
 
 	/**
-	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.Pressen <em>Pressen</em>}'.
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.Pressing <em>Pressing</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Pressen</em>'.
-	 * @see de.dfki.iui.basys.model.domain.capability.Pressen
+	 * @return the meta object for class '<em>Pressing</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.Pressing
 	 * @generated
 	 */
-	EClass getPressen();
+	EClass getPressing();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.capability.Pressen#getDruck <em>Druck</em>}'.
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.capability.Pressing#getPressure <em>Pressure</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Druck</em>'.
-	 * @see de.dfki.iui.basys.model.domain.capability.Pressen#getDruck()
-	 * @see #getPressen()
+	 * @return the meta object for the attribute '<em>Pressure</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.Pressing#getPressure()
+	 * @see #getPressing()
 	 * @generated
 	 */
-	EAttribute getPressen_Druck();
+	EAttribute getPressing_Pressure();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.capability.Pressen#getHub <em>Hub</em>}'.
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.capability.Pressing#getStroke <em>Stroke</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Hub</em>'.
-	 * @see de.dfki.iui.basys.model.domain.capability.Pressen#getHub()
-	 * @see #getPressen()
+	 * @return the meta object for the attribute '<em>Stroke</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.Pressing#getStroke()
+	 * @see #getPressing()
 	 * @generated
 	 */
-	EAttribute getPressen_Hub();
+	EAttribute getPressing_Stroke();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.QoSCapability <em>Qo SCapability</em>}'.
@@ -1223,6 +1792,26 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getQoSCapability();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.Inspect <em>Inspect</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Inspect</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.Inspect
+	 * @generated
+	 */
+	EClass getInspect();
+
+	/**
+	 * Returns the meta object for enum '{@link de.dfki.iui.basys.model.domain.capability.LoadCarrierUnitEnum <em>Load Carrier Unit Enum</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Load Carrier Unit Enum</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.LoadCarrierUnitEnum
+	 * @generated
+	 */
+	EEnum getLoadCarrierUnitEnum();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.Urformen <em>Urformen</em>}'.
@@ -1285,45 +1874,130 @@ public interface CapabilityPackage extends EPackage {
 	EClass getAnEinpressen();
 
 	/**
-	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.Schrauben <em>Schrauben</em>}'.
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.Screwing <em>Screwing</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Schrauben</em>'.
-	 * @see de.dfki.iui.basys.model.domain.capability.Schrauben
+	 * @return the meta object for class '<em>Screwing</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.Screwing
 	 * @generated
 	 */
-	EClass getSchrauben();
+	EClass getScrewing();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.capability.Schrauben#getDrehmoment <em>Drehmoment</em>}'.
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.capability.Screwing#getTorque <em>Torque</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Drehmoment</em>'.
-	 * @see de.dfki.iui.basys.model.domain.capability.Schrauben#getDrehmoment()
-	 * @see #getSchrauben()
+	 * @return the meta object for the attribute '<em>Torque</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.Screwing#getTorque()
+	 * @see #getScrewing()
 	 * @generated
 	 */
-	EAttribute getSchrauben_Drehmoment();
+	EAttribute getScrewing_Torque();
 
 	/**
-	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.InformationTransferCapability <em>Information Transfer Capability</em>}'.
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.ProductionCapability <em>Production Capability</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Information Transfer Capability</em>'.
-	 * @see de.dfki.iui.basys.model.domain.capability.InformationTransferCapability
+	 * @return the meta object for class '<em>Production Capability</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.ProductionCapability
 	 * @generated
 	 */
-	EClass getInformationTransferCapability();
+	EClass getProductionCapability();
 
 	/**
-	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.ProvideInformation <em>Provide Information</em>}'.
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.LogisticsCapability <em>Logistics Capability</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Provide Information</em>'.
-	 * @see de.dfki.iui.basys.model.domain.capability.ProvideInformation
+	 * @return the meta object for class '<em>Logistics Capability</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.LogisticsCapability
 	 * @generated
 	 */
-	EClass getProvideInformation();
+	EClass getLogisticsCapability();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.capability.LogisticsCapability#getLoadCarrierUnit <em>Load Carrier Unit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Load Carrier Unit</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.LogisticsCapability#getLoadCarrierUnit()
+	 * @see #getLogisticsCapability()
+	 * @generated
+	 */
+	EAttribute getLogisticsCapability_LoadCarrierUnit();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.capability.LogisticsCapability#getCapacity <em>Capacity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Capacity</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.LogisticsCapability#getCapacity()
+	 * @see #getLogisticsCapability()
+	 * @generated
+	 */
+	EAttribute getLogisticsCapability_Capacity();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.capability.LogisticsCapability#getWeight <em>Weight</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Weight</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.LogisticsCapability#getWeight()
+	 * @see #getLogisticsCapability()
+	 * @generated
+	 */
+	EAttribute getLogisticsCapability_Weight();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.PickAndPlace <em>Pick And Place</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Pick And Place</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.PickAndPlace
+	 * @generated
+	 */
+	EClass getPickAndPlace();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.capability.PickAndPlace#getDistance <em>Distance</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Distance</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.PickAndPlace#getDistance()
+	 * @see #getPickAndPlace()
+	 * @generated
+	 */
+	EAttribute getPickAndPlace_Distance();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.Transport <em>Transport</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Transport</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.Transport
+	 * @generated
+	 */
+	EClass getTransport();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.capability.Transport#getDistance <em>Distance</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Distance</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.Transport#getDistance()
+	 * @see #getTransport()
+	 * @generated
+	 */
+	EAttribute getTransport_Distance();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.Store <em>Store</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Store</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.Store
+	 * @generated
+	 */
+	EClass getStore();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1367,6 +2041,72 @@ public interface CapabilityPackage extends EPackage {
 		EReference CAPABILITY_ASSERTION__PATTERN = eINSTANCE.getCapabilityAssertion_Pattern();
 
 		/**
+		 * The meta object literal for the '<em><b>Prerequisites</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CAPABILITY_ASSERTION__PREREQUISITES = eINSTANCE.getCapabilityAssertion_Prerequisites();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.CapabilityRequestImpl <em>Request</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityRequestImpl
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getCapabilityRequest()
+		 * @generated
+		 */
+		EClass CAPABILITY_REQUEST = eINSTANCE.getCapabilityRequest();
+
+		/**
+		 * The meta object literal for the '<em><b>Who</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CAPABILITY_REQUEST__WHO = eINSTANCE.getCapabilityRequest_Who();
+
+		/**
+		 * The meta object literal for the '<em><b>What</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CAPABILITY_REQUEST__WHAT = eINSTANCE.getCapabilityRequest_What();
+
+		/**
+		 * The meta object literal for the '<em><b>Whom</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CAPABILITY_REQUEST__WHOM = eINSTANCE.getCapabilityRequest_Whom();
+
+		/**
+		 * The meta object literal for the '<em><b>Where</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CAPABILITY_REQUEST__WHERE = eINSTANCE.getCapabilityRequest_Where();
+
+		/**
+		 * The meta object literal for the '<em><b>When</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CAPABILITY_REQUEST__WHEN = eINSTANCE.getCapabilityRequest_When();
+
+		/**
+		 * The meta object literal for the '<em><b>How</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CAPABILITY_REQUEST__HOW = eINSTANCE.getCapabilityRequest_How();
+
+		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.CapabilityImpl <em>Capability</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1407,30 +2147,30 @@ public interface CapabilityPackage extends EPackage {
 		EClass FÜGEN = eINSTANCE.getFügen();
 
 		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.PressenImpl <em>Pressen</em>}' class.
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.PressingImpl <em>Pressing</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.domain.capability.impl.PressenImpl
-		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getPressen()
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.PressingImpl
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getPressing()
 		 * @generated
 		 */
-		EClass PRESSEN = eINSTANCE.getPressen();
+		EClass PRESSING = eINSTANCE.getPressing();
 
 		/**
-		 * The meta object literal for the '<em><b>Druck</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Pressure</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PRESSEN__DRUCK = eINSTANCE.getPressen_Druck();
+		EAttribute PRESSING__PRESSURE = eINSTANCE.getPressing_Pressure();
 
 		/**
-		 * The meta object literal for the '<em><b>Hub</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Stroke</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PRESSEN__HUB = eINSTANCE.getPressen_Hub();
+		EAttribute PRESSING__STROKE = eINSTANCE.getPressing_Stroke();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.QoSCapabilityImpl <em>Qo SCapability</em>}' class.
@@ -1441,6 +2181,26 @@ public interface CapabilityPackage extends EPackage {
 		 * @generated
 		 */
 		EClass QO_SCAPABILITY = eINSTANCE.getQoSCapability();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.InspectImpl <em>Inspect</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.InspectImpl
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getInspect()
+		 * @generated
+		 */
+		EClass INSPECT = eINSTANCE.getInspect();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.LoadCarrierUnitEnum <em>Load Carrier Unit Enum</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.capability.LoadCarrierUnitEnum
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getLoadCarrierUnitEnum()
+		 * @generated
+		 */
+		EEnum LOAD_CARRIER_UNIT_ENUM = eINSTANCE.getLoadCarrierUnitEnum();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.UrformenImpl <em>Urformen</em>}' class.
@@ -1503,42 +2263,112 @@ public interface CapabilityPackage extends EPackage {
 		EClass AN_EINPRESSEN = eINSTANCE.getAnEinpressen();
 
 		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.SchraubenImpl <em>Schrauben</em>}' class.
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.ScrewingImpl <em>Screwing</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.domain.capability.impl.SchraubenImpl
-		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getSchrauben()
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.ScrewingImpl
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getScrewing()
 		 * @generated
 		 */
-		EClass SCHRAUBEN = eINSTANCE.getSchrauben();
+		EClass SCREWING = eINSTANCE.getScrewing();
 
 		/**
-		 * The meta object literal for the '<em><b>Drehmoment</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Torque</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SCHRAUBEN__DREHMOMENT = eINSTANCE.getSchrauben_Drehmoment();
+		EAttribute SCREWING__TORQUE = eINSTANCE.getScrewing_Torque();
 
 		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.InformationTransferCapabilityImpl <em>Information Transfer Capability</em>}' class.
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.ProductionCapabilityImpl <em>Production Capability</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.domain.capability.impl.InformationTransferCapabilityImpl
-		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getInformationTransferCapability()
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.ProductionCapabilityImpl
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getProductionCapability()
 		 * @generated
 		 */
-		EClass INFORMATION_TRANSFER_CAPABILITY = eINSTANCE.getInformationTransferCapability();
+		EClass PRODUCTION_CAPABILITY = eINSTANCE.getProductionCapability();
 
 		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.ProvideInformationImpl <em>Provide Information</em>}' class.
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.LogisticsCapabilityImpl <em>Logistics Capability</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.domain.capability.impl.ProvideInformationImpl
-		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getProvideInformation()
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.LogisticsCapabilityImpl
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getLogisticsCapability()
 		 * @generated
 		 */
-		EClass PROVIDE_INFORMATION = eINSTANCE.getProvideInformation();
+		EClass LOGISTICS_CAPABILITY = eINSTANCE.getLogisticsCapability();
+
+		/**
+		 * The meta object literal for the '<em><b>Load Carrier Unit</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LOGISTICS_CAPABILITY__LOAD_CARRIER_UNIT = eINSTANCE.getLogisticsCapability_LoadCarrierUnit();
+
+		/**
+		 * The meta object literal for the '<em><b>Capacity</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LOGISTICS_CAPABILITY__CAPACITY = eINSTANCE.getLogisticsCapability_Capacity();
+
+		/**
+		 * The meta object literal for the '<em><b>Weight</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LOGISTICS_CAPABILITY__WEIGHT = eINSTANCE.getLogisticsCapability_Weight();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.PickAndPlaceImpl <em>Pick And Place</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.PickAndPlaceImpl
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getPickAndPlace()
+		 * @generated
+		 */
+		EClass PICK_AND_PLACE = eINSTANCE.getPickAndPlace();
+
+		/**
+		 * The meta object literal for the '<em><b>Distance</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PICK_AND_PLACE__DISTANCE = eINSTANCE.getPickAndPlace_Distance();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.TransportImpl <em>Transport</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.TransportImpl
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getTransport()
+		 * @generated
+		 */
+		EClass TRANSPORT = eINSTANCE.getTransport();
+
+		/**
+		 * The meta object literal for the '<em><b>Distance</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRANSPORT__DISTANCE = eINSTANCE.getTransport_Distance();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.StoreImpl <em>Store</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.StoreImpl
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getStore()
+		 * @generated
+		 */
+		EClass STORE = eINSTANCE.getStore();
 
 	}
 

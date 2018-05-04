@@ -371,75 +371,6 @@ public class TopologyItemProviderAdapterFactory extends TopologyAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.Transition} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected TransitionItemProvider transitionItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.Transition}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createTransitionAdapter() {
-		if (transitionItemProvider == null) {
-			transitionItemProvider = new TransitionItemProvider(this);
-		}
-
-		return transitionItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.AssemblyStation} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected AssemblyStationItemProvider assemblyStationItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.AssemblyStation}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createAssemblyStationAdapter() {
-		if (assemblyStationItemProvider == null) {
-			assemblyStationItemProvider = new AssemblyStationItemProvider(this);
-		}
-
-		return assemblyStationItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.BufferStation} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected BufferStationItemProvider bufferStationItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.BufferStation}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createBufferStationAdapter() {
-		if (bufferStationItemProvider == null) {
-			bufferStationItemProvider = new BufferStationItemProvider(this);
-		}
-
-		return bufferStationItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.ProcessUnit} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -569,15 +500,12 @@ public class TopologyItemProviderAdapterFactory extends TopologyAdapterFactory i
 		if (productionLineItemProvider != null) productionLineItemProvider.dispose();
 		if (storageZoneItemProvider != null) storageZoneItemProvider.dispose();
 		if (unitItemProvider != null) unitItemProvider.dispose();
-		if (workCellItemProvider != null) workCellItemProvider.dispose();
+		if (processUnitItemProvider != null) processUnitItemProvider.dispose();
 		if (storageUnitItemProvider != null) storageUnitItemProvider.dispose();
+		if (workCellItemProvider != null) workCellItemProvider.dispose();
 		if (equipmentModuleItemProvider != null) equipmentModuleItemProvider.dispose();
 		if (controlModuleItemProvider != null) controlModuleItemProvider.dispose();
 		if (stationItemProvider != null) stationItemProvider.dispose();
-		if (transitionItemProvider != null) transitionItemProvider.dispose();
-		if (assemblyStationItemProvider != null) assemblyStationItemProvider.dispose();
-		if (bufferStationItemProvider != null) bufferStationItemProvider.dispose();
-		if (processUnitItemProvider != null) processUnitItemProvider.dispose();
 	}
 
 }

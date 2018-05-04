@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<parent>
@@ -27,22 +28,16 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>de.dfki.iui.basys.model</groupId>
+			<artifactId>de.dfki.iui.basys.model.base</artifactId>
+			<version>${project.version}</version>
+			<type>bundle</type>
+		</dependency>
+		<dependency>
 			<type>pom</type>
 			<groupId>${project.parent.groupId}</groupId>
 			<artifactId>provision</artifactId>
 			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>de.dfki.iui.basys.model</groupId>
-			<artifactId>de.dfki.iui.basys.model.base</artifactId>
-			<version>${project.version}</version>
-			<type>bundle</type>			
-		</dependency>
-		<dependency>
-			<groupId>de.dfki.iui.basys.common</groupId>
-			<artifactId>de.dfki.iui.basys.common.emf</artifactId>
-			<version>${project.version}</version>
-			<type>bundle</type>
 		</dependency>
 	</dependencies>
 </project>

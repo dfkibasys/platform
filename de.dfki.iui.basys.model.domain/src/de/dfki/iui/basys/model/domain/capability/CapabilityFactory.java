@@ -31,6 +31,15 @@ public interface CapabilityFactory extends EFactory {
 	CapabilityAssertion createCapabilityAssertion();
 
 	/**
+	 * Returns a new object of class '<em>Request</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Request</em>'.
+	 * @generated
+	 */
+	CapabilityRequest createCapabilityRequest();
+
+	/**
 	 * Returns a new object of class '<em>Capability</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -67,13 +76,13 @@ public interface CapabilityFactory extends EFactory {
 	Fügen createFügen();
 
 	/**
-	 * Returns a new object of class '<em>Pressen</em>'.
+	 * Returns a new object of class '<em>Pressing</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Pressen</em>'.
+	 * @return a new object of class '<em>Pressing</em>'.
 	 * @generated
 	 */
-	Pressen createPressen();
+	Pressing createPressing();
 
 	/**
 	 * Returns a new object of class '<em>Qo SCapability</em>'.
@@ -83,6 +92,15 @@ public interface CapabilityFactory extends EFactory {
 	 * @generated
 	 */
 	QoSCapability createQoSCapability();
+
+	/**
+	 * Returns a new object of class '<em>Inspect</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Inspect</em>'.
+	 * @generated
+	 */
+	Inspect createInspect();
 
 	/**
 	 * Returns a new object of class '<em>Urformen</em>'.
@@ -139,31 +157,58 @@ public interface CapabilityFactory extends EFactory {
 	AnEinpressen createAnEinpressen();
 
 	/**
-	 * Returns a new object of class '<em>Schrauben</em>'.
+	 * Returns a new object of class '<em>Screwing</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Schrauben</em>'.
+	 * @return a new object of class '<em>Screwing</em>'.
 	 * @generated
 	 */
-	Schrauben createSchrauben();
+	Screwing createScrewing();
 
 	/**
-	 * Returns a new object of class '<em>Information Transfer Capability</em>'.
+	 * Returns a new object of class '<em>Production Capability</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Information Transfer Capability</em>'.
+	 * @return a new object of class '<em>Production Capability</em>'.
 	 * @generated
 	 */
-	InformationTransferCapability createInformationTransferCapability();
+	ProductionCapability createProductionCapability();
 
 	/**
-	 * Returns a new object of class '<em>Provide Information</em>'.
+	 * Returns a new object of class '<em>Logistics Capability</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Provide Information</em>'.
+	 * @return a new object of class '<em>Logistics Capability</em>'.
 	 * @generated
 	 */
-	ProvideInformation createProvideInformation();
+	LogisticsCapability createLogisticsCapability();
+
+	/**
+	 * Returns a new object of class '<em>Pick And Place</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Pick And Place</em>'.
+	 * @generated
+	 */
+	PickAndPlace createPickAndPlace();
+
+	/**
+	 * Returns a new object of class '<em>Transport</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Transport</em>'.
+	 * @generated
+	 */
+	Transport createTransport();
+
+	/**
+	 * Returns a new object of class '<em>Store</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Store</em>'.
+	 * @generated
+	 */
+	Store createStore();
 
 	/**
 	 * Returns the package supported by this factory.

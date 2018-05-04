@@ -59,25 +59,48 @@ public class CapabilityApplicationItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addBomEntriesPropertyDescriptor(object);
+			addCapabilityAssertionPropertyDescriptor(object);
+			addVariantsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Bom Entries feature.
+	 * This adds a property descriptor for the Capability Assertion feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addBomEntriesPropertyDescriptor(Object object) {
+	protected void addCapabilityAssertionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_CapabilityApplication_bomEntries_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CapabilityApplication_bomEntries_feature", "_UI_CapabilityApplication_type"),
-				 ResourceinstancePackage.Literals.CAPABILITY_APPLICATION__BOM_ENTRIES,
+				 getString("_UI_CapabilityApplication_capabilityAssertion_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CapabilityApplication_capabilityAssertion_feature", "_UI_CapabilityApplication_type"),
+				 ResourceinstancePackage.Literals.CAPABILITY_APPLICATION__CAPABILITY_ASSERTION,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Variants feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addVariantsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CapabilityApplication_variants_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CapabilityApplication_variants_feature", "_UI_CapabilityApplication_type"),
+				 ResourceinstancePackage.Literals.CAPABILITY_APPLICATION__VARIANTS,
 				 true,
 				 false,
 				 true,

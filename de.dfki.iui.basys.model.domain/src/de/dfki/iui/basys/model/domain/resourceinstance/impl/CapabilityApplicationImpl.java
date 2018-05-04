@@ -2,18 +2,22 @@
  */
 package de.dfki.iui.basys.model.domain.resourceinstance.impl;
 
-import de.dfki.iui.basys.model.domain.productdefinition.BOMEntry;
+import de.dfki.iui.basys.model.domain.capability.CapabilityAssertion;
 import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityApplication;
+import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
 import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage;
 
 import de.dfki.iui.basys.model.util.BasysEObjectImpl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
@@ -24,22 +28,31 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.dfki.iui.basys.model.domain.resourceinstance.impl.CapabilityApplicationImpl#getBomEntries <em>Bom Entries</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.resourceinstance.impl.CapabilityApplicationImpl#getCapabilityAssertion <em>Capability Assertion</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.resourceinstance.impl.CapabilityApplicationImpl#getVariants <em>Variants</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class CapabilityApplicationImpl extends BasysEObjectImpl implements CapabilityApplication {
 	/**
-	 * The cached value of the '{@link #getBomEntries() <em>Bom Entries</em>}' reference list.
+	 * The cached value of the '{@link #getCapabilityAssertion() <em>Capability Assertion</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBomEntries()
+	 * @see #getCapabilityAssertion()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<BOMEntry> bomEntries;
-
+	protected CapabilityAssertion capabilityAssertion;
+	/**
+	 * The cached value of the '{@link #getVariants() <em>Variants</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVariants()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<CapabilityVariant> variants;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -64,11 +77,49 @@ public class CapabilityApplicationImpl extends BasysEObjectImpl implements Capab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<BOMEntry> getBomEntries() {
-		if (bomEntries == null) {
-			bomEntries = new EObjectResolvingEList<BOMEntry>(BOMEntry.class, this, ResourceinstancePackage.CAPABILITY_APPLICATION__BOM_ENTRIES);
+	public CapabilityAssertion getCapabilityAssertion() {
+		if (capabilityAssertion != null && capabilityAssertion.eIsProxy()) {
+			InternalEObject oldCapabilityAssertion = (InternalEObject)capabilityAssertion;
+			capabilityAssertion = (CapabilityAssertion)eResolveProxy(oldCapabilityAssertion);
+			if (capabilityAssertion != oldCapabilityAssertion) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ResourceinstancePackage.CAPABILITY_APPLICATION__CAPABILITY_ASSERTION, oldCapabilityAssertion, capabilityAssertion));
+			}
 		}
-		return bomEntries;
+		return capabilityAssertion;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CapabilityAssertion basicGetCapabilityAssertion() {
+		return capabilityAssertion;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCapabilityAssertion(CapabilityAssertion newCapabilityAssertion) {
+		CapabilityAssertion oldCapabilityAssertion = capabilityAssertion;
+		capabilityAssertion = newCapabilityAssertion;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ResourceinstancePackage.CAPABILITY_APPLICATION__CAPABILITY_ASSERTION, oldCapabilityAssertion, capabilityAssertion));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<CapabilityVariant> getVariants() {
+		if (variants == null) {
+			variants = new EObjectResolvingEList<CapabilityVariant>(CapabilityVariant.class, this, ResourceinstancePackage.CAPABILITY_APPLICATION__VARIANTS);
+		}
+		return variants;
 	}
 
 	/**
@@ -79,8 +130,11 @@ public class CapabilityApplicationImpl extends BasysEObjectImpl implements Capab
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ResourceinstancePackage.CAPABILITY_APPLICATION__BOM_ENTRIES:
-				return getBomEntries();
+			case ResourceinstancePackage.CAPABILITY_APPLICATION__CAPABILITY_ASSERTION:
+				if (resolve) return getCapabilityAssertion();
+				return basicGetCapabilityAssertion();
+			case ResourceinstancePackage.CAPABILITY_APPLICATION__VARIANTS:
+				return getVariants();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -94,9 +148,12 @@ public class CapabilityApplicationImpl extends BasysEObjectImpl implements Capab
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ResourceinstancePackage.CAPABILITY_APPLICATION__BOM_ENTRIES:
-				getBomEntries().clear();
-				getBomEntries().addAll((Collection<? extends BOMEntry>)newValue);
+			case ResourceinstancePackage.CAPABILITY_APPLICATION__CAPABILITY_ASSERTION:
+				setCapabilityAssertion((CapabilityAssertion)newValue);
+				return;
+			case ResourceinstancePackage.CAPABILITY_APPLICATION__VARIANTS:
+				getVariants().clear();
+				getVariants().addAll((Collection<? extends CapabilityVariant>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -110,8 +167,11 @@ public class CapabilityApplicationImpl extends BasysEObjectImpl implements Capab
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ResourceinstancePackage.CAPABILITY_APPLICATION__BOM_ENTRIES:
-				getBomEntries().clear();
+			case ResourceinstancePackage.CAPABILITY_APPLICATION__CAPABILITY_ASSERTION:
+				setCapabilityAssertion((CapabilityAssertion)null);
+				return;
+			case ResourceinstancePackage.CAPABILITY_APPLICATION__VARIANTS:
+				getVariants().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -125,8 +185,10 @@ public class CapabilityApplicationImpl extends BasysEObjectImpl implements Capab
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ResourceinstancePackage.CAPABILITY_APPLICATION__BOM_ENTRIES:
-				return bomEntries != null && !bomEntries.isEmpty();
+			case ResourceinstancePackage.CAPABILITY_APPLICATION__CAPABILITY_ASSERTION:
+				return capabilityAssertion != null;
+			case ResourceinstancePackage.CAPABILITY_APPLICATION__VARIANTS:
+				return variants != null && !variants.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

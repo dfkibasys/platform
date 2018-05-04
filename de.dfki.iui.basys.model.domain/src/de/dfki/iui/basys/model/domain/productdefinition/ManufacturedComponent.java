@@ -17,7 +17,7 @@ import de.dfki.iui.basys.model.base.Entity;
  * </ul>
  *
  * @see de.dfki.iui.basys.model.domain.productdefinition.ProductdefinitionPackage#getManufacturedComponent()
- * @model
+ * @model interface="true" abstract="true"
  * @generated
  */
 public interface ManufacturedComponent extends Entity {

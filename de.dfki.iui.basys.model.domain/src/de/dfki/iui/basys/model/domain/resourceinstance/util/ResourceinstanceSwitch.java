@@ -83,12 +83,6 @@ public class ResourceinstanceSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ResourceinstancePackage.CAPABILITY_APPLICATION: {
-				CapabilityApplication capabilityApplication = (CapabilityApplication)theEObject;
-				T result = caseCapabilityApplication(capabilityApplication);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case ResourceinstancePackage.RESOURCE_INSTANCE_STATUS: {
 				ResourceInstanceStatus resourceInstanceStatus = (ResourceInstanceStatus)theEObject;
 				T result = caseResourceInstanceStatus(resourceInstanceStatus);
@@ -103,6 +97,18 @@ public class ResourceinstanceSwitch<T> extends Switch<T> {
 				if (result == null) result = caseResourceInstanceStatus(resourceInstanceStatusChangeEvent);
 				if (result == null) result = caseEntity(resourceInstanceStatusChangeEvent);
 				if (result == null) result = caseBObject(resourceInstanceStatusChangeEvent);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ResourceinstancePackage.CAPABILITY_APPLICATION: {
+				CapabilityApplication capabilityApplication = (CapabilityApplication)theEObject;
+				T result = caseCapabilityApplication(capabilityApplication);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ResourceinstancePackage.CAPABILITY_VARIANT: {
+				CapabilityVariant capabilityVariant = (CapabilityVariant)theEObject;
+				T result = caseCapabilityVariant(capabilityVariant);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -152,6 +158,21 @@ public class ResourceinstanceSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseCapabilityApplication(CapabilityApplication object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Capability Variant</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Capability Variant</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCapabilityVariant(CapabilityVariant object) {
 		return null;
 	}
 

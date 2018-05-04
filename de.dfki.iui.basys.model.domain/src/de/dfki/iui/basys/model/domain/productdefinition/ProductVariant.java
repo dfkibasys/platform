@@ -2,6 +2,8 @@
  */
 package de.dfki.iui.basys.model.domain.productdefinition;
 
+import org.eclipse.emf.common.util.EList;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -17,6 +19,7 @@ package de.dfki.iui.basys.model.domain.productdefinition;
  * </p>
  * <ul>
  *   <li>{@link de.dfki.iui.basys.model.domain.productdefinition.ProductVariant#getProductGroup <em>Product Group</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.productdefinition.ProductVariant#getAssemblyGroups <em>Assembly Groups</em>}</li>
  * </ul>
  *
  * @see de.dfki.iui.basys.model.domain.productdefinition.ProductdefinitionPackage#getProductVariant()
@@ -51,5 +54,21 @@ public interface ProductVariant extends ManufacturedComponent {
 	 * @generated
 	 */
 	void setProductGroup(ProductGroup value);
+
+	/**
+	 * Returns the value of the '<em><b>Assembly Groups</b></em>' containment reference list.
+	 * The list contents are of type {@link de.dfki.iui.basys.model.domain.productdefinition.AssemblyGroup}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Assembly Groups</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Assembly Groups</em>' containment reference list.
+	 * @see de.dfki.iui.basys.model.domain.productdefinition.ProductdefinitionPackage#getProductVariant_AssemblyGroups()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<AssemblyGroup> getAssemblyGroups();
 
 } // ProductVariant

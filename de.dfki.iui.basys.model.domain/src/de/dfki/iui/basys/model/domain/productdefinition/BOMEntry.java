@@ -17,12 +17,13 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see de.dfki.iui.basys.model.domain.productdefinition.ProductdefinitionPackage#getBOMEntry()
- * @model
+ * @model interface="true" abstract="true"
  * @generated
  */
 public interface BOMEntry extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Count</b></em>' attribute.
+	 * The default value is <code>"1"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Count</em>' attribute isn't clear,
@@ -32,7 +33,7 @@ public interface BOMEntry extends EObject {
 	 * @return the value of the '<em>Count</em>' attribute.
 	 * @see #setCount(int)
 	 * @see de.dfki.iui.basys.model.domain.productdefinition.ProductdefinitionPackage#getBOMEntry_Count()
-	 * @model required="true"
+	 * @model default="1" required="true"
 	 * @generated
 	 */
 	int getCount();

@@ -60,11 +60,9 @@ public class ProductdefinitionFactoryImpl extends EFactoryImpl implements Produc
 			case ProductdefinitionPackage.PRODUCT_GROUP: return createProductGroup();
 			case ProductdefinitionPackage.PRODUCT_VARIANT: return createProductVariant();
 			case ProductdefinitionPackage.BILL_OF_MATERIAL: return createBillOfMaterial();
-			case ProductdefinitionPackage.BOM_ENTRY: return createBOMEntry();
 			case ProductdefinitionPackage.ASSEMBLY_GROUP: return createAssemblyGroup();
 			case ProductdefinitionPackage.ASSEMBLY_GROUP_ENTRY: return createAssemblyGroupEntry();
-			case ProductdefinitionPackage.COMPONENT_ENTRY: return createComponentEntry();
-			case ProductdefinitionPackage.MANUFACTURED_COMPONENT: return createManufacturedComponent();
+			case ProductdefinitionPackage.MATERIAL_ENTRY: return createMaterialEntry();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -115,16 +113,6 @@ public class ProductdefinitionFactoryImpl extends EFactoryImpl implements Produc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BOMEntry createBOMEntry() {
-		BOMEntryImpl bomEntry = new BOMEntryImpl();
-		return bomEntry;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public AssemblyGroup createAssemblyGroup() {
 		AssemblyGroupImpl assemblyGroup = new AssemblyGroupImpl();
 		return assemblyGroup;
@@ -145,19 +133,9 @@ public class ProductdefinitionFactoryImpl extends EFactoryImpl implements Produc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ComponentEntry createComponentEntry() {
-		ComponentEntryImpl componentEntry = new ComponentEntryImpl();
-		return componentEntry;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ManufacturedComponent createManufacturedComponent() {
-		ManufacturedComponentImpl manufacturedComponent = new ManufacturedComponentImpl();
-		return manufacturedComponent;
+	public MaterialEntry createMaterialEntry() {
+		MaterialEntryImpl materialEntry = new MaterialEntryImpl();
+		return materialEntry;
 	}
 
 	/**

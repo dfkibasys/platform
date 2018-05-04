@@ -140,16 +140,6 @@ public class WorkCellItemProvider extends WorkUnitItemProvider {
 			(createChildParameter
 				(TopologyPackage.Literals.WORK_CELL__STATIONS,
 				 TopologyFactory.eINSTANCE.createStation()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TopologyPackage.Literals.WORK_CELL__STATIONS,
-				 TopologyFactory.eINSTANCE.createAssemblyStation()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TopologyPackage.Literals.WORK_CELL__STATIONS,
-				 TopologyFactory.eINSTANCE.createBufferStation()));
 	}
 
 }

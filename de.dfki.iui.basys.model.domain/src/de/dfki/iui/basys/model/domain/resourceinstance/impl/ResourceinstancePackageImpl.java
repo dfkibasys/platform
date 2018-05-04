@@ -30,6 +30,7 @@ import de.dfki.iui.basys.model.domain.productinstance.ProductinstancePackage;
 
 import de.dfki.iui.basys.model.domain.productinstance.impl.ProductinstancePackageImpl;
 import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityApplication;
+import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
 import de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstance;
 import de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstanceRepository;
 import de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstanceStatus;
@@ -95,6 +96,13 @@ public class ResourceinstancePackageImpl extends EPackageImpl implements Resourc
 	 * @generated
 	 */
 	private EClass capabilityApplicationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass capabilityVariantEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -296,8 +304,44 @@ public class ResourceinstancePackageImpl extends EPackageImpl implements Resourc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCapabilityApplication_BomEntries() {
+	public EReference getCapabilityApplication_CapabilityAssertion() {
 		return (EReference)capabilityApplicationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCapabilityApplication_Variants() {
+		return (EReference)capabilityApplicationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getCapabilityVariant() {
+		return capabilityVariantEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCapabilityVariant_Capability() {
+		return (EReference)capabilityVariantEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCapabilityVariant_BomEntries() {
+		return (EReference)capabilityVariantEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -373,14 +417,19 @@ public class ResourceinstancePackageImpl extends EPackageImpl implements Resourc
 		createEReference(resourceInstanceEClass, RESOURCE_INSTANCE__CAPABILITY_APPLICATIONS);
 		createEReference(resourceInstanceEClass, RESOURCE_INSTANCE__ROLE);
 
-		capabilityApplicationEClass = createEClass(CAPABILITY_APPLICATION);
-		createEReference(capabilityApplicationEClass, CAPABILITY_APPLICATION__BOM_ENTRIES);
-
 		resourceInstanceStatusEClass = createEClass(RESOURCE_INSTANCE_STATUS);
 		createEAttribute(resourceInstanceStatusEClass, RESOURCE_INSTANCE_STATUS__RESOURCE_INSTANCE_ID);
 
 		resourceInstanceStatusChangeEventEClass = createEClass(RESOURCE_INSTANCE_STATUS_CHANGE_EVENT);
 		createEAttribute(resourceInstanceStatusChangeEventEClass, RESOURCE_INSTANCE_STATUS_CHANGE_EVENT__TIMESTAMP);
+
+		capabilityApplicationEClass = createEClass(CAPABILITY_APPLICATION);
+		createEReference(capabilityApplicationEClass, CAPABILITY_APPLICATION__CAPABILITY_ASSERTION);
+		createEReference(capabilityApplicationEClass, CAPABILITY_APPLICATION__VARIANTS);
+
+		capabilityVariantEClass = createEClass(CAPABILITY_VARIANT);
+		createEReference(capabilityVariantEClass, CAPABILITY_VARIANT__CAPABILITY);
+		createEReference(capabilityVariantEClass, CAPABILITY_VARIANT__BOM_ENTRIES);
 	}
 
 	/**
@@ -410,6 +459,7 @@ public class ResourceinstancePackageImpl extends EPackageImpl implements Resourc
 		BasePackage theBasePackage = (BasePackage)EPackage.Registry.INSTANCE.getEPackage(BasePackage.eNS_URI);
 		ResourcetypePackage theResourcetypePackage = (ResourcetypePackage)EPackage.Registry.INSTANCE.getEPackage(ResourcetypePackage.eNS_URI);
 		TopologyPackage theTopologyPackage = (TopologyPackage)EPackage.Registry.INSTANCE.getEPackage(TopologyPackage.eNS_URI);
+		CapabilityPackage theCapabilityPackage = (CapabilityPackage)EPackage.Registry.INSTANCE.getEPackage(CapabilityPackage.eNS_URI);
 		ProductdefinitionPackage theProductdefinitionPackage = (ProductdefinitionPackage)EPackage.Registry.INSTANCE.getEPackage(ProductdefinitionPackage.eNS_URI);
 
 		// Create type parameters
@@ -431,14 +481,19 @@ public class ResourceinstancePackageImpl extends EPackageImpl implements Resourc
 		initEReference(getResourceInstance_CapabilityApplications(), this.getCapabilityApplication(), null, "capabilityApplications", null, 0, -1, ResourceInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getResourceInstance_Role(), theTopologyPackage.getEquipmentModule(), theTopologyPackage.getEquipmentModule_AssignedResourceInstance(), "role", null, 0, 1, ResourceInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(capabilityApplicationEClass, CapabilityApplication.class, "CapabilityApplication", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCapabilityApplication_BomEntries(), theProductdefinitionPackage.getBOMEntry(), null, "bomEntries", null, 0, -1, CapabilityApplication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(resourceInstanceStatusEClass, ResourceInstanceStatus.class, "ResourceInstanceStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getResourceInstanceStatus_ResourceInstanceId(), ecorePackage.getEString(), "resourceInstanceId", null, 0, 1, ResourceInstanceStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(resourceInstanceStatusChangeEventEClass, ResourceInstanceStatusChangeEvent.class, "ResourceInstanceStatusChangeEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getResourceInstanceStatusChangeEvent_Timestamp(), ecorePackage.getEDate(), "timestamp", null, 0, 1, ResourceInstanceStatusChangeEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(capabilityApplicationEClass, CapabilityApplication.class, "CapabilityApplication", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCapabilityApplication_CapabilityAssertion(), theCapabilityPackage.getCapabilityAssertion(), null, "capabilityAssertion", null, 0, 1, CapabilityApplication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCapabilityApplication_Variants(), this.getCapabilityVariant(), null, "variants", null, 0, -1, CapabilityApplication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(capabilityVariantEClass, CapabilityVariant.class, "CapabilityVariant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCapabilityVariant_Capability(), theCapabilityPackage.getCapability(), null, "capability", null, 0, 1, CapabilityVariant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCapabilityVariant_BomEntries(), theProductdefinitionPackage.getBOMEntry(), null, "bomEntries", null, 0, -1, CapabilityVariant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

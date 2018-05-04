@@ -64,15 +64,12 @@ public class TopologyFactoryImpl extends EFactoryImpl implements TopologyFactory
 			case TopologyPackage.PRODUCTION_LINE: return createProductionLine();
 			case TopologyPackage.STORAGE_ZONE: return createStorageZone();
 			case TopologyPackage.UNIT: return createUnit();
-			case TopologyPackage.WORK_CELL: return createWorkCell();
+			case TopologyPackage.PROCESS_UNIT: return createProcessUnit();
 			case TopologyPackage.STORAGE_UNIT: return createStorageUnit();
+			case TopologyPackage.WORK_CELL: return createWorkCell();
 			case TopologyPackage.EQUIPMENT_MODULE: return createEquipmentModule();
 			case TopologyPackage.CONTROL_MODULE: return createControlModule();
 			case TopologyPackage.STATION: return createStation();
-			case TopologyPackage.TRANSITION: return createTransition();
-			case TopologyPackage.ASSEMBLY_STATION: return createAssemblyStation();
-			case TopologyPackage.BUFFER_STATION: return createBufferStation();
-			case TopologyPackage.PROCESS_UNIT: return createProcessUnit();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -206,36 +203,6 @@ public class TopologyFactoryImpl extends EFactoryImpl implements TopologyFactory
 	public Station createStation() {
 		StationImpl station = new StationImpl();
 		return station;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Transition createTransition() {
-		TransitionImpl transition = new TransitionImpl();
-		return transition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public AssemblyStation createAssemblyStation() {
-		AssemblyStationImpl assemblyStation = new AssemblyStationImpl();
-		return assemblyStation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public BufferStation createBufferStation() {
-		BufferStationImpl bufferStation = new BufferStationImpl();
-		return bufferStation;
 	}
 
 	/**

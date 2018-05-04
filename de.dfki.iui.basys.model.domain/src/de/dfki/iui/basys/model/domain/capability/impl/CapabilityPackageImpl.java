@@ -10,15 +10,21 @@ import de.dfki.iui.basys.model.domain.capability.Capability;
 import de.dfki.iui.basys.model.domain.capability.CapabilityAssertion;
 import de.dfki.iui.basys.model.domain.capability.CapabilityFactory;
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
+import de.dfki.iui.basys.model.domain.capability.CapabilityRequest;
 import de.dfki.iui.basys.model.domain.capability.Fügen;
 import de.dfki.iui.basys.model.domain.capability.HandlingCapability;
-import de.dfki.iui.basys.model.domain.capability.InformationTransferCapability;
+import de.dfki.iui.basys.model.domain.capability.Inspect;
+import de.dfki.iui.basys.model.domain.capability.LoadCarrierUnitEnum;
+import de.dfki.iui.basys.model.domain.capability.LogisticsCapability;
 import de.dfki.iui.basys.model.domain.capability.ManufacturingCapability;
-import de.dfki.iui.basys.model.domain.capability.Pressen;
-import de.dfki.iui.basys.model.domain.capability.ProvideInformation;
+import de.dfki.iui.basys.model.domain.capability.PickAndPlace;
+import de.dfki.iui.basys.model.domain.capability.Pressing;
+import de.dfki.iui.basys.model.domain.capability.ProductionCapability;
 import de.dfki.iui.basys.model.domain.capability.QoSCapability;
-import de.dfki.iui.basys.model.domain.capability.Schrauben;
+import de.dfki.iui.basys.model.domain.capability.Screwing;
 import de.dfki.iui.basys.model.domain.capability.Stoffeigenschaften;
+import de.dfki.iui.basys.model.domain.capability.Store;
+import de.dfki.iui.basys.model.domain.capability.Transport;
 import de.dfki.iui.basys.model.domain.capability.Trennen;
 import de.dfki.iui.basys.model.domain.capability.Umformen;
 import de.dfki.iui.basys.model.domain.capability.Urformen;
@@ -68,6 +74,7 @@ import de.dfki.iui.basys.model.pattern.PatternPackage;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -86,6 +93,13 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * @generated
 	 */
 	private EClass capabilityAssertionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass capabilityRequestEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -120,7 +134,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass pressenEClass = null;
+	private EClass pressingEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -128,6 +142,20 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * @generated
 	 */
 	private EClass qoSCapabilityEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass inspectEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum loadCarrierUnitEnumEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -176,21 +204,42 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass schraubenEClass = null;
+	private EClass screwingEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass informationTransferCapabilityEClass = null;
+	private EClass productionCapabilityEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass provideInformationEClass = null;
+	private EClass logisticsCapabilityEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass pickAndPlaceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass transportEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass storeEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -324,6 +373,78 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getCapabilityAssertion_Prerequisites() {
+		return (EReference)capabilityAssertionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getCapabilityRequest() {
+		return capabilityRequestEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCapabilityRequest_Who() {
+		return (EReference)capabilityRequestEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCapabilityRequest_What() {
+		return (EReference)capabilityRequestEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCapabilityRequest_Whom() {
+		return (EReference)capabilityRequestEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCapabilityRequest_Where() {
+		return (EReference)capabilityRequestEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCapabilityRequest_When() {
+		return (EAttribute)capabilityRequestEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCapabilityRequest_How() {
+		return (EReference)capabilityRequestEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getCapability() {
 		return capabilityEClass;
 	}
@@ -360,8 +481,8 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getPressen() {
-		return pressenEClass;
+	public EClass getPressing() {
+		return pressingEClass;
 	}
 
 	/**
@@ -369,8 +490,8 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPressen_Druck() {
-		return (EAttribute)pressenEClass.getEStructuralFeatures().get(0);
+	public EAttribute getPressing_Pressure() {
+		return (EAttribute)pressingEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -378,8 +499,8 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPressen_Hub() {
-		return (EAttribute)pressenEClass.getEStructuralFeatures().get(1);
+	public EAttribute getPressing_Stroke() {
+		return (EAttribute)pressingEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -389,6 +510,24 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 */
 	public EClass getQoSCapability() {
 		return qoSCapabilityEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getInspect() {
+		return inspectEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getLoadCarrierUnitEnum() {
+		return loadCarrierUnitEnumEEnum;
 	}
 
 	/**
@@ -450,8 +589,8 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getSchrauben() {
-		return schraubenEClass;
+	public EClass getScrewing() {
+		return screwingEClass;
 	}
 
 	/**
@@ -459,8 +598,8 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSchrauben_Drehmoment() {
-		return (EAttribute)schraubenEClass.getEStructuralFeatures().get(0);
+	public EAttribute getScrewing_Torque() {
+		return (EAttribute)screwingEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -468,8 +607,8 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getInformationTransferCapability() {
-		return informationTransferCapabilityEClass;
+	public EClass getProductionCapability() {
+		return productionCapabilityEClass;
 	}
 
 	/**
@@ -477,8 +616,80 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getProvideInformation() {
-		return provideInformationEClass;
+	public EClass getLogisticsCapability() {
+		return logisticsCapabilityEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLogisticsCapability_LoadCarrierUnit() {
+		return (EAttribute)logisticsCapabilityEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLogisticsCapability_Capacity() {
+		return (EAttribute)logisticsCapabilityEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLogisticsCapability_Weight() {
+		return (EAttribute)logisticsCapabilityEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getPickAndPlace() {
+		return pickAndPlaceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPickAndPlace_Distance() {
+		return (EAttribute)pickAndPlaceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTransport() {
+		return transportEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTransport_Distance() {
+		return (EAttribute)transportEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getStore() {
+		return storeEClass;
 	}
 
 	/**
@@ -511,6 +722,15 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		// Create classes and their features
 		capabilityAssertionEClass = createEClass(CAPABILITY_ASSERTION);
 		createEReference(capabilityAssertionEClass, CAPABILITY_ASSERTION__PATTERN);
+		createEReference(capabilityAssertionEClass, CAPABILITY_ASSERTION__PREREQUISITES);
+
+		capabilityRequestEClass = createEClass(CAPABILITY_REQUEST);
+		createEReference(capabilityRequestEClass, CAPABILITY_REQUEST__WHO);
+		createEReference(capabilityRequestEClass, CAPABILITY_REQUEST__WHAT);
+		createEReference(capabilityRequestEClass, CAPABILITY_REQUEST__WHOM);
+		createEReference(capabilityRequestEClass, CAPABILITY_REQUEST__WHERE);
+		createEAttribute(capabilityRequestEClass, CAPABILITY_REQUEST__WHEN);
+		createEReference(capabilityRequestEClass, CAPABILITY_REQUEST__HOW);
 
 		capabilityEClass = createEClass(CAPABILITY);
 
@@ -520,11 +740,9 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 
 		fügenEClass = createEClass(FÜGEN);
 
-		pressenEClass = createEClass(PRESSEN);
-		createEAttribute(pressenEClass, PRESSEN__DRUCK);
-		createEAttribute(pressenEClass, PRESSEN__HUB);
-
-		qoSCapabilityEClass = createEClass(QO_SCAPABILITY);
+		pressingEClass = createEClass(PRESSING);
+		createEAttribute(pressingEClass, PRESSING__PRESSURE);
+		createEAttribute(pressingEClass, PRESSING__STROKE);
 
 		urformenEClass = createEClass(URFORMEN);
 
@@ -538,12 +756,30 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 
 		anEinpressenEClass = createEClass(AN_EINPRESSEN);
 
-		schraubenEClass = createEClass(SCHRAUBEN);
-		createEAttribute(schraubenEClass, SCHRAUBEN__DREHMOMENT);
+		screwingEClass = createEClass(SCREWING);
+		createEAttribute(screwingEClass, SCREWING__TORQUE);
 
-		informationTransferCapabilityEClass = createEClass(INFORMATION_TRANSFER_CAPABILITY);
+		productionCapabilityEClass = createEClass(PRODUCTION_CAPABILITY);
 
-		provideInformationEClass = createEClass(PROVIDE_INFORMATION);
+		logisticsCapabilityEClass = createEClass(LOGISTICS_CAPABILITY);
+		createEAttribute(logisticsCapabilityEClass, LOGISTICS_CAPABILITY__LOAD_CARRIER_UNIT);
+		createEAttribute(logisticsCapabilityEClass, LOGISTICS_CAPABILITY__CAPACITY);
+		createEAttribute(logisticsCapabilityEClass, LOGISTICS_CAPABILITY__WEIGHT);
+
+		pickAndPlaceEClass = createEClass(PICK_AND_PLACE);
+		createEAttribute(pickAndPlaceEClass, PICK_AND_PLACE__DISTANCE);
+
+		transportEClass = createEClass(TRANSPORT);
+		createEAttribute(transportEClass, TRANSPORT__DISTANCE);
+
+		storeEClass = createEClass(STORE);
+
+		qoSCapabilityEClass = createEClass(QO_SCAPABILITY);
+
+		inspectEClass = createEClass(INSPECT);
+
+		// Create enums
+		loadCarrierUnitEnumEEnum = createEEnum(LOAD_CARRIER_UNIT_ENUM);
 	}
 
 	/**
@@ -581,23 +817,36 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		capabilityAssertionEClass.getESuperTypes().add(theBasePackage.getEntity());
 		capabilityEClass.getESuperTypes().add(theBasePackage.getEntity());
 		handlingCapabilityEClass.getESuperTypes().add(this.getCapability());
-		manufacturingCapabilityEClass.getESuperTypes().add(this.getCapability());
+		manufacturingCapabilityEClass.getESuperTypes().add(this.getProductionCapability());
 		fügenEClass.getESuperTypes().add(this.getManufacturingCapability());
-		pressenEClass.getESuperTypes().add(this.getAnEinpressen());
-		qoSCapabilityEClass.getESuperTypes().add(this.getCapability());
+		pressingEClass.getESuperTypes().add(this.getAnEinpressen());
 		urformenEClass.getESuperTypes().add(this.getManufacturingCapability());
 		umformenEClass.getESuperTypes().add(this.getManufacturingCapability());
 		trennenEClass.getESuperTypes().add(this.getManufacturingCapability());
 		beschichtenEClass.getESuperTypes().add(this.getManufacturingCapability());
 		stoffeigenschaftenEClass.getESuperTypes().add(this.getManufacturingCapability());
 		anEinpressenEClass.getESuperTypes().add(this.getFügen());
-		schraubenEClass.getESuperTypes().add(this.getAnEinpressen());
-		informationTransferCapabilityEClass.getESuperTypes().add(this.getCapability());
-		provideInformationEClass.getESuperTypes().add(this.getInformationTransferCapability());
+		screwingEClass.getESuperTypes().add(this.getAnEinpressen());
+		productionCapabilityEClass.getESuperTypes().add(this.getCapability());
+		logisticsCapabilityEClass.getESuperTypes().add(this.getCapability());
+		pickAndPlaceEClass.getESuperTypes().add(this.getLogisticsCapability());
+		transportEClass.getESuperTypes().add(this.getLogisticsCapability());
+		storeEClass.getESuperTypes().add(this.getLogisticsCapability());
+		qoSCapabilityEClass.getESuperTypes().add(this.getCapability());
+		inspectEClass.getESuperTypes().add(this.getQoSCapability());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(capabilityAssertionEClass, CapabilityAssertion.class, "CapabilityAssertion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCapabilityAssertion_Pattern(), thePatternPackage.getPObject(), null, "pattern", null, 0, 1, CapabilityAssertion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCapabilityAssertion_Prerequisites(), this.getCapabilityAssertion(), null, "prerequisites", null, 0, 1, CapabilityAssertion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(capabilityRequestEClass, CapabilityRequest.class, "CapabilityRequest", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCapabilityRequest_Who(), theBasePackage.getEntity(), null, "who", null, 0, 1, CapabilityRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCapabilityRequest_What(), this.getCapability(), null, "what", null, 0, 1, CapabilityRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCapabilityRequest_Whom(), theBasePackage.getEntity(), null, "whom", null, 0, -1, CapabilityRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCapabilityRequest_Where(), theBasePackage.getEntity(), null, "where", null, 0, -1, CapabilityRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCapabilityRequest_When(), ecorePackage.getEDate(), "when", null, 0, 1, CapabilityRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCapabilityRequest_How(), theBasePackage.getEntity(), null, "how", null, 0, -1, CapabilityRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(capabilityEClass, Capability.class, "Capability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -607,11 +856,9 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 
 		initEClass(fügenEClass, Fügen.class, "Fügen", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(pressenEClass, Pressen.class, "Pressen", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPressen_Druck(), ecorePackage.getEInt(), "druck", null, 0, 1, Pressen.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPressen_Hub(), ecorePackage.getEInt(), "hub", null, 0, 1, Pressen.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(qoSCapabilityEClass, QoSCapability.class, "QoSCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(pressingEClass, Pressing.class, "Pressing", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPressing_Pressure(), ecorePackage.getEDouble(), "pressure", null, 0, 1, Pressing.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPressing_Stroke(), ecorePackage.getEDouble(), "stroke", null, 0, 1, Pressing.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(urformenEClass, Urformen.class, "Urformen", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -625,12 +872,33 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 
 		initEClass(anEinpressenEClass, AnEinpressen.class, "AnEinpressen", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(schraubenEClass, Schrauben.class, "Schrauben", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSchrauben_Drehmoment(), ecorePackage.getEInt(), "drehmoment", null, 0, 1, Schrauben.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(screwingEClass, Screwing.class, "Screwing", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getScrewing_Torque(), ecorePackage.getEDouble(), "torque", null, 0, 1, Screwing.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(informationTransferCapabilityEClass, InformationTransferCapability.class, "InformationTransferCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(productionCapabilityEClass, ProductionCapability.class, "ProductionCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(provideInformationEClass, ProvideInformation.class, "ProvideInformation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(logisticsCapabilityEClass, LogisticsCapability.class, "LogisticsCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLogisticsCapability_LoadCarrierUnit(), this.getLoadCarrierUnitEnum(), "loadCarrierUnit", "UNDEFINED", 0, 1, LogisticsCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLogisticsCapability_Capacity(), ecorePackage.getEInt(), "capacity", null, 0, 1, LogisticsCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLogisticsCapability_Weight(), ecorePackage.getEDouble(), "weight", null, 0, 1, LogisticsCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(pickAndPlaceEClass, PickAndPlace.class, "PickAndPlace", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPickAndPlace_Distance(), ecorePackage.getEDouble(), "distance", "0.0", 0, 1, PickAndPlace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(transportEClass, Transport.class, "Transport", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTransport_Distance(), ecorePackage.getEDouble(), "distance", null, 0, 1, Transport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(storeEClass, Store.class, "Store", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(qoSCapabilityEClass, QoSCapability.class, "QoSCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(inspectEClass, Inspect.class, "Inspect", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		// Initialize enums and add enum literals
+		initEEnum(loadCarrierUnitEnumEEnum, LoadCarrierUnitEnum.class, "LoadCarrierUnitEnum");
+		addEEnumLiteral(loadCarrierUnitEnumEEnum, LoadCarrierUnitEnum.UNDEFINED);
+		addEEnumLiteral(loadCarrierUnitEnumEEnum, LoadCarrierUnitEnum.MATERIAL);
+		addEEnumLiteral(loadCarrierUnitEnumEEnum, LoadCarrierUnitEnum.RKLT_3215);
 
 		// Create resource
 		createResource(eNS_URI);

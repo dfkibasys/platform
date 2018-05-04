@@ -189,22 +189,13 @@ public interface ResourcetypePackage extends EPackage {
 	int RESOURCE_TYPE__METADATA = BasePackage.ENTITY__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Capability Assertion</b></em>' containment reference.
+	 * The feature id for the '<em><b>Capability Assertions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_TYPE__CAPABILITY_ASSERTION = BasePackage.ENTITY_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Capability Requirement</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE_TYPE__CAPABILITY_REQUIREMENT = BasePackage.ENTITY_FEATURE_COUNT + 1;
+	int RESOURCE_TYPE__CAPABILITY_ASSERTIONS = BasePackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -213,7 +204,7 @@ public interface ResourcetypePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_TYPE__DOCUMENTATION = BasePackage.ENTITY_FEATURE_COUNT + 2;
+	int RESOURCE_TYPE__DOCUMENTATION = BasePackage.ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Resource Type</em>' class.
@@ -222,7 +213,7 @@ public interface ResourcetypePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_TYPE_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 3;
+	int RESOURCE_TYPE_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Resource Type</em>' class.
@@ -280,22 +271,13 @@ public interface ResourcetypePackage extends EPackage {
 	int DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA = RESOURCE_TYPE__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Capability Assertion</b></em>' containment reference.
+	 * The feature id for the '<em><b>Capability Assertions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_ASSERTION = RESOURCE_TYPE__CAPABILITY_ASSERTION;
-
-	/**
-	 * The feature id for the '<em><b>Capability Requirement</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT = RESOURCE_TYPE__CAPABILITY_REQUIREMENT;
+	int DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_ASSERTIONS = RESOURCE_TYPE__CAPABILITY_ASSERTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -371,22 +353,13 @@ public interface ResourcetypePackage extends EPackage {
 	int TOOL__METADATA = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Capability Assertion</b></em>' containment reference.
+	 * The feature id for the '<em><b>Capability Assertions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TOOL__CAPABILITY_ASSERTION = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_ASSERTION;
-
-	/**
-	 * The feature id for the '<em><b>Capability Requirement</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TOOL__CAPABILITY_REQUIREMENT = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT;
+	int TOOL__CAPABILITY_ASSERTIONS = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_ASSERTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -462,22 +435,13 @@ public interface ResourcetypePackage extends EPackage {
 	int STATIONARY_TOOL__METADATA = TOOL__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Capability Assertion</b></em>' containment reference.
+	 * The feature id for the '<em><b>Capability Assertions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATIONARY_TOOL__CAPABILITY_ASSERTION = TOOL__CAPABILITY_ASSERTION;
-
-	/**
-	 * The feature id for the '<em><b>Capability Requirement</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STATIONARY_TOOL__CAPABILITY_REQUIREMENT = TOOL__CAPABILITY_REQUIREMENT;
+	int STATIONARY_TOOL__CAPABILITY_ASSERTIONS = TOOL__CAPABILITY_ASSERTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -553,22 +517,13 @@ public interface ResourcetypePackage extends EPackage {
 	int MOVABLE_TOOL__METADATA = TOOL__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Capability Assertion</b></em>' containment reference.
+	 * The feature id for the '<em><b>Capability Assertions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MOVABLE_TOOL__CAPABILITY_ASSERTION = TOOL__CAPABILITY_ASSERTION;
-
-	/**
-	 * The feature id for the '<em><b>Capability Requirement</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MOVABLE_TOOL__CAPABILITY_REQUIREMENT = TOOL__CAPABILITY_REQUIREMENT;
+	int MOVABLE_TOOL__CAPABILITY_ASSERTIONS = TOOL__CAPABILITY_ASSERTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -644,22 +599,13 @@ public interface ResourcetypePackage extends EPackage {
 	int TRANSPORT__METADATA = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Capability Assertion</b></em>' containment reference.
+	 * The feature id for the '<em><b>Capability Assertions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSPORT__CAPABILITY_ASSERTION = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_ASSERTION;
-
-	/**
-	 * The feature id for the '<em><b>Capability Requirement</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSPORT__CAPABILITY_REQUIREMENT = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT;
+	int TRANSPORT__CAPABILITY_ASSERTIONS = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_ASSERTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -735,22 +681,13 @@ public interface ResourcetypePackage extends EPackage {
 	int STORAGE__METADATA = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Capability Assertion</b></em>' containment reference.
+	 * The feature id for the '<em><b>Capability Assertions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STORAGE__CAPABILITY_ASSERTION = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_ASSERTION;
-
-	/**
-	 * The feature id for the '<em><b>Capability Requirement</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STORAGE__CAPABILITY_REQUIREMENT = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT;
+	int STORAGE__CAPABILITY_ASSERTIONS = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_ASSERTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -826,22 +763,13 @@ public interface ResourcetypePackage extends EPackage {
 	int FIXTURE__METADATA = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Capability Assertion</b></em>' containment reference.
+	 * The feature id for the '<em><b>Capability Assertions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FIXTURE__CAPABILITY_ASSERTION = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_ASSERTION;
-
-	/**
-	 * The feature id for the '<em><b>Capability Requirement</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FIXTURE__CAPABILITY_REQUIREMENT = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT;
+	int FIXTURE__CAPABILITY_ASSERTIONS = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_ASSERTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -917,22 +845,13 @@ public interface ResourcetypePackage extends EPackage {
 	int GATE__METADATA = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Capability Assertion</b></em>' containment reference.
+	 * The feature id for the '<em><b>Capability Assertions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GATE__CAPABILITY_ASSERTION = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_ASSERTION;
-
-	/**
-	 * The feature id for the '<em><b>Capability Requirement</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GATE__CAPABILITY_REQUIREMENT = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT;
+	int GATE__CAPABILITY_ASSERTIONS = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_ASSERTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -1008,22 +927,13 @@ public interface ResourcetypePackage extends EPackage {
 	int ROBOT__METADATA = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Capability Assertion</b></em>' containment reference.
+	 * The feature id for the '<em><b>Capability Assertions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ROBOT__CAPABILITY_ASSERTION = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_ASSERTION;
-
-	/**
-	 * The feature id for the '<em><b>Capability Requirement</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ROBOT__CAPABILITY_REQUIREMENT = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT;
+	int ROBOT__CAPABILITY_ASSERTIONS = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_ASSERTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -1099,22 +1009,13 @@ public interface ResourcetypePackage extends EPackage {
 	int CARRIER__METADATA = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Capability Assertion</b></em>' containment reference.
+	 * The feature id for the '<em><b>Capability Assertions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CARRIER__CAPABILITY_ASSERTION = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_ASSERTION;
-
-	/**
-	 * The feature id for the '<em><b>Capability Requirement</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CARRIER__CAPABILITY_REQUIREMENT = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT;
+	int CARRIER__CAPABILITY_ASSERTIONS = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_ASSERTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -1190,22 +1091,13 @@ public interface ResourcetypePackage extends EPackage {
 	int MACHINE__METADATA = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Capability Assertion</b></em>' containment reference.
+	 * The feature id for the '<em><b>Capability Assertions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE__CAPABILITY_ASSERTION = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_ASSERTION;
-
-	/**
-	 * The feature id for the '<em><b>Capability Requirement</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE__CAPABILITY_REQUIREMENT = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT;
+	int MACHINE__CAPABILITY_ASSERTIONS = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_ASSERTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -1281,22 +1173,13 @@ public interface ResourcetypePackage extends EPackage {
 	int STATIC_OBJECT__METADATA = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Capability Assertion</b></em>' containment reference.
+	 * The feature id for the '<em><b>Capability Assertions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATIC_OBJECT__CAPABILITY_ASSERTION = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_ASSERTION;
-
-	/**
-	 * The feature id for the '<em><b>Capability Requirement</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STATIC_OBJECT__CAPABILITY_REQUIREMENT = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT;
+	int STATIC_OBJECT__CAPABILITY_ASSERTIONS = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__CAPABILITY_ASSERTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -1372,22 +1255,13 @@ public interface ResourcetypePackage extends EPackage {
 	int HORIZONTAL_TRANSPORT__METADATA = TRANSPORT__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Capability Assertion</b></em>' containment reference.
+	 * The feature id for the '<em><b>Capability Assertions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HORIZONTAL_TRANSPORT__CAPABILITY_ASSERTION = TRANSPORT__CAPABILITY_ASSERTION;
-
-	/**
-	 * The feature id for the '<em><b>Capability Requirement</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HORIZONTAL_TRANSPORT__CAPABILITY_REQUIREMENT = TRANSPORT__CAPABILITY_REQUIREMENT;
+	int HORIZONTAL_TRANSPORT__CAPABILITY_ASSERTIONS = TRANSPORT__CAPABILITY_ASSERTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -1463,22 +1337,13 @@ public interface ResourcetypePackage extends EPackage {
 	int TURNABLE__METADATA = HORIZONTAL_TRANSPORT__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Capability Assertion</b></em>' containment reference.
+	 * The feature id for the '<em><b>Capability Assertions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TURNABLE__CAPABILITY_ASSERTION = HORIZONTAL_TRANSPORT__CAPABILITY_ASSERTION;
-
-	/**
-	 * The feature id for the '<em><b>Capability Requirement</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TURNABLE__CAPABILITY_REQUIREMENT = HORIZONTAL_TRANSPORT__CAPABILITY_REQUIREMENT;
+	int TURNABLE__CAPABILITY_ASSERTIONS = HORIZONTAL_TRANSPORT__CAPABILITY_ASSERTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -1554,22 +1419,13 @@ public interface ResourcetypePackage extends EPackage {
 	int CONVEYOR__METADATA = HORIZONTAL_TRANSPORT__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Capability Assertion</b></em>' containment reference.
+	 * The feature id for the '<em><b>Capability Assertions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONVEYOR__CAPABILITY_ASSERTION = HORIZONTAL_TRANSPORT__CAPABILITY_ASSERTION;
-
-	/**
-	 * The feature id for the '<em><b>Capability Requirement</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONVEYOR__CAPABILITY_REQUIREMENT = HORIZONTAL_TRANSPORT__CAPABILITY_REQUIREMENT;
+	int CONVEYOR__CAPABILITY_ASSERTIONS = HORIZONTAL_TRANSPORT__CAPABILITY_ASSERTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -1645,22 +1501,13 @@ public interface ResourcetypePackage extends EPackage {
 	int VERTICAL_TRANSPORT__METADATA = TRANSPORT__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Capability Assertion</b></em>' containment reference.
+	 * The feature id for the '<em><b>Capability Assertions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VERTICAL_TRANSPORT__CAPABILITY_ASSERTION = TRANSPORT__CAPABILITY_ASSERTION;
-
-	/**
-	 * The feature id for the '<em><b>Capability Requirement</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VERTICAL_TRANSPORT__CAPABILITY_REQUIREMENT = TRANSPORT__CAPABILITY_REQUIREMENT;
+	int VERTICAL_TRANSPORT__CAPABILITY_ASSERTIONS = TRANSPORT__CAPABILITY_ASSERTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -1736,22 +1583,13 @@ public interface ResourcetypePackage extends EPackage {
 	int LIFTING_TABLE__METADATA = VERTICAL_TRANSPORT__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Capability Assertion</b></em>' containment reference.
+	 * The feature id for the '<em><b>Capability Assertions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LIFTING_TABLE__CAPABILITY_ASSERTION = VERTICAL_TRANSPORT__CAPABILITY_ASSERTION;
-
-	/**
-	 * The feature id for the '<em><b>Capability Requirement</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LIFTING_TABLE__CAPABILITY_REQUIREMENT = VERTICAL_TRANSPORT__CAPABILITY_REQUIREMENT;
+	int LIFTING_TABLE__CAPABILITY_ASSERTIONS = VERTICAL_TRANSPORT__CAPABILITY_ASSERTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -1827,22 +1665,13 @@ public interface ResourcetypePackage extends EPackage {
 	int AVG__METADATA = HORIZONTAL_TRANSPORT__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Capability Assertion</b></em>' containment reference.
+	 * The feature id for the '<em><b>Capability Assertions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AVG__CAPABILITY_ASSERTION = HORIZONTAL_TRANSPORT__CAPABILITY_ASSERTION;
-
-	/**
-	 * The feature id for the '<em><b>Capability Requirement</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AVG__CAPABILITY_REQUIREMENT = HORIZONTAL_TRANSPORT__CAPABILITY_REQUIREMENT;
+	int AVG__CAPABILITY_ASSERTIONS = HORIZONTAL_TRANSPORT__CAPABILITY_ASSERTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -1918,22 +1747,13 @@ public interface ResourcetypePackage extends EPackage {
 	int TRANSPOSER__METADATA = TRANSPORT__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Capability Assertion</b></em>' containment reference.
+	 * The feature id for the '<em><b>Capability Assertions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSPOSER__CAPABILITY_ASSERTION = TRANSPORT__CAPABILITY_ASSERTION;
-
-	/**
-	 * The feature id for the '<em><b>Capability Requirement</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSPOSER__CAPABILITY_REQUIREMENT = TRANSPORT__CAPABILITY_REQUIREMENT;
+	int TRANSPOSER__CAPABILITY_ASSERTIONS = TRANSPORT__CAPABILITY_ASSERTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -2009,22 +1829,13 @@ public interface ResourcetypePackage extends EPackage {
 	int CARRIER_HANDLING_SYSTEM__METADATA = TRANSPORT__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Capability Assertion</b></em>' containment reference.
+	 * The feature id for the '<em><b>Capability Assertions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CARRIER_HANDLING_SYSTEM__CAPABILITY_ASSERTION = TRANSPORT__CAPABILITY_ASSERTION;
-
-	/**
-	 * The feature id for the '<em><b>Capability Requirement</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CARRIER_HANDLING_SYSTEM__CAPABILITY_REQUIREMENT = TRANSPORT__CAPABILITY_REQUIREMENT;
+	int CARRIER_HANDLING_SYSTEM__CAPABILITY_ASSERTIONS = TRANSPORT__CAPABILITY_ASSERTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -2100,22 +1911,13 @@ public interface ResourcetypePackage extends EPackage {
 	int LIFT__METADATA = VERTICAL_TRANSPORT__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Capability Assertion</b></em>' containment reference.
+	 * The feature id for the '<em><b>Capability Assertions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LIFT__CAPABILITY_ASSERTION = VERTICAL_TRANSPORT__CAPABILITY_ASSERTION;
-
-	/**
-	 * The feature id for the '<em><b>Capability Requirement</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LIFT__CAPABILITY_REQUIREMENT = VERTICAL_TRANSPORT__CAPABILITY_REQUIREMENT;
+	int LIFT__CAPABILITY_ASSERTIONS = VERTICAL_TRANSPORT__CAPABILITY_ASSERTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -2191,22 +1993,13 @@ public interface ResourcetypePackage extends EPackage {
 	int ROLLERBED__METADATA = HORIZONTAL_TRANSPORT__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Capability Assertion</b></em>' containment reference.
+	 * The feature id for the '<em><b>Capability Assertions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ROLLERBED__CAPABILITY_ASSERTION = HORIZONTAL_TRANSPORT__CAPABILITY_ASSERTION;
-
-	/**
-	 * The feature id for the '<em><b>Capability Requirement</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ROLLERBED__CAPABILITY_REQUIREMENT = HORIZONTAL_TRANSPORT__CAPABILITY_REQUIREMENT;
+	int ROLLERBED__CAPABILITY_ASSERTIONS = HORIZONTAL_TRANSPORT__CAPABILITY_ASSERTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -2282,22 +2075,13 @@ public interface ResourcetypePackage extends EPackage {
 	int LOADER__METADATA = STORAGE__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Capability Assertion</b></em>' containment reference.
+	 * The feature id for the '<em><b>Capability Assertions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LOADER__CAPABILITY_ASSERTION = STORAGE__CAPABILITY_ASSERTION;
-
-	/**
-	 * The feature id for the '<em><b>Capability Requirement</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LOADER__CAPABILITY_REQUIREMENT = STORAGE__CAPABILITY_REQUIREMENT;
+	int LOADER__CAPABILITY_ASSERTIONS = STORAGE__CAPABILITY_ASSERTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -2373,22 +2157,13 @@ public interface ResourcetypePackage extends EPackage {
 	int UNLOADER__METADATA = STORAGE__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Capability Assertion</b></em>' containment reference.
+	 * The feature id for the '<em><b>Capability Assertions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int UNLOADER__CAPABILITY_ASSERTION = STORAGE__CAPABILITY_ASSERTION;
-
-	/**
-	 * The feature id for the '<em><b>Capability Requirement</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int UNLOADER__CAPABILITY_REQUIREMENT = STORAGE__CAPABILITY_REQUIREMENT;
+	int UNLOADER__CAPABILITY_ASSERTIONS = STORAGE__CAPABILITY_ASSERTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -2464,22 +2239,13 @@ public interface ResourcetypePackage extends EPackage {
 	int BODY_STORE__METADATA = STORAGE__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Capability Assertion</b></em>' containment reference.
+	 * The feature id for the '<em><b>Capability Assertions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BODY_STORE__CAPABILITY_ASSERTION = STORAGE__CAPABILITY_ASSERTION;
-
-	/**
-	 * The feature id for the '<em><b>Capability Requirement</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BODY_STORE__CAPABILITY_REQUIREMENT = STORAGE__CAPABILITY_REQUIREMENT;
+	int BODY_STORE__CAPABILITY_ASSERTIONS = STORAGE__CAPABILITY_ASSERTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -2555,22 +2321,13 @@ public interface ResourcetypePackage extends EPackage {
 	int CLAMP__METADATA = FIXTURE__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Capability Assertion</b></em>' containment reference.
+	 * The feature id for the '<em><b>Capability Assertions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CLAMP__CAPABILITY_ASSERTION = FIXTURE__CAPABILITY_ASSERTION;
-
-	/**
-	 * The feature id for the '<em><b>Capability Requirement</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLAMP__CAPABILITY_REQUIREMENT = FIXTURE__CAPABILITY_REQUIREMENT;
+	int CLAMP__CAPABILITY_ASSERTIONS = FIXTURE__CAPABILITY_ASSERTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -2646,22 +2403,13 @@ public interface ResourcetypePackage extends EPackage {
 	int BELT_CONVEYOR__METADATA = CONVEYOR__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Capability Assertion</b></em>' containment reference.
+	 * The feature id for the '<em><b>Capability Assertions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BELT_CONVEYOR__CAPABILITY_ASSERTION = CONVEYOR__CAPABILITY_ASSERTION;
-
-	/**
-	 * The feature id for the '<em><b>Capability Requirement</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BELT_CONVEYOR__CAPABILITY_REQUIREMENT = CONVEYOR__CAPABILITY_REQUIREMENT;
+	int BELT_CONVEYOR__CAPABILITY_ASSERTIONS = CONVEYOR__CAPABILITY_ASSERTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -2737,22 +2485,13 @@ public interface ResourcetypePackage extends EPackage {
 	int ROLL_CONVEYOR__METADATA = CONVEYOR__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Capability Assertion</b></em>' containment reference.
+	 * The feature id for the '<em><b>Capability Assertions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ROLL_CONVEYOR__CAPABILITY_ASSERTION = CONVEYOR__CAPABILITY_ASSERTION;
-
-	/**
-	 * The feature id for the '<em><b>Capability Requirement</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ROLL_CONVEYOR__CAPABILITY_REQUIREMENT = CONVEYOR__CAPABILITY_REQUIREMENT;
+	int ROLL_CONVEYOR__CAPABILITY_ASSERTIONS = CONVEYOR__CAPABILITY_ASSERTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -2828,22 +2567,13 @@ public interface ResourcetypePackage extends EPackage {
 	int CHAIN_CONVEYOR__METADATA = CONVEYOR__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Capability Assertion</b></em>' containment reference.
+	 * The feature id for the '<em><b>Capability Assertions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CHAIN_CONVEYOR__CAPABILITY_ASSERTION = CONVEYOR__CAPABILITY_ASSERTION;
-
-	/**
-	 * The feature id for the '<em><b>Capability Requirement</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHAIN_CONVEYOR__CAPABILITY_REQUIREMENT = CONVEYOR__CAPABILITY_REQUIREMENT;
+	int CHAIN_CONVEYOR__CAPABILITY_ASSERTIONS = CONVEYOR__CAPABILITY_ASSERTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -2919,22 +2649,13 @@ public interface ResourcetypePackage extends EPackage {
 	int PALLET_CONVEYOR__METADATA = CONVEYOR__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Capability Assertion</b></em>' containment reference.
+	 * The feature id for the '<em><b>Capability Assertions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PALLET_CONVEYOR__CAPABILITY_ASSERTION = CONVEYOR__CAPABILITY_ASSERTION;
-
-	/**
-	 * The feature id for the '<em><b>Capability Requirement</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PALLET_CONVEYOR__CAPABILITY_REQUIREMENT = CONVEYOR__CAPABILITY_REQUIREMENT;
+	int PALLET_CONVEYOR__CAPABILITY_ASSERTIONS = CONVEYOR__CAPABILITY_ASSERTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -3010,22 +2731,13 @@ public interface ResourcetypePackage extends EPackage {
 	int OVERHEAD_CONVEYOR__METADATA = CONVEYOR__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Capability Assertion</b></em>' containment reference.
+	 * The feature id for the '<em><b>Capability Assertions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OVERHEAD_CONVEYOR__CAPABILITY_ASSERTION = CONVEYOR__CAPABILITY_ASSERTION;
-
-	/**
-	 * The feature id for the '<em><b>Capability Requirement</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OVERHEAD_CONVEYOR__CAPABILITY_REQUIREMENT = CONVEYOR__CAPABILITY_REQUIREMENT;
+	int OVERHEAD_CONVEYOR__CAPABILITY_ASSERTIONS = CONVEYOR__CAPABILITY_ASSERTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -3119,26 +2831,15 @@ public interface ResourcetypePackage extends EPackage {
 	EClass getResourceType();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link de.dfki.iui.basys.model.domain.resourcetype.ResourceType#getCapabilityAssertion <em>Capability Assertion</em>}'.
+	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.domain.resourcetype.ResourceType#getCapabilityAssertions <em>Capability Assertions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Capability Assertion</em>'.
-	 * @see de.dfki.iui.basys.model.domain.resourcetype.ResourceType#getCapabilityAssertion()
+	 * @return the meta object for the containment reference list '<em>Capability Assertions</em>'.
+	 * @see de.dfki.iui.basys.model.domain.resourcetype.ResourceType#getCapabilityAssertions()
 	 * @see #getResourceType()
 	 * @generated
 	 */
-	EReference getResourceType_CapabilityAssertion();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link de.dfki.iui.basys.model.domain.resourcetype.ResourceType#getCapabilityRequirement <em>Capability Requirement</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Capability Requirement</em>'.
-	 * @see de.dfki.iui.basys.model.domain.resourcetype.ResourceType#getCapabilityRequirement()
-	 * @see #getResourceType()
-	 * @generated
-	 */
-	EReference getResourceType_CapabilityRequirement();
+	EReference getResourceType_CapabilityAssertions();
 
 	/**
 	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.resourcetype.ResourceType#getDocumentation <em>Documentation</em>}'.
@@ -3539,20 +3240,12 @@ public interface ResourcetypePackage extends EPackage {
 		EClass RESOURCE_TYPE = eINSTANCE.getResourceType();
 
 		/**
-		 * The meta object literal for the '<em><b>Capability Assertion</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Capability Assertions</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference RESOURCE_TYPE__CAPABILITY_ASSERTION = eINSTANCE.getResourceType_CapabilityAssertion();
-
-		/**
-		 * The meta object literal for the '<em><b>Capability Requirement</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference RESOURCE_TYPE__CAPABILITY_REQUIREMENT = eINSTANCE.getResourceType_CapabilityRequirement();
+		EReference RESOURCE_TYPE__CAPABILITY_ASSERTIONS = eINSTANCE.getResourceType_CapabilityAssertions();
 
 		/**
 		 * The meta object literal for the '<em><b>Documentation</b></em>' attribute feature.

@@ -69,9 +69,18 @@ public class TopologySwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
+			case TopologyPackage.TOPOLOGY_ELEMENT: {
+				TopologyElement topologyElement = (TopologyElement)theEObject;
+				T result = caseTopologyElement(topologyElement);
+				if (result == null) result = caseEntity(topologyElement);
+				if (result == null) result = caseBObject(topologyElement);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case TopologyPackage.ENTERPRISE: {
 				Enterprise enterprise = (Enterprise)theEObject;
 				T result = caseEnterprise(enterprise);
+				if (result == null) result = caseTopologyElement(enterprise);
 				if (result == null) result = caseEntity(enterprise);
 				if (result == null) result = caseBObject(enterprise);
 				if (result == null) result = defaultCase(theEObject);
@@ -80,6 +89,7 @@ public class TopologySwitch<T> extends Switch<T> {
 			case TopologyPackage.SITE: {
 				Site site = (Site)theEObject;
 				T result = caseSite(site);
+				if (result == null) result = caseTopologyElement(site);
 				if (result == null) result = caseEntity(site);
 				if (result == null) result = caseBObject(site);
 				if (result == null) result = defaultCase(theEObject);
@@ -88,6 +98,7 @@ public class TopologySwitch<T> extends Switch<T> {
 			case TopologyPackage.AREA: {
 				Area area = (Area)theEObject;
 				T result = caseArea(area);
+				if (result == null) result = caseTopologyElement(area);
 				if (result == null) result = caseEntity(area);
 				if (result == null) result = caseBObject(area);
 				if (result == null) result = defaultCase(theEObject);
@@ -140,6 +151,7 @@ public class TopologySwitch<T> extends Switch<T> {
 			case TopologyPackage.WORK_UNIT: {
 				WorkUnit workUnit = (WorkUnit)theEObject;
 				T result = caseWorkUnit(workUnit);
+				if (result == null) result = caseTopologyElement(workUnit);
 				if (result == null) result = caseEntity(workUnit);
 				if (result == null) result = caseBObject(workUnit);
 				if (result == null) result = defaultCase(theEObject);
@@ -149,17 +161,19 @@ public class TopologySwitch<T> extends Switch<T> {
 				Unit unit = (Unit)theEObject;
 				T result = caseUnit(unit);
 				if (result == null) result = caseWorkUnit(unit);
+				if (result == null) result = caseTopologyElement(unit);
 				if (result == null) result = caseEntity(unit);
 				if (result == null) result = caseBObject(unit);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case TopologyPackage.WORK_CELL: {
-				WorkCell workCell = (WorkCell)theEObject;
-				T result = caseWorkCell(workCell);
-				if (result == null) result = caseWorkUnit(workCell);
-				if (result == null) result = caseEntity(workCell);
-				if (result == null) result = caseBObject(workCell);
+			case TopologyPackage.PROCESS_UNIT: {
+				ProcessUnit processUnit = (ProcessUnit)theEObject;
+				T result = caseProcessUnit(processUnit);
+				if (result == null) result = caseWorkUnit(processUnit);
+				if (result == null) result = caseTopologyElement(processUnit);
+				if (result == null) result = caseEntity(processUnit);
+				if (result == null) result = caseBObject(processUnit);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -167,14 +181,26 @@ public class TopologySwitch<T> extends Switch<T> {
 				StorageUnit storageUnit = (StorageUnit)theEObject;
 				T result = caseStorageUnit(storageUnit);
 				if (result == null) result = caseWorkUnit(storageUnit);
+				if (result == null) result = caseTopologyElement(storageUnit);
 				if (result == null) result = caseEntity(storageUnit);
 				if (result == null) result = caseBObject(storageUnit);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TopologyPackage.WORK_CELL: {
+				WorkCell workCell = (WorkCell)theEObject;
+				T result = caseWorkCell(workCell);
+				if (result == null) result = caseWorkUnit(workCell);
+				if (result == null) result = caseTopologyElement(workCell);
+				if (result == null) result = caseEntity(workCell);
+				if (result == null) result = caseBObject(workCell);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case TopologyPackage.EQUIPMENT_MODULE: {
 				EquipmentModule equipmentModule = (EquipmentModule)theEObject;
 				T result = caseEquipmentModule(equipmentModule);
+				if (result == null) result = caseTopologyElement(equipmentModule);
 				if (result == null) result = caseEntity(equipmentModule);
 				if (result == null) result = caseBObject(equipmentModule);
 				if (result == null) result = defaultCase(theEObject);
@@ -183,6 +209,7 @@ public class TopologySwitch<T> extends Switch<T> {
 			case TopologyPackage.CONTROL_MODULE: {
 				ControlModule controlModule = (ControlModule)theEObject;
 				T result = caseControlModule(controlModule);
+				if (result == null) result = caseTopologyElement(controlModule);
 				if (result == null) result = caseEntity(controlModule);
 				if (result == null) result = caseBObject(controlModule);
 				if (result == null) result = defaultCase(theEObject);
@@ -191,46 +218,29 @@ public class TopologySwitch<T> extends Switch<T> {
 			case TopologyPackage.STATION: {
 				Station station = (Station)theEObject;
 				T result = caseStation(station);
+				if (result == null) result = caseTopologyElement(station);
 				if (result == null) result = caseEntity(station);
 				if (result == null) result = caseBObject(station);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case TopologyPackage.TRANSITION: {
-				Transition transition = (Transition)theEObject;
-				T result = caseTransition(transition);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case TopologyPackage.ASSEMBLY_STATION: {
-				AssemblyStation assemblyStation = (AssemblyStation)theEObject;
-				T result = caseAssemblyStation(assemblyStation);
-				if (result == null) result = caseStation(assemblyStation);
-				if (result == null) result = caseEntity(assemblyStation);
-				if (result == null) result = caseBObject(assemblyStation);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case TopologyPackage.BUFFER_STATION: {
-				BufferStation bufferStation = (BufferStation)theEObject;
-				T result = caseBufferStation(bufferStation);
-				if (result == null) result = caseStation(bufferStation);
-				if (result == null) result = caseEntity(bufferStation);
-				if (result == null) result = caseBObject(bufferStation);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case TopologyPackage.PROCESS_UNIT: {
-				ProcessUnit processUnit = (ProcessUnit)theEObject;
-				T result = caseProcessUnit(processUnit);
-				if (result == null) result = caseWorkUnit(processUnit);
-				if (result == null) result = caseEntity(processUnit);
-				if (result == null) result = caseBObject(processUnit);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			default: return defaultCase(theEObject);
 		}
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTopologyElement(TopologyElement object) {
+		return null;
 	}
 
 	/**
@@ -455,51 +465,6 @@ public class TopologySwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseStation(Station object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Transition</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Transition</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseTransition(Transition object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Assembly Station</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Assembly Station</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAssemblyStation(AssemblyStation object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Buffer Station</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Buffer Station</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseBufferStation(BufferStation object) {
 		return null;
 	}
 

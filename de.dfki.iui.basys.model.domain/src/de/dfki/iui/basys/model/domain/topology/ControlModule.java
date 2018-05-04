@@ -2,8 +2,6 @@
  */
 package de.dfki.iui.basys.model.domain.topology;
 
-import de.dfki.iui.basys.model.base.Entity;
-
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -22,7 +20,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface ControlModule extends Entity {
+public interface ControlModule extends TopologyElement {
 	/**
 	 * Returns the value of the '<em><b>Control Modules</b></em>' containment reference list.
 	 * The list contents are of type {@link de.dfki.iui.basys.model.domain.topology.ControlModule}.

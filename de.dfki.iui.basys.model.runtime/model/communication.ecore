@@ -46,6 +46,9 @@
     <eOperations name="getChannel" eType="#//Channel">
       <eParameters name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
+    <eOperations name="getChannelByName" eType="#//Channel">
+      <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="channels" upperBound="-1"
         eType="#//Channel" eOpposite="#//Channel/pool"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="provider" lowerBound="1"
