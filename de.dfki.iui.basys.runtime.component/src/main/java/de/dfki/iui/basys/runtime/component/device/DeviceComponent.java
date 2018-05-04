@@ -1,82 +1,87 @@
 package de.dfki.iui.basys.runtime.component.device;
 
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
 import org.eclipse.emf.ecore.EObject;
 
 import de.dfki.iui.basys.common.emf.JsonUtils;
-import de.dfki.iui.basys.model.domain.capability.Capability;
-import de.dfki.iui.basys.model.runtime.communication.Notification;
 import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.communication.Response;
+import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
+import de.dfki.iui.basys.model.runtime.component.ChangeModeRequest;
+import de.dfki.iui.basys.model.runtime.component.CommandRequest;
+import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.ComponentRequest;
+import de.dfki.iui.basys.model.runtime.component.ComponentRequestStatus;
+import de.dfki.iui.basys.model.runtime.component.ControlMode;
+import de.dfki.iui.basys.model.runtime.component.RequestStatus;
+import de.dfki.iui.basys.model.runtime.component.State;
+import de.dfki.iui.basys.model.runtime.component.impl.ComponentRequestStatusImpl;
 import de.dfki.iui.basys.runtime.component.BaseComponent;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.packml.ActiveStatesHandler;
 import de.dfki.iui.basys.runtime.component.device.packml.CommandInterface;
-import de.dfki.iui.basys.runtime.component.device.packml.Mode;
-import de.dfki.iui.basys.runtime.component.device.packml.PackMLException;
 import de.dfki.iui.basys.runtime.component.device.packml.PackMLUnit;
-import de.dfki.iui.basys.runtime.component.device.packml.State;
 import de.dfki.iui.basys.runtime.component.device.packml.StatusInterface;
 import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
 import de.dfki.iui.basys.runtime.component.device.packml.WaitStatesHandler;
-import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.registry.ComponentRegistrationException;
 
+public abstract class DeviceComponent extends BaseComponent implements StatusInterface, CommandInterface, ActiveStatesHandler, WaitStatesHandler {
 
-public abstract class DeviceComponent extends BaseComponent
-		implements StatusInterface, CommandInterface, ActiveStatesHandler, WaitStatesHandler {
-	
 	protected PackMLUnit packmlUnit;
+
+	protected boolean resetOnComplete, resetOnStopped, internalStop = false;
 
 	public DeviceComponent(ComponentConfiguration config) {
 		super(config);
 	}
 
-	public void activate(ComponentContext context) throws ComponentException {	
+	@Override
+	public void activate(ComponentContext context) throws ComponentException {
 
 		NotifyingStatesHandlerFacade handler = new NotifyingStatesHandlerFacade(this);
 
-		packmlUnit = new PackMLUnit(getId());		
+		packmlUnit = new PackMLUnit(getId());
 		packmlUnit.setActiveStatesHandler(handler);
 		packmlUnit.setWaitStatesHandler(handler);
 		packmlUnit.initialize();
-		
+
 		super.activate(context);
-		
+
 		// make unit ready for production
-		//no, should be done from outside
-//		packmlUnit.reset();
-//		
-//		while (getState() != State.IDLE) {
-//			try {
-//				TimeUnit.MILLISECONDS.sleep(500);
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		}
-		
+		// no, should be done from outside
+		// packmlUnit.reset();
+		//
+		// while (getState() != State.IDLE) {
+		// try {
+		// TimeUnit.MILLISECONDS.sleep(500);
+		// } catch (InterruptedException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+		// }
+
 		LOGGER.info("activated");
 	}
 
+	@Override
 	public void deactivate() throws ComponentException {
-		
+
 		// regardless of connection to real device (e.g. in simulation) do:
 		// no, should be done from outside
-//		packmlUnit.stop();		
-//
-//		while (getState() != State.STOPPED) {
-//			try {
-//				TimeUnit.MILLISECONDS.sleep(500);
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		}
-		
+		// packmlUnit.stop();
+		//
+		// while (getState() != State.STOPPED) {
+		// try {
+		// TimeUnit.MILLISECONDS.sleep(500);
+		// } catch (InterruptedException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+		// }
+
 		super.deactivate();
 
 		packmlUnit.dispose();
@@ -84,6 +89,13 @@ public abstract class DeviceComponent extends BaseComponent
 		LOGGER.info("deactivated");
 	}
 
+	public int getErrorCode() {
+		return packmlUnit.getErrorCode();
+	}
+
+	public void setErrorCode(int errorCode) {
+		packmlUnit.setErrorCode(errorCode);
+	}
 
 	/*
 	 * StatusInterface
@@ -95,7 +107,7 @@ public abstract class DeviceComponent extends BaseComponent
 	}
 
 	@Override
-	public Mode getMode() {
+	public ControlMode getMode() {
 		return packmlUnit.getMode();
 	}
 
@@ -103,30 +115,137 @@ public abstract class DeviceComponent extends BaseComponent
 	public UnitConfiguration getUnitConfig() {
 		return packmlUnit.getUnitConfig();
 	}
-	
+
 	@Override
-	public Response handleRequest(Request req) {
+	public Response handleRequest(Request request) {
+		ComponentRequestStatus status = null;
 		try {
-			EObject ob = JsonUtils.fromJsonString(req.getPayload(), EObject.class);
-			if (ob instanceof Capability) {
-				boolean status = handleCapabilityRequest((Capability)ob);
+			EObject ob = JsonUtils.fromJsonString(request.getPayload(), EObject.class);
+			if (ob instanceof ComponentRequest) {
+				ComponentRequest cr = (ComponentRequest) ob;
+
+				if (!getId().equals(cr.getComponentId())) {
+					// don't make the same mistake as BMW: https://www.heise.de/newsticker/meldung/ConnectedDrive-Der-BMW-Hack-im-Detail-2540786.html
+					status = new ComponentRequestStatusImpl.Builder().componentId(cr.getComponentId()).status(RequestStatus.REJECTED).message("componentId does not match").build();
+				} else {
+					if (cr instanceof ChangeModeRequest) {
+						ChangeModeRequest req = (ChangeModeRequest) cr;
+						status = handleChangeModeRequest(req);
+					} else if (cr instanceof CommandRequest) {
+						CommandRequest req = (CommandRequest) cr;
+						status = handleCommandRequest(req);
+					} else if (cr instanceof CapabilityRequest) {
+						CapabilityRequest req = (CapabilityRequest) cr;
+						status = handleCapabilityRequest(req);
+					}
+				}
 			} else {
-				
+				status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.REJECTED).message("unknown request").build();
 			}
-			return cf.createResponse(req.getId(), "io");
+			String payload = JsonUtils.toJsonString(status);
+			return cf.createResponse(request.getId(), payload);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return cf.createResponse(req.getId(), "nio");
+			status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.REJECTED).message(e.getMessage()).build();
+			try {
+				String payload = JsonUtils.toJsonString(status);
+				return cf.createResponse(request.getId(), payload);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+				return cf.createResponse(request.getId(), e1.getMessage());
+			}
 		}
 	}
 
-	public boolean handleCapabilityRequest(Capability ob) {
+	protected ComponentRequestStatus handleCapabilityRequest(CapabilityRequest req) {
+		ComponentRequestStatus status = null;
 		// "translate"
 		// set config
-		// start();		
-		// es sollte eine Art Status zurückgegeben werden, der ausdrückt, ob und wann der Request angenommen/in Auftrag gegeben wurde.
-		return true;
+		// start();
+		return status;
+	}
+
+	protected ComponentRequestStatus handleCommandRequest(CommandRequest req) {
+		ComponentRequestStatus status = null;
+		switch (req.getControlCommand()) {
+		case ABORT:
+			// if (getState() != State.ABORTED && getState() != State.ABORTING)
+			status = abort();
+			break;
+		case CLEAR:
+			status = clear();
+			break;
+		case HOLD:
+			status = hold();
+			break;
+		case RESET:
+			status = reset();
+			break;
+		case START:
+			status = start();
+			break;
+		case STOP:
+			status = stop();
+			break;
+		case SUSPEND:
+			status = suspend();
+			break;
+		case UNHOLD:
+			status = unhold();
+			break;
+		case UNSUSPEND:
+			status = unsuspend();
+			break;
+		case NO_COMMAND:
+		default:
+			status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.REJECTED).message("unknown command").build();
+			break;
+		}
+
+		return status;
+	}
+
+	protected ComponentRequestStatus handleChangeModeRequest(ChangeModeRequest req) {
+		ComponentRequestStatus status = setMode(req.getMode());
+		return status;
+	}
+
+	protected void updateRegistrationAndNotify() {
+
+		LOGGER.info("updateRegistrationAndNotify()");
+		// TODO: something like:Notification not = createStatusUpdate();
+
+		LOGGER.info(String.format("component with id %s is now in state %s and mode %s", getId(), getState(), getMode()));
+
+		if (statusChannel != null && statusChannel.isOpen()) {
+			LOGGER.info("send status update notification");
+//			Notification not = cf.createNotification(state);
+//			try {
+//				statusChannel.sendNotification(not);
+//			} catch (ChannelException e) {
+//				e.printStackTrace();
+//			}
+		} else {
+			LOGGER.warn("cannot send status update notification");
+		}
+		if (registration != null) {
+			try {
+				LOGGER.info("update registration");
+				registration.update();
+			} catch (ComponentRegistrationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else {
+			LOGGER.warn("cannot update registration");
+		}
+
+		LOGGER.info("updateRegistrationAndNotify() - finished");
+	}
+
+	protected void internalStop() {
+		internalStop = true;
+		stop();
 	}
 
 	/*
@@ -134,131 +253,174 @@ public abstract class DeviceComponent extends BaseComponent
 	 */
 
 	@Override
-	public void setMode(Mode mode) throws PackMLException {
-		if (getMode() == mode) return;
-		
-		packmlUnit.setMode(mode);
-		
-		if (outChannel != null && outChannel.isOpen()) {
-			Notification not = cf.createNotification("mode_changed");
-			outChannel.sendNotification(not);
+	public ComponentRequestStatus setMode(ControlMode mode) {
+		ComponentRequestStatus status = packmlUnit.setMode(mode);
+
+		if (status.getStatus() == RequestStatus.ACCEPTED) {
+			updateRegistrationAndNotify();
 		}
-		if (registration != null)
-		{
-			try {
-				registration.update();
-			} catch (ComponentRegistrationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-	}
-
-	@Override
-	public void setUnitConfig(UnitConfiguration config) throws PackMLException {
-		packmlUnit.setUnitConfig(config);
-	}
-
-	@Override
-	public void reset() {
-		packmlUnit.reset();
-	}
-
-	@Override
-	public void start() {
-		packmlUnit.start();
-	}
-
-	@Override
-	public void stop() {
-		packmlUnit.stop();
-	}
-
-	@Override
-	public void hold() {
-		packmlUnit.hold();
-	}
-
-	@Override
-	public void unhold() {
-		packmlUnit.unhold();
-	}
-
-	@Override
-	public void suspend() {
-		packmlUnit.suspend();
-	}
-
-	@Override
-	public void unsuspend() {
-		packmlUnit.unsuspend();
-	}
-
-	@Override
-	public void abort() {
-		packmlUnit.abort();
-	}
-
-	@Override
-	public void clear() {
-		packmlUnit.clear();
-	}
-
-	protected void notifyAndUpdateRegistration() {
-		// TODO: something like:Notification not = createStatusUpdate();
-		String state = getState().toString();
 		
-		LOGGER.info(String.format("device with id %s is now in state %s", getId(), state));
-		
-		if (outChannel != null && outChannel.isOpen()) {
-			Notification not = cf.createNotification(state);
-			outChannel.sendNotification(not);
-		}
-		if (registration != null)
-		{
-			try {
-				registration.update();
-			} catch (ComponentRegistrationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+		return status;
 	}
-	
+
+	@Override
+	public ComponentRequestStatus setUnitConfig(UnitConfiguration config) {
+		return packmlUnit.setUnitConfig(config);
+	}
+
+	@Override
+	public ComponentRequestStatus reset() {
+		return packmlUnit.reset();
+	}
+
+	@Override
+	public ComponentRequestStatus start() {
+		return packmlUnit.start();
+	}
+
+	@Override
+	public ComponentRequestStatus stop() {
+		return packmlUnit.stop();
+	}
+
+	@Override
+	public ComponentRequestStatus hold() {
+		return packmlUnit.hold();
+	}
+
+	@Override
+	public ComponentRequestStatus unhold() {
+		return packmlUnit.unhold();
+	}
+
+	@Override
+	public ComponentRequestStatus suspend() {
+		return packmlUnit.suspend();
+	}
+
+	@Override
+	public ComponentRequestStatus unsuspend() {
+		return packmlUnit.unsuspend();
+	}
+
+	@Override
+	public ComponentRequestStatus abort() {
+		return packmlUnit.abort();
+	}
+
+	@Override
+	public ComponentRequestStatus clear() {
+		return packmlUnit.clear();
+	}
+
 	/*
 	 * default WaitStatesHandler implementation -> notify Basys Middleware
 	 */
-	
+
 	@Override
 	public void onStopped() {
-	
+		if (resetOnStopped) {
+			// resetOnComplete = false;
+			reset();
+		}
 	}
 
 	@Override
 	public void onIdle() {
-	
+
 	}
 
 	@Override
 	public void onComplete() {
-	
+		if (resetOnComplete) {
+			// resetOnComplete = false;
+			reset();
+		}
 	}
 
 	@Override
 	public void onHeld() {
-	
+
 	}
 
 	@Override
 	public void onSuspended() {
-	
+
 	}
 
 	@Override
 	public void onAborted() {
-	
+
 	}
-	
-	
+
+	/*
+	 * default ActiveStatesHandler implementation -> trigger logic on device
+	 */
+
+	@Override
+	public void onResetting() {
+		LOGGER.info("onResetting");
+
+		internalStop = false;
+
+	}
+
+	@Override
+	public void onStarting() {
+		LOGGER.info("onStarting");
+
+	}
+
+	@Override
+	public void onExecute() {
+		LOGGER.info("onExecute");
+	}
+
+	@Override
+	public void onCompleting() {
+		LOGGER.info("onCompleting");
+
+	}
+
+	@Override
+	public void onHolding() {
+		LOGGER.info("onHolding");
+
+	}
+
+	@Override
+	public void onUnholding() {
+		LOGGER.info("onUnholding");
+
+	}
+
+	@Override
+	public void onSuspending() {
+		LOGGER.info("onSuspending");
+
+	}
+
+	@Override
+	public void onUnsuspending() {
+		LOGGER.info("onUnsuspending");
+
+	}
+
+	@Override
+	public void onAborting() {
+		LOGGER.info("onAborting");
+
+	}
+
+	@Override
+	public void onClearing() {
+		LOGGER.info("onClearing");
+
+	}
+
+	@Override
+	public void onStopping() {
+		LOGGER.info("onStopping");
+	}
 
 }

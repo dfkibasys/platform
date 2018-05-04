@@ -18,6 +18,9 @@ import org.apache.commons.scxml2.model.SCXML;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import de.dfki.iui.basys.model.runtime.component.ControlMode;
+import de.dfki.iui.basys.model.runtime.component.State;
+
 public class PackML {
 
 	protected final Logger LOGGER = LoggerFactory.getLogger(PackML.class.getName());
@@ -49,7 +52,7 @@ public class PackML {
 				// add script variables to scope
 				exec.addListener(scxml, new SimpleSCXMLListener());
 				exec.getRootContext().set("unit", unit);
-				exec.getRootContext().set("Mode", Mode.class);
+				exec.getRootContext().set("Mode", ControlMode.class);
 
 				//exec.go();
 				exec.run();
@@ -76,6 +79,7 @@ public class PackML {
 	}
 
 	public void raiseLifecycleEvent(String event) {
+		LOGGER.info("raiseLifecycleEvent: " + event);
 		exec.addEvent(new EventBuilder("lifecycle.events." + event, TriggerEvent.SIGNAL_EVENT).build());
 //		try {
 //			exec.triggerEvent(new EventBuilder("lifecycle.events." + event, TriggerEvent.SIGNAL_EVENT).build());			

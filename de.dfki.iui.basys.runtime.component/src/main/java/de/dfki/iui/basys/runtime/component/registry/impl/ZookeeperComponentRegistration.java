@@ -4,12 +4,11 @@ import org.apache.curator.x.discovery.ServiceDiscovery;
 import org.apache.curator.x.discovery.ServiceInstance;
 import org.apache.curator.x.discovery.UriSpec;
 
+import de.dfki.iui.basys.model.runtime.component.ComponentInfo;
+import de.dfki.iui.basys.model.runtime.component.impl.ComponentInfoImpl;
 import de.dfki.iui.basys.runtime.component.Component;
-import de.dfki.iui.basys.runtime.component.ComponentCategory;
-import de.dfki.iui.basys.runtime.component.registry.ComponentInfo;
 import de.dfki.iui.basys.runtime.component.registry.ComponentRegistration;
 import de.dfki.iui.basys.runtime.component.registry.ComponentRegistrationException;
-import de.dfki.iui.basys.runtime.component.registry.ComponentInfo.Builder;
 
 public class ZookeeperComponentRegistration implements ComponentRegistration {
 
@@ -28,14 +27,14 @@ public class ZookeeperComponentRegistration implements ComponentRegistration {
 
 	private ServiceInstance<ComponentInfo> createServiceInstance(Component component)
 			throws ComponentRegistrationException {
-		ComponentInfo componentInfo = new ComponentInfo.Builder()
-				.id(component.getId())
-				.name(component.getName())
-				.category(component.getCategory().toString())
+		ComponentInfo componentInfo = new ComponentInfoImpl.Builder()
+				.componentId(component.getId())
+				.componentName(component.getName())
+				.componentCategory(component.getCategory())
 				.communicationProvider(component.getConfig().getCommunicationProviderImplementationJavaClass())
 				.connectionString(component.getConfig().getCommunicationProviderConnectionString())
-				.inChannel(component.getConfig().getInChannelName())
-				.outChannel(component.getConfig().getOutChannelName())
+				.inChannelName(component.getConfig().getInChannelName())
+				.outChannelName(component.getConfig().getOutChannelName())
 				.currentState(component.getState())
 				.currentMode(component.getMode())
 				.build();

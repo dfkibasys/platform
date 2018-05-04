@@ -1,6 +1,8 @@
 package de.dfki.iui.basys.runtime.component.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import java.util.List;
 
@@ -10,11 +12,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import de.dfki.iui.basys.runtime.component.manager.ComponentManager;
-import de.dfki.iui.basys.runtime.component.manager.ComponentManagerException;
-import de.dfki.iui.basys.runtime.component.manager.impl.ComponentManagerImpl;
-import de.dfki.iui.basys.runtime.component.registry.ComponentInfo;
+import de.dfki.iui.basys.model.runtime.component.ComponentInfo;
 import de.dfki.iui.basys.runtime.component.Component;
+import de.dfki.iui.basys.runtime.component.manager.ComponentManagerException;
 
 public class ComponentManagerTest extends BaseComponentTest {
 	
@@ -28,11 +28,13 @@ public class ComponentManagerTest extends BaseComponentTest {
 		// not really needed
 	}
 
+	@Override
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
 	}
 
+	@Override
 	@After
 	public void tearDown() throws Exception {
 		super.tearDown();

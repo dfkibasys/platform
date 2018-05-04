@@ -26,13 +26,11 @@
 	<packaging>bundle</packaging>
 
 	<dependencies>
-		<!-- comment to remove all imported (non-local) bundles from your compilation 
-			classpath -->
+
 		<dependency>
-			<type>pom</type>
-			<groupId>${project.parent.groupId}</groupId>
-			<artifactId>provision</artifactId>
-			<optional>true</optional>
+			<groupId>de.dfki.iui.basys.common</groupId>
+			<artifactId>de.dfki.iui.basys.common.emf</artifactId>
+			<version>${project.version}</version>
 		</dependency>
 
 		<dependency>
@@ -52,6 +50,16 @@
 			<groupId>org.apache.activemq</groupId>
 			<artifactId>activemq-client</artifactId>
 			<version>${activemq-version}</version>
+		</dependency>
+
+
+		<!-- comment to remove all imported (non-local) bundles from your compilation 
+			classpath -->
+		<dependency>
+			<type>pom</type>
+			<groupId>${project.parent.groupId}</groupId>
+			<artifactId>provision</artifactId>
+			<optional>true</optional>
 		</dependency>
 
 

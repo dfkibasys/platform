@@ -11,9 +11,10 @@ import org.slf4j.LoggerFactory;
 
 import de.dfki.iui.basys.model.runtime.communication.ChannelPool;
 import de.dfki.iui.basys.model.runtime.communication.Client;
+import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
+import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl;
 import de.dfki.iui.basys.runtime.communication.ClientFactory;
-import de.dfki.iui.basys.runtime.component.ComponentCategory;
-import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.manager.impl.ComponentManagerImpl;
 import de.dfki.iui.basys.runtime.component.registry.impl.ZookeeperComponentRegistry;
@@ -34,7 +35,7 @@ public class BaseComponentTest {
 	
 
 	protected static final String communicationProviderImplementationJavaClass = "de.dfki.iui.basys.runtime.communication.provider.JmsCommunicationProvider";
-	protected static final String communicationProviderConnectionString = "vm://localhost?broker.persistent=false";
+	protected static final String communicationProviderConnectionString = "tcp://lns-90165.sb.dfki.de:61616";
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -48,7 +49,7 @@ public class BaseComponentTest {
 
 	@Before
 	public void setUp() throws Exception {
-		registryConfig = new ComponentConfiguration.Builder()
+		registryConfig = new ComponentConfigurationImpl.Builder()
 				.componentId("component-registry")
 				.componentName("component-registry")
 				.componentCategory(ComponentCategory.MANAGEMENT_COMPONENT)
@@ -57,7 +58,7 @@ public class BaseComponentTest {
 				.externalConnectionString(ZookeeperComponentRegistry.defaultConnectionString)
 				.build();	
 		
-		observerConfig = new ComponentConfiguration.Builder()
+		observerConfig = new ComponentConfigurationImpl.Builder()
 				.componentId("component-registry-observer")
 				.componentName("component-registry-observer")
 				.componentCategory(ComponentCategory.MANAGEMENT_COMPONENT)
@@ -67,7 +68,7 @@ public class BaseComponentTest {
 				.build();	
 		
 		
-		managerConfig = new ComponentConfiguration.Builder()
+		managerConfig = new ComponentConfigurationImpl.Builder()
 				.componentId("component-manager")
 				.componentName("component-manager")
 				.componentCategory(ComponentCategory.MANAGEMENT_COMPONENT)
@@ -75,7 +76,7 @@ public class BaseComponentTest {
 				.communicationProviderConnectionString(communicationProviderConnectionString)
 				.build();	
 
-		config1 = new ComponentConfiguration.Builder()
+		config1 = new ComponentConfigurationImpl.Builder()
 				.componentId("component-1")
 				.componentName("component-1")
 				.componentCategory(ComponentCategory.DEVICE_COMPONENT)
@@ -84,7 +85,7 @@ public class BaseComponentTest {
 				.communicationProviderConnectionString(communicationProviderConnectionString)
 				.build();		
 		
-		config2 = new ComponentConfiguration.Builder()
+		config2 = new ComponentConfigurationImpl.Builder()
 				.componentId("component-2")
 				.componentName("component-2")
 				.componentCategory(ComponentCategory.DEVICE_COMPONENT)
@@ -93,7 +94,7 @@ public class BaseComponentTest {
 				.communicationProviderConnectionString(communicationProviderConnectionString)
 				.build();	
 				
-		config3 = new ComponentConfiguration.Builder()
+		config3 = new ComponentConfigurationImpl.Builder()
 				.componentId("component-3")
 				.componentName("component-3")
 				.componentCategory(ComponentCategory.DEVICE_COMPONENT)
@@ -107,7 +108,7 @@ public class BaseComponentTest {
 
 		
 		communicationClient = ClientFactory.getInstance().createClient("client", null);
-		sharedPool = ClientFactory.getInstance().connectJmsChannelPool(communicationClient, null);
+		sharedPool = ClientFactory.getInstance().connectJmsChannelPool(communicationClient, communicationProviderConnectionString);
 		
 		registry = new ZookeeperComponentRegistry(registryConfig);
 		observer = new ZookeeperComponentRegistryObserver(observerConfig);

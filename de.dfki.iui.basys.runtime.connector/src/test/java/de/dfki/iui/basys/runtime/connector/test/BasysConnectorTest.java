@@ -1,7 +1,5 @@
 package de.dfki.iui.basys.runtime.connector.test;
 
-import static org.junit.Assert.assertTrue;
-
 import java.util.LinkedList;
 import java.util.UUID;
 
@@ -20,10 +18,8 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Test;
 
-import de.dfki.iui.basys.runtime.component.ComponentCategory;
-import de.dfki.iui.basys.runtime.component.registry.impl.ZookeeperComponentRegistry;
+import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
 import de.dfki.iui.basys.runtime.connector.BasysConnector;
 import de.dfki.iui.basys.runtime.connector.BasysConnectorConfiguration;
 import de.dfki.iui.basys.runtime.connector.MessageFactory;
@@ -55,6 +51,7 @@ public class BasysConnectorTest extends BaseComponentTest {
 		connection.close();
 	}
 
+	@Override
 	@Before
 	public void setUp() throws Exception {
 		connectorComponentId = UUID.randomUUID().toString();
@@ -87,6 +84,7 @@ public class BasysConnectorTest extends BaseComponentTest {
 		wfe_receiver = session.createConsumer(jmsTopicConsumer);
 	}
 
+	@Override
 	@After
 	public void tearDown() throws Exception {
 		wfe_sender.close();

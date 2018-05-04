@@ -4,18 +4,19 @@ import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import junit.framework.TestCase;
+
+import de.dfki.iui.basys.model.runtime.component.State;
 import de.dfki.iui.basys.runtime.component.device.packml.PackMLUnit;
-import de.dfki.iui.basys.runtime.component.device.packml.State;
-import de.dfki.iui.basys.runtime.component.test.TestHandler.Path;
+import junit.framework.TestCase;
 
-public class PackMLTests extends TestCase {
+public class PackMLTest extends TestCase {
 
-	protected final Logger LOGGER = LoggerFactory.getLogger(PackMLTests.class);
+	protected final Logger LOGGER = LoggerFactory.getLogger(PackMLTest.class);
 	
 	TestHandler handler;
 	PackMLUnit unit;
 	
+	@Override
 	protected void setUp() throws Exception {		
 		super.setUp();
 		LOGGER.info("setUp");
@@ -26,6 +27,7 @@ public class PackMLTests extends TestCase {
 		
 	}
 
+	@Override
 	protected void tearDown() throws Exception {
 		super.tearDown();
 		LOGGER.info("tearDown");

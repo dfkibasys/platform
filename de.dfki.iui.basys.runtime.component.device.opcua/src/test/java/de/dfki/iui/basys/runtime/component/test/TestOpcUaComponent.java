@@ -1,11 +1,11 @@
 package de.dfki.iui.basys.runtime.component.test;
 
+import static org.junit.Assert.assertEquals;
+
 import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;
 import org.eclipse.milo.opcua.stack.core.types.builtin.StatusCode;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.device.opcua.OpcUaDeviceComponent;
 import de.dfki.iui.basys.runtime.component.device.opcua.OpcUaException;
 
@@ -38,7 +38,8 @@ public class TestOpcUaComponent extends OpcUaDeviceComponent {
 
 	@Override
 	public void onExecute() {
-		super.onExecute();
+		// to avoid async behavior
+		//super.onExecute();
 		
 		try {
 			result = invokeMethod(NODE_OBJECT, NODE_METHOD, (short) 2, (short) 3);
@@ -54,9 +55,15 @@ public class TestOpcUaComponent extends OpcUaDeviceComponent {
 		
 		try {
 			short out = readValue(NODE_VARIABLE_OUT);
+			assertEquals(5, out);
 		} catch (OpcUaException e) {
 			e.printStackTrace();
 		}		
 	}
 
+	@Override
+	public void onStopping() {
+		// to avoid async behavior
+		//super.onStopping();
+	}
 }

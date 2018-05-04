@@ -2,10 +2,11 @@
  */
 package de.dfki.iui.basys.runtime.component.manager;
 
+import java.io.File;
 import java.util.List;
 
+import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.Component;
-import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Manager</b></em>'. <!-- end-user-doc -->
@@ -47,6 +48,8 @@ public interface ComponentManager {
 	 * @generated
 	 */
 	void createLocalComponent(ComponentConfiguration config) throws ComponentManagerException;
+	void createLocalComponent(File configFile) throws ComponentManagerException;
+	void createLocalComponents(File configFolder, boolean recursive) throws ComponentManagerException;
 
 	void addLocalComponent(Component component) throws ComponentManagerException;
 
@@ -57,5 +60,7 @@ public interface ComponentManager {
 	 * @generated
 	 */
 	void deleteLocalComponent(String id) throws ComponentManagerException;
+	
+	
 
 } // ComponentManager

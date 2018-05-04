@@ -1,8 +1,8 @@
 package de.dfki.iui.basys.runtime.connector;
 
-import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl;
 
-public class BasysConnectorConfiguration extends ComponentConfiguration {
+public class BasysConnectorConfiguration extends ComponentConfigurationImpl {
 
 	private int caaResourceId;
 	private String caaInTopic;
@@ -29,7 +29,7 @@ public class BasysConnectorConfiguration extends ComponentConfiguration {
 		return caaOutTopic;
 	}
 	
-	public static class Builder extends ComponentConfiguration.Builder {
+	public static class Builder extends ComponentConfigurationImpl.Builder {
 		private int caaResourceId;
 		private String caaInTopic;
 		private String caaOutTopic;

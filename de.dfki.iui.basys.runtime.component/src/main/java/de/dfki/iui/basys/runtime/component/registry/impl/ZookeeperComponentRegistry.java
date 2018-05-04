@@ -13,12 +13,12 @@ import org.apache.curator.x.discovery.ServiceDiscoveryBuilder;
 import org.apache.curator.x.discovery.ServiceInstance;
 import org.apache.curator.x.discovery.details.JsonInstanceSerializer;
 
+import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
+import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.ComponentInfo;
 import de.dfki.iui.basys.runtime.component.BaseComponent;
 import de.dfki.iui.basys.runtime.component.Component;
-import de.dfki.iui.basys.runtime.component.ComponentCategory;
-import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.ComponentException;
-import de.dfki.iui.basys.runtime.component.registry.ComponentInfo;
 import de.dfki.iui.basys.runtime.component.registry.ComponentRegistration;
 import de.dfki.iui.basys.runtime.component.registry.ComponentRegistrationException;
 import de.dfki.iui.basys.runtime.component.registry.ComponentRegistry;
@@ -40,7 +40,7 @@ public class ZookeeperComponentRegistry extends BaseComponent implements Compone
 		}
 		client = CuratorFrameworkFactory.newClient(connectionString, new ExponentialBackoffRetry(1000, 3));
 
-		JsonInstanceSerializer<ComponentInfo> serializer = new JsonInstanceSerializer<ComponentInfo>(ComponentInfo.class);
+		JsonInstanceSerializer<ComponentInfo> serializer = new JsonInstanceSerializer<ComponentInfo>(ComponentInfo.class, false);
 
 		serviceDiscovery = ServiceDiscoveryBuilder.builder(ComponentInfo.class).client(client).basePath(PATH).serializer(serializer).build();
 
@@ -76,7 +76,7 @@ public class ZookeeperComponentRegistry extends BaseComponent implements Compone
 
 	@Override
 	public List<ComponentInfo> getComponents(ComponentCategory category) {
-		try {
+		try {		 			
 			Collection<ServiceInstance<ComponentInfo>> instances = serviceDiscovery.queryForInstances(category.toString());
 			List<ComponentInfo> result = new ArrayList<>(instances.size());
 			instances.forEach(i -> result.add(i.getPayload()));

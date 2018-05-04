@@ -2,17 +2,34 @@ package de.dfki.iui.basys.runtime.component.registry;
 
 import java.util.List;
 
-import de.dfki.iui.basys.runtime.component.Component;
-import de.dfki.iui.basys.runtime.component.ComponentCategory;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
+import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
+import de.dfki.iui.basys.model.runtime.component.ComponentInfo;
+import de.dfki.iui.basys.runtime.component.Component;
+
+@Path("/registry")
 public interface ComponentRegistry {
 
 	ComponentRegistration createRegistration(Component instance) throws ComponentRegistrationException;
 
-	List<ComponentInfo> getComponents(ComponentCategory category);
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/{componentCategory}")
+	List<ComponentInfo> getComponents(@PathParam("componentCategory") ComponentCategory category);
 
-	ComponentInfo getComponentById(ComponentCategory category, String id);
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/{componentCategory}/{componentId}")
+	ComponentInfo getComponentById(@PathParam("componentCategory") ComponentCategory category, @PathParam("componentId") String id);
 
-	ComponentInfo getComponentByName(ComponentCategory category, String name);
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/{componentCategory}/name/{componentName}")
+	ComponentInfo getComponentByName(@PathParam("componentCategory") ComponentCategory category, @PathParam("componentName") String name);
 
 }

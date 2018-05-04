@@ -2,10 +2,8 @@ package de.dfki.iui.basys.runtime.component.test;
 
 import java.util.concurrent.TimeUnit;
 
-import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.device.DeviceComponent;
-import de.dfki.iui.basys.runtime.component.test.TestHandler.Path;
-import de.dfki.iui.basys.runtime.component.ComponentException;
 
 public class TestDeviceComponent extends DeviceComponent {
 
@@ -28,57 +26,68 @@ public class TestDeviceComponent extends DeviceComponent {
 	
 	@Override
 	public void onResetting() {
-		sleep(1);
-	}
-
-	@Override
-	public void onStarting() {
-		sleep(1);
-	}
-
-	@Override
-	public void onExecute() {
+		LOGGER.info("onResetting()");
 		sleep(2);
 	}
 
 	@Override
+	public void onStarting() {
+		LOGGER.info("onStarting()");
+		sleep(2);
+	}
+
+	@Override
+	public void onExecute() {
+		LOGGER.info("onExecute()");
+		sleep(10);
+	}
+
+	@Override
 	public void onCompleting() {
-		sleep(1);
+		LOGGER.info("onCompleting()");
+		sleep(2);
 	}
 
 	@Override
 	public void onHolding() {
+		LOGGER.info("onHolding()");
 		sleep(1);
 	}
 
 	@Override
 	public void onUnholding() {
+		LOGGER.info("onUnholding()");
 		sleep(1);
 	}
 
 	@Override
 	public void onSuspending() {
+		LOGGER.info("onSuspending()");
 		sleep(1);
 	}
 
 	@Override
 	public void onUnsuspending() {
+		LOGGER.info("onUnsuspending()");
 		sleep(1);
 	}
 
 	@Override
 	public void onAborting() {
+		LOGGER.info("onAborting()");
 		sleep(1);
 	}
 
 	@Override
 	public void onClearing() {
+		LOGGER.info("onClearing()");
 		sleep(1);
 	}
 
 	@Override
 	public void onStopping() {
-		sleep(1);
+		LOGGER.info("onStopping()");
+		sleep(2);
 	}
 
 }
