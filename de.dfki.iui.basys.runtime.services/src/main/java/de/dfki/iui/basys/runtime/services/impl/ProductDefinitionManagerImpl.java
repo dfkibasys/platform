@@ -2,6 +2,7 @@ package de.dfki.iui.basys.runtime.services.impl;
 
 import java.util.List;
 
+import de.dfki.iui.basys.model.domain.productdefinition.ProductGroup;
 import de.dfki.iui.basys.model.domain.productdefinition.ProductVariant;
 import de.dfki.iui.basys.model.domain.productdefinition.ProductdefinitionPackage;
 import de.dfki.iui.basys.model.domain.productdefinition.impl.ProductdefinitionPackageImpl;
@@ -30,9 +31,15 @@ public class ProductDefinitionManagerImpl extends EmfServiceComponent implements
 	}
 
 	@Override
-	public List<ProductVariant> getProductVariants(String productGroupName) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ProductGroup> getProductGroups() {
+		return getAllEntities(ProductdefinitionPackage.eINSTANCE.getProductGroup(), false);
+	}
+	
+	
+	@Override
+	public List<ProductVariant> getProductVariants(String productGroupId) {
+		ProductGroup group = getEntity(productGroupId);
+		return group.getProductVariants();
 	}
 
 	@Override

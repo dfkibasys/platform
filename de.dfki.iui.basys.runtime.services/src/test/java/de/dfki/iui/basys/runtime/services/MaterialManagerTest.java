@@ -24,7 +24,7 @@ public class MaterialManagerTest extends BaseEmfServiceComponentTest<MaterialMan
 	@Before
 	public void setUp() throws Exception {
 		javaClassName = "de.dfki.iui.basys.runtime.services.impl.MaterialManagerImpl";
-		file = "test.material";
+		file = "cebit.material";
 
 		super.setUp();
 	}
@@ -38,7 +38,7 @@ public class MaterialManagerTest extends BaseEmfServiceComponentTest<MaterialMan
 	@Test
 	public void testGetAllMaterials() {
 		List<Material> materials = service.getAllMaterials();
-		assertEquals(5, materials.size());
+		assertEquals(8, materials.size());
 	}
 
 	@Test
@@ -67,10 +67,10 @@ public class MaterialManagerTest extends BaseEmfServiceComponentTest<MaterialMan
 		List<String> ids = materialGroups.stream().map(materialGroup -> materialGroup.getId()).sorted().collect(Collectors.toList());
 		List<String> names = materialGroups.stream().map(materialGroup -> materialGroup.getName()).sorted().collect(Collectors.toList());
 
-		List<String> expectedIds = new LinkedList<>(Arrays.asList("_b9Yi8BMxEeiF0dM90lRpcg", "_b9ZKAhMxEeiF0dM90lRpcg"));
-		expectedIds.stream().sorted().collect(Collectors.toList());
-		List<String> expectedNames = new LinkedList<>(Arrays.asList("Caps", "Screws"));
-		expectedNames.stream().sorted().collect(Collectors.toList());
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("_b9Yi8BMxEeiF0dM90lRpcg", "_b9ZKAhMxEeiF0dM90lRpcg", "_QfjT4EjKEei9sPQ0bCp2Ew", "_jWzGsEjKEei9sPQ0bCp2Ew", "_u_PJcEjKEei9sPQ0bCp2Ew"));
+		expectedIds = expectedIds.stream().sorted().collect(Collectors.toList());
+		List<String> expectedNames = new LinkedList<>(Arrays.asList("Caps", "Screws", "VibrationAbsorbers", "Housings", "Shafts"));
+		expectedNames = expectedNames.stream().sorted().collect(Collectors.toList());
 		
 		Assert.assertArrayEquals(expectedIds.toArray(), ids.toArray());
 		Assert.assertArrayEquals(expectedNames.toArray(), names.toArray());

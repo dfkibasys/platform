@@ -29,9 +29,12 @@ public class ResourceInstanceManagerImpl extends EmfServiceComponent implements 
 	public List<ResourceInstance> getAllResourceInstances() {
 		List<ResourceInstance> result = new ArrayList<ResourceInstance>();
 		for (TreeIterator<Notifier> iter = resourceSet.getAllContents(); iter.hasNext();) {
-			EObject eObject = (EObject) iter.next();
-			if (ResourceinstancePackage.eINSTANCE.getResourceInstance().isSuperTypeOf(eObject.eClass())) {
-				result.add((ResourceInstance) eObject);
+			Object obj = iter.next();
+			if (obj instanceof EObject) {
+				EObject eObject = (EObject) obj;
+				if (ResourceinstancePackage.eINSTANCE.getResourceInstance().isSuperTypeOf(eObject.eClass())) {
+					result.add((ResourceInstance) eObject);
+				}
 			}
 		}
 		return result;
@@ -68,7 +71,7 @@ public class ResourceInstanceManagerImpl extends EmfServiceComponent implements 
 
 	@Override
 	public String addResourceInstance(ResourceInstance resourceInstance) {
-		// TODO Auto-generated method stub
+		// TODO get resource instance repo and add resourceInstance to it
 		return null;
 	}
 

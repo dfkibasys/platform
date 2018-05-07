@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <topology:Enterprise xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:capability="http://www.dfki.de/iui/basys/model/capability" xmlns:topology="http://www.dfki.de/iui/basys/model/topology" id="_mkrEADB4Eei1bbwBPPZWOA" name="DemoEnterprise">
   <sites id="_m9aUIDB4Eei1bbwBPPZWOA" name="CeBIT Hannover">
-    <areas id="_nb0HYDB4Eei1bbwBPPZWOA" name="Stand A.123">
+    <areas id="_nb0HYDB4Eei1bbwBPPZWOA" name="BMBF Stand">
       <workCenters xsi:type="topology:ProductionLine" id="_nuSXcjB4Eei1bbwBPPZWOA" name="Montage">
         <workCells id="_zr-RcTB4Eei1bbwBPPZWOA" name="Endmontage">
           <stations id="_1yPaZzB4Eei1bbwBPPZWOA" name="S1">
@@ -9,14 +9,20 @@
           </stations>
           <stations id="_2P5mwTB4Eei1bbwBPPZWOA" name="S2">
             <equipmentModules id="_5vbBoDB4Eei1bbwBPPZWOA" name="Schrauber"/>
+            <equipmentModules id="_rcKlkFIxEeidSe5vp9A3oA" name="Handtaster">
+              <assignedResourceType href="cebit.resourcetype#_GHTn8lIxEeidSe5vp9A3oA"/>
+              <assignedResourceInstance href="cebit.resourceinstance#_PwPREFIxEeidSe5vp9A3oA"/>
+            </equipmentModules>
           </stations>
           <stations id="_2jROsTB4Eei1bbwBPPZWOA" name="S3">
             <equipmentModules id="_6CV9oDB4Eei1bbwBPPZWOA" name="Deckelaufleger">
-              <capabilityRequirement xsi:type="capability:Pressen" id="_LmHydzDyEeixrJ0x1ZWKig" druck="50"/>
+              <capabilityRequirement xsi:type="capability:Pressing" id="_LmHydzDyEeixrJ0x1ZWKig" pressure="50.0"/>
               <assignedResourceType href="cebit.resourcetype#_yIFSQjB3Eei1bbwBPPZWOA"/>
               <assignedResourceInstance href="cebit.resourceinstance#_SE5NIDB4Eei1bbwBPPZWOA"/>
             </equipmentModules>
-            <equipmentModules binding="" id="_AzQQwDB5Eei1bbwBPPZWOA" name="Werkerführung"/>
+            <equipmentModules binding="" id="_AzQQwDB5Eei1bbwBPPZWOA" name="Werkerführung">
+              <assignedResourceInstance href="cebit.resourceinstance#_8cLJ8FIxEeidSe5vp9A3oA"/>
+            </equipmentModules>
           </stations>
         </workCells>
         <workCells id="_C-v38TB5Eei1bbwBPPZWOA" name="Qualitätssicherung">
@@ -30,6 +36,17 @@
         <storageUnits id="_O8321zB5Eei1bbwBPPZWOA" name="">
           <equipmentModules id="_ROxA8zB5Eei1bbwBPPZWOA" name="Positioniereinheit"/>
         </storageUnits>
+      </workCenters>
+      <equipmentModules id="_gUuXFFIxEeidSe5vp9A3oA" name="Laser Projection">
+        <assignedResourceType href="cebit.resourcetype#_BcwkYlIxEeidSe5vp9A3oA"/>
+        <assignedResourceInstance href="cebit.resourceinstance#_RtlHgFIxEeidSe5vp9A3oA"/>
+      </equipmentModules>
+    </areas>
+    <areas id="_JUNX8EegEeiuhP6xdl274w" name="DFKI Stand">
+      <workCenters xsi:type="topology:ProductionLine" id="_Pn-cEkegEeiuhP6xdl274w">
+        <workCells id="_R4WjQUegEeiuhP6xdl274w">
+          <stations id="_Sap_EUegEeiuhP6xdl274w" name="Remote Teach-In"/>
+        </workCells>
       </workCenters>
     </areas>
   </sites>

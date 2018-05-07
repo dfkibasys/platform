@@ -13,7 +13,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import de.dfki.iui.basys.model.domain.processdefinition.ProcessDefinition;
 import de.dfki.iui.basys.model.domain.processinstance.ProcessInstance;
 import de.dfki.iui.basys.runtime.services.impl.ProcessInstanceManagerImpl;
 
@@ -24,7 +23,7 @@ public class ProcessInstanceManagerTest extends BaseEmfServiceComponentTest<Proc
 	@Before
 	public void setUp() throws Exception {
 		javaClassName = "de.dfki.iui.basys.runtime.services.impl.ProcessInstanceManagerImpl";
-		file = "test.processinstance";
+		file = "cebit.processinstance";
 
 		super.setUp();
 	}

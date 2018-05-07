@@ -13,8 +13,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import de.dfki.iui.basys.model.domain.material.MaterialGroup;
-import de.dfki.iui.basys.model.domain.order.Order;
 import de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstance;
 import de.dfki.iui.basys.runtime.services.impl.ResourceInstanceManagerImpl;
 
@@ -77,8 +75,9 @@ public class ResourceInstanceManagerTest extends BaseEmfServiceComponentTest<Res
 
 		List<String> expectedIds = new LinkedList<>(Arrays.asList("_SE5NIDB4Eei1bbwBPPZWOA", "_jJdx4DD7EeiuBvcKgWzd3Q",
 				"_mQ0kYDD7EeiuBvcKgWzd3Q", "_r4sy4DD7EeiuBvcKgWzd3Q", "_uFLRgDD7EeiuBvcKgWzd3Q",
-				"_wojNMDD7EeiuBvcKgWzd3Q", "_I4a_oDD-EeiuBvcKgWzd3Q", "_rUJzsDJhEei1p5hKOf5Slw"));
-		expectedIds.stream().sorted().collect(Collectors.toList());
+				"_wojNMDD7EeiuBvcKgWzd3Q", "_I4a_oDD-EeiuBvcKgWzd3Q", "_rUJzsDJhEei1p5hKOf5Slw",
+				"_PwPREFIxEeidSe5vp9A3oA", "_RtlHgFIxEeidSe5vp9A3oA", "_8cLJ8FIxEeidSe5vp9A3oA"));
+		expectedIds = expectedIds.stream().sorted().collect(Collectors.toList());
 
 		Assert.assertArrayEquals(expectedIds.toArray(), ids.toArray());
 	}

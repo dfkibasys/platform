@@ -2,11 +2,11 @@
 <resourcetype:ResourceTypeCatalogueCollection xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:pattern="http://www.dfki.de/iui/basys/model/pattern" xmlns:resourcetype="http://www.dfki.de/iui/basys/model/resourcetype">
   <catalogues manufacturer="Festo">
     <resourceTypes xsi:type="resourcetype:Tool" id="_yIFSQjB3Eei1bbwBPPZWOA" name="Festo Component">
-      <capabilityAssertion id="_1zTmYDDxEeixrJ0x1ZWKig">
+      <capabilityAssertions id="_syqRQEjXEei9gKvc5bxWyQ">
         <pattern>
-          <type href="http://www.dfki.de/iui/basys/model/capability#//Pressen"/>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//Pressing"/>
           <slot>
-            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//Pressen/druck"/>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//Pressing/druck"/>
             <range xsi:type="pattern:PValue">
               <type href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
               <restrictions>
@@ -15,7 +15,7 @@
             </range>
           </slot>
         </pattern>
-      </capabilityAssertion>
+      </capabilityAssertions>
     </resourceTypes>
   </catalogues>
   <catalogues manufacturer="Universal Robotics">
@@ -35,5 +35,14 @@
   </catalogues>
   <catalogues manufacturer="Smart Robotics">
     <resourceTypes xsi:type="resourcetype:AVG" id="_ZRW8sjJhEei1p5hKOf5Slw" name="MiR 100"/>
+  </catalogues>
+  <catalogues manufacturer="LAP Laser">
+    <resourceTypes xsi:type="resourcetype:Tool" id="_BcwkYlIxEeidSe5vp9A3oA" name="Projection Laser"/>
+  </catalogues>
+  <catalogues manufacturer="Optron">
+    <resourceTypes xsi:type="resourcetype:Tool" id="_GHTn8lIxEeidSe5vp9A3oA" name="Button"/>
+  </catalogues>
+  <catalogues manufacturer="WGS">
+    <resourceTypes xsi:type="resourcetype:Tool" id="_3cuNYlIxEeidSe5vp9A3oA" name="Worker Guidance"/>
   </catalogues>
 </resourcetype:ResourceTypeCatalogueCollection>

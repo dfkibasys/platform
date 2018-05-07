@@ -25,4 +25,16 @@
   <resourceInstances id="_rUJzsDJhEei1p5hKOf5Slw" name="My MiR 100">
     <resourceType href="cebit.resourcetype#_ZRW8sjJhEei1p5hKOf5Slw"/>
   </resourceInstances>
+  <resourceInstances id="_PwPREFIxEeidSe5vp9A3oA" name="My Button">
+    <resourceType href="cebit.resourcetype#_GHTn8lIxEeidSe5vp9A3oA"/>
+    <role href="cebit.topology#_rcKlkFIxEeidSe5vp9A3oA"/>
+  </resourceInstances>
+  <resourceInstances binding="" id="_RtlHgFIxEeidSe5vp9A3oA" name="My Laser">
+    <resourceType href="cebit.resourcetype#_BcwkYlIxEeidSe5vp9A3oA"/>
+    <role href="cebit.topology#_gUuXFFIxEeidSe5vp9A3oA"/>
+  </resourceInstances>
+  <resourceInstances id="_8cLJ8FIxEeidSe5vp9A3oA" name="Worker Guidance S2">
+    <resourceType href="cebit.resourcetype#_3cuNYlIxEeidSe5vp9A3oA"/>
+    <role href="cebit.topology#_AzQQwDB5Eei1bbwBPPZWOA"/>
+  </resourceInstances>
 </resourceinstance:ResourceInstanceRepository>

@@ -8,6 +8,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import de.dfki.iui.basys.model.domain.productdefinition.ProductGroup;
 import de.dfki.iui.basys.model.domain.productdefinition.ProductVariant;
 
 @Path("/productdefinition")
@@ -25,8 +26,13 @@ public interface ProductDefinitionManager {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/group/{productGroupName}")
-	List<ProductVariant> getProductVariants(@PathParam("productGroupName") String productGroupName);
+	@Path("/group/")
+	List<ProductGroup> getProductGroups();
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/group/{productGroupId}")
+	List<ProductVariant> getProductVariants(@PathParam("productGroupId") String productGroupId);
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)

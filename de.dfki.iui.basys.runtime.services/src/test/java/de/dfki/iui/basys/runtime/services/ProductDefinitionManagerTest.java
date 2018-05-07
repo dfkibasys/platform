@@ -13,7 +13,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import de.dfki.iui.basys.model.domain.processinstance.ProcessInstance;
 import de.dfki.iui.basys.model.domain.productdefinition.ProductVariant;
 import de.dfki.iui.basys.runtime.services.impl.ProductDefinitionManagerImpl;
 
@@ -24,7 +23,7 @@ public class ProductDefinitionManagerTest extends BaseEmfServiceComponentTest<Pr
 	@Before
 	public void setUp() throws Exception {
 		javaClassName = "de.dfki.iui.basys.runtime.services.impl.ProductDefinitionManagerImpl";
-		file = "test.productdefinition";
+		file = "cebit.productdefinition";
 
 		super.setUp();
 	}
@@ -38,11 +37,11 @@ public class ProductDefinitionManagerTest extends BaseEmfServiceComponentTest<Pr
 	@Test
 	public void testGetProductVariant() {
 		// TODO: set properties
-		String id = "";
+		String id = "_6odhQEjIEei9sPQ0bCp2Ew";
 		ProductVariant productVariant = service.getProductVariant(id);
 
 		assertEquals(id, productVariant.getId());
-		assertEquals("", productVariant.getName());
+		assertEquals("Gearbox ZF", productVariant.getName());
 	}
 
 	@Test
@@ -53,19 +52,19 @@ public class ProductDefinitionManagerTest extends BaseEmfServiceComponentTest<Pr
 	@Test
 	public void testGetProductVariants() {
 		// TODO: set properties
-		String productGroupName = "";
-		List<ProductVariant> productVariants = service.getProductVariants(productGroupName);
+		String productGroupId = "_xn7U4EjIEei9sPQ0bCp2Ew";
+		List<ProductVariant> productVariants = service.getProductVariants(productGroupId);
 		assertNotNull(productVariants);
 		List<String> ids = productVariants.stream().map(productVariant -> productVariant.getId()).sorted().collect(Collectors.toList());
-		List<String> names = productVariants.stream().map(productVariant -> productVariant.getName()).sorted().collect(Collectors.toList());
+//		List<String> names = productVariants.stream().map(productVariant -> productVariant.getName()).sorted().collect(Collectors.toList());
 
-		List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
-		expectedIds.stream().sorted().collect(Collectors.toList());
-		List<String> expectedNames = new LinkedList<>(Arrays.asList("", ""));
-		expectedNames.stream().sorted().collect(Collectors.toList());
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("_6odhQEjIEei9sPQ0bCp2Ew"));
+		expectedIds = expectedIds.stream().sorted().collect(Collectors.toList());
+//		List<String> expectedNames = new LinkedList<>(Arrays.asList("", ""));
+//		expectedNames.stream().sorted().collect(Collectors.toList());
 
 		Assert.assertArrayEquals(expectedIds.toArray(), ids.toArray());
-		Assert.assertArrayEquals(expectedNames.toArray(), names.toArray());
+//		Assert.assertArrayEquals(expectedNames.toArray(), names.toArray());
 	}
 	
 	@Test
@@ -74,15 +73,15 @@ public class ProductDefinitionManagerTest extends BaseEmfServiceComponentTest<Pr
 		List<ProductVariant> productVariants = service.getAllProductVariants();
 		assertNotNull(productVariants);
 		List<String> ids = productVariants.stream().map(productVariant -> productVariant.getId()).sorted().collect(Collectors.toList());
-		List<String> names = productVariants.stream().map(productVariant -> productVariant.getName()).sorted().collect(Collectors.toList());
+//		List<String> names = productVariants.stream().map(productVariant -> productVariant.getName()).sorted().collect(Collectors.toList());
 
-		List<String> expectedIds = new LinkedList<>(Arrays.asList("", ""));
-		expectedIds.stream().sorted().collect(Collectors.toList());
-		List<String> expectedNames = new LinkedList<>(Arrays.asList("", ""));
-		expectedNames.stream().sorted().collect(Collectors.toList());
+		List<String> expectedIds = new LinkedList<>(Arrays.asList("_6odhQEjIEei9sPQ0bCp2Ew"));
+		expectedIds = expectedIds.stream().sorted().collect(Collectors.toList());
+//		List<String> expectedNames = new LinkedList<>(Arrays.asList("", ""));
+//		expectedNames.stream().sorted().collect(Collectors.toList());
 
 		Assert.assertArrayEquals(expectedIds.toArray(), ids.toArray());
-		Assert.assertArrayEquals(expectedNames.toArray(), names.toArray());
+//		Assert.assertArrayEquals(expectedNames.toArray(), names.toArray());
 	}
 
 }
