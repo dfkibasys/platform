@@ -11,6 +11,7 @@ public final class Activator implements BundleActivator {
 	/**
 	 * Called whenever the OSGi framework starts our bundle
 	 */
+	@Override
 	public void start(BundleContext bc) throws Exception {
 		System.out.println("STARTING de.dfki.iui.basys.service.catalogue");
 	}
@@ -18,6 +19,7 @@ public final class Activator implements BundleActivator {
 	/**
 	 * Called whenever the OSGi framework stops our bundle
 	 */
+	@Override
 	public void stop(BundleContext bc) throws Exception {
 		System.out.println("STOPPING de.dfki.iui.basys.service.catalogue");
 	}

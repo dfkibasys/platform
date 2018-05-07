@@ -11,11 +11,11 @@ import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.component.annotations.Reference;
 
+import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
+import de.dfki.iui.basys.model.runtime.component.ComponentInfo;
 import de.dfki.iui.basys.osgi.services.BasysOsgiComponent;
 import de.dfki.iui.basys.osgi.services.ChannelPoolProvider;
-import de.dfki.iui.basys.runtime.component.ComponentCategory;
 import de.dfki.iui.basys.runtime.component.ComponentException;
-import de.dfki.iui.basys.runtime.component.registry.ComponentInfo;
 import de.dfki.iui.basys.runtime.component.registry.ComponentRegistration;
 import de.dfki.iui.basys.runtime.component.registry.ComponentRegistrationException;
 import de.dfki.iui.basys.runtime.component.registry.ComponentRegistry;
@@ -88,16 +88,42 @@ public class ComponentRegistryService extends BasysOsgiComponent implements Comp
 
 	@Override
 	public List<ComponentInfo> getComponents(ComponentCategory category) {
-		return registry.getComponents(category);
+		//Strange, but it works
+		//https://stackoverflow.com/questions/19694928/jackson-jersey-deserialize-exception-for-id-type-id-class-no-such-class?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+
+		//ClassLoader cl = getClass().getClassLoader();
+		// different from
+		ClassLoader old = Thread.currentThread().getContextClassLoader();
+		try {
+			Thread.currentThread().setContextClassLoader(getClass().getClassLoader());
+			return registry.getComponents(category);
+		} finally {
+			Thread.currentThread().setContextClassLoader(old);
+		}
+
 	}
 
 	@Override
 	public ComponentInfo getComponentById(ComponentCategory category, String id) {
-		return registry.getComponentById(category, id);
+		
+		ClassLoader old = Thread.currentThread().getContextClassLoader();
+		try {
+			Thread.currentThread().setContextClassLoader(getClass().getClassLoader());
+			return registry.getComponentById(category, id);
+		} finally {
+			Thread.currentThread().setContextClassLoader(old);
+		}
 	}
 
 	@Override
 	public ComponentInfo getComponentByName(ComponentCategory category, String name) {
-		return registry.getComponentByName(category, name);
+		
+		ClassLoader old = Thread.currentThread().getContextClassLoader();
+		try {
+			Thread.currentThread().setContextClassLoader(getClass().getClassLoader());
+			return registry.getComponentByName(category, name);
+		} finally {
+			Thread.currentThread().setContextClassLoader(old);
+		}
 	}
 }

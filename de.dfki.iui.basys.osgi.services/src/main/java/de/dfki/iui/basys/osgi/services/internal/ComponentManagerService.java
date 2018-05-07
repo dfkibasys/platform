@@ -1,5 +1,6 @@
 package de.dfki.iui.basys.osgi.services.internal;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
@@ -11,9 +12,9 @@ import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.component.annotations.Reference;
 
+import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.osgi.services.BasysOsgiComponent;
 import de.dfki.iui.basys.osgi.services.ChannelPoolProvider;
-import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManager;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManagerException;
@@ -39,8 +40,6 @@ public class ComponentManagerService extends BasysOsgiComponent implements Compo
 
 		manager = new ComponentManagerImpl(config);
 		modified(context, properties);
-
-		// create component instances
 	}
 
 	@Override
@@ -50,13 +49,25 @@ public class ComponentManagerService extends BasysOsgiComponent implements Compo
 
 		de.dfki.iui.basys.runtime.component.ComponentContext basysComponentContext = new de.dfki.iui.basys.runtime.component.ComponentContext.Builder()
 				.sharedChannelPool(channelPoolProvider.getSharedChannelPool()).componentRegistry(registry).build();
-
+		
 		try {
 			manager.activate(basysComponentContext);
 		} catch (ComponentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+//	TODO: hide the following in manager impl connectToExternal()		
+//		if (config.getExternalConnectionString() != null) {
+//			String folder = config.getExternalConnectionString();
+//			try {
+//				manager.createLocalComponents(new File(folder), true);
+//			} catch (ComponentManagerException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		}
+
 	}
 
 	@Override
@@ -121,6 +132,16 @@ public class ComponentManagerService extends BasysOsgiComponent implements Compo
 	@Override
 	public void deleteLocalComponent(String id) throws ComponentManagerException {
 		manager.deleteLocalComponent(id);
+	}
+
+	@Override
+	public void createLocalComponent(File configFile) throws ComponentManagerException {
+		manager.createLocalComponent(configFile);		
+	}
+
+	@Override
+	public void createLocalComponents(File configFolder, boolean recursive) throws ComponentManagerException {
+		manager.createLocalComponents(configFolder, recursive);
 	}
 
 }

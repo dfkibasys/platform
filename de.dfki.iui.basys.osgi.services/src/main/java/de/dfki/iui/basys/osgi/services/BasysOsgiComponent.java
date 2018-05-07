@@ -4,10 +4,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
-
-import org.eclipse.emf.ecore.EObject;
 import org.osgi.service.component.ComponentContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,8 +11,8 @@ import org.slf4j.LoggerFactory;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.dataformat.javaprop.JavaPropsMapper;
 
-import de.dfki.iui.basys.common.emf.JsonUtils;
-import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl;
 
 public class BasysOsgiComponent {
 
@@ -52,7 +48,7 @@ public class BasysOsgiComponent {
 
 			JavaPropsMapper mapper = new JavaPropsMapper();
 			String asText = mapper.writeValueAsString(props);
-			config = mapper.readValue(asText, ComponentConfiguration.class);
+			config = mapper.readValue(asText, ComponentConfigurationImpl.class);
 		} catch (JsonProcessingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -63,18 +59,18 @@ public class BasysOsgiComponent {
 		return config;
 	}
 
-	protected Response responseBuilder(EObject obj) {
-		if (obj != null) {
-			try {
-				return Response.ok(JsonUtils.toJsonString(obj)).build();
-			} catch (IOException e) {
-				e.printStackTrace();
-				return Response.serverError().build();
-			}
-		} else {
-			return Response.status(Status.NOT_FOUND).build();
-		}
-	}
+//	protected Response responseBuilder(EObject obj) {
+//		if (obj != null) {
+//			try {
+//				return Response.ok(JsonUtils.toJsonString(obj)).build();
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//				return Response.serverError().build();
+//			}
+//		} else {
+//			return Response.status(Status.NOT_FOUND).build();
+//		}
+//	}
 
 	// public synchronized void modified(ComponentContext context, Map<String, Object> properties) {
 	//

@@ -23,6 +23,34 @@
 	<packaging>bundle</packaging>
 
 	<dependencies>
+
+<!-- https://mvnrepository.com/artifact/org.glassfish.jersey.core/jersey-server -->
+<dependency>
+    <groupId>org.glassfish.jersey.core</groupId>
+    <artifactId>jersey-server</artifactId>
+    <version>2.27</version>
+</dependency>
+
+		<dependency>
+			<groupId>de.dfki.iui.basys.runtime</groupId>
+			<artifactId>de.dfki.iui.basys.runtime.component</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>de.dfki.iui.basys.runtime</groupId>
+			<artifactId>de.dfki.iui.basys.runtime.services</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.osgi/org.osgi.service.component.annotations -->
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.service.component.annotations</artifactId>
+			<version>1.4.0</version>
+			<scope>provided</scope>
+		</dependency>
+
 		<!-- comment to remove all imported (non-local) bundles from your compilation 
 			classpath -->
 		<dependency>
@@ -32,34 +60,6 @@
 			<optional>true</optional>
 		</dependency>
 
-		<dependency>
-			<groupId>de.dfki.iui.basys.runtime</groupId>
-			<artifactId>de.dfki.iui.basys.runtime.component</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>de.dfki.iui.basys.runtime</groupId>
-			<artifactId>de.dfki.iui.basys.runtime.services</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/org.osgi/org.osgi.service.component.annotations -->
-		<dependency>
-		    <groupId>org.osgi</groupId>
-		    <artifactId>org.osgi.service.component.annotations</artifactId>
-		    <version>1.4.0</version>
-		    <scope>provided</scope>
-		</dependency>
-				
-		
-		<!-- https://mvnrepository.com/artifact/com.eclipsesource.jaxrs/publisher/5.3.1 -->
-		<dependency>
-			<groupId>com.eclipsesource.jaxrs</groupId>
-			<artifactId>publisher</artifactId>
-			<version>5.3.1</version>
-		</dependency>
-		
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -72,11 +72,13 @@
 			<artifactId>osgi_R4_core</artifactId>
 			<optional>true</optional>
 		</dependency>
+
 		<dependency>
 			<groupId>org.osgi</groupId>
 			<artifactId>osgi_R4_compendium</artifactId>
 			<optional>true</optional>
 		</dependency>
+
 	</dependencies>
 
 </project>
