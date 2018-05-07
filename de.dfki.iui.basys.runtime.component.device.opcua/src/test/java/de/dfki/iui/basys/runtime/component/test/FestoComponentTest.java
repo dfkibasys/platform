@@ -1,8 +1,5 @@
 package de.dfki.iui.basys.runtime.component.test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
@@ -12,14 +9,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
-import de.dfki.iui.basys.model.runtime.component.ComponentRequestStatus;
-import de.dfki.iui.basys.model.runtime.component.State;
 import de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
-import de.dfki.iui.basys.runtime.component.ComponentException;
-import de.dfki.iui.basys.runtime.component.device.opcua.FestoComponent;
-import de.dfki.iui.basys.runtime.component.device.opcua.FestoUnitConfiguration;
-import de.dfki.iui.basys.runtime.component.device.opcua.OpcUaDeviceComponent;
 
 public class FestoComponentTest {
 
@@ -54,8 +45,10 @@ public class FestoComponentTest {
 		}
 	}
 	
-	
-	//@Test
+	@Test
+	public void testDummy() {}
+	/*
+	@Test
 	public void testOpcUaConnection() throws ComponentException {
 		OpcUaDeviceComponent component = new FestoComponent(opcuaConfig);
 		assertTrue(!component.isConnectedToExternal());
@@ -130,6 +123,6 @@ public class FestoComponentTest {
 		component.deactivate();
 		assertTrue(!component.isConnectedToExternal());
 	}
-	
+	*/
 
 }

@@ -17,7 +17,6 @@
 		<curator-x.version>4.0.0</curator-x.version>
 		<scxml.version>2.0-SNAPSHOT</scxml.version>
 		<jexl.version>3.1</jexl.version>		
-		<jaxrs-version>2.0.1</jaxrs-version>		
 		<activemq-version>5.15.3</activemq-version>
 	</properties>
 
@@ -33,7 +32,7 @@
 
 		<dependency>
 			<groupId>de.dfki.iui.basys.common</groupId>
-			<artifactId>de.dfki.iui.basys.common.emf.json</artifactId>
+			<artifactId>de.dfki.iui.basys.common.emf.jaxrs</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		
@@ -89,14 +88,6 @@
 			<version>${jexl.version}</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/javax.ws.rs/javax.ws.rs-api -->
-		<dependency>
-		    <groupId>javax.ws.rs</groupId>
-		    <artifactId>javax.ws.rs-api</artifactId>
-		    <version>${jaxrs-version}</version>
-		</dependency>
-
-
 		<!-- comment to remove all imported (non-local) bundles from your compilation 
 			classpath -->
 		<dependency>
@@ -121,6 +112,7 @@
 			<artifactId>osgi_R4_core</artifactId>
 			<optional>true</optional>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.osgi</groupId>
 			<artifactId>osgi_R4_compendium</artifactId>
