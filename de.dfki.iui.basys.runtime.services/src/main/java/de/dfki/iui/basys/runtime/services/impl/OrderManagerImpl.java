@@ -31,7 +31,8 @@ public class OrderManagerImpl extends EmfServiceComponent implements OrderManage
 
 	@Override
 	public List<Order> getAllOrders() {
-		return getAllEntities(OrderPackage.eINSTANCE.getOrder(), false);
+		List<Order> result = getAllEntities(OrderPackage.eINSTANCE.getOrder(), false); 
+		return result;
 	}
 
 }

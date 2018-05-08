@@ -2,6 +2,7 @@ package de.dfki.iui.basys.runtime.component.service;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -26,7 +27,14 @@ public class EmfServiceComponent extends ServiceComponent {
 	public EmfServiceComponent(ComponentConfiguration config) {
 		super(config);
 		resourceSet = new ResourceSetImpl();
-		// TODO configure URIConverter URIMap
+		
+		String BASE_URL = "http://localhost:8080/services/";
+		String fileName = "cebit";
+				
+		String [] modelNames = new String [] {"material", "order", "processdefinition", "processinstance", "productdefinition", "productinstance", "resourceinstance", "resourcetype", "topology" };
+		for (String model : Arrays.asList(modelNames)) {
+			resourceSet.getURIConverter().getURIMap().put(URI.createURI(fileName + "." + model), URI.createURI(BASE_URL + model));			
+		}
 	}
 
 	@Override
@@ -60,7 +68,9 @@ public class EmfServiceComponent extends ServiceComponent {
 		TreeIterator<EObject> it = resourceSet.getResource(uri, true).getAllContents();
 		while (it.hasNext()) {
 			EObject e = it.next();
-			if (e.eClass() == type) {
+			if (e.eClass() == type) {				
+				//EcoreUtil.resolveAll(e);
+				//result.add((T) EcoreUtil.resolveAll(e));
 				result.add((T) e);
 				if (pruneSearchOnMatch)
 					it.prune(); // tiefer im Baum werden je nach Metamodell keine weiteren Entitäten gleichen Typs auftauchen.

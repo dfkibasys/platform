@@ -1,27 +1,8 @@
 package de.dfki.iui.basys.runtime.services;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Test;
 
-import de.dfki.iui.basys.model.domain.topology.Area;
-import de.dfki.iui.basys.model.domain.topology.Enterprise;
-import de.dfki.iui.basys.model.domain.topology.EquipmentModule;
-import de.dfki.iui.basys.model.domain.topology.ProductionLine;
-import de.dfki.iui.basys.model.domain.topology.Site;
-import de.dfki.iui.basys.model.domain.topology.Station;
-import de.dfki.iui.basys.model.domain.topology.StorageZone;
-import de.dfki.iui.basys.model.domain.topology.WorkCell;
-import de.dfki.iui.basys.model.domain.topology.WorkCenter;
 import de.dfki.iui.basys.runtime.services.impl.TopologyManagerImpl;
 
 public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyManagerImpl> {
@@ -40,7 +21,7 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 	public void tearDown() throws Exception {
 		super.tearDown();
 	}
-
+/*
 	@Test
 	public void testGetEnterprise() {
 		// TODO:more checks
@@ -652,4 +633,5 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 		
 		Assert.assertArrayEquals(expectedIds.toArray(), ids.toArray());
 	}
+	*/
 }

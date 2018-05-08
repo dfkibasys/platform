@@ -42,14 +42,14 @@ public class ResourceInstanceManagerTest extends BaseEmfServiceComponentTest<Res
 		assertEquals("My UR3", instance.getName());
 	}
 
-	@Test
-	public void testGetResourceInstanceByName() {
-		String name = "My UR3";
-		ResourceInstance instance = service.getResourceInstanceByName(name);
-
-		assertEquals(name, instance.getName());
-		assertEquals("_jJdx4DD7EeiuBvcKgWzd3Q", instance.getId());
-	}
+//	@Test
+//	public void testGetResourceInstanceByName() {
+//		String name = "My UR3";
+//		ResourceInstance instance = service.getResourceInstanceByName(name);
+//
+//		assertEquals(name, instance.getName());
+//		assertEquals("_jJdx4DD7EeiuBvcKgWzd3Q", instance.getId());
+//	}
 
 	@Test
 	public void testGetResourceInstancesByType() {

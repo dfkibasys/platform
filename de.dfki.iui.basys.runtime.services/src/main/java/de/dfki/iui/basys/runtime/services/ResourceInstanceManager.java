@@ -40,6 +40,7 @@ public interface ResourceInstanceManager {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/capability")
 	List<ResourceInstance> getResourceInstancesByCapability(Capability capability);
 
 	@GET

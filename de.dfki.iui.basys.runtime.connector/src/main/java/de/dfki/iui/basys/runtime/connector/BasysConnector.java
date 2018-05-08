@@ -1,8 +1,6 @@
 package de.dfki.iui.basys.runtime.connector;
 
-import de.dfki.iui.basys.runtime.component.Component;
-
-public interface BasysConnector extends Component {
+public interface BasysConnector {
 
 	final String ATSMsgType = "ATSMsgType";
 	final String ResourceId = "ResourceID";
