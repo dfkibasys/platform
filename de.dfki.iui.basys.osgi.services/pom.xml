@@ -24,24 +24,23 @@
 
 	<dependencies>
 
-<!-- https://mvnrepository.com/artifact/org.glassfish.jersey.core/jersey-server -->
-<dependency>
-    <groupId>org.glassfish.jersey.core</groupId>
-    <artifactId>jersey-server</artifactId>
-    <version>2.27</version>
-</dependency>
-
-		<dependency>
-			<groupId>de.dfki.iui.basys.runtime</groupId>
-			<artifactId>de.dfki.iui.basys.runtime.component</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-
 		<dependency>
 			<groupId>de.dfki.iui.basys.runtime</groupId>
 			<artifactId>de.dfki.iui.basys.runtime.services</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		
+<!-- 		<dependency>
+			<groupId>de.dfki.iui.basys.osgi</groupId>
+			<artifactId>de.dfki.iui.basys.osgi.cm</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+				
+		<dependency>
+			<groupId>de.dfki.iui.basys.osgi</groupId>
+			<artifactId>de.dfki.iui.basys.osgi.services.config</artifactId>
+			<version>${project.version}</version>
+		</dependency> -->
 
 		<!-- https://mvnrepository.com/artifact/org.osgi/org.osgi.service.component.annotations -->
 		<dependency>

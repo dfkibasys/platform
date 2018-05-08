@@ -37,14 +37,8 @@ public class ComponentRegistryService extends BasysOsgiComponent implements Comp
 		super.activate(context, properties);
 
 		registry = new ZookeeperComponentRegistry(config);
-		modified(context, properties);
-	}
-
-	@Override
-	@Modified
-	public void modified(ComponentContext context, Map<String, Object> properties) {
-		super.modified(context, properties);
-
+		//modified(context, properties);
+		
 		de.dfki.iui.basys.runtime.component.ComponentContext basysComponentContext = new de.dfki.iui.basys.runtime.component.ComponentContext.Builder()
 				.sharedChannelPool(channelPoolProvider.getSharedChannelPool()).componentRegistry(registry).build();
 
@@ -54,6 +48,14 @@ public class ComponentRegistryService extends BasysOsgiComponent implements Comp
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	@Modified
+	public void modified(ComponentContext context, Map<String, Object> properties) {
+		super.modified(context, properties);
+
+		
 
 	}
 

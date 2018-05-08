@@ -59,32 +59,4 @@ public class BasysOsgiComponent {
 		return config;
 	}
 
-//	protected Response responseBuilder(EObject obj) {
-//		if (obj != null) {
-//			try {
-//				return Response.ok(JsonUtils.toJsonString(obj)).build();
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//				return Response.serverError().build();
-//			}
-//		} else {
-//			return Response.status(Status.NOT_FOUND).build();
-//		}
-//	}
-
-	// public synchronized void modified(ComponentContext context, Map<String, Object> properties) {
-	//
-	// if (properties.containsKey("resourceUri")) {
-	// String resourceUri = (String) context.getProperties().get("resourceUri");
-	// uri = URI.createPlatformPluginURI(resourceUri, false);
-	// Resource resource = resourceSet.createResource(uri);
-	// try {
-	// EmfPersistence.read(resource, null);
-	// } catch (IOException e) {
-	// e.printStackTrace();
-	// }
-	// }
-	//
-	// }
-
 }
