@@ -187,6 +187,29 @@ public class ProductinstanceItemProviderAdapterFactory extends ProductinstanceAd
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.productinstance.ProductInstanceStore} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ProductInstanceStoreItemProvider productInstanceStoreItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.productinstance.ProductInstanceStore}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createProductInstanceStoreAdapter() {
+		if (productInstanceStoreItemProvider == null) {
+			productInstanceStoreItemProvider = new ProductInstanceStoreItemProvider(this);
+		}
+
+		return productInstanceStoreItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -290,6 +313,7 @@ public class ProductinstanceItemProviderAdapterFactory extends ProductinstanceAd
 		if (productInstanceStatusChangeEventItemProvider != null) productInstanceStatusChangeEventItemProvider.dispose();
 		if (productInstanceLocationItemProvider != null) productInstanceLocationItemProvider.dispose();
 		if (productInstanceLocationChangeEventItemProvider != null) productInstanceLocationChangeEventItemProvider.dispose();
+		if (productInstanceStoreItemProvider != null) productInstanceStoreItemProvider.dispose();
 	}
 
 }

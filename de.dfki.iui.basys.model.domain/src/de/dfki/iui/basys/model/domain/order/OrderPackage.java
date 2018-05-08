@@ -388,6 +388,43 @@ public interface OrderPackage extends EPackage {
 	int ORDER_STATUS_CHANGE_EVENT_OPERATION_COUNT = ORDER_STATUS_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.order.impl.OrderStoreImpl <em>Store</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.order.impl.OrderStoreImpl
+	 * @see de.dfki.iui.basys.model.domain.order.impl.OrderPackageImpl#getOrderStore()
+	 * @generated
+	 */
+	int ORDER_STORE = 3;
+
+	/**
+	 * The feature id for the '<em><b>Orders</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORDER_STORE__ORDERS = 0;
+
+	/**
+	 * The number of structural features of the '<em>Store</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORDER_STORE_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Store</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORDER_STORE_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.order.OrderStatusEnum <em>Status Enum</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -395,7 +432,7 @@ public interface OrderPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.order.impl.OrderPackageImpl#getOrderStatusEnum()
 	 * @generated
 	 */
-	int ORDER_STATUS_ENUM = 3;
+	int ORDER_STATUS_ENUM = 4;
 
 
 	/**
@@ -561,6 +598,27 @@ public interface OrderPackage extends EPackage {
 	EAttribute getOrderStatusChangeEvent_Timestamp();
 
 	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.order.OrderStore <em>Store</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Store</em>'.
+	 * @see de.dfki.iui.basys.model.domain.order.OrderStore
+	 * @generated
+	 */
+	EClass getOrderStore();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.domain.order.OrderStore#getOrders <em>Orders</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Orders</em>'.
+	 * @see de.dfki.iui.basys.model.domain.order.OrderStore#getOrders()
+	 * @see #getOrderStore()
+	 * @generated
+	 */
+	EReference getOrderStore_Orders();
+
+	/**
 	 * Returns the meta object for enum '{@link de.dfki.iui.basys.model.domain.order.OrderStatusEnum <em>Status Enum</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -718,6 +776,24 @@ public interface OrderPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ORDER_STATUS_CHANGE_EVENT__TIMESTAMP = eINSTANCE.getOrderStatusChangeEvent_Timestamp();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.order.impl.OrderStoreImpl <em>Store</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.order.impl.OrderStoreImpl
+		 * @see de.dfki.iui.basys.model.domain.order.impl.OrderPackageImpl#getOrderStore()
+		 * @generated
+		 */
+		EClass ORDER_STORE = eINSTANCE.getOrderStore();
+
+		/**
+		 * The meta object literal for the '<em><b>Orders</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ORDER_STORE__ORDERS = eINSTANCE.getOrderStore_Orders();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.order.OrderStatusEnum <em>Status Enum</em>}' enum.

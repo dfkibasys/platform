@@ -516,6 +516,43 @@ public interface ProductinstancePackage extends EPackage {
 	int PRODUCT_INSTANCE_LOCATION_CHANGE_EVENT_OPERATION_COUNT = PRODUCT_INSTANCE_LOCATION_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.productinstance.impl.ProductInstanceStoreImpl <em>Product Instance Store</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.productinstance.impl.ProductInstanceStoreImpl
+	 * @see de.dfki.iui.basys.model.domain.productinstance.impl.ProductinstancePackageImpl#getProductInstanceStore()
+	 * @generated
+	 */
+	int PRODUCT_INSTANCE_STORE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Product Instances</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_INSTANCE_STORE__PRODUCT_INSTANCES = 0;
+
+	/**
+	 * The number of structural features of the '<em>Product Instance Store</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_INSTANCE_STORE_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Product Instance Store</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_INSTANCE_STORE_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.productinstance.ProductInstanceDetectionEnum <em>Product Instance Detection Enum</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -523,7 +560,7 @@ public interface ProductinstancePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.productinstance.impl.ProductinstancePackageImpl#getProductInstanceDetectionEnum()
 	 * @generated
 	 */
-	int PRODUCT_INSTANCE_DETECTION_ENUM = 5;
+	int PRODUCT_INSTANCE_DETECTION_ENUM = 6;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.productinstance.ProductInstanceStatusEnum <em>Product Instance Status Enum</em>}' enum.
@@ -533,7 +570,7 @@ public interface ProductinstancePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.productinstance.impl.ProductinstancePackageImpl#getProductInstanceStatusEnum()
 	 * @generated
 	 */
-	int PRODUCT_INSTANCE_STATUS_ENUM = 6;
+	int PRODUCT_INSTANCE_STATUS_ENUM = 7;
 
 
 	/**
@@ -695,6 +732,27 @@ public interface ProductinstancePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getProductInstanceLocationChangeEvent_Timestamp();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.productinstance.ProductInstanceStore <em>Product Instance Store</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Product Instance Store</em>'.
+	 * @see de.dfki.iui.basys.model.domain.productinstance.ProductInstanceStore
+	 * @generated
+	 */
+	EClass getProductInstanceStore();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.domain.productinstance.ProductInstanceStore#getProductInstances <em>Product Instances</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Product Instances</em>'.
+	 * @see de.dfki.iui.basys.model.domain.productinstance.ProductInstanceStore#getProductInstances()
+	 * @see #getProductInstanceStore()
+	 * @generated
+	 */
+	EReference getProductInstanceStore_ProductInstances();
 
 	/**
 	 * Returns the meta object for enum '{@link de.dfki.iui.basys.model.domain.productinstance.ProductInstanceDetectionEnum <em>Product Instance Detection Enum</em>}'.
@@ -868,6 +926,24 @@ public interface ProductinstancePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PRODUCT_INSTANCE_LOCATION_CHANGE_EVENT__TIMESTAMP = eINSTANCE.getProductInstanceLocationChangeEvent_Timestamp();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.productinstance.impl.ProductInstanceStoreImpl <em>Product Instance Store</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.productinstance.impl.ProductInstanceStoreImpl
+		 * @see de.dfki.iui.basys.model.domain.productinstance.impl.ProductinstancePackageImpl#getProductInstanceStore()
+		 * @generated
+		 */
+		EClass PRODUCT_INSTANCE_STORE = eINSTANCE.getProductInstanceStore();
+
+		/**
+		 * The meta object literal for the '<em><b>Product Instances</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PRODUCT_INSTANCE_STORE__PRODUCT_INSTANCES = eINSTANCE.getProductInstanceStore_ProductInstances();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.productinstance.ProductInstanceDetectionEnum <em>Product Instance Detection Enum</em>}' enum.

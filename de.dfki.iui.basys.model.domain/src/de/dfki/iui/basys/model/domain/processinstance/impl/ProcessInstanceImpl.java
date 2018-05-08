@@ -9,13 +9,19 @@ import de.dfki.iui.basys.model.domain.processdefinition.ProcessDefinition;
 import de.dfki.iui.basys.model.domain.processinstance.ProcessInstance;
 import de.dfki.iui.basys.model.domain.processinstance.ProcessinstancePackage;
 
+import de.dfki.iui.basys.model.domain.processinstance.TaskInstance;
 import de.dfki.iui.basys.model.domain.productinstance.ProductInstance;
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,6 +35,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link de.dfki.iui.basys.model.domain.processinstance.impl.ProcessInstanceImpl#getOrder <em>Order</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.processinstance.impl.ProcessInstanceImpl#getProductInstance <em>Product Instance</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.processinstance.impl.ProcessInstanceImpl#getState <em>State</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.processinstance.impl.ProcessInstanceImpl#getTaskInstances <em>Task Instances</em>}</li>
  * </ul>
  *
  * @generated
@@ -83,6 +90,16 @@ public class ProcessInstanceImpl extends EntityImpl implements ProcessInstance {
 	 * @ordered
 	 */
 	protected String state = STATE_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getTaskInstances() <em>Task Instances</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTaskInstances()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<TaskInstance> taskInstances;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -243,6 +260,32 @@ public class ProcessInstanceImpl extends EntityImpl implements ProcessInstance {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<TaskInstance> getTaskInstances() {
+		if (taskInstances == null) {
+			taskInstances = new EObjectContainmentEList<TaskInstance>(TaskInstance.class, this, ProcessinstancePackage.PROCESS_INSTANCE__TASK_INSTANCES);
+		}
+		return taskInstances;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ProcessinstancePackage.PROCESS_INSTANCE__TASK_INSTANCES:
+				return ((InternalEList<?>)getTaskInstances()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -257,6 +300,8 @@ public class ProcessInstanceImpl extends EntityImpl implements ProcessInstance {
 				return basicGetProductInstance();
 			case ProcessinstancePackage.PROCESS_INSTANCE__STATE:
 				return getState();
+			case ProcessinstancePackage.PROCESS_INSTANCE__TASK_INSTANCES:
+				return getTaskInstances();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -266,6 +311,7 @@ public class ProcessInstanceImpl extends EntityImpl implements ProcessInstance {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -280,6 +326,10 @@ public class ProcessInstanceImpl extends EntityImpl implements ProcessInstance {
 				return;
 			case ProcessinstancePackage.PROCESS_INSTANCE__STATE:
 				setState((String)newValue);
+				return;
+			case ProcessinstancePackage.PROCESS_INSTANCE__TASK_INSTANCES:
+				getTaskInstances().clear();
+				getTaskInstances().addAll((Collection<? extends TaskInstance>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -305,6 +355,9 @@ public class ProcessInstanceImpl extends EntityImpl implements ProcessInstance {
 			case ProcessinstancePackage.PROCESS_INSTANCE__STATE:
 				setState(STATE_EDEFAULT);
 				return;
+			case ProcessinstancePackage.PROCESS_INSTANCE__TASK_INSTANCES:
+				getTaskInstances().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -325,6 +378,8 @@ public class ProcessInstanceImpl extends EntityImpl implements ProcessInstance {
 				return productInstance != null;
 			case ProcessinstancePackage.PROCESS_INSTANCE__STATE:
 				return STATE_EDEFAULT == null ? state != null : !STATE_EDEFAULT.equals(state);
+			case ProcessinstancePackage.PROCESS_INSTANCE__TASK_INSTANCES:
+				return taskInstances != null && !taskInstances.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

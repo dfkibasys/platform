@@ -6,6 +6,7 @@ import de.dfki.iui.basys.model.base.Entity;
 import de.dfki.iui.basys.model.domain.order.Order;
 import de.dfki.iui.basys.model.domain.processdefinition.ProcessDefinition;
 import de.dfki.iui.basys.model.domain.productinstance.ProductInstance;
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,6 +21,7 @@ import de.dfki.iui.basys.model.domain.productinstance.ProductInstance;
  *   <li>{@link de.dfki.iui.basys.model.domain.processinstance.ProcessInstance#getOrder <em>Order</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.processinstance.ProcessInstance#getProductInstance <em>Product Instance</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.processinstance.ProcessInstance#getState <em>State</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.processinstance.ProcessInstance#getTaskInstances <em>Task Instances</em>}</li>
  * </ul>
  *
  * @see de.dfki.iui.basys.model.domain.processinstance.ProcessinstancePackage#getProcessInstance()
@@ -130,5 +132,21 @@ public interface ProcessInstance extends Entity {
 	 * @generated
 	 */
 	void setState(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Task Instances</b></em>' containment reference list.
+	 * The list contents are of type {@link de.dfki.iui.basys.model.domain.processinstance.TaskInstance}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Task Instances</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Task Instances</em>' containment reference list.
+	 * @see de.dfki.iui.basys.model.domain.processinstance.ProcessinstancePackage#getProcessInstance_TaskInstances()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<TaskInstance> getTaskInstances();
 
 } // ProcessInstance

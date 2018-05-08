@@ -142,13 +142,22 @@ public interface ProcessinstancePackage extends EPackage {
 	int PROCESS_INSTANCE__STATE = BasePackage.ENTITY_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Task Instances</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_INSTANCE__TASK_INSTANCES = BasePackage.ENTITY_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Process Instance</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROCESS_INSTANCE_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 4;
+	int PROCESS_INSTANCE_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Process Instance</em>' class.
@@ -244,6 +253,44 @@ public interface ProcessinstancePackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.processinstance.impl.ProcessInstanceStoreImpl <em>Process Instance Store</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.processinstance.impl.ProcessInstanceStoreImpl
+	 * @see de.dfki.iui.basys.model.domain.processinstance.impl.ProcessinstancePackageImpl#getProcessInstanceStore()
+	 * @generated
+	 */
+	int PROCESS_INSTANCE_STORE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Process Instances</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_INSTANCE_STORE__PROCESS_INSTANCES = 0;
+
+	/**
+	 * The number of structural features of the '<em>Process Instance Store</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_INSTANCE_STORE_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Process Instance Store</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_INSTANCE_STORE_OPERATION_COUNT = 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.processinstance.ProcessInstance <em>Process Instance</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -298,6 +345,17 @@ public interface ProcessinstancePackage extends EPackage {
 	EAttribute getProcessInstance_State();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.domain.processinstance.ProcessInstance#getTaskInstances <em>Task Instances</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Task Instances</em>'.
+	 * @see de.dfki.iui.basys.model.domain.processinstance.ProcessInstance#getTaskInstances()
+	 * @see #getProcessInstance()
+	 * @generated
+	 */
+	EReference getProcessInstance_TaskInstances();
+
+	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.processinstance.TaskInstance <em>Task Instance</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -328,6 +386,27 @@ public interface ProcessinstancePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTaskInstance_Task();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.processinstance.ProcessInstanceStore <em>Process Instance Store</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Process Instance Store</em>'.
+	 * @see de.dfki.iui.basys.model.domain.processinstance.ProcessInstanceStore
+	 * @generated
+	 */
+	EClass getProcessInstanceStore();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.domain.processinstance.ProcessInstanceStore#getProcessInstances <em>Process Instances</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Process Instances</em>'.
+	 * @see de.dfki.iui.basys.model.domain.processinstance.ProcessInstanceStore#getProcessInstances()
+	 * @see #getProcessInstanceStore()
+	 * @generated
+	 */
+	EReference getProcessInstanceStore_ProcessInstances();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -395,6 +474,14 @@ public interface ProcessinstancePackage extends EPackage {
 		EAttribute PROCESS_INSTANCE__STATE = eINSTANCE.getProcessInstance_State();
 
 		/**
+		 * The meta object literal for the '<em><b>Task Instances</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROCESS_INSTANCE__TASK_INSTANCES = eINSTANCE.getProcessInstance_TaskInstances();
+
+		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.processinstance.impl.TaskInstanceImpl <em>Task Instance</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -419,6 +506,24 @@ public interface ProcessinstancePackage extends EPackage {
 		 * @generated
 		 */
 		EReference TASK_INSTANCE__TASK = eINSTANCE.getTaskInstance_Task();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.processinstance.impl.ProcessInstanceStoreImpl <em>Process Instance Store</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.processinstance.impl.ProcessInstanceStoreImpl
+		 * @see de.dfki.iui.basys.model.domain.processinstance.impl.ProcessinstancePackageImpl#getProcessInstanceStore()
+		 * @generated
+		 */
+		EClass PROCESS_INSTANCE_STORE = eINSTANCE.getProcessInstanceStore();
+
+		/**
+		 * The meta object literal for the '<em><b>Process Instances</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROCESS_INSTANCE_STORE__PROCESS_INSTANCES = eINSTANCE.getProcessInstanceStore_ProcessInstances();
 
 	}
 

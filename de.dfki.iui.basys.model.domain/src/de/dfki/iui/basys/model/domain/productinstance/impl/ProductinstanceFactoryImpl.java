@@ -62,6 +62,7 @@ public class ProductinstanceFactoryImpl extends EFactoryImpl implements Producti
 			case ProductinstancePackage.PRODUCT_INSTANCE_STATUS_CHANGE_EVENT: return createProductInstanceStatusChangeEvent();
 			case ProductinstancePackage.PRODUCT_INSTANCE_LOCATION: return createProductInstanceLocation();
 			case ProductinstancePackage.PRODUCT_INSTANCE_LOCATION_CHANGE_EVENT: return createProductInstanceLocationChangeEvent();
+			case ProductinstancePackage.PRODUCT_INSTANCE_STORE: return createProductInstanceStore();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -149,6 +150,16 @@ public class ProductinstanceFactoryImpl extends EFactoryImpl implements Producti
 	public ProductInstanceLocationChangeEvent createProductInstanceLocationChangeEvent() {
 		ProductInstanceLocationChangeEventImpl productInstanceLocationChangeEvent = new ProductInstanceLocationChangeEventImpl();
 		return productInstanceLocationChangeEvent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ProductInstanceStore createProductInstanceStore() {
+		ProductInstanceStoreImpl productInstanceStore = new ProductInstanceStoreImpl();
+		return productInstanceStore;
 	}
 
 	/**

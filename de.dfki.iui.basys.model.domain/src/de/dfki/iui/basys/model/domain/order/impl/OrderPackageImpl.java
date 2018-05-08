@@ -20,6 +20,7 @@ import de.dfki.iui.basys.model.domain.order.OrderPackage;
 import de.dfki.iui.basys.model.domain.order.OrderStatus;
 import de.dfki.iui.basys.model.domain.order.OrderStatusChangeEvent;
 import de.dfki.iui.basys.model.domain.order.OrderStatusEnum;
+import de.dfki.iui.basys.model.domain.order.OrderStore;
 import de.dfki.iui.basys.model.domain.processdefinition.ProcessdefinitionPackage;
 import de.dfki.iui.basys.model.domain.processdefinition.impl.ProcessdefinitionPackageImpl;
 import de.dfki.iui.basys.model.domain.processinstance.ProcessinstancePackage;
@@ -89,6 +90,13 @@ public class OrderPackageImpl extends EPackageImpl implements OrderPackage {
 	 * @generated
 	 */
 	private EClass orderStatusChangeEventEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass orderStoreEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -346,6 +354,24 @@ public class OrderPackageImpl extends EPackageImpl implements OrderPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getOrderStore() {
+		return orderStoreEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOrderStore_Orders() {
+		return (EReference)orderStoreEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getOrderStatusEnum() {
 		return orderStatusEnumEEnum;
 	}
@@ -395,6 +421,9 @@ public class OrderPackageImpl extends EPackageImpl implements OrderPackage {
 
 		orderStatusChangeEventEClass = createEClass(ORDER_STATUS_CHANGE_EVENT);
 		createEAttribute(orderStatusChangeEventEClass, ORDER_STATUS_CHANGE_EVENT__TIMESTAMP);
+
+		orderStoreEClass = createEClass(ORDER_STORE);
+		createEReference(orderStoreEClass, ORDER_STORE__ORDERS);
 
 		// Create enums
 		orderStatusEnumEEnum = createEEnum(ORDER_STATUS_ENUM);
@@ -454,6 +483,9 @@ public class OrderPackageImpl extends EPackageImpl implements OrderPackage {
 
 		initEClass(orderStatusChangeEventEClass, OrderStatusChangeEvent.class, "OrderStatusChangeEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOrderStatusChangeEvent_Timestamp(), ecorePackage.getEDate(), "timestamp", null, 0, 1, OrderStatusChangeEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(orderStoreEClass, OrderStore.class, "OrderStore", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getOrderStore_Orders(), this.getOrder(), null, "orders", null, 0, -1, OrderStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(orderStatusEnumEEnum, OrderStatusEnum.class, "OrderStatusEnum");

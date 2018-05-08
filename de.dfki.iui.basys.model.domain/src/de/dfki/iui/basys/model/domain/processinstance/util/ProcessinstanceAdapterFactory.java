@@ -79,6 +79,10 @@ public class ProcessinstanceAdapterFactory extends AdapterFactoryImpl {
 				return createTaskInstanceAdapter();
 			}
 			@Override
+			public Adapter caseProcessInstanceStore(ProcessInstanceStore object) {
+				return createProcessInstanceStoreAdapter();
+			}
+			@Override
 			public Adapter caseBObject(BObject object) {
 				return createBObjectAdapter();
 			}
@@ -131,6 +135,20 @@ public class ProcessinstanceAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTaskInstanceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.processinstance.ProcessInstanceStore <em>Process Instance Store</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.domain.processinstance.ProcessInstanceStore
+	 * @generated
+	 */
+	public Adapter createProcessInstanceStoreAdapter() {
 		return null;
 	}
 

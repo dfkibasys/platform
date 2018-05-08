@@ -83,6 +83,10 @@ public class OrderAdapterFactory extends AdapterFactoryImpl {
 				return createOrderStatusChangeEventAdapter();
 			}
 			@Override
+			public Adapter caseOrderStore(OrderStore object) {
+				return createOrderStoreAdapter();
+			}
+			@Override
 			public Adapter caseBObject(BObject object) {
 				return createBObjectAdapter();
 			}
@@ -149,6 +153,20 @@ public class OrderAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createOrderStatusChangeEventAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.order.OrderStore <em>Store</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.domain.order.OrderStore
+	 * @generated
+	 */
+	public Adapter createOrderStoreAdapter() {
 		return null;
 	}
 

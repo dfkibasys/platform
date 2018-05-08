@@ -49,6 +49,15 @@ public interface OrderFactory extends EFactory {
 	OrderStatusChangeEvent createOrderStatusChangeEvent();
 
 	/**
+	 * Returns a new object of class '<em>Store</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Store</em>'.
+	 * @generated
+	 */
+	OrderStore createOrderStore();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

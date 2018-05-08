@@ -118,6 +118,29 @@ public class ProcessinstanceItemProviderAdapterFactory extends ProcessinstanceAd
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.processinstance.ProcessInstanceStore} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ProcessInstanceStoreItemProvider processInstanceStoreItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.processinstance.ProcessInstanceStore}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createProcessInstanceStoreAdapter() {
+		if (processInstanceStoreItemProvider == null) {
+			processInstanceStoreItemProvider = new ProcessInstanceStoreItemProvider(this);
+		}
+
+		return processInstanceStoreItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -218,6 +241,7 @@ public class ProcessinstanceItemProviderAdapterFactory extends ProcessinstanceAd
 	public void dispose() {
 		if (processInstanceItemProvider != null) processInstanceItemProvider.dispose();
 		if (taskInstanceItemProvider != null) taskInstanceItemProvider.dispose();
+		if (processInstanceStoreItemProvider != null) processInstanceStoreItemProvider.dispose();
 	}
 
 }

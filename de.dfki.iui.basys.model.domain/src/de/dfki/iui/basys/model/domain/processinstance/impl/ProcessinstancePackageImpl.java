@@ -20,6 +20,7 @@ import de.dfki.iui.basys.model.domain.order.impl.OrderPackageImpl;
 import de.dfki.iui.basys.model.domain.processdefinition.ProcessdefinitionPackage;
 import de.dfki.iui.basys.model.domain.processdefinition.impl.ProcessdefinitionPackageImpl;
 import de.dfki.iui.basys.model.domain.processinstance.ProcessInstance;
+import de.dfki.iui.basys.model.domain.processinstance.ProcessInstanceStore;
 import de.dfki.iui.basys.model.domain.processinstance.ProcessinstanceFactory;
 import de.dfki.iui.basys.model.domain.processinstance.ProcessinstancePackage;
 
@@ -80,6 +81,13 @@ public class ProcessinstancePackageImpl extends EPackageImpl implements Processi
 	 * @generated
 	 */
 	private EClass taskInstanceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass processInstanceStoreEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -240,6 +248,15 @@ public class ProcessinstancePackageImpl extends EPackageImpl implements Processi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getProcessInstance_TaskInstances() {
+		return (EReference)processInstanceEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getTaskInstance() {
 		return taskInstanceEClass;
 	}
@@ -260,6 +277,24 @@ public class ProcessinstancePackageImpl extends EPackageImpl implements Processi
 	 */
 	public EReference getTaskInstance_Task() {
 		return (EReference)taskInstanceEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getProcessInstanceStore() {
+		return processInstanceStoreEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getProcessInstanceStore_ProcessInstances() {
+		return (EReference)processInstanceStoreEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -295,10 +330,14 @@ public class ProcessinstancePackageImpl extends EPackageImpl implements Processi
 		createEReference(processInstanceEClass, PROCESS_INSTANCE__ORDER);
 		createEReference(processInstanceEClass, PROCESS_INSTANCE__PRODUCT_INSTANCE);
 		createEAttribute(processInstanceEClass, PROCESS_INSTANCE__STATE);
+		createEReference(processInstanceEClass, PROCESS_INSTANCE__TASK_INSTANCES);
 
 		taskInstanceEClass = createEClass(TASK_INSTANCE);
 		createEAttribute(taskInstanceEClass, TASK_INSTANCE__STATE);
 		createEReference(taskInstanceEClass, TASK_INSTANCE__TASK);
+
+		processInstanceStoreEClass = createEClass(PROCESS_INSTANCE_STORE);
+		createEReference(processInstanceStoreEClass, PROCESS_INSTANCE_STORE__PROCESS_INSTANCES);
 	}
 
 	/**
@@ -344,10 +383,14 @@ public class ProcessinstancePackageImpl extends EPackageImpl implements Processi
 		initEReference(getProcessInstance_Order(), theOrderPackage.getOrder(), null, "order", null, 1, 1, ProcessInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProcessInstance_ProductInstance(), theProductinstancePackage.getProductInstance(), null, "productInstance", null, 0, 1, ProcessInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProcessInstance_State(), ecorePackage.getEString(), "state", null, 0, 1, ProcessInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcessInstance_TaskInstances(), this.getTaskInstance(), null, "taskInstances", null, 0, -1, ProcessInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(taskInstanceEClass, TaskInstance.class, "TaskInstance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTaskInstance_State(), theProcessdefinitionPackage.getTaskStateEnum(), "state", null, 0, 1, TaskInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTaskInstance_Task(), theProcessdefinitionPackage.getTask(), null, "task", null, 1, 1, TaskInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(processInstanceStoreEClass, ProcessInstanceStore.class, "ProcessInstanceStore", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getProcessInstanceStore_ProcessInstances(), this.getProcessInstance(), null, "processInstances", null, 0, -1, ProcessInstanceStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -94,6 +94,12 @@ public class OrderSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case OrderPackage.ORDER_STORE: {
+				OrderStore orderStore = (OrderStore)theEObject;
+				T result = caseOrderStore(orderStore);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -140,6 +146,21 @@ public class OrderSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseOrderStatusChangeEvent(OrderStatusChangeEvent object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Store</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Store</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOrderStore(OrderStore object) {
 		return null;
 	}
 

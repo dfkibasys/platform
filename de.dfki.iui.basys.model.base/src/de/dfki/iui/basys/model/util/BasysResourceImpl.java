@@ -2,15 +2,11 @@
  */
 package de.dfki.iui.basys.model.util;
 
-import java.util.Date;
 import java.util.HashMap;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
-
-import de.dfki.iui.basys.model.base.Entity;
 
 /**
  * <!-- begin-user-doc -->

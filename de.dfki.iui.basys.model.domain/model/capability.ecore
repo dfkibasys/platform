@@ -64,4 +64,5 @@
     <eLiterals name="MATERIAL" value="1" literal="MATERIAL"/>
     <eLiterals name="R_KLT_3215" value="2" literal="R_KLT_3215"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WorkerAssistenceCapability" eSuperTypes="#//Capability"/>
 </ecore:EPackage>

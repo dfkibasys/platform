@@ -31,6 +31,7 @@ import de.dfki.iui.basys.model.domain.productinstance.ProductInstanceLocationCha
 import de.dfki.iui.basys.model.domain.productinstance.ProductInstanceStatus;
 import de.dfki.iui.basys.model.domain.productinstance.ProductInstanceStatusChangeEvent;
 import de.dfki.iui.basys.model.domain.productinstance.ProductInstanceStatusEnum;
+import de.dfki.iui.basys.model.domain.productinstance.ProductInstanceStore;
 import de.dfki.iui.basys.model.domain.productinstance.ProductinstanceFactory;
 import de.dfki.iui.basys.model.domain.productinstance.ProductinstancePackage;
 import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage;
@@ -106,6 +107,13 @@ public class ProductinstancePackageImpl extends EPackageImpl implements Producti
 	 * @generated
 	 */
 	private EClass productInstanceLocationChangeEventEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass productInstanceStoreEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -370,6 +378,24 @@ public class ProductinstancePackageImpl extends EPackageImpl implements Producti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getProductInstanceStore() {
+		return productInstanceStoreEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getProductInstanceStore_ProductInstances() {
+		return (EReference)productInstanceStoreEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getProductInstanceDetectionEnum() {
 		return productInstanceDetectionEnumEEnum;
 	}
@@ -430,6 +456,9 @@ public class ProductinstancePackageImpl extends EPackageImpl implements Producti
 
 		productInstanceLocationChangeEventEClass = createEClass(PRODUCT_INSTANCE_LOCATION_CHANGE_EVENT);
 		createEAttribute(productInstanceLocationChangeEventEClass, PRODUCT_INSTANCE_LOCATION_CHANGE_EVENT__TIMESTAMP);
+
+		productInstanceStoreEClass = createEClass(PRODUCT_INSTANCE_STORE);
+		createEReference(productInstanceStoreEClass, PRODUCT_INSTANCE_STORE__PRODUCT_INSTANCES);
 
 		// Create enums
 		productInstanceDetectionEnumEEnum = createEEnum(PRODUCT_INSTANCE_DETECTION_ENUM);
@@ -495,6 +524,9 @@ public class ProductinstancePackageImpl extends EPackageImpl implements Producti
 
 		initEClass(productInstanceLocationChangeEventEClass, ProductInstanceLocationChangeEvent.class, "ProductInstanceLocationChangeEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProductInstanceLocationChangeEvent_Timestamp(), ecorePackage.getEDate(), "timestamp", null, 0, 1, ProductInstanceLocationChangeEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(productInstanceStoreEClass, ProductInstanceStore.class, "ProductInstanceStore", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getProductInstanceStore_ProductInstances(), this.getProductInstance(), null, "productInstances", null, 0, -1, ProductInstanceStore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(productInstanceDetectionEnumEEnum, ProductInstanceDetectionEnum.class, "ProductInstanceDetectionEnum");
