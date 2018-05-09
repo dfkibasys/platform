@@ -1,16 +1,14 @@
 package de.dfki.iui.basys.runtime.component.device.tecs;
 
-import javax.ws.rs.core.Form;
-
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TSocket;
 import org.apache.thrift.transport.TTransportException;
 
-import com.sun.istack.logging.Logger;
 
-import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.DeviceComponent;
 import de.dfki.iui.hrc.general3d.Point3d;
@@ -20,18 +18,10 @@ import de.dfki.iui.hrc.generalrobots.Path;
 import de.dfki.iui.hrc.hybritcommand.CommandResponse;
 import de.dfki.iui.hrc.hybritcommand.CommandState;
 import de.dfki.iui.hrc.mir100.GotoException;
-//import de.dfki.iui.hrc.mir100.GotoException;
-//import de.dfki.iui.hrc.mir100.MIR;
 import de.dfki.iui.hrc.mir100.MIR;
 import de.dfki.iui.hrc.mir100.MIRState;
 import de.dfki.iui.hrc.mir100.MIRStatus;
 
-//for debug
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 public class Mir100 extends DeviceComponent{
 
@@ -44,7 +34,7 @@ public class Mir100 extends DeviceComponent{
 	 * Just for Debug. Let Mir drive to a position
 	 */
 	public static void main(String[] args) {
-		ComponentConfiguration opcuaConfig = new ComponentConfiguration.Builder().componentId("test-opcua-component")
+		ComponentConfiguration opcuaConfig = new ComponentConfigurationImpl.Builder().componentId("test-opcua-component")
 				.externalConnectionString(String.format("opc.tcp://%s:%s", "localhost", 4841)).build();
 		
 		m = new Mir100(opcuaConfig);
