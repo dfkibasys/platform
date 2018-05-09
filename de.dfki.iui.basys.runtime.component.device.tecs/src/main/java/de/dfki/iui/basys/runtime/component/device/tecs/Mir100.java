@@ -13,6 +13,7 @@ import com.sun.istack.logging.Logger;
 import de.dfki.iui.basys.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.DeviceComponent;
+import de.dfki.iui.hrc.general3d.Point3d;
 import de.dfki.iui.hrc.general3d.Pose;
 import de.dfki.iui.hrc.generalrobots.KnownPositions;
 import de.dfki.iui.hrc.generalrobots.Path;
@@ -40,7 +41,7 @@ public class Mir100 extends DeviceComponent{
 	static Mir100 m;
 	
 	/*
-	 * Just for debug. Let Mir drive to a position
+	 * Just for Debug. Let Mir drive to a position
 	 */
 	public static void main(String[] args) {
 		ComponentConfiguration opcuaConfig = new ComponentConfiguration.Builder().componentId("test-opcua-component")
@@ -90,27 +91,34 @@ public class Mir100 extends DeviceComponent{
 	@Override
 	public void onResetting() {
 		try {
+			mirTECS.open();
 			mirTECS.setState(MIRState.Ready);
 		} catch (TException e) {
+			mirTECS.close();
 			e.printStackTrace();
 			onAborting();
 		}
+		mirTECS.close();
 	}
 
 	@Override
 	public void onStarting() {
 		try {
+			mirTECS.open();
 			mirTECS.gotoNamedPosition(POSITION[5]);
 			onExecute(); // ?
 		} catch (TException e) {
+			mirTECS.close();
 			e.printStackTrace();
 			onAborting();
 		}
+		mirTECS.close();
 	}
 
 	@Override
 	public void onExecute() {
 		try {
+			mirTECS.open();
 			CommandResponse cs = mirTECS.getCommandState();
 			boolean executing = true;
 			while (executing) {
@@ -118,7 +126,7 @@ public class Mir100 extends DeviceComponent{
 				case ABORTED: executing = false; onAborting(); break;
 				case ACCEPTED: /* nothing to do, wait until finished */ break;
 				case EXECUTING: /* nothing to do, wait until finished */ break;
-				case FINISHED: executing = false; /* SEND FINISH SIGNAL */ onCompleting(); break;
+				case FINISHED: executing = false; /* SEND FINISH SIGNAL, call onCompleting for now */ onCompleting(); break;
 				case PAUSED: /* what to do */ break;
 				case READY: /* what to do */ break;
 				case REJECTED: executing = false; onAborting(); break;
@@ -127,12 +135,15 @@ public class Mir100 extends DeviceComponent{
 				Thread.sleep(10);
 			}
 		} catch (TException e) {
+			mirTECS.close();
 			e.printStackTrace();
 			onAborting();
 		} catch (InterruptedException e) {
+			mirTECS.close();
 			e.printStackTrace();
 			onAborting();
 		}
+		mirTECS.close();
 	}
 
 	@Override
@@ -163,11 +174,14 @@ public class Mir100 extends DeviceComponent{
 	@Override
 	public void onAborting() {
 		try {
+			mirTECS.open();
 			mirTECS.stopMovement();
 		} catch (TException e) {
+			mirTECS.close();
 			e.printStackTrace();
 			// nothing we can do.
 		}
+		mirTECS.close();
 	}
 
 	@Override
@@ -178,10 +192,41 @@ public class Mir100 extends DeviceComponent{
 	@Override
 	public void onStopping() {
 		try {
+			mirTECS.open();
 			mirTECS.stopMovement();
 		} catch (TException e) {
+			mirTECS.close();
 			e.printStackTrace();
 			onAborting();
+		}
+		mirTECS.close();
+	}
+	
+	/*
+	 * Get the path of the mir.
+	 * Returns an array with values where:
+	 * 	values[i * 3] is the X coordinate of the i-th point,
+	 * 	values[i * 3 + 1] is the Y coordinate of the i-th point and 
+	 * 	values[i * 3 + 2] is the Z coordinate of the i-th point.
+	 * 	(values / 3) is the number of points.
+	 */
+	public double[] getPath() {
+		try {
+			mirTECS.open();
+			Path path = mirTECS.getPath();
+			Point3d[] points = (Point3d[])(path.path.toArray());
+			double[] values = new double[points.length * 3];
+			for (int i = 0; i < points.length; i++) {
+				values[i * 3] = points[i].x;
+				values[i * 3 + 1] = points[i].y;
+				values[i * 3 + 2] = points[i].z;
+			}
+			mirTECS.close();
+			return values;
+		} catch (TException e) {
+			mirTECS.close();
+			e.printStackTrace();
+			return new double[0];
 		}
 	}
 
@@ -225,8 +270,11 @@ public class Mir100 extends DeviceComponent{
 		}
 		
 		/*
-		 * Get the path of the mir. Path is a list of 3d points.
-		 * A 3d point has the fields: x, y and z.
+		 * Get the path of the mir. Path has a field path which is a list of 3d points.
+		 * A 3d point has the fields: 
+		 * 	double x
+		 * 	double y 
+		 * 	double z
 		 */
 		@Override
 		public Path getPath() throws TException {
@@ -318,7 +366,6 @@ public class Mir100 extends DeviceComponent{
 		public void gotoNamedPosition(String positionName) throws GotoException, TException {
 			super.gotoNamedPosition(positionName);
 		}
-		
 	}
 	
 }
