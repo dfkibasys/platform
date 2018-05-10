@@ -1,8 +1,7 @@
 package de.dfki.iui.basys.runtime.services.impl;
 
-import java.util.List;
-
 import de.dfki.iui.basys.model.domain.productinstance.ProductInstance;
+import de.dfki.iui.basys.model.domain.productinstance.ProductInstanceStore;
 import de.dfki.iui.basys.model.domain.productinstance.ProductinstancePackage;
 import de.dfki.iui.basys.model.domain.productinstance.impl.ProductinstancePackageImpl;
 import de.dfki.iui.basys.model.domain.productinstance.util.ProductinstanceResourceFactoryImpl;
@@ -24,8 +23,9 @@ public class ProductInstanceManagerImpl extends EmfServiceComponent implements P
 	}
 
 	@Override
-	public List<ProductInstance> getAllProductInstances() {
-		return getAllEntities(ProductinstancePackage.eINSTANCE.getProductInstance(), false);
+	public ProductInstanceStore getProductInstanceStore() {
+		ProductInstanceStore store = getFirstEntity(ProductinstancePackage.eINSTANCE.getProductInstanceStore());
+		return store;
 	}
 
 }

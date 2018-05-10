@@ -1,7 +1,5 @@
 package de.dfki.iui.basys.runtime.services.impl;
 
-import java.util.List;
-
 import de.dfki.iui.basys.model.domain.material.Material;
 import de.dfki.iui.basys.model.domain.material.MaterialCatalogue;
 import de.dfki.iui.basys.model.domain.material.MaterialGroup;
@@ -21,8 +19,9 @@ public class MaterialManagerImpl extends EmfServiceComponent implements Material
 	}
 
 	@Override
-	public List<Material> getAllMaterials() {
-		return getAllEntities(MaterialPackage.eINSTANCE.getMaterial(), true);
+	public MaterialCatalogue getMaterialCatalogue() {
+		MaterialCatalogue catalogue = getFirstEntity(MaterialPackage.eINSTANCE.getMaterialCatalogue());
+		return catalogue;
 	}
 
 	@Override
@@ -31,50 +30,8 @@ public class MaterialManagerImpl extends EmfServiceComponent implements Material
 	}
 
 	@Override
-	public void deleteMaterial(String id) {
-		deleteEntity(id);
-	}
-
-	@Override
-	public List<MaterialGroup> getMaterialGroups() {
-		return getAllEntities(MaterialPackage.eINSTANCE.getMaterialGroup(), false);
-	}
-
-	@Override
-	public String addMaterialGroup(MaterialGroup materialGroup) {
-		MaterialCatalogue catalogue = getFirstEntity(MaterialPackage.eINSTANCE.getMaterialCatalogue());
-		catalogue.getMaterialGroups().add(materialGroup);
-		return materialGroup.getId();
-	}
-
-	@Override
 	public MaterialGroup getMaterialGroup(String id) {
 		return getEntity(id);
-	}
-
-	@Override
-	public void deleteMaterialGroup(String id) {
-		deleteEntity(id);
-	}
-
-	@Override
-	public String addMaterialToGroup(Material material, String materialGroupId) {
-		MaterialGroup parentGroup = getEntity(materialGroupId);
-		if (parentGroup != null) {
-			parentGroup.getMaterials().add(material);
-			return material.getId();
-		}
-		return null;
-	}
-
-	@Override
-	public String addMaterialGroupToGroup(MaterialGroup materialGroup, String materialGroupId) {
-		MaterialGroup parentGroup = getEntity(materialGroupId);
-		if (parentGroup != null) {
-			parentGroup.getMaterialGroups().add(materialGroup);
-			return materialGroup.getId();
-		}
-		return null;
 	}
 
 }

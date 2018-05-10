@@ -1,9 +1,8 @@
 package de.dfki.iui.basys.runtime.services.impl;
 
-import java.util.List;
-
-import de.dfki.iui.basys.model.domain.capability.Capability;
 import de.dfki.iui.basys.model.domain.resourcetype.ResourceType;
+import de.dfki.iui.basys.model.domain.resourcetype.ResourceTypeCatalogue;
+import de.dfki.iui.basys.model.domain.resourcetype.ResourceTypeCatalogueCollection;
 import de.dfki.iui.basys.model.domain.resourcetype.ResourcetypePackage;
 import de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl;
 import de.dfki.iui.basys.model.domain.resourcetype.util.ResourcetypeResourceFactoryImpl;
@@ -27,26 +26,15 @@ public class ResourceTypeManagerImpl extends EmfServiceComponent implements Reso
 	}
 
 	@Override
-	public ResourceType getResourceTypeByName(String name) {
+	public ResourceTypeCatalogue getResourceTypeCatalogue(String manufacturerName) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<ResourceType> getResourceTypesByManufacturer(String manufacturer) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<ResourceType> getResourceTypesByCapability(Capability capability) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<ResourceType> getAllResourceTypes() {
-		return getAllEntities(ResourcetypePackage.eINSTANCE.getResourceType(), false);
+	public ResourceTypeCatalogueCollection getResourceTypeCatalogueCollection() {
+		ResourceTypeCatalogueCollection catalogueCollection = getFirstEntity(ResourcetypePackage.eINSTANCE.getResourceTypeCatalogueCollection());
+		return catalogueCollection;
 	}
 
 }

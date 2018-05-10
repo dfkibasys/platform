@@ -1,8 +1,7 @@
 package de.dfki.iui.basys.runtime.services.impl;
 
-import java.util.List;
-
 import de.dfki.iui.basys.model.domain.processinstance.ProcessInstance;
+import de.dfki.iui.basys.model.domain.processinstance.ProcessInstanceStore;
 import de.dfki.iui.basys.model.domain.processinstance.ProcessinstancePackage;
 import de.dfki.iui.basys.model.domain.processinstance.impl.ProcessinstancePackageImpl;
 import de.dfki.iui.basys.model.domain.processinstance.util.ProcessinstanceResourceFactoryImpl;
@@ -30,8 +29,9 @@ public class ProcessInstanceManagerImpl extends EmfServiceComponent implements P
 	}
 
 	@Override
-	public List<ProcessInstance> getAllProcessInstances() {
-		return getAllEntities(ProcessinstancePackage.eINSTANCE.getProcessInstance(), false);
+	public ProcessInstanceStore getProcessInstanceStore() {
+		ProcessInstanceStore store = getFirstEntity(ProcessinstancePackage.eINSTANCE.getProcessInstanceStore());
+		return store;
 	}
 
 }
