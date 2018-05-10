@@ -19,12 +19,11 @@ import de.dfki.iui.basys.runtime.services.impl.MaterialManagerImpl;
 
 public class MaterialManagerTest extends BaseEmfServiceComponentTest<MaterialManagerImpl> {
 
-
 	@Override
 	@Before
 	public void setUp() throws Exception {
 		javaClassName = "de.dfki.iui.basys.runtime.services.impl.MaterialManagerImpl";
-		file = "cebit.material";
+		file = "model.material";
 
 		super.setUp();
 	}

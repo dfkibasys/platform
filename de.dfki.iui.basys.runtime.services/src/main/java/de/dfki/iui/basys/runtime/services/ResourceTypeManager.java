@@ -1,17 +1,14 @@
 package de.dfki.iui.basys.runtime.services;
 
-import java.util.List;
-
-import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import de.dfki.iui.basys.model.domain.capability.Capability;
 import de.dfki.iui.basys.model.domain.resourcetype.ResourceType;
+import de.dfki.iui.basys.model.domain.resourcetype.ResourceTypeCatalogue;
+import de.dfki.iui.basys.model.domain.resourcetype.ResourceTypeCatalogueCollection;
 
 @Path("/resourcetype")
 public interface ResourceTypeManager {
@@ -23,48 +20,11 @@ public interface ResourceTypeManager {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/name/{name}")
-	ResourceType getResourceTypeByName(@PathParam("name") String name);
+	@Path("/catalogue/{manufacturerName}")
+	ResourceTypeCatalogue getResourceTypeCatalogue(@PathParam("manufacturerName") String manufacturerName);
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/manufacturer/{manufacturer}")
-	List<ResourceType> getResourceTypesByManufacturer(@PathParam("manufacturer") String manufacturer);
-
-	// TODO: handle capability
-	@POST
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Path("/capability")
-	List<ResourceType> getResourceTypesByCapability(Capability capability);
-
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	List<ResourceType> getAllResourceTypes();
-
-	// @GET
-	// @Produces(MediaType.APPLICATION_JSON)
-	// @Path("/")
-	// Response getAllResourceTypeCataloguesRest();
-	//
-	//
-	// @GET
-	// @Produces(MediaType.APPLICATION_JSON)
-	// @Path("/typeCatalogue/{manufacturer}")
-	// Response getTypeCatalogueRest(@PathParam("manufacturer") String
-	// manufacturer);
-	//
-	//
-	//
-	// @GET
-	// @Produces(MediaType.APPLICATION_JSON)
-	// @Path("/")
-	// Response getAllResourceTypesRest(String manufacturer);
-	//
-	//
-	// @GET
-	// @Produces(MediaType.APPLICATION_JSON)
-	// @Path("/{resourceTypeId}")
-	// Response getResourceTypeRest(@PathParam("resourceTypeId") String id);
+	ResourceTypeCatalogueCollection getResourceTypeCatalogueCollection();
 
 }

@@ -1,7 +1,5 @@
 package de.dfki.iui.basys.runtime.services;
 
-import java.util.List;
-
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -9,6 +7,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import de.dfki.iui.basys.model.domain.processinstance.ProcessInstance;
+import de.dfki.iui.basys.model.domain.processinstance.ProcessInstanceStore;
 
 @Path("/processinstance")
 public interface ProcessInstanceManager {
@@ -20,11 +19,11 @@ public interface ProcessInstanceManager {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/productInstance/{processInstanceId}")
-	ProcessInstance getProcessInstanceByProductInstance(@PathParam("processInstanceId") String productInstanceId);
+	@Path("/productInstance/{productInstanceId}")
+	ProcessInstance getProcessInstanceByProductInstance(@PathParam("productInstanceId") String productInstanceId);
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	List<ProcessInstance> getAllProcessInstances();
+	ProcessInstanceStore getProcessInstanceStore();
 
 }

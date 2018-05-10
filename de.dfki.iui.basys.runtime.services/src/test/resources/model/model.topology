@@ -10,18 +10,18 @@
           <stations id="_2P5mwTB4Eei1bbwBPPZWOA" name="S2">
             <equipmentModules id="_5vbBoDB4Eei1bbwBPPZWOA" name="Schrauber"/>
             <equipmentModules id="_rcKlkFIxEeidSe5vp9A3oA" name="Handtaster">
-              <assignedResourceType href="cebit.resourcetype#_GHTn8lIxEeidSe5vp9A3oA"/>
-              <assignedResourceInstance href="cebit.resourceinstance#_PwPREFIxEeidSe5vp9A3oA"/>
+              <assignedResourceType href="model.resourcetype#_GHTn8lIxEeidSe5vp9A3oA"/>
+              <assignedResourceInstance href="model.resourceinstance#_PwPREFIxEeidSe5vp9A3oA"/>
             </equipmentModules>
           </stations>
           <stations id="_2jROsTB4Eei1bbwBPPZWOA" name="S3">
             <equipmentModules id="_6CV9oDB4Eei1bbwBPPZWOA" name="Deckelaufleger">
               <capabilityRequirement xsi:type="capability:Pressing" id="_LmHydzDyEeixrJ0x1ZWKig" pressure="50.0"/>
-              <assignedResourceType href="cebit.resourcetype#_yIFSQjB3Eei1bbwBPPZWOA"/>
-              <assignedResourceInstance href="cebit.resourceinstance#_SE5NIDB4Eei1bbwBPPZWOA"/>
+              <assignedResourceType href="model.resourcetype#_yIFSQjB3Eei1bbwBPPZWOA"/>
+              <assignedResourceInstance href="model.resourceinstance#_SE5NIDB4Eei1bbwBPPZWOA"/>
             </equipmentModules>
             <equipmentModules binding="" id="_AzQQwDB5Eei1bbwBPPZWOA" name="Werkerführung">
-              <assignedResourceInstance href="cebit.resourceinstance#_8cLJ8FIxEeidSe5vp9A3oA"/>
+              <assignedResourceInstance href="model.resourceinstance#_8cLJ8FIxEeidSe5vp9A3oA"/>
             </equipmentModules>
           </stations>
         </workCells>
@@ -38,8 +38,8 @@
         </storageUnits>
       </workCenters>
       <equipmentModules id="_gUuXFFIxEeidSe5vp9A3oA" name="Laser Projection">
-        <assignedResourceType href="cebit.resourcetype#_BcwkYlIxEeidSe5vp9A3oA"/>
-        <assignedResourceInstance href="cebit.resourceinstance#_RtlHgFIxEeidSe5vp9A3oA"/>
+        <assignedResourceType href="model.resourcetype#_BcwkYlIxEeidSe5vp9A3oA"/>
+        <assignedResourceInstance href="model.resourceinstance#_RtlHgFIxEeidSe5vp9A3oA"/>
       </equipmentModules>
     </areas>
     <areas id="_JUNX8EegEeiuhP6xdl274w" name="DFKI Stand">

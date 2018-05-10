@@ -22,7 +22,7 @@ public class OrderManagerTest extends BaseEmfServiceComponentTest<OrderManagerIm
 	@Before
 	public void setUp() throws Exception {
 		javaClassName = "de.dfki.iui.basys.runtime.services.impl.OrderManagerImpl";
-		file = "cebit.order";
+		file = "model.order";
 
 		super.setUp();
 	}
