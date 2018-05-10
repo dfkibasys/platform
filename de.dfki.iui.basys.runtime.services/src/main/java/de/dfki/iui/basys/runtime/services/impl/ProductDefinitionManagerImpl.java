@@ -1,7 +1,7 @@
 package de.dfki.iui.basys.runtime.services.impl;
 
-import java.util.List;
-
+import de.dfki.iui.basys.model.domain.productdefinition.AssemblyGroup;
+import de.dfki.iui.basys.model.domain.productdefinition.ProductCatalogue;
 import de.dfki.iui.basys.model.domain.productdefinition.ProductGroup;
 import de.dfki.iui.basys.model.domain.productdefinition.ProductVariant;
 import de.dfki.iui.basys.model.domain.productdefinition.ProductdefinitionPackage;
@@ -25,26 +25,19 @@ public class ProductDefinitionManagerImpl extends EmfServiceComponent implements
 	}
 
 	@Override
-	public ProductVariant getProductVariantByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+	public AssemblyGroup getAssemblyGroup(String assemblyGroupId) {
+		return getEntity(assemblyGroupId);
 	}
 
 	@Override
-	public List<ProductGroup> getProductGroups() {
-		return getAllEntities(ProductdefinitionPackage.eINSTANCE.getProductGroup(), false);
-	}
-	
-	
-	@Override
-	public List<ProductVariant> getProductVariants(String productGroupId) {
-		ProductGroup group = getEntity(productGroupId);
-		return group.getProductVariants();
+	public ProductGroup getProductGroup(String productGroupId) {
+		return getEntity(productGroupId);
 	}
 
 	@Override
-	public List<ProductVariant> getAllProductVariants() {
-		return getAllEntities(ProductdefinitionPackage.eINSTANCE.getProductVariant(), false);
+	public ProductCatalogue getProductCatalogue() {
+		ProductCatalogue catalogue = getFirstEntity(ProductdefinitionPackage.eINSTANCE.getProductCatalogue());
+		return catalogue;
 	}
 
 }
