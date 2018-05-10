@@ -1,6 +1,5 @@
 package de.dfki.iui.basys.osgi.services.internal;
 
-import java.util.List;
 import java.util.Map;
 
 import org.osgi.service.component.ComponentContext;
@@ -12,6 +11,7 @@ import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.component.annotations.Reference;
 
 import de.dfki.iui.basys.model.domain.material.Material;
+import de.dfki.iui.basys.model.domain.material.MaterialCatalogue;
 import de.dfki.iui.basys.model.domain.material.MaterialGroup;
 import de.dfki.iui.basys.osgi.services.BasysOsgiComponent;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManager;
@@ -66,15 +66,15 @@ public final class MaterialManagerServiceImpl extends BasysOsgiComponent impleme
 	void unsetComponentManager(ComponentManager componentManager) {
 		this.componentManager = null;
 	}
-
+	
 
 	/*
 	 * MaterialManager interface
 	 */
-	
+
 	@Override
-	public List<Material> getAllMaterials() {
-		return impl.getAllMaterials();
+	public MaterialCatalogue getMaterialCatalogue() {
+		return impl.getMaterialCatalogue();
 	}
 
 	@Override
@@ -83,40 +83,12 @@ public final class MaterialManagerServiceImpl extends BasysOsgiComponent impleme
 	}
 
 	@Override
-	public void deleteMaterial(String id) {
-		impl.deleteMaterial(id);
-	}
-
-	@Override
-	public List<MaterialGroup> getMaterialGroups() {
-		return impl.getMaterialGroups();
-	}
-
-	@Override
-	public String addMaterialGroup(MaterialGroup materialGroup) {
-		return impl.addMaterialGroup(materialGroup);
-	}
-
-	@Override
 	public MaterialGroup getMaterialGroup(String id) {
 		return impl.getMaterialGroup(id);
 	}
 
-	@Override
-	public void deleteMaterialGroup(String id) {
-		impl.deleteMaterialGroup(id);		
-	}
 
-	@Override
-	public String addMaterialToGroup(Material material, String materialGroupId) {
-		return impl.addMaterialToGroup(material, materialGroupId);
-	}
-
-	@Override
-	public String addMaterialGroupToGroup(MaterialGroup materialGroup, String materialGroupId) {
-		return impl.addMaterialGroupToGroup(materialGroup, materialGroupId);
-	}
-
+	
 
 
 }

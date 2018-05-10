@@ -1,6 +1,5 @@
 package de.dfki.iui.basys.osgi.services.internal;
 
-import java.util.List;
 import java.util.Map;
 
 import org.osgi.service.component.ComponentContext;
@@ -12,6 +11,7 @@ import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.component.annotations.Reference;
 
 import de.dfki.iui.basys.model.domain.processinstance.ProcessInstance;
+import de.dfki.iui.basys.model.domain.processinstance.ProcessInstanceStore;
 import de.dfki.iui.basys.osgi.services.BasysOsgiComponent;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManager;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManagerException;
@@ -69,7 +69,12 @@ public final class ProcessInstanceManagerServiceImpl extends BasysOsgiComponent 
 	/*
 	 * Service interface
 	 */
-	
+
+	@Override
+	public ProcessInstanceStore getProcessInstanceStore() {
+		return impl.getProcessInstanceStore();
+	}
+
 	@Override
 	public ProcessInstance getProcessInstance(String id) {
 		return impl.getProcessInstance(id);
@@ -79,12 +84,5 @@ public final class ProcessInstanceManagerServiceImpl extends BasysOsgiComponent 
 	public ProcessInstance getProcessInstanceByProductInstance(String productInstanceId) {
 		return impl.getProcessInstanceByProductInstance(productInstanceId);
 	}
-
-	@Override
-	public List<ProcessInstance> getAllProcessInstances() {
-		return impl.getAllProcessInstances();
-	}
-
-
 	
 }

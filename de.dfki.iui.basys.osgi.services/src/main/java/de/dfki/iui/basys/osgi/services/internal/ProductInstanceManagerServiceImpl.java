@@ -1,6 +1,5 @@
 package de.dfki.iui.basys.osgi.services.internal;
 
-import java.util.List;
 import java.util.Map;
 
 import org.osgi.service.component.ComponentContext;
@@ -12,6 +11,7 @@ import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.component.annotations.Reference;
 
 import de.dfki.iui.basys.model.domain.productinstance.ProductInstance;
+import de.dfki.iui.basys.model.domain.productinstance.ProductInstanceStore;
 import de.dfki.iui.basys.osgi.services.BasysOsgiComponent;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManager;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManagerException;
@@ -76,8 +76,8 @@ public final class ProductInstanceManagerServiceImpl extends BasysOsgiComponent 
 	}
 
 	@Override
-	public List<ProductInstance> getAllProductInstances() {
-		return impl.getAllProductInstances();
+	public ProductInstanceStore getProductInstanceStore() {
+		return impl.getProductInstanceStore();
 	}
 
 	

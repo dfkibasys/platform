@@ -13,6 +13,7 @@ import org.osgi.service.component.annotations.Reference;
 
 import de.dfki.iui.basys.model.domain.capability.Capability;
 import de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstance;
+import de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstanceRepository;
 import de.dfki.iui.basys.osgi.services.BasysOsgiComponent;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManager;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManagerException;
@@ -79,38 +80,13 @@ public final class ResourceInstanceManagerServiceImpl extends BasysOsgiComponent
 	}
 
 	@Override
-	public ResourceInstance getResourceInstanceByName(String name) {
-		return impl.getResourceInstanceByName(name);
-	}
-
-	@Override
-	public List<ResourceInstance> getResourceInstancesByType(String typeId) {
-		return impl.getResourceInstancesByType(typeId);
-	}
-
-	@Override
-	public List<ResourceInstance> getResourceInstancesByTypeName(String typeName) {
-		return impl.getResourceInstancesByTypeName(typeName);
-	}
-
-	@Override
 	public List<ResourceInstance> getResourceInstancesByCapability(Capability capability) {
 		return impl.getResourceInstancesByCapability(capability);
 	}
 
 	@Override
-	public List<ResourceInstance> getAllResourceInstances() {
-		return impl.getAllResourceInstances();
+	public ResourceInstanceRepository getResourceInstanceRepository() {
+		return impl.getResourceInstanceRepository();
 	}
 
-	@Override
-	public String addResourceInstance(ResourceInstance resourceInstance) {
-		return impl.addResourceInstance(resourceInstance);
-	}
-
-	@Override
-	public void removeResourceInstance(String id) {
-		impl.removeResourceInstance(id);		
-	}
-	
 }

@@ -1,6 +1,5 @@
 package de.dfki.iui.basys.osgi.services.internal;
 
-import java.util.List;
 import java.util.Map;
 
 import org.osgi.service.component.ComponentContext;
@@ -12,6 +11,7 @@ import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.component.annotations.Reference;
 
 import de.dfki.iui.basys.model.domain.order.Order;
+import de.dfki.iui.basys.model.domain.order.OrderStore;
 import de.dfki.iui.basys.osgi.services.BasysOsgiComponent;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManager;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManagerException;
@@ -70,6 +70,11 @@ public final class OrderManagerServiceImpl extends BasysOsgiComponent implements
 	/*
 	 * Service interface
 	 */
+
+	@Override
+	public OrderStore getOrderStore() {
+		return impl.getOrderStore();
+	}
 	
 	@Override
 	public Order getOrder(String id) {
@@ -77,13 +82,10 @@ public final class OrderManagerServiceImpl extends BasysOsgiComponent implements
 	}
 
 	@Override
-	public List<Order> getOrdersByManufacturedComponent(String manufacturedComponentId) {
-		return impl.getOrdersByManufacturedComponent(manufacturedComponentId);
+	public void addOrder(Order order) {
+		impl.addOrder(order);		
 	}
 
-	@Override
-	public List<Order> getAllOrders() {
-		return impl.getAllOrders();
-	}
+
 
 }

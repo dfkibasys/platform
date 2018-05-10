@@ -1,6 +1,5 @@
 package de.dfki.iui.basys.osgi.services.internal;
 
-import java.util.List;
 import java.util.Map;
 
 import org.osgi.service.component.ComponentContext;
@@ -11,6 +10,8 @@ import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.component.annotations.Reference;
 
+import de.dfki.iui.basys.model.domain.productdefinition.AssemblyGroup;
+import de.dfki.iui.basys.model.domain.productdefinition.ProductCatalogue;
 import de.dfki.iui.basys.model.domain.productdefinition.ProductGroup;
 import de.dfki.iui.basys.model.domain.productdefinition.ProductVariant;
 import de.dfki.iui.basys.osgi.services.BasysOsgiComponent;
@@ -78,24 +79,21 @@ public final class ProductDefinitionManagerServiceImpl extends BasysOsgiComponen
 	}
 
 	@Override
-	public ProductVariant getProductVariantByName(String name) {
-		return impl.getProductVariantByName(name);
+	public AssemblyGroup getAssemblyGroup(String assemblyGroupId) {		
+		return impl.getAssemblyGroup(assemblyGroupId);
 	}
 
 	@Override
-	public List<ProductGroup> getProductGroups() {
-		return impl.getProductGroups();
+	public ProductGroup getProductGroup(String productGroupId) {
+		return impl.getProductGroup(productGroupId);
 	}
 
 	@Override
-	public List<ProductVariant> getProductVariants(String productGroupId) {
-		return impl.getProductVariants(productGroupId);
+	public ProductCatalogue getProductCatalogue() {
+		return impl.getProductCatalogue();
 	}
 
-	@Override
-	public List<ProductVariant> getAllProductVariants() {
-		return impl.getAllProductVariants();
-	}
+
 
 	
 }

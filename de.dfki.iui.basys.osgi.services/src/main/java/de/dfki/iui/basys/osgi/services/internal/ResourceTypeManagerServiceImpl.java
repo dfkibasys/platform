@@ -1,6 +1,5 @@
 package de.dfki.iui.basys.osgi.services.internal;
 
-import java.util.List;
 import java.util.Map;
 
 import org.osgi.service.component.ComponentContext;
@@ -11,8 +10,9 @@ import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.component.annotations.Reference;
 
-import de.dfki.iui.basys.model.domain.capability.Capability;
 import de.dfki.iui.basys.model.domain.resourcetype.ResourceType;
+import de.dfki.iui.basys.model.domain.resourcetype.ResourceTypeCatalogue;
+import de.dfki.iui.basys.model.domain.resourcetype.ResourceTypeCatalogueCollection;
 import de.dfki.iui.basys.osgi.services.BasysOsgiComponent;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManager;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManagerException;
@@ -78,23 +78,13 @@ public final class ResourceTypeManagerServiceImpl extends BasysOsgiComponent imp
 	}
 
 	@Override
-	public ResourceType getResourceTypeByName(String name) {
-		return impl.getResourceTypeByName(name);
+	public ResourceTypeCatalogue getResourceTypeCatalogue(String manufacturerName) {
+		return impl.getResourceTypeCatalogue(manufacturerName);
 	}
 
 	@Override
-	public List<ResourceType> getResourceTypesByManufacturer(String manufacturer) {
-		return impl.getResourceTypesByManufacturer(manufacturer);
+	public ResourceTypeCatalogueCollection getResourceTypeCatalogueCollection() {
+		return impl.getResourceTypeCatalogueCollection();
 	}
 
-	@Override
-	public List<ResourceType> getResourceTypesByCapability(Capability capability) {
-		return impl.getResourceTypesByCapability(capability);
-	}
-
-	@Override
-	public List<ResourceType> getAllResourceTypes() {
-		return impl.getAllResourceTypes();
-	}
-	
 }
