@@ -78,6 +78,9 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 			case CapabilityPackage.STORE: return createStore();
 			case CapabilityPackage.QO_SCAPABILITY: return createQoSCapability();
 			case CapabilityPackage.INSPECT: return createInspect();
+			case CapabilityPackage.WORKER_ASSISTENCE_CAPABILITY: return createWorkerAssistenceCapability();
+			case CapabilityPackage.GENERAL_CAPABILITY: return createGeneralCapability();
+			case CapabilityPackage.MOVE_TO_LOCATION: return createMoveToLocation();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -201,6 +204,36 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	public Inspect createInspect() {
 		InspectImpl inspect = new InspectImpl();
 		return inspect;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public WorkerAssistenceCapability createWorkerAssistenceCapability() {
+		WorkerAssistenceCapabilityImpl workerAssistenceCapability = new WorkerAssistenceCapabilityImpl();
+		return workerAssistenceCapability;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GeneralCapability createGeneralCapability() {
+		GeneralCapabilityImpl generalCapability = new GeneralCapabilityImpl();
+		return generalCapability;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MoveToLocation createMoveToLocation() {
+		MoveToLocationImpl moveToLocation = new MoveToLocationImpl();
+		return moveToLocation;
 	}
 
 	/**

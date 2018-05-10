@@ -47,7 +47,7 @@ public class LogisticsCapabilityItemProvider extends CapabilityItemProvider {
 
 			addLoadCarrierUnitPropertyDescriptor(object);
 			addCapacityPropertyDescriptor(object);
-			addWeightPropertyDescriptor(object);
+			addPayloadPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -97,19 +97,19 @@ public class LogisticsCapabilityItemProvider extends CapabilityItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Weight feature.
+	 * This adds a property descriptor for the Payload feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addWeightPropertyDescriptor(Object object) {
+	protected void addPayloadPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_LogisticsCapability_weight_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_LogisticsCapability_weight_feature", "_UI_LogisticsCapability_type"),
-				 CapabilityPackage.Literals.LOGISTICS_CAPABILITY__WEIGHT,
+				 getString("_UI_LogisticsCapability_payload_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LogisticsCapability_payload_feature", "_UI_LogisticsCapability_type"),
+				 CapabilityPackage.Literals.LOGISTICS_CAPABILITY__PAYLOAD,
 				 true,
 				 false,
 				 false,
@@ -158,7 +158,7 @@ public class LogisticsCapabilityItemProvider extends CapabilityItemProvider {
 		switch (notification.getFeatureID(LogisticsCapability.class)) {
 			case CapabilityPackage.LOGISTICS_CAPABILITY__LOAD_CARRIER_UNIT:
 			case CapabilityPackage.LOGISTICS_CAPABILITY__CAPACITY:
-			case CapabilityPackage.LOGISTICS_CAPABILITY__WEIGHT:
+			case CapabilityPackage.LOGISTICS_CAPABILITY__PAYLOAD:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

@@ -19,31 +19,52 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.dfki.iui.basys.model.domain.capability.impl.PickAndPlaceImpl#getDistance <em>Distance</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.capability.impl.PickAndPlaceImpl#getReach <em>Reach</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.capability.impl.PickAndPlaceImpl#getPositionRepeatability <em>Position Repeatability</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class PickAndPlaceImpl extends LogisticsCapabilityImpl implements PickAndPlace {
 	/**
-	 * The default value of the '{@link #getDistance() <em>Distance</em>}' attribute.
+	 * The default value of the '{@link #getReach() <em>Reach</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDistance()
+	 * @see #getReach()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double DISTANCE_EDEFAULT = 0.0;
+	protected static final double REACH_EDEFAULT = 0.0;
 
 	/**
-	 * The cached value of the '{@link #getDistance() <em>Distance</em>}' attribute.
+	 * The cached value of the '{@link #getReach() <em>Reach</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDistance()
+	 * @see #getReach()
 	 * @generated
 	 * @ordered
 	 */
-	protected double distance = DISTANCE_EDEFAULT;
+	protected double reach = REACH_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPositionRepeatability() <em>Position Repeatability</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPositionRepeatability()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double POSITION_REPEATABILITY_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getPositionRepeatability() <em>Position Repeatability</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPositionRepeatability()
+	 * @generated
+	 * @ordered
+	 */
+	protected double positionRepeatability = POSITION_REPEATABILITY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -69,8 +90,8 @@ public class PickAndPlaceImpl extends LogisticsCapabilityImpl implements PickAnd
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getDistance() {
-		return distance;
+	public double getReach() {
+		return reach;
 	}
 
 	/**
@@ -78,11 +99,32 @@ public class PickAndPlaceImpl extends LogisticsCapabilityImpl implements PickAnd
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDistance(double newDistance) {
-		double oldDistance = distance;
-		distance = newDistance;
+	public void setReach(double newReach) {
+		double oldReach = reach;
+		reach = newReach;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CapabilityPackage.PICK_AND_PLACE__DISTANCE, oldDistance, distance));
+			eNotify(new ENotificationImpl(this, Notification.SET, CapabilityPackage.PICK_AND_PLACE__REACH, oldReach, reach));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public double getPositionRepeatability() {
+		return positionRepeatability;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPositionRepeatability(double newPositionRepeatability) {
+		double oldPositionRepeatability = positionRepeatability;
+		positionRepeatability = newPositionRepeatability;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CapabilityPackage.PICK_AND_PLACE__POSITION_REPEATABILITY, oldPositionRepeatability, positionRepeatability));
 	}
 
 	/**
@@ -93,8 +135,10 @@ public class PickAndPlaceImpl extends LogisticsCapabilityImpl implements PickAnd
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CapabilityPackage.PICK_AND_PLACE__DISTANCE:
-				return getDistance();
+			case CapabilityPackage.PICK_AND_PLACE__REACH:
+				return getReach();
+			case CapabilityPackage.PICK_AND_PLACE__POSITION_REPEATABILITY:
+				return getPositionRepeatability();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -107,8 +151,11 @@ public class PickAndPlaceImpl extends LogisticsCapabilityImpl implements PickAnd
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CapabilityPackage.PICK_AND_PLACE__DISTANCE:
-				setDistance((Double)newValue);
+			case CapabilityPackage.PICK_AND_PLACE__REACH:
+				setReach((Double)newValue);
+				return;
+			case CapabilityPackage.PICK_AND_PLACE__POSITION_REPEATABILITY:
+				setPositionRepeatability((Double)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -122,8 +169,11 @@ public class PickAndPlaceImpl extends LogisticsCapabilityImpl implements PickAnd
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CapabilityPackage.PICK_AND_PLACE__DISTANCE:
-				setDistance(DISTANCE_EDEFAULT);
+			case CapabilityPackage.PICK_AND_PLACE__REACH:
+				setReach(REACH_EDEFAULT);
+				return;
+			case CapabilityPackage.PICK_AND_PLACE__POSITION_REPEATABILITY:
+				setPositionRepeatability(POSITION_REPEATABILITY_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -137,8 +187,10 @@ public class PickAndPlaceImpl extends LogisticsCapabilityImpl implements PickAnd
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CapabilityPackage.PICK_AND_PLACE__DISTANCE:
-				return distance != DISTANCE_EDEFAULT;
+			case CapabilityPackage.PICK_AND_PLACE__REACH:
+				return reach != REACH_EDEFAULT;
+			case CapabilityPackage.PICK_AND_PLACE__POSITION_REPEATABILITY:
+				return positionRepeatability != POSITION_REPEATABILITY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -153,8 +205,10 @@ public class PickAndPlaceImpl extends LogisticsCapabilityImpl implements PickAnd
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (distance: ");
-		result.append(distance);
+		result.append(" (reach: ");
+		result.append(reach);
+		result.append(", positionRepeatability: ");
+		result.append(positionRepeatability);
 		result.append(')');
 		return result.toString();
 	}

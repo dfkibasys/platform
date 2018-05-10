@@ -103,6 +103,33 @@ public interface CapabilityFactory extends EFactory {
 	Inspect createInspect();
 
 	/**
+	 * Returns a new object of class '<em>Worker Assistence Capability</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Worker Assistence Capability</em>'.
+	 * @generated
+	 */
+	WorkerAssistenceCapability createWorkerAssistenceCapability();
+
+	/**
+	 * Returns a new object of class '<em>General Capability</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>General Capability</em>'.
+	 * @generated
+	 */
+	GeneralCapability createGeneralCapability();
+
+	/**
+	 * Returns a new object of class '<em>Move To Location</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Move To Location</em>'.
+	 * @generated
+	 */
+	MoveToLocation createMoveToLocation();
+
+	/**
 	 * Returns a new object of class '<em>Urformen</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -131,8 +131,9 @@ public class MaterialEntryItemProvider
 		MaterialEntry materialEntry = (MaterialEntry)object;
 		
 		if (materialEntry.getMaterial() != null)
-			return getString("_UI_MaterialEntry_type") + " " + materialEntry.getCount() + "x " + materialEntry.getMaterial().getName();
-		return getString("_UI_MaterialEntry_type") + " " + materialEntry.getCount() + "x ???";
+			return materialEntry.getCount() + "x " + materialEntry.getMaterial().getName();
+		//return getString("_UI_MaterialEntry_type") + " " + materialEntry.getCount() + "x ???";
+		return materialEntry.getCount() + "x ???";
 	}
 	
 

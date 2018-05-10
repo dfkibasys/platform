@@ -35,8 +35,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CapabilityApplication">
     <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityAssertion" eType="ecore:EClass capability.ecore#//CapabilityAssertion"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="variants" upperBound="-1"
-        eType="#//CapabilityVariant"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityVariants" upperBound="-1"
+        eType="#//CapabilityVariant" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CapabilityVariant">
     <eStructuralFeatures xsi:type="ecore:EReference" name="capability" eType="ecore:EClass capability.ecore#//Capability"

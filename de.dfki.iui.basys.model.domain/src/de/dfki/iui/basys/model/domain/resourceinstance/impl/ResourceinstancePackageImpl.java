@@ -313,7 +313,7 @@ public class ResourceinstancePackageImpl extends EPackageImpl implements Resourc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCapabilityApplication_Variants() {
+	public EReference getCapabilityApplication_CapabilityVariants() {
 		return (EReference)capabilityApplicationEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -425,7 +425,7 @@ public class ResourceinstancePackageImpl extends EPackageImpl implements Resourc
 
 		capabilityApplicationEClass = createEClass(CAPABILITY_APPLICATION);
 		createEReference(capabilityApplicationEClass, CAPABILITY_APPLICATION__CAPABILITY_ASSERTION);
-		createEReference(capabilityApplicationEClass, CAPABILITY_APPLICATION__VARIANTS);
+		createEReference(capabilityApplicationEClass, CAPABILITY_APPLICATION__CAPABILITY_VARIANTS);
 
 		capabilityVariantEClass = createEClass(CAPABILITY_VARIANT);
 		createEReference(capabilityVariantEClass, CAPABILITY_VARIANT__CAPABILITY);
@@ -489,7 +489,7 @@ public class ResourceinstancePackageImpl extends EPackageImpl implements Resourc
 
 		initEClass(capabilityApplicationEClass, CapabilityApplication.class, "CapabilityApplication", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCapabilityApplication_CapabilityAssertion(), theCapabilityPackage.getCapabilityAssertion(), null, "capabilityAssertion", null, 0, 1, CapabilityApplication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCapabilityApplication_Variants(), this.getCapabilityVariant(), null, "variants", null, 0, -1, CapabilityApplication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCapabilityApplication_CapabilityVariants(), this.getCapabilityVariant(), null, "capabilityVariants", null, 0, -1, CapabilityApplication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(capabilityVariantEClass, CapabilityVariant.class, "CapabilityVariant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCapabilityVariant_Capability(), theCapabilityPackage.getCapability(), null, "capability", null, 0, 1, CapabilityVariant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

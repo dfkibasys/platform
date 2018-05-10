@@ -3,18 +3,14 @@
 package de.dfki.iui.basys.model.domain.resourceinstance.provider;
 
 
-import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
-
-import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage;
-
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -22,7 +18,16 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
+
+import org.eclipse.emf.edit.provider.ViewerNotification;
+import de.dfki.iui.basys.model.domain.capability.CapabilityAssertion;
+import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
+import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityApplication;
+import de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstance;
+import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstanceFactory;
+import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage;
 
 /**
  * This is the item provider adapter for a {@link de.dfki.iui.basys.model.domain.resourceinstance.CapabilityApplication} object.
@@ -60,7 +65,6 @@ public class CapabilityApplicationItemProvider
 			super.getPropertyDescriptors(object);
 
 			addCapabilityAssertionPropertyDescriptor(object);
-			addVariantsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -69,12 +73,25 @@ public class CapabilityApplicationItemProvider
 	 * This adds a property descriptor for the Capability Assertion feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addCapabilityAssertionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+//		itemPropertyDescriptors.add
+//			(createItemPropertyDescriptor
+//				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+//				 getResourceLocator(),
+//				 getString("_UI_CapabilityApplication_capabilityAssertion_feature"),
+//				 getString("_UI_PropertyDescriptor_description", "_UI_CapabilityApplication_capabilityAssertion_feature", "_UI_CapabilityApplication_type"),
+//				 ResourceinstancePackage.Literals.CAPABILITY_APPLICATION__CAPABILITY_ASSERTION,
+//				 true,
+//				 false,
+//				 true,
+//				 null,
+//				 null,
+//				 null));
+		
+		itemPropertyDescriptors.add(new ItemPropertyDescriptor(
+				((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_CapabilityApplication_capabilityAssertion_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_CapabilityApplication_capabilityAssertion_feature", "_UI_CapabilityApplication_type"),
@@ -84,29 +101,57 @@ public class CapabilityApplicationItemProvider
 				 true,
 				 null,
 				 null,
-				 null));
+				 null) {
+			@Override
+			public Collection<?> getChoiceOfValues(Object object) {
+				
+				CapabilityApplication e = (CapabilityApplication) object;
+				Collection<?> result = super.getChoiceOfValues(object);
+				List<CapabilityAssertion> filtered = new LinkedList<>();
+				
+				result.forEach(entry -> {
+					if (entry != null) {
+						CapabilityAssertion ass = (CapabilityAssertion) entry;
+						if (ass.eContainer() == ((ResourceInstance)e.eContainer()).getResourceType()) {
+							filtered.add(ass);
+						}
+					}
+				});				
+				
+				return filtered;
+			}
+		});
+		
 	}
 
 	/**
-	 * This adds a property descriptor for the Variants feature.
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addVariantsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_CapabilityApplication_variants_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CapabilityApplication_variants_feature", "_UI_CapabilityApplication_type"),
-				 ResourceinstancePackage.Literals.CAPABILITY_APPLICATION__VARIANTS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(ResourceinstancePackage.Literals.CAPABILITY_APPLICATION__CAPABILITY_VARIANTS);
+		}
+		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
 	}
 
 	/**
@@ -142,6 +187,12 @@ public class CapabilityApplicationItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(CapabilityApplication.class)) {
+			case ResourceinstancePackage.CAPABILITY_APPLICATION__CAPABILITY_VARIANTS:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 
@@ -155,6 +206,11 @@ public class CapabilityApplicationItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ResourceinstancePackage.Literals.CAPABILITY_APPLICATION__CAPABILITY_VARIANTS,
+				 ResourceinstanceFactory.eINSTANCE.createCapabilityVariant()));
 	}
 
 	/**

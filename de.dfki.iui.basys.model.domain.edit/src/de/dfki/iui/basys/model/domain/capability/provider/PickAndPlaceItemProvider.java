@@ -45,25 +45,48 @@ public class PickAndPlaceItemProvider extends LogisticsCapabilityItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addDistancePropertyDescriptor(object);
+			addReachPropertyDescriptor(object);
+			addPositionRepeatabilityPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Distance feature.
+	 * This adds a property descriptor for the Reach feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addDistancePropertyDescriptor(Object object) {
+	protected void addReachPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_PickAndPlace_distance_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PickAndPlace_distance_feature", "_UI_PickAndPlace_type"),
-				 CapabilityPackage.Literals.PICK_AND_PLACE__DISTANCE,
+				 getString("_UI_PickAndPlace_reach_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PickAndPlace_reach_feature", "_UI_PickAndPlace_type"),
+				 CapabilityPackage.Literals.PICK_AND_PLACE__REACH,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Position Repeatability feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPositionRepeatabilityPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_PickAndPlace_positionRepeatability_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PickAndPlace_positionRepeatability_feature", "_UI_PickAndPlace_type"),
+				 CapabilityPackage.Literals.PICK_AND_PLACE__POSITION_REPEATABILITY,
 				 true,
 				 false,
 				 false,
@@ -110,7 +133,8 @@ public class PickAndPlaceItemProvider extends LogisticsCapabilityItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(PickAndPlace.class)) {
-			case CapabilityPackage.PICK_AND_PLACE__DISTANCE:
+			case CapabilityPackage.PICK_AND_PLACE__REACH:
+			case CapabilityPackage.PICK_AND_PLACE__POSITION_REPEATABILITY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

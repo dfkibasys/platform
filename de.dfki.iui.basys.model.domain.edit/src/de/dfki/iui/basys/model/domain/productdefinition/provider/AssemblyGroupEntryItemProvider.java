@@ -117,12 +117,15 @@ public class AssemblyGroupEntryItemProvider extends ItemProviderAdapter implemen
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
 		AssemblyGroupEntry assemblyGroupEntry = (AssemblyGroupEntry)object;
-		return getString("_UI_AssemblyGroupEntry_type") + " " + assemblyGroupEntry.getCount();
+		if (assemblyGroupEntry.getAssemblyGroup() != null)
+			return assemblyGroupEntry.getCount() + "x " + assemblyGroupEntry.getAssemblyGroup().getName();
+		//return getString("_UI_AssemblyGroupEntry_type") + " " + assemblyGroupEntry.getCount() + "x ???";
+		return assemblyGroupEntry.getCount() + "x ???";
 	}
 	
 

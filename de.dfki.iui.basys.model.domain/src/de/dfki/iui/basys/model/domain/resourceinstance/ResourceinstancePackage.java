@@ -381,13 +381,13 @@ public interface ResourceinstancePackage extends EPackage {
 	int CAPABILITY_APPLICATION__CAPABILITY_ASSERTION = 0;
 
 	/**
-	 * The feature id for the '<em><b>Variants</b></em>' reference list.
+	 * The feature id for the '<em><b>Capability Variants</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_APPLICATION__VARIANTS = 1;
+	int CAPABILITY_APPLICATION__CAPABILITY_VARIANTS = 1;
 
 	/**
 	 * The number of structural features of the '<em>Capability Application</em>' class.
@@ -541,15 +541,15 @@ public interface ResourceinstancePackage extends EPackage {
 	EReference getCapabilityApplication_CapabilityAssertion();
 
 	/**
-	 * Returns the meta object for the reference list '{@link de.dfki.iui.basys.model.domain.resourceinstance.CapabilityApplication#getVariants <em>Variants</em>}'.
+	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.domain.resourceinstance.CapabilityApplication#getCapabilityVariants <em>Capability Variants</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Variants</em>'.
-	 * @see de.dfki.iui.basys.model.domain.resourceinstance.CapabilityApplication#getVariants()
+	 * @return the meta object for the containment reference list '<em>Capability Variants</em>'.
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.CapabilityApplication#getCapabilityVariants()
 	 * @see #getCapabilityApplication()
 	 * @generated
 	 */
-	EReference getCapabilityApplication_Variants();
+	EReference getCapabilityApplication_CapabilityVariants();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant <em>Capability Variant</em>}'.
@@ -727,12 +727,12 @@ public interface ResourceinstancePackage extends EPackage {
 		EReference CAPABILITY_APPLICATION__CAPABILITY_ASSERTION = eINSTANCE.getCapabilityApplication_CapabilityAssertion();
 
 		/**
-		 * The meta object literal for the '<em><b>Variants</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Capability Variants</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CAPABILITY_APPLICATION__VARIANTS = eINSTANCE.getCapabilityApplication_Variants();
+		EReference CAPABILITY_APPLICATION__CAPABILITY_VARIANTS = eINSTANCE.getCapabilityApplication_CapabilityVariants();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.resourceinstance.impl.CapabilityVariantImpl <em>Capability Variant</em>}' class.

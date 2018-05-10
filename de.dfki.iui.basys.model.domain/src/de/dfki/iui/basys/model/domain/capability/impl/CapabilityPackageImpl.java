@@ -12,11 +12,13 @@ import de.dfki.iui.basys.model.domain.capability.CapabilityFactory;
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
 import de.dfki.iui.basys.model.domain.capability.CapabilityRequest;
 import de.dfki.iui.basys.model.domain.capability.Fügen;
+import de.dfki.iui.basys.model.domain.capability.GeneralCapability;
 import de.dfki.iui.basys.model.domain.capability.HandlingCapability;
 import de.dfki.iui.basys.model.domain.capability.Inspect;
 import de.dfki.iui.basys.model.domain.capability.LoadCarrierUnitEnum;
 import de.dfki.iui.basys.model.domain.capability.LogisticsCapability;
 import de.dfki.iui.basys.model.domain.capability.ManufacturingCapability;
+import de.dfki.iui.basys.model.domain.capability.MoveToLocation;
 import de.dfki.iui.basys.model.domain.capability.PickAndPlace;
 import de.dfki.iui.basys.model.domain.capability.Pressing;
 import de.dfki.iui.basys.model.domain.capability.ProductionCapability;
@@ -29,6 +31,7 @@ import de.dfki.iui.basys.model.domain.capability.Trennen;
 import de.dfki.iui.basys.model.domain.capability.Umformen;
 import de.dfki.iui.basys.model.domain.capability.Urformen;
 
+import de.dfki.iui.basys.model.domain.capability.WorkerAssistenceCapability;
 import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
 
 import de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl;
@@ -149,6 +152,27 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * @generated
 	 */
 	private EClass inspectEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass workerAssistenceCapabilityEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass generalCapabilityEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass moveToLocationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -526,6 +550,33 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getWorkerAssistenceCapability() {
+		return workerAssistenceCapabilityEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getGeneralCapability() {
+		return generalCapabilityEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getMoveToLocation() {
+		return moveToLocationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getLoadCarrierUnitEnum() {
 		return loadCarrierUnitEnumEEnum;
 	}
@@ -643,7 +694,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLogisticsCapability_Weight() {
+	public EAttribute getLogisticsCapability_Payload() {
 		return (EAttribute)logisticsCapabilityEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -661,8 +712,17 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPickAndPlace_Distance() {
+	public EAttribute getPickAndPlace_Reach() {
 		return (EAttribute)pickAndPlaceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPickAndPlace_PositionRepeatability() {
+		return (EAttribute)pickAndPlaceEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -764,10 +824,11 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		logisticsCapabilityEClass = createEClass(LOGISTICS_CAPABILITY);
 		createEAttribute(logisticsCapabilityEClass, LOGISTICS_CAPABILITY__LOAD_CARRIER_UNIT);
 		createEAttribute(logisticsCapabilityEClass, LOGISTICS_CAPABILITY__CAPACITY);
-		createEAttribute(logisticsCapabilityEClass, LOGISTICS_CAPABILITY__WEIGHT);
+		createEAttribute(logisticsCapabilityEClass, LOGISTICS_CAPABILITY__PAYLOAD);
 
 		pickAndPlaceEClass = createEClass(PICK_AND_PLACE);
-		createEAttribute(pickAndPlaceEClass, PICK_AND_PLACE__DISTANCE);
+		createEAttribute(pickAndPlaceEClass, PICK_AND_PLACE__REACH);
+		createEAttribute(pickAndPlaceEClass, PICK_AND_PLACE__POSITION_REPEATABILITY);
 
 		transportEClass = createEClass(TRANSPORT);
 		createEAttribute(transportEClass, TRANSPORT__DISTANCE);
@@ -777,6 +838,12 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		qoSCapabilityEClass = createEClass(QO_SCAPABILITY);
 
 		inspectEClass = createEClass(INSPECT);
+
+		workerAssistenceCapabilityEClass = createEClass(WORKER_ASSISTENCE_CAPABILITY);
+
+		generalCapabilityEClass = createEClass(GENERAL_CAPABILITY);
+
+		moveToLocationEClass = createEClass(MOVE_TO_LOCATION);
 
 		// Create enums
 		loadCarrierUnitEnumEEnum = createEEnum(LOAD_CARRIER_UNIT_ENUM);
@@ -834,6 +901,9 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		storeEClass.getESuperTypes().add(this.getLogisticsCapability());
 		qoSCapabilityEClass.getESuperTypes().add(this.getCapability());
 		inspectEClass.getESuperTypes().add(this.getQoSCapability());
+		workerAssistenceCapabilityEClass.getESuperTypes().add(this.getCapability());
+		generalCapabilityEClass.getESuperTypes().add(this.getCapability());
+		moveToLocationEClass.getESuperTypes().add(this.getGeneralCapability());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(capabilityAssertionEClass, CapabilityAssertion.class, "CapabilityAssertion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -880,10 +950,11 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		initEClass(logisticsCapabilityEClass, LogisticsCapability.class, "LogisticsCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLogisticsCapability_LoadCarrierUnit(), this.getLoadCarrierUnitEnum(), "loadCarrierUnit", "UNDEFINED", 0, 1, LogisticsCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLogisticsCapability_Capacity(), ecorePackage.getEInt(), "capacity", null, 0, 1, LogisticsCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getLogisticsCapability_Weight(), ecorePackage.getEDouble(), "weight", null, 0, 1, LogisticsCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLogisticsCapability_Payload(), ecorePackage.getEDouble(), "payload", null, 0, 1, LogisticsCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(pickAndPlaceEClass, PickAndPlace.class, "PickAndPlace", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPickAndPlace_Distance(), ecorePackage.getEDouble(), "distance", "0.0", 0, 1, PickAndPlace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPickAndPlace_Reach(), ecorePackage.getEDouble(), "reach", "0.0", 0, 1, PickAndPlace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPickAndPlace_PositionRepeatability(), ecorePackage.getEDouble(), "positionRepeatability", null, 0, 1, PickAndPlace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(transportEClass, Transport.class, "Transport", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTransport_Distance(), ecorePackage.getEDouble(), "distance", null, 0, 1, Transport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -893,6 +964,12 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		initEClass(qoSCapabilityEClass, QoSCapability.class, "QoSCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(inspectEClass, Inspect.class, "Inspect", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(workerAssistenceCapabilityEClass, WorkerAssistenceCapability.class, "WorkerAssistenceCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(generalCapabilityEClass, GeneralCapability.class, "GeneralCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(moveToLocationEClass, MoveToLocation.class, "MoveToLocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize enums and add enum literals
 		initEEnum(loadCarrierUnitEnumEEnum, LoadCarrierUnitEnum.class, "LoadCarrierUnitEnum");

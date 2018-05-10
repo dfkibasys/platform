@@ -269,6 +269,21 @@ public class CapabilityVariantItemProvider
 			(createChildParameter
 				(ResourceinstancePackage.Literals.CAPABILITY_VARIANT__CAPABILITY,
 				 CapabilityFactory.eINSTANCE.createInspect()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ResourceinstancePackage.Literals.CAPABILITY_VARIANT__CAPABILITY,
+				 CapabilityFactory.eINSTANCE.createWorkerAssistenceCapability()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ResourceinstancePackage.Literals.CAPABILITY_VARIANT__CAPABILITY,
+				 CapabilityFactory.eINSTANCE.createGeneralCapability()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ResourceinstancePackage.Literals.CAPABILITY_VARIANT__CAPABILITY,
+				 CapabilityFactory.eINSTANCE.createMoveToLocation()));
 	}
 
 	/**

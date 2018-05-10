@@ -12,13 +12,15 @@ import de.dfki.iui.basys.model.util.BasysEObjectImpl;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,7 +31,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * </p>
  * <ul>
  *   <li>{@link de.dfki.iui.basys.model.domain.resourceinstance.impl.CapabilityApplicationImpl#getCapabilityAssertion <em>Capability Assertion</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.domain.resourceinstance.impl.CapabilityApplicationImpl#getVariants <em>Variants</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.resourceinstance.impl.CapabilityApplicationImpl#getCapabilityVariants <em>Capability Variants</em>}</li>
  * </ul>
  *
  * @generated
@@ -45,14 +47,14 @@ public class CapabilityApplicationImpl extends BasysEObjectImpl implements Capab
 	 */
 	protected CapabilityAssertion capabilityAssertion;
 	/**
-	 * The cached value of the '{@link #getVariants() <em>Variants</em>}' reference list.
+	 * The cached value of the '{@link #getCapabilityVariants() <em>Capability Variants</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getVariants()
+	 * @see #getCapabilityVariants()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<CapabilityVariant> variants;
+	protected EList<CapabilityVariant> capabilityVariants;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -115,11 +117,25 @@ public class CapabilityApplicationImpl extends BasysEObjectImpl implements Capab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<CapabilityVariant> getVariants() {
-		if (variants == null) {
-			variants = new EObjectResolvingEList<CapabilityVariant>(CapabilityVariant.class, this, ResourceinstancePackage.CAPABILITY_APPLICATION__VARIANTS);
+	public EList<CapabilityVariant> getCapabilityVariants() {
+		if (capabilityVariants == null) {
+			capabilityVariants = new EObjectContainmentEList<CapabilityVariant>(CapabilityVariant.class, this, ResourceinstancePackage.CAPABILITY_APPLICATION__CAPABILITY_VARIANTS);
 		}
-		return variants;
+		return capabilityVariants;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ResourceinstancePackage.CAPABILITY_APPLICATION__CAPABILITY_VARIANTS:
+				return ((InternalEList<?>)getCapabilityVariants()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -133,8 +149,8 @@ public class CapabilityApplicationImpl extends BasysEObjectImpl implements Capab
 			case ResourceinstancePackage.CAPABILITY_APPLICATION__CAPABILITY_ASSERTION:
 				if (resolve) return getCapabilityAssertion();
 				return basicGetCapabilityAssertion();
-			case ResourceinstancePackage.CAPABILITY_APPLICATION__VARIANTS:
-				return getVariants();
+			case ResourceinstancePackage.CAPABILITY_APPLICATION__CAPABILITY_VARIANTS:
+				return getCapabilityVariants();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -151,9 +167,9 @@ public class CapabilityApplicationImpl extends BasysEObjectImpl implements Capab
 			case ResourceinstancePackage.CAPABILITY_APPLICATION__CAPABILITY_ASSERTION:
 				setCapabilityAssertion((CapabilityAssertion)newValue);
 				return;
-			case ResourceinstancePackage.CAPABILITY_APPLICATION__VARIANTS:
-				getVariants().clear();
-				getVariants().addAll((Collection<? extends CapabilityVariant>)newValue);
+			case ResourceinstancePackage.CAPABILITY_APPLICATION__CAPABILITY_VARIANTS:
+				getCapabilityVariants().clear();
+				getCapabilityVariants().addAll((Collection<? extends CapabilityVariant>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -170,8 +186,8 @@ public class CapabilityApplicationImpl extends BasysEObjectImpl implements Capab
 			case ResourceinstancePackage.CAPABILITY_APPLICATION__CAPABILITY_ASSERTION:
 				setCapabilityAssertion((CapabilityAssertion)null);
 				return;
-			case ResourceinstancePackage.CAPABILITY_APPLICATION__VARIANTS:
-				getVariants().clear();
+			case ResourceinstancePackage.CAPABILITY_APPLICATION__CAPABILITY_VARIANTS:
+				getCapabilityVariants().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -187,8 +203,8 @@ public class CapabilityApplicationImpl extends BasysEObjectImpl implements Capab
 		switch (featureID) {
 			case ResourceinstancePackage.CAPABILITY_APPLICATION__CAPABILITY_ASSERTION:
 				return capabilityAssertion != null;
-			case ResourceinstancePackage.CAPABILITY_APPLICATION__VARIANTS:
-				return variants != null && !variants.isEmpty();
+			case ResourceinstancePackage.CAPABILITY_APPLICATION__CAPABILITY_VARIANTS:
+				return capabilityVariants != null && !capabilityVariants.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

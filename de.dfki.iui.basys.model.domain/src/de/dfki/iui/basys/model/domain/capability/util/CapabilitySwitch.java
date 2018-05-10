@@ -281,6 +281,34 @@ public class CapabilitySwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case CapabilityPackage.WORKER_ASSISTENCE_CAPABILITY: {
+				WorkerAssistenceCapability workerAssistenceCapability = (WorkerAssistenceCapability)theEObject;
+				T result = caseWorkerAssistenceCapability(workerAssistenceCapability);
+				if (result == null) result = caseCapability(workerAssistenceCapability);
+				if (result == null) result = caseEntity(workerAssistenceCapability);
+				if (result == null) result = caseBObject(workerAssistenceCapability);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CapabilityPackage.GENERAL_CAPABILITY: {
+				GeneralCapability generalCapability = (GeneralCapability)theEObject;
+				T result = caseGeneralCapability(generalCapability);
+				if (result == null) result = caseCapability(generalCapability);
+				if (result == null) result = caseEntity(generalCapability);
+				if (result == null) result = caseBObject(generalCapability);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CapabilityPackage.MOVE_TO_LOCATION: {
+				MoveToLocation moveToLocation = (MoveToLocation)theEObject;
+				T result = caseMoveToLocation(moveToLocation);
+				if (result == null) result = caseGeneralCapability(moveToLocation);
+				if (result == null) result = caseCapability(moveToLocation);
+				if (result == null) result = caseEntity(moveToLocation);
+				if (result == null) result = caseBObject(moveToLocation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -417,6 +445,51 @@ public class CapabilitySwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseInspect(Inspect object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Worker Assistence Capability</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Worker Assistence Capability</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseWorkerAssistenceCapability(WorkerAssistenceCapability object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>General Capability</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>General Capability</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGeneralCapability(GeneralCapability object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Move To Location</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Move To Location</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMoveToLocation(MoveToLocation object) {
 		return null;
 	}
 

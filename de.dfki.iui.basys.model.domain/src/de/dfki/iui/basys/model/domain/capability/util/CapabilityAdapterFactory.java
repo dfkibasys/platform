@@ -155,6 +155,18 @@ public class CapabilityAdapterFactory extends AdapterFactoryImpl {
 				return createInspectAdapter();
 			}
 			@Override
+			public Adapter caseWorkerAssistenceCapability(WorkerAssistenceCapability object) {
+				return createWorkerAssistenceCapabilityAdapter();
+			}
+			@Override
+			public Adapter caseGeneralCapability(GeneralCapability object) {
+				return createGeneralCapabilityAdapter();
+			}
+			@Override
+			public Adapter caseMoveToLocation(MoveToLocation object) {
+				return createMoveToLocationAdapter();
+			}
+			@Override
 			public Adapter caseBObject(BObject object) {
 				return createBObjectAdapter();
 			}
@@ -305,6 +317,48 @@ public class CapabilityAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createInspectAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.capability.WorkerAssistenceCapability <em>Worker Assistence Capability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.domain.capability.WorkerAssistenceCapability
+	 * @generated
+	 */
+	public Adapter createWorkerAssistenceCapabilityAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.capability.GeneralCapability <em>General Capability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.domain.capability.GeneralCapability
+	 * @generated
+	 */
+	public Adapter createGeneralCapabilityAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.capability.MoveToLocation <em>Move To Location</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.domain.capability.MoveToLocation
+	 * @generated
+	 */
+	public Adapter createMoveToLocationAdapter() {
 		return null;
 	}
 

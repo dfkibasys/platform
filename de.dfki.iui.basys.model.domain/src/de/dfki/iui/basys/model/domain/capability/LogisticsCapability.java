@@ -14,7 +14,7 @@ package de.dfki.iui.basys.model.domain.capability;
  * <ul>
  *   <li>{@link de.dfki.iui.basys.model.domain.capability.LogisticsCapability#getLoadCarrierUnit <em>Load Carrier Unit</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.capability.LogisticsCapability#getCapacity <em>Capacity</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.domain.capability.LogisticsCapability#getWeight <em>Weight</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.capability.LogisticsCapability#getPayload <em>Payload</em>}</li>
  * </ul>
  *
  * @see de.dfki.iui.basys.model.domain.capability.CapabilityPackage#getLogisticsCapability()
@@ -79,29 +79,29 @@ public interface LogisticsCapability extends Capability {
 	void setCapacity(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Weight</b></em>' attribute.
+	 * Returns the value of the '<em><b>Payload</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Weight</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Payload</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Weight</em>' attribute.
-	 * @see #setWeight(double)
-	 * @see de.dfki.iui.basys.model.domain.capability.CapabilityPackage#getLogisticsCapability_Weight()
+	 * @return the value of the '<em>Payload</em>' attribute.
+	 * @see #setPayload(double)
+	 * @see de.dfki.iui.basys.model.domain.capability.CapabilityPackage#getLogisticsCapability_Payload()
 	 * @model
 	 * @generated
 	 */
-	double getWeight();
+	double getPayload();
 
 	/**
-	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.capability.LogisticsCapability#getWeight <em>Weight</em>}' attribute.
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.capability.LogisticsCapability#getPayload <em>Payload</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Weight</em>' attribute.
-	 * @see #getWeight()
+	 * @param value the new value of the '<em>Payload</em>' attribute.
+	 * @see #getPayload()
 	 * @generated
 	 */
-	void setWeight(double value);
+	void setPayload(double value);
 
 } // LogisticsCapability

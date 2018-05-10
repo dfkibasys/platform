@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link de.dfki.iui.basys.model.domain.capability.impl.LogisticsCapabilityImpl#getLoadCarrierUnit <em>Load Carrier Unit</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.capability.impl.LogisticsCapabilityImpl#getCapacity <em>Capacity</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.domain.capability.impl.LogisticsCapabilityImpl#getWeight <em>Weight</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.capability.impl.LogisticsCapabilityImpl#getPayload <em>Payload</em>}</li>
  * </ul>
  *
  * @generated
@@ -69,24 +69,24 @@ public class LogisticsCapabilityImpl extends CapabilityImpl implements Logistics
 	protected int capacity = CAPACITY_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getWeight() <em>Weight</em>}' attribute.
+	 * The default value of the '{@link #getPayload() <em>Payload</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getWeight()
+	 * @see #getPayload()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double WEIGHT_EDEFAULT = 0.0;
+	protected static final double PAYLOAD_EDEFAULT = 0.0;
 
 	/**
-	 * The cached value of the '{@link #getWeight() <em>Weight</em>}' attribute.
+	 * The cached value of the '{@link #getPayload() <em>Payload</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getWeight()
+	 * @see #getPayload()
 	 * @generated
 	 * @ordered
 	 */
-	protected double weight = WEIGHT_EDEFAULT;
+	protected double payload = PAYLOAD_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -154,8 +154,8 @@ public class LogisticsCapabilityImpl extends CapabilityImpl implements Logistics
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public double getWeight() {
-		return weight;
+	public double getPayload() {
+		return payload;
 	}
 
 	/**
@@ -163,11 +163,11 @@ public class LogisticsCapabilityImpl extends CapabilityImpl implements Logistics
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setWeight(double newWeight) {
-		double oldWeight = weight;
-		weight = newWeight;
+	public void setPayload(double newPayload) {
+		double oldPayload = payload;
+		payload = newPayload;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CapabilityPackage.LOGISTICS_CAPABILITY__WEIGHT, oldWeight, weight));
+			eNotify(new ENotificationImpl(this, Notification.SET, CapabilityPackage.LOGISTICS_CAPABILITY__PAYLOAD, oldPayload, payload));
 	}
 
 	/**
@@ -182,8 +182,8 @@ public class LogisticsCapabilityImpl extends CapabilityImpl implements Logistics
 				return getLoadCarrierUnit();
 			case CapabilityPackage.LOGISTICS_CAPABILITY__CAPACITY:
 				return getCapacity();
-			case CapabilityPackage.LOGISTICS_CAPABILITY__WEIGHT:
-				return getWeight();
+			case CapabilityPackage.LOGISTICS_CAPABILITY__PAYLOAD:
+				return getPayload();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -202,8 +202,8 @@ public class LogisticsCapabilityImpl extends CapabilityImpl implements Logistics
 			case CapabilityPackage.LOGISTICS_CAPABILITY__CAPACITY:
 				setCapacity((Integer)newValue);
 				return;
-			case CapabilityPackage.LOGISTICS_CAPABILITY__WEIGHT:
-				setWeight((Double)newValue);
+			case CapabilityPackage.LOGISTICS_CAPABILITY__PAYLOAD:
+				setPayload((Double)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -223,8 +223,8 @@ public class LogisticsCapabilityImpl extends CapabilityImpl implements Logistics
 			case CapabilityPackage.LOGISTICS_CAPABILITY__CAPACITY:
 				setCapacity(CAPACITY_EDEFAULT);
 				return;
-			case CapabilityPackage.LOGISTICS_CAPABILITY__WEIGHT:
-				setWeight(WEIGHT_EDEFAULT);
+			case CapabilityPackage.LOGISTICS_CAPABILITY__PAYLOAD:
+				setPayload(PAYLOAD_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -242,8 +242,8 @@ public class LogisticsCapabilityImpl extends CapabilityImpl implements Logistics
 				return loadCarrierUnit != LOAD_CARRIER_UNIT_EDEFAULT;
 			case CapabilityPackage.LOGISTICS_CAPABILITY__CAPACITY:
 				return capacity != CAPACITY_EDEFAULT;
-			case CapabilityPackage.LOGISTICS_CAPABILITY__WEIGHT:
-				return weight != WEIGHT_EDEFAULT;
+			case CapabilityPackage.LOGISTICS_CAPABILITY__PAYLOAD:
+				return payload != PAYLOAD_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -262,8 +262,8 @@ public class LogisticsCapabilityImpl extends CapabilityImpl implements Logistics
 		result.append(loadCarrierUnit);
 		result.append(", capacity: ");
 		result.append(capacity);
-		result.append(", weight: ");
-		result.append(weight);
+		result.append(", payload: ");
+		result.append(payload);
 		result.append(')');
 		return result.toString();
 	}

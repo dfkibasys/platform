@@ -47,11 +47,13 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="loadCarrierUnit" eType="#//LoadCarrierUnitEnum"
         defaultValueLiteral="UNDEFINED"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="capacity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="weight" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="payload" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PickAndPlace" eSuperTypes="#//LogisticsCapability">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="distance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reach" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
         defaultValueLiteral="0.0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="positionRepeatability"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Transport" eSuperTypes="#//LogisticsCapability">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="distance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
@@ -65,4 +67,6 @@
     <eLiterals name="R_KLT_3215" value="2" literal="R_KLT_3215"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WorkerAssistenceCapability" eSuperTypes="#//Capability"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GeneralCapability" eSuperTypes="#//Capability"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MoveToLocation" eSuperTypes="#//GeneralCapability"/>
 </ecore:EPackage>

@@ -718,7 +718,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getLoadCarrierUnitEnum()
 	 * @generated
 	 */
-	int LOAD_CARRIER_UNIT_ENUM = 21;
+	int LOAD_CARRIER_UNIT_ENUM = 24;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.UrformenImpl <em>Urformen</em>}' class.
@@ -1178,13 +1178,13 @@ public interface CapabilityPackage extends EPackage {
 	int LOGISTICS_CAPABILITY__CAPACITY = CAPABILITY_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Weight</b></em>' attribute.
+	 * The feature id for the '<em><b>Payload</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LOGISTICS_CAPABILITY__WEIGHT = CAPABILITY_FEATURE_COUNT + 2;
+	int LOGISTICS_CAPABILITY__PAYLOAD = CAPABILITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Logistics Capability</em>' class.
@@ -1269,22 +1269,31 @@ public interface CapabilityPackage extends EPackage {
 	int PICK_AND_PLACE__CAPACITY = LOGISTICS_CAPABILITY__CAPACITY;
 
 	/**
-	 * The feature id for the '<em><b>Weight</b></em>' attribute.
+	 * The feature id for the '<em><b>Payload</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PICK_AND_PLACE__WEIGHT = LOGISTICS_CAPABILITY__WEIGHT;
+	int PICK_AND_PLACE__PAYLOAD = LOGISTICS_CAPABILITY__PAYLOAD;
 
 	/**
-	 * The feature id for the '<em><b>Distance</b></em>' attribute.
+	 * The feature id for the '<em><b>Reach</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PICK_AND_PLACE__DISTANCE = LOGISTICS_CAPABILITY_FEATURE_COUNT + 0;
+	int PICK_AND_PLACE__REACH = LOGISTICS_CAPABILITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Position Repeatability</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PICK_AND_PLACE__POSITION_REPEATABILITY = LOGISTICS_CAPABILITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Pick And Place</em>' class.
@@ -1293,7 +1302,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PICK_AND_PLACE_FEATURE_COUNT = LOGISTICS_CAPABILITY_FEATURE_COUNT + 1;
+	int PICK_AND_PLACE_FEATURE_COUNT = LOGISTICS_CAPABILITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Pick And Place</em>' class.
@@ -1369,13 +1378,13 @@ public interface CapabilityPackage extends EPackage {
 	int TRANSPORT__CAPACITY = LOGISTICS_CAPABILITY__CAPACITY;
 
 	/**
-	 * The feature id for the '<em><b>Weight</b></em>' attribute.
+	 * The feature id for the '<em><b>Payload</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSPORT__WEIGHT = LOGISTICS_CAPABILITY__WEIGHT;
+	int TRANSPORT__PAYLOAD = LOGISTICS_CAPABILITY__PAYLOAD;
 
 	/**
 	 * The feature id for the '<em><b>Distance</b></em>' attribute.
@@ -1469,13 +1478,13 @@ public interface CapabilityPackage extends EPackage {
 	int STORE__CAPACITY = LOGISTICS_CAPABILITY__CAPACITY;
 
 	/**
-	 * The feature id for the '<em><b>Weight</b></em>' attribute.
+	 * The feature id for the '<em><b>Payload</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STORE__WEIGHT = LOGISTICS_CAPABILITY__WEIGHT;
+	int STORE__PAYLOAD = LOGISTICS_CAPABILITY__PAYLOAD;
 
 	/**
 	 * The number of structural features of the '<em>Store</em>' class.
@@ -1602,6 +1611,198 @@ public interface CapabilityPackage extends EPackage {
 	 * @ordered
 	 */
 	int INSPECT_OPERATION_COUNT = QO_SCAPABILITY_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.WorkerAssistenceCapabilityImpl <em>Worker Assistence Capability</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.WorkerAssistenceCapabilityImpl
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getWorkerAssistenceCapability()
+	 * @generated
+	 */
+	int WORKER_ASSISTENCE_CAPABILITY = 21;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKER_ASSISTENCE_CAPABILITY__BINDING = CAPABILITY__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKER_ASSISTENCE_CAPABILITY__ID = CAPABILITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKER_ASSISTENCE_CAPABILITY__NAME = CAPABILITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKER_ASSISTENCE_CAPABILITY__METADATA = CAPABILITY__METADATA;
+
+	/**
+	 * The number of structural features of the '<em>Worker Assistence Capability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKER_ASSISTENCE_CAPABILITY_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Worker Assistence Capability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKER_ASSISTENCE_CAPABILITY_OPERATION_COUNT = CAPABILITY_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.GeneralCapabilityImpl <em>General Capability</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.GeneralCapabilityImpl
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getGeneralCapability()
+	 * @generated
+	 */
+	int GENERAL_CAPABILITY = 22;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERAL_CAPABILITY__BINDING = CAPABILITY__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERAL_CAPABILITY__ID = CAPABILITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERAL_CAPABILITY__NAME = CAPABILITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERAL_CAPABILITY__METADATA = CAPABILITY__METADATA;
+
+	/**
+	 * The number of structural features of the '<em>General Capability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERAL_CAPABILITY_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>General Capability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERAL_CAPABILITY_OPERATION_COUNT = CAPABILITY_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.MoveToLocationImpl <em>Move To Location</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.MoveToLocationImpl
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getMoveToLocation()
+	 * @generated
+	 */
+	int MOVE_TO_LOCATION = 23;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVE_TO_LOCATION__BINDING = GENERAL_CAPABILITY__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVE_TO_LOCATION__ID = GENERAL_CAPABILITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVE_TO_LOCATION__NAME = GENERAL_CAPABILITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVE_TO_LOCATION__METADATA = GENERAL_CAPABILITY__METADATA;
+
+	/**
+	 * The number of structural features of the '<em>Move To Location</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVE_TO_LOCATION_FEATURE_COUNT = GENERAL_CAPABILITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Move To Location</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVE_TO_LOCATION_OPERATION_COUNT = GENERAL_CAPABILITY_OPERATION_COUNT + 0;
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.CapabilityAssertion <em>Assertion</em>}'.
@@ -1804,6 +2005,36 @@ public interface CapabilityPackage extends EPackage {
 	EClass getInspect();
 
 	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.WorkerAssistenceCapability <em>Worker Assistence Capability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Worker Assistence Capability</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.WorkerAssistenceCapability
+	 * @generated
+	 */
+	EClass getWorkerAssistenceCapability();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.GeneralCapability <em>General Capability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>General Capability</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.GeneralCapability
+	 * @generated
+	 */
+	EClass getGeneralCapability();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.MoveToLocation <em>Move To Location</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Move To Location</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.MoveToLocation
+	 * @generated
+	 */
+	EClass getMoveToLocation();
+
+	/**
 	 * Returns the meta object for enum '{@link de.dfki.iui.basys.model.domain.capability.LoadCarrierUnitEnum <em>Load Carrier Unit Enum</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1937,15 +2168,15 @@ public interface CapabilityPackage extends EPackage {
 	EAttribute getLogisticsCapability_Capacity();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.capability.LogisticsCapability#getWeight <em>Weight</em>}'.
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.capability.LogisticsCapability#getPayload <em>Payload</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Weight</em>'.
-	 * @see de.dfki.iui.basys.model.domain.capability.LogisticsCapability#getWeight()
+	 * @return the meta object for the attribute '<em>Payload</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.LogisticsCapability#getPayload()
 	 * @see #getLogisticsCapability()
 	 * @generated
 	 */
-	EAttribute getLogisticsCapability_Weight();
+	EAttribute getLogisticsCapability_Payload();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.PickAndPlace <em>Pick And Place</em>}'.
@@ -1958,15 +2189,26 @@ public interface CapabilityPackage extends EPackage {
 	EClass getPickAndPlace();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.capability.PickAndPlace#getDistance <em>Distance</em>}'.
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.capability.PickAndPlace#getReach <em>Reach</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Distance</em>'.
-	 * @see de.dfki.iui.basys.model.domain.capability.PickAndPlace#getDistance()
+	 * @return the meta object for the attribute '<em>Reach</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.PickAndPlace#getReach()
 	 * @see #getPickAndPlace()
 	 * @generated
 	 */
-	EAttribute getPickAndPlace_Distance();
+	EAttribute getPickAndPlace_Reach();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.capability.PickAndPlace#getPositionRepeatability <em>Position Repeatability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Position Repeatability</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.PickAndPlace#getPositionRepeatability()
+	 * @see #getPickAndPlace()
+	 * @generated
+	 */
+	EAttribute getPickAndPlace_PositionRepeatability();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.Transport <em>Transport</em>}'.
@@ -2193,6 +2435,36 @@ public interface CapabilityPackage extends EPackage {
 		EClass INSPECT = eINSTANCE.getInspect();
 
 		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.WorkerAssistenceCapabilityImpl <em>Worker Assistence Capability</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.WorkerAssistenceCapabilityImpl
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getWorkerAssistenceCapability()
+		 * @generated
+		 */
+		EClass WORKER_ASSISTENCE_CAPABILITY = eINSTANCE.getWorkerAssistenceCapability();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.GeneralCapabilityImpl <em>General Capability</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.GeneralCapabilityImpl
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getGeneralCapability()
+		 * @generated
+		 */
+		EClass GENERAL_CAPABILITY = eINSTANCE.getGeneralCapability();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.MoveToLocationImpl <em>Move To Location</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.MoveToLocationImpl
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getMoveToLocation()
+		 * @generated
+		 */
+		EClass MOVE_TO_LOCATION = eINSTANCE.getMoveToLocation();
+
+		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.LoadCarrierUnitEnum <em>Load Carrier Unit Enum</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2317,12 +2589,12 @@ public interface CapabilityPackage extends EPackage {
 		EAttribute LOGISTICS_CAPABILITY__CAPACITY = eINSTANCE.getLogisticsCapability_Capacity();
 
 		/**
-		 * The meta object literal for the '<em><b>Weight</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Payload</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute LOGISTICS_CAPABILITY__WEIGHT = eINSTANCE.getLogisticsCapability_Weight();
+		EAttribute LOGISTICS_CAPABILITY__PAYLOAD = eINSTANCE.getLogisticsCapability_Payload();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.PickAndPlaceImpl <em>Pick And Place</em>}' class.
@@ -2335,12 +2607,20 @@ public interface CapabilityPackage extends EPackage {
 		EClass PICK_AND_PLACE = eINSTANCE.getPickAndPlace();
 
 		/**
-		 * The meta object literal for the '<em><b>Distance</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Reach</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PICK_AND_PLACE__DISTANCE = eINSTANCE.getPickAndPlace_Distance();
+		EAttribute PICK_AND_PLACE__REACH = eINSTANCE.getPickAndPlace_Reach();
+
+		/**
+		 * The meta object literal for the '<em><b>Position Repeatability</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PICK_AND_PLACE__POSITION_REPEATABILITY = eINSTANCE.getPickAndPlace_PositionRepeatability();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.TransportImpl <em>Transport</em>}' class.

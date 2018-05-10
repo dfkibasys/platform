@@ -387,6 +387,21 @@ public class CapabilityRequestItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
+				 CapabilityFactory.eINSTANCE.createWorkerAssistenceCapability()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
+				 CapabilityFactory.eINSTANCE.createGeneralCapability()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
+				 CapabilityFactory.eINSTANCE.createMoveToLocation()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
 				 OrderFactory.eINSTANCE.createOrder()));
 
 		newChildDescriptors.add
@@ -963,6 +978,21 @@ public class CapabilityRequestItemProvider
 			(createChildParameter
 				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHAT,
 				 CapabilityFactory.eINSTANCE.createInspect()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHAT,
+				 CapabilityFactory.eINSTANCE.createWorkerAssistenceCapability()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHAT,
+				 CapabilityFactory.eINSTANCE.createGeneralCapability()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHAT,
+				 CapabilityFactory.eINSTANCE.createMoveToLocation()));
 	}
 
 	/**

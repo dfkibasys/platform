@@ -279,6 +279,75 @@ public class CapabilityItemProviderAdapterFactory extends CapabilityAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.WorkerAssistenceCapability} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected WorkerAssistenceCapabilityItemProvider workerAssistenceCapabilityItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.WorkerAssistenceCapability}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createWorkerAssistenceCapabilityAdapter() {
+		if (workerAssistenceCapabilityItemProvider == null) {
+			workerAssistenceCapabilityItemProvider = new WorkerAssistenceCapabilityItemProvider(this);
+		}
+
+		return workerAssistenceCapabilityItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.GeneralCapability} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected GeneralCapabilityItemProvider generalCapabilityItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.GeneralCapability}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createGeneralCapabilityAdapter() {
+		if (generalCapabilityItemProvider == null) {
+			generalCapabilityItemProvider = new GeneralCapabilityItemProvider(this);
+		}
+
+		return generalCapabilityItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.MoveToLocation} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MoveToLocationItemProvider moveToLocationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.MoveToLocation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMoveToLocationAdapter() {
+		if (moveToLocationItemProvider == null) {
+			moveToLocationItemProvider = new MoveToLocationItemProvider(this);
+		}
+
+		return moveToLocationItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.Urformen} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -674,6 +743,9 @@ public class CapabilityItemProviderAdapterFactory extends CapabilityAdapterFacto
 		if (storeItemProvider != null) storeItemProvider.dispose();
 		if (qoSCapabilityItemProvider != null) qoSCapabilityItemProvider.dispose();
 		if (inspectItemProvider != null) inspectItemProvider.dispose();
+		if (workerAssistenceCapabilityItemProvider != null) workerAssistenceCapabilityItemProvider.dispose();
+		if (generalCapabilityItemProvider != null) generalCapabilityItemProvider.dispose();
+		if (moveToLocationItemProvider != null) moveToLocationItemProvider.dispose();
 	}
 
 }
