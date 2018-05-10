@@ -1,107 +1,68 @@
 package de.dfki.iui.basys.runtime.component.device.tecs;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.apache.thrift.protocol.TBinaryProtocol;
+import org.apache.thrift.protocol.TProtocol;
+import org.apache.thrift.transport.TSocket;
+import org.apache.thrift.transport.TTransportException;
+
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.DeviceComponent;
 
-public class TecsDeviceComponent extends DeviceComponent {
-
+public abstract class TecsDeviceComponent extends DeviceComponent {
 
 	public TecsDeviceComponent(ComponentConfiguration config) {
 		super(config);
 	}
 
-	
-	// TODO: Code for communicating with the actual device, here via TECS. 
+	// TODO: Code for communicating with the actual device, here via TECS.
 	// Could also be done in some kind of "IntegrationProvider" implementation.
-	
-	// protected TSocket socket;
-	// TBinaryProtocol protocol;
-	// protected String host;
-	// protected int port;
+
+	protected TSocket socket;
+	protected TProtocol protocol;
+	protected String host;
+	protected int port;
 
 	@Override
 	public void connectToExternal() throws ComponentException {
-		//socket = new TSocket(host,port);
-		//protocol = new TBinaryProtocol(socket);
+		String patternString = "tecs.tcp:\\/\\/(?<host>.*):(?<port>\\d*)";
+
+		Pattern pattern = Pattern.compile(patternString);
+
+		Matcher matcher = pattern.matcher(componentConfig.getExternalConnectionString());
+		boolean matches = matcher.matches();
+		if (!matches) {
+			throw new ComponentException("Invalid external connection string! " + componentConfig.getExternalConnectionString() + " does not match the expected pattern " + patternString);
+		}
+
+		host = matcher.group("host");
+		port = Integer.parseInt(matcher.group("port"));
+
+		socket = new TSocket(host, port);
+		protocol = new TBinaryProtocol(socket);
+
+		try {
+			open();
+		} catch (TTransportException e) {
+			throw new ComponentException("Could not open the protocol!", e);
+		}
+	}
+
+	@Override
+	public void disconnectFromExternal() {
+		close();
+	}
+
+	protected void open() throws TTransportException {
+		protocol.getTransport().open();
+	}
+
+	// close communication to TECS
+	protected void close() {
+		protocol.getTransport().close();
 	}
 	
-	@Override
-	public void disconnectFromExternal() {	
-		// socket.close();		
-	}
-	
-
-	/*
-	 * default ActiveStatesHandler implementation -> trigger logic on device
-	 */
-	
-	@Override
-	public void onResetting() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void onStarting() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void onExecute() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void onCompleting() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void onHolding() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void onUnholding() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void onSuspending() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void onUnsuspending() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void onAborting() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void onClearing() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void onStopping() {
-		// TODO Auto-generated method stub
-
-	}
-	
-
-
 }

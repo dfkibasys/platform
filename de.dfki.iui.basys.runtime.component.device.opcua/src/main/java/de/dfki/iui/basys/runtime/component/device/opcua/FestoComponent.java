@@ -4,10 +4,12 @@ import org.eclipse.milo.opcua.sdk.client.api.subscriptions.UaMonitoredItem;
 import org.eclipse.milo.opcua.stack.core.types.builtin.DataValue;
 import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;
 
+import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.State;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.ComponentException;
+import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
 
 public class FestoComponent extends OpcUaDeviceComponent {
 
@@ -44,6 +46,8 @@ public class FestoComponent extends OpcUaDeviceComponent {
 		}
 	}
 
+
+	
 	@Override
 	public void onResetting() {
 		super.onResetting();
@@ -60,12 +64,11 @@ public class FestoComponent extends OpcUaDeviceComponent {
 		//
 	}
 
-	@Override
-	public void onExecuteAsync() {	
-	//public void onStarting() {
+	@Override		
+	public void onStarting() {
 		try {
-			FestoUnitConfiguration config = (FestoUnitConfiguration) getUnitConfig();
-			Void v = invokeMethod(NODE_SERVICES, NODE_EXECUTE_PP_JOB, config.getLidNumber());
+			int lidNumber = getUnitConfig().getRecipe();
+			Void v = invokeMethod(NODE_SERVICES, NODE_EXECUTE_PP_JOB, (short) lidNumber);
 		} catch (OpcUaException e) {
 			e.printStackTrace();
 		}
@@ -83,14 +86,14 @@ public class FestoComponent extends OpcUaDeviceComponent {
 
 		//In case of an error the particular machine stops immediately. 
 		//An explicit stop command has only to be sent in case of an external stop/cancel request 
-		if (!internalStop) {
+		//if (!internalStop) {
 			try {
-				FestoUnitConfiguration config = (FestoUnitConfiguration) getUnitConfig();
-				Void v = invokeMethod(NODE_SERVICES, NODE_CANCEL_PP_JOB, config.getLidNumber());
+				int lidNumber = getUnitConfig().getRecipe();
+				Void v = invokeMethod(NODE_SERVICES, NODE_CANCEL_PP_JOB, (short) lidNumber);
 			} catch (OpcUaException e) {
 				e.printStackTrace();
 			}
-		}
+		//}
 	}
 
 	@Override
@@ -158,5 +161,12 @@ public class FestoComponent extends OpcUaDeviceComponent {
 			return;
 		}
 	}
+
+	@Override
+	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

@@ -43,7 +43,7 @@ import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.AsyncDeviceComponent;
 
-public class OpcUaDeviceComponent extends AsyncDeviceComponent {
+public abstract class OpcUaDeviceComponent extends AsyncDeviceComponent {
 
 	protected OpcUaClient opcuaClient;
 	protected SecurityPolicy opcuaSecurityPolicy = SecurityPolicy.None;
