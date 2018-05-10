@@ -8,10 +8,10 @@
       <assemblyGroups id="_tZoTAUjJEei9sPQ0bCp2Ew" name="Housing">
         <bom id="_ImdecEjPEeiKNvOOp20QBg">
           <entries xsi:type="productdefinition:MaterialEntry">
-            <material href="cebit.material#_k1J7EUjKEei9sPQ0bCp2Ew"/>
+            <material href="model.material#_k1J7EUjKEei9sPQ0bCp2Ew"/>
           </entries>
           <entries xsi:type="productdefinition:MaterialEntry">
-            <material href="cebit.material#_E8B0EUjPEeiKNvOOp20QBg"/>
+            <material href="model.material#_E8B0EUjPEeiKNvOOp20QBg"/>
           </entries>
         </bom>
       </assemblyGroups>
@@ -19,10 +19,10 @@
         <bom id="_oPgFkEjLEei9sPQ0bCp2Ew">
           <entries xsi:type="productdefinition:AssemblyGroupEntry" assemblyGroup="_tZoTAUjJEei9sPQ0bCp2Ew"/>
           <entries xsi:type="productdefinition:MaterialEntry">
-            <material href="cebit.material#_SW86YUjKEei9sPQ0bCp2Ew"/>
+            <material href="model.material#_SW86YUjKEei9sPQ0bCp2Ew"/>
           </entries>
           <entries xsi:type="productdefinition:MaterialEntry" count="4">
-            <material href="cebit.material#_b9ZKAxMxEeiF0dM30lRpcg"/>
+            <material href="model.material#_b9ZKAxMxEeiF0dM30lRpcg"/>
           </entries>
         </bom>
       </assemblyGroups>
@@ -30,7 +30,7 @@
         <bom id="_bznzsEjLEei9sPQ0bCp2Ew">
           <entries xsi:type="productdefinition:AssemblyGroupEntry" assemblyGroup="_lGGrsUjLEei9sPQ0bCp2Ew"/>
           <entries xsi:type="productdefinition:MaterialEntry">
-            <material href="cebit.material#_b9ZKABMxEeiF0dM20lRpcg"/>
+            <material href="model.material#_b9ZKABMxEeiF0dM20lRpcg"/>
           </entries>
         </bom>
       </assemblyGroups>

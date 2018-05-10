@@ -20,7 +20,7 @@
   </catalogues>
   <catalogues manufacturer="Universal Robotics">
     <resourceTypes xsi:type="resourcetype:Robot" id="_Hi37STD5EeiuBvcKgWzd3Q" name="UR3" documentation="https://www.universal-robots.com/media/1801288/eng_199901_ur3_tech_spec_web_a4.pdf">
-      <capabilityAssertions id="_jNgp8FNhEeibbdo05KXzGQ" name="UR3 PickAndPlace">
+      <capabilityAssertions id="_jNgp8FNhEeibbdo05KXxGQ" name="UR3 PickAndPlace">
         <pattern>
           <type href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace"/>
           <slot>
@@ -54,7 +54,7 @@
       </capabilityAssertions>
     </resourceTypes>
     <resourceTypes xsi:type="resourcetype:Robot" id="_Jve8yTD5EeiuBvcKgWzd3Q" name="UR5" documentation="https://www.universal-robots.com/media/1801303/eng_199901_ur5_tech_spec_web_a4.pdf">
-      <capabilityAssertions id="_jNgp8FNhEeibbdo05KXzGQ" name="UR5 PickAndPlace">
+      <capabilityAssertions id="_jNgp8FNxEeibbdo05KXzGQ" name="UR5 PickAndPlace">
         <pattern>
           <type href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace"/>
           <slot>
@@ -88,7 +88,7 @@
       </capabilityAssertions>
     </resourceTypes>
     <resourceTypes xsi:type="resourcetype:Robot" id="_LILOCTD5EeiuBvcKgWzd3Q" name="UR10" documentation="https://www.universal-robots.com/media/1801323/eng_199901_ur10_tech_spec_web_a4.pdf">
-      <capabilityAssertions id="_jNgp8FNhEeibbdo05KXzGQ" name="UR10 PickAndPlace">
+      <capabilityAssertions id="_jNgp8FNhEexbbdo05KXzGQ" name="UR10 PickAndPlace">
         <pattern>
           <type href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace"/>
           <slot>
@@ -124,7 +124,7 @@
   </catalogues>
   <catalogues manufacturer="Kuka">
     <resourceTypes xsi:type="resourcetype:Robot" id="_Vvb1uTD7EeiuBvcKgWzd3Q" name="LBR iiwa 7 R800" documentation="https://www.kuka.com/de-de/produkte-leistungen/robotersysteme/industrieroboter/lbr-iiwa">
-      <capabilityAssertions id="_jNgp8FNhEeibbdo05KXzGQ" name="LBR iiwa 7 PickAndPlace">
+      <capabilityAssertions id="_jNgx8FNhEeibbdo05KXzGQ" name="LBR iiwa 7 PickAndPlace">
         <pattern>
           <type href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace"/>
           <slot>
@@ -158,7 +158,7 @@
       </capabilityAssertions>
     </resourceTypes>
     <resourceTypes xsi:type="resourcetype:Robot" id="_9rqBszD8EeiuBvcKgWzd3Q" name="LBR iiwa 14 R820">
-      <capabilityAssertions id="_jNgp8FNhEeibbdo05KXzGQ" name="LBR iiwa 14 PickAndPlace">
+      <capabilityAssertions id="_jNgp8FNhEeibbdx05KXzGQ" name="LBR iiwa 14 PickAndPlace">
         <pattern>
           <type href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace"/>
           <slot>
@@ -194,7 +194,7 @@
   </catalogues>
   <catalogues manufacturer="ABB">
     <resourceTypes xsi:type="resourcetype:Robot" id="_NnuuyTD7EeiuBvcKgWzd3Q" name="YuMi" documentation="https://library.e.abb.com/public/848462e58ba244f38532d23534bb4067/Datenblatt%20YuMi_lowres.pdf">
-      <capabilityAssertions id="_jNgp8FNhEeibbdo05KXzGQ" name="YuMi PickAndPlace">
+      <capabilityAssertions id="_jNg99FNhEeibbdo05KXzGQ" name="YuMi PickAndPlace">
         <pattern>
           <type href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace"/>
           <slot>
@@ -266,7 +266,7 @@
   </catalogues>
   <catalogues manufacturer="Mobile Industrial Robots">
     <resourceTypes xsi:type="resourcetype:AVG" id="_ZRW8sjJhEei1p5hKOf5Slw" name="MiR 100" documentation="http://www.mobile-industrial-robots.com/media/2947/mir100_specs_eng_corrected.pdf">
-      <capabilityAssertions id="_vmBh8FNlEei1Nvtofg5AwQ" name="MiR100 Transport">
+      <capabilityAssertions id="_vmBh8FNlEei1Nvtoff5AwQ" name="MiR100 Transport">
         <pattern varName="">
           <type href="http://www.dfki.de/iui/basys/model/capability#//Transport"/>
           <slot>
