@@ -11,7 +11,7 @@ public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyMan
 	@Before
 	public void setUp() throws Exception {
 		javaClassName = "de.dfki.iui.basys.runtime.services.impl.TopologyManagerImpl";
-		file = "cebit.topology";
+		file = "model.topology";
 
 		super.setUp();
 	}

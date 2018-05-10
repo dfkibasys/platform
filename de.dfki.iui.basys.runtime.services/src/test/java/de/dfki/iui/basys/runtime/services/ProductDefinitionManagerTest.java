@@ -18,12 +18,11 @@ import de.dfki.iui.basys.runtime.services.impl.ProductDefinitionManagerImpl;
 
 public class ProductDefinitionManagerTest extends BaseEmfServiceComponentTest<ProductDefinitionManagerImpl> {
 
-
 	@Override
 	@Before
 	public void setUp() throws Exception {
 		javaClassName = "de.dfki.iui.basys.runtime.services.impl.ProductDefinitionManagerImpl";
-		file = "cebit.productdefinition";
+		file = "model.productdefinition";
 
 		super.setUp();
 	}

@@ -7,12 +7,11 @@ import de.dfki.iui.basys.runtime.services.impl.ProductInstanceManagerImpl;
 
 public class ProductInstanceManagerTest extends BaseEmfServiceComponentTest<ProductInstanceManagerImpl> {
 
-
 	@Override
 	@Before
 	public void setUp() throws Exception {
 		javaClassName = "de.dfki.iui.basys.runtime.services.impl.ProductInstanceManagerImpl";
-		file = "test.productinstance";
+		file = "model.productinstance";
 
 		super.setUp();
 	}

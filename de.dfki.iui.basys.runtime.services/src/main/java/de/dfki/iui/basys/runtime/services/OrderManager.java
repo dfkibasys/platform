@@ -1,31 +1,30 @@
 package de.dfki.iui.basys.runtime.services;
 
-import java.util.List;
-
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import de.dfki.iui.basys.model.domain.order.Order;
+import de.dfki.iui.basys.model.domain.order.OrderStore;
 
 @Path("/order")
 public interface OrderManager {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
+	OrderStore getOrderStore();
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/{orderId}")
 	Order getOrder(@PathParam("orderId") String id);
 
-	// List<Order> queryOrders(OrderQuery query);
-
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/manufacturedComponent/{manufacturedComponentId}")
-	List<Order> getOrdersByManufacturedComponent(@PathParam("manufacturedComponentId") String manufacturedComponentId);
-
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	List<Order> getAllOrders();
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	void addOrder(Order order);
+	
 }

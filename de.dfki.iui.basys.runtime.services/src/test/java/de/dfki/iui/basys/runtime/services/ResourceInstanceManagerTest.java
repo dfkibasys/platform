@@ -22,7 +22,7 @@ public class ResourceInstanceManagerTest extends BaseEmfServiceComponentTest<Res
 	@Before
 	public void setUp() throws Exception {
 		javaClassName = "de.dfki.iui.basys.runtime.services.impl.ResourceInstanceManagerImpl";
-		file = "cebit.resourceinstance";
+		file = "model.resourceinstance";
 
 		super.setUp();
 	}

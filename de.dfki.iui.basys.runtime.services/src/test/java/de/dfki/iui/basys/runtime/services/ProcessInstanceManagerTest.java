@@ -8,12 +8,11 @@ import de.dfki.iui.basys.runtime.services.impl.ProcessInstanceManagerImpl;
 
 public class ProcessInstanceManagerTest extends BaseEmfServiceComponentTest<ProcessInstanceManagerImpl> {
 
-
 	@Override
 	@Before
 	public void setUp() throws Exception {
 		javaClassName = "de.dfki.iui.basys.runtime.services.impl.ProcessInstanceManagerImpl";
-		file = "cebit.processinstance";
+		file = "model.processinstance";
 
 		super.setUp();
 	}
