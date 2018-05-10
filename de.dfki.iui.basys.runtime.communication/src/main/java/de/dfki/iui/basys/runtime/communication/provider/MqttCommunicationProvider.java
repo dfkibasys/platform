@@ -34,19 +34,19 @@ import de.dfki.iui.basys.runtime.communication.ClientFactory;
 public class MqttCommunicationProvider implements CommunicationProvider {
 
 	protected final Logger LOGGER = LoggerFactory.getLogger(getClass());
-	
+
 	IMqttAsyncClient mqttClient = null;
 
 	private static String toTopic(Channel channel) {
 		return toTopic(channel.getName());
 	}
-	
+
 	private static String toTopic(String channelName) {
 		if (channelName == null)
 			return null;
 		return channelName.replaceAll("#", "/");
 	}
-	
+
 	@Override
 	public void doConnect(ChannelPool pool) throws ProviderException {
 
@@ -58,12 +58,12 @@ public class MqttCommunicationProvider implements CommunicationProvider {
 		MemoryPersistence persistence = new MemoryPersistence();
 		final MqttConnectOptions options = new MqttConnectOptions();
 		options.setCleanSession(true);
-		
-		if (pool.getUri() == null) {			
+
+		if (pool.getUri() == null) {
 			pool.setUri("tcp://lns-90165.sb.dfki.de:1883");
 			LOGGER.warn(String.format("ConnectionString not specified, using public default %s", pool.getUri()));
 		}
-		
+
 		try {
 
 			mqttClient = new MqttAsyncClient(pool.getUri(), poolId, persistence);
@@ -80,8 +80,7 @@ public class MqttCommunicationProvider implements CommunicationProvider {
 				}
 			}).waitForCompletion();
 		} catch (MqttException e) {
-			throw new ProviderException("ChannelPool \"" + poolId + "\" cannot connect to \"" + pool.getUri() + "\"",
-					e);
+			throw new ProviderException("ChannelPool \"" + poolId + "\" cannot connect to \"" + pool.getUri() + "\"", e);
 		}
 
 	}
@@ -105,8 +104,8 @@ public class MqttCommunicationProvider implements CommunicationProvider {
 
 		LOGGER.info("doOpenChannel: " + channel.getName());
 
-		String topic = toTopic(channel); 
-		
+		String topic = toTopic(channel);
+
 		if (channel.isQueued())
 			throw new ProviderException("MQTT does not support queued channels");
 
@@ -119,34 +118,36 @@ public class MqttCommunicationProvider implements CommunicationProvider {
 
 						ObjectMapper objectMapper = new ObjectMapper();
 						String mqttPayload = new String(message.getPayload(), StandardCharsets.UTF_8);
-						MqttProtocolMessage mqttProtocolMessage = objectMapper.readValue(mqttPayload,
-								MqttProtocolMessage.class);
+						try {
 
-						Message incomingMessage = JsonUtils.fromString(mqttProtocolMessage.getPayload(),
-								Message.class);
+							MqttProtocolMessage mqttProtocolMessage = objectMapper.readValue(mqttPayload, MqttProtocolMessage.class);
 
-						if (mqttProtocolMessage.getResponseTopic() != null) {
-							Request req = (Request) incomingMessage;
-							Response res = channel.getListener().handleRequest(req);
+							Message incomingMessage = JsonUtils.fromString(mqttProtocolMessage.getPayload(), Message.class);
 
-							try {
-								String payload = JsonUtils.toString(res);
-								MqttProtocolMessage mqttMessage = new MqttProtocolMessage();
-								mqttMessage.setPayload(payload);
-								Channel responseChannel = ClientFactory.getInstance()
-										.createChannel(mqttProtocolMessage.getResponseTopic(), false, null);
-								doSendMessage(responseChannel, mqttMessage);
-							} catch (IOException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
-						} else {
-							if (incomingMessage instanceof Notification) {
-								channel.getListener().handleNotification((Notification) incomingMessage);
+							if (mqttProtocolMessage.getResponseTopic() != null) {
+								Request req = (Request) incomingMessage;
+								Response res = channel.getListener().handleRequest(req);
+
+								try {
+									String payload = JsonUtils.toString(res);
+									MqttProtocolMessage mqttMessage = new MqttProtocolMessage();
+									mqttMessage.setPayload(payload);
+									Channel responseChannel = ClientFactory.getInstance().createChannel(mqttProtocolMessage.getResponseTopic(), false, null);
+									doSendMqttProtocolMessage(responseChannel, mqttMessage);
+								} catch (IOException e1) {
+									// TODO Auto-generated catch block
+									e1.printStackTrace();
+								}
 							} else {
-								channel.getListener().handleMessage(incomingMessage.getPayload());
-							}
+								if (incomingMessage instanceof Notification) {
+									channel.getListener().handleNotification((Notification) incomingMessage);
+								} else {
+									channel.getListener().handleMessage(incomingMessage.getPayload());
+								}
 
+							}
+						} catch (IOException e) {
+							channel.getListener().handleMessage(mqttPayload);
 						}
 					}
 
@@ -162,9 +163,9 @@ public class MqttCommunicationProvider implements CommunicationProvider {
 	public void doCloseChannel(Channel channel) throws ProviderException {
 
 		LOGGER.info("doCloseChannel: " + channel.getName());
-		
-		String topic = toTopic(channel); 
-		
+
+		String topic = toTopic(channel);
+
 		if (channel.getListener() != null) {
 			try {
 				mqttClient.unsubscribe(topic).waitForCompletion();
@@ -178,14 +179,14 @@ public class MqttCommunicationProvider implements CommunicationProvider {
 	public void doSendMessage(Channel channel, String msg) throws ProviderException {
 
 		LOGGER.info("doSendMessage: " + channel.getName());
-		
+
 		Message message = ClientFactory.getInstance().createNotification(msg);
 
 		try {
 			String payload = JsonUtils.toString(message);
-			MqttProtocolMessage mqttMessage = new MqttProtocolMessage();
-			mqttMessage.setPayload(payload);
-			doSendMessage(channel, mqttMessage);
+			// MqttProtocolMessage mqttMessage = new MqttProtocolMessage();
+			// mqttMessage.setPayload(payload);
+			doSendRawMessage(channel, payload);
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -195,13 +196,13 @@ public class MqttCommunicationProvider implements CommunicationProvider {
 
 	@Override
 	public void doSendNotification(Channel channel, Notification not) throws ProviderException {
-		
-		LOGGER.info("doSendNotification: " + channel.getName());		
+
+		LOGGER.info("doSendNotification: " + channel.getName());
 		try {
 			String payload = JsonUtils.toString(not);
 			MqttProtocolMessage mqttMessage = new MqttProtocolMessage();
 			mqttMessage.setPayload(payload);
-			doSendMessage(channel, mqttMessage);
+			doSendMqttProtocolMessage(channel, mqttMessage);
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -214,7 +215,7 @@ public class MqttCommunicationProvider implements CommunicationProvider {
 		LOGGER.info("doSendRequest: " + channel.getName());
 		try {
 			String payload = JsonUtils.toString(req);
-			String responseTopic =  ClientFactory.getInstance().createResponseTopic(req);
+			String responseTopic = ClientFactory.getInstance().createResponseTopic(req);
 			MqttProtocolMessage message = new MqttProtocolMessage();
 			message.setPayload(payload);
 			message.setResponseTopic(responseTopic);
@@ -226,8 +227,7 @@ public class MqttCommunicationProvider implements CommunicationProvider {
 
 					ObjectMapper objectMapper = new ObjectMapper();
 					String mqttPayload = new String(message.getPayload(), StandardCharsets.UTF_8);
-					MqttProtocolMessage mqttProtocolMessage = objectMapper.readValue(mqttPayload,
-							MqttProtocolMessage.class);
+					MqttProtocolMessage mqttProtocolMessage = objectMapper.readValue(mqttPayload, MqttProtocolMessage.class);
 
 					Response response = JsonUtils.fromString(mqttProtocolMessage.getPayload(), Response.class);
 					cb.handleResponse(response);
@@ -236,7 +236,7 @@ public class MqttCommunicationProvider implements CommunicationProvider {
 
 			}).waitForCompletion();
 
-			doSendMessage(channel, message);
+			doSendMqttProtocolMessage(channel, message);
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -263,22 +263,24 @@ public class MqttCommunicationProvider implements CommunicationProvider {
 		return cb.response;
 	}
 
-	private void doSendMessage(Channel channel, MqttProtocolMessage msg) throws ProviderException {
+	private void doSendMqttProtocolMessage(Channel channel, MqttProtocolMessage msg) throws ProviderException {
+		doSendRawMessage(channel, msg.toMqttPayload());
+	}
+
+	private void doSendRawMessage(Channel channel, String msg) throws ProviderException {
 		MqttMessage message = new MqttMessage();
-		message.setPayload(msg.toMqttPayload().getBytes(StandardCharsets.UTF_8));
+		message.setPayload(msg.getBytes(StandardCharsets.UTF_8));
 		message.setQos(2);
 
-		String topic = toTopic(channel); 
-		
+		String topic = toTopic(channel);
+
 		try {
 			mqttClient.publish(topic, message).waitForCompletion();
 		} catch (MqttException e) {
-			throw new ProviderException(
-					"Cannot publish MQTT message with payload \"" + msg + "\" to topic \"" + topic + "\"",
-					e);
+			throw new ProviderException("Cannot publish MQTT message with payload \"" + msg + "\" to topic \"" + topic + "\"", e);
 		}
 	}
-	
+
 	@Override
 	public boolean supportQueuedChannels() {
 		// TODO Auto-generated method stub

@@ -31,13 +31,12 @@ import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.communication.Response;
 import de.dfki.iui.basys.model.runtime.communication.ResponseCallback;
 import de.dfki.iui.basys.model.runtime.communication.exceptions.ProviderException;
-import de.dfki.iui.basys.runtime.communication.ClientFactory;
 
 public class JmsCommunicationProvider implements CommunicationProvider {
 
 	protected final Logger LOGGER = LoggerFactory.getLogger(JmsCommunicationProvider.class.getName());
 
-	//public static final String defaultConnectionString = "vm://localhost?broker.persistent=false";
+	// public static final String defaultConnectionString = "vm://localhost?broker.persistent=false";
 	public static final String defaultConnectionString = "tcp://lns-90165.sb.dfki.de:61616";
 	private Connection connection = null;
 	private Session session;
@@ -56,7 +55,6 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 
 		LOGGER.info("doConnect ChannelPool: " + poolId);
 		Authentication auth = pool.getClient().getAuthentication();
-		
 
 		if (pool.getUri() == null) {
 			pool.setUri(defaultConnectionString);
@@ -100,8 +98,7 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 
 			LOGGER.info("ChannelPool connected: " + poolId);
 		} catch (Exception e) {
-			throw new ProviderException("ChannelPool \"" + poolId + "\" cannot connect to \"" + pool.getUri() + "\"",
-					e);
+			throw new ProviderException("ChannelPool \"" + poolId + "\" cannot connect to \"" + pool.getUri() + "\"", e);
 		}
 
 	}
@@ -124,9 +121,9 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 	private String getJmsChannelName(Channel channel) {
 		return channel.getName().replaceAll("#", ".");
 	}
-	
+
 	@Override
-	public void doOpenChannel(Channel channel) throws ProviderException {		
+	public void doOpenChannel(Channel channel) throws ProviderException {
 		LOGGER.info("doOpenChannel: " + channel.getName());
 
 		JmsDestination internalDestination = this.destinations.get(channel.getId());
@@ -139,7 +136,7 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 		if (internalDestination.getMessageConsumer() != null) {
 			return;
 		}
-		
+
 		if (channel.isQueued()) {
 
 			Queue jmsQueue;
@@ -151,7 +148,7 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 				Queue jmsQueueProduce = session.createQueue(internalDestination.getName());
 				MessageProducer jmsProducer = session.createProducer(jmsQueueProduce);
 				internalDestination.setMessageProducer(jmsProducer);
-				
+
 				if (channel.getListener() == null) {
 					return;
 				}
@@ -163,9 +160,8 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 						TextMessage textMessage = (TextMessage) msg;
 
 						try {
-							de.dfki.iui.basys.model.runtime.communication.Message incomingMessage = JsonUtils
-									.fromString(textMessage.getText(),
-											de.dfki.iui.basys.model.runtime.communication.Message.class);
+							de.dfki.iui.basys.model.runtime.communication.Message incomingMessage = JsonUtils.fromString(textMessage.getText(),
+									de.dfki.iui.basys.model.runtime.communication.Message.class);
 							if (textMessage.getJMSCorrelationID() != null) {
 								Request req = (Request) incomingMessage;
 								Response res = channel.getListener().handleRequest(req);
@@ -205,7 +201,6 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 				MessageProducer jmsProducer = session.createProducer(jmsTopicProducer);
 				internalDestination.setMessageProducer(jmsProducer);
 
-
 				if (channel.getListener() == null) {
 					return;
 				}
@@ -216,28 +211,30 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 					public void onMessage(Message message) {
 						TextMessage textMessage = (TextMessage) message;
 						try {
-							de.dfki.iui.basys.model.runtime.communication.Message incomingMessage = JsonUtils
-									.fromString(textMessage.getText(),
-											de.dfki.iui.basys.model.runtime.communication.Message.class);
-							if (textMessage.getJMSCorrelationID() != null) {
-								Request req = (Request) incomingMessage;
-								Response res = channel.getListener().handleRequest(req);
-								String payload = JsonUtils.toString(res);
+							String content = textMessage.getText();
+							try {
+								de.dfki.iui.basys.model.runtime.communication.Message incomingMessage = 
+										JsonUtils.fromString(content, de.dfki.iui.basys.model.runtime.communication.Message.class);
+								if (textMessage.getJMSCorrelationID() != null) {
+									Request req = (Request) incomingMessage;
+									Response res = channel.getListener().handleRequest(req);
+									String payload = JsonUtils.toString(res);
 
-								TextMessage responseMessage = session.createTextMessage();
-								responseMessage.setText(payload);
-								responseMessage.setJMSCorrelationID(textMessage.getJMSCorrelationID());
-								replyProducer.send(textMessage.getJMSReplyTo(), responseMessage);
-							} else {
-								if (incomingMessage instanceof Notification) {
-									channel.getListener().handleNotification((Notification) incomingMessage);
+									TextMessage responseMessage = session.createTextMessage();
+									responseMessage.setText(payload);
+									responseMessage.setJMSCorrelationID(textMessage.getJMSCorrelationID());
+									replyProducer.send(textMessage.getJMSReplyTo(), responseMessage);
 								} else {
-									channel.getListener().handleMessage(incomingMessage.getPayload());
+									if (incomingMessage instanceof Notification) {
+										channel.getListener().handleNotification((Notification) incomingMessage);
+									} else {
+										channel.getListener().handleMessage(incomingMessage.getPayload());
+									}
 								}
+							} catch (IOException e) {
+								channel.getListener().handleMessage(content);
 							}
 						} catch (JMSException e) {
-							e.printStackTrace();
-						} catch (IOException e) {
 							e.printStackTrace();
 						}
 					}
@@ -258,12 +255,12 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 			try {
 				internal_destination.getMessageConsumer().close();
 			} catch (JMSException e) {
-				throw new ProviderException("Cannot close channel " + channel.getId() + " ("+ channel.getName() + ")", e);
+				throw new ProviderException("Cannot close channel " + channel.getId() + " (" + channel.getName() + ")", e);
 			}
 		}
 
 		this.destinations.remove(channel.getId());
-		
+
 	}
 
 	@Override
@@ -272,22 +269,22 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 
 		JmsDestination internal_destination = this.destinations.get(channel.getId());
 
-		de.dfki.iui.basys.model.runtime.communication.Message message = ClientFactory.getInstance()
-				.createNotification(payload);
+		// de.dfki.iui.basys.model.runtime.communication.Message message = ClientFactory.getInstance()
+		// .createNotification(payload);
 
 		try {
-			String payloadString = JsonUtils.toString(message);
-			Message jmsMsg = session.createTextMessage(payloadString);
-//			if (internal_destination.getMessageProducer() == null) {
-//				Topic jmsTopic = session.createTopic(channel.getName());
-//				MessageProducer jmsProducer = session.createProducer(jmsTopic);
-//				internal_destination.setMessageProducer(jmsProducer);
-//			}
+			// String payloadString = JsonUtils.toString(payload);
+			Message jmsMsg = session.createTextMessage(payload);
+			// if (internal_destination.getMessageProducer() == null) {
+			// Topic jmsTopic = session.createTopic(channel.getName());
+			// MessageProducer jmsProducer = session.createProducer(jmsTopic);
+			// internal_destination.setMessageProducer(jmsProducer);
+			// }
 			internal_destination.getMessageProducer().send(jmsMsg);
 		} catch (JMSException e) {
 			throw new ProviderException("Message could not be published on " + channel.getName() + ".", e);
-		} catch (IOException e) {
-			e.printStackTrace();
+			// } catch (IOException e) {
+			// e.printStackTrace();
 		}
 
 	}
@@ -337,24 +334,24 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 		try {
 			String payload = JsonUtils.toString(not);
 			Message jmsMsg = session.createTextMessage(payload);
-//			if (internal_destination.getMessageProducer() == null) {
-//				Topic jmsTopic = session.createTopic(internal_destination.getName());
-//				MessageProducer jmsProducer = session.createProducer(jmsTopic);
-//				internal_destination.setMessageProducer(jmsProducer);
-//			}
+			// if (internal_destination.getMessageProducer() == null) {
+			// Topic jmsTopic = session.createTopic(internal_destination.getName());
+			// MessageProducer jmsProducer = session.createProducer(jmsTopic);
+			// internal_destination.setMessageProducer(jmsProducer);
+			// }
 			internal_destination.getMessageProducer().send(jmsMsg);
 		} catch (IOException e) {
-			LOGGER.error(e.getMessage(),e);
+			LOGGER.error(e.getMessage(), e);
 		} catch (JMSException e) {
 			throw new ProviderException("Message could not be published on " + channel.getName() + ".", e);
-		} 
+		}
 	}
-	
-	class JmsDestination  {
+
+	class JmsDestination {
 
 		private MessageConsumer messageConsumer;
 		private MessageProducer messageProducer;
-		
+
 		private String name;
 
 		public String getName() {
@@ -364,7 +361,7 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 		public JmsDestination(String name) {
 			this.name = name;
 		}
-		
+
 		public void setMessageConsumer(MessageConsumer messageConsumer) {
 			this.messageConsumer = messageConsumer;
 		}
@@ -372,15 +369,14 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 		public MessageConsumer getMessageConsumer() {
 			return messageConsumer;
 		}
-		
+
 		public void setMessageProducer(MessageProducer messageProducer) {
 			this.messageProducer = messageProducer;
 		}
-		
+
 		public MessageProducer getMessageProducer() {
 			return messageProducer;
 		}
-		
 
 	}
 
@@ -395,7 +391,7 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 		}
 
 	}
-	
+
 	@Override
 	public boolean supportQueuedChannels() {
 		return true;

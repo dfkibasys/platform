@@ -29,7 +29,7 @@ public class EmfServiceComponent extends ServiceComponent {
 		resourceSet = new ResourceSetImpl();
 		
 		String BASE_URL = "http://localhost:8080/services/";
-		String fileName = "cebit";
+		String fileName = "model";
 				
 		String [] modelNames = new String [] {"material", "order", "processdefinition", "processinstance", "productdefinition", "productinstance", "resourceinstance", "resourcetype", "topology" };
 		for (String model : Arrays.asList(modelNames)) {
