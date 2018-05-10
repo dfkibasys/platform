@@ -48,6 +48,12 @@
 		<module>../osgi</module>
 	</modules>
 
+	<scm>
+		<url>https://lns-90165.sb.dfki.de/gitlab/basys/build</url>
+		<connection>scm:git:ssh://git@lns-90165.sb.dfki.de:10022/basys/build.git</connection>
+		<developerConnection>scm:git:ssh://git@lns-90165.sb.dfki.de:10022/basys/build.git</developerConnection>
+	</scm>
+
 	<repositories>
 		<repository>
 			<id>DFKI BaSys Nexus</id>
@@ -56,6 +62,10 @@
 	</repositories>
 
 	<distributionManagement>
+		<repository>
+			<id>nexus-releases</id>
+			<url>http://lns-90165.sb.dfki.de:8081/repository/maven-releases/</url>
+		</repository>
 		<snapshotRepository>
 			<id>nexus-snapshots</id>
 			<url>http://lns-90165.sb.dfki.de:8081/repository/maven-snapshots/</url>
@@ -111,22 +121,13 @@
 			</plugin>
 
 			<plugin>
-				<groupId>org.sonatype.plugins</groupId>
-				<artifactId>nexus-staging-maven-plugin</artifactId>
-				<version>1.5.1</version>
-				<executions>
-					<execution>
-						<id>default-deploy</id>
-						<phase>deploy</phase>
-						<goals>
-							<goal>deploy</goal>
-						</goals>
-					</execution>
-				</executions>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.5.3</version>
 				<configuration>
-					<serverId>nexus</serverId>
-					<nexusUrl>http://lns-90165.sb.dfki.de:8081</nexusUrl>
-					<skipStaging>true</skipStaging>
+					<tagNameFormat>v@{project.version}</tagNameFormat>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+					<releaseProfiles>releases</releaseProfiles>
 				</configuration>
 			</plugin>
 
@@ -166,7 +167,7 @@
 									<action>
 										<execute></execute>
 									</action>
-								</pluginExecution>								
+								</pluginExecution>
 							</pluginExecutions>
 						</lifecycleMappingMetadata>
 					</configuration>
@@ -174,5 +175,34 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>releases</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.sonatype.plugins</groupId>
+						<artifactId>nexus-staging-maven-plugin</artifactId>
+						<version>1.6.8</version>
+						<executions>
+							<execution>
+								<id>default-deploy</id>
+								<phase>deploy</phase>
+								<goals>
+									<goal>deploy</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<serverId>nexus-releases</serverId>
+							<nexusUrl>http://lns-90165.sb.dfki.de:8081/</nexusUrl>
+							<skipStaging>true</skipStaging>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
 </project>
