@@ -180,17 +180,16 @@ public class MqttCommunicationProvider implements CommunicationProvider {
 
 		LOGGER.info("doSendMessage: " + channel.getName());
 
-		Message message = ClientFactory.getInstance().createNotification(msg);
+		//Message message = ClientFactory.getInstance().createNotification(msg);
 
-		try {
-			String payload = JsonUtils.toString(message);
+		//try {
+			//String payload = JsonUtils.toString(message);
 			// MqttProtocolMessage mqttMessage = new MqttProtocolMessage();
 			// mqttMessage.setPayload(payload);
-			doSendRawMessage(channel, payload);
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+			doSendRawMessage(channel, msg);
+		//} catch (IOException e1) {
+		//	e1.printStackTrace();
+		//}
 
 	}
 

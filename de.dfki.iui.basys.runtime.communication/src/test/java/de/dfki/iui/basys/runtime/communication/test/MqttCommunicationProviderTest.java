@@ -27,6 +27,7 @@ public class MqttCommunicationProviderTest extends TestCase {
 	Client client_1, client_2;
 	ChannelPool cp_11, cp_12, cp_21, cp_22;
 
+	@Override
 	protected void setUp() throws Exception {
 		super.setUp();
 
@@ -41,6 +42,7 @@ public class MqttCommunicationProviderTest extends TestCase {
 		cp_22 = fac.connectChannelPool(client_2, brokerUri, new MqttCommunicationProvider());
 	}
 
+	@Override
 	protected void tearDown() throws Exception {
 		super.tearDown();
 
