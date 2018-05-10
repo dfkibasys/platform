@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
   <parent>
     <groupId>de.dfki.iui.basys.build</groupId>
@@ -16,12 +15,13 @@
   <!--
    | don't apply project details to wrapped jars
   -->
-  <organization/>
-  <description>
-    Simple OSGi wrapper around third-party jar(s)
-  </description>
+
+  <organization />
+
+  <description>Simple OSGi wrapper around third-party jar(s)</description>
+
   <licenses>
-    <license/>
+    <license />
   </licenses>
 
   <packaging>pom</packaging>
@@ -34,6 +34,7 @@
         -->
         <groupId>org.apache.felix</groupId>
         <artifactId>maven-bundle-plugin</artifactId>
+		<extensions>true</extensions>		
         <configuration>
           <instructions>
             <Bundle-SymbolicName>${bundle.symbolicName}</Bundle-SymbolicName>
@@ -52,5 +53,12 @@
       </plugin>
     </plugins>
   </build>
+
+  <modules>
+    <module>org.apache.curator.client</module>
+    <module>org.apache.curator.framework</module>
+    <module>org.apache.curator.x.discovery</module>
+    <module>org.apache.zookeeper</module>
+  </modules>
 
 </project>
