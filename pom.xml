@@ -1,29 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
-  <parent>
-    <relativePath>../build</relativePath>
-    <groupId>de.dfki.iui</groupId>
-    <artifactId>basys</artifactId>
-    <version>1.0-SNAPSHOT</version>
-  </parent>
+	<parent>
+		<relativePath>../build</relativePath>
+		<groupId>de.dfki.iui</groupId>
+		<artifactId>basys</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
 
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>de.dfki.iui.basys</groupId>
-  <artifactId>runtime</artifactId>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>de.dfki.iui.basys</groupId>
+	<artifactId>runtime</artifactId>
 
-  <name>BaSys 4.0 Runtime Module</name>
+	<name>BaSys 4.0 Runtime Module</name>
 
-  <packaging>pom</packaging>
+	<packaging>pom</packaging>
 
-  <modules>
-    <module>de.dfki.iui.basys.runtime.communication</module>
-    <module>de.dfki.iui.basys.runtime.component</module>
-    <module>de.dfki.iui.basys.runtime.component.device.opcua</module>
-    <module>de.dfki.iui.basys.runtime.component.device.tecs</module>
-    <module>de.dfki.iui.basys.runtime.connector</module>
-    <module>de.dfki.iui.basys.runtime.gateway</module>
-    <module>de.dfki.iui.basys.runtime.services</module>
-  </modules>
+	<modules>
+		<module>de.dfki.iui.basys.runtime.communication</module>
+		<module>de.dfki.iui.basys.runtime.component</module>
+		<module>de.dfki.iui.basys.runtime.component.device.opcua</module>
+		<module>de.dfki.iui.basys.runtime.component.device.tecs</module>
+		<module>de.dfki.iui.basys.runtime.connector</module>
+		<module>de.dfki.iui.basys.runtime.gateway</module>
+		<module>de.dfki.iui.basys.runtime.services</module>
+	</modules>
+
+	<scm>
+		<url>https://lns-90165.sb.dfki.de/gitlab/basys/runtime</url>
+		<connection>scm:git:ssh://git@lns-90165.sb.dfki.de:10022/basys/runtime.git</connection>
+		<developerConnection>scm:git:ssh://git@lns-90165.sb.dfki.de:10022/basys/runtime.git</developerConnection>
+	</scm>
 
 </project>
