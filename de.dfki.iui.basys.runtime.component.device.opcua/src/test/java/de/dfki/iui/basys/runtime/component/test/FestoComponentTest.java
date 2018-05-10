@@ -74,8 +74,8 @@ public class FestoComponentTest {
 		
 		assertEquals(State.IDLE, component.getState());
 
-		FestoUnitConfiguration config = new FestoUnitConfiguration();		
-		config.setLidNumber((short) 0);
+		UnitConfiguration config = new UnitConfiguration();		
+		config.setRecipe(0);
 		ComponentRequestStatus status = component.setUnitConfig(config);
 		
 		component.start();		
@@ -104,8 +104,8 @@ public class FestoComponentTest {
 		
 		//assertEquals(State.IDLE, component.getState());
 
-		FestoUnitConfiguration config = new FestoUnitConfiguration();		
-		config.setLidNumber((short) 0);
+		UnitConfiguration config = new UnitConfiguration();		
+		config.setRecipe(0);
 		ComponentRequestStatus status = component.setUnitConfig(config);
 		
 		component.start();		

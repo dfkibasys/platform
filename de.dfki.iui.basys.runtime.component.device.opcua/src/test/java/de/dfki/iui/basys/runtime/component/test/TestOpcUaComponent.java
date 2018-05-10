@@ -5,9 +5,11 @@ import static org.junit.Assert.assertEquals;
 import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;
 import org.eclipse.milo.opcua.stack.core.types.builtin.StatusCode;
 
+import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.device.opcua.OpcUaDeviceComponent;
 import de.dfki.iui.basys.runtime.component.device.opcua.OpcUaException;
+import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
 
 public class TestOpcUaComponent extends OpcUaDeviceComponent {
 	
@@ -66,4 +68,12 @@ public class TestOpcUaComponent extends OpcUaDeviceComponent {
 		// to avoid async behavior
 		//super.onStopping();
 	}
+
+
+	@Override
+	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

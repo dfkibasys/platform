@@ -7,7 +7,7 @@ import java.util.concurrent.locks.ReentrantLock;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 
 
-public class AsyncDeviceComponent extends DeviceComponent {
+public abstract class AsyncDeviceComponent extends DeviceComponent {
 
 
 	protected boolean stopping = false;

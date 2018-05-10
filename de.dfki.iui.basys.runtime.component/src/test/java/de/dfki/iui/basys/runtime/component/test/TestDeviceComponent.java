@@ -2,8 +2,10 @@ package de.dfki.iui.basys.runtime.component.test;
 
 import java.util.concurrent.TimeUnit;
 
+import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.device.DeviceComponent;
+import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
 
 public class TestDeviceComponent extends DeviceComponent {
 
@@ -89,5 +91,12 @@ public class TestDeviceComponent extends DeviceComponent {
 		LOGGER.info("onStopping()");
 		sleep(2);
 	}
+
+	@Override
+	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

@@ -20,7 +20,7 @@ import de.dfki.iui.basys.runtime.component.registry.ComponentRegistrationExcepti
 
 public class BaseComponent implements Component, ChannelListener {
 
-	protected final Logger LOGGER = LoggerFactory.getLogger(getClass().getName());
+	public final Logger LOGGER = LoggerFactory.getLogger(getClass().getName());
 
 	protected ComponentConfiguration componentConfig;
 	protected ComponentContext context;

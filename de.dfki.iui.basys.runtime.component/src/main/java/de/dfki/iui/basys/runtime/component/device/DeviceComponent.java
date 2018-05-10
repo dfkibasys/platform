@@ -32,7 +32,7 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 
 	protected PackMLUnit packmlUnit;
 
-	protected boolean resetOnComplete, resetOnStopped, internalStop = false;
+	protected boolean resetOnComplete, resetOnStopped = false;
 
 	public DeviceComponent(ComponentConfiguration config) {
 		super(config);
@@ -157,14 +157,22 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 		}
 	}
 
-	protected ComponentRequestStatus handleCapabilityRequest(CapabilityRequest req) {
+	protected ComponentRequestStatus handleCapabilityRequest(CapabilityRequest req)	{
 		ComponentRequestStatus status = null;
 		// "translate"
+		UnitConfiguration config = translateCapabilityRequest(req);
 		// set config
-		// start();
+		status = setUnitConfig(config);
+		
+		if (status.getStatus() == RequestStatus.REJECTED)
+			return status;
+		
+		status = start();
 		return status;
 	}
 
+	protected abstract UnitConfiguration translateCapabilityRequest(CapabilityRequest req);
+	
 	protected ComponentRequestStatus handleCommandRequest(CommandRequest req) {
 		ComponentRequestStatus status = null;
 		switch (req.getControlCommand()) {
@@ -219,12 +227,12 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 
 		if (statusChannel != null && statusChannel.isOpen()) {
 			LOGGER.info("send status update notification");
-//			Notification not = cf.createNotification(state);
-//			try {
-//				statusChannel.sendNotification(not);
-//			} catch (ChannelException e) {
-//				e.printStackTrace();
-//			}
+			// Notification not = cf.createNotification(state);
+			// try {
+			// statusChannel.sendNotification(not);
+			// } catch (ChannelException e) {
+			// e.printStackTrace();
+			// }
 		} else {
 			LOGGER.warn("cannot send status update notification");
 		}
@@ -243,10 +251,10 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 		LOGGER.info("updateRegistrationAndNotify() - finished");
 	}
 
-	protected void internalStop() {
-		internalStop = true;
-		stop();
-	}
+	// protected void internalStop() {
+	// internalStop = true;
+	// stop();
+	// }
 
 	/*
 	 * CommandInterface
@@ -259,7 +267,7 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 		if (status.getStatus() == RequestStatus.ACCEPTED) {
 			updateRegistrationAndNotify();
 		}
-		
+
 		return status;
 	}
 
@@ -320,7 +328,6 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 	@Override
 	public void onStopped() {
 		if (resetOnStopped) {
-			// resetOnComplete = false;
 			reset();
 		}
 	}
@@ -333,7 +340,6 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 	@Override
 	public void onComplete() {
 		if (resetOnComplete) {
-			// resetOnComplete = false;
 			reset();
 		}
 	}
@@ -359,68 +365,46 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 
 	@Override
 	public void onResetting() {
-		LOGGER.info("onResetting");
-
-		internalStop = false;
-
 	}
 
 	@Override
 	public void onStarting() {
-		LOGGER.info("onStarting");
-
 	}
 
 	@Override
 	public void onExecute() {
-		LOGGER.info("onExecute");
 	}
 
 	@Override
 	public void onCompleting() {
-		LOGGER.info("onCompleting");
-
 	}
 
 	@Override
 	public void onHolding() {
-		LOGGER.info("onHolding");
-
 	}
 
 	@Override
 	public void onUnholding() {
-		LOGGER.info("onUnholding");
-
 	}
 
 	@Override
 	public void onSuspending() {
-		LOGGER.info("onSuspending");
-
 	}
 
 	@Override
 	public void onUnsuspending() {
-		LOGGER.info("onUnsuspending");
-
 	}
 
 	@Override
 	public void onAborting() {
-		LOGGER.info("onAborting");
-
 	}
 
 	@Override
 	public void onClearing() {
-		LOGGER.info("onClearing");
-
 	}
 
 	@Override
 	public void onStopping() {
-		LOGGER.info("onStopping");
 	}
 
 }

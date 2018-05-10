@@ -6,17 +6,17 @@ import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TSocket;
 import org.apache.thrift.transport.TTransportException;
 
-
+import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.DeviceComponent;
+import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
 import de.dfki.iui.hrc.general3d.Point3d;
 import de.dfki.iui.hrc.general3d.Pose;
 import de.dfki.iui.hrc.generalrobots.KnownPositions;
 import de.dfki.iui.hrc.generalrobots.Path;
 import de.dfki.iui.hrc.hybritcommand.CommandResponse;
-import de.dfki.iui.hrc.hybritcommand.CommandState;
 import de.dfki.iui.hrc.mir100.GotoException;
 import de.dfki.iui.hrc.mir100.MIR;
 import de.dfki.iui.hrc.mir100.MIRState;
@@ -220,6 +220,11 @@ public class Mir100 extends DeviceComponent{
 		}
 	}
 
+	@Override
+	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	/*
 	 * Helper class to communicate with TECS
@@ -357,5 +362,7 @@ public class Mir100 extends DeviceComponent{
 			super.gotoNamedPosition(positionName);
 		}
 	}
+
+
 	
 }
