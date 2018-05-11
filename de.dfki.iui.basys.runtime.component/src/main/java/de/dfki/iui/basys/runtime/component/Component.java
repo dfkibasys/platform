@@ -24,5 +24,7 @@ public interface Component {
 	void activate(ComponentContext context) throws ComponentException;
 
 	void deactivate() throws ComponentException;
+	
+	boolean isActivated();
 
 }

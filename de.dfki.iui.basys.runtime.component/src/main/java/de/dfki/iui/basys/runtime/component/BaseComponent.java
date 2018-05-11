@@ -35,6 +35,7 @@ public class BaseComponent implements Component, ChannelListener {
 	protected ComponentRegistration registration;
 
 	private boolean connectedToExternal = false;
+	private boolean activated = false;
 
 	public BaseComponent(ComponentConfiguration config) {
 		this.componentConfig = config;
@@ -71,52 +72,65 @@ public class BaseComponent implements Component, ChannelListener {
 	}
 
 	@Override
+	public boolean isActivated() {
+		return activated;
+	}
+
+	@Override
 	public void activate(ComponentContext context) throws ComponentException {
-		if (context == null)
-			throw new ComponentException("Context must not be null!");
+		if (!activated) {
 
-		// use copy constructor. if sharedChannelPool is null, it can be set afterwards for reuse in dependent components, e.g. DeviceComponentController
-		this.context = new ComponentContext(context);
+			if (context == null)
+				throw new ComponentException("Context must not be null!");
 
-		if (componentConfig.getExternalConnectionString() != null) {
-			try {
-				connectToExternal();
-				connectedToExternal = true;
-			} catch (ComponentException e) {
-				LOGGER.error(e.getMessage());
-				e.printStackTrace();
+			// use copy constructor. if sharedChannelPool is null, it can be set afterwards for reuse in dependent components, e.g. DeviceComponentController
+			this.context = new ComponentContext(context);
+
+			if (componentConfig.getExternalConnectionString() != null) {
+				try {
+					connectToExternal();
+					connectedToExternal = true;
+				} catch (ComponentException e) {
+					LOGGER.error(e.getMessage());
+					e.printStackTrace();
+				}
 			}
-		}
-		// else {
-		// LOGGER.warn("no device connection string provided, enter simulation mode");
-		// // enter some kind of simulation mode like so:
-		// //unit.setActiveStatesHandler(simulationActHandler);
-		// //unit.setWaitStatesHandler(simulationWaitHandler);
-		// }
+			// else {
+			// LOGGER.warn("no device connection string provided, enter simulation mode");
+			// // enter some kind of simulation mode like so:
+			// //unit.setActiveStatesHandler(simulationActHandler);
+			// //unit.setWaitStatesHandler(simulationWaitHandler);
+			// }
 
-		if (context.getSharedChannelPool() != null || componentConfig.getCommunicationProviderImplementationJavaClass() != null) {
-			connectToBasys();
-			try {
-				register();
-			} catch (ComponentRegistrationException e) {
-				throw new ComponentException(e);
+			if (context.getSharedChannelPool() != null || componentConfig.getCommunicationProviderImplementationJavaClass() != null) {
+				connectToBasys();
+				try {
+					register();
+				} catch (ComponentRegistrationException e) {
+					throw new ComponentException(e);
+				}
 			}
+			activated = true;
 		}
 	}
 
 	@Override
 	public void deactivate() throws ComponentException {
-		if (context.getSharedChannelPool() != null || componentConfig.getCommunicationProviderImplementationJavaClass() != null) {
-			try {
-				unregister();
-			} catch (ComponentRegistrationException e) {
-				throw new ComponentException(e);
+		if (activated) {
+
+			if (context.getSharedChannelPool() != null || componentConfig.getCommunicationProviderImplementationJavaClass() != null) {
+				try {
+					unregister();
+				} catch (ComponentRegistrationException e) {
+					throw new ComponentException(e);
+				}
+				disconnectFromBasys();
 			}
-			disconnectFromBasys();
-		}
-		if (connectedToExternal) {
-			disconnectFromExternal();
-			connectedToExternal = false;
+			if (connectedToExternal) {
+				disconnectFromExternal();
+				connectedToExternal = false;
+			}
+			activated = false;
 		}
 	}
 

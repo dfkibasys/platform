@@ -27,6 +27,14 @@ public class ComponentManagerImpl extends BaseComponent implements ComponentMana
 	public ComponentManagerImpl(ComponentConfiguration config) {
 		super(config);
 	}
+	
+	@Override
+	public void deactivate() throws ComponentException {		
+		for (Component c : components.values()) {
+			c.deactivate();
+		}
+		super.deactivate();
+	}
 
 	@Override
 	public List<Component> getLocalComponents() {
