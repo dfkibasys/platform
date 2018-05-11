@@ -37,6 +37,8 @@ public class MqttCommunicationProvider implements CommunicationProvider {
 
 	IMqttAsyncClient mqttClient = null;
 
+	public static final String DEV_BROKER_URL = "tcp://lns-90165.sb.dfki.de:1883";
+	
 	private static String toTopic(Channel channel) {
 		return toTopic(channel.getName());
 	}
@@ -60,7 +62,7 @@ public class MqttCommunicationProvider implements CommunicationProvider {
 		options.setCleanSession(true);
 
 		if (pool.getUri() == null) {
-			pool.setUri("tcp://lns-90165.sb.dfki.de:1883");
+			pool.setUri(DEV_BROKER_URL);
 			LOGGER.warn(String.format("ConnectionString not specified, using public default %s", pool.getUri()));
 		}
 

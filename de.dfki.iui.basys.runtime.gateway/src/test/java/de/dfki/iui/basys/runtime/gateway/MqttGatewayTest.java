@@ -17,9 +17,10 @@ import de.dfki.iui.basys.model.runtime.communication.Notification;
 import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.communication.Response;
 import de.dfki.iui.basys.runtime.communication.ClientFactory;
+import de.dfki.iui.basys.runtime.communication.provider.MqttCommunicationProvider;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManagerException;
 
-public class JmsGatewayTest extends BaseComponentTest {
+public class MqttGatewayTest extends BaseComponentTest {
 
 
 	private String testMessage = "this message is sent via a gateway.";
@@ -43,12 +44,12 @@ public class JmsGatewayTest extends BaseComponentTest {
 		
 		try {
 			
-			componentManager.createLocalComponent(jmsGatewayConfig);
+			componentManager.createLocalComponent(mqttGatewayConfig);
 			
-			JmsGatewayComponent gateway = (JmsGatewayComponent) componentManager.getLocalComponentById(jmsGatewayConfig.getComponentId());
-			gateway.installOutgoingChannel("test#gateway#out", "test.gateway.in");
+			MqttGatewayComponent gateway = (MqttGatewayComponent) componentManager.getLocalComponentById(mqttGatewayConfig.getComponentId());
+			gateway.installOutgoingChannel("test#gateway#out", "test/gateway/in");
 			
-			ChannelPool externalPool = ClientFactory.getInstance().connectJmsChannelPool(communicationClient, communicationProviderConnectionString);
+			ChannelPool externalPool = ClientFactory.getInstance().connectMqttChannelPool(communicationClient, MqttCommunicationProvider.DEV_BROKER_URL);
 			Channel externalChannel = ClientFactory.getInstance().openChannel(externalPool, "test#gateway#in", false, new ChannelListener() {
 				
 				@Override
@@ -102,12 +103,12 @@ public class JmsGatewayTest extends BaseComponentTest {
 		
 		try {
 			
-			componentManager.createLocalComponent(jmsGatewayConfig);
+			componentManager.createLocalComponent(mqttGatewayConfig);
 			
-			JmsGatewayComponent gateway = (JmsGatewayComponent) componentManager.getLocalComponentById(jmsGatewayConfig.getComponentId());
-			gateway.installIncomingChannel("test.gateway.out", "test#gateway#in");
+			MqttGatewayComponent gateway = (MqttGatewayComponent) componentManager.getLocalComponentById(mqttGatewayConfig.getComponentId());
+			gateway.installIncomingChannel("test/gateway/out", "test#gateway#in");
 			
-			ChannelPool externalPool = ClientFactory.getInstance().connectJmsChannelPool(communicationClient, communicationProviderConnectionString);
+			ChannelPool externalPool = ClientFactory.getInstance().connectMqttChannelPool(communicationClient, MqttCommunicationProvider.DEV_BROKER_URL);
 			Channel externalChannel = ClientFactory.getInstance().openChannel(externalPool, "test#gateway#out", false, null); 
 					
 				

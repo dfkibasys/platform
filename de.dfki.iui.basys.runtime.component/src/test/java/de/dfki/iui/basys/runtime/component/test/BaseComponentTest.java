@@ -1,5 +1,7 @@
 package de.dfki.iui.basys.runtime.component.test;
 
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
@@ -47,8 +49,23 @@ public class BaseComponentTest {
 		// not really needed
 	}
 
+	protected void printClassPath() {
+		ClassLoader cl = ClassLoader.getSystemClassLoader();
+
+        URL[] urls = ((URLClassLoader)cl).getURLs();
+
+        System.out.println("####################################################");
+        System.out.println("");
+        for(URL url: urls){
+        	System.out.println(url.getFile());
+        }
+        System.out.println("");
+        System.out.println("####################################################");
+	}
+	
 	@Before
 	public void setUp() throws Exception {
+		
 		registryConfig = new ComponentConfigurationImpl.Builder()
 				.componentId("component-registry")
 				.componentName("component-registry")
