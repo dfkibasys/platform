@@ -47,6 +47,8 @@ public class LaserServiceComponentTest extends BaseComponentTest {
 	public void setUp() throws Exception {
 		super.setUp();
 		
+		
+		
 		deviceComponentConfig = new ComponentConfigurationImpl.Builder()
 				.componentId("laser-device-component")
 				.componentName("laser-device-component")
@@ -75,8 +77,13 @@ public class LaserServiceComponentTest extends BaseComponentTest {
 
 	@Test
 	public void testConnection() throws ComponentException {
-		
-		printClassPath();
+		try {
+			System.out.println(JsonUtils.toString(deviceComponentConfig));
+			System.out.println(JsonUtils.toString(serviceComponentConfig));
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		try {
 			componentManager.createLocalComponent(deviceComponentConfig);

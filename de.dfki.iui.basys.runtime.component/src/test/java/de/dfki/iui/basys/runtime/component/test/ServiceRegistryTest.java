@@ -16,6 +16,7 @@ import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
 import de.dfki.iui.basys.model.runtime.component.ComponentInfo;
 import de.dfki.iui.basys.model.runtime.component.State;
 import de.dfki.iui.basys.runtime.component.ComponentException;
+import de.dfki.iui.basys.runtime.component.device.TestDeviceComponent;
 
 public class ServiceRegistryTest extends BaseComponentTest {
 

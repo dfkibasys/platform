@@ -71,6 +71,7 @@ public class LaserDeviceComponentTest {
 
 	@Test
 	public void testConnection() throws ComponentException {
+		
 		LaserDeviceComponent component = new LaserDeviceComponent(componentConfig);
 		assertTrue(!component.isConnectedToExternal());
 
