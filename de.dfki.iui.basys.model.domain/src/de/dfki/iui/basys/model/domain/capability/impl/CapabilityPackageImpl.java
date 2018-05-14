@@ -4,6 +4,7 @@ package de.dfki.iui.basys.model.domain.capability.impl;
 
 import de.dfki.iui.basys.model.base.BasePackage;
 
+import de.dfki.iui.basys.model.data.DataPackage;
 import de.dfki.iui.basys.model.domain.capability.AnEinpressen;
 import de.dfki.iui.basys.model.domain.capability.Beschichten;
 import de.dfki.iui.basys.model.domain.capability.Capability;
@@ -22,6 +23,8 @@ import de.dfki.iui.basys.model.domain.capability.MoveToLocation;
 import de.dfki.iui.basys.model.domain.capability.PickAndPlace;
 import de.dfki.iui.basys.model.domain.capability.Pressing;
 import de.dfki.iui.basys.model.domain.capability.ProductionCapability;
+import de.dfki.iui.basys.model.domain.capability.ProjectETA;
+import de.dfki.iui.basys.model.domain.capability.ProjectPath;
 import de.dfki.iui.basys.model.domain.capability.QoSCapability;
 import de.dfki.iui.basys.model.domain.capability.Screwing;
 import de.dfki.iui.basys.model.domain.capability.Stoffeigenschaften;
@@ -81,6 +84,7 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -173,6 +177,20 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * @generated
 	 */
 	private EClass moveToLocationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass projectPathEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass projectETAEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -314,6 +332,8 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		// Initialize simple dependencies
 		BasePackage.eINSTANCE.eClass();
 		PatternPackage.eINSTANCE.eClass();
+		DataPackage.eINSTANCE.eClass();
+		EcorePackage.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies
 		OrderPackageImpl theOrderPackage = (OrderPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(OrderPackage.eNS_URI) instanceof OrderPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(OrderPackage.eNS_URI) : OrderPackage.eINSTANCE);
@@ -570,6 +590,105 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 */
 	public EClass getMoveToLocation() {
 		return moveToLocationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getProjectPath() {
+		return projectPathEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getProjectPath_Path() {
+		return (EReference)projectPathEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProjectPath_Delay() {
+		return (EAttribute)projectPathEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProjectPath_ArrowCount() {
+		return (EAttribute)projectPathEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProjectPath_Color() {
+		return (EAttribute)projectPathEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProjectPath_Eta() {
+		return (EAttribute)projectPathEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getProjectETA() {
+		return projectETAEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProjectETA_Eta() {
+		return (EAttribute)projectETAEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getProjectETA_Position() {
+		return (EReference)projectETAEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProjectETA_Radius() {
+		return (EAttribute)projectETAEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProjectETA_Color() {
+		return (EAttribute)projectETAEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -845,6 +964,19 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 
 		moveToLocationEClass = createEClass(MOVE_TO_LOCATION);
 
+		projectPathEClass = createEClass(PROJECT_PATH);
+		createEReference(projectPathEClass, PROJECT_PATH__PATH);
+		createEAttribute(projectPathEClass, PROJECT_PATH__DELAY);
+		createEAttribute(projectPathEClass, PROJECT_PATH__ARROW_COUNT);
+		createEAttribute(projectPathEClass, PROJECT_PATH__COLOR);
+		createEAttribute(projectPathEClass, PROJECT_PATH__ETA);
+
+		projectETAEClass = createEClass(PROJECT_ETA);
+		createEAttribute(projectETAEClass, PROJECT_ETA__ETA);
+		createEReference(projectETAEClass, PROJECT_ETA__POSITION);
+		createEAttribute(projectETAEClass, PROJECT_ETA__RADIUS);
+		createEAttribute(projectETAEClass, PROJECT_ETA__COLOR);
+
 		// Create enums
 		loadCarrierUnitEnumEEnum = createEEnum(LOAD_CARRIER_UNIT_ENUM);
 	}
@@ -875,6 +1007,8 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		// Obtain other dependent packages
 		BasePackage theBasePackage = (BasePackage)EPackage.Registry.INSTANCE.getEPackage(BasePackage.eNS_URI);
 		PatternPackage thePatternPackage = (PatternPackage)EPackage.Registry.INSTANCE.getEPackage(PatternPackage.eNS_URI);
+		DataPackage theDataPackage = (DataPackage)EPackage.Registry.INSTANCE.getEPackage(DataPackage.eNS_URI);
+		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 
 		// Create type parameters
 
@@ -904,6 +1038,8 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		workerAssistenceCapabilityEClass.getESuperTypes().add(this.getCapability());
 		generalCapabilityEClass.getESuperTypes().add(this.getCapability());
 		moveToLocationEClass.getESuperTypes().add(this.getGeneralCapability());
+		projectPathEClass.getESuperTypes().add(this.getWorkerAssistenceCapability());
+		projectETAEClass.getESuperTypes().add(this.getWorkerAssistenceCapability());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(capabilityAssertionEClass, CapabilityAssertion.class, "CapabilityAssertion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -970,6 +1106,19 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		initEClass(generalCapabilityEClass, GeneralCapability.class, "GeneralCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(moveToLocationEClass, MoveToLocation.class, "MoveToLocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(projectPathEClass, ProjectPath.class, "ProjectPath", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getProjectPath_Path(), theDataPackage.getPath(), null, "path", null, 0, 1, ProjectPath.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProjectPath_Delay(), theEcorePackage.getELong(), "delay", null, 0, 1, ProjectPath.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProjectPath_ArrowCount(), theEcorePackage.getEInt(), "arrowCount", null, 0, 1, ProjectPath.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProjectPath_Color(), theEcorePackage.getEInt(), "color", null, 0, 1, ProjectPath.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProjectPath_Eta(), theEcorePackage.getELong(), "eta", null, 0, 1, ProjectPath.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(projectETAEClass, ProjectETA.class, "ProjectETA", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getProjectETA_Eta(), theEcorePackage.getELong(), "eta", null, 0, 1, ProjectETA.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProjectETA_Position(), theDataPackage.getCartesianCoordinate(), null, "position", null, 0, 1, ProjectETA.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProjectETA_Radius(), theEcorePackage.getEDouble(), "radius", null, 0, 1, ProjectETA.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProjectETA_Color(), theEcorePackage.getEInt(), "color", null, 0, 1, ProjectETA.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(loadCarrierUnitEnumEEnum, LoadCarrierUnitEnum.class, "LoadCarrierUnitEnum");

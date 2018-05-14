@@ -365,7 +365,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORK_CENTER__BINDING = BasePackage.ENTITY__BINDING;
+	int WORK_CENTER__BINDING = TOPOLOGY_ELEMENT__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -374,7 +374,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORK_CENTER__ID = BasePackage.ENTITY__ID;
+	int WORK_CENTER__ID = TOPOLOGY_ELEMENT__ID;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -383,7 +383,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORK_CENTER__NAME = BasePackage.ENTITY__NAME;
+	int WORK_CENTER__NAME = TOPOLOGY_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -392,7 +392,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORK_CENTER__METADATA = BasePackage.ENTITY__METADATA;
+	int WORK_CENTER__METADATA = TOPOLOGY_ELEMENT__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
@@ -401,7 +401,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORK_CENTER__EQUIPMENT_MODULES = BasePackage.ENTITY_FEATURE_COUNT + 0;
+	int WORK_CENTER__EQUIPMENT_MODULES = TOPOLOGY_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Work Center</em>' class.
@@ -410,7 +410,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORK_CENTER_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 1;
+	int WORK_CENTER_FEATURE_COUNT = TOPOLOGY_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Work Center</em>' class.
@@ -419,7 +419,7 @@ public interface TopologyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORK_CENTER_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
+	int WORK_CENTER_OPERATION_COUNT = TOPOLOGY_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.ProcessCellImpl <em>Process Cell</em>}' class.

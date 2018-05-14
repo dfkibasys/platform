@@ -564,8 +564,8 @@ public class PatternItemProviderAdapterFactory extends PatternAdapterFactory imp
 	 * @generated
 	 */
 	public void dispose() {
-		if (pEmptySlotItemProvider != null) pEmptySlotItemProvider.dispose();
 		if (pObjectItemProvider != null) pObjectItemProvider.dispose();
+		if (pEmptySlotItemProvider != null) pEmptySlotItemProvider.dispose();
 		if (pSlotItemProvider != null) pSlotItemProvider.dispose();
 		if (pValueItemProvider != null) pValueItemProvider.dispose();
 		if (pValueObjectItemProvider != null) pValueObjectItemProvider.dispose();

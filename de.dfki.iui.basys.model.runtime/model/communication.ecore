@@ -84,12 +84,15 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ChannelListener" abstract="true" interface="true">
     <eOperations name="handleMessage">
+      <eParameters name="channel" eType="#//Channel"/>
       <eParameters name="msg" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="handleNotification">
+      <eParameters name="channel" eType="#//Channel"/>
       <eParameters name="not" eType="#//Notification"/>
     </eOperations>
     <eOperations name="handleRequest" eType="#//Response">
+      <eParameters name="channel" eType="#//Channel"/>
       <eParameters name="req" eType="#//Request"/>
     </eOperations>
   </eClassifiers>

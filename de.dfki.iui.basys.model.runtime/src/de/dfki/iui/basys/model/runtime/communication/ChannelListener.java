@@ -19,7 +19,7 @@ public interface ChannelListener {
 	 * @model
 	 * @generated
 	 */
-	void handleMessage(String msg);
+	void handleMessage(Channel channel, String msg);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -27,7 +27,7 @@ public interface ChannelListener {
 	 * @model
 	 * @generated
 	 */
-	void handleNotification(Notification not);
+	void handleNotification(Channel channel, Notification not);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -35,6 +35,6 @@ public interface ChannelListener {
 	 * @model
 	 * @generated
 	 */
-	Response handleRequest(Request req);
+	Response handleRequest(Channel channel, Request req);
 
 } // ChannelListener

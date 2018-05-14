@@ -31,7 +31,6 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import de.dfki.iui.basys.model.base.BasePackage;
 import de.dfki.iui.basys.model.base.provider.BaseEditPlugin;
 import de.dfki.iui.basys.model.pattern.PEnumRestriction;
-import de.dfki.iui.basys.model.pattern.PQuantorEnum;
 import de.dfki.iui.basys.model.pattern.PRestrictions;
 import de.dfki.iui.basys.model.pattern.PRestrictionsEnum;
 import de.dfki.iui.basys.model.pattern.PSlot;
@@ -140,16 +139,6 @@ public class PRestrictionsItemProvider extends ItemProviderAdapter implements IE
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected boolean shouldComposeCreationImage() {
-		return true;
-	}
-
-	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
@@ -157,14 +146,11 @@ public class PRestrictionsItemProvider extends ItemProviderAdapter implements IE
 	 */
 	@Override
 	public String getText(Object object) {
-		PRestrictionsEnum function = ((PRestrictions)object).getFunction();
-		
-		char q = '\u22C0';
-		if (function == PRestrictionsEnum.OR) {
-			q = '\u22C1';
-		}
-
-		return q + ": " + getString("_UI_PRestrictions_type");
+		PRestrictionsEnum labelValue = ((PRestrictions)object).getFunction();
+		String label = labelValue == null ? null : labelValue.toString();
+		return label == null || label.length() == 0 ?
+			getString("_UI_PRestrictions_type") :
+			getString("_UI_PRestrictions_type") + " " + label;
 	}
 
 	/**

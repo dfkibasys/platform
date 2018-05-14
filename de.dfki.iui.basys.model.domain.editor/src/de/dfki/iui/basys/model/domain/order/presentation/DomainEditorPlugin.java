@@ -9,6 +9,7 @@ import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.ui.EclipseUIPlugin;
 
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
 
 /**
  * This is the central singleton for the Domain editor plugin.
@@ -43,6 +44,7 @@ public final class DomainEditorPlugin extends EMFPlugin {
 		super
 			(new ResourceLocator [] {
 				BaseEditPlugin.INSTANCE,
+				EcoreEditPlugin.INSTANCE,
 			});
 	}
 

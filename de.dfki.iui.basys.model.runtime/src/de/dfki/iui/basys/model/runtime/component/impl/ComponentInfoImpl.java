@@ -26,10 +26,13 @@ import de.dfki.iui.basys.model.runtime.component.State;
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.impl.ComponentInfoImpl#getComponentCategory <em>Component Category</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.impl.ComponentInfoImpl#getInChannelName <em>In Channel Name</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.impl.ComponentInfoImpl#getOutChannelName <em>Out Channel Name</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.runtime.component.impl.ComponentInfoImpl#getStatusChannelName <em>Status Channel Name</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.impl.ComponentInfoImpl#getCurrentState <em>Current State</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.impl.ComponentInfoImpl#getCurrentMode <em>Current Mode</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.impl.ComponentInfoImpl#getCommunicationProvider <em>Communication Provider</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.impl.ComponentInfoImpl#getConnectionString <em>Connection String</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.runtime.component.impl.ComponentInfoImpl#getHostName <em>Host Name</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.runtime.component.impl.ComponentInfoImpl#getUriSpec <em>Uri Spec</em>}</li>
  * </ul>
  *
  * @generated
@@ -136,6 +139,26 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 	protected String outChannelName = OUT_CHANNEL_NAME_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getStatusChannelName() <em>Status Channel Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStatusChannelName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String STATUS_CHANNEL_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getStatusChannelName() <em>Status Channel Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStatusChannelName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String statusChannelName = STATUS_CHANNEL_NAME_EDEFAULT;
+
+	/**
 	 * The default value of the '{@link #getCurrentState() <em>Current State</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -214,6 +237,46 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 	 * @ordered
 	 */
 	protected String connectionString = CONNECTION_STRING_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getHostName() <em>Host Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHostName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String HOST_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getHostName() <em>Host Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHostName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String hostName = HOST_NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getUriSpec() <em>Uri Spec</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUriSpec()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String URI_SPEC_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getUriSpec() <em>Uri Spec</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUriSpec()
+	 * @generated
+	 * @ordered
+	 */
+	protected String uriSpec = URI_SPEC_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -355,6 +418,29 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 	 * @generated
 	 */
 	@Override
+	public String getStatusChannelName() {
+		return statusChannelName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setStatusChannelName(String newStatusChannelName) {
+		String oldStatusChannelName = statusChannelName;
+		statusChannelName = newStatusChannelName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.COMPONENT_INFO__STATUS_CHANNEL_NAME, oldStatusChannelName, statusChannelName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public State getCurrentState() {
 		return currentState;
 	}
@@ -447,6 +533,52 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 	 * @generated
 	 */
 	@Override
+	public String getHostName() {
+		return hostName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setHostName(String newHostName) {
+		String oldHostName = hostName;
+		hostName = newHostName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.COMPONENT_INFO__HOST_NAME, oldHostName, hostName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getUriSpec() {
+		return uriSpec;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setUriSpec(String newUriSpec) {
+		String oldUriSpec = uriSpec;
+		uriSpec = newUriSpec;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.COMPONENT_INFO__URI_SPEC, oldUriSpec, uriSpec));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ComponentPackage.COMPONENT_INFO__COMPONENT_ID:
@@ -459,6 +591,8 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 				return getInChannelName();
 			case ComponentPackage.COMPONENT_INFO__OUT_CHANNEL_NAME:
 				return getOutChannelName();
+			case ComponentPackage.COMPONENT_INFO__STATUS_CHANNEL_NAME:
+				return getStatusChannelName();
 			case ComponentPackage.COMPONENT_INFO__CURRENT_STATE:
 				return getCurrentState();
 			case ComponentPackage.COMPONENT_INFO__CURRENT_MODE:
@@ -467,6 +601,10 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 				return getCommunicationProvider();
 			case ComponentPackage.COMPONENT_INFO__CONNECTION_STRING:
 				return getConnectionString();
+			case ComponentPackage.COMPONENT_INFO__HOST_NAME:
+				return getHostName();
+			case ComponentPackage.COMPONENT_INFO__URI_SPEC:
+				return getUriSpec();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -494,6 +632,9 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 			case ComponentPackage.COMPONENT_INFO__OUT_CHANNEL_NAME:
 				setOutChannelName((String)newValue);
 				return;
+			case ComponentPackage.COMPONENT_INFO__STATUS_CHANNEL_NAME:
+				setStatusChannelName((String)newValue);
+				return;
 			case ComponentPackage.COMPONENT_INFO__CURRENT_STATE:
 				setCurrentState((State)newValue);
 				return;
@@ -505,6 +646,12 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 				return;
 			case ComponentPackage.COMPONENT_INFO__CONNECTION_STRING:
 				setConnectionString((String)newValue);
+				return;
+			case ComponentPackage.COMPONENT_INFO__HOST_NAME:
+				setHostName((String)newValue);
+				return;
+			case ComponentPackage.COMPONENT_INFO__URI_SPEC:
+				setUriSpec((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -533,6 +680,9 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 			case ComponentPackage.COMPONENT_INFO__OUT_CHANNEL_NAME:
 				setOutChannelName(OUT_CHANNEL_NAME_EDEFAULT);
 				return;
+			case ComponentPackage.COMPONENT_INFO__STATUS_CHANNEL_NAME:
+				setStatusChannelName(STATUS_CHANNEL_NAME_EDEFAULT);
+				return;
 			case ComponentPackage.COMPONENT_INFO__CURRENT_STATE:
 				setCurrentState(CURRENT_STATE_EDEFAULT);
 				return;
@@ -544,6 +694,12 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 				return;
 			case ComponentPackage.COMPONENT_INFO__CONNECTION_STRING:
 				setConnectionString(CONNECTION_STRING_EDEFAULT);
+				return;
+			case ComponentPackage.COMPONENT_INFO__HOST_NAME:
+				setHostName(HOST_NAME_EDEFAULT);
+				return;
+			case ComponentPackage.COMPONENT_INFO__URI_SPEC:
+				setUriSpec(URI_SPEC_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -567,6 +723,8 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 				return IN_CHANNEL_NAME_EDEFAULT == null ? inChannelName != null : !IN_CHANNEL_NAME_EDEFAULT.equals(inChannelName);
 			case ComponentPackage.COMPONENT_INFO__OUT_CHANNEL_NAME:
 				return OUT_CHANNEL_NAME_EDEFAULT == null ? outChannelName != null : !OUT_CHANNEL_NAME_EDEFAULT.equals(outChannelName);
+			case ComponentPackage.COMPONENT_INFO__STATUS_CHANNEL_NAME:
+				return STATUS_CHANNEL_NAME_EDEFAULT == null ? statusChannelName != null : !STATUS_CHANNEL_NAME_EDEFAULT.equals(statusChannelName);
 			case ComponentPackage.COMPONENT_INFO__CURRENT_STATE:
 				return currentState != CURRENT_STATE_EDEFAULT;
 			case ComponentPackage.COMPONENT_INFO__CURRENT_MODE:
@@ -575,6 +733,10 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 				return COMMUNICATION_PROVIDER_EDEFAULT == null ? communicationProvider != null : !COMMUNICATION_PROVIDER_EDEFAULT.equals(communicationProvider);
 			case ComponentPackage.COMPONENT_INFO__CONNECTION_STRING:
 				return CONNECTION_STRING_EDEFAULT == null ? connectionString != null : !CONNECTION_STRING_EDEFAULT.equals(connectionString);
+			case ComponentPackage.COMPONENT_INFO__HOST_NAME:
+				return HOST_NAME_EDEFAULT == null ? hostName != null : !HOST_NAME_EDEFAULT.equals(hostName);
+			case ComponentPackage.COMPONENT_INFO__URI_SPEC:
+				return URI_SPEC_EDEFAULT == null ? uriSpec != null : !URI_SPEC_EDEFAULT.equals(uriSpec);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -599,6 +761,8 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 		result.append(inChannelName);
 		result.append(", outChannelName: ");
 		result.append(outChannelName);
+		result.append(", statusChannelName: ");
+		result.append(statusChannelName);
 		result.append(", currentState: ");
 		result.append(currentState);
 		result.append(", currentMode: ");
@@ -607,6 +771,10 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 		result.append(communicationProvider);
 		result.append(", connectionString: ");
 		result.append(connectionString);
+		result.append(", hostName: ");
+		result.append(hostName);
+		result.append(", uriSpec: ");
+		result.append(uriSpec);
 		result.append(')');
 		return result.toString();
 	}
@@ -617,10 +785,13 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 		private ComponentCategory componentCategory;
 		private String inChannelName;
 		private String outChannelName;
+		private String statusChannelName;
 		private State currentState;
 		private ControlMode currentMode;
 		private String communicationProvider;
 		private String connectionString;
+		private String hostName;
+		private String uriSpec;
 
 		public Builder componentId(String componentId) {
 			this.componentId = componentId;
@@ -647,6 +818,11 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 			return this;
 		}
 
+		public Builder statusChannelName(String statusChannelName) {
+			this.statusChannelName = statusChannelName;
+			return this;
+		}
+
 		public Builder currentState(State currentState) {
 			this.currentState = currentState;
 			return this;
@@ -667,7 +843,17 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 			return this;
 		}
 
-		public ComponentInfo build() {
+		public Builder hostName(String hostName) {
+			this.hostName = hostName;
+			return this;
+		}
+
+		public Builder uriSpec(String uriSpec) {
+			this.uriSpec = uriSpec;
+			return this;
+		}
+
+		public ComponentInfoImpl build() {
 			return new ComponentInfoImpl(this);
 		}
 	}
@@ -678,9 +864,12 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 		this.componentCategory = builder.componentCategory;
 		this.inChannelName = builder.inChannelName;
 		this.outChannelName = builder.outChannelName;
+		this.statusChannelName = builder.statusChannelName;
 		this.currentState = builder.currentState;
 		this.currentMode = builder.currentMode;
 		this.communicationProvider = builder.communicationProvider;
 		this.connectionString = builder.connectionString;
+		this.hostName = builder.hostName;
+		this.uriSpec = builder.uriSpec;
 	}
 }

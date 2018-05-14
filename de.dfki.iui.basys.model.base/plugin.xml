@@ -36,4 +36,12 @@
             class="de.dfki.iui.basys.model.pattern.util.PatternResourceFactoryImpl"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated base -->
+      <package
+            uri="http://www.dfki.de/iui/basys/model/data"
+            class="de.dfki.iui.basys.model.data.DataPackage"
+            genModel="model/base.genmodel"/>
+   </extension>
+
 </plugin>

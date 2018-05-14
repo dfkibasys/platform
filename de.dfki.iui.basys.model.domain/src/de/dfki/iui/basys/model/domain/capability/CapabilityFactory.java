@@ -130,6 +130,24 @@ public interface CapabilityFactory extends EFactory {
 	MoveToLocation createMoveToLocation();
 
 	/**
+	 * Returns a new object of class '<em>Project Path</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Project Path</em>'.
+	 * @generated
+	 */
+	ProjectPath createProjectPath();
+
+	/**
+	 * Returns a new object of class '<em>Project ETA</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Project ETA</em>'.
+	 * @generated
+	 */
+	ProjectETA createProjectETA();
+
+	/**
 	 * Returns a new object of class '<em>Urformen</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

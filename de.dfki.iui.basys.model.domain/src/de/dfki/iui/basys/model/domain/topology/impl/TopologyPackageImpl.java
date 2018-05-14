@@ -4,6 +4,7 @@ package de.dfki.iui.basys.model.domain.topology.impl;
 
 import de.dfki.iui.basys.model.base.BasePackage;
 
+import de.dfki.iui.basys.model.data.DataPackage;
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
 
 import de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl;
@@ -74,6 +75,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -251,6 +253,8 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		// Initialize simple dependencies
 		BasePackage.eINSTANCE.eClass();
 		PatternPackage.eINSTANCE.eClass();
+		DataPackage.eINSTANCE.eClass();
+		EcorePackage.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies
 		OrderPackageImpl theOrderPackage = (OrderPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(OrderPackage.eNS_URI) instanceof OrderPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(OrderPackage.eNS_URI) : OrderPackage.eINSTANCE);
@@ -745,7 +749,7 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		enterpriseEClass.getESuperTypes().add(this.getTopologyElement());
 		siteEClass.getESuperTypes().add(this.getTopologyElement());
 		areaEClass.getESuperTypes().add(this.getTopologyElement());
-		workCenterEClass.getESuperTypes().add(theBasePackage.getEntity());
+		workCenterEClass.getESuperTypes().add(this.getTopologyElement());
 		processCellEClass.getESuperTypes().add(this.getWorkCenter());
 		productionUnitEClass.getESuperTypes().add(this.getWorkCenter());
 		productionLineEClass.getESuperTypes().add(this.getWorkCenter());

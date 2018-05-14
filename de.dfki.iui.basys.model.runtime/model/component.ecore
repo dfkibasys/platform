@@ -15,11 +15,14 @@
         defaultValueLiteral="NONE"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="inChannelName" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="outChannelName" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="statusChannelName" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="currentState" eType="#//State"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="currentMode" eType="#//ControlMode"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="communicationProvider"
         eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="connectionString" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hostName" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uriSpec" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ComponentCategory">
     <eLiterals name="NONE"/>
@@ -104,6 +107,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" eType="#//RequestStatus"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="message" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StatusRequest" eSuperTypes="#//ComponentRequest"/>
   <eClassifiers xsi:type="ecore:EEnum" name="RequestStatus">
     <eLiterals name="UNDEFINED"/>
     <eLiterals name="ACCEPTED" value="1"/>

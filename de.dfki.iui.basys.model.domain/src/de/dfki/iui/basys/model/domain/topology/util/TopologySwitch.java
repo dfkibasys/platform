@@ -107,6 +107,7 @@ public class TopologySwitch<T> extends Switch<T> {
 			case TopologyPackage.WORK_CENTER: {
 				WorkCenter workCenter = (WorkCenter)theEObject;
 				T result = caseWorkCenter(workCenter);
+				if (result == null) result = caseTopologyElement(workCenter);
 				if (result == null) result = caseEntity(workCenter);
 				if (result == null) result = caseBObject(workCenter);
 				if (result == null) result = defaultCase(theEObject);
@@ -116,6 +117,7 @@ public class TopologySwitch<T> extends Switch<T> {
 				ProcessCell processCell = (ProcessCell)theEObject;
 				T result = caseProcessCell(processCell);
 				if (result == null) result = caseWorkCenter(processCell);
+				if (result == null) result = caseTopologyElement(processCell);
 				if (result == null) result = caseEntity(processCell);
 				if (result == null) result = caseBObject(processCell);
 				if (result == null) result = defaultCase(theEObject);
@@ -125,6 +127,7 @@ public class TopologySwitch<T> extends Switch<T> {
 				ProductionUnit productionUnit = (ProductionUnit)theEObject;
 				T result = caseProductionUnit(productionUnit);
 				if (result == null) result = caseWorkCenter(productionUnit);
+				if (result == null) result = caseTopologyElement(productionUnit);
 				if (result == null) result = caseEntity(productionUnit);
 				if (result == null) result = caseBObject(productionUnit);
 				if (result == null) result = defaultCase(theEObject);
@@ -134,6 +137,7 @@ public class TopologySwitch<T> extends Switch<T> {
 				ProductionLine productionLine = (ProductionLine)theEObject;
 				T result = caseProductionLine(productionLine);
 				if (result == null) result = caseWorkCenter(productionLine);
+				if (result == null) result = caseTopologyElement(productionLine);
 				if (result == null) result = caseEntity(productionLine);
 				if (result == null) result = caseBObject(productionLine);
 				if (result == null) result = defaultCase(theEObject);
@@ -143,6 +147,7 @@ public class TopologySwitch<T> extends Switch<T> {
 				StorageZone storageZone = (StorageZone)theEObject;
 				T result = caseStorageZone(storageZone);
 				if (result == null) result = caseWorkCenter(storageZone);
+				if (result == null) result = caseTopologyElement(storageZone);
 				if (result == null) result = caseEntity(storageZone);
 				if (result == null) result = caseBObject(storageZone);
 				if (result == null) result = defaultCase(theEObject);

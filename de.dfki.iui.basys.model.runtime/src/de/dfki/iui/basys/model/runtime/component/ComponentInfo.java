@@ -18,10 +18,13 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.ComponentInfo#getComponentCategory <em>Component Category</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.ComponentInfo#getInChannelName <em>In Channel Name</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.ComponentInfo#getOutChannelName <em>Out Channel Name</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.runtime.component.ComponentInfo#getStatusChannelName <em>Status Channel Name</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.ComponentInfo#getCurrentState <em>Current State</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.ComponentInfo#getCurrentMode <em>Current Mode</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.ComponentInfo#getCommunicationProvider <em>Communication Provider</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.ComponentInfo#getConnectionString <em>Connection String</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.runtime.component.ComponentInfo#getHostName <em>Host Name</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.runtime.component.ComponentInfo#getUriSpec <em>Uri Spec</em>}</li>
  * </ul>
  *
  * @see de.dfki.iui.basys.model.runtime.component.ComponentPackage#getComponentInfo()
@@ -164,6 +167,32 @@ public interface ComponentInfo extends EObject {
 	void setOutChannelName(String value);
 
 	/**
+	 * Returns the value of the '<em><b>Status Channel Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Status Channel Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Status Channel Name</em>' attribute.
+	 * @see #setStatusChannelName(String)
+	 * @see de.dfki.iui.basys.model.runtime.component.ComponentPackage#getComponentInfo_StatusChannelName()
+	 * @model
+	 * @generated
+	 */
+	String getStatusChannelName();
+
+	/**
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.runtime.component.ComponentInfo#getStatusChannelName <em>Status Channel Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Status Channel Name</em>' attribute.
+	 * @see #getStatusChannelName()
+	 * @generated
+	 */
+	void setStatusChannelName(String value);
+
+	/**
 	 * Returns the value of the '<em><b>Current State</b></em>' attribute.
 	 * The literals are from the enumeration {@link de.dfki.iui.basys.model.runtime.component.State}.
 	 * <!-- begin-user-doc -->
@@ -272,5 +301,57 @@ public interface ComponentInfo extends EObject {
 	 * @generated
 	 */
 	void setConnectionString(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Host Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Host Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Host Name</em>' attribute.
+	 * @see #setHostName(String)
+	 * @see de.dfki.iui.basys.model.runtime.component.ComponentPackage#getComponentInfo_HostName()
+	 * @model
+	 * @generated
+	 */
+	String getHostName();
+
+	/**
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.runtime.component.ComponentInfo#getHostName <em>Host Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Host Name</em>' attribute.
+	 * @see #getHostName()
+	 * @generated
+	 */
+	void setHostName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Uri Spec</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Uri Spec</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Uri Spec</em>' attribute.
+	 * @see #setUriSpec(String)
+	 * @see de.dfki.iui.basys.model.runtime.component.ComponentPackage#getComponentInfo_UriSpec()
+	 * @model
+	 * @generated
+	 */
+	String getUriSpec();
+
+	/**
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.runtime.component.ComponentInfo#getUriSpec <em>Uri Spec</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Uri Spec</em>' attribute.
+	 * @see #getUriSpec()
+	 * @generated
+	 */
+	void setUriSpec(String value);
 
 } // ComponentInfo

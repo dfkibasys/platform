@@ -62,4 +62,32 @@
       </editor>
    </extension>
 
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated base -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="de.dfki.iui.basys.model.data.presentation.DataModelWizardID"
+            name="%_UI_DataModelWizard_label"
+            class="de.dfki.iui.basys.model.data.presentation.DataModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/DataModelFile.gif">
+         <description>%_UI_DataModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated base -->
+      <editor
+            id="de.dfki.iui.basys.model.data.presentation.DataEditorID"
+            name="%_UI_DataEditor_label"
+            icon="icons/full/obj16/DataModelFile.gif"
+            extensions="data"
+            class="de.dfki.iui.basys.model.data.presentation.DataEditor"
+            contributorClass="de.dfki.iui.basys.model.data.presentation.DataActionBarContributor">
+      </editor>
+   </extension>
+
 </plugin>

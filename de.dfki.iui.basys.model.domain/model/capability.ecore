@@ -69,4 +69,19 @@
   <eClassifiers xsi:type="ecore:EClass" name="WorkerAssistenceCapability" eSuperTypes="#//Capability"/>
   <eClassifiers xsi:type="ecore:EClass" name="GeneralCapability" eSuperTypes="#//Capability"/>
   <eClassifiers xsi:type="ecore:EClass" name="MoveToLocation" eSuperTypes="#//GeneralCapability"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ProjectPath" eSuperTypes="#//WorkerAssistenceCapability">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="path" eType="ecore:EClass ../../de.dfki.iui.basys.model.base/model/data.ecore#//Path"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="delay" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="arrowCount" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="color" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="eta" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//ELong"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProjectETA" eSuperTypes="#//WorkerAssistenceCapability">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="eta" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="position" eType="ecore:EClass ../../de.dfki.iui.basys.model.base/model/data.ecore#//CartesianCoordinate"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="radius" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="color" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
+  </eClassifiers>
 </ecore:EPackage>

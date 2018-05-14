@@ -402,6 +402,16 @@ public class CapabilityRequestItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
+				 CapabilityFactory.eINSTANCE.createProjectPath()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
+				 CapabilityFactory.eINSTANCE.createProjectETA()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
 				 OrderFactory.eINSTANCE.createOrder()));
 
 		newChildDescriptors.add
@@ -993,6 +1003,16 @@ public class CapabilityRequestItemProvider
 			(createChildParameter
 				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHAT,
 				 CapabilityFactory.eINSTANCE.createMoveToLocation()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHAT,
+				 CapabilityFactory.eINSTANCE.createProjectPath()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHAT,
+				 CapabilityFactory.eINSTANCE.createProjectETA()));
 	}
 
 	/**

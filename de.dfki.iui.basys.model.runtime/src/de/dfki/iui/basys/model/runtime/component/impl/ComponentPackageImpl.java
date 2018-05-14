@@ -18,6 +18,7 @@ import de.dfki.iui.basys.model.runtime.component.ComponentInfo;
 import de.dfki.iui.basys.model.runtime.component.ControlMode;
 import de.dfki.iui.basys.model.runtime.component.RequestStatus;
 import de.dfki.iui.basys.model.runtime.component.State;
+import de.dfki.iui.basys.model.runtime.component.StatusRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentPackage;
 import de.dfki.iui.basys.model.runtime.component.ComponentRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentRequestStatus;
@@ -86,6 +87,13 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 * @generated
 	 */
 	private EClass componentRequestStatusEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass statusRequestEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -251,7 +259,7 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getComponentInfo_CurrentState() {
+	public EAttribute getComponentInfo_StatusChannelName() {
 		return (EAttribute)componentInfoEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -260,7 +268,7 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getComponentInfo_CurrentMode() {
+	public EAttribute getComponentInfo_CurrentState() {
 		return (EAttribute)componentInfoEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -269,7 +277,7 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getComponentInfo_CommunicationProvider() {
+	public EAttribute getComponentInfo_CurrentMode() {
 		return (EAttribute)componentInfoEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -278,8 +286,35 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getComponentInfo_ConnectionString() {
+	public EAttribute getComponentInfo_CommunicationProvider() {
 		return (EAttribute)componentInfoEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getComponentInfo_ConnectionString() {
+		return (EAttribute)componentInfoEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getComponentInfo_HostName() {
+		return (EAttribute)componentInfoEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getComponentInfo_UriSpec() {
+		return (EAttribute)componentInfoEClass.getEStructuralFeatures().get(11);
 	}
 
 	/**
@@ -485,6 +520,15 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getStatusRequest() {
+		return statusRequestEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getComponentCategory() {
 		return componentCategoryEEnum;
 	}
@@ -559,10 +603,13 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		createEAttribute(componentInfoEClass, COMPONENT_INFO__COMPONENT_CATEGORY);
 		createEAttribute(componentInfoEClass, COMPONENT_INFO__IN_CHANNEL_NAME);
 		createEAttribute(componentInfoEClass, COMPONENT_INFO__OUT_CHANNEL_NAME);
+		createEAttribute(componentInfoEClass, COMPONENT_INFO__STATUS_CHANNEL_NAME);
 		createEAttribute(componentInfoEClass, COMPONENT_INFO__CURRENT_STATE);
 		createEAttribute(componentInfoEClass, COMPONENT_INFO__CURRENT_MODE);
 		createEAttribute(componentInfoEClass, COMPONENT_INFO__COMMUNICATION_PROVIDER);
 		createEAttribute(componentInfoEClass, COMPONENT_INFO__CONNECTION_STRING);
+		createEAttribute(componentInfoEClass, COMPONENT_INFO__HOST_NAME);
+		createEAttribute(componentInfoEClass, COMPONENT_INFO__URI_SPEC);
 
 		componentConfigurationEClass = createEClass(COMPONENT_CONFIGURATION);
 		createEAttribute(componentConfigurationEClass, COMPONENT_CONFIGURATION__COMPONENT_ID);
@@ -591,6 +638,8 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		createEAttribute(componentRequestStatusEClass, COMPONENT_REQUEST_STATUS__COMPONENT_ID);
 		createEAttribute(componentRequestStatusEClass, COMPONENT_REQUEST_STATUS__STATUS);
 		createEAttribute(componentRequestStatusEClass, COMPONENT_REQUEST_STATUS__MESSAGE);
+
+		statusRequestEClass = createEClass(STATUS_REQUEST);
 
 		// Create enums
 		componentCategoryEEnum = createEEnum(COMPONENT_CATEGORY);
@@ -634,6 +683,7 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		commandRequestEClass.getESuperTypes().add(this.getComponentRequest());
 		changeModeRequestEClass.getESuperTypes().add(this.getComponentRequest());
 		capabilityRequestEClass.getESuperTypes().add(this.getComponentRequest());
+		statusRequestEClass.getESuperTypes().add(this.getComponentRequest());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(componentInfoEClass, ComponentInfo.class, "ComponentInfo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -642,10 +692,13 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		initEAttribute(getComponentInfo_ComponentCategory(), this.getComponentCategory(), "componentCategory", "NONE", 0, 1, ComponentInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getComponentInfo_InChannelName(), theEcorePackage.getEString(), "inChannelName", null, 0, 1, ComponentInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getComponentInfo_OutChannelName(), theEcorePackage.getEString(), "outChannelName", null, 0, 1, ComponentInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getComponentInfo_StatusChannelName(), theEcorePackage.getEString(), "statusChannelName", null, 0, 1, ComponentInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getComponentInfo_CurrentState(), this.getState(), "currentState", null, 0, 1, ComponentInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getComponentInfo_CurrentMode(), this.getControlMode(), "currentMode", null, 0, 1, ComponentInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getComponentInfo_CommunicationProvider(), theEcorePackage.getEString(), "communicationProvider", null, 0, 1, ComponentInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getComponentInfo_ConnectionString(), theEcorePackage.getEString(), "connectionString", null, 0, 1, ComponentInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getComponentInfo_HostName(), theEcorePackage.getEString(), "hostName", null, 0, 1, ComponentInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getComponentInfo_UriSpec(), theEcorePackage.getEString(), "uriSpec", null, 0, 1, ComponentInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(componentConfigurationEClass, ComponentConfiguration.class, "ComponentConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getComponentConfiguration_ComponentId(), theEcorePackage.getEString(), "componentId", null, 0, 1, ComponentConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -674,6 +727,8 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		initEAttribute(getComponentRequestStatus_ComponentId(), theEcorePackage.getEString(), "componentId", null, 0, 1, ComponentRequestStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getComponentRequestStatus_Status(), this.getRequestStatus(), "status", null, 0, 1, ComponentRequestStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getComponentRequestStatus_Message(), theEcorePackage.getEString(), "message", null, 0, 1, ComponentRequestStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(statusRequestEClass, StatusRequest.class, "StatusRequest", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize enums and add enum literals
 		initEEnum(componentCategoryEEnum, ComponentCategory.class, "ComponentCategory");

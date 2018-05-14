@@ -5,6 +5,7 @@ package de.dfki.iui.basys.model.base.provider;
 import org.eclipse.emf.common.EMFPlugin;
 
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
 
 /**
  * This is the central singleton for the Base edit plugin.
@@ -38,6 +39,7 @@ public final class BaseEditPlugin extends EMFPlugin {
 	public BaseEditPlugin() {
 		super
 		  (new ResourceLocator [] {
+		     EcoreEditPlugin.INSTANCE,
 		   });
 	}
 

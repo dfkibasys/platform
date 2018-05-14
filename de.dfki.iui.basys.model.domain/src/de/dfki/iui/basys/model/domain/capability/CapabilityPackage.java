@@ -718,7 +718,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getLoadCarrierUnitEnum()
 	 * @generated
 	 */
-	int LOAD_CARRIER_UNIT_ENUM = 24;
+	int LOAD_CARRIER_UNIT_ENUM = 26;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.UrformenImpl <em>Urformen</em>}' class.
@@ -1805,6 +1805,215 @@ public interface CapabilityPackage extends EPackage {
 	int MOVE_TO_LOCATION_OPERATION_COUNT = GENERAL_CAPABILITY_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.ProjectPathImpl <em>Project Path</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.ProjectPathImpl
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getProjectPath()
+	 * @generated
+	 */
+	int PROJECT_PATH = 24;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROJECT_PATH__BINDING = WORKER_ASSISTENCE_CAPABILITY__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROJECT_PATH__ID = WORKER_ASSISTENCE_CAPABILITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROJECT_PATH__NAME = WORKER_ASSISTENCE_CAPABILITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROJECT_PATH__METADATA = WORKER_ASSISTENCE_CAPABILITY__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROJECT_PATH__PATH = WORKER_ASSISTENCE_CAPABILITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Delay</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROJECT_PATH__DELAY = WORKER_ASSISTENCE_CAPABILITY_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Arrow Count</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROJECT_PATH__ARROW_COUNT = WORKER_ASSISTENCE_CAPABILITY_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Color</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROJECT_PATH__COLOR = WORKER_ASSISTENCE_CAPABILITY_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Eta</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROJECT_PATH__ETA = WORKER_ASSISTENCE_CAPABILITY_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of structural features of the '<em>Project Path</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROJECT_PATH_FEATURE_COUNT = WORKER_ASSISTENCE_CAPABILITY_FEATURE_COUNT + 5;
+
+	/**
+	 * The number of operations of the '<em>Project Path</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROJECT_PATH_OPERATION_COUNT = WORKER_ASSISTENCE_CAPABILITY_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.ProjectETAImpl <em>Project ETA</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.ProjectETAImpl
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getProjectETA()
+	 * @generated
+	 */
+	int PROJECT_ETA = 25;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROJECT_ETA__BINDING = WORKER_ASSISTENCE_CAPABILITY__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROJECT_ETA__ID = WORKER_ASSISTENCE_CAPABILITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROJECT_ETA__NAME = WORKER_ASSISTENCE_CAPABILITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROJECT_ETA__METADATA = WORKER_ASSISTENCE_CAPABILITY__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Eta</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROJECT_ETA__ETA = WORKER_ASSISTENCE_CAPABILITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Position</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROJECT_ETA__POSITION = WORKER_ASSISTENCE_CAPABILITY_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Radius</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROJECT_ETA__RADIUS = WORKER_ASSISTENCE_CAPABILITY_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Color</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROJECT_ETA__COLOR = WORKER_ASSISTENCE_CAPABILITY_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Project ETA</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROJECT_ETA_FEATURE_COUNT = WORKER_ASSISTENCE_CAPABILITY_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of operations of the '<em>Project ETA</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROJECT_ETA_OPERATION_COUNT = WORKER_ASSISTENCE_CAPABILITY_OPERATION_COUNT + 0;
+
+	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.CapabilityAssertion <em>Assertion</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2033,6 +2242,125 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getMoveToLocation();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.ProjectPath <em>Project Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Project Path</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.ProjectPath
+	 * @generated
+	 */
+	EClass getProjectPath();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link de.dfki.iui.basys.model.domain.capability.ProjectPath#getPath <em>Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Path</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.ProjectPath#getPath()
+	 * @see #getProjectPath()
+	 * @generated
+	 */
+	EReference getProjectPath_Path();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.capability.ProjectPath#getDelay <em>Delay</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Delay</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.ProjectPath#getDelay()
+	 * @see #getProjectPath()
+	 * @generated
+	 */
+	EAttribute getProjectPath_Delay();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.capability.ProjectPath#getArrowCount <em>Arrow Count</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Arrow Count</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.ProjectPath#getArrowCount()
+	 * @see #getProjectPath()
+	 * @generated
+	 */
+	EAttribute getProjectPath_ArrowCount();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.capability.ProjectPath#getColor <em>Color</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Color</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.ProjectPath#getColor()
+	 * @see #getProjectPath()
+	 * @generated
+	 */
+	EAttribute getProjectPath_Color();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.capability.ProjectPath#getEta <em>Eta</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Eta</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.ProjectPath#getEta()
+	 * @see #getProjectPath()
+	 * @generated
+	 */
+	EAttribute getProjectPath_Eta();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.ProjectETA <em>Project ETA</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Project ETA</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.ProjectETA
+	 * @generated
+	 */
+	EClass getProjectETA();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.capability.ProjectETA#getEta <em>Eta</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Eta</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.ProjectETA#getEta()
+	 * @see #getProjectETA()
+	 * @generated
+	 */
+	EAttribute getProjectETA_Eta();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link de.dfki.iui.basys.model.domain.capability.ProjectETA#getPosition <em>Position</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Position</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.ProjectETA#getPosition()
+	 * @see #getProjectETA()
+	 * @generated
+	 */
+	EReference getProjectETA_Position();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.capability.ProjectETA#getRadius <em>Radius</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Radius</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.ProjectETA#getRadius()
+	 * @see #getProjectETA()
+	 * @generated
+	 */
+	EAttribute getProjectETA_Radius();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.capability.ProjectETA#getColor <em>Color</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Color</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.ProjectETA#getColor()
+	 * @see #getProjectETA()
+	 * @generated
+	 */
+	EAttribute getProjectETA_Color();
 
 	/**
 	 * Returns the meta object for enum '{@link de.dfki.iui.basys.model.domain.capability.LoadCarrierUnitEnum <em>Load Carrier Unit Enum</em>}'.
@@ -2463,6 +2791,98 @@ public interface CapabilityPackage extends EPackage {
 		 * @generated
 		 */
 		EClass MOVE_TO_LOCATION = eINSTANCE.getMoveToLocation();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.ProjectPathImpl <em>Project Path</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.ProjectPathImpl
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getProjectPath()
+		 * @generated
+		 */
+		EClass PROJECT_PATH = eINSTANCE.getProjectPath();
+
+		/**
+		 * The meta object literal for the '<em><b>Path</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROJECT_PATH__PATH = eINSTANCE.getProjectPath_Path();
+
+		/**
+		 * The meta object literal for the '<em><b>Delay</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROJECT_PATH__DELAY = eINSTANCE.getProjectPath_Delay();
+
+		/**
+		 * The meta object literal for the '<em><b>Arrow Count</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROJECT_PATH__ARROW_COUNT = eINSTANCE.getProjectPath_ArrowCount();
+
+		/**
+		 * The meta object literal for the '<em><b>Color</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROJECT_PATH__COLOR = eINSTANCE.getProjectPath_Color();
+
+		/**
+		 * The meta object literal for the '<em><b>Eta</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROJECT_PATH__ETA = eINSTANCE.getProjectPath_Eta();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.ProjectETAImpl <em>Project ETA</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.ProjectETAImpl
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getProjectETA()
+		 * @generated
+		 */
+		EClass PROJECT_ETA = eINSTANCE.getProjectETA();
+
+		/**
+		 * The meta object literal for the '<em><b>Eta</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROJECT_ETA__ETA = eINSTANCE.getProjectETA_Eta();
+
+		/**
+		 * The meta object literal for the '<em><b>Position</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROJECT_ETA__POSITION = eINSTANCE.getProjectETA_Position();
+
+		/**
+		 * The meta object literal for the '<em><b>Radius</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROJECT_ETA__RADIUS = eINSTANCE.getProjectETA_Radius();
+
+		/**
+		 * The meta object literal for the '<em><b>Color</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROJECT_ETA__COLOR = eINSTANCE.getProjectETA_Color();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.LoadCarrierUnitEnum <em>Load Carrier Unit Enum</em>}' enum.

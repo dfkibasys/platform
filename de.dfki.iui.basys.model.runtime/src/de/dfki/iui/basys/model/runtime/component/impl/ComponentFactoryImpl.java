@@ -63,6 +63,7 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 			case ComponentPackage.CHANGE_MODE_REQUEST: return createChangeModeRequest();
 			case ComponentPackage.CAPABILITY_REQUEST: return createCapabilityRequest();
 			case ComponentPackage.COMPONENT_REQUEST_STATUS: return createComponentRequestStatus();
+			case ComponentPackage.STATUS_REQUEST: return createStatusRequest();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -172,6 +173,16 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 	public ComponentRequestStatus createComponentRequestStatus() {
 		ComponentRequestStatusImpl componentRequestStatus = new ComponentRequestStatusImpl();
 		return componentRequestStatus;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StatusRequest createStatusRequest() {
+		StatusRequestImpl statusRequest = new StatusRequestImpl();
+		return statusRequest;
 	}
 
 	/**

@@ -114,13 +114,22 @@ public interface ComponentPackage extends EPackage {
 	int COMPONENT_INFO__OUT_CHANNEL_NAME = 4;
 
 	/**
+	 * The feature id for the '<em><b>Status Channel Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_INFO__STATUS_CHANNEL_NAME = 5;
+
+	/**
 	 * The feature id for the '<em><b>Current State</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_INFO__CURRENT_STATE = 5;
+	int COMPONENT_INFO__CURRENT_STATE = 6;
 
 	/**
 	 * The feature id for the '<em><b>Current Mode</b></em>' attribute.
@@ -129,7 +138,7 @@ public interface ComponentPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_INFO__CURRENT_MODE = 6;
+	int COMPONENT_INFO__CURRENT_MODE = 7;
 
 	/**
 	 * The feature id for the '<em><b>Communication Provider</b></em>' attribute.
@@ -138,7 +147,7 @@ public interface ComponentPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_INFO__COMMUNICATION_PROVIDER = 7;
+	int COMPONENT_INFO__COMMUNICATION_PROVIDER = 8;
 
 	/**
 	 * The feature id for the '<em><b>Connection String</b></em>' attribute.
@@ -147,7 +156,25 @@ public interface ComponentPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_INFO__CONNECTION_STRING = 8;
+	int COMPONENT_INFO__CONNECTION_STRING = 9;
+
+	/**
+	 * The feature id for the '<em><b>Host Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_INFO__HOST_NAME = 10;
+
+	/**
+	 * The feature id for the '<em><b>Uri Spec</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_INFO__URI_SPEC = 11;
 
 	/**
 	 * The number of structural features of the '<em>Info</em>' class.
@@ -156,7 +183,7 @@ public interface ComponentPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_INFO_FEATURE_COUNT = 9;
+	int COMPONENT_INFO_FEATURE_COUNT = 12;
 
 	/**
 	 * The number of operations of the '<em>Info</em>' class.
@@ -507,6 +534,43 @@ public interface ComponentPackage extends EPackage {
 	int COMPONENT_REQUEST_STATUS_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.impl.StatusRequestImpl <em>Status Request</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.runtime.component.impl.StatusRequestImpl
+	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getStatusRequest()
+	 * @generated
+	 */
+	int STATUS_REQUEST = 7;
+
+	/**
+	 * The feature id for the '<em><b>Component Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATUS_REQUEST__COMPONENT_ID = COMPONENT_REQUEST__COMPONENT_ID;
+
+	/**
+	 * The number of structural features of the '<em>Status Request</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATUS_REQUEST_FEATURE_COUNT = COMPONENT_REQUEST_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Status Request</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATUS_REQUEST_OPERATION_COUNT = COMPONENT_REQUEST_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.ComponentCategory <em>Category</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -514,7 +578,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getComponentCategory()
 	 * @generated
 	 */
-	int COMPONENT_CATEGORY = 7;
+	int COMPONENT_CATEGORY = 8;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.State <em>State</em>}' enum.
@@ -524,7 +588,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getState()
 	 * @generated
 	 */
-	int STATE = 8;
+	int STATE = 9;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.ControlMode <em>Control Mode</em>}' enum.
@@ -534,7 +598,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getControlMode()
 	 * @generated
 	 */
-	int CONTROL_MODE = 9;
+	int CONTROL_MODE = 10;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.ControlCommand <em>Control Command</em>}' enum.
@@ -544,7 +608,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getControlCommand()
 	 * @generated
 	 */
-	int CONTROL_COMMAND = 10;
+	int CONTROL_COMMAND = 11;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.RequestStatus <em>Request Status</em>}' enum.
@@ -554,7 +618,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getRequestStatus()
 	 * @generated
 	 */
-	int REQUEST_STATUS = 11;
+	int REQUEST_STATUS = 12;
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.runtime.component.ComponentInfo <em>Info</em>}'.
@@ -622,6 +686,17 @@ public interface ComponentPackage extends EPackage {
 	EAttribute getComponentInfo_OutChannelName();
 
 	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.runtime.component.ComponentInfo#getStatusChannelName <em>Status Channel Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Status Channel Name</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.ComponentInfo#getStatusChannelName()
+	 * @see #getComponentInfo()
+	 * @generated
+	 */
+	EAttribute getComponentInfo_StatusChannelName();
+
+	/**
 	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.runtime.component.ComponentInfo#getCurrentState <em>Current State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -664,6 +739,28 @@ public interface ComponentPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getComponentInfo_ConnectionString();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.runtime.component.ComponentInfo#getHostName <em>Host Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Host Name</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.ComponentInfo#getHostName()
+	 * @see #getComponentInfo()
+	 * @generated
+	 */
+	EAttribute getComponentInfo_HostName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.runtime.component.ComponentInfo#getUriSpec <em>Uri Spec</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Uri Spec</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.ComponentInfo#getUriSpec()
+	 * @see #getComponentInfo()
+	 * @generated
+	 */
+	EAttribute getComponentInfo_UriSpec();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.runtime.component.ComponentConfiguration <em>Configuration</em>}'.
@@ -902,6 +999,16 @@ public interface ComponentPackage extends EPackage {
 	EAttribute getComponentRequestStatus_Message();
 
 	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.runtime.component.StatusRequest <em>Status Request</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Status Request</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.StatusRequest
+	 * @generated
+	 */
+	EClass getStatusRequest();
+
+	/**
 	 * Returns the meta object for enum '{@link de.dfki.iui.basys.model.runtime.component.ComponentCategory <em>Category</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1025,6 +1132,14 @@ public interface ComponentPackage extends EPackage {
 		EAttribute COMPONENT_INFO__OUT_CHANNEL_NAME = eINSTANCE.getComponentInfo_OutChannelName();
 
 		/**
+		 * The meta object literal for the '<em><b>Status Channel Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMPONENT_INFO__STATUS_CHANNEL_NAME = eINSTANCE.getComponentInfo_StatusChannelName();
+
+		/**
 		 * The meta object literal for the '<em><b>Current State</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1055,6 +1170,22 @@ public interface ComponentPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute COMPONENT_INFO__CONNECTION_STRING = eINSTANCE.getComponentInfo_ConnectionString();
+
+		/**
+		 * The meta object literal for the '<em><b>Host Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMPONENT_INFO__HOST_NAME = eINSTANCE.getComponentInfo_HostName();
+
+		/**
+		 * The meta object literal for the '<em><b>Uri Spec</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMPONENT_INFO__URI_SPEC = eINSTANCE.getComponentInfo_UriSpec();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl <em>Configuration</em>}' class.
@@ -1243,6 +1374,16 @@ public interface ComponentPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute COMPONENT_REQUEST_STATUS__MESSAGE = eINSTANCE.getComponentRequestStatus_Message();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.runtime.component.impl.StatusRequestImpl <em>Status Request</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.runtime.component.impl.StatusRequestImpl
+		 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getStatusRequest()
+		 * @generated
+		 */
+		EClass STATUS_REQUEST = eINSTANCE.getStatusRequest();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.runtime.component.ComponentCategory <em>Category</em>}' enum.

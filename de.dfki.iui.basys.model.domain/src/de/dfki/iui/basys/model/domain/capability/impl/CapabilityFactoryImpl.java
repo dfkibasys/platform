@@ -81,6 +81,8 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 			case CapabilityPackage.WORKER_ASSISTENCE_CAPABILITY: return createWorkerAssistenceCapability();
 			case CapabilityPackage.GENERAL_CAPABILITY: return createGeneralCapability();
 			case CapabilityPackage.MOVE_TO_LOCATION: return createMoveToLocation();
+			case CapabilityPackage.PROJECT_PATH: return createProjectPath();
+			case CapabilityPackage.PROJECT_ETA: return createProjectETA();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -234,6 +236,26 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	public MoveToLocation createMoveToLocation() {
 		MoveToLocationImpl moveToLocation = new MoveToLocationImpl();
 		return moveToLocation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ProjectPath createProjectPath() {
+		ProjectPathImpl projectPath = new ProjectPathImpl();
+		return projectPath;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ProjectETA createProjectETA() {
+		ProjectETAImpl projectETA = new ProjectETAImpl();
+		return projectETA;
 	}
 
 	/**

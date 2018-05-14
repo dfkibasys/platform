@@ -167,6 +167,14 @@ public class CapabilityAdapterFactory extends AdapterFactoryImpl {
 				return createMoveToLocationAdapter();
 			}
 			@Override
+			public Adapter caseProjectPath(ProjectPath object) {
+				return createProjectPathAdapter();
+			}
+			@Override
+			public Adapter caseProjectETA(ProjectETA object) {
+				return createProjectETAAdapter();
+			}
+			@Override
 			public Adapter caseBObject(BObject object) {
 				return createBObjectAdapter();
 			}
@@ -359,6 +367,34 @@ public class CapabilityAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createMoveToLocationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.capability.ProjectPath <em>Project Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.domain.capability.ProjectPath
+	 * @generated
+	 */
+	public Adapter createProjectPathAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.capability.ProjectETA <em>Project ETA</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.domain.capability.ProjectETA
+	 * @generated
+	 */
+	public Adapter createProjectETAAdapter() {
 		return null;
 	}
 

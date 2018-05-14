@@ -348,6 +348,52 @@ public class CapabilityItemProviderAdapterFactory extends CapabilityAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.ProjectPath} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ProjectPathItemProvider projectPathItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.ProjectPath}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createProjectPathAdapter() {
+		if (projectPathItemProvider == null) {
+			projectPathItemProvider = new ProjectPathItemProvider(this);
+		}
+
+		return projectPathItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.ProjectETA} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ProjectETAItemProvider projectETAItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.ProjectETA}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createProjectETAAdapter() {
+		if (projectETAItemProvider == null) {
+			projectETAItemProvider = new ProjectETAItemProvider(this);
+		}
+
+		return projectETAItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.Urformen} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -746,6 +792,8 @@ public class CapabilityItemProviderAdapterFactory extends CapabilityAdapterFacto
 		if (workerAssistenceCapabilityItemProvider != null) workerAssistenceCapabilityItemProvider.dispose();
 		if (generalCapabilityItemProvider != null) generalCapabilityItemProvider.dispose();
 		if (moveToLocationItemProvider != null) moveToLocationItemProvider.dispose();
+		if (projectPathItemProvider != null) projectPathItemProvider.dispose();
+		if (projectETAItemProvider != null) projectETAItemProvider.dispose();
 	}
 
 }

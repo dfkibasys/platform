@@ -2,7 +2,6 @@
  */
 package de.dfki.iui.basys.model.domain.topology;
 
-import de.dfki.iui.basys.model.base.Entity;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -21,7 +20,7 @@ import org.eclipse.emf.common.util.EList;
  * @model abstract="true"
  * @generated
  */
-public interface WorkCenter extends Entity {
+public interface WorkCenter extends TopologyElement {
 
 	/**
 	 * Returns the value of the '<em><b>Equipment Modules</b></em>' containment reference list.
