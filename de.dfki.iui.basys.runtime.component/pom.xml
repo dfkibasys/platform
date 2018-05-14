@@ -61,7 +61,33 @@
 			<version>${scxml.version}</version>
 		</dependency>
 
-<!-- 		 <dependency>
+		<dependency>
+			<groupId>org.apache.curator</groupId>
+			<artifactId>curator-recipes</artifactId>
+			<version>4.0.0</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.curator</groupId>
+					<artifactId>curator-framework</artifactId>
+		        </exclusion>
+			</exclusions>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.curator/curator-framework -->
+ 		<dependency>
+			<groupId>org.apache.curator</groupId>
+			<artifactId>curator-framework</artifactId>
+			<version>${curator.version}</version>
+		</dependency> 
+
+		<!-- https://mvnrepository.com/artifact/org.apache.curator/curator-x-discovery -->
+		<dependency>
+			<groupId>org.apache.curator</groupId>
+			<artifactId>curator-x-discovery</artifactId>
+			<version>${curator-x.version}</version>
+		</dependency> 
+
+		 <dependency>
 			<groupId>org.apache.curator</groupId>
 			<artifactId>curator-client</artifactId>
 			<version>${curator.version}</version>
@@ -75,8 +101,8 @@
 					<artifactId>log4j</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency> -->
-		
+		</dependency>
+		<!-- 
 		<dependency>
 			<groupId>de.dfki.iui.basys.build.wrapper-bundle-settings</groupId>
 			<artifactId>org.apache.curator.client</artifactId>
@@ -117,33 +143,9 @@
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
 			<version>1.9.13</version>			
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.curator</groupId>
-			<artifactId>curator-recipes</artifactId>
-			<version>4.0.0</version>
-			<exclusions>
-				<exclusion>
-					<groupId>org.apache.curator</groupId>
-					<artifactId>curator-framework</artifactId>
-		        </exclusion>
-			</exclusions>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.apache.curator/curator-framework -->
-<!-- 		<dependency>
-			<groupId>org.apache.curator</groupId>
-			<artifactId>curator-framework</artifactId>
-			<version>${curator.version}</version>
 		</dependency> -->
 
-		<!-- https://mvnrepository.com/artifact/org.apache.curator/curator-x-discovery -->
-<!-- 		<dependency>
-			<groupId>org.apache.curator</groupId>
-			<artifactId>curator-x-discovery</artifactId>
-			<version>${curator-x.version}</version>
-		</dependency> -->
+
 
 		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-jexl3 -->
 		<dependency>
