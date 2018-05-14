@@ -67,6 +67,7 @@
         </dependency>
 
 
+
 		<!-- comment to remove all imported (non-local) bundles from your compilation 
 			classpath -->
 		<dependency>
@@ -83,17 +84,7 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
-
-		<dependency>
-			<groupId>org.osgi</groupId>
-			<artifactId>osgi_R4_core</artifactId>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.osgi</groupId>
-			<artifactId>osgi_R4_compendium</artifactId>
-			<optional>true</optional>
-		</dependency>
+		
 	</dependencies>
 
 </project>

@@ -12,8 +12,10 @@ import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.communication.Response;
 import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.ComponentInfo;
 import de.dfki.iui.basys.model.runtime.component.ControlMode;
 import de.dfki.iui.basys.model.runtime.component.State;
+import de.dfki.iui.basys.model.runtime.component.impl.ComponentInfoImpl;
 import de.dfki.iui.basys.runtime.communication.ClientFactory;
 import de.dfki.iui.basys.runtime.component.registry.ComponentRegistration;
 import de.dfki.iui.basys.runtime.component.registry.ComponentRegistrationException;
@@ -153,7 +155,7 @@ public class BaseComponent implements Component, ChannelListener {
 			context.setSharedChannelPool(pool);
 		}
 
-		statusChannel = cf.openChannel(pool, statusChannelName, false, null);
+		statusChannel = cf.openChannel(pool, baseStatusChannelName + "#" + getId(), false, null);
 		// telemetryChannel = cf.openChannel(pool, componentConfig.getComponentId() + "#telemetry" , false, null);
 
 		if (componentConfig.getInChannelName() != null && !componentConfig.getInChannelName().equals(""))
@@ -189,24 +191,41 @@ public class BaseComponent implements Component, ChannelListener {
 		}
 	}
 
+	@Override
+	public ComponentInfo getComponentInfo() {
+		ComponentInfo componentInfo = new ComponentInfoImpl.Builder()
+				.componentId(getId())
+				.componentName(getName())
+				.componentCategory(getCategory())
+				.communicationProvider(getConfig().getCommunicationProviderImplementationJavaClass())
+				.connectionString(getConfig().getCommunicationProviderConnectionString())
+				.inChannelName(getConfig().getInChannelName())
+				.outChannelName(getConfig().getOutChannelName())
+				.statusChannelName(Component.baseStatusChannelName + "#" + getId())
+				.currentState(getState())
+				.currentMode(getMode())
+				.build();
+		return componentInfo;		
+	}
+	
 	/*
 	 * ChannelListener interface
 	 */
 
 	@Override
-	public void handleMessage(String msg) {
+	public void handleMessage(Channel channel, String msg) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void handleNotification(Notification not) {
+	public void handleNotification(Channel channel, Notification not) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public Response handleRequest(Request req) {
+	public Response handleRequest(Channel channel, Request req) {
 		// TODO Auto-generated method stub
 		return null;
 	}

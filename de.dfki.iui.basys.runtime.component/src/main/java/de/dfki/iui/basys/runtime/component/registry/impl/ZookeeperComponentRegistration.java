@@ -5,7 +5,6 @@ import org.apache.curator.x.discovery.ServiceInstance;
 import org.apache.curator.x.discovery.UriSpec;
 
 import de.dfki.iui.basys.model.runtime.component.ComponentInfo;
-import de.dfki.iui.basys.model.runtime.component.impl.ComponentInfoImpl;
 import de.dfki.iui.basys.runtime.component.Component;
 import de.dfki.iui.basys.runtime.component.registry.ComponentRegistration;
 import de.dfki.iui.basys.runtime.component.registry.ComponentRegistrationException;
@@ -27,20 +26,13 @@ public class ZookeeperComponentRegistration implements ComponentRegistration {
 
 	private ServiceInstance<ComponentInfo> createServiceInstance(Component component)
 			throws ComponentRegistrationException {
-		ComponentInfo componentInfo = new ComponentInfoImpl.Builder()
-				.componentId(component.getId())
-				.componentName(component.getName())
-				.componentCategory(component.getCategory())
-				.communicationProvider(component.getConfig().getCommunicationProviderImplementationJavaClass())
-				.connectionString(component.getConfig().getCommunicationProviderConnectionString())
-				.inChannelName(component.getConfig().getInChannelName())
-				.outChannelName(component.getConfig().getOutChannelName())
-				.currentState(component.getState())
-				.currentMode(component.getMode())
-				.build();
+	
 		// in a real application, you'd have a convention of some kind for the URI
 		// layout
-		UriSpec uriSpec = new UriSpec("{scheme}://foo.com:{port}");
+		UriSpec uriSpec = new UriSpec("{scheme}://{hostName}:{port}");
+		
+		ComponentInfo componentInfo = component.getComponentInfo();
+
 		try {
 			ServiceInstance<ComponentInfo> inst = ServiceInstance.<ComponentInfo>builder()
 					.name(component.getCategory().getName())
@@ -48,6 +40,9 @@ public class ZookeeperComponentRegistration implements ComponentRegistration {
 					.payload(componentInfo)
 					.port((int) (65535 * Math.random())) // in a real application, you'd use a common port
 					.uriSpec(uriSpec).build();
+			
+			componentInfo.setHostName(inst.getAddress());
+			componentInfo.setUriSpec(uriSpec.toString());
 			return inst;
 		} catch (Exception e) {
 			throw new ComponentRegistrationException(e);
@@ -105,5 +100,16 @@ public class ZookeeperComponentRegistration implements ComponentRegistration {
 			// TODO Auto-generated catch block
 			throw new ComponentRegistrationException(e);
 		}
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * de.dfki.iui.basys.runtime.component.registry.ServiceRegistration#getComponentInfo()
+	 */
+	@Override
+	public ComponentInfo getComponentInfo() {
+		return registeredInstance.getPayload();
 	}
 }

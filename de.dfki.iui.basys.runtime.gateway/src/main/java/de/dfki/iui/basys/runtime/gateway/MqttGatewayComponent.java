@@ -94,13 +94,13 @@ public class MqttGatewayComponent extends ServiceComponent implements Gateway {
 		Channel internalChannel = cf.openChannel(context.getSharedChannelPool(), internalChannelName, false, new ChannelListener() {
 
 			@Override
-			public Response handleRequest(Request req) {
+			public Response handleRequest(Channel channel, Request req) {
 				// TODO Auto-generated method stub
 				return null;
 			}
 
 			@Override
-			public void handleNotification(Notification not) {
+			public void handleNotification(Channel channel, Notification not) {
 				try {
 					
 					String msg = JsonUtils.toString(not);
@@ -122,7 +122,7 @@ public class MqttGatewayComponent extends ServiceComponent implements Gateway {
 			}
 
 			@Override
-			public void handleMessage(String msg) {
+			public void handleMessage(Channel channel, String msg) {
 				MqttMessage message = new MqttMessage();
 				message.setPayload(msg.getBytes(StandardCharsets.UTF_8));
 				message.setQos(2);

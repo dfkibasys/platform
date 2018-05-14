@@ -16,49 +16,66 @@ import de.dfki.iui.basys.model.runtime.component.ComponentRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentRequestStatus;
 import de.dfki.iui.basys.model.runtime.component.ControlCommand;
 import de.dfki.iui.basys.model.runtime.component.ControlMode;
+import de.dfki.iui.basys.model.runtime.component.State;
 import de.dfki.iui.basys.model.runtime.component.impl.CapabilityRequestImpl;
 import de.dfki.iui.basys.model.runtime.component.impl.ChangeModeRequestImpl;
 import de.dfki.iui.basys.model.runtime.component.impl.CommandRequestImpl;
 import de.dfki.iui.basys.runtime.communication.ClientFactory;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.device.packml.CommandInterface;
+import de.dfki.iui.basys.runtime.component.device.packml.StatusInterface;
 import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
 
-public class DeviceComponentController implements CommandInterface, ChannelListener {
+public class DeviceComponentController implements CommandInterface, ChannelListener, StatusInterface {
 
 	private String componentId;
 
 	protected ClientFactory cf = ClientFactory.getInstance();
-	
+
 	private ComponentContext context = null;
-	
+
 	private Channel componentInChannel = null;
 	private Channel componentOutChannel = null;
+	private Channel componentStatusChannel = null;
+
+	private ComponentInfo componentInfo = null;
+
+	private ChannelListener listener = null;
 
 	public DeviceComponentController(String componentId) {
 		this.componentId = componentId;
 	}
 
+	public DeviceComponentController(String componentId, ChannelListener listener) {
+		this.componentId = componentId;
+		this.listener = listener;
+	}
+
 	public void connect(ComponentContext context) {
-		
-		//TODO: controller should register itself at remote device component in order to avoid two controllers can control a component at the same time. 
+
+		// TODO: controller should register itself at remote device component in order to avoid two controllers can control a component at the same time.
 		this.context = context;
-		ComponentInfo componentInfo = context.getComponentRegistry().getComponentById(ComponentCategory.DEVICE_COMPONENT, componentId);
-		if (componentInfo.getInChannelName() != null && !componentInfo.getInChannelName().equals(""))
-			componentInChannel = cf.openChannel(context.getSharedChannelPool(), componentInfo.getInChannelName(), false, null);
-		if (componentInfo.getOutChannelName() != null && !componentInfo.getOutChannelName().equals(""))
-			componentOutChannel = cf.openChannel(context.getSharedChannelPool(), componentInfo.getOutChannelName(), false, this);		
-		
+
+		componentInfo = context.getComponentRegistry().getComponentById(ComponentCategory.DEVICE_COMPONENT, componentId);
+		synchronized (componentInfo) {
+			if (componentInfo.getInChannelName() != null && !componentInfo.getInChannelName().equals(""))
+				componentInChannel = cf.openChannel(context.getSharedChannelPool(), componentInfo.getInChannelName(), false, null);
+			if (componentInfo.getOutChannelName() != null && !componentInfo.getOutChannelName().equals(""))
+				componentOutChannel = cf.openChannel(context.getSharedChannelPool(), componentInfo.getOutChannelName(), false, this);
+			if (componentInfo.getStatusChannelName() != null && !componentInfo.getStatusChannelName().equals(""))
+				componentStatusChannel = cf.openChannel(context.getSharedChannelPool(), componentInfo.getStatusChannelName(), false, this);
+		}
 	}
 
 	public void disconnect() {
-		//TODO: unregister at remote device controller
+		// TODO: unregister at remote device controller
 		if (componentInChannel != null)
 			componentInChannel.close();
 		if (componentOutChannel != null)
 			componentOutChannel.close();
+		if (componentStatusChannel != null)
+			componentStatusChannel.close();
 	}
-
 
 	private ComponentRequestStatus sendCommandRequest(ControlCommand command) {
 		ComponentRequest cr = new CommandRequestImpl.Builder().componentId(componentId).controlCommand(command).build();
@@ -69,12 +86,12 @@ public class DeviceComponentController implements CommandInterface, ChannelListe
 		ComponentRequest cr = new ChangeModeRequestImpl.Builder().componentId(componentId).mode(mode).build();
 		return sendComponentRequest(cr);
 	}
-	
+
 	private ComponentRequestStatus sendCapabilityRequest(Capability capability) {
 		CapabilityRequest cr = new CapabilityRequestImpl.Builder().componentId(componentId).capability(capability).build();
 		return sendComponentRequest(cr);
 	}
-	
+
 	private ComponentRequestStatus sendComponentRequest(ComponentRequest request) {
 		ComponentRequestStatus status = null;
 		try {
@@ -94,7 +111,6 @@ public class DeviceComponentController implements CommandInterface, ChannelListe
 		ComponentRequestStatus status = sendCapabilityRequest(capability);
 		return status;
 	}
-
 
 	@Override
 	public ComponentRequestStatus setMode(ControlMode mode) {
@@ -163,21 +179,63 @@ public class DeviceComponentController implements CommandInterface, ChannelListe
 	}
 
 	@Override
-	public void handleMessage(String msg) {
-		// TODO Auto-generated method stub
-		
+	public void handleMessage(Channel channel, String msg) {
+		if (listener != null) {
+			listener.handleMessage(channel, msg);
+		}
+
 	}
 
 	@Override
-	public void handleNotification(Notification not) {
-		// TODO Auto-generated method stub
+	public void handleNotification(Channel channel, Notification not) {
 		
+		if (channel.getName().equals(componentInfo.getStatusChannelName())) {
+			synchronized (componentInfo) {
+				try {
+					componentInfo = JsonUtils.fromString(not.getPayload(), ComponentInfo.class);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		if (listener != null) {
+			listener.handleNotification(channel, not);
+		}
 	}
 
 	@Override
-	public Response handleRequest(Request req) {
-		// TODO Auto-generated method stub
+	public Response handleRequest(Channel channel, Request req) {
+		if (listener != null) {
+			return listener.handleRequest(channel, req);
+		}
+
 		return null;
+	}
+
+	@Override
+	public String getId() {
+		return componentId;
+	}
+
+	@Override
+	public State getState() {
+		synchronized (componentInfo) {
+			return componentInfo.getCurrentState();
+		}
+	}
+
+	@Override
+	public ControlMode getMode() {
+		synchronized (componentInfo) {
+			return componentInfo.getCurrentMode();
+		}
+	}
+
+	@Override
+	public UnitConfiguration getUnitConfig() {
+		throw new UnsupportedOperationException("method not implemented in device component controller.");
 	}
 
 }

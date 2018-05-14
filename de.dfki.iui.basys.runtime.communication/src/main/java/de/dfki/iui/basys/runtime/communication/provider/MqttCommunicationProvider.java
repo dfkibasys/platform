@@ -128,7 +128,7 @@ public class MqttCommunicationProvider implements CommunicationProvider {
 
 							if (mqttProtocolMessage.getResponseTopic() != null) {
 								Request req = (Request) incomingMessage;
-								Response res = channel.getListener().handleRequest(req);
+								Response res = channel.getListener().handleRequest(channel, req);
 
 								try {
 									String payload = JsonUtils.toString(res);
@@ -142,14 +142,14 @@ public class MqttCommunicationProvider implements CommunicationProvider {
 								}
 							} else {
 								if (incomingMessage instanceof Notification) {
-									channel.getListener().handleNotification((Notification) incomingMessage);
+									channel.getListener().handleNotification(channel, (Notification) incomingMessage);
 								} else {
-									channel.getListener().handleMessage(incomingMessage.getPayload());
+									channel.getListener().handleMessage(channel, incomingMessage.getPayload());
 								}
 
 							}
 						} catch (IOException e) {
-							channel.getListener().handleMessage(mqttPayload);
+							channel.getListener().handleMessage(channel, mqttPayload);
 						}
 					}
 

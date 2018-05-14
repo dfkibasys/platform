@@ -105,13 +105,13 @@ public class JmsGatewayComponent extends ServiceComponent implements Gateway {
 			Channel internalChannel = cf.openChannel(context.getSharedChannelPool(), internalChannelName, false, new ChannelListener() {
 
 				@Override
-				public Response handleRequest(Request req) {
+				public Response handleRequest(Channel channel, Request req) {
 					// TODO Auto-generated method stub
 					return null;
 				}
 
 				@Override
-				public void handleNotification(Notification not) {
+				public void handleNotification(Channel channel, Notification not) {
 					try {
 						TextMessage outMsg = session.createTextMessage();
 						String payload = JsonUtils.toString(not);
@@ -124,7 +124,7 @@ public class JmsGatewayComponent extends ServiceComponent implements Gateway {
 				}
 
 				@Override
-				public void handleMessage(String msg) {
+				public void handleMessage(Channel channel, String msg) {
 					try {
 						TextMessage outMsg = session.createTextMessage();
 						outMsg.setText(msg);

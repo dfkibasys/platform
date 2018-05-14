@@ -2,6 +2,7 @@ package de.dfki.iui.basys.runtime.services.impl;
 
 import de.dfki.iui.basys.model.domain.topology.Enterprise;
 import de.dfki.iui.basys.model.domain.topology.TopologyElement;
+import de.dfki.iui.basys.model.domain.topology.TopologyPackage;
 import de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl;
 import de.dfki.iui.basys.model.domain.topology.util.TopologyResourceFactoryImpl;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
@@ -19,8 +20,7 @@ public class TopologyManagerImpl extends EmfServiceComponent implements Topology
 
 	@Override
 	public Enterprise getEnterprise() {
-		// TODO Auto-generated method stub
-		return null;
+		return getFirstEntity(TopologyPackage.eINSTANCE.getEnterprise()); 
 	}
 
 	@Override
@@ -30,8 +30,11 @@ public class TopologyManagerImpl extends EmfServiceComponent implements Topology
 
 	@Override
 	public TopologyElement getParentTopologyElement(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		TopologyElement element = getEntity(id);
+		if (element.eContainer() != null)
+			return (TopologyElement) element.eContainer();
+		else 
+			return null;		
 	}
 
 }

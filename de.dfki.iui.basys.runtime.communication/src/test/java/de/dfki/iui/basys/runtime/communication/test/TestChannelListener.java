@@ -3,6 +3,7 @@ package de.dfki.iui.basys.runtime.communication.test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import de.dfki.iui.basys.model.runtime.communication.Channel;
 import de.dfki.iui.basys.model.runtime.communication.ChannelListener;
 import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.communication.Response;
@@ -36,21 +37,21 @@ public class TestChannelListener implements ChannelListener {
 	}
 
 	@Override
-	public void handleMessage(String msg) {
+	public void handleMessage(Channel channel, String msg) {
 		LOGGER.info("handleMessage: " + msg);
 		if (msg.equals(expectedMessage))
 			success = true;
 	}
 
 	@Override
-	public void handleNotification(de.dfki.iui.basys.model.runtime.communication.Notification not) {
+	public void handleNotification(Channel channel, de.dfki.iui.basys.model.runtime.communication.Notification not) {
 		LOGGER.info("handleNotification: " + not.getPayload());
 		if (not.getPayload().equals(expectedMessage))
 			success = true;
 	}
 
 	@Override
-	public Response handleRequest(Request req) {
+	public Response handleRequest(Channel channel, Request req) {
 		LOGGER.info("handleRequest: " + req.getPayload());
 		if (req.getPayload().equals(expectedMessage))
 			success = true;

@@ -2,12 +2,13 @@ package de.dfki.iui.basys.runtime.component;
 
 import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.ComponentInfo;
 import de.dfki.iui.basys.model.runtime.component.ControlMode;
 import de.dfki.iui.basys.model.runtime.component.State;
 
 public interface Component {
 
-	final String statusChannelName = "basys#components#status";
+	final String baseStatusChannelName = "basys#components#status";
 
 	String getId();
 
@@ -16,6 +17,8 @@ public interface Component {
 	ComponentCategory getCategory();
 
 	ComponentConfiguration getConfig();
+	
+	ComponentInfo getComponentInfo();
 
 	State getState();
 

@@ -46,7 +46,6 @@
 			<version>20180130</version>
 		</dependency>
 
-
 		<!-- https://mvnrepository.com/artifact/javax.xml/jaxb-api -->
 		<dependency>
 			<groupId>javax.xml</groupId>
@@ -71,6 +70,7 @@
 			<optional>true</optional>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/junit/junit/4.12 -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -78,16 +78,6 @@
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>org.osgi</groupId>
-			<artifactId>osgi_R4_core</artifactId>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.osgi</groupId>
-			<artifactId>osgi_R4_compendium</artifactId>
-			<optional>true</optional>
-		</dependency>
 	</dependencies>
 
 </project>

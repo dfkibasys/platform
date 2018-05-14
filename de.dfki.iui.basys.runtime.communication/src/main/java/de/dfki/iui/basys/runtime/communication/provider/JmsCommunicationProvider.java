@@ -156,31 +156,33 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 				consumer.setMessageListener(new MessageListener() {
 
 					@Override
-					public void onMessage(Message msg) {
-						TextMessage textMessage = (TextMessage) msg;
-
+					public void onMessage(Message message) {
+						TextMessage textMessage = (TextMessage) message;
 						try {
-							de.dfki.iui.basys.model.runtime.communication.Message incomingMessage = JsonUtils.fromString(textMessage.getText(),
-									de.dfki.iui.basys.model.runtime.communication.Message.class);
-							if (textMessage.getJMSCorrelationID() != null) {
-								Request req = (Request) incomingMessage;
-								Response res = channel.getListener().handleRequest(req);
-								String payload = JsonUtils.toString(res);
+							String content = textMessage.getText();
+							try {
+								de.dfki.iui.basys.model.runtime.communication.Message incomingMessage = 
+										JsonUtils.fromString(content, de.dfki.iui.basys.model.runtime.communication.Message.class);
+								if (textMessage.getJMSCorrelationID() != null) {
+									Request req = (Request) incomingMessage;
+									Response res = channel.getListener().handleRequest(channel, req);
+									String payload = JsonUtils.toString(res);
 
-								TextMessage responseMessage = session.createTextMessage();
-								responseMessage.setText(payload);
-								responseMessage.setJMSCorrelationID(textMessage.getJMSCorrelationID());
-								replyProducer.send(textMessage.getJMSReplyTo(), responseMessage);
-							} else {
-								if (incomingMessage instanceof Notification) {
-									channel.getListener().handleNotification((Notification) incomingMessage);
+									TextMessage responseMessage = session.createTextMessage();
+									responseMessage.setText(payload);
+									responseMessage.setJMSCorrelationID(textMessage.getJMSCorrelationID());
+									replyProducer.send(textMessage.getJMSReplyTo(), responseMessage);
 								} else {
-									channel.getListener().handleMessage(incomingMessage.getPayload());
+									if (incomingMessage instanceof Notification) {
+										channel.getListener().handleNotification(channel, (Notification) incomingMessage);
+									} else {
+										channel.getListener().handleMessage(channel, incomingMessage.getPayload());
+									}
 								}
+							} catch (IOException e) {
+								channel.getListener().handleMessage(channel, content);
 							}
 						} catch (JMSException e) {
-							e.printStackTrace();
-						} catch (IOException e) {
 							e.printStackTrace();
 						}
 					}
@@ -217,7 +219,7 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 										JsonUtils.fromString(content, de.dfki.iui.basys.model.runtime.communication.Message.class);
 								if (textMessage.getJMSCorrelationID() != null) {
 									Request req = (Request) incomingMessage;
-									Response res = channel.getListener().handleRequest(req);
+									Response res = channel.getListener().handleRequest(channel, req);
 									String payload = JsonUtils.toString(res);
 
 									TextMessage responseMessage = session.createTextMessage();
@@ -226,13 +228,13 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 									replyProducer.send(textMessage.getJMSReplyTo(), responseMessage);
 								} else {
 									if (incomingMessage instanceof Notification) {
-										channel.getListener().handleNotification((Notification) incomingMessage);
+										channel.getListener().handleNotification(channel, (Notification) incomingMessage);
 									} else {
-										channel.getListener().handleMessage(incomingMessage.getPayload());
+										channel.getListener().handleMessage(channel, incomingMessage.getPayload());
 									}
 								}
 							} catch (IOException e) {
-								channel.getListener().handleMessage(content);
+								channel.getListener().handleMessage(channel, content);
 							}
 						} catch (JMSException e) {
 							e.printStackTrace();

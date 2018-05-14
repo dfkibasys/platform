@@ -53,19 +53,19 @@ public class MqttGatewayTest extends BaseComponentTest {
 			Channel externalChannel = ClientFactory.getInstance().openChannel(externalPool, "test#gateway#in", false, new ChannelListener() {
 				
 				@Override
-				public Response handleRequest(Request req) {
+				public Response handleRequest(Channel channel, Request req) {
 					// TODO Auto-generated method stub
 					return null;
 				}
 				
 				@Override
-				public void handleNotification(Notification not) {
+				public void handleNotification(Channel channel, Notification not) {
 					// TODO Auto-generated method stub
 					
 				}
 				
 				@Override
-				public void handleMessage(String msg) {
+				public void handleMessage(Channel channel, String msg) {
 					LOGGER.info(msg);	
 					assertEquals(testMessage, msg);
 					counter.countDown();
@@ -116,19 +116,19 @@ public class MqttGatewayTest extends BaseComponentTest {
 			Channel in = ClientFactory.getInstance().openChannel(sharedPool, "test#gateway#in", false, new ChannelListener() {
 				
 				@Override
-				public Response handleRequest(Request req) {
+				public Response handleRequest(Channel channel, Request req) {
 					// TODO Auto-generated method stub
 					return null;
 				}
 				
 				@Override
-				public void handleNotification(Notification not) {
+				public void handleNotification(Channel channel, Notification not) {
 					// TODO Auto-generated method stub
 					
 				}
 				
 				@Override
-				public void handleMessage(String msg) {
+				public void handleMessage(Channel channel, String msg) {
 					LOGGER.info(msg);	
 					assertEquals(testMessage, msg);
 					counter.countDown();

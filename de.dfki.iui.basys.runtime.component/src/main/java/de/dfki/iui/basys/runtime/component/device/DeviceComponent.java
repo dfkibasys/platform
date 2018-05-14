@@ -4,18 +4,25 @@ import java.io.IOException;
 
 import org.eclipse.emf.ecore.EObject;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+
 import de.dfki.iui.basys.common.emf.json.JsonUtils;
+import de.dfki.iui.basys.model.runtime.communication.Channel;
+import de.dfki.iui.basys.model.runtime.communication.Notification;
 import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.communication.Response;
+import de.dfki.iui.basys.model.runtime.communication.exceptions.ChannelException;
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ChangeModeRequest;
 import de.dfki.iui.basys.model.runtime.component.CommandRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.ComponentInfo;
 import de.dfki.iui.basys.model.runtime.component.ComponentRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentRequestStatus;
 import de.dfki.iui.basys.model.runtime.component.ControlMode;
 import de.dfki.iui.basys.model.runtime.component.RequestStatus;
 import de.dfki.iui.basys.model.runtime.component.State;
+import de.dfki.iui.basys.model.runtime.component.StatusRequest;
 import de.dfki.iui.basys.model.runtime.component.impl.ComponentRequestStatusImpl;
 import de.dfki.iui.basys.runtime.component.BaseComponent;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
@@ -117,7 +124,7 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 	}
 
 	@Override
-	public Response handleRequest(Request request) {
+	public Response handleRequest(Channel channel, Request request) {
 		ComponentRequestStatus status = null;
 		try {
 			EObject ob = JsonUtils.fromString(request.getPayload(), EObject.class);
@@ -137,6 +144,9 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 					} else if (cr instanceof CapabilityRequest) {
 						CapabilityRequest req = (CapabilityRequest) cr;
 						status = handleCapabilityRequest(req);
+					} else if (cr instanceof StatusRequest) {
+						StatusRequest req = (StatusRequest) cr;
+						status = handleStatusRequest(req);
 					}
 				}
 			} else {
@@ -218,6 +228,28 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 		return status;
 	}
 
+
+	protected ComponentRequestStatus handleStatusRequest(StatusRequest req) {
+		ComponentRequestStatus status;
+		
+		if (statusChannel != null && statusChannel.isOpen()) {
+			status = new ComponentRequestStatusImpl.Builder().componentId(getId()).status(RequestStatus.ACCEPTED).build();
+			LOGGER.info("send status update notification upon explicit request");
+			try {
+				ComponentInfo info = getComponentInfo();
+				Notification not = cf.createNotification(JsonUtils.toString(info));
+				//TODO ggf auf eigenem Thread
+				statusChannel.sendNotification(not);
+				
+			} catch (ChannelException | JsonProcessingException e) {
+				e.printStackTrace();
+			}
+		} else {
+			status = new ComponentRequestStatusImpl.Builder().componentId(getId()).status(RequestStatus.REJECTED).message("status channel not available").build();
+		}
+		return status;
+	}
+	
 	protected void updateRegistrationAndNotify() {
 
 		LOGGER.info("updateRegistrationAndNotify()");
@@ -227,12 +259,13 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 
 		if (statusChannel != null && statusChannel.isOpen()) {
 			LOGGER.info("send status update notification");
-			// Notification not = cf.createNotification(state);
-			// try {
-			// statusChannel.sendNotification(not);
-			// } catch (ChannelException e) {
-			// e.printStackTrace();
-			// }
+			try {
+				ComponentInfo info = getComponentInfo();
+				Notification not = cf.createNotification(JsonUtils.toString(info));
+				statusChannel.sendNotification(not);
+			} catch (ChannelException | JsonProcessingException e) {
+				e.printStackTrace();
+			}
 		} else {
 			LOGGER.warn("cannot send status update notification");
 		}

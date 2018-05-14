@@ -24,7 +24,7 @@
 
 	<dependencies>
 	
-			<dependency>
+		<dependency>
 			<groupId>de.dfki.iui.basys.runtime</groupId>
 			<artifactId>de.dfki.iui.basys.runtime.communication</artifactId>
 			<version>${project.version}</version>
@@ -36,7 +36,6 @@
 			<version>${project.version}</version>
 		</dependency>
 
-	
 		<!-- comment to remove all imported (non-local) bundles from your compilation 
 			classpath -->
 		<dependency>
@@ -46,6 +45,7 @@
 			<optional>true</optional>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/junit/junit/4.12 -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -53,16 +53,6 @@
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>org.osgi</groupId>
-			<artifactId>osgi_R4_core</artifactId>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.osgi</groupId>
-			<artifactId>osgi_R4_compendium</artifactId>
-			<optional>true</optional>
-		</dependency>
 	</dependencies>
 
 </project>

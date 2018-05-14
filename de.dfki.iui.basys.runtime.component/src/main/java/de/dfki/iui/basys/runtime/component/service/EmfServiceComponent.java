@@ -28,6 +28,7 @@ public class EmfServiceComponent extends ServiceComponent {
 		super(config);
 		resourceSet = new ResourceSetImpl();
 		
+		//TODO: get real network endpoint or even urispec for each individual service from component registry
 		String BASE_URL = "http://localhost:8080/services/";
 		String fileName = "model";
 				
@@ -35,6 +36,7 @@ public class EmfServiceComponent extends ServiceComponent {
 		for (String model : Arrays.asList(modelNames)) {
 			resourceSet.getURIConverter().getURIMap().put(URI.createURI(fileName + "." + model), URI.createURI(BASE_URL + model));			
 		}
+		
 	}
 
 	@Override
