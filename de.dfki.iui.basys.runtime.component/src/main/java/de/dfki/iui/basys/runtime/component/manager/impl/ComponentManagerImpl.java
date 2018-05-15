@@ -11,9 +11,11 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.io.filefilter.SuffixFileFilter;
+import org.eclipse.emf.common.util.URI;
 
 import de.dfki.iui.basys.common.emf.json.JsonUtils;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl;
 import de.dfki.iui.basys.runtime.component.BaseComponent;
 import de.dfki.iui.basys.runtime.component.Component;
 import de.dfki.iui.basys.runtime.component.ComponentException;
@@ -26,10 +28,33 @@ public class ComponentManagerImpl extends BaseComponent implements ComponentMana
 
 	public ComponentManagerImpl(ComponentConfiguration config) {
 		super(config);
+		ComponentPackageImpl.init();
 	}
-	
+
 	@Override
-	public void deactivate() throws ComponentException {		
+	public void connectToExternal() throws ComponentException {
+
+		URI uri = URI.createURI(getConfig().getExternalConnectionString());
+		if (uri.isFile()) {
+			String fileString = uri.toFileString();
+
+			File file = new File(fileString);
+			try {
+				if (file.isDirectory()) {
+					createLocalComponents(file, true);
+				} else {
+					createLocalComponent(file);
+				}
+			} catch (ComponentManagerException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+	}
+
+	@Override
+	public void deactivate() throws ComponentException {
 		for (Component c : components.values()) {
 			c.deactivate();
 		}
@@ -59,7 +84,14 @@ public class ComponentManagerImpl extends BaseComponent implements ComponentMana
 	public void createLocalComponent(ComponentConfiguration config) throws ComponentManagerException {
 		Class c = null;
 		try {
-			c = Class.forName(config.getComponentImplementationJavaClass());
+			
+			//ClassLoader cl1 = Thread.currentThread().getContextClassLoader();
+			//c = cl1.loadClass(config.getComponentImplementationJavaClass());
+			
+			ClassLoader cl2 = getClass().getClassLoader();
+			c = cl2.loadClass(config.getComponentImplementationJavaClass());
+			
+			//c = Class.forName(config.getComponentImplementationJavaClass());
 		} catch (ClassNotFoundException e) {
 			throw new ComponentManagerException(e);
 		}
@@ -71,7 +103,8 @@ public class ComponentManagerImpl extends BaseComponent implements ComponentMana
 			component = constructor.newInstance(config);
 			addLocalComponent(component);
 
-		} catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+		} catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException
+				| IllegalArgumentException | InvocationTargetException e) {
 			throw new ComponentManagerException(e);
 		}
 	}
@@ -114,13 +147,14 @@ public class ComponentManagerImpl extends BaseComponent implements ComponentMana
 	public void createLocalComponents(File configFolder, boolean recursive) throws ComponentManagerException {
 
 		FileFilter filter = new SuffixFileFilter("json");
-		
+
 		for (File entry : configFolder.listFiles(filter)) {
-			if (entry.isDirectory() && recursive) {
-				createLocalComponents(entry, recursive);
-			} else {
-				createLocalComponent(entry);
-			}
+			createLocalComponent(entry);
+		}
+		if (recursive) {
+			for (File entry : configFolder.listFiles(File::isDirectory)) {
+				createLocalComponents(entry ,recursive);
+			}		
 		}
 	}
 

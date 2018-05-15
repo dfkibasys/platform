@@ -42,7 +42,7 @@ public class ZookeeperComponentRegistration implements ComponentRegistration {
 					.uriSpec(uriSpec).build();
 			
 			componentInfo.setHostName(inst.getAddress());
-			componentInfo.setUriSpec(uriSpec.toString());
+			//componentInfo.setUriSpec(uriSpec.toString());
 			return inst;
 		} catch (Exception e) {
 			throw new ComponentRegistrationException(e);
