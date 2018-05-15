@@ -1996,13 +1996,22 @@ public interface CapabilityPackage extends EPackage {
 	int PROJECT_ETA__COLOR = WORKER_ASSISTENCE_CAPABILITY_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Orientation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROJECT_ETA__ORIENTATION = WORKER_ASSISTENCE_CAPABILITY_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Project ETA</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROJECT_ETA_FEATURE_COUNT = WORKER_ASSISTENCE_CAPABILITY_FEATURE_COUNT + 4;
+	int PROJECT_ETA_FEATURE_COUNT = WORKER_ASSISTENCE_CAPABILITY_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Project ETA</em>' class.
@@ -2361,6 +2370,17 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getProjectETA_Color();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.capability.ProjectETA#getOrientation <em>Orientation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Orientation</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.ProjectETA#getOrientation()
+	 * @see #getProjectETA()
+	 * @generated
+	 */
+	EAttribute getProjectETA_Orientation();
 
 	/**
 	 * Returns the meta object for enum '{@link de.dfki.iui.basys.model.domain.capability.LoadCarrierUnitEnum <em>Load Carrier Unit Enum</em>}'.
@@ -2883,6 +2903,14 @@ public interface CapabilityPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PROJECT_ETA__COLOR = eINSTANCE.getProjectETA_Color();
+
+		/**
+		 * The meta object literal for the '<em><b>Orientation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROJECT_ETA__ORIENTATION = eINSTANCE.getProjectETA_Orientation();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.LoadCarrierUnitEnum <em>Load Carrier Unit Enum</em>}' enum.

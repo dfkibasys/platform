@@ -17,6 +17,7 @@ import de.dfki.iui.basys.model.data.CartesianCoordinate;
  *   <li>{@link de.dfki.iui.basys.model.domain.capability.ProjectETA#getPosition <em>Position</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.capability.ProjectETA#getRadius <em>Radius</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.capability.ProjectETA#getColor <em>Color</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.capability.ProjectETA#getOrientation <em>Orientation</em>}</li>
  * </ul>
  *
  * @see de.dfki.iui.basys.model.domain.capability.CapabilityPackage#getProjectETA()
@@ -127,5 +128,31 @@ public interface ProjectETA extends WorkerAssistenceCapability {
 	 * @generated
 	 */
 	void setColor(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Orientation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Orientation</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Orientation</em>' attribute.
+	 * @see #setOrientation(int)
+	 * @see de.dfki.iui.basys.model.domain.capability.CapabilityPackage#getProjectETA_Orientation()
+	 * @model
+	 * @generated
+	 */
+	int getOrientation();
+
+	/**
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.capability.ProjectETA#getOrientation <em>Orientation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Orientation</em>' attribute.
+	 * @see #getOrientation()
+	 * @generated
+	 */
+	void setOrientation(int value);
 
 } // ProjectETA

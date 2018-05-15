@@ -696,6 +696,15 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getProjectETA_Orientation() {
+		return (EAttribute)projectETAEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getLoadCarrierUnitEnum() {
 		return loadCarrierUnitEnumEEnum;
 	}
@@ -976,6 +985,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		createEReference(projectETAEClass, PROJECT_ETA__POSITION);
 		createEAttribute(projectETAEClass, PROJECT_ETA__RADIUS);
 		createEAttribute(projectETAEClass, PROJECT_ETA__COLOR);
+		createEAttribute(projectETAEClass, PROJECT_ETA__ORIENTATION);
 
 		// Create enums
 		loadCarrierUnitEnumEEnum = createEEnum(LOAD_CARRIER_UNIT_ENUM);
@@ -1119,6 +1129,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		initEReference(getProjectETA_Position(), theDataPackage.getCartesianCoordinate(), null, "position", null, 0, 1, ProjectETA.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProjectETA_Radius(), theEcorePackage.getEDouble(), "radius", null, 0, 1, ProjectETA.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProjectETA_Color(), theEcorePackage.getEInt(), "color", null, 0, 1, ProjectETA.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProjectETA_Orientation(), theEcorePackage.getEInt(), "orientation", null, 0, 1, ProjectETA.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(loadCarrierUnitEnumEEnum, LoadCarrierUnitEnum.class, "LoadCarrierUnitEnum");

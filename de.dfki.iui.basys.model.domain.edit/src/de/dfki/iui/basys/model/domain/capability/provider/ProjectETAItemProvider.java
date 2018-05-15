@@ -52,6 +52,7 @@ public class ProjectETAItemProvider extends WorkerAssistenceCapabilityItemProvid
 			addEtaPropertyDescriptor(object);
 			addRadiusPropertyDescriptor(object);
 			addColorPropertyDescriptor(object);
+			addOrientationPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -114,6 +115,28 @@ public class ProjectETAItemProvider extends WorkerAssistenceCapabilityItemProvid
 				 getString("_UI_ProjectETA_color_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_ProjectETA_color_feature", "_UI_ProjectETA_type"),
 				 CapabilityPackage.Literals.PROJECT_ETA__COLOR,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Orientation feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOrientationPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ProjectETA_orientation_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ProjectETA_orientation_feature", "_UI_ProjectETA_type"),
+				 CapabilityPackage.Literals.PROJECT_ETA__ORIENTATION,
 				 true,
 				 false,
 				 false,
@@ -193,6 +216,7 @@ public class ProjectETAItemProvider extends WorkerAssistenceCapabilityItemProvid
 			case CapabilityPackage.PROJECT_ETA__ETA:
 			case CapabilityPackage.PROJECT_ETA__RADIUS:
 			case CapabilityPackage.PROJECT_ETA__COLOR:
+			case CapabilityPackage.PROJECT_ETA__ORIENTATION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case CapabilityPackage.PROJECT_ETA__POSITION:

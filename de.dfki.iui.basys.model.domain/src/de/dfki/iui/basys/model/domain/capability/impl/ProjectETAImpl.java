@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link de.dfki.iui.basys.model.domain.capability.impl.ProjectETAImpl#getPosition <em>Position</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.capability.impl.ProjectETAImpl#getRadius <em>Radius</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.capability.impl.ProjectETAImpl#getColor <em>Color</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.capability.impl.ProjectETAImpl#getOrientation <em>Orientation</em>}</li>
  * </ul>
  *
  * @generated
@@ -101,6 +102,26 @@ public class ProjectETAImpl extends WorkerAssistenceCapabilityImpl implements Pr
 	 * @ordered
 	 */
 	protected int color = COLOR_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getOrientation() <em>Orientation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOrientation()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int ORIENTATION_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getOrientation() <em>Orientation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOrientation()
+	 * @generated
+	 * @ordered
+	 */
+	protected int orientation = ORIENTATION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -232,6 +253,27 @@ public class ProjectETAImpl extends WorkerAssistenceCapabilityImpl implements Pr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getOrientation() {
+		return orientation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOrientation(int newOrientation) {
+		int oldOrientation = orientation;
+		orientation = newOrientation;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CapabilityPackage.PROJECT_ETA__ORIENTATION, oldOrientation, orientation));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -257,6 +299,8 @@ public class ProjectETAImpl extends WorkerAssistenceCapabilityImpl implements Pr
 				return getRadius();
 			case CapabilityPackage.PROJECT_ETA__COLOR:
 				return getColor();
+			case CapabilityPackage.PROJECT_ETA__ORIENTATION:
+				return getOrientation();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -280,6 +324,9 @@ public class ProjectETAImpl extends WorkerAssistenceCapabilityImpl implements Pr
 				return;
 			case CapabilityPackage.PROJECT_ETA__COLOR:
 				setColor((Integer)newValue);
+				return;
+			case CapabilityPackage.PROJECT_ETA__ORIENTATION:
+				setOrientation((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -305,6 +352,9 @@ public class ProjectETAImpl extends WorkerAssistenceCapabilityImpl implements Pr
 			case CapabilityPackage.PROJECT_ETA__COLOR:
 				setColor(COLOR_EDEFAULT);
 				return;
+			case CapabilityPackage.PROJECT_ETA__ORIENTATION:
+				setOrientation(ORIENTATION_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -325,6 +375,8 @@ public class ProjectETAImpl extends WorkerAssistenceCapabilityImpl implements Pr
 				return radius != RADIUS_EDEFAULT;
 			case CapabilityPackage.PROJECT_ETA__COLOR:
 				return color != COLOR_EDEFAULT;
+			case CapabilityPackage.PROJECT_ETA__ORIENTATION:
+				return orientation != ORIENTATION_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -345,6 +397,8 @@ public class ProjectETAImpl extends WorkerAssistenceCapabilityImpl implements Pr
 		result.append(radius);
 		result.append(", color: ");
 		result.append(color);
+		result.append(", orientation: ");
+		result.append(orientation);
 		result.append(')');
 		return result.toString();
 	}
