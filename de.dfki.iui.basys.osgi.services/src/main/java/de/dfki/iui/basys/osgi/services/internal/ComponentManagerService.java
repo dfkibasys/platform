@@ -57,17 +57,6 @@ public class ComponentManagerService extends BasysOsgiComponent implements Compo
 			e.printStackTrace();
 		}
 
-//	TODO: hide the following in manager impl connectToExternal()		
-//		if (config.getExternalConnectionString() != null) {
-//			String folder = config.getExternalConnectionString();
-//			try {
-//				manager.createLocalComponents(new File(folder), true);
-//			} catch (ComponentManagerException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		}
-
 	}
 
 	@Override

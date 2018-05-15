@@ -1,0 +1,10 @@
+{
+  "eClass" : "http://www.dfki.de/iui/basys/model/component#//ComponentConfiguration",
+  "componentCategory" : "DEVICE_COMPONENT",
+  "componentId" : "_RtlHgFIxEeidSe5vp9A3oA",
+  "componentName" : "My LAP Laser",
+  "componentImplementationJavaClass" : "de.dfki.iui.basys.runtime.component.device.TestDeviceComponent",
+  "inChannelName" : "_RtlHgFIxEeidSe5vp9A3oA#in",
+  "outChannelName" : "_RtlHgFIxEeidSe5vp9A3oA#out",
+  "externalConnectionString" : "http://192.168.100.3:9000/laserControl"
+}
