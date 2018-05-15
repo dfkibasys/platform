@@ -12,6 +12,17 @@ public enum EProjectionColor {
 
 	}
 
+	public static EProjectionColor getColorByIndex(int index) {
+		switch (index) {
+		case 1:
+			return RED;
+		case 2:
+			return YELLOW;
+		default:
+			return GREEN;
+		}
+	}
+
 	public int getColor() {
 		return mColor;
 	}
