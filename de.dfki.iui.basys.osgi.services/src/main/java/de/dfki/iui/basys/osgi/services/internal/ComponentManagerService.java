@@ -39,14 +39,7 @@ public class ComponentManagerService extends BasysOsgiComponent implements Compo
 		super.activate(context, properties);
 
 		manager = new ComponentManagerImpl(config);
-		modified(context, properties);
-	}
-
-	@Override
-	@Modified
-	public synchronized void modified(ComponentContext context, Map<String, Object> properties) {
-		super.modified(context, properties);
-
+				
 		de.dfki.iui.basys.runtime.component.ComponentContext basysComponentContext = new de.dfki.iui.basys.runtime.component.ComponentContext.Builder()
 				.sharedChannelPool(channelPoolProvider.getSharedChannelPool()).componentRegistry(registry).build();
 		
@@ -56,9 +49,18 @@ public class ComponentManagerService extends BasysOsgiComponent implements Compo
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
 
+
+	@Override
+	@Modified
+	public void modified(ComponentContext context, Map<String, Object> properties) {
+		if (super.context == null)
+			return;
+
+		super.modified(context, properties);
+	}
+	
 	@Override
 	@Deactivate
 	protected void deactivate(ComponentContext context, int reason) {

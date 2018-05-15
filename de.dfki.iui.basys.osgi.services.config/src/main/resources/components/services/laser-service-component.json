@@ -5,6 +5,5 @@
   "componentName" : "laser-service-component",
   "componentImplementationJavaClass" : "de.dfki.iui.basys.runtime.component.service.DeviceControllerServiceComponent",
   "inChannelName" : "laser-service-component#in",
-  "outChannelName" : "laser-service-component#out",
-  "externalConnectionString" : "basys.component://laser-device-component"
+  "outChannelName" : "laser-service-component#out"
 }
