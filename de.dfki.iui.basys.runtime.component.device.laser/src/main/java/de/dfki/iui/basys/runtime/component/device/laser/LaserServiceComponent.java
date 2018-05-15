@@ -1,6 +1,8 @@
 package de.dfki.iui.basys.runtime.component.device.laser;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -9,9 +11,11 @@ import java.util.concurrent.TimeUnit;
 import org.eclipse.emf.ecore.EObject;
 
 import de.dfki.iui.basys.common.emf.json.JsonUtils;
+import de.dfki.iui.basys.model.data.CartesianCoordinate;
 import de.dfki.iui.basys.model.data.DataPackage;
 import de.dfki.iui.basys.model.data.Path;
 import de.dfki.iui.basys.model.domain.capability.CapabilityFactory;
+import de.dfki.iui.basys.model.domain.capability.ProjectETA;
 import de.dfki.iui.basys.model.domain.capability.ProjectPath;
 import de.dfki.iui.basys.model.runtime.communication.Channel;
 import de.dfki.iui.basys.model.runtime.communication.ChannelListener;
@@ -36,75 +40,129 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 		// TODO Auto-generated constructor stub
 	}
 
+	private void stopDevice() {
+		if (device.getState() != State.IDLE) {
+			device.stop();
+
+			while (device.getState() != State.IDLE) {
+				try {
+					Thread.sleep(200);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
 	@Override
 	public void activate(ComponentContext context) throws ComponentException {
 		super.activate(context);
 
 		executor = Executors.newCachedThreadPool();
 
-		mirOut = ClientFactory.getInstance().openChannel(context.getSharedChannelPool(), "mir-component#out", false, new ChannelListener() {
+		mirOut = ClientFactory.getInstance().openChannel(context.getSharedChannelPool(), "mir-component#out", false,
+				new ChannelListener() {
 
-			@Override
-			public Response handleRequest(Channel channel, Request req) {
-				// TODO Auto-generated method stub
-				return null;
-			}
-
-			@Override
-			public void handleNotification(Channel channel, Notification not) {
-
-				CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
-
-				executor.submit(() -> {
-
-					try {
-						EObject payload = JsonUtils.fromString(not.getPayload(), EObject.class);
-
-						if (payload.eClass().equals(DataPackage.eINSTANCE.getPath())) {
-
-							if (device.getState() != State.IDLE )
-							{
-								device.stop();
-
-								while (device.getState() != State.IDLE) {
-									try {
-										Thread.sleep(200);
-									} catch (InterruptedException e) {
-										// TODO Auto-generated catch block
-										e.printStackTrace();
-									}
-								}
-							}
-
-							Path path = (Path) payload;
-
-							ProjectPath capability = CapabilityFactory.eINSTANCE.createProjectPath();
-							capability.setPath(path);
-							capability.setDelay(1000);
-							capability.setArrowCount(3);
-							// capability.setColor(0);
-
-							ComponentRequestStatus status = device.executeCapability(capability);
-
-						}
-
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+					@Override
+					public Response handleRequest(Channel channel, Request req) {
+						// TODO Auto-generated method stub
+						return null;
 					}
 
-					cf.complete(true);
-					return null;
+					@Override
+					public void handleNotification(Channel channel, Notification not) {
+
+						CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
+
+						executor.submit(() -> {
+
+							try {
+								EObject payload = JsonUtils.fromString(not.getPayload(), EObject.class);
+
+								if (payload.eClass().equals(DataPackage.eINSTANCE.getPath())) {
+
+									stopDevice();
+
+									Path path = (Path) payload;
+									List<CartesianCoordinate> completePath = new ArrayList<>();
+									completePath.addAll(path.getCoordinates());
+
+									if (path.getEta() > 60000) {
+
+										ProjectPath capability = CapabilityFactory.eINSTANCE.createProjectPath();
+										path.getCoordinates().clear();
+										path.getCoordinates().addAll(completePath.subList(0, 5));
+
+										capability.setPath(path);
+										capability.setDelay(1000);
+										capability.setArrowCount(3);
+										capability.setColor(0);
+
+										ComponentRequestStatus status = device.executeCapability(capability);
+									}
+									Thread t = new Thread(new Runnable() {
+
+										@Override
+										public void run() {
+											try {
+												Thread.sleep(5000);
+											} catch (InterruptedException e) {
+												e.printStackTrace();
+											}
+											stopDevice();
+
+											try {
+												Thread.sleep(path.getEta() - 55000);
+											} catch (InterruptedException e) {
+												e.printStackTrace();
+											}
+											ProjectETA etaCap = CapabilityFactory.eINSTANCE.createProjectETA();
+											etaCap.setEta(60000);
+											etaCap.setPosition(
+													path.getCoordinates().get(path.getCoordinates().size() - 1));
+											etaCap.setRadius(.3);
+											etaCap.setColor(0);
+											ComponentRequestStatus status = device.executeCapability(etaCap);
+											try {
+												Thread.sleep(45000);
+											} catch (InterruptedException e) {
+												e.printStackTrace();
+											}
+											stopDevice();
+											ProjectPath capability = CapabilityFactory.eINSTANCE.createProjectPath();
+											path.getCoordinates().clear();
+											path.getCoordinates().addAll(
+													completePath.subList(completePath.size() - 5, completePath.size()));
+											capability.setPath(path);
+											capability.setDelay(1000);
+											capability.setArrowCount(3);
+											capability.setColor(0);
+
+											status = device.executeCapability(capability);
+
+										}
+									});
+									t.start();
+
+								}
+
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+
+							cf.complete(true);
+							return null;
+						});
+
+					}
+
+					@Override
+					public void handleMessage(Channel channel, String msg) {
+						// TODO Auto-generated method stub
+
+					}
 				});
-
-			}
-
-			@Override
-			public void handleMessage(Channel channel, String msg) {
-				// TODO Auto-generated method stub
-
-			}
-		});
 
 	}
 
