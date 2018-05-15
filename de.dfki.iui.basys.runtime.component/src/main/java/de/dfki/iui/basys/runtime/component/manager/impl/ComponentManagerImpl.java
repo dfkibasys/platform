@@ -146,7 +146,7 @@ public class ComponentManagerImpl extends BaseComponent implements ComponentMana
 	@Override
 	public void createLocalComponents(File configFolder, boolean recursive) throws ComponentManagerException {
 
-		FileFilter filter = new SuffixFileFilter("json");
+		FileFilter filter = new SuffixFileFilter(".json");
 
 		for (File entry : configFolder.listFiles(filter)) {
 			createLocalComponent(entry);
