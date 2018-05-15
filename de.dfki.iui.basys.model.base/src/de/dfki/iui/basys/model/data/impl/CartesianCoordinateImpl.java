@@ -182,12 +182,12 @@ public class CartesianCoordinateImpl extends BasysEObjectImpl implements Cartesi
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case DataPackage.CARTESIAN_COORDINATE__X:
-			return getX();
-		case DataPackage.CARTESIAN_COORDINATE__Y:
-			return getY();
-		case DataPackage.CARTESIAN_COORDINATE__Z:
-			return getZ();
+			case DataPackage.CARTESIAN_COORDINATE__X:
+				return getX();
+			case DataPackage.CARTESIAN_COORDINATE__Y:
+				return getY();
+			case DataPackage.CARTESIAN_COORDINATE__Z:
+				return getZ();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -200,15 +200,15 @@ public class CartesianCoordinateImpl extends BasysEObjectImpl implements Cartesi
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case DataPackage.CARTESIAN_COORDINATE__X:
-			setX((Double) newValue);
-			return;
-		case DataPackage.CARTESIAN_COORDINATE__Y:
-			setY((Double) newValue);
-			return;
-		case DataPackage.CARTESIAN_COORDINATE__Z:
-			setZ((Double) newValue);
-			return;
+			case DataPackage.CARTESIAN_COORDINATE__X:
+				setX((Double)newValue);
+				return;
+			case DataPackage.CARTESIAN_COORDINATE__Y:
+				setY((Double)newValue);
+				return;
+			case DataPackage.CARTESIAN_COORDINATE__Z:
+				setZ((Double)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -221,15 +221,15 @@ public class CartesianCoordinateImpl extends BasysEObjectImpl implements Cartesi
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case DataPackage.CARTESIAN_COORDINATE__X:
-			setX(X_EDEFAULT);
-			return;
-		case DataPackage.CARTESIAN_COORDINATE__Y:
-			setY(Y_EDEFAULT);
-			return;
-		case DataPackage.CARTESIAN_COORDINATE__Z:
-			setZ(Z_EDEFAULT);
-			return;
+			case DataPackage.CARTESIAN_COORDINATE__X:
+				setX(X_EDEFAULT);
+				return;
+			case DataPackage.CARTESIAN_COORDINATE__Y:
+				setY(Y_EDEFAULT);
+				return;
+			case DataPackage.CARTESIAN_COORDINATE__Z:
+				setZ(Z_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -242,12 +242,12 @@ public class CartesianCoordinateImpl extends BasysEObjectImpl implements Cartesi
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case DataPackage.CARTESIAN_COORDINATE__X:
-			return x != X_EDEFAULT;
-		case DataPackage.CARTESIAN_COORDINATE__Y:
-			return y != Y_EDEFAULT;
-		case DataPackage.CARTESIAN_COORDINATE__Z:
-			return z != Z_EDEFAULT;
+			case DataPackage.CARTESIAN_COORDINATE__X:
+				return x != X_EDEFAULT;
+			case DataPackage.CARTESIAN_COORDINATE__Y:
+				return y != Y_EDEFAULT;
+			case DataPackage.CARTESIAN_COORDINATE__Z:
+				return z != Z_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -259,8 +259,7 @@ public class CartesianCoordinateImpl extends BasysEObjectImpl implements Cartesi
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (x: ");

@@ -133,13 +133,22 @@ public interface DataPackage extends EPackage {
 	int PATH__COORDINATES = 0;
 
 	/**
+	 * The feature id for the '<em><b>Eta</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PATH__ETA = 1;
+
+	/**
 	 * The number of structural features of the '<em>Path</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PATH_FEATURE_COUNT = 1;
+	int PATH_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Path</em>' class.
@@ -216,6 +225,17 @@ public interface DataPackage extends EPackage {
 	EReference getPath_Coordinates();
 
 	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.data.Path#getEta <em>Eta</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Eta</em>'.
+	 * @see de.dfki.iui.basys.model.data.Path#getEta()
+	 * @see #getPath()
+	 * @generated
+	 */
+	EAttribute getPath_Eta();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -289,6 +309,14 @@ public interface DataPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PATH__COORDINATES = eINSTANCE.getPath_Coordinates();
+
+		/**
+		 * The meta object literal for the '<em><b>Eta</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PATH__ETA = eINSTANCE.getPath_Eta();
 
 	}
 

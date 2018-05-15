@@ -175,6 +175,15 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getPath_Eta() {
+		return (EAttribute)pathEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public DataFactory getDataFactory() {
 		return (DataFactory)getEFactoryInstance();
 	}
@@ -205,6 +214,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 
 		pathEClass = createEClass(PATH);
 		createEReference(pathEClass, PATH__COORDINATES);
+		createEAttribute(pathEClass, PATH__ETA);
 	}
 
 	/**
@@ -247,6 +257,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 
 		initEClass(pathEClass, Path.class, "Path", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPath_Coordinates(), this.getCartesianCoordinate(), null, "coordinates", null, 0, -1, Path.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPath_Eta(), theEcorePackage.getELong(), "eta", null, 0, 1, Path.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

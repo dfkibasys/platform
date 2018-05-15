@@ -6,6 +6,8 @@ import de.dfki.iui.basys.model.base.BasePackage;
 
 import de.dfki.iui.basys.model.base.impl.BasePackageImpl;
 
+import de.dfki.iui.basys.model.data.DataPackage;
+import de.dfki.iui.basys.model.data.impl.DataPackageImpl;
 import de.dfki.iui.basys.model.pattern.Computation;
 import de.dfki.iui.basys.model.pattern.PBooleanRestriction;
 import de.dfki.iui.basys.model.pattern.PBooleanRestrictionEnum;
@@ -49,6 +51,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.ETypeParameter;
 
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -321,16 +324,22 @@ public class PatternPackageImpl extends EPackageImpl implements PatternPackage {
 
 		isInited = true;
 
+		// Initialize simple dependencies
+		EcorePackage.eINSTANCE.eClass();
+
 		// Obtain or create and register interdependencies
 		BasePackageImpl theBasePackage = (BasePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(BasePackage.eNS_URI) instanceof BasePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(BasePackage.eNS_URI) : BasePackage.eINSTANCE);
+		DataPackageImpl theDataPackage = (DataPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(DataPackage.eNS_URI) instanceof DataPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(DataPackage.eNS_URI) : DataPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		thePatternPackage.createPackageContents();
 		theBasePackage.createPackageContents();
+		theDataPackage.createPackageContents();
 
 		// Initialize created meta-data
 		thePatternPackage.initializePackageContents();
 		theBasePackage.initializePackageContents();
+		theDataPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		thePatternPackage.freeze();

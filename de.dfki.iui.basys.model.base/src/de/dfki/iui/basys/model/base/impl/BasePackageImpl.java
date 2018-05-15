@@ -19,6 +19,8 @@ import de.dfki.iui.basys.model.base.datatypes.BLong;
 import de.dfki.iui.basys.model.base.datatypes.BShort;
 import de.dfki.iui.basys.model.base.datatypes.BString;
 
+import de.dfki.iui.basys.model.data.DataPackage;
+import de.dfki.iui.basys.model.data.impl.DataPackageImpl;
 import de.dfki.iui.basys.model.pattern.PatternPackage;
 import de.dfki.iui.basys.model.pattern.impl.PatternPackageImpl;
 import java.util.Collection;
@@ -29,6 +31,7 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -189,16 +192,22 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 
 		isInited = true;
 
+		// Initialize simple dependencies
+		EcorePackage.eINSTANCE.eClass();
+
 		// Obtain or create and register interdependencies
 		PatternPackageImpl thePatternPackage = (PatternPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(PatternPackage.eNS_URI) instanceof PatternPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(PatternPackage.eNS_URI) : PatternPackage.eINSTANCE);
+		DataPackageImpl theDataPackage = (DataPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(DataPackage.eNS_URI) instanceof DataPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(DataPackage.eNS_URI) : DataPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theBasePackage.createPackageContents();
 		thePatternPackage.createPackageContents();
+		theDataPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theBasePackage.initializePackageContents();
 		thePatternPackage.initializePackageContents();
+		theDataPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theBasePackage.freeze();
