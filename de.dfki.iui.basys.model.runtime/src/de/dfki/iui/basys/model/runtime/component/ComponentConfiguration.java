@@ -2,6 +2,7 @@
  */
 package de.dfki.iui.basys.model.runtime.component;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -22,6 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.ComponentConfiguration#getInChannelName <em>In Channel Name</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.ComponentConfiguration#getOutChannelName <em>Out Channel Name</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.ComponentConfiguration#getExternalConnectionString <em>External Connection String</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.runtime.component.ComponentConfiguration#getProperties <em>Properties</em>}</li>
  * </ul>
  *
  * @see de.dfki.iui.basys.model.runtime.component.ComponentPackage#getComponentConfiguration()
@@ -266,5 +268,29 @@ public interface ComponentConfiguration extends EObject {
 	 * @generated
 	 */
 	void setExternalConnectionString(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Properties</b></em>' containment reference list.
+	 * The list contents are of type {@link de.dfki.iui.basys.model.runtime.component.Property}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Properties</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Properties</em>' containment reference list.
+	 * @see de.dfki.iui.basys.model.runtime.component.ComponentPackage#getComponentConfiguration_Properties()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Property> getProperties();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	Property getProperty(String key);
 
 } // ComponentConfiguration

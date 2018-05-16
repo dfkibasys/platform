@@ -5,6 +5,7 @@ package de.dfki.iui.basys.model.runtime.component;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -286,13 +287,31 @@ public interface ComponentPackage extends EPackage {
 	int COMPONENT_CONFIGURATION__EXTERNAL_CONNECTION_STRING = 8;
 
 	/**
+	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_CONFIGURATION__PROPERTIES = 9;
+
+	/**
 	 * The number of structural features of the '<em>Configuration</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_CONFIGURATION_FEATURE_COUNT = 9;
+	int COMPONENT_CONFIGURATION_FEATURE_COUNT = 10;
+
+	/**
+	 * The operation id for the '<em>Get Property</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_CONFIGURATION___GET_PROPERTY__STRING = 0;
 
 	/**
 	 * The number of operations of the '<em>Configuration</em>' class.
@@ -301,7 +320,53 @@ public interface ComponentPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_CONFIGURATION_OPERATION_COUNT = 0;
+	int COMPONENT_CONFIGURATION_OPERATION_COUNT = 1;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.impl.PropertyImpl <em>Property</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.runtime.component.impl.PropertyImpl
+	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getProperty()
+	 * @generated
+	 */
+	int PROPERTY = 2;
+
+	/**
+	 * The feature id for the '<em><b>Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY__KEY = 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY__VALUE = 1;
+
+	/**
+	 * The number of structural features of the '<em>Property</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Property</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.ComponentRequest <em>Request</em>}' class.
@@ -311,7 +376,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getComponentRequest()
 	 * @generated
 	 */
-	int COMPONENT_REQUEST = 2;
+	int COMPONENT_REQUEST = 3;
 
 	/**
 	 * The feature id for the '<em><b>Component Id</b></em>' attribute.
@@ -348,7 +413,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getCommandRequest()
 	 * @generated
 	 */
-	int COMMAND_REQUEST = 3;
+	int COMMAND_REQUEST = 4;
 
 	/**
 	 * The feature id for the '<em><b>Component Id</b></em>' attribute.
@@ -394,7 +459,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getChangeModeRequest()
 	 * @generated
 	 */
-	int CHANGE_MODE_REQUEST = 4;
+	int CHANGE_MODE_REQUEST = 5;
 
 	/**
 	 * The feature id for the '<em><b>Component Id</b></em>' attribute.
@@ -440,7 +505,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getCapabilityRequest()
 	 * @generated
 	 */
-	int CAPABILITY_REQUEST = 5;
+	int CAPABILITY_REQUEST = 6;
 
 	/**
 	 * The feature id for the '<em><b>Component Id</b></em>' attribute.
@@ -486,7 +551,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getComponentRequestStatus()
 	 * @generated
 	 */
-	int COMPONENT_REQUEST_STATUS = 6;
+	int COMPONENT_REQUEST_STATUS = 7;
 
 	/**
 	 * The feature id for the '<em><b>Component Id</b></em>' attribute.
@@ -541,7 +606,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getStatusRequest()
 	 * @generated
 	 */
-	int STATUS_REQUEST = 7;
+	int STATUS_REQUEST = 8;
 
 	/**
 	 * The feature id for the '<em><b>Component Id</b></em>' attribute.
@@ -578,7 +643,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getComponentCategory()
 	 * @generated
 	 */
-	int COMPONENT_CATEGORY = 8;
+	int COMPONENT_CATEGORY = 9;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.State <em>State</em>}' enum.
@@ -588,7 +653,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getState()
 	 * @generated
 	 */
-	int STATE = 9;
+	int STATE = 10;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.ControlMode <em>Control Mode</em>}' enum.
@@ -598,7 +663,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getControlMode()
 	 * @generated
 	 */
-	int CONTROL_MODE = 10;
+	int CONTROL_MODE = 11;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.ControlCommand <em>Control Command</em>}' enum.
@@ -608,7 +673,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getControlCommand()
 	 * @generated
 	 */
-	int CONTROL_COMMAND = 11;
+	int CONTROL_COMMAND = 12;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.RequestStatus <em>Request Status</em>}' enum.
@@ -618,7 +683,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getRequestStatus()
 	 * @generated
 	 */
-	int REQUEST_STATUS = 12;
+	int REQUEST_STATUS = 13;
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.runtime.component.ComponentInfo <em>Info</em>}'.
@@ -870,6 +935,59 @@ public interface ComponentPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getComponentConfiguration_ExternalConnectionString();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.runtime.component.ComponentConfiguration#getProperties <em>Properties</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Properties</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.ComponentConfiguration#getProperties()
+	 * @see #getComponentConfiguration()
+	 * @generated
+	 */
+	EReference getComponentConfiguration_Properties();
+
+	/**
+	 * Returns the meta object for the '{@link de.dfki.iui.basys.model.runtime.component.ComponentConfiguration#getProperty(java.lang.String) <em>Get Property</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Property</em>' operation.
+	 * @see de.dfki.iui.basys.model.runtime.component.ComponentConfiguration#getProperty(java.lang.String)
+	 * @generated
+	 */
+	EOperation getComponentConfiguration__GetProperty__String();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.runtime.component.Property <em>Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Property</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.Property
+	 * @generated
+	 */
+	EClass getProperty();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.runtime.component.Property#getKey <em>Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Key</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.Property#getKey()
+	 * @see #getProperty()
+	 * @generated
+	 */
+	EAttribute getProperty_Key();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.runtime.component.Property#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.Property#getValue()
+	 * @see #getProperty()
+	 * @generated
+	 */
+	EAttribute getProperty_Value();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.runtime.component.ComponentRequest <em>Request</em>}'.
@@ -1268,6 +1386,48 @@ public interface ComponentPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute COMPONENT_CONFIGURATION__EXTERNAL_CONNECTION_STRING = eINSTANCE.getComponentConfiguration_ExternalConnectionString();
+
+		/**
+		 * The meta object literal for the '<em><b>Properties</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPONENT_CONFIGURATION__PROPERTIES = eINSTANCE.getComponentConfiguration_Properties();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Property</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation COMPONENT_CONFIGURATION___GET_PROPERTY__STRING = eINSTANCE.getComponentConfiguration__GetProperty__String();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.runtime.component.impl.PropertyImpl <em>Property</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.runtime.component.impl.PropertyImpl
+		 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getProperty()
+		 * @generated
+		 */
+		EClass PROPERTY = eINSTANCE.getProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROPERTY__KEY = eINSTANCE.getProperty_Key();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROPERTY__VALUE = eINSTANCE.getProperty_Value();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.runtime.component.ComponentRequest <em>Request</em>}' class.

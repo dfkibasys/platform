@@ -40,6 +40,15 @@ public interface ComponentFactory extends EFactory {
 	ComponentConfiguration createComponentConfiguration();
 
 	/**
+	 * Returns a new object of class '<em>Property</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Property</em>'.
+	 * @generated
+	 */
+	Property createProperty();
+
+	/**
 	 * Returns a new object of class '<em>Command Request</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

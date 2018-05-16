@@ -2,14 +2,23 @@
  */
 package de.dfki.iui.basys.model.runtime.component.impl;
 
+import java.lang.reflect.InvocationTargetException;
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.ComponentPackage;
+import de.dfki.iui.basys.model.runtime.component.Property;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,6 +37,7 @@ import de.dfki.iui.basys.model.runtime.component.ComponentPackage;
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl#getInChannelName <em>In Channel Name</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl#getOutChannelName <em>Out Channel Name</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl#getExternalConnectionString <em>External Connection String</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl#getProperties <em>Properties</em>}</li>
  * </ul>
  *
  * @generated
@@ -212,6 +222,16 @@ public class ComponentConfigurationImpl extends MinimalEObjectImpl.Container imp
 	 * @ordered
 	 */
 	protected String externalConnectionString = EXTERNAL_CONNECTION_STRING_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getProperties()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Property> properties;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -445,6 +465,47 @@ public class ComponentConfigurationImpl extends MinimalEObjectImpl.Container imp
 	 * @generated
 	 */
 	@Override
+	public EList<Property> getProperties() {
+		if (properties == null) {
+			properties = new EObjectContainmentEList<Property>(Property.class, this, ComponentPackage.COMPONENT_CONFIGURATION__PROPERTIES);
+		}
+		return properties;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public Property getProperty(String key) {
+		for (Property p : getProperties()) {
+			if (p.getKey().equals(key))
+				return p;
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ComponentPackage.COMPONENT_CONFIGURATION__PROPERTIES:
+				return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ComponentPackage.COMPONENT_CONFIGURATION__COMPONENT_ID:
@@ -465,6 +526,8 @@ public class ComponentConfigurationImpl extends MinimalEObjectImpl.Container imp
 				return getOutChannelName();
 			case ComponentPackage.COMPONENT_CONFIGURATION__EXTERNAL_CONNECTION_STRING:
 				return getExternalConnectionString();
+			case ComponentPackage.COMPONENT_CONFIGURATION__PROPERTIES:
+				return getProperties();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -474,6 +537,7 @@ public class ComponentConfigurationImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -503,6 +567,10 @@ public class ComponentConfigurationImpl extends MinimalEObjectImpl.Container imp
 				return;
 			case ComponentPackage.COMPONENT_CONFIGURATION__EXTERNAL_CONNECTION_STRING:
 				setExternalConnectionString((String)newValue);
+				return;
+			case ComponentPackage.COMPONENT_CONFIGURATION__PROPERTIES:
+				getProperties().clear();
+				getProperties().addAll((Collection<? extends Property>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -543,6 +611,9 @@ public class ComponentConfigurationImpl extends MinimalEObjectImpl.Container imp
 			case ComponentPackage.COMPONENT_CONFIGURATION__EXTERNAL_CONNECTION_STRING:
 				setExternalConnectionString(EXTERNAL_CONNECTION_STRING_EDEFAULT);
 				return;
+			case ComponentPackage.COMPONENT_CONFIGURATION__PROPERTIES:
+				getProperties().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -573,8 +644,24 @@ public class ComponentConfigurationImpl extends MinimalEObjectImpl.Container imp
 				return OUT_CHANNEL_NAME_EDEFAULT == null ? outChannelName != null : !OUT_CHANNEL_NAME_EDEFAULT.equals(outChannelName);
 			case ComponentPackage.COMPONENT_CONFIGURATION__EXTERNAL_CONNECTION_STRING:
 				return EXTERNAL_CONNECTION_STRING_EDEFAULT == null ? externalConnectionString != null : !EXTERNAL_CONNECTION_STRING_EDEFAULT.equals(externalConnectionString);
+			case ComponentPackage.COMPONENT_CONFIGURATION__PROPERTIES:
+				return properties != null && !properties.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case ComponentPackage.COMPONENT_CONFIGURATION___GET_PROPERTY__STRING:
+				return getProperty((String)arguments.get(0));
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

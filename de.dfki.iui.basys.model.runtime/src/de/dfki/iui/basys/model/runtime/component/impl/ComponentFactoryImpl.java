@@ -59,6 +59,7 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 		switch (eClass.getClassifierID()) {
 			case ComponentPackage.COMPONENT_INFO: return createComponentInfo();
 			case ComponentPackage.COMPONENT_CONFIGURATION: return createComponentConfiguration();
+			case ComponentPackage.PROPERTY: return createProperty();
 			case ComponentPackage.COMMAND_REQUEST: return createCommandRequest();
 			case ComponentPackage.CHANGE_MODE_REQUEST: return createChangeModeRequest();
 			case ComponentPackage.CAPABILITY_REQUEST: return createCapabilityRequest();
@@ -133,6 +134,16 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 	public ComponentConfiguration createComponentConfiguration() {
 		ComponentConfigurationImpl componentConfiguration = new ComponentConfigurationImpl();
 		return componentConfiguration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Property createProperty() {
+		PropertyImpl property = new PropertyImpl();
+		return property;
 	}
 
 	/**
