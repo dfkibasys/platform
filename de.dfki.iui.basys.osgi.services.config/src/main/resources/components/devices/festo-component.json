@@ -1,7 +1,7 @@
 {
   "eClass" : "http://www.dfki.de/iui/basys/model/component#//ComponentConfiguration",
   "componentCategory" : "DEVICE_COMPONENT",
-  "componentId" : "festo-component",
+  "componentId" : "_SE5NIDB4Eei1bbwBPPZWOA",
   "componentName" : "My Festo Component",
   "componentImplementationJavaClass" : "de.dfki.iui.basys.runtime.component.device.TestDeviceComponent",
   "inChannelName" : "_SE5NIDB4Eei1bbwBPPZWOA#in",
