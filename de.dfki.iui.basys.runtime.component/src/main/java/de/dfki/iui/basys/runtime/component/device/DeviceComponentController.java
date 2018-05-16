@@ -41,6 +41,8 @@ public class DeviceComponentController implements CommandInterface, ChannelListe
 	private ComponentInfo componentInfo = null;
 
 	private ChannelListener listener = null;
+	
+	boolean isConnected = false;
 
 	public DeviceComponentController(String componentId) {
 		this.componentId = componentId;
@@ -51,8 +53,16 @@ public class DeviceComponentController implements CommandInterface, ChannelListe
 		this.listener = listener;
 	}
 
+	public void lazyConnect(ComponentContext context) {
+		// TODO: controller should register itself at remote device component in order to avoid two controllers can control a component at the same time.
+		this.context = context;
+	}
+	
 	public void connect(ComponentContext context) {
 
+		if (isConnected)
+			return;
+		
 		// TODO: controller should register itself at remote device component in order to avoid two controllers can control a component at the same time.
 		this.context = context;
 
@@ -65,9 +75,15 @@ public class DeviceComponentController implements CommandInterface, ChannelListe
 			if (componentInfo.getStatusChannelName() != null && !componentInfo.getStatusChannelName().equals(""))
 				componentStatusChannel = cf.openChannel(context.getSharedChannelPool(), componentInfo.getStatusChannelName(), false, this);
 		}
+		
+		isConnected = true;
 	}
 
 	public void disconnect() {
+		
+		if (!isConnected)
+			return;
+		
 		// TODO: unregister at remote device controller
 		if (componentInChannel != null)
 			componentInChannel.close();
@@ -75,6 +91,8 @@ public class DeviceComponentController implements CommandInterface, ChannelListe
 			componentOutChannel.close();
 		if (componentStatusChannel != null)
 			componentStatusChannel.close();
+		
+		isConnected = false;
 	}
 
 	private ComponentRequestStatus sendCommandRequest(ControlCommand command) {
@@ -93,6 +111,9 @@ public class DeviceComponentController implements CommandInterface, ChannelListe
 	}
 
 	private ComponentRequestStatus sendComponentRequest(ComponentRequest request) {
+		
+		connect(this.context);
+		
 		ComponentRequestStatus status = null;
 		try {
 			String payload = JsonUtils.toString(request);

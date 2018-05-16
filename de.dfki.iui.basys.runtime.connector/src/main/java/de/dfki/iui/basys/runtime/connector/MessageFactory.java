@@ -48,6 +48,20 @@ public class MessageFactory {
 		return msg;
 	}
 
+	public TextMessage createMSG10(int resourceId, int functionId, int capType, int matNr, int serialNr, int orderNr) {
+		String text = 
+				"<Message>"
+				+ "<Parameter name=\"functionID\" value=\"" + functionId + "\" />"
+				+ "<Parameter name=\"capType\" value=\"" + capType + "\" />"
+				+ "<Parameter name=\"matNr\" value=\"" + matNr + "\" /> "
+				+ "<Parameter name=\"serialNr\" value=\"" + serialNr + "\" /> "
+				+ "<Parameter name=\"orderNr\" value=\"" + orderNr + "\" />"
+				+ "</Message>";
+		TextMessage msg = createMSG("MSG10", resourceId, text);
+		return msg;
+	}
+
+	
 	public TextMessage createMSG11(int resourceId) {
 		TextMessage msg = createMSG("MSG11", resourceId);
 		return msg;

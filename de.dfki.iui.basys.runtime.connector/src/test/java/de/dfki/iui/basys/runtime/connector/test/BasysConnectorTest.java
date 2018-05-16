@@ -1,7 +1,10 @@
 package de.dfki.iui.basys.runtime.connector.test;
 
-import java.util.LinkedList;
-import java.util.UUID;
+import static org.junit.Assert.assertTrue;
+
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.TimeUnit;
 
 import javax.jms.Connection;
 import javax.jms.JMSException;
@@ -18,15 +21,20 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Test;
 
+import de.dfki.iui.basys.common.emf.json.JsonUtils;
 import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
+import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl;
+import de.dfki.iui.basys.model.runtime.component.impl.PropertyImpl;
+import de.dfki.iui.basys.runtime.communication.provider.JmsCommunicationProvider;
 import de.dfki.iui.basys.runtime.connector.BasysConnector;
-import de.dfki.iui.basys.runtime.connector.BasysConnectorConfiguration;
 import de.dfki.iui.basys.runtime.connector.MessageFactory;
 
 public class BasysConnectorTest extends BaseComponentTest {
 
-	private static final String brokerUri = "vm://localhost?broker.persistent=false";
+	private static final String brokerUri = JmsCommunicationProvider.defaultConnectionString;
 	private static Connection connection = null;
 	private Session session;
 	private MessageFactory messageFactory;
@@ -34,8 +42,9 @@ public class BasysConnectorTest extends BaseComponentTest {
 	private MessageConsumer wfe_receiver;
 
 	// Data
-	private String connectorComponentId;
-	private int caaResourceId = 2000815;
+	private int caaResourceId = 300999013;
+	private int basysMatNr = 815;
+	private int festoMatNr = 0;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -50,20 +59,19 @@ public class BasysConnectorTest extends BaseComponentTest {
 	public static void tearDownAfterClass() throws Exception {
 		connection.close();
 	}
-
+	ComponentConfiguration connectorConfig;
+	
 	@Override
 	@Before
-	public void setUp() throws Exception {
-		connectorComponentId = UUID.randomUUID().toString();
+	public void setUp() throws Exception {		
+		super.setUp();
 		
-		BasysConnectorConfiguration connectorConfig = (BasysConnectorConfiguration) new BasysConnectorConfiguration.Builder()
-				.caaResourceId(caaResourceId)
-				.caaInTopic("Caa.In")
-				.caaOutTopic("Caa.Out")
-				.componentId(connectorComponentId)
+		
+		connectorConfig = new ComponentConfigurationImpl.Builder()			
+				.componentId("basys-connector")
 				.componentName("basys-connector")
 				.componentCategory(ComponentCategory.SERVICE_COMPONENT)
-				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.connector.test.TestBasysConnector")
+				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.connector.BasysConnectorImpl")
 				.communicationProviderImplementationJavaClass(communicationProviderImplementationJavaClass)
 				.communicationProviderConnectionString(communicationProviderConnectionString)
 				//.inChannelName("connector.in")
@@ -72,34 +80,49 @@ public class BasysConnectorTest extends BaseComponentTest {
 				.build();
 				
 		
+
+		connectorConfig.getProperties().add(new PropertyImpl.Builder().key("caaResourceId").value(caaResourceId+"").build());
+		connectorConfig.getProperties().add(new PropertyImpl.Builder().key("caaInTopic").value("Sbr.Line.003.Basys.Preassembly.Iss.OpcUa.In").build());
+		connectorConfig.getProperties().add(new PropertyImpl.Builder().key("caaOutTopic").value("Sbr.Line.003.Basys.Preassembly.Iss.OpcUa.Out").build());
+		connectorConfig.getProperties().add(new PropertyImpl.Builder().key("basysMatNr").value(basysMatNr+"").build());
+		connectorConfig.getProperties().add(new PropertyImpl.Builder().key("festoComponentId").value("_SE5NIDB4Eei1bbwBPPZWOA").build());
+		connectorConfig.getProperties().add(new PropertyImpl.Builder().key("debugJobStatus").value("1").build());
+		connectorConfig.getProperties().add(new PropertyImpl.Builder().key("debugErrorCode").value("0").build());
+
+		System.out.println(JsonUtils.toString(connectorConfig));
+		
 		componentManager.createLocalComponent(connectorConfig);
 		
 		session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);		
 		messageFactory = new MessageFactory(session);
 
-		Topic jmsTopicProducer = session.createTopic(connectorConfig.getCaaInTopic());
+		Topic jmsTopicProducer = session.createTopic(connectorConfig.getProperty("caaInTopic").getValue());
 		wfe_sender = session.createProducer(jmsTopicProducer);
 
-		Topic jmsTopicConsumer = session.createTopic(connectorConfig.getCaaOutTopic());
+		Topic jmsTopicConsumer = session.createTopic(connectorConfig.getProperty("caaOutTopic").getValue());
 		wfe_receiver = session.createConsumer(jmsTopicConsumer);
 	}
 
 	@Override
 	@After
-	public void tearDown() throws Exception {
+	public void tearDown() throws Exception {		
+		super.tearDown();
+		
 		wfe_sender.close();
 		wfe_receiver.close();
 		session.close();
 		
-		componentManager.deleteLocalComponent(connectorComponentId);
 	}
 
-	/*
 	@Test
-	public void testExecutionIO() {
+	public void testNewOrderFesto() {
 		TestListener testCallback = new TestListener();
+		
+		int functionId = 0;
+		int capType = 0;
+		int matNr = festoMatNr;
 
-		TextMessage msg10 = messageFactory.createMSG10(caaResourceId, 0, 0);
+		TextMessage msg10 = messageFactory.createMSG10(caaResourceId, functionId, capType, matNr, 1, 1);
 		TextMessage msg11 = messageFactory.createMSG11(caaResourceId);
 		TextMessage msg12 = messageFactory.createMSG12(caaResourceId, 1, 0);
 		TextMessage msg13 = messageFactory.createMSG13(caaResourceId, 1, 0);
@@ -107,10 +130,7 @@ public class BasysConnectorTest extends BaseComponentTest {
 		try {
 			wfe_receiver.setMessageListener(testCallback);
 			wfe_sender.send(msg10);
-			Thread.currentThread().join(1000);
 		} catch (JMSException e) {
-			e.printStackTrace();
-		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 
@@ -123,24 +143,24 @@ public class BasysConnectorTest extends BaseComponentTest {
 			e.printStackTrace();
 		}
 	}
-
+	
 	@Test
-	public void testExecutionNIO() {
-
+	public void testNewOrderBasys() {
 		TestListener testCallback = new TestListener();
 
-		TextMessage msg10 = messageFactory.createMSG10(caaResourceId, 0, 0);
+		int functionId = 0;
+		int capType = 0;
+		int matNr = basysMatNr;
+
+		TextMessage msg10 = messageFactory.createMSG10(caaResourceId, functionId, capType, matNr, 1, 1);
 		TextMessage msg11 = messageFactory.createMSG11(caaResourceId);
-		TextMessage msg12 = messageFactory.createMSG12(caaResourceId, 2, 0);
-		TextMessage msg13 = messageFactory.createMSG13(caaResourceId, 2, 0);
+		TextMessage msg12 = messageFactory.createMSG12(caaResourceId, 1, 0);
+		TextMessage msg13 = messageFactory.createMSG13(caaResourceId, 1, 0);
 
 		try {
 			wfe_receiver.setMessageListener(testCallback);
 			wfe_sender.send(msg10);
-			Thread.currentThread().join(1000);
 		} catch (JMSException e) {
-			e.printStackTrace();
-		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 
@@ -153,84 +173,28 @@ public class BasysConnectorTest extends BaseComponentTest {
 			e.printStackTrace();
 		}
 	}
-
+	
 	@Test
-	public void testExecutionAbortSuccess() {
-
+	public void testResetFestoIO() {
 		TestListener testCallback = new TestListener();
 
-		TextMessage msg10 = messageFactory.createMSG10(caaResourceId, 0, 0);
+		int functionId = 1;
+		int capType = 0;
+		int matNr = festoMatNr;
+
+		TextMessage msg10 = messageFactory.createMSG10(caaResourceId, functionId, capType, matNr, 1, 1);
 		TextMessage msg11 = messageFactory.createMSG11(caaResourceId);
-		TextMessage msg16 = messageFactory.createMSG16(caaResourceId);
-		TextMessage msg17 = messageFactory.createMSG17(caaResourceId);
-		TextMessage msg18 = messageFactory.createMSG18(caaResourceId);
-		TextMessage msg19 = messageFactory.createMSG19(caaResourceId);
+		TextMessage msg12 = messageFactory.createMSG12(caaResourceId, 1, 0);
+		TextMessage msg13 = messageFactory.createMSG13(caaResourceId, 1, 0);
 
 		try {
 			wfe_receiver.setMessageListener(testCallback);
 			wfe_sender.send(msg10);
-			Thread.currentThread().join(1000);
 		} catch (JMSException e) {
-			e.printStackTrace();
-		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 
 		assertTrue(testCallback.equalsLastReceived(msg11));
-
-		try {
-			wfe_sender.send(msg16);
-			Thread.currentThread().join(1000);
-		} catch (JMSException e) {
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-
-		assertTrue(testCallback.equalsLastReceived(msg17));
-		assertTrue(testCallback.equalsLastReceived(msg18));
-
-		try {
-			wfe_sender.send(msg19);
-		} catch (JMSException e) {
-			e.printStackTrace();
-		}
-	}
-
-	@Test
-	public void testExecutionAbortNotPossible() {
-
-		TestListener testCallback = new TestListener();
-
-		TextMessage msg10 = messageFactory.createMSG10(caaResourceId, 0, 0);
-		TextMessage msg11 = messageFactory.createMSG11(caaResourceId);
-		TextMessage msg16 = messageFactory.createMSG16(caaResourceId);
-		TextMessage msg17 = messageFactory.createMSG17(caaResourceId);
-		TextMessage msg12 = messageFactory.createMSG12(caaResourceId, 2, 0);
-		TextMessage msg13 = messageFactory.createMSG13(caaResourceId, 2, 0);
-
-		try {
-			wfe_receiver.setMessageListener(testCallback);
-			wfe_sender.send(msg10);
-			Thread.currentThread().join(1000);
-		} catch (JMSException e) {
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-
-		assertTrue(testCallback.equalsLastReceived(msg11));
-
-		try {
-			wfe_sender.send(msg16);
-			Thread.currentThread().join(1000);
-		} catch (JMSException e) {
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-
-		assertTrue(testCallback.equalsLastReceived(msg17));
 		assertTrue(testCallback.equalsLastReceived(msg12));
 
 		try {
@@ -239,19 +203,149 @@ public class BasysConnectorTest extends BaseComponentTest {
 			e.printStackTrace();
 		}
 	}
-*/
+	
+	@Test
+	public void testResetBasysIO() {
+		TestListener testCallback = new TestListener();
+
+		int functionId = 1;
+		int capType = 0;
+		int matNr = basysMatNr;
+
+		TextMessage msg10 = messageFactory.createMSG10(caaResourceId, functionId, capType, matNr, 1, 1);
+		TextMessage msg11 = messageFactory.createMSG11(caaResourceId);
+		TextMessage msg12 = messageFactory.createMSG12(caaResourceId, 1, 0);
+		TextMessage msg13 = messageFactory.createMSG13(caaResourceId, 1, 0);
+
+		try {
+			wfe_receiver.setMessageListener(testCallback);
+			wfe_sender.send(msg10);
+		} catch (JMSException e) {
+			e.printStackTrace();
+		}
+
+		assertTrue(testCallback.equalsLastReceived(msg11));
+		assertTrue(testCallback.equalsLastReceived(msg12));
+
+		try {
+			wfe_sender.send(msg13);
+		} catch (JMSException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	@Test
+	public void testExecuteJobFestoRedIO() {
+		TestListener testCallback = new TestListener();
+		
+		int functionId = 2;
+		int capType = 1;
+		int matNr = festoMatNr;
+
+		TextMessage msg10 = messageFactory.createMSG10(caaResourceId, functionId, capType, matNr, 1, 1);
+		TextMessage msg11 = messageFactory.createMSG11(caaResourceId);
+		TextMessage msg12 = messageFactory.createMSG12(caaResourceId, 1, 0);
+		TextMessage msg13 = messageFactory.createMSG13(caaResourceId, 1, 0);
+
+		try {
+			wfe_receiver.setMessageListener(testCallback);
+			wfe_sender.send(msg10);
+		} catch (JMSException e) {
+			e.printStackTrace();
+		}
+
+		assertTrue(testCallback.equalsLastReceived(msg11));
+		assertTrue(testCallback.equalsLastReceived(msg12));
+
+		try {
+			wfe_sender.send(msg13);
+		} catch (JMSException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void testExecuteJobFestoGreenIO() {
+		TestListener testCallback = new TestListener();
+		
+		int functionId = 2;
+		int capType = 2;
+		int matNr = festoMatNr;
+
+		TextMessage msg10 = messageFactory.createMSG10(caaResourceId, functionId, capType, matNr, 1, 1);
+		TextMessage msg11 = messageFactory.createMSG11(caaResourceId);
+		TextMessage msg12 = messageFactory.createMSG12(caaResourceId, 1, 0);
+		TextMessage msg13 = messageFactory.createMSG13(caaResourceId, 1, 0);
+
+		try {
+			wfe_receiver.setMessageListener(testCallback);
+			wfe_sender.send(msg10);
+		} catch (JMSException e) {
+			e.printStackTrace();
+		}
+
+		assertTrue(testCallback.equalsLastReceived(msg11));
+		assertTrue(testCallback.equalsLastReceived(msg12));
+
+		try {
+			wfe_sender.send(msg13);
+		} catch (JMSException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void testExecuteJobBasysIO() {
+		TestListener testCallback = new TestListener();
+		
+		int functionId = 2;
+		int capType = 2;
+		int matNr = basysMatNr;
+
+		TextMessage msg10 = messageFactory.createMSG10(caaResourceId, functionId, capType, matNr, 1, 1);
+		TextMessage msg11 = messageFactory.createMSG11(caaResourceId);
+		TextMessage msg12 = messageFactory.createMSG12(caaResourceId, 1, 0);
+		TextMessage msg13 = messageFactory.createMSG13(caaResourceId, 1, 0);
+
+		try {
+			wfe_receiver.setMessageListener(testCallback);
+			wfe_sender.send(msg10);
+		} catch (JMSException e) {
+			e.printStackTrace();
+		}
+
+		assertTrue(testCallback.equalsLastReceived(msg11));
+		assertTrue(testCallback.equalsLastReceived(msg12));
+
+		try {
+			wfe_sender.send(msg13);
+		} catch (JMSException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	class TestListener implements MessageListener {
 
-		private LinkedList<Message> receivedList = new LinkedList<Message>();
+		private BlockingQueue<Message> receivedList = new LinkedBlockingQueue<Message>();
 
 		@Override
-		public synchronized void onMessage(Message message) {
+		public void onMessage(Message message) {
 			this.receivedList.add(message);
 		}
 
-		public synchronized boolean equalsLastReceived(TextMessage expected) {
-			TextMessage received = (TextMessage)receivedList.remove();
+		public boolean equalsLastReceived(TextMessage expected) {
+			TextMessage received = null;
+			try {
+				received = (TextMessage)receivedList.poll(2,TimeUnit.MINUTES);
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 
+			if (received == null)
+				return false;
+			
 			try {
 				return received.getStringProperty(BasysConnector.ATSMsgType).equals(expected.getStringProperty(BasysConnector.ATSMsgType))
 						&& received.getIntProperty(BasysConnector.ResourceId) == expected.getIntProperty(BasysConnector.ResourceId) &&
