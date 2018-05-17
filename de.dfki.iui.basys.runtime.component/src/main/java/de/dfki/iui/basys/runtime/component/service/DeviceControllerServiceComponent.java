@@ -31,7 +31,7 @@ public class DeviceControllerServiceComponent extends ServiceComponent {
 		String componentId = matcher.group("componentId");
 		
 		device = new DeviceComponentController(componentId, this);
-		device.connect(context);
+		device.lazyConnect(context);
 	}
 	
 	@Override

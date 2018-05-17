@@ -3,3 +3,5 @@
 #-----------------------------------------------------------------
 
 #Bundle-Activator: ${bundle.namespace}.internal.ExampleActivator
+# important for creating components in component manager via reflection
+DynamicImport-Package = * 

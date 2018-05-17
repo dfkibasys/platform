@@ -13,9 +13,6 @@ public class TopologyManagerImpl extends EmfServiceComponent implements Topology
 
 	public TopologyManagerImpl(ComponentConfiguration config) {
 		super(config);
-		TopologyPackageImpl.init();
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("topology", new TopologyResourceFactoryImpl());
-
 	}
 
 	@Override
@@ -35,6 +32,12 @@ public class TopologyManagerImpl extends EmfServiceComponent implements Topology
 			return (TopologyElement) element.eContainer();
 		else 
 			return null;		
+	}
+
+	@Override
+	protected void initPackageAndregisterResourceFactory() {
+		TopologyPackageImpl.init();
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("topology", new TopologyResourceFactoryImpl());
 	}
 
 }

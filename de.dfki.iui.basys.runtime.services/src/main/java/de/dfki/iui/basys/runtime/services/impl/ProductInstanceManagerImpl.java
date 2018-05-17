@@ -13,8 +13,6 @@ public class ProductInstanceManagerImpl extends EmfServiceComponent implements P
 
 	public ProductInstanceManagerImpl(ComponentConfiguration config) {
 		super(config);
-		ProductinstancePackageImpl.init();
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("productinstance", new ProductinstanceResourceFactoryImpl());
 	}
 
 	@Override
@@ -26,6 +24,12 @@ public class ProductInstanceManagerImpl extends EmfServiceComponent implements P
 	public ProductInstanceStore getProductInstanceStore() {
 		ProductInstanceStore store = getFirstEntity(ProductinstancePackage.eINSTANCE.getProductInstanceStore());
 		return store;
+	}
+
+	@Override
+	protected void initPackageAndregisterResourceFactory() {
+		ProductinstancePackageImpl.init();
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("productinstance", new ProductinstanceResourceFactoryImpl());
 	}
 
 }

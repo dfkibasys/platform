@@ -85,13 +85,15 @@ public class ComponentManagerImpl extends BaseComponent implements ComponentMana
 		Class c = null;
 		try {
 			
-			//ClassLoader cl1 = Thread.currentThread().getContextClassLoader();
-			//c = cl1.loadClass(config.getComponentImplementationJavaClass());
+//			ClassLoader cl1 = Thread.currentThread().getContextClassLoader();
+//			c = cl1.loadClass(config.getComponentImplementationJavaClass());
+//			
+//			ClassLoader cl2 = getClass().getClassLoader();
+//			c = cl2.loadClass(config.getComponentImplementationJavaClass());
+//			
+//			c = componentCreationClassLoader.loadClass(config.getComponentImplementationJavaClass());
 			
-			ClassLoader cl2 = getClass().getClassLoader();
-			c = cl2.loadClass(config.getComponentImplementationJavaClass());
-			
-			//c = Class.forName(config.getComponentImplementationJavaClass());
+			c = Class.forName(config.getComponentImplementationJavaClass());
 		} catch (ClassNotFoundException e) {
 			throw new ComponentManagerException(e);
 		}

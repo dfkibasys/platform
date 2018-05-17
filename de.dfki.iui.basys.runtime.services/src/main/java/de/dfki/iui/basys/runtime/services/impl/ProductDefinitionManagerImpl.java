@@ -15,8 +15,6 @@ public class ProductDefinitionManagerImpl extends EmfServiceComponent implements
 
 	public ProductDefinitionManagerImpl(ComponentConfiguration config) {
 		super(config);
-		ProductdefinitionPackageImpl.init();
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("productdefinition", new ProductdefinitionResourceFactoryImpl());
 	}
 
 	@Override
@@ -38,6 +36,12 @@ public class ProductDefinitionManagerImpl extends EmfServiceComponent implements
 	public ProductCatalogue getProductCatalogue() {
 		ProductCatalogue catalogue = getFirstEntity(ProductdefinitionPackage.eINSTANCE.getProductCatalogue());
 		return catalogue;
+	}
+
+	@Override
+	protected void initPackageAndregisterResourceFactory() {
+		ProductdefinitionPackageImpl.init();
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("productdefinition", new ProductdefinitionResourceFactoryImpl());
 	}
 
 }
