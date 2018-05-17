@@ -29,18 +29,6 @@
 			<artifactId>de.dfki.iui.basys.runtime.services</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		
-<!-- 		<dependency>
-			<groupId>de.dfki.iui.basys.osgi</groupId>
-			<artifactId>de.dfki.iui.basys.osgi.cm</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-				
-		<dependency>
-			<groupId>de.dfki.iui.basys.osgi</groupId>
-			<artifactId>de.dfki.iui.basys.osgi.services.config</artifactId>
-			<version>${project.version}</version>
-		</dependency> -->
 
 		<!-- https://mvnrepository.com/artifact/org.osgi/org.osgi.service.component.annotations -->
 		<dependency>
@@ -66,17 +54,28 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.osgi/org.osgi.core -->
 		<dependency>
 			<groupId>org.osgi</groupId>
-			<artifactId>osgi_R4_core</artifactId>
-			<optional>true</optional>
+			<artifactId>org.osgi.core</artifactId>
+			<version>6.0.0</version>
+			<scope>provided</scope>
 		</dependency>
 
+
+		<!-- https://mvnrepository.com/artifact/org.osgi/osgi.cmpn -->
 		<dependency>
 			<groupId>org.osgi</groupId>
-			<artifactId>osgi_R4_compendium</artifactId>
-			<optional>true</optional>
+			<artifactId>osgi.cmpn</artifactId>
+			<version>6.0.0</version>
+			<scope>provided</scope>
 		</dependency>
+
+		<!-- <dependency> <groupId>org.osgi</groupId> <artifactId>osgi_R4_core</artifactId> 
+			<optional>true</optional> </dependency> <dependency> <groupId>org.osgi</groupId> 
+			<artifactId>osgi_R4_compendium</artifactId> <optional>true</optional> </dependency> -->
+
+
 
 	</dependencies>
 

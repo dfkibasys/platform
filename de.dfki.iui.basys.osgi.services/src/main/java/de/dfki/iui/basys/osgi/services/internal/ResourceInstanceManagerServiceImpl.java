@@ -15,6 +15,7 @@ import de.dfki.iui.basys.model.domain.capability.Capability;
 import de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstance;
 import de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstanceRepository;
 import de.dfki.iui.basys.osgi.services.BasysOsgiComponent;
+import de.dfki.iui.basys.osgi.services.ResourceSetProvider;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManager;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManagerException;
 import de.dfki.iui.basys.runtime.services.ResourceInstanceManager;
@@ -36,6 +37,7 @@ public final class ResourceInstanceManagerServiceImpl extends BasysOsgiComponent
 		super.activate(context, properties);
 
 		impl = new ResourceInstanceManagerImpl(config);
+		impl.setSharedResourceSet(provider.getSharedResourceSet());
 		try {
 			componentManager.addLocalComponent(impl);
 		} catch (ComponentManagerException e) {
@@ -68,7 +70,16 @@ public final class ResourceInstanceManagerServiceImpl extends BasysOsgiComponent
 		this.componentManager = null;
 	}
 
-
+	ResourceSetProvider provider;
+	
+	@Reference
+	void setResourceSetProvider(ResourceSetProvider provider) {
+		this.provider = provider;
+	}
+	
+	void unsetResourceSetProvider(ResourceSetProvider provider) {
+		this.provider = null;
+	}
 
 	/*
 	 * Service interface

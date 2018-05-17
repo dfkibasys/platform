@@ -15,6 +15,7 @@ import de.dfki.iui.basys.model.domain.productdefinition.ProductCatalogue;
 import de.dfki.iui.basys.model.domain.productdefinition.ProductGroup;
 import de.dfki.iui.basys.model.domain.productdefinition.ProductVariant;
 import de.dfki.iui.basys.osgi.services.BasysOsgiComponent;
+import de.dfki.iui.basys.osgi.services.ResourceSetProvider;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManager;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManagerException;
 import de.dfki.iui.basys.runtime.services.ProductDefinitionManager;
@@ -36,6 +37,7 @@ public final class ProductDefinitionManagerServiceImpl extends BasysOsgiComponen
 		super.activate(context, properties);
 
 		impl = new ProductDefinitionManagerImpl(config);
+		impl.setSharedResourceSet(provider.getSharedResourceSet());
 		try {
 			componentManager.addLocalComponent(impl);
 		} catch (ComponentManagerException e) {
@@ -68,7 +70,17 @@ public final class ProductDefinitionManagerServiceImpl extends BasysOsgiComponen
 		this.componentManager = null;
 	}
 
-
+	ResourceSetProvider provider;
+	
+	@Reference
+	void setResourceSetProvider(ResourceSetProvider provider) {
+		this.provider = provider;
+	}
+	
+	void unsetResourceSetProvider(ResourceSetProvider provider) {
+		this.provider = null;
+	}
+	
 	/*
 	 * Service interface
 	 */

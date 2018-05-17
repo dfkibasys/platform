@@ -13,6 +13,7 @@ import org.osgi.service.component.annotations.Reference;
 
 import de.dfki.iui.basys.model.domain.processdefinition.ProcessDefinition;
 import de.dfki.iui.basys.osgi.services.BasysOsgiComponent;
+import de.dfki.iui.basys.osgi.services.ResourceSetProvider;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManager;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManagerException;
 import de.dfki.iui.basys.runtime.services.ProcessDefinitionManager;
@@ -34,6 +35,7 @@ public final class ProcessDefinitionManagerServiceImpl extends BasysOsgiComponen
 		super.activate(context, properties);
 
 		impl = new ProcessDefinitionManagerImpl(config);
+		impl.setSharedResourceSet(provider.getSharedResourceSet());
 		try {
 			componentManager.addLocalComponent(impl);
 		} catch (ComponentManagerException e) {
@@ -66,7 +68,17 @@ public final class ProcessDefinitionManagerServiceImpl extends BasysOsgiComponen
 		this.componentManager = null;
 	}
 
-
+	ResourceSetProvider provider;
+	
+	@Reference
+	void setResourceSetProvider(ResourceSetProvider provider) {
+		this.provider = provider;
+	}
+	
+	void unsetResourceSetProvider(ResourceSetProvider provider) {
+		this.provider = null;
+	}
+	
 	/*
 	 * Service interface
 	 */

@@ -13,6 +13,7 @@ import org.osgi.service.component.annotations.Reference;
 import de.dfki.iui.basys.model.domain.topology.Enterprise;
 import de.dfki.iui.basys.model.domain.topology.TopologyElement;
 import de.dfki.iui.basys.osgi.services.BasysOsgiComponent;
+import de.dfki.iui.basys.osgi.services.ResourceSetProvider;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManager;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManagerException;
 import de.dfki.iui.basys.runtime.services.TopologyManager;
@@ -36,6 +37,7 @@ public final class TopologyManagerServiceImpl extends BasysOsgiComponent impleme
 		impl = new TopologyManagerImpl(config);
 		try {
 			componentManager.addLocalComponent(impl);
+			impl.setSharedResourceSet(provider.getSharedResourceSet());
 		} catch (ComponentManagerException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -66,7 +68,17 @@ public final class TopologyManagerServiceImpl extends BasysOsgiComponent impleme
 		this.componentManager = null;
 	}
 
-
+	ResourceSetProvider provider;
+	
+	@Reference
+	void setResourceSetProvider(ResourceSetProvider provider) {
+		this.provider = provider;
+	}
+	
+	void unsetResourceSetProvider(ResourceSetProvider provider) {
+		this.provider = null;
+	}
+	
 	/*
 	 * Service interface
 	 */

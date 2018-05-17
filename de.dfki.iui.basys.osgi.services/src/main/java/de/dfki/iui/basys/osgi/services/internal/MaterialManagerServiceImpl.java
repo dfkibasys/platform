@@ -14,6 +14,7 @@ import de.dfki.iui.basys.model.domain.material.Material;
 import de.dfki.iui.basys.model.domain.material.MaterialCatalogue;
 import de.dfki.iui.basys.model.domain.material.MaterialGroup;
 import de.dfki.iui.basys.osgi.services.BasysOsgiComponent;
+import de.dfki.iui.basys.osgi.services.ResourceSetProvider;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManager;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManagerException;
 import de.dfki.iui.basys.runtime.services.MaterialManager;
@@ -35,6 +36,7 @@ public final class MaterialManagerServiceImpl extends BasysOsgiComponent impleme
 		super.activate(context, properties);
 
 		impl = new MaterialManagerImpl(config);
+		impl.setSharedResourceSet(provider.getSharedResourceSet());
 		try {
 			componentManager.addLocalComponent(impl);
 		} catch (ComponentManagerException e) {
@@ -67,6 +69,16 @@ public final class MaterialManagerServiceImpl extends BasysOsgiComponent impleme
 		this.componentManager = null;
 	}
 	
+	ResourceSetProvider provider;
+	
+	@Reference
+	void setResourceSetProvider(ResourceSetProvider provider) {
+		this.provider = provider;
+	}
+	
+	void unsetResourceSetProvider(ResourceSetProvider provider) {
+		this.provider = null;
+	}
 
 	/*
 	 * MaterialManager interface

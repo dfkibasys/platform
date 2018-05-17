@@ -13,6 +13,7 @@ import org.osgi.service.component.annotations.Reference;
 import de.dfki.iui.basys.model.domain.order.Order;
 import de.dfki.iui.basys.model.domain.order.OrderStore;
 import de.dfki.iui.basys.osgi.services.BasysOsgiComponent;
+import de.dfki.iui.basys.osgi.services.ResourceSetProvider;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManager;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManagerException;
 import de.dfki.iui.basys.runtime.services.OrderManager;
@@ -34,6 +35,7 @@ public final class OrderManagerServiceImpl extends BasysOsgiComponent implements
 		super.activate(context, properties);
 
 		impl = new OrderManagerImpl(config);
+		impl.setSharedResourceSet(provider.getSharedResourceSet());
 		try {
 			componentManager.addLocalComponent(impl);
 		} catch (ComponentManagerException e) {
@@ -65,7 +67,17 @@ public final class OrderManagerServiceImpl extends BasysOsgiComponent implements
 	void unsetComponentManager(ComponentManager componentManager) {
 		this.componentManager = null;
 	}
-
+	
+	ResourceSetProvider provider;
+	
+	@Reference
+	void setResourceSetProvider(ResourceSetProvider provider) {
+		this.provider = provider;
+	}
+	
+	void unsetResourceSetProvider(ResourceSetProvider provider) {
+		this.provider = null;
+	}
 
 	/*
 	 * Service interface
