@@ -114,58 +114,58 @@ public class LaserServiceComponentTest extends BaseComponentTest {
 	
 
 	
-	@Test
-	public void testPathProjection() throws ComponentException {
-
-		try {
-			componentManager.createLocalComponent(deviceComponentConfig);
-			componentManager.createLocalComponent(serviceComponentConfig);
-
-			Component deviceComponent = componentManager.getLocalComponentById(deviceComponentConfig.getComponentId());
-			Component serviceComponent = componentManager.getLocalComponentById(serviceComponentConfig.getComponentId());
-
-			assertTrue(deviceComponent.isActivated());
-			assertTrue(serviceComponent.isActivated());
-
-			CartesianCoordinate c1 = new CartesianCoordinateImpl.Builder().x(1.0).y(1.0).z(1.0).build();
-			CartesianCoordinate c2 = new CartesianCoordinateImpl.Builder().x(2.0).y(2.0).z(2.0).build();
-			CartesianCoordinate c3 = new CartesianCoordinateImpl.Builder().x(3.0).y(3.0).z(3.0).build();
-			CartesianCoordinate c4 = new CartesianCoordinateImpl.Builder().x(4.0).y(3.0).z(3.0).build();
-			CartesianCoordinate c5 = new CartesianCoordinateImpl.Builder().x(5.0).y(3.0).z(3.0).build();
-			CartesianCoordinate c6 = new CartesianCoordinateImpl.Builder().x(6.0).y(3.0).z(3.0).build();
-
-			Path path = DataFactory.eINSTANCE.createPath();
-			path.getCoordinates().add(c1);
-			path.getCoordinates().add(c2);
-			path.getCoordinates().add(c3);
-			path.getCoordinates().add(c4);
-			path.getCoordinates().add(c5);
-			path.getCoordinates().add(c6);
-
-			Channel mirOut = ClientFactory.getInstance().openChannel(sharedPool, "mir-component#out", false, null);
-
-			String payload = JsonUtils.toString(path);
-			Notification not = ClientFactory.getInstance().createNotification(payload);
-			mirOut.sendNotification(not);
-
-			sleep(5);
-
-			assertEquals(State.EXECUTE, deviceComponent.getState());
-
-			componentManager.deleteLocalComponent(deviceComponentConfig.getComponentId());
-			componentManager.deleteLocalComponent(serviceComponentConfig.getComponentId());
-
-			assertTrue(!deviceComponent.isActivated());
-			assertTrue(!serviceComponent.isActivated());
-
-		} catch (ComponentManagerException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+//	@Test
+//	public void testPathProjection() throws ComponentException {
+//
+//		try {
+//			componentManager.createLocalComponent(deviceComponentConfig);
+//			componentManager.createLocalComponent(serviceComponentConfig);
+//
+//			Component deviceComponent = componentManager.getLocalComponentById(deviceComponentConfig.getComponentId());
+//			Component serviceComponent = componentManager.getLocalComponentById(serviceComponentConfig.getComponentId());
+//
+//			assertTrue(deviceComponent.isActivated());
+//			assertTrue(serviceComponent.isActivated());
+//
+//			CartesianCoordinate c1 = new CartesianCoordinateImpl.Builder().x(1.0).y(1.0).z(1.0).build();
+//			CartesianCoordinate c2 = new CartesianCoordinateImpl.Builder().x(2.0).y(2.0).z(2.0).build();
+//			CartesianCoordinate c3 = new CartesianCoordinateImpl.Builder().x(3.0).y(3.0).z(3.0).build();
+//			CartesianCoordinate c4 = new CartesianCoordinateImpl.Builder().x(4.0).y(3.0).z(3.0).build();
+//			CartesianCoordinate c5 = new CartesianCoordinateImpl.Builder().x(5.0).y(3.0).z(3.0).build();
+//			CartesianCoordinate c6 = new CartesianCoordinateImpl.Builder().x(6.0).y(3.0).z(3.0).build();
+//
+//			Path path = DataFactory.eINSTANCE.createPath();
+//			path.getCoordinates().add(c1);
+//			path.getCoordinates().add(c2);
+//			path.getCoordinates().add(c3);
+//			path.getCoordinates().add(c4);
+//			path.getCoordinates().add(c5);
+//			path.getCoordinates().add(c6);
+//
+//			Channel mirOut = ClientFactory.getInstance().openChannel(sharedPool, "mir-component#out", false, null);
+//
+//			String payload = JsonUtils.toString(path);
+//			Notification not = ClientFactory.getInstance().createNotification(payload);
+//			mirOut.sendNotification(not);
+//
+//			sleep(5);
+//
+//			assertEquals(State.EXECUTE, deviceComponent.getState());
+//
+//			componentManager.deleteLocalComponent(deviceComponentConfig.getComponentId());
+//			componentManager.deleteLocalComponent(serviceComponentConfig.getComponentId());
+//
+//			assertTrue(!deviceComponent.isActivated());
+//			assertTrue(!serviceComponent.isActivated());
+//
+//		} catch (ComponentManagerException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (JsonProcessingException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 	
 	
 	/*

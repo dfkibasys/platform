@@ -13,8 +13,6 @@ public class OrderManagerImpl extends EmfServiceComponent implements OrderManage
 
 	public OrderManagerImpl(ComponentConfiguration config) {
 		super(config);
-		OrderPackageImpl.init();
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("order", new OrderResourceFactoryImpl());
 	}
 
 	@Override
@@ -32,6 +30,12 @@ public class OrderManagerImpl extends EmfServiceComponent implements OrderManage
 	public void addOrder(Order order) {
 		OrderStore store = getOrderStore();
 		store.getOrders().add(order);
+	}
+
+	@Override
+	protected void initPackageAndregisterResourceFactory() {
+		OrderPackageImpl.init();
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("order", new OrderResourceFactoryImpl());
 	}
 
 }

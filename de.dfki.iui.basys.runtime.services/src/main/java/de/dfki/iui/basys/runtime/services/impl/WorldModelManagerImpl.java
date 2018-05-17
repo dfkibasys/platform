@@ -22,4 +22,10 @@ public class WorldModelManagerImpl extends EmfServiceComponent implements WorldM
 		return null;
 	}
 
+	@Override
+	protected void initPackageAndregisterResourceFactory() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

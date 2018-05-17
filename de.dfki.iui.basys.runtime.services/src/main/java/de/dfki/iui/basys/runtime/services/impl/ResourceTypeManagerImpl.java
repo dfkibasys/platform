@@ -14,10 +14,6 @@ public class ResourceTypeManagerImpl extends EmfServiceComponent implements Reso
 
 	public ResourceTypeManagerImpl(ComponentConfiguration config) {
 		super(config);
-		ResourcetypePackageImpl.init();
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("resourcetype",
-				new ResourcetypeResourceFactoryImpl());
-
 	}
 
 	@Override
@@ -35,6 +31,13 @@ public class ResourceTypeManagerImpl extends EmfServiceComponent implements Reso
 	public ResourceTypeCatalogueCollection getResourceTypeCatalogueCollection() {
 		ResourceTypeCatalogueCollection catalogueCollection = getFirstEntity(ResourcetypePackage.eINSTANCE.getResourceTypeCatalogueCollection());
 		return catalogueCollection;
+	}
+
+	@Override
+	protected void initPackageAndregisterResourceFactory() {
+		ResourcetypePackageImpl.init();
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("resourcetype",
+				new ResourcetypeResourceFactoryImpl());
 	}
 
 }

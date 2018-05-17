@@ -15,10 +15,7 @@ import de.dfki.iui.basys.runtime.services.ResourceInstanceManager;
 public class ResourceInstanceManagerImpl extends EmfServiceComponent implements ResourceInstanceManager {
 
 	public ResourceInstanceManagerImpl(ComponentConfiguration config) {
-		super(config);
-		ResourceinstancePackageImpl.init();
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("resourceinstance",
-				new ResourceinstanceResourceFactoryImpl());
+		super(config);	
 	}
 
 	@Override
@@ -36,6 +33,13 @@ public class ResourceInstanceManagerImpl extends EmfServiceComponent implements 
 	public ResourceInstanceRepository getResourceInstanceRepository() {
 		ResourceInstanceRepository repository = getFirstEntity(ResourceinstancePackage.eINSTANCE.getResourceInstanceRepository());
 		return repository;
+	}
+
+	@Override
+	protected void initPackageAndregisterResourceFactory() {
+		ResourceinstancePackageImpl.init();
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("resourceinstance",
+				new ResourceinstanceResourceFactoryImpl());
 	}
 
 }

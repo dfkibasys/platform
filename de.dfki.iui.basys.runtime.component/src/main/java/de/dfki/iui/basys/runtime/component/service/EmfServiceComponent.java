@@ -19,7 +19,7 @@ import de.dfki.iui.basys.common.emf.EmfPersistence;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 
-public class EmfServiceComponent extends ServiceComponent {
+public abstract class EmfServiceComponent extends ServiceComponent {
 
 	protected ResourceSet resourceSet;
 	URI uri;
@@ -50,6 +50,7 @@ public class EmfServiceComponent extends ServiceComponent {
 		
 		String resourceUri = getConfig().getExternalConnectionString();
 		uri = URI.createURI(resourceUri);
+		initPackageAndregisterResourceFactory();
 		Resource resource = resourceSet.createResource(uri);
 		try {
 			EmfPersistence.read(resource, null);
@@ -57,6 +58,8 @@ public class EmfServiceComponent extends ServiceComponent {
 			e.printStackTrace();
 		}
 	}
+
+	protected abstract void initPackageAndregisterResourceFactory();
 
 	@Override
 	public void disconnectFromExternal() {
