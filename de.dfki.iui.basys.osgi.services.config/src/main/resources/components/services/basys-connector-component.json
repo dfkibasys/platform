@@ -4,7 +4,7 @@
   "componentName" : "basys-connector",
   "componentCategory" : "SERVICE_COMPONENT",
   "componentImplementationJavaClass" : "de.dfki.iui.basys.runtime.connector.BasysConnectorImpl",
-  "externalConnectionString" : "tcp://lns-90165.sb.dfki.de:61616",
+  "externalConnectionString" : "failover:(tcp://10.2.100.1:61616)?randomize=false&priorityBackup=true",
   "properties" : [ {
     "key" : "caaResourceId",
     "value" : "300999013"
@@ -22,9 +22,9 @@
     "value" : "_SE5NIDB4Eei1bbwBPPZWOA"
   }, {
     "key" : "debugJobStatus",
-    "value" : "1"
+    "value" : "2"
   }, {
     "key" : "debugErrorCode",
-    "value" : "0"
+    "value" : "1"
   } ]
 }
