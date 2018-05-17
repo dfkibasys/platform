@@ -11,9 +11,11 @@ import org.apache.thrift.transport.TTransportException;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.DeviceComponent;
+import de.dfki.tecs.Event;
+import de.dfki.tecs.ps.PSClient;
 
 public abstract class TecsDeviceComponent extends DeviceComponent {
-
+	
 	public TecsDeviceComponent(ComponentConfiguration config) {
 		super(config);
 	}
@@ -25,7 +27,8 @@ public abstract class TecsDeviceComponent extends DeviceComponent {
 	protected TProtocol protocol;
 	protected String host;
 	protected int port;
-
+	protected PSClient psClient;
+	
 	@Override
 	public void connectToExternal() throws ComponentException {
 		String patternString = "tecs.tcp:\\/\\/(?<host>.*):(?<port>\\d*)";
@@ -50,7 +53,38 @@ public abstract class TecsDeviceComponent extends DeviceComponent {
 			throw new ComponentException("Could not open the protocol!", e);
 		}
 	}
-
+	
+	/*
+	 * Connect to Tecs server for publish subscribe.
+	 * clientId = the id of the client
+	 * subscribeTo = array of events to subscribe.
+	 * ip = ip of the tecs server
+	 * port = port of the tecs server
+	 */
+	public void connectToTecs(String clientID, String[] subscribeTo, String ip, int port) {
+		psClient = new PSClient(clientID, ip, port);
+		
+		for (String sub: subscribeTo)
+			psClient.subscribe(sub);
+		
+		psClient.connect();
+		
+		Thread receiverThread = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				while(true) {
+					Event e = psClient.recv();
+					handleTecsEvent(e);
+				}
+			}
+		});
+		
+		receiverThread.setDaemon(true);
+		receiverThread.start();
+	}
+	
+	protected abstract void handleTecsEvent(Event event);
+	
 	@Override
 	public void disconnectFromExternal() {
 		close();

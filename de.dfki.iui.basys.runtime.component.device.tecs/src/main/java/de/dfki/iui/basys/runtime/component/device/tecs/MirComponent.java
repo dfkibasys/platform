@@ -19,6 +19,7 @@ import de.dfki.iui.hrc.mir100.GotoException;
 import de.dfki.iui.hrc.mir100.MIR;
 import de.dfki.iui.hrc.mir100.MIRState;
 import de.dfki.iui.hrc.mir100.MIRStatus;
+import de.dfki.tecs.Event;
 
 public class MirComponent extends TecsDeviceComponent {
 
@@ -26,9 +27,32 @@ public class MirComponent extends TecsDeviceComponent {
 	/*
 	 * 0: Station-QA 1: Station-TeachIn 2: Station-Cola 3: Station-BaSys 4: Station-Wait 5: Station-Festo
 	 */
+	
+	// from dieter: besser string enums?
+	protected enum Position{
+		STATION_QA("Station-QA"),
+		STATION_TEACHIN("Station-TeachIn"),
+		STATION_COLA("Station-Cola"),
+		STATION_BASYS("Station-BaSys"),
+		STATION_WAIT("Station-Wait"),
+		STATION_FESTO("Station-Festo");
+		
+		private final String stationName;
+		
+		private Position(String name) {
+			stationName = name;
+		}
+		
+		@Override
+		public String toString() {
+			return stationName;
+		}
+	}
 
 	public MirComponent(ComponentConfiguration config) {
 		super(config);
+		//connect to tecs
+		//connectToTecs(clientID, subscribeTo, ip, port);
 	}
 
 	protected MirTECS client;
@@ -49,24 +73,40 @@ public class MirComponent extends TecsDeviceComponent {
 
 		return config;
 	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see de.dfki.iui.basys.runtime.component.device.tecs.TecsDeviceComponent#handleTecsEvent(de.dfki.tecs.Event)
+	 * handle tecs events here
+	 */
+	@Override
+	protected void handleTecsEvent(Event event) {
+		if (event.is("MIRPathEvent")) {
+			//MIRPathEvent e = new MIRPathEvent();
+			//event.parseData(e);
+			// do stuff with e
+		}
+	}
 
 	@Override
 	public void onResetting() {
-
+		System.out.println("onResetting - begin");
 		try {
 			client.setState(MIRState.Ready);
+			int x = 0;
 		} catch (TException e) {
 			e.printStackTrace();
 			stop();
 		}
-
+		System.out.println("onResetting - end");
 	}
 
 	@Override
 	public void onStarting() {
-
+		System.out.println("onStarting - begin");
 		try {
-			client.gotoNamedPosition(POSITION[getUnitConfig().getRecipe()]);
+			//client.gotoNamedPositionDelayed(POSITION[getUnitConfig().getRecipe()]);
+			client.gotoNamedPosition(Position.STATION_COLA.toString());
 			
 			Path path = getPath();
 			
@@ -76,37 +116,52 @@ public class MirComponent extends TecsDeviceComponent {
 			stop();
 		}
 
+		System.out.println("onStarting - end");
 	}
 
 	@Override
 	public void onExecute() {
-
+		System.out.println("onExecute - begin");
 		try {
 			boolean executing = true;
 			while (executing) {
 				CommandResponse cs = client.getCommandState();
 				String robotState = client.getRobotState();
-
+				System.out.println("STRING "+robotState);
+				if (robotState.equals("Error") || robotState.equals("Manual")) {
+					executing = false;
+					setErrorCode(1);
+					stop();
+					break;
+				}
+				
 				switch (cs.state) {
 				case ABORTED:
+					System.out.println("Mir status: ABORTED");
 					executing = false;
 					setErrorCode(1);
 					stop();
 					break;
 				case ACCEPTED:
+					System.out.println("Mir status: ACCEPTED");
 					// nothing to do, wait until finished
 					break;
 				case EXECUTING:
+					System.out.println("Mir status: EXECUTING");
 					// nothing to do, wait until finished
 					break;
 				case FINISHED:
+					System.out.println("Mir status: FINISHED");
 					executing = false;
 					break;
 				case PAUSED:
+					System.out.println("Mir status: PAUSED");
 					/* what to do */ break;
 				case READY:
+					System.out.println("Mir status: READY");
 					/* what to do */ break;
 				case REJECTED:
+					System.out.println("Mir status: REJECTED");
 					executing = false;
 					setErrorCode(2);
 					stop();
@@ -120,11 +175,28 @@ public class MirComponent extends TecsDeviceComponent {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				
+				System.out.println("Mir status: "+cs.state+" --");
 			}
 		} catch (TException e) {
 			e.printStackTrace();
 			setErrorCode(3);
 			stop();
+		}
+		System.out.println("onExecute - end");
+		
+		try {
+			System.out.println("Last RobotState" + client.getRobotState());
+		} catch (TException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			System.out.println("Last Command State: " + client.getCommandState().state);
+		} catch (TException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
@@ -263,7 +335,8 @@ public class MirComponent extends TecsDeviceComponent {
 		 */
 		@Override
 		public void setState(MIRState state) throws TException {
-			super.setState(state);
+			// Not implemented yet
+			//super.setState(state);
 		}
 
 		/*
@@ -297,6 +370,11 @@ public class MirComponent extends TecsDeviceComponent {
 		@Override
 		public void gotoNamedPosition(String positionName) throws GotoException, TException {
 			super.gotoNamedPosition(positionName);
+		}
+		
+		@Override
+		public void gotoNamedPositionDelayed(String positionName) throws GotoException, TException {
+			super.gotoNamedPositionDelayed(positionName);
 		}
 	}
 
