@@ -26,21 +26,28 @@ public class EmfServiceComponent extends ServiceComponent {
 
 	public EmfServiceComponent(ComponentConfiguration config) {
 		super(config);
-		resourceSet = new ResourceSetImpl();
-		
-		//TODO: get real network endpoint or even urispec for each individual service from component registry
-		String BASE_URL = "http://localhost:8080/services/";
-		String fileName = "model";
-				
-		String [] modelNames = new String [] {"material", "order", "processdefinition", "processinstance", "productdefinition", "productinstance", "resourceinstance", "resourcetype", "topology" };
-		for (String model : Arrays.asList(modelNames)) {
-			resourceSet.getURIConverter().getURIMap().put(URI.createURI(fileName + "." + model), URI.createURI(BASE_URL + model));			
-		}
-		
 	}
 
+	public void setSharedResourceSet(ResourceSet resourceSet) {
+		this.resourceSet = resourceSet;
+	}
+	
 	@Override
 	public void connectToExternal() throws ComponentException {
+
+		if (resourceSet == null) {
+			resourceSet = new ResourceSetImpl();
+			
+			//TODO: get real network endpoint or even urispec for each individual service from component registry
+			String BASE_URL = "http://localhost:8080/services/";
+			String fileName = "model";
+					
+			String [] modelNames = new String [] {"material", "order", "processdefinition", "processinstance", "productdefinition", "productinstance", "resourceinstance", "resourcetype", "topology" };
+			for (String model : Arrays.asList(modelNames)) {
+				resourceSet.getURIConverter().getURIMap().put(URI.createURI(fileName + "." + model), URI.createURI(BASE_URL + model));			
+			}
+		}		
+		
 		String resourceUri = getConfig().getExternalConnectionString();
 		uri = URI.createURI(resourceUri);
 		Resource resource = resourceSet.createResource(uri);
