@@ -13,12 +13,13 @@ import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
 
 public class FestoComponent extends OpcUaDeviceComponent {
 
-	final NodeId NODE_VARIABLE_JOB_STATUS = new NodeId(1, 50195);
-	final NodeId NODE_VARIABLE_JOB_ERRORCODE = new NodeId(1, 50196);
+	final NodeId NODE_VARIABLE_JOB_STATUS = new NodeId(1, 320);
+	final NodeId NODE_VARIABLE_JOB_ERRORCODE = new NodeId(1, 318);
 
-	final NodeId NODE_SERVICES = new NodeId(1, 50208);
-	final NodeId NODE_EXECUTE_PP_JOB = new NodeId(1, 50209);
-	final NodeId NODE_CANCEL_PP_JOB = new NodeId(1, 50211);
+	final NodeId NODE_SERVICES = new NodeId(1, 52);
+	final NodeId NODE_EXECUTE_PP_JOB = new NodeId(1, 242);
+	final NodeId NODE_CANCEL_PP_JOB = new NodeId(1, 119);
+	final NodeId NODE_ACK = new NodeId(1, 314);
 
 	// private CountDownLatch completeLatch;
 	// private CountDownLatch cancelLatch;
@@ -52,6 +53,8 @@ public class FestoComponent extends OpcUaDeviceComponent {
 	public void onResetting() {
 		super.onResetting();
 
+		
+		
 		oldJobStatus = 0;
 		jobStatus = 0;
 		// TODO: setze Variable zum Zurücksetzten, z.B. nach Fehlerquittierung (=reset())
@@ -168,5 +171,13 @@ public class FestoComponent extends OpcUaDeviceComponent {
 		return null;
 	}
 
-
+	
+	public void ackn() {
+		try {
+			Short v = invokeMethod(NODE_SERVICES, NODE_ACK);
+		} catch (OpcUaException e) {
+			e.printStackTrace();
+		}
+	}
+	
 }

@@ -30,26 +30,36 @@ public class CaaMessage {
 	
 	public int getFunctionId() {
 		String value = getParameter("functionID");
+		if (value == null)
+			return 0;
 		return Integer.parseInt(value);
 	}
 	
 	public int getSerialNr() {
 		String value = getParameter("serialNr");
+		if (value == null)
+			return 0;
 		return Integer.parseInt(value);
 	}	
 	
 	public int getMatNr() {
 		String value = getParameter("matNr");
+		if (value == null)
+			return 0;
 		return Integer.parseInt(value);
 	}
 
 	public int getCapType() {
 		String value = getParameter("capType");
+		if (value == null)
+			return 0;
 		return Integer.parseInt(value);
 	}
 
 	public int getOrderNr() {
 		String value = getParameter("orderNr");
+		if (value == null)
+			return 0;
 		return Integer.parseInt(value);
 	}
 }

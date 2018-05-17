@@ -34,8 +34,8 @@ public class JmsGatewayComponent extends ServiceComponent implements Gateway {
 	protected Map<MessageConsumer, Channel> incoming = new HashMap<>();
 
 	// JMS
-	Connection connection;
-	Session session;
+	private Connection connection;
+	private Session session;
 
 	ClientFactory cf = ClientFactory.getInstance();
 

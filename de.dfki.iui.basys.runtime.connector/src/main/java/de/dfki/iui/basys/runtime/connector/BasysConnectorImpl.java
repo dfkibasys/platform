@@ -35,6 +35,8 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 	private DeviceComponentController festoController;
 	private int basysMatNr = 0;
 
+	private boolean cancelled = false;
+	
 	public BasysConnectorImpl(ComponentConfiguration config) {
 		super(config);
 	}
@@ -154,20 +156,28 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 	@Override
 	public void handleMSG10(CaaMessage msg) {
 
+		LOGGER.info("MSG10 received");
+		
+		cancelled = false;
 		// JSONObject json = XML.toJSONObject(payload);
 		// String jsonPrettyPrintString = json.toString(4);
 		// System.out.println(jsonPrettyPrintString);
 
+		try {
+			Thread.currentThread().sleep(50);
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
+		}
+		
 		// Quittiere Nachrichtenerhalt
 		TextMessage msg11 = messageFactory.createMSG11(getCaaResourceId());
 		try {
 			sender.send(msg11);
-			LOGGER.info("MSG10 sent to " + sender.getDestination().toString());
+			LOGGER.info("MSG11 sent to " + sender.getDestination().toString());
 		} catch (JMSException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
 		TextMessage msg12 = messageFactory.createMSG12(getCaaResourceId(), 1, 0);
 
 		if (msg.getMatNr() == basysMatNr) {
@@ -196,7 +206,6 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 					sender.send(msg12);
 					LOGGER.info("MSG12 sent to " + sender.getDestination().toString());
 				} catch (JMSException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 
@@ -219,13 +228,20 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 			case 0: // Neuer Auftrag
 
 				// ignorieren, da nicht Basys-relevant
-
-				// Melde IO
 				try {
+					Thread.currentThread().sleep(10000);
+				} catch (InterruptedException e1) {
+					e1.printStackTrace();
+				}
+				
+				if (cancelled)
+					return;
+				
+				// Melde IO
+				try {					
 					sender.send(msg12);
 					LOGGER.info("MSG12 sent to " + sender.getDestination().toString());
 				} catch (JMSException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 
@@ -236,17 +252,36 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 				// irrelevant, da durch Komponente sichergestellt
 				// festoController.reset();
 
+				
+				try {
+					Thread.currentThread().sleep(10000);
+				} catch (InterruptedException e1) {
+					e1.printStackTrace();
+				}
+				
+				if (cancelled)
+					return;				
+				
 				// Melde IO
 				try {
+					
 					sender.send(msg12);
 					LOGGER.info("MSG12 sent to " + sender.getDestination().toString());
 				} catch (JMSException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 
 				break;
 			case 2: // Deckel fügen
+				
+				try {
+					Thread.currentThread().sleep(10000);
+				} catch (InterruptedException e1) {
+					e1.printStackTrace();
+				}
+				
+				if (cancelled)
+					return;
 				
 				if (!checkDebug(msg)) {
 					// Befehl direkt an Festokomponente ohne weiterführende Prozessinstanz
@@ -266,20 +301,42 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 	@Override
 	public void handleMSG13(CaaMessage msg) {
 		// ignore Caa-Quittierung
+
+		LOGGER.info("MSG13 received");
 	}
 
 	@Override
 	public void handleMSG16(CaaMessage msg) {
 
+		LOGGER.info("MSG16 received");
+		cancelled = true;
+		
+		try {
+			Thread.currentThread().sleep(50);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		// Quittiere Nachrichtenerhalt
 		TextMessage msg17 = messageFactory.createMSG17(getCaaResourceId());
 		try {
 			sender.send(msg17);
+			LOGGER.info("MSG17 sent to " + sender.getDestination().toString());
 		} catch (JMSException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
+
+		try {
+			Thread.currentThread().sleep(10000);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		
 		// Job abbrechen
 		if (msg.getMatNr() == basysMatNr) {
 			// Falls UR3: ignorieren
@@ -292,6 +349,7 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 		TextMessage msg12 = messageFactory.createMSG12(getCaaResourceId(), 2, 0);
 		try {
 			sender.send(msg12);
+			LOGGER.info("MSG12 sent to " + sender.getDestination().toString());
 		} catch (JMSException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -301,6 +359,8 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 	@Override
 	public void handleMSG19(CaaMessage msg) {
 		// ignore Caa-Quittierung
+
+		LOGGER.info("MSG19 received");
 	}
 
 	private boolean checkDebug(CaaMessage msg) {

@@ -28,13 +28,13 @@ import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl;
 import de.dfki.iui.basys.model.runtime.component.impl.PropertyImpl;
-import de.dfki.iui.basys.runtime.communication.provider.JmsCommunicationProvider;
 import de.dfki.iui.basys.runtime.connector.BasysConnector;
 import de.dfki.iui.basys.runtime.connector.MessageFactory;
 
 public class BasysConnectorTest extends BaseComponentTest {
 
-	private static final String brokerUri = JmsCommunicationProvider.defaultConnectionString;
+	//private static final String brokerUri = "failover:(tcp://10.2.100.1:61616)?randomize=false&priorityBackup=true";
+	private static final String brokerUri = "tcp://10.2.100.1:61616";
 	private static Connection connection = null;
 	private Session session;
 	private MessageFactory messageFactory;
