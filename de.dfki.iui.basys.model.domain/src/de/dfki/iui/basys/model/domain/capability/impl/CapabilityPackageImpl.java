@@ -12,6 +12,7 @@ import de.dfki.iui.basys.model.domain.capability.CapabilityAssertion;
 import de.dfki.iui.basys.model.domain.capability.CapabilityFactory;
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
 import de.dfki.iui.basys.model.domain.capability.CapabilityRequest;
+import de.dfki.iui.basys.model.domain.capability.ConfirmationCapability;
 import de.dfki.iui.basys.model.domain.capability.Fügen;
 import de.dfki.iui.basys.model.domain.capability.GeneralCapability;
 import de.dfki.iui.basys.model.domain.capability.HandlingCapability;
@@ -29,6 +30,7 @@ import de.dfki.iui.basys.model.domain.capability.QoSCapability;
 import de.dfki.iui.basys.model.domain.capability.Screwing;
 import de.dfki.iui.basys.model.domain.capability.Stoffeigenschaften;
 import de.dfki.iui.basys.model.domain.capability.Store;
+import de.dfki.iui.basys.model.domain.capability.SwitchConfirmationCapability;
 import de.dfki.iui.basys.model.domain.capability.Transport;
 import de.dfki.iui.basys.model.domain.capability.Trennen;
 import de.dfki.iui.basys.model.domain.capability.Umformen;
@@ -163,6 +165,20 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * @generated
 	 */
 	private EClass workerAssistenceCapabilityEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass confirmationCapabilityEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass switchConfirmationCapabilityEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -579,6 +595,33 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getConfirmationCapability() {
+		return confirmationCapabilityEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSwitchConfirmationCapability() {
+		return switchConfirmationCapabilityEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSwitchConfirmationCapability_State() {
+		return (EAttribute)switchConfirmationCapabilityEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getGeneralCapability() {
 		return generalCapabilityEClass;
 	}
@@ -969,6 +1012,11 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 
 		workerAssistenceCapabilityEClass = createEClass(WORKER_ASSISTENCE_CAPABILITY);
 
+		confirmationCapabilityEClass = createEClass(CONFIRMATION_CAPABILITY);
+
+		switchConfirmationCapabilityEClass = createEClass(SWITCH_CONFIRMATION_CAPABILITY);
+		createEAttribute(switchConfirmationCapabilityEClass, SWITCH_CONFIRMATION_CAPABILITY__STATE);
+
 		generalCapabilityEClass = createEClass(GENERAL_CAPABILITY);
 
 		moveToLocationEClass = createEClass(MOVE_TO_LOCATION);
@@ -1017,8 +1065,8 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		// Obtain other dependent packages
 		BasePackage theBasePackage = (BasePackage)EPackage.Registry.INSTANCE.getEPackage(BasePackage.eNS_URI);
 		PatternPackage thePatternPackage = (PatternPackage)EPackage.Registry.INSTANCE.getEPackage(PatternPackage.eNS_URI);
-		DataPackage theDataPackage = (DataPackage)EPackage.Registry.INSTANCE.getEPackage(DataPackage.eNS_URI);
 		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
+		DataPackage theDataPackage = (DataPackage)EPackage.Registry.INSTANCE.getEPackage(DataPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -1046,6 +1094,8 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		qoSCapabilityEClass.getESuperTypes().add(this.getCapability());
 		inspectEClass.getESuperTypes().add(this.getQoSCapability());
 		workerAssistenceCapabilityEClass.getESuperTypes().add(this.getCapability());
+		confirmationCapabilityEClass.getESuperTypes().add(this.getWorkerAssistenceCapability());
+		switchConfirmationCapabilityEClass.getESuperTypes().add(this.getConfirmationCapability());
 		generalCapabilityEClass.getESuperTypes().add(this.getCapability());
 		moveToLocationEClass.getESuperTypes().add(this.getGeneralCapability());
 		projectPathEClass.getESuperTypes().add(this.getWorkerAssistenceCapability());
@@ -1112,6 +1162,11 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		initEClass(inspectEClass, Inspect.class, "Inspect", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(workerAssistenceCapabilityEClass, WorkerAssistenceCapability.class, "WorkerAssistenceCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(confirmationCapabilityEClass, ConfirmationCapability.class, "ConfirmationCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(switchConfirmationCapabilityEClass, SwitchConfirmationCapability.class, "SwitchConfirmationCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSwitchConfirmationCapability_State(), theEcorePackage.getEInt(), "State", null, 0, 1, SwitchConfirmationCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(generalCapabilityEClass, GeneralCapability.class, "GeneralCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

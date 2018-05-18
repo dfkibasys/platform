@@ -158,6 +158,7 @@ import de.dfki.iui.basys.model.domain.topology.provider.TopologyItemProviderAdap
 
 import de.dfki.iui.basys.model.base.provider.BaseItemProviderAdapterFactory;
 
+import de.dfki.iui.basys.model.data.provider.DataItemProviderAdapterFactory;
 import de.dfki.iui.basys.model.domain.capability.provider.CapabilityItemProviderAdapterFactory;
 
 import de.dfki.iui.basys.model.domain.linebalancing.provider.LinebalancingItemProviderAdapterFactory;
@@ -185,6 +186,7 @@ import de.dfki.iui.basys.model.domain.workplan.provider.WorkplanItemProviderAdap
 
 import de.dfki.iui.basys.model.pattern.provider.PatternItemProviderAdapterFactory;
 
+import org.eclipse.emf.ecore.provider.EcoreItemProviderAdapterFactory;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 
@@ -744,6 +746,8 @@ public class TopologyEditor
 		adapterFactory.addAdapterFactory(new ResourceinstanceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new BaseItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new PatternItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new DataItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new EcoreItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
 		// Create the command stack that will notify this editor as commands are executed.

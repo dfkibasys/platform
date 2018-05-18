@@ -290,6 +290,27 @@ public class CapabilitySwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case CapabilityPackage.CONFIRMATION_CAPABILITY: {
+				ConfirmationCapability confirmationCapability = (ConfirmationCapability)theEObject;
+				T result = caseConfirmationCapability(confirmationCapability);
+				if (result == null) result = caseWorkerAssistenceCapability(confirmationCapability);
+				if (result == null) result = caseCapability(confirmationCapability);
+				if (result == null) result = caseEntity(confirmationCapability);
+				if (result == null) result = caseBObject(confirmationCapability);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CapabilityPackage.SWITCH_CONFIRMATION_CAPABILITY: {
+				SwitchConfirmationCapability switchConfirmationCapability = (SwitchConfirmationCapability)theEObject;
+				T result = caseSwitchConfirmationCapability(switchConfirmationCapability);
+				if (result == null) result = caseConfirmationCapability(switchConfirmationCapability);
+				if (result == null) result = caseWorkerAssistenceCapability(switchConfirmationCapability);
+				if (result == null) result = caseCapability(switchConfirmationCapability);
+				if (result == null) result = caseEntity(switchConfirmationCapability);
+				if (result == null) result = caseBObject(switchConfirmationCapability);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case CapabilityPackage.GENERAL_CAPABILITY: {
 				GeneralCapability generalCapability = (GeneralCapability)theEObject;
 				T result = caseGeneralCapability(generalCapability);
@@ -480,6 +501,36 @@ public class CapabilitySwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseWorkerAssistenceCapability(WorkerAssistenceCapability object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Confirmation Capability</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Confirmation Capability</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConfirmationCapability(ConfirmationCapability object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Switch Confirmation Capability</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Switch Confirmation Capability</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSwitchConfirmationCapability(SwitchConfirmationCapability object) {
 		return null;
 	}
 

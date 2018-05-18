@@ -4,6 +4,7 @@ package de.dfki.iui.basys.model.domain.resourcetype.impl;
 
 import de.dfki.iui.basys.model.base.BasePackage;
 
+import de.dfki.iui.basys.model.data.DataPackage;
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
 
 import de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl;
@@ -102,6 +103,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -398,6 +400,8 @@ public class ResourcetypePackageImpl extends EPackageImpl implements Resourcetyp
 		// Initialize simple dependencies
 		BasePackage.eINSTANCE.eClass();
 		PatternPackage.eINSTANCE.eClass();
+		DataPackage.eINSTANCE.eClass();
+		EcorePackage.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies
 		OrderPackageImpl theOrderPackage = (OrderPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(OrderPackage.eNS_URI) instanceof OrderPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(OrderPackage.eNS_URI) : OrderPackage.eINSTANCE);

@@ -4,6 +4,7 @@ package de.dfki.iui.basys.model.domain.processdefinition.impl;
 
 import de.dfki.iui.basys.model.base.BasePackage;
 
+import de.dfki.iui.basys.model.data.DataPackage;
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
 
 import de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl;
@@ -98,6 +99,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EValidator;
 
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
@@ -326,6 +328,8 @@ public class ProcessdefinitionPackageImpl extends EPackageImpl implements Proces
 		// Initialize simple dependencies
 		BasePackage.eINSTANCE.eClass();
 		PatternPackage.eINSTANCE.eClass();
+		DataPackage.eINSTANCE.eClass();
+		EcorePackage.eINSTANCE.eClass();
 		XMLTypePackage.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies

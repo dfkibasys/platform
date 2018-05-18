@@ -159,6 +159,14 @@ public class CapabilityAdapterFactory extends AdapterFactoryImpl {
 				return createWorkerAssistenceCapabilityAdapter();
 			}
 			@Override
+			public Adapter caseConfirmationCapability(ConfirmationCapability object) {
+				return createConfirmationCapabilityAdapter();
+			}
+			@Override
+			public Adapter caseSwitchConfirmationCapability(SwitchConfirmationCapability object) {
+				return createSwitchConfirmationCapabilityAdapter();
+			}
+			@Override
 			public Adapter caseGeneralCapability(GeneralCapability object) {
 				return createGeneralCapabilityAdapter();
 			}
@@ -339,6 +347,34 @@ public class CapabilityAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createWorkerAssistenceCapabilityAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.capability.ConfirmationCapability <em>Confirmation Capability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.domain.capability.ConfirmationCapability
+	 * @generated
+	 */
+	public Adapter createConfirmationCapabilityAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.capability.SwitchConfirmationCapability <em>Switch Confirmation Capability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.domain.capability.SwitchConfirmationCapability
+	 * @generated
+	 */
+	public Adapter createSwitchConfirmationCapabilityAdapter() {
 		return null;
 	}
 

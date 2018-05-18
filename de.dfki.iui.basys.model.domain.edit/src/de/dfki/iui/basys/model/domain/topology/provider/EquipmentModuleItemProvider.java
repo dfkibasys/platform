@@ -399,6 +399,41 @@ public class EquipmentModuleItemProvider extends EntityItemProvider {
 			(createChildParameter
 				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
 				 CapabilityFactory.eINSTANCE.createInspect()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createWorkerAssistenceCapability()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createConfirmationCapability()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createSwitchConfirmationCapability()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createGeneralCapability()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createMoveToLocation()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createProjectPath()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createProjectETA()));
 	}
 
 	/**

@@ -112,6 +112,24 @@ public interface CapabilityFactory extends EFactory {
 	WorkerAssistenceCapability createWorkerAssistenceCapability();
 
 	/**
+	 * Returns a new object of class '<em>Confirmation Capability</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Confirmation Capability</em>'.
+	 * @generated
+	 */
+	ConfirmationCapability createConfirmationCapability();
+
+	/**
+	 * Returns a new object of class '<em>Switch Confirmation Capability</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Switch Confirmation Capability</em>'.
+	 * @generated
+	 */
+	SwitchConfirmationCapability createSwitchConfirmationCapability();
+
+	/**
 	 * Returns a new object of class '<em>General Capability</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

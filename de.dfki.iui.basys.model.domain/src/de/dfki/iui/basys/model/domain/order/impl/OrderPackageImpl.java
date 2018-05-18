@@ -4,6 +4,7 @@ package de.dfki.iui.basys.model.domain.order.impl;
 
 import de.dfki.iui.basys.model.base.BasePackage;
 
+import de.dfki.iui.basys.model.data.DataPackage;
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
 
 import de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl;
@@ -61,6 +62,7 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -154,6 +156,8 @@ public class OrderPackageImpl extends EPackageImpl implements OrderPackage {
 		// Initialize simple dependencies
 		BasePackage.eINSTANCE.eClass();
 		PatternPackage.eINSTANCE.eClass();
+		DataPackage.eINSTANCE.eClass();
+		EcorePackage.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies
 		ProductdefinitionPackageImpl theProductdefinitionPackage = (ProductdefinitionPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ProductdefinitionPackage.eNS_URI) instanceof ProductdefinitionPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ProductdefinitionPackage.eNS_URI) : ProductdefinitionPackage.eINSTANCE);

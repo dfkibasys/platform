@@ -158,6 +158,7 @@ import de.dfki.iui.basys.model.domain.order.provider.OrderItemProviderAdapterFac
 
 import de.dfki.iui.basys.model.base.provider.BaseItemProviderAdapterFactory;
 
+import de.dfki.iui.basys.model.data.provider.DataItemProviderAdapterFactory;
 import de.dfki.iui.basys.model.domain.capability.provider.CapabilityItemProviderAdapterFactory;
 import de.dfki.iui.basys.model.domain.linebalancing.provider.LinebalancingItemProviderAdapterFactory;
 import de.dfki.iui.basys.model.domain.material.provider.MaterialItemProviderAdapterFactory;
@@ -177,6 +178,7 @@ import de.dfki.iui.basys.model.domain.workforce.provider.WorkforceItemProviderAd
 import de.dfki.iui.basys.model.domain.workplan.provider.WorkplanItemProviderAdapterFactory;
 
 import de.dfki.iui.basys.model.pattern.provider.PatternItemProviderAdapterFactory;
+import org.eclipse.emf.ecore.provider.EcoreItemProviderAdapterFactory;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 
@@ -736,6 +738,8 @@ public class OrderEditor
 		adapterFactory.addAdapterFactory(new ResourceinstanceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new BaseItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new PatternItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new DataItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new EcoreItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
 		// Create the command stack that will notify this editor as commands are executed.

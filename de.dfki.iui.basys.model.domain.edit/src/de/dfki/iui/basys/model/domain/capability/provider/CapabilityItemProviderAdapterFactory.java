@@ -302,6 +302,52 @@ public class CapabilityItemProviderAdapterFactory extends CapabilityAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.ConfirmationCapability} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ConfirmationCapabilityItemProvider confirmationCapabilityItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.ConfirmationCapability}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createConfirmationCapabilityAdapter() {
+		if (confirmationCapabilityItemProvider == null) {
+			confirmationCapabilityItemProvider = new ConfirmationCapabilityItemProvider(this);
+		}
+
+		return confirmationCapabilityItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.SwitchConfirmationCapability} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SwitchConfirmationCapabilityItemProvider switchConfirmationCapabilityItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.SwitchConfirmationCapability}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSwitchConfirmationCapabilityAdapter() {
+		if (switchConfirmationCapabilityItemProvider == null) {
+			switchConfirmationCapabilityItemProvider = new SwitchConfirmationCapabilityItemProvider(this);
+		}
+
+		return switchConfirmationCapabilityItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.GeneralCapability} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -790,6 +836,8 @@ public class CapabilityItemProviderAdapterFactory extends CapabilityAdapterFacto
 		if (qoSCapabilityItemProvider != null) qoSCapabilityItemProvider.dispose();
 		if (inspectItemProvider != null) inspectItemProvider.dispose();
 		if (workerAssistenceCapabilityItemProvider != null) workerAssistenceCapabilityItemProvider.dispose();
+		if (confirmationCapabilityItemProvider != null) confirmationCapabilityItemProvider.dispose();
+		if (switchConfirmationCapabilityItemProvider != null) switchConfirmationCapabilityItemProvider.dispose();
 		if (generalCapabilityItemProvider != null) generalCapabilityItemProvider.dispose();
 		if (moveToLocationItemProvider != null) moveToLocationItemProvider.dispose();
 		if (projectPathItemProvider != null) projectPathItemProvider.dispose();

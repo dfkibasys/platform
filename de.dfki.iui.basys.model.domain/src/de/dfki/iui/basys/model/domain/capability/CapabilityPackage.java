@@ -718,7 +718,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getLoadCarrierUnitEnum()
 	 * @generated
 	 */
-	int LOAD_CARRIER_UNIT_ENUM = 26;
+	int LOAD_CARRIER_UNIT_ENUM = 28;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.UrformenImpl <em>Urformen</em>}' class.
@@ -1677,6 +1677,143 @@ public interface CapabilityPackage extends EPackage {
 	int WORKER_ASSISTENCE_CAPABILITY_OPERATION_COUNT = CAPABILITY_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.ConfirmationCapabilityImpl <em>Confirmation Capability</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.ConfirmationCapabilityImpl
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getConfirmationCapability()
+	 * @generated
+	 */
+	int CONFIRMATION_CAPABILITY = 22;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIRMATION_CAPABILITY__BINDING = WORKER_ASSISTENCE_CAPABILITY__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIRMATION_CAPABILITY__ID = WORKER_ASSISTENCE_CAPABILITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIRMATION_CAPABILITY__NAME = WORKER_ASSISTENCE_CAPABILITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIRMATION_CAPABILITY__METADATA = WORKER_ASSISTENCE_CAPABILITY__METADATA;
+
+	/**
+	 * The number of structural features of the '<em>Confirmation Capability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIRMATION_CAPABILITY_FEATURE_COUNT = WORKER_ASSISTENCE_CAPABILITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Confirmation Capability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONFIRMATION_CAPABILITY_OPERATION_COUNT = WORKER_ASSISTENCE_CAPABILITY_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.SwitchConfirmationCapabilityImpl <em>Switch Confirmation Capability</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.SwitchConfirmationCapabilityImpl
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getSwitchConfirmationCapability()
+	 * @generated
+	 */
+	int SWITCH_CONFIRMATION_CAPABILITY = 23;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SWITCH_CONFIRMATION_CAPABILITY__BINDING = CONFIRMATION_CAPABILITY__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SWITCH_CONFIRMATION_CAPABILITY__ID = CONFIRMATION_CAPABILITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SWITCH_CONFIRMATION_CAPABILITY__NAME = CONFIRMATION_CAPABILITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SWITCH_CONFIRMATION_CAPABILITY__METADATA = CONFIRMATION_CAPABILITY__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>State</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SWITCH_CONFIRMATION_CAPABILITY__STATE = CONFIRMATION_CAPABILITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Switch Confirmation Capability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SWITCH_CONFIRMATION_CAPABILITY_FEATURE_COUNT = CONFIRMATION_CAPABILITY_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Switch Confirmation Capability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SWITCH_CONFIRMATION_CAPABILITY_OPERATION_COUNT = CONFIRMATION_CAPABILITY_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.GeneralCapabilityImpl <em>General Capability</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1684,7 +1821,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getGeneralCapability()
 	 * @generated
 	 */
-	int GENERAL_CAPABILITY = 22;
+	int GENERAL_CAPABILITY = 24;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -1748,7 +1885,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getMoveToLocation()
 	 * @generated
 	 */
-	int MOVE_TO_LOCATION = 23;
+	int MOVE_TO_LOCATION = 25;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -1812,7 +1949,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getProjectPath()
 	 * @generated
 	 */
-	int PROJECT_PATH = 24;
+	int PROJECT_PATH = 26;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -1921,7 +2058,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getProjectETA()
 	 * @generated
 	 */
-	int PROJECT_ETA = 25;
+	int PROJECT_ETA = 27;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -2231,6 +2368,37 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getWorkerAssistenceCapability();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.ConfirmationCapability <em>Confirmation Capability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Confirmation Capability</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.ConfirmationCapability
+	 * @generated
+	 */
+	EClass getConfirmationCapability();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.SwitchConfirmationCapability <em>Switch Confirmation Capability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Switch Confirmation Capability</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.SwitchConfirmationCapability
+	 * @generated
+	 */
+	EClass getSwitchConfirmationCapability();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.capability.SwitchConfirmationCapability#getState <em>State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>State</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.SwitchConfirmationCapability#getState()
+	 * @see #getSwitchConfirmationCapability()
+	 * @generated
+	 */
+	EAttribute getSwitchConfirmationCapability_State();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.GeneralCapability <em>General Capability</em>}'.
@@ -2791,6 +2959,34 @@ public interface CapabilityPackage extends EPackage {
 		 * @generated
 		 */
 		EClass WORKER_ASSISTENCE_CAPABILITY = eINSTANCE.getWorkerAssistenceCapability();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.ConfirmationCapabilityImpl <em>Confirmation Capability</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.ConfirmationCapabilityImpl
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getConfirmationCapability()
+		 * @generated
+		 */
+		EClass CONFIRMATION_CAPABILITY = eINSTANCE.getConfirmationCapability();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.SwitchConfirmationCapabilityImpl <em>Switch Confirmation Capability</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.SwitchConfirmationCapabilityImpl
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getSwitchConfirmationCapability()
+		 * @generated
+		 */
+		EClass SWITCH_CONFIRMATION_CAPABILITY = eINSTANCE.getSwitchConfirmationCapability();
+
+		/**
+		 * The meta object literal for the '<em><b>State</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SWITCH_CONFIRMATION_CAPABILITY__STATE = eINSTANCE.getSwitchConfirmationCapability_State();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.GeneralCapabilityImpl <em>General Capability</em>}' class.
