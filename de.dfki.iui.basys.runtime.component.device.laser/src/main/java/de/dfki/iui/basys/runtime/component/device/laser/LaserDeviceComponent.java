@@ -4,8 +4,6 @@ import java.util.concurrent.CountDownLatch;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.core.MediaType;
 
 import de.dfki.iui.basys.model.data.CartesianCoordinate;
 import de.dfki.iui.basys.model.domain.capability.Capability;
@@ -16,7 +14,6 @@ import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.device.DeviceComponent;
 import de.dfki.iui.basys.runtime.component.device.laser.action.Projection;
-import de.dfki.iui.basys.runtime.component.device.laser.action.StopProjection;
 import de.dfki.iui.basys.runtime.component.device.laser.projectionentities.PEMovingArrows;
 import de.dfki.iui.basys.runtime.component.device.laser.projectionentities.PEMovingETA;
 import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;

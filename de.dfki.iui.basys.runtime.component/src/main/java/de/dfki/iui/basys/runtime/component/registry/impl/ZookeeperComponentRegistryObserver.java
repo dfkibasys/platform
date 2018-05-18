@@ -21,7 +21,7 @@ import de.dfki.iui.basys.runtime.component.registry.ComponentRegistryObserver;
 
 public class ZookeeperComponentRegistryObserver extends BaseComponent implements ComponentRegistryObserver, PathChildrenCacheListener {
 
-	public static final String defaultConnectionString = "lns-90165.sb.dfki.de:2181";
+	public static final String defaultConnectionString = "10.2.10.4:2181";
 	public static final String PATH = "/basys/registry";
 	private CuratorFramework client;
 	private JsonInstanceSerializer<ComponentInfo> serializer;

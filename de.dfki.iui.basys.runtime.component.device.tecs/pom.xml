@@ -31,6 +31,12 @@
 			<version>${project.version}</version>
 		</dependency>
 		
+		<dependency>
+			<groupId>de.dfki.iui.basys.runtime</groupId>
+			<artifactId>de.dfki.iui.basys.runtime.component.device.laser</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
         <dependency>
             <groupId>de.dfki.iui</groupId>
             <artifactId>libHRC</artifactId>

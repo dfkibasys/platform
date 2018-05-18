@@ -2,7 +2,6 @@ package de.dfki.iui.basys.runtime.component.device.laser;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -20,8 +19,8 @@ import de.dfki.iui.basys.model.data.CartesianCoordinate;
 import de.dfki.iui.basys.model.data.DataPackage;
 import de.dfki.iui.basys.model.data.Path;
 import de.dfki.iui.basys.model.data.impl.CartesianCoordinateImpl;
+import de.dfki.iui.basys.model.data.impl.DataFactoryImpl;
 import de.dfki.iui.basys.model.domain.capability.CapabilityFactory;
-import de.dfki.iui.basys.model.domain.capability.ProjectETA;
 import de.dfki.iui.basys.model.domain.capability.ProjectPath;
 import de.dfki.iui.basys.model.runtime.communication.Channel;
 import de.dfki.iui.basys.model.runtime.communication.ChannelListener;
@@ -29,7 +28,6 @@ import de.dfki.iui.basys.model.runtime.communication.Notification;
 import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.communication.Response;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
-import de.dfki.iui.basys.model.runtime.component.ComponentRequestStatus;
 import de.dfki.iui.basys.model.runtime.component.State;
 import de.dfki.iui.basys.runtime.communication.ClientFactory;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
@@ -40,6 +38,8 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 
 	Channel mirOut;
 	ExecutorService executor;
+	List<CartesianCoordinate> mPath;
+	CartesianCoordinate mMIRPosition;
 
 	public LaserServiceComponent(ComponentConfiguration config) {
 		super(config);
@@ -47,6 +47,7 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 	}
 
 	private void stopDevice() {
+
 		if (device.getState() != State.IDLE) {
 			device.stop();
 
@@ -58,6 +59,7 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 				}
 			}
 		}
+
 	}
 
 	private static double getDistance(CartesianCoordinate cc1, CartesianCoordinate cc2) {
@@ -91,9 +93,11 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 				.z(cc1.getZ() + cc2.getZ()).build();
 	}
 
-	private static List<CartesianCoordinate> beautifyPath(List<CartesianCoordinate> coords, CartesianCoordinate currentPosition, double pathLengthToCover,
+	private static List<CartesianCoordinate> beautifyPath(List<CartesianCoordinate> coords, double pathLengthToCover,
 			double interArrowDistance) {
-		
+		if (coords == null) {
+			return new ArrayList<>();
+		}
 		if (coords.size() < 2) {
 			return coords;
 		}
@@ -114,7 +118,8 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 
 			while (remainingSegmentLength > currentDesiredDistance && pathLengthToCover > 0) {
 
-				baseCoordinate = add(baseCoordinate, scalarProduct(normedSegmentDirectionVector, currentDesiredDistance));
+				baseCoordinate = add(baseCoordinate,
+						scalarProduct(normedSegmentDirectionVector, currentDesiredDistance));
 				result.add(baseCoordinate);
 				remainingSegmentLength -= currentDesiredDistance;
 				pathLengthToCover -= interArrowDistance;
@@ -122,8 +127,7 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 			}
 			currentDesiredDistance -= remainingSegmentLength;
 		}
-	
-		
+
 		return result;
 	}
 
@@ -140,14 +144,10 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 			}
 			br.close();
 
-			CartesianCoordinate mir1 = new CartesianCoordinateImpl.Builder().x(1.27)
-					.y(4.03).z(0).build();
-			
-			
-			
-			
+			CartesianCoordinate mir1 = new CartesianCoordinateImpl.Builder().x(1.27).y(4.03).z(0).build();
+
 			BufferedWriter bw = new BufferedWriter(new FileWriter("/Users/fkerber/Downloads/MIR100_beauty.csv"));
-			for (CartesianCoordinate cc : beautifyPath(input, mir1, 15, .1)) {
+			for (CartesianCoordinate cc : beautifyPath(input, 15, .1)) {
 				String xString = cc.getX() + "";
 				String yString = cc.getY() + "";
 				xString = xString.replace(".", ",");
@@ -155,17 +155,16 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 				bw.write(xString + ";" + yString + "\n");
 			}
 			bw.close();
-			
-			CartesianCoordinate mir2 = new CartesianCoordinateImpl.Builder().x(1.238023998)
-					.y(3.93520143).z(0).build();
-			
-			if (getDistance(mir2, input.get(0))< 0.11) {
+
+			CartesianCoordinate mir2 = new CartesianCoordinateImpl.Builder().x(1.238023998).y(3.93520143).z(0).build();
+
+			if (getDistance(mir2, input.get(0)) < 0.11) {
 				input.remove(0);
 			}
 			input.add(0, mir2);
-			
+
 			bw = new BufferedWriter(new FileWriter("/Users/fkerber/Downloads/MIR100_2_beauty.csv"));
-			for (CartesianCoordinate cc : beautifyPath(input, mir2, 15, .1)) {
+			for (CartesianCoordinate cc : beautifyPath(input, 15, .1)) {
 				String xString = cc.getX() + "";
 				String yString = cc.getY() + "";
 				xString = xString.replace(".", ",");
@@ -173,19 +172,17 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 				bw.write(xString + ";" + yString + "\n");
 			}
 			bw.close();
-			
-			
-			CartesianCoordinate mir3 = new CartesianCoordinateImpl.Builder().x(1.206047997)
-					.y(3.840500287).z(0).build();
-			
+
+			CartesianCoordinate mir3 = new CartesianCoordinateImpl.Builder().x(1.206047997).y(3.840500287).z(0).build();
+
 			input.remove(0);
-			if (getDistance(mir3, input.get(0))< 0.11) {
+			if (getDistance(mir3, input.get(0)) < 0.11) {
 				input.remove(0);
 			}
 			input.add(0, mir3);
-			
+
 			bw = new BufferedWriter(new FileWriter("/Users/fkerber/Downloads/MIR100_3_beauty.csv"));
-			for (CartesianCoordinate cc : beautifyPath(input, mir3, 15, .1)) {
+			for (CartesianCoordinate cc : beautifyPath(input, 15, .1)) {
 				String xString = cc.getX() + "";
 				String yString = cc.getY() + "";
 				xString = xString.replace(".", ",");
@@ -198,6 +195,17 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 			e.printStackTrace();
 		}
 
+	}
+
+	private boolean coordEquals(CartesianCoordinate cc1, CartesianCoordinate cc2) {
+
+		double epsilon = 0.00001;
+		return doubleEquals(cc1.getX(), cc2.getX(), epsilon) && doubleEquals(cc1.getY(), cc2.getY(), epsilon)
+				&& doubleEquals(cc1.getZ(), cc2.getZ(), epsilon);
+	}
+
+	private boolean doubleEquals(double d1, double d2, double epsilon) {
+		return Math.abs(d1 - d2) < epsilon;
 	}
 
 	@Override
@@ -225,75 +233,41 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 							try {
 								EObject payload = JsonUtils.fromString(not.getPayload(), EObject.class);
 
-								if (payload.eClass().equals(DataPackage.eINSTANCE.getPath())) {
+								if (payload.eClass().equals(DataPackage.eINSTANCE.getCartesianCoordinate())) {
+									CartesianCoordinate MIRPos = (CartesianCoordinate) payload;
 
-									stopDevice();
+									if (mMIRPosition == null || !coordEquals(MIRPos, mMIRPosition)) {
 
-									Path path = (Path) payload;
-									List<CartesianCoordinate> completePath = new ArrayList<>();
-									completePath.addAll(path.getCoordinates());
+										System.out.println("POSITION RECEIVED: " + MIRPos.getX() + " - " + MIRPos.getY()
+												+ " - " + MIRPos.getZ());
+										stopDevice();
+										if (mPath != null && getDistance(MIRPos, mPath.get(0)) < 0.11) {
+											mPath.remove(0);
+										}
 
-									if (path.getEta() > 60000) {
+										Path path = new DataFactoryImpl().createPath();
+										path.getCoordinates().addAll(beautifyPath(mPath, 5, 0.2));
 
 										ProjectPath capability = CapabilityFactory.eINSTANCE.createProjectPath();
-										path.getCoordinates().clear();
-										path.getCoordinates().addAll(completePath.subList(0, 5));
-
 										capability.setPath(path);
 										capability.setDelay(1000);
 										capability.setArrowCount(3);
 										capability.setColor(0);
-
-										ComponentRequestStatus status = device.executeCapability(capability);
+										// ComponentRequestStatus status = device.executeCapability(capability);
 									}
-									Thread t = new Thread(new Runnable() {
+									mMIRPosition = MIRPos;
+								}
 
-										@Override
-										public void run() {
-											try {
-												Thread.sleep(5000);
-											} catch (InterruptedException e) {
-												e.printStackTrace();
-											}
-											stopDevice();
+								if (payload.eClass().equals(DataPackage.eINSTANCE.getPath())) {
 
-											try {
-												Thread.sleep(path.getEta() - 55000);
-											} catch (InterruptedException e) {
-												e.printStackTrace();
-											}
-											ProjectETA etaCap = CapabilityFactory.eINSTANCE.createProjectETA();
-											etaCap.setEta(60000);
-											etaCap.setPosition(
-													path.getCoordinates().get(path.getCoordinates().size() - 1));
-											etaCap.setRadius(.3);
-											etaCap.setColor(0);
-											ComponentRequestStatus status = device.executeCapability(etaCap);
-											try {
-												Thread.sleep(45000);
-											} catch (InterruptedException e) {
-												e.printStackTrace();
-											}
-											stopDevice();
-											ProjectPath capability = CapabilityFactory.eINSTANCE.createProjectPath();
-											path.getCoordinates().clear();
-											path.getCoordinates().addAll(
-													completePath.subList(completePath.size() - 5, completePath.size()));
-											capability.setPath(path);
-											capability.setDelay(1000);
-											capability.setArrowCount(3);
-											capability.setColor(0);
+									System.out.println("PATH RECEIVED");
 
-											status = device.executeCapability(capability);
-
-										}
-									});
-									t.start();
-
+									stopDevice();
+									Path path = (Path) payload;
+									mPath.addAll(path.getCoordinates());
 								}
 
 							} catch (IOException e) {
-								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
 

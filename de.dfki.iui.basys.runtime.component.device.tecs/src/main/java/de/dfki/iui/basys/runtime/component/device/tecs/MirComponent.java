@@ -3,46 +3,54 @@ package de.dfki.iui.basys.runtime.component.device.tecs;
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TProtocol;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+
+import de.dfki.iui.basys.common.emf.json.JsonUtils;
 import de.dfki.iui.basys.model.data.CartesianCoordinate;
 import de.dfki.iui.basys.model.data.DataFactory;
 import de.dfki.iui.basys.model.data.Path;
 import de.dfki.iui.basys.model.data.impl.CartesianCoordinateImpl;
+import de.dfki.iui.basys.model.data.impl.DataFactoryImpl;
+import de.dfki.iui.basys.model.runtime.communication.Notification;
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.runtime.communication.ClientFactory;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
 import de.dfki.iui.hrc.general3d.Point3d;
 import de.dfki.iui.hrc.general3d.Pose;
 import de.dfki.iui.hrc.generalrobots.KnownPositions;
+import de.dfki.iui.hrc.generalrobots.RobotStateEvent;
 import de.dfki.iui.hrc.hybritcommand.CommandResponse;
 import de.dfki.iui.hrc.mir100.GotoException;
 import de.dfki.iui.hrc.mir100.MIR;
+import de.dfki.iui.hrc.mir100.MIRPathEvent;
 import de.dfki.iui.hrc.mir100.MIRState;
 import de.dfki.iui.hrc.mir100.MIRStatus;
 import de.dfki.tecs.Event;
 
 public class MirComponent extends TecsDeviceComponent {
 
-	protected static final String[] POSITION = { "Station-QA", "Station-TeachIn", "Station-Cola", "Station-BaSys", "Station-Wait", "Station-Festo" };
+	private boolean first = true;
+
+	protected static final String[] POSITION = { "Station-QA", "Station-TeachIn", "Station-Cola", "Station-BaSys",
+			"Station-Wait", "Station-Festo" };
 	/*
-	 * 0: Station-QA 1: Station-TeachIn 2: Station-Cola 3: Station-BaSys 4: Station-Wait 5: Station-Festo
+	 * 0: Station-QA 1: Station-TeachIn 2: Station-Cola 3: Station-BaSys 4:
+	 * Station-Wait 5: Station-Festo
 	 */
-	
+
 	// from dieter: besser string enums?
-	protected enum Position{
-		STATION_QA("Station-QA"),
-		STATION_TEACHIN("Station-TeachIn"),
-		STATION_COLA("Station-Cola"),
-		STATION_BASYS("Station-BaSys"),
-		STATION_WAIT("Station-Wait"),
-		STATION_FESTO("Station-Festo");
-		
+	protected enum Position {
+		STATION_QA("Station-QA"), STATION_TEACHIN("Station-TeachIn"), STATION_COLA("Station-Cola"), STATION_BASYS(
+				"Station-BaSys"), STATION_WAIT("Station-Wait"), STATION_FESTO("Station-Festo");
+
 		private final String stationName;
-		
+
 		private Position(String name) {
 			stationName = name;
 		}
-		
+
 		@Override
 		public String toString() {
 			return stationName;
@@ -51,8 +59,12 @@ public class MirComponent extends TecsDeviceComponent {
 
 	public MirComponent(ComponentConfiguration config) {
 		super(config);
-		//connect to tecs
-		//connectToTecs(clientID, subscribeTo, ip, port);
+		// connect to tecs
+		String[] subscribeTo = new String[2];
+		subscribeTo[0] = "MIRPathEvent";
+		subscribeTo[1] = "RobotStateEvent";
+		connectToTecs("robot-mir-01", subscribeTo, "tecs", 9000);
+
 	}
 
 	protected MirTECS client;
@@ -73,19 +85,75 @@ public class MirComponent extends TecsDeviceComponent {
 
 		return config;
 	}
-	
+
 	/*
 	 * (non-Javadoc)
-	 * @see de.dfki.iui.basys.runtime.component.device.tecs.TecsDeviceComponent#handleTecsEvent(de.dfki.tecs.Event)
-	 * handle tecs events here
+	 * 
+	 * @see de.dfki.iui.basys.runtime.component.device.tecs.TecsDeviceComponent#
+	 * handleTecsEvent(de.dfki.tecs.Event) handle tecs events here
 	 */
 	@Override
 	protected void handleTecsEvent(Event event) {
+
+		String payload;
+
 		if (event.is("MIRPathEvent")) {
-			//MIRPathEvent e = new MIRPathEvent();
-			//event.parseData(e);
-			// do stuff with e
+
+			System.out.println("MIRPATH RECEIVED");
+
+			MIRPathEvent e = new MIRPathEvent();
+			event.parseData(e);
+
+			Path path = DataFactoryImpl.eINSTANCE.createPath();
+			for (Point3d p : e.path.path) {
+				path.getCoordinates().add(new CartesianCoordinateImpl.Builder().x(p.x).y(p.y).z(p.z).build());
+			}
+
+			try {
+				payload = JsonUtils.toString(path);
+				Notification not = ClientFactory.getInstance().createNotification(payload);
+				while (!outChannel.isOpen()) {
+					try {
+						Thread.sleep(200);
+					} catch (InterruptedException e2) {
+						e2.printStackTrace();
+					}
+				}
+				outChannel.sendNotification(not);
+			} catch (JsonProcessingException e1) {
+				e1.printStackTrace();
+			}
+
 		}
+
+		if (event.is("RobotStateEvent")) {
+
+			System.out.println("ROBOTSTATEEVENT RECEIVED");
+
+			RobotStateEvent e = new RobotStateEvent();
+			event.parseData(e);
+
+			Point3d p = e.pose.position;
+			CartesianCoordinate position = new CartesianCoordinateImpl.Builder().x(p.x).y(p.y).z(p.z).build();
+
+			try {
+				payload = JsonUtils.toString(position);
+				Notification not = ClientFactory.getInstance().createNotification(payload);
+				while (!outChannel.isOpen()) {
+					try {
+						Thread.sleep(200);
+					} catch (InterruptedException e2) {
+						e2.printStackTrace();
+					}
+				}
+				outChannel.sendNotification(not);
+
+			} catch (JsonProcessingException e1) {
+				e1.printStackTrace();
+			}
+
+		}
+
 	}
 
 	@Override
@@ -104,17 +172,12 @@ public class MirComponent extends TecsDeviceComponent {
 	@Override
 	public void onStarting() {
 		System.out.println("onStarting - begin");
-		try {
-			//client.gotoNamedPositionDelayed(POSITION[getUnitConfig().getRecipe()]);
-			client.gotoNamedPosition(Position.STATION_COLA.toString());
-			
-			Path path = getPath();
-			
-			
-		} catch (TException e) {
-			e.printStackTrace();
-			stop();
-		}
+		/*
+		 * try {
+		 * //client.gotoNamedPositionDelayed(POSITION[getUnitConfig().getRecipe()]);
+		 * client.gotoNamedPosition(Position.STATION_COLA.toString()); } catch
+		 * (TException e) { e.printStackTrace(); stop(); }
+		 */
 
 		System.out.println("onStarting - end");
 	}
@@ -127,14 +190,14 @@ public class MirComponent extends TecsDeviceComponent {
 			while (executing) {
 				CommandResponse cs = client.getCommandState();
 				String robotState = client.getRobotState();
-				System.out.println("STRING "+robotState);
+				System.out.println("STRING " + robotState);
 				if (robotState.equals("Error") || robotState.equals("Manual")) {
 					executing = false;
 					setErrorCode(1);
 					stop();
 					break;
 				}
-				
+
 				switch (cs.state) {
 				case ABORTED:
 					System.out.println("Mir status: ABORTED");
@@ -175,8 +238,8 @@ public class MirComponent extends TecsDeviceComponent {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
-				System.out.println("Mir status: "+cs.state+" --");
+
+				System.out.println("Mir status: " + cs.state + " --");
 			}
 		} catch (TException e) {
 			e.printStackTrace();
@@ -184,14 +247,14 @@ public class MirComponent extends TecsDeviceComponent {
 			stop();
 		}
 		System.out.println("onExecute - end");
-		
+
 		try {
 			System.out.println("Last RobotState" + client.getRobotState());
 		} catch (TException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		try {
 			System.out.println("Last Command State: " + client.getCommandState().state);
 		} catch (TException e) {
@@ -247,8 +310,10 @@ public class MirComponent extends TecsDeviceComponent {
 	}
 
 	/*
-	 * Get the path of the mir. Returns an array with values where: values[i * 3] is the X coordinate of the i-th point, values[i * 3 + 1] is the Y coordinate of the i-th point and values[i * 3 + 2]
-	 * is the Z coordinate of the i-th point. (values / 3) is the number of points.
+	 * Get the path of the mir. Returns an array with values where: values[i * 3] is
+	 * the X coordinate of the i-th point, values[i * 3 + 1] is the Y coordinate of
+	 * the i-th point and values[i * 3 + 2] is the Z coordinate of the i-th point.
+	 * (values / 3) is the number of points.
 	 */
 	// public double[] getPath() {
 	// try {
@@ -272,7 +337,7 @@ public class MirComponent extends TecsDeviceComponent {
 		Path path = DataFactory.eINSTANCE.createPath();
 
 		try {
-			de.dfki.iui.hrc.generalrobots.Path  tecsPath = (client.getPath());
+			de.dfki.iui.hrc.generalrobots.Path tecsPath = (client.getPath());
 			for (Point3d point : tecsPath.path) {
 				CartesianCoordinate c = new CartesianCoordinateImpl.Builder().x(point.x).y(point.y).z(point.z).build();
 				path.getCoordinates().add(c);
@@ -298,7 +363,9 @@ public class MirComponent extends TecsDeviceComponent {
 		}
 
 		/*
-		 * get the status of the mir. fields are: double batteryPercentage String batteryTimeLeft double distanceMoved double eta String mode String state String message
+		 * get the status of the mir. fields are: double batteryPercentage String
+		 * batteryTimeLeft double distanceMoved double eta String mode String state
+		 * String message
 		 */
 		@Override
 		public MIRStatus getStatus() throws TException {
@@ -306,7 +373,8 @@ public class MirComponent extends TecsDeviceComponent {
 		}
 
 		/*
-		 * Get the path of the mir. Path has a field path which is a list of 3d points. A 3d point has the fields: double x double y double z
+		 * Get the path of the mir. Path has a field path which is a list of 3d points.
+		 * A 3d point has the fields: double x double y double z
 		 */
 		@Override
 		public de.dfki.iui.hrc.generalrobots.Path getPath() throws TException {
@@ -314,7 +382,9 @@ public class MirComponent extends TecsDeviceComponent {
 		}
 
 		/*
-		 * Get the command response. CommandResponse has the fields: String description CommandState state: CommandState is an enum: ACCEPTED, EXECUTING, FINISHED, ABORTED, PAUSED, REJECTED, READY
+		 * Get the command response. CommandResponse has the fields: String description
+		 * CommandState state: CommandState is an enum: ACCEPTED, EXECUTING, FINISHED,
+		 * ABORTED, PAUSED, REJECTED, READY
 		 */
 		@Override
 		public CommandResponse getCommandState() throws TException {
@@ -322,8 +392,9 @@ public class MirComponent extends TecsDeviceComponent {
 		}
 
 		/*
-		 * Get the pose of the mir. Pose has the fields: Point3d position: Point3d has the fields: double x double y double z EulerAngles orientation: EulerAngles has the fields: double x double y
-		 * double z
+		 * Get the pose of the mir. Pose has the fields: Point3d position: Point3d has
+		 * the fields: double x double y double z EulerAngles orientation: EulerAngles
+		 * has the fields: double x double y double z
 		 */
 		@Override
 		public Pose getPose() throws TException {
@@ -331,17 +402,20 @@ public class MirComponent extends TecsDeviceComponent {
 		}
 
 		/*
-		 * Set the state of the mir. MIRState is an enum: Error, Executing, Ready, Paused, Manual
+		 * Set the state of the mir. MIRState is an enum: Error, Executing, Ready,
+		 * Paused, Manual
 		 */
 		@Override
 		public void setState(MIRState state) throws TException {
 			// Not implemented yet
-			//super.setState(state);
+			// super.setState(state);
 		}
 
 		/*
-		 * Get the known positions. KnownPosition has the fields: map<String, Pose> positions Pose has the fields: Point3d position: Point3d has the fields: double x double y double z EulerAngles
-		 * orientation: EulerAngles has the fields: double x double y double z
+		 * Get the known positions. KnownPosition has the fields: map<String, Pose>
+		 * positions Pose has the fields: Point3d position: Point3d has the fields:
+		 * double x double y double z EulerAngles orientation: EulerAngles has the
+		 * fields: double x double y double z
 		 */
 		@Override
 		public KnownPositions getKnownPositions() throws TException {
@@ -349,7 +423,8 @@ public class MirComponent extends TecsDeviceComponent {
 		}
 
 		/*
-		 * Set the state of the mir. MIRState is an enum: Error, Executing, Ready, Paused, Manual
+		 * Set the state of the mir. MIRState is an enum: Error, Executing, Ready,
+		 * Paused, Manual
 		 */
 		@Override
 		public String getRobotState() throws TException {
@@ -371,10 +446,10 @@ public class MirComponent extends TecsDeviceComponent {
 		public void gotoNamedPosition(String positionName) throws GotoException, TException {
 			super.gotoNamedPosition(positionName);
 		}
-		
+
 		@Override
-		public void gotoNamedPositionDelayed(String positionName) throws GotoException, TException {
-			super.gotoNamedPositionDelayed(positionName);
+		public void gotoNamedPositionDelayed(String positionName, double delay) throws GotoException, TException {
+			super.gotoNamedPositionDelayed(positionName, delay);
 		}
 	}
 

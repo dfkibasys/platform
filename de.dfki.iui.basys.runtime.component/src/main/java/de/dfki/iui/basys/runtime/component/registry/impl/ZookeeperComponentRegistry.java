@@ -25,7 +25,7 @@ import de.dfki.iui.basys.runtime.component.registry.ComponentRegistry;
 
 public class ZookeeperComponentRegistry extends BaseComponent implements ComponentRegistry {
 
-	public static final String defaultConnectionString = "lns-90165.sb.dfki.de:2181";
+	public static final String defaultConnectionString = "10.2.10.4:2181";
 	public static final String PATH = "/basys/registry";
 	protected CuratorFramework client;
 
