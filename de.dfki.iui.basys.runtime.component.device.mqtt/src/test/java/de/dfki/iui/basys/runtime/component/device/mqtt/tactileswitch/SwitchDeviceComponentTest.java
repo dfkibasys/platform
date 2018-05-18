@@ -52,7 +52,7 @@ public class SwitchDeviceComponentTest {
 				.inChannelName("switch-component#in")
 				.outChannelName("switch-component#out")
 				.componentCategory(ComponentCategory.DEVICE_COMPONENT)
-				.externalConnectionString(localBroker).build();
+				.externalConnectionString(basysBroker).build();
 	}
 
 	@After
@@ -81,8 +81,6 @@ public class SwitchDeviceComponentTest {
 		component.deactivate();		
 		assertTrue(!component.isConnectedToExternal());
 	}
-	
-	
 	
 	@Test
 	@Ignore
@@ -126,8 +124,6 @@ public class SwitchDeviceComponentTest {
 		assertTrue(!component.isConnectedToExternal());
 	}
 	
-	
-	
 	@Test
 	@Ignore
 	public void testActivateComplete() throws ComponentException {
@@ -160,8 +156,6 @@ public class SwitchDeviceComponentTest {
 				
 		assertEquals(State.EXECUTE, component.getState());
 		
-		
-		
 		sleep(10);
 		
 		assertEquals(State.IDLE, component.getState());
@@ -170,49 +164,4 @@ public class SwitchDeviceComponentTest {
 		assertTrue(!component.isConnectedToExternal());
 	}
 	
-/*
-	@Test
-	public void testEtaProjection() throws ComponentException {
-		LaserDeviceComponent component = new LaserDeviceComponent(componentConfig);
-		assertTrue(!component.isConnectedToExternal());
-
-		component.activate(emptyContext);
-		assertTrue(component.isConnectedToExternal());
-		
-		sleep(1); // für reset()
-		
-		CartesianCoordinate position = new CartesianCoordinateImpl.Builder().x(1.0).y(1.0).z(0.0).build();		
-		
-		ProjectETA capability = CapabilityFactory.eINSTANCE.createProjectETA();
-		capability.setEta(30*1000); // Millisekunden
-		capability.setPosition(position);
-		capability.setRadius(0.25); // Meter
-		capability.setColor(0);
-		
-		CapabilityRequest req = ComponentFactory.eINSTANCE.createCapabilityRequest();
-		req.setCapability(capability);
-		req.setComponentId(componentConfig.getComponentId());
-		
-		try {
-			String payload = JsonUtils.toString(req);
-			Request message = ClientFactory.getInstance().createRequest(payload);
-			component.handleRequest(null, message);
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-		}
-		
-		sleep(3);
-				
-		assertEquals(State.EXECUTE, component.getState());
-		
-		component.stop();
-		
-		sleep(3);
-		
-		assertEquals(State.IDLE, component.getState());
-		
-		component.deactivate();		
-		assertTrue(!component.isConnectedToExternal());
-	}
-*/
 }

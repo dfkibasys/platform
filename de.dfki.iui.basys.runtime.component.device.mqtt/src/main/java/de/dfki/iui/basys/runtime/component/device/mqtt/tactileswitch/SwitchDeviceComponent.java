@@ -24,9 +24,9 @@ public class SwitchDeviceComponent extends MqttDeviceComponent {
 	private final Integer qos = 0;
 	private final String topic = "switch";
 	
-	private Object lock = new Object();
+	private boolean switchIsActive = false;
 	
-	CountDownLatch counter;
+	private CountDownLatch counter;
 	
 	public SwitchDeviceComponent(ComponentConfiguration config) {
 		super(config);
@@ -56,7 +56,6 @@ public class SwitchDeviceComponent extends MqttDeviceComponent {
 		super.activate(context);
 		
 	}
-	
 
 	@Override
 	public void onStarting() {
@@ -64,7 +63,6 @@ public class SwitchDeviceComponent extends MqttDeviceComponent {
 		UnitConfiguration unitConfiguration = getUnitConfig();
 		int state = (int) unitConfiguration.getPayload();
 		counter = new CountDownLatch(1);
-		
 		
 		if (state==1)
 			switchActivate();
@@ -97,7 +95,8 @@ public class SwitchDeviceComponent extends MqttDeviceComponent {
 	
 	@Override
 	public void onResetting() {
-		// TODO Auto-generated method stub
+		if (switchIsActive)
+			switchDeactivate();
 		super.onResetting();
 	}
 	
@@ -127,6 +126,7 @@ public class SwitchDeviceComponent extends MqttDeviceComponent {
 			e.printStackTrace();
 		}
 		publish(topic, "activate");
+		switchIsActive = true;
 		return true;
 	}
 	
@@ -152,7 +152,7 @@ public class SwitchDeviceComponent extends MqttDeviceComponent {
 		} catch (MqttException e) {
 			e.printStackTrace();
 		}
-		
+		switchIsActive = false;
 		return true;
 	}
 	
