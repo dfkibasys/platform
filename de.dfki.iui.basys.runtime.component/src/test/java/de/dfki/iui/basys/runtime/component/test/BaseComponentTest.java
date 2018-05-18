@@ -37,7 +37,7 @@ public class BaseComponentTest {
 	
 
 	protected static final String communicationProviderImplementationJavaClass = "de.dfki.iui.basys.runtime.communication.provider.JmsCommunicationProvider";
-	protected static final String communicationProviderConnectionString = "tcp://lns-90165.sb.dfki.de:61616";
+	protected static final String communicationProviderConnectionString = "tcp://10.2.10.4:61616";
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {

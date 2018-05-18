@@ -10,18 +10,13 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import de.dfki.iui.basys.common.emf.json.JsonUtils;
-import de.dfki.iui.basys.model.data.CartesianCoordinate;
-import de.dfki.iui.basys.model.data.DataFactory;
-import de.dfki.iui.basys.model.data.Path;
-import de.dfki.iui.basys.model.data.impl.CartesianCoordinateImpl;
 import de.dfki.iui.basys.model.domain.capability.CapabilityFactory;
-import de.dfki.iui.basys.model.domain.capability.ProjectETA;
-import de.dfki.iui.basys.model.domain.capability.ProjectPath;
 import de.dfki.iui.basys.model.domain.capability.SwitchConfirmationCapability;
 import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
@@ -74,6 +69,7 @@ public class SwitchDeviceComponentTest {
 	}
 
 	@Test
+	@Ignore
 	public void testConnection() throws ComponentException {
 		
 		SwitchDeviceComponent component = new SwitchDeviceComponent(componentConfig);
@@ -89,6 +85,7 @@ public class SwitchDeviceComponentTest {
 	
 	
 	@Test
+	@Ignore
 	public void testActivateStop() throws ComponentException {
 		SwitchDeviceComponent component = new SwitchDeviceComponent(componentConfig);
 		assertTrue(!component.isConnectedToExternal());
@@ -132,6 +129,7 @@ public class SwitchDeviceComponentTest {
 	
 	
 	@Test
+	@Ignore
 	public void testActivateComplete() throws ComponentException {
 		SwitchDeviceComponent component = new SwitchDeviceComponent(componentConfig);
 		assertTrue(!component.isConnectedToExternal());

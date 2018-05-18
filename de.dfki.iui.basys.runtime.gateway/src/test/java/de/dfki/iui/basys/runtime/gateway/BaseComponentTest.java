@@ -35,7 +35,7 @@ public class BaseComponentTest {
 	
 
 	protected static final String communicationProviderImplementationJavaClass = "de.dfki.iui.basys.runtime.communication.provider.JmsCommunicationProvider";
-	protected static final String communicationProviderConnectionString = "tcp://lns-90165.sb.dfki.de:61616";
+	protected static final String communicationProviderConnectionString = "tcp://10.2.10.4:61616";
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -86,7 +86,7 @@ public class BaseComponentTest {
 				.communicationProviderConnectionString(communicationProviderConnectionString)
 				.inChannelName("mqttgateway#in")
 				.outChannelName("mqttgateway#out")
-				.externalConnectionString("tcp://lns-90165.sb.dfki.de:1883")
+				.externalConnectionString("tcp://10.2.10.4:1883")
 				.build();	
 		
 		config1 = new ComponentConfigurationImpl.Builder()

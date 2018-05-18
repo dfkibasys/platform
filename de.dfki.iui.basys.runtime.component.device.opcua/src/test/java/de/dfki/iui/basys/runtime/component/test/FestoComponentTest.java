@@ -9,6 +9,7 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
@@ -55,6 +56,7 @@ public class FestoComponentTest {
 	}
 	
 	@Test
+	@Ignore
 	public void testDummy() {}
 	/*
 	@Test
@@ -71,6 +73,7 @@ public class FestoComponentTest {
 	*/
 	
 	@Test
+	@Ignore
 	public void testExecuteJob() throws ComponentException {
 		OpcUaDeviceComponent component = new FestoComponent(opcuaConfig);
 		assertTrue(!component.isConnectedToExternal());

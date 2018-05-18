@@ -37,7 +37,7 @@ public class MqttCommunicationProvider implements CommunicationProvider {
 
 	IMqttAsyncClient mqttClient = null;
 
-	public static final String DEV_BROKER_URL = "tcp://lns-90165.sb.dfki.de:1883";
+	public static final String DEV_BROKER_URL = "tcp://10.2.10.4:1883";
 	
 	private static String toTopic(Channel channel) {
 		return toTopic(channel.getName());

@@ -37,7 +37,7 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 	protected final Logger LOGGER = LoggerFactory.getLogger(JmsCommunicationProvider.class.getName());
 
 	// public static final String defaultConnectionString = "vm://localhost?broker.persistent=false";
-	public static final String defaultConnectionString = "tcp://lns-90165.sb.dfki.de:61616";
+	public static final String defaultConnectionString = "tcp://10.2.10.4:61616";
 	private Connection connection = null;
 	private Session session;
 
