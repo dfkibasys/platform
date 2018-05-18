@@ -18,9 +18,38 @@ import de.dfki.tecs.Event;
 public class YumiComponent extends TecsDeviceComponent{
 
 	protected YumiTECS client;
+
+	protected enum OBJECT_ID{
+		// fill enums here
+		;
+		
+		private final String objectId;
+		
+		private OBJECT_ID(String id) {
+			objectId = id;
+		}
+		
+		@Override
+		public String toString() {
+			return objectId;
+		}
+	}
 	
-	protected static final String[] objectId = {/* TODO FILL */};
-	protected static final String[] sourceLocation = {/* TODO FILL */};
+	protected enum SOURCE_LOCATION{
+		// fill enums here
+		;
+		
+		private final String location;
+		
+		private SOURCE_LOCATION(String loc) {
+			location = loc;
+		}
+		
+		@Override
+		public String toString() {
+			return location;
+		}
+	}
 	
 	public YumiComponent(ComponentConfiguration config) {
 		super(config);
@@ -45,7 +74,7 @@ public class YumiComponent extends TecsDeviceComponent{
 	
 	@Override
 	public void onResetting() {
-		//?
+		//set arm to default position?
 	}
 
 	@Override
@@ -59,6 +88,14 @@ public class YumiComponent extends TecsDeviceComponent{
 			boolean executing = true;
 			while(executing) {
 				CommandResponse cr = client.getCommandState();
+				YumiState ys = client.getState();
+				
+				if (ys == YumiState.Error || ys == YumiState.Manual) {
+					executing = false;
+					setErrorCode(1);
+					stop();
+					break;
+				}
 				
 				switch(cr.state) {
 				case ACCEPTED: 
@@ -175,6 +212,8 @@ public class YumiComponent extends TecsDeviceComponent{
 		public CommandResponse performQA(String objectId) throws QAException, TException {
 			return super.performQA(objectId);
 		}
+		
+		//TODO: performScan, new, needs new version of libHRC
 		
 	}
 
