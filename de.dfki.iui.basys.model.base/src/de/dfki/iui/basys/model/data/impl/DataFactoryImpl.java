@@ -58,6 +58,7 @@ public class DataFactoryImpl extends EFactoryImpl implements DataFactory {
 		switch (eClass.getClassifierID()) {
 			case DataPackage.CARTESIAN_COORDINATE: return createCartesianCoordinate();
 			case DataPackage.PATH: return createPath();
+			case DataPackage.ROBOT_POSITION_INFORMATION: return createRobotPositionInformation();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -81,6 +82,16 @@ public class DataFactoryImpl extends EFactoryImpl implements DataFactory {
 	public Path createPath() {
 		PathImpl path = new PathImpl();
 		return path;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RobotPositionInformation createRobotPositionInformation() {
+		RobotPositionInformationImpl robotPositionInformation = new RobotPositionInformationImpl();
+		return robotPositionInformation;
 	}
 
 	/**

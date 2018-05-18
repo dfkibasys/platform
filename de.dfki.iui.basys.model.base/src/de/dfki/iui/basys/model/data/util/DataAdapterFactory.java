@@ -76,6 +76,10 @@ public class DataAdapterFactory extends AdapterFactoryImpl {
 				return createPathAdapter();
 			}
 			@Override
+			public Adapter caseRobotPositionInformation(RobotPositionInformation object) {
+				return createRobotPositionInformationAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -120,6 +124,20 @@ public class DataAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPathAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.data.RobotPositionInformation <em>Robot Position Information</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.data.RobotPositionInformation
+	 * @generated
+	 */
+	public Adapter createRobotPositionInformationAdapter() {
 		return null;
 	}
 

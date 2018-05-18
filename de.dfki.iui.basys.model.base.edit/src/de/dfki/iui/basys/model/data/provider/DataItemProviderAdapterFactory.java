@@ -118,6 +118,29 @@ public class DataItemProviderAdapterFactory extends DataAdapterFactory implement
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.data.RobotPositionInformation} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RobotPositionInformationItemProvider robotPositionInformationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.data.RobotPositionInformation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createRobotPositionInformationAdapter() {
+		if (robotPositionInformationItemProvider == null) {
+			robotPositionInformationItemProvider = new RobotPositionInformationItemProvider(this);
+		}
+
+		return robotPositionInformationItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -218,6 +241,7 @@ public class DataItemProviderAdapterFactory extends DataAdapterFactory implement
 	public void dispose() {
 		if (cartesianCoordinateItemProvider != null) cartesianCoordinateItemProvider.dispose();
 		if (pathItemProvider != null) pathItemProvider.dispose();
+		if (robotPositionInformationItemProvider != null) robotPositionInformationItemProvider.dispose();
 	}
 
 }

@@ -78,6 +78,12 @@ public class DataSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case DataPackage.ROBOT_POSITION_INFORMATION: {
+				RobotPositionInformation robotPositionInformation = (RobotPositionInformation)theEObject;
+				T result = caseRobotPositionInformation(robotPositionInformation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -109,6 +115,21 @@ public class DataSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T casePath(Path object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Robot Position Information</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Robot Position Information</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRobotPositionInformation(RobotPositionInformation object) {
 		return null;
 	}
 

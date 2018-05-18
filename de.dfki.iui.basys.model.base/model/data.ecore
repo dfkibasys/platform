@@ -15,6 +15,10 @@
   <eClassifiers xsi:type="ecore:EClass" name="Path">
     <eStructuralFeatures xsi:type="ecore:EReference" name="coordinates" upperBound="-1"
         eType="#//CartesianCoordinate" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="eta" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//ELong"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RobotPositionInformation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="eta" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="position" eType="#//CartesianCoordinate"
+        containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

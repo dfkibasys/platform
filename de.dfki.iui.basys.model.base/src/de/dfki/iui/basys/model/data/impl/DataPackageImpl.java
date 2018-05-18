@@ -11,6 +11,7 @@ import de.dfki.iui.basys.model.data.DataFactory;
 import de.dfki.iui.basys.model.data.DataPackage;
 
 import de.dfki.iui.basys.model.data.Path;
+import de.dfki.iui.basys.model.data.RobotPositionInformation;
 import de.dfki.iui.basys.model.pattern.PatternPackage;
 
 import de.dfki.iui.basys.model.pattern.impl.PatternPackageImpl;
@@ -43,6 +44,13 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * @generated
 	 */
 	private EClass pathEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass robotPositionInformationEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -175,8 +183,26 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPath_Eta() {
-		return (EAttribute)pathEClass.getEStructuralFeatures().get(1);
+	public EClass getRobotPositionInformation() {
+		return robotPositionInformationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRobotPositionInformation_Eta() {
+		return (EAttribute)robotPositionInformationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRobotPositionInformation_Position() {
+		return (EReference)robotPositionInformationEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -214,7 +240,10 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 
 		pathEClass = createEClass(PATH);
 		createEReference(pathEClass, PATH__COORDINATES);
-		createEAttribute(pathEClass, PATH__ETA);
+
+		robotPositionInformationEClass = createEClass(ROBOT_POSITION_INFORMATION);
+		createEAttribute(robotPositionInformationEClass, ROBOT_POSITION_INFORMATION__ETA);
+		createEReference(robotPositionInformationEClass, ROBOT_POSITION_INFORMATION__POSITION);
 	}
 
 	/**
@@ -257,7 +286,10 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 
 		initEClass(pathEClass, Path.class, "Path", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPath_Coordinates(), this.getCartesianCoordinate(), null, "coordinates", null, 0, -1, Path.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPath_Eta(), theEcorePackage.getELong(), "eta", null, 0, 1, Path.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(robotPositionInformationEClass, RobotPositionInformation.class, "RobotPositionInformation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getRobotPositionInformation_Eta(), theEcorePackage.getEDouble(), "eta", null, 0, 1, RobotPositionInformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRobotPositionInformation_Position(), this.getCartesianCoordinate(), null, "position", null, 0, 1, RobotPositionInformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -133,22 +133,13 @@ public interface DataPackage extends EPackage {
 	int PATH__COORDINATES = 0;
 
 	/**
-	 * The feature id for the '<em><b>Eta</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PATH__ETA = 1;
-
-	/**
 	 * The number of structural features of the '<em>Path</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PATH_FEATURE_COUNT = 2;
+	int PATH_FEATURE_COUNT = 1;
 
 	/**
 	 * The number of operations of the '<em>Path</em>' class.
@@ -158,6 +149,53 @@ public interface DataPackage extends EPackage {
 	 * @ordered
 	 */
 	int PATH_OPERATION_COUNT = 0;
+
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.data.impl.RobotPositionInformationImpl <em>Robot Position Information</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.data.impl.RobotPositionInformationImpl
+	 * @see de.dfki.iui.basys.model.data.impl.DataPackageImpl#getRobotPositionInformation()
+	 * @generated
+	 */
+	int ROBOT_POSITION_INFORMATION = 2;
+
+	/**
+	 * The feature id for the '<em><b>Eta</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROBOT_POSITION_INFORMATION__ETA = 0;
+
+	/**
+	 * The feature id for the '<em><b>Position</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROBOT_POSITION_INFORMATION__POSITION = 1;
+
+	/**
+	 * The number of structural features of the '<em>Robot Position Information</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROBOT_POSITION_INFORMATION_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Robot Position Information</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROBOT_POSITION_INFORMATION_OPERATION_COUNT = 0;
 
 
 	/**
@@ -225,15 +263,36 @@ public interface DataPackage extends EPackage {
 	EReference getPath_Coordinates();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.data.Path#getEta <em>Eta</em>}'.
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.data.RobotPositionInformation <em>Robot Position Information</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Robot Position Information</em>'.
+	 * @see de.dfki.iui.basys.model.data.RobotPositionInformation
+	 * @generated
+	 */
+	EClass getRobotPositionInformation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.data.RobotPositionInformation#getEta <em>Eta</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Eta</em>'.
-	 * @see de.dfki.iui.basys.model.data.Path#getEta()
-	 * @see #getPath()
+	 * @see de.dfki.iui.basys.model.data.RobotPositionInformation#getEta()
+	 * @see #getRobotPositionInformation()
 	 * @generated
 	 */
-	EAttribute getPath_Eta();
+	EAttribute getRobotPositionInformation_Eta();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link de.dfki.iui.basys.model.data.RobotPositionInformation#getPosition <em>Position</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Position</em>'.
+	 * @see de.dfki.iui.basys.model.data.RobotPositionInformation#getPosition()
+	 * @see #getRobotPositionInformation()
+	 * @generated
+	 */
+	EReference getRobotPositionInformation_Position();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -311,12 +370,30 @@ public interface DataPackage extends EPackage {
 		EReference PATH__COORDINATES = eINSTANCE.getPath_Coordinates();
 
 		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.data.impl.RobotPositionInformationImpl <em>Robot Position Information</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.data.impl.RobotPositionInformationImpl
+		 * @see de.dfki.iui.basys.model.data.impl.DataPackageImpl#getRobotPositionInformation()
+		 * @generated
+		 */
+		EClass ROBOT_POSITION_INFORMATION = eINSTANCE.getRobotPositionInformation();
+
+		/**
 		 * The meta object literal for the '<em><b>Eta</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PATH__ETA = eINSTANCE.getPath_Eta();
+		EAttribute ROBOT_POSITION_INFORMATION__ETA = eINSTANCE.getRobotPositionInformation_Eta();
+
+		/**
+		 * The meta object literal for the '<em><b>Position</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ROBOT_POSITION_INFORMATION__POSITION = eINSTANCE.getRobotPositionInformation_Position();
 
 	}
 
