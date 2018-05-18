@@ -169,4 +169,3 @@ public class WorldModelManagerImpl extends ServiceComponent implements WorldMode
     }
     
 }
-

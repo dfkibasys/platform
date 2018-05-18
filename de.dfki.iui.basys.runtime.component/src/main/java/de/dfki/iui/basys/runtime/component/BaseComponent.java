@@ -156,7 +156,6 @@ public class BaseComponent implements Component, ChannelListener {
 		}
 
 		statusChannel = cf.openChannel(pool, baseStatusChannelName + "#" + getId(), false, null);
-		// telemetryChannel = cf.openChannel(pool, componentConfig.getComponentId() + "#telemetry" , false, null);
 
 		if (componentConfig.getInChannelName() != null && !componentConfig.getInChannelName().equals(""))
 			inChannel = cf.openChannel(pool, componentConfig.getInChannelName(), false, this);
