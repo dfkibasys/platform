@@ -41,7 +41,7 @@ public class DeviceComponentController implements CommandInterface, ChannelListe
 	private ComponentInfo componentInfo = null;
 
 	private ChannelListener listener = null;
-	
+
 	boolean isConnected = false;
 
 	public DeviceComponentController(String componentId) {
@@ -54,36 +54,42 @@ public class DeviceComponentController implements CommandInterface, ChannelListe
 	}
 
 	public void lazyConnect(ComponentContext context) {
-		// TODO: controller should register itself at remote device component in order to avoid two controllers can control a component at the same time.
+		// TODO: controller should register itself at remote device component in order
+		// to avoid two controllers can control a component at the same time.
 		this.context = context;
 	}
-	
-	public void connect(ComponentContext context) {
+
+	public synchronized void connect(ComponentContext context) {
 
 		if (isConnected)
 			return;
-		
-		// TODO: controller should register itself at remote device component in order to avoid two controllers can control a component at the same time.
+
+		// TODO: controller should register itself at remote device component in order
+		// to avoid two controllers can control a component at the same time.
 		this.context = context;
 
-		componentInfo = context.getComponentRegistry().getComponentById(ComponentCategory.DEVICE_COMPONENT, componentId);
-		synchronized (componentInfo) {
+		componentInfo = context.getComponentRegistry().getComponentById(ComponentCategory.DEVICE_COMPONENT,
+				componentId);
+		//synchronized (componentInfo) {
 			if (componentInfo.getInChannelName() != null && !componentInfo.getInChannelName().equals(""))
-				componentInChannel = cf.openChannel(context.getSharedChannelPool(), componentInfo.getInChannelName(), false, null);
+				componentInChannel = cf.openChannel(context.getSharedChannelPool(), componentInfo.getInChannelName(),
+						false, null);
 			if (componentInfo.getOutChannelName() != null && !componentInfo.getOutChannelName().equals(""))
-				componentOutChannel = cf.openChannel(context.getSharedChannelPool(), componentInfo.getOutChannelName(), false, this);
+				componentOutChannel = cf.openChannel(context.getSharedChannelPool(), componentInfo.getOutChannelName(),
+						false, this);
 			if (componentInfo.getStatusChannelName() != null && !componentInfo.getStatusChannelName().equals(""))
-				componentStatusChannel = cf.openChannel(context.getSharedChannelPool(), componentInfo.getStatusChannelName(), false, this);
-		}
-		
+				componentStatusChannel = cf.openChannel(context.getSharedChannelPool(),
+						componentInfo.getStatusChannelName(), false, this);
+		//}
+
 		isConnected = true;
 	}
 
 	public void disconnect() {
-		
+
 		if (!isConnected)
 			return;
-		
+
 		// TODO: unregister at remote device controller
 		if (componentInChannel != null)
 			componentInChannel.close();
@@ -91,7 +97,7 @@ public class DeviceComponentController implements CommandInterface, ChannelListe
 			componentOutChannel.close();
 		if (componentStatusChannel != null)
 			componentStatusChannel.close();
-		
+
 		isConnected = false;
 	}
 
@@ -106,14 +112,15 @@ public class DeviceComponentController implements CommandInterface, ChannelListe
 	}
 
 	private ComponentRequestStatus sendCapabilityRequest(Capability capability) {
-		CapabilityRequest cr = new CapabilityRequestImpl.Builder().componentId(componentId).capability(capability).build();
+		CapabilityRequest cr = new CapabilityRequestImpl.Builder().componentId(componentId).capability(capability)
+				.build();
 		return sendComponentRequest(cr);
 	}
 
 	private ComponentRequestStatus sendComponentRequest(ComponentRequest request) {
-		
+
 		connect(this.context);
-		
+
 		ComponentRequestStatus status = null;
 		try {
 			String payload = JsonUtils.toString(request);
@@ -209,18 +216,18 @@ public class DeviceComponentController implements CommandInterface, ChannelListe
 
 	@Override
 	public void handleNotification(Channel channel, Notification not) {
-		
+
 		if (channel.getName().equals(componentInfo.getStatusChannelName())) {
-			synchronized (componentInfo) {
+			//synchronized (componentInfo) {
 				try {
 					componentInfo = JsonUtils.fromString(not.getPayload(), ComponentInfo.class);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			}
+			//}
 		}
-		
+
 		if (listener != null) {
 			listener.handleNotification(channel, not);
 		}
@@ -242,16 +249,16 @@ public class DeviceComponentController implements CommandInterface, ChannelListe
 
 	@Override
 	public State getState() {
-		synchronized (componentInfo) {
-			return componentInfo.getCurrentState();
-		}
+		connect(context);
+		return componentInfo.getCurrentState();
+
 	}
 
 	@Override
 	public ControlMode getMode() {
-		synchronized (componentInfo) {
-			return componentInfo.getCurrentMode();
-		}
+		connect(context);
+		return componentInfo.getCurrentMode();
+
 	}
 
 	@Override

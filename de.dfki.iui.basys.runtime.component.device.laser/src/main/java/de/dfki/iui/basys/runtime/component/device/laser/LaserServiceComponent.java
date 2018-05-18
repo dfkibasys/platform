@@ -18,9 +18,11 @@ import de.dfki.iui.basys.common.emf.json.JsonUtils;
 import de.dfki.iui.basys.model.data.CartesianCoordinate;
 import de.dfki.iui.basys.model.data.DataPackage;
 import de.dfki.iui.basys.model.data.Path;
+import de.dfki.iui.basys.model.data.RobotPositionInformation;
 import de.dfki.iui.basys.model.data.impl.CartesianCoordinateImpl;
 import de.dfki.iui.basys.model.data.impl.DataFactoryImpl;
 import de.dfki.iui.basys.model.domain.capability.CapabilityFactory;
+import de.dfki.iui.basys.model.domain.capability.ProjectETA;
 import de.dfki.iui.basys.model.domain.capability.ProjectPath;
 import de.dfki.iui.basys.model.runtime.communication.Channel;
 import de.dfki.iui.basys.model.runtime.communication.ChannelListener;
@@ -59,7 +61,6 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 				}
 			}
 		}
-
 	}
 
 	private static double getDistance(CartesianCoordinate cc1, CartesianCoordinate cc2) {
@@ -233,29 +234,52 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 							try {
 								EObject payload = JsonUtils.fromString(not.getPayload(), EObject.class);
 
-								if (payload.eClass().equals(DataPackage.eINSTANCE.getCartesianCoordinate())) {
-									CartesianCoordinate MIRPos = (CartesianCoordinate) payload;
+								if (payload.eClass().equals(DataPackage.eINSTANCE.getRobotPositionInformation())) {
+									RobotPositionInformation MIRPosition = (RobotPositionInformation) payload;
+
+									CartesianCoordinate MIRPos = MIRPosition.getPosition();
 
 									if (mMIRPosition == null || !coordEquals(MIRPos, mMIRPosition)) {
 
 										System.out.println("POSITION RECEIVED: " + MIRPos.getX() + " - " + MIRPos.getY()
 												+ " - " + MIRPos.getZ());
 										stopDevice();
-										if (mPath != null && getDistance(MIRPos, mPath.get(0)) < 0.11) {
-											mPath.remove(0);
+
+										// TODO handle path start
+
+										if (MIRPosition.getEta() < 60 && MIRPosition.getEta() > 15) {
+
+											ProjectETA capability = CapabilityFactory.eINSTANCE.createProjectETA();
+
+											capability.setEta((long) MIRPosition.getEta() * 1000);
+											// TODO where to project
+
+											// ComponentRequestStatus status = device.executeCapability(capability);
+
+										} else {
+											if (MIRPosition.getEta() <= 15) {
+
+												if (mPath != null && getDistance(MIRPos, mPath.get(0)) < 0.11) {
+													mPath.remove(0);
+												}
+
+												Path path = new DataFactoryImpl().createPath();
+												path.getCoordinates().addAll(beautifyPath(mPath, 5, 0.2));
+
+												ProjectPath capability = CapabilityFactory.eINSTANCE
+														.createProjectPath();
+												capability.setPath(path);
+												capability.setDelay(1000);
+												capability.setArrowCount(3);
+												capability.setColor(0);
+												// ComponentRequestStatus status = device.executeCapability(capability);
+											}
 										}
 
-										Path path = new DataFactoryImpl().createPath();
-										path.getCoordinates().addAll(beautifyPath(mPath, 5, 0.2));
-
-										ProjectPath capability = CapabilityFactory.eINSTANCE.createProjectPath();
-										capability.setPath(path);
-										capability.setDelay(1000);
-										capability.setArrowCount(3);
-										capability.setColor(0);
-										// ComponentRequestStatus status = device.executeCapability(capability);
 									}
+
 									mMIRPosition = MIRPos;
+
 								}
 
 								if (payload.eClass().equals(DataPackage.eINSTANCE.getPath())) {

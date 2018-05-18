@@ -9,29 +9,34 @@ import de.dfki.iui.basys.common.emf.json.JsonUtils;
 import de.dfki.iui.basys.model.data.CartesianCoordinate;
 import de.dfki.iui.basys.model.data.DataFactory;
 import de.dfki.iui.basys.model.data.Path;
+import de.dfki.iui.basys.model.data.RobotPositionInformation;
 import de.dfki.iui.basys.model.data.impl.CartesianCoordinateImpl;
 import de.dfki.iui.basys.model.data.impl.DataFactoryImpl;
 import de.dfki.iui.basys.model.runtime.communication.Notification;
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.communication.ClientFactory;
+import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
 import de.dfki.iui.hrc.general3d.Point3d;
 import de.dfki.iui.hrc.general3d.Pose;
 import de.dfki.iui.hrc.generalrobots.KnownPositions;
-import de.dfki.iui.hrc.generalrobots.RobotStateEvent;
 import de.dfki.iui.hrc.hybritcommand.CommandResponse;
 import de.dfki.iui.hrc.mir100.GotoException;
 import de.dfki.iui.hrc.mir100.MIR;
 import de.dfki.iui.hrc.mir100.MIRPathEvent;
+import de.dfki.iui.hrc.mir100.MIRPoseEvent;
 import de.dfki.iui.hrc.mir100.MIRState;
 import de.dfki.iui.hrc.mir100.MIRStatus;
+import de.dfki.iui.hrc.mir100.MIRStatusEvent;
 import de.dfki.tecs.Event;
 
 public class MirComponent extends TecsDeviceComponent {
 
 	private boolean first = true;
+	protected MirTECS client;
+	private double mETA;
 
 	protected static final String[] POSITION = { "Station-QA", "Station-TeachIn", "Station-Cola", "Station-BaSys",
 			"Station-Wait", "Station-Festo" };
@@ -59,15 +64,17 @@ public class MirComponent extends TecsDeviceComponent {
 
 	public MirComponent(ComponentConfiguration config) {
 		super(config);
-		// connect to tecs
-		String[] subscribeTo = new String[2];
-		subscribeTo[0] = "MIRPathEvent";
-		subscribeTo[1] = "RobotStateEvent";
-		connectToTecs("robot-mir-01", subscribeTo, "tecs", 9000);
-
 	}
 
-	protected MirTECS client;
+	@Override
+	public void activate(ComponentContext context) throws ComponentException {
+		super.activate(context);
+		String[] subscribeTo = new String[3];
+		subscribeTo[0] = "MIRPathEvent";
+		subscribeTo[1] = "MIRPoseEvent";
+		subscribeTo[2] = "MIRStatusEvent";
+		connectToTecs("robot-mir-01", subscribeTo, "tecs", 9000);
+	}
 
 	@Override
 	public void connectToExternal() throws ComponentException {
@@ -112,13 +119,7 @@ public class MirComponent extends TecsDeviceComponent {
 			try {
 				payload = JsonUtils.toString(path);
 				Notification not = ClientFactory.getInstance().createNotification(payload);
-				while (!outChannel.isOpen()) {
-					try {
-						Thread.sleep(200);
-					} catch (InterruptedException e2) {
-						e2.printStackTrace();
-					}
-				}
+
 				outChannel.sendNotification(not);
 			} catch (JsonProcessingException e1) {
 				e1.printStackTrace();
@@ -126,34 +127,35 @@ public class MirComponent extends TecsDeviceComponent {
 
 		}
 
-		if (event.is("RobotStateEvent")) {
+		if (event.is("MIRPoseEvent")) {
 
-			System.out.println("ROBOTSTATEEVENT RECEIVED");
+			System.out.println("MIRPoseEvent RECEIVED");
 
-			RobotStateEvent e = new RobotStateEvent();
+			MIRPoseEvent e = new MIRPoseEvent();
 			event.parseData(e);
 
 			Point3d p = e.pose.position;
-			CartesianCoordinate position = new CartesianCoordinateImpl.Builder().x(p.x).y(p.y).z(p.z).build();
+			RobotPositionInformation robotPosition = new DataFactoryImpl().createRobotPositionInformation();
+			robotPosition.setPosition(new CartesianCoordinateImpl.Builder().x(p.x).y(p.y).z(p.z).build());
+			robotPosition.setEta(mETA);
 
 			try {
-				payload = JsonUtils.toString(position);
+				payload = JsonUtils.toString(robotPosition);
 				Notification not = ClientFactory.getInstance().createNotification(payload);
-				while (!outChannel.isOpen()) {
-					try {
-						Thread.sleep(200);
-					} catch (InterruptedException e2) {
-						e2.printStackTrace();
-					}
-				}
 				outChannel.sendNotification(not);
 
 			} catch (JsonProcessingException e1) {
 				e1.printStackTrace();
 			}
-
 		}
 
+		if (event.is("MIRStatusEvent")) {
+			System.out.println("MIRStatusEvent RECEIVED");
+
+			MIRStatusEvent e = new MIRStatusEvent();
+			event.parseData(e);
+			mETA = e.getStatus().eta;
+		}
 	}
 
 	@Override
