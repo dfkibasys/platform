@@ -69,7 +69,6 @@ public class SwitchDeviceComponentTest {
 	}
 
 	@Test
-	@Ignore
 	public void testConnection() throws ComponentException {
 		
 		SwitchDeviceComponent component = new SwitchDeviceComponent(componentConfig);
@@ -83,7 +82,6 @@ public class SwitchDeviceComponentTest {
 	}
 	
 	@Test
-	@Ignore
 	public void testActivateStop() throws ComponentException {
 		SwitchDeviceComponent component = new SwitchDeviceComponent(componentConfig);
 		assertTrue(!component.isConnectedToExternal());
