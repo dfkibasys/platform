@@ -14,20 +14,16 @@ import javax.jms.MessageListener;
 import javax.jms.MessageProducer;
 import javax.jms.Session;
 import javax.jms.TextMessage;
-import javax.jms.Topic;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
-import de.dfki.iui.basys.common.emf.json.JsonUtils;
-import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
-import de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl;
-import de.dfki.iui.basys.model.runtime.component.impl.PropertyImpl;
 import de.dfki.iui.basys.runtime.connector.BasysConnector;
 import de.dfki.iui.basys.runtime.connector.MessageFactory;
 
@@ -66,7 +62,7 @@ public class BasysConnectorTest extends BaseComponentTest {
 	public void setUp() throws Exception {		
 		super.setUp();
 		
-		
+		/*
 		connectorConfig = new ComponentConfigurationImpl.Builder()			
 				.componentId("basys-connector")
 				.componentName("basys-connector")
@@ -100,7 +96,7 @@ public class BasysConnectorTest extends BaseComponentTest {
 		wfe_sender = session.createProducer(jmsTopicProducer);
 
 		Topic jmsTopicConsumer = session.createTopic(connectorConfig.getProperty("caaOutTopic").getValue());
-		wfe_receiver = session.createConsumer(jmsTopicConsumer);
+		wfe_receiver = session.createConsumer(jmsTopicConsumer);*/
 	}
 
 	@Override
@@ -108,13 +104,15 @@ public class BasysConnectorTest extends BaseComponentTest {
 	public void tearDown() throws Exception {		
 		super.tearDown();
 		
+		/*
 		wfe_sender.close();
 		wfe_receiver.close();
 		session.close();
-		
+		*/
 	}
 
 	@Test
+	@Ignore
 	public void testNewOrderFesto() {
 		TestListener testCallback = new TestListener();
 		
@@ -145,6 +143,7 @@ public class BasysConnectorTest extends BaseComponentTest {
 	}
 	
 	@Test
+	@Ignore
 	public void testNewOrderBasys() {
 		TestListener testCallback = new TestListener();
 
@@ -175,6 +174,7 @@ public class BasysConnectorTest extends BaseComponentTest {
 	}
 	
 	@Test
+	@Ignore
 	public void testResetFestoIO() {
 		TestListener testCallback = new TestListener();
 
@@ -205,6 +205,7 @@ public class BasysConnectorTest extends BaseComponentTest {
 	}
 	
 	@Test
+	@Ignore
 	public void testResetBasysIO() {
 		TestListener testCallback = new TestListener();
 
@@ -236,6 +237,7 @@ public class BasysConnectorTest extends BaseComponentTest {
 	
 	
 	@Test
+	@Ignore
 	public void testExecuteJobFestoRedIO() {
 		TestListener testCallback = new TestListener();
 		
@@ -266,6 +268,7 @@ public class BasysConnectorTest extends BaseComponentTest {
 	}
 	
 	@Test
+	@Ignore
 	public void testExecuteJobFestoGreenIO() {
 		TestListener testCallback = new TestListener();
 		
@@ -296,6 +299,7 @@ public class BasysConnectorTest extends BaseComponentTest {
 	}
 	
 	@Test
+	@Ignore
 	public void testExecuteJobBasysIO() {
 		TestListener testCallback = new TestListener();
 		

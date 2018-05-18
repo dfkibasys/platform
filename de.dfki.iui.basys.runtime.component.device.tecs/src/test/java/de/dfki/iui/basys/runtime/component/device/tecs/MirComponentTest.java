@@ -6,6 +6,7 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
@@ -34,7 +35,7 @@ public class MirComponentTest extends BaseComponentTest {
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
-		mirComponentConfig = new ComponentConfigurationImpl.Builder().componentId("mir-component")
+	/*	mirComponentConfig = new ComponentConfigurationImpl.Builder().componentId("mir-component")
 				.inChannelName("mir-component#in").outChannelName("mir-component#out")
 				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.component.device.tecs.MirComponent")
 				.componentCategory(ComponentCategory.DEVICE_COMPONENT)
@@ -52,7 +53,7 @@ public class MirComponentTest extends BaseComponentTest {
 				.outChannelName("laser-service-component#out").componentCategory(ComponentCategory.SERVICE_COMPONENT)
 				.componentImplementationJavaClass(
 						"de.dfki.iui.basys.runtime.component.device.laser.LaserServiceComponent")
-				.externalConnectionString("basys.component://laser-device-component").build();
+				.externalConnectionString("basys.component://laser-device-component").build();*/
 
 	}
 
@@ -61,6 +62,7 @@ public class MirComponentTest extends BaseComponentTest {
 	}
 
 	@Test
+	@Ignore
 	public void listenForever() throws ComponentException {
 
 		try {
