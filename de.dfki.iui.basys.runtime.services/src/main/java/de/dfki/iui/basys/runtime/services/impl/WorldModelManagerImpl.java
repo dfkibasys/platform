@@ -18,7 +18,7 @@ import de.dfki.iui.basys.model.runtime.communication.Notification;
 import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.communication.Response;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
-import de.dfki.iui.basys.runtime.communication.ClientFactory;
+import de.dfki.iui.basys.runtime.communication.CommFactory;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.service.ServiceComponent;
@@ -47,7 +47,7 @@ public class WorldModelManagerImpl extends ServiceComponent implements WorldMode
         ExecutorService executor = Executors.newCachedThreadPool();
         
         @SuppressWarnings("unused")
-        Channel mirOut = ClientFactory.getInstance().openChannel(context.getSharedChannelPool(), "mir-component#out",
+        Channel mirOut = CommFactory.getInstance().openChannel(context.getSharedChannelPool(), "mir-component#out",
                                                                  false, new ChannelListener() {
             
             @Override

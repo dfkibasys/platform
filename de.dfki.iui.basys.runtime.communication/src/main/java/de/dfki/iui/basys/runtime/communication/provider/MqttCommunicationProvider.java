@@ -1,6 +1,7 @@
 package de.dfki.iui.basys.runtime.communication.provider;
 
 import java.io.IOException;
+import java.net.UnknownHostException;
 import java.nio.charset.StandardCharsets;
 
 import org.eclipse.paho.client.mqttv3.IMqttActionListener;
@@ -29,15 +30,26 @@ import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.communication.Response;
 import de.dfki.iui.basys.model.runtime.communication.ResponseCallback;
 import de.dfki.iui.basys.model.runtime.communication.exceptions.ProviderException;
-import de.dfki.iui.basys.runtime.communication.ClientFactory;
+import de.dfki.iui.basys.runtime.communication.CommFactory;
+import de.dfki.iui.basys.runtime.communication.CommUtils;
 
 public class MqttCommunicationProvider implements CommunicationProvider {
 
 	protected final Logger LOGGER = LoggerFactory.getLogger(getClass());
 
+	public static String defaultConnectionString;
 	IMqttAsyncClient mqttClient = null;
-
-	public static final String DEV_BROKER_URL = "tcp://10.2.10.4:1883";
+	
+	static {
+		try {
+			String serverName = CommUtils.getPreferredBasysMiddleware();
+			defaultConnectionString = String.format("tcp://%s:1883", serverName);			
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+	}
+	
 	
 	private static String toTopic(Channel channel) {
 		return toTopic(channel.getName());
@@ -62,7 +74,7 @@ public class MqttCommunicationProvider implements CommunicationProvider {
 		options.setCleanSession(true);
 
 		if (pool.getUri() == null) {
-			pool.setUri(DEV_BROKER_URL);
+			pool.setUri(defaultConnectionString);
 			LOGGER.warn(String.format("ConnectionString not specified, using public default %s", pool.getUri()));
 		}
 
@@ -134,7 +146,7 @@ public class MqttCommunicationProvider implements CommunicationProvider {
 									String payload = JsonUtils.toString(res);
 									MqttProtocolMessage mqttMessage = new MqttProtocolMessage();
 									mqttMessage.setPayload(payload);
-									Channel responseChannel = ClientFactory.getInstance().createChannel(mqttProtocolMessage.getResponseTopic(), false, null);
+									Channel responseChannel = CommFactory.getInstance().createChannel(mqttProtocolMessage.getResponseTopic(), false, null);
 									doSendMqttProtocolMessage(responseChannel, mqttMessage);
 								} catch (IOException e1) {
 									// TODO Auto-generated catch block
@@ -216,7 +228,7 @@ public class MqttCommunicationProvider implements CommunicationProvider {
 		LOGGER.info("doSendRequest: " + channel.getName());
 		try {
 			String payload = JsonUtils.toString(req);
-			String responseTopic = ClientFactory.getInstance().createResponseTopic(req);
+			String responseTopic = CommFactory.getInstance().createResponseTopic(req);
 			MqttProtocolMessage message = new MqttProtocolMessage();
 			message.setPayload(payload);
 			message.setResponseTopic(responseTopic);

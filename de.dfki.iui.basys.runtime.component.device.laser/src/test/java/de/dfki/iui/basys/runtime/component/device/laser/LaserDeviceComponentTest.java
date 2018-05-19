@@ -28,7 +28,7 @@ import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.ComponentFactory;
 import de.dfki.iui.basys.model.runtime.component.State;
 import de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl;
-import de.dfki.iui.basys.runtime.communication.ClientFactory;
+import de.dfki.iui.basys.runtime.communication.CommFactory;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 
@@ -120,7 +120,7 @@ public class LaserDeviceComponentTest {
 		
 		try {
 			String payload = JsonUtils.toString(req);
-			Request message = ClientFactory.getInstance().createRequest(payload);
+			Request message = CommFactory.getInstance().createRequest(payload);
 			component.handleRequest(null, message);
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
@@ -164,7 +164,7 @@ public class LaserDeviceComponentTest {
 		
 		try {
 			String payload = JsonUtils.toString(req);
-			Request message = ClientFactory.getInstance().createRequest(payload);
+			Request message = CommFactory.getInstance().createRequest(payload);
 			component.handleRequest(null, message);
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();

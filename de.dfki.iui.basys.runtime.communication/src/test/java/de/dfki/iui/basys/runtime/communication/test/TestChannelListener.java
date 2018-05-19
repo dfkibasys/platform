@@ -7,7 +7,7 @@ import de.dfki.iui.basys.model.runtime.communication.Channel;
 import de.dfki.iui.basys.model.runtime.communication.ChannelListener;
 import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.communication.Response;
-import de.dfki.iui.basys.runtime.communication.ClientFactory;
+import de.dfki.iui.basys.runtime.communication.CommFactory;
 
 public class TestChannelListener implements ChannelListener {
 
@@ -56,7 +56,7 @@ public class TestChannelListener implements ChannelListener {
 		if (req.getPayload().equals(expectedMessage))
 			success = true;
 
-		Response response = ClientFactory.getInstance().createResponse(req.getId(), expectedMessage.toUpperCase());
+		Response response = CommFactory.getInstance().createResponse(req.getId(), expectedMessage.toUpperCase());
 		return response;
 	}
 

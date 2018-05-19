@@ -12,7 +12,7 @@ import de.dfki.iui.basys.model.runtime.communication.Client;
 import de.dfki.iui.basys.model.runtime.communication.Notification;
 import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.communication.Response;
-import de.dfki.iui.basys.runtime.communication.ClientFactory;
+import de.dfki.iui.basys.runtime.communication.CommFactory;
 import de.dfki.iui.basys.runtime.communication.provider.JmsCommunicationProvider;
 import junit.framework.TestCase;
 
@@ -23,7 +23,7 @@ public class JmsCommunicationProviderTest extends TestCase {
 	// String brokerUri = "vm://localhost?broker.persistent=false";
 	String brokerUri = null;
 
-	ClientFactory fac = ClientFactory.getInstance();
+	CommFactory fac = CommFactory.getInstance();
 
 	Client client_1, client_2;
 	ChannelPool cp_11, cp_12, cp_21, cp_22;

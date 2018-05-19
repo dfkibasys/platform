@@ -31,7 +31,7 @@ import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.communication.Response;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.State;
-import de.dfki.iui.basys.runtime.communication.ClientFactory;
+import de.dfki.iui.basys.runtime.communication.CommFactory;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.service.DeviceControllerServiceComponent;
@@ -215,7 +215,7 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 
 		executor = Executors.newCachedThreadPool();
 
-		mirOut = ClientFactory.getInstance().openChannel(context.getSharedChannelPool(), "mir-component#out", false,
+		mirOut = CommFactory.getInstance().openChannel(context.getSharedChannelPool(), "mir-component#out", false,
 				new ChannelListener() {
 
 					@Override

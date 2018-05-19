@@ -15,7 +15,7 @@ import de.dfki.iui.basys.model.data.impl.DataFactoryImpl;
 import de.dfki.iui.basys.model.runtime.communication.Notification;
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
-import de.dfki.iui.basys.runtime.communication.ClientFactory;
+import de.dfki.iui.basys.runtime.communication.CommFactory;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
@@ -118,7 +118,7 @@ public class MirComponent extends TecsDeviceComponent {
 
 			try {
 				payload = JsonUtils.toString(path);
-				Notification not = ClientFactory.getInstance().createNotification(payload);
+				Notification not = CommFactory.getInstance().createNotification(payload);
 
 				outChannel.sendNotification(not);
 			} catch (JsonProcessingException e1) {
@@ -141,7 +141,7 @@ public class MirComponent extends TecsDeviceComponent {
 
 			try {
 				payload = JsonUtils.toString(robotPosition);
-				Notification not = ClientFactory.getInstance().createNotification(payload);
+				Notification not = CommFactory.getInstance().createNotification(payload);
 				outChannel.sendNotification(not);
 
 			} catch (JsonProcessingException e1) {

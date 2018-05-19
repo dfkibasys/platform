@@ -20,7 +20,7 @@ import de.dfki.iui.basys.model.runtime.component.State;
 import de.dfki.iui.basys.model.runtime.component.impl.CapabilityRequestImpl;
 import de.dfki.iui.basys.model.runtime.component.impl.ChangeModeRequestImpl;
 import de.dfki.iui.basys.model.runtime.component.impl.CommandRequestImpl;
-import de.dfki.iui.basys.runtime.communication.ClientFactory;
+import de.dfki.iui.basys.runtime.communication.CommFactory;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.device.packml.CommandInterface;
 import de.dfki.iui.basys.runtime.component.device.packml.StatusInterface;
@@ -30,7 +30,7 @@ public class DeviceComponentController implements CommandInterface, ChannelListe
 
 	private String componentId;
 
-	protected ClientFactory cf = ClientFactory.getInstance();
+	protected CommFactory cf = CommFactory.getInstance();
 
 	private ComponentContext context = null;
 

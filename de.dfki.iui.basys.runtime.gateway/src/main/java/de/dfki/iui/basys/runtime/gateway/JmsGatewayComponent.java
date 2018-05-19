@@ -24,7 +24,7 @@ import de.dfki.iui.basys.model.runtime.communication.Notification;
 import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.communication.Response;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
-import de.dfki.iui.basys.runtime.communication.ClientFactory;
+import de.dfki.iui.basys.runtime.communication.CommFactory;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.service.ServiceComponent;
 
@@ -37,7 +37,7 @@ public class JmsGatewayComponent extends ServiceComponent implements Gateway {
 	private Connection connection;
 	private Session session;
 
-	ClientFactory cf = ClientFactory.getInstance();
+	CommFactory cf = CommFactory.getInstance();
 
 	public JmsGatewayComponent(ComponentConfiguration config) {
 		super(config);

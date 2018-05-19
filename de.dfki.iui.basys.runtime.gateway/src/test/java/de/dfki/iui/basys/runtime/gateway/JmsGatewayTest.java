@@ -16,7 +16,11 @@ import de.dfki.iui.basys.model.runtime.communication.ChannelPool;
 import de.dfki.iui.basys.model.runtime.communication.Notification;
 import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.communication.Response;
-import de.dfki.iui.basys.runtime.communication.ClientFactory;
+import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
+import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl;
+import de.dfki.iui.basys.runtime.communication.CommFactory;
+import de.dfki.iui.basys.runtime.communication.provider.JmsCommunicationProvider;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManagerException;
 
 public class JmsGatewayTest extends BaseComponentTest {
@@ -24,10 +28,24 @@ public class JmsGatewayTest extends BaseComponentTest {
 
 	private String testMessage = "this message is sent via a gateway.";
 	
+	protected static ComponentConfiguration gatewayConfig; 
+	
+	
 	@Override
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
+		
+		gatewayConfig = new ComponentConfigurationImpl.Builder()
+				.componentId("jms-gateway")
+				.componentName("jms-gateway-component")
+				.componentCategory(ComponentCategory.MANAGEMENT_COMPONENT)
+				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.gateway.JmsGatewayComponent")
+				.inChannelName("jmsgateway#in")
+				.outChannelName("jmsgateway#out")
+				.externalConnectionString(JmsCommunicationProvider.defaultConnectionString)
+				.build();
+		
 	}
 
 	@Override
@@ -43,13 +61,13 @@ public class JmsGatewayTest extends BaseComponentTest {
 		
 		try {
 			
-			componentManager.createLocalComponent(jmsGatewayConfig);
+			componentManager.createLocalComponent(gatewayConfig);
 			
-			JmsGatewayComponent gateway = (JmsGatewayComponent) componentManager.getLocalComponentById(jmsGatewayConfig.getComponentId());
+			JmsGatewayComponent gateway = (JmsGatewayComponent) componentManager.getLocalComponentById(gatewayConfig.getComponentId());
 			gateway.installOutgoingChannel("test#gateway#out", "test.gateway.in");
 			
-			ChannelPool externalPool = ClientFactory.getInstance().connectJmsChannelPool(communicationClient, communicationProviderConnectionString);
-			Channel externalChannel = ClientFactory.getInstance().openChannel(externalPool, "test#gateway#in", false, new ChannelListener() {
+			ChannelPool externalPool = CommFactory.getInstance().connectJmsChannelPool(communicationClient, gatewayConfig.getExternalConnectionString());
+			Channel externalChannel = CommFactory.getInstance().openChannel(externalPool, "test#gateway#in", false, new ChannelListener() {
 				
 				@Override
 				public Response handleRequest(Channel channel, Request req) {
@@ -72,7 +90,7 @@ public class JmsGatewayTest extends BaseComponentTest {
 			});
 			
 			
-			Channel out = ClientFactory.getInstance().openChannel(sharedPool, "test#gateway#out", false, null);
+			Channel out = CommFactory.getInstance().openChannel(sharedPool, "test#gateway#out", false, null);
 			out.sendMessage(testMessage);
 			sleep(1);
 			out.sendMessage(testMessage);
@@ -102,17 +120,17 @@ public class JmsGatewayTest extends BaseComponentTest {
 		
 		try {
 			
-			componentManager.createLocalComponent(jmsGatewayConfig);
+			componentManager.createLocalComponent(gatewayConfig);
 			
-			JmsGatewayComponent gateway = (JmsGatewayComponent) componentManager.getLocalComponentById(jmsGatewayConfig.getComponentId());
+			JmsGatewayComponent gateway = (JmsGatewayComponent) componentManager.getLocalComponentById(gatewayConfig.getComponentId());
 			gateway.installIncomingChannel("test.gateway.out", "test#gateway#in");
 			
-			ChannelPool externalPool = ClientFactory.getInstance().connectJmsChannelPool(communicationClient, communicationProviderConnectionString);
-			Channel externalChannel = ClientFactory.getInstance().openChannel(externalPool, "test#gateway#out", false, null); 
+			ChannelPool externalPool = CommFactory.getInstance().connectJmsChannelPool(communicationClient, gatewayConfig.getExternalConnectionString());
+			Channel externalChannel = CommFactory.getInstance().openChannel(externalPool, "test#gateway#out", false, null); 
 					
 				
 					
-			Channel in = ClientFactory.getInstance().openChannel(sharedPool, "test#gateway#in", false, new ChannelListener() {
+			Channel in = CommFactory.getInstance().openChannel(sharedPool, "test#gateway#in", false, new ChannelListener() {
 				
 				@Override
 				public Response handleRequest(Channel channel, Request req) {

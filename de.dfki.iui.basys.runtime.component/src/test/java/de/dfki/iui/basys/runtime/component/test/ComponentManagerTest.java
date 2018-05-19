@@ -50,20 +50,14 @@ public class ComponentManagerTest extends BaseComponentTest {
 			componentManager.createLocalComponent(config1);
 			components = componentManager.getLocalComponents();
 			assertEquals(1,components.size());
-			ComponentInfo details1 = registry.getComponentById(config1.getComponentCategory(), config1.getComponentId());
-			assertNotNull(details1);
-			
+
 			componentManager.createLocalComponent(config2);
 			components = componentManager.getLocalComponents();
 			assertEquals(2,components.size());
-			ComponentInfo details2 = registry.getComponentById(config1.getComponentCategory(),config2.getComponentId());
-			assertNotNull(details2);
 
 			componentManager.createLocalComponent(config3);			
 			components = componentManager.getLocalComponents();
 			assertEquals(3,components.size());
-			ComponentInfo details3 = registry.getComponentById(config1.getComponentCategory(),config3.getComponentId());
-			assertNotNull(details3);
 
 			components = componentManager.getLocalComponents();
 			assertEquals(3,components.size());
@@ -71,20 +65,15 @@ public class ComponentManagerTest extends BaseComponentTest {
 			componentManager.deleteLocalComponent(config1.getComponentId());
 			components = componentManager.getLocalComponents();
 			assertEquals(2,components.size());
-			details1 = registry.getComponentById(config1.getComponentCategory(),config1.getComponentId());
-			assertNull(details1);
 			
 			componentManager.deleteLocalComponent(config2.getComponentId());
 			components = componentManager.getLocalComponents();
 			assertEquals(1,components.size());
-			details2 = registry.getComponentById(config1.getComponentCategory(),config2.getComponentId());
-			assertNull(details2);
-			
+	
 			componentManager.deleteLocalComponent(config3.getComponentId());
 			components = componentManager.getLocalComponents();
 			assertEquals(0,components.size());
-			details3 = registry.getComponentById(config1.getComponentCategory(),config3.getComponentId());
-			assertNull(details3);			
+	
 		} catch (ComponentManagerException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

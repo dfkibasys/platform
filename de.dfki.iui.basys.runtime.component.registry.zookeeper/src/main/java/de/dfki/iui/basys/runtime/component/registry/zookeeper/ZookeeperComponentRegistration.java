@@ -1,4 +1,4 @@
-package de.dfki.iui.basys.runtime.component.registry.impl;
+package de.dfki.iui.basys.runtime.component.registry.zookeeper;
 
 import org.apache.curator.x.discovery.ServiceDiscovery;
 import org.apache.curator.x.discovery.ServiceInstance;

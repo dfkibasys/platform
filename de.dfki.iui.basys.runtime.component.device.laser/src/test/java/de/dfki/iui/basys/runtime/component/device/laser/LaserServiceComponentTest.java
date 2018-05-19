@@ -22,7 +22,7 @@ import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.State;
 import de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl;
-import de.dfki.iui.basys.runtime.communication.ClientFactory;
+import de.dfki.iui.basys.runtime.communication.CommFactory;
 import de.dfki.iui.basys.runtime.component.Component;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.ComponentException;
@@ -142,10 +142,10 @@ public class LaserServiceComponentTest extends BaseComponentTest {
 //			path.getCoordinates().add(c5);
 //			path.getCoordinates().add(c6);
 //
-//			Channel mirOut = ClientFactory.getInstance().openChannel(sharedPool, "mir-component#out", false, null);
+//			Channel mirOut = CommFactory.getInstance().openChannel(sharedPool, "mir-component#out", false, null);
 //
 //			String payload = JsonUtils.toString(path);
-//			Notification not = ClientFactory.getInstance().createNotification(payload);
+//			Notification not = CommFactory.getInstance().createNotification(payload);
 //			mirOut.sendNotification(not);
 //
 //			sleep(5);
@@ -193,7 +193,7 @@ public class LaserServiceComponentTest extends BaseComponentTest {
 		
 		try {
 			String payload = JsonUtils.toString(req);
-			Request message = ClientFactory.getInstance().createRequest(payload);
+			Request message = CommFactory.getInstance().createRequest(payload);
 			component.handleRequest(message);
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();

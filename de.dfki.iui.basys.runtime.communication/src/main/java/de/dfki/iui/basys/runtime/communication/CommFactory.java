@@ -15,17 +15,17 @@ import de.dfki.iui.basys.runtime.communication.provider.JmsCommunicationProvider
 import de.dfki.iui.basys.runtime.communication.provider.MqttCommunicationProvider;
 import de.dfki.iui.basys.runtime.communication.provider.WsCommunicationProvider;
 
-public class ClientFactory {
+public class CommFactory {
 
-	private static ClientFactory _instance;
+	private static CommFactory _instance;
 
-	public static ClientFactory getInstance() {
+	public static CommFactory getInstance() {
 		if (_instance == null)
-			_instance = new ClientFactory();
+			_instance = new CommFactory();
 		return _instance;
 	}
 
-	protected ClientFactory() {
+	protected CommFactory() {
 	}
 
 	public Notification createNotification(String payload) {

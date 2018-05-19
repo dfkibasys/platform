@@ -25,7 +25,8 @@ import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.ComponentFactory;
 import de.dfki.iui.basys.model.runtime.component.State;
 import de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl;
-import de.dfki.iui.basys.runtime.communication.ClientFactory;
+import de.dfki.iui.basys.runtime.communication.CommFactory;
+import de.dfki.iui.basys.runtime.communication.provider.MqttCommunicationProvider;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 
@@ -44,7 +45,7 @@ public class SwitchDeviceComponentTest {
 
 	@Before
 	public void setUp() throws Exception {
-		String basysBroker = "tcp://10.2.10.4:1883";
+		String basysBroker = MqttCommunicationProvider.defaultConnectionString;
 		String localBroker = "tcp://127.0.0.1:1883";
 		componentConfig = new ComponentConfigurationImpl.Builder()
 				.componentId("switch-component")
@@ -82,6 +83,7 @@ public class SwitchDeviceComponentTest {
 	}
 	
 	@Test
+	@Ignore
 	public void testActivateStop() throws ComponentException {
 		SwitchDeviceComponent component = new SwitchDeviceComponent(componentConfig);
 		assertTrue(!component.isConnectedToExternal());
@@ -102,7 +104,7 @@ public class SwitchDeviceComponentTest {
 		
 		try {
 			String payload = JsonUtils.toString(req);
-			Request message = ClientFactory.getInstance().createRequest(payload);
+			Request message = CommFactory.getInstance().createRequest(payload);
 			component.handleRequest(null, message);
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
@@ -144,7 +146,7 @@ public class SwitchDeviceComponentTest {
 		
 		try {
 			String payload = JsonUtils.toString(req);
-			Request message = ClientFactory.getInstance().createRequest(payload);
+			Request message = CommFactory.getInstance().createRequest(payload);
 			component.handleRequest(null, message);
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();

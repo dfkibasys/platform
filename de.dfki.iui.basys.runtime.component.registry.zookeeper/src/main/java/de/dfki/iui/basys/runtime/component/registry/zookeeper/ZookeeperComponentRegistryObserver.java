@@ -1,4 +1,4 @@
-package de.dfki.iui.basys.runtime.component.registry.impl;
+package de.dfki.iui.basys.runtime.component.registry.zookeeper;
 
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
@@ -14,7 +14,7 @@ import de.dfki.iui.basys.model.runtime.communication.Notification;
 import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.ComponentInfo;
-import de.dfki.iui.basys.runtime.communication.ClientFactory;
+import de.dfki.iui.basys.runtime.communication.CommFactory;
 import de.dfki.iui.basys.runtime.component.BaseComponent;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.registry.ComponentRegistryObserver;
@@ -97,7 +97,7 @@ public class ZookeeperComponentRegistryObserver extends BaseComponent implements
 	@Override
 	public void handleComponentAdded(ComponentInfo info) {		
 		if (outChannel != null) {
-			Notification not = ClientFactory.getInstance().createNotification("");
+			Notification not = CommFactory.getInstance().createNotification("");
 			outChannel.sendNotification(not);
 		}
 	}
@@ -105,7 +105,7 @@ public class ZookeeperComponentRegistryObserver extends BaseComponent implements
 	@Override
 	public void handleComponentUpdated(ComponentInfo info) {
 		if (outChannel != null) {
-			Notification not = ClientFactory.getInstance().createNotification("");
+			Notification not = CommFactory.getInstance().createNotification("");
 			outChannel.sendNotification(not);
 		}
 	}
@@ -113,7 +113,7 @@ public class ZookeeperComponentRegistryObserver extends BaseComponent implements
 	@Override
 	public void handleComponentRemoved(ComponentInfo info) {
 		if (outChannel != null) {
-			Notification not = ClientFactory.getInstance().createNotification("");
+			Notification not = CommFactory.getInstance().createNotification("");
 			outChannel.sendNotification(not);
 		}
 	}

@@ -1,6 +1,7 @@
 package de.dfki.iui.basys.runtime.communication.provider;
 
 import java.io.IOException;
+import java.net.UnknownHostException;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
@@ -31,13 +32,13 @@ import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.communication.Response;
 import de.dfki.iui.basys.model.runtime.communication.ResponseCallback;
 import de.dfki.iui.basys.model.runtime.communication.exceptions.ProviderException;
+import de.dfki.iui.basys.runtime.communication.CommUtils;
 
 public class JmsCommunicationProvider implements CommunicationProvider {
 
 	protected final Logger LOGGER = LoggerFactory.getLogger(JmsCommunicationProvider.class.getName());
 
-	// public static final String defaultConnectionString = "vm://localhost?broker.persistent=false";
-	public static final String defaultConnectionString = "tcp://10.2.10.4:61616";
+	public static String defaultConnectionString;
 	private Connection connection = null;
 	private Session session;
 
@@ -49,6 +50,16 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 
 	private Map<String, JmsDestination> destinations = new ConcurrentHashMap<String, JmsDestination>();
 
+	static {
+		try {
+			String serverName = CommUtils.getPreferredBasysMiddleware();
+			defaultConnectionString = String.format("tcp://%s:61616", serverName);			
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+	}	
+	
 	@Override
 	public void doConnect(ChannelPool pool) throws ProviderException {
 		String poolId = pool.getId();
