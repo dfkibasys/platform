@@ -26,6 +26,12 @@
 
 		<dependency>
 			<groupId>de.dfki.iui.basys.runtime</groupId>
+			<artifactId>de.dfki.iui.basys.runtime.component.registry.zookeeper</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>de.dfki.iui.basys.runtime</groupId>
 			<artifactId>de.dfki.iui.basys.runtime.services</artifactId>
 			<version>${project.version}</version>
 		</dependency>

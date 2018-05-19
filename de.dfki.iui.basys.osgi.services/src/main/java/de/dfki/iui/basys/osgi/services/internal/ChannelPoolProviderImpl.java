@@ -15,7 +15,7 @@ import de.dfki.iui.basys.model.runtime.communication.Authentication;
 import de.dfki.iui.basys.model.runtime.communication.ChannelPool;
 import de.dfki.iui.basys.model.runtime.communication.Client;
 import de.dfki.iui.basys.osgi.services.ChannelPoolProvider;
-import de.dfki.iui.basys.runtime.communication.ClientFactory;
+import de.dfki.iui.basys.runtime.communication.CommFactory;
 
 @Component(configurationPolicy = ConfigurationPolicy.REQUIRE)
 public class ChannelPoolProviderImpl implements ChannelPoolProvider {
@@ -45,19 +45,22 @@ public class ChannelPoolProviderImpl implements ChannelPoolProvider {
 			if (properties.containsKey("username") && properties.containsKey("password")) {
 				String username = (String) properties.get("username");
 				String password = (String) properties.get("password");
-				Authentication auth = ClientFactory.getInstance().createAuthentication(username, password, null);
-				communicationClient = ClientFactory.getInstance().createClient("client", auth);
+				Authentication auth = CommFactory.getInstance().createAuthentication(username, password, null);
+				communicationClient = CommFactory.getInstance().createClient("client", auth);
 			} else {
-				communicationClient = ClientFactory.getInstance().createClient("client", null);
+				communicationClient = CommFactory.getInstance().createClient("client", null);
 			}
 		}
 
-		if (properties.containsKey("communicationProviderImplementationJavaClass") && properties.containsKey("connectionString")) {
+		if (properties.containsKey("communicationProviderImplementationJavaClass") ) {
 
 			String communicationProviderImplementationJavaClass = (String) properties.get("communicationProviderImplementationJavaClass");
-			String connectionString = (String) properties.get("connectionString");
+			
+			String connectionString = null;
+			if (properties.containsKey("connectionString"))			
+				connectionString = (String) properties.get("connectionString");
 
-			channelPool = ClientFactory.getInstance().connectChannelPool(communicationClient, connectionString, communicationProviderImplementationJavaClass);
+			channelPool = CommFactory.getInstance().connectChannelPool(communicationClient, connectionString, communicationProviderImplementationJavaClass);
 
 		}
 

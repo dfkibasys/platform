@@ -20,7 +20,7 @@ import de.dfki.iui.basys.model.runtime.communication.ChannelPool;
 import de.dfki.iui.basys.model.runtime.communication.Client;
 import de.dfki.iui.basys.osgi.services.ChannelPoolProvider;
 import de.dfki.iui.basys.osgi.services.ResourceSetProvider;
-import de.dfki.iui.basys.runtime.communication.ClientFactory;
+import de.dfki.iui.basys.runtime.communication.CommFactory;
 
 @Component(configurationPolicy = ConfigurationPolicy.REQUIRE)
 public class ResourceSetProviderImpl implements ResourceSetProvider {

@@ -19,7 +19,7 @@ import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.registry.ComponentRegistration;
 import de.dfki.iui.basys.runtime.component.registry.ComponentRegistrationException;
 import de.dfki.iui.basys.runtime.component.registry.ComponentRegistry;
-import de.dfki.iui.basys.runtime.component.registry.impl.ZookeeperComponentRegistry;
+import de.dfki.iui.basys.runtime.component.registry.zookeeper.ZookeeperComponentRegistry;
 
 @Component(configurationPolicy = ConfigurationPolicy.REQUIRE, immediate = true)
 public class ComponentRegistryService extends BasysOsgiComponent implements ComponentRegistry {
