@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -43,7 +44,7 @@ public class ServiceRegistryTest extends BaseComponentTest {
 	}
 
 	@Test
-	public void testRegisterServicesAndList() throws ComponentException, InterruptedException {
+	public void testRegisterDeviceComponentsAndList() throws ComponentException, InterruptedException {
 		LOGGER.info("testRegisterServicesAndList - start");
 
 		// fail("Not yet implemented");
@@ -51,112 +52,127 @@ public class ServiceRegistryTest extends BaseComponentTest {
 		// TODO: implement test
 		// Step 1: register 3 different services
 
-		TestDeviceComponent service1 = new TestDeviceComponent(config1);
-		TestDeviceComponent service2 = new TestDeviceComponent(config2);
-		TestDeviceComponent service3 = new TestDeviceComponent(config3);
+		TestDeviceComponent comp1 = new TestDeviceComponent(config1);
+		TestDeviceComponent comp2 = new TestDeviceComponent(config2);
+		TestDeviceComponent comp3 = new TestDeviceComponent(config3);
 
-		service1.activate(context);
-		ComponentInfo details1 = registry.getComponentById(service1.getCategory(), service1.getId());
+		comp1.activate(context);
+		ComponentInfo details1 = registry.getComponentById(comp1.getCategory(), comp1.getId());
 		assertNotNull(details1);
 		assertEquals(config1.getComponentId(), details1.getComponentId());
 	
-		service2.activate(context);
-		ComponentInfo details2 = registry.getComponentById(service2.getCategory(), service2.getId());
+		comp2.activate(context);
+		ComponentInfo details2 = registry.getComponentById(comp2.getCategory(), comp2.getId());
 		assertNotNull(details2);
 		assertEquals(config2.getComponentId(), details2.getComponentId());
 		
-		service3.activate(context);
-		ComponentInfo details3 = registry.getComponentById(service3.getCategory(), service3.getId());
+		comp3.activate(context);
+		ComponentInfo details3 = registry.getComponentById(comp3.getCategory(), comp3.getId());
 		assertNotNull(details3);
 		assertEquals(config3.getComponentId(), details3.getComponentId());
 				
 		List<ComponentInfo> services = registry.getComponents(ComponentCategory.DEVICE_COMPONENT);
-		assertEquals(3, services.size()); // component-manager & component-registry are also registered
-//
-//		service1.reset();
-//		sleep(3);
-//		details1 = registry.getComponentById(service1.getCategory(), service1.getId());
-//		assertEquals(State.IDLE, details1.getCurrentState());
-//		
-//		service2.reset();
-//		sleep(3);
-//		details2 = registry.getComponentById(service2.getCategory(), service2.getId());
-//		assertEquals(State.IDLE, details2.getCurrentState());
-//		
-//		service3.reset();
-//		sleep(3);
-//		details3 = registry.getComponentById(service3.getCategory(), service3.getId());
-//		assertEquals(State.IDLE, details3.getCurrentState());
-//		
-		
-		service1.deactivate();
-		details1 = registry.getComponentById(service1.getCategory(), service1.getId());
+		assertEquals(3, services.size());
+
+		comp1.deactivate();
+		details1 = registry.getComponentById(comp1.getCategory(), comp1.getId());
 		assertNull(details1);
 
-		service2.deactivate();
-		details2 = registry.getComponentById(service2.getCategory(), service2.getId());
+		comp2.deactivate();
+		details2 = registry.getComponentById(comp2.getCategory(), comp2.getId());
 		assertNull(details2);
 
-		service3.deactivate();
-		details3 = registry.getComponentById(service3.getCategory(), service3.getId());
+		comp3.deactivate();
+		details3 = registry.getComponentById(comp3.getCategory(), comp3.getId());
 		assertNull(details3);
-		// Step 2: list all registered services
-		// Step 3: assert that all registered services from step 1 are in the list
+		
+		services = registry.getComponents(ComponentCategory.DEVICE_COMPONENT);
+		assertEquals(0, services.size());
 
 		LOGGER.info("testRegisterServicesAndList - complete");
 	}
 
 	@Test
-	public void testServiceLifecycle() throws ComponentException {
+	public void testDeviceComponentLifecycle() throws ComponentException {
 		LOGGER.info("testServiceLifecycle - start");
 		
-		TestDeviceComponent service1 = new TestDeviceComponent(config1);
-		service1.activate(context);
-		sleep(5);
-		ComponentInfo details1 = registry.getComponentById(service1.getCategory(), service1.getId());
-		assertNotNull(details1);
-		assertEquals(config1.getComponentId(), details1.getComponentId());
-		assertEquals(State.STOPPED,details1.getCurrentState());
-			
-		service1.reset();
-		LOGGER.info("testServiceLifecycle - reset");
-		sleep(5);
-		LOGGER.info("testServiceLifecycle - check");
-		details1 = registry.getComponentById(service1.getCategory(), service1.getId());
+		TestDeviceComponent comp = new TestDeviceComponent(config1);
+		comp.activate(context);
 
-		LOGGER.info(details1.getCurrentState().toString() + " - " + service1.getState().toString());
-		assertNotNull(details1);
+		assertEquals(State.STOPPED, comp.getLastState());
+			
+		comp.reset();
+		assertEquals(State.RESETTING, comp.getLastState());
+		assertEquals(State.IDLE, comp.getLastState());
 		
-		assertEquals(config1.getComponentId(), details1.getComponentId());
-		assertEquals(State.IDLE,details1.getCurrentState());
+		comp.start();
+		assertEquals(State.STARTING, comp.getLastState());
+		assertEquals(State.EXECUTE, comp.getLastState());
+
+		assertEquals(State.COMPLETING, comp.getLastState());
+		assertEquals(State.COMPLETE, comp.getLastState());		
 		
-		service1.start();
-		sleep(3);
-		details1 = registry.getComponentById(service1.getCategory(), service1.getId());
-		assertNotNull(details1);
-		assertEquals(config1.getComponentId(), details1.getComponentId());
-		assertEquals(State.EXECUTE,details1.getCurrentState());
+		comp.stop();
+		assertEquals(State.STOPPING, comp.getLastState());
+		assertEquals(State.STOPPED, comp.getLastState());		
 		
-		sleep(12);
-		details1 = registry.getComponentById(service1.getCategory(), service1.getId());
-		assertNotNull(details1);
-		assertEquals(config1.getComponentId(), details1.getComponentId());
-		assertEquals(State.COMPLETE,details1.getCurrentState());
-		
-		service1.stop();
-		sleep(3);
-		details1 = registry.getComponentById(service1.getCategory(), service1.getId());
-		assertNotNull(details1);
-		assertEquals(config1.getComponentId(), details1.getComponentId());
-		assertEquals(State.STOPPED,details1.getCurrentState());
-		
-		service1.deactivate();
-		details1 = registry.getComponentById(service1.getCategory(), service1.getId());
-		assertNull(details1);
+		comp.deactivate();
 		
 		LOGGER.info("testServiceLifecycle - complete");
 	}
 		
+	
+
+	@Test
+	public void testDeviceComponentLifecycle2() throws ComponentException {
+		LOGGER.info("testServiceLifecycle - start");
+		
+		TestDeviceComponent comp = new TestDeviceComponent(config1);
+		comp.activate(context);
+
+		assertEquals(State.STOPPED, comp.getLastState());
+		ComponentInfo info = registry.getComponentById(comp.getCategory(), comp.getId());
+		assertNotNull(info);
+		assertEquals(config1.getComponentId(), info.getComponentId());
+		assertEquals(State.STOPPED,info.getCurrentState());
+			
+		comp.reset();
+		assertEquals(State.RESETTING, comp.getLastState());
+		assertEquals(State.IDLE, comp.getLastState());
+		info = registry.getComponentById(comp.getCategory(), comp.getId());
+		assertNotNull(info);
+		assertEquals(config1.getComponentId(), info.getComponentId());		
+		assertEquals(State.IDLE,info.getCurrentState());
+		
+		comp.start();
+		assertEquals(State.STARTING, comp.getLastState());
+		assertEquals(State.EXECUTE, comp.getLastState());
+		info = registry.getComponentById(comp.getCategory(), comp.getId());
+		assertNotNull(info);
+		assertEquals(config1.getComponentId(), info.getComponentId());
+		assertEquals(State.EXECUTE,info.getCurrentState());
+
+		assertEquals(State.COMPLETING, comp.getLastState());
+		assertEquals(State.COMPLETE, comp.getLastState());		
+		info = registry.getComponentById(comp.getCategory(), comp.getId());
+		assertNotNull(info);
+		assertEquals(config1.getComponentId(), info.getComponentId());
+		assertEquals(State.COMPLETE,info.getCurrentState());
+		
+		comp.stop();
+		assertEquals(State.STOPPING, comp.getLastState());
+		assertEquals(State.STOPPED, comp.getLastState());		
+		info = registry.getComponentById(comp.getCategory(), comp.getId());
+		assertNotNull(info);
+		assertEquals(config1.getComponentId(), info.getComponentId());
+		assertEquals(State.STOPPED,info.getCurrentState());
+		
+		comp.deactivate();
+		info = registry.getComponentById(comp.getCategory(), comp.getId());
+		assertNull(info);
+		
+		LOGGER.info("testServiceLifecycle - complete");
+	}
 		
 	// @Test
 	// public void testRegisterServicesAndRemove() {

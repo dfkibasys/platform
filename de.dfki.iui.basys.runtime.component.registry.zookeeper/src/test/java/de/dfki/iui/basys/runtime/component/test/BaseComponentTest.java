@@ -135,13 +135,4 @@ public class BaseComponentTest {
         System.out.println("####################################################");
 	}
 	
-	protected void sleep(long seconds) {
-		try {
-			TimeUnit.MILLISECONDS.sleep(seconds*1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
 }

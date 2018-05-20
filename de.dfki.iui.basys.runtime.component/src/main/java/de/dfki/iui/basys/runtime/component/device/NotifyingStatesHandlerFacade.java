@@ -17,7 +17,7 @@ public class NotifyingStatesHandlerFacade implements ActiveStatesHandler, WaitSt
 
 	@Override
 	public void onStopped() {
-		component.LOGGER.info("onStopped");
+		component.LOGGER.info("onStopped - start");
 		component.updateRegistrationAndNotify();
 		component.onStopped();
 		component.LOGGER.info("onStopped - finished");
@@ -25,7 +25,7 @@ public class NotifyingStatesHandlerFacade implements ActiveStatesHandler, WaitSt
 
 	@Override
 	public void onIdle() {
-		component.LOGGER.info("onIdle");
+		component.LOGGER.info("onIdle - start");
 		component.updateRegistrationAndNotify();
 		component.onIdle();
 		component.LOGGER.info("onIdle - finished");
@@ -33,7 +33,7 @@ public class NotifyingStatesHandlerFacade implements ActiveStatesHandler, WaitSt
 
 	@Override
 	public void onComplete() {
-		component.LOGGER.info("onComplete");
+		component.LOGGER.info("onComplete - start");
 		component.updateRegistrationAndNotify();
 		component.onComplete();
 		component.LOGGER.info("onComplete - finished");
@@ -41,7 +41,7 @@ public class NotifyingStatesHandlerFacade implements ActiveStatesHandler, WaitSt
 
 	@Override
 	public void onHeld() {
-		component.LOGGER.info("onHeld");
+		component.LOGGER.info("onHeld - start");
 		component.updateRegistrationAndNotify();
 		component.onHeld();
 		component.LOGGER.info("onHeld - finished");
@@ -49,7 +49,7 @@ public class NotifyingStatesHandlerFacade implements ActiveStatesHandler, WaitSt
 
 	@Override
 	public void onSuspended() {
-		component.LOGGER.info("onSuspended");
+		component.LOGGER.info("onSuspended - start");
 		component.updateRegistrationAndNotify();
 		component.onSuspended();
 		component.LOGGER.info("onSuspended - finished");
@@ -57,7 +57,7 @@ public class NotifyingStatesHandlerFacade implements ActiveStatesHandler, WaitSt
 
 	@Override
 	public void onAborted() {
-		component.LOGGER.info("onAborted");
+		component.LOGGER.info("onAborted - start");
 		component.updateRegistrationAndNotify();
 		component.onAborted();
 		component.LOGGER.info("onAborted - finished");
@@ -69,7 +69,7 @@ public class NotifyingStatesHandlerFacade implements ActiveStatesHandler, WaitSt
 
 	@Override
 	public void onResetting() {
-		component.LOGGER.info("onResetting");
+		component.LOGGER.info("onResetting - start");
 		component.updateRegistrationAndNotify();
 		component.onResetting();
 		component.LOGGER.info("onResetting - finished");
@@ -77,7 +77,7 @@ public class NotifyingStatesHandlerFacade implements ActiveStatesHandler, WaitSt
 
 	@Override
 	public void onStarting() {
-		component.LOGGER.info("onStarting");
+		component.LOGGER.info("onStarting - start");
 		component.updateRegistrationAndNotify();
 		component.onStarting();
 		component.LOGGER.info("onStarting - finished");
@@ -85,7 +85,7 @@ public class NotifyingStatesHandlerFacade implements ActiveStatesHandler, WaitSt
 
 	@Override
 	public void onExecute() {
-		component.LOGGER.info("onExecute");
+		component.LOGGER.info("onExecute - start");
 		component.updateRegistrationAndNotify();
 		component.onExecute();
 		component.LOGGER.info("onExecute - finished");
@@ -93,7 +93,7 @@ public class NotifyingStatesHandlerFacade implements ActiveStatesHandler, WaitSt
 
 	@Override
 	public void onCompleting() {
-		component.LOGGER.info("onCompleting");
+		component.LOGGER.info("onCompleting - start");
 		component.updateRegistrationAndNotify();
 		component.onCompleting();
 		component.LOGGER.info("onCompleting - finished");
@@ -101,7 +101,7 @@ public class NotifyingStatesHandlerFacade implements ActiveStatesHandler, WaitSt
 
 	@Override
 	public void onHolding() {
-		component.LOGGER.info("onHolding");
+		component.LOGGER.info("onHolding - start");
 		component.updateRegistrationAndNotify();
 		component.onHolding();
 		component.LOGGER.info("onHolding - finished");
@@ -109,7 +109,7 @@ public class NotifyingStatesHandlerFacade implements ActiveStatesHandler, WaitSt
 
 	@Override
 	public void onUnholding() {
-		component.LOGGER.info("onUnholding");
+		component.LOGGER.info("onUnholding - start");
 		component.updateRegistrationAndNotify();
 		component.onUnholding();
 		component.LOGGER.info("onUnholding - finished");
@@ -117,7 +117,7 @@ public class NotifyingStatesHandlerFacade implements ActiveStatesHandler, WaitSt
 
 	@Override
 	public void onSuspending() {
-		component.LOGGER.info("onSuspending");
+		component.LOGGER.info("onSuspending - start");
 		component.updateRegistrationAndNotify();
 		component.onSuspending();
 		component.LOGGER.info("onSuspending - finished");
@@ -125,7 +125,7 @@ public class NotifyingStatesHandlerFacade implements ActiveStatesHandler, WaitSt
 
 	@Override
 	public void onUnsuspending() {
-		component.LOGGER.info("onUnsuspending");
+		component.LOGGER.info("onUnsuspending - start");
 		component.updateRegistrationAndNotify();
 		component.onUnsuspending();
 		component.LOGGER.info("onUnsuspending - finished");
@@ -133,7 +133,7 @@ public class NotifyingStatesHandlerFacade implements ActiveStatesHandler, WaitSt
 
 	@Override
 	public void onAborting() {
-		component.LOGGER.info("onAborting");
+		component.LOGGER.info("onAborting - start");
 		component.updateRegistrationAndNotify();
 		component.onAborting();
 		component.LOGGER.info("onAborting - finished");
@@ -141,7 +141,7 @@ public class NotifyingStatesHandlerFacade implements ActiveStatesHandler, WaitSt
 
 	@Override
 	public void onClearing() {
-		component.LOGGER.info("onClearing");
+		component.LOGGER.info("onClearing - start");
 		component.updateRegistrationAndNotify();
 		component.onClearing();
 		component.LOGGER.info("onClearing - finished");
@@ -149,7 +149,7 @@ public class NotifyingStatesHandlerFacade implements ActiveStatesHandler, WaitSt
 
 	@Override
 	public void onStopping() {
-		component.LOGGER.info("onStopping");
+		component.LOGGER.info("onStopping - start");
 		component.updateRegistrationAndNotify();
 		component.onStopping();
 		component.LOGGER.info("onStopping - finished");
