@@ -10,30 +10,43 @@
 	</parent>
 
 	<properties>
-		<bundle.symbolicName>de.dfki.iui.basys.runtime.services</bundle.symbolicName>
-		<bundle.namespace>de.dfki.iui.basys.runtime.services</bundle.namespace>
+		<bundle.symbolicName>de.dfki.iui.basys.runtime.processcontrol</bundle.symbolicName>
+		<bundle.namespace>de.dfki.iui.basys.runtime.processcontrol</bundle.namespace>
 	</properties>
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.dfki.iui.basys.runtime</groupId>
-	<artifactId>de.dfki.iui.basys.runtime.services</artifactId>
+	<artifactId>de.dfki.iui.basys.runtime.processcontrol</artifactId>
 
 	<name>${bundle.symbolicName}</name>
 
 	<packaging>bundle</packaging>
 
 	<dependencies>
-
-		<dependency>
-			<groupId>de.dfki.iui.basys.model</groupId>
-			<artifactId>de.dfki.iui.basys.model.domain</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-
+	
 		<dependency>
 			<groupId>de.dfki.iui.basys.runtime</groupId>
 			<artifactId>de.dfki.iui.basys.runtime.component</artifactId>
 			<version>${project.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.glassfish.jersey.core</groupId>
+			<artifactId>jersey-client</artifactId>
+			<version>2.27</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.glassfish.jersey.media/jersey-media-json-jackson -->
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-json-jackson</artifactId>
+			<version>2.27</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.fasterxml.jackson.core</groupId>
+					<artifactId>jackson-annotations</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		
 		<!-- comment to remove all imported (non-local) bundles from your compilation 

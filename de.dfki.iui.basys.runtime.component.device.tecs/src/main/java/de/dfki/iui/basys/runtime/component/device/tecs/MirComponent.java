@@ -15,6 +15,7 @@ import de.dfki.iui.basys.model.data.impl.DataFactoryImpl;
 import de.dfki.iui.basys.model.runtime.communication.Notification;
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
 import de.dfki.iui.basys.runtime.communication.CommFactory;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.ComponentException;
@@ -268,12 +269,20 @@ public class MirComponent extends TecsDeviceComponent {
 	@Override
 	public void onCompleting() {
 		// mir is in the position. nothing to do
+		
+		//send response to basys (dp)
+		//TODO: move to base class DeviceComponent
+		sendComponentResponse(ResponseStatus.OK, 0);
 	}
 
 	@Override
 	public void onStopping() {
 		try {
 			client.stopMovement();
+			
+			//send response to basys (dp)
+			//TODO: move to base class DeviceComponent; requires a statusCode member variable to be set here
+			sendComponentResponse(ResponseStatus.NOT_OK, 0);
 		} catch (TException e) {
 			e.printStackTrace();
 			abort();

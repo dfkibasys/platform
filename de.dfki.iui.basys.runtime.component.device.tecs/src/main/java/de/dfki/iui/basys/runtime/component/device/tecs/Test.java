@@ -4,8 +4,6 @@ import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.ComponentException;
-import de.dfki.tecs.Event;
-import de.dfki.tecs.ps.PSClient;
 
 public class Test {
 	
@@ -28,6 +26,8 @@ public class Test {
 		}
 		
 		System.out.println("C");
+		
+		//FIXME: man darf keine on*()-Methoden explizit aufrufen! (dp)
 		component.onResetting();
 		try {
 			Thread.sleep(1000);
@@ -36,6 +36,7 @@ public class Test {
 			e.printStackTrace();
 		}
 		
+		//FIXME: man darf keine on*()-Methoden explizit aufrufen! (dp)
 		component.onStarting();
 		
 		while(true) {}

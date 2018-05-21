@@ -28,6 +28,8 @@
 		<module>de.dfki.iui.basys.runtime.component.device.mqtt</module>
 		<module>de.dfki.iui.basys.runtime.connector</module>
 		<module>de.dfki.iui.basys.runtime.gateway</module>
+		<module>de.dfki.iui.basys.runtime.processapplication</module>
+		<module>de.dfki.iui.basys.runtime.processcontrol</module>
 		<module>de.dfki.iui.basys.runtime.services</module>
 	</modules>
 

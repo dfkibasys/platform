@@ -19,11 +19,14 @@ import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.ComponentInfo;
 import de.dfki.iui.basys.model.runtime.component.ComponentRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentRequestStatus;
+import de.dfki.iui.basys.model.runtime.component.ComponentResponse;
 import de.dfki.iui.basys.model.runtime.component.ControlMode;
 import de.dfki.iui.basys.model.runtime.component.RequestStatus;
+import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
 import de.dfki.iui.basys.model.runtime.component.State;
 import de.dfki.iui.basys.model.runtime.component.StatusRequest;
 import de.dfki.iui.basys.model.runtime.component.impl.ComponentRequestStatusImpl;
+import de.dfki.iui.basys.model.runtime.component.impl.ComponentResponseImpl;
 import de.dfki.iui.basys.runtime.component.BaseComponent;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.ComponentException;
@@ -40,6 +43,8 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 	protected PackMLUnit packmlUnit;
 
 	protected boolean resetOnComplete, resetOnStopped = false;
+	
+	protected CapabilityRequest currentRequest;
 
 	public DeviceComponent(ComponentConfiguration config) {
 		super(config);
@@ -178,6 +183,10 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 			return status;
 		
 		status = start();
+		
+		if (status.getStatus() == RequestStatus.ACCEPTED)
+			currentRequest = req;
+		
 		return status;
 	}
 
@@ -238,7 +247,7 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 			try {
 				ComponentInfo info = getComponentInfo();
 				Notification not = cf.createNotification(JsonUtils.toString(info));
-				//TODO ggf auf eigenem Thread
+				//TODO ggf auf eigenem Thread?
 				statusChannel.sendNotification(not);
 				
 			} catch (ChannelException | JsonProcessingException e) {
@@ -284,10 +293,26 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 		LOGGER.info("updateRegistrationAndNotify() - finished");
 	}
 
-	// protected void internalStop() {
-	// internalStop = true;
-	// stop();
-	// }
+	protected void sendComponentResponse(ResponseStatus status, int statusCode) {
+		if (currentRequest == null) {
+			LOGGER.error("Cannot send response to null request. Skipping.");
+			return;
+		}
+		
+		ComponentResponse response = new ComponentResponseImpl.Builder().componentId(getId()).request(currentRequest).status(status).statusCode(statusCode).build();
+	
+		try {
+			String payload = JsonUtils.toString(response);
+			Notification not = cf.createNotification(payload);
+			outChannel.sendNotification(not);			
+			
+			currentRequest = null;
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 
 	/*
 	 * CommandInterface

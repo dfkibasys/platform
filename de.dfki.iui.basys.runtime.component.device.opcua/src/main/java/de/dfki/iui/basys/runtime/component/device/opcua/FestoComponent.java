@@ -6,6 +6,7 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;
 
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
 import de.dfki.iui.basys.model.runtime.component.State;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.ComponentException;
@@ -80,8 +81,10 @@ public class FestoComponent extends OpcUaDeviceComponent {
 	@Override
 	public void onCompleting() {
 		super.onCompleting();
-		// report Job IO
 
+		//send response to basys (dp)
+		//TODO: move to base class DeviceComponent
+		sendComponentResponse(ResponseStatus.OK, 0);
 	}
 
 	@Override
