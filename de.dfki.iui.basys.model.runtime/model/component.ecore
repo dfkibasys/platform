@@ -117,9 +117,22 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="message" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StatusRequest" eSuperTypes="#//ComponentRequest"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ComponentResponse">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="componentId" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" eType="#//ResponseStatus"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="statusCode" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="message" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="request" eType="#//ComponentRequest"
+        containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="RequestStatus">
     <eLiterals name="UNDEFINED"/>
     <eLiterals name="ACCEPTED" value="1"/>
     <eLiterals name="REJECTED" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ResponseStatus">
+    <eLiterals name="UNDEFINED"/>
+    <eLiterals name="OK" value="1"/>
+    <eLiterals name="NOT_OK" value="2"/>
   </eClassifiers>
 </ecore:EPackage>

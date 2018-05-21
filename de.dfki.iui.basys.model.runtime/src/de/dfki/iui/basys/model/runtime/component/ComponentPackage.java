@@ -636,6 +636,79 @@ public interface ComponentPackage extends EPackage {
 	int STATUS_REQUEST_OPERATION_COUNT = COMPONENT_REQUEST_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.impl.ComponentResponseImpl <em>Response</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentResponseImpl
+	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getComponentResponse()
+	 * @generated
+	 */
+	int COMPONENT_RESPONSE = 9;
+
+	/**
+	 * The feature id for the '<em><b>Component Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_RESPONSE__COMPONENT_ID = 0;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_RESPONSE__STATUS = 1;
+
+	/**
+	 * The feature id for the '<em><b>Status Code</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_RESPONSE__STATUS_CODE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_RESPONSE__MESSAGE = 3;
+
+	/**
+	 * The feature id for the '<em><b>Request</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_RESPONSE__REQUEST = 4;
+
+	/**
+	 * The number of structural features of the '<em>Response</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_RESPONSE_FEATURE_COUNT = 5;
+
+	/**
+	 * The number of operations of the '<em>Response</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_RESPONSE_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.ComponentCategory <em>Category</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -643,7 +716,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getComponentCategory()
 	 * @generated
 	 */
-	int COMPONENT_CATEGORY = 9;
+	int COMPONENT_CATEGORY = 10;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.State <em>State</em>}' enum.
@@ -653,7 +726,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getState()
 	 * @generated
 	 */
-	int STATE = 10;
+	int STATE = 11;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.ControlMode <em>Control Mode</em>}' enum.
@@ -663,7 +736,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getControlMode()
 	 * @generated
 	 */
-	int CONTROL_MODE = 11;
+	int CONTROL_MODE = 12;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.ControlCommand <em>Control Command</em>}' enum.
@@ -673,7 +746,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getControlCommand()
 	 * @generated
 	 */
-	int CONTROL_COMMAND = 12;
+	int CONTROL_COMMAND = 13;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.RequestStatus <em>Request Status</em>}' enum.
@@ -683,7 +756,17 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getRequestStatus()
 	 * @generated
 	 */
-	int REQUEST_STATUS = 13;
+	int REQUEST_STATUS = 14;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.ResponseStatus <em>Response Status</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.runtime.component.ResponseStatus
+	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getResponseStatus()
+	 * @generated
+	 */
+	int RESPONSE_STATUS = 15;
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.runtime.component.ComponentInfo <em>Info</em>}'.
@@ -1127,6 +1210,71 @@ public interface ComponentPackage extends EPackage {
 	EClass getStatusRequest();
 
 	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.runtime.component.ComponentResponse <em>Response</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Response</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.ComponentResponse
+	 * @generated
+	 */
+	EClass getComponentResponse();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.runtime.component.ComponentResponse#getComponentId <em>Component Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Component Id</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.ComponentResponse#getComponentId()
+	 * @see #getComponentResponse()
+	 * @generated
+	 */
+	EAttribute getComponentResponse_ComponentId();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.runtime.component.ComponentResponse#getStatus <em>Status</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Status</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.ComponentResponse#getStatus()
+	 * @see #getComponentResponse()
+	 * @generated
+	 */
+	EAttribute getComponentResponse_Status();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.runtime.component.ComponentResponse#getStatusCode <em>Status Code</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Status Code</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.ComponentResponse#getStatusCode()
+	 * @see #getComponentResponse()
+	 * @generated
+	 */
+	EAttribute getComponentResponse_StatusCode();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.runtime.component.ComponentResponse#getMessage <em>Message</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Message</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.ComponentResponse#getMessage()
+	 * @see #getComponentResponse()
+	 * @generated
+	 */
+	EAttribute getComponentResponse_Message();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link de.dfki.iui.basys.model.runtime.component.ComponentResponse#getRequest <em>Request</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Request</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.ComponentResponse#getRequest()
+	 * @see #getComponentResponse()
+	 * @generated
+	 */
+	EReference getComponentResponse_Request();
+
+	/**
 	 * Returns the meta object for enum '{@link de.dfki.iui.basys.model.runtime.component.ComponentCategory <em>Category</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1175,6 +1323,16 @@ public interface ComponentPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getRequestStatus();
+
+	/**
+	 * Returns the meta object for enum '{@link de.dfki.iui.basys.model.runtime.component.ResponseStatus <em>Response Status</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Response Status</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.ResponseStatus
+	 * @generated
+	 */
+	EEnum getResponseStatus();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1546,6 +1704,56 @@ public interface ComponentPackage extends EPackage {
 		EClass STATUS_REQUEST = eINSTANCE.getStatusRequest();
 
 		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.runtime.component.impl.ComponentResponseImpl <em>Response</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentResponseImpl
+		 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getComponentResponse()
+		 * @generated
+		 */
+		EClass COMPONENT_RESPONSE = eINSTANCE.getComponentResponse();
+
+		/**
+		 * The meta object literal for the '<em><b>Component Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMPONENT_RESPONSE__COMPONENT_ID = eINSTANCE.getComponentResponse_ComponentId();
+
+		/**
+		 * The meta object literal for the '<em><b>Status</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMPONENT_RESPONSE__STATUS = eINSTANCE.getComponentResponse_Status();
+
+		/**
+		 * The meta object literal for the '<em><b>Status Code</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMPONENT_RESPONSE__STATUS_CODE = eINSTANCE.getComponentResponse_StatusCode();
+
+		/**
+		 * The meta object literal for the '<em><b>Message</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMPONENT_RESPONSE__MESSAGE = eINSTANCE.getComponentResponse_Message();
+
+		/**
+		 * The meta object literal for the '<em><b>Request</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPONENT_RESPONSE__REQUEST = eINSTANCE.getComponentResponse_Request();
+
+		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.runtime.component.ComponentCategory <em>Category</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1594,6 +1802,16 @@ public interface ComponentPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum REQUEST_STATUS = eINSTANCE.getRequestStatus();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.runtime.component.ResponseStatus <em>Response Status</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.runtime.component.ResponseStatus
+		 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getResponseStatus()
+		 * @generated
+		 */
+		EEnum RESPONSE_STATUS = eINSTANCE.getResponseStatus();
 
 	}
 

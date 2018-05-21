@@ -138,10 +138,10 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case ComponentPackage.PROPERTY__KEY:
-			return getKey();
-		case ComponentPackage.PROPERTY__VALUE:
-			return getValue();
+			case ComponentPackage.PROPERTY__KEY:
+				return getKey();
+			case ComponentPackage.PROPERTY__VALUE:
+				return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -154,12 +154,12 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case ComponentPackage.PROPERTY__KEY:
-			setKey((String) newValue);
-			return;
-		case ComponentPackage.PROPERTY__VALUE:
-			setValue((String) newValue);
-			return;
+			case ComponentPackage.PROPERTY__KEY:
+				setKey((String)newValue);
+				return;
+			case ComponentPackage.PROPERTY__VALUE:
+				setValue((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -172,12 +172,12 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case ComponentPackage.PROPERTY__KEY:
-			setKey(KEY_EDEFAULT);
-			return;
-		case ComponentPackage.PROPERTY__VALUE:
-			setValue(VALUE_EDEFAULT);
-			return;
+			case ComponentPackage.PROPERTY__KEY:
+				setKey(KEY_EDEFAULT);
+				return;
+			case ComponentPackage.PROPERTY__VALUE:
+				setValue(VALUE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -190,10 +190,10 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case ComponentPackage.PROPERTY__KEY:
-			return KEY_EDEFAULT == null ? key != null : !KEY_EDEFAULT.equals(key);
-		case ComponentPackage.PROPERTY__VALUE:
-			return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+			case ComponentPackage.PROPERTY__KEY:
+				return KEY_EDEFAULT == null ? key != null : !KEY_EDEFAULT.equals(key);
+			case ComponentPackage.PROPERTY__VALUE:
+				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -205,8 +205,7 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (key: ");

@@ -18,11 +18,13 @@ import de.dfki.iui.basys.model.runtime.component.ComponentInfo;
 import de.dfki.iui.basys.model.runtime.component.ControlMode;
 import de.dfki.iui.basys.model.runtime.component.Property;
 import de.dfki.iui.basys.model.runtime.component.RequestStatus;
+import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
 import de.dfki.iui.basys.model.runtime.component.State;
 import de.dfki.iui.basys.model.runtime.component.StatusRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentPackage;
 import de.dfki.iui.basys.model.runtime.component.ComponentRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentRequestStatus;
+import de.dfki.iui.basys.model.runtime.component.ComponentResponse;
 import de.dfki.iui.basys.model.runtime.component.ControlCommand;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -109,6 +111,13 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass componentResponseEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum componentCategoryEEnum = null;
 
 	/**
@@ -138,6 +147,13 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 * @generated
 	 */
 	private EEnum requestStatusEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum responseStatusEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -583,6 +599,60 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getComponentResponse() {
+		return componentResponseEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getComponentResponse_ComponentId() {
+		return (EAttribute)componentResponseEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getComponentResponse_Status() {
+		return (EAttribute)componentResponseEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getComponentResponse_StatusCode() {
+		return (EAttribute)componentResponseEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getComponentResponse_Message() {
+		return (EAttribute)componentResponseEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getComponentResponse_Request() {
+		return (EReference)componentResponseEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getComponentCategory() {
 		return componentCategoryEEnum;
 	}
@@ -621,6 +691,15 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 */
 	public EEnum getRequestStatus() {
 		return requestStatusEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getResponseStatus() {
+		return responseStatusEEnum;
 	}
 
 	/**
@@ -701,12 +780,20 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 
 		statusRequestEClass = createEClass(STATUS_REQUEST);
 
+		componentResponseEClass = createEClass(COMPONENT_RESPONSE);
+		createEAttribute(componentResponseEClass, COMPONENT_RESPONSE__COMPONENT_ID);
+		createEAttribute(componentResponseEClass, COMPONENT_RESPONSE__STATUS);
+		createEAttribute(componentResponseEClass, COMPONENT_RESPONSE__STATUS_CODE);
+		createEAttribute(componentResponseEClass, COMPONENT_RESPONSE__MESSAGE);
+		createEReference(componentResponseEClass, COMPONENT_RESPONSE__REQUEST);
+
 		// Create enums
 		componentCategoryEEnum = createEEnum(COMPONENT_CATEGORY);
 		stateEEnum = createEEnum(STATE);
 		controlModeEEnum = createEEnum(CONTROL_MODE);
 		controlCommandEEnum = createEEnum(CONTROL_COMMAND);
 		requestStatusEEnum = createEEnum(REQUEST_STATUS);
+		responseStatusEEnum = createEEnum(RESPONSE_STATUS);
 	}
 
 	/**
@@ -798,6 +885,13 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 
 		initEClass(statusRequestEClass, StatusRequest.class, "StatusRequest", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEClass(componentResponseEClass, ComponentResponse.class, "ComponentResponse", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getComponentResponse_ComponentId(), theEcorePackage.getEString(), "componentId", null, 0, 1, ComponentResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getComponentResponse_Status(), this.getResponseStatus(), "status", null, 0, 1, ComponentResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getComponentResponse_StatusCode(), theEcorePackage.getEInt(), "statusCode", null, 0, 1, ComponentResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getComponentResponse_Message(), theEcorePackage.getEString(), "message", null, 0, 1, ComponentResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getComponentResponse_Request(), this.getComponentRequest(), null, "request", null, 0, 1, ComponentResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(componentCategoryEEnum, ComponentCategory.class, "ComponentCategory");
 		addEEnumLiteral(componentCategoryEEnum, ComponentCategory.NONE);
@@ -852,6 +946,11 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		addEEnumLiteral(requestStatusEEnum, RequestStatus.UNDEFINED);
 		addEEnumLiteral(requestStatusEEnum, RequestStatus.ACCEPTED);
 		addEEnumLiteral(requestStatusEEnum, RequestStatus.REJECTED);
+
+		initEEnum(responseStatusEEnum, ResponseStatus.class, "ResponseStatus");
+		addEEnumLiteral(responseStatusEEnum, ResponseStatus.UNDEFINED);
+		addEEnumLiteral(responseStatusEEnum, ResponseStatus.OK);
+		addEEnumLiteral(responseStatusEEnum, ResponseStatus.NOT_OK);
 
 		// Create resource
 		createResource(eNS_URI);

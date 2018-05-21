@@ -94,6 +94,15 @@ public interface ComponentFactory extends EFactory {
 	StatusRequest createStatusRequest();
 
 	/**
+	 * Returns a new object of class '<em>Response</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Response</em>'.
+	 * @generated
+	 */
+	ComponentResponse createComponentResponse();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

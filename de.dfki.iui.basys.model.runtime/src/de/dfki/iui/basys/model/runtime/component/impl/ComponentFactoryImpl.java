@@ -65,6 +65,7 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 			case ComponentPackage.CAPABILITY_REQUEST: return createCapabilityRequest();
 			case ComponentPackage.COMPONENT_REQUEST_STATUS: return createComponentRequestStatus();
 			case ComponentPackage.STATUS_REQUEST: return createStatusRequest();
+			case ComponentPackage.COMPONENT_RESPONSE: return createComponentResponse();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -88,6 +89,8 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 				return createControlCommandFromString(eDataType, initialValue);
 			case ComponentPackage.REQUEST_STATUS:
 				return createRequestStatusFromString(eDataType, initialValue);
+			case ComponentPackage.RESPONSE_STATUS:
+				return createResponseStatusFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -111,6 +114,8 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 				return convertControlCommandToString(eDataType, instanceValue);
 			case ComponentPackage.REQUEST_STATUS:
 				return convertRequestStatusToString(eDataType, instanceValue);
+			case ComponentPackage.RESPONSE_STATUS:
+				return convertResponseStatusToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -194,6 +199,16 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 	public StatusRequest createStatusRequest() {
 		StatusRequestImpl statusRequest = new StatusRequestImpl();
 		return statusRequest;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ComponentResponse createComponentResponse() {
+		ComponentResponseImpl componentResponse = new ComponentResponseImpl();
+		return componentResponse;
 	}
 
 	/**
@@ -293,6 +308,26 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 	 * @generated
 	 */
 	public String convertRequestStatusToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ResponseStatus createResponseStatusFromString(EDataType eDataType, String initialValue) {
+		ResponseStatus result = ResponseStatus.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertResponseStatusToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
