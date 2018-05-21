@@ -46,20 +46,20 @@
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/org.apache.curator/curator-framework -->
- 		<dependency>
+<!--  		<dependency>
 			<groupId>org.apache.curator</groupId>
 			<artifactId>curator-framework</artifactId>
 			<version>${curator.version}</version>
 		</dependency> 
-
+ -->
 		<!-- https://mvnrepository.com/artifact/org.apache.curator/curator-x-discovery -->
-		<dependency>
+<!-- 		<dependency>
 			<groupId>org.apache.curator</groupId>
 			<artifactId>curator-x-discovery</artifactId>
 			<version>${curator-x.version}</version>
-		</dependency> 
+		</dependency>  -->
 
-		 <dependency>
+<!-- 		 <dependency>
 			<groupId>org.apache.curator</groupId>
 			<artifactId>curator-client</artifactId>
 			<version>${curator.version}</version>
@@ -73,8 +73,9 @@
 					<artifactId>log4j</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency>
-		<!-- 
+		</dependency> -->
+		
+ 
 		<dependency>
 			<groupId>de.dfki.iui.basys.build.wrapper-bundle-settings</groupId>
 			<artifactId>org.apache.curator.client</artifactId>
@@ -89,10 +90,17 @@
 		
 		<dependency>
 			<groupId>de.dfki.iui.basys.build.wrapper-bundle-settings</groupId>
+			<artifactId>org.apache.curator.x.discovery</artifactId>
+			<version>4.0.0-001-SNAPSHOT</version>			
+		</dependency>
+		
+		<dependency>
+			<groupId>de.dfki.iui.basys.build.wrapper-bundle-settings</groupId>
 			<artifactId>org.apache.zookeeper</artifactId>
 			<version>3.5.3-beta-001-SNAPSHOT</version>			
 		</dependency>
 
+ 
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
@@ -115,7 +123,7 @@
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
 			<version>1.9.13</version>			
-		</dependency> -->
+		</dependency>
 
 		<!-- comment to remove all imported (non-local) bundles from your compilation 
 			classpath -->
