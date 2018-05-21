@@ -101,6 +101,10 @@ public class DeviceComponentController implements CommandInterface, ChannelListe
 		isConnected = false;
 	}
 
+	public ComponentInfo getComponentInfo() {
+		return componentInfo;
+	}
+	
 	private ComponentRequestStatus sendCommandRequest(ControlCommand command) {
 		ComponentRequest cr = new CommandRequestImpl.Builder().componentId(componentId).controlCommand(command).build();
 		return sendComponentRequest(cr);
@@ -132,7 +136,7 @@ public class DeviceComponentController implements CommandInterface, ChannelListe
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return status;
 	}
 
 	public ComponentRequestStatus executeCapability(Capability capability) {

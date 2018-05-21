@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.13.1">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.14.0">
   <bpmn:process id="de.dfki.iui.basys.runtime.processapplication" name="de.dfki.iui.basys.runtime.processapplication" isExecutable="true">
     <bpmn:startEvent id="StartEventProcessStarted" name="Process&#10;started">
       <bpmn:outgoing>SequenceFlow_0twvgwl</bpmn:outgoing>
@@ -7,7 +7,7 @@
     <bpmn:endEvent id="EndEventProcessEnded" name="Process&#10;ended">
       <bpmn:incoming>SequenceFlow_1dxkbvo</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="SequenceFlow_0twvgwl" sourceRef="StartEventProcessStarted" targetRef="Task_0tk4ynx" />
+    <bpmn:sequenceFlow id="SequenceFlow_0twvgwl" sourceRef="StartEventProcessStarted" targetRef="ServiceTask_0tk4ynx" />
     <bpmn:serviceTask id="ServiceTask_0tk4ynx" name="Do Something with Component 1" camunda:type="external" camunda:topic="BasysTask">
       <bpmn:extensionElements>
         <camunda:field name="resourceInstanceId">
@@ -71,7 +71,7 @@ params</camunda:script>
       <bpmn:incoming>SequenceFlow_0zwm1k7</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1dxkbvo</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:sequenceFlow id="SequenceFlow_1mnpz3r" sourceRef="Task_0tk4ynx" targetRef="ServiceTask_037pd5y" />
+    <bpmn:sequenceFlow id="SequenceFlow_1mnpz3r" sourceRef="ServiceTask_0tk4ynx" targetRef="ServiceTask_037pd5y" />
     <bpmn:sequenceFlow id="SequenceFlow_0zwm1k7" sourceRef="ServiceTask_037pd5y" targetRef="ServiceTask_1akuy9z" />
     <bpmn:sequenceFlow id="SequenceFlow_1dxkbvo" sourceRef="ServiceTask_1akuy9z" targetRef="EndEventProcessEnded" />
   </bpmn:process>
@@ -96,7 +96,7 @@ params</camunda:script>
           <dc:Bounds x="238" y="99" width="90" height="12" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="ServiceTask_1pvztul_di" bpmnElement="Task_0tk4ynx">
+      <bpmndi:BPMNShape id="ServiceTask_1pvztul_di" bpmnElement="ServiceTask_0tk4ynx">
         <dc:Bounds x="325" y="80" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ServiceTask_037pd5y_di" bpmnElement="ServiceTask_037pd5y">

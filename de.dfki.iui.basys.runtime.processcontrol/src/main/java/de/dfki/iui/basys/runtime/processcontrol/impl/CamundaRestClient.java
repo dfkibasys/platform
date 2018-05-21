@@ -73,7 +73,7 @@ public class CamundaRestClient {
     	Response response = client
     			.target(baseUrl + taskId + "/complete")
     			.request(MediaType.APPLICATION_JSON)
-    			.post(Entity.entity("{\"workerId\": \"scheduler\"}", MediaType.APPLICATION_JSON));
+    			.post(Entity.entity("{\"workerId\": \""+workerId+"\"}", MediaType.APPLICATION_JSON));
     	LOGGER.debug("Complete task {} succeded with status code {}", taskId, response.getStatus());
     }
 
@@ -97,7 +97,7 @@ public class CamundaRestClient {
     			.target(baseUrl + taskId + "/failure")
     			.request(MediaType.APPLICATION_JSON)
     			.post(Entity.entity("{\n"
-                        + "  \"workerId\": \"scheduler\",\n"
+                        + "  \"workerId\": \""+workerId+"\",\n"
                         + "  \"errorMessage\": \"" + message + "\",\n"
                         + "  \"retries\": " + retries + ",\n"
                         + "  \"retryTimeout\": " + retryTimeout + "\n"

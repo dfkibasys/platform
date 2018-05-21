@@ -4,11 +4,14 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl;
+import de.dfki.iui.basys.runtime.processcontrol.impl.CamundaTaskScheduler;
+import de.dfki.iui.basys.runtime.component.device.DeviceComponent;
 import de.dfki.iui.basys.runtime.processcontrol.impl.CamundaRestClient;
 import de.dfki.iui.basys.runtime.processcontrol.impl.ExternalServiceTaskDto;
 
@@ -33,13 +36,49 @@ public class ProcessControlTest extends BaseComponentTest {
 	}
 	
 	@Test
-	//@Ignore
+	@Ignore
 	public void testCamundaRestClient() {
 		CamundaRestClient camundaClient = new CamundaRestClient(taskSchedulerConfig.getComponentId(), taskSchedulerConfig.getExternalConnectionString());
 		List<ExternalServiceTaskDto> tasks = camundaClient.getExternalTasks("BasysTask", 30 * 1000, "assignee", "command", "parameters");
 		 
 		assertEquals(1,	tasks.size());
 		
+	}
+
+	@Test
+	//@Ignore
+	public void testCamundaSchedulerOk() throws Exception {
+
+		componentManager.createLocalComponent(config1);
+		DeviceComponent d1 = (DeviceComponent)componentManager.getLocalComponentById(config1.getComponentId());
+		d1.reset();
+		
+		componentManager.createLocalComponent(config2);
+		DeviceComponent d2 = (DeviceComponent)componentManager.getLocalComponentById(config2.getComponentId());
+		d2.reset();
+		
+		componentManager.createLocalComponent(config3);
+		DeviceComponent d3 = (DeviceComponent)componentManager.getLocalComponentById(config3.getComponentId());
+		d3.reset();
+		
+		componentManager.createLocalComponent(taskSchedulerConfig);
+		
+		Thread.currentThread().sleep(60*10*1000);
+				
+	}
+	
+	@Test
+	//@Ignore
+	public void testCamundaSchedulerNotOk() throws Exception {
+
+		componentManager.createLocalComponent(config1);
+		componentManager.createLocalComponent(config2);
+		componentManager.createLocalComponent(config3);
+
+		componentManager.createLocalComponent(taskSchedulerConfig);
+		
+		Thread.currentThread().sleep(60*10*1000);
+				
 	}
 	
 	

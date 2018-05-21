@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
 import de.dfki.iui.basys.model.runtime.component.State;
 import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
 
@@ -65,6 +66,8 @@ public class TestDeviceComponent extends DeviceComponent {
 	public void onCompleting() {
 		recentStates.add(State.COMPLETING);
 		sleep(1);
+
+		sendComponentResponse(ResponseStatus.OK, 0);
 	}
 
 	@Override
@@ -107,6 +110,8 @@ public class TestDeviceComponent extends DeviceComponent {
 	public void onStopping() {
 		recentStates.add(State.STOPPING);
 		sleep(1);
+		
+		sendComponentResponse(ResponseStatus.NOT_OK, 0);
 	}
 
 	/* Wait States */
