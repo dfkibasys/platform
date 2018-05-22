@@ -70,6 +70,7 @@ public class TopologyFactoryImpl extends EFactoryImpl implements TopologyFactory
 			case TopologyPackage.EQUIPMENT_MODULE: return createEquipmentModule();
 			case TopologyPackage.CONTROL_MODULE: return createControlModule();
 			case TopologyPackage.STATION: return createStation();
+			case TopologyPackage.AGV_STATION: return createAGVStation();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -203,6 +204,16 @@ public class TopologyFactoryImpl extends EFactoryImpl implements TopologyFactory
 	public Station createStation() {
 		StationImpl station = new StationImpl();
 		return station;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AGVStation createAGVStation() {
+		AGVStationImpl agvStation = new AGVStationImpl();
+		return agvStation;
 	}
 
 	/**

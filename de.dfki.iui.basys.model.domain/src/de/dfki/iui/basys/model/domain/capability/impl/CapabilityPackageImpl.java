@@ -640,6 +640,15 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getMoveToLocation_TargetLocation() {
+		return (EReference)moveToLocationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getProjectPath() {
 		return projectPathEClass;
 	}
@@ -1020,6 +1029,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		generalCapabilityEClass = createEClass(GENERAL_CAPABILITY);
 
 		moveToLocationEClass = createEClass(MOVE_TO_LOCATION);
+		createEReference(moveToLocationEClass, MOVE_TO_LOCATION__TARGET_LOCATION);
 
 		projectPathEClass = createEClass(PROJECT_PATH);
 		createEReference(projectPathEClass, PROJECT_PATH__PATH);
@@ -1066,6 +1076,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		BasePackage theBasePackage = (BasePackage)EPackage.Registry.INSTANCE.getEPackage(BasePackage.eNS_URI);
 		PatternPackage thePatternPackage = (PatternPackage)EPackage.Registry.INSTANCE.getEPackage(PatternPackage.eNS_URI);
 		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
+		TopologyPackage theTopologyPackage = (TopologyPackage)EPackage.Registry.INSTANCE.getEPackage(TopologyPackage.eNS_URI);
 		DataPackage theDataPackage = (DataPackage)EPackage.Registry.INSTANCE.getEPackage(DataPackage.eNS_URI);
 
 		// Create type parameters
@@ -1171,6 +1182,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		initEClass(generalCapabilityEClass, GeneralCapability.class, "GeneralCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(moveToLocationEClass, MoveToLocation.class, "MoveToLocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getMoveToLocation_TargetLocation(), theTopologyPackage.getTopologyElement(), null, "targetLocation", null, 0, 1, MoveToLocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(projectPathEClass, ProjectPath.class, "ProjectPath", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getProjectPath_Path(), theDataPackage.getPath(), null, "path", null, 0, 1, ProjectPath.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

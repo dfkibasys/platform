@@ -371,6 +371,29 @@ public class TopologyItemProviderAdapterFactory extends TopologyAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.AGVStation} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AGVStationItemProvider agvStationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.topology.AGVStation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAGVStationAdapter() {
+		if (agvStationItemProvider == null) {
+			agvStationItemProvider = new AGVStationItemProvider(this);
+		}
+
+		return agvStationItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.topology.ProcessUnit} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -506,6 +529,7 @@ public class TopologyItemProviderAdapterFactory extends TopologyAdapterFactory i
 		if (equipmentModuleItemProvider != null) equipmentModuleItemProvider.dispose();
 		if (controlModuleItemProvider != null) controlModuleItemProvider.dispose();
 		if (stationItemProvider != null) stationItemProvider.dispose();
+		if (agvStationItemProvider != null) agvStationItemProvider.dispose();
 	}
 
 }

@@ -1924,13 +1924,22 @@ public interface CapabilityPackage extends EPackage {
 	int MOVE_TO_LOCATION__METADATA = GENERAL_CAPABILITY__METADATA;
 
 	/**
+	 * The feature id for the '<em><b>Target Location</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVE_TO_LOCATION__TARGET_LOCATION = GENERAL_CAPABILITY_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Move To Location</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MOVE_TO_LOCATION_FEATURE_COUNT = GENERAL_CAPABILITY_FEATURE_COUNT + 0;
+	int MOVE_TO_LOCATION_FEATURE_COUNT = GENERAL_CAPABILITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Move To Location</em>' class.
@@ -2419,6 +2428,17 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getMoveToLocation();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.dfki.iui.basys.model.domain.capability.MoveToLocation#getTargetLocation <em>Target Location</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target Location</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.MoveToLocation#getTargetLocation()
+	 * @see #getMoveToLocation()
+	 * @generated
+	 */
+	EReference getMoveToLocation_TargetLocation();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.ProjectPath <em>Project Path</em>}'.
@@ -3007,6 +3027,14 @@ public interface CapabilityPackage extends EPackage {
 		 * @generated
 		 */
 		EClass MOVE_TO_LOCATION = eINSTANCE.getMoveToLocation();
+
+		/**
+		 * The meta object literal for the '<em><b>Target Location</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MOVE_TO_LOCATION__TARGET_LOCATION = eINSTANCE.getMoveToLocation_TargetLocation();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.ProjectPathImpl <em>Project Path</em>}' class.

@@ -145,6 +145,11 @@ public class StationItemProvider extends EntityItemProvider {
 			(createChildParameter
 				(TopologyPackage.Literals.STATION__EQUIPMENT_MODULES,
 				 TopologyFactory.eINSTANCE.createEquipmentModule()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.STATION__EQUIPMENT_MODULES,
+				 TopologyFactory.eINSTANCE.createAGVStation()));
 	}
 
 	/**

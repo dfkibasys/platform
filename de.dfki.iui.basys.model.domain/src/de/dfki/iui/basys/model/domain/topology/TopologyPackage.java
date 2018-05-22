@@ -1390,6 +1390,115 @@ public interface TopologyPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.topology.impl.AGVStationImpl <em>AGV Station</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.AGVStationImpl
+	 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getAGVStation()
+	 * @generated
+	 */
+	int AGV_STATION = 17;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AGV_STATION__BINDING = EQUIPMENT_MODULE__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AGV_STATION__ID = EQUIPMENT_MODULE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AGV_STATION__NAME = EQUIPMENT_MODULE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AGV_STATION__METADATA = EQUIPMENT_MODULE__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Control Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AGV_STATION__CONTROL_MODULES = EQUIPMENT_MODULE__CONTROL_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Equipment Modules</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AGV_STATION__EQUIPMENT_MODULES = EQUIPMENT_MODULE__EQUIPMENT_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Capability Requirement</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AGV_STATION__CAPABILITY_REQUIREMENT = EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT;
+
+	/**
+	 * The feature id for the '<em><b>Assigned Resource Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AGV_STATION__ASSIGNED_RESOURCE_TYPE = EQUIPMENT_MODULE__ASSIGNED_RESOURCE_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Assigned Resource Instance</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AGV_STATION__ASSIGNED_RESOURCE_INSTANCE = EQUIPMENT_MODULE__ASSIGNED_RESOURCE_INSTANCE;
+
+	/**
+	 * The number of structural features of the '<em>AGV Station</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AGV_STATION_FEATURE_COUNT = EQUIPMENT_MODULE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>AGV Station</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AGV_STATION_OPERATION_COUNT = EQUIPMENT_MODULE_OPERATION_COUNT + 0;
+
+	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.Enterprise <em>Enterprise</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1738,6 +1847,16 @@ public interface TopologyPackage extends EPackage {
 	EReference getStation_EquipmentModules();
 
 	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.AGVStation <em>AGV Station</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>AGV Station</em>'.
+	 * @see de.dfki.iui.basys.model.domain.topology.AGVStation
+	 * @generated
+	 */
+	EClass getAGVStation();
+
+	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.topology.ProcessUnit <em>Process Unit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2073,6 +2192,16 @@ public interface TopologyPackage extends EPackage {
 		 * @generated
 		 */
 		EReference STATION__EQUIPMENT_MODULES = eINSTANCE.getStation_EquipmentModules();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.AGVStationImpl <em>AGV Station</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.AGVStationImpl
+		 * @see de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl#getAGVStation()
+		 * @generated
+		 */
+		EClass AGV_STATION = eINSTANCE.getAGVStation();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.topology.impl.ProcessUnitImpl <em>Process Unit</em>}' class.

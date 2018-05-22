@@ -567,6 +567,11 @@ public class CapabilityRequestItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
+				 TopologyFactory.eINSTANCE.createAGVStation()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
 				 WorkerguidanceFactory.eINSTANCE.createInstruction()));
 
 		newChildDescriptors.add

@@ -135,6 +135,11 @@ public class WorkUnitItemProvider extends EntityItemProvider {
 			(createChildParameter
 				(TopologyPackage.Literals.WORK_UNIT__EQUIPMENT_MODULES,
 				 TopologyFactory.eINSTANCE.createEquipmentModule()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.WORK_UNIT__EQUIPMENT_MODULES,
+				 TopologyFactory.eINSTANCE.createAGVStation()));
 	}
 
 	/**

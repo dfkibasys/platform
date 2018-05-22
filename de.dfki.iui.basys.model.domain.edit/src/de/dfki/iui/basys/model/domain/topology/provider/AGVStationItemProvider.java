@@ -1,34 +1,31 @@
 /**
  */
-package de.dfki.iui.basys.model.domain.capability.provider;
+package de.dfki.iui.basys.model.domain.topology.provider;
 
 
-import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
-import de.dfki.iui.basys.model.domain.capability.MoveToLocation;
+import de.dfki.iui.basys.model.domain.topology.AGVStation;
 
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 /**
- * This is the item provider adapter for a {@link de.dfki.iui.basys.model.domain.capability.MoveToLocation} object.
+ * This is the item provider adapter for a {@link de.dfki.iui.basys.model.domain.topology.AGVStation} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class MoveToLocationItemProvider extends GeneralCapabilityItemProvider {
+public class AGVStationItemProvider extends EquipmentModuleItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MoveToLocationItemProvider(AdapterFactory adapterFactory) {
+	public AGVStationItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -43,42 +40,19 @@ public class MoveToLocationItemProvider extends GeneralCapabilityItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addTargetLocationPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Target Location feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addTargetLocationPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_MoveToLocation_targetLocation_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_MoveToLocation_targetLocation_feature", "_UI_MoveToLocation_type"),
-				 CapabilityPackage.Literals.MOVE_TO_LOCATION__TARGET_LOCATION,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This returns MoveToLocation.gif.
+	 * This returns AGVStation.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/MoveToLocation"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/AGVStation"));
 	}
 
 	/**
@@ -89,10 +63,10 @@ public class MoveToLocationItemProvider extends GeneralCapabilityItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((MoveToLocation)object).getName();
+		String label = ((AGVStation)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_MoveToLocation_type") :
-			getString("_UI_MoveToLocation_type") + " " + label;
+			getString("_UI_AGVStation_type") :
+			getString("_UI_AGVStation_type") + " " + label;
 	}
 	
 

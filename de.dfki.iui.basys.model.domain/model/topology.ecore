@@ -81,4 +81,5 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="equipmentModules" upperBound="-1"
         eType="#//EquipmentModule" containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AGVStation" eSuperTypes="#//EquipmentModule"/>
 </ecore:EPackage>

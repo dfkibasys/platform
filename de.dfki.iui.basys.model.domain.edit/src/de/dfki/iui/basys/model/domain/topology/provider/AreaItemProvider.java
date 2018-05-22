@@ -168,6 +168,11 @@ public class AreaItemProvider extends EntityItemProvider {
 			(createChildParameter
 				(TopologyPackage.Literals.AREA__EQUIPMENT_MODULES,
 				 TopologyFactory.eINSTANCE.createEquipmentModule()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.AREA__EQUIPMENT_MODULES,
+				 TopologyFactory.eINSTANCE.createAGVStation()));
 	}
 
 	/**

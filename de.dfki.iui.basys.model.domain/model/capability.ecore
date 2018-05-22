@@ -72,7 +72,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="State" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GeneralCapability" eSuperTypes="#//Capability"/>
-  <eClassifiers xsi:type="ecore:EClass" name="MoveToLocation" eSuperTypes="#//GeneralCapability"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MoveToLocation" eSuperTypes="#//GeneralCapability">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetLocation" eType="ecore:EClass topology.ecore#//TopologyElement"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ProjectPath" eSuperTypes="#//WorkerAssistenceCapability">
     <eStructuralFeatures xsi:type="ecore:EReference" name="path" eType="ecore:EClass ../../de.dfki.iui.basys.model.base/model/data.ecore#//Path"
         containment="true"/>

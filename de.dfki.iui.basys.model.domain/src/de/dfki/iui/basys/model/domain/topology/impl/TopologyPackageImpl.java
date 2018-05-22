@@ -38,6 +38,7 @@ import de.dfki.iui.basys.model.domain.staff.StaffPackage;
 
 import de.dfki.iui.basys.model.domain.staff.impl.StaffPackageImpl;
 
+import de.dfki.iui.basys.model.domain.topology.AGVStation;
 import de.dfki.iui.basys.model.domain.topology.Area;
 import de.dfki.iui.basys.model.domain.topology.ControlModule;
 import de.dfki.iui.basys.model.domain.topology.Enterprise;
@@ -196,6 +197,13 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 	 * @generated
 	 */
 	private EClass stationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass agvStationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -626,6 +634,15 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getAGVStation() {
+		return agvStationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getProcessUnit() {
 		return processUnitEClass;
 	}
@@ -709,6 +726,8 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 
 		stationEClass = createEClass(STATION);
 		createEReference(stationEClass, STATION__EQUIPMENT_MODULES);
+
+		agvStationEClass = createEClass(AGV_STATION);
 	}
 
 	/**
@@ -762,6 +781,7 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		equipmentModuleEClass.getESuperTypes().add(this.getTopologyElement());
 		controlModuleEClass.getESuperTypes().add(this.getTopologyElement());
 		stationEClass.getESuperTypes().add(this.getTopologyElement());
+		agvStationEClass.getESuperTypes().add(this.getEquipmentModule());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(topologyElementEClass, TopologyElement.class, "TopologyElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -815,6 +835,8 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 
 		initEClass(stationEClass, Station.class, "Station", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getStation_EquipmentModules(), this.getEquipmentModule(), null, "equipmentModules", null, 0, -1, Station.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(agvStationEClass, AGVStation.class, "AGVStation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

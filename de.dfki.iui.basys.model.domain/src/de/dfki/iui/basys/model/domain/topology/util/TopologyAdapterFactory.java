@@ -139,6 +139,10 @@ public class TopologyAdapterFactory extends AdapterFactoryImpl {
 				return createStationAdapter();
 			}
 			@Override
+			public Adapter caseAGVStation(AGVStation object) {
+				return createAGVStationAdapter();
+			}
+			@Override
 			public Adapter caseBObject(BObject object) {
 				return createBObjectAdapter();
 			}
@@ -387,6 +391,20 @@ public class TopologyAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createStationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.topology.AGVStation <em>AGV Station</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.domain.topology.AGVStation
+	 * @generated
+	 */
+	public Adapter createAGVStationAdapter() {
 		return null;
 	}
 
