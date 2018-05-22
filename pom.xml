@@ -31,6 +31,7 @@
 		<module>de.dfki.iui.basys.runtime.processapplication</module>
 		<module>de.dfki.iui.basys.runtime.processcontrol</module>
 		<module>de.dfki.iui.basys.runtime.services</module>
+        <module>de.dfki.iui.basys.runtime.services.worldmodelManager</module>
 	</modules>
 
 	<scm>

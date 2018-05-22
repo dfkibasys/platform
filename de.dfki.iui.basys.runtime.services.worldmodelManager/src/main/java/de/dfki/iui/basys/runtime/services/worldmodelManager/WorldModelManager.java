@@ -1,4 +1,4 @@
-package de.dfki.iui.basys.runtime.services;
+package de.dfki.iui.basys.runtime.services.worldmodelManager;
 
 import java.util.List;
 
@@ -8,6 +8,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityApplication;
 
 @Path("/worldmodel")
 public interface WorldModelManager {
@@ -19,31 +21,51 @@ public interface WorldModelManager {
 			@JsonProperty
 			private String serialId;
 			@JsonProperty
-			private String from_position;
-			@JsonProperty
-			private String to_position;
+			private String position;
 			@JsonProperty
 			private boolean in_transit;
 			@JsonProperty
 			private long eta;
 			@JsonProperty
 			private String variant;
+
+			public WMProductInstance(String serialId, String position, boolean in_transit, long eta, String variant) {
+				this.serialId = serialId;
+				this.position = position;
+				this.in_transit = in_transit;
+				this.eta = eta;
+				this.variant = variant;
+			}
+
 		}
 
-		public class WMCapability {
-			@JsonProperty
-			private String id;
-		}
+		/*
+		 * public class WMCapability {
+		 * 
+		 * @JsonProperty private String id; }
+		 */
 
 		public class WMResourceInstance {
 			@JsonProperty
-			private String id;
+			private String serialId;
 			@JsonProperty
 			private String from_position;
 			@JsonProperty
 			private String to_position;
 			@JsonProperty
-			private List<WMCapability> capabilities;
+			private long eta;
+			@JsonProperty
+			private List<CapabilityApplication> capabilities;
+
+			public WMResourceInstance(String serialId, String from_position, String to_position, long eta,
+					List<CapabilityApplication> capabilities) {
+				this.serialId = serialId;
+				this.from_position = from_position;
+				this.to_position = to_position;
+				this.eta = eta;
+				this.capabilities = capabilities;
+			}
+
 		}
 
 		@JsonProperty
@@ -51,6 +73,14 @@ public interface WorldModelManager {
 
 		@JsonProperty
 		private List<WMResourceInstance> mResourceInstances;
+
+		public void setProductInstances(List<WMProductInstance> wpis) {
+			mProductInstances = wpis;
+		}
+
+		public void setResourceInstances(List<WMResourceInstance> wris) {
+			mResourceInstances = wris;
+		}
 	}
 
 	public class StaticWorldModel {

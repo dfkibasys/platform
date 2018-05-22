@@ -12,10 +12,16 @@ import de.dfki.iui.basys.model.data.Path;
 import de.dfki.iui.basys.model.data.RobotPositionInformation;
 import de.dfki.iui.basys.model.data.impl.CartesianCoordinateImpl;
 import de.dfki.iui.basys.model.data.impl.DataFactoryImpl;
+import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
+import de.dfki.iui.basys.model.domain.capability.MoveToLocation;
+import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
+import de.dfki.iui.basys.model.domain.topology.TopologyElement;
 import de.dfki.iui.basys.model.runtime.communication.Notification;
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.Property;
 import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
+import de.dfki.iui.basys.model.runtime.component.impl.ComponentFactoryImpl;
 import de.dfki.iui.basys.runtime.communication.CommFactory;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.ComponentException;
@@ -35,33 +41,9 @@ import de.dfki.tecs.Event;
 
 public class MirComponent extends TecsDeviceComponent {
 
-	private boolean first = true;
 	protected MirTECS client;
 	private double mETA;
-
-	protected static final String[] POSITION = { "Station-QA", "Station-TeachIn", "Station-Cola", "Station-BaSys",
-			"Station-Wait", "Station-Festo" };
-	/*
-	 * 0: Station-QA 1: Station-TeachIn 2: Station-Cola 3: Station-BaSys 4:
-	 * Station-Wait 5: Station-Festo
-	 */
-
-	// from dieter: besser string enums?
-	protected enum Position {
-		STATION_QA("Station-QA"), STATION_TEACHIN("Station-TeachIn"), STATION_COLA("Station-Cola"), STATION_BASYS(
-				"Station-BaSys"), STATION_WAIT("Station-Wait"), STATION_FESTO("Station-Festo");
-
-		private final String stationName;
-
-		private Position(String name) {
-			stationName = name;
-		}
-
-		@Override
-		public String toString() {
-			return stationName;
-		}
-	}
+	private TopologyElement mTargetLocation;
 
 	public MirComponent(ComponentConfiguration config) {
 		super(config);
@@ -85,13 +67,44 @@ public class MirComponent extends TecsDeviceComponent {
 
 	@Override
 	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
-		UnitConfiguration config = new UnitConfiguration();
 
-		// TODO: translate
-		int positionIndex = 0;
-		config.setRecipe(positionIndex);
+		CapabilityVariant<?> c = (CapabilityVariant<?>) req.getCapabilityVariant();
+		TopologyElement te = null;
+		if (c.eClass().equals(CapabilityPackage.eINSTANCE.getMoveToLocation())) {
+			te = ((MoveToLocation) c.getCapability()).getTargetLocation();
 
-		return config;
+			if (mTargetLocation != null) {
+				Property p = componentConfig.getProperty("sourceLocation");
+				if (p == null) {
+					p = new ComponentFactoryImpl().createProperty();
+					p.setKey("sourceLocation");
+					componentConfig.getProperties().add(p);
+				}
+				try {
+					p.setValue(JsonUtils.toString(mTargetLocation));
+				} catch (JsonProcessingException e1) {
+					e1.printStackTrace();
+				}
+			}
+
+			Property p = componentConfig.getProperty("targetLocation");
+			if (p == null) {
+				p = new ComponentFactoryImpl().createProperty();
+				p.setKey("targetLocation");
+				componentConfig.getProperties().add(p);
+			}
+			try {
+				p.setValue(JsonUtils.toString(te));
+			} catch (JsonProcessingException e1) {
+				e1.printStackTrace();
+			}
+			mTargetLocation = te;
+
+		}
+
+		UnitConfiguration uc = new UnitConfiguration();
+		uc.setPayload(te);
+		return uc;
 	}
 
 	/*
@@ -126,6 +139,18 @@ public class MirComponent extends TecsDeviceComponent {
 				e1.printStackTrace();
 			}
 
+			Property p = componentConfig.getProperty("path");
+			if (p == null) {
+				p = new ComponentFactoryImpl().createProperty();
+				p.setKey("path");
+				componentConfig.getProperties().add(p);
+			}
+			try {
+				p.setValue(JsonUtils.toString(path));
+			} catch (JsonProcessingException e1) {
+				e1.printStackTrace();
+			}
+
 		}
 
 		if (event.is("MIRPoseEvent")) {
@@ -148,6 +173,18 @@ public class MirComponent extends TecsDeviceComponent {
 			} catch (JsonProcessingException e1) {
 				e1.printStackTrace();
 			}
+
+			Property prop = componentConfig.getProperty("robotPosition");
+			if (prop == null) {
+				prop = new ComponentFactoryImpl().createProperty();
+				prop.setKey("robotPosition");
+				componentConfig.getProperties().add(prop);
+			}
+			try {
+				prop.setValue(JsonUtils.toString(robotPosition));
+			} catch (JsonProcessingException e1) {
+				e1.printStackTrace();
+			}
 		}
 
 		if (event.is("MIRStatusEvent")) {
@@ -164,7 +201,6 @@ public class MirComponent extends TecsDeviceComponent {
 		System.out.println("onResetting - begin");
 		try {
 			client.setState(MIRState.Ready);
-			int x = 0;
 		} catch (TException e) {
 			e.printStackTrace();
 			stop();
@@ -175,12 +211,23 @@ public class MirComponent extends TecsDeviceComponent {
 	@Override
 	public void onStarting() {
 		System.out.println("onStarting - begin");
-		/*
-		 * try {
-		 * //client.gotoNamedPositionDelayed(POSITION[getUnitConfig().getRecipe()]);
-		 * client.gotoNamedPosition(Position.STATION_COLA.toString()); } catch
-		 * (TException e) { e.printStackTrace(); stop(); }
-		 */
+
+		TopologyElement targetElement = ((TopologyElement) getUnitConfig().getPayload());
+
+		try {
+			client.gotoNamedPosition(targetElement.getName());
+
+			String payload = JsonUtils.toString(targetElement);
+			Notification not = CommFactory.getInstance().createNotification(payload);
+
+			outChannel.sendNotification(not);
+
+		} catch (TException e) {
+			e.printStackTrace();
+			stop();
+		} catch (JsonProcessingException e1) {
+			e1.printStackTrace();
+		}
 
 		System.out.println("onStarting - end");
 	}
@@ -269,19 +316,21 @@ public class MirComponent extends TecsDeviceComponent {
 	@Override
 	public void onCompleting() {
 		// mir is in the position. nothing to do
-		
-		//send response to basys (dp)
-		//TODO: move to base class DeviceComponent
+
+		// send response to basys (dp)
+		// TODO: move to base class DeviceComponent
 		sendComponentResponse(ResponseStatus.OK, 0);
 	}
 
 	@Override
 	public void onStopping() {
+		mTargetLocation = null;
 		try {
 			client.stopMovement();
-			
-			//send response to basys (dp)
-			//TODO: move to base class DeviceComponent; requires a statusCode member variable to be set here
+
+			// send response to basys (dp)
+			// TODO: move to base class DeviceComponent; requires a statusCode member
+			// variable to be set here
 			sendComponentResponse(ResponseStatus.NOT_OK, 0);
 		} catch (TException e) {
 			e.printStackTrace();
