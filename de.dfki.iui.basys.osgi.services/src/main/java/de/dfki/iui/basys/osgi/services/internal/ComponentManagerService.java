@@ -27,7 +27,7 @@ public class ComponentManagerService extends BasysOsgiComponent implements Compo
 	ComponentRegistry registry;
 	ChannelPoolProvider channelPoolProvider;
 
-	ComponentManagerImpl manager;
+	ComponentManagerImpl impl;
 
 	public ComponentManagerService() {
 
@@ -38,13 +38,13 @@ public class ComponentManagerService extends BasysOsgiComponent implements Compo
 	protected void activate(ComponentContext context, Map<String, Object> properties) {
 		super.activate(context, properties);
 
-		manager = new ComponentManagerImpl(config);
+		impl = new ComponentManagerImpl(config);
 				
 		de.dfki.iui.basys.runtime.component.ComponentContext basysComponentContext = new de.dfki.iui.basys.runtime.component.ComponentContext.Builder()
-				.sharedChannelPool(channelPoolProvider.getSharedChannelPool()).componentRegistry(registry).build();
+				.sharedChannelPool(channelPoolProvider.getSharedChannelPool()).componentRegistry(registry).componentManager(impl).build();
 		
 		try {
-			manager.activate(basysComponentContext);
+			impl.activate(basysComponentContext);
 		} catch (ComponentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -66,7 +66,7 @@ public class ComponentManagerService extends BasysOsgiComponent implements Compo
 	protected void deactivate(ComponentContext context, int reason) {
 		super.deactivate(context, reason);
 		try {
-			manager.deactivate();
+			impl.deactivate();
 		} catch (ComponentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -97,42 +97,42 @@ public class ComponentManagerService extends BasysOsgiComponent implements Compo
 
 	@Override
 	public List<de.dfki.iui.basys.runtime.component.Component> getLocalComponents() {
-		return manager.getLocalComponents();
+		return impl.getLocalComponents();
 	}
 
 	@Override
 	public de.dfki.iui.basys.runtime.component.Component getLocalComponentById(String id) {
-		return manager.getLocalComponentById(id);
+		return impl.getLocalComponentById(id);
 	}
 
 	@Override
 	public de.dfki.iui.basys.runtime.component.Component getLocalComponentByName(String name) {
-		return manager.getLocalComponentByName(name);
+		return impl.getLocalComponentByName(name);
 	}
 
 	@Override
 	public void createLocalComponent(ComponentConfiguration config) throws ComponentManagerException {
-		manager.createLocalComponent(config);
+		impl.createLocalComponent(config);
 	}
 
 	@Override
 	public void addLocalComponent(de.dfki.iui.basys.runtime.component.Component component) throws ComponentManagerException {
-		manager.addLocalComponent(component);
+		impl.addLocalComponent(component);
 	}
 
 	@Override
 	public void deleteLocalComponent(String id) throws ComponentManagerException {
-		manager.deleteLocalComponent(id);
+		impl.deleteLocalComponent(id);
 	}
 
 	@Override
 	public void createLocalComponent(File configFile) throws ComponentManagerException {
-		manager.createLocalComponent(configFile);		
+		impl.createLocalComponent(configFile);		
 	}
 
 	@Override
 	public void createLocalComponents(File configFolder, boolean recursive) throws ComponentManagerException {
-		manager.createLocalComponents(configFolder, recursive);
+		impl.createLocalComponents(configFolder, recursive);
 	}
 
 }
