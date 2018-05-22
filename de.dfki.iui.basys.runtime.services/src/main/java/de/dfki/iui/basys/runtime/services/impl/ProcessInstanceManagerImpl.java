@@ -31,11 +31,5 @@ public class ProcessInstanceManagerImpl extends EmfServiceComponent implements P
 		ProcessInstanceStore store = getFirstEntity(ProcessinstancePackage.eINSTANCE.getProcessInstanceStore());
 		return store;
 	}
-
-	@Override
-	protected void initPackageAndregisterResourceFactory() {
-		ProcessinstancePackageImpl.init();
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("processinstance", new ProcessinstanceResourceFactoryImpl());
-	}
-
+	
 }

@@ -35,11 +35,4 @@ public class ResourceInstanceManagerImpl extends EmfServiceComponent implements 
 		return repository;
 	}
 
-	@Override
-	protected void initPackageAndregisterResourceFactory() {
-		ResourceinstancePackageImpl.init();
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("resourceinstance",
-				new ResourceinstanceResourceFactoryImpl());
-	}
-
 }

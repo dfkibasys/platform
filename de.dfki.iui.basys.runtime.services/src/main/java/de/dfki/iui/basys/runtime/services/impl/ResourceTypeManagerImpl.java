@@ -33,11 +33,4 @@ public class ResourceTypeManagerImpl extends EmfServiceComponent implements Reso
 		return catalogueCollection;
 	}
 
-	@Override
-	protected void initPackageAndregisterResourceFactory() {
-		ResourcetypePackageImpl.init();
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("resourcetype",
-				new ResourcetypeResourceFactoryImpl());
-	}
-
 }

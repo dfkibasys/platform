@@ -16,6 +16,24 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import de.dfki.iui.basys.common.emf.EmfPersistence;
+import de.dfki.iui.basys.model.domain.material.impl.MaterialPackageImpl;
+import de.dfki.iui.basys.model.domain.material.util.MaterialResourceFactoryImpl;
+import de.dfki.iui.basys.model.domain.order.impl.OrderPackageImpl;
+import de.dfki.iui.basys.model.domain.order.util.OrderResourceFactoryImpl;
+import de.dfki.iui.basys.model.domain.processdefinition.impl.ProcessdefinitionPackageImpl;
+import de.dfki.iui.basys.model.domain.processdefinition.util.ProcessdefinitionResourceFactoryImpl;
+import de.dfki.iui.basys.model.domain.processinstance.impl.ProcessinstancePackageImpl;
+import de.dfki.iui.basys.model.domain.processinstance.util.ProcessinstanceResourceFactoryImpl;
+import de.dfki.iui.basys.model.domain.productdefinition.impl.ProductdefinitionPackageImpl;
+import de.dfki.iui.basys.model.domain.productdefinition.util.ProductdefinitionResourceFactoryImpl;
+import de.dfki.iui.basys.model.domain.productinstance.impl.ProductinstancePackageImpl;
+import de.dfki.iui.basys.model.domain.productinstance.util.ProductinstanceResourceFactoryImpl;
+import de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceinstancePackageImpl;
+import de.dfki.iui.basys.model.domain.resourceinstance.util.ResourceinstanceResourceFactoryImpl;
+import de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl;
+import de.dfki.iui.basys.model.domain.resourcetype.util.ResourcetypeResourceFactoryImpl;
+import de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl;
+import de.dfki.iui.basys.model.domain.topology.util.TopologyResourceFactoryImpl;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 
@@ -36,7 +54,7 @@ public abstract class EmfServiceComponent extends ServiceComponent {
 	public void connectToExternal() throws ComponentException {
 
 		if (resourceSet == null) {
-			resourceSet = new ResourceSetImpl();
+			resourceSet = createResourceSet();
 			
 			//TODO: get real network endpoint or even urispec for each individual service from component registry
 			String BASE_URL = "http://localhost:8080/services/";
@@ -50,7 +68,6 @@ public abstract class EmfServiceComponent extends ServiceComponent {
 		
 		String resourceUri = getConfig().getExternalConnectionString();
 		uri = URI.createURI(resourceUri);
-		initPackageAndregisterResourceFactory();
 		Resource resource = resourceSet.createResource(uri);
 		try {
 			EmfPersistence.read(resource, null);
@@ -59,13 +76,44 @@ public abstract class EmfServiceComponent extends ServiceComponent {
 		}
 	}
 
-	protected abstract void initPackageAndregisterResourceFactory();
-
 	@Override
 	public void disconnectFromExternal() {
 		resourceSet = null;
 	}
 
+	protected ResourceSet createResourceSet() {
+		ResourceSet	resourceSet = new ResourceSetImpl();
+		
+		MaterialPackageImpl.init();
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("material", new MaterialResourceFactoryImpl());	
+		
+		OrderPackageImpl.init();
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("order", new OrderResourceFactoryImpl());
+		
+		ProcessdefinitionPackageImpl.init();
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("processdefinition", new ProcessdefinitionResourceFactoryImpl());
+		
+		ProcessinstancePackageImpl.init();
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("processinstance", new ProcessinstanceResourceFactoryImpl());
+		
+		ProductdefinitionPackageImpl.init();
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("productdefinition", new ProductdefinitionResourceFactoryImpl());
+		
+		ProductinstancePackageImpl.init();
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("productinstance", new ProductinstanceResourceFactoryImpl());
+		
+		ResourceinstancePackageImpl.init();
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("resourceinstance", new ResourceinstanceResourceFactoryImpl());
+		
+		ResourcetypePackageImpl.init();
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("resourcetype",	new ResourcetypeResourceFactoryImpl());
+		
+		TopologyPackageImpl.init();
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("topology", new TopologyResourceFactoryImpl());
+		
+		return resourceSet;		
+	}
+	
 	protected <T extends EObject> T getEntity(String id) {
 		return (T) resourceSet.getEObject(uri.appendFragment(id), true);
 	}

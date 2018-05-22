@@ -32,10 +32,4 @@ public class MaterialManagerImpl extends EmfServiceComponent implements Material
 		return getEntity(id);
 	}
 
-	@Override
-	protected void initPackageAndregisterResourceFactory() {
-		MaterialPackageImpl.init();
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("material", new MaterialResourceFactoryImpl());		
-	}
-
 }

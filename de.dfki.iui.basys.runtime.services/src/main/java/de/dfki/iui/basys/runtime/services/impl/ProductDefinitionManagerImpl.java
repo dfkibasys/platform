@@ -38,10 +38,4 @@ public class ProductDefinitionManagerImpl extends EmfServiceComponent implements
 		return catalogue;
 	}
 
-	@Override
-	protected void initPackageAndregisterResourceFactory() {
-		ProductdefinitionPackageImpl.init();
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("productdefinition", new ProductdefinitionResourceFactoryImpl());
-	}
-
 }

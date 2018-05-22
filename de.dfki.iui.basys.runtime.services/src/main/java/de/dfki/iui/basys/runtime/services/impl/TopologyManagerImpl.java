@@ -34,10 +34,4 @@ public class TopologyManagerImpl extends EmfServiceComponent implements Topology
 			return null;		
 	}
 
-	@Override
-	protected void initPackageAndregisterResourceFactory() {
-		TopologyPackageImpl.init();
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("topology", new TopologyResourceFactoryImpl());
-	}
-
 }

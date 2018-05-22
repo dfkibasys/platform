@@ -32,10 +32,4 @@ public class ProcessDefinitionManagerImpl extends EmfServiceComponent implements
 		return getAllEntities(ProcessdefinitionPackage.eINSTANCE.getProcessDefinition(), false);
 	}
 
-	@Override
-	protected void initPackageAndregisterResourceFactory() {
-		ProcessdefinitionPackageImpl.init();
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("processdefinition", new ProcessdefinitionResourceFactoryImpl());
-	}
-
 }

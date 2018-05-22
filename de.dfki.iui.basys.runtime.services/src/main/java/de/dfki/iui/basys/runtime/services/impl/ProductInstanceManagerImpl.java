@@ -26,10 +26,4 @@ public class ProductInstanceManagerImpl extends EmfServiceComponent implements P
 		return store;
 	}
 
-	@Override
-	protected void initPackageAndregisterResourceFactory() {
-		ProductinstancePackageImpl.init();
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("productinstance", new ProductinstanceResourceFactoryImpl());
-	}
-
 }
