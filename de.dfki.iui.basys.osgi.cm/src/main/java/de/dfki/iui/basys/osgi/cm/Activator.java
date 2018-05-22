@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.nio.file.StandardWatchEventKinds;
 import java.nio.file.WatchEvent;
 import java.nio.file.WatchKey;
@@ -28,14 +29,20 @@ public class Activator implements BundleActivator {
 	public void start(final BundleContext context) throws Exception {
 		isRunning = true;
 		String dir = context.getProperty(LOCPROPERTY);
-		if (dir == null)
+		
+		System.out.println("Current working dir: " + Paths.get(".").toAbsolutePath().normalize().toString());
+		
+		if (dir == null) {
+			System.out.println("basys.configuration.location not specified, aborting");
 			return;
+		}
 
 		watcher = FileSystems.getDefault().newWatchService();
-		Path path = FileSystems.getDefault().getPath(dir);
+		Path path = FileSystems.getDefault().getPath(dir).toAbsolutePath().normalize();
 
 		final Map<String, PropertyFileHandler> persisters = new HashMap<String, PropertyFileHandler>();
 		File file = path.toFile();
+		System.out.println("basys.configuration.location resolved to " + file.toString());
 		if (!file.isDirectory()) {
 			if (PropertyFileHandler.filter().accept(file)) {
 				persisters.put(file.toString(), new PropertyFileHandler(file));
