@@ -203,7 +203,7 @@ public class BaseComponent implements Component, ChannelListener {
 				.statusChannelName(Component.baseStatusChannelName + "#" + getId())
 				.currentState(getState())
 				.currentMode(getMode())
-				.properties(getConfig().getProperties())
+				//.properties(getConfig().getProperties())
 				.build();
 		return componentInfo;		
 	}
