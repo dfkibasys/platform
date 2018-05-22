@@ -426,13 +426,49 @@ public interface ProductdefinitionPackage extends EPackage {
 	int BOM_ENTRY = 4;
 
 	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOM_ENTRY__BINDING = BasePackage.ENTITY__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOM_ENTRY__ID = BasePackage.ENTITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOM_ENTRY__NAME = BasePackage.ENTITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOM_ENTRY__METADATA = BasePackage.ENTITY__METADATA;
+
+	/**
 	 * The feature id for the '<em><b>Count</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOM_ENTRY__COUNT = 0;
+	int BOM_ENTRY__COUNT = BasePackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>BOM Entry</em>' class.
@@ -441,7 +477,7 @@ public interface ProductdefinitionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOM_ENTRY_FEATURE_COUNT = 1;
+	int BOM_ENTRY_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>BOM Entry</em>' class.
@@ -450,7 +486,7 @@ public interface ProductdefinitionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOM_ENTRY_OPERATION_COUNT = 0;
+	int BOM_ENTRY_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.productdefinition.impl.AssemblyGroupImpl <em>Assembly Group</em>}' class.
@@ -536,6 +572,42 @@ public interface ProductdefinitionPackage extends EPackage {
 	int ASSEMBLY_GROUP_ENTRY = 6;
 
 	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSEMBLY_GROUP_ENTRY__BINDING = BOM_ENTRY__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSEMBLY_GROUP_ENTRY__ID = BOM_ENTRY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSEMBLY_GROUP_ENTRY__NAME = BOM_ENTRY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSEMBLY_GROUP_ENTRY__METADATA = BOM_ENTRY__METADATA;
+
+	/**
 	 * The feature id for the '<em><b>Count</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -580,6 +652,42 @@ public interface ProductdefinitionPackage extends EPackage {
 	 * @generated
 	 */
 	int MATERIAL_ENTRY = 7;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATERIAL_ENTRY__BINDING = BOM_ENTRY__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATERIAL_ENTRY__ID = BOM_ENTRY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATERIAL_ENTRY__NAME = BOM_ENTRY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATERIAL_ENTRY__METADATA = BOM_ENTRY__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Count</b></em>' attribute.

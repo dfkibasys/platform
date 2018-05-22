@@ -2,10 +2,8 @@
  */
 package de.dfki.iui.basys.model.domain.resourceinstance.impl;
 
+import de.dfki.iui.basys.model.base.Entity;
 import de.dfki.iui.basys.model.domain.capability.Capability;
-
-import de.dfki.iui.basys.model.domain.productdefinition.BOMEntry;
-
 import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
 import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage;
 
@@ -34,12 +32,12 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * </p>
  * <ul>
  *   <li>{@link de.dfki.iui.basys.model.domain.resourceinstance.impl.CapabilityVariantImpl#getCapability <em>Capability</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.domain.resourceinstance.impl.CapabilityVariantImpl#getBomEntries <em>Bom Entries</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.resourceinstance.impl.CapabilityVariantImpl#getAppliedOn <em>Applied On</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class CapabilityVariantImpl extends BasysEObjectImpl implements CapabilityVariant {
+public class CapabilityVariantImpl<T extends Entity> extends BasysEObjectImpl implements CapabilityVariant<T> {
 	/**
 	 * The cached value of the '{@link #getCapability() <em>Capability</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -51,14 +49,14 @@ public class CapabilityVariantImpl extends BasysEObjectImpl implements Capabilit
 	protected Capability capability;
 
 	/**
-	 * The cached value of the '{@link #getBomEntries() <em>Bom Entries</em>}' reference list.
+	 * The cached value of the '{@link #getAppliedOn() <em>Applied On</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBomEntries()
+	 * @see #getAppliedOn()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<BOMEntry> bomEntries;
+	protected EList<T> appliedOn;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -127,11 +125,11 @@ public class CapabilityVariantImpl extends BasysEObjectImpl implements Capabilit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<BOMEntry> getBomEntries() {
-		if (bomEntries == null) {
-			bomEntries = new EObjectResolvingEList<BOMEntry>(BOMEntry.class, this, ResourceinstancePackage.CAPABILITY_VARIANT__BOM_ENTRIES);
+	public EList<T> getAppliedOn() {
+		if (appliedOn == null) {
+			appliedOn = new EObjectResolvingEList<T>(Entity.class, this, ResourceinstancePackage.CAPABILITY_VARIANT__APPLIED_ON);
 		}
-		return bomEntries;
+		return appliedOn;
 	}
 
 	/**
@@ -158,8 +156,8 @@ public class CapabilityVariantImpl extends BasysEObjectImpl implements Capabilit
 		switch (featureID) {
 			case ResourceinstancePackage.CAPABILITY_VARIANT__CAPABILITY:
 				return getCapability();
-			case ResourceinstancePackage.CAPABILITY_VARIANT__BOM_ENTRIES:
-				return getBomEntries();
+			case ResourceinstancePackage.CAPABILITY_VARIANT__APPLIED_ON:
+				return getAppliedOn();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -176,9 +174,9 @@ public class CapabilityVariantImpl extends BasysEObjectImpl implements Capabilit
 			case ResourceinstancePackage.CAPABILITY_VARIANT__CAPABILITY:
 				setCapability((Capability)newValue);
 				return;
-			case ResourceinstancePackage.CAPABILITY_VARIANT__BOM_ENTRIES:
-				getBomEntries().clear();
-				getBomEntries().addAll((Collection<? extends BOMEntry>)newValue);
+			case ResourceinstancePackage.CAPABILITY_VARIANT__APPLIED_ON:
+				getAppliedOn().clear();
+				getAppliedOn().addAll((Collection<? extends T>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -195,8 +193,8 @@ public class CapabilityVariantImpl extends BasysEObjectImpl implements Capabilit
 			case ResourceinstancePackage.CAPABILITY_VARIANT__CAPABILITY:
 				setCapability((Capability)null);
 				return;
-			case ResourceinstancePackage.CAPABILITY_VARIANT__BOM_ENTRIES:
-				getBomEntries().clear();
+			case ResourceinstancePackage.CAPABILITY_VARIANT__APPLIED_ON:
+				getAppliedOn().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -212,8 +210,8 @@ public class CapabilityVariantImpl extends BasysEObjectImpl implements Capabilit
 		switch (featureID) {
 			case ResourceinstancePackage.CAPABILITY_VARIANT__CAPABILITY:
 				return capability != null;
-			case ResourceinstancePackage.CAPABILITY_VARIANT__BOM_ENTRIES:
-				return bomEntries != null && !bomEntries.isEmpty();
+			case ResourceinstancePackage.CAPABILITY_VARIANT__APPLIED_ON:
+				return appliedOn != null && !appliedOn.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

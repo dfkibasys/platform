@@ -54,7 +54,7 @@ public class CapabilityApplicationImpl extends BasysEObjectImpl implements Capab
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<CapabilityVariant> capabilityVariants;
+	protected EList<CapabilityVariant<?>> capabilityVariants;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -117,9 +117,9 @@ public class CapabilityApplicationImpl extends BasysEObjectImpl implements Capab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<CapabilityVariant> getCapabilityVariants() {
+	public EList<CapabilityVariant<?>> getCapabilityVariants() {
 		if (capabilityVariants == null) {
-			capabilityVariants = new EObjectContainmentEList<CapabilityVariant>(CapabilityVariant.class, this, ResourceinstancePackage.CAPABILITY_APPLICATION__CAPABILITY_VARIANTS);
+			capabilityVariants = new EObjectContainmentEList<CapabilityVariant<?>>(CapabilityVariant.class, this, ResourceinstancePackage.CAPABILITY_APPLICATION__CAPABILITY_VARIANTS);
 		}
 		return capabilityVariants;
 	}
@@ -169,7 +169,7 @@ public class CapabilityApplicationImpl extends BasysEObjectImpl implements Capab
 				return;
 			case ResourceinstancePackage.CAPABILITY_APPLICATION__CAPABILITY_VARIANTS:
 				getCapabilityVariants().clear();
-				getCapabilityVariants().addAll((Collection<? extends CapabilityVariant>)newValue);
+				getCapabilityVariants().addAll((Collection<? extends CapabilityVariant<?>>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

@@ -2,10 +2,8 @@
  */
 package de.dfki.iui.basys.model.domain.resourceinstance;
 
+import de.dfki.iui.basys.model.base.Entity;
 import de.dfki.iui.basys.model.domain.capability.Capability;
-
-import de.dfki.iui.basys.model.domain.productdefinition.BOMEntry;
-
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -20,14 +18,14 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant#getCapability <em>Capability</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant#getBomEntries <em>Bom Entries</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant#getAppliedOn <em>Applied On</em>}</li>
  * </ul>
  *
  * @see de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage#getCapabilityVariant()
  * @model
  * @generated
  */
-public interface CapabilityVariant extends EObject {
+public interface CapabilityVariant<T extends Entity> extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Capability</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -55,19 +53,18 @@ public interface CapabilityVariant extends EObject {
 	void setCapability(Capability value);
 
 	/**
-	 * Returns the value of the '<em><b>Bom Entries</b></em>' reference list.
-	 * The list contents are of type {@link de.dfki.iui.basys.model.domain.productdefinition.BOMEntry}.
+	 * Returns the value of the '<em><b>Applied On</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Bom Entries</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Applied On</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Bom Entries</em>' reference list.
-	 * @see de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage#getCapabilityVariant_BomEntries()
+	 * @return the value of the '<em>Applied On</em>' reference list.
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage#getCapabilityVariant_AppliedOn()
 	 * @model
 	 * @generated
 	 */
-	EList<BOMEntry> getBomEntries();
+	EList<T> getAppliedOn();
 
 } // CapabilityVariant

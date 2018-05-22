@@ -526,6 +526,7 @@ public class ProductdefinitionPackageImpl extends EPackageImpl implements Produc
 		productGroupEClass.getESuperTypes().add(theBasePackage.getEntity());
 		productVariantEClass.getESuperTypes().add(this.getManufacturedComponent());
 		billOfMaterialEClass.getESuperTypes().add(theBasePackage.getEntity());
+		bomEntryEClass.getESuperTypes().add(theBasePackage.getEntity());
 		assemblyGroupEClass.getESuperTypes().add(this.getManufacturedComponent());
 		assemblyGroupEntryEClass.getESuperTypes().add(this.getBOMEntry());
 		materialEntryEClass.getESuperTypes().add(this.getBOMEntry());

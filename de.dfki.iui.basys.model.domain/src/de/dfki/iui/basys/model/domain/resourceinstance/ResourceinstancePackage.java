@@ -204,7 +204,7 @@ public interface ResourceinstancePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceinstancePackageImpl#getCapabilityApplication()
 	 * @generated
 	 */
-	int CAPABILITY_APPLICATION = 4;
+	int CAPABILITY_APPLICATION = 2;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.resourceinstance.impl.CapabilityVariantImpl <em>Capability Variant</em>}' class.
@@ -214,162 +214,7 @@ public interface ResourceinstancePackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceinstancePackageImpl#getCapabilityVariant()
 	 * @generated
 	 */
-	int CAPABILITY_VARIANT = 5;
-
-	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceInstanceStatusImpl <em>Resource Instance Status</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceInstanceStatusImpl
-	 * @see de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceinstancePackageImpl#getResourceInstanceStatus()
-	 * @generated
-	 */
-	int RESOURCE_INSTANCE_STATUS = 2;
-
-	/**
-	 * The feature id for the '<em><b>Binding</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE_INSTANCE_STATUS__BINDING = BasePackage.ENTITY__BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE_INSTANCE_STATUS__ID = BasePackage.ENTITY__ID;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE_INSTANCE_STATUS__NAME = BasePackage.ENTITY__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE_INSTANCE_STATUS__METADATA = BasePackage.ENTITY__METADATA;
-
-	/**
-	 * The feature id for the '<em><b>Resource Instance Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE_INSTANCE_STATUS__RESOURCE_INSTANCE_ID = BasePackage.ENTITY_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Resource Instance Status</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE_INSTANCE_STATUS_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Resource Instance Status</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE_INSTANCE_STATUS_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceInstanceStatusChangeEventImpl <em>Resource Instance Status Change Event</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceInstanceStatusChangeEventImpl
-	 * @see de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceinstancePackageImpl#getResourceInstanceStatusChangeEvent()
-	 * @generated
-	 */
-	int RESOURCE_INSTANCE_STATUS_CHANGE_EVENT = 3;
-
-	/**
-	 * The feature id for the '<em><b>Binding</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE_INSTANCE_STATUS_CHANGE_EVENT__BINDING = RESOURCE_INSTANCE_STATUS__BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE_INSTANCE_STATUS_CHANGE_EVENT__ID = RESOURCE_INSTANCE_STATUS__ID;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE_INSTANCE_STATUS_CHANGE_EVENT__NAME = RESOURCE_INSTANCE_STATUS__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE_INSTANCE_STATUS_CHANGE_EVENT__METADATA = RESOURCE_INSTANCE_STATUS__METADATA;
-
-	/**
-	 * The feature id for the '<em><b>Resource Instance Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE_INSTANCE_STATUS_CHANGE_EVENT__RESOURCE_INSTANCE_ID = RESOURCE_INSTANCE_STATUS__RESOURCE_INSTANCE_ID;
-
-	/**
-	 * The feature id for the '<em><b>Timestamp</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE_INSTANCE_STATUS_CHANGE_EVENT__TIMESTAMP = RESOURCE_INSTANCE_STATUS_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Resource Instance Status Change Event</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE_INSTANCE_STATUS_CHANGE_EVENT_FEATURE_COUNT = RESOURCE_INSTANCE_STATUS_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Resource Instance Status Change Event</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE_INSTANCE_STATUS_CHANGE_EVENT_OPERATION_COUNT = RESOURCE_INSTANCE_STATUS_OPERATION_COUNT + 0;
+	int CAPABILITY_VARIANT = 3;
 
 	/**
 	 * The feature id for the '<em><b>Capability Assertion</b></em>' reference.
@@ -417,13 +262,13 @@ public interface ResourceinstancePackage extends EPackage {
 	int CAPABILITY_VARIANT__CAPABILITY = 0;
 
 	/**
-	 * The feature id for the '<em><b>Bom Entries</b></em>' reference list.
+	 * The feature id for the '<em><b>Applied On</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_VARIANT__BOM_ENTRIES = 1;
+	int CAPABILITY_VARIANT__APPLIED_ON = 1;
 
 	/**
 	 * The number of structural features of the '<em>Capability Variant</em>' class.
@@ -442,6 +287,145 @@ public interface ResourceinstancePackage extends EPackage {
 	 * @ordered
 	 */
 	int CAPABILITY_VARIANT_OPERATION_COUNT = 0;
+
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.resourceinstance.impl.ManufacturingCapabilityVariantImpl <em>Manufacturing Capability Variant</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.impl.ManufacturingCapabilityVariantImpl
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceinstancePackageImpl#getManufacturingCapabilityVariant()
+	 * @generated
+	 */
+	int MANUFACTURING_CAPABILITY_VARIANT = 4;
+
+	/**
+	 * The feature id for the '<em><b>Capability</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANUFACTURING_CAPABILITY_VARIANT__CAPABILITY = CAPABILITY_VARIANT__CAPABILITY;
+
+	/**
+	 * The feature id for the '<em><b>Applied On</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANUFACTURING_CAPABILITY_VARIANT__APPLIED_ON = CAPABILITY_VARIANT__APPLIED_ON;
+
+	/**
+	 * The number of structural features of the '<em>Manufacturing Capability Variant</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANUFACTURING_CAPABILITY_VARIANT_FEATURE_COUNT = CAPABILITY_VARIANT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Manufacturing Capability Variant</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANUFACTURING_CAPABILITY_VARIANT_OPERATION_COUNT = CAPABILITY_VARIANT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.resourceinstance.impl.LogisticsCapabilityVariantImpl <em>Logistics Capability Variant</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.impl.LogisticsCapabilityVariantImpl
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceinstancePackageImpl#getLogisticsCapabilityVariant()
+	 * @generated
+	 */
+	int LOGISTICS_CAPABILITY_VARIANT = 5;
+
+	/**
+	 * The feature id for the '<em><b>Capability</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGISTICS_CAPABILITY_VARIANT__CAPABILITY = CAPABILITY_VARIANT__CAPABILITY;
+
+	/**
+	 * The feature id for the '<em><b>Applied On</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGISTICS_CAPABILITY_VARIANT__APPLIED_ON = CAPABILITY_VARIANT__APPLIED_ON;
+
+	/**
+	 * The number of structural features of the '<em>Logistics Capability Variant</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGISTICS_CAPABILITY_VARIANT_FEATURE_COUNT = CAPABILITY_VARIANT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Logistics Capability Variant</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGISTICS_CAPABILITY_VARIANT_OPERATION_COUNT = CAPABILITY_VARIANT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.resourceinstance.impl.GeneralCapabilityVariantImpl <em>General Capability Variant</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.impl.GeneralCapabilityVariantImpl
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceinstancePackageImpl#getGeneralCapabilityVariant()
+	 * @generated
+	 */
+	int GENERAL_CAPABILITY_VARIANT = 6;
+
+	/**
+	 * The feature id for the '<em><b>Capability</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERAL_CAPABILITY_VARIANT__CAPABILITY = CAPABILITY_VARIANT__CAPABILITY;
+
+	/**
+	 * The feature id for the '<em><b>Applied On</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERAL_CAPABILITY_VARIANT__APPLIED_ON = CAPABILITY_VARIANT__APPLIED_ON;
+
+	/**
+	 * The number of structural features of the '<em>General Capability Variant</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERAL_CAPABILITY_VARIANT_FEATURE_COUNT = CAPABILITY_VARIANT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>General Capability Variant</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERAL_CAPABILITY_VARIANT_OPERATION_COUNT = CAPABILITY_VARIANT_OPERATION_COUNT + 0;
 
 
 	/**
@@ -573,57 +557,45 @@ public interface ResourceinstancePackage extends EPackage {
 	EReference getCapabilityVariant_Capability();
 
 	/**
-	 * Returns the meta object for the reference list '{@link de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant#getBomEntries <em>Bom Entries</em>}'.
+	 * Returns the meta object for the reference list '{@link de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant#getAppliedOn <em>Applied On</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Bom Entries</em>'.
-	 * @see de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant#getBomEntries()
+	 * @return the meta object for the reference list '<em>Applied On</em>'.
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant#getAppliedOn()
 	 * @see #getCapabilityVariant()
 	 * @generated
 	 */
-	EReference getCapabilityVariant_BomEntries();
+	EReference getCapabilityVariant_AppliedOn();
 
 	/**
-	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstanceStatus <em>Resource Instance Status</em>}'.
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.resourceinstance.ManufacturingCapabilityVariant <em>Manufacturing Capability Variant</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Resource Instance Status</em>'.
-	 * @see de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstanceStatus
+	 * @return the meta object for class '<em>Manufacturing Capability Variant</em>'.
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.ManufacturingCapabilityVariant
 	 * @generated
 	 */
-	EClass getResourceInstanceStatus();
+	EClass getManufacturingCapabilityVariant();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstanceStatus#getResourceInstanceId <em>Resource Instance Id</em>}'.
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.resourceinstance.LogisticsCapabilityVariant <em>Logistics Capability Variant</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Resource Instance Id</em>'.
-	 * @see de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstanceStatus#getResourceInstanceId()
-	 * @see #getResourceInstanceStatus()
+	 * @return the meta object for class '<em>Logistics Capability Variant</em>'.
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.LogisticsCapabilityVariant
 	 * @generated
 	 */
-	EAttribute getResourceInstanceStatus_ResourceInstanceId();
+	EClass getLogisticsCapabilityVariant();
 
 	/**
-	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstanceStatusChangeEvent <em>Resource Instance Status Change Event</em>}'.
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.resourceinstance.GeneralCapabilityVariant <em>General Capability Variant</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Resource Instance Status Change Event</em>'.
-	 * @see de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstanceStatusChangeEvent
+	 * @return the meta object for class '<em>General Capability Variant</em>'.
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.GeneralCapabilityVariant
 	 * @generated
 	 */
-	EClass getResourceInstanceStatusChangeEvent();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstanceStatusChangeEvent#getTimestamp <em>Timestamp</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Timestamp</em>'.
-	 * @see de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstanceStatusChangeEvent#getTimestamp()
-	 * @see #getResourceInstanceStatusChangeEvent()
-	 * @generated
-	 */
-	EAttribute getResourceInstanceStatusChangeEvent_Timestamp();
+	EClass getGeneralCapabilityVariant();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -753,48 +725,42 @@ public interface ResourceinstancePackage extends EPackage {
 		EReference CAPABILITY_VARIANT__CAPABILITY = eINSTANCE.getCapabilityVariant_Capability();
 
 		/**
-		 * The meta object literal for the '<em><b>Bom Entries</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Applied On</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CAPABILITY_VARIANT__BOM_ENTRIES = eINSTANCE.getCapabilityVariant_BomEntries();
+		EReference CAPABILITY_VARIANT__APPLIED_ON = eINSTANCE.getCapabilityVariant_AppliedOn();
 
 		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceInstanceStatusImpl <em>Resource Instance Status</em>}' class.
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.resourceinstance.impl.ManufacturingCapabilityVariantImpl <em>Manufacturing Capability Variant</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceInstanceStatusImpl
-		 * @see de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceinstancePackageImpl#getResourceInstanceStatus()
+		 * @see de.dfki.iui.basys.model.domain.resourceinstance.impl.ManufacturingCapabilityVariantImpl
+		 * @see de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceinstancePackageImpl#getManufacturingCapabilityVariant()
 		 * @generated
 		 */
-		EClass RESOURCE_INSTANCE_STATUS = eINSTANCE.getResourceInstanceStatus();
+		EClass MANUFACTURING_CAPABILITY_VARIANT = eINSTANCE.getManufacturingCapabilityVariant();
 
 		/**
-		 * The meta object literal for the '<em><b>Resource Instance Id</b></em>' attribute feature.
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.resourceinstance.impl.LogisticsCapabilityVariantImpl <em>Logistics Capability Variant</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.resourceinstance.impl.LogisticsCapabilityVariantImpl
+		 * @see de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceinstancePackageImpl#getLogisticsCapabilityVariant()
 		 * @generated
 		 */
-		EAttribute RESOURCE_INSTANCE_STATUS__RESOURCE_INSTANCE_ID = eINSTANCE.getResourceInstanceStatus_ResourceInstanceId();
+		EClass LOGISTICS_CAPABILITY_VARIANT = eINSTANCE.getLogisticsCapabilityVariant();
 
 		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceInstanceStatusChangeEventImpl <em>Resource Instance Status Change Event</em>}' class.
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.resourceinstance.impl.GeneralCapabilityVariantImpl <em>General Capability Variant</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceInstanceStatusChangeEventImpl
-		 * @see de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceinstancePackageImpl#getResourceInstanceStatusChangeEvent()
+		 * @see de.dfki.iui.basys.model.domain.resourceinstance.impl.GeneralCapabilityVariantImpl
+		 * @see de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceinstancePackageImpl#getGeneralCapabilityVariant()
 		 * @generated
 		 */
-		EClass RESOURCE_INSTANCE_STATUS_CHANGE_EVENT = eINSTANCE.getResourceInstanceStatusChangeEvent();
-
-		/**
-		 * The meta object literal for the '<em><b>Timestamp</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute RESOURCE_INSTANCE_STATUS_CHANGE_EVENT__TIMESTAMP = eINSTANCE.getResourceInstanceStatusChangeEvent_Timestamp();
+		EClass GENERAL_CAPABILITY_VARIANT = eINSTANCE.getGeneralCapabilityVariant();
 
 	}
 

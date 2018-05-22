@@ -2,7 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.productdefinition;
 
-import org.eclipse.emf.ecore.EObject;
+import de.dfki.iui.basys.model.base.Entity;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface BOMEntry extends EObject {
+public interface BOMEntry extends Entity {
 	/**
 	 * Returns the value of the '<em><b>Count</b></em>' attribute.
 	 * The default value is <code>"1"</code>.

@@ -457,6 +457,16 @@ public class CapabilityRequestItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
+				 ProductdefinitionFactory.eINSTANCE.createAssemblyGroupEntry()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
+				 ProductdefinitionFactory.eINSTANCE.createMaterialEntry()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
 				 StaffFactory.eINSTANCE.createStaff()));
 
 		newChildDescriptors.add
@@ -888,16 +898,6 @@ public class CapabilityRequestItemProvider
 			(createChildParameter
 				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
 				 ResourceinstanceFactory.eINSTANCE.createResourceInstance()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
-				 ResourceinstanceFactory.eINSTANCE.createResourceInstanceStatus()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
-				 ResourceinstanceFactory.eINSTANCE.createResourceInstanceStatusChangeEvent()));
 
 		newChildDescriptors.add
 			(createChildParameter

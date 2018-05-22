@@ -103,6 +103,8 @@ public class ProductdefinitionSwitch<T> extends Switch<T> {
 			case ProductdefinitionPackage.BOM_ENTRY: {
 				BOMEntry bomEntry = (BOMEntry)theEObject;
 				T result = caseBOMEntry(bomEntry);
+				if (result == null) result = caseEntity(bomEntry);
+				if (result == null) result = caseBObject(bomEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -119,6 +121,8 @@ public class ProductdefinitionSwitch<T> extends Switch<T> {
 				AssemblyGroupEntry assemblyGroupEntry = (AssemblyGroupEntry)theEObject;
 				T result = caseAssemblyGroupEntry(assemblyGroupEntry);
 				if (result == null) result = caseBOMEntry(assemblyGroupEntry);
+				if (result == null) result = caseEntity(assemblyGroupEntry);
+				if (result == null) result = caseBObject(assemblyGroupEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -126,6 +130,8 @@ public class ProductdefinitionSwitch<T> extends Switch<T> {
 				MaterialEntry materialEntry = (MaterialEntry)theEObject;
 				T result = caseMaterialEntry(materialEntry);
 				if (result == null) result = caseBOMEntry(materialEntry);
+				if (result == null) result = caseEntity(materialEntry);
+				if (result == null) result = caseBObject(materialEntry);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

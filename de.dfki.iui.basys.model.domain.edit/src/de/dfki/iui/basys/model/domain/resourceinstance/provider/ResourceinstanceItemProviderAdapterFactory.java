@@ -163,49 +163,72 @@ public class ResourceinstanceItemProviderAdapterFactory extends Resourceinstance
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstanceStatus} instances.
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.resourceinstance.ManufacturingCapabilityVariant} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ResourceInstanceStatusItemProvider resourceInstanceStatusItemProvider;
+	protected ManufacturingCapabilityVariantItemProvider manufacturingCapabilityVariantItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstanceStatus}.
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.resourceinstance.ManufacturingCapabilityVariant}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createResourceInstanceStatusAdapter() {
-		if (resourceInstanceStatusItemProvider == null) {
-			resourceInstanceStatusItemProvider = new ResourceInstanceStatusItemProvider(this);
+	public Adapter createManufacturingCapabilityVariantAdapter() {
+		if (manufacturingCapabilityVariantItemProvider == null) {
+			manufacturingCapabilityVariantItemProvider = new ManufacturingCapabilityVariantItemProvider(this);
 		}
 
-		return resourceInstanceStatusItemProvider;
+		return manufacturingCapabilityVariantItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstanceStatusChangeEvent} instances.
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.resourceinstance.LogisticsCapabilityVariant} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ResourceInstanceStatusChangeEventItemProvider resourceInstanceStatusChangeEventItemProvider;
+	protected LogisticsCapabilityVariantItemProvider logisticsCapabilityVariantItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstanceStatusChangeEvent}.
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.resourceinstance.LogisticsCapabilityVariant}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createResourceInstanceStatusChangeEventAdapter() {
-		if (resourceInstanceStatusChangeEventItemProvider == null) {
-			resourceInstanceStatusChangeEventItemProvider = new ResourceInstanceStatusChangeEventItemProvider(this);
+	public Adapter createLogisticsCapabilityVariantAdapter() {
+		if (logisticsCapabilityVariantItemProvider == null) {
+			logisticsCapabilityVariantItemProvider = new LogisticsCapabilityVariantItemProvider(this);
 		}
 
-		return resourceInstanceStatusChangeEventItemProvider;
+		return logisticsCapabilityVariantItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.resourceinstance.GeneralCapabilityVariant} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected GeneralCapabilityVariantItemProvider generalCapabilityVariantItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.resourceinstance.GeneralCapabilityVariant}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createGeneralCapabilityVariantAdapter() {
+		if (generalCapabilityVariantItemProvider == null) {
+			generalCapabilityVariantItemProvider = new GeneralCapabilityVariantItemProvider(this);
+		}
+
+		return generalCapabilityVariantItemProvider;
 	}
 
 	/**

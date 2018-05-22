@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.util.Switch;
  * @see de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage
  * @generated
  */
-public class ResourceinstanceSwitch<T> extends Switch<T> {
+public class ResourceinstanceSwitch<T1> extends Switch<T1> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -67,48 +67,52 @@ public class ResourceinstanceSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	@Override
-	protected T doSwitch(int classifierID, EObject theEObject) {
+	protected T1 doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case ResourceinstancePackage.RESOURCE_INSTANCE_REPOSITORY: {
 				ResourceInstanceRepository resourceInstanceRepository = (ResourceInstanceRepository)theEObject;
-				T result = caseResourceInstanceRepository(resourceInstanceRepository);
+				T1 result = caseResourceInstanceRepository(resourceInstanceRepository);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ResourceinstancePackage.RESOURCE_INSTANCE: {
 				ResourceInstance resourceInstance = (ResourceInstance)theEObject;
-				T result = caseResourceInstance(resourceInstance);
+				T1 result = caseResourceInstance(resourceInstance);
 				if (result == null) result = caseEntity(resourceInstance);
 				if (result == null) result = caseBObject(resourceInstance);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ResourceinstancePackage.RESOURCE_INSTANCE_STATUS: {
-				ResourceInstanceStatus resourceInstanceStatus = (ResourceInstanceStatus)theEObject;
-				T result = caseResourceInstanceStatus(resourceInstanceStatus);
-				if (result == null) result = caseEntity(resourceInstanceStatus);
-				if (result == null) result = caseBObject(resourceInstanceStatus);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ResourceinstancePackage.RESOURCE_INSTANCE_STATUS_CHANGE_EVENT: {
-				ResourceInstanceStatusChangeEvent resourceInstanceStatusChangeEvent = (ResourceInstanceStatusChangeEvent)theEObject;
-				T result = caseResourceInstanceStatusChangeEvent(resourceInstanceStatusChangeEvent);
-				if (result == null) result = caseResourceInstanceStatus(resourceInstanceStatusChangeEvent);
-				if (result == null) result = caseEntity(resourceInstanceStatusChangeEvent);
-				if (result == null) result = caseBObject(resourceInstanceStatusChangeEvent);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case ResourceinstancePackage.CAPABILITY_APPLICATION: {
 				CapabilityApplication capabilityApplication = (CapabilityApplication)theEObject;
-				T result = caseCapabilityApplication(capabilityApplication);
+				T1 result = caseCapabilityApplication(capabilityApplication);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ResourceinstancePackage.CAPABILITY_VARIANT: {
-				CapabilityVariant capabilityVariant = (CapabilityVariant)theEObject;
-				T result = caseCapabilityVariant(capabilityVariant);
+				CapabilityVariant<?> capabilityVariant = (CapabilityVariant<?>)theEObject;
+				T1 result = caseCapabilityVariant(capabilityVariant);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ResourceinstancePackage.MANUFACTURING_CAPABILITY_VARIANT: {
+				ManufacturingCapabilityVariant manufacturingCapabilityVariant = (ManufacturingCapabilityVariant)theEObject;
+				T1 result = caseManufacturingCapabilityVariant(manufacturingCapabilityVariant);
+				if (result == null) result = caseCapabilityVariant(manufacturingCapabilityVariant);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ResourceinstancePackage.LOGISTICS_CAPABILITY_VARIANT: {
+				LogisticsCapabilityVariant logisticsCapabilityVariant = (LogisticsCapabilityVariant)theEObject;
+				T1 result = caseLogisticsCapabilityVariant(logisticsCapabilityVariant);
+				if (result == null) result = caseCapabilityVariant(logisticsCapabilityVariant);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ResourceinstancePackage.GENERAL_CAPABILITY_VARIANT: {
+				GeneralCapabilityVariant generalCapabilityVariant = (GeneralCapabilityVariant)theEObject;
+				T1 result = caseGeneralCapabilityVariant(generalCapabilityVariant);
+				if (result == null) result = caseCapabilityVariant(generalCapabilityVariant);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -127,7 +131,7 @@ public class ResourceinstanceSwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseResourceInstanceRepository(ResourceInstanceRepository object) {
+	public T1 caseResourceInstanceRepository(ResourceInstanceRepository object) {
 		return null;
 	}
 
@@ -142,7 +146,7 @@ public class ResourceinstanceSwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseResourceInstance(ResourceInstance object) {
+	public T1 caseResourceInstance(ResourceInstance object) {
 		return null;
 	}
 
@@ -157,7 +161,7 @@ public class ResourceinstanceSwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseCapabilityApplication(CapabilityApplication object) {
+	public T1 caseCapabilityApplication(CapabilityApplication object) {
 		return null;
 	}
 
@@ -172,37 +176,52 @@ public class ResourceinstanceSwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseCapabilityVariant(CapabilityVariant object) {
+	public <T extends Entity> T1 caseCapabilityVariant(CapabilityVariant<T> object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Resource Instance Status</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Manufacturing Capability Variant</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Resource Instance Status</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Manufacturing Capability Variant</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseResourceInstanceStatus(ResourceInstanceStatus object) {
+	public T1 caseManufacturingCapabilityVariant(ManufacturingCapabilityVariant object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Resource Instance Status Change Event</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Logistics Capability Variant</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Resource Instance Status Change Event</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Logistics Capability Variant</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseResourceInstanceStatusChangeEvent(ResourceInstanceStatusChangeEvent object) {
+	public T1 caseLogisticsCapabilityVariant(LogisticsCapabilityVariant object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>General Capability Variant</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>General Capability Variant</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseGeneralCapabilityVariant(GeneralCapabilityVariant object) {
 		return null;
 	}
 
@@ -217,7 +236,7 @@ public class ResourceinstanceSwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseBObject(BObject object) {
+	public T1 caseBObject(BObject object) {
 		return null;
 	}
 
@@ -232,7 +251,7 @@ public class ResourceinstanceSwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseEntity(Entity object) {
+	public T1 caseEntity(Entity object) {
 		return null;
 	}
 
@@ -248,7 +267,7 @@ public class ResourceinstanceSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	@Override
-	public T defaultCase(EObject object) {
+	public T1 defaultCase(EObject object) {
 		return null;
 	}
 

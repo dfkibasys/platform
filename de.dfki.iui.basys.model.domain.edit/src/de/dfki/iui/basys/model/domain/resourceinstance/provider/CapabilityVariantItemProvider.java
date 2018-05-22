@@ -65,25 +65,25 @@ public class CapabilityVariantItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addBomEntriesPropertyDescriptor(object);
+			addAppliedOnPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Bom Entries feature.
+	 * This adds a property descriptor for the Applied On feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addBomEntriesPropertyDescriptor(Object object) {
+	protected void addAppliedOnPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_CapabilityVariant_bomEntries_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CapabilityVariant_bomEntries_feature", "_UI_CapabilityVariant_type"),
-				 ResourceinstancePackage.Literals.CAPABILITY_VARIANT__BOM_ENTRIES,
+				 getString("_UI_CapabilityVariant_appliedOn_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CapabilityVariant_appliedOn_feature", "_UI_CapabilityVariant_type"),
+				 ResourceinstancePackage.Literals.CAPABILITY_VARIANT__APPLIED_ON,
 				 true,
 				 false,
 				 true,

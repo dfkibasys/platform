@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.dfki.iui.basys.model.runtime.component.CapabilityRequest#getCapability <em>Capability</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.runtime.component.CapabilityRequest#getCapabilityVariant <em>Capability Variant</em>}</li>
  * </ul>
  *
  * @see de.dfki.iui.basys.model.runtime.component.ComponentPackage#getCapabilityRequest()
@@ -22,29 +22,29 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface CapabilityRequest extends ComponentRequest {
 	/**
-	 * Returns the value of the '<em><b>Capability</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Capability Variant</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Capability</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Capability Variant</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Capability</em>' containment reference.
-	 * @see #setCapability(EObject)
-	 * @see de.dfki.iui.basys.model.runtime.component.ComponentPackage#getCapabilityRequest_Capability()
+	 * @return the value of the '<em>Capability Variant</em>' containment reference.
+	 * @see #setCapabilityVariant(EObject)
+	 * @see de.dfki.iui.basys.model.runtime.component.ComponentPackage#getCapabilityRequest_CapabilityVariant()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EObject getCapability();
+	EObject getCapabilityVariant();
 
 	/**
-	 * Sets the value of the '{@link de.dfki.iui.basys.model.runtime.component.CapabilityRequest#getCapability <em>Capability</em>}' containment reference.
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.runtime.component.CapabilityRequest#getCapabilityVariant <em>Capability Variant</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Capability</em>' containment reference.
-	 * @see #getCapability()
+	 * @param value the new value of the '<em>Capability Variant</em>' containment reference.
+	 * @see #getCapabilityVariant()
 	 * @generated
 	 */
-	void setCapability(EObject value);
+	void setCapabilityVariant(EObject value);
 
 } // CapabilityRequest

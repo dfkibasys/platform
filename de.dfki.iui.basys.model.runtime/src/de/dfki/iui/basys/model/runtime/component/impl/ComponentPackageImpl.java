@@ -545,7 +545,7 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCapabilityRequest_Capability() {
+	public EReference getCapabilityRequest_CapabilityVariant() {
 		return (EReference)capabilityRequestEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -771,7 +771,7 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		createEAttribute(changeModeRequestEClass, CHANGE_MODE_REQUEST__MODE);
 
 		capabilityRequestEClass = createEClass(CAPABILITY_REQUEST);
-		createEReference(capabilityRequestEClass, CAPABILITY_REQUEST__CAPABILITY);
+		createEReference(capabilityRequestEClass, CAPABILITY_REQUEST__CAPABILITY_VARIANT);
 
 		componentRequestStatusEClass = createEClass(COMPONENT_REQUEST_STATUS);
 		createEAttribute(componentRequestStatusEClass, COMPONENT_REQUEST_STATUS__COMPONENT_ID);
@@ -876,7 +876,7 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		initEAttribute(getChangeModeRequest_Mode(), this.getControlMode(), "mode", null, 0, 1, ChangeModeRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(capabilityRequestEClass, CapabilityRequest.class, "CapabilityRequest", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCapabilityRequest_Capability(), theEcorePackage.getEObject(), null, "capability", null, 0, 1, CapabilityRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCapabilityRequest_CapabilityVariant(), theEcorePackage.getEObject(), null, "capabilityVariant", null, 0, 1, CapabilityRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(componentRequestStatusEClass, ComponentRequestStatus.class, "ComponentRequestStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getComponentRequestStatus_ComponentId(), theEcorePackage.getEString(), "componentId", null, 0, 1, ComponentRequestStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -22,7 +22,7 @@ import de.dfki.iui.basys.model.runtime.component.ComponentPackage;
  * </p>
  * <ul>
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.impl.CapabilityRequestImpl#getComponentId <em>Component Id</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.runtime.component.impl.CapabilityRequestImpl#getCapability <em>Capability</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.runtime.component.impl.CapabilityRequestImpl#getCapabilityVariant <em>Capability Variant</em>}</li>
  * </ul>
  *
  * @generated
@@ -47,15 +47,14 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 	 */
 	protected String componentId = COMPONENT_ID_EDEFAULT;
 	/**
-	 * The cached value of the '{@link #getCapability() <em>Capability</em>}' containment reference.
+	 * The cached value of the '{@link #getCapabilityVariant() <em>Capability Variant</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCapability()
+	 * @see #getCapabilityVariant()
 	 * @generated
 	 * @ordered
 	 */
-	protected EObject capability;
-
+	protected EObject capabilityVariant;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -104,8 +103,8 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 */
 	@Override
-	public EObject getCapability() {
-		return capability;
+	public EObject getCapabilityVariant() {
+		return capabilityVariant;
 	}
 
 	/**
@@ -113,11 +112,11 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetCapability(EObject newCapability, NotificationChain msgs) {
-		EObject oldCapability = capability;
-		capability = newCapability;
+	public NotificationChain basicSetCapabilityVariant(EObject newCapabilityVariant, NotificationChain msgs) {
+		EObject oldCapabilityVariant = capabilityVariant;
+		capabilityVariant = newCapabilityVariant;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ComponentPackage.CAPABILITY_REQUEST__CAPABILITY, oldCapability, newCapability);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ComponentPackage.CAPABILITY_REQUEST__CAPABILITY_VARIANT, oldCapabilityVariant, newCapabilityVariant);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -129,18 +128,18 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 */
 	@Override
-	public void setCapability(EObject newCapability) {
-		if (newCapability != capability) {
+	public void setCapabilityVariant(EObject newCapabilityVariant) {
+		if (newCapabilityVariant != capabilityVariant) {
 			NotificationChain msgs = null;
-			if (capability != null)
-				msgs = ((InternalEObject)capability).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ComponentPackage.CAPABILITY_REQUEST__CAPABILITY, null, msgs);
-			if (newCapability != null)
-				msgs = ((InternalEObject)newCapability).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ComponentPackage.CAPABILITY_REQUEST__CAPABILITY, null, msgs);
-			msgs = basicSetCapability(newCapability, msgs);
+			if (capabilityVariant != null)
+				msgs = ((InternalEObject)capabilityVariant).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ComponentPackage.CAPABILITY_REQUEST__CAPABILITY_VARIANT, null, msgs);
+			if (newCapabilityVariant != null)
+				msgs = ((InternalEObject)newCapabilityVariant).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ComponentPackage.CAPABILITY_REQUEST__CAPABILITY_VARIANT, null, msgs);
+			msgs = basicSetCapabilityVariant(newCapabilityVariant, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.CAPABILITY_REQUEST__CAPABILITY, newCapability, newCapability));
+			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.CAPABILITY_REQUEST__CAPABILITY_VARIANT, newCapabilityVariant, newCapabilityVariant));
 	}
 
 	/**
@@ -151,8 +150,8 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ComponentPackage.CAPABILITY_REQUEST__CAPABILITY:
-				return basicSetCapability(null, msgs);
+			case ComponentPackage.CAPABILITY_REQUEST__CAPABILITY_VARIANT:
+				return basicSetCapabilityVariant(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -167,8 +166,8 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 		switch (featureID) {
 			case ComponentPackage.CAPABILITY_REQUEST__COMPONENT_ID:
 				return getComponentId();
-			case ComponentPackage.CAPABILITY_REQUEST__CAPABILITY:
-				return getCapability();
+			case ComponentPackage.CAPABILITY_REQUEST__CAPABILITY_VARIANT:
+				return getCapabilityVariant();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -184,8 +183,8 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 			case ComponentPackage.CAPABILITY_REQUEST__COMPONENT_ID:
 				setComponentId((String)newValue);
 				return;
-			case ComponentPackage.CAPABILITY_REQUEST__CAPABILITY:
-				setCapability((EObject)newValue);
+			case ComponentPackage.CAPABILITY_REQUEST__CAPABILITY_VARIANT:
+				setCapabilityVariant((EObject)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -202,8 +201,8 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 			case ComponentPackage.CAPABILITY_REQUEST__COMPONENT_ID:
 				setComponentId(COMPONENT_ID_EDEFAULT);
 				return;
-			case ComponentPackage.CAPABILITY_REQUEST__CAPABILITY:
-				setCapability((EObject)null);
+			case ComponentPackage.CAPABILITY_REQUEST__CAPABILITY_VARIANT:
+				setCapabilityVariant((EObject)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -219,8 +218,8 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 		switch (featureID) {
 			case ComponentPackage.CAPABILITY_REQUEST__COMPONENT_ID:
 				return COMPONENT_ID_EDEFAULT == null ? componentId != null : !COMPONENT_ID_EDEFAULT.equals(componentId);
-			case ComponentPackage.CAPABILITY_REQUEST__CAPABILITY:
-				return capability != null;
+			case ComponentPackage.CAPABILITY_REQUEST__CAPABILITY_VARIANT:
+				return capabilityVariant != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -243,15 +242,15 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 
 	public static class Builder {
 		private String componentId;
-		private EObject capability;
+		private EObject capabilityVariant;
 
 		public Builder componentId(String componentId) {
 			this.componentId = componentId;
 			return this;
 		}
 
-		public Builder capability(EObject capability) {
-			this.capability = capability;
+		public Builder capabilityVariant(EObject capabilityVariant) {
+			this.capabilityVariant = capabilityVariant;
 			return this;
 		}
 
@@ -262,6 +261,6 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 
 	private CapabilityRequestImpl(Builder builder) {
 		this.componentId = builder.componentId;
-		this.capability = builder.capability;
+		this.capabilityVariant = builder.capabilityVariant;
 	}
 }

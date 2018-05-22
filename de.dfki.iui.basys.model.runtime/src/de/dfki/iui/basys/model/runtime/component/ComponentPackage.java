@@ -517,13 +517,13 @@ public interface ComponentPackage extends EPackage {
 	int CAPABILITY_REQUEST__COMPONENT_ID = COMPONENT_REQUEST__COMPONENT_ID;
 
 	/**
-	 * The feature id for the '<em><b>Capability</b></em>' containment reference.
+	 * The feature id for the '<em><b>Capability Variant</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_REQUEST__CAPABILITY = COMPONENT_REQUEST_FEATURE_COUNT + 0;
+	int CAPABILITY_REQUEST__CAPABILITY_VARIANT = COMPONENT_REQUEST_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Capability Request</em>' class.
@@ -1146,15 +1146,15 @@ public interface ComponentPackage extends EPackage {
 	EClass getCapabilityRequest();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link de.dfki.iui.basys.model.runtime.component.CapabilityRequest#getCapability <em>Capability</em>}'.
+	 * Returns the meta object for the containment reference '{@link de.dfki.iui.basys.model.runtime.component.CapabilityRequest#getCapabilityVariant <em>Capability Variant</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Capability</em>'.
-	 * @see de.dfki.iui.basys.model.runtime.component.CapabilityRequest#getCapability()
+	 * @return the meta object for the containment reference '<em>Capability Variant</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.CapabilityRequest#getCapabilityVariant()
 	 * @see #getCapabilityRequest()
 	 * @generated
 	 */
-	EReference getCapabilityRequest_Capability();
+	EReference getCapabilityRequest_CapabilityVariant();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.runtime.component.ComponentRequestStatus <em>Request Status</em>}'.
@@ -1652,12 +1652,12 @@ public interface ComponentPackage extends EPackage {
 		EClass CAPABILITY_REQUEST = eINSTANCE.getCapabilityRequest();
 
 		/**
-		 * The meta object literal for the '<em><b>Capability</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Capability Variant</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CAPABILITY_REQUEST__CAPABILITY = eINSTANCE.getCapabilityRequest_Capability();
+		EReference CAPABILITY_REQUEST__CAPABILITY_VARIANT = eINSTANCE.getCapabilityRequest_CapabilityVariant();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.runtime.component.impl.ComponentRequestStatusImpl <em>Request Status</em>}' class.

@@ -53,7 +53,7 @@ public interface CapabilityApplication extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Capability Variants</b></em>' containment reference list.
-	 * The list contents are of type {@link de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant}.
+	 * The list contents are of type {@link de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant}<code>&lt;?&gt;</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Capability Variants</em>' containment reference list isn't clear,
@@ -65,6 +65,6 @@ public interface CapabilityApplication extends EObject {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<CapabilityVariant> getCapabilityVariants();
+	EList<CapabilityVariant<?>> getCapabilityVariants();
 
 } // CapabilityApplication

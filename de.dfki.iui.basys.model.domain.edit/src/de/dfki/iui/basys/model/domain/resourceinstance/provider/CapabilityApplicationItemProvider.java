@@ -211,6 +211,21 @@ public class CapabilityApplicationItemProvider
 			(createChildParameter
 				(ResourceinstancePackage.Literals.CAPABILITY_APPLICATION__CAPABILITY_VARIANTS,
 				 ResourceinstanceFactory.eINSTANCE.createCapabilityVariant()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ResourceinstancePackage.Literals.CAPABILITY_APPLICATION__CAPABILITY_VARIANTS,
+				 ResourceinstanceFactory.eINSTANCE.createManufacturingCapabilityVariant()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ResourceinstancePackage.Literals.CAPABILITY_APPLICATION__CAPABILITY_VARIANTS,
+				 ResourceinstanceFactory.eINSTANCE.createLogisticsCapabilityVariant()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ResourceinstancePackage.Literals.CAPABILITY_APPLICATION__CAPABILITY_VARIANTS,
+				 ResourceinstanceFactory.eINSTANCE.createGeneralCapabilityVariant()));
 	}
 
 	/**

@@ -2,13 +2,11 @@
  */
 package de.dfki.iui.basys.model.domain.productdefinition.impl;
 
+import de.dfki.iui.basys.model.base.impl.EntityImpl;
 import de.dfki.iui.basys.model.domain.material.Material;
 
 import de.dfki.iui.basys.model.domain.productdefinition.MaterialEntry;
 import de.dfki.iui.basys.model.domain.productdefinition.ProductdefinitionPackage;
-
-import de.dfki.iui.basys.model.util.BasysEObjectImpl;
-
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -30,7 +28,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class MaterialEntryImpl extends BasysEObjectImpl implements MaterialEntry {
+public class MaterialEntryImpl extends EntityImpl implements MaterialEntry {
 	/**
 	 * The default value of the '{@link #getCount() <em>Count</em>}' attribute.
 	 * <!-- begin-user-doc -->

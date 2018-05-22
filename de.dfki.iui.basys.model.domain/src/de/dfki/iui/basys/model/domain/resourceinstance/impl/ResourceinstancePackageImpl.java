@@ -32,10 +32,11 @@ import de.dfki.iui.basys.model.domain.productinstance.ProductinstancePackage;
 import de.dfki.iui.basys.model.domain.productinstance.impl.ProductinstancePackageImpl;
 import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityApplication;
 import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
+import de.dfki.iui.basys.model.domain.resourceinstance.GeneralCapabilityVariant;
+import de.dfki.iui.basys.model.domain.resourceinstance.LogisticsCapabilityVariant;
+import de.dfki.iui.basys.model.domain.resourceinstance.ManufacturingCapabilityVariant;
 import de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstance;
 import de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstanceRepository;
-import de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstanceStatus;
-import de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstanceStatusChangeEvent;
 import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstanceFactory;
 import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage;
 
@@ -65,9 +66,11 @@ import de.dfki.iui.basys.model.pattern.PatternPackage;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
+import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
@@ -111,14 +114,21 @@ public class ResourceinstancePackageImpl extends EPackageImpl implements Resourc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass resourceInstanceStatusEClass = null;
+	private EClass manufacturingCapabilityVariantEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass resourceInstanceStatusChangeEventEClass = null;
+	private EClass logisticsCapabilityVariantEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass generalCapabilityVariantEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -344,7 +354,7 @@ public class ResourceinstancePackageImpl extends EPackageImpl implements Resourc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCapabilityVariant_BomEntries() {
+	public EReference getCapabilityVariant_AppliedOn() {
 		return (EReference)capabilityVariantEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -353,8 +363,8 @@ public class ResourceinstancePackageImpl extends EPackageImpl implements Resourc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getResourceInstanceStatus() {
-		return resourceInstanceStatusEClass;
+	public EClass getManufacturingCapabilityVariant() {
+		return manufacturingCapabilityVariantEClass;
 	}
 
 	/**
@@ -362,8 +372,8 @@ public class ResourceinstancePackageImpl extends EPackageImpl implements Resourc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getResourceInstanceStatus_ResourceInstanceId() {
-		return (EAttribute)resourceInstanceStatusEClass.getEStructuralFeatures().get(0);
+	public EClass getLogisticsCapabilityVariant() {
+		return logisticsCapabilityVariantEClass;
 	}
 
 	/**
@@ -371,17 +381,8 @@ public class ResourceinstancePackageImpl extends EPackageImpl implements Resourc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getResourceInstanceStatusChangeEvent() {
-		return resourceInstanceStatusChangeEventEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getResourceInstanceStatusChangeEvent_Timestamp() {
-		return (EAttribute)resourceInstanceStatusChangeEventEClass.getEStructuralFeatures().get(0);
+	public EClass getGeneralCapabilityVariant() {
+		return generalCapabilityVariantEClass;
 	}
 
 	/**
@@ -421,19 +422,19 @@ public class ResourceinstancePackageImpl extends EPackageImpl implements Resourc
 		createEReference(resourceInstanceEClass, RESOURCE_INSTANCE__CAPABILITY_APPLICATIONS);
 		createEReference(resourceInstanceEClass, RESOURCE_INSTANCE__ROLE);
 
-		resourceInstanceStatusEClass = createEClass(RESOURCE_INSTANCE_STATUS);
-		createEAttribute(resourceInstanceStatusEClass, RESOURCE_INSTANCE_STATUS__RESOURCE_INSTANCE_ID);
-
-		resourceInstanceStatusChangeEventEClass = createEClass(RESOURCE_INSTANCE_STATUS_CHANGE_EVENT);
-		createEAttribute(resourceInstanceStatusChangeEventEClass, RESOURCE_INSTANCE_STATUS_CHANGE_EVENT__TIMESTAMP);
-
 		capabilityApplicationEClass = createEClass(CAPABILITY_APPLICATION);
 		createEReference(capabilityApplicationEClass, CAPABILITY_APPLICATION__CAPABILITY_ASSERTION);
 		createEReference(capabilityApplicationEClass, CAPABILITY_APPLICATION__CAPABILITY_VARIANTS);
 
 		capabilityVariantEClass = createEClass(CAPABILITY_VARIANT);
 		createEReference(capabilityVariantEClass, CAPABILITY_VARIANT__CAPABILITY);
-		createEReference(capabilityVariantEClass, CAPABILITY_VARIANT__BOM_ENTRIES);
+		createEReference(capabilityVariantEClass, CAPABILITY_VARIANT__APPLIED_ON);
+
+		manufacturingCapabilityVariantEClass = createEClass(MANUFACTURING_CAPABILITY_VARIANT);
+
+		logisticsCapabilityVariantEClass = createEClass(LOGISTICS_CAPABILITY_VARIANT);
+
+		generalCapabilityVariantEClass = createEClass(GENERAL_CAPABILITY_VARIANT);
 	}
 
 	/**
@@ -467,13 +468,26 @@ public class ResourceinstancePackageImpl extends EPackageImpl implements Resourc
 		ProductdefinitionPackage theProductdefinitionPackage = (ProductdefinitionPackage)EPackage.Registry.INSTANCE.getEPackage(ProductdefinitionPackage.eNS_URI);
 
 		// Create type parameters
+		ETypeParameter capabilityVariantEClass_T = addETypeParameter(capabilityVariantEClass, "T");
 
 		// Set bounds for type parameters
+		EGenericType g1 = createEGenericType(theBasePackage.getEntity());
+		capabilityVariantEClass_T.getEBounds().add(g1);
 
 		// Add supertypes to classes
 		resourceInstanceEClass.getESuperTypes().add(theBasePackage.getEntity());
-		resourceInstanceStatusEClass.getESuperTypes().add(theBasePackage.getEntity());
-		resourceInstanceStatusChangeEventEClass.getESuperTypes().add(this.getResourceInstanceStatus());
+		g1 = createEGenericType(this.getCapabilityVariant());
+		EGenericType g2 = createEGenericType(theProductdefinitionPackage.getBOMEntry());
+		g1.getETypeArguments().add(g2);
+		manufacturingCapabilityVariantEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(this.getCapabilityVariant());
+		g2 = createEGenericType(theTopologyPackage.getTopologyElement());
+		g1.getETypeArguments().add(g2);
+		logisticsCapabilityVariantEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(this.getCapabilityVariant());
+		g2 = createEGenericType(theBasePackage.getEntity());
+		g1.getETypeArguments().add(g2);
+		generalCapabilityVariantEClass.getEGenericSuperTypes().add(g1);
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(resourceInstanceRepositoryEClass, ResourceInstanceRepository.class, "ResourceInstanceRepository", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -485,19 +499,23 @@ public class ResourceinstancePackageImpl extends EPackageImpl implements Resourc
 		initEReference(getResourceInstance_CapabilityApplications(), this.getCapabilityApplication(), null, "capabilityApplications", null, 0, -1, ResourceInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getResourceInstance_Role(), theTopologyPackage.getEquipmentModule(), theTopologyPackage.getEquipmentModule_AssignedResourceInstance(), "role", null, 0, 1, ResourceInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(resourceInstanceStatusEClass, ResourceInstanceStatus.class, "ResourceInstanceStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getResourceInstanceStatus_ResourceInstanceId(), ecorePackage.getEString(), "resourceInstanceId", null, 0, 1, ResourceInstanceStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(resourceInstanceStatusChangeEventEClass, ResourceInstanceStatusChangeEvent.class, "ResourceInstanceStatusChangeEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getResourceInstanceStatusChangeEvent_Timestamp(), ecorePackage.getEDate(), "timestamp", null, 0, 1, ResourceInstanceStatusChangeEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(capabilityApplicationEClass, CapabilityApplication.class, "CapabilityApplication", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCapabilityApplication_CapabilityAssertion(), theCapabilityPackage.getCapabilityAssertion(), null, "capabilityAssertion", null, 0, 1, CapabilityApplication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCapabilityApplication_CapabilityVariants(), this.getCapabilityVariant(), null, "capabilityVariants", null, 0, -1, CapabilityApplication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		g1 = createEGenericType(this.getCapabilityVariant());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		initEReference(getCapabilityApplication_CapabilityVariants(), g1, null, "capabilityVariants", null, 0, -1, CapabilityApplication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(capabilityVariantEClass, CapabilityVariant.class, "CapabilityVariant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCapabilityVariant_Capability(), theCapabilityPackage.getCapability(), null, "capability", null, 0, 1, CapabilityVariant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCapabilityVariant_BomEntries(), theProductdefinitionPackage.getBOMEntry(), null, "bomEntries", null, 0, -1, CapabilityVariant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		g1 = createEGenericType(capabilityVariantEClass_T);
+		initEReference(getCapabilityVariant_AppliedOn(), g1, null, "appliedOn", null, 0, -1, CapabilityVariant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(manufacturingCapabilityVariantEClass, ManufacturingCapabilityVariant.class, "ManufacturingCapabilityVariant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(logisticsCapabilityVariantEClass, LogisticsCapabilityVariant.class, "LogisticsCapabilityVariant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(generalCapabilityVariantEClass, GeneralCapabilityVariant.class, "GeneralCapabilityVariant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

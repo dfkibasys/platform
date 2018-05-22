@@ -79,20 +79,24 @@ public class ResourceinstanceAdapterFactory extends AdapterFactoryImpl {
 				return createResourceInstanceAdapter();
 			}
 			@Override
-			public Adapter caseResourceInstanceStatus(ResourceInstanceStatus object) {
-				return createResourceInstanceStatusAdapter();
-			}
-			@Override
-			public Adapter caseResourceInstanceStatusChangeEvent(ResourceInstanceStatusChangeEvent object) {
-				return createResourceInstanceStatusChangeEventAdapter();
-			}
-			@Override
 			public Adapter caseCapabilityApplication(CapabilityApplication object) {
 				return createCapabilityApplicationAdapter();
 			}
 			@Override
-			public Adapter caseCapabilityVariant(CapabilityVariant object) {
+			public <T extends Entity> Adapter caseCapabilityVariant(CapabilityVariant<T> object) {
 				return createCapabilityVariantAdapter();
+			}
+			@Override
+			public Adapter caseManufacturingCapabilityVariant(ManufacturingCapabilityVariant object) {
+				return createManufacturingCapabilityVariantAdapter();
+			}
+			@Override
+			public Adapter caseLogisticsCapabilityVariant(LogisticsCapabilityVariant object) {
+				return createLogisticsCapabilityVariantAdapter();
+			}
+			@Override
+			public Adapter caseGeneralCapabilityVariant(GeneralCapabilityVariant object) {
+				return createGeneralCapabilityVariantAdapter();
 			}
 			@Override
 			public Adapter caseBObject(BObject object) {
@@ -179,30 +183,44 @@ public class ResourceinstanceAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstanceStatus <em>Resource Instance Status</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.resourceinstance.ManufacturingCapabilityVariant <em>Manufacturing Capability Variant</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstanceStatus
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.ManufacturingCapabilityVariant
 	 * @generated
 	 */
-	public Adapter createResourceInstanceStatusAdapter() {
+	public Adapter createManufacturingCapabilityVariantAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstanceStatusChangeEvent <em>Resource Instance Status Change Event</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.resourceinstance.LogisticsCapabilityVariant <em>Logistics Capability Variant</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstanceStatusChangeEvent
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.LogisticsCapabilityVariant
 	 * @generated
 	 */
-	public Adapter createResourceInstanceStatusChangeEventAdapter() {
+	public Adapter createLogisticsCapabilityVariantAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.resourceinstance.GeneralCapabilityVariant <em>General Capability Variant</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.GeneralCapabilityVariant
+	 * @generated
+	 */
+	public Adapter createGeneralCapabilityVariantAdapter() {
 		return null;
 	}
 

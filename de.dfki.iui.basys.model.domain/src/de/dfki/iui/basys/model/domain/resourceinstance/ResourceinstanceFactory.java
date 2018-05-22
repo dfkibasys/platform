@@ -2,6 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.resourceinstance;
 
+import de.dfki.iui.basys.model.base.Entity;
 import org.eclipse.emf.ecore.EFactory;
 
 /**
@@ -55,25 +56,34 @@ public interface ResourceinstanceFactory extends EFactory {
 	 * @return a new object of class '<em>Capability Variant</em>'.
 	 * @generated
 	 */
-	CapabilityVariant createCapabilityVariant();
+	<T extends Entity> CapabilityVariant<T> createCapabilityVariant();
 
 	/**
-	 * Returns a new object of class '<em>Resource Instance Status</em>'.
+	 * Returns a new object of class '<em>Manufacturing Capability Variant</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Resource Instance Status</em>'.
+	 * @return a new object of class '<em>Manufacturing Capability Variant</em>'.
 	 * @generated
 	 */
-	ResourceInstanceStatus createResourceInstanceStatus();
+	ManufacturingCapabilityVariant createManufacturingCapabilityVariant();
 
 	/**
-	 * Returns a new object of class '<em>Resource Instance Status Change Event</em>'.
+	 * Returns a new object of class '<em>Logistics Capability Variant</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Resource Instance Status Change Event</em>'.
+	 * @return a new object of class '<em>Logistics Capability Variant</em>'.
 	 * @generated
 	 */
-	ResourceInstanceStatusChangeEvent createResourceInstanceStatusChangeEvent();
+	LogisticsCapabilityVariant createLogisticsCapabilityVariant();
+
+	/**
+	 * Returns a new object of class '<em>General Capability Variant</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>General Capability Variant</em>'.
+	 * @generated
+	 */
+	GeneralCapabilityVariant createGeneralCapabilityVariant();
 
 	/**
 	 * Returns the package supported by this factory.

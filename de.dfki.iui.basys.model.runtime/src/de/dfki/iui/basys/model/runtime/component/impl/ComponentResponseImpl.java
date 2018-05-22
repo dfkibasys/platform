@@ -253,10 +253,7 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 		request = newRequest;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ComponentPackage.COMPONENT_RESPONSE__REQUEST, oldRequest, newRequest);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -271,13 +268,13 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 		if (newRequest != request) {
 			NotificationChain msgs = null;
 			if (request != null)
-				msgs = ((InternalEObject) request).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ComponentPackage.COMPONENT_RESPONSE__REQUEST, null, msgs);
+				msgs = ((InternalEObject)request).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ComponentPackage.COMPONENT_RESPONSE__REQUEST, null, msgs);
 			if (newRequest != null)
-				msgs = ((InternalEObject) newRequest).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ComponentPackage.COMPONENT_RESPONSE__REQUEST, null, msgs);
+				msgs = ((InternalEObject)newRequest).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ComponentPackage.COMPONENT_RESPONSE__REQUEST, null, msgs);
 			msgs = basicSetRequest(newRequest, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.COMPONENT_RESPONSE__REQUEST, newRequest, newRequest));
 	}
 
@@ -289,8 +286,8 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case ComponentPackage.COMPONENT_RESPONSE__REQUEST:
-			return basicSetRequest(null, msgs);
+			case ComponentPackage.COMPONENT_RESPONSE__REQUEST:
+				return basicSetRequest(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -303,16 +300,16 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case ComponentPackage.COMPONENT_RESPONSE__COMPONENT_ID:
-			return getComponentId();
-		case ComponentPackage.COMPONENT_RESPONSE__STATUS:
-			return getStatus();
-		case ComponentPackage.COMPONENT_RESPONSE__STATUS_CODE:
-			return getStatusCode();
-		case ComponentPackage.COMPONENT_RESPONSE__MESSAGE:
-			return getMessage();
-		case ComponentPackage.COMPONENT_RESPONSE__REQUEST:
-			return getRequest();
+			case ComponentPackage.COMPONENT_RESPONSE__COMPONENT_ID:
+				return getComponentId();
+			case ComponentPackage.COMPONENT_RESPONSE__STATUS:
+				return getStatus();
+			case ComponentPackage.COMPONENT_RESPONSE__STATUS_CODE:
+				return getStatusCode();
+			case ComponentPackage.COMPONENT_RESPONSE__MESSAGE:
+				return getMessage();
+			case ComponentPackage.COMPONENT_RESPONSE__REQUEST:
+				return getRequest();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -325,21 +322,21 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case ComponentPackage.COMPONENT_RESPONSE__COMPONENT_ID:
-			setComponentId((String) newValue);
-			return;
-		case ComponentPackage.COMPONENT_RESPONSE__STATUS:
-			setStatus((ResponseStatus) newValue);
-			return;
-		case ComponentPackage.COMPONENT_RESPONSE__STATUS_CODE:
-			setStatusCode((Integer) newValue);
-			return;
-		case ComponentPackage.COMPONENT_RESPONSE__MESSAGE:
-			setMessage((String) newValue);
-			return;
-		case ComponentPackage.COMPONENT_RESPONSE__REQUEST:
-			setRequest((ComponentRequest) newValue);
-			return;
+			case ComponentPackage.COMPONENT_RESPONSE__COMPONENT_ID:
+				setComponentId((String)newValue);
+				return;
+			case ComponentPackage.COMPONENT_RESPONSE__STATUS:
+				setStatus((ResponseStatus)newValue);
+				return;
+			case ComponentPackage.COMPONENT_RESPONSE__STATUS_CODE:
+				setStatusCode((Integer)newValue);
+				return;
+			case ComponentPackage.COMPONENT_RESPONSE__MESSAGE:
+				setMessage((String)newValue);
+				return;
+			case ComponentPackage.COMPONENT_RESPONSE__REQUEST:
+				setRequest((ComponentRequest)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -352,21 +349,21 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case ComponentPackage.COMPONENT_RESPONSE__COMPONENT_ID:
-			setComponentId(COMPONENT_ID_EDEFAULT);
-			return;
-		case ComponentPackage.COMPONENT_RESPONSE__STATUS:
-			setStatus(STATUS_EDEFAULT);
-			return;
-		case ComponentPackage.COMPONENT_RESPONSE__STATUS_CODE:
-			setStatusCode(STATUS_CODE_EDEFAULT);
-			return;
-		case ComponentPackage.COMPONENT_RESPONSE__MESSAGE:
-			setMessage(MESSAGE_EDEFAULT);
-			return;
-		case ComponentPackage.COMPONENT_RESPONSE__REQUEST:
-			setRequest((ComponentRequest) null);
-			return;
+			case ComponentPackage.COMPONENT_RESPONSE__COMPONENT_ID:
+				setComponentId(COMPONENT_ID_EDEFAULT);
+				return;
+			case ComponentPackage.COMPONENT_RESPONSE__STATUS:
+				setStatus(STATUS_EDEFAULT);
+				return;
+			case ComponentPackage.COMPONENT_RESPONSE__STATUS_CODE:
+				setStatusCode(STATUS_CODE_EDEFAULT);
+				return;
+			case ComponentPackage.COMPONENT_RESPONSE__MESSAGE:
+				setMessage(MESSAGE_EDEFAULT);
+				return;
+			case ComponentPackage.COMPONENT_RESPONSE__REQUEST:
+				setRequest((ComponentRequest)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -379,16 +376,16 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case ComponentPackage.COMPONENT_RESPONSE__COMPONENT_ID:
-			return COMPONENT_ID_EDEFAULT == null ? componentId != null : !COMPONENT_ID_EDEFAULT.equals(componentId);
-		case ComponentPackage.COMPONENT_RESPONSE__STATUS:
-			return status != STATUS_EDEFAULT;
-		case ComponentPackage.COMPONENT_RESPONSE__STATUS_CODE:
-			return statusCode != STATUS_CODE_EDEFAULT;
-		case ComponentPackage.COMPONENT_RESPONSE__MESSAGE:
-			return MESSAGE_EDEFAULT == null ? message != null : !MESSAGE_EDEFAULT.equals(message);
-		case ComponentPackage.COMPONENT_RESPONSE__REQUEST:
-			return request != null;
+			case ComponentPackage.COMPONENT_RESPONSE__COMPONENT_ID:
+				return COMPONENT_ID_EDEFAULT == null ? componentId != null : !COMPONENT_ID_EDEFAULT.equals(componentId);
+			case ComponentPackage.COMPONENT_RESPONSE__STATUS:
+				return status != STATUS_EDEFAULT;
+			case ComponentPackage.COMPONENT_RESPONSE__STATUS_CODE:
+				return statusCode != STATUS_CODE_EDEFAULT;
+			case ComponentPackage.COMPONENT_RESPONSE__MESSAGE:
+				return MESSAGE_EDEFAULT == null ? message != null : !MESSAGE_EDEFAULT.equals(message);
+			case ComponentPackage.COMPONENT_RESPONSE__REQUEST:
+				return request != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -400,8 +397,7 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (componentId: ");

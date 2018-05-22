@@ -2,6 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.resourceinstance.impl;
 
+import de.dfki.iui.basys.model.base.Entity;
 import de.dfki.iui.basys.model.domain.resourceinstance.*;
 
 import org.eclipse.emf.ecore.EClass;
@@ -58,10 +59,11 @@ public class ResourceinstanceFactoryImpl extends EFactoryImpl implements Resourc
 		switch (eClass.getClassifierID()) {
 			case ResourceinstancePackage.RESOURCE_INSTANCE_REPOSITORY: return createResourceInstanceRepository();
 			case ResourceinstancePackage.RESOURCE_INSTANCE: return createResourceInstance();
-			case ResourceinstancePackage.RESOURCE_INSTANCE_STATUS: return createResourceInstanceStatus();
-			case ResourceinstancePackage.RESOURCE_INSTANCE_STATUS_CHANGE_EVENT: return createResourceInstanceStatusChangeEvent();
 			case ResourceinstancePackage.CAPABILITY_APPLICATION: return createCapabilityApplication();
 			case ResourceinstancePackage.CAPABILITY_VARIANT: return createCapabilityVariant();
+			case ResourceinstancePackage.MANUFACTURING_CAPABILITY_VARIANT: return createManufacturingCapabilityVariant();
+			case ResourceinstancePackage.LOGISTICS_CAPABILITY_VARIANT: return createLogisticsCapabilityVariant();
+			case ResourceinstancePackage.GENERAL_CAPABILITY_VARIANT: return createGeneralCapabilityVariant();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -102,8 +104,8 @@ public class ResourceinstanceFactoryImpl extends EFactoryImpl implements Resourc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CapabilityVariant createCapabilityVariant() {
-		CapabilityVariantImpl capabilityVariant = new CapabilityVariantImpl();
+	public <T extends Entity> CapabilityVariant<T> createCapabilityVariant() {
+		CapabilityVariantImpl<T> capabilityVariant = new CapabilityVariantImpl<T>();
 		return capabilityVariant;
 	}
 
@@ -112,9 +114,9 @@ public class ResourceinstanceFactoryImpl extends EFactoryImpl implements Resourc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ResourceInstanceStatus createResourceInstanceStatus() {
-		ResourceInstanceStatusImpl resourceInstanceStatus = new ResourceInstanceStatusImpl();
-		return resourceInstanceStatus;
+	public ManufacturingCapabilityVariant createManufacturingCapabilityVariant() {
+		ManufacturingCapabilityVariantImpl manufacturingCapabilityVariant = new ManufacturingCapabilityVariantImpl();
+		return manufacturingCapabilityVariant;
 	}
 
 	/**
@@ -122,9 +124,19 @@ public class ResourceinstanceFactoryImpl extends EFactoryImpl implements Resourc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ResourceInstanceStatusChangeEvent createResourceInstanceStatusChangeEvent() {
-		ResourceInstanceStatusChangeEventImpl resourceInstanceStatusChangeEvent = new ResourceInstanceStatusChangeEventImpl();
-		return resourceInstanceStatusChangeEvent;
+	public LogisticsCapabilityVariant createLogisticsCapabilityVariant() {
+		LogisticsCapabilityVariantImpl logisticsCapabilityVariant = new LogisticsCapabilityVariantImpl();
+		return logisticsCapabilityVariant;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GeneralCapabilityVariant createGeneralCapabilityVariant() {
+		GeneralCapabilityVariantImpl generalCapabilityVariant = new GeneralCapabilityVariantImpl();
+		return generalCapabilityVariant;
 	}
 
 	/**
