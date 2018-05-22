@@ -513,6 +513,8 @@ public class ChannelPoolImpl extends EntityImpl implements ChannelPool {
 				}
 			case CommunicationPackage.CHANNEL_POOL___GET_CHANNEL__STRING:
 				return getChannel((String)arguments.get(0));
+			case CommunicationPackage.CHANNEL_POOL___GET_CHANNEL_BY_NAME__STRING:
+				return getChannelByName((String)arguments.get(0));
 		}
 		return super.eInvoke(operationID, arguments);
 	}

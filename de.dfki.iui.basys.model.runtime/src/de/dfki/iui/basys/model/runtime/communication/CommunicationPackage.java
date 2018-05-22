@@ -352,13 +352,22 @@ public interface CommunicationPackage extends EPackage {
 	int CHANNEL_POOL___GET_CHANNEL__STRING = BasePackage.ENTITY_OPERATION_COUNT + 2;
 
 	/**
+	 * The operation id for the '<em>Get Channel By Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANNEL_POOL___GET_CHANNEL_BY_NAME__STRING = BasePackage.ENTITY_OPERATION_COUNT + 3;
+
+	/**
 	 * The number of operations of the '<em>Channel Pool</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CHANNEL_POOL_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 3;
+	int CHANNEL_POOL_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.communication.impl.ChannelImpl <em>Channel</em>}' class.
@@ -540,7 +549,7 @@ public interface CommunicationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHANNEL_LISTENER___HANDLE_MESSAGE__STRING = 0;
+	int CHANNEL_LISTENER___HANDLE_MESSAGE__CHANNEL_STRING = 0;
 
 	/**
 	 * The operation id for the '<em>Handle Notification</em>' operation.
@@ -549,7 +558,7 @@ public interface CommunicationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHANNEL_LISTENER___HANDLE_NOTIFICATION__NOTIFICATION = 1;
+	int CHANNEL_LISTENER___HANDLE_NOTIFICATION__CHANNEL_NOTIFICATION = 1;
 
 	/**
 	 * The operation id for the '<em>Handle Request</em>' operation.
@@ -558,7 +567,7 @@ public interface CommunicationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHANNEL_LISTENER___HANDLE_REQUEST__REQUEST = 2;
+	int CHANNEL_LISTENER___HANDLE_REQUEST__CHANNEL_REQUEST = 2;
 
 	/**
 	 * The number of operations of the '<em>Channel Listener</em>' class.
@@ -1350,6 +1359,16 @@ public interface CommunicationPackage extends EPackage {
 	EOperation getChannelPool__GetChannel__String();
 
 	/**
+	 * Returns the meta object for the '{@link de.dfki.iui.basys.model.runtime.communication.ChannelPool#getChannelByName(java.lang.String) <em>Get Channel By Name</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Channel By Name</em>' operation.
+	 * @see de.dfki.iui.basys.model.runtime.communication.ChannelPool#getChannelByName(java.lang.String)
+	 * @generated
+	 */
+	EOperation getChannelPool__GetChannelByName__String();
+
+	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.runtime.communication.Channel <em>Channel</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1474,34 +1493,34 @@ public interface CommunicationPackage extends EPackage {
 	EClass getChannelListener();
 
 	/**
-	 * Returns the meta object for the '{@link de.dfki.iui.basys.model.runtime.communication.ChannelListener#handleMessage(java.lang.String) <em>Handle Message</em>}' operation.
+	 * Returns the meta object for the '{@link de.dfki.iui.basys.model.runtime.communication.ChannelListener#handleMessage(de.dfki.iui.basys.model.runtime.communication.Channel, java.lang.String) <em>Handle Message</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Handle Message</em>' operation.
-	 * @see de.dfki.iui.basys.model.runtime.communication.ChannelListener#handleMessage(java.lang.String)
+	 * @see de.dfki.iui.basys.model.runtime.communication.ChannelListener#handleMessage(de.dfki.iui.basys.model.runtime.communication.Channel, java.lang.String)
 	 * @generated
 	 */
-	EOperation getChannelListener__HandleMessage__String();
+	EOperation getChannelListener__HandleMessage__Channel_String();
 
 	/**
-	 * Returns the meta object for the '{@link de.dfki.iui.basys.model.runtime.communication.ChannelListener#handleNotification(de.dfki.iui.basys.model.runtime.communication.Notification) <em>Handle Notification</em>}' operation.
+	 * Returns the meta object for the '{@link de.dfki.iui.basys.model.runtime.communication.ChannelListener#handleNotification(de.dfki.iui.basys.model.runtime.communication.Channel, de.dfki.iui.basys.model.runtime.communication.Notification) <em>Handle Notification</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Handle Notification</em>' operation.
-	 * @see de.dfki.iui.basys.model.runtime.communication.ChannelListener#handleNotification(de.dfki.iui.basys.model.runtime.communication.Notification)
+	 * @see de.dfki.iui.basys.model.runtime.communication.ChannelListener#handleNotification(de.dfki.iui.basys.model.runtime.communication.Channel, de.dfki.iui.basys.model.runtime.communication.Notification)
 	 * @generated
 	 */
-	EOperation getChannelListener__HandleNotification__Notification();
+	EOperation getChannelListener__HandleNotification__Channel_Notification();
 
 	/**
-	 * Returns the meta object for the '{@link de.dfki.iui.basys.model.runtime.communication.ChannelListener#handleRequest(de.dfki.iui.basys.model.runtime.communication.Request) <em>Handle Request</em>}' operation.
+	 * Returns the meta object for the '{@link de.dfki.iui.basys.model.runtime.communication.ChannelListener#handleRequest(de.dfki.iui.basys.model.runtime.communication.Channel, de.dfki.iui.basys.model.runtime.communication.Request) <em>Handle Request</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Handle Request</em>' operation.
-	 * @see de.dfki.iui.basys.model.runtime.communication.ChannelListener#handleRequest(de.dfki.iui.basys.model.runtime.communication.Request)
+	 * @see de.dfki.iui.basys.model.runtime.communication.ChannelListener#handleRequest(de.dfki.iui.basys.model.runtime.communication.Channel, de.dfki.iui.basys.model.runtime.communication.Request)
 	 * @generated
 	 */
-	EOperation getChannelListener__HandleRequest__Request();
+	EOperation getChannelListener__HandleRequest__Channel_Request();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.runtime.communication.CommunicationProvider <em>Provider</em>}'.
@@ -1990,6 +2009,14 @@ public interface CommunicationPackage extends EPackage {
 		EOperation CHANNEL_POOL___GET_CHANNEL__STRING = eINSTANCE.getChannelPool__GetChannel__String();
 
 		/**
+		 * The meta object literal for the '<em><b>Get Channel By Name</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CHANNEL_POOL___GET_CHANNEL_BY_NAME__STRING = eINSTANCE.getChannelPool__GetChannelByName__String();
+
+		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.runtime.communication.impl.ChannelImpl <em>Channel</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2095,7 +2122,7 @@ public interface CommunicationPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation CHANNEL_LISTENER___HANDLE_MESSAGE__STRING = eINSTANCE.getChannelListener__HandleMessage__String();
+		EOperation CHANNEL_LISTENER___HANDLE_MESSAGE__CHANNEL_STRING = eINSTANCE.getChannelListener__HandleMessage__Channel_String();
 
 		/**
 		 * The meta object literal for the '<em><b>Handle Notification</b></em>' operation.
@@ -2103,7 +2130,7 @@ public interface CommunicationPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation CHANNEL_LISTENER___HANDLE_NOTIFICATION__NOTIFICATION = eINSTANCE.getChannelListener__HandleNotification__Notification();
+		EOperation CHANNEL_LISTENER___HANDLE_NOTIFICATION__CHANNEL_NOTIFICATION = eINSTANCE.getChannelListener__HandleNotification__Channel_Notification();
 
 		/**
 		 * The meta object literal for the '<em><b>Handle Request</b></em>' operation.
@@ -2111,7 +2138,7 @@ public interface CommunicationPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation CHANNEL_LISTENER___HANDLE_REQUEST__REQUEST = eINSTANCE.getChannelListener__HandleRequest__Request();
+		EOperation CHANNEL_LISTENER___HANDLE_REQUEST__CHANNEL_REQUEST = eINSTANCE.getChannelListener__HandleRequest__Channel_Request();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.runtime.communication.CommunicationProvider <em>Provider</em>}' class.

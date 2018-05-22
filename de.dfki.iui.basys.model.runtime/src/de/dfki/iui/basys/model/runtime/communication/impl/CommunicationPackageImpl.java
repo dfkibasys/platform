@@ -22,6 +22,8 @@ import de.dfki.iui.basys.model.runtime.communication.exceptions.ClientException;
 import de.dfki.iui.basys.model.runtime.communication.exceptions.CommunicationException;
 import de.dfki.iui.basys.model.runtime.communication.exceptions.MessageException;
 import de.dfki.iui.basys.model.runtime.communication.exceptions.ProviderException;
+import de.dfki.iui.basys.model.runtime.component.ComponentPackage;
+import de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -208,11 +210,16 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 		BasePackage.eINSTANCE.eClass();
 		EcorePackage.eINSTANCE.eClass();
 
+		// Obtain or create and register interdependencies
+		ComponentPackageImpl theComponentPackage = (ComponentPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ComponentPackage.eNS_URI) instanceof ComponentPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ComponentPackage.eNS_URI) : ComponentPackage.eINSTANCE);
+
 		// Create package meta-data objects
 		theCommunicationPackage.createPackageContents();
+		theComponentPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theCommunicationPackage.initializePackageContents();
+		theComponentPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theCommunicationPackage.freeze();
@@ -417,6 +424,15 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getChannelPool__GetChannelByName__String() {
+		return channelPoolEClass.getEOperations().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getChannel() {
 		return channelEClass;
 	}
@@ -525,7 +541,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getChannelListener__HandleMessage__String() {
+	public EOperation getChannelListener__HandleMessage__Channel_String() {
 		return channelListenerEClass.getEOperations().get(0);
 	}
 
@@ -534,7 +550,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getChannelListener__HandleNotification__Notification() {
+	public EOperation getChannelListener__HandleNotification__Channel_Notification() {
 		return channelListenerEClass.getEOperations().get(1);
 	}
 
@@ -543,7 +559,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getChannelListener__HandleRequest__Request() {
+	public EOperation getChannelListener__HandleRequest__Channel_Request() {
 		return channelListenerEClass.getEOperations().get(2);
 	}
 
@@ -849,6 +865,7 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 		createEOperation(channelPoolEClass, CHANNEL_POOL___CONNECT);
 		createEOperation(channelPoolEClass, CHANNEL_POOL___DISCONNECT);
 		createEOperation(channelPoolEClass, CHANNEL_POOL___GET_CHANNEL__STRING);
+		createEOperation(channelPoolEClass, CHANNEL_POOL___GET_CHANNEL_BY_NAME__STRING);
 
 		channelEClass = createEClass(CHANNEL);
 		createEReference(channelEClass, CHANNEL__LISTENER);
@@ -863,9 +880,9 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 		createEOperation(channelEClass, CHANNEL___SEND_REQUEST__REQUEST_RESPONSECALLBACK);
 
 		channelListenerEClass = createEClass(CHANNEL_LISTENER);
-		createEOperation(channelListenerEClass, CHANNEL_LISTENER___HANDLE_MESSAGE__STRING);
-		createEOperation(channelListenerEClass, CHANNEL_LISTENER___HANDLE_NOTIFICATION__NOTIFICATION);
-		createEOperation(channelListenerEClass, CHANNEL_LISTENER___HANDLE_REQUEST__REQUEST);
+		createEOperation(channelListenerEClass, CHANNEL_LISTENER___HANDLE_MESSAGE__CHANNEL_STRING);
+		createEOperation(channelListenerEClass, CHANNEL_LISTENER___HANDLE_NOTIFICATION__CHANNEL_NOTIFICATION);
+		createEOperation(channelListenerEClass, CHANNEL_LISTENER___HANDLE_REQUEST__CHANNEL_REQUEST);
 
 		communicationProviderEClass = createEClass(COMMUNICATION_PROVIDER);
 		createEOperation(communicationProviderEClass, COMMUNICATION_PROVIDER___DO_CONNECT__CHANNELPOOL);
@@ -1001,6 +1018,9 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 		op = initEOperation(getChannelPool__GetChannel__String(), this.getChannel(), "getChannel", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "id", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = initEOperation(getChannelPool__GetChannelByName__String(), this.getChannel(), "getChannelByName", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(channelEClass, Channel.class, "Channel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getChannel_Listener(), this.getChannelListener(), null, "listener", null, 0, 1, Channel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getChannel_Pool(), this.getChannelPool(), this.getChannelPool_Channels(), "pool", null, 1, 1, Channel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1032,13 +1052,16 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 
 		initEClass(channelListenerEClass, ChannelListener.class, "ChannelListener", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		op = initEOperation(getChannelListener__HandleMessage__String(), null, "handleMessage", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getChannelListener__HandleMessage__Channel_String(), null, "handleMessage", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getChannel(), "channel", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "msg", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = initEOperation(getChannelListener__HandleNotification__Notification(), null, "handleNotification", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getChannelListener__HandleNotification__Channel_Notification(), null, "handleNotification", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getChannel(), "channel", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getNotification(), "not", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = initEOperation(getChannelListener__HandleRequest__Request(), this.getResponse(), "handleRequest", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getChannelListener__HandleRequest__Channel_Request(), this.getResponse(), "handleRequest", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getChannel(), "channel", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getRequest(), "req", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(communicationProviderEClass, CommunicationProvider.class, "CommunicationProvider", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

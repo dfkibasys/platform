@@ -2,6 +2,7 @@
  */
 package de.dfki.iui.basys.model.runtime.component;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -25,6 +26,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.ComponentInfo#getConnectionString <em>Connection String</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.ComponentInfo#getHostName <em>Host Name</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.ComponentInfo#getUriSpec <em>Uri Spec</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.runtime.component.ComponentInfo#getProperties <em>Properties</em>}</li>
  * </ul>
  *
  * @see de.dfki.iui.basys.model.runtime.component.ComponentPackage#getComponentInfo()
@@ -353,5 +355,21 @@ public interface ComponentInfo extends EObject {
 	 * @generated
 	 */
 	void setUriSpec(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Properties</b></em>' containment reference list.
+	 * The list contents are of type {@link de.dfki.iui.basys.model.runtime.component.Property}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Properties</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Properties</em>' containment reference list.
+	 * @see de.dfki.iui.basys.model.runtime.component.ComponentPackage#getComponentInfo_Properties()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Property> getProperties();
 
 } // ComponentInfo
