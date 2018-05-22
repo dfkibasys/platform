@@ -2,20 +2,11 @@
  */
 package de.dfki.iui.basys.model.runtime.component.impl;
 
-import java.util.Collection;
 import java.util.List;
-import java.util.Map;
-
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-
 import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
 import de.dfki.iui.basys.model.runtime.component.ComponentInfo;
 import de.dfki.iui.basys.model.runtime.component.ComponentPackage;
@@ -43,7 +34,6 @@ import de.dfki.iui.basys.model.runtime.component.State;
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.impl.ComponentInfoImpl#getConnectionString <em>Connection String</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.impl.ComponentInfoImpl#getHostName <em>Host Name</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.impl.ComponentInfoImpl#getUriSpec <em>Uri Spec</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.runtime.component.impl.ComponentInfoImpl#getProperties <em>Properties</em>}</li>
  * </ul>
  *
  * @generated
@@ -288,16 +278,6 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 	 * @ordered
 	 */
 	protected String uriSpec = URI_SPEC_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getProperties()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Property> properties;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -599,32 +579,6 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Property> getProperties() {
-		if (properties == null) {
-			properties = new EObjectContainmentEList<Property>(Property.class, this, ComponentPackage.COMPONENT_INFO__PROPERTIES);
-		}
-		return properties;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ComponentPackage.COMPONENT_INFO__PROPERTIES:
-				return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -652,8 +606,6 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 				return getHostName();
 			case ComponentPackage.COMPONENT_INFO__URI_SPEC:
 				return getUriSpec();
-			case ComponentPackage.COMPONENT_INFO__PROPERTIES:
-				return getProperties();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -703,10 +655,6 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 			case ComponentPackage.COMPONENT_INFO__URI_SPEC:
 				setUriSpec((String)newValue);
 				return;
-			case ComponentPackage.COMPONENT_INFO__PROPERTIES:
-				getProperties().clear();
-				getProperties().addAll((Collection<? extends Property>)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -755,9 +703,6 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 			case ComponentPackage.COMPONENT_INFO__URI_SPEC:
 				setUriSpec(URI_SPEC_EDEFAULT);
 				return;
-			case ComponentPackage.COMPONENT_INFO__PROPERTIES:
-				getProperties().clear();
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -794,8 +739,6 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 				return HOST_NAME_EDEFAULT == null ? hostName != null : !HOST_NAME_EDEFAULT.equals(hostName);
 			case ComponentPackage.COMPONENT_INFO__URI_SPEC:
 				return URI_SPEC_EDEFAULT == null ? uriSpec != null : !URI_SPEC_EDEFAULT.equals(uriSpec);
-			case ComponentPackage.COMPONENT_INFO__PROPERTIES:
-				return properties != null && !properties.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -834,8 +777,6 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 		result.append(hostName);
 		result.append(", uriSpec: ");
 		result.append(uriSpec);
-		result.append(", properties: ");
-		result.append(properties.toString());
 		result.append(')');
 		return result.toString();
 	}
@@ -853,7 +794,7 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 		private String connectionString;
 		private String hostName;
 		private String uriSpec;
-		private List<Property> properties;
+		//private List<Property> properties;
 
 		public Builder componentId(String componentId) {
 			this.componentId = componentId;
@@ -915,10 +856,10 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 			return this;
 		}
 		
-		public Builder properties(List<Property> properties) {
-			this.properties = properties;
-			return this;
-		}
+//		public Builder properties(List<Property> properties) {
+//			this.properties = properties;
+//			return this;
+//		}
 
 		public ComponentInfoImpl build() {
 			return new ComponentInfoImpl(this);
@@ -938,6 +879,6 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 		this.connectionString = builder.connectionString;
 		this.hostName = builder.hostName;
 		this.uriSpec = builder.uriSpec;
-		this.getProperties().addAll(builder.properties);
+		//this.getProperties().addAll(builder.properties);
 	}
 }

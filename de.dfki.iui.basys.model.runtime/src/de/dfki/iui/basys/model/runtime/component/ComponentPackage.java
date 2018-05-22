@@ -178,22 +178,13 @@ public interface ComponentPackage extends EPackage {
 	int COMPONENT_INFO__URI_SPEC = 11;
 
 	/**
-	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_INFO__PROPERTIES = 12;
-
-	/**
 	 * The number of structural features of the '<em>Info</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_INFO_FEATURE_COUNT = 13;
+	int COMPONENT_INFO_FEATURE_COUNT = 12;
 
 	/**
 	 * The number of operations of the '<em>Info</em>' class.
@@ -920,17 +911,6 @@ public interface ComponentPackage extends EPackage {
 	EAttribute getComponentInfo_UriSpec();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.runtime.component.ComponentInfo#getProperties <em>Properties</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Properties</em>'.
-	 * @see de.dfki.iui.basys.model.runtime.component.ComponentInfo#getProperties()
-	 * @see #getComponentInfo()
-	 * @generated
-	 */
-	EReference getComponentInfo_Properties();
-
-	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.runtime.component.ComponentConfiguration <em>Configuration</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1482,14 +1462,6 @@ public interface ComponentPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute COMPONENT_INFO__URI_SPEC = eINSTANCE.getComponentInfo_UriSpec();
-
-		/**
-		 * The meta object literal for the '<em><b>Properties</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference COMPONENT_INFO__PROPERTIES = eINSTANCE.getComponentInfo_Properties();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl <em>Configuration</em>}' class.
