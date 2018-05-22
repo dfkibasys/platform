@@ -10,7 +10,6 @@ import org.junit.Test;
 import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl;
-import de.dfki.iui.basys.runtime.processcontrol.impl.CamundaTaskScheduler;
 import de.dfki.iui.basys.runtime.component.device.DeviceComponent;
 import de.dfki.iui.basys.runtime.processcontrol.impl.CamundaRestClient;
 import de.dfki.iui.basys.runtime.processcontrol.impl.ExternalServiceTaskDto;
@@ -46,7 +45,7 @@ public class ProcessControlTest extends BaseComponentTest {
 	}
 
 	@Test
-	//@Ignore
+	@Ignore
 	public void testCamundaSchedulerOk() throws Exception {
 
 		componentManager.createLocalComponent(config1);
@@ -68,7 +67,7 @@ public class ProcessControlTest extends BaseComponentTest {
 	}
 	
 	@Test
-	//@Ignore
+	@Ignore
 	public void testCamundaSchedulerNotOk() throws Exception {
 
 		componentManager.createLocalComponent(config1);

@@ -1,9 +1,6 @@
 package de.dfki.iui.basys.runtime.component.device.mqtt.tactileswitch;
 
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
 import org.eclipse.paho.client.mqttv3.IMqttMessageListener;
 import org.eclipse.paho.client.mqttv3.MqttException;
@@ -12,6 +9,7 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 import de.dfki.iui.basys.model.domain.capability.Capability;
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
 import de.dfki.iui.basys.model.domain.capability.SwitchConfirmationCapability;
+import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
@@ -37,7 +35,8 @@ public class SwitchDeviceComponent extends MqttDeviceComponent {
 	@Override
 	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
 
-		Capability c = (Capability) req.getCapability();
+		CapabilityVariant<?> variant = (CapabilityVariant<?>)req.getCapabilityVariant();
+		Capability c = variant.getCapability();
 
 		SwitchConfirmationCapability switchConfirmationCapability = null;
 		if (c.eClass().equals(CapabilityPackage.eINSTANCE.getSwitchConfirmationCapability()))

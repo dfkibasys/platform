@@ -18,6 +18,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import de.dfki.iui.basys.common.emf.json.JsonUtils;
 import de.dfki.iui.basys.model.domain.capability.CapabilityFactory;
 import de.dfki.iui.basys.model.domain.capability.SwitchConfirmationCapability;
+import de.dfki.iui.basys.model.domain.resourceinstance.GeneralCapabilityVariant;
+import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstanceFactory;
 import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
@@ -98,8 +100,11 @@ public class SwitchDeviceComponentTest {
 		SwitchConfirmationCapability capability = CapabilityFactory.eINSTANCE.createSwitchConfirmationCapability();
 		capability.setState(1);
 		
+		GeneralCapabilityVariant variant = ResourceinstanceFactory.eINSTANCE.createGeneralCapabilityVariant();		
+		variant.setCapability(capability);
+		
 		CapabilityRequest req = ComponentFactory.eINSTANCE.createCapabilityRequest();
-		req.setCapability(capability);
+		req.setCapabilityVariant(variant);
 		req.setComponentId(componentConfig.getComponentId());
 		
 		try {
@@ -140,8 +145,11 @@ public class SwitchDeviceComponentTest {
 		SwitchConfirmationCapability capability = CapabilityFactory.eINSTANCE.createSwitchConfirmationCapability();
 		capability.setState(1);
 		
+		GeneralCapabilityVariant variant = ResourceinstanceFactory.eINSTANCE.createGeneralCapabilityVariant();		
+		variant.setCapability(capability);
+		
 		CapabilityRequest req = ComponentFactory.eINSTANCE.createCapabilityRequest();
-		req.setCapability(capability);
+		req.setCapabilityVariant(variant);
 		req.setComponentId(componentConfig.getComponentId());
 		
 		try {

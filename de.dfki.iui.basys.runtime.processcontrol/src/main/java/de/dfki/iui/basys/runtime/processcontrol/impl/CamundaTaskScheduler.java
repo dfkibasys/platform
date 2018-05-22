@@ -4,12 +4,11 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import de.dfki.iui.basys.common.emf.json.JsonUtils;
-import de.dfki.iui.basys.model.domain.capability.Capability;
+import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.ComponentFactory;
@@ -81,10 +80,10 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 		List<ExternalServiceTaskDto> tasks = client.getExternalTasks("BasysTask", lockDuration, "assignee", "command", "parameters");
 
 		for (ExternalServiceTaskDto task : tasks) {
-//			if (task.variables.assignee == null || task.variables.assignee.value == null) {
-//				client.handleError(task.id, "ExternalTask does not contain an assignee", 0, 1000);
-//				continue;
-//			}
+			if (task.variables.assignee == null || task.variables.assignee.value == null) {
+				client.handleError(task.id, "ExternalTask does not contain an assignee", 0, 1000);
+				continue;
+			}
 			if (task.variables.command == null || task.variables.command.value == null) {
 				client.handleError(task.id, "ExternalTask does not contain a command", 0, 1000);
 				continue;
@@ -98,10 +97,10 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 			if (task.variables.assignee != null || task.variables.assignee.value != null) {
 				request.setComponentId(task.variables.assignee.value);				
 			}
-			Capability capability;
+			CapabilityVariant<?> capabilityVariant;
 			try {
-				capability = JsonUtils.fromString(task.variables.command.value, Capability.class);
-				request.setCapability(capability);
+				capabilityVariant = JsonUtils.fromString(task.variables.command.value, CapabilityVariant.class);
+				request.setCapabilityVariant(capabilityVariant);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -21,6 +21,8 @@ import de.dfki.iui.basys.model.data.impl.CartesianCoordinateImpl;
 import de.dfki.iui.basys.model.domain.capability.CapabilityFactory;
 import de.dfki.iui.basys.model.domain.capability.ProjectETA;
 import de.dfki.iui.basys.model.domain.capability.ProjectPath;
+import de.dfki.iui.basys.model.domain.resourceinstance.GeneralCapabilityVariant;
+import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstanceFactory;
 import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
@@ -114,8 +116,11 @@ public class LaserDeviceComponentTest {
 		capability.setEta(60*1000);
 		capability.setColor(0);
 		
+		GeneralCapabilityVariant variant = ResourceinstanceFactory.eINSTANCE.createGeneralCapabilityVariant();		
+		variant.setCapability(capability);
+		
 		CapabilityRequest req = ComponentFactory.eINSTANCE.createCapabilityRequest();
-		req.setCapability(capability);
+		req.setCapabilityVariant(variant);
 		req.setComponentId(componentConfig.getComponentId());
 		
 		try {
@@ -158,8 +163,11 @@ public class LaserDeviceComponentTest {
 		capability.setRadius(0.25); // Meter
 		capability.setColor(0);
 		
+		GeneralCapabilityVariant variant = ResourceinstanceFactory.eINSTANCE.createGeneralCapabilityVariant();		
+		variant.setCapability(capability);
+		
 		CapabilityRequest req = ComponentFactory.eINSTANCE.createCapabilityRequest();
-		req.setCapability(capability);
+		req.setCapabilityVariant(variant);
 		req.setComponentId(componentConfig.getComponentId());
 		
 		try {

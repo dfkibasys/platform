@@ -6,10 +6,10 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 
 import de.dfki.iui.basys.model.data.CartesianCoordinate;
-import de.dfki.iui.basys.model.domain.capability.Capability;
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
 import de.dfki.iui.basys.model.domain.capability.ProjectETA;
 import de.dfki.iui.basys.model.domain.capability.ProjectPath;
+import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.device.DeviceComponent;
@@ -31,14 +31,14 @@ public class LaserDeviceComponent extends DeviceComponent {
 
 	@Override
 	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
-
-		Capability c = (Capability) req.getCapability();
+		// in einem CapabilityRequest steckt nun eine CapabilityVariant. Diese enthält wiederum eine Capability (dp, 22.05.2018)
+		CapabilityVariant<?> c = (CapabilityVariant<?>) req.getCapabilityVariant();
 
 		Projection p;
 		if (c.eClass().equals(CapabilityPackage.eINSTANCE.getProjectPath())) {
-			p = createPathProjection((ProjectPath) c);
+			p = createPathProjection((ProjectPath) c.getCapability());
 		} else if (c.eClass().equals(CapabilityPackage.eINSTANCE.getProjectETA())) {
-			p = createEtaProjection((ProjectETA) c);
+			p = createEtaProjection((ProjectETA) c.getCapability());
 		} else {
 			p = null;
 		}

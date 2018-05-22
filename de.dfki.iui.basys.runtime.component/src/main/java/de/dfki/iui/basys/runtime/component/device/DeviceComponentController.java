@@ -3,7 +3,7 @@ package de.dfki.iui.basys.runtime.component.device;
 import java.io.IOException;
 
 import de.dfki.iui.basys.common.emf.json.JsonUtils;
-import de.dfki.iui.basys.model.domain.capability.Capability;
+import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
 import de.dfki.iui.basys.model.runtime.communication.Channel;
 import de.dfki.iui.basys.model.runtime.communication.ChannelListener;
 import de.dfki.iui.basys.model.runtime.communication.Notification;
@@ -115,8 +115,8 @@ public class DeviceComponentController implements CommandInterface, ChannelListe
 		return sendComponentRequest(cr);
 	}
 
-	private ComponentRequestStatus sendCapabilityRequest(Capability capability) {
-		CapabilityRequest cr = new CapabilityRequestImpl.Builder().componentId(componentId).capability(capability)
+	private ComponentRequestStatus sendCapabilityRequest(CapabilityVariant capability) {
+		CapabilityRequest cr = new CapabilityRequestImpl.Builder().componentId(componentId).capabilityVariant(capability)
 				.build();
 		return sendComponentRequest(cr);
 	}
@@ -139,7 +139,7 @@ public class DeviceComponentController implements CommandInterface, ChannelListe
 		return status;
 	}
 
-	public ComponentRequestStatus executeCapability(Capability capability) {
+	public ComponentRequestStatus executeCapability(CapabilityVariant capability) {
 		ComponentRequestStatus status = sendCapabilityRequest(capability);
 		return status;
 	}
