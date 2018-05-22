@@ -13,8 +13,8 @@ import org.osgi.service.component.annotations.Reference;
 import de.dfki.iui.basys.osgi.services.BasysOsgiComponent;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManager;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManagerException;
-import de.dfki.iui.basys.runtime.services.WorldModelManager;
-import de.dfki.iui.basys.runtime.services.impl.WorldModelManagerImpl;
+import de.dfki.iui.basys.runtime.services.worldmodelManager.WorldModelManager;
+import de.dfki.iui.basys.runtime.services.worldmodelManager.impl.WorldModelManagerImpl;
 
 @Component(configurationPolicy = ConfigurationPolicy.REQUIRE, immediate = true)
 public final class WorldModelManagerServiceImpl extends BasysOsgiComponent implements WorldModelManager {

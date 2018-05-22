@@ -35,6 +35,12 @@
 			<artifactId>de.dfki.iui.basys.runtime.services</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>de.dfki.iui.basys.runtime</groupId>
+			<artifactId>de.dfki.iui.basys.runtime.services.worldmodelManager</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.osgi/org.osgi.service.component.annotations -->
 		<dependency>
