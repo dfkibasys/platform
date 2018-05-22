@@ -1,41 +1,57 @@
 package de.dfki.iui.basys.runtime.component;
 
 import de.dfki.iui.basys.model.runtime.communication.ChannelPool;
+import de.dfki.iui.basys.runtime.component.manager.ComponentManager;
 import de.dfki.iui.basys.runtime.component.registry.ComponentRegistry;
 
 public class ComponentContext {
 
 	private ComponentRegistry componentRegistry;
+	private ComponentManager componentManager;
 	private ChannelPool sharedChannelPool;
 
-	/**
-	 * @return the serviceRegistry
-	 */
+	public ComponentContext(ComponentContext context) {
+		this.componentRegistry = context.getComponentRegistry();
+		this.componentManager = context.getComponentManager();
+		this.sharedChannelPool = context.getSharedChannelPool();
+	}
+	
 	public ComponentRegistry getComponentRegistry() {
 		return componentRegistry;
 	}
 
-	/**
-	 * @return the sharedChannelPool
-	 */
-	public ChannelPool getSharedChannelPool() {
-		return sharedChannelPool;
-	}
-	
 	public void setComponentRegistry(ComponentRegistry componentRegistry) {
 		this.componentRegistry = componentRegistry;
 	}
-	
+
+	public ComponentManager getComponentManager() {
+		return componentManager;
+	}
+
+	public void setComponentManager(ComponentManager componentManager) {
+		this.componentManager = componentManager;
+	}
+
+	public ChannelPool getSharedChannelPool() {
+		return sharedChannelPool;
+	}
+
 	public void setSharedChannelPool(ChannelPool sharedChannelPool) {
 		this.sharedChannelPool = sharedChannelPool;
 	}
 
 	public static class Builder {
 		private ComponentRegistry componentRegistry;
+		private ComponentManager componentManager;
 		private ChannelPool sharedChannelPool;
 
 		public Builder componentRegistry(ComponentRegistry componentRegistry) {
 			this.componentRegistry = componentRegistry;
+			return this;
+		}
+
+		public Builder componentManager(ComponentManager componentManager) {
+			this.componentManager = componentManager;
 			return this;
 		}
 
@@ -51,11 +67,7 @@ public class ComponentContext {
 
 	private ComponentContext(Builder builder) {
 		this.componentRegistry = builder.componentRegistry;
+		this.componentManager = builder.componentManager;
 		this.sharedChannelPool = builder.sharedChannelPool;
-	}
-	
-	public ComponentContext(ComponentContext context) {
-		this.componentRegistry = context.componentRegistry;
-		this.sharedChannelPool = context.sharedChannelPool;
 	}
 }

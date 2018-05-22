@@ -39,4 +39,6 @@ buildNumber.properties
 # Eclipse IDE settings
 .settings/
 
+.classpath
+.project
 MANIFEST.MF
