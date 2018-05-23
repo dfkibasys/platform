@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.filefilter.SuffixFileFilter;
 import org.eclipse.emf.common.util.URI;
@@ -25,7 +28,9 @@ import de.dfki.iui.basys.runtime.component.manager.ComponentManagerException;
 public class ComponentManagerImpl extends BaseComponent implements ComponentManager {
 
 	private Map<String, Component> components = new HashMap<>();
-
+	
+	private ScheduledExecutorService scheduledExecutorService =  Executors.newScheduledThreadPool(1);
+	
 	public ComponentManagerImpl(ComponentConfiguration config) {
 		super(config);
 		ComponentPackageImpl.init();
@@ -34,22 +39,31 @@ public class ComponentManagerImpl extends BaseComponent implements ComponentMana
 	@Override
 	public void connectToExternal() throws ComponentException {
 
-		URI uri = URI.createURI(getConfig().getExternalConnectionString());
-		if (uri.isFile()) {
-			String fileString = uri.toFileString();
+		scheduledExecutorService.schedule(new Runnable() {
+			
+			@Override
+			public void run() {
+				URI uri = URI.createURI(getConfig().getExternalConnectionString());
+				if (uri.isFile()) {
+					String fileString = uri.toFileString();
 
-			File file = new File(fileString);
-			try {
-				if (file.isDirectory()) {
-					createLocalComponents(file, true);
-				} else {
-					createLocalComponent(file);
+					File file = new File(fileString);
+					try {
+						if (file.isDirectory()) {
+							createLocalComponents(file, true);
+						} else {
+							createLocalComponent(file);
+						}
+					} catch (ComponentManagerException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
-			} catch (ComponentManagerException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				LOGGER.info("connectToExternal complete");
+				
 			}
-		}
+		}, 10, TimeUnit.SECONDS);
+		
 
 	}
 
@@ -57,6 +71,14 @@ public class ComponentManagerImpl extends BaseComponent implements ComponentMana
 	public void deactivate() throws ComponentException {
 		for (Component c : components.values()) {
 			c.deactivate();
+		}
+		try {
+			if (!scheduledExecutorService.awaitTermination(5,TimeUnit.SECONDS)) {
+				scheduledExecutorService.shutdownNow();
+			}
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		super.deactivate();
 	}

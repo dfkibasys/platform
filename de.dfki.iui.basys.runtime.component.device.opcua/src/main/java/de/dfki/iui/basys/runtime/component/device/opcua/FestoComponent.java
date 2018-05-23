@@ -7,7 +7,6 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
-import de.dfki.iui.basys.model.runtime.component.State;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
@@ -27,6 +26,7 @@ public class FestoComponent extends OpcUaDeviceComponent {
 
 	private short oldJobStatus = 0;
 	private short jobStatus = 0;
+	private short jobErrorCode = 0;
 
 	public FestoComponent(ComponentConfiguration config) {
 		super(config);
@@ -41,34 +41,22 @@ public class FestoComponent extends OpcUaDeviceComponent {
 
 		try {
 			subscribeToValue(NODE_VARIABLE_JOB_STATUS);
-			// subscribeToValue(NODE_VARIABLE_JOB_ERRORCODE);
+			subscribeToValue(NODE_VARIABLE_JOB_ERRORCODE);
 
 		} catch (Exception e) {
 			throw new ComponentException(new OpcUaException(e));
 		}
 	}
 
-
-	
 	@Override
 	public void onResetting() {
 		super.onResetting();
-
-		
-		
 		oldJobStatus = 0;
 		jobStatus = 0;
-		// TODO: setze Variable zum Zurücksetzten, z.B. nach Fehlerquittierung (=reset())
-		// try {
-		// writeValue(NODE_VARIABLE_JOB_ERRORCODE, (short) 0);
-		// } catch (OpcUaException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
-		//
+		ackn();
 	}
 
-	@Override		
+	@Override
 	public void onStarting() {
 		try {
 			int lidNumber = getUnitConfig().getRecipe();
@@ -82,90 +70,74 @@ public class FestoComponent extends OpcUaDeviceComponent {
 	public void onCompleting() {
 		super.onCompleting();
 
-		//send response to basys (dp)
-		//TODO: move to base class DeviceComponent
 		sendComponentResponse(ResponseStatus.OK, 0);
 	}
 
 	@Override
-	public void onStoppingAsync() {
-
-		//In case of an error the particular machine stops immediately. 
-		//An explicit stop command has only to be sent in case of an external stop/cancel request 
-		//if (!internalStop) {
-			try {
+	public void onStopping() {
+		try {
+			short jobErrorCode = readValue(NODE_VARIABLE_JOB_ERRORCODE);
+			if (jobErrorCode != 0) {
+				// internal error report
+				// do nothing
+			} else {
+				// external stop
 				int lidNumber = getUnitConfig().getRecipe();
-				Void v = invokeMethod(NODE_SERVICES, NODE_CANCEL_PP_JOB, (short) lidNumber);
-			} catch (OpcUaException e) {
-				e.printStackTrace();
+				cancelJob((short) lidNumber);
 			}
-		//}
+
+			sendComponentResponse(ResponseStatus.NOT_OK, jobErrorCode);
+		} catch (OpcUaException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 	}
 
 	@Override
 	protected void onSubscriptionValue(UaMonitoredItem item, DataValue value) {
 		super.onSubscriptionValue(item, value);
 
-		// if (item.getReadValueId().getNodeId() == NODE_VARIABLE_JOB_ERRORCODE) {
-		// setErrorCode((short) (value.getValue().getValue()));
-		// switch (getErrorCode()) {
-		// case 0:
-		// case 123:
-		// // do nothing, happens also during reset()
-		// break;
-		// // case 11:
-		// // according to Excel sheet
-		// // abort(); // already aborted.
-		// default:
-		// // internal error
-		// internalStop();
-		// break;
-		// }
-		// return;
-		// }
+		if (item.getReadValueId().getNodeId() == NODE_VARIABLE_JOB_ERRORCODE) {
+			jobErrorCode = (short) (value.getValue().getValue());
+		}
 
 		if (item.getReadValueId().getNodeId() == NODE_VARIABLE_JOB_STATUS) {
+			short newJobStatus = (short) (value.getValue().getValue());
 			oldJobStatus = jobStatus;
-			jobStatus = (short) (value.getValue().getValue());
-
-			switch (jobStatus) {
-			case 0: // IDLE
-				if (getState() == State.STOPPED) {
-					reset();
-				} else if (getState() == State.EXECUTE) {
-					signalComplete();
-				} else if (getState() == State.STOPPING) {
-					signalComplete();
-				} else if (getState() == State.RESETTING) {
-					signalComplete();
-				}
-				break;
-			case 1:
-				// machine started execution, ignore or notify basys
-				break;
-			case 2:
-				// cancel
-
-				break;
-			case 3:
-				// error
-				// try {
-				// short code = readValue(NODE_VARIABLE_JOB_ERRORCODE);
-				// } catch (OpcUaException e) {
-				// // TODO Auto-generated catch block
-				// e.printStackTrace();
-				// }
-				//
-				// if (oldJobStatus == 2) {
-				// //notify CAA: cancel failed
-				// }
-				// internalStop();
-				break;
-			default:
-				break;
-			}
-			return;
+			jobErrorCode = newJobStatus;
 		}
+
+		updateState();
+
+	}
+
+	private void updateState() {
+
+		switch (jobStatus) {
+		case 0: // IDLE
+			// if (getState() == State.STOPPED) {
+			// reset();
+			// } else if (getState() == State.EXECUTE) {
+			// signalComplete();
+			// } else if (getState() == State.STOPPING) {
+			// signalComplete();
+			// } else if (getState() == State.RESETTING) {
+			// signalComplete();
+			// }
+			break;
+		case 1: // RUNNING
+			// ignore
+			break;
+		case 2: // RESETTING
+			// ignore
+			break;
+		case 3: // ERROR
+			stop();
+			break;
+		default:
+			break;
+		}
+
 	}
 
 	@Override
@@ -174,7 +146,6 @@ public class FestoComponent extends OpcUaDeviceComponent {
 		return null;
 	}
 
-	
 	public void ackn() {
 		try {
 			Short v = invokeMethod(NODE_SERVICES, NODE_ACK);
@@ -182,5 +153,21 @@ public class FestoComponent extends OpcUaDeviceComponent {
 			e.printStackTrace();
 		}
 	}
-	
+
+	public void executeJob(short lidNumber) {
+		try {
+			invokeMethod(NODE_SERVICES, NODE_EXECUTE_PP_JOB, lidNumber);
+		} catch (OpcUaException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void cancelJob(short lidNumber) {
+		try {
+			invokeMethod(NODE_SERVICES, NODE_CANCEL_PP_JOB, lidNumber);
+		} catch (OpcUaException e) {
+			e.printStackTrace();
+		}
+	}
+
 }

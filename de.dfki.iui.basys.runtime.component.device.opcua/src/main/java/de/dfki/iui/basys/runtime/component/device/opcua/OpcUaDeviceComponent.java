@@ -41,9 +41,9 @@ import org.eclipse.milo.opcua.stack.core.types.structured.ReadValueId;
 
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.ComponentException;
-import de.dfki.iui.basys.runtime.component.device.AsyncDeviceComponent;
+import de.dfki.iui.basys.runtime.component.device.DeviceComponent;
 
-public abstract class OpcUaDeviceComponent extends AsyncDeviceComponent {
+public abstract class OpcUaDeviceComponent extends DeviceComponent {
 
 	protected OpcUaClient opcuaClient;
 	protected SecurityPolicy opcuaSecurityPolicy = SecurityPolicy.None;

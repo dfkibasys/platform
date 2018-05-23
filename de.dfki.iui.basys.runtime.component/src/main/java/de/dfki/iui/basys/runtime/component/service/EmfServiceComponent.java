@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import de.dfki.iui.basys.common.emf.EmfPersistence;
+import de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl;
 import de.dfki.iui.basys.model.domain.material.impl.MaterialPackageImpl;
 import de.dfki.iui.basys.model.domain.material.util.MaterialResourceFactoryImpl;
 import de.dfki.iui.basys.model.domain.order.impl.OrderPackageImpl;
@@ -81,8 +82,11 @@ public abstract class EmfServiceComponent extends ServiceComponent {
 		resourceSet = null;
 	}
 
-	protected ResourceSet createResourceSet() {
+	public static ResourceSet createResourceSet() {
 		ResourceSet	resourceSet = new ResourceSetImpl();
+		
+		
+		CapabilityPackageImpl.init();
 		
 		MaterialPackageImpl.init();
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("material", new MaterialResourceFactoryImpl());	
