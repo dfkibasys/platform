@@ -8,17 +8,21 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+
+import de.dfki.iui.basys.common.emf.json.JsonUtils;
+import de.dfki.iui.basys.model.domain.linebalancing.WMProductInstance;
+import de.dfki.iui.basys.model.domain.linebalancing.WorldModel;
+import de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingFactoryImpl;
 import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.TestDeviceComponent;
 import de.dfki.iui.basys.runtime.component.device.tecs.MirComponent;
-import de.dfki.iui.basys.runtime.services.ResourceTypeManager;
 import de.dfki.iui.basys.runtime.services.impl.ProductInstanceManagerImpl;
 import de.dfki.iui.basys.runtime.services.impl.ResourceInstanceManagerImpl;
 import de.dfki.iui.basys.runtime.services.impl.ResourceTypeManagerImpl;
-import de.dfki.iui.basys.runtime.services.worldmodelManager.WorldModelManager.WorldModel;
 import de.dfki.iui.basys.runtime.services.worldmodelManager.impl.WorldModelManagerImpl;
 
 public class WorldModelManagerTest extends BaseComponentTest {
@@ -69,6 +73,8 @@ public class WorldModelManagerTest extends BaseComponentTest {
 				.componentName("worldmodel-manager").componentCategory(ComponentCategory.SERVICE_COMPONENT)
 				.componentImplementationJavaClass(
 						"de.dfki.iui.basys.runtime.services.worldmodelManager.WorldModelManager")
+				.externalConnectionString(
+						"file:/" + new File(".").getAbsolutePath() + "/src/test/resources/model/model.linebalancing")
 				.inChannelName("worldmodel-manager#in").outChannelName("worldmodel-manager#out").build();
 
 		config6 = new ComponentConfigurationImpl.Builder().componentId("resource-type-manager")
@@ -88,7 +94,7 @@ public class WorldModelManagerTest extends BaseComponentTest {
 		componentManager.addLocalComponent(pim);
 		componentManager.addLocalComponent(rtm);
 		componentManager.addLocalComponent(rim);
-		// componentManager.addLocalComponent(mir);
+		componentManager.addLocalComponent(mir);
 		// componentManager.addLocalComponent(ur3);
 		componentManager.addLocalComponent(wmm);
 
@@ -101,10 +107,29 @@ public class WorldModelManagerTest extends BaseComponentTest {
 	}
 
 	@Test
-	public void testRegisterDeviceComponentsAndList() throws ComponentException, InterruptedException {
+	public void testRegisterDeviceComponentsAndList() throws ComponentException, InterruptedException, JsonProcessingException {
 		LOGGER.info("testRegisterServicesAndList - start");
 
+	//	WMProductInstance wmpi = new LinebalancingFactoryImpl().createWMProductInstance();
+	//	System.out.println(JsonUtils.toString(wmpi));
+		
+		
+		
 		WorldModel wm = wmm.getCurrentWorld();
+
+		
+			System.out.println("");
+			System.out.println("");
+
+			System.out.println("");
+			System.out.println("");
+			System.out.println(JsonUtils.toString(wm));
+			System.out.println("");
+			System.out.println("");
+			System.out.println("");
+			System.out.println("");
+
+	
 
 		LOGGER.info("testServiceLifecycle - complete");
 	}
