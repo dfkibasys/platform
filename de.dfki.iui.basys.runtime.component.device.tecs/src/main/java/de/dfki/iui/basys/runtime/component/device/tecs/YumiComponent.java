@@ -74,12 +74,17 @@ public class YumiComponent extends TecsDeviceComponent{
 	
 	@Override
 	public void onResetting() {
-		//set arm to default position?
+		// no action
 	}
 
 	@Override
 	public void onStarting() {
-		//?
+		try {
+			client.performQA("PERFORM QA");
+		} catch (TException e) {
+			e.printStackTrace();
+			abort();
+		}
 	}
 
 	@Override
@@ -93,7 +98,7 @@ public class YumiComponent extends TecsDeviceComponent{
 				if (ys == YumiState.Error || ys == YumiState.Manual) {
 					executing = false;
 					setErrorCode(1);
-					stop();
+					abort();
 					break;
 				}
 				
@@ -104,7 +109,7 @@ public class YumiComponent extends TecsDeviceComponent{
 				case ABORTED: 
 					executing= false;
 					setErrorCode(1);
-					stop();
+					abort();
 					break;
 				case EXECUTING:
 					// wait
@@ -121,7 +126,7 @@ public class YumiComponent extends TecsDeviceComponent{
 				case REJECTED: 
 					executing=false;
 					setErrorCode(2);
-					stop();
+					abort();
 					break;
 				default: break;
 				}
@@ -134,7 +139,7 @@ public class YumiComponent extends TecsDeviceComponent{
 		} catch (TException e) {
 			e.printStackTrace();
 			setErrorCode(3);
-			stop();
+			abort();
 		}
 	}
 
@@ -145,7 +150,7 @@ public class YumiComponent extends TecsDeviceComponent{
 
 	@Override
 	public void onStopping() {
-		
+		// no action
 	}
 
 	@Override
@@ -212,14 +217,11 @@ public class YumiComponent extends TecsDeviceComponent{
 		public CommandResponse performQA(String objectId) throws QAException, TException {
 			return super.performQA(objectId);
 		}
-		
-		//TODO: performScan, new, needs new version of libHRC
-		
 	}
 
 	@Override
 	protected void handleTecsEvent(Event event) {
 		// TODO Auto-generated method stub
-		
+		// nothing to do
 	}
 }
