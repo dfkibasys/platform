@@ -22,31 +22,58 @@ public interface LinebalancingFactory extends EFactory {
 	LinebalancingFactory eINSTANCE = de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>LB Product Instance</em>'.
+	 * Returns a new object of class '<em>WM Path Time</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>LB Product Instance</em>'.
+	 * @return a new object of class '<em>WM Path Time</em>'.
 	 * @generated
 	 */
-	LBProductInstance createLBProductInstance();
+	WMPathTime createWMPathTime();
 
 	/**
-	 * Returns a new object of class '<em>LB Staff</em>'.
+	 * Returns a new object of class '<em>Static World Model</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>LB Staff</em>'.
+	 * @return a new object of class '<em>Static World Model</em>'.
 	 * @generated
 	 */
-	LBStaff createLBStaff();
+	StaticWorldModel createStaticWorldModel();
 
 	/**
-	 * Returns a new object of class '<em>LB Locations</em>'.
+	 * Returns a new object of class '<em>WM Product Instance</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>LB Locations</em>'.
+	 * @return a new object of class '<em>WM Product Instance</em>'.
 	 * @generated
 	 */
-	LBLocations createLBLocations();
+	WMProductInstance createWMProductInstance();
+
+	/**
+	 * Returns a new object of class '<em>WM Resource Instance</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>WM Resource Instance</em>'.
+	 * @generated
+	 */
+	WMResourceInstance createWMResourceInstance();
+
+	/**
+	 * Returns a new object of class '<em>World Model</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>World Model</em>'.
+	 * @generated
+	 */
+	WorldModel createWorldModel();
+
+	/**
+	 * Returns a new object of class '<em>WM Path Times</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>WM Path Times</em>'.
+	 * @generated
+	 */
+	WMPathTimes createWMPathTimes();
 
 	/**
 	 * Returns the package supported by this factory.

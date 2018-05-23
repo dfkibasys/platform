@@ -8,9 +8,6 @@ import de.dfki.iui.basys.model.base.BaseFactory;
 import de.dfki.iui.basys.model.domain.capability.CapabilityFactory;
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
 import de.dfki.iui.basys.model.domain.capability.CapabilityRequest;
-
-import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingFactory;
-
 import de.dfki.iui.basys.model.domain.material.MaterialFactory;
 
 import de.dfki.iui.basys.model.domain.order.OrderFactory;
@@ -623,16 +620,6 @@ public class CapabilityRequestItemProvider
 			(createChildParameter
 				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
 				 WorkplanFactory.eINSTANCE.createDuration()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
-				 LinebalancingFactory.eINSTANCE.createLBProductInstance()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
-				 LinebalancingFactory.eINSTANCE.createLBStaff()));
 
 		newChildDescriptors.add
 			(createChildParameter

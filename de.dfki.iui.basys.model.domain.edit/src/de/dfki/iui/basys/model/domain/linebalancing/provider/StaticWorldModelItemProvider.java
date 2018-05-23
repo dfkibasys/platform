@@ -3,9 +3,9 @@
 package de.dfki.iui.basys.model.domain.linebalancing.provider;
 
 
-import de.dfki.iui.basys.model.domain.linebalancing.LBLocations;
 import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingFactory;
 import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
+import de.dfki.iui.basys.model.domain.linebalancing.StaticWorldModel;
 
 import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
 
@@ -29,12 +29,12 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link de.dfki.iui.basys.model.domain.linebalancing.LBLocations} object.
+ * This is the item provider adapter for a {@link de.dfki.iui.basys.model.domain.linebalancing.StaticWorldModel} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class LBLocationsItemProvider 
+public class StaticWorldModelItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -48,7 +48,7 @@ public class LBLocationsItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LBLocationsItemProvider(AdapterFactory adapterFactory) {
+	public StaticWorldModelItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -79,8 +79,7 @@ public class LBLocationsItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(LinebalancingPackage.Literals.LB_LOCATIONS__STAFF);
-			childrenFeatures.add(LinebalancingPackage.Literals.LB_LOCATIONS__PRODUCT_INSTANCES);
+			childrenFeatures.add(LinebalancingPackage.Literals.STATIC_WORLD_MODEL__PATH_TIMES);
 		}
 		return childrenFeatures;
 	}
@@ -99,14 +98,14 @@ public class LBLocationsItemProvider
 	}
 
 	/**
-	 * This returns LBLocations.gif.
+	 * This returns StaticWorldModel.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/LBLocations"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/StaticWorldModel"));
 	}
 
 	/**
@@ -117,7 +116,7 @@ public class LBLocationsItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_LBLocations_type");
+		return getString("_UI_StaticWorldModel_type");
 	}
 	
 
@@ -132,9 +131,8 @@ public class LBLocationsItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(LBLocations.class)) {
-			case LinebalancingPackage.LB_LOCATIONS__STAFF:
-			case LinebalancingPackage.LB_LOCATIONS__PRODUCT_INSTANCES:
+		switch (notification.getFeatureID(StaticWorldModel.class)) {
+			case LinebalancingPackage.STATIC_WORLD_MODEL__PATH_TIMES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -154,13 +152,8 @@ public class LBLocationsItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(LinebalancingPackage.Literals.LB_LOCATIONS__STAFF,
-				 LinebalancingFactory.eINSTANCE.createLBStaff()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(LinebalancingPackage.Literals.LB_LOCATIONS__PRODUCT_INSTANCES,
-				 LinebalancingFactory.eINSTANCE.createLBProductInstance()));
+				(LinebalancingPackage.Literals.STATIC_WORLD_MODEL__PATH_TIMES,
+				 LinebalancingFactory.eINSTANCE.createWMPathTimes()));
 	}
 
 	/**

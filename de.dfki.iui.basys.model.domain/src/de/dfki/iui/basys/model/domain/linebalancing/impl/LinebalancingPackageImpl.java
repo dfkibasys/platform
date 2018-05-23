@@ -8,13 +8,15 @@ import de.dfki.iui.basys.model.data.DataPackage;
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
 
 import de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl;
-
-import de.dfki.iui.basys.model.domain.linebalancing.LBLocations;
-import de.dfki.iui.basys.model.domain.linebalancing.LBProductInstance;
-import de.dfki.iui.basys.model.domain.linebalancing.LBStaff;
 import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingFactory;
 import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
 
+import de.dfki.iui.basys.model.domain.linebalancing.StaticWorldModel;
+import de.dfki.iui.basys.model.domain.linebalancing.WMPathTime;
+import de.dfki.iui.basys.model.domain.linebalancing.WMPathTimes;
+import de.dfki.iui.basys.model.domain.linebalancing.WMProductInstance;
+import de.dfki.iui.basys.model.domain.linebalancing.WMResourceInstance;
+import de.dfki.iui.basys.model.domain.linebalancing.WorldModel;
 import de.dfki.iui.basys.model.domain.material.MaterialPackage;
 import de.dfki.iui.basys.model.domain.material.impl.MaterialPackageImpl;
 import de.dfki.iui.basys.model.domain.order.OrderPackage;
@@ -74,21 +76,42 @@ public class LinebalancingPackageImpl extends EPackageImpl implements Linebalanc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass lbProductInstanceEClass = null;
+	private EClass wmPathTimeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass lbStaffEClass = null;
+	private EClass staticWorldModelEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass lbLocationsEClass = null;
+	private EClass wmProductInstanceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass wmResourceInstanceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass worldModelEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass wmPathTimesEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -206,8 +229,8 @@ public class LinebalancingPackageImpl extends EPackageImpl implements Linebalanc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getLBProductInstance() {
-		return lbProductInstanceEClass;
+	public EClass getWMPathTime() {
+		return wmPathTimeEClass;
 	}
 
 	/**
@@ -215,8 +238,8 @@ public class LinebalancingPackageImpl extends EPackageImpl implements Linebalanc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLBProductInstance_ComponentId() {
-		return (EAttribute)lbProductInstanceEClass.getEStructuralFeatures().get(0);
+	public EAttribute getWMPathTime_Time() {
+		return (EAttribute)wmPathTimeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -224,8 +247,8 @@ public class LinebalancingPackageImpl extends EPackageImpl implements Linebalanc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLBProductInstance_WorkstepInstanceId() {
-		return (EAttribute)lbProductInstanceEClass.getEStructuralFeatures().get(1);
+	public EReference getWMPathTime_To() {
+		return (EReference)wmPathTimeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -233,8 +256,8 @@ public class LinebalancingPackageImpl extends EPackageImpl implements Linebalanc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLBProductInstance_RemainingTime() {
-		return (EAttribute)lbProductInstanceEClass.getEStructuralFeatures().get(2);
+	public EClass getStaticWorldModel() {
+		return staticWorldModelEClass;
 	}
 
 	/**
@@ -242,8 +265,8 @@ public class LinebalancingPackageImpl extends EPackageImpl implements Linebalanc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getLBStaff() {
-		return lbStaffEClass;
+	public EReference getStaticWorldModel_PathTimes() {
+		return (EReference)staticWorldModelEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -251,8 +274,8 @@ public class LinebalancingPackageImpl extends EPackageImpl implements Linebalanc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLBStaff_Assignment() {
-		return (EAttribute)lbStaffEClass.getEStructuralFeatures().get(0);
+	public EClass getWMProductInstance() {
+		return wmProductInstanceEClass;
 	}
 
 	/**
@@ -260,8 +283,8 @@ public class LinebalancingPackageImpl extends EPackageImpl implements Linebalanc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLBStaff_ComponentId_src() {
-		return (EAttribute)lbStaffEClass.getEStructuralFeatures().get(1);
+	public EAttribute getWMProductInstance_SerialId() {
+		return (EAttribute)wmProductInstanceEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -269,8 +292,8 @@ public class LinebalancingPackageImpl extends EPackageImpl implements Linebalanc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLBStaff_ComponentId_target() {
-		return (EAttribute)lbStaffEClass.getEStructuralFeatures().get(2);
+	public EReference getWMProductInstance_Position() {
+		return (EReference)wmProductInstanceEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -278,8 +301,8 @@ public class LinebalancingPackageImpl extends EPackageImpl implements Linebalanc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLBStaff_CurrentProductInstanceId() {
-		return (EAttribute)lbStaffEClass.getEStructuralFeatures().get(3);
+	public EAttribute getWMProductInstance_In_transit() {
+		return (EAttribute)wmProductInstanceEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -287,8 +310,8 @@ public class LinebalancingPackageImpl extends EPackageImpl implements Linebalanc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLBStaff_RemainingMovementTime() {
-		return (EAttribute)lbStaffEClass.getEStructuralFeatures().get(4);
+	public EAttribute getWMProductInstance_Eta() {
+		return (EAttribute)wmProductInstanceEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -296,8 +319,8 @@ public class LinebalancingPackageImpl extends EPackageImpl implements Linebalanc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getLBLocations() {
-		return lbLocationsEClass;
+	public EReference getWMProductInstance_Variant() {
+		return (EReference)wmProductInstanceEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -305,8 +328,8 @@ public class LinebalancingPackageImpl extends EPackageImpl implements Linebalanc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLBLocations_Staff() {
-		return (EReference)lbLocationsEClass.getEStructuralFeatures().get(0);
+	public EClass getWMResourceInstance() {
+		return wmResourceInstanceEClass;
 	}
 
 	/**
@@ -314,8 +337,98 @@ public class LinebalancingPackageImpl extends EPackageImpl implements Linebalanc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLBLocations_ProductInstances() {
-		return (EReference)lbLocationsEClass.getEStructuralFeatures().get(1);
+	public EAttribute getWMResourceInstance_SerialId() {
+		return (EAttribute)wmResourceInstanceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getWMResourceInstance_From_position() {
+		return (EReference)wmResourceInstanceEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getWMResourceInstance_To_position() {
+		return (EReference)wmResourceInstanceEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getWMResourceInstance_Eta() {
+		return (EAttribute)wmResourceInstanceEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getWMResourceInstance_Capabilities() {
+		return (EReference)wmResourceInstanceEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getWorldModel() {
+		return worldModelEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getWorldModel_ProductInstances() {
+		return (EReference)worldModelEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getWorldModel_ResourceInstances() {
+		return (EReference)worldModelEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getWMPathTimes() {
+		return wmPathTimesEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getWMPathTimes_From() {
+		return (EReference)wmPathTimesEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getWMPathTimes_To() {
+		return (EReference)wmPathTimesEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -346,21 +459,34 @@ public class LinebalancingPackageImpl extends EPackageImpl implements Linebalanc
 		isCreated = true;
 
 		// Create classes and their features
-		lbProductInstanceEClass = createEClass(LB_PRODUCT_INSTANCE);
-		createEAttribute(lbProductInstanceEClass, LB_PRODUCT_INSTANCE__COMPONENT_ID);
-		createEAttribute(lbProductInstanceEClass, LB_PRODUCT_INSTANCE__WORKSTEP_INSTANCE_ID);
-		createEAttribute(lbProductInstanceEClass, LB_PRODUCT_INSTANCE__REMAINING_TIME);
+		wmPathTimeEClass = createEClass(WM_PATH_TIME);
+		createEAttribute(wmPathTimeEClass, WM_PATH_TIME__TIME);
+		createEReference(wmPathTimeEClass, WM_PATH_TIME__TO);
 
-		lbStaffEClass = createEClass(LB_STAFF);
-		createEAttribute(lbStaffEClass, LB_STAFF__ASSIGNMENT);
-		createEAttribute(lbStaffEClass, LB_STAFF__COMPONENT_ID_SRC);
-		createEAttribute(lbStaffEClass, LB_STAFF__COMPONENT_ID_TARGET);
-		createEAttribute(lbStaffEClass, LB_STAFF__CURRENT_PRODUCT_INSTANCE_ID);
-		createEAttribute(lbStaffEClass, LB_STAFF__REMAINING_MOVEMENT_TIME);
+		staticWorldModelEClass = createEClass(STATIC_WORLD_MODEL);
+		createEReference(staticWorldModelEClass, STATIC_WORLD_MODEL__PATH_TIMES);
 
-		lbLocationsEClass = createEClass(LB_LOCATIONS);
-		createEReference(lbLocationsEClass, LB_LOCATIONS__STAFF);
-		createEReference(lbLocationsEClass, LB_LOCATIONS__PRODUCT_INSTANCES);
+		wmProductInstanceEClass = createEClass(WM_PRODUCT_INSTANCE);
+		createEAttribute(wmProductInstanceEClass, WM_PRODUCT_INSTANCE__SERIAL_ID);
+		createEReference(wmProductInstanceEClass, WM_PRODUCT_INSTANCE__POSITION);
+		createEAttribute(wmProductInstanceEClass, WM_PRODUCT_INSTANCE__IN_TRANSIT);
+		createEAttribute(wmProductInstanceEClass, WM_PRODUCT_INSTANCE__ETA);
+		createEReference(wmProductInstanceEClass, WM_PRODUCT_INSTANCE__VARIANT);
+
+		wmResourceInstanceEClass = createEClass(WM_RESOURCE_INSTANCE);
+		createEAttribute(wmResourceInstanceEClass, WM_RESOURCE_INSTANCE__SERIAL_ID);
+		createEReference(wmResourceInstanceEClass, WM_RESOURCE_INSTANCE__FROM_POSITION);
+		createEReference(wmResourceInstanceEClass, WM_RESOURCE_INSTANCE__TO_POSITION);
+		createEAttribute(wmResourceInstanceEClass, WM_RESOURCE_INSTANCE__ETA);
+		createEReference(wmResourceInstanceEClass, WM_RESOURCE_INSTANCE__CAPABILITIES);
+
+		worldModelEClass = createEClass(WORLD_MODEL);
+		createEReference(worldModelEClass, WORLD_MODEL__PRODUCT_INSTANCES);
+		createEReference(worldModelEClass, WORLD_MODEL__RESOURCE_INSTANCES);
+
+		wmPathTimesEClass = createEClass(WM_PATH_TIMES);
+		createEReference(wmPathTimesEClass, WM_PATH_TIMES__FROM);
+		createEReference(wmPathTimesEClass, WM_PATH_TIMES__TO);
 	}
 
 	/**
@@ -387,32 +513,46 @@ public class LinebalancingPackageImpl extends EPackageImpl implements Linebalanc
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		BasePackage theBasePackage = (BasePackage)EPackage.Registry.INSTANCE.getEPackage(BasePackage.eNS_URI);
+		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
+		TopologyPackage theTopologyPackage = (TopologyPackage)EPackage.Registry.INSTANCE.getEPackage(TopologyPackage.eNS_URI);
+		ProductdefinitionPackage theProductdefinitionPackage = (ProductdefinitionPackage)EPackage.Registry.INSTANCE.getEPackage(ProductdefinitionPackage.eNS_URI);
+		ResourceinstancePackage theResourceinstancePackage = (ResourceinstancePackage)EPackage.Registry.INSTANCE.getEPackage(ResourceinstancePackage.eNS_URI);
 
 		// Create type parameters
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		lbProductInstanceEClass.getESuperTypes().add(theBasePackage.getEntity());
-		lbStaffEClass.getESuperTypes().add(theBasePackage.getEntity());
 
 		// Initialize classes, features, and operations; add parameters
-		initEClass(lbProductInstanceEClass, LBProductInstance.class, "LBProductInstance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getLBProductInstance_ComponentId(), ecorePackage.getEString(), "componentId", null, 0, 1, LBProductInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getLBProductInstance_WorkstepInstanceId(), ecorePackage.getEString(), "workstepInstanceId", null, 0, 1, LBProductInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getLBProductInstance_RemainingTime(), ecorePackage.getELong(), "remainingTime", null, 0, 1, LBProductInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(wmPathTimeEClass, WMPathTime.class, "WMPathTime", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getWMPathTime_Time(), theEcorePackage.getELong(), "time", null, 0, 1, WMPathTime.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getWMPathTime_To(), theTopologyPackage.getTopologyElement(), null, "to", null, 0, 1, WMPathTime.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(lbStaffEClass, LBStaff.class, "LBStaff", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getLBStaff_Assignment(), ecorePackage.getEString(), "assignment", null, 0, 1, LBStaff.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getLBStaff_ComponentId_src(), ecorePackage.getEString(), "componentId_src", null, 0, 1, LBStaff.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getLBStaff_ComponentId_target(), ecorePackage.getEString(), "componentId_target", null, 0, 1, LBStaff.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getLBStaff_CurrentProductInstanceId(), ecorePackage.getEString(), "currentProductInstanceId", null, 0, 1, LBStaff.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getLBStaff_RemainingMovementTime(), ecorePackage.getELong(), "remainingMovementTime", null, 0, 1, LBStaff.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(staticWorldModelEClass, StaticWorldModel.class, "StaticWorldModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getStaticWorldModel_PathTimes(), this.getWMPathTimes(), null, "pathTimes", null, 0, -1, StaticWorldModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(lbLocationsEClass, LBLocations.class, "LBLocations", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getLBLocations_Staff(), this.getLBStaff(), null, "staff", null, 0, -1, LBLocations.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLBLocations_ProductInstances(), this.getLBProductInstance(), null, "productInstances", null, 0, -1, LBLocations.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(wmProductInstanceEClass, WMProductInstance.class, "WMProductInstance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getWMProductInstance_SerialId(), ecorePackage.getEString(), "serialId", null, 0, 1, WMProductInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getWMProductInstance_Position(), theTopologyPackage.getTopologyElement(), null, "position", null, 0, 1, WMProductInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getWMProductInstance_In_transit(), ecorePackage.getEBoolean(), "in_transit", null, 0, 1, WMProductInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getWMProductInstance_Eta(), theEcorePackage.getELong(), "eta", null, 0, 1, WMProductInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getWMProductInstance_Variant(), theProductdefinitionPackage.getManufacturedComponent(), null, "variant", null, 0, 1, WMProductInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(wmResourceInstanceEClass, WMResourceInstance.class, "WMResourceInstance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getWMResourceInstance_SerialId(), theEcorePackage.getEString(), "serialId", null, 0, 1, WMResourceInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getWMResourceInstance_From_position(), theTopologyPackage.getTopologyElement(), null, "from_position", null, 0, 1, WMResourceInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getWMResourceInstance_To_position(), theTopologyPackage.getTopologyElement(), null, "to_position", null, 0, 1, WMResourceInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getWMResourceInstance_Eta(), theEcorePackage.getELong(), "eta", null, 0, 1, WMResourceInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getWMResourceInstance_Capabilities(), theResourceinstancePackage.getCapabilityApplication(), null, "capabilities", null, 0, -1, WMResourceInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(worldModelEClass, WorldModel.class, "WorldModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getWorldModel_ProductInstances(), this.getWMProductInstance(), null, "productInstances", null, 0, -1, WorldModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getWorldModel_ResourceInstances(), this.getWMResourceInstance(), null, "resourceInstances", null, 0, -1, WorldModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(wmPathTimesEClass, WMPathTimes.class, "WMPathTimes", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getWMPathTimes_From(), theTopologyPackage.getTopologyElement(), null, "from", null, 0, 1, WMPathTimes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getWMPathTimes_To(), this.getWMPathTime(), null, "to", null, 0, -1, WMPathTimes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

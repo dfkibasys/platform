@@ -2,9 +2,6 @@
  */
 package de.dfki.iui.basys.model.domain.linebalancing.util;
 
-import de.dfki.iui.basys.model.base.BObject;
-import de.dfki.iui.basys.model.base.Entity;
-
 import de.dfki.iui.basys.model.domain.linebalancing.*;
 
 import org.eclipse.emf.ecore.EObject;
@@ -69,25 +66,39 @@ public class LinebalancingSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case LinebalancingPackage.LB_PRODUCT_INSTANCE: {
-				LBProductInstance lbProductInstance = (LBProductInstance)theEObject;
-				T result = caseLBProductInstance(lbProductInstance);
-				if (result == null) result = caseEntity(lbProductInstance);
-				if (result == null) result = caseBObject(lbProductInstance);
+			case LinebalancingPackage.WM_PATH_TIME: {
+				WMPathTime wmPathTime = (WMPathTime)theEObject;
+				T result = caseWMPathTime(wmPathTime);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case LinebalancingPackage.LB_STAFF: {
-				LBStaff lbStaff = (LBStaff)theEObject;
-				T result = caseLBStaff(lbStaff);
-				if (result == null) result = caseEntity(lbStaff);
-				if (result == null) result = caseBObject(lbStaff);
+			case LinebalancingPackage.STATIC_WORLD_MODEL: {
+				StaticWorldModel staticWorldModel = (StaticWorldModel)theEObject;
+				T result = caseStaticWorldModel(staticWorldModel);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case LinebalancingPackage.LB_LOCATIONS: {
-				LBLocations lbLocations = (LBLocations)theEObject;
-				T result = caseLBLocations(lbLocations);
+			case LinebalancingPackage.WM_PRODUCT_INSTANCE: {
+				WMProductInstance wmProductInstance = (WMProductInstance)theEObject;
+				T result = caseWMProductInstance(wmProductInstance);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case LinebalancingPackage.WM_RESOURCE_INSTANCE: {
+				WMResourceInstance wmResourceInstance = (WMResourceInstance)theEObject;
+				T result = caseWMResourceInstance(wmResourceInstance);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case LinebalancingPackage.WORLD_MODEL: {
+				WorldModel worldModel = (WorldModel)theEObject;
+				T result = caseWorldModel(worldModel);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case LinebalancingPackage.WM_PATH_TIMES: {
+				WMPathTimes wmPathTimes = (WMPathTimes)theEObject;
+				T result = caseWMPathTimes(wmPathTimes);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -96,77 +107,92 @@ public class LinebalancingSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>LB Product Instance</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>WM Path Time</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>LB Product Instance</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>WM Path Time</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseLBProductInstance(LBProductInstance object) {
+	public T caseWMPathTime(WMPathTime object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>LB Staff</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Static World Model</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>LB Staff</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Static World Model</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseLBStaff(LBStaff object) {
+	public T caseStaticWorldModel(StaticWorldModel object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>LB Locations</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>WM Product Instance</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>LB Locations</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>WM Product Instance</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseLBLocations(LBLocations object) {
+	public T caseWMProductInstance(WMProductInstance object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>BObject</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>WM Resource Instance</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>BObject</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>WM Resource Instance</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseBObject(BObject object) {
+	public T caseWMResourceInstance(WMResourceInstance object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Entity</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>World Model</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Entity</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>World Model</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseEntity(Entity object) {
+	public T caseWorldModel(WorldModel object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>WM Path Times</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>WM Path Times</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseWMPathTimes(WMPathTimes object) {
 		return null;
 	}
 

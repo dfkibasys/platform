@@ -2,9 +2,6 @@
  */
 package de.dfki.iui.basys.model.domain.linebalancing.util;
 
-import de.dfki.iui.basys.model.base.BObject;
-import de.dfki.iui.basys.model.base.Entity;
-
 import de.dfki.iui.basys.model.domain.linebalancing.*;
 
 import org.eclipse.emf.common.notify.Adapter;
@@ -71,24 +68,28 @@ public class LinebalancingAdapterFactory extends AdapterFactoryImpl {
 	protected LinebalancingSwitch<Adapter> modelSwitch =
 		new LinebalancingSwitch<Adapter>() {
 			@Override
-			public Adapter caseLBProductInstance(LBProductInstance object) {
-				return createLBProductInstanceAdapter();
+			public Adapter caseWMPathTime(WMPathTime object) {
+				return createWMPathTimeAdapter();
 			}
 			@Override
-			public Adapter caseLBStaff(LBStaff object) {
-				return createLBStaffAdapter();
+			public Adapter caseStaticWorldModel(StaticWorldModel object) {
+				return createStaticWorldModelAdapter();
 			}
 			@Override
-			public Adapter caseLBLocations(LBLocations object) {
-				return createLBLocationsAdapter();
+			public Adapter caseWMProductInstance(WMProductInstance object) {
+				return createWMProductInstanceAdapter();
 			}
 			@Override
-			public Adapter caseBObject(BObject object) {
-				return createBObjectAdapter();
+			public Adapter caseWMResourceInstance(WMResourceInstance object) {
+				return createWMResourceInstanceAdapter();
 			}
 			@Override
-			public Adapter caseEntity(Entity object) {
-				return createEntityAdapter();
+			public Adapter caseWorldModel(WorldModel object) {
+				return createWorldModelAdapter();
+			}
+			@Override
+			public Adapter caseWMPathTimes(WMPathTimes object) {
+				return createWMPathTimesAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -111,72 +112,86 @@ public class LinebalancingAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.linebalancing.LBProductInstance <em>LB Product Instance</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.linebalancing.WMPathTime <em>WM Path Time</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.dfki.iui.basys.model.domain.linebalancing.LBProductInstance
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.WMPathTime
 	 * @generated
 	 */
-	public Adapter createLBProductInstanceAdapter() {
+	public Adapter createWMPathTimeAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.linebalancing.LBStaff <em>LB Staff</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.linebalancing.StaticWorldModel <em>Static World Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.dfki.iui.basys.model.domain.linebalancing.LBStaff
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.StaticWorldModel
 	 * @generated
 	 */
-	public Adapter createLBStaffAdapter() {
+	public Adapter createStaticWorldModelAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.linebalancing.LBLocations <em>LB Locations</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.linebalancing.WMProductInstance <em>WM Product Instance</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.dfki.iui.basys.model.domain.linebalancing.LBLocations
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.WMProductInstance
 	 * @generated
 	 */
-	public Adapter createLBLocationsAdapter() {
+	public Adapter createWMProductInstanceAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.base.BObject <em>BObject</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.linebalancing.WMResourceInstance <em>WM Resource Instance</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.dfki.iui.basys.model.base.BObject
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.WMResourceInstance
 	 * @generated
 	 */
-	public Adapter createBObjectAdapter() {
+	public Adapter createWMResourceInstanceAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.base.Entity <em>Entity</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.linebalancing.WorldModel <em>World Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.dfki.iui.basys.model.base.Entity
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.WorldModel
 	 * @generated
 	 */
-	public Adapter createEntityAdapter() {
+	public Adapter createWorldModelAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.linebalancing.WMPathTimes <em>WM Path Times</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.WMPathTimes
+	 * @generated
+	 */
+	public Adapter createWMPathTimesAdapter() {
 		return null;
 	}
 

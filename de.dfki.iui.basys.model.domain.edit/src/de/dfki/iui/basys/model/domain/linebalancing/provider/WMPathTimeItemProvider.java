@@ -3,13 +3,10 @@
 package de.dfki.iui.basys.model.domain.linebalancing.provider;
 
 
-import de.dfki.iui.basys.model.base.provider.EntityItemProvider;
-
-import de.dfki.iui.basys.model.domain.linebalancing.LBProductInstance;
 import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
+import de.dfki.iui.basys.model.domain.linebalancing.WMPathTime;
 
 import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
-
 import java.util.Collection;
 import java.util.List;
 
@@ -17,26 +14,38 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.IItemPropertySource;
+import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
+import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link de.dfki.iui.basys.model.domain.linebalancing.LBProductInstance} object.
+ * This is the item provider adapter for a {@link de.dfki.iui.basys.model.domain.linebalancing.WMPathTime} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class LBProductInstanceItemProvider extends EntityItemProvider {
+public class WMPathTimeItemProvider 
+	extends ItemProviderAdapter
+	implements
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
+		IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LBProductInstanceItemProvider(AdapterFactory adapterFactory) {
+	public WMPathTimeItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -51,71 +60,26 @@ public class LBProductInstanceItemProvider extends EntityItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addComponentIdPropertyDescriptor(object);
-			addWorkstepInstanceIdPropertyDescriptor(object);
-			addRemainingTimePropertyDescriptor(object);
+			addTimePropertyDescriptor(object);
+			addToPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Component Id feature.
+	 * This adds a property descriptor for the Time feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addComponentIdPropertyDescriptor(Object object) {
+	protected void addTimePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_LBProductInstance_componentId_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_LBProductInstance_componentId_feature", "_UI_LBProductInstance_type"),
-				 LinebalancingPackage.Literals.LB_PRODUCT_INSTANCE__COMPONENT_ID,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Workstep Instance Id feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addWorkstepInstanceIdPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_LBProductInstance_workstepInstanceId_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_LBProductInstance_workstepInstanceId_feature", "_UI_LBProductInstance_type"),
-				 LinebalancingPackage.Literals.LB_PRODUCT_INSTANCE__WORKSTEP_INSTANCE_ID,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Remaining Time feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addRemainingTimePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_LBProductInstance_remainingTime_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_LBProductInstance_remainingTime_feature", "_UI_LBProductInstance_type"),
-				 LinebalancingPackage.Literals.LB_PRODUCT_INSTANCE__REMAINING_TIME,
+				 getString("_UI_WMPathTime_time_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_WMPathTime_time_feature", "_UI_WMPathTime_type"),
+				 LinebalancingPackage.Literals.WM_PATH_TIME__TIME,
 				 true,
 				 false,
 				 false,
@@ -125,14 +89,36 @@ public class LBProductInstanceItemProvider extends EntityItemProvider {
 	}
 
 	/**
-	 * This returns LBProductInstance.gif.
+	 * This adds a property descriptor for the To feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addToPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_WMPathTime_to_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_WMPathTime_to_feature", "_UI_WMPathTime_type"),
+				 LinebalancingPackage.Literals.WM_PATH_TIME__TO,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This returns WMPathTime.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/LBProductInstance"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/WMPathTime"));
 	}
 
 	/**
@@ -143,10 +129,8 @@ public class LBProductInstanceItemProvider extends EntityItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((LBProductInstance)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_LBProductInstance_type") :
-			getString("_UI_LBProductInstance_type") + " " + label;
+		WMPathTime wmPathTime = (WMPathTime)object;
+		return getString("_UI_WMPathTime_type") + " " + wmPathTime.getTime();
 	}
 	
 
@@ -161,10 +145,8 @@ public class LBProductInstanceItemProvider extends EntityItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(LBProductInstance.class)) {
-			case LinebalancingPackage.LB_PRODUCT_INSTANCE__COMPONENT_ID:
-			case LinebalancingPackage.LB_PRODUCT_INSTANCE__WORKSTEP_INSTANCE_ID:
-			case LinebalancingPackage.LB_PRODUCT_INSTANCE__REMAINING_TIME:
+		switch (notification.getFeatureID(WMPathTime.class)) {
+			case LinebalancingPackage.WM_PATH_TIME__TIME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

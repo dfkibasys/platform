@@ -2,8 +2,6 @@
  */
 package de.dfki.iui.basys.model.domain.linebalancing;
 
-import de.dfki.iui.basys.model.base.BasePackage;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -60,223 +58,243 @@ public interface LinebalancingPackage extends EPackage {
 	LinebalancingPackage eINSTANCE = de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.linebalancing.impl.LBProductInstanceImpl <em>LB Product Instance</em>}' class.
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.linebalancing.impl.WMPathTimeImpl <em>WM Path Time</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.LBProductInstanceImpl
-	 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl#getLBProductInstance()
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.WMPathTimeImpl
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl#getWMPathTime()
 	 * @generated
 	 */
-	int LB_PRODUCT_INSTANCE = 0;
+	int WM_PATH_TIME = 0;
 
 	/**
-	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * The feature id for the '<em><b>Time</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LB_PRODUCT_INSTANCE__BINDING = BasePackage.ENTITY__BINDING;
+	int WM_PATH_TIME__TIME = 0;
 
 	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * The feature id for the '<em><b>To</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LB_PRODUCT_INSTANCE__ID = BasePackage.ENTITY__ID;
+	int WM_PATH_TIME__TO = 1;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The number of structural features of the '<em>WM Path Time</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LB_PRODUCT_INSTANCE__NAME = BasePackage.ENTITY__NAME;
+	int WM_PATH_TIME_FEATURE_COUNT = 2;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The number of operations of the '<em>WM Path Time</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LB_PRODUCT_INSTANCE__METADATA = BasePackage.ENTITY__METADATA;
+	int WM_PATH_TIME_OPERATION_COUNT = 0;
 
 	/**
-	 * The feature id for the '<em><b>Component Id</b></em>' attribute.
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.linebalancing.impl.StaticWorldModelImpl <em>Static World Model</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.StaticWorldModelImpl
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl#getStaticWorldModel()
+	 * @generated
+	 */
+	int STATIC_WORLD_MODEL = 1;
+
+	/**
+	 * The feature id for the '<em><b>Path Times</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LB_PRODUCT_INSTANCE__COMPONENT_ID = BasePackage.ENTITY_FEATURE_COUNT + 0;
+	int STATIC_WORLD_MODEL__PATH_TIMES = 0;
 
 	/**
-	 * The feature id for the '<em><b>Workstep Instance Id</b></em>' attribute.
+	 * The number of structural features of the '<em>Static World Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LB_PRODUCT_INSTANCE__WORKSTEP_INSTANCE_ID = BasePackage.ENTITY_FEATURE_COUNT + 1;
+	int STATIC_WORLD_MODEL_FEATURE_COUNT = 1;
 
 	/**
-	 * The feature id for the '<em><b>Remaining Time</b></em>' attribute.
+	 * The number of operations of the '<em>Static World Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LB_PRODUCT_INSTANCE__REMAINING_TIME = BasePackage.ENTITY_FEATURE_COUNT + 2;
+	int STATIC_WORLD_MODEL_OPERATION_COUNT = 0;
 
 	/**
-	 * The number of structural features of the '<em>LB Product Instance</em>' class.
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.linebalancing.impl.WMProductInstanceImpl <em>WM Product Instance</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.WMProductInstanceImpl
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl#getWMProductInstance()
+	 * @generated
+	 */
+	int WM_PRODUCT_INSTANCE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Serial Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LB_PRODUCT_INSTANCE_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 3;
+	int WM_PRODUCT_INSTANCE__SERIAL_ID = 0;
 
 	/**
-	 * The number of operations of the '<em>LB Product Instance</em>' class.
+	 * The feature id for the '<em><b>Position</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LB_PRODUCT_INSTANCE_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
+	int WM_PRODUCT_INSTANCE__POSITION = 1;
 
 	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.linebalancing.impl.LBStaffImpl <em>LB Staff</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.LBStaffImpl
-	 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl#getLBStaff()
-	 * @generated
-	 */
-	int LB_STAFF = 1;
-
-	/**
-	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * The feature id for the '<em><b>In transit</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LB_STAFF__BINDING = BasePackage.ENTITY__BINDING;
+	int WM_PRODUCT_INSTANCE__IN_TRANSIT = 2;
 
 	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * The feature id for the '<em><b>Eta</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LB_STAFF__ID = BasePackage.ENTITY__ID;
+	int WM_PRODUCT_INSTANCE__ETA = 3;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Variant</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LB_STAFF__NAME = BasePackage.ENTITY__NAME;
+	int WM_PRODUCT_INSTANCE__VARIANT = 4;
 
 	/**
-	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * The number of structural features of the '<em>WM Product Instance</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LB_STAFF__METADATA = BasePackage.ENTITY__METADATA;
+	int WM_PRODUCT_INSTANCE_FEATURE_COUNT = 5;
 
 	/**
-	 * The feature id for the '<em><b>Assignment</b></em>' attribute.
+	 * The number of operations of the '<em>WM Product Instance</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LB_STAFF__ASSIGNMENT = BasePackage.ENTITY_FEATURE_COUNT + 0;
+	int WM_PRODUCT_INSTANCE_OPERATION_COUNT = 0;
 
 	/**
-	 * The feature id for the '<em><b>Component Id src</b></em>' attribute.
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.linebalancing.impl.WMResourceInstanceImpl <em>WM Resource Instance</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.WMResourceInstanceImpl
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl#getWMResourceInstance()
+	 * @generated
+	 */
+	int WM_RESOURCE_INSTANCE = 3;
+
+	/**
+	 * The feature id for the '<em><b>Serial Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LB_STAFF__COMPONENT_ID_SRC = BasePackage.ENTITY_FEATURE_COUNT + 1;
+	int WM_RESOURCE_INSTANCE__SERIAL_ID = 0;
 
 	/**
-	 * The feature id for the '<em><b>Component Id target</b></em>' attribute.
+	 * The feature id for the '<em><b>From position</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LB_STAFF__COMPONENT_ID_TARGET = BasePackage.ENTITY_FEATURE_COUNT + 2;
+	int WM_RESOURCE_INSTANCE__FROM_POSITION = 1;
 
 	/**
-	 * The feature id for the '<em><b>Current Product Instance Id</b></em>' attribute.
+	 * The feature id for the '<em><b>To position</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LB_STAFF__CURRENT_PRODUCT_INSTANCE_ID = BasePackage.ENTITY_FEATURE_COUNT + 3;
+	int WM_RESOURCE_INSTANCE__TO_POSITION = 2;
 
 	/**
-	 * The feature id for the '<em><b>Remaining Movement Time</b></em>' attribute.
+	 * The feature id for the '<em><b>Eta</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LB_STAFF__REMAINING_MOVEMENT_TIME = BasePackage.ENTITY_FEATURE_COUNT + 4;
+	int WM_RESOURCE_INSTANCE__ETA = 3;
 
 	/**
-	 * The number of structural features of the '<em>LB Staff</em>' class.
+	 * The feature id for the '<em><b>Capabilities</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LB_STAFF_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 5;
+	int WM_RESOURCE_INSTANCE__CAPABILITIES = 4;
 
 	/**
-	 * The number of operations of the '<em>LB Staff</em>' class.
+	 * The number of structural features of the '<em>WM Resource Instance</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LB_STAFF_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
+	int WM_RESOURCE_INSTANCE_FEATURE_COUNT = 5;
 
 	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.linebalancing.impl.LBLocationsImpl <em>LB Locations</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.LBLocationsImpl
-	 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl#getLBLocations()
-	 * @generated
-	 */
-	int LB_LOCATIONS = 2;
-
-	/**
-	 * The feature id for the '<em><b>Staff</b></em>' containment reference list.
+	 * The number of operations of the '<em>WM Resource Instance</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LB_LOCATIONS__STAFF = 0;
+	int WM_RESOURCE_INSTANCE_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.linebalancing.impl.WorldModelImpl <em>World Model</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.WorldModelImpl
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl#getWorldModel()
+	 * @generated
+	 */
+	int WORLD_MODEL = 4;
 
 	/**
 	 * The feature id for the '<em><b>Product Instances</b></em>' containment reference list.
@@ -285,166 +303,328 @@ public interface LinebalancingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LB_LOCATIONS__PRODUCT_INSTANCES = 1;
+	int WORLD_MODEL__PRODUCT_INSTANCES = 0;
 
 	/**
-	 * The number of structural features of the '<em>LB Locations</em>' class.
+	 * The feature id for the '<em><b>Resource Instances</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LB_LOCATIONS_FEATURE_COUNT = 2;
+	int WORLD_MODEL__RESOURCE_INSTANCES = 1;
 
 	/**
-	 * The number of operations of the '<em>LB Locations</em>' class.
+	 * The number of structural features of the '<em>World Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LB_LOCATIONS_OPERATION_COUNT = 0;
-
+	int WORLD_MODEL_FEATURE_COUNT = 2;
 
 	/**
-	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.linebalancing.LBProductInstance <em>LB Product Instance</em>}'.
+	 * The number of operations of the '<em>World Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>LB Product Instance</em>'.
-	 * @see de.dfki.iui.basys.model.domain.linebalancing.LBProductInstance
 	 * @generated
+	 * @ordered
 	 */
-	EClass getLBProductInstance();
+	int WORLD_MODEL_OPERATION_COUNT = 0;
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.linebalancing.LBProductInstance#getComponentId <em>Component Id</em>}'.
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.linebalancing.impl.WMPathTimesImpl <em>WM Path Times</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Component Id</em>'.
-	 * @see de.dfki.iui.basys.model.domain.linebalancing.LBProductInstance#getComponentId()
-	 * @see #getLBProductInstance()
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.WMPathTimesImpl
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl#getWMPathTimes()
 	 * @generated
 	 */
-	EAttribute getLBProductInstance_ComponentId();
+	int WM_PATH_TIMES = 5;
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.linebalancing.LBProductInstance#getWorkstepInstanceId <em>Workstep Instance Id</em>}'.
+	 * The feature id for the '<em><b>From</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Workstep Instance Id</em>'.
-	 * @see de.dfki.iui.basys.model.domain.linebalancing.LBProductInstance#getWorkstepInstanceId()
-	 * @see #getLBProductInstance()
 	 * @generated
+	 * @ordered
 	 */
-	EAttribute getLBProductInstance_WorkstepInstanceId();
+	int WM_PATH_TIMES__FROM = 0;
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.linebalancing.LBProductInstance#getRemainingTime <em>Remaining Time</em>}'.
+	 * The feature id for the '<em><b>To</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Remaining Time</em>'.
-	 * @see de.dfki.iui.basys.model.domain.linebalancing.LBProductInstance#getRemainingTime()
-	 * @see #getLBProductInstance()
 	 * @generated
+	 * @ordered
 	 */
-	EAttribute getLBProductInstance_RemainingTime();
+	int WM_PATH_TIMES__TO = 1;
 
 	/**
-	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.linebalancing.LBStaff <em>LB Staff</em>}'.
+	 * The number of structural features of the '<em>WM Path Times</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>LB Staff</em>'.
-	 * @see de.dfki.iui.basys.model.domain.linebalancing.LBStaff
 	 * @generated
+	 * @ordered
 	 */
-	EClass getLBStaff();
+	int WM_PATH_TIMES_FEATURE_COUNT = 2;
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.linebalancing.LBStaff#getAssignment <em>Assignment</em>}'.
+	 * The number of operations of the '<em>WM Path Times</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Assignment</em>'.
-	 * @see de.dfki.iui.basys.model.domain.linebalancing.LBStaff#getAssignment()
-	 * @see #getLBStaff()
 	 * @generated
+	 * @ordered
 	 */
-	EAttribute getLBStaff_Assignment();
+	int WM_PATH_TIMES_OPERATION_COUNT = 0;
+
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.linebalancing.LBStaff#getComponentId_src <em>Component Id src</em>}'.
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.linebalancing.WMPathTime <em>WM Path Time</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Component Id src</em>'.
-	 * @see de.dfki.iui.basys.model.domain.linebalancing.LBStaff#getComponentId_src()
-	 * @see #getLBStaff()
+	 * @return the meta object for class '<em>WM Path Time</em>'.
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.WMPathTime
 	 * @generated
 	 */
-	EAttribute getLBStaff_ComponentId_src();
+	EClass getWMPathTime();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.linebalancing.LBStaff#getComponentId_target <em>Component Id target</em>}'.
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.linebalancing.WMPathTime#getTime <em>Time</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Component Id target</em>'.
-	 * @see de.dfki.iui.basys.model.domain.linebalancing.LBStaff#getComponentId_target()
-	 * @see #getLBStaff()
+	 * @return the meta object for the attribute '<em>Time</em>'.
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.WMPathTime#getTime()
+	 * @see #getWMPathTime()
 	 * @generated
 	 */
-	EAttribute getLBStaff_ComponentId_target();
+	EAttribute getWMPathTime_Time();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.linebalancing.LBStaff#getCurrentProductInstanceId <em>Current Product Instance Id</em>}'.
+	 * Returns the meta object for the reference '{@link de.dfki.iui.basys.model.domain.linebalancing.WMPathTime#getTo <em>To</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Current Product Instance Id</em>'.
-	 * @see de.dfki.iui.basys.model.domain.linebalancing.LBStaff#getCurrentProductInstanceId()
-	 * @see #getLBStaff()
+	 * @return the meta object for the reference '<em>To</em>'.
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.WMPathTime#getTo()
+	 * @see #getWMPathTime()
 	 * @generated
 	 */
-	EAttribute getLBStaff_CurrentProductInstanceId();
+	EReference getWMPathTime_To();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.linebalancing.LBStaff#getRemainingMovementTime <em>Remaining Movement Time</em>}'.
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.linebalancing.StaticWorldModel <em>Static World Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Remaining Movement Time</em>'.
-	 * @see de.dfki.iui.basys.model.domain.linebalancing.LBStaff#getRemainingMovementTime()
-	 * @see #getLBStaff()
+	 * @return the meta object for class '<em>Static World Model</em>'.
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.StaticWorldModel
 	 * @generated
 	 */
-	EAttribute getLBStaff_RemainingMovementTime();
+	EClass getStaticWorldModel();
 
 	/**
-	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.linebalancing.LBLocations <em>LB Locations</em>}'.
+	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.domain.linebalancing.StaticWorldModel#getPathTimes <em>Path Times</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>LB Locations</em>'.
-	 * @see de.dfki.iui.basys.model.domain.linebalancing.LBLocations
+	 * @return the meta object for the containment reference list '<em>Path Times</em>'.
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.StaticWorldModel#getPathTimes()
+	 * @see #getStaticWorldModel()
 	 * @generated
 	 */
-	EClass getLBLocations();
+	EReference getStaticWorldModel_PathTimes();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.domain.linebalancing.LBLocations#getStaff <em>Staff</em>}'.
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.linebalancing.WMProductInstance <em>WM Product Instance</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Staff</em>'.
-	 * @see de.dfki.iui.basys.model.domain.linebalancing.LBLocations#getStaff()
-	 * @see #getLBLocations()
+	 * @return the meta object for class '<em>WM Product Instance</em>'.
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.WMProductInstance
 	 * @generated
 	 */
-	EReference getLBLocations_Staff();
+	EClass getWMProductInstance();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.domain.linebalancing.LBLocations#getProductInstances <em>Product Instances</em>}'.
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.linebalancing.WMProductInstance#getSerialId <em>Serial Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Serial Id</em>'.
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.WMProductInstance#getSerialId()
+	 * @see #getWMProductInstance()
+	 * @generated
+	 */
+	EAttribute getWMProductInstance_SerialId();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.dfki.iui.basys.model.domain.linebalancing.WMProductInstance#getPosition <em>Position</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Position</em>'.
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.WMProductInstance#getPosition()
+	 * @see #getWMProductInstance()
+	 * @generated
+	 */
+	EReference getWMProductInstance_Position();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.linebalancing.WMProductInstance#isIn_transit <em>In transit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>In transit</em>'.
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.WMProductInstance#isIn_transit()
+	 * @see #getWMProductInstance()
+	 * @generated
+	 */
+	EAttribute getWMProductInstance_In_transit();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.linebalancing.WMProductInstance#getEta <em>Eta</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Eta</em>'.
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.WMProductInstance#getEta()
+	 * @see #getWMProductInstance()
+	 * @generated
+	 */
+	EAttribute getWMProductInstance_Eta();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.dfki.iui.basys.model.domain.linebalancing.WMProductInstance#getVariant <em>Variant</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Variant</em>'.
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.WMProductInstance#getVariant()
+	 * @see #getWMProductInstance()
+	 * @generated
+	 */
+	EReference getWMProductInstance_Variant();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.linebalancing.WMResourceInstance <em>WM Resource Instance</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>WM Resource Instance</em>'.
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.WMResourceInstance
+	 * @generated
+	 */
+	EClass getWMResourceInstance();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.linebalancing.WMResourceInstance#getSerialId <em>Serial Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Serial Id</em>'.
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.WMResourceInstance#getSerialId()
+	 * @see #getWMResourceInstance()
+	 * @generated
+	 */
+	EAttribute getWMResourceInstance_SerialId();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.dfki.iui.basys.model.domain.linebalancing.WMResourceInstance#getFrom_position <em>From position</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>From position</em>'.
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.WMResourceInstance#getFrom_position()
+	 * @see #getWMResourceInstance()
+	 * @generated
+	 */
+	EReference getWMResourceInstance_From_position();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.dfki.iui.basys.model.domain.linebalancing.WMResourceInstance#getTo_position <em>To position</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>To position</em>'.
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.WMResourceInstance#getTo_position()
+	 * @see #getWMResourceInstance()
+	 * @generated
+	 */
+	EReference getWMResourceInstance_To_position();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.linebalancing.WMResourceInstance#getEta <em>Eta</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Eta</em>'.
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.WMResourceInstance#getEta()
+	 * @see #getWMResourceInstance()
+	 * @generated
+	 */
+	EAttribute getWMResourceInstance_Eta();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.domain.linebalancing.WMResourceInstance#getCapabilities <em>Capabilities</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Capabilities</em>'.
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.WMResourceInstance#getCapabilities()
+	 * @see #getWMResourceInstance()
+	 * @generated
+	 */
+	EReference getWMResourceInstance_Capabilities();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.linebalancing.WorldModel <em>World Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>World Model</em>'.
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.WorldModel
+	 * @generated
+	 */
+	EClass getWorldModel();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.domain.linebalancing.WorldModel#getProductInstances <em>Product Instances</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Product Instances</em>'.
-	 * @see de.dfki.iui.basys.model.domain.linebalancing.LBLocations#getProductInstances()
-	 * @see #getLBLocations()
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.WorldModel#getProductInstances()
+	 * @see #getWorldModel()
 	 * @generated
 	 */
-	EReference getLBLocations_ProductInstances();
+	EReference getWorldModel_ProductInstances();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.domain.linebalancing.WorldModel#getResourceInstances <em>Resource Instances</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Resource Instances</em>'.
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.WorldModel#getResourceInstances()
+	 * @see #getWorldModel()
+	 * @generated
+	 */
+	EReference getWorldModel_ResourceInstances();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.linebalancing.WMPathTimes <em>WM Path Times</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>WM Path Times</em>'.
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.WMPathTimes
+	 * @generated
+	 */
+	EClass getWMPathTimes();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.dfki.iui.basys.model.domain.linebalancing.WMPathTimes#getFrom <em>From</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>From</em>'.
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.WMPathTimes#getFrom()
+	 * @see #getWMPathTimes()
+	 * @generated
+	 */
+	EReference getWMPathTimes_From();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.domain.linebalancing.WMPathTimes#getTo <em>To</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>To</em>'.
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.WMPathTimes#getTo()
+	 * @see #getWMPathTimes()
+	 * @generated
+	 */
+	EReference getWMPathTimes_To();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -470,106 +650,158 @@ public interface LinebalancingPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.linebalancing.impl.LBProductInstanceImpl <em>LB Product Instance</em>}' class.
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.linebalancing.impl.WMPathTimeImpl <em>WM Path Time</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.LBProductInstanceImpl
-		 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl#getLBProductInstance()
+		 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.WMPathTimeImpl
+		 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl#getWMPathTime()
 		 * @generated
 		 */
-		EClass LB_PRODUCT_INSTANCE = eINSTANCE.getLBProductInstance();
+		EClass WM_PATH_TIME = eINSTANCE.getWMPathTime();
 
 		/**
-		 * The meta object literal for the '<em><b>Component Id</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Time</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute LB_PRODUCT_INSTANCE__COMPONENT_ID = eINSTANCE.getLBProductInstance_ComponentId();
+		EAttribute WM_PATH_TIME__TIME = eINSTANCE.getWMPathTime_Time();
 
 		/**
-		 * The meta object literal for the '<em><b>Workstep Instance Id</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>To</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute LB_PRODUCT_INSTANCE__WORKSTEP_INSTANCE_ID = eINSTANCE.getLBProductInstance_WorkstepInstanceId();
+		EReference WM_PATH_TIME__TO = eINSTANCE.getWMPathTime_To();
 
 		/**
-		 * The meta object literal for the '<em><b>Remaining Time</b></em>' attribute feature.
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.linebalancing.impl.StaticWorldModelImpl <em>Static World Model</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.StaticWorldModelImpl
+		 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl#getStaticWorldModel()
 		 * @generated
 		 */
-		EAttribute LB_PRODUCT_INSTANCE__REMAINING_TIME = eINSTANCE.getLBProductInstance_RemainingTime();
+		EClass STATIC_WORLD_MODEL = eINSTANCE.getStaticWorldModel();
 
 		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.linebalancing.impl.LBStaffImpl <em>LB Staff</em>}' class.
+		 * The meta object literal for the '<em><b>Path Times</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.LBStaffImpl
-		 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl#getLBStaff()
 		 * @generated
 		 */
-		EClass LB_STAFF = eINSTANCE.getLBStaff();
+		EReference STATIC_WORLD_MODEL__PATH_TIMES = eINSTANCE.getStaticWorldModel_PathTimes();
 
 		/**
-		 * The meta object literal for the '<em><b>Assignment</b></em>' attribute feature.
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.linebalancing.impl.WMProductInstanceImpl <em>WM Product Instance</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.WMProductInstanceImpl
+		 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl#getWMProductInstance()
 		 * @generated
 		 */
-		EAttribute LB_STAFF__ASSIGNMENT = eINSTANCE.getLBStaff_Assignment();
+		EClass WM_PRODUCT_INSTANCE = eINSTANCE.getWMProductInstance();
 
 		/**
-		 * The meta object literal for the '<em><b>Component Id src</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Serial Id</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute LB_STAFF__COMPONENT_ID_SRC = eINSTANCE.getLBStaff_ComponentId_src();
+		EAttribute WM_PRODUCT_INSTANCE__SERIAL_ID = eINSTANCE.getWMProductInstance_SerialId();
 
 		/**
-		 * The meta object literal for the '<em><b>Component Id target</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Position</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute LB_STAFF__COMPONENT_ID_TARGET = eINSTANCE.getLBStaff_ComponentId_target();
+		EReference WM_PRODUCT_INSTANCE__POSITION = eINSTANCE.getWMProductInstance_Position();
 
 		/**
-		 * The meta object literal for the '<em><b>Current Product Instance Id</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>In transit</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute LB_STAFF__CURRENT_PRODUCT_INSTANCE_ID = eINSTANCE.getLBStaff_CurrentProductInstanceId();
+		EAttribute WM_PRODUCT_INSTANCE__IN_TRANSIT = eINSTANCE.getWMProductInstance_In_transit();
 
 		/**
-		 * The meta object literal for the '<em><b>Remaining Movement Time</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Eta</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute LB_STAFF__REMAINING_MOVEMENT_TIME = eINSTANCE.getLBStaff_RemainingMovementTime();
+		EAttribute WM_PRODUCT_INSTANCE__ETA = eINSTANCE.getWMProductInstance_Eta();
 
 		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.linebalancing.impl.LBLocationsImpl <em>LB Locations</em>}' class.
+		 * The meta object literal for the '<em><b>Variant</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.LBLocationsImpl
-		 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl#getLBLocations()
 		 * @generated
 		 */
-		EClass LB_LOCATIONS = eINSTANCE.getLBLocations();
+		EReference WM_PRODUCT_INSTANCE__VARIANT = eINSTANCE.getWMProductInstance_Variant();
 
 		/**
-		 * The meta object literal for the '<em><b>Staff</b></em>' containment reference list feature.
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.linebalancing.impl.WMResourceInstanceImpl <em>WM Resource Instance</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.WMResourceInstanceImpl
+		 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl#getWMResourceInstance()
+		 * @generated
+		 */
+		EClass WM_RESOURCE_INSTANCE = eINSTANCE.getWMResourceInstance();
+
+		/**
+		 * The meta object literal for the '<em><b>Serial Id</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference LB_LOCATIONS__STAFF = eINSTANCE.getLBLocations_Staff();
+		EAttribute WM_RESOURCE_INSTANCE__SERIAL_ID = eINSTANCE.getWMResourceInstance_SerialId();
+
+		/**
+		 * The meta object literal for the '<em><b>From position</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WM_RESOURCE_INSTANCE__FROM_POSITION = eINSTANCE.getWMResourceInstance_From_position();
+
+		/**
+		 * The meta object literal for the '<em><b>To position</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WM_RESOURCE_INSTANCE__TO_POSITION = eINSTANCE.getWMResourceInstance_To_position();
+
+		/**
+		 * The meta object literal for the '<em><b>Eta</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WM_RESOURCE_INSTANCE__ETA = eINSTANCE.getWMResourceInstance_Eta();
+
+		/**
+		 * The meta object literal for the '<em><b>Capabilities</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WM_RESOURCE_INSTANCE__CAPABILITIES = eINSTANCE.getWMResourceInstance_Capabilities();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.linebalancing.impl.WorldModelImpl <em>World Model</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.WorldModelImpl
+		 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl#getWorldModel()
+		 * @generated
+		 */
+		EClass WORLD_MODEL = eINSTANCE.getWorldModel();
 
 		/**
 		 * The meta object literal for the '<em><b>Product Instances</b></em>' containment reference list feature.
@@ -577,7 +809,41 @@ public interface LinebalancingPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference LB_LOCATIONS__PRODUCT_INSTANCES = eINSTANCE.getLBLocations_ProductInstances();
+		EReference WORLD_MODEL__PRODUCT_INSTANCES = eINSTANCE.getWorldModel_ProductInstances();
+
+		/**
+		 * The meta object literal for the '<em><b>Resource Instances</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WORLD_MODEL__RESOURCE_INSTANCES = eINSTANCE.getWorldModel_ResourceInstances();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.linebalancing.impl.WMPathTimesImpl <em>WM Path Times</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.WMPathTimesImpl
+		 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl#getWMPathTimes()
+		 * @generated
+		 */
+		EClass WM_PATH_TIMES = eINSTANCE.getWMPathTimes();
+
+		/**
+		 * The meta object literal for the '<em><b>From</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WM_PATH_TIMES__FROM = eINSTANCE.getWMPathTimes_From();
+
+		/**
+		 * The meta object literal for the '<em><b>To</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WM_PATH_TIMES__TO = eINSTANCE.getWMPathTimes_To();
 
 	}
 

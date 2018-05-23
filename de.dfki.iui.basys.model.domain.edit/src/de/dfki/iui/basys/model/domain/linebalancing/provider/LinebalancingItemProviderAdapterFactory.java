@@ -72,72 +72,141 @@ public class LinebalancingItemProviderAdapterFactory extends LinebalancingAdapte
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.linebalancing.LBProductInstance} instances.
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.linebalancing.WMPathTime} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected LBProductInstanceItemProvider lbProductInstanceItemProvider;
+	protected WMPathTimeItemProvider wmPathTimeItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.linebalancing.LBProductInstance}.
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.linebalancing.WMPathTime}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createLBProductInstanceAdapter() {
-		if (lbProductInstanceItemProvider == null) {
-			lbProductInstanceItemProvider = new LBProductInstanceItemProvider(this);
+	public Adapter createWMPathTimeAdapter() {
+		if (wmPathTimeItemProvider == null) {
+			wmPathTimeItemProvider = new WMPathTimeItemProvider(this);
 		}
 
-		return lbProductInstanceItemProvider;
+		return wmPathTimeItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.linebalancing.LBStaff} instances.
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.linebalancing.StaticWorldModel} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected LBStaffItemProvider lbStaffItemProvider;
+	protected StaticWorldModelItemProvider staticWorldModelItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.linebalancing.LBStaff}.
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.linebalancing.StaticWorldModel}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createLBStaffAdapter() {
-		if (lbStaffItemProvider == null) {
-			lbStaffItemProvider = new LBStaffItemProvider(this);
+	public Adapter createStaticWorldModelAdapter() {
+		if (staticWorldModelItemProvider == null) {
+			staticWorldModelItemProvider = new StaticWorldModelItemProvider(this);
 		}
 
-		return lbStaffItemProvider;
+		return staticWorldModelItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.linebalancing.LBLocations} instances.
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.linebalancing.WMProductInstance} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected LBLocationsItemProvider lbLocationsItemProvider;
+	protected WMProductInstanceItemProvider wmProductInstanceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.linebalancing.LBLocations}.
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.linebalancing.WMProductInstance}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createLBLocationsAdapter() {
-		if (lbLocationsItemProvider == null) {
-			lbLocationsItemProvider = new LBLocationsItemProvider(this);
+	public Adapter createWMProductInstanceAdapter() {
+		if (wmProductInstanceItemProvider == null) {
+			wmProductInstanceItemProvider = new WMProductInstanceItemProvider(this);
 		}
 
-		return lbLocationsItemProvider;
+		return wmProductInstanceItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.linebalancing.WMResourceInstance} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected WMResourceInstanceItemProvider wmResourceInstanceItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.linebalancing.WMResourceInstance}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createWMResourceInstanceAdapter() {
+		if (wmResourceInstanceItemProvider == null) {
+			wmResourceInstanceItemProvider = new WMResourceInstanceItemProvider(this);
+		}
+
+		return wmResourceInstanceItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.linebalancing.WorldModel} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected WorldModelItemProvider worldModelItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.linebalancing.WorldModel}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createWorldModelAdapter() {
+		if (worldModelItemProvider == null) {
+			worldModelItemProvider = new WorldModelItemProvider(this);
+		}
+
+		return worldModelItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.linebalancing.WMPathTimes} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected WMPathTimesItemProvider wmPathTimesItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.linebalancing.WMPathTimes}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createWMPathTimesAdapter() {
+		if (wmPathTimesItemProvider == null) {
+			wmPathTimesItemProvider = new WMPathTimesItemProvider(this);
+		}
+
+		return wmPathTimesItemProvider;
 	}
 
 	/**
@@ -239,9 +308,12 @@ public class LinebalancingItemProviderAdapterFactory extends LinebalancingAdapte
 	 * @generated
 	 */
 	public void dispose() {
-		if (lbProductInstanceItemProvider != null) lbProductInstanceItemProvider.dispose();
-		if (lbStaffItemProvider != null) lbStaffItemProvider.dispose();
-		if (lbLocationsItemProvider != null) lbLocationsItemProvider.dispose();
+		if (wmPathTimeItemProvider != null) wmPathTimeItemProvider.dispose();
+		if (staticWorldModelItemProvider != null) staticWorldModelItemProvider.dispose();
+		if (wmProductInstanceItemProvider != null) wmProductInstanceItemProvider.dispose();
+		if (wmResourceInstanceItemProvider != null) wmResourceInstanceItemProvider.dispose();
+		if (worldModelItemProvider != null) worldModelItemProvider.dispose();
+		if (wmPathTimesItemProvider != null) wmPathTimesItemProvider.dispose();
 	}
 
 }

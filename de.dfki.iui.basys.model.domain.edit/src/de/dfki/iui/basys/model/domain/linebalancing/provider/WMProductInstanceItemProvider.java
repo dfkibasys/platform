@@ -3,10 +3,8 @@
 package de.dfki.iui.basys.model.domain.linebalancing.provider;
 
 
-import de.dfki.iui.basys.model.base.provider.EntityItemProvider;
-
-import de.dfki.iui.basys.model.domain.linebalancing.LBStaff;
 import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
+import de.dfki.iui.basys.model.domain.linebalancing.WMProductInstance;
 
 import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
 
@@ -19,24 +17,37 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.IItemPropertySource;
+import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
+import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link de.dfki.iui.basys.model.domain.linebalancing.LBStaff} object.
+ * This is the item provider adapter for a {@link de.dfki.iui.basys.model.domain.linebalancing.WMProductInstance} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class LBStaffItemProvider extends EntityItemProvider {
+public class WMProductInstanceItemProvider 
+	extends ItemProviderAdapter
+	implements
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
+		IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LBStaffItemProvider(AdapterFactory adapterFactory) {
+	public WMProductInstanceItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -51,29 +62,29 @@ public class LBStaffItemProvider extends EntityItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addAssignmentPropertyDescriptor(object);
-			addComponentId_srcPropertyDescriptor(object);
-			addComponentId_targetPropertyDescriptor(object);
-			addCurrentProductInstanceIdPropertyDescriptor(object);
-			addRemainingMovementTimePropertyDescriptor(object);
+			addSerialIdPropertyDescriptor(object);
+			addPositionPropertyDescriptor(object);
+			addIn_transitPropertyDescriptor(object);
+			addEtaPropertyDescriptor(object);
+			addVariantPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Assignment feature.
+	 * This adds a property descriptor for the Serial Id feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addAssignmentPropertyDescriptor(Object object) {
+	protected void addSerialIdPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_LBStaff_assignment_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_LBStaff_assignment_feature", "_UI_LBStaff_type"),
-				 LinebalancingPackage.Literals.LB_STAFF__ASSIGNMENT,
+				 getString("_UI_WMProductInstance_serialId_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_WMProductInstance_serialId_feature", "_UI_WMProductInstance_type"),
+				 LinebalancingPackage.Literals.WM_PRODUCT_INSTANCE__SERIAL_ID,
 				 true,
 				 false,
 				 false,
@@ -83,85 +94,63 @@ public class LBStaffItemProvider extends EntityItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Component Id src feature.
+	 * This adds a property descriptor for the Position feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addComponentId_srcPropertyDescriptor(Object object) {
+	protected void addPositionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_LBStaff_componentId_src_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_LBStaff_componentId_src_feature", "_UI_LBStaff_type"),
-				 LinebalancingPackage.Literals.LB_STAFF__COMPONENT_ID_SRC,
+				 getString("_UI_WMProductInstance_position_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_WMProductInstance_position_feature", "_UI_WMProductInstance_type"),
+				 LinebalancingPackage.Literals.WM_PRODUCT_INSTANCE__POSITION,
 				 true,
 				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 true,
+				 null,
 				 null,
 				 null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Component Id target feature.
+	 * This adds a property descriptor for the In transit feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addComponentId_targetPropertyDescriptor(Object object) {
+	protected void addIn_transitPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_LBStaff_componentId_target_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_LBStaff_componentId_target_feature", "_UI_LBStaff_type"),
-				 LinebalancingPackage.Literals.LB_STAFF__COMPONENT_ID_TARGET,
+				 getString("_UI_WMProductInstance_in_transit_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_WMProductInstance_in_transit_feature", "_UI_WMProductInstance_type"),
+				 LinebalancingPackage.Literals.WM_PRODUCT_INSTANCE__IN_TRANSIT,
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
 				 null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Current Product Instance Id feature.
+	 * This adds a property descriptor for the Eta feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addCurrentProductInstanceIdPropertyDescriptor(Object object) {
+	protected void addEtaPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_LBStaff_currentProductInstanceId_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_LBStaff_currentProductInstanceId_feature", "_UI_LBStaff_type"),
-				 LinebalancingPackage.Literals.LB_STAFF__CURRENT_PRODUCT_INSTANCE_ID,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Remaining Movement Time feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addRemainingMovementTimePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_LBStaff_remainingMovementTime_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_LBStaff_remainingMovementTime_feature", "_UI_LBStaff_type"),
-				 LinebalancingPackage.Literals.LB_STAFF__REMAINING_MOVEMENT_TIME,
+				 getString("_UI_WMProductInstance_eta_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_WMProductInstance_eta_feature", "_UI_WMProductInstance_type"),
+				 LinebalancingPackage.Literals.WM_PRODUCT_INSTANCE__ETA,
 				 true,
 				 false,
 				 false,
@@ -171,14 +160,36 @@ public class LBStaffItemProvider extends EntityItemProvider {
 	}
 
 	/**
-	 * This returns LBStaff.gif.
+	 * This adds a property descriptor for the Variant feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addVariantPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_WMProductInstance_variant_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_WMProductInstance_variant_feature", "_UI_WMProductInstance_type"),
+				 LinebalancingPackage.Literals.WM_PRODUCT_INSTANCE__VARIANT,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This returns WMProductInstance.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/LBStaff"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/WMProductInstance"));
 	}
 
 	/**
@@ -189,10 +200,10 @@ public class LBStaffItemProvider extends EntityItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((LBStaff)object).getName();
+		String label = ((WMProductInstance)object).getSerialId();
 		return label == null || label.length() == 0 ?
-			getString("_UI_LBStaff_type") :
-			getString("_UI_LBStaff_type") + " " + label;
+			getString("_UI_WMProductInstance_type") :
+			getString("_UI_WMProductInstance_type") + " " + label;
 	}
 	
 
@@ -207,12 +218,10 @@ public class LBStaffItemProvider extends EntityItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(LBStaff.class)) {
-			case LinebalancingPackage.LB_STAFF__ASSIGNMENT:
-			case LinebalancingPackage.LB_STAFF__COMPONENT_ID_SRC:
-			case LinebalancingPackage.LB_STAFF__COMPONENT_ID_TARGET:
-			case LinebalancingPackage.LB_STAFF__CURRENT_PRODUCT_INSTANCE_ID:
-			case LinebalancingPackage.LB_STAFF__REMAINING_MOVEMENT_TIME:
+		switch (notification.getFeatureID(WMProductInstance.class)) {
+			case LinebalancingPackage.WM_PRODUCT_INSTANCE__SERIAL_ID:
+			case LinebalancingPackage.WM_PRODUCT_INSTANCE__IN_TRANSIT:
+			case LinebalancingPackage.WM_PRODUCT_INSTANCE__ETA:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

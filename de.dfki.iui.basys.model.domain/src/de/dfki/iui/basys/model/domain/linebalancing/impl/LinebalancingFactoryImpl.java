@@ -56,9 +56,12 @@ public class LinebalancingFactoryImpl extends EFactoryImpl implements Linebalanc
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case LinebalancingPackage.LB_PRODUCT_INSTANCE: return createLBProductInstance();
-			case LinebalancingPackage.LB_STAFF: return createLBStaff();
-			case LinebalancingPackage.LB_LOCATIONS: return createLBLocations();
+			case LinebalancingPackage.WM_PATH_TIME: return createWMPathTime();
+			case LinebalancingPackage.STATIC_WORLD_MODEL: return createStaticWorldModel();
+			case LinebalancingPackage.WM_PRODUCT_INSTANCE: return createWMProductInstance();
+			case LinebalancingPackage.WM_RESOURCE_INSTANCE: return createWMResourceInstance();
+			case LinebalancingPackage.WORLD_MODEL: return createWorldModel();
+			case LinebalancingPackage.WM_PATH_TIMES: return createWMPathTimes();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -69,9 +72,9 @@ public class LinebalancingFactoryImpl extends EFactoryImpl implements Linebalanc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LBProductInstance createLBProductInstance() {
-		LBProductInstanceImpl lbProductInstance = new LBProductInstanceImpl();
-		return lbProductInstance;
+	public WMPathTime createWMPathTime() {
+		WMPathTimeImpl wmPathTime = new WMPathTimeImpl();
+		return wmPathTime;
 	}
 
 	/**
@@ -79,9 +82,9 @@ public class LinebalancingFactoryImpl extends EFactoryImpl implements Linebalanc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LBStaff createLBStaff() {
-		LBStaffImpl lbStaff = new LBStaffImpl();
-		return lbStaff;
+	public StaticWorldModel createStaticWorldModel() {
+		StaticWorldModelImpl staticWorldModel = new StaticWorldModelImpl();
+		return staticWorldModel;
 	}
 
 	/**
@@ -89,9 +92,39 @@ public class LinebalancingFactoryImpl extends EFactoryImpl implements Linebalanc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LBLocations createLBLocations() {
-		LBLocationsImpl lbLocations = new LBLocationsImpl();
-		return lbLocations;
+	public WMProductInstance createWMProductInstance() {
+		WMProductInstanceImpl wmProductInstance = new WMProductInstanceImpl();
+		return wmProductInstance;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public WMResourceInstance createWMResourceInstance() {
+		WMResourceInstanceImpl wmResourceInstance = new WMResourceInstanceImpl();
+		return wmResourceInstance;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public WorldModel createWorldModel() {
+		WorldModelImpl worldModel = new WorldModelImpl();
+		return worldModel;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public WMPathTimes createWMPathTimes() {
+		WMPathTimesImpl wmPathTimes = new WMPathTimesImpl();
+		return wmPathTimes;
 	}
 
 	/**

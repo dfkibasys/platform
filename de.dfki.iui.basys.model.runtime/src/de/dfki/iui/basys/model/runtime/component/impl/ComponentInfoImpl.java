@@ -2,7 +2,6 @@
  */
 package de.dfki.iui.basys.model.runtime.component.impl;
 
-import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -11,7 +10,6 @@ import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
 import de.dfki.iui.basys.model.runtime.component.ComponentInfo;
 import de.dfki.iui.basys.model.runtime.component.ComponentPackage;
 import de.dfki.iui.basys.model.runtime.component.ControlMode;
-import de.dfki.iui.basys.model.runtime.component.Property;
 import de.dfki.iui.basys.model.runtime.component.State;
 
 /**

@@ -7,24 +7,38 @@
     <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
     <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
   </eAnnotations>
-  <eClassifiers xsi:type="ecore:EClass" name="LBProductInstance" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="componentId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="workstepInstanceId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="remainingTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+  <eClassifiers xsi:type="ecore:EClass" name="WMPathTime">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="to" eType="ecore:EClass topology.ecore#//TopologyElement"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="LBStaff" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="assignment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="componentId_src" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="componentId_target" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="currentProductInstanceId"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="remainingMovementTime"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StaticWorldModel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pathTimes" upperBound="-1"
+        eType="#//WMPathTimes" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="LBLocations">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="staff" upperBound="-1"
-        eType="#//LBStaff" containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="WMProductInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="serialId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="position" eType="ecore:EClass topology.ecore#//TopologyElement"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="in_transit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="eta" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variant" eType="ecore:EClass productdefinition.ecore#//ManufacturedComponent"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WMResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="serialId" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="from_position" eType="ecore:EClass topology.ecore#//TopologyElement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="to_position" eType="ecore:EClass topology.ecore#//TopologyElement"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="eta" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilities" upperBound="-1"
+        eType="ecore:EClass resourceinstance.ecore#//CapabilityApplication" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WorldModel">
     <eStructuralFeatures xsi:type="ecore:EReference" name="productInstances" upperBound="-1"
-        eType="#//LBProductInstance" containment="true"/>
+        eType="#//WMProductInstance" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resourceInstances" upperBound="-1"
+        eType="#//WMResourceInstance" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WMPathTimes">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="from" eType="ecore:EClass topology.ecore#//TopologyElement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="to" upperBound="-1" eType="#//WMPathTime"
+        containment="true"/>
   </eClassifiers>
 </ecore:EPackage>
