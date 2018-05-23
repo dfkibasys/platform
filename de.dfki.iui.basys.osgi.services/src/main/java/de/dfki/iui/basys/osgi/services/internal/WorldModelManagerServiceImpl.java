@@ -10,6 +10,8 @@ import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.component.annotations.Reference;
 
+import de.dfki.iui.basys.model.domain.linebalancing.StaticWorldModel;
+import de.dfki.iui.basys.model.domain.linebalancing.WorldModel;
 import de.dfki.iui.basys.osgi.services.BasysOsgiComponent;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManager;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManagerException;
