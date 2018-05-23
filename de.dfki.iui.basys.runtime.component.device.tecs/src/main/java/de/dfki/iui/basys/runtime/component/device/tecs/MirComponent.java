@@ -199,11 +199,17 @@ public class MirComponent extends TecsDeviceComponent {
 
 	@Override
 	public void onResetting() {
+		close();
+		try {
+			open();
+		} catch (TTransportException e1) {
+			e1.printStackTrace();
+		}
 		try {
 			client.setState(MIRState.Ready);
 		} catch (TException e) {
 			e.printStackTrace();
-			abort();
+			stop();
 		}
 	}
 
@@ -221,7 +227,7 @@ public class MirComponent extends TecsDeviceComponent {
 
 		} catch (TException e) {
 			e.printStackTrace();
-			abort();
+			stop();
 		} catch (JsonProcessingException e1) {
 			e1.printStackTrace();
 		}
@@ -238,7 +244,7 @@ public class MirComponent extends TecsDeviceComponent {
 				if (robotState.equals("Error") || robotState.equals("Manual")) {
 					executing = false;
 					setErrorCode(1);
-					abort();
+					stop();
 					break;
 				}
 
@@ -246,7 +252,7 @@ public class MirComponent extends TecsDeviceComponent {
 				case ABORTED:
 					executing = false;
 					setErrorCode(1);
-					abort();
+					stop();
 					break;
 				case ACCEPTED:
 					// nothing to do, wait until finished
@@ -266,7 +272,7 @@ public class MirComponent extends TecsDeviceComponent {
 				case REJECTED:
 					executing = false;
 					setErrorCode(2);
-					abort();
+					stop();
 					break;
 				default:
 					break;
@@ -281,7 +287,7 @@ public class MirComponent extends TecsDeviceComponent {
 		} catch (TException e) {
 			e.printStackTrace();
 			setErrorCode(3);
-			abort();
+			stop();
 		}
 	}
 
@@ -306,7 +312,6 @@ public class MirComponent extends TecsDeviceComponent {
 			sendComponentResponse(ResponseStatus.NOT_OK, 0);
 		} catch (TException e) {
 			e.printStackTrace();
-			abort();
 		}
 	}
 
