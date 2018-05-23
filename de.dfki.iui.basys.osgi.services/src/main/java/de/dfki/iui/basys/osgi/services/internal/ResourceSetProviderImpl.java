@@ -63,7 +63,7 @@ public class ResourceSetProviderImpl implements ResourceSetProvider {
 		
 		for (String model : Arrays.asList(modelNames)) {
 			resourceSet.getURIConverter().getURIMap().put(URI.createURI(modelFileName + "." + model),
-					URI.createURI(baseUrl + modelFileName));
+					URI.createURI(baseUrl + model));
 		}
 
 	}
