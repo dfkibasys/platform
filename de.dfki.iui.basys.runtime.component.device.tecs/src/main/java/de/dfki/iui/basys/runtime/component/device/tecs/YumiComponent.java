@@ -75,7 +75,13 @@ public class YumiComponent extends TecsDeviceComponent{
 	
 	@Override
 	public void onResetting() {
-		// no action
+		close();
+		try {
+			open();
+		} catch (TTransportException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -84,7 +90,7 @@ public class YumiComponent extends TecsDeviceComponent{
 			client.performQA("PERFORM QA");
 		} catch (TException e) {
 			e.printStackTrace();
-			abort();
+			stop();
 		}
 	}
 
@@ -99,7 +105,7 @@ public class YumiComponent extends TecsDeviceComponent{
 				if (ys == YumiState.Error || ys == YumiState.Manual) {
 					executing = false;
 					setErrorCode(1);
-					abort();
+					stop();
 					break;
 				}
 				
@@ -110,7 +116,7 @@ public class YumiComponent extends TecsDeviceComponent{
 				case ABORTED: 
 					executing= false;
 					setErrorCode(1);
-					abort();
+					stop();
 					break;
 				case EXECUTING:
 					// wait
@@ -127,7 +133,7 @@ public class YumiComponent extends TecsDeviceComponent{
 				case REJECTED: 
 					executing=false;
 					setErrorCode(2);
-					abort();
+					stop();
 					break;
 				default: break;
 				}
@@ -140,7 +146,7 @@ public class YumiComponent extends TecsDeviceComponent{
 		} catch (TException e) {
 			e.printStackTrace();
 			setErrorCode(3);
-			abort();
+			stop();
 		}
 	}
 

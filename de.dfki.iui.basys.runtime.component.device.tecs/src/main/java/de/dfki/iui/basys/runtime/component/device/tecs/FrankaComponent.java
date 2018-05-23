@@ -92,7 +92,13 @@ public class FrankaComponent extends TecsDeviceComponent{
 	
 	@Override
 	public void onResetting() {
-		// noting to do
+		close();
+		try {
+			open();
+		} catch (TTransportException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -111,7 +117,7 @@ public class FrankaComponent extends TecsDeviceComponent{
 				if (fs == FrankaState.Error || fs == FrankaState.Manual) {
 					executing = false;
 					setErrorCode(1);
-					abort();
+					stop();
 					break;
 				}
 				
@@ -122,7 +128,7 @@ public class FrankaComponent extends TecsDeviceComponent{
 				case ABORTED: 
 					executing= false;
 					setErrorCode(1);
-					abort();
+					stop();
 					break;
 				case EXECUTING:
 					// wait
@@ -139,7 +145,7 @@ public class FrankaComponent extends TecsDeviceComponent{
 				case REJECTED: 
 					executing=false;
 					setErrorCode(2);
-					abort();
+					stop();
 					break;
 				default: break;
 				}
@@ -152,7 +158,7 @@ public class FrankaComponent extends TecsDeviceComponent{
 		} catch (TException e) {
 			e.printStackTrace();
 			setErrorCode(3);
-			abort();
+			stop();
 		}
 	}
 
