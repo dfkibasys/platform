@@ -2,6 +2,7 @@ package de.dfki.iui.basys.runtime.component.device.tecs;
 
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TProtocol;
+import org.apache.thrift.transport.TTransportException;
 
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
@@ -173,7 +174,14 @@ public class FrankaComponent extends TecsDeviceComponent{
 
 	@Override
 	public void onClearing() {
-		// nothing to clear. Move Mir to default position?
+		// perform reconecct
+		close();
+		try {
+			open();
+		} catch (TTransportException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override

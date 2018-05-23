@@ -2,6 +2,7 @@ package de.dfki.iui.basys.runtime.component.device.tecs;
 
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TProtocol;
+import org.apache.thrift.transport.TTransportException;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
@@ -317,6 +318,14 @@ public class MirComponent extends TecsDeviceComponent {
 
 	@Override
 	public void onClearing() {
+		// perform reconnect
+		close();
+		try {
+			open();
+		} catch (TTransportException e1) {
+			e1.printStackTrace();
+		}
+		
 		// clear the error and set mir in a ready status
 		try {
 			client.setState(MIRState.Ready);

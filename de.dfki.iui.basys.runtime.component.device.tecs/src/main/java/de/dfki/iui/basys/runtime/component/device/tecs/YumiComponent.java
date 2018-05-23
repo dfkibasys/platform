@@ -2,6 +2,7 @@ package de.dfki.iui.basys.runtime.component.device.tecs;
 
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TProtocol;
+import org.apache.thrift.transport.TTransportException;
 
 import de.dfki.iui.basys.model.data.Path;
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
@@ -161,7 +162,14 @@ public class YumiComponent extends TecsDeviceComponent{
 
 	@Override
 	public void onClearing() {
-		// nothing to clear. Move Mir to default position?
+		// perform reconnect
+		close();
+		try {
+			open();
+		} catch (TTransportException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
