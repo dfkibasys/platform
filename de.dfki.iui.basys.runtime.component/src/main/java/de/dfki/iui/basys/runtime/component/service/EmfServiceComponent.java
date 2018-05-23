@@ -59,14 +59,14 @@ public abstract class EmfServiceComponent extends ServiceComponent {
 		if (resourceSet == null) {
 			resourceSet = createResourceSet();
 			
-			//TODO: get real network endpoint or even urispec for each individual service from component registry
-			String BASE_URL = "http://localhost:8080/services/";
-			String fileName = "model";
-					
-			String [] modelNames = new String [] {"material", "order", "processdefinition", "processinstance", "productdefinition", "productinstance", "resourceinstance", "resourcetype", "topology" };
-			for (String model : Arrays.asList(modelNames)) {
-				resourceSet.getURIConverter().getURIMap().put(URI.createURI(fileName + "." + model), URI.createURI(BASE_URL + model));			
-			}
+//			//TODO: get real network endpoint or even urispec for each individual service from component registry
+//			String BASE_URL = "http://localhost:8080/services/";
+//			String fileName = "model";
+//					
+//			String [] modelNames = new String [] {"material", "order", "processdefinition", "processinstance", "productdefinition", "productinstance", "resourceinstance", "resourcetype", "topology" };
+//			for (String model : Arrays.asList(modelNames)) {
+//				resourceSet.getURIConverter().getURIMap().put(URI.createURI(fileName + "." + model), URI.createURI(BASE_URL + model));			
+//			}
 		}		
 		
 		String resourceUri = getConfig().getExternalConnectionString();
@@ -120,11 +120,30 @@ public abstract class EmfServiceComponent extends ServiceComponent {
 		LinebalancingPackageImpl.init();
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("linebalancing", new LinebalancingResourceFactoryImpl());
 		
+		//TODO: get real network endpoint or even urispec for each individual service from component registry
+		String BASE_URL = "http://localhost:8080/services/";
+		String fileName = "model";
+				
+		String [] fileExtensions = new String [] {"material", "order", "processdefinition", "processinstance", "productdefinition", "productinstance", "resourceinstance", "resourcetype", "topology" };
+		for (String fileExtension : Arrays.asList(fileExtensions)) {
+			resourceSet.getURIConverter().getURIMap().put(URI.createURI(fileName + "." + fileExtension), URI.createURI(BASE_URL + "entity"));			
+		}
+		
 		return resourceSet;		
 	}
 	
 	protected <T extends EObject> T getEntity(String id) {
-		return (T) resourceSet.getEObject(uri.appendFragment(id), true);
+		if (uri != null) {
+			return (T) resourceSet.getEObject(uri.appendFragment(id), true);
+		} else {
+			for (Resource r : resourceSet.getResources()) {
+				T entity = (T) r.getEObject(id);
+				if (entity != null) {
+					return entity;
+				}
+			}
+		}
+		return null;
 	}
 
 	protected void deleteEntity(String id) {

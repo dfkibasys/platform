@@ -88,7 +88,7 @@ public class BaseComponent implements Component, ChannelListener {
 			// use copy constructor. if sharedChannelPool is null, it can be set afterwards for reuse in dependent components, e.g. DeviceComponentController
 			this.context = new ComponentContext(context);
 
-			if (componentConfig.getExternalConnectionString() != null) {
+			if (componentConfig.getExternalConnectionString() != null && !componentConfig.getExternalConnectionString().equals("")) {
 				try {
 					connectToExternal();
 					connectedToExternal = true;
