@@ -198,20 +198,16 @@ public class MirComponent extends TecsDeviceComponent {
 
 	@Override
 	public void onResetting() {
-		System.out.println("onResetting - begin");
 		try {
 			client.setState(MIRState.Ready);
 		} catch (TException e) {
 			e.printStackTrace();
-			stop();
+			abort();
 		}
-		System.out.println("onResetting - end");
 	}
 
 	@Override
 	public void onStarting() {
-		System.out.println("onStarting - begin");
-
 		TopologyElement targetElement = ((TopologyElement) getUnitConfig().getPayload());
 
 		try {
@@ -224,60 +220,52 @@ public class MirComponent extends TecsDeviceComponent {
 
 		} catch (TException e) {
 			e.printStackTrace();
-			stop();
+			abort();
 		} catch (JsonProcessingException e1) {
 			e1.printStackTrace();
 		}
-
-		System.out.println("onStarting - end");
 	}
 
 	@Override
 	public void onExecute() {
-		System.out.println("onExecute - begin");
 		try {
 			boolean executing = true;
 			while (executing) {
 				CommandResponse cs = client.getCommandState();
 				String robotState = client.getRobotState();
-				System.out.println("STRING " + robotState);
+				
 				if (robotState.equals("Error") || robotState.equals("Manual")) {
 					executing = false;
 					setErrorCode(1);
-					stop();
+					abort();
 					break;
 				}
 
 				switch (cs.state) {
 				case ABORTED:
-					System.out.println("Mir status: ABORTED");
 					executing = false;
 					setErrorCode(1);
-					stop();
+					abort();
 					break;
 				case ACCEPTED:
-					System.out.println("Mir status: ACCEPTED");
 					// nothing to do, wait until finished
 					break;
 				case EXECUTING:
-					System.out.println("Mir status: EXECUTING");
 					// nothing to do, wait until finished
 					break;
 				case FINISHED:
-					System.out.println("Mir status: FINISHED");
 					executing = false;
 					break;
 				case PAUSED:
-					System.out.println("Mir status: PAUSED");
-					/* what to do */ break;
+					/* what to do */ 
+					break;
 				case READY:
-					System.out.println("Mir status: READY");
-					/* what to do */ break;
+					/* what to do */ 
+					break;
 				case REJECTED:
-					System.out.println("Mir status: REJECTED");
 					executing = false;
 					setErrorCode(2);
-					stop();
+					abort();
 					break;
 				default:
 					break;
@@ -288,28 +276,11 @@ public class MirComponent extends TecsDeviceComponent {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-
-				System.out.println("Mir status: " + cs.state + " --");
 			}
 		} catch (TException e) {
 			e.printStackTrace();
 			setErrorCode(3);
-			stop();
-		}
-		System.out.println("onExecute - end");
-
-		try {
-			System.out.println("Last RobotState" + client.getRobotState());
-		} catch (TException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		try {
-			System.out.println("Last Command State: " + client.getCommandState().state);
-		} catch (TException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			abort();
 		}
 	}
 
@@ -346,7 +317,12 @@ public class MirComponent extends TecsDeviceComponent {
 
 	@Override
 	public void onClearing() {
-		// nothing to clear. Move Mir to default position?
+		// clear the error and set mir in a ready status
+		try {
+			client.setState(MIRState.Ready);
+		} catch (TException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
