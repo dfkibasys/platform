@@ -17,6 +17,8 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import de.dfki.iui.basys.common.emf.EmfPersistence;
 import de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl;
+import de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl;
+import de.dfki.iui.basys.model.domain.linebalancing.util.LinebalancingResourceFactoryImpl;
 import de.dfki.iui.basys.model.domain.material.impl.MaterialPackageImpl;
 import de.dfki.iui.basys.model.domain.material.util.MaterialResourceFactoryImpl;
 import de.dfki.iui.basys.model.domain.order.impl.OrderPackageImpl;
@@ -114,6 +116,9 @@ public abstract class EmfServiceComponent extends ServiceComponent {
 		
 		TopologyPackageImpl.init();
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("topology", new TopologyResourceFactoryImpl());
+		
+		LinebalancingPackageImpl.init();
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("linebalancing", new LinebalancingResourceFactoryImpl());
 		
 		return resourceSet;		
 	}

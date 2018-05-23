@@ -4,22 +4,39 @@ import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TTransportException;
 
-import de.dfki.iui.basys.model.data.Path;
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
+import de.dfki.iui.hrc.franka.Franka;
+import de.dfki.iui.hrc.franka.FrankaState;
+import de.dfki.iui.hrc.franka.FrankaStatus;
+import de.dfki.iui.hrc.franka.LoadException;
+import de.dfki.iui.hrc.general3d.TransformationMatrix;
 import de.dfki.iui.hrc.hybritcommand.CommandResponse;
-import de.dfki.iui.hrc.yumi.PickException;
-import de.dfki.iui.hrc.yumi.QAException;
-import de.dfki.iui.hrc.yumi.Yumi;
-import de.dfki.iui.hrc.yumi.YumiState;
+import de.dfki.iui.hrc.mir100.MIR;
 import de.dfki.tecs.Event;
 
-public class YumiComponent extends TecsDeviceComponent{
-
-	protected YumiTECS client;
-
+public class FrankaComponent extends TecsDeviceComponent{
+	
+	private FrankaTECS client;
+	
+	protected enum ACTION{
+		// fill enums here
+		;
+		
+		private final String action;
+		
+		private ACTION(String a) {
+			action = a;
+		}
+		
+		@Override
+		public String toString() {
+			return action;
+		}
+	}
+	
 	protected enum OBJECT_ID{
 		// fill enums here
 		;
@@ -36,30 +53,30 @@ public class YumiComponent extends TecsDeviceComponent{
 		}
 	}
 	
-	protected enum SOURCE_LOCATION{
-		// fill enums here
+	protected enum POSITION{
+		//fill here
 		;
 		
-		private final String location;
+		private final String position;
 		
-		private SOURCE_LOCATION(String loc) {
-			location = loc;
+		private POSITION(String p) {
+			position = p;
 		}
 		
 		@Override
 		public String toString() {
-			return location;
+			return position;
 		}
 	}
 	
-	public YumiComponent(ComponentConfiguration config) {
+	public FrankaComponent(ComponentConfiguration config) {
 		super(config);
 	}
 	
 	@Override
 	public void connectToExternal() throws ComponentException {
 		super.connectToExternal();
-		client = new YumiTECS(protocol);
+		client = new FrankaTECS(protocol);
 	}
 
 	@Override
@@ -86,12 +103,7 @@ public class YumiComponent extends TecsDeviceComponent{
 
 	@Override
 	public void onStarting() {
-		try {
-			client.performQA("PERFORM QA");
-		} catch (TException e) {
-			e.printStackTrace();
-			stop();
-		}
+		//?
 	}
 
 	@Override
@@ -100,9 +112,9 @@ public class YumiComponent extends TecsDeviceComponent{
 			boolean executing = true;
 			while(executing) {
 				CommandResponse cr = client.getCommandState();
-				YumiState ys = client.getState();
+				FrankaState fs = client.getState();
 				
-				if (ys == YumiState.Error || ys == YumiState.Manual) {
+				if (fs == FrankaState.Error || fs == FrankaState.Manual) {
 					executing = false;
 					setErrorCode(1);
 					stop();
@@ -157,7 +169,7 @@ public class YumiComponent extends TecsDeviceComponent{
 
 	@Override
 	public void onStopping() {
-		// no action
+		//
 	}
 
 	@Override
@@ -168,7 +180,7 @@ public class YumiComponent extends TecsDeviceComponent{
 
 	@Override
 	public void onClearing() {
-		// perform reconnect
+		// perform reconecct
 		close();
 		try {
 			open();
@@ -197,14 +209,29 @@ public class YumiComponent extends TecsDeviceComponent{
 	public void onUnsuspending() {
 		// NOT IN THE MAIN PATH!
 	}
-	
-	private class YumiTECS extends Yumi.Client{
+
+	private class FrankaTECS extends Franka.Client{
 
 		private TProtocol protocol;
 		
-		public YumiTECS(TProtocol prot) {
+		public FrankaTECS(TProtocol prot) {
 			super(prot);
 			protocol = prot;
+		}
+		
+		@Override
+		public TransformationMatrix requestM() throws TException {
+			return super.requestM();
+		}
+		
+		@Override
+		public FrankaStatus getStatus() throws TException {
+			return super.getStatus();
+		}
+		
+		@Override
+		public FrankaState getState() throws TException {
+			return super.getState();
 		}
 		
 		@Override
@@ -213,29 +240,58 @@ public class YumiComponent extends TecsDeviceComponent{
 		}
 		
 		@Override
-		public YumiState getState() throws TException {
-			return super.getState();
+		public CommandResponse Load(String targetPosition) throws LoadException, TException {
+			return super.Load(targetPosition);
+		}
+		
+		/*@Override
+		public CommandResponse MoveToKnownPosition(String knownPosition) {
+			return super.MoveToKnownPosition(knownPosition);
+		}*/
+		
+		/*@Override
+		public CommandResponse Recover(String action) {
+			return super.Recover(action);
+		}*/
+		
+		@Override
+		public void EnterTeachMode() throws TException {
+			super.EnterTeachMode();
 		}
 		
 		@Override
-		public CommandResponse performPick(String objectId, String sourceLocation) throws PickException, TException {
-			return super.performPick(objectId, sourceLocation);
+		public void ExitTeachMode() throws TException {
+			super.ExitTeachMode();
 		}
 		
 		@Override
-		public CommandResponse performPut(String objectId, String sourceLocation) throws PickException, TException {
-			return super.performPut(objectId, sourceLocation);
+		public void StartAssistance() throws TException {
+			super.StartAssistance();
 		}
 		
 		@Override
-		public CommandResponse performQA(String objectId) throws QAException, TException {
-			return super.performQA(objectId);
+		public void StopAssistance() throws TException {
+			super.StopAssistance();
 		}
+		
+		@Override
+		public void StartSendingVelocities() throws TException {
+			super.StartSendingVelocities();
+		}
+		
+		@Override
+		public void StopSendingVelocities() throws TException {
+			super.StopSendingVelocities();
+		}
+
+		
+		
 	}
 
 	@Override
 	protected void handleTecsEvent(Event event) {
 		// TODO Auto-generated method stub
-		// nothing to do
+		
 	}
+
 }
