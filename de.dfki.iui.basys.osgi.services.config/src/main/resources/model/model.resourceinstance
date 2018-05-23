@@ -1,25 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<resourceinstance:ResourceInstanceRepository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:capability="http://www.dfki.de/iui/basys/model/capability" xmlns:resourceinstance="http://www.dfki.de/iui/basys/model/resourceinstance">
+<resourceinstance:ResourceInstanceRepository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:capability="http://www.dfki.de/iui/basys/model/capability" xmlns:productdefinition="http://www.dfki.de/iui/basys/model/productdefinition" xmlns:resourceinstance="http://www.dfki.de/iui/basys/model/resourceinstance">
   <resourceInstances id="_SE5NIDB4Eei1bbwBPPZWOA" name="My Festo Component" serialNumber="65465464">
     <resourceType href="model.resourcetype#_yIFSQjB3Eei1bbwBPPZWOA"/>
     <capabilityApplications>
       <capabilityAssertion href="model.resourcetype#_syqRQEjXEei9gKvc5bxWyQ"/>
-      <capabilityVariants>
-        <capability xsi:type="capability:Pressing" id="_2BKRBlNzEeiceaq8G123Yg"/>
+      <capabilityVariants xsi:type="resourceinstance:ManufacturingCapabilityVariant">
+        <capability xsi:type="capability:Pressing" id="_KhijZl29EeixDOGCyjgf_g"/>
+        <appliedOn xsi:type="productdefinition:MaterialEntry" href="model.productdefinition#_IpqbzV29EeixDOGCyjgf_g"/>
+        <appliedOn xsi:type="productdefinition:AssemblyGroupEntry" href="model.productdefinition#_IpqbzF29EeixDOGCyjgf_g"/>
       </capabilityVariants>
     </capabilityApplications>
     <role href="model.topology#_6CV9oDB4Eei1bbwBPPZWOA"/>
   </resourceInstances>
-  <resourceInstances id="_jJdx4DD7EeiuBvcKgWzd3Q" name="My UR3">
+  <resourceInstances id="_jJdx4DD7EeiuBvcKgWzd3Q" name="My UR3" serialNumber="123">
     <resourceType href="model.resourcetype#_Hi37STD5EeiuBvcKgWzd3Q"/>
     <capabilityApplications>
       <capabilityAssertion href="model.resourcetype#_jNgp8FNhEeibbdo05KXxGQ"/>
       <capabilityVariants>
         <capability xsi:type="capability:PickAndPlace" id="_BJmlHlN0Eeiceaq8G123Yg"/>
+        <appliedOn xsi:type="productdefinition:MaterialEntry" href="model.productdefinition#_IpqbzV29EeixDOGCyjgf_g"/>
+        <appliedOn xsi:type="productdefinition:AssemblyGroupEntry" href="model.productdefinition#_IpqbzF29EeixDOGCyjgf_g"/>
       </capabilityVariants>
     </capabilityApplications>
   </resourceInstances>
-  <resourceInstances id="_mQ0kYDD7EeiuBvcKgWzd3Q" name="My UR5">
+  <resourceInstances id="_mQ0kYDD7EeiuBvcKgWzd3Q" name="My UR5" serialNumber="345">
     <resourceType href="model.resourcetype#_Jve8yTD5EeiuBvcKgWzd3Q"/>
     <capabilityApplications>
       <capabilityAssertion href="model.resourcetype#_jNgp8FNxEeibbdo05KXzGQ"/>
@@ -28,7 +32,7 @@
       </capabilityVariants>
     </capabilityApplications>
   </resourceInstances>
-  <resourceInstances id="_r4sy4DD7EeiuBvcKgWzd3Q" name="My UR10">
+  <resourceInstances id="_r4sy4DD7EeiuBvcKgWzd3Q" name="My UR10" serialNumber="345">
     <resourceType href="model.resourcetype#_LILOCTD5EeiuBvcKgWzd3Q"/>
     <capabilityApplications>
       <capabilityAssertion href="model.resourcetype#_jNgp8FNhEexbbdo05KXzGQ"/>
@@ -37,7 +41,7 @@
       </capabilityVariants>
     </capabilityApplications>
   </resourceInstances>
-  <resourceInstances id="_uFLRgDD7EeiuBvcKgWzd3Q" name="My iiwa">
+  <resourceInstances id="_uFLRgDD7EeiuBvcKgWzd3Q" name="My iiwa" serialNumber="456">
     <resourceType href="model.resourcetype#_Vvb1uTD7EeiuBvcKgWzd3Q"/>
     <capabilityApplications>
       <capabilityAssertion href="model.resourcetype#_jNgx8FNhEeibbdo05KXzGQ"/>
@@ -46,7 +50,7 @@
       </capabilityVariants>
     </capabilityApplications>
   </resourceInstances>
-  <resourceInstances id="_wojNMDD7EeiuBvcKgWzd3Q" name="My YuMi">
+  <resourceInstances id="_wojNMDD7EeiuBvcKgWzd3Q" name="My YuMi" serialNumber="567">
     <resourceType href="model.resourcetype#_NnuuyTD7EeiuBvcKgWzd3Q"/>
     <capabilityApplications>
       <capabilityAssertion href="model.resourcetype#_jNg99FNhEeibbdo05KXzGQ"/>
@@ -55,7 +59,7 @@
       </capabilityVariants>
     </capabilityApplications>
   </resourceInstances>
-  <resourceInstances id="_I4a_oDD-EeiuBvcKgWzd3Q" name="My Panda">
+  <resourceInstances id="_I4a_oDD-EeiuBvcKgWzd3Q" name="My Panda" serialNumber="678">
     <resourceType href="model.resourcetype#_0xCaqTD9EeiuBvcKgWzd3Q"/>
     <capabilityApplications>
       <capabilityAssertion href="model.resourcetype#_jNgp8FNhEeibbdo05KXzGQ"/>
@@ -64,7 +68,7 @@
       </capabilityVariants>
     </capabilityApplications>
   </resourceInstances>
-  <resourceInstances id="_rUJzsDJhEei1p5hKOf5Slw" name="My MiR 100">
+  <resourceInstances id="_rUJzsDJhEei1p5hKOf5Slw" name="My MiR 100" serialNumber="789">
     <resourceType href="model.resourcetype#_ZRW8sjJhEei1p5hKOf5Slw"/>
     <capabilityApplications>
       <capabilityAssertion href="model.resourcetype#_vmBh8FNlEei1Nvtoff5AwQ"/>
@@ -73,21 +77,21 @@
       </capabilityVariants>
     </capabilityApplications>
   </resourceInstances>
-  <resourceInstances id="_PwPREFIxEeidSe5vp9A3oA" name="My Button">
+  <resourceInstances id="_PwPREFIxEeidSe5vp9A3oA" name="My Button" serialNumber="890">
     <resourceType href="model.resourcetype#_GHTn8lIxEeidSe5vp9A3oA"/>
     <capabilityApplications>
       <capabilityVariants/>
     </capabilityApplications>
     <role href="model.topology#_rcKlkFIxEeidSe5vp9A3oA"/>
   </resourceInstances>
-  <resourceInstances binding="" id="_RtlHgFIxEeidSe5vp9A3oA" name="My Laser">
+  <resourceInstances binding="" id="_RtlHgFIxEeidSe5vp9A3oA" name="My Laser" serialNumber="901">
     <resourceType href="model.resourcetype#_BcwkYlIxEeidSe5vp9A3oA"/>
     <capabilityApplications>
       <capabilityVariants/>
     </capabilityApplications>
     <role href="model.topology#_gUuXFFIxEeidSe5vp9A3oA"/>
   </resourceInstances>
-  <resourceInstances id="_8cLJ8FIxEeidSe5vp9A3oA" name="Worker Guidance S2">
+  <resourceInstances id="_8cLJ8FIxEeidSe5vp9A3oA" name="Worker Guidance S2" serialNumber="1233">
     <resourceType href="model.resourcetype#_3cuNYlIxEeidSe5vp9A3oA"/>
     <role href="model.topology#_AzQQwDB5Eei1bbwBPPZWOA"/>
   </resourceInstances>

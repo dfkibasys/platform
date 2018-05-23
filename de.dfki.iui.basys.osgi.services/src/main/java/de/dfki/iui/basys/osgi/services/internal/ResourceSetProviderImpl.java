@@ -1,11 +1,8 @@
 package de.dfki.iui.basys.osgi.services.internal;
 
-import java.util.Arrays;
 import java.util.Map;
 
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.osgi.service.component.ComponentContext;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
@@ -15,12 +12,8 @@ import org.osgi.service.component.annotations.Modified;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.dfki.iui.basys.model.runtime.communication.Authentication;
-import de.dfki.iui.basys.model.runtime.communication.ChannelPool;
-import de.dfki.iui.basys.model.runtime.communication.Client;
-import de.dfki.iui.basys.osgi.services.ChannelPoolProvider;
 import de.dfki.iui.basys.osgi.services.ResourceSetProvider;
-import de.dfki.iui.basys.runtime.communication.CommFactory;
+import de.dfki.iui.basys.runtime.component.service.EmfServiceComponent;
 
 @Component(configurationPolicy = ConfigurationPolicy.REQUIRE)
 public class ResourceSetProviderImpl implements ResourceSetProvider {
@@ -43,28 +36,29 @@ public class ResourceSetProviderImpl implements ResourceSetProvider {
 		this.context = context;
 
 		if (resourceSet == null) {
-			resourceSet = new ResourceSetImpl();
+			resourceSet = EmfServiceComponent.createResourceSet();
 		}
 		
 		// TODO: get real network endpoint or even urispec for each individual service
 		// from component registry
-		String baseUrl = "http://localhost:8080/services/";
-		String modelFileName = "model";
-
-		if (properties.containsKey("modelFileName") && properties.containsKey("baseUrl")) {
-			modelFileName = (String) properties.get("modelFileName");
-			baseUrl = (String) properties.get("baseUrl");
-		}
-		
-		resourceSet.getURIConverter().getURIMap().clear();
-		
-		String[] modelNames = new String[] { "material", "order", "processdefinition", "processinstance",
-				"productdefinition", "productinstance", "resourceinstance", "resourcetype", "topology" };
-		
-		for (String model : Arrays.asList(modelNames)) {
-			resourceSet.getURIConverter().getURIMap().put(URI.createURI(modelFileName + "." + model),
-					URI.createURI(baseUrl + model));
-		}
+//		
+//		String baseUrl = "http://localhost:8080/services/";
+//		String modelFileName = "model";
+//
+//		if (properties.containsKey("modelFileName") && properties.containsKey("baseUrl")) {
+//			modelFileName = (String) properties.get("modelFileName");
+//			baseUrl = (String) properties.get("baseUrl");
+//		}
+//		
+//		resourceSet.getURIConverter().getURIMap().clear();
+//		
+//		String[] modelNames = new String[] { "material", "order", "processdefinition", "processinstance",
+//				"productdefinition", "productinstance", "resourceinstance", "resourcetype", "topology" };
+//		
+//		for (String model : Arrays.asList(modelNames)) {
+//			resourceSet.getURIConverter().getURIMap().put(URI.createURI(modelFileName + "." + model),
+//					URI.createURI(baseUrl + model));
+//		}
 
 	}
 
