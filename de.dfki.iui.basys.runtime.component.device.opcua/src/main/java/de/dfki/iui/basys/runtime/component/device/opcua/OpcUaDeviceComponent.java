@@ -183,6 +183,10 @@ public abstract class OpcUaDeviceComponent extends DeviceComponent {
 			throw new OpcUaException(e);
 		}
 	}
+	
+	public CompletableFuture<Object> invokeMethodAsync(final NodeId objectNode, final NodeId methodNode, final Object... inputs) throws OpcUaException  {
+		return  _invokeMethod(objectNode, methodNode, inputs);
+	}
 
 //	public <T> T invokeVoidMethod(final NodeId objectNode, final NodeId methodNode, final Object... inputs) throws OpcUaException  {
 //		try {

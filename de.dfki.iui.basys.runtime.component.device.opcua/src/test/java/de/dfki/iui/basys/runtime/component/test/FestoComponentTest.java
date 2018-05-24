@@ -73,8 +73,68 @@ public class FestoComponentTest {
 	*/
 	
 	@Test
-	@Ignore
 	public void testExecuteJob() throws ComponentException {
+		OpcUaDeviceComponent component = new FestoComponent(opcuaConfig);
+		assertTrue(!component.isConnectedToExternal());
+
+		component.activate(emptyContext);		
+		assertTrue(component.isConnectedToExternal());
+		
+		assertEquals(State.STOPPED, component.getState());
+		component.reset();
+		sleep(3);
+				
+		assertEquals(State.IDLE, component.getState());
+
+		UnitConfiguration config = new UnitConfiguration();		
+		config.setRecipe(1);
+		ComponentRequestStatus status = component.setUnitConfig(config);
+		
+		component.start();
+		sleep(2);	
+		assertEquals(State.EXECUTE, component.getState());
+		
+		sleep(10);		
+		assertEquals(State.COMPLETE, component.getState());
+	
+		
+		component.deactivate();
+		assertTrue(!component.isConnectedToExternal());
+	}
+	
+	@Test
+	@Ignore
+	public void testExecuteJobMitEingriff() throws ComponentException {
+		OpcUaDeviceComponent component = new FestoComponent(opcuaConfig);
+		assertTrue(!component.isConnectedToExternal());
+
+		component.activate(emptyContext);		
+		assertTrue(component.isConnectedToExternal());
+		
+		assertEquals(State.STOPPED, component.getState());
+		component.reset();
+		sleep(3);
+				
+		assertEquals(State.IDLE, component.getState());
+
+		UnitConfiguration config = new UnitConfiguration();		
+		config.setRecipe(1);
+		ComponentRequestStatus status = component.setUnitConfig(config);
+		
+		component.start();
+		sleep(2);	
+		assertEquals(State.EXECUTE, component.getState());
+		
+		sleep(10);		
+		assertEquals(State.COMPLETE, component.getState());
+	
+		
+		component.deactivate();
+		assertTrue(!component.isConnectedToExternal());
+	}
+	
+	@Test
+	public void testExecuteJobAndStop() throws ComponentException {
 		OpcUaDeviceComponent component = new FestoComponent(opcuaConfig);
 		assertTrue(!component.isConnectedToExternal());
 
@@ -91,11 +151,12 @@ public class FestoComponentTest {
 		config.setRecipe(2);
 		ComponentRequestStatus status = component.setUnitConfig(config);
 		
-		component.start();		
-		//sleep(2);	
+		component.start();
+		sleep(5);	
+		component.stop();
 		//assertEquals(State.EXECUTE, component.getState());
-		
-		sleep(20);		
+		sleep(5);		
+		component.reset();
 		//assertEquals(State.IDLE, component.getState());
 	
 		

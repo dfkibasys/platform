@@ -13,12 +13,14 @@ public abstract class AsyncDeviceComponent extends DeviceComponent {
 	protected boolean stopping = false;
 	
 	private Lock lock;
-	private Condition condition;
+	private Condition executeCondition;
+	private Condition stoppingCondition;
 
 	public AsyncDeviceComponent(ComponentConfiguration config) {
 		super(config);
 		lock = new ReentrantLock();
-		condition = lock.newCondition();
+		executeCondition = lock.newCondition();
+		stoppingCondition = lock.newCondition();
 	}
 
 
@@ -40,9 +42,15 @@ public abstract class AsyncDeviceComponent extends DeviceComponent {
 	
 	
 	
-	public void signalComplete() {
+	public void signalExecuteComplete() {
 		lock.lock();
-		condition.signalAll();
+		executeCondition.signalAll();
+		lock.unlock();
+	}
+	
+	public void signalStoppingComplete() {
+		lock.lock();
+		stoppingCondition.signalAll();
 		lock.unlock();
 	}
 	
@@ -61,7 +69,7 @@ public abstract class AsyncDeviceComponent extends DeviceComponent {
 		
 		lock.lock();
 		try {
-			condition.await();
+			executeCondition.await();
 			
 			if (stopping) {
 				System.out.println("onExecute - stopping");
@@ -93,7 +101,7 @@ public abstract class AsyncDeviceComponent extends DeviceComponent {
 		
 		lock.lock();
 		try {
-			condition.await();
+			stoppingCondition.await();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} finally {

@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 import de.dfki.iui.basys.common.emf.EmfPersistence;
 import de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl;
@@ -38,6 +39,7 @@ import de.dfki.iui.basys.model.domain.resourcetype.util.ResourcetypeResourceFact
 import de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl;
 import de.dfki.iui.basys.model.domain.topology.util.TopologyResourceFactoryImpl;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 
 public abstract class EmfServiceComponent extends ServiceComponent {
@@ -119,6 +121,9 @@ public abstract class EmfServiceComponent extends ServiceComponent {
 		
 		LinebalancingPackageImpl.init();
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("linebalancing", new LinebalancingResourceFactoryImpl());
+		
+		ComponentPackageImpl.init();
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("component", new XMIResourceFactoryImpl());
 		
 		//TODO: get real network endpoint or even urispec for each individual service from component registry
 		String BASE_URL = "http://localhost:8080/services/";

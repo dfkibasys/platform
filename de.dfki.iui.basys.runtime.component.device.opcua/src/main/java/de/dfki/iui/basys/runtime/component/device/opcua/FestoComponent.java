@@ -1,5 +1,9 @@
 package de.dfki.iui.basys.runtime.component.device.opcua;
 
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 import org.eclipse.milo.opcua.sdk.client.api.subscriptions.UaMonitoredItem;
 import org.eclipse.milo.opcua.stack.core.types.builtin.DataValue;
 import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;
@@ -7,6 +11,7 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
+import de.dfki.iui.basys.model.runtime.component.State;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
@@ -28,10 +33,17 @@ public class FestoComponent extends OpcUaDeviceComponent {
 	private short jobStatus = 0;
 	private short jobErrorCode = 0;
 
+	private Lock lock;
+	private Condition executeCondition;
+	//private Condition stoppingCondition;
+	
 	public FestoComponent(ComponentConfiguration config) {
 		super(config);
 
-		resetOnComplete = true;
+		lock = new ReentrantLock();
+		executeCondition = lock.newCondition();
+		//stoppingCondition = lock.newCondition();
+		//resetOnComplete = true;
 		// resetOnStopped = true;
 	}
 
@@ -50,7 +62,6 @@ public class FestoComponent extends OpcUaDeviceComponent {
 
 	@Override
 	public void onResetting() {
-		super.onResetting();
 		oldJobStatus = 0;
 		jobStatus = 0;
 		ackn();
@@ -58,14 +69,26 @@ public class FestoComponent extends OpcUaDeviceComponent {
 
 	@Override
 	public void onStarting() {
-		try {
-			int lidNumber = getUnitConfig().getRecipe();
-			Void v = invokeMethod(NODE_SERVICES, NODE_EXECUTE_PP_JOB, (short) lidNumber);
-		} catch (OpcUaException e) {
-			e.printStackTrace();
-		}
+		int lidNumber = getUnitConfig().getRecipe();
+		executeJob((short)lidNumber);
 	}
 
+	@Override
+	public void onExecute() {
+
+		lock.lock();
+		try {
+			System.out.println("WAIT");
+			executeCondition.await();						
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+			return;
+		} finally {
+			lock.unlock();
+		}
+
+	}
+	
 	@Override
 	public void onCompleting() {
 		super.onCompleting();
@@ -99,46 +122,52 @@ public class FestoComponent extends OpcUaDeviceComponent {
 
 		if (item.getReadValueId().getNodeId() == NODE_VARIABLE_JOB_ERRORCODE) {
 			jobErrorCode = (short) (value.getValue().getValue());
+			System.out.println("NEW ERROR CODE: " + jobErrorCode);
+			if (jobErrorCode != 0) {
+				//stop();
+			}
 		}
 
 		if (item.getReadValueId().getNodeId() == NODE_VARIABLE_JOB_STATUS) {
 			short newJobStatus = (short) (value.getValue().getValue());
+
+			System.out.println("NEW JOB STATUS " + newJobStatus);
+			
 			oldJobStatus = jobStatus;
-			jobErrorCode = newJobStatus;
+			jobStatus = newJobStatus;
+			switch (jobStatus) {
+			case 0: // IDLE
+				if (getState() == State.STOPPED) {
+					//externes Reset
+					reset();
+				} else if (getState() == State.EXECUTE) {
+					// Fügen erfolgeich, EXECUTE->COMPLETING
+					signalExecuteComplete();
+				} else if (getState() == State.STOPPING) {
+					// signalComplete();
+				} else if (getState() == State.RESETTING) {
+					// signalComplete();
+				}
+				break;
+			case 1: // RUNNING
+				// ignore
+				break;
+			case 2: // RESETTING
+				// ignore
+				break;
+			case 3: // ERROR
+				// wird über Subscription auf jobErrorCode getriggert
+				//stop();
+				break;
+			default:
+				break;
+			}
 		}
 
-		updateState();
+		
 
 	}
 
-	private void updateState() {
-
-		switch (jobStatus) {
-		case 0: // IDLE
-			// if (getState() == State.STOPPED) {
-			// reset();
-			// } else if (getState() == State.EXECUTE) {
-			// signalComplete();
-			// } else if (getState() == State.STOPPING) {
-			// signalComplete();
-			// } else if (getState() == State.RESETTING) {
-			// signalComplete();
-			// }
-			break;
-		case 1: // RUNNING
-			// ignore
-			break;
-		case 2: // RESETTING
-			// ignore
-			break;
-		case 3: // ERROR
-			stop();
-			break;
-		default:
-			break;
-		}
-
-	}
 
 	@Override
 	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
@@ -147,27 +176,40 @@ public class FestoComponent extends OpcUaDeviceComponent {
 	}
 
 	public void ackn() {
+		System.out.println("ackn");
 		try {
-			Short v = invokeMethod(NODE_SERVICES, NODE_ACK);
+			invokeMethodAsync(NODE_SERVICES, NODE_ACK);
+			sleep(1);
 		} catch (OpcUaException e) {
 			e.printStackTrace();
 		}
 	}
 
 	public void executeJob(short lidNumber) {
+		System.out.println("executeJob");
 		try {
-			invokeMethod(NODE_SERVICES, NODE_EXECUTE_PP_JOB, lidNumber);
+			invokeMethodAsync(NODE_SERVICES, NODE_EXECUTE_PP_JOB, lidNumber);
+			sleep(1);
 		} catch (OpcUaException e) {
 			e.printStackTrace();
 		}
 	}
 
 	public void cancelJob(short lidNumber) {
+		System.out.println("cancelJob");
 		try {
-			invokeMethod(NODE_SERVICES, NODE_CANCEL_PP_JOB, lidNumber);
+			invokeMethodAsync(NODE_SERVICES, NODE_CANCEL_PP_JOB, lidNumber);
+			sleep(1);
 		} catch (OpcUaException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void signalExecuteComplete() {
+		System.out.println("signalExecuteComplete");
+		lock.lock();
+		executeCondition.signalAll();
+		lock.unlock();
 	}
 
 }

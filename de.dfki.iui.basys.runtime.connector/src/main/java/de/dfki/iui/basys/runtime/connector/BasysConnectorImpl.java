@@ -186,6 +186,10 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 
 				// Auftrag und Produktinstanz anlegen.
 
+				// Entscheiden, wer den Deckel-Auflege-Job ausführt, Ergebnis ist eine ResourceInstanceId
+				// Falls UR3, dann disponierte MiR (früher) zur Festo-Station
+				// Falls Festo, dann disponierte MiR (später) zur Festo-Station
+
 				// Melde IO
 				try {
 					sender.send(msg12);
@@ -213,8 +217,14 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 			case 2: // Deckel fügen	
 				
 				if (!checkDebug(msg)) {
+					// Es ist bekannt, welche Komponente den Job ausführt,
+					// Trigger Werkerführung
+					// Werker bestätigt auf GUI die Bestückung der Komponente.
+						//Falls Festo: sequezieller Ablauf, 
+							// nach Auflegen, WF aktualisieren: Gehäuse auf Mir aufladen
+						//Falls Mir
+							// Gehäuse auflegen
 					// Prozess für restliche Produktion incl. QA und ggf. Colarun starten
-					// Entscheiden, wer den Job ausführt
 					// Rückmeldung abwarten
 				};				
 				

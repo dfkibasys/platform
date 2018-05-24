@@ -1,6 +1,7 @@
 package de.dfki.iui.basys.runtime.component.device;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -323,6 +324,15 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 		
 	}
 
+	protected void sleep(long seconds) {
+		try {
+			TimeUnit.MILLISECONDS.sleep(seconds*1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	/*
 	 * CommandInterface
 	 */
