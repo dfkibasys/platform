@@ -173,7 +173,11 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 	}
 
 	protected ComponentRequestStatus handleCapabilityRequest(CapabilityRequest req)	{
-		ComponentRequestStatus status = null;
+		ComponentRequestStatus status = canExecuteCapabilityRequest(req);
+		
+		if (status.getStatus() == RequestStatus.REJECTED)
+			return status;
+		
 		// "translate"
 		UnitConfiguration config = translateCapabilityRequest(req);
 		// set config
@@ -190,6 +194,11 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 		return status;
 	}
 
+	public ComponentRequestStatus canExecuteCapabilityRequest(CapabilityRequest req) {
+		ComponentRequestStatus status = new ComponentRequestStatusImpl.Builder().componentId(getId()).status(RequestStatus.ACCEPTED).build();
+		return status;
+	}
+	
 	protected abstract UnitConfiguration translateCapabilityRequest(CapabilityRequest req);
 	
 	protected ComponentRequestStatus handleCommandRequest(CommandRequest req) {
