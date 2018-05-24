@@ -8,10 +8,8 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import de.dfki.iui.basys.common.emf.json.JsonUtils;
-import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
-import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
-import de.dfki.iui.basys.model.runtime.component.ComponentFactory;
+import de.dfki.iui.basys.model.runtime.component.ComponentRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentResponse;
 import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
@@ -77,7 +75,7 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 		
 		//long lockDuration = 24 * 60 * 60 * 1000;
 		long lockDuration = 30 * 1000;
-		List<ExternalServiceTaskDto> tasks = client.getExternalTasks("BasysTask", lockDuration, "assignee", "command", "parameters");
+		List<ExternalServiceTaskDto> tasks = client.getExternalTasks("BasysTask", 5, lockDuration, "assignee", "command", "parameters");
 
 		for (ExternalServiceTaskDto task : tasks) {
 			if (task.variables.assignee == null || task.variables.assignee.value == null) {
@@ -92,22 +90,17 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 //				client.handleError(task.id, "ExternalTask does not contain parameters", 0, 1000);
 //				continue;
 //			}
-			
-			CapabilityRequest request = ComponentFactory.eINSTANCE.createCapabilityRequest();
-			if (task.variables.assignee != null || task.variables.assignee.value != null) {
-				request.setComponentId(task.variables.assignee.value);				
-			}
-			CapabilityVariant<?> capabilityVariant;
+						 
 			try {
-				capabilityVariant = JsonUtils.fromString(task.variables.command.value, CapabilityVariant.class);
-				request.setCapabilityVariant(capabilityVariant);
+				ComponentRequest request = JsonUtils.fromString(task.variables.command.value, ComponentRequest.class);				
+				if (task.variables.assignee != null || task.variables.assignee.value != null) {
+					request.setComponentId(task.variables.assignee.value);				
+				}
+				scheduleTask(new TaskDescription(request, task.id));	
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
-			
-			scheduleTask(new TaskDescription(task.id, request));				
-			
+			}							
+
 		}
 	}
     
@@ -117,22 +110,21 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 
 	@Override
 	public void scheduleTask(TaskDescription task) {
-
 		LOGGER.debug("scheduleCapabilityRequest");
 		TaskExecutor ce = new TaskExecutor(task);
 		CompletableFuture<ComponentResponse> cf = CompletableFuture.supplyAsync(() -> {
 			ce.execute(context);
 			return ce.getTask();
 		}, executor).thenApply((ts) -> {
-			if (ts.getResponse().getStatus() == ResponseStatus.OK) {
-				client.complete(ts.getId());
-			} else {
-				client.handleError(ts.getId(), ts.getResponse().getMessage(), 0, 1000);
+			if (ts.getCorrelationId() != null) {
+				if (ts.getResponse().getStatus() == ResponseStatus.OK) {
+					client.complete(ts.getCorrelationId());
+				} else {
+					client.handleError(ts.getCorrelationId(), ts.getResponse().getMessage(), 0, 1000);
+				}
 			}
 			return ts.getResponse();
-		});
-		
-		
+		});		
 	}
 
 //	@Override

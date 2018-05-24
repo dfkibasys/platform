@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 
 import de.dfki.iui.basys.common.emf.json.JsonUtils;
-import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
 import de.dfki.iui.basys.model.runtime.communication.Channel;
 import de.dfki.iui.basys.model.runtime.communication.ChannelListener;
 import de.dfki.iui.basys.model.runtime.communication.Notification;
@@ -36,7 +35,8 @@ public class TaskExecutor implements ChannelListener {
 	public void execute(ComponentContext context) {
 		device.connect(context);
 		
-		ComponentRequestStatus status = device.executeCapability((CapabilityVariant<?>)(task.getRequest().getCapabilityVariant()));
+		//ComponentRequestStatus status = device.executeCapability((CapabilityVariant<?>)(task.getRequest().getCapabilityVariant()));
+		ComponentRequestStatus status = device.sendComponentRequest(task.getRequest());
 		if (status.getStatus() == RequestStatus.ACCEPTED) {
 			try {
 				counter.await();

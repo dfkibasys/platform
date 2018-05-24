@@ -121,7 +121,9 @@ public class DeviceComponentController implements CommandInterface, ChannelListe
 		return sendComponentRequest(cr);
 	}
 
-	private ComponentRequestStatus sendComponentRequest(ComponentRequest request) {
+	
+	//TODO: public ist hier nicht schön, ggf Klasse in processcontrol verschieben?
+	public ComponentRequestStatus sendComponentRequest(ComponentRequest request) {
 
 		connect(this.context);
 

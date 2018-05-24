@@ -1,24 +1,28 @@
 package de.dfki.iui.basys.runtime.processcontrol;
 
-import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
+import de.dfki.iui.basys.model.runtime.component.ComponentRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentResponse;
 
 public class TaskDescription {
 
-	String id;
-	CapabilityRequest request;
+	String correlationId;
+	ComponentRequest request;
 	ComponentResponse response;
 	
-	public TaskDescription(String id, CapabilityRequest request) {
-		this.id = id;
-		this.request = request;
-	}
-
-	public String getId() {
-		return id;
+	public TaskDescription(ComponentRequest request) {
+		this(request, null);
 	}
 	
-	public CapabilityRequest getRequest() {
+	public TaskDescription(ComponentRequest request, String correlationId) {
+		this.request = request;
+		this.correlationId = correlationId;
+	}
+
+	public String getCorrelationId() {
+		return correlationId;
+	}
+	
+	public ComponentRequest getRequest() {
 		return request;
 	}
 	

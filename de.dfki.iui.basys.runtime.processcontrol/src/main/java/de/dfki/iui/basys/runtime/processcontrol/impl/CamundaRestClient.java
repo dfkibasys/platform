@@ -35,7 +35,7 @@ public class CamundaRestClient {
 	}
 
 
-    public List<ExternalServiceTaskDto> getExternalTasks(String topic, long lockDuration, String... fetchVariables) {
+    public List<ExternalServiceTaskDto> getExternalTasks(String topic, int maxCount, long lockDuration, String... fetchVariables) {
     	
     	String vars = "[]";
 		try {
@@ -47,7 +47,7 @@ public class CamundaRestClient {
     	
 		Entity<String> e = Entity.entity("{\n"
                 + "  \"workerId\":\""+workerId+"\",\n"
-                + "  \"maxTasks\":1,\n"
+                + "  \"maxTasks\":"+ maxCount + ",\n"
                 + "  \"usePriority\":true,\n"
                 + "  \"topics\":\n"
                 + "      [{\"topicName\": \"" + topic + "\",\n"
