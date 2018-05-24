@@ -2,15 +2,33 @@
 <resourcetype:ResourceTypeCatalogueCollection xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:pattern="http://www.dfki.de/iui/basys/model/pattern" xmlns:resourcetype="http://www.dfki.de/iui/basys/model/resourcetype">
   <catalogues manufacturer="Festo">
     <resourceTypes xsi:type="resourcetype:Tool" id="_yIFSQjB3Eei1bbwBPPZWOA" name="Festo Component">
-      <capabilityAssertions id="_syqRQEjXEei9gKvc5bxWyQ" name="Festo Component Pressing">
+      <capabilityAssertions id="_QGmo8F8yEeiUo-65_7rTBQ" name="Festo Component PickAndPlace">
         <pattern>
-          <type href="http://www.dfki.de/iui/basys/model/capability#//Pressing"/>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace"/>
           <slot>
-            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//Pressing/pressure"/>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//LogisticsCapability/payload"/>
             <range xsi:type="pattern:PValue">
-              <type href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
               <restrictions>
-                <restriction xsi:type="pattern:PIntegerRestriction" function="&lt;" value="100"/>
+                <restriction xsi:type="pattern:PDoubleRestriction" expression="" function="&lt;" value="0.1"/>
+              </restrictions>
+            </range>
+          </slot>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace/positionRepeatability"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <restrictions>
+                <restriction xsi:type="pattern:PDoubleRestriction" expression="" function="&lt;" value="0.1"/>
+              </restrictions>
+            </range>
+          </slot>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace/reach"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <restrictions>
+                <restriction xsi:type="pattern:PDoubleRestriction" expression="" function="&lt;" value="200.0"/>
               </restrictions>
             </range>
           </slot>
