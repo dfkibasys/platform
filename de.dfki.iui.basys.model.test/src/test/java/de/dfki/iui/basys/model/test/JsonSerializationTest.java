@@ -5,6 +5,7 @@ import java.net.URL;
 import java.net.URLClassLoader;
 
 import org.emfjson.jackson.module.EMFModule;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -16,6 +17,7 @@ import de.dfki.iui.basys.model.runtime.component.impl.ChangeModeRequestImpl;
 public class JsonSerializationTest {
 
 	@Test
+	@Ignore
 	public void testJson() {
 		
 		ClassLoader cl = ClassLoader.getSystemClassLoader();
@@ -44,5 +46,5 @@ public class JsonSerializationTest {
 		}
 	}
 
-	
+
 }

@@ -2,7 +2,7 @@
  */
 package de.dfki.iui.basys.model.runtime.component;
 
-import org.eclipse.emf.ecore.EObject;
+import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,12 +30,12 @@ public interface CapabilityRequest extends ComponentRequest {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Capability Variant</em>' containment reference.
-	 * @see #setCapabilityVariant(EObject)
+	 * @see #setCapabilityVariant(CapabilityVariant)
 	 * @see de.dfki.iui.basys.model.runtime.component.ComponentPackage#getCapabilityRequest_CapabilityVariant()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EObject getCapabilityVariant();
+	CapabilityVariant<?> getCapabilityVariant();
 
 	/**
 	 * Sets the value of the '{@link de.dfki.iui.basys.model.runtime.component.CapabilityRequest#getCapabilityVariant <em>Capability Variant</em>}' containment reference.
@@ -45,6 +45,6 @@ public interface CapabilityRequest extends ComponentRequest {
 	 * @see #getCapabilityVariant()
 	 * @generated
 	 */
-	void setCapabilityVariant(EObject value);
+	void setCapabilityVariant(CapabilityVariant<?> value);
 
 } // CapabilityRequest

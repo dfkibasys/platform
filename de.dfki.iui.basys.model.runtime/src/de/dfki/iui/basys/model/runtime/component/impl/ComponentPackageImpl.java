@@ -4,6 +4,14 @@ package de.dfki.iui.basys.model.runtime.component.impl;
 
 import de.dfki.iui.basys.model.base.BasePackage;
 
+import de.dfki.iui.basys.model.data.DataPackage;
+import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
+import de.dfki.iui.basys.model.domain.material.MaterialPackage;
+import de.dfki.iui.basys.model.domain.productdefinition.ProductdefinitionPackage;
+import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage;
+import de.dfki.iui.basys.model.domain.resourcetype.ResourcetypePackage;
+import de.dfki.iui.basys.model.domain.topology.TopologyPackage;
+import de.dfki.iui.basys.model.pattern.PatternPackage;
 import de.dfki.iui.basys.model.runtime.communication.CommunicationPackage;
 
 import de.dfki.iui.basys.model.runtime.communication.impl.CommunicationPackageImpl;
@@ -23,12 +31,14 @@ import de.dfki.iui.basys.model.runtime.component.State;
 import de.dfki.iui.basys.model.runtime.component.StatusRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentPackage;
 import de.dfki.iui.basys.model.runtime.component.ComponentRequest;
+import de.dfki.iui.basys.model.runtime.component.ComponentRequestCollection;
 import de.dfki.iui.basys.model.runtime.component.ComponentRequestStatus;
 import de.dfki.iui.basys.model.runtime.component.ComponentResponse;
 import de.dfki.iui.basys.model.runtime.component.ControlCommand;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -112,6 +122,13 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 * @generated
 	 */
 	private EClass componentResponseEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass componentRequestCollectionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -203,6 +220,14 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 
 		// Initialize simple dependencies
 		BasePackage.eINSTANCE.eClass();
+		PatternPackage.eINSTANCE.eClass();
+		DataPackage.eINSTANCE.eClass();
+		ProductdefinitionPackage.eINSTANCE.eClass();
+		TopologyPackage.eINSTANCE.eClass();
+		CapabilityPackage.eINSTANCE.eClass();
+		MaterialPackage.eINSTANCE.eClass();
+		ResourcetypePackage.eINSTANCE.eClass();
+		ResourceinstancePackage.eINSTANCE.eClass();
 		EcorePackage.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies
@@ -653,6 +678,24 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getComponentRequestCollection() {
+		return componentRequestCollectionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getComponentRequestCollection_ComponentRequests() {
+		return (EReference)componentRequestCollectionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getComponentCategory() {
 		return componentCategoryEEnum;
 	}
@@ -787,6 +830,9 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		createEAttribute(componentResponseEClass, COMPONENT_RESPONSE__MESSAGE);
 		createEReference(componentResponseEClass, COMPONENT_RESPONSE__REQUEST);
 
+		componentRequestCollectionEClass = createEClass(COMPONENT_REQUEST_COLLECTION);
+		createEReference(componentRequestCollectionEClass, COMPONENT_REQUEST_COLLECTION__COMPONENT_REQUESTS);
+
 		// Create enums
 		componentCategoryEEnum = createEEnum(COMPONENT_CATEGORY);
 		stateEEnum = createEEnum(STATE);
@@ -821,6 +867,7 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 
 		// Obtain other dependent packages
 		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
+		ResourceinstancePackage theResourceinstancePackage = (ResourceinstancePackage)EPackage.Registry.INSTANCE.getEPackage(ResourceinstancePackage.eNS_URI);
 
 		// Create type parameters
 
@@ -876,7 +923,10 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		initEAttribute(getChangeModeRequest_Mode(), this.getControlMode(), "mode", null, 0, 1, ChangeModeRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(capabilityRequestEClass, CapabilityRequest.class, "CapabilityRequest", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCapabilityRequest_CapabilityVariant(), theEcorePackage.getEObject(), null, "capabilityVariant", null, 0, 1, CapabilityRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		EGenericType g1 = createEGenericType(theResourceinstancePackage.getCapabilityVariant());
+		EGenericType g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		initEReference(getCapabilityRequest_CapabilityVariant(), g1, null, "capabilityVariant", null, 0, 1, CapabilityRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(componentRequestStatusEClass, ComponentRequestStatus.class, "ComponentRequestStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getComponentRequestStatus_ComponentId(), theEcorePackage.getEString(), "componentId", null, 0, 1, ComponentRequestStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -891,6 +941,9 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		initEAttribute(getComponentResponse_StatusCode(), theEcorePackage.getEInt(), "statusCode", null, 0, 1, ComponentResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getComponentResponse_Message(), theEcorePackage.getEString(), "message", null, 0, 1, ComponentResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getComponentResponse_Request(), this.getComponentRequest(), null, "request", null, 0, 1, ComponentResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(componentRequestCollectionEClass, ComponentRequestCollection.class, "ComponentRequestCollection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getComponentRequestCollection_ComponentRequests(), this.getComponentRequest(), null, "componentRequests", null, 0, -1, ComponentRequestCollection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(componentCategoryEEnum, ComponentCategory.class, "ComponentCategory");

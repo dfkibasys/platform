@@ -158,6 +158,14 @@ import de.dfki.iui.basys.model.runtime.communication.provider.CommunicationItemP
 
 import de.dfki.iui.basys.model.base.provider.BaseItemProviderAdapterFactory;
 
+import de.dfki.iui.basys.model.data.provider.DataItemProviderAdapterFactory;
+import de.dfki.iui.basys.model.domain.capability.provider.CapabilityItemProviderAdapterFactory;
+import de.dfki.iui.basys.model.domain.material.provider.MaterialItemProviderAdapterFactory;
+import de.dfki.iui.basys.model.domain.productdefinition.provider.ProductdefinitionItemProviderAdapterFactory;
+import de.dfki.iui.basys.model.domain.resourceinstance.provider.ResourceinstanceItemProviderAdapterFactory;
+import de.dfki.iui.basys.model.domain.resourcetype.provider.ResourcetypeItemProviderAdapterFactory;
+import de.dfki.iui.basys.model.domain.topology.provider.TopologyItemProviderAdapterFactory;
+import de.dfki.iui.basys.model.pattern.provider.PatternItemProviderAdapterFactory;
 import de.dfki.iui.basys.model.runtime.component.provider.ComponentItemProviderAdapterFactory;
 
 import org.eclipse.emf.ecore.provider.EcoreItemProviderAdapterFactory;
@@ -707,6 +715,14 @@ public class CommunicationEditor
 		adapterFactory.addAdapterFactory(new CommunicationItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ComponentItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new BaseItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new PatternItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new DataItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new ProductdefinitionItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new TopologyItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new CapabilityItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new MaterialItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new ResourcetypeItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new ResourceinstanceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new EcoreItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 

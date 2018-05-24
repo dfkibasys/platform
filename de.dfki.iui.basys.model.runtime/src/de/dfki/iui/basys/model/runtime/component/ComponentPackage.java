@@ -709,6 +709,43 @@ public interface ComponentPackage extends EPackage {
 	int COMPONENT_RESPONSE_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.impl.ComponentRequestCollectionImpl <em>Request Collection</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentRequestCollectionImpl
+	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getComponentRequestCollection()
+	 * @generated
+	 */
+	int COMPONENT_REQUEST_COLLECTION = 10;
+
+	/**
+	 * The feature id for the '<em><b>Component Requests</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_REQUEST_COLLECTION__COMPONENT_REQUESTS = 0;
+
+	/**
+	 * The number of structural features of the '<em>Request Collection</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_REQUEST_COLLECTION_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Request Collection</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_REQUEST_COLLECTION_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.ComponentCategory <em>Category</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -716,7 +753,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getComponentCategory()
 	 * @generated
 	 */
-	int COMPONENT_CATEGORY = 10;
+	int COMPONENT_CATEGORY = 11;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.State <em>State</em>}' enum.
@@ -726,7 +763,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getState()
 	 * @generated
 	 */
-	int STATE = 11;
+	int STATE = 12;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.ControlMode <em>Control Mode</em>}' enum.
@@ -736,7 +773,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getControlMode()
 	 * @generated
 	 */
-	int CONTROL_MODE = 12;
+	int CONTROL_MODE = 13;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.ControlCommand <em>Control Command</em>}' enum.
@@ -746,7 +783,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getControlCommand()
 	 * @generated
 	 */
-	int CONTROL_COMMAND = 13;
+	int CONTROL_COMMAND = 14;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.RequestStatus <em>Request Status</em>}' enum.
@@ -756,7 +793,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getRequestStatus()
 	 * @generated
 	 */
-	int REQUEST_STATUS = 14;
+	int REQUEST_STATUS = 15;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.ResponseStatus <em>Response Status</em>}' enum.
@@ -766,7 +803,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getResponseStatus()
 	 * @generated
 	 */
-	int RESPONSE_STATUS = 15;
+	int RESPONSE_STATUS = 16;
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.runtime.component.ComponentInfo <em>Info</em>}'.
@@ -1275,6 +1312,27 @@ public interface ComponentPackage extends EPackage {
 	EReference getComponentResponse_Request();
 
 	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.runtime.component.ComponentRequestCollection <em>Request Collection</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Request Collection</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.ComponentRequestCollection
+	 * @generated
+	 */
+	EClass getComponentRequestCollection();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.runtime.component.ComponentRequestCollection#getComponentRequests <em>Component Requests</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Component Requests</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.ComponentRequestCollection#getComponentRequests()
+	 * @see #getComponentRequestCollection()
+	 * @generated
+	 */
+	EReference getComponentRequestCollection_ComponentRequests();
+
+	/**
 	 * Returns the meta object for enum '{@link de.dfki.iui.basys.model.runtime.component.ComponentCategory <em>Category</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1752,6 +1810,24 @@ public interface ComponentPackage extends EPackage {
 		 * @generated
 		 */
 		EReference COMPONENT_RESPONSE__REQUEST = eINSTANCE.getComponentResponse_Request();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.runtime.component.impl.ComponentRequestCollectionImpl <em>Request Collection</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentRequestCollectionImpl
+		 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getComponentRequestCollection()
+		 * @generated
+		 */
+		EClass COMPONENT_REQUEST_COLLECTION = eINSTANCE.getComponentRequestCollection();
+
+		/**
+		 * The meta object literal for the '<em><b>Component Requests</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPONENT_REQUEST_COLLECTION__COMPONENT_REQUESTS = eINSTANCE.getComponentRequestCollection_ComponentRequests();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.runtime.component.ComponentCategory <em>Category</em>}' enum.

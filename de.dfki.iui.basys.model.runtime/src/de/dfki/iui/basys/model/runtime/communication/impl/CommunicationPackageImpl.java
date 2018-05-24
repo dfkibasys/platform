@@ -3,6 +3,14 @@
 package de.dfki.iui.basys.model.runtime.communication.impl;
 
 import de.dfki.iui.basys.model.base.BasePackage;
+import de.dfki.iui.basys.model.data.DataPackage;
+import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
+import de.dfki.iui.basys.model.domain.material.MaterialPackage;
+import de.dfki.iui.basys.model.domain.productdefinition.ProductdefinitionPackage;
+import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage;
+import de.dfki.iui.basys.model.domain.resourcetype.ResourcetypePackage;
+import de.dfki.iui.basys.model.domain.topology.TopologyPackage;
+import de.dfki.iui.basys.model.pattern.PatternPackage;
 import de.dfki.iui.basys.model.runtime.communication.Authentication;
 import de.dfki.iui.basys.model.runtime.communication.Channel;
 import de.dfki.iui.basys.model.runtime.communication.ChannelListener;
@@ -208,6 +216,14 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 
 		// Initialize simple dependencies
 		BasePackage.eINSTANCE.eClass();
+		PatternPackage.eINSTANCE.eClass();
+		DataPackage.eINSTANCE.eClass();
+		ProductdefinitionPackage.eINSTANCE.eClass();
+		TopologyPackage.eINSTANCE.eClass();
+		CapabilityPackage.eINSTANCE.eClass();
+		MaterialPackage.eINSTANCE.eClass();
+		ResourcetypePackage.eINSTANCE.eClass();
+		ResourceinstancePackage.eINSTANCE.eClass();
 		EcorePackage.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies

@@ -3,22 +3,13 @@
 package de.dfki.iui.basys.model.runtime.component.provider;
 
 
-import de.dfki.iui.basys.model.runtime.communication.provider.RuntimeEditPlugin;
-
-import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
-import de.dfki.iui.basys.model.runtime.component.ComponentPackage;
-
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.EcoreFactory;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -29,6 +20,11 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstanceFactory;
+import de.dfki.iui.basys.model.runtime.communication.provider.RuntimeEditPlugin;
+import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
+import de.dfki.iui.basys.model.runtime.component.ComponentPackage;
 
 /**
  * This is the item provider adapter for a {@link de.dfki.iui.basys.model.runtime.component.CapabilityRequest} object.
@@ -137,14 +133,15 @@ public class CapabilityRequestItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
 		String label = ((CapabilityRequest)object).getComponentId();
-		return label == null || label.length() == 0 ?
-			getString("_UI_CapabilityRequest_type") :
-			getString("_UI_CapabilityRequest_type") + " " + label;
+		if (label == null || label.length() == 0) {
+			label = " ??? ";
+		}			
+		return getString("_UI_CapabilityRequest_type") + " <" + label + ">";
 	}
 	
 
@@ -184,7 +181,22 @@ public class CapabilityRequestItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(ComponentPackage.Literals.CAPABILITY_REQUEST__CAPABILITY_VARIANT,
-				 EcoreFactory.eINSTANCE.createEObject()));
+				 ResourceinstanceFactory.eINSTANCE.createCapabilityVariant()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ComponentPackage.Literals.CAPABILITY_REQUEST__CAPABILITY_VARIANT,
+				 ResourceinstanceFactory.eINSTANCE.createManufacturingCapabilityVariant()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ComponentPackage.Literals.CAPABILITY_REQUEST__CAPABILITY_VARIANT,
+				 ResourceinstanceFactory.eINSTANCE.createLogisticsCapabilityVariant()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ComponentPackage.Literals.CAPABILITY_REQUEST__CAPABILITY_VARIANT,
+				 ResourceinstanceFactory.eINSTANCE.createGeneralCapabilityVariant()));
 	}
 
 	/**

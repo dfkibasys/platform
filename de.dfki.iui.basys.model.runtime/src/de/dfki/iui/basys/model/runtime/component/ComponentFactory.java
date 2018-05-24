@@ -103,6 +103,15 @@ public interface ComponentFactory extends EFactory {
 	ComponentResponse createComponentResponse();
 
 	/**
+	 * Returns a new object of class '<em>Request Collection</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Request Collection</em>'.
+	 * @generated
+	 */
+	ComponentRequestCollection createComponentRequestCollection();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -5,11 +5,11 @@ package de.dfki.iui.basys.model.runtime.component.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentPackage;
 
@@ -54,7 +54,7 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected EObject capabilityVariant;
+	protected CapabilityVariant<?> capabilityVariant;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -103,7 +103,7 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 */
 	@Override
-	public EObject getCapabilityVariant() {
+	public CapabilityVariant<?> getCapabilityVariant() {
 		return capabilityVariant;
 	}
 
@@ -112,8 +112,8 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetCapabilityVariant(EObject newCapabilityVariant, NotificationChain msgs) {
-		EObject oldCapabilityVariant = capabilityVariant;
+	public NotificationChain basicSetCapabilityVariant(CapabilityVariant<?> newCapabilityVariant, NotificationChain msgs) {
+		CapabilityVariant<?> oldCapabilityVariant = capabilityVariant;
 		capabilityVariant = newCapabilityVariant;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ComponentPackage.CAPABILITY_REQUEST__CAPABILITY_VARIANT, oldCapabilityVariant, newCapabilityVariant);
@@ -128,7 +128,7 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 */
 	@Override
-	public void setCapabilityVariant(EObject newCapabilityVariant) {
+	public void setCapabilityVariant(CapabilityVariant<?> newCapabilityVariant) {
 		if (newCapabilityVariant != capabilityVariant) {
 			NotificationChain msgs = null;
 			if (capabilityVariant != null)
@@ -184,7 +184,7 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 				setComponentId((String)newValue);
 				return;
 			case ComponentPackage.CAPABILITY_REQUEST__CAPABILITY_VARIANT:
-				setCapabilityVariant((EObject)newValue);
+				setCapabilityVariant((CapabilityVariant<?>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -202,7 +202,7 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 				setComponentId(COMPONENT_ID_EDEFAULT);
 				return;
 			case ComponentPackage.CAPABILITY_REQUEST__CAPABILITY_VARIANT:
-				setCapabilityVariant((EObject)null);
+				setCapabilityVariant((CapabilityVariant<?>)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -242,14 +242,14 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 
 	public static class Builder {
 		private String componentId;
-		private EObject capabilityVariant;
+		private CapabilityVariant<?> capabilityVariant;
 
 		public Builder componentId(String componentId) {
 			this.componentId = componentId;
 			return this;
 		}
 
-		public Builder capabilityVariant(EObject capabilityVariant) {
+		public Builder capabilityVariant(CapabilityVariant<?> capabilityVariant) {
 			this.capabilityVariant = capabilityVariant;
 			return this;
 		}

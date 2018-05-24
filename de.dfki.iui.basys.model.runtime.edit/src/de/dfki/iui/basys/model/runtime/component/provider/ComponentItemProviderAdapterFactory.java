@@ -279,6 +279,29 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.runtime.component.ComponentRequestCollection} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ComponentRequestCollectionItemProvider componentRequestCollectionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.runtime.component.ComponentRequestCollection}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createComponentRequestCollectionAdapter() {
+		if (componentRequestCollectionItemProvider == null) {
+			componentRequestCollectionItemProvider = new ComponentRequestCollectionItemProvider(this);
+		}
+
+		return componentRequestCollectionItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -386,6 +409,7 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 		if (componentRequestStatusItemProvider != null) componentRequestStatusItemProvider.dispose();
 		if (statusRequestItemProvider != null) statusRequestItemProvider.dispose();
 		if (componentResponseItemProvider != null) componentResponseItemProvider.dispose();
+		if (componentRequestCollectionItemProvider != null) componentRequestCollectionItemProvider.dispose();
 	}
 
 }

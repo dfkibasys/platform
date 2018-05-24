@@ -3,19 +3,12 @@
 package de.dfki.iui.basys.model.runtime.component.provider;
 
 
-import de.dfki.iui.basys.model.runtime.communication.provider.RuntimeEditPlugin;
-
-import de.dfki.iui.basys.model.runtime.component.CommandRequest;
-import de.dfki.iui.basys.model.runtime.component.ComponentPackage;
-
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -26,6 +19,10 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import de.dfki.iui.basys.model.runtime.communication.provider.RuntimeEditPlugin;
+import de.dfki.iui.basys.model.runtime.component.CommandRequest;
+import de.dfki.iui.basys.model.runtime.component.ComponentPackage;
 
 /**
  * This is the item provider adapter for a {@link de.dfki.iui.basys.model.runtime.component.CommandRequest} object.
@@ -127,16 +124,17 @@ public class CommandRequestItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	 * @generated NOT
+	 */	
 	@Override
 	public String getText(Object object) {
 		String label = ((CommandRequest)object).getComponentId();
-		return label == null || label.length() == 0 ?
-			getString("_UI_CommandRequest_type") :
-			getString("_UI_CommandRequest_type") + " " + label;
+		String mode = ((CommandRequest)object).getControlCommand().getName();
+		if (label == null || label.length() == 0) {
+			label = " ??? ";
+		}			
+		return getString("_UI_CommandRequest_type") + " <" + label + "> -> " + mode;
 	}
-	
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
