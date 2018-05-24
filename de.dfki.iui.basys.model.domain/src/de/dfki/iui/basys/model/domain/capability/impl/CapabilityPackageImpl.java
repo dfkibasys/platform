@@ -1203,6 +1203,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		addEEnumLiteral(loadCarrierUnitEnumEEnum, LoadCarrierUnitEnum.UNDEFINED);
 		addEEnumLiteral(loadCarrierUnitEnumEEnum, LoadCarrierUnitEnum.MATERIAL);
 		addEEnumLiteral(loadCarrierUnitEnumEEnum, LoadCarrierUnitEnum.RKLT_3215);
+		addEEnumLiteral(loadCarrierUnitEnumEEnum, LoadCarrierUnitEnum.BOTTLE);
 
 		// Create resource
 		createResource(eNS_URI);
