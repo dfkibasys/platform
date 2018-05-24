@@ -10,7 +10,7 @@
         <appliedOn xsi:type="productdefinition:AssemblyGroupEntry" href="model.productdefinition#_IpqbzF29EeixDOGCyjgf_g"/>
       </capabilityVariants>
       <capabilityVariants xsi:type="resourceinstance:ManufacturingCapabilityVariant">
-        <capability xsi:type="capability:PickAndPlace" id="_xio67l8yEeiUo-65_7rTBQ"/>
+        <capability xsi:type="capability:PickAndPlace" id="_xio67l8yEeiUo-65_7rTBQ" loadCarrierUnit="MATERIAL"/>
         <appliedOn xsi:type="productdefinition:MaterialEntry" href="model.productdefinition#_IpqbzV29EeixDOGCyjgf_g"/>
         <appliedOn xsi:type="productdefinition:AssemblyGroupEntry" href="model.productdefinition#_IpqbzF29EeixDOGCyjgf_g"/>
       </capabilityVariants>
