@@ -45,7 +45,7 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 
 	protected boolean resetOnComplete, resetOnStopped = false;
 	
-	protected CapabilityRequest currentRequest;
+	protected ComponentRequest pendingRequest;
 
 	public DeviceComponent(ComponentConfiguration config) {
 		super(config);
@@ -190,7 +190,7 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 		status = start();
 		
 		if (status.getStatus() == RequestStatus.ACCEPTED)
-			currentRequest = req;
+			pendingRequest = req;
 		
 		return status;
 	}
@@ -304,19 +304,19 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 	}
 
 	protected void sendComponentResponse(ResponseStatus status, int statusCode) {
-		if (currentRequest == null) {
+		if (pendingRequest == null) {
 			LOGGER.error("Cannot send response to null request. Skipping.");
 			return;
 		}
 		
-		ComponentResponse response = new ComponentResponseImpl.Builder().componentId(getId()).request(currentRequest).status(status).statusCode(statusCode).build();
+		ComponentResponse response = new ComponentResponseImpl.Builder().componentId(getId()).request(pendingRequest).status(status).statusCode(statusCode).build();
 	
 		try {
 			String payload = JsonUtils.toString(response);
 			Notification not = cf.createNotification(payload);
 			outChannel.sendNotification(not);			
 			
-			currentRequest = null;
+			pendingRequest = null;
 		} catch (JsonProcessingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

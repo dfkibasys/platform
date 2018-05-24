@@ -271,5 +271,14 @@ public class DeviceComponentController implements CommandInterface, ChannelListe
 	public UnitConfiguration getUnitConfig() {
 		throw new UnsupportedOperationException("method not implemented in device component controller.");
 	}
+	
+//	public void resetAsync(ComponentResponseCallback cb) {
+//		ComponentRequestStatus status = sendCommandRequest(ControlCommand.RESET);
+//		return status;
+//	};
+//	
+//	public interface ComponentResponseCallback {
+//		void handleComponentResponse(ComponentResponse response);
+//	}
 
 }

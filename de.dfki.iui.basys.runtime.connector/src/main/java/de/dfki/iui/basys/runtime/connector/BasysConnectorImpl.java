@@ -1,6 +1,8 @@
 package de.dfki.iui.basys.runtime.connector;
 
+import java.io.IOException;
 import java.io.StringReader;
+import java.util.concurrent.TimeUnit;
 
 import javax.jms.Connection;
 import javax.jms.JMSException;
@@ -16,6 +18,8 @@ import javax.xml.bind.Unmarshaller;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 
+import de.dfki.iui.basys.common.emf.json.JsonUtils;
+import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.Property;
 import de.dfki.iui.basys.runtime.component.ComponentException;
@@ -35,10 +39,48 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 	private DeviceComponentController festoController;
 	private int basysMatNr = 0;
 
-	private boolean cancelled = false;
+	private static boolean cancelled = false;
+
+	private final String jsonVariantLightBlue, jsonVariantDarkBlue;
 	
 	public BasysConnectorImpl(ComponentConfiguration config) {
 		super(config);
+		
+		jsonVariantLightBlue = "{\n" + 
+				"	\"eClass\": \"http://www.dfki.de/iui/basys/model/resourceinstance#//ManufacturingCapabilityVariant\",\n" + 
+				"	\"capability\": {\n" + 
+				"		\"eClass\": \"http://www.dfki.de/iui/basys/model/capability#//PickAndPlace\",\n" + 
+				"		\"id\": \"_xio67l8yEeiUo-65_7rTBS\",\n" + 
+				"		\"loadCarrierUnit\": \"MATERIAL\"\n" + 
+				"	},\n" + 
+				"	\"appliedOn\": [{\n" + 
+				"		\"eClass\": \"http://www.dfki.de/iui/basys/model/productdefinition#//MaterialEntry\",\n" + 
+				"		\"$ref\": \"http://localhost:8080/services/entity/_IpqbzV29EeixDOGCyjgf_g\"\n" + 
+				"	},\n" + 
+				"	{\n" + 
+				"		\"eClass\": \"http://www.dfki.de/iui/basys/model/productdefinition#//AssemblyGroupEntry\",\n" + 
+				"		\"$ref\": \"http://localhost:8080/services/entity/_IpqbzF29EeixDOGCyjgf_g\"\n" + 
+				"	}]\n" + 
+				"}";
+		
+		jsonVariantDarkBlue = "{\n" + 
+				"	\"eClass\": \"http://www.dfki.de/iui/basys/model/resourceinstance#//ManufacturingCapabilityVariant\",\n" + 
+				"	\"capability\": {\n" + 
+				"		\"eClass\": \"http://www.dfki.de/iui/basys/model/capability#//PickAndPlace\",\n" + 
+				"		\"id\": \"_xio67l8yEeiUo-65_7rTBQ\",\n" + 
+				"		\"loadCarrierUnit\": \"MATERIAL\"\n" + 
+				"	},\n" + 
+				"	\"appliedOn\": [{\n" + 
+				"		\"eClass\": \"http://www.dfki.de/iui/basys/model/productdefinition#//MaterialEntry\",\n" + 
+				"		\"$ref\": \"http://localhost:8080/services/entity/_IpqbzV29EeixDOGCyjgf_g\"\n" + 
+				"	},\n" + 
+				"	{\n" + 
+				"		\"eClass\": \"http://www.dfki.de/iui/basys/model/productdefinition#//AssemblyGroupEntry\",\n" + 
+				"		\"$ref\": \"http://localhost:8080/services/entity/_IpqbzF29EeixDOGCyjgf_g\"\n" + 
+				"	}]\n" + 
+				"}";
+		
+		
 	}
 
 	@Override
@@ -61,7 +103,8 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 			receiver.setMessageListener(this);
 
 			basysMatNr = Integer.parseInt(componentConfig.getProperty("basysMatNr").getValue());
-
+			festoComponentId = componentConfig.getProperty("festoComponentId").getValue();
+			
 			festoController = new DeviceComponentController(festoComponentId);
 			festoController.lazyConnect(context);
 
@@ -80,7 +123,7 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 			connection.close();
 			messageFactory = null;
 		} catch (JMSException e) {
-			e.printStackTrace();
+			LOGGER.error(e.getMessage(),e);
 		}
 	}
 
@@ -128,7 +171,7 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 				caaMessage = (CaaMessage) jaxbUnmarshaller.unmarshal(reader);
 
 			} catch (Exception e) {
-				e.printStackTrace();
+				LOGGER.error(e.getMessage(),e);
 				return;
 			}
 
@@ -149,7 +192,7 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
-			e.printStackTrace();
+			LOGGER.error(e.getMessage(),e);
 		}
 	}
 
@@ -163,11 +206,7 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 		// String jsonPrettyPrintString = json.toString(4);
 		// System.out.println(jsonPrettyPrintString);
 
-		try {
-			Thread.currentThread().sleep(50);
-		} catch (InterruptedException e1) {
-			e1.printStackTrace();
-		}
+		sleep(50);
 		
 		// Quittiere Nachrichtenerhalt
 		TextMessage msg11 = messageFactory.createMSG11(getCaaResourceId());
@@ -175,7 +214,7 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 			sender.send(msg11);
 			LOGGER.info("MSG11 sent to " + sender.getDestination().toString());
 		} catch (JMSException e) {
-			e.printStackTrace();
+			LOGGER.error(e.getMessage(),e);
 		}
 		
 		TextMessage msg12 = messageFactory.createMSG12(getCaaResourceId(), 1, 0);
@@ -195,8 +234,8 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 					sender.send(msg12);
 					LOGGER.info("MSG12 sent to " + sender.getDestination().toString());
 				} catch (JMSException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					
+					LOGGER.error(e.getMessage(),e);
 				}
 
 				break;
@@ -210,7 +249,7 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 					sender.send(msg12);
 					LOGGER.info("MSG12 sent to " + sender.getDestination().toString());
 				} catch (JMSException e) {
-					e.printStackTrace();
+					LOGGER.error(e.getMessage(),e);
 				}
 
 				break;
@@ -238,11 +277,7 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 			case 0: // Neuer Auftrag
 
 				// ignorieren, da nicht Basys-relevant
-				try {
-					Thread.currentThread().sleep(10000);
-				} catch (InterruptedException e1) {
-					e1.printStackTrace();
-				}
+				sleep(50);
 				
 				if (cancelled)
 					return;
@@ -252,7 +287,7 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 					sender.send(msg12);
 					LOGGER.info("MSG12 sent to " + sender.getDestination().toString());
 				} catch (JMSException e) {
-					e.printStackTrace();
+					LOGGER.error(e.getMessage(),e);
 				}
 
 				break;
@@ -260,14 +295,10 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 
 				// Festokomponente explizit in Homeposition fahren
 				// irrelevant, da durch Komponente sichergestellt
-				// festoController.reset();
+				festoController.reset();
 
 				
-				try {
-					Thread.currentThread().sleep(10000);
-				} catch (InterruptedException e1) {
-					e1.printStackTrace();
-				}
+				sleep(3000);
 				
 				if (cancelled)
 					return;				
@@ -278,17 +309,11 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 					sender.send(msg12);
 					LOGGER.info("MSG12 sent to " + sender.getDestination().toString());
 				} catch (JMSException e) {
-					e.printStackTrace();
+					LOGGER.error(e.getMessage(),e);
 				}
 
 				break;
 			case 2: // Deckel fügen
-				
-				try {
-					Thread.currentThread().sleep(10000);
-				} catch (InterruptedException e1) {
-					e1.printStackTrace();
-				}
 				
 				if (cancelled)
 					return;
@@ -296,8 +321,19 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 				if (!checkDebug(msg)) {
 					// Befehl direkt an Festokomponente ohne weiterführende Prozessinstanz
 					// Demo nach Deckel fügen beendet
-					//Capability capability = null;
-					//festoController.executeCapability(capability);
+
+					try {
+						CapabilityVariant<?> variant = null;
+						if (msg.getCapType() == 1) {
+							variant = JsonUtils.fromString(jsonVariantLightBlue, CapabilityVariant.class);
+						} else if (msg.getCapType() == 2) {
+							variant = JsonUtils.fromString(jsonVariantDarkBlue, CapabilityVariant.class);
+						}
+						festoController.executeCapability(variant);
+						sleep(10000);
+					} catch (IOException e) {
+						LOGGER.error(e.getMessage(), e);
+					}
 				};	
 
 				break;
@@ -321,38 +357,26 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 		LOGGER.info("MSG16 received");
 		cancelled = true;
 		
-		try {
-			Thread.currentThread().sleep(50);
-		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		sleep(50);
 		
 		// Quittiere Nachrichtenerhalt
 		TextMessage msg17 = messageFactory.createMSG17(getCaaResourceId());
 		try {
 			sender.send(msg17);
 			LOGGER.info("MSG17 sent to " + sender.getDestination().toString());
-		} catch (JMSException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (JMSException e) {			
+			LOGGER.error(e.getMessage(),e);
 		}
 
-
-		try {
-			Thread.currentThread().sleep(10000);
-		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
 		
 		// Job abbrechen
 		if (msg.getMatNr() == basysMatNr) {
 			// Falls UR3: ignorieren
 			// Falls Festokomponente: ebenfalls ignorieren, s.u.
+			sleep(1000);
 		} else {
 			// Festokomponente: Job abbrechen ist irrelevant, weil die Dauer des Jobs sehr kurz (< 10 sek)
+			sleep(1000);
 		}
 
 		// Melde Abbruch nicht möglich
@@ -361,8 +385,8 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 			sender.send(msg12);
 			LOGGER.info("MSG12 sent to " + sender.getDestination().toString());
 		} catch (JMSException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
+			LOGGER.error(e.getMessage(),e);
 		}
 	}
 
@@ -383,8 +407,8 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 					sender.send(msg12);
 					LOGGER.info("MSG12 sent to " + sender.getDestination().toString());
 				} catch (JMSException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					
+					LOGGER.error(e.getMessage(),e);
 				}
 			} else if (status == 2) {
 				Property debugErrorCode = componentConfig.getProperty("debugErrorCode");
@@ -395,8 +419,8 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 						sender.send(msg12);
 						LOGGER.info("MSG12 sent to " + sender.getDestination().toString());
 					} catch (JMSException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+						
+						LOGGER.error(e.getMessage(),e);
 					}
 				}
 			}
@@ -404,5 +428,12 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 		}
 		return false;	
 	}
-
+	
+	protected void sleep(long ms) {
+		try {
+			TimeUnit.MILLISECONDS.sleep(ms);
+		} catch (InterruptedException e) {
+			LOGGER.error(e.getMessage(),e);
+		}
+	}
 }

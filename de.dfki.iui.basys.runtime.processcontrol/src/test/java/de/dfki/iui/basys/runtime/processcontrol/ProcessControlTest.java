@@ -38,7 +38,7 @@ public class ProcessControlTest extends BaseComponentTest {
 	@Ignore
 	public void testCamundaRestClient() {
 		CamundaRestClient camundaClient = new CamundaRestClient(taskSchedulerConfig.getComponentId(), taskSchedulerConfig.getExternalConnectionString());
-		List<ExternalServiceTaskDto> tasks = camundaClient.getExternalTasks("BasysTask", 30 * 1000, "assignee", "command", "parameters");
+		List<ExternalServiceTaskDto> tasks = camundaClient.getExternalTasks("BasysTask", 5, 30 * 1000, "assignee", "command", "parameters");
 		 
 		assertEquals(1,	tasks.size());
 		
