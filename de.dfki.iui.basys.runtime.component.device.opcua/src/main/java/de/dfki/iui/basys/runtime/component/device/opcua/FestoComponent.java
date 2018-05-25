@@ -69,7 +69,10 @@ public class FestoComponent extends OpcUaDeviceComponent {
 
 	@Override
 	public void onStarting() {
-		int lidNumber = getUnitConfig().getRecipe();
+		int lidNumber = 1;
+		if (getUnitConfig() != null)
+			lidNumber = getUnitConfig().getRecipe();
+		
 		executeJob((short)lidNumber);
 	}
 
@@ -157,7 +160,7 @@ public class FestoComponent extends OpcUaDeviceComponent {
 				break;
 			case 3: // ERROR
 				// wird über Subscription auf jobErrorCode getriggert
-				//stop();
+				stop();
 				break;
 			default:
 				break;

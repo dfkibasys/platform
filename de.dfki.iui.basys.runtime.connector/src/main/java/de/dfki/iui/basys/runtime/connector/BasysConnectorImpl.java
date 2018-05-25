@@ -2,7 +2,10 @@ package de.dfki.iui.basys.runtime.connector;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 import javax.jms.Connection;
 import javax.jms.JMSException;
@@ -21,7 +24,9 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 import de.dfki.iui.basys.common.emf.json.JsonUtils;
 import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.ComponentResponse;
 import de.dfki.iui.basys.model.runtime.component.Property;
+import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.DeviceComponentController;
 import de.dfki.iui.basys.runtime.component.service.ServiceComponent;
@@ -223,6 +228,7 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 			switch (msg.getFunctionId()) {
 			case 0: // Neuer Auftrag
 
+				LOGGER.info("Basys: Neuer Auftrag");
 				// Auftrag und Produktinstanz anlegen.
 
 				// Entscheiden, wer den Deckel-Auflege-Job ausführt, Ergebnis ist eine ResourceInstanceId
@@ -241,6 +247,7 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 				break;
 			case 1: // Homeposition anfahren
 
+				LOGGER.info("Basys: Homeposition anfahren");
 				// Falls UR3: ignorieren
 				// Falls Festokomponente: ebenfalls ignorieren, s.u.
 
@@ -254,7 +261,8 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 
 				break;
 			case 2: // Deckel fügen	
-				
+
+				LOGGER.info("Basys: Deckel fügen");
 				if (!checkDebug(msg)) {
 					// Es ist bekannt, welche Komponente den Job ausführt,
 					// Trigger Werkerführung
@@ -274,8 +282,8 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 			}
 		} else {
 			switch (msg.getFunctionId()) {
-			case 0: // Neuer Auftrag
-
+			case 0: 
+				LOGGER.info("FESTO: Neuer Auftrag");
 				// ignorieren, da nicht Basys-relevant
 				sleep(50);
 				
@@ -291,14 +299,14 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 				}
 
 				break;
-			case 1: // Homeposition anfahren
-
+			case 1:
+				LOGGER.info("FESTO: Homeposition anfahren");
 				// Festokomponente explizit in Homeposition fahren
 				// irrelevant, da durch Komponente sichergestellt
 				festoController.reset();
 
 				
-				sleep(3000);
+				sleep(4000);
 				
 				if (cancelled)
 					return;				
@@ -313,8 +321,8 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 				}
 
 				break;
-			case 2: // Deckel fügen
-				
+			case 2: 
+				LOGGER.info("FESTO: Deckel fügen");
 				if (cancelled)
 					return;
 				
@@ -329,8 +337,47 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 						} else if (msg.getCapType() == 2) {
 							variant = JsonUtils.fromString(jsonVariantDarkBlue, CapabilityVariant.class);
 						}
-						festoController.executeCapability(variant);
-						sleep(10000);
+						//TODO: Synchroner Aufruf!
+//						festoController.executeCapability(variant);						
+//						sleep(10000);						
+						//sende IO/NIO						
+
+						CompletableFuture<ComponentResponse> cf = festoController.executeCapabilityFuture(variant)
+								.thenApply(response -> {
+									if (response.getStatus() == ResponseStatus.OK) {
+										try {
+											sender.send(msg12);
+											LOGGER.info("MSG12 sent to " + sender.getDestination().toString());
+										} catch (JMSException e) {											
+											LOGGER.error(e.getMessage(),e);
+										}
+									} else {
+										TextMessage newMsg12 = messageFactory.createMSG12(getCaaResourceId(), 2, response.getStatusCode());
+										try {
+											sender.send(newMsg12);
+											LOGGER.info("MSG12 sent to " + sender.getDestination().toString());
+										} catch (JMSException e) {											
+											LOGGER.error(e.getMessage(),e);
+										}
+									}
+									return response;
+								}
+						);
+						
+						try {
+							ComponentResponse response = cf.get(20, TimeUnit.SECONDS);
+						} catch (InterruptedException | ExecutionException | TimeoutException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+							TextMessage newMsg12 = messageFactory.createMSG12(getCaaResourceId(), 2, 14);
+							try {
+								sender.send(newMsg12);
+								LOGGER.info("MSG12 sent to " + sender.getDestination().toString());
+							} catch (JMSException e1) {											
+								LOGGER.error(e1.getMessage(),e1);
+							}
+						}
+						
 					} catch (IOException e) {
 						LOGGER.error(e.getMessage(), e);
 					}

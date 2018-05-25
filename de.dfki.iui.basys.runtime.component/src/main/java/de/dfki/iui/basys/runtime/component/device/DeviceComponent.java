@@ -18,9 +18,11 @@ import de.dfki.iui.basys.model.runtime.component.ChangeModeRequest;
 import de.dfki.iui.basys.model.runtime.component.CommandRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.ComponentInfo;
+import de.dfki.iui.basys.model.runtime.component.ComponentPackage;
 import de.dfki.iui.basys.model.runtime.component.ComponentRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentRequestStatus;
 import de.dfki.iui.basys.model.runtime.component.ComponentResponse;
+import de.dfki.iui.basys.model.runtime.component.ControlCommand;
 import de.dfki.iui.basys.model.runtime.component.ControlMode;
 import de.dfki.iui.basys.model.runtime.component.RequestStatus;
 import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
@@ -63,38 +65,11 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 
 		super.activate(context);
 
-		// make unit ready for production
-		// no, should be done from outside
-		// packmlUnit.reset();
-		//
-		// while (getState() != State.IDLE) {
-		// try {
-		// TimeUnit.MILLISECONDS.sleep(500);
-		// } catch (InterruptedException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
-		// }
-
 		LOGGER.info("activated");
 	}
 
 	@Override
 	public void deactivate() throws ComponentException {
-
-		// regardless of connection to real device (e.g. in simulation) do:
-		// no, should be done from outside
-		// packmlUnit.stop();
-		//
-		// while (getState() != State.STOPPED) {
-		// try {
-		// TimeUnit.MILLISECONDS.sleep(500);
-		// } catch (InterruptedException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
-		// }
-
 		super.deactivate();
 
 		packmlUnit.dispose();
@@ -345,6 +320,21 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 			updateRegistrationAndNotify();
 		}
 
+		new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				sleep(1);
+				if (pendingRequest != null && pendingRequest.eClass().equals(ComponentPackage.eINSTANCE.getChangeModeRequest())) {
+					ChangeModeRequest r = (ChangeModeRequest) pendingRequest;
+					if (r.getMode() == getMode()) {
+						sendComponentResponse(ResponseStatus.OK, 0);
+					}			
+				}
+				
+			}
+		}, "responseSender").start();	
+		
 		return status;
 	}
 
@@ -404,6 +394,14 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 
 	@Override
 	public void onStopped() {
+		if (pendingRequest != null && pendingRequest.eClass().equals(ComponentPackage.eINSTANCE.getCommandRequest())) {
+			CommandRequest r = (CommandRequest) pendingRequest;
+			if (r.getControlCommand() == ControlCommand.STOP || r.getControlCommand() == ControlCommand.CLEAR) {
+				sendComponentResponse(ResponseStatus.OK, 0);
+			}			
+		}
+		
+		
 		if (resetOnStopped) {
 			reset();
 		}
@@ -411,11 +409,23 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 
 	@Override
 	public void onIdle() {
-
+		if (pendingRequest != null && pendingRequest.eClass().equals(ComponentPackage.eINSTANCE.getCommandRequest())) {
+			CommandRequest r = (CommandRequest) pendingRequest;
+			if (r.getControlCommand() == ControlCommand.RESET) {
+				sendComponentResponse(ResponseStatus.OK, 0);
+			}			
+		}
 	}
 
 	@Override
 	public void onComplete() {
+		if (pendingRequest != null && pendingRequest.eClass().equals(ComponentPackage.eINSTANCE.getCommandRequest())) {
+			CommandRequest r = (CommandRequest) pendingRequest;
+			if (r.getControlCommand() == ControlCommand.START) {
+				sendComponentResponse(ResponseStatus.OK, 0);
+			}			
+		}
+		
 		if (resetOnComplete) {
 			reset();
 		}
@@ -423,17 +433,32 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 
 	@Override
 	public void onHeld() {
-
+		if (pendingRequest != null && pendingRequest.eClass().equals(ComponentPackage.eINSTANCE.getCommandRequest())) {
+			CommandRequest r = (CommandRequest) pendingRequest;
+			if (r.getControlCommand() == ControlCommand.HOLD) {
+				sendComponentResponse(ResponseStatus.OK, 0);
+			}			
+		}
 	}
 
 	@Override
 	public void onSuspended() {
-
+		if (pendingRequest != null && pendingRequest.eClass().equals(ComponentPackage.eINSTANCE.getCommandRequest())) {
+			CommandRequest r = (CommandRequest) pendingRequest;
+			if (r.getControlCommand() == ControlCommand.SUSPEND) {
+				sendComponentResponse(ResponseStatus.OK, 0);
+			}			
+		}
 	}
 
 	@Override
 	public void onAborted() {
-
+		if (pendingRequest != null && pendingRequest.eClass().equals(ComponentPackage.eINSTANCE.getCommandRequest())) {
+			CommandRequest r = (CommandRequest) pendingRequest;
+			if (r.getControlCommand() == ControlCommand.ABORT) {
+				sendComponentResponse(ResponseStatus.OK, 0);
+			}			
+		}
 	}
 
 	/*

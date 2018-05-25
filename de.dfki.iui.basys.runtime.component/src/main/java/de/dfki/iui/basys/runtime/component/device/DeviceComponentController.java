@@ -1,6 +1,10 @@
 package de.dfki.iui.basys.runtime.component.device;
 
 import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 import de.dfki.iui.basys.common.emf.json.JsonUtils;
 import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
@@ -11,11 +15,15 @@ import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.communication.Response;
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
+import de.dfki.iui.basys.model.runtime.component.ComponentFactory;
 import de.dfki.iui.basys.model.runtime.component.ComponentInfo;
 import de.dfki.iui.basys.model.runtime.component.ComponentRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentRequestStatus;
+import de.dfki.iui.basys.model.runtime.component.ComponentResponse;
 import de.dfki.iui.basys.model.runtime.component.ControlCommand;
 import de.dfki.iui.basys.model.runtime.component.ControlMode;
+import de.dfki.iui.basys.model.runtime.component.RequestStatus;
+import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
 import de.dfki.iui.basys.model.runtime.component.State;
 import de.dfki.iui.basys.model.runtime.component.impl.CapabilityRequestImpl;
 import de.dfki.iui.basys.model.runtime.component.impl.ChangeModeRequestImpl;
@@ -43,14 +51,19 @@ public class DeviceComponentController implements CommandInterface, ChannelListe
 	private ChannelListener listener = null;
 
 	boolean isConnected = false;
+	
+	private Lock lock;
+	private Condition executeCondition;
 
 	public DeviceComponentController(String componentId) {
-		this.componentId = componentId;
+		this(componentId,null);		
 	}
 
 	public DeviceComponentController(String componentId, ChannelListener listener) {
 		this.componentId = componentId;
 		this.listener = listener;
+		this.lock = new ReentrantLock();
+		this.executeCondition = lock.newCondition();
 	}
 
 	public void lazyConnect(ComponentContext context) {
@@ -141,11 +154,53 @@ public class DeviceComponentController implements CommandInterface, ChannelListe
 		return status;
 	}
 
-	public ComponentRequestStatus executeCapability(CapabilityVariant capability) {
+	ComponentRequestEnvelop envelop;
+	
+	public CompletableFuture<ComponentResponse> executeComponentRequest(ComponentRequest request) {
+		CompletableFuture<ComponentResponse> cf = CompletableFuture.supplyAsync(() -> {
+			envelop = new ComponentRequestEnvelop(request);
+			ComponentRequestStatus status = sendComponentRequest(request);
+			if (status.getStatus() == RequestStatus.ACCEPTED) {
+				lock.lock();
+				try {
+					executeCondition.await();
+				} catch (InterruptedException e) {
+					e.printStackTrace();				
+				} finally {
+					lock.unlock();
+				}
+				return envelop.getResponse();
+			} else {
+				ComponentResponse response = ComponentFactory.eINSTANCE.createComponentResponse();
+				// TODO: ggf. eContainer-Wechsel?
+				response.setRequest(request);
+				response.setComponentId(getId());
+				response.setMessage(status.getMessage());
+				response.setStatus(ResponseStatus.NOT_OK);	
+				return response;
+			} 
+		});
+		return cf;	
+	}
+	
+		
+	public void signalExecuteComplete() {
+		lock.lock();
+		executeCondition.signalAll();
+		lock.unlock();
+	}
+	
+	public CompletableFuture<ComponentResponse> executeCapabilityFuture(CapabilityVariant<?> capability) {
+		CapabilityRequest cr = new CapabilityRequestImpl.Builder().componentId(componentId).capabilityVariant(capability)
+				.build();
+		return executeComponentRequest(cr);
+	}
+
+	public ComponentRequestStatus executeCapability(CapabilityVariant<?> capability) {
 		ComponentRequestStatus status = sendCapabilityRequest(capability);
 		return status;
 	}
-
+	
 	@Override
 	public ComponentRequestStatus setMode(ControlMode mode) {
 		ComponentRequestStatus status = sendChangeModeRequest(mode);
@@ -222,8 +277,19 @@ public class DeviceComponentController implements CommandInterface, ChannelListe
 
 	@Override
 	public void handleNotification(Channel channel, Notification not) {
+		
+		if (channel.getName().equals(componentOutChannel.getName())) {
+			try {
+				ComponentResponse response = JsonUtils.fromString(not.getPayload(), ComponentResponse.class);
+				envelop.setResponse(response);
+				signalExecuteComplete();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}		
 
-		if (channel.getName().equals(componentInfo.getStatusChannelName())) {
+		if (channel.getName().equals(componentStatusChannel.getName())) {
 			//synchronized (componentInfo) {
 				try {
 					componentInfo = JsonUtils.fromString(not.getPayload(), ComponentInfo.class);
@@ -281,4 +347,28 @@ public class DeviceComponentController implements CommandInterface, ChannelListe
 //		void handleComponentResponse(ComponentResponse response);
 //	}
 
+	public class ComponentRequestEnvelop {
+
+		ComponentRequest request;
+		ComponentResponse response;
+		
+		public ComponentRequestEnvelop(ComponentRequest request) {
+			this.request = request;
+		}
+		
+		public ComponentRequest getRequest() {
+			return request;
+		}
+		
+		public ComponentResponse getResponse() {
+			return response;
+		}
+		
+		public void setResponse(ComponentResponse response) {
+			this.response = response;
+		}
+		
+		
+	}
+	
 }

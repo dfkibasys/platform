@@ -14,6 +14,7 @@ import javax.jms.MessageListener;
 import javax.jms.MessageProducer;
 import javax.jms.Session;
 import javax.jms.TextMessage;
+import javax.jms.Topic;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.junit.After;
@@ -23,14 +24,20 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import de.dfki.iui.basys.common.emf.json.JsonUtils;
+import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl;
+import de.dfki.iui.basys.model.runtime.component.impl.PropertyImpl;
+import de.dfki.iui.basys.runtime.communication.provider.JmsCommunicationProvider;
+import de.dfki.iui.basys.runtime.component.device.DeviceComponent;
 import de.dfki.iui.basys.runtime.connector.BasysConnector;
 import de.dfki.iui.basys.runtime.connector.MessageFactory;
 
 public class BasysConnectorTest extends BaseComponentTest {
 
 	//private static final String brokerUri = "failover:(tcp://10.2.100.1:61616)?randomize=false&priorityBackup=true";
-	private static final String brokerUri = "tcp://10.2.100.1:61616";
+	private static final String brokerUri = JmsCommunicationProvider.defaultConnectionString;//"tcp://10.2.100.1:61616";
 	private static Connection connection = null;
 	private Session session;
 	private MessageFactory messageFactory;
@@ -57,19 +64,20 @@ public class BasysConnectorTest extends BaseComponentTest {
 	}
 	ComponentConfiguration connectorConfig;
 	
+	
+	DeviceComponent component1;
+	
 	@Override
 	@Before
 	public void setUp() throws Exception {		
 		super.setUp();
 		
-		/*
+		
 		connectorConfig = new ComponentConfigurationImpl.Builder()			
 				.componentId("basys-connector")
 				.componentName("basys-connector")
 				.componentCategory(ComponentCategory.SERVICE_COMPONENT)
 				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.connector.BasysConnectorImpl")
-				.communicationProviderImplementationJavaClass(communicationProviderImplementationJavaClass)
-				.communicationProviderConnectionString(communicationProviderConnectionString)
 				//.inChannelName("connector.in")
 				//.outChannelName("connector.out")
 				.externalConnectionString(brokerUri)
@@ -81,13 +89,17 @@ public class BasysConnectorTest extends BaseComponentTest {
 		connectorConfig.getProperties().add(new PropertyImpl.Builder().key("caaInTopic").value("Sbr.Line.003.Basys.Preassembly.Iss.OpcUa.In").build());
 		connectorConfig.getProperties().add(new PropertyImpl.Builder().key("caaOutTopic").value("Sbr.Line.003.Basys.Preassembly.Iss.OpcUa.Out").build());
 		connectorConfig.getProperties().add(new PropertyImpl.Builder().key("basysMatNr").value(basysMatNr+"").build());
-		connectorConfig.getProperties().add(new PropertyImpl.Builder().key("festoComponentId").value("_SE5NIDB4Eei1bbwBPPZWOA").build());
-		connectorConfig.getProperties().add(new PropertyImpl.Builder().key("debugJobStatus").value("1").build());
-		connectorConfig.getProperties().add(new PropertyImpl.Builder().key("debugErrorCode").value("0").build());
+		//connectorConfig.getProperties().add(new PropertyImpl.Builder().key("festoComponentId").value("_SE5NIDB4Eei1bbwBPPZWOA").build());
+		connectorConfig.getProperties().add(new PropertyImpl.Builder().key("festoComponentId").value("component-1").build());
+		//connectorConfig.getProperties().add(new PropertyImpl.Builder().key("debugJobStatus").value("1").build());
+		//connectorConfig.getProperties().add(new PropertyImpl.Builder().key("debugErrorCode").value("0").build());
 
 		System.out.println(JsonUtils.toString(connectorConfig));
 		
+		component1 = (DeviceComponent) componentManager.createLocalComponent(config1);
+	
 		componentManager.createLocalComponent(connectorConfig);
+		
 		
 		session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);		
 		messageFactory = new MessageFactory(session);
@@ -96,7 +108,7 @@ public class BasysConnectorTest extends BaseComponentTest {
 		wfe_sender = session.createProducer(jmsTopicProducer);
 
 		Topic jmsTopicConsumer = session.createTopic(connectorConfig.getProperty("caaOutTopic").getValue());
-		wfe_receiver = session.createConsumer(jmsTopicConsumer);*/
+		wfe_receiver = session.createConsumer(jmsTopicConsumer);
 	}
 
 	@Override
@@ -237,8 +249,8 @@ public class BasysConnectorTest extends BaseComponentTest {
 	
 	
 	@Test
-	@Ignore
-	public void testExecuteJobFestoRedIO() {
+	//@Ignore
+	public void testExecuteJobFestoLightBlueIO() {
 		TestListener testCallback = new TestListener();
 		
 		int functionId = 2;
@@ -250,6 +262,15 @@ public class BasysConnectorTest extends BaseComponentTest {
 		TextMessage msg12 = messageFactory.createMSG12(caaResourceId, 1, 0);
 		TextMessage msg13 = messageFactory.createMSG13(caaResourceId, 1, 0);
 
+		component1.reset();
+		
+		try {
+			Thread.currentThread().sleep(3000);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		try {
 			wfe_receiver.setMessageListener(testCallback);
 			wfe_sender.send(msg10);
@@ -269,7 +290,7 @@ public class BasysConnectorTest extends BaseComponentTest {
 	
 	@Test
 	@Ignore
-	public void testExecuteJobFestoGreenIO() {
+	public void testExecuteJobFestoDarkBlueIO() {
 		TestListener testCallback = new TestListener();
 		
 		int functionId = 2;
@@ -300,11 +321,11 @@ public class BasysConnectorTest extends BaseComponentTest {
 	
 	@Test
 	@Ignore
-	public void testExecuteJobBasysIO() {
+	public void testExecuteJobBasysLightBlueIO() {
 		TestListener testCallback = new TestListener();
 		
 		int functionId = 2;
-		int capType = 2;
+		int capType = 1;
 		int matNr = basysMatNr;
 
 		TextMessage msg10 = messageFactory.createMSG10(caaResourceId, functionId, capType, matNr, 1, 1);

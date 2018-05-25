@@ -47,8 +47,8 @@ public interface ComponentManager {
 	 * @model exceptions="de.dfki.iui.basys.model.runtime.component.ComponentManagerException"
 	 * @generated
 	 */
-	void createLocalComponent(ComponentConfiguration config) throws ComponentManagerException;
-	void createLocalComponent(File configFile) throws ComponentManagerException;
+	Component createLocalComponent(ComponentConfiguration config) throws ComponentManagerException;
+	Component createLocalComponent(File configFile) throws ComponentManagerException;
 	void createLocalComponents(File configFolder, boolean recursive) throws ComponentManagerException;
 
 	void addLocalComponent(Component component) throws ComponentManagerException;

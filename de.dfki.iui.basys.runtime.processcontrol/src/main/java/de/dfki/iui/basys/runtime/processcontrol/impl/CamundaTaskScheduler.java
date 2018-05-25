@@ -110,7 +110,7 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 
 	@Override
 	public void scheduleTask(TaskDescription task) {
-		LOGGER.debug("scheduleCapabilityRequest");
+		LOGGER.debug("scheduleTask");
 		TaskExecutor ce = new TaskExecutor(task);
 		CompletableFuture<ComponentResponse> cf = CompletableFuture.supplyAsync(() -> {
 			ce.execute(context);
@@ -126,6 +126,19 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 			return ts.getResponse();
 		});		
 	}
+	
+//	public CompletableFuture<ComponentResponse> scheduleTaskAlternative(ComponentRequest request, String correlationId) {
+//		LOGGER.debug("scheduleTaskAlternative");
+//		
+//		TaskExecutor2 ce = new TaskExecutor2(request);
+//		ComponentResponse response = ce.execute(context);
+//		
+//		CompletableFuture<ComponentResponse> cf = CompletableFuture.supplyAsync(() -> {
+//			ce.execute(context);
+//			return ce.getTask().getResponse();
+//		}, executor);
+//		return cf;
+//	}
 
 //	@Override
 //	public TaskInstance getTaskInstance(String taskInstanceId) {

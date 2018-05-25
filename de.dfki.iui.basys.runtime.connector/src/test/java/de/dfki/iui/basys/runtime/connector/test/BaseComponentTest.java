@@ -2,12 +2,9 @@ package de.dfki.iui.basys.runtime.connector.test;
 
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,6 +16,8 @@ import de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl
 import de.dfki.iui.basys.runtime.communication.CommFactory;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.manager.impl.ComponentManagerImpl;
+import de.dfki.iui.basys.runtime.component.registry.zookeeper.ZookeeperComponentRegistry;
+import de.dfki.iui.basys.runtime.component.registry.zookeeper.ZookeeperComponentRegistryObserver;
 
 public class BaseComponentTest {
 
@@ -30,6 +29,12 @@ public class BaseComponentTest {
 	protected ChannelPool sharedPool;
 	protected ComponentContext context;
 	protected ComponentConfiguration config1, config2, config3, managerConfig; 
+	
+
+	protected ZookeeperComponentRegistry registry;
+	protected ZookeeperComponentRegistryObserver observer;
+
+	protected ComponentConfiguration registryConfig, observerConfig; 
 	
 	@Before
 	public void setUp() throws Exception {
@@ -67,12 +72,31 @@ public class BaseComponentTest {
 				.outChannelName("component3#out")
 				.build();	
 				
-		communicationClient = CommFactory.getInstance().createClient("client", null);
-		sharedPool = CommFactory.getInstance().connectJmsChannelPool(communicationClient, null);	
-
-		context = new ComponentContext.Builder().sharedChannelPool(sharedPool).build();
+		registryConfig = new ComponentConfigurationImpl.Builder()
+				.componentId("component-registry")
+				.componentName("component-registry")
+				.componentCategory(ComponentCategory.MANAGEMENT_COMPONENT)
+				.externalConnectionString(ZookeeperComponentRegistry.defaultConnectionString)
+				.build();	
 		
-		componentManager = new ComponentManagerImpl(managerConfig);				
+		observerConfig = new ComponentConfigurationImpl.Builder()
+				.componentId("component-registry-observer")
+				.componentName("component-registry-observer")
+				.componentCategory(ComponentCategory.MANAGEMENT_COMPONENT)
+				.externalConnectionString(ZookeeperComponentRegistry.defaultConnectionString)
+				.build();	
+		
+		
+		registry = new ZookeeperComponentRegistry(registryConfig);
+		observer = new ZookeeperComponentRegistryObserver(observerConfig);
+		componentManager = new ComponentManagerImpl(managerConfig);	
+		
+		communicationClient = CommFactory.getInstance().createClient("client", null);
+		sharedPool = CommFactory.getInstance().connectJmsChannelPool(communicationClient, null);
+		context = new ComponentContext.Builder().sharedChannelPool(sharedPool).componentRegistry(registry).build();
+					
+		registry.activate(context);
+		observer.activate(context);		
 		componentManager.activate(context);
 	}
 
@@ -80,7 +104,13 @@ public class BaseComponentTest {
 	public void tearDown() throws Exception {
 		componentManager.deactivate();
 		componentManager = null;
+				
+		observer.deactivate();
+		observer = null;
 		
+		registry.deactivate();
+		registry = null;
+
 		communicationClient.disconnect();
 		communicationClient = null;
 		
@@ -99,15 +129,6 @@ public class BaseComponentTest {
         }
         System.out.println("");
         System.out.println("####################################################");
-	}
-	
-	protected void sleep(long seconds) {
-		try {
-			TimeUnit.MILLISECONDS.sleep(seconds*1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	
 }

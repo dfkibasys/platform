@@ -15,6 +15,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 
 import de.dfki.iui.basys.common.emf.EmfPersistence;
 import de.dfki.iui.basys.common.emf.json.JsonUtils;
+import de.dfki.iui.basys.model.domain.resourceinstance.ManufacturingCapabilityVariant;
 import de.dfki.iui.basys.model.runtime.component.ComponentRequest;
 import de.dfki.iui.basys.model.runtime.component.ControlMode;
 import de.dfki.iui.basys.model.runtime.component.impl.ChangeModeRequestImpl;
@@ -45,8 +46,7 @@ public class JsonSerializationTest {
 		System.out.println(payload);
 	}
 
-	@Test
-	@Ignore
+	@Test	
 	public void testSerializeComponentRequests() {
 		
 		ResourceSet resourceSet = EmfServiceComponent.createResourceSet();
@@ -78,5 +78,37 @@ public class JsonSerializationTest {
 		
 		
 	}
+	
+	@Test
+	public void testDeserialization() {
+		ResourceSet rs = EmfServiceComponent.createResourceSet();
+		String json = "{\n" + 
+				"	\"eClass\": \"http://www.dfki.de/iui/basys/model/resourceinstance#//ManufacturingCapabilityVariant\",\n" + 
+				"	\"capability\": {\n" + 
+				"		\"eClass\": \"http://www.dfki.de/iui/basys/model/capability#//PickAndPlace\",\n" + 
+				"		\"id\": \"_xio67l8yEeiUo-65_7rTBS\",\n" + 
+				"		\"loadCarrierUnit\": \"MATERIAL\"\n" + 
+				"	},\n" + 
+				"	\"appliedOn\": [{\n" + 
+				"		\"eClass\": \"http://www.dfki.de/iui/basys/model/productdefinition#//MaterialEntry\",\n" + 
+				"		\"$ref\": \"http://localhost:8080/services/entity/_IpqbzV29EeixDOGCyjgf_g\"\n" + 
+				"	},\n" + 
+				"	{\n" + 
+				"		\"eClass\": \"http://www.dfki.de/iui/basys/model/productdefinition#//AssemblyGroupEntry\",\n" + 
+				"		\"$ref\": \"http://localhost:8080/services/entity/_IpqbzF29EeixDOGCyjgf_g\"\n" + 
+				"	}]\n" + 
+				"}";
+		
+		try {
+			ManufacturingCapabilityVariant var = JsonUtils.fromString(json, ManufacturingCapabilityVariant.class);
+			System.out.println(var);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	
+	}
+	
 	
 }

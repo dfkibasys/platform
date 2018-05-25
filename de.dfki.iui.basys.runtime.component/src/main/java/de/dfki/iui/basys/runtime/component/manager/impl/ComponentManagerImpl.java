@@ -103,7 +103,7 @@ public class ComponentManagerImpl extends BaseComponent implements ComponentMana
 	}
 
 	@Override
-	public void createLocalComponent(ComponentConfiguration config) throws ComponentManagerException {
+	public Component createLocalComponent(ComponentConfiguration config) throws ComponentManagerException {
 		Class c = null;
 		try {
 			
@@ -131,6 +131,7 @@ public class ComponentManagerImpl extends BaseComponent implements ComponentMana
 				| IllegalArgumentException | InvocationTargetException e) {
 			throw new ComponentManagerException(e);
 		}
+		return component;
 	}
 
 	@Override
@@ -158,13 +159,15 @@ public class ComponentManagerImpl extends BaseComponent implements ComponentMana
 	}
 
 	@Override
-	public void createLocalComponent(File configFile) throws ComponentManagerException {
+	public Component createLocalComponent(File configFile) throws ComponentManagerException {
+		Component component = null;
 		try {
 			ComponentConfiguration config = JsonUtils.fromFile(configFile, ComponentConfiguration.class);
-			createLocalComponent(config);
+			component = createLocalComponent(config);
 		} catch (IOException e) {
 			throw new ComponentManagerException(e);
 		}
+		return component;
 	}
 
 	@Override
