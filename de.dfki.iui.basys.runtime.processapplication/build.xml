@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="de.dfki.iui.basys.runtime.process" default="deploy.jboss">
+<project name="processapplication" default="deploy.jboss">
 
 	<property file="build.properties" />
 	<property file="${user.home}/.camunda/build.properties" />
@@ -27,4 +27,15 @@
 		<delete file="${deploy.jboss.dir}/${ant.project.name}.war" />
 	</target>
 
+	<target name="deploy.tomcat" depends="package.mvn, copy.war.into.tomcat" description="Copies the process application to the deployment directory defined in '${basedir}/build.properties' or '${user.home}/.camunda/build.properties'" />
+
+	<target name="copy.war.into.tomcat">
+		<fail unless="deploy.tomcat.dir" message="No deployment folder has been configured. Please copy the file '${basedir}/build.properties.example' to '${basedir}/build.properties' or '${user.home}/.camunda/build.properties' and change it according to your environment." />
+		<copy file="${target.dir}/${ant.project.name}.war" todir="${deploy.tomcat.dir}" />
+	</target>
+
+	<target name="undeploy.tomcat" description="Deletes the process application from the deployment directory defined in '${basedir}/build.properties' or '${user.home}/.camunda/build.properties'">
+		<delete file="${deploy.tomcat.dir}/${ant.project.name}.war" />
+	</target>
+	
 </project>

@@ -1,15 +1,17 @@
-package de.dfki.iui.basys.runtime.de.dfki.iui.basys.runtime.process.nonarquillian;
-
-import static org.camunda.bpm.engine.test.assertions.ProcessEngineAssertions.init;
+package de.dfki.iui.basys.runtime.processapplication;
 
 import org.apache.ibatis.logging.LogFactory;
-import org.camunda.bpm.engine.test.Deployment;
+import org.camunda.bpm.engine.runtime.ProcessInstance;
 import org.camunda.bpm.engine.test.ProcessEngineRule;
 import org.camunda.bpm.extension.process_test_coverage.junit.rules.TestCoverageProcessEngineRuleBuilder;
+import org.camunda.bpm.engine.test.Deployment;
 import org.junit.Before;
 import org.junit.ClassRule;
 import org.junit.Rule;
 import org.junit.Test;
+
+import static org.camunda.bpm.engine.test.assertions.ProcessEngineTests.*;
+import static org.junit.Assert.*;
 
 /**
  * Test case starting an in-memory database-backed Process Engine.
@@ -20,7 +22,7 @@ public class InMemoryH2Test {
   @Rule
   public static ProcessEngineRule rule = TestCoverageProcessEngineRuleBuilder.create().build();
 
-  private static final String PROCESS_DEFINITION_KEY = "de.dfki.iui.basys.runtime.processapplication";
+  private static final String PROCESS_DEFINITION_KEY = "processapplication";
 
   static {
     LogFactory.useSlf4jLogging(); // MyBatis
