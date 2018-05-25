@@ -476,6 +476,7 @@ public class ResourceinstancePackageImpl extends EPackageImpl implements Resourc
 
 		// Add supertypes to classes
 		resourceInstanceEClass.getESuperTypes().add(theBasePackage.getEntity());
+		capabilityVariantEClass.getESuperTypes().add(theBasePackage.getEntity());
 		g1 = createEGenericType(this.getCapabilityVariant());
 		EGenericType g2 = createEGenericType(theProductdefinitionPackage.getBOMEntry());
 		g1.getETypeArguments().add(g2);

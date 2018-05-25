@@ -6,8 +6,6 @@ import de.dfki.iui.basys.model.base.Entity;
 import de.dfki.iui.basys.model.domain.capability.Capability;
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Capability Variant</b></em>'.
@@ -25,7 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface CapabilityVariant<T extends Entity> extends EObject {
+public interface CapabilityVariant<T extends Entity> extends Entity {
 	/**
 	 * Returns the value of the '<em><b>Capability</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

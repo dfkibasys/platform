@@ -3,6 +3,7 @@
 package de.dfki.iui.basys.model.domain.resourceinstance.provider;
 
 
+import de.dfki.iui.basys.model.domain.resourceinstance.LogisticsCapabilityVariant;
 import java.util.Collection;
 import java.util.List;
 
@@ -62,7 +63,10 @@ public class LogisticsCapabilityVariantItemProvider extends CapabilityVariantIte
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_LogisticsCapabilityVariant_type");
+		String label = ((LogisticsCapabilityVariant)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_LogisticsCapabilityVariant_type") :
+			getString("_UI_LogisticsCapabilityVariant_type") + " " + label;
 	}
 	
 

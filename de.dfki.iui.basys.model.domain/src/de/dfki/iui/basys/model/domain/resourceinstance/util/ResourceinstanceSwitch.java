@@ -92,6 +92,8 @@ public class ResourceinstanceSwitch<T1> extends Switch<T1> {
 			case ResourceinstancePackage.CAPABILITY_VARIANT: {
 				CapabilityVariant<?> capabilityVariant = (CapabilityVariant<?>)theEObject;
 				T1 result = caseCapabilityVariant(capabilityVariant);
+				if (result == null) result = caseEntity(capabilityVariant);
+				if (result == null) result = caseBObject(capabilityVariant);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -99,6 +101,8 @@ public class ResourceinstanceSwitch<T1> extends Switch<T1> {
 				ManufacturingCapabilityVariant manufacturingCapabilityVariant = (ManufacturingCapabilityVariant)theEObject;
 				T1 result = caseManufacturingCapabilityVariant(manufacturingCapabilityVariant);
 				if (result == null) result = caseCapabilityVariant(manufacturingCapabilityVariant);
+				if (result == null) result = caseEntity(manufacturingCapabilityVariant);
+				if (result == null) result = caseBObject(manufacturingCapabilityVariant);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -106,6 +110,8 @@ public class ResourceinstanceSwitch<T1> extends Switch<T1> {
 				LogisticsCapabilityVariant logisticsCapabilityVariant = (LogisticsCapabilityVariant)theEObject;
 				T1 result = caseLogisticsCapabilityVariant(logisticsCapabilityVariant);
 				if (result == null) result = caseCapabilityVariant(logisticsCapabilityVariant);
+				if (result == null) result = caseEntity(logisticsCapabilityVariant);
+				if (result == null) result = caseBObject(logisticsCapabilityVariant);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -113,6 +119,8 @@ public class ResourceinstanceSwitch<T1> extends Switch<T1> {
 				GeneralCapabilityVariant generalCapabilityVariant = (GeneralCapabilityVariant)theEObject;
 				T1 result = caseGeneralCapabilityVariant(generalCapabilityVariant);
 				if (result == null) result = caseCapabilityVariant(generalCapabilityVariant);
+				if (result == null) result = caseEntity(generalCapabilityVariant);
+				if (result == null) result = caseBObject(generalCapabilityVariant);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

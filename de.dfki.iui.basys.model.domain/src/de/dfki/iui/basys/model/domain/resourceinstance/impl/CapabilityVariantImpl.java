@@ -3,12 +3,10 @@
 package de.dfki.iui.basys.model.domain.resourceinstance.impl;
 
 import de.dfki.iui.basys.model.base.Entity;
+import de.dfki.iui.basys.model.base.impl.EntityImpl;
 import de.dfki.iui.basys.model.domain.capability.Capability;
 import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
 import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage;
-
-import de.dfki.iui.basys.model.util.BasysEObjectImpl;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -37,7 +35,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *
  * @generated
  */
-public class CapabilityVariantImpl<T extends Entity> extends BasysEObjectImpl implements CapabilityVariant<T> {
+public class CapabilityVariantImpl<T extends Entity> extends EntityImpl implements CapabilityVariant<T> {
 	/**
 	 * The cached value of the '{@link #getCapability() <em>Capability</em>}' containment reference.
 	 * <!-- begin-user-doc -->

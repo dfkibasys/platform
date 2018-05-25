@@ -33,7 +33,7 @@
       </eGenericType>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CapabilityVariant">
+  <eClassifiers xsi:type="ecore:EClass" name="CapabilityVariant" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
     <eTypeParameters name="T">
       <eBounds eClassifier="ecore:EClass ../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity"/>
     </eTypeParameters>

@@ -3,6 +3,7 @@
 package de.dfki.iui.basys.model.domain.resourceinstance.provider;
 
 
+import de.dfki.iui.basys.model.domain.resourceinstance.ManufacturingCapabilityVariant;
 import java.util.Collection;
 import java.util.List;
 
@@ -62,7 +63,10 @@ public class ManufacturingCapabilityVariantItemProvider extends CapabilityVarian
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_ManufacturingCapabilityVariant_type");
+		String label = ((ManufacturingCapabilityVariant)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_ManufacturingCapabilityVariant_type") :
+			getString("_UI_ManufacturingCapabilityVariant_type") + " " + label;
 	}
 	
 

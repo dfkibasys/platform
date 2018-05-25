@@ -253,13 +253,49 @@ public interface ResourceinstancePackage extends EPackage {
 	int CAPABILITY_APPLICATION_OPERATION_COUNT = 0;
 
 	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_VARIANT__BINDING = BasePackage.ENTITY__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_VARIANT__ID = BasePackage.ENTITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_VARIANT__NAME = BasePackage.ENTITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_VARIANT__METADATA = BasePackage.ENTITY__METADATA;
+
+	/**
 	 * The feature id for the '<em><b>Capability</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_VARIANT__CAPABILITY = 0;
+	int CAPABILITY_VARIANT__CAPABILITY = BasePackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Applied On</b></em>' reference list.
@@ -268,7 +304,7 @@ public interface ResourceinstancePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_VARIANT__APPLIED_ON = 1;
+	int CAPABILITY_VARIANT__APPLIED_ON = BasePackage.ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Capability Variant</em>' class.
@@ -277,7 +313,7 @@ public interface ResourceinstancePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_VARIANT_FEATURE_COUNT = 2;
+	int CAPABILITY_VARIANT_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Capability Variant</em>' class.
@@ -286,7 +322,7 @@ public interface ResourceinstancePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_VARIANT_OPERATION_COUNT = 0;
+	int CAPABILITY_VARIANT_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
 
 
 	/**
@@ -298,6 +334,42 @@ public interface ResourceinstancePackage extends EPackage {
 	 * @generated
 	 */
 	int MANUFACTURING_CAPABILITY_VARIANT = 4;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANUFACTURING_CAPABILITY_VARIANT__BINDING = CAPABILITY_VARIANT__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANUFACTURING_CAPABILITY_VARIANT__ID = CAPABILITY_VARIANT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANUFACTURING_CAPABILITY_VARIANT__NAME = CAPABILITY_VARIANT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MANUFACTURING_CAPABILITY_VARIANT__METADATA = CAPABILITY_VARIANT__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Capability</b></em>' containment reference.
@@ -346,6 +418,42 @@ public interface ResourceinstancePackage extends EPackage {
 	int LOGISTICS_CAPABILITY_VARIANT = 5;
 
 	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGISTICS_CAPABILITY_VARIANT__BINDING = CAPABILITY_VARIANT__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGISTICS_CAPABILITY_VARIANT__ID = CAPABILITY_VARIANT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGISTICS_CAPABILITY_VARIANT__NAME = CAPABILITY_VARIANT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGISTICS_CAPABILITY_VARIANT__METADATA = CAPABILITY_VARIANT__METADATA;
+
+	/**
 	 * The feature id for the '<em><b>Capability</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -390,6 +498,42 @@ public interface ResourceinstancePackage extends EPackage {
 	 * @generated
 	 */
 	int GENERAL_CAPABILITY_VARIANT = 6;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERAL_CAPABILITY_VARIANT__BINDING = CAPABILITY_VARIANT__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERAL_CAPABILITY_VARIANT__ID = CAPABILITY_VARIANT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERAL_CAPABILITY_VARIANT__NAME = CAPABILITY_VARIANT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERAL_CAPABILITY_VARIANT__METADATA = CAPABILITY_VARIANT__METADATA;
 
 	/**
 	 * The feature id for the '<em><b>Capability</b></em>' containment reference.

@@ -3,6 +3,7 @@
 package de.dfki.iui.basys.model.domain.resourceinstance.provider;
 
 
+import de.dfki.iui.basys.model.domain.resourceinstance.GeneralCapabilityVariant;
 import java.util.Collection;
 import java.util.List;
 
@@ -62,7 +63,10 @@ public class GeneralCapabilityVariantItemProvider extends CapabilityVariantItemP
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_GeneralCapabilityVariant_type");
+		String label = ((GeneralCapabilityVariant)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_GeneralCapabilityVariant_type") :
+			getString("_UI_GeneralCapabilityVariant_type") + " " + label;
 	}
 	
 
