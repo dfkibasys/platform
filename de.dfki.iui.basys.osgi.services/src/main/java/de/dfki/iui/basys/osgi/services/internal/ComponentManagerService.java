@@ -111,8 +111,8 @@ public class ComponentManagerService extends BasysOsgiComponent implements Compo
 	}
 
 	@Override
-	public void createLocalComponent(ComponentConfiguration config) throws ComponentManagerException {
-		impl.createLocalComponent(config);
+	public de.dfki.iui.basys.runtime.component.Component createLocalComponent(ComponentConfiguration config) throws ComponentManagerException {
+		return impl.createLocalComponent(config);
 	}
 
 	@Override
@@ -126,8 +126,8 @@ public class ComponentManagerService extends BasysOsgiComponent implements Compo
 	}
 
 	@Override
-	public void createLocalComponent(File configFile) throws ComponentManagerException {
-		impl.createLocalComponent(configFile);		
+	public de.dfki.iui.basys.runtime.component.Component createLocalComponent(File configFile) throws ComponentManagerException {
+		return impl.createLocalComponent(configFile);		
 	}
 
 	@Override
