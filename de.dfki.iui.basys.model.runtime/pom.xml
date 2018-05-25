@@ -37,6 +37,13 @@
 		</dependency>
 		
 		<dependency>
+			<groupId>de.dfki.iui.basys.model</groupId>
+			<artifactId>de.dfki.iui.basys.model.domain</artifactId>
+			<version>${project.version}</version>
+			<type>bundle</type>
+		</dependency>
+		
+		<dependency>
 			<type>pom</type>
 			<groupId>${project.parent.groupId}</groupId>
 			<artifactId>provision</artifactId>
