@@ -16,7 +16,6 @@ import de.dfki.iui.hrc.franka.LoadException;
 import de.dfki.iui.hrc.franka.MoveException;
 import de.dfki.iui.hrc.general3d.TransformationMatrix;
 import de.dfki.iui.hrc.hybritcommand.CommandResponse;
-import de.dfki.iui.hrc.mir100.MIR;
 import de.dfki.tecs.Event;
 
 public class FrankaComponent extends TecsDeviceComponent{
