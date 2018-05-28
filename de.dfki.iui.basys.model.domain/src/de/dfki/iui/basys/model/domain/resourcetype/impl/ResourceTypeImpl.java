@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link de.dfki.iui.basys.model.domain.resourcetype.impl.ResourceTypeImpl#getCapabilityAssertions <em>Capability Assertions</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.resourcetype.impl.ResourceTypeImpl#getDocumentation <em>Documentation</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.resourcetype.impl.ResourceTypeImpl#getImage <em>Image</em>}</li>
  * </ul>
  *
  * @generated
@@ -64,6 +65,26 @@ public class ResourceTypeImpl extends EntityImpl implements ResourceType {
 	 * @ordered
 	 */
 	protected String documentation = DOCUMENTATION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getImage() <em>Image</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getImage()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String IMAGE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getImage() <em>Image</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getImage()
+	 * @generated
+	 * @ordered
+	 */
+	protected String image = IMAGE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -122,6 +143,27 @@ public class ResourceTypeImpl extends EntityImpl implements ResourceType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getImage() {
+		return image;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setImage(String newImage) {
+		String oldImage = image;
+		image = newImage;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ResourcetypePackage.RESOURCE_TYPE__IMAGE, oldImage, image));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -143,6 +185,8 @@ public class ResourceTypeImpl extends EntityImpl implements ResourceType {
 				return getCapabilityAssertions();
 			case ResourcetypePackage.RESOURCE_TYPE__DOCUMENTATION:
 				return getDocumentation();
+			case ResourcetypePackage.RESOURCE_TYPE__IMAGE:
+				return getImage();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -163,6 +207,9 @@ public class ResourceTypeImpl extends EntityImpl implements ResourceType {
 			case ResourcetypePackage.RESOURCE_TYPE__DOCUMENTATION:
 				setDocumentation((String)newValue);
 				return;
+			case ResourcetypePackage.RESOURCE_TYPE__IMAGE:
+				setImage((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -181,6 +228,9 @@ public class ResourceTypeImpl extends EntityImpl implements ResourceType {
 			case ResourcetypePackage.RESOURCE_TYPE__DOCUMENTATION:
 				setDocumentation(DOCUMENTATION_EDEFAULT);
 				return;
+			case ResourcetypePackage.RESOURCE_TYPE__IMAGE:
+				setImage(IMAGE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -197,6 +247,8 @@ public class ResourceTypeImpl extends EntityImpl implements ResourceType {
 				return capabilityAssertions != null && !capabilityAssertions.isEmpty();
 			case ResourcetypePackage.RESOURCE_TYPE__DOCUMENTATION:
 				return DOCUMENTATION_EDEFAULT == null ? documentation != null : !DOCUMENTATION_EDEFAULT.equals(documentation);
+			case ResourcetypePackage.RESOURCE_TYPE__IMAGE:
+				return IMAGE_EDEFAULT == null ? image != null : !IMAGE_EDEFAULT.equals(image);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -213,6 +265,8 @@ public class ResourceTypeImpl extends EntityImpl implements ResourceType {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (documentation: ");
 		result.append(documentation);
+		result.append(", image: ");
+		result.append(image);
 		result.append(')');
 		return result.toString();
 	}

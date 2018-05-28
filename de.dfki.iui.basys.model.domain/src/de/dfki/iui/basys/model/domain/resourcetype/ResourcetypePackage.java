@@ -207,13 +207,22 @@ public interface ResourcetypePackage extends EPackage {
 	int RESOURCE_TYPE__DOCUMENTATION = BasePackage.ENTITY_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_TYPE__IMAGE = BasePackage.ENTITY_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Resource Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_TYPE_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 2;
+	int RESOURCE_TYPE_FEATURE_COUNT = BasePackage.ENTITY_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Resource Type</em>' class.
@@ -287,6 +296,15 @@ public interface ResourcetypePackage extends EPackage {
 	 * @ordered
 	 */
 	int DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__DOCUMENTATION = RESOURCE_TYPE__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__IMAGE = RESOURCE_TYPE__IMAGE;
 
 	/**
 	 * The number of structural features of the '<em>Discrete Manufacturing Equipment Module</em>' class.
@@ -371,6 +389,15 @@ public interface ResourcetypePackage extends EPackage {
 	int TOOL__DOCUMENTATION = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__DOCUMENTATION;
 
 	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOOL__IMAGE = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__IMAGE;
+
+	/**
 	 * The number of structural features of the '<em>Tool</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -451,6 +478,15 @@ public interface ResourcetypePackage extends EPackage {
 	 * @ordered
 	 */
 	int STATIONARY_TOOL__DOCUMENTATION = TOOL__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATIONARY_TOOL__IMAGE = TOOL__IMAGE;
 
 	/**
 	 * The number of structural features of the '<em>Stationary Tool</em>' class.
@@ -535,6 +571,15 @@ public interface ResourcetypePackage extends EPackage {
 	int MOVABLE_TOOL__DOCUMENTATION = TOOL__DOCUMENTATION;
 
 	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVABLE_TOOL__IMAGE = TOOL__IMAGE;
+
+	/**
 	 * The number of structural features of the '<em>Movable Tool</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -615,6 +660,15 @@ public interface ResourcetypePackage extends EPackage {
 	 * @ordered
 	 */
 	int TRANSPORT__DOCUMENTATION = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSPORT__IMAGE = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__IMAGE;
 
 	/**
 	 * The number of structural features of the '<em>Transport</em>' class.
@@ -699,6 +753,15 @@ public interface ResourcetypePackage extends EPackage {
 	int STORAGE__DOCUMENTATION = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__DOCUMENTATION;
 
 	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE__IMAGE = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__IMAGE;
+
+	/**
 	 * The number of structural features of the '<em>Storage</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -779,6 +842,15 @@ public interface ResourcetypePackage extends EPackage {
 	 * @ordered
 	 */
 	int FIXTURE__DOCUMENTATION = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIXTURE__IMAGE = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__IMAGE;
 
 	/**
 	 * The number of structural features of the '<em>Fixture</em>' class.
@@ -863,6 +935,15 @@ public interface ResourcetypePackage extends EPackage {
 	int GATE__DOCUMENTATION = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__DOCUMENTATION;
 
 	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GATE__IMAGE = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__IMAGE;
+
+	/**
 	 * The number of structural features of the '<em>Gate</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -943,6 +1024,15 @@ public interface ResourcetypePackage extends EPackage {
 	 * @ordered
 	 */
 	int ROBOT__DOCUMENTATION = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROBOT__IMAGE = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__IMAGE;
 
 	/**
 	 * The number of structural features of the '<em>Robot</em>' class.
@@ -1027,6 +1117,15 @@ public interface ResourcetypePackage extends EPackage {
 	int CARRIER__DOCUMENTATION = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__DOCUMENTATION;
 
 	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARRIER__IMAGE = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__IMAGE;
+
+	/**
 	 * The number of structural features of the '<em>Carrier</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1107,6 +1206,15 @@ public interface ResourcetypePackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE__DOCUMENTATION = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE__IMAGE = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__IMAGE;
 
 	/**
 	 * The number of structural features of the '<em>Machine</em>' class.
@@ -1191,6 +1299,15 @@ public interface ResourcetypePackage extends EPackage {
 	int STATIC_OBJECT__DOCUMENTATION = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__DOCUMENTATION;
 
 	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATIC_OBJECT__IMAGE = DISCRETE_MANUFACTURING_EQUIPMENT_MODULE__IMAGE;
+
+	/**
 	 * The number of structural features of the '<em>Static Object</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1271,6 +1388,15 @@ public interface ResourcetypePackage extends EPackage {
 	 * @ordered
 	 */
 	int HORIZONTAL_TRANSPORT__DOCUMENTATION = TRANSPORT__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HORIZONTAL_TRANSPORT__IMAGE = TRANSPORT__IMAGE;
 
 	/**
 	 * The number of structural features of the '<em>Horizontal Transport</em>' class.
@@ -1355,6 +1481,15 @@ public interface ResourcetypePackage extends EPackage {
 	int TURNABLE__DOCUMENTATION = HORIZONTAL_TRANSPORT__DOCUMENTATION;
 
 	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TURNABLE__IMAGE = HORIZONTAL_TRANSPORT__IMAGE;
+
+	/**
 	 * The number of structural features of the '<em>Turnable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1435,6 +1570,15 @@ public interface ResourcetypePackage extends EPackage {
 	 * @ordered
 	 */
 	int CONVEYOR__DOCUMENTATION = HORIZONTAL_TRANSPORT__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONVEYOR__IMAGE = HORIZONTAL_TRANSPORT__IMAGE;
 
 	/**
 	 * The number of structural features of the '<em>Conveyor</em>' class.
@@ -1519,6 +1663,15 @@ public interface ResourcetypePackage extends EPackage {
 	int VERTICAL_TRANSPORT__DOCUMENTATION = TRANSPORT__DOCUMENTATION;
 
 	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VERTICAL_TRANSPORT__IMAGE = TRANSPORT__IMAGE;
+
+	/**
 	 * The number of structural features of the '<em>Vertical Transport</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1599,6 +1752,15 @@ public interface ResourcetypePackage extends EPackage {
 	 * @ordered
 	 */
 	int LIFTING_TABLE__DOCUMENTATION = VERTICAL_TRANSPORT__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIFTING_TABLE__IMAGE = VERTICAL_TRANSPORT__IMAGE;
 
 	/**
 	 * The number of structural features of the '<em>Lifting Table</em>' class.
@@ -1683,6 +1845,15 @@ public interface ResourcetypePackage extends EPackage {
 	int AVG__DOCUMENTATION = HORIZONTAL_TRANSPORT__DOCUMENTATION;
 
 	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AVG__IMAGE = HORIZONTAL_TRANSPORT__IMAGE;
+
+	/**
 	 * The number of structural features of the '<em>AVG</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1763,6 +1934,15 @@ public interface ResourcetypePackage extends EPackage {
 	 * @ordered
 	 */
 	int TRANSPOSER__DOCUMENTATION = TRANSPORT__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSPOSER__IMAGE = TRANSPORT__IMAGE;
 
 	/**
 	 * The number of structural features of the '<em>Transposer</em>' class.
@@ -1847,6 +2027,15 @@ public interface ResourcetypePackage extends EPackage {
 	int CARRIER_HANDLING_SYSTEM__DOCUMENTATION = TRANSPORT__DOCUMENTATION;
 
 	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARRIER_HANDLING_SYSTEM__IMAGE = TRANSPORT__IMAGE;
+
+	/**
 	 * The number of structural features of the '<em>Carrier Handling System</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1927,6 +2116,15 @@ public interface ResourcetypePackage extends EPackage {
 	 * @ordered
 	 */
 	int LIFT__DOCUMENTATION = VERTICAL_TRANSPORT__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIFT__IMAGE = VERTICAL_TRANSPORT__IMAGE;
 
 	/**
 	 * The number of structural features of the '<em>Lift</em>' class.
@@ -2011,6 +2209,15 @@ public interface ResourcetypePackage extends EPackage {
 	int ROLLERBED__DOCUMENTATION = HORIZONTAL_TRANSPORT__DOCUMENTATION;
 
 	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLLERBED__IMAGE = HORIZONTAL_TRANSPORT__IMAGE;
+
+	/**
 	 * The number of structural features of the '<em>Rollerbed</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2091,6 +2298,15 @@ public interface ResourcetypePackage extends EPackage {
 	 * @ordered
 	 */
 	int LOADER__DOCUMENTATION = STORAGE__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOADER__IMAGE = STORAGE__IMAGE;
 
 	/**
 	 * The number of structural features of the '<em>Loader</em>' class.
@@ -2175,6 +2391,15 @@ public interface ResourcetypePackage extends EPackage {
 	int UNLOADER__DOCUMENTATION = STORAGE__DOCUMENTATION;
 
 	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNLOADER__IMAGE = STORAGE__IMAGE;
+
+	/**
 	 * The number of structural features of the '<em>Unloader</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2255,6 +2480,15 @@ public interface ResourcetypePackage extends EPackage {
 	 * @ordered
 	 */
 	int BODY_STORE__DOCUMENTATION = STORAGE__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BODY_STORE__IMAGE = STORAGE__IMAGE;
 
 	/**
 	 * The number of structural features of the '<em>Body Store</em>' class.
@@ -2339,6 +2573,15 @@ public interface ResourcetypePackage extends EPackage {
 	int CLAMP__DOCUMENTATION = FIXTURE__DOCUMENTATION;
 
 	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLAMP__IMAGE = FIXTURE__IMAGE;
+
+	/**
 	 * The number of structural features of the '<em>Clamp</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2419,6 +2662,15 @@ public interface ResourcetypePackage extends EPackage {
 	 * @ordered
 	 */
 	int BELT_CONVEYOR__DOCUMENTATION = CONVEYOR__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BELT_CONVEYOR__IMAGE = CONVEYOR__IMAGE;
 
 	/**
 	 * The number of structural features of the '<em>Belt Conveyor</em>' class.
@@ -2503,6 +2755,15 @@ public interface ResourcetypePackage extends EPackage {
 	int ROLL_CONVEYOR__DOCUMENTATION = CONVEYOR__DOCUMENTATION;
 
 	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLL_CONVEYOR__IMAGE = CONVEYOR__IMAGE;
+
+	/**
 	 * The number of structural features of the '<em>Roll Conveyor</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2583,6 +2844,15 @@ public interface ResourcetypePackage extends EPackage {
 	 * @ordered
 	 */
 	int CHAIN_CONVEYOR__DOCUMENTATION = CONVEYOR__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHAIN_CONVEYOR__IMAGE = CONVEYOR__IMAGE;
 
 	/**
 	 * The number of structural features of the '<em>Chain Conveyor</em>' class.
@@ -2667,6 +2937,15 @@ public interface ResourcetypePackage extends EPackage {
 	int PALLET_CONVEYOR__DOCUMENTATION = CONVEYOR__DOCUMENTATION;
 
 	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PALLET_CONVEYOR__IMAGE = CONVEYOR__IMAGE;
+
+	/**
 	 * The number of structural features of the '<em>Pallet Conveyor</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2747,6 +3026,15 @@ public interface ResourcetypePackage extends EPackage {
 	 * @ordered
 	 */
 	int OVERHEAD_CONVEYOR__DOCUMENTATION = CONVEYOR__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OVERHEAD_CONVEYOR__IMAGE = CONVEYOR__IMAGE;
 
 	/**
 	 * The number of structural features of the '<em>Overhead Conveyor</em>' class.
@@ -2851,6 +3139,17 @@ public interface ResourcetypePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getResourceType_Documentation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.resourcetype.ResourceType#getImage <em>Image</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Image</em>'.
+	 * @see de.dfki.iui.basys.model.domain.resourcetype.ResourceType#getImage()
+	 * @see #getResourceType()
+	 * @generated
+	 */
+	EAttribute getResourceType_Image();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.resourcetype.DiscreteManufacturingEquipmentModule <em>Discrete Manufacturing Equipment Module</em>}'.
@@ -3254,6 +3553,14 @@ public interface ResourcetypePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute RESOURCE_TYPE__DOCUMENTATION = eINSTANCE.getResourceType_Documentation();
+
+		/**
+		 * The meta object literal for the '<em><b>Image</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RESOURCE_TYPE__IMAGE = eINSTANCE.getResourceType_Image();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.resourcetype.impl.DiscreteManufacturingEquipmentModuleImpl <em>Discrete Manufacturing Equipment Module</em>}' class.

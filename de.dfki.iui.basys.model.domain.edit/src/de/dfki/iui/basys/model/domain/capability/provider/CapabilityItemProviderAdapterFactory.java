@@ -440,6 +440,52 @@ public class CapabilityItemProviderAdapterFactory extends CapabilityAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.VisualisationCapability} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected VisualisationCapabilityItemProvider visualisationCapabilityItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.VisualisationCapability}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createVisualisationCapabilityAdapter() {
+		if (visualisationCapabilityItemProvider == null) {
+			visualisationCapabilityItemProvider = new VisualisationCapabilityItemProvider(this);
+		}
+
+		return visualisationCapabilityItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.QAVisualisationCapability} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected QAVisualisationCapabilityItemProvider qaVisualisationCapabilityItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.QAVisualisationCapability}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createQAVisualisationCapabilityAdapter() {
+		if (qaVisualisationCapabilityItemProvider == null) {
+			qaVisualisationCapabilityItemProvider = new QAVisualisationCapabilityItemProvider(this);
+		}
+
+		return qaVisualisationCapabilityItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.Urformen} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -842,6 +888,8 @@ public class CapabilityItemProviderAdapterFactory extends CapabilityAdapterFacto
 		if (moveToLocationItemProvider != null) moveToLocationItemProvider.dispose();
 		if (projectPathItemProvider != null) projectPathItemProvider.dispose();
 		if (projectETAItemProvider != null) projectETAItemProvider.dispose();
+		if (visualisationCapabilityItemProvider != null) visualisationCapabilityItemProvider.dispose();
+		if (qaVisualisationCapabilityItemProvider != null) qaVisualisationCapabilityItemProvider.dispose();
 	}
 
 }

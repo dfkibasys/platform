@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link de.dfki.iui.basys.model.domain.resourcetype.ResourceType#getCapabilityAssertions <em>Capability Assertions</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.domain.resourcetype.ResourceType#getDocumentation <em>Documentation</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.resourcetype.ResourceType#getImage <em>Image</em>}</li>
  * </ul>
  *
  * @see de.dfki.iui.basys.model.domain.resourcetype.ResourcetypePackage#getResourceType()
@@ -65,5 +66,31 @@ public interface ResourceType extends Entity {
 	 * @generated
 	 */
 	void setDocumentation(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Image</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Image</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Image</em>' attribute.
+	 * @see #setImage(String)
+	 * @see de.dfki.iui.basys.model.domain.resourcetype.ResourcetypePackage#getResourceType_Image()
+	 * @model
+	 * @generated
+	 */
+	String getImage();
+
+	/**
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.resourcetype.ResourceType#getImage <em>Image</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Image</em>' attribute.
+	 * @see #getImage()
+	 * @generated
+	 */
+	void setImage(String value);
 
 } // ResourceType

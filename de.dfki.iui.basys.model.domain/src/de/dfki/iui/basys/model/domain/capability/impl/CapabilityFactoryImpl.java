@@ -85,6 +85,8 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 			case CapabilityPackage.MOVE_TO_LOCATION: return createMoveToLocation();
 			case CapabilityPackage.PROJECT_PATH: return createProjectPath();
 			case CapabilityPackage.PROJECT_ETA: return createProjectETA();
+			case CapabilityPackage.VISUALISATION_CAPABILITY: return createVisualisationCapability();
+			case CapabilityPackage.QA_VISUALISATION_CAPABILITY: return createQAVisualisationCapability();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -278,6 +280,26 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	public ProjectETA createProjectETA() {
 		ProjectETAImpl projectETA = new ProjectETAImpl();
 		return projectETA;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public VisualisationCapability createVisualisationCapability() {
+		VisualisationCapabilityImpl visualisationCapability = new VisualisationCapabilityImpl();
+		return visualisationCapability;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QAVisualisationCapability createQAVisualisationCapability() {
+		QAVisualisationCapabilityImpl qaVisualisationCapability = new QAVisualisationCapabilityImpl();
+		return qaVisualisationCapability;
 	}
 
 	/**

@@ -539,6 +539,15 @@ public class ResourcetypePackageImpl extends EPackageImpl implements Resourcetyp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getResourceType_Image() {
+		return (EAttribute)resourceTypeEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDiscreteManufacturingEquipmentModule() {
 		return discreteManufacturingEquipmentModuleEClass;
 	}
@@ -851,6 +860,7 @@ public class ResourcetypePackageImpl extends EPackageImpl implements Resourcetyp
 		resourceTypeEClass = createEClass(RESOURCE_TYPE);
 		createEReference(resourceTypeEClass, RESOURCE_TYPE__CAPABILITY_ASSERTIONS);
 		createEAttribute(resourceTypeEClass, RESOURCE_TYPE__DOCUMENTATION);
+		createEAttribute(resourceTypeEClass, RESOURCE_TYPE__IMAGE);
 
 		discreteManufacturingEquipmentModuleEClass = createEClass(DISCRETE_MANUFACTURING_EQUIPMENT_MODULE);
 
@@ -991,6 +1001,7 @@ public class ResourcetypePackageImpl extends EPackageImpl implements Resourcetyp
 		initEClass(resourceTypeEClass, ResourceType.class, "ResourceType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getResourceType_CapabilityAssertions(), theCapabilityPackage.getCapabilityAssertion(), null, "capabilityAssertions", null, 0, -1, ResourceType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getResourceType_Documentation(), ecorePackage.getEString(), "documentation", null, 0, 1, ResourceType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getResourceType_Image(), ecorePackage.getEString(), "image", null, 0, 1, ResourceType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(discreteManufacturingEquipmentModuleEClass, DiscreteManufacturingEquipmentModule.class, "DiscreteManufacturingEquipmentModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

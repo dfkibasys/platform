@@ -92,4 +92,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="color" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="orientation" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VisualisationCapability" eSuperTypes="#//WorkerAssistenceCapability"/>
+  <eClassifiers xsi:type="ecore:EClass" name="QAVisualisationCapability" eSuperTypes="#//VisualisationCapability">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="OK" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
+  </eClassifiers>
 </ecore:EPackage>

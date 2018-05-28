@@ -718,7 +718,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getLoadCarrierUnitEnum()
 	 * @generated
 	 */
-	int LOAD_CARRIER_UNIT_ENUM = 28;
+	int LOAD_CARRIER_UNIT_ENUM = 30;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.UrformenImpl <em>Urformen</em>}' class.
@@ -2169,6 +2169,143 @@ public interface CapabilityPackage extends EPackage {
 	int PROJECT_ETA_OPERATION_COUNT = WORKER_ASSISTENCE_CAPABILITY_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.VisualisationCapabilityImpl <em>Visualisation Capability</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.VisualisationCapabilityImpl
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getVisualisationCapability()
+	 * @generated
+	 */
+	int VISUALISATION_CAPABILITY = 28;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VISUALISATION_CAPABILITY__BINDING = WORKER_ASSISTENCE_CAPABILITY__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VISUALISATION_CAPABILITY__ID = WORKER_ASSISTENCE_CAPABILITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VISUALISATION_CAPABILITY__NAME = WORKER_ASSISTENCE_CAPABILITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VISUALISATION_CAPABILITY__METADATA = WORKER_ASSISTENCE_CAPABILITY__METADATA;
+
+	/**
+	 * The number of structural features of the '<em>Visualisation Capability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VISUALISATION_CAPABILITY_FEATURE_COUNT = WORKER_ASSISTENCE_CAPABILITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Visualisation Capability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VISUALISATION_CAPABILITY_OPERATION_COUNT = WORKER_ASSISTENCE_CAPABILITY_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.QAVisualisationCapabilityImpl <em>QA Visualisation Capability</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.QAVisualisationCapabilityImpl
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getQAVisualisationCapability()
+	 * @generated
+	 */
+	int QA_VISUALISATION_CAPABILITY = 29;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QA_VISUALISATION_CAPABILITY__BINDING = VISUALISATION_CAPABILITY__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QA_VISUALISATION_CAPABILITY__ID = VISUALISATION_CAPABILITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QA_VISUALISATION_CAPABILITY__NAME = VISUALISATION_CAPABILITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QA_VISUALISATION_CAPABILITY__METADATA = VISUALISATION_CAPABILITY__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>OK</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QA_VISUALISATION_CAPABILITY__OK = VISUALISATION_CAPABILITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>QA Visualisation Capability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QA_VISUALISATION_CAPABILITY_FEATURE_COUNT = VISUALISATION_CAPABILITY_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>QA Visualisation Capability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QA_VISUALISATION_CAPABILITY_OPERATION_COUNT = VISUALISATION_CAPABILITY_OPERATION_COUNT + 0;
+
+	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.CapabilityAssertion <em>Assertion</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2569,6 +2706,37 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getProjectETA_Orientation();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.VisualisationCapability <em>Visualisation Capability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Visualisation Capability</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.VisualisationCapability
+	 * @generated
+	 */
+	EClass getVisualisationCapability();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.QAVisualisationCapability <em>QA Visualisation Capability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>QA Visualisation Capability</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.QAVisualisationCapability
+	 * @generated
+	 */
+	EClass getQAVisualisationCapability();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.capability.QAVisualisationCapability#getOK <em>OK</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>OK</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.QAVisualisationCapability#getOK()
+	 * @see #getQAVisualisationCapability()
+	 * @generated
+	 */
+	EAttribute getQAVisualisationCapability_OK();
 
 	/**
 	 * Returns the meta object for enum '{@link de.dfki.iui.basys.model.domain.capability.LoadCarrierUnitEnum <em>Load Carrier Unit Enum</em>}'.
@@ -3135,6 +3303,34 @@ public interface CapabilityPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PROJECT_ETA__ORIENTATION = eINSTANCE.getProjectETA_Orientation();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.VisualisationCapabilityImpl <em>Visualisation Capability</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.VisualisationCapabilityImpl
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getVisualisationCapability()
+		 * @generated
+		 */
+		EClass VISUALISATION_CAPABILITY = eINSTANCE.getVisualisationCapability();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.QAVisualisationCapabilityImpl <em>QA Visualisation Capability</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.QAVisualisationCapabilityImpl
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getQAVisualisationCapability()
+		 * @generated
+		 */
+		EClass QA_VISUALISATION_CAPABILITY = eINSTANCE.getQAVisualisationCapability();
+
+		/**
+		 * The meta object literal for the '<em><b>OK</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute QA_VISUALISATION_CAPABILITY__OK = eINSTANCE.getQAVisualisationCapability_OK();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.LoadCarrierUnitEnum <em>Load Carrier Unit Enum</em>}' enum.

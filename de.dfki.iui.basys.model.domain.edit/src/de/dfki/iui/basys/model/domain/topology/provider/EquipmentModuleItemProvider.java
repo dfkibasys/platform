@@ -439,6 +439,16 @@ public class EquipmentModuleItemProvider extends EntityItemProvider {
 			(createChildParameter
 				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
 				 CapabilityFactory.eINSTANCE.createProjectETA()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createVisualisationCapability()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createQAVisualisationCapability()));
 	}
 
 	/**

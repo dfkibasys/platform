@@ -26,6 +26,7 @@ import de.dfki.iui.basys.model.domain.capability.Pressing;
 import de.dfki.iui.basys.model.domain.capability.ProductionCapability;
 import de.dfki.iui.basys.model.domain.capability.ProjectETA;
 import de.dfki.iui.basys.model.domain.capability.ProjectPath;
+import de.dfki.iui.basys.model.domain.capability.QAVisualisationCapability;
 import de.dfki.iui.basys.model.domain.capability.QoSCapability;
 import de.dfki.iui.basys.model.domain.capability.Screwing;
 import de.dfki.iui.basys.model.domain.capability.Stoffeigenschaften;
@@ -36,6 +37,7 @@ import de.dfki.iui.basys.model.domain.capability.Trennen;
 import de.dfki.iui.basys.model.domain.capability.Umformen;
 import de.dfki.iui.basys.model.domain.capability.Urformen;
 
+import de.dfki.iui.basys.model.domain.capability.VisualisationCapability;
 import de.dfki.iui.basys.model.domain.capability.WorkerAssistenceCapability;
 import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
 
@@ -207,6 +209,20 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * @generated
 	 */
 	private EClass projectETAEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass visualisationCapabilityEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass qaVisualisationCapabilityEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -757,6 +773,33 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getVisualisationCapability() {
+		return visualisationCapabilityEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getQAVisualisationCapability() {
+		return qaVisualisationCapabilityEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getQAVisualisationCapability_OK() {
+		return (EAttribute)qaVisualisationCapabilityEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getLoadCarrierUnitEnum() {
 		return loadCarrierUnitEnumEEnum;
 	}
@@ -1045,6 +1088,11 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		createEAttribute(projectETAEClass, PROJECT_ETA__COLOR);
 		createEAttribute(projectETAEClass, PROJECT_ETA__ORIENTATION);
 
+		visualisationCapabilityEClass = createEClass(VISUALISATION_CAPABILITY);
+
+		qaVisualisationCapabilityEClass = createEClass(QA_VISUALISATION_CAPABILITY);
+		createEAttribute(qaVisualisationCapabilityEClass, QA_VISUALISATION_CAPABILITY__OK);
+
 		// Create enums
 		loadCarrierUnitEnumEEnum = createEEnum(LOAD_CARRIER_UNIT_ENUM);
 	}
@@ -1111,6 +1159,8 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		moveToLocationEClass.getESuperTypes().add(this.getGeneralCapability());
 		projectPathEClass.getESuperTypes().add(this.getWorkerAssistenceCapability());
 		projectETAEClass.getESuperTypes().add(this.getWorkerAssistenceCapability());
+		visualisationCapabilityEClass.getESuperTypes().add(this.getWorkerAssistenceCapability());
+		qaVisualisationCapabilityEClass.getESuperTypes().add(this.getVisualisationCapability());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(capabilityAssertionEClass, CapabilityAssertion.class, "CapabilityAssertion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1197,6 +1247,11 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		initEAttribute(getProjectETA_Radius(), theEcorePackage.getEDouble(), "radius", null, 0, 1, ProjectETA.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProjectETA_Color(), theEcorePackage.getEInt(), "color", null, 0, 1, ProjectETA.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProjectETA_Orientation(), theEcorePackage.getEInt(), "orientation", null, 0, 1, ProjectETA.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(visualisationCapabilityEClass, VisualisationCapability.class, "VisualisationCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(qaVisualisationCapabilityEClass, QAVisualisationCapability.class, "QAVisualisationCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getQAVisualisationCapability_OK(), theEcorePackage.getEInt(), "OK", null, 0, 1, QAVisualisationCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(loadCarrierUnitEnumEEnum, LoadCarrierUnitEnum.class, "LoadCarrierUnitEnum");

@@ -166,6 +166,24 @@ public interface CapabilityFactory extends EFactory {
 	ProjectETA createProjectETA();
 
 	/**
+	 * Returns a new object of class '<em>Visualisation Capability</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Visualisation Capability</em>'.
+	 * @generated
+	 */
+	VisualisationCapability createVisualisationCapability();
+
+	/**
+	 * Returns a new object of class '<em>QA Visualisation Capability</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>QA Visualisation Capability</em>'.
+	 * @generated
+	 */
+	QAVisualisationCapability createQAVisualisationCapability();
+
+	/**
 	 * Returns a new object of class '<em>Urformen</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

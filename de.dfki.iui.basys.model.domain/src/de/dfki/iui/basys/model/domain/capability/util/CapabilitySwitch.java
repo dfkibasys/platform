@@ -350,6 +350,27 @@ public class CapabilitySwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case CapabilityPackage.VISUALISATION_CAPABILITY: {
+				VisualisationCapability visualisationCapability = (VisualisationCapability)theEObject;
+				T result = caseVisualisationCapability(visualisationCapability);
+				if (result == null) result = caseWorkerAssistenceCapability(visualisationCapability);
+				if (result == null) result = caseCapability(visualisationCapability);
+				if (result == null) result = caseEntity(visualisationCapability);
+				if (result == null) result = caseBObject(visualisationCapability);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CapabilityPackage.QA_VISUALISATION_CAPABILITY: {
+				QAVisualisationCapability qaVisualisationCapability = (QAVisualisationCapability)theEObject;
+				T result = caseQAVisualisationCapability(qaVisualisationCapability);
+				if (result == null) result = caseVisualisationCapability(qaVisualisationCapability);
+				if (result == null) result = caseWorkerAssistenceCapability(qaVisualisationCapability);
+				if (result == null) result = caseCapability(qaVisualisationCapability);
+				if (result == null) result = caseEntity(qaVisualisationCapability);
+				if (result == null) result = caseBObject(qaVisualisationCapability);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -591,6 +612,36 @@ public class CapabilitySwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseProjectETA(ProjectETA object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Visualisation Capability</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Visualisation Capability</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseVisualisationCapability(VisualisationCapability object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>QA Visualisation Capability</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>QA Visualisation Capability</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseQAVisualisationCapability(QAVisualisationCapability object) {
 		return null;
 	}
 

@@ -296,6 +296,16 @@ public class CapabilityVariantItemProvider
 			(createChildParameter
 				(ResourceinstancePackage.Literals.CAPABILITY_VARIANT__CAPABILITY,
 				 CapabilityFactory.eINSTANCE.createProjectETA()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ResourceinstancePackage.Literals.CAPABILITY_VARIANT__CAPABILITY,
+				 CapabilityFactory.eINSTANCE.createVisualisationCapability()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ResourceinstancePackage.Literals.CAPABILITY_VARIANT__CAPABILITY,
+				 CapabilityFactory.eINSTANCE.createQAVisualisationCapability()));
 	}
 
 	/**

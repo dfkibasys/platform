@@ -56,6 +56,7 @@ public class ResourceTypeItemProvider extends EntityItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addDocumentationPropertyDescriptor(object);
+			addImagePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -74,6 +75,28 @@ public class ResourceTypeItemProvider extends EntityItemProvider {
 				 getString("_UI_ResourceType_documentation_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_ResourceType_documentation_feature", "_UI_ResourceType_type"),
 				 ResourcetypePackage.Literals.RESOURCE_TYPE__DOCUMENTATION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Image feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addImagePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ResourceType_image_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ResourceType_image_feature", "_UI_ResourceType_type"),
+				 ResourcetypePackage.Literals.RESOURCE_TYPE__IMAGE,
 				 true,
 				 false,
 				 false,
@@ -151,6 +174,7 @@ public class ResourceTypeItemProvider extends EntityItemProvider {
 
 		switch (notification.getFeatureID(ResourceType.class)) {
 			case ResourcetypePackage.RESOURCE_TYPE__DOCUMENTATION:
+			case ResourcetypePackage.RESOURCE_TYPE__IMAGE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case ResourcetypePackage.RESOURCE_TYPE__CAPABILITY_ASSERTIONS:

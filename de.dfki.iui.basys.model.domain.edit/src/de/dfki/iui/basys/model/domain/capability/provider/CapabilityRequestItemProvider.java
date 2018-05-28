@@ -419,6 +419,16 @@ public class CapabilityRequestItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
+				 CapabilityFactory.eINSTANCE.createVisualisationCapability()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
+				 CapabilityFactory.eINSTANCE.createQAVisualisationCapability()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
 				 OrderFactory.eINSTANCE.createOrder()));
 
 		newChildDescriptors.add
@@ -894,6 +904,26 @@ public class CapabilityRequestItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
+				 ResourceinstanceFactory.eINSTANCE.createCapabilityVariant()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
+				 ResourceinstanceFactory.eINSTANCE.createManufacturingCapabilityVariant()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
+				 ResourceinstanceFactory.eINSTANCE.createLogisticsCapabilityVariant()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
+				 ResourceinstanceFactory.eINSTANCE.createGeneralCapabilityVariant()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
 				 BaseFactory.eINSTANCE.createEntity()));
 
 		newChildDescriptors.add
@@ -1025,6 +1055,16 @@ public class CapabilityRequestItemProvider
 			(createChildParameter
 				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHAT,
 				 CapabilityFactory.eINSTANCE.createProjectETA()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHAT,
+				 CapabilityFactory.eINSTANCE.createVisualisationCapability()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHAT,
+				 CapabilityFactory.eINSTANCE.createQAVisualisationCapability()));
 	}
 
 	/**
