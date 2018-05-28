@@ -1,22 +1,16 @@
 package de.dfki.iui.basys.runtime.component.device.tecs;
 
-import org.apache.thrift.TException;
-import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TTransportException;
 
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
-import de.dfki.iui.hrc.huelights.Color;
-import de.dfki.iui.hrc.huelights.HueBridge;
-import de.dfki.iui.hrc.hybritcommand.CommandResponse;
-import de.dfki.iui.hrc.ur.URState;
 import de.dfki.tecs.Event;
 
 public class HueLightsComponent extends TecsDeviceComponent {
 
-	private HueLightsTECS client;
+	//private HueLightsTECS client;
 	
 	public HueLightsComponent(ComponentConfiguration config) {
 		super(config);
@@ -39,7 +33,7 @@ public class HueLightsComponent extends TecsDeviceComponent {
 	@Override
 	public void connectToExternal() throws ComponentException {
 		super.connectToExternal();
-		client = new HueLightsTECS(protocol);
+		//client = new HueLightsTECS(protocol);
 	}
 	
 	@Override
@@ -110,41 +104,5 @@ public class HueLightsComponent extends TecsDeviceComponent {
 	public void onUnsuspending() {
 		// NOT IN THE MAIN PATH!
 	}
-	
-	private class HueLightsTECS extends HueBridge.Client{
 
-		private TProtocol protocol;
-		
-		public HueLightsTECS(TProtocol prot) {
-			super(prot);
-			protocol = prot;
-		}
-		
-		@Override
-		public void setState(String id, boolean state) throws TException {
-			super.setState(id, state);
-		}
-
-		@Override
-		public void setColorXY(String id, double x, double y) throws TException {
-			super.setColorXY(id, x, y);
-		}
-
-		@Override
-		public void setColorRGB(String id, int r, int g, int b) throws TException {
-			super.setColorRGB(id, r, g, b);
-		}
-
-		@Override
-		public void setColor(String id, Color color) throws TException {
-			super.setColor(id, color);
-		}
-
-		@Override
-		public void setBrightness(String id, int bri) throws TException {
-			super.setBrightness(id, bri);
-		}
-
-		
-	}
 }
