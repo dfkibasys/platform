@@ -10,7 +10,7 @@ import de.dfki.tecs.Event;
 
 public class HueLightsComponent extends TecsDeviceComponent {
 
-	//private HueLightsTECS client;
+	private HueLightsNotifier client;
 	
 	public HueLightsComponent(ComponentConfiguration config) {
 		super(config);
@@ -33,7 +33,7 @@ public class HueLightsComponent extends TecsDeviceComponent {
 	@Override
 	public void connectToExternal() throws ComponentException {
 		super.connectToExternal();
-		//client = new HueLightsTECS(protocol);
+		client = new HueLightsNotifier();
 	}
 	
 	@Override
