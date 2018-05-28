@@ -19,6 +19,8 @@ public class TestDeviceComponent extends DeviceComponent {
 	
 	public TestDeviceComponent(ComponentConfiguration config) {
 		super(config);
+		resetOnComplete = true;
+		resetOnStopped = true;
 	}
 		
 	public LinkedBlockingQueue<State> getRecentStates() {
@@ -35,6 +37,7 @@ public class TestDeviceComponent extends DeviceComponent {
 		return State.ABORTED;
 	}
 	
+	@Override
 	protected void sleep(long seconds) {
 		try {
 			TimeUnit.MILLISECONDS.sleep(seconds*1000);
