@@ -8,10 +8,12 @@ import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
+import de.dfki.iui.hrc.franka.ActionException;
 import de.dfki.iui.hrc.franka.Franka;
 import de.dfki.iui.hrc.franka.FrankaState;
 import de.dfki.iui.hrc.franka.FrankaStatus;
 import de.dfki.iui.hrc.franka.LoadException;
+import de.dfki.iui.hrc.franka.MoveException;
 import de.dfki.iui.hrc.general3d.TransformationMatrix;
 import de.dfki.iui.hrc.hybritcommand.CommandResponse;
 import de.dfki.iui.hrc.mir100.MIR;
@@ -244,48 +246,25 @@ public class FrankaComponent extends TecsDeviceComponent{
 			return super.Load(targetPosition);
 		}
 		
-		/*@Override
-		public CommandResponse MoveToKnownPosition(String knownPosition) {
+		@Override
+		public CommandResponse MoveToKnownPosition(String knownPosition) throws MoveException, TException {
 			return super.MoveToKnownPosition(knownPosition);
-		}*/
+		}
 		
-		/*@Override
-		public CommandResponse Recover(String action) {
+		@Override
+		public CommandResponse Recover(String action) throws ActionException, TException {
 			return super.Recover(action);
-		}*/
-		
-		@Override
-		public void EnterTeachMode() throws TException {
-			super.EnterTeachMode();
 		}
 		
 		@Override
-		public void ExitTeachMode() throws TException {
-			super.ExitTeachMode();
+		public CommandResponse EnterTeachMode(String action) throws TException {
+			return super.EnterTeachMode(action);
 		}
 		
 		@Override
-		public void StartAssistance() throws TException {
-			super.StartAssistance();
-		}
-		
-		@Override
-		public void StopAssistance() throws TException {
-			super.StopAssistance();
-		}
-		
-		@Override
-		public void StartSendingVelocities() throws TException {
-			super.StartSendingVelocities();
-		}
-		
-		@Override
-		public void StopSendingVelocities() throws TException {
-			super.StopSendingVelocities();
-		}
-
-		
-		
+		public CommandResponse ExitTeachMode(String action) throws TException {
+			return super.ExitTeachMode(action);
+		}		
 	}
 
 	@Override
