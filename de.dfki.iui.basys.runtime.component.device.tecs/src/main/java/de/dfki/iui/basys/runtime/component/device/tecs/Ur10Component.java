@@ -8,80 +8,30 @@ import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
-import de.dfki.iui.hrc.franka.ActionException;
-import de.dfki.iui.hrc.franka.Franka;
-import de.dfki.iui.hrc.franka.FrankaState;
-import de.dfki.iui.hrc.franka.FrankaStatus;
-import de.dfki.iui.hrc.franka.LoadException;
-import de.dfki.iui.hrc.franka.MoveException;
 import de.dfki.iui.hrc.general3d.TransformationMatrix;
+import de.dfki.iui.hrc.generalrobots.RobotState;
 import de.dfki.iui.hrc.hybritcommand.CommandResponse;
+import de.dfki.iui.hrc.ur.ActionException;
+import de.dfki.iui.hrc.ur.LoadException;
+import de.dfki.iui.hrc.ur.MoveException;
+import de.dfki.iui.hrc.ur.UR;
+import de.dfki.iui.hrc.ur.URState;
+import de.dfki.iui.hrc.ur.URStatus;
 import de.dfki.tecs.Event;
 
-public class FrankaComponent extends TecsDeviceComponent{
+public class Ur10Component extends TecsDeviceComponent{
 	
-	private FrankaTECS client;
+	private Ur10TECS client;
 	
-	protected enum ACTION{
-		// fill enums here
-		;
-		
-		private final String action;
-		
-		private ACTION(String a) {
-			action = a;
-		}
-		
-		@Override
-		public String toString() {
-			return action;
-		}
-	}
-	
-	protected enum OBJECT_ID{
-		// fill enums here
-		;
-		
-		private final String objectId;
-		
-		private OBJECT_ID(String id) {
-			objectId = id;
-		}
-		
-		@Override
-		public String toString() {
-			return objectId;
-		}
-	}
-	
-	protected enum POSITION{
-		//fill here
-		;
-		
-		private final String position;
-		
-		private POSITION(String p) {
-			position = p;
-		}
-		
-		@Override
-		public String toString() {
-			return position;
-		}
-	}
-	
-	public FrankaComponent(ComponentConfiguration config) {
+	public Ur10Component(ComponentConfiguration config) {
 		super(config);
-	}
-	
-	@Override
-	public void connectToExternal() throws ComponentException {
-		super.connectToExternal();
-		client = new FrankaTECS(protocol);
 	}
 
 	@Override
-	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
+	protected void handleTecsEvent(Event event) {/* nothing to do */}
+
+	@Override
+	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest arg0) {
 		UnitConfiguration config = new UnitConfiguration();
 
 		// TODO: translate
@@ -89,6 +39,12 @@ public class FrankaComponent extends TecsDeviceComponent{
 		config.setRecipe(positionIndex);
 
 		return config;
+	}
+	
+	@Override
+	public void connectToExternal() throws ComponentException {
+		super.connectToExternal();
+		client = new Ur10TECS(protocol);
 	}
 	
 	@Override
@@ -113,9 +69,9 @@ public class FrankaComponent extends TecsDeviceComponent{
 			boolean executing = true;
 			while(executing) {
 				CommandResponse cr = client.getCommandState();
-				FrankaState fs = client.getState();
+				 URState urs = client.getState();
 				
-				if (fs == FrankaState.Error || fs == FrankaState.Manual) {
+				if (urs == URState.Error || urs == URState.Manual) {
 					executing = false;
 					setErrorCode(1);
 					stop();
@@ -211,27 +167,27 @@ public class FrankaComponent extends TecsDeviceComponent{
 		// NOT IN THE MAIN PATH!
 	}
 
-	private class FrankaTECS extends Franka.Client{
+	private class Ur10TECS extends UR.Client{
 
 		private TProtocol protocol;
 		
-		public FrankaTECS(TProtocol prot) {
+		public Ur10TECS(TProtocol prot) {
 			super(prot);
 			protocol = prot;
 		}
 		
 		@Override
-		public TransformationMatrix requestM() throws TException {
+		public TransformationMatrix requestM() throws TException{
 			return super.requestM();
 		}
 		
-		@Override
-		public FrankaStatus getStatus() throws TException {
+		@Override 
+		public URStatus getStatus() throws TException {
 			return super.getStatus();
 		}
 		
 		@Override
-		public FrankaState getState() throws TException {
+		public URState getState() throws TException {
 			return super.getState();
 		}
 		
@@ -241,8 +197,23 @@ public class FrankaComponent extends TecsDeviceComponent{
 		}
 		
 		@Override
+		public RobotState getRobotState() throws TException {
+			return super.getRobotState();
+		}
+		
+		@Override
+		public RobotState setRobotState(RobotState state) throws TException {
+			return super.setRobotState(state);
+		}
+		
+		@Override
 		public CommandResponse Load(String targetPosition) throws LoadException, TException {
 			return super.Load(targetPosition);
+		}
+		
+		@Override
+		public CommandResponse Calibrate() throws TException {
+			return super.Calibrate();
 		}
 		
 		@Override
@@ -256,20 +227,14 @@ public class FrankaComponent extends TecsDeviceComponent{
 		}
 		
 		@Override
-		public CommandResponse EnterTeachMode(String action) throws TException {
+		public CommandResponse EnterTeachMode(String action) throws ActionException, TException{
 			return super.EnterTeachMode(action);
 		}
 		
 		@Override
-		public CommandResponse ExitTeachMode(String action) throws TException {
+		public CommandResponse ExitTeachMode(String action) throws ActionException, TException {
 			return super.ExitTeachMode(action);
-		}		
-	}
-
-	@Override
-	protected void handleTecsEvent(Event event) {
-		// TODO Auto-generated method stub
-		
+		}	
 	}
 
 }

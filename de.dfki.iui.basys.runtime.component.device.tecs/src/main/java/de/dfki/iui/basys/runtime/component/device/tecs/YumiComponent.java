@@ -90,6 +90,7 @@ public class YumiComponent extends TecsDeviceComponent{
 			client.performQA("PERFORM QA");
 		} catch (TException e) {
 			e.printStackTrace();
+			setErrorCode(3);
 			stop();
 		}
 	}

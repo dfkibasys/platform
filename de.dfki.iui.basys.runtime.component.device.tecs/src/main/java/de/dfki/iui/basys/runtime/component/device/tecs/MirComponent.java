@@ -457,8 +457,7 @@ public class MirComponent extends TecsDeviceComponent {
 		 */
 		@Override
 		public void setState(MIRState state) throws TException {
-			// Not implemented yet
-			// super.setState(state);
+			super.setState(state);
 		}
 
 		/*
