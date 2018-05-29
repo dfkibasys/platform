@@ -19,38 +19,6 @@ import de.dfki.tecs.Event;
 public class YumiComponent extends TecsDeviceComponent{
 
 	protected YumiTECS client;
-
-	protected enum OBJECT_ID{
-		// fill enums here
-		;
-		
-		private final String objectId;
-		
-		private OBJECT_ID(String id) {
-			objectId = id;
-		}
-		
-		@Override
-		public String toString() {
-			return objectId;
-		}
-	}
-	
-	protected enum SOURCE_LOCATION{
-		// fill enums here
-		;
-		
-		private final String location;
-		
-		private SOURCE_LOCATION(String loc) {
-			location = loc;
-		}
-		
-		@Override
-		public String toString() {
-			return location;
-		}
-	}
 	
 	public YumiComponent(ComponentConfiguration config) {
 		super(config);
@@ -152,20 +120,13 @@ public class YumiComponent extends TecsDeviceComponent{
 	}
 
 	@Override
-	public void onCompleting() {
-		// mir is in the position. nothing to do
-	}
+	public void onCompleting() {}
 
 	@Override
-	public void onStopping() {
-		// no action
-	}
+	public void onStopping() {}
 
 	@Override
-	public void onAborting() {
-		// somehow trigger real emergency stop?!
-		// if emergency stop is released, trigger a clear() command
-	}
+	public void onAborting() {}
 
 	@Override
 	public void onClearing() {
@@ -180,24 +141,16 @@ public class YumiComponent extends TecsDeviceComponent{
 	}
 
 	@Override
-	public void onHolding() {
-		// should be triggered when CommandState is in PAUSE. NOT IN THE MAIN PATH!
-	}
+	public void onHolding() {}
 
 	@Override
-	public void onUnholding() {
-		// should continue to execute. NOT IN THE MAIN PATH!
-	}
+	public void onUnholding() {}
 
 	@Override
-	public void onSuspending() {
-		// NOT IN THE MAIN PATH!
-	}
+	public void onSuspending() {}
 
 	@Override
-	public void onUnsuspending() {
-		// NOT IN THE MAIN PATH!
-	}
+	public void onUnsuspending() {}
 	
 	private class YumiTECS extends Yumi.Client{
 
