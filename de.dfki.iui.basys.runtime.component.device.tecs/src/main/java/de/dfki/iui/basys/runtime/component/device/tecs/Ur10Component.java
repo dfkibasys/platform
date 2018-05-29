@@ -54,6 +54,7 @@ public class Ur10Component extends TecsDeviceComponent{
 		try {
 			open();
 			client.MoveToKnownPosition(urConstants.KNOWN_POSE_1);
+			onExecute(); // block until in KnownPose1
 		} catch (TTransportException e) {
 			setErrorCode(1);
 			stop();

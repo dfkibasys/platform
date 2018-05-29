@@ -98,6 +98,7 @@ public class FrankaComponent extends TecsDeviceComponent{
 		try {
 			open();
 			client.MoveToKnownPosition(FrankaConstants.KNOWN_POSE_1);
+			onExecute(); // block until in KnownPose1
 		} catch (TException e) {
 			e.printStackTrace();
 			setErrorCode(1);
