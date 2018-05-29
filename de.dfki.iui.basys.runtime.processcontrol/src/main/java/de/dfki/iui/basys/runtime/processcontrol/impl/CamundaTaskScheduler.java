@@ -3,15 +3,20 @@ package de.dfki.iui.basys.runtime.processcontrol.impl;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import de.dfki.iui.basys.common.emf.json.JsonUtils;
+import de.dfki.iui.basys.model.runtime.communication.Channel;
+import de.dfki.iui.basys.model.runtime.communication.Request;
+import de.dfki.iui.basys.model.runtime.communication.Response;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.ComponentRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentResponse;
 import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
+import de.dfki.iui.basys.runtime.communication.CommFactory;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.service.ServiceComponent;
@@ -109,7 +114,7 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 	 */
 
 	@Override
-	public void scheduleTask(TaskDescription task) {
+	public CompletableFuture<ComponentResponse> scheduleTask(TaskDescription task) {
 		LOGGER.debug("scheduleTask");
 		TaskExecutor ce = new TaskExecutor(task);
 		CompletableFuture<ComponentResponse> cf = CompletableFuture.supplyAsync(() -> {
@@ -125,7 +130,26 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 			}
 			return ts.getResponse();
 		});		
+		return cf;
 	}
+	
+	
+	@Override
+	public Response handleRequest(Channel channel, Request req) {
+		String payload = req.getPayload();
+		Response res = null;
+		try {
+			ComponentRequest request = JsonUtils.fromString(payload, ComponentRequest.class);
+			ComponentResponse response = scheduleTask(new TaskDescription(request)).get();
+			res = CommFactory.getInstance().createResponse(req.getId(), JsonUtils.toString(response));
+		} catch (IOException | InterruptedException | ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			res.setPayload(e.getMessage());			
+		}
+		return res;
+	}
+	
 	
 //	public CompletableFuture<ComponentResponse> scheduleTaskAlternative(ComponentRequest request, String correlationId) {
 //		LOGGER.debug("scheduleTaskAlternative");

@@ -7,9 +7,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import de.dfki.iui.basys.model.base.Entity;
-import de.dfki.iui.basys.model.domain.material.Material;
-import de.dfki.iui.basys.model.domain.material.MaterialCatalogue;
-import de.dfki.iui.basys.model.domain.material.MaterialGroup;
 
 @Path("/entity")
 public interface EntityManager {

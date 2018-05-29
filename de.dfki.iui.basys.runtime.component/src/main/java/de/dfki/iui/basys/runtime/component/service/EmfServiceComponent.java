@@ -12,34 +12,35 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 import de.dfki.iui.basys.common.emf.EmfPersistence;
-import de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl;
-import de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl;
+import de.dfki.iui.basys.common.emf.json.BasysResourceSetImpl;
+import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
+import de.dfki.iui.basys.model.domain.capability.util.CapabilityResourceFactoryImpl;
+import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
 import de.dfki.iui.basys.model.domain.linebalancing.util.LinebalancingResourceFactoryImpl;
-import de.dfki.iui.basys.model.domain.material.impl.MaterialPackageImpl;
+import de.dfki.iui.basys.model.domain.material.MaterialPackage;
 import de.dfki.iui.basys.model.domain.material.util.MaterialResourceFactoryImpl;
-import de.dfki.iui.basys.model.domain.order.impl.OrderPackageImpl;
+import de.dfki.iui.basys.model.domain.order.OrderPackage;
 import de.dfki.iui.basys.model.domain.order.util.OrderResourceFactoryImpl;
-import de.dfki.iui.basys.model.domain.processdefinition.impl.ProcessdefinitionPackageImpl;
+import de.dfki.iui.basys.model.domain.processdefinition.ProcessdefinitionPackage;
 import de.dfki.iui.basys.model.domain.processdefinition.util.ProcessdefinitionResourceFactoryImpl;
-import de.dfki.iui.basys.model.domain.processinstance.impl.ProcessinstancePackageImpl;
+import de.dfki.iui.basys.model.domain.processinstance.ProcessinstancePackage;
 import de.dfki.iui.basys.model.domain.processinstance.util.ProcessinstanceResourceFactoryImpl;
-import de.dfki.iui.basys.model.domain.productdefinition.impl.ProductdefinitionPackageImpl;
+import de.dfki.iui.basys.model.domain.productdefinition.ProductdefinitionPackage;
 import de.dfki.iui.basys.model.domain.productdefinition.util.ProductdefinitionResourceFactoryImpl;
-import de.dfki.iui.basys.model.domain.productinstance.impl.ProductinstancePackageImpl;
+import de.dfki.iui.basys.model.domain.productinstance.ProductinstancePackage;
 import de.dfki.iui.basys.model.domain.productinstance.util.ProductinstanceResourceFactoryImpl;
-import de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceinstancePackageImpl;
+import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage;
 import de.dfki.iui.basys.model.domain.resourceinstance.util.ResourceinstanceResourceFactoryImpl;
-import de.dfki.iui.basys.model.domain.resourcetype.impl.ResourcetypePackageImpl;
+import de.dfki.iui.basys.model.domain.resourcetype.ResourcetypePackage;
 import de.dfki.iui.basys.model.domain.resourcetype.util.ResourcetypeResourceFactoryImpl;
-import de.dfki.iui.basys.model.domain.topology.impl.TopologyPackageImpl;
+import de.dfki.iui.basys.model.domain.topology.TopologyPackage;
 import de.dfki.iui.basys.model.domain.topology.util.TopologyResourceFactoryImpl;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
-import de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl;
+import de.dfki.iui.basys.model.runtime.component.ComponentPackage;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 
 public abstract class EmfServiceComponent extends ServiceComponent {
@@ -87,42 +88,42 @@ public abstract class EmfServiceComponent extends ServiceComponent {
 	}
 
 	public static ResourceSet createResourceSet() {
-		ResourceSet	resourceSet = new ResourceSetImpl();
-		
-		
-		CapabilityPackageImpl.init();
-		
-		MaterialPackageImpl.init();
+		ResourceSet	resourceSet = new BasysResourceSetImpl();
+			
+		resourceSet.getPackageRegistry().put(CapabilityPackage.eNS_URI,CapabilityPackage.eINSTANCE);
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("capability", new CapabilityResourceFactoryImpl());	
+			
+		resourceSet.getPackageRegistry().put(MaterialPackage.eNS_URI,MaterialPackage.eINSTANCE);
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("material", new MaterialResourceFactoryImpl());	
 		
-		OrderPackageImpl.init();
+		resourceSet.getPackageRegistry().put(OrderPackage.eNS_URI,OrderPackage.eINSTANCE);
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("order", new OrderResourceFactoryImpl());
 		
-		ProcessdefinitionPackageImpl.init();
+		resourceSet.getPackageRegistry().put(ProcessdefinitionPackage.eNS_URI,ProcessdefinitionPackage.eINSTANCE);
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("processdefinition", new ProcessdefinitionResourceFactoryImpl());
 		
-		ProcessinstancePackageImpl.init();
+		resourceSet.getPackageRegistry().put(ProcessinstancePackage.eNS_URI,ProcessinstancePackage.eINSTANCE);
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("processinstance", new ProcessinstanceResourceFactoryImpl());
 		
-		ProductdefinitionPackageImpl.init();
+		resourceSet.getPackageRegistry().put(ProductdefinitionPackage.eNS_URI,ProductdefinitionPackage.eINSTANCE);
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("productdefinition", new ProductdefinitionResourceFactoryImpl());
 		
-		ProductinstancePackageImpl.init();
+		resourceSet.getPackageRegistry().put(ProductinstancePackage.eNS_URI,ProductinstancePackage.eINSTANCE);
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("productinstance", new ProductinstanceResourceFactoryImpl());
 		
-		ResourceinstancePackageImpl.init();
+		resourceSet.getPackageRegistry().put(ResourceinstancePackage.eNS_URI,ResourceinstancePackage.eINSTANCE);
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("resourceinstance", new ResourceinstanceResourceFactoryImpl());
 		
-		ResourcetypePackageImpl.init();
+		resourceSet.getPackageRegistry().put(ResourcetypePackage.eNS_URI,ResourcetypePackage.eINSTANCE);
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("resourcetype",	new ResourcetypeResourceFactoryImpl());
-		
-		TopologyPackageImpl.init();
+
+		resourceSet.getPackageRegistry().put(TopologyPackage.eNS_URI,TopologyPackage.eINSTANCE);
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("topology", new TopologyResourceFactoryImpl());
 		
-		LinebalancingPackageImpl.init();
+		resourceSet.getPackageRegistry().put(LinebalancingPackage.eNS_URI,LinebalancingPackage.eINSTANCE);
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("linebalancing", new LinebalancingResourceFactoryImpl());
 		
-		ComponentPackageImpl.init();
+		resourceSet.getPackageRegistry().put(ComponentPackage.eNS_URI,ComponentPackage.eINSTANCE);
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("component", new XMIResourceFactoryImpl());
 		
 		//TODO: get real network endpoint or even urispec for each individual service from component registry

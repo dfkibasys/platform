@@ -1,16 +1,17 @@
 package de.dfki.iui.basys.runtime.processcontrol;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.PUT;
+import java.util.concurrent.CompletableFuture;
+
 import javax.ws.rs.Path;
-import javax.ws.rs.core.MediaType;
+
+import de.dfki.iui.basys.model.runtime.component.ComponentResponse;
 
 @Path("/task")
 public interface TaskScheduler {
 
-	@PUT
-	@Consumes(MediaType.APPLICATION_JSON)
-	void scheduleTask(TaskDescription task);
+	//@PUT
+	//@Consumes(MediaType.APPLICATION_JSON)
+	CompletableFuture<ComponentResponse> scheduleTask(TaskDescription task);
 	
 	//CompletableFuture<ComponentResponse> scheduleTaskSync(TaskDescription task);
 	
