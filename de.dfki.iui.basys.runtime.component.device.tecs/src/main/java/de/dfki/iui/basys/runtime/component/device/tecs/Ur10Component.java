@@ -17,6 +17,7 @@ import de.dfki.iui.hrc.ur.MoveException;
 import de.dfki.iui.hrc.ur.UR;
 import de.dfki.iui.hrc.ur.URState;
 import de.dfki.iui.hrc.ur.URStatus;
+import de.dfki.iui.hrc.ur.urConstants;
 import de.dfki.tecs.Event;
 
 public class Ur10Component extends TecsDeviceComponent{
@@ -52,15 +53,31 @@ public class Ur10Component extends TecsDeviceComponent{
 		close();
 		try {
 			open();
+			client.MoveToKnownPosition(urConstants.KNOWN_POSE_1);
 		} catch (TTransportException e) {
-			// TODO Auto-generated catch block
+			setErrorCode(1);
+			stop();
 			e.printStackTrace();
+		} catch (MoveException e) {
+			e.printStackTrace();
+			setErrorCode(1);
+			stop();
+		} catch (TException e) {
+			e.printStackTrace();
+			setErrorCode(1);
+			stop();
 		}
 	}
 
 	@Override
 	public void onStarting() {
-		//?
+		try {
+			client.MoveToKnownPosition(urConstants.KNOWN_POSE_2);
+		} catch (TException e) {
+			e.printStackTrace();
+			setErrorCode(1);
+			stop();
+		}
 	}
 
 	@Override
@@ -120,20 +137,13 @@ public class Ur10Component extends TecsDeviceComponent{
 	}
 
 	@Override
-	public void onCompleting() {
-		// mir is in the position. nothing to do
-	}
+	public void onCompleting() {}
 
 	@Override
-	public void onStopping() {
-		//
-	}
+	public void onStopping() {}
 
 	@Override
-	public void onAborting() {
-		// somehow trigger real emergency stop?!
-		// if emergency stop is released, trigger a clear() command
-	}
+	public void onAborting() {}
 
 	@Override
 	public void onClearing() {
@@ -148,24 +158,16 @@ public class Ur10Component extends TecsDeviceComponent{
 	}
 
 	@Override
-	public void onHolding() {
-		// should be triggered when CommandState is in PAUSE. NOT IN THE MAIN PATH!
-	}
+	public void onHolding() {}
 
 	@Override
-	public void onUnholding() {
-		// should continue to execute. NOT IN THE MAIN PATH!
-	}
+	public void onUnholding() {}
 
 	@Override
-	public void onSuspending() {
-		// NOT IN THE MAIN PATH!
-	}
+	public void onSuspending() {}
 
 	@Override
-	public void onUnsuspending() {
-		// NOT IN THE MAIN PATH!
-	}
+	public void onUnsuspending() {}
 
 	private class Ur10TECS extends UR.Client{
 
