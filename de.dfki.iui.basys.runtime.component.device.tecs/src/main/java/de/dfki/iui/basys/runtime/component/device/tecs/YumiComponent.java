@@ -92,6 +92,7 @@ public class YumiComponent extends TecsDeviceComponent{
 					break;
 				case FINISHED: 
 					executing=false;
+					outChannel.sendMessage("OK");
 					break;
 				case PAUSED: 
 					//?
