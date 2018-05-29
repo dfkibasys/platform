@@ -4,6 +4,8 @@ import java.util.concurrent.CountDownLatch;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.core.MediaType;
 
 import de.dfki.iui.basys.model.data.CartesianCoordinate;
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
@@ -14,6 +16,7 @@ import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.device.DeviceComponent;
 import de.dfki.iui.basys.runtime.component.device.laser.action.Projection;
+import de.dfki.iui.basys.runtime.component.device.laser.action.StopProjection;
 import de.dfki.iui.basys.runtime.component.device.laser.projectionentities.PEMovingArrows;
 import de.dfki.iui.basys.runtime.component.device.laser.projectionentities.PEMovingETA;
 import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
@@ -31,13 +34,15 @@ public class LaserDeviceComponent extends DeviceComponent {
 
 	@Override
 	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
-		// in einem CapabilityRequest steckt nun eine CapabilityVariant. Diese enthält wiederum eine Capability (dp, 22.05.2018)
+		
+		// in einem CapabilityRequest steckt nun eine CapabilityVariant. Diese enthält
+		// wiederum eine Capability (dp, 22.05.2018)
 		CapabilityVariant<?> c = (CapabilityVariant<?>) req.getCapabilityVariant();
 
 		Projection p;
-		if (c.eClass().equals(CapabilityPackage.eINSTANCE.getProjectPath())) {
+		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getProjectPath())) {
 			p = createPathProjection((ProjectPath) c.getCapability());
-		} else if (c.eClass().equals(CapabilityPackage.eINSTANCE.getProjectETA())) {
+		} else if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getProjectETA())) {
 			p = createEtaProjection((ProjectETA) c.getCapability());
 		} else {
 			p = null;
@@ -80,8 +85,8 @@ public class LaserDeviceComponent extends DeviceComponent {
 		Projection p = (Projection) (getUnitConfig().getPayload());
 
 		LOGGER.info("call rest client");
-		// client.target(getConfig().getExternalConnectionString()).request(MediaType.APPLICATION_JSON)
-		// .put(Entity.entity(p, MediaType.APPLICATION_JSON));
+		client.target(getConfig().getExternalConnectionString()).request(MediaType.APPLICATION_JSON)
+				.put(Entity.entity(p, MediaType.APPLICATION_JSON));
 
 	}
 
@@ -99,7 +104,7 @@ public class LaserDeviceComponent extends DeviceComponent {
 		counter.countDown();
 
 		LOGGER.info("call rest client");
-		// client.target(getConfig().getExternalConnectionString()).request(MediaType.APPLICATION_JSON)
-		// .put(Entity.entity(new StopProjection(), MediaType.APPLICATION_JSON));
+		client.target(getConfig().getExternalConnectionString()).request(MediaType.APPLICATION_JSON)
+				.put(Entity.entity(new StopProjection(), MediaType.APPLICATION_JSON));
 	}
 }

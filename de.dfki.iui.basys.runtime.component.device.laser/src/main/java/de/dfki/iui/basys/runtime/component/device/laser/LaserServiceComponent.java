@@ -1,9 +1,5 @@
 package de.dfki.iui.basys.runtime.component.device.laser;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,12 +20,16 @@ import de.dfki.iui.basys.model.data.impl.DataFactoryImpl;
 import de.dfki.iui.basys.model.domain.capability.CapabilityFactory;
 import de.dfki.iui.basys.model.domain.capability.ProjectETA;
 import de.dfki.iui.basys.model.domain.capability.ProjectPath;
+import de.dfki.iui.basys.model.domain.resourceinstance.GeneralCapabilityVariant;
+import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstanceFactory;
 import de.dfki.iui.basys.model.runtime.communication.Channel;
 import de.dfki.iui.basys.model.runtime.communication.ChannelListener;
 import de.dfki.iui.basys.model.runtime.communication.Notification;
 import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.communication.Response;
+import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.ComponentFactory;
 import de.dfki.iui.basys.model.runtime.component.State;
 import de.dfki.iui.basys.runtime.communication.CommFactory;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
@@ -40,7 +40,7 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 
 	Channel mirOut;
 	ExecutorService executor;
-	List<CartesianCoordinate> mPath;
+	List<CartesianCoordinate> mPath = new ArrayList<>();
 	CartesianCoordinate mMIRPosition;
 
 	public LaserServiceComponent(ComponentConfiguration config) {
@@ -132,71 +132,78 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 		return result;
 	}
 
-	public static void main(String[] args) {
-		List<CartesianCoordinate> input = new ArrayList<>();
-		try {
-			BufferedReader br = new BufferedReader(new FileReader("/Users/fkerber/Downloads/MIR100.csv"));
-			String str = null;
-			while ((str = br.readLine()) != null) {
-				String[] spl = str.split(";");
-
-				input.add(new CartesianCoordinateImpl.Builder().x(Double.parseDouble(spl[0]))
-						.y(Double.parseDouble(spl[1])).z(0).build());
-			}
-			br.close();
-
-			CartesianCoordinate mir1 = new CartesianCoordinateImpl.Builder().x(1.27).y(4.03).z(0).build();
-
-			BufferedWriter bw = new BufferedWriter(new FileWriter("/Users/fkerber/Downloads/MIR100_beauty.csv"));
-			for (CartesianCoordinate cc : beautifyPath(input, 15, .1)) {
-				String xString = cc.getX() + "";
-				String yString = cc.getY() + "";
-				xString = xString.replace(".", ",");
-				yString = yString.replace(".", ",");
-				bw.write(xString + ";" + yString + "\n");
-			}
-			bw.close();
-
-			CartesianCoordinate mir2 = new CartesianCoordinateImpl.Builder().x(1.238023998).y(3.93520143).z(0).build();
-
-			if (getDistance(mir2, input.get(0)) < 0.11) {
-				input.remove(0);
-			}
-			input.add(0, mir2);
-
-			bw = new BufferedWriter(new FileWriter("/Users/fkerber/Downloads/MIR100_2_beauty.csv"));
-			for (CartesianCoordinate cc : beautifyPath(input, 15, .1)) {
-				String xString = cc.getX() + "";
-				String yString = cc.getY() + "";
-				xString = xString.replace(".", ",");
-				yString = yString.replace(".", ",");
-				bw.write(xString + ";" + yString + "\n");
-			}
-			bw.close();
-
-			CartesianCoordinate mir3 = new CartesianCoordinateImpl.Builder().x(1.206047997).y(3.840500287).z(0).build();
-
-			input.remove(0);
-			if (getDistance(mir3, input.get(0)) < 0.11) {
-				input.remove(0);
-			}
-			input.add(0, mir3);
-
-			bw = new BufferedWriter(new FileWriter("/Users/fkerber/Downloads/MIR100_3_beauty.csv"));
-			for (CartesianCoordinate cc : beautifyPath(input, 15, .1)) {
-				String xString = cc.getX() + "";
-				String yString = cc.getY() + "";
-				xString = xString.replace(".", ",");
-				yString = yString.replace(".", ",");
-				bw.write(xString + ";" + yString + "\n");
-			}
-			bw.close();
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-	}
+	// public static void main(String[] args) {
+	// List<CartesianCoordinate> input = new ArrayList<>();
+	// try {
+	// BufferedReader br = new BufferedReader(new
+	// FileReader("/Users/fkerber/Downloads/MIR100.csv"));
+	// String str = null;
+	// while ((str = br.readLine()) != null) {
+	// String[] spl = str.split(";");
+	//
+	// input.add(new CartesianCoordinateImpl.Builder().x(Double.parseDouble(spl[0]))
+	// .y(Double.parseDouble(spl[1])).z(0).build());
+	// }
+	// br.close();
+	//
+	// CartesianCoordinate mir1 = new
+	// CartesianCoordinateImpl.Builder().x(1.27).y(4.03).z(0).build();
+	//
+	// BufferedWriter bw = new BufferedWriter(new
+	// FileWriter("/Users/fkerber/Downloads/MIR100_beauty.csv"));
+	// for (CartesianCoordinate cc : beautifyPath(input, 15, .1)) {
+	// String xString = cc.getX() + "";
+	// String yString = cc.getY() + "";
+	// xString = xString.replace(".", ",");
+	// yString = yString.replace(".", ",");
+	// bw.write(xString + ";" + yString + "\n");
+	// }
+	// bw.close();
+	//
+	// CartesianCoordinate mir2 = new
+	// CartesianCoordinateImpl.Builder().x(1.238023998).y(3.93520143).z(0).build();
+	//
+	// if (getDistance(mir2, input.get(0)) < 0.11) {
+	// input.remove(0);
+	// }
+	// input.add(0, mir2);
+	//
+	// bw = new BufferedWriter(new
+	// FileWriter("/Users/fkerber/Downloads/MIR100_2_beauty.csv"));
+	// for (CartesianCoordinate cc : beautifyPath(input, 15, .1)) {
+	// String xString = cc.getX() + "";
+	// String yString = cc.getY() + "";
+	// xString = xString.replace(".", ",");
+	// yString = yString.replace(".", ",");
+	// bw.write(xString + ";" + yString + "\n");
+	// }
+	// bw.close();
+	//
+	// CartesianCoordinate mir3 = new
+	// CartesianCoordinateImpl.Builder().x(1.206047997).y(3.840500287).z(0).build();
+	//
+	// input.remove(0);
+	// if (getDistance(mir3, input.get(0)) < 0.11) {
+	// input.remove(0);
+	// }
+	// input.add(0, mir3);
+	//
+	// bw = new BufferedWriter(new
+	// FileWriter("/Users/fkerber/Downloads/MIR100_3_beauty.csv"));
+	// for (CartesianCoordinate cc : beautifyPath(input, 15, .1)) {
+	// String xString = cc.getX() + "";
+	// String yString = cc.getY() + "";
+	// xString = xString.replace(".", ",");
+	// yString = yString.replace(".", ",");
+	// bw.write(xString + ";" + yString + "\n");
+	// }
+	// bw.close();
+	//
+	// } catch (IOException e) {
+	// e.printStackTrace();
+	// }
+	//
+	// }
 
 	private boolean coordEquals(CartesianCoordinate cc1, CartesianCoordinate cc2) {
 
@@ -259,7 +266,7 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 										} else {
 											if (MIRPosition.getEta() <= 15) {
 
-												if (mPath != null && getDistance(MIRPos, mPath.get(0)) < 0.11) {
+												if (mPath != null && mPath.size()>0 && getDistance(MIRPos, mPath.get(0)) < 0.11) {
 													mPath.remove(0);
 												}
 
@@ -272,7 +279,19 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 												capability.setDelay(1000);
 												capability.setArrowCount(3);
 												capability.setColor(0);
-												// ComponentRequestStatus status = device.executeCapability(capability);
+
+												GeneralCapabilityVariant variant = ResourceinstanceFactory.eINSTANCE.createGeneralCapabilityVariant();		
+												variant.setCapability(capability);
+												
+												CapabilityRequest req = ComponentFactory.eINSTANCE
+														.createCapabilityRequest();
+												req.setCapabilityVariant(variant);
+												req.setComponentId(device.getComponentInfo().getComponentId());
+
+												device.sendComponentRequest(req);
+												
+												
+
 											}
 										}
 
@@ -284,10 +303,9 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 
 								if (payload.eClass().equals(DataPackage.eINSTANCE.getPath())) {
 
-									System.out.println("PATH RECEIVED");
-
 									stopDevice();
 									Path path = (Path) payload;
+									mPath.clear();
 									mPath.addAll(path.getCoordinates());
 								}
 

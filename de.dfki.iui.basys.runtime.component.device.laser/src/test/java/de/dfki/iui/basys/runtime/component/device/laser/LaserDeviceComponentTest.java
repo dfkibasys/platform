@@ -55,7 +55,7 @@ public class LaserDeviceComponentTest {
 				.inChannelName("laser-component#in")
 				.outChannelName("laser-component#out")
 				.componentCategory(ComponentCategory.DEVICE_COMPONENT)
-				.externalConnectionString("http://192.168.100.3:9000/laserControl").build();
+				.externalConnectionString("http://10.2.0.70:9000/laserControl").build();
 	}
 
 	@After
@@ -131,7 +131,7 @@ public class LaserDeviceComponentTest {
 			e.printStackTrace();
 		}
 		
-		sleep(3);
+		sleep(10);
 				
 		assertEquals(State.EXECUTE, component.getState());
 		
