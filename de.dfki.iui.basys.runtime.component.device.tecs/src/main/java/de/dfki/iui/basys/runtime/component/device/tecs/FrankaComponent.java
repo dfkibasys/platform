@@ -10,6 +10,7 @@ import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
 import de.dfki.iui.hrc.franka.ActionException;
 import de.dfki.iui.hrc.franka.Franka;
+import de.dfki.iui.hrc.franka.FrankaConstants;
 import de.dfki.iui.hrc.franka.FrankaState;
 import de.dfki.iui.hrc.franka.FrankaStatus;
 import de.dfki.iui.hrc.franka.LoadException;
@@ -96,15 +97,24 @@ public class FrankaComponent extends TecsDeviceComponent{
 		close();
 		try {
 			open();
-		} catch (TTransportException e) {
-			// TODO Auto-generated catch block
+			client.MoveToKnownPosition(FrankaConstants.KNOWN_POSE_1);
+			onExecute(); // block until in KnownPose1
+		} catch (TException e) {
 			e.printStackTrace();
+			setErrorCode(1);
+			stop();
 		}
 	}
 
 	@Override
 	public void onStarting() {
-		//?
+		try {
+			client.MoveToKnownPosition(FrankaConstants.KNOWN_POSE_2);
+		} catch (TException e) {
+			e.printStackTrace();
+			setErrorCode(1);
+			stop();
+		}
 	}
 
 	@Override
@@ -164,20 +174,13 @@ public class FrankaComponent extends TecsDeviceComponent{
 	}
 
 	@Override
-	public void onCompleting() {
-		// mir is in the position. nothing to do
-	}
+	public void onCompleting() {}
 
 	@Override
-	public void onStopping() {
-		//
-	}
+	public void onStopping() {}
 
 	@Override
-	public void onAborting() {
-		// somehow trigger real emergency stop?!
-		// if emergency stop is released, trigger a clear() command
-	}
+	public void onAborting() {}
 
 	@Override
 	public void onClearing() {
@@ -186,30 +189,21 @@ public class FrankaComponent extends TecsDeviceComponent{
 		try {
 			open();
 		} catch (TTransportException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
 	@Override
-	public void onHolding() {
-		// should be triggered when CommandState is in PAUSE. NOT IN THE MAIN PATH!
-	}
+	public void onHolding() {}
 
 	@Override
-	public void onUnholding() {
-		// should continue to execute. NOT IN THE MAIN PATH!
-	}
+	public void onUnholding() {}
 
 	@Override
-	public void onSuspending() {
-		// NOT IN THE MAIN PATH!
-	}
+	public void onSuspending() {}
 
 	@Override
-	public void onUnsuspending() {
-		// NOT IN THE MAIN PATH!
-	}
+	public void onUnsuspending() {}
 
 	private class FrankaTECS extends Franka.Client{
 
@@ -267,9 +261,6 @@ public class FrankaComponent extends TecsDeviceComponent{
 	}
 
 	@Override
-	protected void handleTecsEvent(Event event) {
-		// TODO Auto-generated method stub
-		
-	}
+	protected void handleTecsEvent(Event event) {}
 
 }
