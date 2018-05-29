@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_0i7srys" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.14.0">
-  <bpmn:process id="Process_1" isExecutable="true">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_0i7srys" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.14.0">
+  <bpmn:process id="Process_CeBIT-Kurz-Demo-QA" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1r3vwty">
       <bpmn:outgoing>SequenceFlow_09b5hmn</bpmn:outgoing>
     </bpmn:startEvent>
@@ -110,7 +110,7 @@
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="SequenceFlow_1y1jupl" sourceRef="Task_0euj2yu" targetRef="Task_15dt537" />
     <bpmn:sequenceFlow id="SequenceFlow_1ot47xj" sourceRef="Task_0euj2yu" targetRef="Task_15dt537" />
-    <bpmn:serviceTask id="Task_15dt537" name="QS (Prüfung)">
+    <bpmn:serviceTask id="Task_15dt537" name="QS (Prüfung)" camunda:type="external" camunda:topic="BasysTask">
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="assignee">_wojNMDD7EeiuBvcKgWzd3Q</camunda:inputParameter>
@@ -122,7 +122,7 @@
       <bpmn:outgoing>SequenceFlow_1vry6pm</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="SequenceFlow_1e9atle" sourceRef="Task_1wcjoaj" targetRef="ExclusiveGateway_00ingt9" />
-    <bpmn:serviceTask id="Task_1wcjoaj" name="Ergebnis der Prüfung anzeigen">
+    <bpmn:serviceTask id="Task_1wcjoaj" name="Ergebnis der Prüfung anzeigen" camunda:type="external" camunda:topic="BasysTask">
       <bpmn:incoming>SequenceFlow_1vry6pm</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1e9atle</bpmn:outgoing>
       <bpmn:outgoing>SequenceFlow_09cp9a6</bpmn:outgoing>
@@ -136,7 +136,7 @@
     </bpmn:parallelGateway>
     <bpmn:sequenceFlow id="SequenceFlow_0bu4ftk" sourceRef="ExclusiveGateway_00ingt9" targetRef="ExclusiveGateway_08jit49" />
     <bpmn:sequenceFlow id="SequenceFlow_0azmx2j" sourceRef="ExclusiveGateway_00ingt9" targetRef="Task_1noaann" />
-    <bpmn:serviceTask id="Task_1noaann" name="Bereitstellung von geprüftem Verteiler-gehäuse">
+    <bpmn:serviceTask id="Task_1noaann" name="Bereitstellung von geprüftem Verteiler-gehäuse" camunda:type="external" camunda:topic="BasysTask">
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="assignee">_r4sy4DD7EeiuBvcKgWzd3Q</camunda:inputParameter>
@@ -147,7 +147,7 @@
       <bpmn:outgoing>SequenceFlow_0nqmt14</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="SequenceFlow_0nqmt14" sourceRef="Task_1noaann" targetRef="Task_0utcbas" />
-    <bpmn:serviceTask id="Task_0utcbas" name="Ergebnis der Prüfung anzeigen">
+    <bpmn:serviceTask id="Task_0utcbas" name="Ergebnis der Prüfung anzeigen" camunda:type="external" camunda:topic="BasysTask">
       <bpmn:incoming>SequenceFlow_0nqmt14</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0sjl6l6</bpmn:outgoing>
     </bpmn:serviceTask>
@@ -228,10 +228,14 @@
       <bpmn:incoming>SequenceFlow_1pm7qfv</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1u3clqt</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:sequenceFlow id="SequenceFlow_1xolpub" name=" Getränkeauftrag" sourceRef="ExclusiveGateway_08jit49" targetRef="ServiceTask_1yotbml" />
+    <bpmn:sequenceFlow id="SequenceFlow_1xolpub" name=" Getränkeauftrag" sourceRef="ExclusiveGateway_08jit49" targetRef="ServiceTask_1yotbml">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${beverageOrder==true}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_1tml54g" sourceRef="ExclusiveGateway_08jit49" targetRef="ExclusiveGateway_1gnlac1" />
     <bpmn:sequenceFlow id="SequenceFlow_0o65l45" sourceRef="ServiceTask_1yotbml" targetRef="ExclusiveGateway_0manadz" />
-    <bpmn:sequenceFlow id="SequenceFlow_0zekcyr" name="Leergut vorhanden" sourceRef="ExclusiveGateway_0manadz" targetRef="ServiceTask_0r9e251" />
+    <bpmn:sequenceFlow id="SequenceFlow_0zekcyr" name="Leergut vorhanden" sourceRef="ExclusiveGateway_0manadz" targetRef="ServiceTask_0r9e251">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${emptyContainers==true}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_1rosm3t" sourceRef="ExclusiveGateway_0manadz" targetRef="ExclusiveGateway_1ioaftk" />
     <bpmn:sequenceFlow id="SequenceFlow_06rrry9" sourceRef="ServiceTask_0r9e251" targetRef="ExclusiveGateway_1ioaftk" />
     <bpmn:sequenceFlow id="SequenceFlow_0zyjksu" sourceRef="ExclusiveGateway_1ioaftk" targetRef="ServiceTask_1n923rb" />
@@ -256,7 +260,7 @@
     <bpmn:sequenceFlow id="SequenceFlow_0daykoj" sourceRef="ExclusiveGateway_1ibrnm3" targetRef="EndEvent_0hx5vpd" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_CeBIT-Kurz-Demo-QA">
       <bpmndi:BPMNShape id="StartEvent_1r3vwty_di" bpmnElement="StartEvent_1r3vwty">
         <dc:Bounds x="111" y="338" width="36" height="36" />
         <bpmndi:BPMNLabel>

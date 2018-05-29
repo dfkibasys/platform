@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_0i7srys" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.14.0">
-  <bpmn:process id="Process_1" isExecutable="true">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_0i7srys" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.14.0">
+  <bpmn:process id="Process_CeBIT-Kurz-Demo" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1r3vwty">
       <bpmn:outgoing>SequenceFlow_09b5hmn</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:parallelGateway id="ExclusiveGateway_06kbte5">
-      <bpmn:incoming>SequenceFlow_0j5kz9j</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_074h9i2</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1w4aeff</bpmn:outgoing>
       <bpmn:outgoing>SequenceFlow_104sijy</bpmn:outgoing>
     </bpmn:parallelGateway>
@@ -22,14 +22,18 @@
       <bpmn:outgoing>SequenceFlow_11x07kn</bpmn:outgoing>
       <bpmn:outgoing>SequenceFlow_12z0bfq</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:sequenceFlow id="SequenceFlow_11x07kn" name=" Getränkeauftrag" sourceRef="ExclusiveGateway_1r9vfo3" targetRef="Task_107xqs8" />
+    <bpmn:sequenceFlow id="SequenceFlow_11x07kn" name=" Getränkeauftrag" sourceRef="ExclusiveGateway_1r9vfo3" targetRef="Task_107xqs8">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${beverageOrder==true}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0gtdhcq" sourceRef="Task_107xqs8" targetRef="ExclusiveGateway_002cx4y" />
     <bpmn:exclusiveGateway id="ExclusiveGateway_002cx4y" default="SequenceFlow_0fnm8x9">
       <bpmn:incoming>SequenceFlow_0gtdhcq</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0wql5s6</bpmn:outgoing>
       <bpmn:outgoing>SequenceFlow_0fnm8x9</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:sequenceFlow id="SequenceFlow_0wql5s6" name="Leergut vorhanden" sourceRef="ExclusiveGateway_002cx4y" targetRef="Task_14jh947" />
+    <bpmn:sequenceFlow id="SequenceFlow_0wql5s6" name="Leergut vorhanden" sourceRef="ExclusiveGateway_002cx4y" targetRef="Task_14jh947">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${emptyContainers==true}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:exclusiveGateway id="ExclusiveGateway_0wyym62">
       <bpmn:incoming>SequenceFlow_0fnm8x9</bpmn:incoming>
       <bpmn:incoming>SequenceFlow_18945n6</bpmn:incoming>
@@ -43,9 +47,8 @@
     <bpmn:serviceTask id="Task_0kte3pf" name="Deckel auflegen" camunda:type="external" camunda:topic="BasysTask">
       <bpmn:extensionElements>
         <camunda:inputOutput>
-          <camunda:inputParameter name="assignee">_jJdx4DD7EeiuBvcKgWzd3Q
-</camunda:inputParameter>
-          <camunda:inputParameter name="command">{ "command" : "doSomething" }</camunda:inputParameter>
+          <camunda:inputParameter name="assignee">_jJdx4DD7EeiuBvcKgWzd3Q</camunda:inputParameter>
+          <camunda:inputParameter name="command" />
         </camunda:inputOutput>
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_1w4aeff</bpmn:incoming>
@@ -55,7 +58,7 @@
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="assignee">_rUJzsDJhEei1p5hKOf5Slw</camunda:inputParameter>
-          <camunda:inputParameter name="command">{ "command" : "doSomething" }</camunda:inputParameter>
+          <camunda:inputParameter name="command" />
         </camunda:inputOutput>
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_11x07kn</bpmn:incoming>
@@ -64,9 +67,8 @@
     <bpmn:serviceTask id="Task_14jh947" name="Verladen von Leergut" camunda:type="external" camunda:topic="BasysTask">
       <bpmn:extensionElements>
         <camunda:inputOutput>
-          <camunda:inputParameter name="assignee">_I4a_oDD-EeiuBvcKgWzd3Q
-</camunda:inputParameter>
-          <camunda:inputParameter name="command">{ "command" : "doSomething" }</camunda:inputParameter>
+          <camunda:inputParameter name="assignee">_I4a_oDD-EeiuBvcKgWzd3Q</camunda:inputParameter>
+          <camunda:inputParameter name="command" />
         </camunda:inputOutput>
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_0wql5s6</bpmn:incoming>
@@ -76,7 +78,7 @@
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="assignee">_I4a_oDD-EeiuBvcKgWzd3Q</camunda:inputParameter>
-          <camunda:inputParameter name="command">{ "command" : "doSomething" }</camunda:inputParameter>
+          <camunda:inputParameter name="command" />
         </camunda:inputOutput>
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_0ugo5il</bpmn:incoming>
@@ -86,7 +88,7 @@
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="assignee">_rUJzsDJhEei1p5hKOf5Slw</camunda:inputParameter>
-          <camunda:inputParameter name="command">{ "command" : "doSomething" }</camunda:inputParameter>
+          <camunda:inputParameter name="command" />
         </camunda:inputOutput>
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_0fvx1h7</bpmn:incoming>
@@ -96,7 +98,7 @@
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="assignee">_I4a_oDD-EeiuBvcKgWzd3Q</camunda:inputParameter>
-          <camunda:inputParameter name="command">{ "command" : "doSomething" }</camunda:inputParameter>
+          <camunda:inputParameter name="command" />
         </camunda:inputOutput>
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_01uz92v</bpmn:incoming>
@@ -106,7 +108,7 @@
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="assignee">_rUJzsDJhEei1p5hKOf5Slw</camunda:inputParameter>
-          <camunda:inputParameter name="command">{ "command" : "doSomething" }</camunda:inputParameter>
+          <camunda:inputParameter name="command" />
         </camunda:inputOutput>
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_1ez567x</bpmn:incoming>
@@ -117,9 +119,8 @@
     <bpmn:serviceTask id="Task_0o7i09t" name="Bestätigung anfordern von Taster" camunda:type="external" camunda:topic="BasysTask">
       <bpmn:extensionElements>
         <camunda:inputOutput>
-          <camunda:inputParameter name="assignee">_PwPREFIxEeidSe5vp9A3oA
-</camunda:inputParameter>
-          <camunda:inputParameter name="command">{ "command" : "doSomething" }</camunda:inputParameter>
+          <camunda:inputParameter name="assignee">_PwPREFIxEeidSe5vp9A3oA</camunda:inputParameter>
+          <camunda:inputParameter name="command" />
         </camunda:inputOutput>
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_09b5hmn</bpmn:incoming>
@@ -129,49 +130,23 @@
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="assignee">_rUJzsDJhEei1p5hKOf5Slw</camunda:inputParameter>
-          <camunda:inputParameter name="command">{ "command" : "doSomething" }</camunda:inputParameter>
+          <camunda:inputParameter name="command" />
         </camunda:inputOutput>
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_0dfefht</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_19ttw02</bpmn:outgoing>
-    </bpmn:serviceTask>
-    <bpmn:serviceTask id="Task_0ao1ton" name="Dialog zur Intentions-vermittlung" camunda:type="external" camunda:topic="BasysTask">
-      <bpmn:extensionElements>
-        <camunda:inputOutput>
-          <camunda:inputParameter name="assignee" />
-          <camunda:inputParameter name="command">{ "command" : "doSomething" }</camunda:inputParameter>
-        </camunda:inputOutput>
-      </bpmn:extensionElements>
-      <bpmn:incoming>SequenceFlow_10grbg2</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_1eq4kno</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_0owklzt</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:serviceTask id="Task_0qflmj1" name="Verladen von Verteiler-gehäuse auf mobilen Roboter" camunda:type="external" camunda:topic="BasysTask">
       <bpmn:extensionElements>
         <camunda:inputOutput>
-          <camunda:inputParameter name="assignee">_r4sy4DD7EeiuBvcKgWzd3Q
-</camunda:inputParameter>
-          <camunda:inputParameter name="command">{ "command" : "doSomething" }</camunda:inputParameter>
+          <camunda:inputParameter name="assignee">_r4sy4DD7EeiuBvcKgWzd3Q</camunda:inputParameter>
+          <camunda:inputParameter name="command" />
         </camunda:inputOutput>
       </bpmn:extensionElements>
-      <bpmn:incoming>SequenceFlow_05s6z04</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_0owklzt</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_074h9i2</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:parallelGateway id="ExclusiveGateway_1dhu9ch">
-      <bpmn:incoming>SequenceFlow_19ttw02</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_05s6z04</bpmn:outgoing>
-      <bpmn:outgoing>SequenceFlow_10grbg2</bpmn:outgoing>
-    </bpmn:parallelGateway>
-    <bpmn:sequenceFlow id="SequenceFlow_19ttw02" sourceRef="Task_1r3odpt" targetRef="ExclusiveGateway_1dhu9ch" />
-    <bpmn:sequenceFlow id="SequenceFlow_05s6z04" sourceRef="ExclusiveGateway_1dhu9ch" targetRef="Task_0qflmj1" />
-    <bpmn:sequenceFlow id="SequenceFlow_10grbg2" sourceRef="ExclusiveGateway_1dhu9ch" targetRef="Task_0ao1ton" />
-    <bpmn:sequenceFlow id="SequenceFlow_074h9i2" sourceRef="Task_0qflmj1" targetRef="ExclusiveGateway_135xim7" />
-    <bpmn:sequenceFlow id="SequenceFlow_1eq4kno" sourceRef="Task_0ao1ton" targetRef="ExclusiveGateway_135xim7" />
-    <bpmn:parallelGateway id="ExclusiveGateway_135xim7">
-      <bpmn:incoming>SequenceFlow_074h9i2</bpmn:incoming>
-      <bpmn:incoming>SequenceFlow_1eq4kno</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0j5kz9j</bpmn:outgoing>
-    </bpmn:parallelGateway>
-    <bpmn:sequenceFlow id="SequenceFlow_0j5kz9j" sourceRef="ExclusiveGateway_135xim7" targetRef="ExclusiveGateway_06kbte5" />
+    <bpmn:sequenceFlow id="SequenceFlow_074h9i2" sourceRef="Task_0qflmj1" targetRef="ExclusiveGateway_06kbte5" />
     <bpmn:endEvent id="EndEvent_1jej8w1">
       <bpmn:incoming>SequenceFlow_0h0suzk</bpmn:incoming>
     </bpmn:endEvent>
@@ -180,7 +155,7 @@
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="assignee">_rUJzsDJhEei1p5hKOf5Slw</camunda:inputParameter>
-          <camunda:inputParameter name="command">{ "command" : "doSomething" }</camunda:inputParameter>
+          <camunda:inputParameter name="command" />
         </camunda:inputOutput>
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_104sijy</bpmn:incoming>
@@ -192,7 +167,7 @@
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="assignee">_r4sy4DD7EeiuBvcKgWzd3Q</camunda:inputParameter>
-          <camunda:inputParameter name="command">{ "command" : "doSomething" }</camunda:inputParameter>
+          <camunda:inputParameter name="command" />
         </camunda:inputOutput>
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_0fbfx1k</bpmn:incoming>
@@ -207,9 +182,10 @@
     <bpmn:sequenceFlow id="SequenceFlow_1ez567x" sourceRef="ExclusiveGateway_1on38tu" targetRef="Task_1vwmbaa" />
     <bpmn:sequenceFlow id="SequenceFlow_002wlbs" sourceRef="Task_0533tw7" targetRef="ExclusiveGateway_1on38tu" />
     <bpmn:sequenceFlow id="SequenceFlow_12z0bfq" sourceRef="ExclusiveGateway_1r9vfo3" targetRef="ExclusiveGateway_1on38tu" />
+    <bpmn:sequenceFlow id="SequenceFlow_0owklzt" sourceRef="Task_1r3odpt" targetRef="Task_0qflmj1" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_CeBIT-Kurz-Demo">
       <bpmndi:BPMNShape id="StartEvent_1r3vwty_di" bpmnElement="StartEvent_1r3vwty">
         <dc:Bounds x="111" y="338" width="36" height="36" />
         <bpmndi:BPMNLabel>
@@ -352,9 +328,9 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_0dfefht_di" bpmnElement="SequenceFlow_0dfefht">
         <di:waypoint x="274" y="356" />
-        <di:waypoint x="304" y="356" />
+        <di:waypoint x="344" y="356" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="244" y="335" width="90" height="12" />
+          <dc:Bounds x="264" y="335" width="90" height="12" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_09b5hmn_di" bpmnElement="SequenceFlow_09b5hmn">
@@ -368,70 +344,16 @@
         <dc:Bounds x="174" y="316" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ServiceTask_1l27mn6_di" bpmnElement="Task_1r3odpt">
-        <dc:Bounds x="304" y="316" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="ServiceTask_17fm37r_di" bpmnElement="Task_0ao1ton">
-        <dc:Bounds x="512" y="401" width="100" height="80" />
+        <dc:Bounds x="344" y="316" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ServiceTask_0nmr1gs_di" bpmnElement="Task_0qflmj1">
-        <dc:Bounds x="512" y="246" width="100" height="80" />
+        <dc:Bounds x="508" y="316" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="ParallelGateway_0j0y0ee_di" bpmnElement="ExclusiveGateway_1dhu9ch">
-        <dc:Bounds x="442" y="331" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="502" y="350" width="0" height="12" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SequenceFlow_19ttw02_di" bpmnElement="SequenceFlow_19ttw02">
-        <di:waypoint x="404" y="356" />
-        <di:waypoint x="442" y="356" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="423" y="335" width="0" height="12" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SequenceFlow_05s6z04_di" bpmnElement="SequenceFlow_05s6z04">
-        <di:waypoint x="467" y="331" />
-        <di:waypoint x="467" y="286" />
-        <di:waypoint x="512" y="286" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="482" y="302.5" width="0" height="12" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SequenceFlow_10grbg2_di" bpmnElement="SequenceFlow_10grbg2">
-        <di:waypoint x="467" y="381" />
-        <di:waypoint x="467" y="441" />
-        <di:waypoint x="512" y="441" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="482" y="405" width="0" height="12" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_074h9i2_di" bpmnElement="SequenceFlow_074h9i2">
-        <di:waypoint x="612" y="286" />
-        <di:waypoint x="658" y="286" />
-        <di:waypoint x="658" y="333" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="635" y="265" width="0" height="12" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SequenceFlow_1eq4kno_di" bpmnElement="SequenceFlow_1eq4kno">
-        <di:waypoint x="612" y="441" />
-        <di:waypoint x="658" y="441" />
-        <di:waypoint x="658" y="383" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="635" y="420" width="0" height="12" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="ParallelGateway_0iagqby_di" bpmnElement="ExclusiveGateway_135xim7">
-        <dc:Bounds x="633" y="333" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="623" y="352" width="0" height="12" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SequenceFlow_0j5kz9j_di" bpmnElement="SequenceFlow_0j5kz9j">
-        <di:waypoint x="683" y="358" />
+        <di:waypoint x="608" y="356" />
         <di:waypoint x="750" y="358" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="716.5" y="337" width="0" height="12" />
+          <dc:Bounds x="634" y="336" width="90" height="12" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="EndEvent_1jej8w1_di" bpmnElement="EndEvent_1jej8w1">
@@ -501,6 +423,13 @@
         <di:waypoint x="2233" y="358" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="1747.5" y="337" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0owklzt_di" bpmnElement="SequenceFlow_0owklzt">
+        <di:waypoint x="444" y="356" />
+        <di:waypoint x="508" y="356" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="431" y="335" width="90" height="12" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>

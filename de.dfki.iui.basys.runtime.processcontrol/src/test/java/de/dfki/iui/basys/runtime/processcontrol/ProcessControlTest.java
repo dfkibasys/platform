@@ -80,6 +80,20 @@ public class ProcessControlTest extends BaseComponentTest {
 				
 	}
 	
+	@Test
+	@Ignore
+	public void testStartAndWalkThroughProcess() throws Exception {
+		CamundaRestClient camundaClient = new CamundaRestClient(taskSchedulerConfig.getComponentId(), taskSchedulerConfig.getExternalConnectionString());
+		for (int i = 0; i<3; i++) {
+			List<ExternalServiceTaskDto> tasks = camundaClient.getExternalTasks("BasysTask", 5, 30 * 1000, "assignee", "command", "parameters");
+			assertEquals(1,	tasks.size());
+			for (ExternalServiceTaskDto task : tasks)
+				camundaClient.complete(task.getId());
+		}
+		List<ExternalServiceTaskDto> tasks = camundaClient.getExternalTasks("BasysTask", 5, 30 * 1000, "assignee", "command", "parameters");
+		assertEquals(true, tasks.isEmpty());
+	}
+	
 	
 	@Override
 	public void tearDown() throws Exception {
