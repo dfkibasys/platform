@@ -14,26 +14,50 @@ public class HueLightsNotifier {
 	
     private Client client;
     private final String lid;
+    private boolean isOn = false;
     
     public HueLightsNotifier(TProtocol prot, String lid) {
     	client = new HueService.Client(prot);
     	this.lid = lid;
     }
     
-    public void enableForTime(boolean green, long ms) throws HueError, TException, InterruptedException {
-    	client.setState(lid, true);
-    	client.setColor(lid, green ? HUE_GREEN : HUE_RED);
-    	Thread.sleep(ms);
-    	client.setState(lid, false);
+    public void enableForTime(boolean green, long ms) {
+    	isOn = true;
+    	Thread thread = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					client.setState(lid, true);
+					client.setColor(lid, green ? HUE_GREEN : HUE_RED);
+			    	Thread.sleep(ms);
+			    	client.setState(lid, false);
+			    	isOn = false;
+				} catch (TException e) {
+					e.printStackTrace();
+					isOn = false;
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+					isOn = false;
+				}
+			}
+		});
+    	thread.setDaemon(true);
+    	thread.start();
     }
     
-    public void enable(boolean green) throws HueError, TException {
-    	client.setState(lid, true);
-    	client.setColor(lid, green ? HUE_GREEN : HUE_RED);
-    }
+//    public void enable(boolean green) throws HueError, TException {
+//    	isOn = true;
+//    	client.setState(lid, true);
+//    	client.setColor(lid, green ? HUE_GREEN : HUE_RED);
+//    }
     
     public void disable() throws HueError, TException {
+    	isOn = true;
     	client.setState(lid, false);
+    }
+    
+    public boolean isOn() {
+    	return isOn;
     }
 	
 }

@@ -1,7 +1,13 @@
 package de.dfki.iui.basys.runtime.component.device.tecs;
 
+import org.apache.thrift.TException;
 import org.apache.thrift.transport.TTransportException;
 
+import de.dfki.iui.basys.model.domain.capability.Capability;
+import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
+import de.dfki.iui.basys.model.domain.capability.QAVisualisationCapability;
+import de.dfki.iui.basys.model.domain.capability.SwitchConfirmationCapability;
+import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.ComponentException;
@@ -12,6 +18,7 @@ public class HueLightsComponent extends TecsDeviceComponent {
 
 	private HueLightsNotifier client;
 	private final String lid;
+	private final long MS = 5000;
 	
 	public HueLightsComponent(ComponentConfiguration config, String lid) {
 		super(config);
@@ -22,14 +29,21 @@ public class HueLightsComponent extends TecsDeviceComponent {
 	protected void handleTecsEvent(Event event) {/* do nothing */}
 
 	@Override
-	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest arg0) {
-		UnitConfiguration config = new UnitConfiguration();
+	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
 
-		// TODO: translate
-		int positionIndex = 0;
-		config.setRecipe(positionIndex);
+		CapabilityVariant<?> variant = (CapabilityVariant<?>)req.getCapabilityVariant();
+		Capability c = variant.getCapability();
 
-		return config;
+		QAVisualisationCapability qaVisualisationCapability = null;
+		if (c.eClass().equals(CapabilityPackage.eINSTANCE.getSwitchConfirmationCapability()))
+			qaVisualisationCapability = (QAVisualisationCapability) c;
+
+		UnitConfiguration uc = new UnitConfiguration();
+		if (qaVisualisationCapability!=null)
+			uc.setPayload(qaVisualisationCapability.getOK());
+		
+		return uc;
+
 	}
 
 	@Override
@@ -43,7 +57,8 @@ public class HueLightsComponent extends TecsDeviceComponent {
 		close();
 		try {
 			open();
-		} catch (TTransportException e) {
+			client.disable();
+		} catch (TException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -51,29 +66,24 @@ public class HueLightsComponent extends TecsDeviceComponent {
 
 	@Override
 	public void onStarting() {
-		//?
+		UnitConfiguration unitConfiguration = getUnitConfig();
+		int state = (int) unitConfiguration.getPayload();
+		client.enableForTime(state > 0, MS);
 	}
 
 	@Override
 	public void onExecute() {
-		
+		while(client.isOn()) {/* wait until off */}
 	}
 
 	@Override
-	public void onCompleting() {
-		// mir is in the position. nothing to do
-	}
+	public void onCompleting() {}
 
 	@Override
-	public void onStopping() {
-		//
-	}
+	public void onStopping() {}
 
 	@Override
-	public void onAborting() {
-		// somehow trigger real emergency stop?!
-		// if emergency stop is released, trigger a clear() command
-	}
+	public void onAborting() {}
 
 	@Override
 	public void onClearing() {
@@ -88,23 +98,15 @@ public class HueLightsComponent extends TecsDeviceComponent {
 	}
 
 	@Override
-	public void onHolding() {
-		// should be triggered when CommandState is in PAUSE. NOT IN THE MAIN PATH!
-	}
+	public void onHolding() {}
 
 	@Override
-	public void onUnholding() {
-		// should continue to execute. NOT IN THE MAIN PATH!
-	}
+	public void onUnholding() {}
 
 	@Override
-	public void onSuspending() {
-		// NOT IN THE MAIN PATH!
-	}
+	public void onSuspending() {}
 
 	@Override
-	public void onUnsuspending() {
-		// NOT IN THE MAIN PATH!
-	}
+	public void onUnsuspending() {}
 
 }
