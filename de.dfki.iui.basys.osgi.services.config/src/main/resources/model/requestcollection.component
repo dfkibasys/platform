@@ -73,7 +73,7 @@
   </componentRequests>
   <componentRequests xsi:type="component:CapabilityRequest">
     <capabilityVariant xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_c6CGAmAgEeiQUsCDRML84w" name="Bottle to Station-BaSys">
-      <capability xsi:type="capability:Transport" id="_djDN32AgEeiQUsCDRML84w"/>
+      <capability xsi:type="capability:Transport" id="_djDN32AgEeiQUsCDRML84w" loadCarrierUnit="BOTTLE"/>
       <appliedOn xsi:type="topology:AGVStation" href="model.topology#_14ta0V2TEeit97PGgoQOAQ"/>
     </capabilityVariant>
   </componentRequests>
