@@ -9,9 +9,21 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+
+import de.dfki.iui.basys.common.emf.json.JsonUtils;
+import de.dfki.iui.basys.model.domain.capability.CapabilityFactory;
+import de.dfki.iui.basys.model.domain.capability.ProjectPath;
+import de.dfki.iui.basys.model.domain.resourceinstance.GeneralCapabilityVariant;
+import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstanceFactory;
+import de.dfki.iui.basys.model.runtime.communication.Channel;
+import de.dfki.iui.basys.model.runtime.communication.Request;
+import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.ComponentFactory;
 import de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl;
+import de.dfki.iui.basys.runtime.communication.CommFactory;
 import de.dfki.iui.basys.runtime.component.Component;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.ComponentException;
@@ -35,25 +47,28 @@ public class MirComponentTest extends BaseComponentTest {
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
-	/*	mirComponentConfig = new ComponentConfigurationImpl.Builder().componentId("mir-component")
-				.inChannelName("mir-component#in").outChannelName("mir-component#out")
-				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.component.device.tecs.MirComponent")
+		mirComponentConfig = new ComponentConfigurationImpl.Builder().componentId("mir-component")
+				.componentName("mir-component").inChannelName("mir-component#in").outChannelName("mir-component#out")
+				.componentImplementationJavaClass(
+						"de.dfki.iui.basys.runtime.component.device.tecs.MirComponent")
 				.componentCategory(ComponentCategory.DEVICE_COMPONENT)
-				.externalConnectionString(String.format("tecs.tcp://%s:%s", "10.2.0.71", 9030)).build();
+				.externalConnectionString(String.format("tecs.tcp://%s:%s", "10.2.0.70",
+				 9030))
+				.build();
 
 		deviceComponentConfig = new ComponentConfigurationImpl.Builder().componentId("laser-device-component")
 				.componentName("laser-device-component").inChannelName("laser-device-component#in")
 				.outChannelName("laser-device-component#out").componentCategory(ComponentCategory.DEVICE_COMPONENT)
 				.componentImplementationJavaClass(
 						"de.dfki.iui.basys.runtime.component.device.laser.LaserDeviceComponent")
-				.externalConnectionString("http://192.168.100.3:9000/laserControl").build();
+				.externalConnectionString("http://10.2.0.70:9000/laserControl").build();
 
 		serviceComponentConfig = new ComponentConfigurationImpl.Builder().componentId("laser-service-component")
 				.componentName("laser-service-component").inChannelName("laser-service-component#in")
 				.outChannelName("laser-service-component#out").componentCategory(ComponentCategory.SERVICE_COMPONENT)
 				.componentImplementationJavaClass(
 						"de.dfki.iui.basys.runtime.component.device.laser.LaserServiceComponent")
-				.externalConnectionString("basys.component://laser-device-component").build();*/
+				.externalConnectionString("basys.component://laser-device-component").build();
 
 	}
 
@@ -63,6 +78,33 @@ public class MirComponentTest extends BaseComponentTest {
 
 	@Test
 	@Ignore
+	public void testInChannel() throws ComponentException, JsonProcessingException, ComponentManagerException {
+
+		// componentManager.createLocalComponent(mirComponentConfig);
+		componentManager.createLocalComponent(deviceComponentConfig);
+		componentManager.createLocalComponent(serviceComponentConfig);
+
+		Channel componentInChannel = CommFactory.getInstance().openChannel(context.getSharedChannelPool(),
+				"laser-device-component#in", false, null);
+
+		ProjectPath capability = CapabilityFactory.eINSTANCE.createProjectPath();
+		capability.setPath(null);
+		capability.setDelay(1000);
+		capability.setArrowCount(3);
+		capability.setColor(0);
+
+		GeneralCapabilityVariant variant = ResourceinstanceFactory.eINSTANCE.createGeneralCapabilityVariant();
+		variant.setCapability(capability);
+
+		CapabilityRequest req = ComponentFactory.eINSTANCE.createCapabilityRequest();
+		req.setCapabilityVariant(variant);
+		req.setComponentId("laser-device-component");
+		Request test = CommFactory.getInstance().createRequest(JsonUtils.toString(req));
+		componentInChannel.sendRequest(test);
+
+	}
+
+	@Test
 	public void listenForever() throws ComponentException {
 
 		try {
@@ -70,6 +112,7 @@ public class MirComponentTest extends BaseComponentTest {
 			componentManager.createLocalComponent(mirComponentConfig);
 			componentManager.createLocalComponent(deviceComponentConfig);
 			componentManager.createLocalComponent(serviceComponentConfig);
+			
 
 			Component mirComponent = componentManager.getLocalComponentById(mirComponentConfig.getComponentId());
 			Component deviceComponent = componentManager.getLocalComponentById(deviceComponentConfig.getComponentId());

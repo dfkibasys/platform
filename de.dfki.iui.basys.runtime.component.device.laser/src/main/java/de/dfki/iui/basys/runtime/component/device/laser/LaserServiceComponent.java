@@ -1,5 +1,8 @@
 package de.dfki.iui.basys.runtime.component.device.laser;
 
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +10,10 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -22,6 +29,8 @@ import de.dfki.iui.basys.model.domain.capability.ProjectETA;
 import de.dfki.iui.basys.model.domain.capability.ProjectPath;
 import de.dfki.iui.basys.model.domain.resourceinstance.GeneralCapabilityVariant;
 import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstanceFactory;
+import de.dfki.iui.basys.model.domain.topology.TopologyElement;
+import de.dfki.iui.basys.model.domain.topology.TopologyPackage;
 import de.dfki.iui.basys.model.runtime.communication.Channel;
 import de.dfki.iui.basys.model.runtime.communication.ChannelListener;
 import de.dfki.iui.basys.model.runtime.communication.Notification;
@@ -41,14 +50,25 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 	Channel mirOut;
 	ExecutorService executor;
 	List<CartesianCoordinate> mPath = new ArrayList<>();
-	CartesianCoordinate mMIRPosition;
+	private long mVisualizeETACircleUntil;
+	private TopologyElement mCurrentTargetPosition;
+	protected boolean mWaitingForNewPath;
+	protected long mVisualizeBeginningUntil;
+	protected boolean mETANotYetVisualized;
+	protected boolean mFinalPathNotYetVisualized;
+	private String mTargetString;
+
+	private int mETA = 61;
+	protected boolean mBeginningVisualizationRunning;
+	protected boolean mETAVisualizationRunning;
+	protected boolean mFinalPathVisualizationRunning;
+	protected long mVisualizeFinalPathUntil;
 
 	public LaserServiceComponent(ComponentConfiguration config) {
 		super(config);
-		// TODO Auto-generated constructor stub
 	}
 
-	private void stopDevice() {
+	private synchronized void stopDevice() {
 
 		if (device.getState() != State.IDLE) {
 			device.stop();
@@ -97,9 +117,11 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 	private static List<CartesianCoordinate> beautifyPath(List<CartesianCoordinate> coords, double pathLengthToCover,
 			double interArrowDistance) {
 		if (coords == null) {
+			System.out.println("Coords was null");
 			return new ArrayList<>();
 		}
 		if (coords.size() < 2) {
+			System.out.println("Coords < 2: " + coords);
 			return coords;
 		}
 		List<CartesianCoordinate> result = new ArrayList<CartesianCoordinate>();
@@ -128,7 +150,8 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 			}
 			currentDesiredDistance -= remainingSegmentLength;
 		}
-
+		System.out.println("Original path: " + coords);
+		System.out.println("Beautified path: " + result);
 		return result;
 	}
 
@@ -216,9 +239,126 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 		return Math.abs(d1 - d2) < epsilon;
 	}
 
+	private List<CartesianCoordinate> getPathEnd(List<CartesianCoordinate> coords, double lengthToCover) {
+
+		List<CartesianCoordinate> result = new ArrayList<CartesianCoordinate>();
+		if (coords == null) {
+			return result;
+		}
+
+		CartesianCoordinate baseCoordinate = coords.get(coords.size() - 1);
+		result.add(baseCoordinate);
+
+		for (int i = coords.size() - 2; i >= 0; i--) {
+			CartesianCoordinate cc2 = coords.get(i);
+			double dist = getDistance(baseCoordinate, cc2);
+			result.add(0, cc2);
+			baseCoordinate = cc2;
+			lengthToCover -= dist;
+			if (lengthToCover <= 0) {
+				break;
+			}
+		}
+		return result;
+
+	}
+
+	private void visualizeETA() {
+		CartesianCoordinate targetPos = new DataFactoryImpl().createCartesianCoordinate();
+		int orientation = 0;
+		switch (mTargetString) {
+
+		case "Center":
+			targetPos.setX(0);
+			targetPos.setY(0);
+			targetPos.setZ(0);
+			orientation = 90;
+			break;
+		case "Station":
+			targetPos.setX(-1);
+			targetPos.setY(-1);
+			targetPos.setZ(0);
+			orientation = 270;
+			break;
+
+		}
+
+		ProjectETA capability = CapabilityFactory.eINSTANCE.createProjectETA();
+
+		capability.setEta(45000);
+		capability.setPosition(targetPos);
+		capability.setRadius(.15);
+		capability.setOrientation(orientation);
+		capability.setColor(0);
+		GeneralCapabilityVariant variant = ResourceinstanceFactory.eINSTANCE.createGeneralCapabilityVariant();
+		variant.setCapability(capability);
+
+		CapabilityRequest req = ComponentFactory.eINSTANCE.createCapabilityRequest();
+		req.setCapabilityVariant(variant);
+		req.setComponentId(device.getComponentInfo().getComponentId());
+
+		device.sendComponentRequest(req);
+
+	}
+
 	@Override
 	public void activate(ComponentContext context) throws ComponentException {
 		super.activate(context);
+
+		Thread t2 = new Thread(new Runnable() {
+			@Override
+			public void run() {
+
+				JFrame meinFrame = new JFrame("Beispiel JFrame");
+				meinFrame.setSize(200, 200);
+				JTextField edt = new JTextField();
+				JButton btn = new JButton("Beispiel");
+				btn.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+
+						mETA = Integer.parseInt(edt.getText());
+					}
+				});
+
+				JButton btn2 = new JButton("Center");
+				btn2.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+
+						mTargetString = "Center";
+						mWaitingForNewPath = true;
+						mVisualizeBeginningUntil = System.currentTimeMillis() + 10000;
+						mETANotYetVisualized = true;
+						mFinalPathNotYetVisualized = true;
+					}
+				});
+				JButton btn3 = new JButton("Station");
+				btn3.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+
+						mTargetString = "Station";
+						mWaitingForNewPath = true;
+						mVisualizeBeginningUntil = System.currentTimeMillis() + 10000;
+						mETANotYetVisualized = true;
+						mFinalPathNotYetVisualized = true;
+					}
+				});
+
+				meinFrame.setLayout(new BorderLayout());
+				meinFrame.add(edt, BorderLayout.NORTH);
+				meinFrame.add(btn, BorderLayout.SOUTH);
+				meinFrame.add(btn2, BorderLayout.WEST);
+				meinFrame.add(btn3, BorderLayout.EAST);
+
+				meinFrame.setVisible(true);
+			}
+		});
+		t2.start();
 
 		executor = Executors.newCachedThreadPool();
 
@@ -241,78 +381,46 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 							try {
 								EObject payload = JsonUtils.fromString(not.getPayload(), EObject.class);
 
-								if (payload.eClass().equals(DataPackage.eINSTANCE.getRobotPositionInformation())) {
-									RobotPositionInformation MIRPosition = (RobotPositionInformation) payload;
-
-									CartesianCoordinate MIRPos = MIRPosition.getPosition();
-
-									if (mMIRPosition == null || !coordEquals(MIRPos, mMIRPosition)) {
-
-										System.out.println("POSITION RECEIVED: " + MIRPos.getX() + " - " + MIRPos.getY()
-												+ " - " + MIRPos.getZ());
-										stopDevice();
-
-										// TODO handle path start
-
-										if (MIRPosition.getEta() < 60 && MIRPosition.getEta() > 15) {
-
-											ProjectETA capability = CapabilityFactory.eINSTANCE.createProjectETA();
-
-											capability.setEta((long) MIRPosition.getEta() * 1000);
-											// TODO where to project
-
-											// ComponentRequestStatus status = device.executeCapability(capability);
-
-										} else {
-											if (MIRPosition.getEta() <= 15) {
-
-												if (mPath != null && mPath.size()>0 && getDistance(MIRPos, mPath.get(0)) < 0.11) {
-													mPath.remove(0);
-												}
-
-												Path path = new DataFactoryImpl().createPath();
-												path.getCoordinates().addAll(beautifyPath(mPath, 5, 0.2));
-
-												ProjectPath capability = CapabilityFactory.eINSTANCE
-														.createProjectPath();
-												capability.setPath(path);
-												capability.setDelay(1000);
-												capability.setArrowCount(3);
-												capability.setColor(0);
-
-												GeneralCapabilityVariant variant = ResourceinstanceFactory.eINSTANCE.createGeneralCapabilityVariant();		
-												variant.setCapability(capability);
-												
-												CapabilityRequest req = ComponentFactory.eINSTANCE
-														.createCapabilityRequest();
-												req.setCapabilityVariant(variant);
-												req.setComponentId(device.getComponentInfo().getComponentId());
-
-												device.sendComponentRequest(req);
-												
-												
-
-											}
-										}
-
-									}
-
-									mMIRPosition = MIRPos;
-
+								if (payload.eClass().equals(TopologyPackage.eINSTANCE.getTopologyElement())) {
+									// MIR should go somewhere
+									mWaitingForNewPath = true;
+									mVisualizeBeginningUntil = System.currentTimeMillis() + 10000;
+									mCurrentTargetPosition = (TopologyElement) payload;
+									mETANotYetVisualized = true;
+									mFinalPathNotYetVisualized = true;
 								}
+
+								// if
+								// (payload.eClass().equals(DataPackage.eINSTANCE.getRobotPositionInformation()))
+								// {
+								//
+								// RobotPositionInformation MIRPosition = (RobotPositionInformation) payload;
+								// CartesianCoordinate MIRPos = MIRPosition.getPosition();
+								// MIRPos.setZ(0);
+								//
+								// }
 
 								if (payload.eClass().equals(DataPackage.eINSTANCE.getPath())) {
 
-									stopDevice();
-									Path path = (Path) payload;
-									mPath.clear();
-									mPath.addAll(path.getCoordinates());
+									if (mWaitingForNewPath) {
+										mWaitingForNewPath = false;
+
+										stopDevice();
+										Path epath = (Path) payload;
+										mPath.clear();
+										for (CartesianCoordinate cc : epath.getCoordinates()) {
+											cc.setZ(0);
+											mPath.add(cc);
+										}
+										visualizePath(mPath, true);
+										mBeginningVisualizationRunning = true;
+
+									}
 								}
 
 							} catch (IOException e) {
 								e.printStackTrace();
 							}
-
 							cf.complete(true);
 							return null;
 						});
@@ -322,10 +430,85 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 					@Override
 					public void handleMessage(Channel channel, String msg) {
 						// TODO Auto-generated method stub
-
 					}
+
 				});
 
+		Thread runner = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+
+				while (true) {
+					if (mETA < 60 && mETA > 15 && mETANotYetVisualized) {
+						mETANotYetVisualized = false;
+						visualizeETA();
+						mETAVisualizationRunning = true;
+						mVisualizeETACircleUntil = System.currentTimeMillis() + 30000;
+
+					}
+
+					if (mETA < 15 && mFinalPathNotYetVisualized) {
+						mFinalPathNotYetVisualized = false;
+						visualizePath(getPathEnd(mPath, .4));
+						mFinalPathVisualizationRunning = true;
+						mVisualizeFinalPathUntil = System.currentTimeMillis() + 15000;
+					}
+
+					if (mBeginningVisualizationRunning && System.currentTimeMillis() >= mVisualizeBeginningUntil) {
+						mBeginningVisualizationRunning = false;
+						stopDevice();
+					}
+					if (mETAVisualizationRunning && System.currentTimeMillis() >= mVisualizeETACircleUntil) {
+						mETAVisualizationRunning = false;
+						stopDevice();
+
+					}
+					if (mFinalPathVisualizationRunning && System.currentTimeMillis() >= mVisualizeFinalPathUntil) {
+						mFinalPathVisualizationRunning = false;
+						stopDevice();
+
+					}
+					try {
+						Thread.sleep(500);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+
+				}
+			}
+		});
+		runner.start();
+
+	}
+
+	private void visualizePath(List<CartesianCoordinate> input) {
+		visualizePath(input, false);
+
+	}
+
+	private void visualizePath(List<CartesianCoordinate> input, boolean cutStart) {
+		Path path = new DataFactoryImpl().createPath();
+		List<CartesianCoordinate> beautifiedPath = beautifyPath(input, 0.8, 0.05);
+		if (cutStart) {
+			path.getCoordinates().addAll(beautifiedPath.subList(8, beautifiedPath.size()));
+		} else {
+			path.getCoordinates().addAll(beautifiedPath);
+		}
+		ProjectPath capability = CapabilityFactory.eINSTANCE.createProjectPath();
+		capability.setPath(path);
+		capability.setDelay(200);
+		capability.setArrowCount(3);
+		capability.setColor(0);
+
+		GeneralCapabilityVariant variant = ResourceinstanceFactory.eINSTANCE.createGeneralCapabilityVariant();
+		variant.setCapability(capability);
+
+		CapabilityRequest req = ComponentFactory.eINSTANCE.createCapabilityRequest();
+		req.setCapabilityVariant(variant);
+		req.setComponentId(device.getComponentInfo().getComponentId());
+
+		device.sendComponentRequest(req);
 	}
 
 	@Override

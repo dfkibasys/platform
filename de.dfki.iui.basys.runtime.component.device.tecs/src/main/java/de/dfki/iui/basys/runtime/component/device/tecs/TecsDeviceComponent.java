@@ -88,6 +88,7 @@ public abstract class TecsDeviceComponent extends DeviceComponent {
 	@Override
 	public void disconnectFromExternal() {
 		close();
+		psClient.disconnect();
 	}
 
 	protected void open() throws TTransportException {
