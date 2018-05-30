@@ -246,13 +246,13 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 	
 	protected void updateRegistrationAndNotify() {
 
-		LOGGER.info("updateRegistrationAndNotify()");
+		LOGGER.debug("updateRegistrationAndNotify");
 		// TODO: something like:Notification not = createStatusUpdate();
 
-		LOGGER.info(String.format("component with id %s is now in state %s and mode %s", getId(), getState(), getMode()));
+		LOGGER.info(String.format("component '%s' (id=%s) is now in state %s and mode %s", getName(), getId(), getState(), getMode()));
 
 		if (statusChannel != null && statusChannel.isOpen()) {
-			LOGGER.info("send status update notification");
+			LOGGER.debug("send status update notification");
 			try {
 				ComponentInfo info = getComponentInfo();
 				Notification not = cf.createNotification(JsonUtils.toString(info));
@@ -261,21 +261,21 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 				e.printStackTrace();
 			}
 		} else {
-			LOGGER.warn("cannot send status update notification");
+			LOGGER.info("cannot send status update notification");
 		}
 		if (registration != null) {
 			try {
-				LOGGER.info("update registration");
+				LOGGER.debug("update registration");
 				registration.update();
 			} catch (ComponentRegistrationException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		} else {
-			LOGGER.warn("cannot update registration");
+			LOGGER.info("cannot update registration, not registered");
 		}
 
-		LOGGER.info("updateRegistrationAndNotify() - finished");
+		LOGGER.debug("updateRegistrationAndNotify - finished");
 	}
 
 	protected void sendComponentResponse(ResponseStatus status, int statusCode) {

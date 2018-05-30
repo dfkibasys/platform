@@ -22,7 +22,7 @@ import de.dfki.iui.basys.runtime.component.registry.ComponentRegistrationExcepti
 
 public class BaseComponent implements Component, ChannelListener {
 
-	public final Logger LOGGER = LoggerFactory.getLogger(getClass().getName());
+	public final Logger LOGGER;
 
 	protected ComponentConfiguration componentConfig;
 	protected ComponentContext context;
@@ -41,6 +41,7 @@ public class BaseComponent implements Component, ChannelListener {
 
 	public BaseComponent(ComponentConfiguration config) {
 		this.componentConfig = config;
+		LOGGER = LoggerFactory.getLogger("basys.component." + componentConfig.getComponentName().replaceAll(" ", "-"));
 	}
 
 	@Override
@@ -80,18 +81,23 @@ public class BaseComponent implements Component, ChannelListener {
 
 	@Override
 	public void activate(ComponentContext context) throws ComponentException {
+		LOGGER.debug("activate");
 		if (!activated) {
 
-			if (context == null)
+			if (context == null) {
+				LOGGER.error("Context must not be null!");
 				throw new ComponentException("Context must not be null!");
-
+			}
 			// use copy constructor. if sharedChannelPool is null, it can be set afterwards for reuse in dependent components, e.g. DeviceComponentController
 			this.context = new ComponentContext(context);
 
 			if (componentConfig.getExternalConnectionString() != null && !componentConfig.getExternalConnectionString().equals("")) {
+				
+				LOGGER.debug("connectToExternal: " + getConfig().getExternalConnectionString());
 				try {
 					connectToExternal();
 					connectedToExternal = true;
+					LOGGER.debug("connectToExternal - finished");
 				} catch (ComponentException e) {
 					LOGGER.error(e.getMessage());
 					e.printStackTrace();
@@ -113,6 +119,9 @@ public class BaseComponent implements Component, ChannelListener {
 				}
 			}
 			activated = true;
+			LOGGER.debug("activate - finished");
+		} else {
+			LOGGER.info("already activated");
 		}
 	}
 
@@ -147,9 +156,11 @@ public class BaseComponent implements Component, ChannelListener {
 	};
 
 	protected void connectToBasys() {
+		LOGGER.debug("connectToBasys");
 		ChannelPool pool = context.getSharedChannelPool();
 
 		if (pool == null) {
+			LOGGER.info("no shared channel pool, creating an internal pool");
 			privateClient = cf.createClient(getId(), cf.createAuthentication(getId(), "secret", null));
 			pool = cf.connectChannelPool(privateClient, componentConfig.getCommunicationProviderConnectionString(), componentConfig.getCommunicationProviderImplementationJavaClass());
 			context.setSharedChannelPool(pool);
@@ -157,13 +168,24 @@ public class BaseComponent implements Component, ChannelListener {
 
 		statusChannel = cf.openChannel(pool, baseStatusChannelName + "#" + getId(), false, null);
 
-		if (componentConfig.getInChannelName() != null && !componentConfig.getInChannelName().equals(""))
+		if (componentConfig.getInChannelName() != null && !componentConfig.getInChannelName().equals("")) {
+			LOGGER.debug("open inChannel " + componentConfig.getInChannelName());
 			inChannel = cf.openChannel(pool, componentConfig.getInChannelName(), false, this);
-		if (componentConfig.getOutChannelName() != null && !componentConfig.getOutChannelName().equals(""))
+		} else {
+			LOGGER.debug("no input channel specified");
+		}
+		
+		if (componentConfig.getOutChannelName() != null && !componentConfig.getOutChannelName().equals("")) {
+			LOGGER.debug("open outChannel " + componentConfig.getOutChannelName());
 			outChannel = cf.openChannel(pool, componentConfig.getOutChannelName(), false, null);
+		} else {
+			LOGGER.debug("no output channel specified");
+		}
+		LOGGER.debug("connectToBasys finished");
 	}
 
 	protected void disconnectFromBasys() {
+		LOGGER.debug("disconnectFromBasys");
 		if (inChannel != null)
 			inChannel.close();
 		if (outChannel != null)
@@ -175,18 +197,27 @@ public class BaseComponent implements Component, ChannelListener {
 			privateClient.disconnect();
 			privateClient = null;
 		}
+		LOGGER.debug("disconnectFromBasys - finished");
 	}
 
 	protected void register() throws ComponentRegistrationException {
+		LOGGER.debug("register");
 		if (context.getComponentRegistry() != null) {
 			registration = context.getComponentRegistry().createRegistration(this);
 			registration.register();
+			LOGGER.debug("register - finished");
+		} else {
+			LOGGER.info("no component registry available");
 		}
 	}
 
 	protected void unregister() throws ComponentRegistrationException {
+		LOGGER.debug("unregister");
 		if (registration != null) {
 			registration.unregister();
+			LOGGER.debug("unregister - finished");
+		} else {
+			LOGGER.debug("not registered");
 		}
 	}
 

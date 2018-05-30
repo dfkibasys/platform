@@ -58,8 +58,8 @@ public abstract class EmfServiceComponent extends ServiceComponent {
 	
 	@Override
 	public void connectToExternal() throws ComponentException {
-
 		if (resourceSet == null) {
+			LOGGER.info("no shared resource set, creating an internal one.");
 			resourceSet = createResourceSet();
 			
 //			//TODO: get real network endpoint or even urispec for each individual service from component registry
@@ -73,13 +73,17 @@ public abstract class EmfServiceComponent extends ServiceComponent {
 		}		
 		
 		String resourceUri = getConfig().getExternalConnectionString();
+				
 		uri = URI.createURI(resourceUri);
+		LOGGER.debug("loading resource " + uri);
 		Resource resource = resourceSet.createResource(uri);
 		try {
 			EmfPersistence.read(resource, null);
 		} catch (IOException e) {
-			e.printStackTrace();
+			LOGGER.error("cannot load resource " + resourceUri, e);
+			//e.printStackTrace();
 		}
+		LOGGER.debug("connectToExternal - finished");
 	}
 
 	@Override
