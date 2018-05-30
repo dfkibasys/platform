@@ -277,8 +277,8 @@ public class DeviceComponentController implements CommandInterface, ChannelListe
 
 	@Override
 	public void handleNotification(Channel channel, Notification not) {
-		
-		if (channel.getName().equals(componentOutChannel.getName())) {
+		//TODO: schöner machen: envelop ist nur gesetzt, falls executeComponentRequest aufgerufen wurde (dp, 30.05.2018)
+		if (channel.getName().equals(componentOutChannel.getName()) && envelop != null) {
 			try {
 				ComponentResponse response = JsonUtils.fromString(not.getPayload(), ComponentResponse.class);
 				envelop.setResponse(response);

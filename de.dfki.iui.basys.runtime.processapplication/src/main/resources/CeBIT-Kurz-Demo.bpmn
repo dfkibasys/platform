@@ -10,7 +10,6 @@
       <bpmn:outgoing>SequenceFlow_104sijy</bpmn:outgoing>
     </bpmn:parallelGateway>
     <bpmn:sequenceFlow id="SequenceFlow_1w4aeff" sourceRef="ExclusiveGateway_06kbte5" targetRef="Task_0kte3pf" />
-    <bpmn:sequenceFlow id="SequenceFlow_104sijy" sourceRef="ExclusiveGateway_06kbte5" targetRef="Task_1eufay9" />
     <bpmn:parallelGateway id="ExclusiveGateway_1o1cm77">
       <bpmn:incoming>SequenceFlow_1a85ydq</bpmn:incoming>
       <bpmn:incoming>SequenceFlow_1omyeeu</bpmn:incoming>
@@ -23,7 +22,7 @@
       <bpmn:outgoing>SequenceFlow_12z0bfq</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="SequenceFlow_11x07kn" name=" Getränkeauftrag" sourceRef="ExclusiveGateway_1r9vfo3" targetRef="Task_107xqs8">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${beverageOrder==true}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${false}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0gtdhcq" sourceRef="Task_107xqs8" targetRef="ExclusiveGateway_002cx4y" />
     <bpmn:exclusiveGateway id="ExclusiveGateway_002cx4y" default="SequenceFlow_0fnm8x9">
@@ -48,7 +47,10 @@
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="assignee">_jJdx4DD7EeiuBvcKgWzd3Q</camunda:inputParameter>
-          <camunda:inputParameter name="command" />
+          <camunda:inputParameter name="command">{
+	"eClass": "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
+	"componentId": ""
+}</camunda:inputParameter>
         </camunda:inputOutput>
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_1w4aeff</bpmn:incoming>
@@ -108,7 +110,10 @@
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="assignee">_rUJzsDJhEei1p5hKOf5Slw</camunda:inputParameter>
-          <camunda:inputParameter name="command" />
+          <camunda:inputParameter name="command">{
+	"eClass": "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
+	"componentId": ""
+}</camunda:inputParameter>
         </camunda:inputOutput>
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_1ez567x</bpmn:incoming>
@@ -120,7 +125,10 @@
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="assignee">_PwPREFIxEeidSe5vp9A3oA</camunda:inputParameter>
-          <camunda:inputParameter name="command" />
+          <camunda:inputParameter name="command">{
+	"eClass": "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
+	"componentId": ""
+}</camunda:inputParameter>
         </camunda:inputOutput>
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_09b5hmn</bpmn:incoming>
@@ -130,7 +138,10 @@
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="assignee">_rUJzsDJhEei1p5hKOf5Slw</camunda:inputParameter>
-          <camunda:inputParameter name="command" />
+          <camunda:inputParameter name="command">{
+	"eClass": "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
+	"componentId": ""
+}</camunda:inputParameter>
         </camunda:inputOutput>
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_0dfefht</bpmn:incoming>
@@ -140,7 +151,10 @@
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="assignee">_r4sy4DD7EeiuBvcKgWzd3Q</camunda:inputParameter>
-          <camunda:inputParameter name="command" />
+          <camunda:inputParameter name="command">{
+	"eClass": "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
+	"componentId": ""
+}</camunda:inputParameter>
         </camunda:inputOutput>
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_0owklzt</bpmn:incoming>
@@ -155,7 +169,10 @@
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="assignee">_rUJzsDJhEei1p5hKOf5Slw</camunda:inputParameter>
-          <camunda:inputParameter name="command" />
+          <camunda:inputParameter name="command">{
+	"eClass": "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
+	"componentId": ""
+}</camunda:inputParameter>
         </camunda:inputOutput>
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_104sijy</bpmn:incoming>
@@ -167,7 +184,10 @@
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="assignee">_r4sy4DD7EeiuBvcKgWzd3Q</camunda:inputParameter>
-          <camunda:inputParameter name="command" />
+          <camunda:inputParameter name="command">{
+	"eClass": "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
+	"componentId": ""
+}</camunda:inputParameter>
         </camunda:inputOutput>
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_0fbfx1k</bpmn:incoming>
@@ -183,6 +203,7 @@
     <bpmn:sequenceFlow id="SequenceFlow_002wlbs" sourceRef="Task_0533tw7" targetRef="ExclusiveGateway_1on38tu" />
     <bpmn:sequenceFlow id="SequenceFlow_12z0bfq" sourceRef="ExclusiveGateway_1r9vfo3" targetRef="ExclusiveGateway_1on38tu" />
     <bpmn:sequenceFlow id="SequenceFlow_0owklzt" sourceRef="Task_1r3odpt" targetRef="Task_0qflmj1" />
+    <bpmn:sequenceFlow id="SequenceFlow_104sijy" sourceRef="ExclusiveGateway_06kbte5" targetRef="Task_1eufay9" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_CeBIT-Kurz-Demo">
@@ -204,14 +225,6 @@
         <di:waypoint x="833" y="441" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="745" y="406" width="90" height="12" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SequenceFlow_104sijy_di" bpmnElement="SequenceFlow_104sijy">
-        <di:waypoint x="775" y="333" />
-        <di:waypoint x="775" y="278" />
-        <di:waypoint x="833" y="278" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="745" y="299.5" width="90" height="12" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="ParallelGateway_01zzqcr_di" bpmnElement="ExclusiveGateway_1o1cm77">
@@ -430,6 +443,14 @@
         <di:waypoint x="508" y="356" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="431" y="335" width="90" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_104sijy_di" bpmnElement="SequenceFlow_104sijy">
+        <di:waypoint x="775" y="333" />
+        <di:waypoint x="775" y="278" />
+        <di:waypoint x="833" y="278" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="745" y="300" width="90" height="12" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>

@@ -135,7 +135,9 @@ public class ComponentManagerImpl extends BaseComponent implements ComponentMana
 	}
 
 	@Override
-	public void addLocalComponent(Component component) throws ComponentManagerException {
+	public void addLocalComponent(Component component) throws ComponentManagerException {	
+
+		LOGGER.debug("addLocalComponent " + component.getName());
 		components.put(component.getId(), component);
 		try {
 			component.activate(context);
@@ -179,6 +181,7 @@ public class ComponentManagerImpl extends BaseComponent implements ComponentMana
 			createLocalComponent(entry);
 		}
 		if (recursive) {
+			File[] files = configFolder.listFiles(File::isDirectory);
 			for (File entry : configFolder.listFiles(File::isDirectory)) {
 				createLocalComponents(entry ,recursive);
 			}		

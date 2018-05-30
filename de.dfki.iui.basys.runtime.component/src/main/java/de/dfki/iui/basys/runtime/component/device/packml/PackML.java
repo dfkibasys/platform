@@ -74,6 +74,8 @@ public class PackML {
 
 	public State getState() {
 		EnterableState state = exec.getStatus().getStates().toArray(new EnterableState[0])[0];
+		if (state.getId().equals("MODE_SWITCH"))
+			return State.RESETTING;
 		State result = State.valueOf(state.getId());
 		return result;
 	}

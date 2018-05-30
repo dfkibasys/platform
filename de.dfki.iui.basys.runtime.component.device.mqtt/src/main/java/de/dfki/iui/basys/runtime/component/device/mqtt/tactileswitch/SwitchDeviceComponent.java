@@ -12,6 +12,7 @@ import de.dfki.iui.basys.model.domain.capability.SwitchConfirmationCapability;
 import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.mqtt.MqttDeviceComponent;
@@ -35,18 +36,17 @@ public class SwitchDeviceComponent extends MqttDeviceComponent {
 	@Override
 	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
 
-		CapabilityVariant<?> variant = (CapabilityVariant<?>)req.getCapabilityVariant();
-		Capability c = variant.getCapability();
+		//CapabilityVariant<?> variant = (CapabilityVariant<?>)req.getCapabilityVariant();
+		// c = variant.getCapability();
 
-		SwitchConfirmationCapability switchConfirmationCapability = null;
-		if (c.eClass().equals(CapabilityPackage.eINSTANCE.getSwitchConfirmationCapability()))
-			switchConfirmationCapability = (SwitchConfirmationCapability) c;
-
-		UnitConfiguration uc = new UnitConfiguration();
-		if (switchConfirmationCapability!=null)
-			uc.setPayload(switchConfirmationCapability.getState());
+		//if (c.eClass().equals(CapabilityPackage.eINSTANCE.getSwitchConfirmationCapability()))
+		{
+			//return new UnitConfiguration();
+		}
+		return new UnitConfiguration();
+		//throw new ComponentException("unknown capability");
+		//return null;
 		
-		return uc;
 
 	}
 	
@@ -59,14 +59,10 @@ public class SwitchDeviceComponent extends MqttDeviceComponent {
 	@Override
 	public void onStarting() {
 		
-		UnitConfiguration unitConfiguration = getUnitConfig();
-		int state = (int) unitConfiguration.getPayload();
 		counter = new CountDownLatch(1);
 		
-		if (state==1)
-			switchActivate();
-		else if (state==0)
-			switchDeactivate();
+		switchActivate();
+
 	}
 	
 	@Override
@@ -89,6 +85,7 @@ public class SwitchDeviceComponent extends MqttDeviceComponent {
 		
 		//TODO: notify Basys
 		//outChannel.sendMessage("");
+		sendComponentResponse(ResponseStatus.OK, 0);
 	}
 	
 	

@@ -61,7 +61,7 @@ public class JsonSerializationTest {
 		//URI uri = URI.createPlatformPluginURI("/de.dfki.iui.basys.osgi.services.config/src/main/resources/model/requestcollection.component", true);
 		
 		
-		URI uri = URI.createFileURI("C:\\Tools\\basys-develop\\ws\\osgi\\de.dfki.iui.basys.osgi.services.config\\src\\main\\resources\\model\\requestcollection.component");
+		URI uri = URI.createFileURI("C:\\Projekte\\BaSys\\Dev\\basys-develop\\ws\\osgi\\de.dfki.iui.basys.osgi.services.config\\src\\main\\resources\\model\\requestcollection.component");
 		
 		Resource resource = resourceSet.createResource(uri);
 		try {

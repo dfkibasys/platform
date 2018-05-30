@@ -7,6 +7,7 @@ import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
 import de.dfki.iui.basys.model.runtime.component.State;
+import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
 
 public class TestDeviceComponent extends DeviceComponent {
@@ -23,6 +24,16 @@ public class TestDeviceComponent extends DeviceComponent {
 		resetOnStopped = true;
 	}
 		
+	@Override
+	public void connectToExternal() throws ComponentException {
+		LOGGER.info("connectToExternal - ignore in TestDeviceComponent" );
+	}
+	
+	@Override
+	public void disconnectFromExternal() {
+		LOGGER.info("disconnectFromExternal - ignore in TestDeviceComponent" );
+	}
+	
 	public LinkedBlockingQueue<State> getRecentStates() {
 		return recentStates;
 	}
