@@ -10,6 +10,7 @@ import de.dfki.iui.basys.model.domain.capability.SwitchConfirmationCapability;
 import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
 import de.dfki.tecs.Event;
@@ -77,10 +78,14 @@ public class HueLightsComponent extends TecsDeviceComponent {
 	}
 
 	@Override
-	public void onCompleting() {}
+	public void onCompleting() {
+		sendComponentResponse(ResponseStatus.OK, 0);
+	}
 
 	@Override
-	public void onStopping() {}
+	public void onStopping() {
+		sendComponentResponse(ResponseStatus.NOT_OK, 0);
+	}
 
 	@Override
 	public void onAborting() {}

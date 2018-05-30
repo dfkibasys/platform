@@ -303,13 +303,9 @@ public class MirComponent extends TecsDeviceComponent {
 	@Override
 	public void onStopping() {
 		mTargetLocation = null;
+		sendComponentResponse(ResponseStatus.NOT_OK, getErrorCode());
 		try {
 			client.stopMovement();
-
-			// send response to basys (dp)
-			// TODO: move to base class DeviceComponent; requires a statusCode member
-			// variable to be set here
-			sendComponentResponse(ResponseStatus.NOT_OK, 0);
 		} catch (TException e) {
 			e.printStackTrace();
 		}
