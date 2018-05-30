@@ -52,7 +52,7 @@ public class HueLightsNotifier {
 //    }
     
     public void disable() throws HueError, TException {
-    	isOn = true;
+    	isOn = false;
     	client.setState(lid, false);
     }
     
