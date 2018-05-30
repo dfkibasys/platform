@@ -130,6 +130,81 @@ public class JsonSerializationTest {
 				"        \"$ref\": \"platform:/plugin/de.dfki.iui.basys.osgi.services.config/model/model.material#_b9ZKABMxEeiF0dM20lRpcg\"\r\n" + 
 				"    }\r\n" + 
 				"}";
+		
+		// TODO this JSON fails during parsing (sk, 30.05.2018)
+		String json4 = "{\n" + 
+				"    \"eClass\" : \"http://www.dfki.de/iui/basys/model/component#//CapabilityRequest\",\n" + 
+				"    \"capabilityVariant\" : {\n" + 
+				"      \"eClass\" : \"http://www.dfki.de/iui/basys/model/resourceinstance#//ManufacturingCapabilityVariant\",\n" + 
+				"      \"id\" : \"_gTSWsV-lEeixtLE-b5nbbQ\",\n" + 
+				"      \"name\" : \"Apply dark blue cap\",\n" + 
+				"      \"capability\" : {\n" + 
+				"        \"eClass\" : \"http://www.dfki.de/iui/basys/model/capability#//PickAndPlace\",\n" + 
+				"        \"id\" : \"_xio67l8yEeiUo-65_7rTBQ\",\n" + 
+				"        \"loadCarrierUnit\" : \"MATERIAL\"\n" + 
+				"      },\n" + 
+				"      \"appliedOn\" : [ {\n" + 
+				"        \"eClass\" : \"http://www.dfki.de/iui/basys/model/productdefinition#//MaterialEntry\",\n" + 
+				"        \"id\" : \"_IpqbzV29EeixDOGCyjgf_g\",\n" + 
+				"        \"material\" : {\n" + 
+				"          \"eClass\" : \"http://www.dfki.de/iui/basys/model/material#//Material\",\n" + 
+				"          \"id\" : \"_Ecka12QAEei-E8pQkAQC4Q\"\n" + 
+				"        }\n" + 
+				"      }, {\n" + 
+				"        \"eClass\" : \"http://www.dfki.de/iui/basys/model/productdefinition#//AssemblyGroupEntry\",\n" + 
+				"        \"id\" : \"_IpqbzF29EeixDOGCyjgf_g\",\n" + 
+				"        \"assemblyGroup\" : {\n" + 
+				"          \"id\" : \"_lGGrsUjLEei9sPQ0bCp2Ew\",\n" + 
+				"          \"name\" : \"HousingWithAbsorber\",\n" + 
+				"          \"bom\" : {\n" + 
+				"            \"id\" : \"_oPgFkEjLEei9sPQ0bCp2Ew\",\n" + 
+				"            \"entries\" : [ {\n" + 
+				"              \"eClass\" : \"http://www.dfki.de/iui/basys/model/productdefinition#//AssemblyGroupEntry\",\n" + 
+				"              \"id\" : \"_IpqbxV29EeixDOGCyjgf_g\",\n" + 
+				"              \"assemblyGroup\" : {\n" + 
+				"                \"id\" : \"_tZoTAUjJEei9sPQ0bCp2Ew\",\n" + 
+				"                \"name\" : \"Housing\",\n" + 
+				"                \"bom\" : {\n" + 
+				"                  \"id\" : \"_ImdecEjPEeiKNvOOp20QBg\",\n" + 
+				"                  \"entries\" : [ {\n" + 
+				"                    \"eClass\" : \"http://www.dfki.de/iui/basys/model/productdefinition#//MaterialEntry\",\n" + 
+				"                    \"id\" : \"_IpomkF29EeixDOGCyjgf_g\",\n" + 
+				"                    \"material\" : {\n" + 
+				"                      \"eClass\" : \"http://www.dfki.de/iui/basys/model/material#//Material\",\n" + 
+				"                      \"id\" : \"_Ecka42QAEei-E8pQkAQC4Q\"\n" + 
+				"                    }\n" + 
+				"                  }, {\n" + 
+				"                    \"eClass\" : \"http://www.dfki.de/iui/basys/model/productdefinition#//MaterialEntry\",\n" + 
+				"                    \"id\" : \"_IpqbwV29EeixDOGCyjgf_g\",\n" + 
+				"                    \"material\" : {\n" + 
+				"                      \"eClass\" : \"http://www.dfki.de/iui/basys/model/material#//Material\",\n" + 
+				"                      \"id\" : \"_Ecka5WQAEei-E8pQkAQC4Q\"\n" + 
+				"                    }\n" + 
+				"                  } ]\n" + 
+				"                }\n" + 
+				"              }\n" + 
+				"            }, {\n" + 
+				"              \"eClass\" : \"http://www.dfki.de/iui/basys/model/productdefinition#//MaterialEntry\",\n" + 
+				"              \"id\" : \"_Ipqbxl29EeixDOGCyjgf_g\",\n" + 
+				"              \"material\" : {\n" + 
+				"                \"eClass\" : \"http://www.dfki.de/iui/basys/model/material#//Material\",\n" + 
+				"                \"id\" : \"_Ecka6mQAEei-E8pQkAQC4Q\"\n" + 
+				"              }\n" + 
+				"            }, {\n" + 
+				"              \"eClass\" : \"http://www.dfki.de/iui/basys/model/productdefinition#//MaterialEntry\",\n" + 
+				"              \"id\" : \"_IpqbyF29EeixDOGCyjgf_g\",\n" + 
+				"              \"count\" : 4,\n" + 
+				"              \"material\" : {\n" + 
+				"                \"eClass\" : \"http://www.dfki.de/iui/basys/model/material#//Material\",\n" + 
+				"                \"id\" : \"_Ecka7GQAEei-E8pQkAQC4Q\"\n" + 
+				"              }\n" + 
+				"            } ]\n" + 
+				"          }\n" + 
+				"        }\n" + 
+				"      } ]\n" + 
+				"    }\n" + 
+				"  }";
+		
 		try {
 
 			ResourceSet rs = EmfServiceComponent.createResourceSet();
