@@ -1,0 +1,8 @@
+#-----------------------------------------------------------------
+# Use this file to add customized Bnd instructions for the bundle
+#-----------------------------------------------------------------
+
+#Bundle-Activator: ${bundle.namespace}.Activator
+Import-Package: !org.apache.log4j
+Export-Package: !de.dfki.iui.basys
+Fragment-Host: org.ops4j.pax.logging.pax-logging-service;bundle-version="1.10.1"
