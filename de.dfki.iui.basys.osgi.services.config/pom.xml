@@ -30,7 +30,7 @@
       <optional>true</optional>
     </dependency>
 	
-    <dependency>
+<!--     <dependency>
       <groupId>org.osgi</groupId>
       <artifactId>osgi_R4_core</artifactId>
       <optional>true</optional>
@@ -39,7 +39,7 @@
       <groupId>org.osgi</groupId>
       <artifactId>osgi_R4_compendium</artifactId>
       <optional>true</optional>
-    </dependency>
+    </dependency> -->
   </dependencies>
 
 </project>
