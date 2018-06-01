@@ -51,6 +51,7 @@ public class JsonSerializationTest {
 	}
 
 	@Test	
+	@Ignore
 	public void testSerializeComponentRequests() {
 		
 		ResourceSet resourceSet = EmfServiceComponent.createResourceSet();

@@ -25,12 +25,6 @@
 	<dependencies>
 
 		<dependency>
-			<groupId>de.dfki.iui.basys.model</groupId>
-			<artifactId>de.dfki.iui.basys.model.domain</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-
-		<dependency>
 			<groupId>de.dfki.iui.basys.runtime</groupId>
 			<artifactId>de.dfki.iui.basys.runtime.component</artifactId>
 			<version>${project.version}</version>

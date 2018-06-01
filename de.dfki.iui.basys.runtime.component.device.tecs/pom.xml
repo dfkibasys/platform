@@ -35,25 +35,46 @@
 			<groupId>de.dfki.iui.basys.runtime</groupId>
 			<artifactId>de.dfki.iui.basys.runtime.component.device.laser</artifactId>
 			<version>${project.version}</version>
+			<scope>test</scope>
 		</dependency>
 		
 		<dependency>
 			<groupId>de.dfki.iui.basys.runtime</groupId>
 			<artifactId>de.dfki.iui.basys.runtime.component.registry.zookeeper</artifactId>
 			<version>${project.version}</version>
+			<scope>test</scope>
 		</dependency>
 		
         <dependency>
             <groupId>de.dfki.iui</groupId>
             <artifactId>libHRC</artifactId>
             <version>0.4.0-SNAPSHOT</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>de.dfki.tecs</groupId>
-            <artifactId>libtecs</artifactId>
-            <version>2.0.6</version>
-        </dependency>
+	    </dependency>
+	
+	    <dependency>
+            <groupId>org.apache.thrift</groupId>
+            <artifactId>libthrift</artifactId>
+            <version>0.9.3</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+			</exclusions>
+	    </dependency>
+	
+	
+		<dependency>
+			<groupId>de.dfki.tecs</groupId>
+			<artifactId>libtecs</artifactId>
+			<version>2.0.6</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
         
         <dependency>
     		<groupId>de.dfki.iui</groupId>

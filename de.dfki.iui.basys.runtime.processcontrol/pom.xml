@@ -26,24 +26,18 @@
 	
 		<dependency>
 			<groupId>de.dfki.iui.basys.runtime</groupId>
-			<artifactId>de.dfki.iui.basys.runtime.component</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-				
-		<dependency>
-			<groupId>de.dfki.iui.basys.runtime</groupId>
 			<artifactId>de.dfki.iui.basys.runtime.component.registry.zookeeper</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		
-		<dependency>
+<!-- 		<dependency>
 			<groupId>org.glassfish.jersey.core</groupId>
 			<artifactId>jersey-client</artifactId>
 			<version>2.22.4</version>
-		</dependency>
+		</dependency> -->
 
 		<!-- https://mvnrepository.com/artifact/org.glassfish.jersey.media/jersey-media-json-jackson -->
-		<dependency>
+	<!-- 	<dependency>
 			<groupId>org.glassfish.jersey.media</groupId>
 			<artifactId>jersey-media-json-jackson</artifactId>
 			<version>2.25.1</version>
@@ -54,6 +48,24 @@
 					<artifactId>jackson-annotations</artifactId>
 				</exclusion>
 			</exclusions>
+		</dependency> -->
+		
+		
+		<!-- https://mvnrepository.com/artifact/org.glassfish.jersey.core/jersey-server -->
+		<dependency>
+		    <groupId>org.glassfish.jersey.core</groupId>
+		    <artifactId>jersey-client</artifactId>
+		    <version>2.25.1</version>
+			<type>bundle</type>
+			<scope>test</scope>
+		</dependency>
+				
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-json-jackson</artifactId>
+			<version>2.25.1</version>
+			<type>bundle</type>
+			<scope>test</scope>
 		</dependency>
 		
 		<!-- comment to remove all imported (non-local) bundles from your compilation 

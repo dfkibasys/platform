@@ -24,7 +24,7 @@
 
 	<dependencies>
 
-		<dependency>
+<!-- 		<dependency>
 			<groupId>de.dfki.iui.basys.model</groupId>
 			<artifactId>de.dfki.iui.basys.model.domain</artifactId>
 			<version>${project.version}</version>
@@ -34,12 +34,13 @@
 			<groupId>de.dfki.iui.basys.runtime</groupId>
 			<artifactId>de.dfki.iui.basys.runtime.component</artifactId>
 			<version>${project.version}</version>
-		</dependency>
+		</dependency> -->
 		
 		<dependency>
 			<groupId>de.dfki.iui.basys.runtime</groupId>
 			<artifactId>de.dfki.iui.basys.runtime.component.device.tecs</artifactId>
 			<version>${project.version}</version>
+			<scope>test</scope>
 		</dependency>
 		
 		<dependency>
@@ -52,6 +53,7 @@
 			<groupId>de.dfki.iui.basys.runtime</groupId>
 			<artifactId>de.dfki.iui.basys.runtime.component.registry.zookeeper</artifactId>
 			<version>${project.version}</version>
+			<scope>test</scope>
 		</dependency>
 		
 		<!-- comment to remove all imported (non-local) bundles from your compilation 

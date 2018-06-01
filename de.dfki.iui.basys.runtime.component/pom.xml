@@ -65,6 +65,13 @@
 			<artifactId>commons-jexl3</artifactId>
 			<version>${jexl.version}</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.codehaus.groovy/groovy -->
+		<dependency>
+		    <groupId>org.codehaus.groovy</groupId>
+		    <artifactId>groovy</artifactId>
+		    <version>2.4.15</version>
+		</dependency>		
 
 		<!-- comment to remove all imported (non-local) bundles from your compilation 
 			classpath -->

@@ -26,7 +26,7 @@
 	<packaging>bundle</packaging>
 
 	<dependencies>
-	
+<!-- 	
 			<dependency>
 			<groupId>de.dfki.iui.basys.runtime</groupId>
 			<artifactId>de.dfki.iui.basys.runtime.communication</artifactId>
@@ -37,7 +37,7 @@
 			<groupId>de.dfki.iui.basys.runtime</groupId>
 			<artifactId>de.dfki.iui.basys.runtime.component</artifactId>
 			<version>${project.version}</version>
-		</dependency>
+		</dependency> -->
 		
 		<dependency>
 			<groupId>de.dfki.iui.basys.runtime</groupId>
