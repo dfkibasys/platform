@@ -47,7 +47,8 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 				pollCamunda();
 				
 			}
-		}, 3000, 1000, TimeUnit.MILLISECONDS);
+		}, 5000, 1000, TimeUnit.MILLISECONDS);
+		// polling interval needs to be synchronized with Long Polling timeout in CamundaRestClient.getExternalTasks(...)
 	}
 	
 	@Override
