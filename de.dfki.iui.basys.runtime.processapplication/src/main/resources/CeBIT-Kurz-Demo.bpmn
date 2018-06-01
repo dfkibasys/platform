@@ -155,7 +155,42 @@
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="assignee">_I4a_oDD-EeiuBvcKgWzd3Q</camunda:inputParameter>
-          <camunda:inputParameter name="command" />
+          <camunda:inputParameter name="command">{
+		"eClass": "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
+		"capabilityVariant": {
+			"eClass": "http://www.dfki.de/iui/basys/model/resourceinstance#//LogisticsCapabilityVariant",
+			"id": "_gTVaBV-lEeixtLE-b5nbbQ",
+			"name": "Unload MiR (bottle)",
+			"capability": {
+				"eClass": "http://www.dfki.de/iui/basys/model/capability#//PickAndPlace",
+				"id": "_sLcgPl-UEeioxNEjr9hsyQ",
+				"loadCarrierUnit": "BOTTLE"
+			},
+			"appliedOn": [{
+				"eClass": "http://www.dfki.de/iui/basys/model/topology#//AGVStation",
+				"id": "_rBfZoV2TEeit97PGgoQOAQ",
+				"name": "Station-Cola"
+			},
+			{
+				"eClass": "http://www.dfki.de/iui/basys/model/topology#//StorageZone",
+				"id": "_NQFk4zB5Eei1bbwBPPZWOA",
+				"name": "Colastation",
+				"equipmentModules": [{
+					"eClass": "http://www.dfki.de/iui/basys/model/topology#//AGVStation",
+					"id": "_rBfZoV2TEeit97PGgoQOAQ",
+					"name": "Station-Cola"
+				}],
+				"storageUnits": [{
+					"id": "_O8321zB5Eei1bbwBPPZWOA",
+					"name": "",
+					"equipmentModules": [{
+						"id": "_ROxA8zB5Eei1bbwBPPZWOA",
+						"name": "Positioniereinheit"
+					}]
+				}]
+			}]
+		}
+	}</camunda:inputParameter>
         </camunda:inputOutput>
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_0wql5s6</bpmn:incoming>
@@ -279,7 +314,7 @@
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="assignee">_rUJzsDJhEei1p5hKOf5Slw</camunda:inputParameter>
-          <camunda:inputParameter name="command"> {
+          <camunda:inputParameter name="command">{
     "eClass" : "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
     "capabilityVariant" : {
       "eClass" : "http://www.dfki.de/iui/basys/model/resourceinstance#//GeneralCapabilityVariant",
@@ -367,9 +402,23 @@
         <camunda:inputOutput>
           <camunda:inputParameter name="assignee">_rUJzsDJhEei1p5hKOf5Slw</camunda:inputParameter>
           <camunda:inputParameter name="command">{
-	"eClass": "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
-	"componentId": ""
-}</camunda:inputParameter>
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
+    "capabilityVariant" : {
+      "eClass" : "http://www.dfki.de/iui/basys/model/resourceinstance#//LogisticsCapabilityVariant",
+      "id" : "_gTXPMV-lEeixtLE-b5nbbQ",
+      "name" : "KLT to Station-QA",
+      "capability" : {
+        "eClass" : "http://www.dfki.de/iui/basys/model/capability#//Transport",
+        "id" : "_2NMnH1-WEeieWai6RAB66w",
+        "loadCarrierUnit" : "R_KLT_3215"
+      },
+      "appliedOn" : [ {
+        "eClass" : "http://www.dfki.de/iui/basys/model/topology#//AGVStation",
+        "id" : "_xHhjwV2TEeit97PGgoQOAQ",
+        "name" : "Station-QA"
+      } ]
+    }
+  }</camunda:inputParameter>
         </camunda:inputOutput>
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_104sijy</bpmn:incoming>
