@@ -46,6 +46,7 @@
 		<module>../models</module>
 		<module>../runtime</module>
 		<module>../osgi</module>
+		<module>../deployment</module>
 	</modules>
 
 	<scm>
@@ -110,7 +111,7 @@
 					</execution>
 				</executions>
 			</plugin> -->
-
+		    
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-deploy-plugin</artifactId>
@@ -141,6 +142,13 @@
 					</rules>
 				</configuration>
 			</plugin>
+
+			<!-- https://github.com/ferstl/depgraph-maven-plugin -->
+		    <plugin>
+		      <groupId>com.github.ferstl</groupId>
+		      <artifactId>depgraph-maven-plugin</artifactId>
+		      <version>3.1.0</version>
+		    </plugin>
 
 		</plugins>
 
