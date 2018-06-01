@@ -42,7 +42,7 @@
   <componentRequests xsi:type="component:CapabilityRequest">
     <capabilityVariant xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_gTVaBV-lEeixtLE-b5nbbQ" name="Unload MiR (bottle)">
       <capability xsi:type="capability:PickAndPlace" id="_sLcgPl-UEeioxNEjr9hsyQ" loadCarrierUnit="BOTTLE"/>
-      <appliedOn xsi:type="topology:AGVStation" href="model.topology#_xHhjwV2TEeit97PGgoQOAQ"/>
+      <appliedOn xsi:type="topology:AGVStation" href="model.topology#_rBfZoV2TEeit97PGgoQOAQ"/>
       <appliedOn xsi:type="topology:StorageZone" href="model.topology#_NQFk4zB5Eei1bbwBPPZWOA"/>
     </capabilityVariant>
   </componentRequests>
