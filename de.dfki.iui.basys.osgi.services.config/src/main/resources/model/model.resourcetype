@@ -317,12 +317,35 @@
     </resourceTypes>
   </catalogues>
   <catalogues manufacturer="LAP Laser">
-    <resourceTypes xsi:type="resourcetype:Tool" id="_BcwkYlIxEeidSe5vp9A3oA" name="Projection Laser"/>
+    <resourceTypes xsi:type="resourcetype:Tool" id="_BcwkYlIxEeidSe5vp9A3oA" name="Projection Laser">
+      <capabilityAssertions id="_fijDUGWlEeimHJMdsEZOIA" name="Project Path">
+        <pattern>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//ProjectPath"/>
+        </pattern>
+      </capabilityAssertions>
+      <capabilityAssertions id="_ks7dgGWlEeimHJMdsEZOIA" name="Project ETA">
+        <pattern>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//ProjectETA"/>
+        </pattern>
+      </capabilityAssertions>
+    </resourceTypes>
   </catalogues>
-  <catalogues manufacturer="Optron">
-    <resourceTypes xsi:type="resourcetype:Tool" id="_GHTn8lIxEeidSe5vp9A3oA" name="Button"/>
+  <catalogues manufacturer="Captron">
+    <resourceTypes xsi:type="resourcetype:Tool" id="_GHTn8lIxEeidSe5vp9A3oA" name="Button">
+      <capabilityAssertions binding="Button Confirmation" id="_RrMR8GWlEeimHJMdsEZOIA">
+        <pattern>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//ConfirmationCapability"/>
+        </pattern>
+      </capabilityAssertions>
+    </resourceTypes>
   </catalogues>
   <catalogues manufacturer="WGS">
-    <resourceTypes xsi:type="resourcetype:Tool" id="_3cuNYlIxEeidSe5vp9A3oA" name="Worker Guidance"/>
+    <resourceTypes xsi:type="resourcetype:Tool" id="_3cuNYlIxEeidSe5vp9A3oA" name="Worker Guidance">
+      <capabilityAssertions binding="WGS Confirmation" id="_be_uUGWlEeimHJMdsEZOIA">
+        <pattern>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//ConfirmationCapability"/>
+        </pattern>
+      </capabilityAssertions>
+    </resourceTypes>
   </catalogues>
 </resourcetype:ResourceTypeCatalogueCollection>
