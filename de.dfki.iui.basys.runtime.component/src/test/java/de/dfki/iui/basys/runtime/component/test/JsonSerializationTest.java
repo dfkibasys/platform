@@ -62,8 +62,9 @@ public class JsonSerializationTest {
 		//URI uri = URI.createPlatformPluginURI("/de.dfki.iui.basys.osgi.services.config/src/main/resources/model/requestcollection.component", true);
 		
 		
-		URI uri = URI.createFileURI("C:\\Projekte\\BaSys\\Dev\\basys-develop\\ws\\osgi\\de.dfki.iui.basys.osgi.services.config\\src\\main\\resources\\model\\requestcollection.component");
-		
+		//URI uri = URI.createFileURI("C:\\Projekte\\BaSys\\Dev\\basys-develop\\ws\\osgi\\de.dfki.iui.basys.osgi.services.config\\src\\main\\resources\\model\\requestcollection.component");
+		URI uri = URI.createFileURI("C:\\Tools\\basys-develop\\ws\\osgi\\de.dfki.iui.basys.osgi.services.config\\src\\main\\resources\\model\\requestcollection.component");
+			
 		Resource resource = resourceSet.createResource(uri);
 		try {
 			EmfPersistence.read(resource, null);
@@ -83,6 +84,51 @@ public class JsonSerializationTest {
 		
 		
 	}
+	
+	@Test
+	public void testSerializeDeserializeComponentRequests() {
+		
+		ResourceSet resourceSet = EmfServiceComponent.createResourceSet();
+
+			
+		
+		
+		//URI uri = URI.createPlatformPluginURI("/de.dfki.iui.basys.osgi.services.config/src/main/resources/model/requestcollection.component", true);
+		
+		
+		//URI uri = URI.createFileURI("C:\\Projekte\\BaSys\\Dev\\basys-develop\\ws\\osgi\\de.dfki.iui.basys.osgi.services.config\\src\\main\\resources\\model\\requestcollection.component");
+		URI uri = URI.createFileURI("C:\\Tools\\basys-develop\\ws\\osgi\\de.dfki.iui.basys.osgi.services.config\\src\\main\\resources\\model\\requestcollection.component");
+			
+		Resource resource = resourceSet.createResource(uri);
+		try {
+			EmfPersistence.read(resource, null);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		EObject collection = resource.getContents().get(0);
+		
+		
+		String json = "";
+		try {
+			json = JsonUtils.toString(collection);
+			System.out.println(json);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			Resource resource2 = JsonUtils.fromString(json);
+			EObject collection2 = resource2.getContents().get(0);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+	
 	
 	@Test
 	public void testDeserialization() {

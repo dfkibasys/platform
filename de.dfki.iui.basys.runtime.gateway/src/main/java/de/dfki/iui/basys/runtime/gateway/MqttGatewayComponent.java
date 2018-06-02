@@ -14,9 +14,6 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-
-import de.dfki.iui.basys.common.emf.json.JsonUtils;
 import de.dfki.iui.basys.model.runtime.communication.Channel;
 import de.dfki.iui.basys.model.runtime.communication.ChannelListener;
 import de.dfki.iui.basys.model.runtime.communication.Notification;
@@ -24,6 +21,8 @@ import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.communication.Response;
 import de.dfki.iui.basys.model.runtime.communication.exceptions.ProviderException;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.Property;
+import de.dfki.iui.basys.runtime.communication.CommFactory;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.service.ServiceComponent;
 
@@ -66,6 +65,20 @@ public class MqttGatewayComponent extends ServiceComponent implements Gateway {
 		} catch (MqttException e) {
 			throw new ComponentException("MqttGatewayComponent \"" + getId() + "\" cannot connect to \"" + componentConfig.getExternalConnectionString() + "\"", e);
 		}
+		
+		for (Property p : getConfig().getProperties()) {
+			if (p.getKey().equals("incoming")) {
+				String[] parts = p.getValue().split(" ");
+				installOutgoingChannel(parts[0], parts[1]);
+			}
+			if (p.getKey().equals("outgoing")) {
+				String[] parts = p.getValue().split(" ");
+				installIncomingChannel(parts[0], parts[1]);
+			}
+		}
+		
+		//installOutgoingChannel(Component.baseStatusChannelName+"#>", "hybrit/devices");
+		//installIncomingChannel("basys/components/command", "task-scheduler#in");
 	}
 
 	@Override
@@ -101,24 +114,24 @@ public class MqttGatewayComponent extends ServiceComponent implements Gateway {
 
 			@Override
 			public void handleNotification(Channel channel, Notification not) {
-				try {
+//				try {
 					
-					String msg = JsonUtils.toString(not);
+					//String msg = JsonUtils.toString(not);
 					
 					MqttMessage message = new MqttMessage();
-					message.setPayload(msg.getBytes(StandardCharsets.UTF_8));
+					message.setPayload(not.getPayload().getBytes(StandardCharsets.UTF_8));
 					message.setQos(2);
 				
 					try {
 						mqttClient.publish(externalChannelName, message).waitForCompletion();
 					} catch (MqttException e) {
-						throw new ProviderException("Cannot publish MQTT message with payload \"" + msg + "\" to topic \"" + externalChannelName + "\"", e);
+						throw new ProviderException("Cannot publish MQTT message with payload \"" + not.getPayload() + "\" to topic \"" + externalChannelName + "\"", e);
 					}
 					
-				} catch (JsonProcessingException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+//				} catch (JsonProcessingException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
 			}
 
 			@Override
@@ -149,7 +162,9 @@ public class MqttGatewayComponent extends ServiceComponent implements Gateway {
 				public void messageArrived(String topic, MqttMessage message) throws Exception {
 
 					String mqttPayload = new String(message.getPayload(), StandardCharsets.UTF_8);
-					internalChannel.sendMessage(mqttPayload);
+					
+					Notification not = CommFactory.getInstance().createNotification(mqttPayload);
+					internalChannel.sendNotification(not);
 					
 				}
 

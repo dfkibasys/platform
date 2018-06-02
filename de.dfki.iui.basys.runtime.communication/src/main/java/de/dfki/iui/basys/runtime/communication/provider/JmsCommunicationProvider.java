@@ -244,7 +244,7 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 										channel.getListener().handleMessage(channel, incomingMessage.getPayload());
 									}
 								}
-							} catch (IOException e) {
+							} catch (IOException | ClassCastException e) {
 								channel.getListener().handleMessage(channel, content);
 							}
 						} catch (JMSException e) {

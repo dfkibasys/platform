@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 import de.dfki.iui.basys.common.emf.json.JsonUtils;
 import de.dfki.iui.basys.model.runtime.communication.Channel;
+import de.dfki.iui.basys.model.runtime.communication.Notification;
 import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.communication.Response;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
@@ -29,7 +30,7 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 	CamundaRestClient client;
 	//private final LinkedBlockingDeque<TaskInstanceDto> taskInstances = new LinkedBlockingDeque<>();
 
-	ScheduledExecutorService executor = Executors.newScheduledThreadPool(3);
+	ScheduledExecutorService executor = Executors.newScheduledThreadPool(50000);
 	
 	
 	public CamundaTaskScheduler(ComponentConfiguration config) {
@@ -48,7 +49,6 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 				
 			}
 		}, 5000, 1000, TimeUnit.MILLISECONDS);
-		// polling interval needs to be synchronized with Long Polling timeout in CamundaRestClient.getExternalTasks(...)
 	}
 	
 	@Override
@@ -151,7 +151,17 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 		return res;
 	}
 	
-	
+	@Override
+	public void handleNotification(Channel channel, Notification not) {
+		try {
+			ComponentRequest request = JsonUtils.fromString(not.getPayload(),ComponentRequest.class);
+			scheduleTask(new TaskDescription(request, null));	
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 //	public CompletableFuture<ComponentResponse> scheduleTaskAlternative(ComponentRequest request, String correlationId) {
 //		LOGGER.debug("scheduleTaskAlternative");
 //		

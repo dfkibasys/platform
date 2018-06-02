@@ -24,6 +24,7 @@ import de.dfki.iui.basys.model.runtime.communication.Notification;
 import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.communication.Response;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.Property;
 import de.dfki.iui.basys.runtime.communication.CommFactory;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.service.ServiceComponent;
@@ -59,6 +60,16 @@ public class JmsGatewayComponent extends ServiceComponent implements Gateway {
 			throw new ComponentException(e);
 		}
 
+		for (Property p : getConfig().getProperties()) {
+			if (p.getKey().equals("incoming")) {
+				String[] parts = p.getValue().split(" ");
+				installOutgoingChannel(parts[0], parts[1]);
+			}
+			if (p.getKey().equals("outgoing")) {
+				String[] parts = p.getValue().split(" ");
+				installIncomingChannel(parts[0], parts[1]);
+			}
+		}
 	}
 
 	@Override

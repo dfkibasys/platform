@@ -49,7 +49,7 @@ public class CamundaRestClient {
                 + "  \"workerId\":\""+workerId+"\",\n"
                 + "  \"maxTasks\":"+ maxCount + ",\n"
                 + "  \"usePriority\":true,\n"
-                + "  \"asyncResponseTimeout\":5000,\n" // Long Polling timeout can be set to 30 minutes, 1800000 milliseconds maximum)
+                + "  \"asyncResponseTimeout\":10000,\n" // Long Polling timeout can be set to 30 minutes, 1800000 milliseconds maximum)
                 + "  \"topics\":\n"
                 + "      [{\"topicName\": \"" + topic + "\",\n"
                 + "      \"lockDuration\": " + lockDuration + ",\n"
