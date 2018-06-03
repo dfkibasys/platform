@@ -97,8 +97,8 @@ public class JsonSerializationTest {
 		
 		
 		//URI uri = URI.createFileURI("C:\\Projekte\\BaSys\\Dev\\basys-develop\\ws\\osgi\\de.dfki.iui.basys.osgi.services.config\\src\\main\\resources\\model\\requestcollection.component");
-		URI uri = URI.createFileURI("C:\\Tools\\basys-develop\\ws\\osgi\\de.dfki.iui.basys.osgi.services.config\\src\\main\\resources\\model\\requestcollection.component");
-			
+		//URI uri = URI.createFileURI("C:\\Tools\\basys-develop\\ws\\osgi\\de.dfki.iui.basys.osgi.services.config\\src\\main\\resources\\model\\requestcollection.component");
+		URI uri = URI.createFileURI("C:\\Work\\basys-develop\\ws\\osgi\\de.dfki.iui.basys.osgi.services.config\\src\\main\\resources\\model\\requestcollection.component");
 		Resource resource = resourceSet.createResource(uri);
 		try {
 			EmfPersistence.read(resource, null);
@@ -142,10 +142,6 @@ public class JsonSerializationTest {
 				"	\"appliedOn\": [{\n" + 
 				"		\"eClass\": \"http://www.dfki.de/iui/basys/model/productdefinition#//MaterialEntry\",\n" + 
 				"		\"$ref\": \"http://localhost:8080/services/entity/_IpqbzV29EeixDOGCyjgf_g\"\n" + 
-				"	},\n" + 
-				"	{\n" + 
-				"		\"eClass\": \"http://www.dfki.de/iui/basys/model/productdefinition#//AssemblyGroupEntry\",\n" + 
-				"		\"$ref\": \"http://localhost:8080/services/entity/_IpqbzF29EeixDOGCyjgf_g\"\n" + 
 				"	}]\n" + 
 				"}";
 		
@@ -254,20 +250,25 @@ public class JsonSerializationTest {
 		
 		try {
 
-			ResourceSet rs = EmfServiceComponent.createResourceSet();
-			BasysResourceImpl r = new BasysResourceImpl(URI.createURI("http://localhost:8080/services/entity"));
-			
-			r.basicSetResourceSet(rs, null);
+//			ResourceSet rs = EmfServiceComponent.createResourceSet();
+//			BasysResourceImpl r = new BasysResourceImpl(URI.createURI("http://localhost:8080/services/entity"));
+//			
+//			r.basicSetResourceSet(rs, null);
 			
 			//MaterialEntry mat = JsonUtils.fromStringResource(json3, MaterialEntry.class, rs);
 
 			ManufacturingCapabilityVariant var = JsonUtils.fromString(json, ManufacturingCapabilityVariant.class);
-			EcoreUtil.resolveAll(var);
-			MaterialEntry entry =(MaterialEntry) var.getAppliedOn().get(0);
-			int count = entry.getCount();
-			Material mat = entry.getMaterial();
-			var = JsonUtils.fromString(json2, ManufacturingCapabilityVariant.class);
-			System.out.println(var);
+			//EcoreUtil.resolveAll(var);
+			//EcoreUtil.resolveAll(var);
+			MaterialEntry entry = (MaterialEntry) var.getAppliedOn().get(0);
+			//EcoreUtil.resolveAll(entry);
+			Material m = entry.getMaterial();
+			
+			//MaterialEntry entry =(MaterialEntry) var.getAppliedOn().get(0);
+			//int count = entry.getCount();
+			//Material mat = entry.getMaterial();
+			//var = JsonUtils.fromString(json2, ManufacturingCapabilityVariant.class);
+			System.out.println(m.getId() + " / " + m.getName());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
