@@ -10,6 +10,8 @@ import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
 import de.dfki.iui.hrc.hybritcommand.CommandResponse;
+import de.dfki.iui.hrc.yumi.PickException;
+import de.dfki.iui.hrc.yumi.QAException;
 import de.dfki.iui.hrc.yumi.Yumi;
 import de.dfki.iui.hrc.yumi.YumiState;
 import de.dfki.tecs.Event;
@@ -17,15 +19,17 @@ import de.dfki.tecs.Event;
 public class YumiComponent extends TecsDeviceComponent{
 
 	protected YumiTECS client;
+	private final String businessKey;
 	
-	public YumiComponent(ComponentConfiguration config) {
+	public YumiComponent(ComponentConfiguration config, String businessKey) {
 		super(config);
+		this.businessKey = businessKey;
 	}
 	
 	@Override
 	public void connectToExternal() throws ComponentException {
 		super.connectToExternal();
-		client = new YumiTECS(protocol);
+		client = new YumiTECS(protocol, businessKey);
 	}
 
 	@Override
@@ -53,7 +57,7 @@ public class YumiComponent extends TecsDeviceComponent{
 	@Override
 	public void onStarting() {
 		try {
-			client.performQA("PERFORM QA","PERFORM QA");
+			client.performQA("PERFORM QA");
 		} catch (TException e) {
 			e.printStackTrace();
 			setErrorCode(3);
@@ -66,7 +70,7 @@ public class YumiComponent extends TecsDeviceComponent{
 		try {
 			boolean executing = true;
 			while(executing) {
-				CommandResponse cr = client.getCommandState("???????????????????????????");
+				CommandResponse cr = client.getCommandState();
 				YumiState ys = client.getState();
 				
 				if (ys == YumiState.Error || ys == YumiState.Manual) {
@@ -157,36 +161,34 @@ public class YumiComponent extends TecsDeviceComponent{
 	private class YumiTECS extends Yumi.Client{
 
 		private TProtocol protocol;
+		private final String businessKey;
 		
-		public YumiTECS(TProtocol prot) {
+		public YumiTECS(TProtocol prot, String businessKey) {
 			super(prot);
 			protocol = prot;
+			this.businessKey = businessKey;
 		}
-//		
-//		@Override
-//		public CommandResponse getCommandState() throws TException {
-//			return super.getCommandState();
-//		}
-//		
-//		@Override
-//		public YumiState getState() throws TException {
-//			return super.getState();
-//		}
-//		
-//		@Override
-//		public CommandResponse performPick(String objectId, String sourceLocation) throws PickException, TException {
-//			return super.performPick(objectId, sourceLocation);
-//		}
-//		
-//		@Override
-//		public CommandResponse performPut(String objectId, String sourceLocation) throws PickException, TException {
-//			return super.performPut(objectId, sourceLocation);
-//		}
-//		
-//		@Override
-//		public CommandResponse performQA(String objectId) throws QAException, TException {
-//			return super.performQA(objectId);
-//		}
+		
+		public CommandResponse getCommandState() throws TException {
+			return super.getCommandState(businessKey);
+		}
+		
+		@Override
+		public YumiState getState() throws TException {
+			return super.getState();
+		}
+		
+		public CommandResponse performPick(String objectId, String sourceLocation) throws PickException, TException {
+			return super.performPick(objectId, sourceLocation, businessKey);
+		}
+		
+		public CommandResponse performPut(String objectId, String sourceLocation) throws PickException, TException {
+			return super.performPut(objectId, sourceLocation, businessKey);
+		}
+		
+		public CommandResponse performQA(String objectId) throws QAException, TException {
+			return super.performQA(objectId, businessKey);
+		}
 	}
 
 	@Override
