@@ -2,29 +2,18 @@ package de.dfki.iui.basys.runtime.component.device.tecs;
 
 import java.io.IOException;
 
-import org.apache.curator.framework.recipes.locks.Reaper;
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TProtocol;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.paho.client.mqttv3.logging.Logger;
-
 import de.dfki.iui.basys.common.emf.json.JsonUtils;
-import de.dfki.iui.basys.model.domain.capability.Capability;
-import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
-import de.dfki.iui.basys.model.domain.capability.QAVisualisationCapability;
-import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
 import de.dfki.iui.basys.model.runtime.communication.Channel;
 import de.dfki.iui.basys.model.runtime.communication.Notification;
 import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.communication.Response;
-import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.communication.CommFactory;
-import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.ComponentException;
-import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
 import de.dfki.iui.hrc.hybritcommand.CommandResponse;
-import de.dfki.iui.hrc.hybritcommand.CommandState;
 import de.dfki.iui.hrc.siam.CeBITDialogue;
 
 public class SiAMServiceComponent extends TecsServiceComponent{
