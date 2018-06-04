@@ -12,6 +12,8 @@ import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.component.annotations.Reference;
 
 import de.dfki.iui.basys.model.domain.capability.Capability;
+import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityApplication;
+import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
 import de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstance;
 import de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstanceRepository;
 import de.dfki.iui.basys.osgi.services.BasysOsgiComponent;
@@ -98,6 +100,31 @@ public final class ResourceInstanceManagerServiceImpl extends BasysOsgiComponent
 	@Override
 	public ResourceInstanceRepository getResourceInstanceRepository() {
 		return impl.getResourceInstanceRepository();
+	}
+
+	@Override
+	public List<CapabilityApplication> getCapabilityApplications(String id) {
+		return impl.getCapabilityApplications(id);
+	}
+
+	@Override
+	public CapabilityApplication getCapabilityApplication(String id, String assertionId) {
+		return impl.getCapabilityApplication(id, assertionId);
+	}
+
+	@Override
+	public CapabilityVariant<?> getCapabilityVariant(String id, String assertionId, String variantId) {
+		return  impl.getCapabilityVariant(id, assertionId, variantId);
+	}
+
+	@Override
+	public void addCapabilityVariant(String id, String assertionId, CapabilityVariant<?> variant) {
+		impl.addCapabilityVariant(id, assertionId, variant);		
+	}
+
+	@Override
+	public void deleteCapabilityVariant(String id, String assertionId, String variantId) {
+		impl.deleteCapabilityVariant(id, assertionId, variantId);		
 	}
 
 }
