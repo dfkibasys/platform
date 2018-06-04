@@ -2,6 +2,7 @@ package de.dfki.iui.basys.runtime.processcontrol;
 
 import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 import de.dfki.iui.basys.common.emf.json.JsonUtils;
 import de.dfki.iui.basys.model.runtime.communication.Channel;
@@ -39,7 +40,7 @@ public class TaskExecutor implements ChannelListener {
 		ComponentRequestStatus status = device.sendComponentRequest(task.getRequest());
 		if (status.getStatus() == RequestStatus.ACCEPTED) {
 			try {
-				counter.await();
+				counter.await(1,TimeUnit.MINUTES);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

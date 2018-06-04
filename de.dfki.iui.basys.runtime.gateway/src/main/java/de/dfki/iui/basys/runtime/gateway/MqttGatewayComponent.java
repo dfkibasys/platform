@@ -2,6 +2,7 @@ package de.dfki.iui.basys.runtime.gateway;
 
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.paho.client.mqttv3.IMqttActionListener;
@@ -66,14 +67,15 @@ public class MqttGatewayComponent extends ServiceComponent implements Gateway {
 			throw new ComponentException("MqttGatewayComponent \"" + getId() + "\" cannot connect to \"" + componentConfig.getExternalConnectionString() + "\"", e);
 		}
 		
-		for (Property p : getConfig().getProperties()) {
+		List<Property> properties = getConfig().getProperties();
+		for (Property p : properties) {
 			if (p.getKey().equals("incoming")) {
 				String[] parts = p.getValue().split(" ");
-				installOutgoingChannel(parts[0], parts[1]);
-			}
-			if (p.getKey().equals("outgoing")) {
-				String[] parts = p.getValue().split(" ");
 				installIncomingChannel(parts[0], parts[1]);
+			}
+			else if (p.getKey().equals("outgoing")) {
+				String[] parts = p.getValue().split(" ");
+				installOutgoingChannel(parts[0], parts[1]);
 			}
 		}
 		

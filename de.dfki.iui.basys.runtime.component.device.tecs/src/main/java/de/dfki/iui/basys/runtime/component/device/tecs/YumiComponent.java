@@ -4,15 +4,12 @@ import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TTransportException;
 
-import de.dfki.iui.basys.model.data.Path;
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
 import de.dfki.iui.hrc.hybritcommand.CommandResponse;
-import de.dfki.iui.hrc.yumi.PickException;
-import de.dfki.iui.hrc.yumi.QAException;
 import de.dfki.iui.hrc.yumi.Yumi;
 import de.dfki.iui.hrc.yumi.YumiState;
 import de.dfki.tecs.Event;
@@ -56,7 +53,7 @@ public class YumiComponent extends TecsDeviceComponent{
 	@Override
 	public void onStarting() {
 		try {
-			client.performQA("PERFORM QA");
+			client.performQA("PERFORM QA","PERFORM QA");
 		} catch (TException e) {
 			e.printStackTrace();
 			setErrorCode(3);
@@ -69,7 +66,7 @@ public class YumiComponent extends TecsDeviceComponent{
 		try {
 			boolean executing = true;
 			while(executing) {
-				CommandResponse cr = client.getCommandState();
+				CommandResponse cr = client.getCommandState("???????????????????????????");
 				YumiState ys = client.getState();
 				
 				if (ys == YumiState.Error || ys == YumiState.Manual) {
@@ -165,31 +162,31 @@ public class YumiComponent extends TecsDeviceComponent{
 			super(prot);
 			protocol = prot;
 		}
-		
-		@Override
-		public CommandResponse getCommandState() throws TException {
-			return super.getCommandState();
-		}
-		
-		@Override
-		public YumiState getState() throws TException {
-			return super.getState();
-		}
-		
-		@Override
-		public CommandResponse performPick(String objectId, String sourceLocation) throws PickException, TException {
-			return super.performPick(objectId, sourceLocation);
-		}
-		
-		@Override
-		public CommandResponse performPut(String objectId, String sourceLocation) throws PickException, TException {
-			return super.performPut(objectId, sourceLocation);
-		}
-		
-		@Override
-		public CommandResponse performQA(String objectId) throws QAException, TException {
-			return super.performQA(objectId);
-		}
+//		
+//		@Override
+//		public CommandResponse getCommandState() throws TException {
+//			return super.getCommandState();
+//		}
+//		
+//		@Override
+//		public YumiState getState() throws TException {
+//			return super.getState();
+//		}
+//		
+//		@Override
+//		public CommandResponse performPick(String objectId, String sourceLocation) throws PickException, TException {
+//			return super.performPick(objectId, sourceLocation);
+//		}
+//		
+//		@Override
+//		public CommandResponse performPut(String objectId, String sourceLocation) throws PickException, TException {
+//			return super.performPut(objectId, sourceLocation);
+//		}
+//		
+//		@Override
+//		public CommandResponse performQA(String objectId) throws QAException, TException {
+//			return super.performQA(objectId);
+//		}
 	}
 
 	@Override

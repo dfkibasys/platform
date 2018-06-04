@@ -124,8 +124,8 @@ public class TestDeviceComponent extends DeviceComponent {
 	public void onStopping() {
 		recentStates.add(State.STOPPING);
 		sleep(1);
-		
-		sendComponentResponse(ResponseStatus.NOT_OK, 0);
+		if (isCapabilityRequestPending())
+			sendComponentResponse(ResponseStatus.NOT_OK, 0);
 	}
 
 	/* Wait States */

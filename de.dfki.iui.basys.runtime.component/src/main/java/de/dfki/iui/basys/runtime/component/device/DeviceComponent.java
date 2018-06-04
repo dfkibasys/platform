@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
@@ -213,7 +214,10 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 			status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.REJECTED).message("unknown command").build();
 			break;
 		}
-
+		
+		if (status.getStatus() == RequestStatus.ACCEPTED)
+			pendingRequest = req;
+		
 		return status;
 	}
 
@@ -284,8 +288,10 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 			return;
 		}
 		
-		ComponentResponse response = new ComponentResponseImpl.Builder().componentId(getId()).request(pendingRequest).status(status).statusCode(statusCode).build();
+		ComponentRequest r = EcoreUtil.copy(pendingRequest);
 	
+		ComponentResponse response = new ComponentResponseImpl.Builder().componentId(getId()).status(status).statusCode(statusCode).request(pendingRequest).build();
+		response.setRequest(r);
 		try {
 			String payload = JsonUtils.toString(response);
 			Notification not = cf.createNotification(payload);
@@ -299,6 +305,24 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 		
 	}
 
+	protected boolean isCapabilityRequestPending() {
+		if (pendingRequest != null && pendingRequest.eClass().equals(ComponentPackage.eINSTANCE.getCapabilityRequest())) 
+			return true;
+		return false;
+	}
+	
+	protected boolean isCommandRequestPending() {
+		if (pendingRequest != null && pendingRequest.eClass().equals(ComponentPackage.eINSTANCE.getCommandRequest())) 
+			return true;
+		return false;
+	}
+	
+	protected boolean isModeChangeRequestPending() {
+		if (pendingRequest != null && pendingRequest.eClass().equals(ComponentPackage.eINSTANCE.getChangeModeRequest())) 
+			return true;
+		return false;
+	}
+	
 	protected void sleep(long seconds) {
 		try {
 			TimeUnit.MILLISECONDS.sleep(seconds*1000);
