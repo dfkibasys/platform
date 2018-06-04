@@ -317,7 +317,7 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 		return false;
 	}
 	
-	protected boolean isModeChangeRequestPending() {
+	protected boolean isChangeModeRequestPending() {
 		if (pendingRequest != null && pendingRequest.eClass().equals(ComponentPackage.eINSTANCE.getChangeModeRequest())) 
 			return true;
 		return false;
@@ -349,10 +349,12 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 			@Override
 			public void run() {
 				sleep(1);
-				if (pendingRequest != null && pendingRequest.eClass().equals(ComponentPackage.eINSTANCE.getChangeModeRequest())) {
+				if (isChangeModeRequestPending()) {
 					ChangeModeRequest r = (ChangeModeRequest) pendingRequest;
 					if (r.getMode() == getMode()) {
 						sendComponentResponse(ResponseStatus.OK, 0);
+					} else {
+						sendComponentResponse(ResponseStatus.NOT_OK, 0);
 					}			
 				}
 				
