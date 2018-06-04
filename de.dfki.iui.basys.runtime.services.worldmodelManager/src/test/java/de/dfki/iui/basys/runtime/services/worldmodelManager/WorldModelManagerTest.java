@@ -1,29 +1,54 @@
 package de.dfki.iui.basys.runtime.services.worldmodelManager;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.Date;
 
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.core.MediaType;
+
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.emfjson.jackson.resource.JsonResourceFactory;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import de.dfki.iui.basys.common.emf.json.BasysResourceSetImpl;
 import de.dfki.iui.basys.common.emf.json.JsonUtils;
-import de.dfki.iui.basys.model.domain.linebalancing.WMProductInstance;
-import de.dfki.iui.basys.model.domain.linebalancing.WorldModel;
-import de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingFactoryImpl;
+import de.dfki.iui.basys.model.domain.capability.CapabilityFactory;
+import de.dfki.iui.basys.model.domain.capability.MoveToLocation;
+import de.dfki.iui.basys.model.domain.order.Order;
+import de.dfki.iui.basys.model.domain.order.OrderStatus;
+import de.dfki.iui.basys.model.domain.order.OrderStatusEnum;
+import de.dfki.iui.basys.model.domain.order.impl.OrderFactoryImpl;
+import de.dfki.iui.basys.model.domain.productinstance.ProductInstance;
+import de.dfki.iui.basys.model.domain.productinstance.impl.ProductinstanceFactoryImpl;
+import de.dfki.iui.basys.model.domain.resourceinstance.GeneralCapabilityVariant;
+import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstanceFactory;
+import de.dfki.iui.basys.model.runtime.communication.Notification;
 import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.ComponentFactory;
 import de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl;
+import de.dfki.iui.basys.runtime.communication.CommFactory;
 import de.dfki.iui.basys.runtime.component.ComponentException;
-import de.dfki.iui.basys.runtime.component.device.TestDeviceComponent;
-import de.dfki.iui.basys.runtime.component.device.tecs.MirComponent;
-import de.dfki.iui.basys.runtime.services.impl.ProductInstanceManagerImpl;
-import de.dfki.iui.basys.runtime.services.impl.ResourceInstanceManagerImpl;
-import de.dfki.iui.basys.runtime.services.impl.ResourceTypeManagerImpl;
+import de.dfki.iui.basys.runtime.processcontrol.TaskDescription;
+import de.dfki.iui.basys.runtime.processcontrol.impl.CamundaTaskScheduler;
+import de.dfki.iui.basys.runtime.services.OrderManager;
+import de.dfki.iui.basys.runtime.services.ProductDefinitionManager;
+import de.dfki.iui.basys.runtime.services.ProductInstanceManager;
+import de.dfki.iui.basys.runtime.services.TopologyManager;
 import de.dfki.iui.basys.runtime.services.worldmodelManager.impl.WorldModelManagerImpl;
+import de.dfki.iui.basys.runtime.services.worldmodelManager.impl.WorldModelManagerImpl.LinebalancingAnswer;
 
 public class WorldModelManagerTest extends BaseComponentTest {
 
@@ -37,66 +62,79 @@ public class WorldModelManagerTest extends BaseComponentTest {
 		// not really needed
 	}
 
-	private ComponentConfiguration config1, config2, config3, config4, config5, config6;
-	private WorldModelManagerImpl wmm;
+	private ComponentConfiguration productInstanceManagerConfig, resourceManagerInstanceConfig, mirComponentConfig,
+			ur3ComponentConfig, worldModelManagerConfig, resourceTypeManagerConfig, orderManagerConfig;
+	private ComponentConfiguration productDefinitionManagerConfig;
 
 	@Override
 	@Before
 	public void setUp() throws Exception {
 		super.setUp();
 
-		config1 = new ComponentConfigurationImpl.Builder().componentId("product-instance-manager")
+		productInstanceManagerConfig = new ComponentConfigurationImpl.Builder().componentId("product-instance-manager")
 				.componentName("product-instance-manager").componentCategory(ComponentCategory.SERVICE_COMPONENT)
-				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.services.ProductInstanceManager")
+				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.services.impl.ProductInstanceManagerImpl")
 				.externalConnectionString(
 						"file:/" + new File(".").getAbsolutePath() + "/src/test/resources/model/model.productinstance")
 				.inChannelName("product-instance-manager#in").outChannelName("product-instance-manager#out").build();
 
-		config2 = new ComponentConfigurationImpl.Builder().componentId("resource-instance-manager")
-				.componentName("resource-instance-manager").componentCategory(ComponentCategory.SERVICE_COMPONENT)
-				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.services.RessourcetInstanceManager")
+		resourceManagerInstanceConfig = new ComponentConfigurationImpl.Builder()
+				.componentId("resource-instance-manager").componentName("resource-instance-manager")
+				.componentCategory(ComponentCategory.SERVICE_COMPONENT)
+				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.services.impl.ResourceInstanceManagerImpl")
 				.externalConnectionString(
 						"file:/" + new File(".").getAbsolutePath() + "/src/test/resources/model/model.resourceinstance")
 				.inChannelName("resource-instance-manager#in").outChannelName("resource-instance-manager#out").build();
 
-		config3 = new ComponentConfigurationImpl.Builder().componentId("_rUJzsDJhEei1p5hKOf5Slw")
+		mirComponentConfig = new ComponentConfigurationImpl.Builder().componentId("_rUJzsDJhEei1p5hKOf5Slw")
 				.componentName("My MiR 100").componentCategory(ComponentCategory.DEVICE_COMPONENT)
-				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.component.device.tecs.MirComponent")
+				.componentImplementationJavaClass(
+						"de.dfki.iui.basys.runtime.component.device.tecs.SimulatedMirComponent")
 				.inChannelName("_rUJzsDJhEei1p5hKOf5Slw#in").outChannelName("_rUJzsDJhEei1p5hKOf5Slw#out").build();
 
-		config4 = new ComponentConfigurationImpl.Builder().componentId("_jJdx4DD7EeiuBvcKgWzd3Q")
+		ur3ComponentConfig = new ComponentConfigurationImpl.Builder().componentId("_jJdx4DD7EeiuBvcKgWzd3Q")
 				.componentName("My UR3").componentCategory(ComponentCategory.DEVICE_COMPONENT)
 				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.component.device.TestDeviceComponent")
 				.inChannelName("_jJdx4DD7EeiuBvcKgWzd3Q#in").outChannelName("_jJdx4DD7EeiuBvcKgWzd3Q#out").build();
 
-		config5 = new ComponentConfigurationImpl.Builder().componentId("worldmodel-manager")
+		worldModelManagerConfig = new ComponentConfigurationImpl.Builder().componentId("worldmodel-manager")
 				.componentName("worldmodel-manager").componentCategory(ComponentCategory.SERVICE_COMPONENT)
 				.componentImplementationJavaClass(
-						"de.dfki.iui.basys.runtime.services.worldmodelManager.WorldModelManager")
+						"de.dfki.iui.basys.runtime.services.worldmodelManager.impl.WorldModelManagerImpl")
 				.externalConnectionString(
 						"file:/" + new File(".").getAbsolutePath() + "/src/test/resources/model/model.linebalancing")
 				.inChannelName("worldmodel-manager#in").outChannelName("worldmodel-manager#out").build();
 
-		config6 = new ComponentConfigurationImpl.Builder().componentId("resource-type-manager")
+		resourceTypeManagerConfig = new ComponentConfigurationImpl.Builder().componentId("resource-type-manager")
 				.componentName("resource-type-manager").componentCategory(ComponentCategory.SERVICE_COMPONENT)
-				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.services.ResourceTypeManager")
+				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.services.impl.ResourceTypeManagerImpl")
 				.externalConnectionString(
 						"file:/" + new File(".").getAbsolutePath() + "/src/test/resources/model/model.resourcetype")
 				.inChannelName("resource-type-manager#in").outChannelName("resource-type-manager#out").build();
 
-		ProductInstanceManagerImpl pim = new ProductInstanceManagerImpl(config1);
-		ResourceTypeManagerImpl rtm = new ResourceTypeManagerImpl(config6);
-		ResourceInstanceManagerImpl rim = new ResourceInstanceManagerImpl(config2);
-		MirComponent mir = new MirComponent(config3);
-		TestDeviceComponent ur3 = new TestDeviceComponent(config4);
-		wmm = new WorldModelManagerImpl(config5);
+		orderManagerConfig = new ComponentConfigurationImpl.Builder().componentId("order-manager")
+				.componentName("order-manager").componentCategory(ComponentCategory.SERVICE_COMPONENT)
+				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.services.impl.OrderManagerImpl")
+				.externalConnectionString(
+						"file:/" + new File(".").getAbsolutePath() + "/src/test/resources/model/model.order")
+				.outChannelName("order-manager#out").build();
 
-		componentManager.addLocalComponent(pim);
-		componentManager.addLocalComponent(rtm);
-		componentManager.addLocalComponent(rim);
-		componentManager.addLocalComponent(mir);
-		// componentManager.addLocalComponent(ur3);
-		componentManager.addLocalComponent(wmm);
+		productDefinitionManagerConfig = new ComponentConfigurationImpl.Builder()
+				.componentId("product-definition-manager").componentName("product-definition-manager")
+				.componentCategory(ComponentCategory.SERVICE_COMPONENT)
+				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.services.impl.ProductDefinitionManagerImpl")
+				.externalConnectionString("file:/" + new File(".").getAbsolutePath()
+						+ "/src/test/resources/model/model.productdefinition")
+				.build();
+
+		componentManager.createLocalComponent(productInstanceManagerConfig);
+		componentManager.createLocalComponent(resourceTypeManagerConfig);
+		componentManager.createLocalComponent(resourceManagerInstanceConfig);
+		componentManager.createLocalComponent(mirComponentConfig);
+		componentManager.createLocalComponent(ur3ComponentConfig);
+		componentManager.createLocalComponent(worldModelManagerConfig);
+		componentManager.createLocalComponent(orderManagerConfig);
+		componentManager.createLocalComponent(productDefinitionManagerConfig);
 
 	}
 
@@ -106,32 +144,86 @@ public class WorldModelManagerTest extends BaseComponentTest {
 		super.tearDown();
 	}
 
-	@Test
-	public void testRegisterDeviceComponentsAndList() throws ComponentException, InterruptedException, JsonProcessingException {
-		LOGGER.info("testRegisterServicesAndList - start");
+	public class LinebalancingAnswer {
 
-	//	WMProductInstance wmpi = new LinebalancingFactoryImpl().createWMProductInstance();
-	//	System.out.println(JsonUtils.toString(wmpi));
-		
-		
-		
-		WorldModel wm = wmm.getCurrentWorld();
+		@JsonProperty
+		private String resourceInstanceId;
 
-		
-			System.out.println("");
-			System.out.println("");
-
-			System.out.println("");
-			System.out.println("");
-			System.out.println(JsonUtils.toString(wm));
-			System.out.println("");
-			System.out.println("");
-			System.out.println("");
-			System.out.println("");
-
+	}
 	
+	@Test
+	public void testAddOrder() throws ComponentException, InterruptedException, JsonProcessingException {
+		LOGGER.info("testAddOrder - start");
+		
+		Thread.sleep(5000);
 
-		LOGGER.info("testServiceLifecycle - complete");
+		OrderManager om = (OrderManager) componentManager.getLocalComponentById("order-manager");
+		ProductInstanceManager pim = (ProductInstanceManager) componentManager
+				.getLocalComponentById("product-instance-manager");
+		ProductDefinitionManager pdm = (ProductDefinitionManager) componentManager
+				.getLocalComponentById("product-definition-manager");
+		ProductInstance productInstance = ProductinstanceFactoryImpl.eINSTANCE.createProductInstance();
+		productInstance.setManufacturedComponent(pdm.getProductVariant("_6odhQEjIEei9sPQ0bCp2Ew"));
+		Order order = OrderFactoryImpl.eINSTANCE.createOrder();
+		order.setManufacturedComponent(pdm.getProductVariant("_6odhQEjIEei9sPQ0bCp2Ew"));
+		order.setCustomer("CEBIT");
+		order.setDueDate(new Date(System.currentTimeMillis() + 1000 * 60 * 60));
+		order.setPriority(1);
+		String orderId = "Order" + System.currentTimeMillis();
+		order.setId(orderId);
+		order.setQuantity(1);
+		order.setStartDate(new Date(System.currentTimeMillis()));
+
+		OrderStatus orderStatus = OrderFactoryImpl.eINSTANCE.createOrderStatus();
+		orderStatus.setOrderId(orderId);
+		orderStatus.setPieceCount(0);
+		orderStatus.setStatus(OrderStatusEnum.STARTED);
+		order.setStatus(orderStatus);
+
+		productInstance.setOrder(order);
+		productInstance.setSerialNumber("ID" + System.currentTimeMillis());
+		pim.addProductInstance(productInstance);
+
+		//om.addOrder(order);
+
+		Client client = ClientBuilder.newClient();
+		/*LinebalancingAnswer lba = client.target("http://10.2.0.81:9001/services/optimizer/")
+				.request(MediaType.APPLICATION_JSON).accept("application/json")
+				.get(LinebalancingAnswer.class);
+
+		System.out.println("\n\n\n\n===============================");
+		System.out.println(lba.resourceInstanceId);
+		System.out.println("===============================\n\n\n\n");
+*/
+		CamundaTaskScheduler cts = (CamundaTaskScheduler) context.getComponentManager()
+				.getLocalComponentById("task-scheduler");
+		TopologyManager tm = (TopologyManager) context.getComponentManager()
+				.getLocalComponentById("topology-manager");
+
+		MoveToLocation moveRequest = CapabilityFactory.eINSTANCE.createMoveToLocation();
+		moveRequest.setTargetLocation(tm.getTopologyElement("_zzNG4V2TEeit97PGgoQOAQ"));
+
+		GeneralCapabilityVariant variant = ResourceinstanceFactory.eINSTANCE
+				.createGeneralCapabilityVariant();
+		variant.setCapability(moveRequest);
+
+		de.dfki.iui.basys.model.runtime.component.CapabilityRequest req = ComponentFactory.eINSTANCE
+				.createCapabilityRequest();
+		req.setCapabilityVariant(variant);
+		req.setComponentId("_rUJzsDJhEei1p5hKOf5Slw");
+
+		TaskDescription task = new TaskDescription(req);
+	/*	if (lba.resourceInstanceId.equals("_jJdx4DD7EeiuBvcKgWzd3Q")) {
+			cts.scheduleTask(task);
+		} else {
+			cts.scheduleTask(task, 10000); // TODO fine tuning
+		}
+	*/	
+		while (true) {
+			Thread.sleep(1000);
+		}
+		
+		
 	}
 
 }

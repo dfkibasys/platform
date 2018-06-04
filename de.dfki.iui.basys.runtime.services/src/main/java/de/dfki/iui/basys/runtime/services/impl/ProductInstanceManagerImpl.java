@@ -26,4 +26,10 @@ public class ProductInstanceManagerImpl extends EmfServiceComponent implements P
 		return store;
 	}
 
+	@Override
+	public void addProductInstance(ProductInstance productInstance) {
+		ProductInstanceStore store = getProductInstanceStore();
+		store.getProductInstances().add(productInstance);
+	}
+
 }

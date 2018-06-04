@@ -7,8 +7,9 @@ import javax.ws.rs.core.MediaType;
 
 import de.dfki.iui.basys.model.domain.linebalancing.StaticWorldModel;
 import de.dfki.iui.basys.model.domain.linebalancing.WorldModel;
+import de.dfki.iui.basys.model.domain.topology.TopologyElement;
 
-@Path("/worldmodel")
+@Path("/worldmodelmanager")
 public interface WorldModelManager {
 
 	@GET
@@ -20,5 +21,7 @@ public interface WorldModelManager {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/dynamic")
 	WorldModel getCurrentWorld();
+
+	long getEstimatedETA(TopologyElement sourceLocation, TopologyElement targetLocation);
 
 }
