@@ -26,7 +26,7 @@ public class YumiTestGUI {
 				.componentCategory(ComponentCategory.DEVICE_COMPONENT)
 				.externalConnectionString(String.format("tecs.tcp://%s:%s", "10.2.0.97", 8030)).build();
 		
-		YumiComponent mir100 = new YumiComponent(config);
+		YumiComponent mir100 = new YumiComponent(config, "KEY");
 		ComponentContext emptyContext = new ComponentContext.Builder().build();
 		try {
 			mir100.activate(emptyContext);
