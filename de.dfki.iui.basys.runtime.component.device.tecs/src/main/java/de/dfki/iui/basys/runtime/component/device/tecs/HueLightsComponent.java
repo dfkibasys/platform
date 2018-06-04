@@ -6,7 +6,6 @@ import org.apache.thrift.transport.TTransportException;
 import de.dfki.iui.basys.model.domain.capability.Capability;
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
 import de.dfki.iui.basys.model.domain.capability.QAVisualisationCapability;
-import de.dfki.iui.basys.model.domain.capability.SwitchConfirmationCapability;
 import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
@@ -32,7 +31,7 @@ public class HueLightsComponent extends TecsDeviceComponent {
 	@Override
 	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
 
-		CapabilityVariant<?> variant = (CapabilityVariant<?>)req.getCapabilityVariant();
+		CapabilityVariant<?> variant = req.getCapabilityVariant();
 		Capability c = variant.getCapability();
 
 		QAVisualisationCapability qaVisualisationCapability = null;

@@ -23,57 +23,59 @@ import de.dfki.tecs.Event;
 public class FrankaComponent extends TecsDeviceComponent{
 	
 	private FrankaTECS client;
+
+//	protected enum ACTION{
+//		// fill enums here
+//		;
+//		
+//		private final String action;
+//		
+//		private ACTION(String a) {
+//			action = a;
+//		}
+//		
+//		@Override
+//		public String toString() {
+//			return action;
+//		}
+//	}
+//	
+//	protected enum OBJECT_ID{
+//		// fill enums here
+//		;
+//		
+//		private final String objectId;
+//		
+//		private OBJECT_ID(String id) {
+//			objectId = id;
+//		}
+//		
+//		@Override
+//		public String toString() {
+//			return objectId;
+//		}
+//	}
+//	
+//	protected enum POSITION{
+//		//fill here
+//		;
+//		
+//		private final String position;
+//		
+//		private POSITION(String p) {
+//			position = p;
+//		}
+//		
+//		@Override
+//		public String toString() {
+//			return position;
+//		}
+//	}
 	
-	protected enum ACTION{
-		// fill enums here
-		;
-		
-		private final String action;
-		
-		private ACTION(String a) {
-			action = a;
-		}
-		
-		@Override
-		public String toString() {
-			return action;
-		}
-	}
 	
-	protected enum OBJECT_ID{
-		// fill enums here
-		;
-		
-		private final String objectId;
-		
-		private OBJECT_ID(String id) {
-			objectId = id;
-		}
-		
-		@Override
-		public String toString() {
-			return objectId;
-		}
-	}
-	
-	protected enum POSITION{
-		//fill here
-		;
-		
-		private final String position;
-		
-		private POSITION(String p) {
-			position = p;
-		}
-		
-		@Override
-		public String toString() {
-			return position;
-		}
-	}
 	
 	public FrankaComponent(ComponentConfiguration config) {
-		super(config);
+		super(config);	
 	}
 	
 	@Override
@@ -98,8 +100,10 @@ public class FrankaComponent extends TecsDeviceComponent{
 		close();
 		try {
 			open();
-			client.MoveToKnownPosition(FrankaConstants.KNOWN_POSE_1);
-			onExecute(); // block until in KnownPose1
+			if (!simulated) {
+				client.MoveToKnownPosition(FrankaConstants.KNOWN_POSE_1);
+				onExecute(); // block until in KnownPose1
+			}
 		} catch (TException e) {
 			e.printStackTrace();
 			setErrorCode(1);
@@ -110,7 +114,9 @@ public class FrankaComponent extends TecsDeviceComponent{
 	@Override
 	public void onStarting() {
 		try {
-			client.MoveToKnownPosition(FrankaConstants.KNOWN_POSE_2);
+			if (!simulated) {		
+				client.MoveToKnownPosition(FrankaConstants.KNOWN_POSE_2);
+			}
 		} catch (TException e) {
 			e.printStackTrace();
 			setErrorCode(1);
@@ -120,6 +126,10 @@ public class FrankaComponent extends TecsDeviceComponent{
 
 	@Override
 	public void onExecute() {
+		if (simulated) {
+			sleep(5);
+			return;
+		}
 		try {
 			boolean executing = true;
 			while(executing) {
@@ -189,7 +199,7 @@ public class FrankaComponent extends TecsDeviceComponent{
 
 	@Override
 	public void onClearing() {
-		// perform reconecct
+		// perform reconnect
 		close();
 		try {
 			open();

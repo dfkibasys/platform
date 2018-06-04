@@ -3,12 +3,12 @@ package de.dfki.iui.basys.runtime.component.test;
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.util.Date;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -17,12 +17,16 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import de.dfki.iui.basys.common.emf.EmfPersistence;
 import de.dfki.iui.basys.common.emf.json.JsonUtils;
 import de.dfki.iui.basys.model.domain.material.Material;
+import de.dfki.iui.basys.model.domain.order.Order;
+import de.dfki.iui.basys.model.domain.order.OrderStatus;
+import de.dfki.iui.basys.model.domain.order.OrderStatusEnum;
+import de.dfki.iui.basys.model.domain.order.impl.OrderFactoryImpl;
 import de.dfki.iui.basys.model.domain.productdefinition.MaterialEntry;
 import de.dfki.iui.basys.model.domain.resourceinstance.ManufacturingCapabilityVariant;
+import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentRequest;
 import de.dfki.iui.basys.model.runtime.component.ControlMode;
 import de.dfki.iui.basys.model.runtime.component.impl.ChangeModeRequestImpl;
-import de.dfki.iui.basys.model.util.BasysResourceImpl;
 import de.dfki.iui.basys.runtime.component.service.EmfServiceComponent;
 
 public class JsonSerializationTest {
@@ -177,79 +181,30 @@ public class JsonSerializationTest {
 		// TODO this JSON fails during parsing (sk, 30.05.2018)
 		String json4 = "{\n" + 
 				"    \"eClass\" : \"http://www.dfki.de/iui/basys/model/component#//CapabilityRequest\",\n" + 
+				"    \"componentId\" : \"\",\n" + 
 				"    \"capabilityVariant\" : {\n" + 
 				"      \"eClass\" : \"http://www.dfki.de/iui/basys/model/resourceinstance#//ManufacturingCapabilityVariant\",\n" + 
-				"      \"id\" : \"_gTSWsV-lEeixtLE-b5nbbQ\",\n" + 
-				"      \"name\" : \"Apply dark blue cap\",\n" + 
+				"      \"id\" : \"_gTTk01-lEeixtLE-b5nbbQ\",\n" + 
+				"      \"name\" : \"Apply light blue cap\",\n" + 
 				"      \"capability\" : {\n" + 
 				"        \"eClass\" : \"http://www.dfki.de/iui/basys/model/capability#//PickAndPlace\",\n" + 
-				"        \"id\" : \"_xio67l8yEeiUo-65_7rTBQ\",\n" + 
+				"        \"id\" : \"_xio67l8yEeiUo-65_7rTBT\",\n" + 
 				"        \"loadCarrierUnit\" : \"MATERIAL\"\n" + 
 				"      },\n" + 
 				"      \"appliedOn\" : [ {\n" + 
 				"        \"eClass\" : \"http://www.dfki.de/iui/basys/model/productdefinition#//MaterialEntry\",\n" + 
-				"        \"id\" : \"_IpqbzV29EeixDOGCyjgf_g\",\n" + 
-				"        \"material\" : {\n" + 
-				"          \"eClass\" : \"http://www.dfki.de/iui/basys/model/material#//Material\",\n" + 
-				"          \"id\" : \"_Ecka12QAEei-E8pQkAQC4Q\"\n" + 
-				"        }\n" + 
+				"        \"$ref\" : \"http://localhost:8080/services/entity/_IpqbzV29EeixDOGCyjgf_g\"\n" + 
 				"      }, {\n" + 
 				"        \"eClass\" : \"http://www.dfki.de/iui/basys/model/productdefinition#//AssemblyGroupEntry\",\n" + 
-				"        \"id\" : \"_IpqbzF29EeixDOGCyjgf_g\",\n" + 
-				"        \"assemblyGroup\" : {\n" + 
-				"          \"id\" : \"_lGGrsUjLEei9sPQ0bCp2Ew\",\n" + 
-				"          \"name\" : \"HousingWithAbsorber\",\n" + 
-				"          \"bom\" : {\n" + 
-				"            \"id\" : \"_oPgFkEjLEei9sPQ0bCp2Ew\",\n" + 
-				"            \"entries\" : [ {\n" + 
-				"              \"eClass\" : \"http://www.dfki.de/iui/basys/model/productdefinition#//AssemblyGroupEntry\",\n" + 
-				"              \"id\" : \"_IpqbxV29EeixDOGCyjgf_g\",\n" + 
-				"              \"assemblyGroup\" : {\n" + 
-				"                \"id\" : \"_tZoTAUjJEei9sPQ0bCp2Ew\",\n" + 
-				"                \"name\" : \"Housing\",\n" + 
-				"                \"bom\" : {\n" + 
-				"                  \"id\" : \"_ImdecEjPEeiKNvOOp20QBg\",\n" + 
-				"                  \"entries\" : [ {\n" + 
-				"                    \"eClass\" : \"http://www.dfki.de/iui/basys/model/productdefinition#//MaterialEntry\",\n" + 
-				"                    \"id\" : \"_IpomkF29EeixDOGCyjgf_g\",\n" + 
-				"                    \"material\" : {\n" + 
-				"                      \"eClass\" : \"http://www.dfki.de/iui/basys/model/material#//Material\",\n" + 
-				"                      \"id\" : \"_Ecka42QAEei-E8pQkAQC4Q\"\n" + 
-				"                    }\n" + 
-				"                  }, {\n" + 
-				"                    \"eClass\" : \"http://www.dfki.de/iui/basys/model/productdefinition#//MaterialEntry\",\n" + 
-				"                    \"id\" : \"_IpqbwV29EeixDOGCyjgf_g\",\n" + 
-				"                    \"material\" : {\n" + 
-				"                      \"eClass\" : \"http://www.dfki.de/iui/basys/model/material#//Material\",\n" + 
-				"                      \"id\" : \"_Ecka5WQAEei-E8pQkAQC4Q\"\n" + 
-				"                    }\n" + 
-				"                  } ]\n" + 
-				"                }\n" + 
-				"              }\n" + 
-				"            }, {\n" + 
-				"              \"eClass\" : \"http://www.dfki.de/iui/basys/model/productdefinition#//MaterialEntry\",\n" + 
-				"              \"id\" : \"_Ipqbxl29EeixDOGCyjgf_g\",\n" + 
-				"              \"material\" : {\n" + 
-				"                \"eClass\" : \"http://www.dfki.de/iui/basys/model/material#//Material\",\n" + 
-				"                \"id\" : \"_Ecka6mQAEei-E8pQkAQC4Q\"\n" + 
-				"              }\n" + 
-				"            }, {\n" + 
-				"              \"eClass\" : \"http://www.dfki.de/iui/basys/model/productdefinition#//MaterialEntry\",\n" + 
-				"              \"id\" : \"_IpqbyF29EeixDOGCyjgf_g\",\n" + 
-				"              \"count\" : 4,\n" + 
-				"              \"material\" : {\n" + 
-				"                \"eClass\" : \"http://www.dfki.de/iui/basys/model/material#//Material\",\n" + 
-				"                \"id\" : \"_Ecka7GQAEei-E8pQkAQC4Q\"\n" + 
-				"              }\n" + 
-				"            } ]\n" + 
-				"          }\n" + 
-				"        }\n" + 
+				"        \"$ref\" : \"http://localhost:8080/services/entity/_IpqbzF29EeixDOGCyjgf_g\"\n" + 
 				"      } ]\n" + 
 				"    }\n" + 
 				"  }";
 		
 		try {
 
+			
+			
 //			ResourceSet rs = EmfServiceComponent.createResourceSet();
 //			BasysResourceImpl r = new BasysResourceImpl(URI.createURI("http://localhost:8080/services/entity"));
 //			
@@ -276,6 +231,76 @@ public class JsonSerializationTest {
 		
 	
 	}
+
+	@Test
+	public void testDeserializeCapabilityRequest() {
 	
+		// TODO this JSON fails during parsing (sk, 30.05.2018)
+		String json = "{\n" + 
+				"    \"eClass\" : \"http://www.dfki.de/iui/basys/model/component#//CapabilityRequest\",\n" + 
+				"    \"componentId\" : \"\",\n" + 
+				"    \"capabilityVariant\" : {\n" + 
+				"      \"eClass\" : \"http://www.dfki.de/iui/basys/model/resourceinstance#//ManufacturingCapabilityVariant\",\n" + 
+				"      \"id\" : \"_gTTk01-lEeixtLE-b5nbbQ\",\n" + 
+				"      \"name\" : \"Apply light blue cap\",\n" + 
+				"      \"capability\" : {\n" + 
+				"        \"eClass\" : \"http://www.dfki.de/iui/basys/model/capability#//PickAndPlace\",\n" + 
+				"        \"id\" : \"_xio67l8yEeiUo-65_7rTBT\",\n" + 
+				"        \"loadCarrierUnit\" : \"MATERIAL\"\n" + 
+				"      },\n" + 
+				"      \"appliedOn\" : [ {\n" + 
+				"        \"eClass\" : \"http://www.dfki.de/iui/basys/model/productdefinition#//MaterialEntry\",\n" + 
+				"        \"$ref\" : \"http://localhost:8080/services/entity/_IpqbzV29EeixDOGCyjgf_g\"\n" + 
+				"      }, {\n" + 
+				"        \"eClass\" : \"http://www.dfki.de/iui/basys/model/productdefinition#//AssemblyGroupEntry\",\n" + 
+				"        \"$ref\" : \"http://localhost:8080/services/entity/_IpqbzF29EeixDOGCyjgf_g\"\n" + 
+				"      } ]\n" + 
+				"    }\n" + 
+				"  }";
+		
+		try {
+
+			
+
+			CapabilityRequest req = JsonUtils.fromString(json, CapabilityRequest.class);
+			
+			System.out.println(req);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	
+	}
+	
+	@Test
+	public void testDeserializeOrder() {
+	
+	
+		Order order = OrderFactoryImpl.eINSTANCE.createOrder();
+		order.setCustomer("CEBIT");
+		order.setDueDate(new Date(System.currentTimeMillis() + 1000 * 60 * 60));
+		order.setPriority(1);
+		String orderId = "Order" + System.currentTimeMillis();
+		order.setId(orderId);
+		order.setQuantity(1);
+		order.setStartDate(new Date(System.currentTimeMillis()));
+
+		OrderStatus orderStatus = OrderFactoryImpl.eINSTANCE.createOrderStatus();
+		orderStatus.setOrderId(orderId);
+		orderStatus.setPieceCount(0);
+		orderStatus.setStatus(OrderStatusEnum.STARTED);
+		order.setStatus(orderStatus);
+
+		try {
+		
+			String orderString = JsonUtils.toString(order);	
+			EObject o = JsonUtils.fromString(orderString, EObject.class);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	
 }

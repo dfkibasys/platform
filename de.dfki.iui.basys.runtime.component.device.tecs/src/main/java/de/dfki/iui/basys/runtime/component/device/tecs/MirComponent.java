@@ -27,7 +27,7 @@ import de.dfki.iui.basys.runtime.communication.CommFactory;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
-import de.dfki.iui.basys.runtime.services.worldmodelManager.WorldModelManager;
+//import de.dfki.iui.basys.runtime.services.worldmodelManager.WorldModelManager;
 import de.dfki.iui.hrc.general3d.Point3d;
 import de.dfki.iui.hrc.general3d.Pose;
 import de.dfki.iui.hrc.generalrobots.KnownPositions;
@@ -46,7 +46,7 @@ public class MirComponent extends TecsDeviceComponent {
 	protected MirTECS client;
 	private double mETA;
 	private TopologyElement mTargetLocation;
-	private WorldModelManager mWorldModelManager;
+	//private WorldModelManager mWorldModelManager;
 	private TopologyElement mSourceLocation;
 	private long mEstimatedETA;
 	private Thread mETAThread;
@@ -73,7 +73,7 @@ public class MirComponent extends TecsDeviceComponent {
 	@Override
 	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
 
-		CapabilityVariant<?> c = (CapabilityVariant<?>) req.getCapabilityVariant();
+		CapabilityVariant<?> c = req.getCapabilityVariant();
 		TopologyElement te = null;
 		if (c.eClass().equals(CapabilityPackage.eINSTANCE.getMoveToLocation())) {
 			te = ((MoveToLocation) c.getCapability()).getTargetLocation();
@@ -219,42 +219,42 @@ public class MirComponent extends TecsDeviceComponent {
 	public void onStarting() {
 		TopologyElement targetElement = ((TopologyElement) getUnitConfig().getPayload());
 
-		mMoving = true;
+		//mMoving = true;
 		try {
 
-			if (mWorldModelManager == null) {
-				mWorldModelManager = ((WorldModelManager) context.getComponentManager()
-						.getLocalComponentById("worldmodel-manager"));
-			}
-
-			mEstimatedETA = mWorldModelManager.getEstimatedETA(mSourceLocation, mTargetLocation);
-			mETAThread = new Thread(new Runnable() {
-
-				@Override
-				public void run() {
-
-					while (mMoving) {
-						Property prop = componentConfig.getProperty("estimatedETA");
-						if (prop == null) {
-							prop = new ComponentFactoryImpl().createProperty();
-							prop.setKey("estimatedETA");
-							componentConfig.getProperties().add(prop);
-						}
-
-						prop.setValue(mEstimatedETA + "");
-						mEstimatedETA -= 1000;
-						if (mEstimatedETA <= 0) {
-							mEstimatedETA = 1;
-						}
-						try {
-							Thread.sleep(1000);
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
-					}
-				}
-			});
-			mETAThread.start();
+//			if (mWorldModelManager == null) {
+//				mWorldModelManager = ((WorldModelManager) context.getComponentManager()
+//						.getLocalComponentById("worldmodel-manager"));
+//			}
+//
+//			mEstimatedETA = mWorldModelManager.getEstimatedETA(mSourceLocation, mTargetLocation);
+//			mETAThread = new Thread(new Runnable() {
+//
+//				@Override
+//				public void run() {
+//
+//					while (mMoving) {
+//						Property prop = componentConfig.getProperty("estimatedETA");
+//						if (prop == null) {
+//							prop = new ComponentFactoryImpl().createProperty();
+//							prop.setKey("estimatedETA");
+//							componentConfig.getProperties().add(prop);
+//						}
+//
+//						prop.setValue(mEstimatedETA + "");
+//						mEstimatedETA -= 1000;
+//						if (mEstimatedETA <= 0) {
+//							mEstimatedETA = 1;
+//						}
+//						try {
+//							Thread.sleep(1000);
+//						} catch (InterruptedException e) {
+//							e.printStackTrace();
+//						}
+//					}
+//				}
+//			});
+//			mETAThread.start();
 
 			client.gotoNamedPosition(targetElement.getName());
 
@@ -334,7 +334,7 @@ public class MirComponent extends TecsDeviceComponent {
 		// mir is in the position
 
 		mSourceLocation = mTargetLocation;
-		mMoving = false;
+		//mMoving = false;
 		try {
 			mETAThread.join();
 		} catch (InterruptedException e) {

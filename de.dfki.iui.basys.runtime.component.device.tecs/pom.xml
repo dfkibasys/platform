@@ -45,11 +45,35 @@
 			<scope>test</scope>
 		</dependency>
 		
-        <dependency>
+    <!--     <dependency>
             <groupId>de.dfki.iui</groupId>
             <artifactId>libHRC</artifactId>
             <version>0.4.0-SNAPSHOT</version>
-	    </dependency>
+	    </dependency> -->
+	
+		<dependency>
+			<groupId>de.dfki.iui.basys.build.wrapper-bundle-settings</groupId>
+			<artifactId>org.apache.httpcomponents.httpcore</artifactId>
+			<version>4.4.1-001-SNAPSHOT</version>			
+		</dependency>
+		
+		<dependency>
+			<groupId>de.dfki.iui.basys.build.wrapper-bundle-settings</groupId>
+			<artifactId>org.apache.httpcomponents.httpclient</artifactId>
+			<version>4.4.1-001-SNAPSHOT</version>			
+		</dependency>		
+	
+		<dependency>
+			<groupId>de.dfki.iui.basys.build.wrapper-bundle-settings</groupId>
+			<artifactId>de.dfki.iui.libHRC</artifactId>
+			<version>0.0.4-001-SNAPSHOT</version>			
+		</dependency>
+		
+		<dependency>
+			<groupId>de.dfki.iui.basys.build.wrapper-bundle-settings</groupId>
+			<artifactId>de.dfki.tecs.libtecs</artifactId>
+			<version>2.0.6-001-SNAPSHOT</version>			
+		</dependency>
 	
 	    <dependency>
             <groupId>org.apache.thrift</groupId>
@@ -64,7 +88,7 @@
 	    </dependency>
 	
 	
-		<dependency>
+<!-- 		<dependency>
 			<groupId>de.dfki.tecs</groupId>
 			<artifactId>libtecs</artifactId>
 			<version>2.0.6</version>
@@ -74,20 +98,33 @@
 					<artifactId>slf4j-api</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency>
-        
+		</dependency> -->
+<!--         
         <dependency>
     		<groupId>de.dfki.iui</groupId>
-    		<artifactId>hue-api</artifactId>
+    		<artifactId>de.dfki.iui.hue-api</artifactId>
     		<version>1.0.0-SNAPSHOT</version>
 		</dependency>	
 		
 		<dependency>
     		<groupId>de.dfki.iui</groupId>
-    		<artifactId>hue-thrift-service</artifactId>
+    		<artifactId>de.dfki.iui.hue-thrift-service</artifactId>
     		<version>1.0.0-SNAPSHOT</version>
 		</dependency>	
-
+ -->
+         <dependency>
+    		<groupId>de.dfki.iui.basys.build.wrapper-bundle-settings</groupId>
+    		<artifactId>de.dfki.iui.hue-api</artifactId>
+    		<version>1.0.0-001-SNAPSHOT</version>
+		</dependency>	
+		
+		<dependency>
+    		<groupId>de.dfki.iui.basys.build.wrapper-bundle-settings</groupId>
+    		<artifactId>de.dfki.iui.hue-thrift-service</artifactId>
+    		<version>1.0.0-001-SNAPSHOT</version>
+		</dependency>	
+ 
+ 
 		<!-- comment to remove all imported (non-local) bundles from your compilation 
 			classpath -->
 		<dependency>

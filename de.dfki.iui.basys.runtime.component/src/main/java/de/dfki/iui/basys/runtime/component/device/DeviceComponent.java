@@ -48,10 +48,15 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 
 	protected boolean resetOnComplete, resetOnStopped = false;
 	
+	protected boolean simulated = false;
+	
 	protected ComponentRequest pendingRequest;
 
 	public DeviceComponent(ComponentConfiguration config) {
 		super(config);
+		if (config.getProperty("simulated") != null) {
+			simulated = Boolean.parseBoolean(config.getProperty("simulated").getValue());
+		}
 	}
 
 	@Override
