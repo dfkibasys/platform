@@ -4,7 +4,7 @@
     <resourceType href="model.resourcetype#_yIFSQjB3Eei1bbwBPPZWOA"/>
     <capabilityApplications>
       <capabilityAssertion href="model.resourcetype#_syqRQEjXEei9gKvc5bxWyQ"/>
-      <capabilityVariants>
+      <capabilityVariants id="_cMfik2fLEeisSslY1xa-_A">
         <capability xsi:type="capability:Pressing" id="_2BKRBlNzEeiceaq8G123Yg"/>
       </capabilityVariants>
     </capabilityApplications>
@@ -14,7 +14,7 @@
     <resourceType href="model.resourcetype#_Hi37STD5EeiuBvcKgWzd3Q"/>
     <capabilityApplications>
       <capabilityAssertion href="model.resourcetype#_jNgp8FNhEeibbdo05KXxGQ"/>
-      <capabilityVariants>
+      <capabilityVariants id="_cMgJoWfLEeisSslY1xa-_A">
         <capability xsi:type="capability:PickAndPlace" id="_BJmlHlN0Eeiceaq8G123Yg"/>
       </capabilityVariants>
     </capabilityApplications>
@@ -23,7 +23,7 @@
     <resourceType href="model.resourcetype#_Jve8yTD5EeiuBvcKgWzd3Q"/>
     <capabilityApplications>
       <capabilityAssertion href="model.resourcetype#_jNgp8FNxEeibbdo05KXzGQ"/>
-      <capabilityVariants>
+      <capabilityVariants id="_cMgJpmfLEeisSslY1xa-_A">
         <capability xsi:type="capability:PickAndPlace" id="_Cs7ZDlN0Eeiceaq8G123Yg"/>
       </capabilityVariants>
     </capabilityApplications>
@@ -32,7 +32,7 @@
     <resourceType href="model.resourcetype#_LILOCTD5EeiuBvcKgWzd3Q"/>
     <capabilityApplications>
       <capabilityAssertion href="model.resourcetype#_jNgp8FNhEexbbdo05KXzGQ"/>
-      <capabilityVariants>
+      <capabilityVariants id="_cMgJq2fLEeisSslY1xa-_A">
         <capability xsi:type="capability:PickAndPlace" id="_DmwkDlN0Eeiceaq8G123Yg"/>
       </capabilityVariants>
     </capabilityApplications>
@@ -41,7 +41,7 @@
     <resourceType href="model.resourcetype#_Vvb1uTD7EeiuBvcKgWzd3Q"/>
     <capabilityApplications>
       <capabilityAssertion href="model.resourcetype#_jNgx8FNhEeibbdo05KXzGQ"/>
-      <capabilityVariants>
+      <capabilityVariants id="_cMgJsGfLEeisSslY1xa-_A">
         <capability xsi:type="capability:PickAndPlace" id="_EPibTlN0Eeiceaq8G123Yg"/>
       </capabilityVariants>
     </capabilityApplications>
@@ -50,7 +50,7 @@
     <resourceType href="model.resourcetype#_NnuuyTD7EeiuBvcKgWzd3Q"/>
     <capabilityApplications>
       <capabilityAssertion href="model.resourcetype#_jNg99FNhEeibbdo05KXzGQ"/>
-      <capabilityVariants>
+      <capabilityVariants id="_cMgJtWfLEeisSslY1xa-_A">
         <capability xsi:type="capability:PickAndPlace" id="_EzBi3lN0Eeiceaq8G123Yg"/>
       </capabilityVariants>
     </capabilityApplications>
@@ -59,7 +59,7 @@
     <resourceType href="model.resourcetype#_0xCaqTD9EeiuBvcKgWzd3Q"/>
     <capabilityApplications>
       <capabilityAssertion href="model.resourcetype#_jNgp8FNhEeibbdo05KXzGQ"/>
-      <capabilityVariants>
+      <capabilityVariants id="_cMgJumfLEeisSslY1xa-_A">
         <capability xsi:type="capability:PickAndPlace" id="_GYV63lN0Eeiceaq8G123Yg"/>
       </capabilityVariants>
     </capabilityApplications>
@@ -68,7 +68,7 @@
     <resourceType href="model.resourcetype#_ZRW8sjJhEei1p5hKOf5Slw"/>
     <capabilityApplications>
       <capabilityAssertion href="model.resourcetype#_vmBh8FNlEei1Nvtoff5AwQ"/>
-      <capabilityVariants>
+      <capabilityVariants id="_cMgJv2fLEeisSslY1xa-_A">
         <capability xsi:type="capability:Transport" id="_G54hr1N0Eeiceaq8G123Yg"/>
       </capabilityVariants>
     </capabilityApplications>
@@ -76,14 +76,14 @@
   <resourceInstances id="_PwPREFIxEeidSe5vp9A3oA" name="My Button">
     <resourceType href="model.resourcetype#_GHTn8lIxEeidSe5vp9A3oA"/>
     <capabilityApplications>
-      <capabilityVariants/>
+      <capabilityVariants id="_cMgwsmfLEeisSslY1xa-_A"/>
     </capabilityApplications>
     <role href="model.topology#_rcKlkFIxEeidSe5vp9A3oA"/>
   </resourceInstances>
   <resourceInstances binding="" id="_RtlHgFIxEeidSe5vp9A3oA" name="My Laser">
     <resourceType href="model.resourcetype#_BcwkYlIxEeidSe5vp9A3oA"/>
     <capabilityApplications>
-      <capabilityVariants/>
+      <capabilityVariants id="_cMgwtmfLEeisSslY1xa-_A"/>
     </capabilityApplications>
     <role href="model.topology#_gUuXFFIxEeidSe5vp9A3oA"/>
   </resourceInstances>

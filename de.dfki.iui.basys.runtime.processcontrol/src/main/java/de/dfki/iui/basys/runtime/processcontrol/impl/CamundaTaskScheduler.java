@@ -28,7 +28,8 @@ import de.dfki.iui.basys.runtime.processcontrol.TaskScheduler;
 public class CamundaTaskScheduler extends ServiceComponent implements TaskScheduler {
 
 	CamundaRestClient client;
-	//private final LinkedBlockingDeque<TaskInstanceDto> taskInstances = new LinkedBlockingDeque<>();
+	// private final LinkedBlockingDeque<TaskInstanceDto> taskInstances = new
+	// LinkedBlockingDeque<>();
 
 	ScheduledExecutorService executor = Executors.newScheduledThreadPool(50000);
 	
@@ -44,17 +45,17 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 	public void activate(ComponentContext context) throws ComponentException {
 		super.activate(context);
 		executor.scheduleWithFixedDelay(new Runnable() {
-			
+
 			@Override
 			public void run() {
 				pollCamunda();
-				
+
 			}
 		}, asyncResponseTimeout, 1000, TimeUnit.MILLISECONDS);
 	}
-	
+
 	@Override
-	public void deactivate() throws ComponentException {	
+	public void deactivate() throws ComponentException {
 		super.deactivate();
 
 		try {
@@ -80,8 +81,8 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 	private void pollCamunda() {
 
 		LOGGER.debug("pollCamunda");
-		
-		//long lockDuration = 24 * 60 * 60 * 1000;
+
+		// long lockDuration = 24 * 60 * 60 * 1000;
 		long lockDuration = 2 * 60 * 1000;
 		List<ExternalServiceTaskDto> tasks = client.getExternalTasks("BasysTask", 5, lockDuration, asyncResponseTimeout, "assignee", "command", "parameters");
 
@@ -94,27 +95,43 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 				client.handleError(task.id, "ExternalTask does not contain a command", 0, 1000);
 				continue;
 			}
-//			if (task.variables.parameters == null || task.variables.parameters.value == null) {
-//				client.handleError(task.id, "ExternalTask does not contain parameters", 0, 1000);
-//				continue;
-//			}
-						 
+			// if (task.variables.parameters == null || task.variables.parameters.value ==
+			// null) {
+			// client.handleError(task.id, "ExternalTask does not contain parameters", 0,
+			// 1000);
+			// continue;
+			// }
+
 			try {
-				ComponentRequest request = JsonUtils.fromString(task.variables.command.value, ComponentRequest.class);				
+				ComponentRequest request = JsonUtils.fromString(task.variables.command.value, ComponentRequest.class);
 				if (task.variables.assignee != null || task.variables.assignee.value != null) {
-					request.setComponentId(task.variables.assignee.value);				
+					request.setComponentId(task.variables.assignee.value);
 				}
-				scheduleTask(new TaskDescription(request, task.id));	
+				scheduleTask(new TaskDescription(request, task.id));
 			} catch (IOException e) {
 				e.printStackTrace();
-			}							
+			}
 
 		}
 	}
-    
+
 	/*
 	 * TaskScheduler interface
 	 */
+
+	@Override
+	public void scheduleTask(TaskDescription task, long delay) {
+
+		executor.schedule(new Runnable() {
+
+			@Override
+			public void run() {
+				scheduleTask(task);
+
+			}
+		}, delay, TimeUnit.MILLISECONDS);
+
+	}
 
 	@Override
 	public CompletableFuture<ComponentResponse> scheduleTask(TaskDescription task) {
@@ -132,11 +149,10 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 				}
 			}
 			return ts.getResponse();
-		});		
+		});
 		return cf;
 	}
-	
-	
+
 	@Override
 	public Response handleRequest(Channel channel, Request req) {
 		String payload = req.getPayload();
@@ -148,51 +164,53 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 		} catch (IOException | InterruptedException | ExecutionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			res.setPayload(e.getMessage());			
+			res.setPayload(e.getMessage());
 		}
 		return res;
 	}
-	
+
 	@Override
 	public void handleNotification(Channel channel, Notification not) {
 		try {
-			ComponentRequest request = JsonUtils.fromString(not.getPayload(),ComponentRequest.class);
-			scheduleTask(new TaskDescription(request, null));	
+			ComponentRequest request = JsonUtils.fromString(not.getPayload(), ComponentRequest.class);
+			scheduleTask(new TaskDescription(request, null));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-//	public CompletableFuture<ComponentResponse> scheduleTaskAlternative(ComponentRequest request, String correlationId) {
-//		LOGGER.debug("scheduleTaskAlternative");
-//		
-//		TaskExecutor2 ce = new TaskExecutor2(request);
-//		ComponentResponse response = ce.execute(context);
-//		
-//		CompletableFuture<ComponentResponse> cf = CompletableFuture.supplyAsync(() -> {
-//			ce.execute(context);
-//			return ce.getTask().getResponse();
-//		}, executor);
-//		return cf;
-//	}
+	// public CompletableFuture<ComponentResponse>
+	// scheduleTaskAlternative(ComponentRequest request, String correlationId) {
+	// LOGGER.debug("scheduleTaskAlternative");
+	//
+	// TaskExecutor2 ce = new TaskExecutor2(request);
+	// ComponentResponse response = ce.execute(context);
+	//
+	// CompletableFuture<ComponentResponse> cf = CompletableFuture.supplyAsync(() ->
+	// {
+	// ce.execute(context);
+	// return ce.getTask().getResponse();
+	// }, executor);
+	// return cf;
+	// }
 
-//	@Override
-//	public TaskInstance getTaskInstance(String taskInstanceId) {
-//		
-//		return null;
-//	}
-//
-//	@Override
-//	public void deleteTaskInstance(String taskInstanceId) {
-//		
-//
-//	}
-//
-//	@Override
-//	public List<TaskInstance> getTaskInstances() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+	// @Override
+	// public TaskInstance getTaskInstance(String taskInstanceId) {
+	//
+	// return null;
+	// }
+	//
+	// @Override
+	// public void deleteTaskInstance(String taskInstanceId) {
+	//
+	//
+	// }
+	//
+	// @Override
+	// public List<TaskInstance> getTaskInstances() {
+	// // TODO Auto-generated method stub
+	// return null;
+	// }
 
 }

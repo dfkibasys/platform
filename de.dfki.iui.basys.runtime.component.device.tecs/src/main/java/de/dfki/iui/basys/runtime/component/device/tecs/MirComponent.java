@@ -27,6 +27,7 @@ import de.dfki.iui.basys.runtime.communication.CommFactory;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
+import de.dfki.iui.basys.runtime.services.worldmodelManager.WorldModelManager;
 import de.dfki.iui.hrc.general3d.Point3d;
 import de.dfki.iui.hrc.general3d.Pose;
 import de.dfki.iui.hrc.generalrobots.KnownPositions;
@@ -45,6 +46,11 @@ public class MirComponent extends TecsDeviceComponent {
 	protected MirTECS client;
 	private double mETA;
 	private TopologyElement mTargetLocation;
+	private WorldModelManager mWorldModelManager;
+	private TopologyElement mSourceLocation;
+	private long mEstimatedETA;
+	private Thread mETAThread;
+	protected boolean mMoving;
 
 	public MirComponent(ComponentConfiguration config) {
 		super(config);
@@ -53,10 +59,8 @@ public class MirComponent extends TecsDeviceComponent {
 	@Override
 	public void activate(ComponentContext context) throws ComponentException {
 		super.activate(context);
-		String[] subscribeTo = new String[3];
+		String[] subscribeTo = new String[1];
 		subscribeTo[0] = "MIRPathEvent";
-		subscribeTo[1] = "MIRPoseEvent";
-		subscribeTo[2] = "MIRStatusEvent";
 		connectToTecs("robot-mir-01", subscribeTo, "tecs", 9000);
 	}
 
@@ -74,21 +78,19 @@ public class MirComponent extends TecsDeviceComponent {
 		if (c.eClass().equals(CapabilityPackage.eINSTANCE.getMoveToLocation())) {
 			te = ((MoveToLocation) c.getCapability()).getTargetLocation();
 
-			if (mTargetLocation != null) {
-				Property p = componentConfig.getProperty("sourceLocation");
-				if (p == null) {
-					p = new ComponentFactoryImpl().createProperty();
-					p.setKey("sourceLocation");
-					componentConfig.getProperties().add(p);
-				}
-				try {
-					p.setValue(JsonUtils.toString(mTargetLocation));
-				} catch (JsonProcessingException e1) {
-					e1.printStackTrace();
-				}
+			Property p = componentConfig.getProperty("sourceLocation");
+			if (p == null) {
+				p = new ComponentFactoryImpl().createProperty();
+				p.setKey("sourceLocation");
+				componentConfig.getProperties().add(p);
+			}
+			try {
+				p.setValue(JsonUtils.toString(mSourceLocation));
+			} catch (JsonProcessingException e1) {
+				e1.printStackTrace();
 			}
 
-			Property p = componentConfig.getProperty("targetLocation");
+			p = componentConfig.getProperty("targetLocation");
 			if (p == null) {
 				p = new ComponentFactoryImpl().createProperty();
 				p.setKey("targetLocation");
@@ -217,7 +219,43 @@ public class MirComponent extends TecsDeviceComponent {
 	public void onStarting() {
 		TopologyElement targetElement = ((TopologyElement) getUnitConfig().getPayload());
 
+		mMoving = true;
 		try {
+
+			if (mWorldModelManager == null) {
+				mWorldModelManager = ((WorldModelManager) context.getComponentManager()
+						.getLocalComponentById("worldmodel-manager"));
+			}
+
+			mEstimatedETA = mWorldModelManager.getEstimatedETA(mSourceLocation, mTargetLocation);
+			mETAThread = new Thread(new Runnable() {
+
+				@Override
+				public void run() {
+
+					while (mMoving) {
+						Property prop = componentConfig.getProperty("estimatedETA");
+						if (prop == null) {
+							prop = new ComponentFactoryImpl().createProperty();
+							prop.setKey("estimatedETA");
+							componentConfig.getProperties().add(prop);
+						}
+
+						prop.setValue(mEstimatedETA + "");
+						mEstimatedETA -= 1000;
+						if (mEstimatedETA <= 0) {
+							mEstimatedETA = 1;
+						}
+						try {
+							Thread.sleep(1000);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+					}
+				}
+			});
+			mETAThread.start();
+
 			client.gotoNamedPosition(targetElement.getName());
 
 			String payload = JsonUtils.toString(targetElement);
@@ -240,7 +278,7 @@ public class MirComponent extends TecsDeviceComponent {
 			while (executing) {
 				CommandResponse cs = client.getCommandState();
 				String robotState = client.getRobotState();
-				
+
 				if (robotState.equals("Error") || robotState.equals("Manual")) {
 					executing = false;
 					setErrorCode(1);
@@ -264,10 +302,10 @@ public class MirComponent extends TecsDeviceComponent {
 					executing = false;
 					break;
 				case PAUSED:
-					/* what to do */ 
+					/* what to do */
 					break;
 				case READY:
-					/* what to do */ 
+					/* what to do */
 					break;
 				case REJECTED:
 					executing = false;
@@ -293,7 +331,23 @@ public class MirComponent extends TecsDeviceComponent {
 
 	@Override
 	public void onCompleting() {
-		// mir is in the position. nothing to do
+		// mir is in the position
+
+		mSourceLocation = mTargetLocation;
+		mMoving = false;
+		try {
+			mETAThread.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		Property prop = componentConfig.getProperty("estimatedETA");
+		if (prop == null) {
+			prop = new ComponentFactoryImpl().createProperty();
+			prop.setKey("estimatedETA");
+			componentConfig.getProperties().add(prop);
+		}
+
+		prop.setValue("0");
 
 		// send response to basys (dp)
 		// TODO: move to base class DeviceComponent
@@ -302,7 +356,6 @@ public class MirComponent extends TecsDeviceComponent {
 
 	@Override
 	public void onStopping() {
-		mTargetLocation = null;
 		sendComponentResponse(ResponseStatus.NOT_OK, getErrorCode());
 		try {
 			client.stopMovement();
@@ -326,7 +379,7 @@ public class MirComponent extends TecsDeviceComponent {
 		} catch (TTransportException e1) {
 			e1.printStackTrace();
 		}
-		
+
 		// clear the error and set mir in a ready status
 		try {
 			client.setState(MIRState.Ready);
