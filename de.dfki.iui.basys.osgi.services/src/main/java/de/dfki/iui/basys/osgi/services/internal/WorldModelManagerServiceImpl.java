@@ -12,6 +12,7 @@ import org.osgi.service.component.annotations.Reference;
 
 import de.dfki.iui.basys.model.domain.linebalancing.StaticWorldModel;
 import de.dfki.iui.basys.model.domain.linebalancing.WorldModel;
+import de.dfki.iui.basys.model.domain.topology.TopologyElement;
 import de.dfki.iui.basys.osgi.services.BasysOsgiComponent;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManager;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManagerException;
@@ -77,6 +78,12 @@ public final class WorldModelManagerServiceImpl extends BasysOsgiComponent imple
 	@Override
 	public StaticWorldModel getStaticWorld() {
 		return impl.getStaticWorld();
+	}
+
+	@Override
+	public long getEstimatedETA(TopologyElement sourceLocation, TopologyElement targetLocation) {
+
+		return impl.getEstimatedETA(sourceLocation, targetLocation);
 	}
 
 }
