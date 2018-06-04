@@ -121,6 +121,10 @@ public class SiAMServiceComponent extends TecsServiceComponent{
 	 * Send 'performDeliveryDialog' as payload to trigger the performDeliveryDialog method.
 	 * 
 	 * handleRequest will wait until the triggered Method is finished to send a response back.
+	 * Returns an 'Error' as payload when an error occurs.
+	 * Returns "OK performColaDialog" as payload if performColaDialog is called and finished.
+	 * Returns "OK performIntentionDialog" as payload if performIntentionDialog is called and finished.
+	 * Returns "OK performDeliveryDialog" as payload if performDeliveryDialog is called and finished.
 	 */
 	@Override
 	public Response handleRequest(Channel channel, Request req) {
