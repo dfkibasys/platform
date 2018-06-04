@@ -3,8 +3,12 @@
   "componentCategory" : "DEVICE_COMPONENT",
   "componentId" : "_I4a_oDD-EeiuBvcKgWzd3Q",
   "componentName" : "My Panda",
-  "componentImplementationJavaClass" : "de.dfki.iui.basys.runtime.component.device.TestDeviceComponent",
+  "componentImplementationJavaClass" : "de.dfki.iui.basys.runtime.component.device.tecs.FrankaComponent",
   "inChannelName" : "_I4a_oDD-EeiuBvcKgWzd3Q#in",
   "outChannelName" : "_I4a_oDD-EeiuBvcKgWzd3Q#out",
-  "externalConnectionString" : "tecs.tcp://10.2.0.45:9031"
+  "externalConnectionString" : "tecs.tcp://10.2.0.45:9031",
+   "properties" : [ {
+    "key" : "simulated",
+    "value" : "true"
+  }]
 }

@@ -2,6 +2,8 @@ package de.dfki.iui.basys.osgi.services.internal;
 
 import java.util.Map;
 
+import javax.ws.rs.core.Response;
+
 import org.osgi.service.component.ComponentContext;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
@@ -10,23 +12,21 @@ import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.component.annotations.Reference;
 
-import de.dfki.iui.basys.model.domain.productinstance.ProductInstance;
-import de.dfki.iui.basys.model.domain.productinstance.ProductInstanceStore;
 import de.dfki.iui.basys.osgi.services.BasysOsgiComponent;
 import de.dfki.iui.basys.osgi.services.ResourceSetProvider;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManager;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManagerException;
-import de.dfki.iui.basys.runtime.services.ProductInstanceManager;
-import de.dfki.iui.basys.runtime.services.impl.ProductInstanceManagerImpl;
+import de.dfki.iui.basys.runtime.services.WorkerGuidanceManager;
+import de.dfki.iui.basys.runtime.services.impl.WorkerGuidanceManagerImpl;
 
 @Component(configurationPolicy = ConfigurationPolicy.REQUIRE, immediate = true)
-public final class ProductInstanceManagerServiceImpl extends BasysOsgiComponent implements ProductInstanceManager {
+public final class WorkerGuidanceManagerServiceImpl extends BasysOsgiComponent implements WorkerGuidanceManager {
 
 	ComponentManager componentManager;
-	ProductInstanceManagerImpl impl;
+	WorkerGuidanceManagerImpl impl;
 
-	public ProductInstanceManagerServiceImpl() {
-		LOGGER.info(getClass().getSimpleName() + " created");
+	public WorkerGuidanceManagerServiceImpl() {
+		LOGGER.info("EntityManagerServiceImpl created");
 	}
 
 	@Override
@@ -34,7 +34,7 @@ public final class ProductInstanceManagerServiceImpl extends BasysOsgiComponent 
 	public void activate(ComponentContext context, Map<String, Object> properties) {
 		super.activate(context, properties);
 
-		impl = new ProductInstanceManagerImpl(config);
+		impl = new WorkerGuidanceManagerImpl(config);
 		impl.setSharedResourceSet(provider.getSharedResourceSet());
 		try {
 			componentManager.addLocalComponent(impl);
@@ -67,7 +67,7 @@ public final class ProductInstanceManagerServiceImpl extends BasysOsgiComponent 
 	void unsetComponentManager(ComponentManager componentManager) {
 		this.componentManager = null;
 	}
-
+	
 	ResourceSetProvider provider;
 	
 	@Reference
@@ -78,26 +78,18 @@ public final class ProductInstanceManagerServiceImpl extends BasysOsgiComponent 
 	void unsetResourceSetProvider(ResourceSetProvider provider) {
 		this.provider = null;
 	}
+
+	@Override
+	public Response presentWorkerGuidance(String id, int order, int serial, int matNr, int errorCode) {
+		return impl.presentWorkerGuidance(id, order, serial, matNr, errorCode);
+	}
+
 	
+
 	/*
-	 * Service interface
+	 * WorkerGuidanceManager interface
 	 */
 	
-	@Override
-	public ProductInstance getProductInstance(String id) {
-		return impl.getProductInstance(id);
-	}
 
-	@Override
-	public ProductInstanceStore getProductInstanceStore() {
-		return impl.getProductInstanceStore();
-	}
 
-	@Override
-	public void addProductInstance(ProductInstance productInstance) {
-		impl.addProductInstance(productInstance);
-		
-	}
-
-	
 }
