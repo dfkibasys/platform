@@ -21,7 +21,7 @@
       <assemblyGroups id="_XAQLUUjLEei9sPQ0bCp2Eq" name="HousingWithAbsorberAndCapDarkBlue">
         <bom id="_bznzsEjLEei9sPQ0bCp2Ew">
           <entries xsi:type="productdefinition:AssemblyGroupEntry" id="_IpqbzF29EeixDOGCyjgf_g" assemblyGroup="_lGGrsUjLEei9sPQ0bCp2Ew"/>
-          <entries xsi:type="productdefinition:MaterialEntry" id="_IpqbzV29EeixDOGCyjgf_g">
+          <entries xsi:type="productdefinition:MaterialEntry" id="_IpqbzV29EeixDOGCyjgf_f">
             <material href="model.material#_b9ZKARMxEeiF0dM30lRpcg"/>
           </entries>
         </bom>
