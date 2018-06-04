@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_062ggb8" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.14.0">
+  <bpmn:process id="Process_Mini_Demo" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>SequenceFlow_0cm1ysr</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0cm1ysr" sourceRef="StartEvent_1" targetRef="Task_1lrr1h0" />
+    <bpmn:sequenceFlow id="SequenceFlow_1xza5xu" sourceRef="Task_1lrr1h0" targetRef="Task_1e26cks" />
+    <bpmn:sequenceFlow id="SequenceFlow_0uhgzbr" sourceRef="Task_1e26cks" targetRef="Task_1j966jq" />
+    <bpmn:sequenceFlow id="SequenceFlow_0ur6b73" sourceRef="Task_1j966jq" targetRef="Task_0jwj4ht" />
+    <bpmn:endEvent id="EndEvent_0drfr84">
+      <bpmn:incoming>SequenceFlow_1yd4xgb</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1yd4xgb" sourceRef="Task_0jwj4ht" targetRef="EndEvent_0drfr84" />
+    <bpmn:serviceTask id="Task_1lrr1h0" name="Mobiler Roboter fährt zu Getränkestation" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_rUJzsDJhEei1p5hKOf5Slw</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
+    "capabilityVariant" : {
+      "eClass" : "http://www.dfki.de/iui/basys/model/resourceinstance#//LogisticsCapabilityVariant",
+      "id" : "_gTXPNF-lEeixtLE-b5nbbQ",
+      "name" : "Bottle to Station-Cola",
+      "capability" : {
+        "eClass" : "http://www.dfki.de/iui/basys/model/capability#//Transport",
+        "id" : "_O0sWv1-WEeieWai6RAB66w",
+        "loadCarrierUnit" : "BOTTLE"
+      },
+      "appliedOn" : [ {
+        "eClass" : "http://www.dfki.de/iui/basys/model/topology#//AGVStation",
+        "$ref" : "http://localhost:8080/services/entity/_rBfZoV2TEeit97PGgoQOAQ"
+      } ]
+    }
+  }</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0cm1ysr</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1xza5xu</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Task_1e26cks" name="Verladen von Leergut" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_I4a_oDD-EeiuBvcKgWzd3Q</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
+    "capabilityVariant" : {
+      "eClass" : "http://www.dfki.de/iui/basys/model/resourceinstance#//LogisticsCapabilityVariant",
+      "id" : "_gTVaBV-lEeixtLE-b5nbbQ",
+      "name" : "Unload MiR (bottle)",
+      "capability" : {
+        "eClass" : "http://www.dfki.de/iui/basys/model/capability#//PickAndPlace",
+        "id" : "_sLcgPl-UEeioxNEjr9hsyQ",
+        "loadCarrierUnit" : "BOTTLE"
+      },
+      "appliedOn" : [ {
+        "eClass" : "http://www.dfki.de/iui/basys/model/topology#//AGVStation",
+        "$ref" : "http://localhost:8080/services/entity/_rBfZoV2TEeit97PGgoQOAQ"
+      }, {
+        "eClass" : "http://www.dfki.de/iui/basys/model/topology#//StorageZone",
+        "$ref" : "http://localhost:8080/services/entity/_NQFk4zB5Eei1bbwBPPZWOA"
+      } ]
+    }
+  }</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_1xza5xu</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0uhgzbr</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Task_1j966jq" name="Verladen von Getränk" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_I4a_oDD-EeiuBvcKgWzd3Q</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
+    "capabilityVariant" : {
+      "eClass" : "http://www.dfki.de/iui/basys/model/resourceinstance#//LogisticsCapabilityVariant",
+      "id" : "_gTWBEV-lEeixtLE-b5nbbQ",
+      "name" : "Load MiR (bottle)",
+      "capability" : {
+        "eClass" : "http://www.dfki.de/iui/basys/model/capability#//PickAndPlace",
+        "id" : "_s_aTzl-UEeioxNEjr9hsyQ",
+        "loadCarrierUnit" : "BOTTLE"
+      },
+      "appliedOn" : [ {
+        "eClass" : "http://www.dfki.de/iui/basys/model/topology#//StorageZone",
+        "$ref" : "http://localhost:8080/services/entity/_NQFk4zB5Eei1bbwBPPZWOA"
+      }, {
+        "eClass" : "http://www.dfki.de/iui/basys/model/topology#//AGVStation",
+        "$ref" : "http://localhost:8080/services/entity/_rBfZoV2TEeit97PGgoQOAQ"
+      } ]
+    }
+  }</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0uhgzbr</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0ur6b73</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Task_0jwj4ht" name="Mobiler Roboter fährt zu BaSys-Station" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_rUJzsDJhEei1p5hKOf5Slw</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
+    "capabilityVariant" : {
+      "eClass" : "http://www.dfki.de/iui/basys/model/resourceinstance#//LogisticsCapabilityVariant",
+      "id" : "_c6CGAmAgEeiQUsCDRML84w",
+      "name" : "Bottle to Station-BaSys",
+      "capability" : {
+        "eClass" : "http://www.dfki.de/iui/basys/model/capability#//Transport",
+        "id" : "_djDN32AgEeiQUsCDRML84w",
+        "loadCarrierUnit" : "BOTTLE"
+      },
+      "appliedOn" : [ {
+        "eClass" : "http://www.dfki.de/iui/basys/model/topology#//AGVStation",
+        "$ref" : "http://localhost:8080/services/entity/_14ta0V2TEeit97PGgoQOAQ"
+      } ]
+    }
+  }</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0ur6b73</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1yd4xgb</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_Mini_Demo">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="173" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0cm1ysr_di" bpmnElement="SequenceFlow_0cm1ysr">
+        <di:waypoint x="209" y="120" />
+        <di:waypoint x="259" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="234" y="99" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1xza5xu_di" bpmnElement="SequenceFlow_1xza5xu">
+        <di:waypoint x="359" y="120" />
+        <di:waypoint x="409" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="384" y="99" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0uhgzbr_di" bpmnElement="SequenceFlow_0uhgzbr">
+        <di:waypoint x="509" y="120" />
+        <di:waypoint x="559" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="534" y="99" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0ur6b73_di" bpmnElement="SequenceFlow_0ur6b73">
+        <di:waypoint x="659" y="120" />
+        <di:waypoint x="709" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="684" y="99" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_0drfr84_di" bpmnElement="EndEvent_0drfr84">
+        <dc:Bounds x="859" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="877" y="142" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1yd4xgb_di" bpmnElement="SequenceFlow_1yd4xgb">
+        <di:waypoint x="809" y="120" />
+        <di:waypoint x="859" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="834" y="99" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_0wpzsli_di" bpmnElement="Task_1lrr1h0">
+        <dc:Bounds x="259" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_0au14z5_di" bpmnElement="Task_1e26cks">
+        <dc:Bounds x="409" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_12q65m5_di" bpmnElement="Task_1j966jq">
+        <dc:Bounds x="559" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_06ojm9r_di" bpmnElement="Task_0jwj4ht">
+        <dc:Bounds x="709" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
