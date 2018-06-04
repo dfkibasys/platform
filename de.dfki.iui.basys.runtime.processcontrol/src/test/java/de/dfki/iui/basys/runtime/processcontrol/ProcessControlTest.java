@@ -30,7 +30,7 @@ public class ProcessControlTest extends BaseComponentTest {
 				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.processcontrol.impl.CamundaTaskScheduler")
 				//.inChannelName("component1#in")
 				//.outChannelName("component1#out")
-				.externalConnectionString("http://localhost:8080/engine-rest/engine/default/external-task/")
+				.externalConnectionString("http://localhost:8081/engine-rest/engine/default/external-task/")
 				.build();
 	}
 	
@@ -38,7 +38,7 @@ public class ProcessControlTest extends BaseComponentTest {
 	@Ignore
 	public void testCamundaRestClient() {
 		CamundaRestClient camundaClient = new CamundaRestClient(taskSchedulerConfig.getComponentId(), taskSchedulerConfig.getExternalConnectionString());
-		List<ExternalServiceTaskDto> tasks = camundaClient.getExternalTasks("BasysTask", 5, 30 * 1000, "assignee", "command", "parameters");
+		List<ExternalServiceTaskDto> tasks = camundaClient.getExternalTasks("BasysTask", 5, 30 * 1000, 2000, "assignee", "command", "parameters");
 		 
 		assertEquals(1,	tasks.size());
 		
@@ -85,12 +85,12 @@ public class ProcessControlTest extends BaseComponentTest {
 	public void testStartAndWalkThroughProcess() throws Exception {
 		CamundaRestClient camundaClient = new CamundaRestClient(taskSchedulerConfig.getComponentId(), taskSchedulerConfig.getExternalConnectionString());
 		for (int i = 0; i<3; i++) {
-			List<ExternalServiceTaskDto> tasks = camundaClient.getExternalTasks("BasysTask", 5, 30 * 1000, "assignee", "command", "parameters");
+			List<ExternalServiceTaskDto> tasks = camundaClient.getExternalTasks("BasysTask", 5, 30 * 1000, 2000, "assignee", "command", "parameters");
 			assertEquals(1,	tasks.size());
 			for (ExternalServiceTaskDto task : tasks)
 				camundaClient.complete(task.getId());
 		}
-		List<ExternalServiceTaskDto> tasks = camundaClient.getExternalTasks("BasysTask", 5, 30 * 1000, "assignee", "command", "parameters");
+		List<ExternalServiceTaskDto> tasks = camundaClient.getExternalTasks("BasysTask", 5, 30 * 1000, 2000, "assignee", "command", "parameters");
 		assertEquals(true, tasks.isEmpty());
 	}
 	
