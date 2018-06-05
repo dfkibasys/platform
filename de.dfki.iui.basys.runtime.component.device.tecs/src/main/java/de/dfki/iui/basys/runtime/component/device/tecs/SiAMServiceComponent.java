@@ -157,16 +157,19 @@ public class SiAMServiceComponent extends TecsServiceComponent{
 		}
 	}
 	
+	// returns an error response
 	private Response errorResponse(String id) {
 		Response response = CommFactory.getInstance().createResponse(id, "Error");
 		return response;
 	}
 	
+	// returns a success response
 	private Response successResponse(String id, String payload) {
 		Response response = CommFactory.getInstance().createResponse(id, payload);
 		return response;
 	}
 	
+	// wait until the dialoge is finished. if finished return a successful response, otherwise returns an error response
 	private Response waitUntilExecuted(CommandResponse cr, String id, String calledMethod) {
 		boolean executing = true;
 		while(executing) {
@@ -205,7 +208,7 @@ public class SiAMServiceComponent extends TecsServiceComponent{
 			}
 		}
 		
-		// never is called
+		// should never be called
 		return errorResponse(id);		
 	}
 	
