@@ -20,9 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import de.dfki.iui.basys.common.emf.json.JsonUtils;
 import de.dfki.iui.basys.model.domain.capability.CapabilityFactory;
-import de.dfki.iui.basys.model.domain.capability.CapabilityRequest;
 import de.dfki.iui.basys.model.domain.capability.MoveToLocation;
-import de.dfki.iui.basys.model.domain.capability.impl.CapabilityRequestImpl;
 import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
 import de.dfki.iui.basys.model.domain.linebalancing.StaticWorldModel;
 import de.dfki.iui.basys.model.domain.linebalancing.WMPathTime;
@@ -45,7 +43,6 @@ import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.communication.Response;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.ComponentFactory;
-import de.dfki.iui.basys.model.runtime.component.ComponentRequest;
 import de.dfki.iui.basys.model.runtime.component.Property;
 import de.dfki.iui.basys.runtime.communication.CommFactory;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
@@ -60,21 +57,19 @@ import de.dfki.iui.basys.runtime.services.worldmodelManager.WorldModelManager;
 
 public class WorldModelManagerImpl extends EmfServiceComponent implements WorldModelManager {
 
-	private Map<String, Date> mEstimatedStepCompletionTimestamp = new HashMap<>();
 	private Map<String, TopologyElement> mCurrentProductPositions = new HashMap<>();
 	private long mEta;
 	private ExecutorService executor;
 	private Client client = ClientBuilder.newClient();
 
 	// TODO
-	// Workplan
 	// CurrentProductPosition
 
 	public WorldModelManagerImpl(ComponentConfiguration config) {
 		super(config);
 	}
 
-	public class LinebalancingAnswer {
+	public static class LinebalancingAnswer {
 
 		@JsonProperty
 		private String resourceInstanceId;
@@ -235,7 +230,7 @@ public class WorldModelManagerImpl extends EmfServiceComponent implements WorldM
 			if (currentPosition == null) {
 				eta = mEta;
 			} else {
-				eta = mEstimatedStepCompletionTimestamp.get(serialNumber).getTime() - System.currentTimeMillis();
+				eta = 10000L; // TODO fine tuning
 			}
 			if (eta <= 0) {
 				eta = 1;

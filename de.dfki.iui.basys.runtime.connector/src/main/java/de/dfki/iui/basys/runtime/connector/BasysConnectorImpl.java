@@ -231,36 +231,7 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 				LOGGER.info("Basys: Neuer Auftrag");
 				// Auftrag und Produktinstanz anlegen.
 
-				ProductDefinitionManager pdm = (ProductDefinitionManager) context.getComponentManager()
-						.getLocalComponentById("product-definition-manager");
-
-				OrderManager om = (OrderManager) context.getComponentManager().getLocalComponentById("order-manager");
-
-				ProductInstanceManager pim = (ProductInstanceManager) context.getComponentManager()
-						.getLocalComponentById("product-instance-manager");
-				ProductInstance productInstance = ProductinstanceFactoryImpl.eINSTANCE.createProductInstance();
-				productInstance.setManufacturedComponent(pdm.getProductVariant("_6odhQEjIEei9sPQ0bCp2Ew"));
-				Order order = OrderFactoryImpl.eINSTANCE.createOrder();
-				order.setManufacturedComponent(pdm.getProductVariant("_6odhQEjIEei9sPQ0bCp2Ew"));
-				order.setCustomer("CEBIT");
-				order.setDueDate(new Date(System.currentTimeMillis() + 1000 * 60 * 60));
-				order.setPriority(1);
-				String orderId = "Order" + System.currentTimeMillis();
-				order.setId(orderId);
-				order.setQuantity(1);
-				order.setStartDate(new Date(System.currentTimeMillis()));
-
-				OrderStatus orderStatus = OrderFactoryImpl.eINSTANCE.createOrderStatus();
-				orderStatus.setOrderId(orderId);
-				orderStatus.setPieceCount(0);
-				orderStatus.setStatus(OrderStatusEnum.STARTED);
-				order.setStatus(orderStatus);
-
-				productInstance.setOrder(order);
-				productInstance.setSerialNumber("ID" + System.currentTimeMillis());
-				pim.addProductInstance(productInstance);
-
-				om.addOrder(order);
+				outChannel.sendMessage("NEW_ORDER");
 
 				// Entscheiden, wer den Deckel-Auflege-Job ausführt, Ergebnis ist eine
 				// ResourceInstanceId
