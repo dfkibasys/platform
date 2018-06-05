@@ -76,8 +76,8 @@ public class Ur3Component extends TecsDeviceComponent{
 						BOMEntry bom1 = variant.getAppliedOn().get(0);
 						BOMEntry bom2 = variant.getAppliedOn().get(1);
 						if (bom1.getId().equals("_IpqbzV29EeixDOGCyjgf_g") && bom2.getId().equals("_IpqbzF29EeixDOGCyjgf_g")) {
-							// Unload MiR (bottle)
-							config.setPayload(urConstants.KNOWN_POSE_2);
+							// place cap
+							config.setPayload(urConstants.KNOWN_POSE_1); // TODO KNOWN_POSE_6 ?!
 						}
 					}
 				}

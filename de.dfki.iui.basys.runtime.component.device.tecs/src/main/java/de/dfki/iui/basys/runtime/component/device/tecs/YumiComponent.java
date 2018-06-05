@@ -4,6 +4,9 @@ import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TTransportException;
 
+import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
+import de.dfki.iui.basys.model.domain.resourceinstance.ManufacturingCapabilityVariant;
+import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage;
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
@@ -16,16 +19,16 @@ import de.dfki.iui.hrc.yumi.Yumi;
 import de.dfki.iui.hrc.yumi.YumiState;
 import de.dfki.tecs.Event;
 
-public class YumiComponent extends TecsDeviceComponent{
+public class YumiComponent extends TecsDeviceComponent {
 
 	protected YumiTECS client;
 	private final String businessKey;
-	
+
 	public YumiComponent(ComponentConfiguration config, String businessKey) {
 		super(config);
 		this.businessKey = businessKey;
 	}
-	
+
 	@Override
 	public void connectToExternal() throws ComponentException {
 		super.connectToExternal();
@@ -36,13 +39,18 @@ public class YumiComponent extends TecsDeviceComponent{
 	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
 		UnitConfiguration config = new UnitConfiguration();
 
-		// TODO: translate
-		int positionIndex = 0;
-		config.setRecipe(positionIndex);
-
+		if (req.getCapabilityVariant().eClass()
+				.equals(ResourceinstancePackage.eINSTANCE.getManufacturingCapabilityVariant())) {
+			ManufacturingCapabilityVariant variant = (ManufacturingCapabilityVariant) req.getCapabilityVariant();
+			if (variant.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getInspect())) {
+				if (variant.getAppliedOn().size() == 1) {
+					config.setPayload("PERFORM QA");
+				}
+			}
+		}
 		return config;
 	}
-	
+
 	@Override
 	public void onResetting() {
 		close();
@@ -56,57 +64,65 @@ public class YumiComponent extends TecsDeviceComponent{
 
 	@Override
 	public void onStarting() {
-		try {
-			client.performQA("PERFORM QA");
-		} catch (TException e) {
-			e.printStackTrace();
-			setErrorCode(3);
-			stop();
+		if (!simulated && ((String) getUnitConfig().getPayload()).equals("PERFORM QA")) {
+			try {
+				client.performQA("PERFORM QA");
+			} catch (TException e) {
+				e.printStackTrace();
+				setErrorCode(3);
+				stop();
+			}
 		}
 	}
 
 	@Override
 	public void onExecute() {
+		if (simulated) {
+			LOGGER.info("Simulating executing");
+			sleep(5);
+			return;
+		}
 		try {
 			boolean executing = true;
-			while(executing) {
+			while (executing) {
 				CommandResponse cr = client.getCommandState();
 				YumiState ys = client.getState();
-				
+
 				if (ys == YumiState.Error || ys == YumiState.Manual) {
 					executing = false;
 					setErrorCode(1);
 					stop();
 					break;
 				}
-				
-				switch(cr.state) {
-				case ACCEPTED: 
+
+				switch (cr.state) {
+				case ACCEPTED:
 					// wait
 					break;
-				case ABORTED: 
-					executing= false;
+				case ABORTED:
+					executing = false;
 					setErrorCode(1);
 					stop();
 					break;
 				case EXECUTING:
 					// wait
 					break;
-				case FINISHED: 
-					executing=false;
+				case FINISHED:
+					executing = false;
 					break;
-				case PAUSED: 
-					//?
+				case PAUSED:
+					// ?
 					break;
-				case READY: 
-					//?
+				case READY:
+					// ?
 					break;
-				case REJECTED: 
-					executing=false;
+				case REJECTED:
+					executing = false;
 					setErrorCode(2);
 					stop();
 					break;
-				default: break;
+				default:
+					break;
 				}
 			}
 			try {
@@ -132,7 +148,8 @@ public class YumiComponent extends TecsDeviceComponent{
 	}
 
 	@Override
-	public void onAborting() {}
+	public void onAborting() {
+	}
 
 	@Override
 	public void onClearing() {
@@ -147,45 +164,49 @@ public class YumiComponent extends TecsDeviceComponent{
 	}
 
 	@Override
-	public void onHolding() {}
+	public void onHolding() {
+	}
 
 	@Override
-	public void onUnholding() {}
+	public void onUnholding() {
+	}
 
 	@Override
-	public void onSuspending() {}
+	public void onSuspending() {
+	}
 
 	@Override
-	public void onUnsuspending() {}
-	
-	private class YumiTECS extends Yumi.Client{
+	public void onUnsuspending() {
+	}
+
+	private class YumiTECS extends Yumi.Client {
 
 		private TProtocol protocol;
 		private final String businessKey;
-		
+
 		public YumiTECS(TProtocol prot, String businessKey) {
 			super(prot);
 			protocol = prot;
 			this.businessKey = businessKey;
 		}
-		
+
 		public CommandResponse getCommandState() throws TException {
 			return super.getCommandState(businessKey);
 		}
-		
+
 		@Override
 		public YumiState getState() throws TException {
 			return super.getState();
 		}
-		
+
 		public CommandResponse performPick(String objectId, String sourceLocation) throws PickException, TException {
 			return super.performPick(objectId, sourceLocation, businessKey);
 		}
-		
+
 		public CommandResponse performPut(String objectId, String sourceLocation) throws PickException, TException {
 			return super.performPut(objectId, sourceLocation, businessKey);
 		}
-		
+
 		public CommandResponse performQA(String objectId) throws QAException, TException {
 			return super.performQA(objectId, businessKey);
 		}

@@ -20,6 +20,7 @@ import de.dfki.iui.basys.model.data.impl.DataFactoryImpl;
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
 import de.dfki.iui.basys.model.domain.capability.MoveToLocation;
 import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
+import de.dfki.iui.basys.model.domain.resourceinstance.LogisticsCapabilityVariant;
 import de.dfki.iui.basys.model.domain.topology.TopologyElement;
 import de.dfki.iui.basys.model.runtime.communication.Notification;
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
@@ -117,7 +118,15 @@ public class MirComponent extends TecsDeviceComponent {
 		TopologyElement te = null;
 		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getMoveToLocation())) {
 			te = ((MoveToLocation) c.getCapability()).getTargetLocation();
+		}
 
+		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getTransport())) {
+			LogisticsCapabilityVariant variant = (LogisticsCapabilityVariant) c;
+			te = variant.getAppliedOn().get(0);
+		}
+
+		if (te != null) {
+			mTargetLocation = te;
 			Property p = componentConfig.getProperty("sourceLocation");
 			if (p == null) {
 				p = new ComponentFactoryImpl().createProperty();
@@ -141,7 +150,6 @@ public class MirComponent extends TecsDeviceComponent {
 			} catch (JsonProcessingException e1) {
 				e1.printStackTrace();
 			}
-			mTargetLocation = te;
 
 		}
 
@@ -315,6 +323,11 @@ public class MirComponent extends TecsDeviceComponent {
 
 	@Override
 	public void onExecute() {
+		if (simulated) {
+			LOGGER.info("Simulating executing");
+			sleep(5);
+			return;
+		}
 		try {
 			boolean executing = true;
 			while (executing) {

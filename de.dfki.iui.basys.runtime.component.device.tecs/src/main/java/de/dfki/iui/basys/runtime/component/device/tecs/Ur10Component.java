@@ -4,6 +4,12 @@ import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TTransportException;
 
+import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
+import de.dfki.iui.basys.model.domain.capability.LoadCarrierUnitEnum;
+import de.dfki.iui.basys.model.domain.capability.PickAndPlace;
+import de.dfki.iui.basys.model.domain.resourceinstance.LogisticsCapabilityVariant;
+import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage;
+import de.dfki.iui.basys.model.domain.topology.TopologyElement;
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
@@ -21,41 +27,66 @@ import de.dfki.iui.hrc.ur.URStatus;
 import de.dfki.iui.hrc.ur.urConstants;
 import de.dfki.tecs.Event;
 
-public class Ur10Component extends TecsDeviceComponent{
-	
+public class Ur10Component extends TecsDeviceComponent {
+
 	private Ur10TECS client;
-	
+
 	public Ur10Component(ComponentConfiguration config) {
 		super(config);
 	}
 
 	@Override
-	protected void handleTecsEvent(Event event) {/* nothing to do */}
+	protected void handleTecsEvent(Event event) {
+		/* nothing to do */}
 
 	@Override
-	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest arg0) {
+	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
 		UnitConfiguration config = new UnitConfiguration();
 
-		// TODO: translate
-		int positionIndex = 0;
-		config.setRecipe(positionIndex);
+		if (req.getCapabilityVariant().eClass()
+				.equals(ResourceinstancePackage.eINSTANCE.getLogisticsCapabilityVariant())) {
+			LogisticsCapabilityVariant variant = (LogisticsCapabilityVariant) req.getCapabilityVariant();
+			if (variant.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getPickAndPlace())) {
+				PickAndPlace capability = (PickAndPlace) variant.getCapability();
+				if (capability.getLoadCarrierUnit() == LoadCarrierUnitEnum.MATERIAL) {
+					if (variant.getAppliedOn().size() == 2) {
+						TopologyElement from = variant.getAppliedOn().get(0);
+						TopologyElement to = variant.getAppliedOn().get(1);
+						if (from.getId().equals("_xHhjwV2TEeit97PGgoQOAQ" /* QA AGV STATION */)
+								&& to.getId().equals("_C-v38TB5Eei1bbwBPPZWOA" /* QA WORKCELL */)) {
+							// Unload MiR (KLT)
+							config.setPayload(urConstants.KNOWN_POSE_3);
+						}
+						if (to.getId().equals("_xHhjwV2TEeit97PGgoQOAQ")
+								&& from.getId().equals("_C-v38TB5Eei1bbwBPPZWOA")) {
+							// Load MiR (KLT)
+							config.setPayload(urConstants.KNOWN_POSE_2);
+						}
+					}
+				}
+			}
+		}
 
+		// YUMI ?
+		
 		return config;
 	}
-	
+
 	@Override
 	public void connectToExternal() throws ComponentException {
 		super.connectToExternal();
 		client = new Ur10TECS(protocol);
 	}
-	
+
 	@Override
 	public void onResetting() {
 		close();
 		try {
 			open();
-			client.MoveToKnownPosition(urConstants.KNOWN_POSE_1);
-			onExecute(); // block until in KnownPose1
+			if (!simulated) {
+				client.MoveToKnownPosition(urConstants.KNOWN_POSE_1);
+				onExecute(); // block until in KnownPose1
+			}
 		} catch (TTransportException e) {
 			setErrorCode(1);
 			stop();
@@ -74,7 +105,10 @@ public class Ur10Component extends TecsDeviceComponent{
 	@Override
 	public void onStarting() {
 		try {
-			client.MoveToKnownPosition(urConstants.KNOWN_POSE_2);
+			String pose = (String) getUnitConfig().getPayload();
+			if (!simulated) {
+				client.MoveToKnownPosition(pose);
+			}
 		} catch (TException e) {
 			e.printStackTrace();
 			setErrorCode(1);
@@ -84,46 +118,52 @@ public class Ur10Component extends TecsDeviceComponent{
 
 	@Override
 	public void onExecute() {
+		if (simulated) {
+			LOGGER.info("Simulating executing");
+			sleep(5);
+			return;
+		}
 		try {
 			boolean executing = true;
-			while(executing) {
+			while (executing) {
 				CommandResponse cr = client.getCommandState();
-				 URState urs = client.getState();
-				
+				URState urs = client.getState();
+
 				if (urs == URState.Error || urs == URState.Manual) {
 					executing = false;
 					setErrorCode(1);
 					stop();
 					break;
 				}
-				
-				switch(cr.state) {
-				case ACCEPTED: 
+
+				switch (cr.state) {
+				case ACCEPTED:
 					// wait
 					break;
-				case ABORTED: 
-					executing= false;
+				case ABORTED:
+					executing = false;
 					setErrorCode(1);
 					stop();
 					break;
 				case EXECUTING:
 					// wait
 					break;
-				case FINISHED: 
-					executing=false;
+				case FINISHED:
+					executing = false;
 					break;
-				case PAUSED: 
-					//?
+				case PAUSED:
+					// ?
 					break;
-				case READY: 
-					//?
+				case READY:
+					// ?
 					break;
-				case REJECTED: 
-					executing=false;
+				case REJECTED:
+					executing = false;
 					setErrorCode(2);
 					stop();
 					break;
-				default: break;
+				default:
+					break;
 				}
 			}
 			try {
@@ -149,7 +189,8 @@ public class Ur10Component extends TecsDeviceComponent{
 	}
 
 	@Override
-	public void onAborting() {}
+	public void onAborting() {
+	}
 
 	@Override
 	public void onClearing() {
@@ -164,85 +205,89 @@ public class Ur10Component extends TecsDeviceComponent{
 	}
 
 	@Override
-	public void onHolding() {}
+	public void onHolding() {
+	}
 
 	@Override
-	public void onUnholding() {}
+	public void onUnholding() {
+	}
 
 	@Override
-	public void onSuspending() {}
+	public void onSuspending() {
+	}
 
 	@Override
-	public void onUnsuspending() {}
+	public void onUnsuspending() {
+	}
 
-	private class Ur10TECS extends UR.Client{
+	private class Ur10TECS extends UR.Client {
 
 		private TProtocol protocol;
-		
+
 		public Ur10TECS(TProtocol prot) {
 			super(prot);
 			protocol = prot;
 		}
-		
+
 		@Override
-		public TransformationMatrix requestM() throws TException{
+		public TransformationMatrix requestM() throws TException {
 			return super.requestM();
 		}
-		
-		@Override 
+
+		@Override
 		public URStatus getStatus() throws TException {
 			return super.getStatus();
 		}
-		
+
 		@Override
 		public URState getState() throws TException {
 			return super.getState();
 		}
-		
+
 		@Override
 		public CommandResponse getCommandState() throws TException {
 			return super.getCommandState();
 		}
-		
+
 		@Override
 		public RobotState getRobotState() throws TException {
 			return super.getRobotState();
 		}
-		
+
 		@Override
 		public RobotState setRobotState(RobotState state) throws TException {
 			return super.setRobotState(state);
 		}
-		
+
 		@Override
 		public CommandResponse Load(String targetPosition) throws LoadException, TException {
 			return super.Load(targetPosition);
 		}
-		
+
 		@Override
 		public CommandResponse Calibrate() throws TException {
 			return super.Calibrate();
 		}
-		
+
 		@Override
 		public CommandResponse MoveToKnownPosition(String knownPosition) throws MoveException, TException {
 			return super.MoveToKnownPosition(knownPosition);
 		}
-		
+
 		@Override
 		public CommandResponse Recover(String action) throws ActionException, TException {
 			return super.Recover(action);
 		}
-		
+
 		@Override
-		public CommandResponse EnterTeachMode(String action) throws ActionException, TException{
+		public CommandResponse EnterTeachMode(String action) throws ActionException, TException {
 			return super.EnterTeachMode(action);
 		}
-		
+
 		@Override
 		public CommandResponse ExitTeachMode(String action) throws ActionException, TException {
 			return super.ExitTeachMode(action);
-		}	
+		}
 	}
 
 }
