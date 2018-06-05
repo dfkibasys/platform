@@ -341,10 +341,18 @@
       },
       "appliedOn" : [ {
         "eClass" : "http://www.dfki.de/iui/basys/model/topology#//AGVStation",
-        "$ref" : "http://localhost:8080/services/entity/_xHhjwV2TEeit97PGgoQOAQ"
+        "id" : "_xHhjwV2TEeit97PGgoQOAQ",
+        "name" : "Station-QA"
       }, {
-        "eClass" : "http://www.dfki.de/iui/basys/model/topology#//Station",
-        "$ref" : "http://localhost:8080/services/entity/_F6qPdzB5Eei1bbwBPPZWOA"
+        "id" : "_F6qPdzB5Eei1bbwBPPZWOA",
+        "name" : "Inspektion",
+        "equipmentModules" : [ {
+          "id" : "_HlgntTB5Eei1bbwBPPZWOA",
+          "name" : "Positioniereinheit"
+        }, {
+          "id" : "_IvknEDB5Eei1bbwBPPZWOA",
+          "name" : "Sichtkontrolle"
+        } ]
       } ]
     }
   }</camunda:inputParameter>
