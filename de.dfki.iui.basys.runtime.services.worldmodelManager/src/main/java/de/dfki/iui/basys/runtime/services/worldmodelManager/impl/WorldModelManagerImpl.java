@@ -207,7 +207,7 @@ public class WorldModelManagerImpl extends EmfServiceComponent implements WorldM
 					}
 
 					WMResourceInstance wmri = new LinebalancingFactoryImpl().createWMResourceInstance();
-					wmri.setSerialId(ri.getSerialNumber());
+					wmri.setSerialId(ri.getId());
 					wmri.setFrom_position(source);
 					wmri.setTo_position(target);
 					wmri.setEta(mEta);
@@ -221,7 +221,7 @@ public class WorldModelManagerImpl extends EmfServiceComponent implements WorldM
 			case "UR3":
 
 				WMResourceInstance wmri = new LinebalancingFactoryImpl().createWMResourceInstance();
-				wmri.setSerialId(ri.getSerialNumber());
+				wmri.setSerialId(ri.getId());
 				wmri.getCapabilities().addAll(ri.getCapabilityApplications());
 				wm.getResourceInstances().add(wmri);
 				break;
