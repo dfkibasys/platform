@@ -7,7 +7,7 @@
   "inChannelName" : "_I4a_oDD-EeiuBvcKgWzd3Q#in",
   "outChannelName" : "_I4a_oDD-EeiuBvcKgWzd3Q#out",
   "externalConnectionString" : "tecs.tcp://10.2.0.45:9031",
-   "properties" : [ {
+  "properties" : [ {
     "key" : "simulated",
     "value" : "true"
   }]
