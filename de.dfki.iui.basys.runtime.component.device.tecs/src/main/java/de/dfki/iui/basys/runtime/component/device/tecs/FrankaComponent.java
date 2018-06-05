@@ -146,11 +146,11 @@ public class FrankaComponent extends TecsDeviceComponent{
 						TopologyElement to   = variant.getAppliedOn().get(1);
 						if (from.getId().equals("_rBfZoV2TEeit97PGgoQOAQ") && to.getId().equals("_NQFk4zB5Eei1bbwBPPZWOA")) {
 							// Unload MiR (bottle)
-							config.setPayload(FrankaConstants.KNOWN_POSE_2);
+							config.setPayload(FrankaConstants.KNOWN_POSE_3);
 						}
 						if (to.getId().equals("_rBfZoV2TEeit97PGgoQOAQ") && from.getId().equals("_NQFk4zB5Eei1bbwBPPZWOA")) {
 							// Load MiR (bottle)
-							config.setPayload(FrankaConstants.KNOWN_POSE_3);
+							config.setPayload(FrankaConstants.KNOWN_POSE_2);
 						} 
 					}
 				}
