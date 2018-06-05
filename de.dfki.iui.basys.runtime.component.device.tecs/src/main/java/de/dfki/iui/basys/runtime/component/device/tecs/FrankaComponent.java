@@ -4,6 +4,12 @@ import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TTransportException;
 
+import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
+import de.dfki.iui.basys.model.domain.capability.LoadCarrierUnitEnum;
+import de.dfki.iui.basys.model.domain.capability.PickAndPlace;
+import de.dfki.iui.basys.model.domain.resourceinstance.LogisticsCapabilityVariant;
+import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage;
+import de.dfki.iui.basys.model.domain.topology.TopologyElement;
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
@@ -71,11 +77,53 @@ public class FrankaComponent extends TecsDeviceComponent{
 //			return position;
 //		}
 //	}
-	
+
+	private String variant1 = "{\r\n" + 
+			"    \"eClass\" : \"http://www.dfki.de/iui/basys/model/component#//CapabilityRequest\",\r\n" + 
+			"    \"capabilityVariant\" : {\r\n" + 
+			"      \"eClass\" : \"http://www.dfki.de/iui/basys/model/resourceinstance#//LogisticsCapabilityVariant\",\r\n" + 
+			"      \"id\" : \"_gTVaBV-lEeixtLE-b5nbbQ\",\r\n" + 
+			"      \"name\" : \"Unload MiR (bottle)\",\r\n" + 
+			"      \"capability\" : {\r\n" + 
+			"        \"eClass\" : \"http://www.dfki.de/iui/basys/model/capability#//PickAndPlace\",\r\n" + 
+			"        \"id\" : \"_sLcgPl-UEeioxNEjr9hsyQ\",\r\n" + 
+			"        \"loadCarrierUnit\" : \"BOTTLE\"\r\n" + 
+			"      },\r\n" + 
+			"      \"appliedOn\" : [ {\r\n" + 
+			"        \"eClass\" : \"http://www.dfki.de/iui/basys/model/topology#//AGVStation\",\r\n" + 
+			"        \"$ref\" : \"http://localhost:8080/services/entity/_rBfZoV2TEeit97PGgoQOAQ\"\r\n" + 
+			"      }, {\r\n" + 
+			"        \"eClass\" : \"http://www.dfki.de/iui/basys/model/topology#//StorageZone\",\r\n" + 
+			"        \"$ref\" : \"http://localhost:8080/services/entity/_NQFk4zB5Eei1bbwBPPZWOA\"\r\n" + 
+			"      } ]\r\n" + 
+			"    }\r\n" + 
+			"  }";
+
+	private String variant2 = "{\r\n" + 
+			"    \"eClass\" : \"http://www.dfki.de/iui/basys/model/component#//CapabilityRequest\",\r\n" + 
+			"    \"capabilityVariant\" : {\r\n" + 
+			"      \"eClass\" : \"http://www.dfki.de/iui/basys/model/resourceinstance#//LogisticsCapabilityVariant\",\r\n" + 
+			"      \"id\" : \"_gTWBEV-lEeixtLE-b5nbbQ\",\r\n" + 
+			"      \"name\" : \"Load MiR (bottle)\",\r\n" + 
+			"      \"capability\" : {\r\n" + 
+			"        \"eClass\" : \"http://www.dfki.de/iui/basys/model/capability#//PickAndPlace\",\r\n" + 
+			"        \"id\" : \"_s_aTzl-UEeioxNEjr9hsyQ\",\r\n" + 
+			"        \"loadCarrierUnit\" : \"BOTTLE\"\r\n" + 
+			"      },\r\n" + 
+			"      \"appliedOn\" : [ {\r\n" + 
+			"        \"eClass\" : \"http://www.dfki.de/iui/basys/model/topology#//StorageZone\",\r\n" + 
+			"        \"$ref\" : \"http://localhost:8080/services/entity/_NQFk4zB5Eei1bbwBPPZWOA\"\r\n" + 
+			"      }, {\r\n" + 
+			"        \"eClass\" : \"http://www.dfki.de/iui/basys/model/topology#//AGVStation\",\r\n" + 
+			"        \"$ref\" : \"http://localhost:8080/services/entity/_rBfZoV2TEeit97PGgoQOAQ\"\r\n" + 
+			"      } ]\r\n" + 
+			"    }\r\n" + 
+			"  }";
 	
 	
 	public FrankaComponent(ComponentConfiguration config) {
 		super(config);	
+		//resetOnComplete = true;
 	}
 	
 	@Override
@@ -87,11 +135,28 @@ public class FrankaComponent extends TecsDeviceComponent{
 	@Override
 	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
 		UnitConfiguration config = new UnitConfiguration();
-
-		// TODO: translate
-		int positionIndex = 0;
-		config.setRecipe(positionIndex);
-
+		
+		if (req.getCapabilityVariant().eClass().equals(ResourceinstancePackage.eINSTANCE.getLogisticsCapabilityVariant())) {
+			LogisticsCapabilityVariant variant = (LogisticsCapabilityVariant) req.getCapabilityVariant();
+			if (variant.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getPickAndPlace())) {
+				PickAndPlace capability = (PickAndPlace) variant.getCapability();
+				if (capability.getLoadCarrierUnit() == LoadCarrierUnitEnum.BOTTLE) {
+					if (variant.getAppliedOn().size() == 2) {
+						TopologyElement from = variant.getAppliedOn().get(0);
+						TopologyElement to   = variant.getAppliedOn().get(1);
+						if (from.getId().equals("_rBfZoV2TEeit97PGgoQOAQ") && to.getId().equals("_NQFk4zB5Eei1bbwBPPZWOA")) {
+							// Unload MiR (bottle)
+							config.setPayload(FrankaConstants.KNOWN_POSE_2);
+						}
+						if (to.getId().equals("_rBfZoV2TEeit97PGgoQOAQ") && from.getId().equals("_NQFk4zB5Eei1bbwBPPZWOA")) {
+							// Load MiR (bottle)
+							config.setPayload(FrankaConstants.KNOWN_POSE_3);
+						} 
+					}
+				}
+			}			
+		}
+		
 		return config;
 	}
 	
@@ -100,6 +165,7 @@ public class FrankaComponent extends TecsDeviceComponent{
 		close();
 		try {
 			open();
+			LOGGER.info("Moving to home position");
 			if (!simulated) {
 				client.MoveToKnownPosition(FrankaConstants.KNOWN_POSE_1);
 				onExecute(); // block until in KnownPose1
@@ -114,8 +180,10 @@ public class FrankaComponent extends TecsDeviceComponent{
 	@Override
 	public void onStarting() {
 		try {
-			if (!simulated) {		
-				client.MoveToKnownPosition(FrankaConstants.KNOWN_POSE_2);
+			String pose = (String)getUnitConfig().getPayload();
+			LOGGER.info("Start executing pose: " + pose);
+			if (!simulated) {				
+				client.MoveToKnownPosition(pose);
 			}
 		} catch (TException e) {
 			e.printStackTrace();
@@ -127,6 +195,7 @@ public class FrankaComponent extends TecsDeviceComponent{
 	@Override
 	public void onExecute() {
 		if (simulated) {
+			LOGGER.info("Simulating executing");
 			sleep(5);
 			return;
 		}

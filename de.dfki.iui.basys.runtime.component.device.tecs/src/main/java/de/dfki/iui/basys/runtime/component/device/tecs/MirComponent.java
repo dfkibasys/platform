@@ -255,9 +255,10 @@ public class MirComponent extends TecsDeviceComponent {
 //				}
 //			});
 //			mETAThread.start();
-
-			client.gotoNamedPosition(targetElement.getName());
-
+			LOGGER.info("Moving to position: " + targetElement.getName());
+			if (!simulated) {
+				client.gotoNamedPosition(targetElement.getName());
+			}
 			String payload = JsonUtils.toString(targetElement);
 			Notification not = CommFactory.getInstance().createNotification(payload);
 
@@ -349,8 +350,6 @@ public class MirComponent extends TecsDeviceComponent {
 
 		prop.setValue("0");
 
-		// send response to basys (dp)
-		// TODO: move to base class DeviceComponent
 		sendComponentResponse(ResponseStatus.OK, 0);
 	}
 

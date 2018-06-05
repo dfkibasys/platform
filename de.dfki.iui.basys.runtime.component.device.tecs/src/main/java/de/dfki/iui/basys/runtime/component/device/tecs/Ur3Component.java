@@ -4,11 +4,20 @@ import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TTransportException;
 
+import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
+import de.dfki.iui.basys.model.domain.capability.LoadCarrierUnitEnum;
+import de.dfki.iui.basys.model.domain.capability.PickAndPlace;
+import de.dfki.iui.basys.model.domain.productdefinition.BOMEntry;
+import de.dfki.iui.basys.model.domain.resourceinstance.LogisticsCapabilityVariant;
+import de.dfki.iui.basys.model.domain.resourceinstance.ManufacturingCapabilityVariant;
+import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage;
+import de.dfki.iui.basys.model.domain.topology.TopologyElement;
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
+import de.dfki.iui.hrc.franka.FrankaConstants;
 import de.dfki.iui.hrc.franka.FrankaState;
 import de.dfki.iui.hrc.general3d.TransformationMatrix;
 import de.dfki.iui.hrc.generalrobots.RobotState;
@@ -26,6 +35,27 @@ public class Ur3Component extends TecsDeviceComponent{
 
 	private Ur3TECS client;
 	
+	private String variant = "{\r\n" + 
+			"    \"eClass\" : \"http://www.dfki.de/iui/basys/model/component#//CapabilityRequest\",\r\n" + 
+			"    \"capabilityVariant\" : {\r\n" + 
+			"      \"eClass\" : \"http://www.dfki.de/iui/basys/model/resourceinstance#//ManufacturingCapabilityVariant\",\r\n" + 
+			"      \"id\" : \"_gTSWsV-lEeixtLE-b5nbbQ\",\r\n" + 
+			"      \"name\" : \"Apply dark blue cap\",\r\n" + 
+			"      \"capability\" : {\r\n" + 
+			"        \"eClass\" : \"http://www.dfki.de/iui/basys/model/capability#//PickAndPlace\",\r\n" + 
+			"        \"id\" : \"_xio67l8yEeiUo-65_7rTBQ\",\r\n" + 
+			"        \"loadCarrierUnit\" : \"MATERIAL\"\r\n" + 
+			"      },\r\n" + 
+			"      \"appliedOn\" : [ {\r\n" + 
+			"        \"eClass\" : \"http://www.dfki.de/iui/basys/model/productdefinition#//MaterialEntry\",\r\n" + 
+			"        \"$ref\" : \"http://localhost:8080/services/entity/_IpqbzV29EeixDOGCyjgf_g\"\r\n" + 
+			"      }, {\r\n" + 
+			"        \"eClass\" : \"http://www.dfki.de/iui/basys/model/productdefinition#//AssemblyGroupEntry\",\r\n" + 
+			"        \"$ref\" : \"http://localhost:8080/services/entity/_IpqbzF29EeixDOGCyjgf_g\"\r\n" + 
+			"      } ]\r\n" + 
+			"    }\r\n" + 
+			"  }";
+	
 	public Ur3Component(ComponentConfiguration config) {
 		super(config);
 	}
@@ -34,13 +64,26 @@ public class Ur3Component extends TecsDeviceComponent{
 	protected void handleTecsEvent(Event event) {/* nothing to do */}
 
 	@Override
-	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest arg0) {
+	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
 		UnitConfiguration config = new UnitConfiguration();
-
-		// TODO: translate
-		int positionIndex = 0;
-		config.setRecipe(positionIndex);
-
+		
+		if (req.getCapabilityVariant().eClass().equals(ResourceinstancePackage.eINSTANCE.getManufacturingCapabilityVariant())) {
+			ManufacturingCapabilityVariant variant = (ManufacturingCapabilityVariant) req.getCapabilityVariant();
+			if (variant.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getPickAndPlace())) {
+				PickAndPlace capability = (PickAndPlace) variant.getCapability();
+				if (capability.getLoadCarrierUnit() == LoadCarrierUnitEnum.MATERIAL) {
+					if (variant.getAppliedOn().size() == 2) {
+						BOMEntry bom1 = variant.getAppliedOn().get(0);
+						BOMEntry bom2 = variant.getAppliedOn().get(1);
+						if (bom1.getId().equals("_IpqbzV29EeixDOGCyjgf_g") && bom2.getId().equals("_IpqbzF29EeixDOGCyjgf_g")) {
+							// Unload MiR (bottle)
+							config.setPayload(urConstants.KNOWN_POSE_2);
+						}
+					}
+				}
+			}			
+		}
+		
 		return config;
 	}
 	
@@ -55,8 +98,11 @@ public class Ur3Component extends TecsDeviceComponent{
 		close();
 		try {
 			open();
-			client.MoveToKnownPosition(urConstants.KNOWN_POSE_1);
-			onExecute(); // block until in KnownPose1
+			LOGGER.info("Moving to home position");
+			if (!simulated) {
+				client.MoveToKnownPosition(urConstants.KNOWN_POSE_1);
+				onExecute(); // block until in KnownPose1
+			}
 		} catch (TTransportException e) {
 			setErrorCode(1);
 			stop();
@@ -75,7 +121,11 @@ public class Ur3Component extends TecsDeviceComponent{
 	@Override
 	public void onStarting() {
 		try {
-			client.MoveToKnownPosition(urConstants.KNOWN_POSE_2);
+			String pose = (String)getUnitConfig().getPayload();
+			LOGGER.info("Start executing pose: " + pose);
+			if (!simulated) {				
+				client.MoveToKnownPosition(pose);
+			}			
 		} catch (TException e) {
 			e.printStackTrace();
 			setErrorCode(1);
