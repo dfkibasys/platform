@@ -250,7 +250,7 @@ public class BasysConnectorTest extends BaseComponentTest {
 	
 	@Test
 	//@Ignore
-	public void testExecuteJobFestoLightBlueIO() {
+	public void testExecuteJobFestoDarkBlueIO() {
 		TestListener testCallback = new TestListener();
 		
 		int functionId = 2;
@@ -290,7 +290,7 @@ public class BasysConnectorTest extends BaseComponentTest {
 	
 	@Test
 	@Ignore
-	public void testExecuteJobFestoDarkBlueIO() {
+	public void testExecuteJobFestoLightBlueIO() {
 		TestListener testCallback = new TestListener();
 		
 		int functionId = 2;
@@ -321,7 +321,7 @@ public class BasysConnectorTest extends BaseComponentTest {
 	
 	@Test
 	@Ignore
-	public void testExecuteJobBasysLightBlueIO() {
+	public void testExecuteJobBasysDarkBlueIO() {
 		TestListener testCallback = new TestListener();
 		
 		int functionId = 2;
