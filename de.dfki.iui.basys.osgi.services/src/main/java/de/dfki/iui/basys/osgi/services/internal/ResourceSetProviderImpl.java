@@ -27,6 +27,7 @@ public class ResourceSetProviderImpl implements ResourceSetProvider {
 
 	@Activate
 	protected void activate(ComponentContext context, Map<String, Object> properties) {
+		LOGGER.info("Creating ResourceSetProvider");
 		modified(context, properties);
 
 	}

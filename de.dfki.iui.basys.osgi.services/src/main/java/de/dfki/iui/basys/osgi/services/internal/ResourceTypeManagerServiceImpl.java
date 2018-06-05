@@ -36,9 +36,9 @@ public final class ResourceTypeManagerServiceImpl extends BasysOsgiComponent imp
 		super.activate(context, properties);
 
 		impl = new ResourceTypeManagerImpl(config);
+		impl.setSharedResourceSet(provider.getSharedResourceSet());
 		try {
 			componentManager.addLocalComponent(impl);
-			impl.setSharedResourceSet(provider.getSharedResourceSet());
 		} catch (ComponentManagerException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

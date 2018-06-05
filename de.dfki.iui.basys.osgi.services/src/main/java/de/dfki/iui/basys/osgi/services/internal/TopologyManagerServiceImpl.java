@@ -35,9 +35,9 @@ public final class TopologyManagerServiceImpl extends BasysOsgiComponent impleme
 		super.activate(context, properties);
 
 		impl = new TopologyManagerImpl(config);
+		impl.setSharedResourceSet(provider.getSharedResourceSet());
 		try {
 			componentManager.addLocalComponent(impl);
-			impl.setSharedResourceSet(provider.getSharedResourceSet());
 		} catch (ComponentManagerException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

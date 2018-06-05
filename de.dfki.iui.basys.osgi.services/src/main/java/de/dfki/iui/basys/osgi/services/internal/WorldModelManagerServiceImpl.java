@@ -14,6 +14,7 @@ import de.dfki.iui.basys.model.domain.linebalancing.StaticWorldModel;
 import de.dfki.iui.basys.model.domain.linebalancing.WorldModel;
 import de.dfki.iui.basys.model.domain.topology.TopologyElement;
 import de.dfki.iui.basys.osgi.services.BasysOsgiComponent;
+import de.dfki.iui.basys.osgi.services.ResourceSetProvider;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManager;
 import de.dfki.iui.basys.runtime.component.manager.ComponentManagerException;
 import de.dfki.iui.basys.runtime.services.worldmodelManager.WorldModelManager;
@@ -35,6 +36,7 @@ public final class WorldModelManagerServiceImpl extends BasysOsgiComponent imple
 		super.activate(context, properties);
 
 		impl = new WorldModelManagerImpl(config);
+		impl.setSharedResourceSet(provider.getSharedResourceSet());
 		try {
 			componentManager.addLocalComponent(impl);
 		} catch (ComponentManagerException e) {
@@ -67,6 +69,17 @@ public final class WorldModelManagerServiceImpl extends BasysOsgiComponent imple
 		this.componentManager = null;
 	}
 
+	ResourceSetProvider provider;
+	
+	@Reference
+	void setResourceSetProvider(ResourceSetProvider provider) {
+		this.provider = provider;
+	}
+	
+	void unsetResourceSetProvider(ResourceSetProvider provider) {
+		this.provider = null;
+	}
+	
 	/*
 	 * WorldmodelManager interface
 	 */
