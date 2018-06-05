@@ -7,6 +7,7 @@ import java.util.Map;
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TTransportException;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
@@ -65,7 +66,7 @@ public class MirComponent extends TecsDeviceComponent {
 		super.activate(context);
 		String[] subscribeTo = new String[1];
 		subscribeTo[0] = "MIRPathEvent";
-		connectToTecs("robot-mir-01", subscribeTo, "tecs", 9000);
+		connectToTecs("robot-mir-04", subscribeTo, "tecs.mrk40.dfki.lan", 9000);
 
 		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Wait", "Station-QA"), 10000L);
 		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Wait", "Station-Festo"), 10000L);
@@ -113,7 +114,11 @@ public class MirComponent extends TecsDeviceComponent {
 
 	@Override
 	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
+		
+		EcoreUtil.resolveAll(req);		
 
+		UnitConfiguration config = new UnitConfiguration();
+		
 		CapabilityVariant<?> c = req.getCapabilityVariant();
 		TopologyElement te = null;
 		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getMoveToLocation())) {
@@ -126,6 +131,7 @@ public class MirComponent extends TecsDeviceComponent {
 		}
 
 		if (te != null) {
+			EcoreUtil.resolveAll(te);
 			mTargetLocation = te;
 			Property p = componentConfig.getProperty("sourceLocation");
 			if (p == null) {
@@ -134,7 +140,9 @@ public class MirComponent extends TecsDeviceComponent {
 				componentConfig.getProperties().add(p);
 			}
 			try {
-				p.setValue(JsonUtils.toString(mSourceLocation));
+				if (mSourceLocation != null) {
+					p.setValue(JsonUtils.toString(mSourceLocation));
+				}
 			} catch (JsonProcessingException e1) {
 				e1.printStackTrace();
 			}
@@ -153,9 +161,8 @@ public class MirComponent extends TecsDeviceComponent {
 
 		}
 
-		UnitConfiguration uc = new UnitConfiguration();
-		uc.setPayload(te);
-		return uc;
+		config.setPayload(te);
+		return config;
 	}
 
 	/*
@@ -559,7 +566,7 @@ public class MirComponent extends TecsDeviceComponent {
 		 */
 		@Override
 		public void setState(MIRState state) throws TException {
-			super.setState(state);
+			//super.setState(state);
 		}
 
 		/*

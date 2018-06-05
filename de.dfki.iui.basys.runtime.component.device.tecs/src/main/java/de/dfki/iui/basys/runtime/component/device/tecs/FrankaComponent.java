@@ -3,6 +3,7 @@ package de.dfki.iui.basys.runtime.component.device.tecs;
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TTransportException;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
 import de.dfki.iui.basys.model.domain.capability.LoadCarrierUnitEnum;
@@ -134,8 +135,10 @@ public class FrankaComponent extends TecsDeviceComponent{
 
 	@Override
 	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
-		UnitConfiguration config = new UnitConfiguration();
 		
+		EcoreUtil.resolveAll(req);
+
+		UnitConfiguration config = new UnitConfiguration();
 		if (req.getCapabilityVariant().eClass().equals(ResourceinstancePackage.eINSTANCE.getLogisticsCapabilityVariant())) {
 			LogisticsCapabilityVariant variant = (LogisticsCapabilityVariant) req.getCapabilityVariant();
 			if (variant.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getPickAndPlace())) {
@@ -143,6 +146,7 @@ public class FrankaComponent extends TecsDeviceComponent{
 				if (capability.getLoadCarrierUnit() == LoadCarrierUnitEnum.BOTTLE) {
 					if (variant.getAppliedOn().size() == 2) {
 						TopologyElement from = variant.getAppliedOn().get(0);
+						EcoreUtil.resolveAll(from);
 						TopologyElement to   = variant.getAppliedOn().get(1);
 						if (from.getId().equals("_rBfZoV2TEeit97PGgoQOAQ") && to.getId().equals("_NQFk4zB5Eei1bbwBPPZWOA")) {
 							// Unload MiR (bottle)

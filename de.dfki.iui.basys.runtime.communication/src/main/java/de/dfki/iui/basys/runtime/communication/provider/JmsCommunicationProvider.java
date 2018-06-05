@@ -91,13 +91,18 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 			responseConsumer.setMessageListener(new MessageListener() {
 
 				@Override
-				public void onMessage(Message message) {
+				public void onMessage(Message message) {					
 					TextMessage textMessage = (TextMessage) message;
 					try {
+						message.acknowledge();
 						String correlationId = textMessage.getJMSCorrelationID();
 						ResponseCallback listener = requestCorrelations.get(correlationId);
 						Response response = JsonUtils.fromString(textMessage.getText(), Response.class);
-						listener.handleResponse(response);
+						if (listener != null) {
+							listener.handleResponse(response);
+						} else {
+							LOGGER.warn("listener is null");
+						}
 						requestCorrelations.remove(correlationId);
 					} catch (JMSException e) {
 						e.printStackTrace();
@@ -170,6 +175,7 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 					public void onMessage(Message message) {
 						TextMessage textMessage = (TextMessage) message;
 						try {
+							message.acknowledge();
 							String content = textMessage.getText();
 							try {
 								de.dfki.iui.basys.model.runtime.communication.Message incomingMessage = 
@@ -224,6 +230,7 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 					public void onMessage(Message message) {
 						TextMessage textMessage = (TextMessage) message;
 						try {
+							message.acknowledge();
 							String content = textMessage.getText();
 							try {
 								de.dfki.iui.basys.model.runtime.communication.Message incomingMessage = 
