@@ -28,9 +28,12 @@ import de.dfki.iui.basys.model.runtime.component.ComponentRequest;
 import de.dfki.iui.basys.model.runtime.component.ControlMode;
 import de.dfki.iui.basys.model.runtime.component.impl.ChangeModeRequestImpl;
 import de.dfki.iui.basys.runtime.component.service.EmfServiceComponent;
+import de.dfki.iui.basys.runtime.component.util.BasysResourceSetImpl;
 
 public class JsonSerializationTest {
 
+	
+	
 	@Test
 	@Ignore
 	public void testJson() {
@@ -55,9 +58,9 @@ public class JsonSerializationTest {
 	}
 
 	@Test	
-	@Ignore
 	public void testSerializeComponentRequests() {
-		
+
+		JsonUtils.factory = new BasysResourceSetImpl.Factory();
 		ResourceSet resourceSet = EmfServiceComponent.createResourceSet();
 
 			

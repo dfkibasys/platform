@@ -8,17 +8,13 @@ import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
 import de.dfki.iui.basys.model.domain.capability.LoadCarrierUnitEnum;
 import de.dfki.iui.basys.model.domain.capability.PickAndPlace;
 import de.dfki.iui.basys.model.domain.productdefinition.BOMEntry;
-import de.dfki.iui.basys.model.domain.resourceinstance.LogisticsCapabilityVariant;
 import de.dfki.iui.basys.model.domain.resourceinstance.ManufacturingCapabilityVariant;
 import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage;
-import de.dfki.iui.basys.model.domain.topology.TopologyElement;
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
-import de.dfki.iui.hrc.franka.FrankaConstants;
-import de.dfki.iui.hrc.franka.FrankaState;
 import de.dfki.iui.hrc.general3d.TransformationMatrix;
 import de.dfki.iui.hrc.generalrobots.RobotState;
 import de.dfki.iui.hrc.hybritcommand.CommandResponse;
@@ -28,8 +24,8 @@ import de.dfki.iui.hrc.ur.MoveException;
 import de.dfki.iui.hrc.ur.UR;
 import de.dfki.iui.hrc.ur.URState;
 import de.dfki.iui.hrc.ur.URStatus;
-import de.dfki.tecs.Event;
 import de.dfki.iui.hrc.ur.urConstants;
+import de.dfki.tecs.Event;
 
 public class Ur3Component extends TecsDeviceComponent{
 
@@ -124,7 +120,7 @@ public class Ur3Component extends TecsDeviceComponent{
 			String pose = (String)getUnitConfig().getPayload();
 			LOGGER.info("Start executing pose: " + pose);
 			if (!simulated) {				
-				client.MoveToKnownPosition(pose);
+				client.Load(pose);
 			}			
 		} catch (TException e) {
 			e.printStackTrace();
@@ -139,14 +135,15 @@ public class Ur3Component extends TecsDeviceComponent{
 			boolean executing = true;
 			while(executing) {
 				CommandResponse cr = client.getCommandState();
-				 URState urs = client.getState();
-				
-				if (urs == URState.Error || urs == URState.Manual) {
-					executing = false;
-					setErrorCode(1);
-					stop();
-					break;
-				}
+				LOGGER.debug("CommandState is " + cr.state);
+				 
+//				URState urs = client.getState();				
+//				if (urs == URState.Error || urs == URState.Manual) {
+//					executing = false;
+//					setErrorCode(1);
+//					stop();
+//					break;
+//				}
 				
 				switch(cr.state) {
 				case ACCEPTED: 
@@ -176,11 +173,11 @@ public class Ur3Component extends TecsDeviceComponent{
 					break;
 				default: break;
 				}
-			}
-			try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
 		} catch (TException e) {
 			e.printStackTrace();

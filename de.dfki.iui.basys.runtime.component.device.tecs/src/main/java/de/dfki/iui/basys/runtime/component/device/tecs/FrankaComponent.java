@@ -2,7 +2,6 @@ package de.dfki.iui.basys.runtime.component.device.tecs;
 
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TProtocol;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
 import de.dfki.iui.basys.model.domain.capability.LoadCarrierUnitEnum;
@@ -134,9 +133,6 @@ public class FrankaComponent extends TecsDeviceComponent{
 
 	@Override
 	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
-		
-		EcoreUtil.resolveAll(req);
-
 		UnitConfiguration config = new UnitConfiguration();
 		if (req.getCapabilityVariant().eClass().equals(ResourceinstancePackage.eINSTANCE.getLogisticsCapabilityVariant())) {
 			LogisticsCapabilityVariant variant = (LogisticsCapabilityVariant) req.getCapabilityVariant();
@@ -144,8 +140,7 @@ public class FrankaComponent extends TecsDeviceComponent{
 				PickAndPlace capability = (PickAndPlace) variant.getCapability();
 				if (capability.getLoadCarrierUnit() == LoadCarrierUnitEnum.BOTTLE) {
 					if (variant.getAppliedOn().size() == 2) {
-						TopologyElement from = variant.getAppliedOn().get(0);
-						EcoreUtil.resolveAll(from);
+						TopologyElement from = variant.getAppliedOn().get(0);						
 						TopologyElement to   = variant.getAppliedOn().get(1);
 						if (from.getId().equals("_rBfZoV2TEeit97PGgoQOAQ") && to.getId().equals("_NQFk4zB5Eei1bbwBPPZWOA")) {
 							// Unload MiR (bottle)
@@ -165,18 +160,18 @@ public class FrankaComponent extends TecsDeviceComponent{
 	
 	@Override
 	public void onResetting() {
-		close();
-		try {
-			open();
-			LOGGER.info("Moving to home position");			
-			client.MoveToKnownPosition(FrankaConstants.KNOWN_POSE_1);
-			onExecute(); // block until in KnownPose1
-			
-		} catch (TException e) {
-			e.printStackTrace();
-			setErrorCode(1);
-			stop();
-		}
+//		close();
+//		try {
+//			open();
+//			LOGGER.info("Moving to home position");			
+//			client.MoveToKnownPosition(FrankaConstants.KNOWN_POSE_1);
+//			onExecute(); // block until in KnownPose1
+//			
+//		} catch (TException e) {
+//			e.printStackTrace();
+//			setErrorCode(1);
+//			stop();
+//		}
 	}
 
 	@Override
@@ -184,7 +179,8 @@ public class FrankaComponent extends TecsDeviceComponent{
 		try {
 			String pose = (String)getUnitConfig().getPayload();
 			LOGGER.info("Start executing pose: " + pose);
-			client.MoveToKnownPosition(pose);			
+			client.Load(pose);
+			//client.MoveToKnownPosition(pose);			
 		} catch (TException e) {
 			e.printStackTrace();
 			setErrorCode(1);
@@ -198,14 +194,15 @@ public class FrankaComponent extends TecsDeviceComponent{
 			boolean executing = true;
 			while(executing) {
 				CommandResponse cr = client.getCommandState();
-				FrankaState fs = client.getState();
-				
-				if (fs == FrankaState.Error || fs == FrankaState.Manual) {
-					executing = false;
-					setErrorCode(1);
-					stop();
-					break;
-				}
+				LOGGER.debug("CommandState is " + cr.state);
+//				FrankaState fs = client.getState();
+//				
+//				if (fs == FrankaState.Error || fs == FrankaState.Manual) {
+//					executing = false;
+//					setErrorCode(1);
+//					stop();
+//					break;
+//				}
 				
 				switch(cr.state) {
 				case ACCEPTED: 
@@ -234,13 +231,14 @@ public class FrankaComponent extends TecsDeviceComponent{
 					stop();
 					break;
 				default: break;
-				}
+				}				
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}				
 			}
-			try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+			
 		} catch (TException e) {
 			e.printStackTrace();
 			setErrorCode(3);

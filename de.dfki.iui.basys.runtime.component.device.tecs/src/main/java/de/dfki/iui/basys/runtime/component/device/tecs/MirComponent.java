@@ -270,12 +270,12 @@ public class MirComponent extends TecsDeviceComponent {
 //		} catch (TTransportException e1) {
 //			e1.printStackTrace();
 //		}
-//		try {
-//			client.setState(MIRState.Ready);
-//		} catch (TException e) {
-//			e.printStackTrace();
-//			stop();
-//		}
+		try {
+			client.setState(MIRState.Ready);
+		} catch (TException e) {
+			e.printStackTrace();
+			stop();
+		}
 	}
 
 	@Override

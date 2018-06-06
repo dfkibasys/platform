@@ -2,7 +2,6 @@ package de.dfki.iui.basys.runtime.component.device.tecs;
 
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TProtocol;
-import org.apache.thrift.transport.TTransportException;
 
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
 import de.dfki.iui.basys.model.domain.capability.LoadCarrierUnitEnum;
@@ -48,26 +47,30 @@ public class Ur10Component extends TecsDeviceComponent {
 			LogisticsCapabilityVariant variant = (LogisticsCapabilityVariant) req.getCapabilityVariant();
 			if (variant.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getPickAndPlace())) {
 				PickAndPlace capability = (PickAndPlace) variant.getCapability();
-				if (capability.getLoadCarrierUnit() == LoadCarrierUnitEnum.MATERIAL) {
+				if (capability.getLoadCarrierUnit() == LoadCarrierUnitEnum.RKLT_3215) {
 					if (variant.getAppliedOn().size() == 2) {
 						TopologyElement from = variant.getAppliedOn().get(0);
 						TopologyElement to = variant.getAppliedOn().get(1);
 						if (from.getId().equals("_xHhjwV2TEeit97PGgoQOAQ" /* QA AGV STATION */)
-								&& to.getId().equals("_C-v38TB5Eei1bbwBPPZWOA" /* QA WORKCELL */)) {
+								&& to.getId().equals("_F6qPdzB5Eei1bbwBPPZWOA" /* QA WORKCELL */)) {
 							// Unload MiR (KLT)
-							config.setPayload(urConstants.KNOWN_POSE_3);
+							config.setPayload(urConstants.KNOWN_POSE_4);
 						}
-						if (to.getId().equals("_xHhjwV2TEeit97PGgoQOAQ")
-								&& from.getId().equals("_C-v38TB5Eei1bbwBPPZWOA")) {
+						if (from.getId().equals("_F6qPdzB5Eei1bbwBPPZWOA") 
+								&& to.getId().equals("_xHhjwV2TEeit97PGgoQOAQ")) {
 							// Load MiR (KLT)
 							config.setPayload(urConstants.KNOWN_POSE_2);
+						}
+						if (from.getId().equals("_F6qPdzB5Eei1bbwBPPZWOA")
+								&& to.getId().equals("_7yRYkmmvEei3B5AQTC2gAw")) {
+							// KLT from QA to table
+							config.setPayload(urConstants.KNOWN_POSE_3);
 						}
 					}
 				}
 			}
 		}
 
-		// YUMI ?
 		
 		return config;
 	}
@@ -80,35 +83,33 @@ public class Ur10Component extends TecsDeviceComponent {
 
 	@Override
 	public void onResetting() {
-		close();
-		try {
-			open();
-			if (!simulated) {
-				client.MoveToKnownPosition(urConstants.KNOWN_POSE_1);
-				onExecute(); // block until in KnownPose1
-			}
-		} catch (TTransportException e) {
-			setErrorCode(1);
-			stop();
-			e.printStackTrace();
-		} catch (MoveException e) {
-			e.printStackTrace();
-			setErrorCode(1);
-			stop();
-		} catch (TException e) {
-			e.printStackTrace();
-			setErrorCode(1);
-			stop();
-		}
+//		close();
+//		try {
+//			open();
+//			if (!simulated) {
+//				client.MoveToKnownPosition(urConstants.KNOWN_POSE_1);
+//				onExecute(); // block until in KnownPose1
+//			}
+//		} catch (TTransportException e) {
+//			setErrorCode(1);
+//			stop();
+//			e.printStackTrace();
+//		} catch (MoveException e) {
+//			e.printStackTrace();
+//			setErrorCode(1);
+//			stop();
+//		} catch (TException e) {
+//			e.printStackTrace();
+//			setErrorCode(1);
+//			stop();
+//		}
 	}
 
 	@Override
 	public void onStarting() {
 		try {
 			String pose = (String) getUnitConfig().getPayload();
-			if (!simulated) {
-				client.MoveToKnownPosition(pose);
-			}
+			client.Load(pose);
 		} catch (TException e) {
 			e.printStackTrace();
 			setErrorCode(1);
@@ -118,23 +119,19 @@ public class Ur10Component extends TecsDeviceComponent {
 
 	@Override
 	public void onExecute() {
-		if (simulated) {
-			LOGGER.info("Simulating executing");
-			sleep(5);
-			return;
-		}
 		try {
 			boolean executing = true;
 			while (executing) {
 				CommandResponse cr = client.getCommandState();
-				URState urs = client.getState();
-
-				if (urs == URState.Error || urs == URState.Manual) {
-					executing = false;
-					setErrorCode(1);
-					stop();
-					break;
-				}
+				LOGGER.debug("CommandState is " + cr.state);
+				
+//				URState urs = client.getState();
+//				if (urs == URState.Error || urs == URState.Manual) {
+//					executing = false;
+//					setErrorCode(1);
+//					stop();
+//					break;
+//				}
 
 				switch (cr.state) {
 				case ACCEPTED:
@@ -165,11 +162,11 @@ public class Ur10Component extends TecsDeviceComponent {
 				default:
 					break;
 				}
-			}
-			try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
 		} catch (TException e) {
 			e.printStackTrace();
@@ -188,37 +185,37 @@ public class Ur10Component extends TecsDeviceComponent {
 		sendComponentResponse(ResponseStatus.NOT_OK, getErrorCode());
 	}
 
-	@Override
-	public void onAborting() {
-	}
-
-	@Override
-	public void onClearing() {
-		// perform reconecct
-		close();
-		try {
-			open();
-		} catch (TTransportException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	@Override
-	public void onHolding() {
-	}
-
-	@Override
-	public void onUnholding() {
-	}
-
-	@Override
-	public void onSuspending() {
-	}
-
-	@Override
-	public void onUnsuspending() {
-	}
+//	@Override
+//	public void onAborting() {
+//	}
+//
+//	@Override
+//	public void onClearing() {
+//		// perform reconecct
+//		close();
+//		try {
+//			open();
+//		} catch (TTransportException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
+//
+//	@Override
+//	public void onHolding() {
+//	}
+//
+//	@Override
+//	public void onUnholding() {
+//	}
+//
+//	@Override
+//	public void onSuspending() {
+//	}
+//
+//	@Override
+//	public void onUnsuspending() {
+//	}
 
 	private class Ur10TECS extends UR.Client {
 

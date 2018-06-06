@@ -1,5 +1,7 @@
 package de.dfki.iui.basys.runtime.component.device.tecs;
 
+import java.util.UUID;
+
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TTransportException;
@@ -24,9 +26,9 @@ public class YumiComponent extends TecsDeviceComponent {
 	protected YumiTECS client;
 	private final String businessKey;
 
-	public YumiComponent(ComponentConfiguration config, String businessKey) {
+	public YumiComponent(ComponentConfiguration config) {
 		super(config);
-		this.businessKey = businessKey;
+		this.businessKey = UUID.randomUUID().toString();
 	}
 
 	@Override
@@ -64,7 +66,7 @@ public class YumiComponent extends TecsDeviceComponent {
 
 	@Override
 	public void onStarting() {
-		if (!simulated && ((String) getUnitConfig().getPayload()).equals("PERFORM QA")) {
+		if (((String) getUnitConfig().getPayload()).equals("PERFORM QA")) {
 			try {
 				client.performQA("PERFORM QA");
 			} catch (TException e) {
@@ -77,23 +79,20 @@ public class YumiComponent extends TecsDeviceComponent {
 
 	@Override
 	public void onExecute() {
-		if (simulated) {
-			LOGGER.info("Simulating executing");
-			sleep(5);
-			return;
-		}
 		try {
 			boolean executing = true;
 			while (executing) {
 				CommandResponse cr = client.getCommandState();
-				YumiState ys = client.getState();
-
-				if (ys == YumiState.Error || ys == YumiState.Manual) {
-					executing = false;
-					setErrorCode(1);
-					stop();
-					break;
-				}
+				LOGGER.debug("CommandState is " + cr.state);
+				
+//				YumiState ys = client.getState();
+//
+//				if (ys == YumiState.Error || ys == YumiState.Manual) {
+//					executing = false;
+//					setErrorCode(1);
+//					stop();
+//					break;
+//				}
 
 				switch (cr.state) {
 				case ACCEPTED:
@@ -124,12 +123,13 @@ public class YumiComponent extends TecsDeviceComponent {
 				default:
 					break;
 				}
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
-			try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+			
 		} catch (TException e) {
 			e.printStackTrace();
 			setErrorCode(3);
