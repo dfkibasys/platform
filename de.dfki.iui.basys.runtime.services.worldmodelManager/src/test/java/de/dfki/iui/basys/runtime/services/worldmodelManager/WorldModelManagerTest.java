@@ -1,18 +1,11 @@
 package de.dfki.iui.basys.runtime.services.worldmodelManager;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Date;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.core.MediaType;
 
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.emfjson.jackson.resource.JsonResourceFactory;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -22,7 +15,6 @@ import org.junit.Test;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
-import de.dfki.iui.basys.common.emf.json.JsonUtils;
 import de.dfki.iui.basys.model.domain.capability.CapabilityFactory;
 import de.dfki.iui.basys.model.domain.capability.MoveToLocation;
 import de.dfki.iui.basys.model.domain.order.Order;
@@ -33,22 +25,17 @@ import de.dfki.iui.basys.model.domain.productinstance.ProductInstance;
 import de.dfki.iui.basys.model.domain.productinstance.impl.ProductinstanceFactoryImpl;
 import de.dfki.iui.basys.model.domain.resourceinstance.GeneralCapabilityVariant;
 import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstanceFactory;
-import de.dfki.iui.basys.model.runtime.communication.Notification;
 import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.ComponentFactory;
 import de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl;
-import de.dfki.iui.basys.runtime.communication.CommFactory;
 import de.dfki.iui.basys.runtime.component.ComponentException;
-import de.dfki.iui.basys.runtime.component.util.BasysResourceSetImpl;
 import de.dfki.iui.basys.runtime.processcontrol.TaskDescription;
 import de.dfki.iui.basys.runtime.processcontrol.impl.CamundaTaskScheduler;
 import de.dfki.iui.basys.runtime.services.OrderManager;
 import de.dfki.iui.basys.runtime.services.ProductDefinitionManager;
 import de.dfki.iui.basys.runtime.services.ProductInstanceManager;
 import de.dfki.iui.basys.runtime.services.TopologyManager;
-import de.dfki.iui.basys.runtime.services.worldmodelManager.impl.WorldModelManagerImpl;
-import de.dfki.iui.basys.runtime.services.worldmodelManager.impl.WorldModelManagerImpl.LinebalancingAnswer;
 
 public class WorldModelManagerTest extends BaseComponentTest {
 
@@ -184,6 +171,7 @@ public class WorldModelManagerTest extends BaseComponentTest {
 		productInstance.setSerialNumber("ID" + System.currentTimeMillis());
 		pim.addProductInstance(productInstance);
 
+		//FIXME: nächste Zeile rein, alles danach raus
 		//om.addOrder(order);
 
 		Client client = ClientBuilder.newClient();

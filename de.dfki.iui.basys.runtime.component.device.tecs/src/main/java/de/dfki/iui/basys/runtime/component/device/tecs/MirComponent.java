@@ -1,19 +1,17 @@
 package de.dfki.iui.basys.runtime.component.device.tecs;
 
 import java.util.AbstractMap.SimpleEntry;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.MediaType;
-
-import java.util.HashMap;
-import java.util.Map;
+import javax.ws.rs.core.Response;
 
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TProtocol;
-import org.apache.thrift.transport.TTransportException;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
@@ -67,6 +65,7 @@ public class MirComponent extends TecsDeviceComponent {
 
 	public MirComponent(ComponentConfiguration config) {
 		super(config);
+		resetOnComplete = true;
 	}
 
 	@Override
@@ -75,7 +74,7 @@ public class MirComponent extends TecsDeviceComponent {
 		String[] subscribeTo = new String[1];
 		subscribeTo[0] = "MIRPathEvent";
 		connectToTecs("robot-mir-04", subscribeTo, "tecs.mrk40.dfki.lan", 9000);
-		mRest_URI = "robot-mir-04.mrk40.dfki.lan:8080/v1.0.0/services/mission_queue";
+		mRest_URI = "http://robot-mir-04.mrk40.dfki.lan:8080/v1.0.0/mission_queue";
 
 		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Wait", "Station-QA"), 10000L);
 		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Wait", "Station-Festo"), 10000L);
@@ -126,7 +125,6 @@ public class MirComponent extends TecsDeviceComponent {
 	@Override
 	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
 
-		EcoreUtil.resolveAll(req);
 
 		UnitConfiguration config = new UnitConfiguration();
 
@@ -142,7 +140,6 @@ public class MirComponent extends TecsDeviceComponent {
 		}
 
 		if (te != null) {
-			EcoreUtil.resolveAll(te);
 			mTargetLocation = te;
 			Property p = componentConfig.getProperty("sourceLocation");
 			if (p == null) {
@@ -267,28 +264,28 @@ public class MirComponent extends TecsDeviceComponent {
 
 	@Override
 	public void onResetting() {
-		close();
-		try {
-			open();
-		} catch (TTransportException e1) {
-			e1.printStackTrace();
-		}
-		try {
-			client.setState(MIRState.Ready);
-		} catch (TException e) {
-			e.printStackTrace();
-			stop();
-		}
+//		close();
+//		try {
+//			open();
+//		} catch (TTransportException e1) {
+//			e1.printStackTrace();
+//		}
+//		try {
+//			client.setState(MIRState.Ready);
+//		} catch (TException e) {
+//			e.printStackTrace();
+//			stop();
+//		}
 	}
 
 	@Override
 	public void onStarting() {
 		TopologyElement targetElement = ((TopologyElement) getUnitConfig().getPayload());
-
+		
 		mMoving = true;
 		try {
-
-			mEstimatedETA = getEstimatedETA(mSourceLocation, mTargetLocation);
+			if  (mSourceLocation != null)
+				mEstimatedETA = getEstimatedETA(mSourceLocation, mTargetLocation);
 			mETAThread = new Thread(new Runnable() {
 
 				@Override
@@ -317,16 +314,15 @@ public class MirComponent extends TecsDeviceComponent {
 			});
 			mETAThread.start();
 
+			LOGGER.info("Moving to position: " + targetElement.getName());
 			if (mSourceLocation!=null && mSourceLocation.getName().equals("Station-Festo") && mTargetLocation.getName().equals("Station-QA")) {
 
 				//Get mission list from here: http://robot-mir-04.mrk40.dfki.lan:8080/v1.0.0/missions
 				
 				String payload = "{\"mission\":\"f4c63d9a-696a-11e8-a644-f44d3061d9da\"}";  
-				restClient.target(mRest_URI).request(MediaType.APPLICATION_JSON).post(Entity.json(payload));
-				
+				Response r = restClient.target(mRest_URI).request(MediaType.APPLICATION_JSON).post(Entity.json(payload));
+				LOGGER.debug("Status: " + r.getStatus());
 			} else {
-
-				LOGGER.info("Moving to position: " + targetElement.getName());
 				client.gotoNamedPosition(targetElement.getName());
 			}
 
@@ -356,7 +352,7 @@ public class MirComponent extends TecsDeviceComponent {
 			while (executing) {
 				CommandResponse cs = client.getCommandState();
 				String robotState = client.getRobotState();
-
+				LOGGER.debug("RobotState is " + robotState);
 				if (robotState.equals("Error") || robotState.equals("Manual")) {
 					executing = false;
 					setErrorCode(1);
@@ -440,49 +436,49 @@ public class MirComponent extends TecsDeviceComponent {
 		}
 	}
 
-	@Override
-	public void onAborting() {
-		// somehow trigger real emergency stop?!
-		// if emergency stop is released, trigger a clear() command
-	}
-
-	@Override
-	public void onClearing() {
-		// perform reconnect
-		close();
-		try {
-			open();
-		} catch (TTransportException e1) {
-			e1.printStackTrace();
-		}
-
-		// clear the error and set mir in a ready status
-		try {
-			client.setState(MIRState.Ready);
-		} catch (TException e) {
-			e.printStackTrace();
-		}
-	}
-
-	@Override
-	public void onHolding() {
-		// should be triggered when CommandState is in PAUSE. NOT IN THE MAIN PATH!
-	}
-
-	@Override
-	public void onUnholding() {
-		// should continue to execute. NOT IN THE MAIN PATH!
-	}
-
-	@Override
-	public void onSuspending() {
-		// NOT IN THE MAIN PATH!
-	}
-
-	@Override
-	public void onUnsuspending() {
-		// NOT IN THE MAIN PATH!
-	}
+//	@Override
+//	public void onAborting() {
+//		// somehow trigger real emergency stop?!
+//		// if emergency stop is released, trigger a clear() command
+//	}
+//
+//	@Override
+//	public void onClearing() {
+//		// perform reconnect
+//		close();
+//		try {
+//			open();
+//		} catch (TTransportException e1) {
+//			e1.printStackTrace();
+//		}
+//
+//		// clear the error and set mir in a ready status
+//		try {
+//			client.setState(MIRState.Ready);
+//		} catch (TException e) {
+//			e.printStackTrace();
+//		}
+//	}
+//
+//	@Override
+//	public void onHolding() {
+//		// should be triggered when CommandState is in PAUSE. NOT IN THE MAIN PATH!
+//	}
+//
+//	@Override
+//	public void onUnholding() {
+//		// should continue to execute. NOT IN THE MAIN PATH!
+//	}
+//
+//	@Override
+//	public void onSuspending() {
+//		// NOT IN THE MAIN PATH!
+//	}
+//
+//	@Override
+//	public void onUnsuspending() {
+//		// NOT IN THE MAIN PATH!
+//	}
 
 	/*
 	 * Get the path of the mir. Returns an array with values where: values[i * 3] is
@@ -582,7 +578,7 @@ public class MirComponent extends TecsDeviceComponent {
 		 */
 		@Override
 		public void setState(MIRState state) throws TException {
-			// super.setState(state);
+			super.setState(state);
 		}
 
 		/*

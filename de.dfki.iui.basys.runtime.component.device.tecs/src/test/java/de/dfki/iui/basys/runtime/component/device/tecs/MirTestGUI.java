@@ -1,11 +1,9 @@
 package de.dfki.iui.basys.runtime.component.device.tecs;
 
 import java.awt.Button;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Frame;
-import java.awt.Label;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,11 +19,11 @@ import de.dfki.iui.basys.runtime.component.ComponentException;
 public class MirTestGUI {
 
 	public static void main(String[] args) {
-		ComponentConfiguration config = new ComponentConfigurationImpl.Builder().componentId("mir-component")
+		ComponentConfiguration config = new ComponentConfigurationImpl.Builder().componentId("mir-component").componentName("MiR Test GUI")
 				.inChannelName("mir-component#in").outChannelName("mir-component#out")
 				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.component.device.tecs.MirComponent")
 				.componentCategory(ComponentCategory.DEVICE_COMPONENT)
-				.externalConnectionString(String.format("tecs.tcp://%s:%s", "10.2.0.71", 9030)).build();
+				.externalConnectionString(String.format("tecs.tcp://%s:%s", "10.2.0.70", 9030)).build();
 		
 		MirComponent mir100 = new MirComponent(config);
 		ComponentContext emptyContext = new ComponentContext.Builder().build();

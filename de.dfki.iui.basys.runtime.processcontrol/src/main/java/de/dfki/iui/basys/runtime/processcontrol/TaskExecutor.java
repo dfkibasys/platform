@@ -40,7 +40,7 @@ public class TaskExecutor implements ChannelListener {
 		ComponentRequestStatus status = device.sendComponentRequest(task.getRequest());
 		if (status.getStatus() == RequestStatus.ACCEPTED) {
 			try {
-				counter.await(1,TimeUnit.MINUTES);
+				counter.await(5,TimeUnit.MINUTES);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -54,6 +54,17 @@ public class TaskExecutor implements ChannelListener {
 			response.setStatus(ResponseStatus.NOT_OK);	
 			task.setResponse(response);
 		} 
+		
+		if (task.getResponse() == null) {
+			device.reset();
+			ComponentResponse response = ComponentFactory.eINSTANCE.createComponentResponse();
+			// TODO: ggf. Container-Wechsel?
+			response.setRequest(task.getRequest());
+			response.setComponentId(device.getId());
+			response.setMessage("timeout reached");
+			response.setStatus(ResponseStatus.NOT_OK);	
+			task.setResponse(response);
+		}
 		
 		device.disconnect();
 	}

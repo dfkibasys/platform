@@ -101,7 +101,7 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 						if (listener != null) {
 							listener.handleResponse(response);
 						} else {
-							LOGGER.warn("listener is null");
+							LOGGER.warn("listener is null, correlationId " + correlationId);
 						}
 						requestCorrelations.remove(correlationId);
 					} catch (JMSException e) {

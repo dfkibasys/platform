@@ -1,7 +1,6 @@
 package de.dfki.iui.basys.runtime.services.worldmodelManager.impl;
 
 import java.io.IOException;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -99,6 +98,8 @@ public class WorldModelManagerImpl extends EmfServiceComponent implements WorldM
 						System.out.println(">>>>>>" + not);
 						String payl = not.getPayload();
 						try {
+							
+							//FIXME
 							EObject payload = JsonUtils.fromString(payl, EObject.class);
 
 							executor.submit(() -> {
@@ -184,14 +185,14 @@ public class WorldModelManagerImpl extends EmfServiceComponent implements WorldM
 					Property sourceProperty = avgConfig.getProperty("sourceLocation");
 					TopologyElement source = null;
 					if (sourceProperty != null) {
-						source = (TopologyElement) JsonUtils.fromString(sourceProperty.getValue(),
+						source = JsonUtils.fromString(sourceProperty.getValue(),
 								TopologyElement.class);
 					}
 
 					Property targetProperty = avgConfig.getProperty("targetLocation");
 					TopologyElement target = null;
 					if (targetProperty != null) {
-						target = (TopologyElement) JsonUtils.fromString(targetProperty.getValue(),
+						target = JsonUtils.fromString(targetProperty.getValue(),
 								TopologyElement.class);
 					}
 
