@@ -34,6 +34,13 @@
     </capabilityVariant>
   </componentRequests>
   <componentRequests xsi:type="component:CapabilityRequest">
+    <capabilityVariant xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_AdWdEmmvEei3B5AQTC2gAw" name="KLT from QA to table">
+      <capability xsi:type="capability:PickAndPlace" id="_NV9HPmmvEei3B5AQTC2gAw" loadCarrierUnit="R_KLT_3215"/>
+      <appliedOn xsi:type="topology:Station" href="model.topology#_F6qPdzB5Eei1bbwBPPZWOA"/>
+      <appliedOn xsi:type="topology:Station" href="model.topology#_7yRYkmmvEei3B5AQTC2gAw"/>
+    </capabilityVariant>
+  </componentRequests>
+  <componentRequests xsi:type="component:CapabilityRequest">
     <capabilityVariant xsi:type="resourceinstance:ManufacturingCapabilityVariant" id="_gTUy-F-lEeixtLE-b5nbbQ" name="Inspect radial seal ring">
       <capability xsi:type="capability:Inspect" id="_eSUpwl-TEeioxNEjr9hsyQ"/>
       <appliedOn xsi:type="productdefinition:AssemblyGroupEntry" href="model.productdefinition#_IphR0F29EeixDOGCyjgf_g"/>
