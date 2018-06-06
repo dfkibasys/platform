@@ -1,6 +1,12 @@
 package de.dfki.iui.basys.runtime.component.device.tecs;
 
 import java.util.AbstractMap.SimpleEntry;
+
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.core.MediaType;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -56,6 +62,8 @@ public class MirComponent extends TecsDeviceComponent {
 	private Thread mETAThread;
 	protected boolean mMoving;
 	private Map<SimpleEntry<String, String>, Long> mEstimatedETAs = new HashMap<>();
+	private Client restClient;
+	private String mRest_URI;
 
 	public MirComponent(ComponentConfiguration config) {
 		super(config);
@@ -67,6 +75,7 @@ public class MirComponent extends TecsDeviceComponent {
 		String[] subscribeTo = new String[1];
 		subscribeTo[0] = "MIRPathEvent";
 		connectToTecs("robot-mir-04", subscribeTo, "tecs.mrk40.dfki.lan", 9000);
+		mRest_URI = "robot-mir-04.mrk40.dfki.lan:8080/v1.0.0/services/mission_queue";
 
 		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Wait", "Station-QA"), 10000L);
 		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Wait", "Station-Festo"), 10000L);
@@ -103,6 +112,8 @@ public class MirComponent extends TecsDeviceComponent {
 		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-TeachIn", "Station-BaSys"), 10000L);
 		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-TeachIn", "Station-Wait"), 10000L);
 		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-TeachIn", "Station-Cola"), 10000L);
+		
+		restClient = ClientBuilder.newClient();
 
 	}
 
@@ -114,11 +125,11 @@ public class MirComponent extends TecsDeviceComponent {
 
 	@Override
 	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
-		
-		EcoreUtil.resolveAll(req);		
+
+		EcoreUtil.resolveAll(req);
 
 		UnitConfiguration config = new UnitConfiguration();
-		
+
 		CapabilityVariant<?> c = req.getCapabilityVariant();
 		TopologyElement te = null;
 		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getMoveToLocation())) {
@@ -305,9 +316,20 @@ public class MirComponent extends TecsDeviceComponent {
 				}
 			});
 			mETAThread.start();
-			LOGGER.info("Moving to position: " + targetElement.getName());			
-			client.gotoNamedPosition(targetElement.getName());
-			
+
+			if (mSourceLocation!=null && mSourceLocation.getName().equals("Station-Festo") && mTargetLocation.getName().equals("Station-QA")) {
+
+				//Get mission list from here: http://robot-mir-04.mrk40.dfki.lan:8080/v1.0.0/missions
+				
+				String payload = "{\"mission\":\"f4c63d9a-696a-11e8-a644-f44d3061d9da\"}";  
+				restClient.target(mRest_URI).request(MediaType.APPLICATION_JSON).post(Entity.json(payload));
+				
+			} else {
+
+				LOGGER.info("Moving to position: " + targetElement.getName());
+				client.gotoNamedPosition(targetElement.getName());
+			}
+
 			String payload = JsonUtils.toString(targetElement);
 			Notification not = CommFactory.getInstance().createNotification(payload);
 
@@ -355,6 +377,7 @@ public class MirComponent extends TecsDeviceComponent {
 					// nothing to do, wait until finished
 					break;
 				case FINISHED:
+					System.out.println("FINISHED");
 					executing = false;
 					break;
 				case PAUSED:
@@ -374,7 +397,6 @@ public class MirComponent extends TecsDeviceComponent {
 				try {
 					Thread.sleep(100);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -560,7 +582,7 @@ public class MirComponent extends TecsDeviceComponent {
 		 */
 		@Override
 		public void setState(MIRState state) throws TException {
-			//super.setState(state);
+			// super.setState(state);
 		}
 
 		/*
