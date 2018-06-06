@@ -1,0 +1,14 @@
+{
+  "eClass" : "http://www.dfki.de/iui/basys/model/component#//ComponentConfiguration",
+  "componentCategory" : "DEVICE_COMPONENT",
+  "componentId" : "_PwPREFIxEeidSe5vp9A3oA",
+  "componentName" : "My Button (Sim)",
+  "componentImplementationJavaClass" : "de.dfki.iui.basys.runtime.component.device.mqtt.tactileswitch.SwitchDeviceComponent",
+  "inChannelName" : "_PwPREFIxEeidSe5vp9A3oA#in",
+  "outChannelName" : "_PwPREFIxEeidSe5vp9A3oA#out",
+  "externalConnectionString" : "tcp://10.2.10.4:1883",
+  "properties" : [ {
+    "key" : "simulated",
+    "value" : "true"
+  }]
+}

@@ -1,0 +1,10 @@
+{
+  "eClass" : "http://www.dfki.de/iui/basys/model/component#//ComponentConfiguration",
+  "componentCategory" : "DEVICE_COMPONENT",
+  "componentId" : "_wojNMDD7EeiuBvcKgWzd3Q",
+  "componentName" : "My YuMi",
+  "componentImplementationJavaClass" : "de.dfki.iui.basys.runtime.component.device.tecs.YumiComponent",
+  "inChannelName" : "_wojNMDD7EeiuBvcKgWzd3Q#in",
+  "outChannelName" : "_wojNMDD7EeiuBvcKgWzd3Q#out",
+  "externalConnectionString" : "tecs.tcp://10.2.0.45:9031"
+}
