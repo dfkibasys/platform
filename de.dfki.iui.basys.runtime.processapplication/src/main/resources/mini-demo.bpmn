@@ -4,9 +4,9 @@
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>SequenceFlow_06nfyqh</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:sequenceFlow id="SequenceFlow_1xza5xu" sourceRef="Task_1lrr1h0" targetRef="Task_1e26cks" />
-    <bpmn:sequenceFlow id="SequenceFlow_0uhgzbr" sourceRef="Task_1e26cks" targetRef="Task_1j966jq" />
-    <bpmn:sequenceFlow id="SequenceFlow_0ur6b73" sourceRef="Task_1j966jq" targetRef="Task_0jwj4ht" />
+    <bpmn:sequenceFlow id="SequenceFlow_1xza5xu" sourceRef="Task_1lrr1h0" targetRef="ServiceTask_07pmx0i" />
+    <bpmn:sequenceFlow id="SequenceFlow_0uhgzbr" sourceRef="Task_1e26cks" targetRef="ServiceTask_0egvrxt" />
+    <bpmn:sequenceFlow id="SequenceFlow_0ur6b73" sourceRef="Task_1j966jq" targetRef="ServiceTask_1yerjt2" />
     <bpmn:endEvent id="EndEvent_0drfr84">
       <bpmn:incoming>SequenceFlow_1yd4xgb</bpmn:incoming>
     </bpmn:endEvent>
@@ -63,7 +63,7 @@
   }</camunda:inputParameter>
         </camunda:inputOutput>
       </bpmn:extensionElements>
-      <bpmn:incoming>SequenceFlow_1xza5xu</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1m21p0g</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0uhgzbr</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:serviceTask id="Task_1j966jq" name="Verladen von Getränk" camunda:type="external" camunda:topic="BasysTask">
@@ -92,7 +92,7 @@
   }</camunda:inputParameter>
         </camunda:inputOutput>
       </bpmn:extensionElements>
-      <bpmn:incoming>SequenceFlow_0uhgzbr</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1y5et53</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0ur6b73</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:serviceTask id="Task_0jwj4ht" name="Mobiler Roboter fährt zu BaSys-Station" camunda:type="external" camunda:topic="BasysTask">
@@ -118,7 +118,7 @@
   }</camunda:inputParameter>
         </camunda:inputOutput>
       </bpmn:extensionElements>
-      <bpmn:incoming>SequenceFlow_0ur6b73</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1tepzb3</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1yd4xgb</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:serviceTask id="ServiceTask_058ex1q" name="Reset MiR" camunda:type="external" camunda:topic="BasysTask">
@@ -131,7 +131,7 @@
   }</camunda:inputParameter>
         </camunda:inputOutput>
       </bpmn:extensionElements>
-      <bpmn:incoming>SequenceFlow_1m21p0g</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_06nfyqh</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1ni4iek</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:serviceTask id="ServiceTask_07pmx0i" name="Reset Panda" camunda:type="external" camunda:topic="BasysTask">
@@ -144,12 +144,40 @@
   }</camunda:inputParameter>
         </camunda:inputOutput>
       </bpmn:extensionElements>
-      <bpmn:incoming>SequenceFlow_06nfyqh</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1xza5xu</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1m21p0g</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:sequenceFlow id="SequenceFlow_1m21p0g" sourceRef="ServiceTask_07pmx0i" targetRef="ServiceTask_058ex1q" />
+    <bpmn:sequenceFlow id="SequenceFlow_1m21p0g" sourceRef="ServiceTask_07pmx0i" targetRef="Task_1e26cks" />
     <bpmn:sequenceFlow id="SequenceFlow_1ni4iek" sourceRef="ServiceTask_058ex1q" targetRef="Task_1lrr1h0" />
-    <bpmn:sequenceFlow id="SequenceFlow_06nfyqh" sourceRef="StartEvent_1" targetRef="ServiceTask_07pmx0i" />
+    <bpmn:sequenceFlow id="SequenceFlow_06nfyqh" sourceRef="StartEvent_1" targetRef="ServiceTask_058ex1q" />
+    <bpmn:serviceTask id="ServiceTask_0egvrxt" name="Reset Panda" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_I4a_oDD-EeiuBvcKgWzd3Q</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CommandRequest",
+    "controlCommand" : "RESET"
+  }</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0uhgzbr</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1y5et53</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_1y5et53" sourceRef="ServiceTask_0egvrxt" targetRef="Task_1j966jq" />
+    <bpmn:serviceTask id="ServiceTask_1yerjt2" name="Reset MiR" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_rUJzsDJhEei1p5hKOf5Slw</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CommandRequest",
+    "controlCommand" : "RESET"
+  }</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0ur6b73</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1tepzb3</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_1tepzb3" sourceRef="ServiceTask_1yerjt2" targetRef="Task_0jwj4ht" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_Mini_Demo">
@@ -157,72 +185,82 @@
         <dc:Bounds x="18" y="102" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_1xza5xu_di" bpmnElement="SequenceFlow_1xza5xu">
-        <di:waypoint x="560" y="120" />
-        <di:waypoint x="610" y="120" />
+        <di:waypoint x="321" y="120" />
+        <di:waypoint x="357" y="120" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="384" y="99" width="0" height="12" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_0uhgzbr_di" bpmnElement="SequenceFlow_0uhgzbr">
-        <di:waypoint x="710" y="120" />
-        <di:waypoint x="760" y="120" />
+        <di:waypoint x="593" y="120" />
+        <di:waypoint x="629" y="120" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="534" y="99" width="0" height="12" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_0ur6b73_di" bpmnElement="SequenceFlow_0ur6b73">
-        <di:waypoint x="860" y="120" />
-        <di:waypoint x="910" y="120" />
+        <di:waypoint x="865" y="120" />
+        <di:waypoint x="901" y="120" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="684" y="99" width="0" height="12" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="EndEvent_0drfr84_di" bpmnElement="EndEvent_0drfr84">
-        <dc:Bounds x="1060" y="102" width="36" height="36" />
+        <dc:Bounds x="1166" y="102" width="36" height="36" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="877" y="142" width="0" height="12" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_1yd4xgb_di" bpmnElement="SequenceFlow_1yd4xgb">
-        <di:waypoint x="1010" y="120" />
-        <di:waypoint x="1060" y="120" />
+        <di:waypoint x="1137" y="120" />
+        <di:waypoint x="1166" y="120" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="834" y="99" width="0" height="12" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="ServiceTask_0wpzsli_di" bpmnElement="Task_1lrr1h0">
-        <dc:Bounds x="460" y="80" width="100" height="80" />
+        <dc:Bounds x="221" y="80" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ServiceTask_0au14z5_di" bpmnElement="Task_1e26cks">
-        <dc:Bounds x="610" y="80" width="100" height="80" />
+        <dc:Bounds x="493" y="80" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ServiceTask_12q65m5_di" bpmnElement="Task_1j966jq">
-        <dc:Bounds x="760" y="80" width="100" height="80" />
+        <dc:Bounds x="765" y="80" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ServiceTask_06ojm9r_di" bpmnElement="Task_0jwj4ht">
-        <dc:Bounds x="910" y="80" width="100" height="80" />
+        <dc:Bounds x="1037" y="80" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ServiceTask_058ex1q_di" bpmnElement="ServiceTask_058ex1q">
-        <dc:Bounds x="321" y="80" width="100" height="80" />
+        <dc:Bounds x="85" y="80" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ServiceTask_07pmx0i_di" bpmnElement="ServiceTask_07pmx0i">
-        <dc:Bounds x="178" y="90" width="100" height="80" />
+        <dc:Bounds x="357" y="80" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_1m21p0g_di" bpmnElement="SequenceFlow_1m21p0g">
-        <di:waypoint x="278" y="130" />
-        <di:waypoint x="300" y="130" />
-        <di:waypoint x="300" y="120" />
-        <di:waypoint x="321" y="120" />
+        <di:waypoint x="457" y="120" />
+        <di:waypoint x="493" y="120" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_1ni4iek_di" bpmnElement="SequenceFlow_1ni4iek">
-        <di:waypoint x="421" y="120" />
-        <di:waypoint x="460" y="120" />
+        <di:waypoint x="185" y="120" />
+        <di:waypoint x="221" y="120" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_06nfyqh_di" bpmnElement="SequenceFlow_06nfyqh">
         <di:waypoint x="54" y="120" />
-        <di:waypoint x="116" y="120" />
-        <di:waypoint x="116" y="130" />
-        <di:waypoint x="178" y="130" />
+        <di:waypoint x="85" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_0egvrxt_di" bpmnElement="ServiceTask_0egvrxt">
+        <dc:Bounds x="629" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1y5et53_di" bpmnElement="SequenceFlow_1y5et53">
+        <di:waypoint x="729" y="120" />
+        <di:waypoint x="765" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_1yerjt2_di" bpmnElement="ServiceTask_1yerjt2">
+        <dc:Bounds x="901" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1tepzb3_di" bpmnElement="SequenceFlow_1tepzb3">
+        <di:waypoint x="1001" y="120" />
+        <di:waypoint x="1037" y="120" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

@@ -48,25 +48,27 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 
 	protected boolean resetOnComplete, resetOnStopped = false;
 	
-	protected boolean simulated = false;
 	
 	protected ComponentRequest pendingRequest;
 
 	public DeviceComponent(ComponentConfiguration config) {
 		super(config);
-		if (config.getProperty("simulated") != null) {
-			simulated = Boolean.parseBoolean(config.getProperty("simulated").getValue());
-		}
+		
+		NotifyingStatesHandlerFacade handler = new NotifyingStatesHandlerFacade(this);
+
+		packmlUnit = new PackMLUnit(getId());
+		packmlUnit.setActiveStatesHandler(handler);
+		packmlUnit.setSimStatesHandler(new SimulatedStatesHandler(this));
+		packmlUnit.setWaitStatesHandler(handler);
+		if (simulated) {
+			packmlUnit.setMode(ControlMode.SIMULATION);
+		}	
 	}
 
 	@Override
 	public void activate(ComponentContext context) throws ComponentException {
 
-		NotifyingStatesHandlerFacade handler = new NotifyingStatesHandlerFacade(this);
-
-		packmlUnit = new PackMLUnit(getId());
-		packmlUnit.setActiveStatesHandler(handler);
-		packmlUnit.setWaitStatesHandler(handler);
+			
 		packmlUnit.initialize();
 
 		super.activate(context);

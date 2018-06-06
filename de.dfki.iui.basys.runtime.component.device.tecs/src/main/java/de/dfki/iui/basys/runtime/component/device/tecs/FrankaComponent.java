@@ -2,7 +2,6 @@ package de.dfki.iui.basys.runtime.component.device.tecs;
 
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TProtocol;
-import org.apache.thrift.transport.TTransportException;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
@@ -169,11 +168,10 @@ public class FrankaComponent extends TecsDeviceComponent{
 		close();
 		try {
 			open();
-			LOGGER.info("Moving to home position");
-			if (!simulated) {
-				client.MoveToKnownPosition(FrankaConstants.KNOWN_POSE_1);
-				onExecute(); // block until in KnownPose1
-			}
+			LOGGER.info("Moving to home position");			
+			client.MoveToKnownPosition(FrankaConstants.KNOWN_POSE_1);
+			onExecute(); // block until in KnownPose1
+			
 		} catch (TException e) {
 			e.printStackTrace();
 			setErrorCode(1);
@@ -186,9 +184,7 @@ public class FrankaComponent extends TecsDeviceComponent{
 		try {
 			String pose = (String)getUnitConfig().getPayload();
 			LOGGER.info("Start executing pose: " + pose);
-			if (!simulated) {				
-				client.MoveToKnownPosition(pose);
-			}
+			client.MoveToKnownPosition(pose);			
 		} catch (TException e) {
 			e.printStackTrace();
 			setErrorCode(1);
@@ -198,11 +194,6 @@ public class FrankaComponent extends TecsDeviceComponent{
 
 	@Override
 	public void onExecute() {
-		if (simulated) {
-			LOGGER.info("Simulating executing");
-			sleep(5);
-			return;
-		}
 		try {
 			boolean executing = true;
 			while(executing) {
@@ -267,31 +258,31 @@ public class FrankaComponent extends TecsDeviceComponent{
 		sendComponentResponse(ResponseStatus.NOT_OK, getErrorCode());
 	}
 
-	@Override
-	public void onAborting() {}
-
-	@Override
-	public void onClearing() {
-		// perform reconnect
-		close();
-		try {
-			open();
-		} catch (TTransportException e) {
-			e.printStackTrace();
-		}
-	}
-
-	@Override
-	public void onHolding() {}
-
-	@Override
-	public void onUnholding() {}
-
-	@Override
-	public void onSuspending() {}
-
-	@Override
-	public void onUnsuspending() {}
+//	@Override
+//	public void onAborting() {}
+//
+//	@Override
+//	public void onClearing() {
+//		// perform reconnect
+//		close();
+//		try {
+//			open();
+//		} catch (TTransportException e) {
+//			e.printStackTrace();
+//		}
+//	}
+//
+//	@Override
+//	public void onHolding() {}
+//
+//	@Override
+//	public void onUnholding() {}
+//
+//	@Override
+//	public void onSuspending() {}
+//
+//	@Override
+//	public void onUnsuspending() {}
 
 	private class FrankaTECS extends Franka.Client{
 

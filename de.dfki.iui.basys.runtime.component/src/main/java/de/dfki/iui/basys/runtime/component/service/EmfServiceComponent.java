@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 import de.dfki.iui.basys.common.emf.EmfPersistence;
-import de.dfki.iui.basys.common.emf.json.BasysResourceSetImpl;
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
 import de.dfki.iui.basys.model.domain.capability.util.CapabilityResourceFactoryImpl;
 import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
@@ -42,6 +41,7 @@ import de.dfki.iui.basys.model.domain.topology.util.TopologyResourceFactoryImpl;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.ComponentPackage;
 import de.dfki.iui.basys.runtime.component.ComponentException;
+import de.dfki.iui.basys.runtime.component.util.BasysResourceSetImpl;
 
 public abstract class EmfServiceComponent extends ServiceComponent {
 

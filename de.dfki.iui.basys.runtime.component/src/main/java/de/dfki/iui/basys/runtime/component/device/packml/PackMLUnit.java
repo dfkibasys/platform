@@ -32,6 +32,7 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 	private UnitConfiguration config;
 
 	private ActiveStatesHandler actHandler = null;
+	private ActiveStatesHandler simHandler = null;
 	private WaitStatesHandler waitHandler = null;
 
 	ExecutorService executor;
@@ -74,6 +75,10 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 
 	public void setActiveStatesHandler(ActiveStatesHandler actHandler) {
 		this.actHandler = actHandler;
+	}
+	
+	public void setSimStatesHandler(ActiveStatesHandler simHandler) {
+		this.simHandler = simHandler;
 	}
 
 	public void setWaitStatesHandler(WaitStatesHandler waitHandler) {
@@ -162,16 +167,18 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 		}		
 		if (mode == ControlMode.MANUAL && state == State.ABORTED) {
 			this.mode = mode;
-			ComponentRequestStatus status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.ACCEPTED).message("mode changed").build();
+			ComponentRequestStatus status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.ACCEPTED).message("mode switched").build();
+			packml.raiseLifecycleEvent("switch_mode");
 			return status;
 		} else if (state == State.STOPPED) {
 			this.mode = mode;
-			ComponentRequestStatus status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.ACCEPTED).message("mode changed").build();
+			packml.raiseLifecycleEvent("switch_mode");
+			ComponentRequestStatus status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.ACCEPTED).message("mode switched").build();
 			return status;
 		} else {
 			// illegal state
-			LOGGER.error(String.format("cannot change to mode %s in state %s", mode, state));
-			ComponentRequestStatus status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.REJECTED).message(String.format("cannot change to mode %s in state %s", mode, state)).build();
+			LOGGER.error(String.format("cannot switch to mode %s in state %s", mode, state));
+			ComponentRequestStatus status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.REJECTED).message(String.format("cannot switch to mode %s in state %s", mode, state)).build();
 			return status;
 		}
 	}
@@ -265,17 +272,25 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 	/*
 	 * ActiveStatesHandler facade
 	 */
+	
+	private ActiveStatesHandler getHandler() {
+		if (getMode() == ControlMode.SIMULATION) {
+			return simHandler;
+		}
+		return actHandler;
+	}
 
 	@Override
 	public void onResetting() {
 		LOGGER.info("onResetting()");
 		setErrorCode(0);
-
-		if (actHandler != null) {
+		
+		ActiveStatesHandler handler = getHandler();		
+		if (handler != null) {
 			CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
 
 			executor.submit(() -> {
-				actHandler.onResetting();
+				handler.onResetting();
 				cf.complete(true);
 				return null;
 			});
@@ -288,11 +303,12 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 	@Override
 	public void onStarting() {
 		LOGGER.info("onStarting()");
-		if (actHandler != null) {
+		ActiveStatesHandler handler = getHandler();		
+		if (handler != null) {
 			CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
 
 			executor.submit(() -> {
-				actHandler.onStarting();
+				handler.onStarting();
 				cf.complete(true);
 				return null;
 			});
@@ -304,11 +320,12 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 	@Override
 	public void onExecute() {
 		LOGGER.info("onExecute()");
-		if (actHandler != null) {
+		ActiveStatesHandler handler = getHandler();		
+		if (handler != null) {
 			CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
 
 			executor.submit(() -> {
-				actHandler.onExecute();
+				handler.onExecute();
 				cf.complete(true);
 				return null;
 			});
@@ -320,11 +337,12 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 	@Override
 	public void onCompleting() {
 		LOGGER.info("onCompleting()");
-		if (actHandler != null) {
+		ActiveStatesHandler handler = getHandler();		
+		if (handler != null) {
 			CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
 
 			executor.submit(() -> {
-				actHandler.onCompleting();
+				handler.onCompleting();
 				cf.complete(true);
 				return null;
 			});
@@ -336,11 +354,12 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 	@Override
 	public void onHolding() {
 		LOGGER.info("onHolding()");
-		if (actHandler != null) {
+		ActiveStatesHandler handler = getHandler();		
+		if (handler != null) {
 			CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
 
 			executor.submit(() -> {
-				actHandler.onHolding();
+				handler.onHolding();
 				cf.complete(true);
 				return null;
 			});
@@ -352,11 +371,12 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 	@Override
 	public void onUnholding() {
 		LOGGER.info("onUnholding()");
-		if (actHandler != null) {
+		ActiveStatesHandler handler = getHandler();		
+		if (handler != null) {
 			CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
 
 			executor.submit(() -> {
-				actHandler.onUnholding();
+				handler.onUnholding();
 				cf.complete(true);
 				return null;
 			});
@@ -368,11 +388,12 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 	@Override
 	public void onSuspending() {
 		LOGGER.info("onSuspending()");
-		if (actHandler != null) {
+		ActiveStatesHandler handler = getHandler();		
+		if (handler != null) {
 			CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
 
 			executor.submit(() -> {
-				actHandler.onSuspending();
+				handler.onSuspending();
 				cf.complete(true);
 				return null;
 			});
@@ -384,11 +405,12 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 	@Override
 	public void onUnsuspending() {
 		LOGGER.info("onUnsuspending()");
-		if (actHandler != null) {
+		ActiveStatesHandler handler = getHandler();		
+		if (handler != null) {
 			CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
 
 			executor.submit(() -> {
-				actHandler.onUnsuspending();
+				handler.onUnsuspending();
 				cf.complete(true);
 				return null;
 			});
@@ -400,11 +422,12 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 	@Override
 	public void onAborting() {
 		LOGGER.info("onAborting()");
-		if (actHandler != null) {
+		ActiveStatesHandler handler = getHandler();		
+		if (handler != null) {
 			CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
 
 			executor.submit(() -> {
-				actHandler.onAborting();
+				handler.onAborting();
 				cf.complete(true);
 				return null;
 			});
@@ -416,11 +439,12 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 	@Override
 	public void onClearing() {
 		LOGGER.info("onClearing()");
-		if (actHandler != null) {
+		ActiveStatesHandler handler = getHandler();		
+		if (handler != null) {
 			CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
 
 			executor.submit(() -> {
-				actHandler.onClearing();
+				handler.onClearing();
 				cf.complete(true);
 				return null;
 			});
@@ -432,11 +456,12 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 	@Override
 	public void onStopping() {
 		LOGGER.info("onStopping()");
-		if (actHandler != null) {
+		ActiveStatesHandler handler = getHandler();		
+		if (handler != null) {
 			CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
 
 			executor.submit(() -> {
-				actHandler.onStopping();
+				handler.onStopping();
 				cf.complete(true);
 				return null;
 			});

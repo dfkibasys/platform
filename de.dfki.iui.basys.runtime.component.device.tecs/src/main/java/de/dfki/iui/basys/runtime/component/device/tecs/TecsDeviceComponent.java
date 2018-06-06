@@ -62,6 +62,9 @@ public abstract class TecsDeviceComponent extends DeviceComponent {
 	 * port = port of the tecs server
 	 */
 	public void connectToTecs(String clientID, String[] subscribeTo, String ip, int port) {
+		if (simulated)
+			return;
+		
 		psClient = new PSClient(clientID, ip, port);
 		
 		for (String sub: subscribeTo)
@@ -92,12 +95,14 @@ public abstract class TecsDeviceComponent extends DeviceComponent {
 	}
 
 	protected void open() throws TTransportException {
-		protocol.getTransport().open();
+		if (!simulated)
+			protocol.getTransport().open();
 	}
 
 	// close communication to TECS
 	protected void close() {
-		protocol.getTransport().close();
+		if (!simulated)
+			protocol.getTransport().close();
 	}
 	
 }

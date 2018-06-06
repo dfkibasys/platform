@@ -6,10 +6,6 @@ import org.eclipse.paho.client.mqttv3.IMqttMessageListener;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
-import de.dfki.iui.basys.model.domain.capability.Capability;
-import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
-import de.dfki.iui.basys.model.domain.capability.SwitchConfirmationCapability;
-import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
@@ -93,7 +89,6 @@ public class SwitchDeviceComponent extends MqttDeviceComponent {
 	public void onResetting() {
 		if (switchIsActive)
 			switchDeactivate();
-		super.onResetting();
 	}
 	
 	private boolean switchActivate() {

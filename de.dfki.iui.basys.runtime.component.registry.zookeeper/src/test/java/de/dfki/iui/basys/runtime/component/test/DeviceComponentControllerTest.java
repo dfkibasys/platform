@@ -2,9 +2,6 @@ package de.dfki.iui.basys.runtime.component.test;
 
 import static org.junit.Assert.assertEquals;
 
-import java.net.URL;
-import java.net.URLClassLoader;
-
 import org.junit.Test;
 
 import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
@@ -19,6 +16,8 @@ public class DeviceComponentControllerTest extends BaseComponentTest {
 
 	@Test
 	public void testDeviceComponentController() {
+		
+		printClassPath();
 		
 		TestDeviceComponent comp = new TestDeviceComponent(config1);
 				

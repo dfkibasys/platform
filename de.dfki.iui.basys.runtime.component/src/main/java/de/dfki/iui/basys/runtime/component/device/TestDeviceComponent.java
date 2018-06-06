@@ -21,7 +21,8 @@ public class TestDeviceComponent extends DeviceComponent {
 	public TestDeviceComponent(ComponentConfiguration config) {
 		super(config);
 		resetOnComplete = true;
-		resetOnStopped = true;
+		//Some tests require this to be false
+		//resetOnStopped = true;
 	}
 		
 	@Override
@@ -46,16 +47,6 @@ public class TestDeviceComponent extends DeviceComponent {
 			e.printStackTrace();
 		}
 		return State.ABORTED;
-	}
-	
-	@Override
-	protected void sleep(long seconds) {
-		try {
-			TimeUnit.MILLISECONDS.sleep(seconds*1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	
 	@Override

@@ -3,6 +3,7 @@ package de.dfki.iui.basys.runtime.component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import de.dfki.iui.basys.common.emf.json.JsonUtils;
 import de.dfki.iui.basys.model.runtime.communication.Channel;
 import de.dfki.iui.basys.model.runtime.communication.ChannelListener;
 import de.dfki.iui.basys.model.runtime.communication.ChannelPool;
@@ -19,6 +20,7 @@ import de.dfki.iui.basys.model.runtime.component.impl.ComponentInfoImpl;
 import de.dfki.iui.basys.runtime.communication.CommFactory;
 import de.dfki.iui.basys.runtime.component.registry.ComponentRegistration;
 import de.dfki.iui.basys.runtime.component.registry.ComponentRegistrationException;
+import de.dfki.iui.basys.runtime.component.util.BasysResourceSetImpl;
 
 public class BaseComponent implements Component, ChannelListener {
 
@@ -27,6 +29,8 @@ public class BaseComponent implements Component, ChannelListener {
 	protected ComponentConfiguration componentConfig;
 	protected ComponentContext context;
 
+	protected boolean simulated = false;
+	
 	protected CommFactory cf = CommFactory.getInstance();
 	protected Client privateClient;
 	protected Channel inChannel;
@@ -40,8 +44,14 @@ public class BaseComponent implements Component, ChannelListener {
 	private boolean activated = false;
 
 	public BaseComponent(ComponentConfiguration config) {
+		JsonUtils.factory = new BasysResourceSetImpl.Factory();
 		this.componentConfig = config;
 		LOGGER = LoggerFactory.getLogger("basys.component." + componentConfig.getComponentName().replaceAll(" ", "-"));
+		if (config.getProperty("simulated") != null) {
+			simulated = Boolean.parseBoolean(config.getProperty("simulated").getValue());
+			LOGGER.info("component is in SIMULATION mode");
+		}
+		
 	}
 
 	@Override
@@ -71,6 +81,8 @@ public class BaseComponent implements Component, ChannelListener {
 
 	@Override
 	public ControlMode getMode() {
+		if (simulated)
+			return ControlMode.SIMULATION;
 		return ControlMode.PRODUCTION;
 	}
 
@@ -95,8 +107,12 @@ public class BaseComponent implements Component, ChannelListener {
 				
 				LOGGER.debug("connectToExternal: " + getConfig().getExternalConnectionString());
 				try {
-					connectToExternal();
-					connectedToExternal = true;
+					if (simulated) {
+						LOGGER.info("component is simulated, skipping connectToExternal()");
+					} else {
+						connectToExternal();
+						connectedToExternal = true;
+					}
 					LOGGER.debug("connectToExternal - finished");
 				} catch (ComponentException e) {
 					LOGGER.error(e.getMessage());

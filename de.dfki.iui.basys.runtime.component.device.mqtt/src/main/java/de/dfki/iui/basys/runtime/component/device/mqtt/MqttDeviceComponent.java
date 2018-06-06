@@ -8,23 +8,20 @@ import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
-import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.DeviceComponent;
-import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
 
-public class MqttDeviceComponent extends DeviceComponent {
+public abstract class MqttDeviceComponent extends DeviceComponent {
 
 	protected IMqttAsyncClient mqttClient = null;
 
 	public MqttDeviceComponent(ComponentConfiguration config) {
 		super(config);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public void connectToExternal() throws ComponentException {
+	public void connectToExternal() throws ComponentException {			
 		MemoryPersistence persistence = new MemoryPersistence();
 		final MqttConnectOptions options = new MqttConnectOptions();
 		options.setCleanSession(true);
@@ -57,13 +54,7 @@ public class MqttDeviceComponent extends DeviceComponent {
 		} catch (MqttException e) {
 			LOGGER.warn("MqttGatewayComponent \"" + getId() + "\"" + " cannot disconnect", e);
 		}
-
 	}
 
-	@Override
-	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

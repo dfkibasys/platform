@@ -12,7 +12,6 @@ import org.apache.commons.scxml2.env.SimpleDispatcher;
 import org.apache.commons.scxml2.env.SimpleSCXMLListener;
 import org.apache.commons.scxml2.env.jexl.JexlEvaluator;
 import org.apache.commons.scxml2.io.SCXMLReader;
-import org.apache.commons.scxml2.model.EnterableState;
 import org.apache.commons.scxml2.model.ModelException;
 import org.apache.commons.scxml2.model.SCXML;
 import org.slf4j.Logger;
@@ -52,7 +51,9 @@ public class PackML {
 				// add script variables to scope
 				exec.addListener(scxml, new SimpleSCXMLListener());
 				exec.getRootContext().set("unit", unit);
+				exec.getRootContext().set("packml", this);
 				exec.getRootContext().set("Mode", ControlMode.class);
+				exec.getRootContext().set("State", State.class);
 
 				//exec.go();
 				exec.run();
@@ -72,16 +73,26 @@ public class PackML {
 		}
 	}
 
+	private State state = State.STOPPED;
+	public void setState(State state) {
+		this.state = state;
+	}
+	
 	public State getState() {
-		EnterableState state = exec.getStatus().getStates().toArray(new EnterableState[0])[0];
-		if (state.getId().equals("MODE_SWITCH"))
-			return State.RESETTING;
-		State result = State.valueOf(state.getId());
-		return result;
+		return state;
+//		EnterableState state = exec.getStatus().getStates().toArray(new EnterableState[0])[0];
+//		if (state.getId().equals("MODE_SWITCH"))
+//			return State.RESETTING;
+//		State result = State.valueOf(state.getId());
+//		return result;
 	}
 
 	public void raiseLifecycleEvent(String event) {
 		LOGGER.info("raiseLifecycleEvent: " + event);
+		if (!initialized) {
+			LOGGER.warn("PackML automaton not yet initialized, skipping event: " + event);
+			return;
+		}
 		exec.addEvent(new EventBuilder("lifecycle.events." + event, TriggerEvent.SIGNAL_EVENT).build());
 //		try {
 //			exec.triggerEvent(new EventBuilder("lifecycle.events." + event, TriggerEvent.SIGNAL_EVENT).build());			

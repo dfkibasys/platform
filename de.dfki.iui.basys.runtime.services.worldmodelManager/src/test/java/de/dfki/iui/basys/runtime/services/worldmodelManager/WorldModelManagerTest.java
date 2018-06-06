@@ -22,7 +22,6 @@ import org.junit.Test;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
-import de.dfki.iui.basys.common.emf.json.BasysResourceSetImpl;
 import de.dfki.iui.basys.common.emf.json.JsonUtils;
 import de.dfki.iui.basys.model.domain.capability.CapabilityFactory;
 import de.dfki.iui.basys.model.domain.capability.MoveToLocation;
@@ -41,6 +40,7 @@ import de.dfki.iui.basys.model.runtime.component.ComponentFactory;
 import de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl;
 import de.dfki.iui.basys.runtime.communication.CommFactory;
 import de.dfki.iui.basys.runtime.component.ComponentException;
+import de.dfki.iui.basys.runtime.component.util.BasysResourceSetImpl;
 import de.dfki.iui.basys.runtime.processcontrol.TaskDescription;
 import de.dfki.iui.basys.runtime.processcontrol.impl.CamundaTaskScheduler;
 import de.dfki.iui.basys.runtime.services.OrderManager;

@@ -51,12 +51,14 @@ public class FestoComponent extends OpcUaDeviceComponent {
 	public void activate(ComponentContext context) throws ComponentException {
 		super.activate(context);
 
-		try {
-			subscribeToValue(NODE_VARIABLE_JOB_STATUS);
-			subscribeToValue(NODE_VARIABLE_JOB_ERRORCODE);
-
-		} catch (Exception e) {
-			throw new ComponentException(new OpcUaException(e));
+		if (!simulated) {
+			try {
+				subscribeToValue(NODE_VARIABLE_JOB_STATUS);
+				subscribeToValue(NODE_VARIABLE_JOB_ERRORCODE);
+	
+			} catch (Exception e) {
+				throw new ComponentException(new OpcUaException(e));
+			}
 		}
 	}
 

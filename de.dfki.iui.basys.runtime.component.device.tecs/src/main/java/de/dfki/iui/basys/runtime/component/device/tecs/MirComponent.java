@@ -305,10 +305,9 @@ public class MirComponent extends TecsDeviceComponent {
 				}
 			});
 			mETAThread.start();
-			LOGGER.info("Moving to position: " + targetElement.getName());
-			if (!simulated) {
-				client.gotoNamedPosition(targetElement.getName());
-			}
+			LOGGER.info("Moving to position: " + targetElement.getName());			
+			client.gotoNamedPosition(targetElement.getName());
+			
 			String payload = JsonUtils.toString(targetElement);
 			Notification not = CommFactory.getInstance().createNotification(payload);
 
@@ -330,11 +329,6 @@ public class MirComponent extends TecsDeviceComponent {
 
 	@Override
 	public void onExecute() {
-		if (simulated) {
-			LOGGER.info("Simulating executing");
-			sleep(5);
-			return;
-		}
 		try {
 			boolean executing = true;
 			while (executing) {

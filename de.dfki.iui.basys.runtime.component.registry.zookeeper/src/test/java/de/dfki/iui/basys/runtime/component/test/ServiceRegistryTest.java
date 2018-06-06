@@ -5,7 +5,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -110,9 +109,10 @@ public class ServiceRegistryTest extends BaseComponentTest {
 		assertEquals(State.EXECUTE, comp.getLastState());
 
 		assertEquals(State.COMPLETING, comp.getLastState());
-		assertEquals(State.COMPLETE, comp.getLastState());		
-		
+
 		comp.stop();
+		//assertEquals(State.COMPLETE, comp.getLastState());		
+		
 		assertEquals(State.STOPPING, comp.getLastState());
 		assertEquals(State.STOPPED, comp.getLastState());		
 		
@@ -121,10 +121,40 @@ public class ServiceRegistryTest extends BaseComponentTest {
 		LOGGER.info("testServiceLifecycle - complete");
 	}
 		
-	
-
 	@Test
 	public void testDeviceComponentLifecycle2() throws ComponentException {
+		LOGGER.info("testServiceLifecycle - start");
+		
+		TestDeviceComponent comp = new TestDeviceComponent(config1);
+		comp.activate(context);
+
+		assertEquals(State.STOPPED, comp.getLastState());
+			
+		comp.reset();
+		assertEquals(State.RESETTING, comp.getLastState());
+		assertEquals(State.IDLE, comp.getLastState());
+		
+		comp.start();
+		assertEquals(State.STARTING, comp.getLastState());
+		assertEquals(State.EXECUTE, comp.getLastState());
+		
+		comp.stop();
+		
+//		assertEquals(State.COMPLETING, comp.getLastState());
+//		assertEquals(State.COMPLETE, comp.getLastState());		
+//		
+//		
+//		assertEquals(State.RESETTING, comp.getLastState());
+		assertEquals(State.STOPPING, comp.getLastState());
+		assertEquals(State.STOPPED, comp.getLastState());		
+		
+		comp.deactivate();
+		
+		LOGGER.info("testServiceLifecycle - complete");
+	}
+
+	@Test
+	public void testDeviceComponentLifecycle3() throws ComponentException {
 		LOGGER.info("testServiceLifecycle - start");
 		
 		TestDeviceComponent comp = new TestDeviceComponent(config1);
@@ -160,6 +190,7 @@ public class ServiceRegistryTest extends BaseComponentTest {
 		assertEquals(State.COMPLETE,info.getCurrentState());
 		
 		comp.stop();
+		assertEquals(State.RESETTING, comp.getLastState());
 		assertEquals(State.STOPPING, comp.getLastState());
 		assertEquals(State.STOPPED, comp.getLastState());		
 		info = registry.getComponentById(comp.getCategory(), comp.getId());
