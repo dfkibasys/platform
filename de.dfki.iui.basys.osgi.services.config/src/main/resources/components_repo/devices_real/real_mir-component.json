@@ -6,5 +6,5 @@
   "componentImplementationJavaClass" : "de.dfki.iui.basys.runtime.component.device.tecs.MirComponent",
   "inChannelName" : "_rUJzsDJhEei1p5hKOf5Slw#in",
   "outChannelName" : "_rUJzsDJhEei1p5hKOf5Slw#out",
-  "externalConnectionString" : "tecs.tcp://10.2.0.70:9030"
+  "externalConnectionString" : "tecs.tcp://10.2.10.3:9030"
 }
