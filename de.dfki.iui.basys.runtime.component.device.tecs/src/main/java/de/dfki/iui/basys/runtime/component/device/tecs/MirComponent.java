@@ -111,7 +111,7 @@ public class MirComponent extends TecsDeviceComponent {
 		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-TeachIn", "Station-BaSys"), 10000L);
 		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-TeachIn", "Station-Wait"), 10000L);
 		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-TeachIn", "Station-Cola"), 10000L);
-		
+
 		restClient = ClientBuilder.newClient();
 
 	}
@@ -124,7 +124,6 @@ public class MirComponent extends TecsDeviceComponent {
 
 	@Override
 	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
-
 
 		UnitConfiguration config = new UnitConfiguration();
 
@@ -141,18 +140,24 @@ public class MirComponent extends TecsDeviceComponent {
 
 		if (te != null) {
 			mTargetLocation = te;
+
 			Property p = componentConfig.getProperty("sourceLocation");
-			if (p == null) {
-				p = new ComponentFactoryImpl().createProperty();
-				p.setKey("sourceLocation");
-				componentConfig.getProperties().add(p);
-			}
-			try {
-				if (mSourceLocation != null) {
-					p.setValue(JsonUtils.toString(mSourceLocation));
+			if (mSourceLocation != null) {
+				if (p == null) {
+					p = new ComponentFactoryImpl().createProperty();
+					p.setKey("sourceLocation");
+					componentConfig.getProperties().add(p);
 				}
-			} catch (JsonProcessingException e1) {
-				e1.printStackTrace();
+				try {
+					p.setValue(JsonUtils.toString(mSourceLocation));
+
+				} catch (JsonProcessingException e1) {
+					e1.printStackTrace();
+				}
+			} else {
+				if (p != null) {
+					componentConfig.getProperties().remove(p);
+				}
 			}
 
 			p = componentConfig.getProperty("targetLocation");
@@ -264,12 +269,12 @@ public class MirComponent extends TecsDeviceComponent {
 
 	@Override
 	public void onResetting() {
-//		close();
-//		try {
-//			open();
-//		} catch (TTransportException e1) {
-//			e1.printStackTrace();
-//		}
+		// close();
+		// try {
+		// open();
+		// } catch (TTransportException e1) {
+		// e1.printStackTrace();
+		// }
 		try {
 			client.setState(MIRState.Ready);
 		} catch (TException e) {
@@ -281,10 +286,10 @@ public class MirComponent extends TecsDeviceComponent {
 	@Override
 	public void onStarting() {
 		TopologyElement targetElement = ((TopologyElement) getUnitConfig().getPayload());
-		
+
 		mMoving = true;
 		try {
-			if  (mSourceLocation != null)
+			if (mSourceLocation != null)
 				mEstimatedETA = getEstimatedETA(mSourceLocation, mTargetLocation);
 			mETAThread = new Thread(new Runnable() {
 
@@ -315,12 +320,15 @@ public class MirComponent extends TecsDeviceComponent {
 			mETAThread.start();
 
 			LOGGER.info("Moving to position: " + targetElement.getName());
-			if (mSourceLocation!=null && mSourceLocation.getName().equals("Station-Festo") && mTargetLocation.getName().equals("Station-QA")) {
+			if (mSourceLocation != null && mSourceLocation.getName().equals("Station-Festo")
+					&& mTargetLocation.getName().equals("Station-QA")) {
 
-				//Get mission list from here: http://robot-mir-04.mrk40.dfki.lan:8080/v1.0.0/missions
-				
-				String payload = "{\"mission\":\"f4c63d9a-696a-11e8-a644-f44d3061d9da\"}";  
-				Response r = restClient.target(mRest_URI).request(MediaType.APPLICATION_JSON).post(Entity.json(payload));
+				// Get mission list from here:
+				// http://robot-mir-04.mrk40.dfki.lan:8080/v1.0.0/missions
+
+				String payload = "{\"mission\":\"f4c63d9a-696a-11e8-a644-f44d3061d9da\"}";
+				Response r = restClient.target(mRest_URI).request(MediaType.APPLICATION_JSON)
+						.post(Entity.json(payload));
 				LOGGER.debug("Status: " + r.getStatus());
 			} else {
 				client.gotoNamedPosition(targetElement.getName());
@@ -436,49 +444,49 @@ public class MirComponent extends TecsDeviceComponent {
 		}
 	}
 
-//	@Override
-//	public void onAborting() {
-//		// somehow trigger real emergency stop?!
-//		// if emergency stop is released, trigger a clear() command
-//	}
-//
-//	@Override
-//	public void onClearing() {
-//		// perform reconnect
-//		close();
-//		try {
-//			open();
-//		} catch (TTransportException e1) {
-//			e1.printStackTrace();
-//		}
-//
-//		// clear the error and set mir in a ready status
-//		try {
-//			client.setState(MIRState.Ready);
-//		} catch (TException e) {
-//			e.printStackTrace();
-//		}
-//	}
-//
-//	@Override
-//	public void onHolding() {
-//		// should be triggered when CommandState is in PAUSE. NOT IN THE MAIN PATH!
-//	}
-//
-//	@Override
-//	public void onUnholding() {
-//		// should continue to execute. NOT IN THE MAIN PATH!
-//	}
-//
-//	@Override
-//	public void onSuspending() {
-//		// NOT IN THE MAIN PATH!
-//	}
-//
-//	@Override
-//	public void onUnsuspending() {
-//		// NOT IN THE MAIN PATH!
-//	}
+	// @Override
+	// public void onAborting() {
+	// // somehow trigger real emergency stop?!
+	// // if emergency stop is released, trigger a clear() command
+	// }
+	//
+	// @Override
+	// public void onClearing() {
+	// // perform reconnect
+	// close();
+	// try {
+	// open();
+	// } catch (TTransportException e1) {
+	// e1.printStackTrace();
+	// }
+	//
+	// // clear the error and set mir in a ready status
+	// try {
+	// client.setState(MIRState.Ready);
+	// } catch (TException e) {
+	// e.printStackTrace();
+	// }
+	// }
+	//
+	// @Override
+	// public void onHolding() {
+	// // should be triggered when CommandState is in PAUSE. NOT IN THE MAIN PATH!
+	// }
+	//
+	// @Override
+	// public void onUnholding() {
+	// // should continue to execute. NOT IN THE MAIN PATH!
+	// }
+	//
+	// @Override
+	// public void onSuspending() {
+	// // NOT IN THE MAIN PATH!
+	// }
+	//
+	// @Override
+	// public void onUnsuspending() {
+	// // NOT IN THE MAIN PATH!
+	// }
 
 	/*
 	 * Get the path of the mir. Returns an array with values where: values[i * 3] is
