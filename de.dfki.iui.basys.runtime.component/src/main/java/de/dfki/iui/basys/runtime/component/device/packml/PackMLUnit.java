@@ -162,7 +162,7 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 	public ComponentRequestStatus setMode(ControlMode mode) {
 		State state = getState();
 		if (getMode() == mode) {
-			ComponentRequestStatus status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.REJECTED).message(String.format("already in mode %s", mode)).build();
+			ComponentRequestStatus status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.NOOP).message(String.format("already in mode %s", mode)).build();
 			return status;
 		}		
 		if (mode == ControlMode.MANUAL && state == State.ABORTED) {
@@ -200,24 +200,46 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 	@Override
 	public ComponentRequestStatus reset() {
 		LOGGER.info("reset()");
-		packml.raiseLifecycleEvent("reset");
-		ComponentRequestStatus status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.ACCEPTED).message("command accepted").build();
+		ComponentRequestStatus status = null;
+		if (getState() == State.IDLE) {
+			status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.NOOP).message("already in state " + getState()).build();
+		} else if (getState() == State.COMPLETE || getState() == State.STOPPED) {
+			packml.raiseLifecycleEvent("reset");
+			status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.ACCEPTED).message("command accepted").build();
+		} else {
+			status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.REJECTED).message("not in COMPLETE or STOPPED state").build();
+		}
 		return status;
 	}
 
 	@Override
 	public ComponentRequestStatus start() {
 		LOGGER.info("start()");
-		packml.raiseLifecycleEvent("start");
-		ComponentRequestStatus status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.ACCEPTED).message("command accepted").build();
+		ComponentRequestStatus status = null;
+		if (getState() == State.STARTING || getState() == State.EXECUTE) {
+			status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.NOOP).message("already in state " + getState()).build();
+		} else if (getState() == State.IDLE) {
+			packml.raiseLifecycleEvent("start");
+			status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.ACCEPTED).message("command accepted").build();
+		} else {
+			status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.REJECTED).message("not in COMPLETE or STOPPED state").build();
+		}		
 		return status;
 	}
 
 	@Override
 	public ComponentRequestStatus stop() {
 		LOGGER.info("stop()");
-		packml.raiseLifecycleEvent("stop");
-		ComponentRequestStatus status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.ACCEPTED).message("command accepted").build();
+		ComponentRequestStatus status = null;
+		if (getState() == State.STOPPING || getState() == State.STOPPED) {
+			status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.NOOP).message("already in state " + getState()).build();
+		} else {
+			packml.raiseLifecycleEvent("stop");
+			status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.ACCEPTED).message("command accepted").build();
+		} 
+//		else {
+//			status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.NOOP).message("not in COMPLETE or STOPPED state").build();
+//		}		
 		return status;
 	}
 

@@ -67,14 +67,23 @@ public class YumiComponent extends TecsDeviceComponent {
 	@Override
 	public void onStarting() {
 		if (((String) getUnitConfig().getPayload()).equals("PERFORM QA")) {
-			try {
+			try {			
 				client.performQA("PERFORM QA");
 			} catch (TException e) {
 				e.printStackTrace();
-				setErrorCode(3);
-				stop();
+				if (e instanceof TTransportException ) {
+					LOGGER.warn("Trying to reconnect");
+					reconnect();
+					try {
+						client.performQA("PERFORM QA");
+					} catch (TException e1) {
+						e1.printStackTrace();
+						setErrorCode(1);
+						stop();
+					}
+				}
 			}
-		}
+		}		
 	}
 
 	@Override
@@ -108,6 +117,7 @@ public class YumiComponent extends TecsDeviceComponent {
 					break;
 				case FINISHED:
 					executing = false;
+					LOGGER.info("QA result was " + cr.getDescription());
 					break;
 				case PAUSED:
 					// ?
@@ -139,6 +149,16 @@ public class YumiComponent extends TecsDeviceComponent {
 
 	@Override
 	public void onCompleting() {
+		try {
+			CommandResponse cr = client.getCommandState();
+			LOGGER.info("QA result was " + cr.getDescription());
+		} catch (TException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//TODO: create result variable(s) for process
+		
+		//sendComponentResponse(ResponseStatus.OK, 0, resultVariables);
 		sendComponentResponse(ResponseStatus.OK, 0);
 	}
 

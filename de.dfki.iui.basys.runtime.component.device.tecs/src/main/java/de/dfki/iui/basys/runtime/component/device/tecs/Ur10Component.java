@@ -2,6 +2,7 @@ package de.dfki.iui.basys.runtime.component.device.tecs;
 
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TProtocol;
+import org.apache.thrift.transport.TTransportException;
 
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
 import de.dfki.iui.basys.model.domain.capability.LoadCarrierUnitEnum;
@@ -107,13 +108,23 @@ public class Ur10Component extends TecsDeviceComponent {
 
 	@Override
 	public void onStarting() {
-		try {
-			String pose = (String) getUnitConfig().getPayload();
+		String pose = (String) getUnitConfig().getPayload();
+		LOGGER.info("Start executing pose: " + pose);
+		try {			
 			client.Load(pose);
 		} catch (TException e) {
 			e.printStackTrace();
-			setErrorCode(1);
-			stop();
+			if (e instanceof TTransportException ) {
+				LOGGER.warn("Trying to reconnect");
+				reconnect();
+				try {
+					client.Load(pose);
+				} catch (TException e1) {
+					e1.printStackTrace();
+					setErrorCode(1);
+					stop();
+				}
+			}
 		}
 	}
 

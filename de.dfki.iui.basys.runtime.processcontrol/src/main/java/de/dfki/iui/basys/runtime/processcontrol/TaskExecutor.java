@@ -51,7 +51,11 @@ public class TaskExecutor implements ChannelListener {
 			response.setRequest(task.getRequest());
 			response.setComponentId(device.getId());
 			response.setMessage(status.getMessage());
-			response.setStatus(ResponseStatus.NOT_OK);	
+			if (status.getStatus() == RequestStatus.NOOP) {
+				response.setStatus(ResponseStatus.OK);
+			} else {
+				response.setStatus(ResponseStatus.NOT_OK);
+			}
 			task.setResponse(response);
 		} 
 		

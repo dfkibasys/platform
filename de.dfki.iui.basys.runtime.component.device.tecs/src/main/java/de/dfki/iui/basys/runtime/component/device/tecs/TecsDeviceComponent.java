@@ -95,14 +95,22 @@ public abstract class TecsDeviceComponent extends DeviceComponent {
 	}
 
 	protected void open() throws TTransportException {
-		if (!simulated)
-			protocol.getTransport().open();
+		protocol.getTransport().open();
 	}
 
 	// close communication to TECS
 	protected void close() {
-		if (!simulated)
-			protocol.getTransport().close();
+		protocol.getTransport().close();
+	}
+	
+	protected void reconnect() {
+		close();
+		try {
+			open();
+		} catch (TTransportException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 }

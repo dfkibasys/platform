@@ -1,6 +1,7 @@
 package de.dfki.iui.basys.runtime.component.device;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.eclipse.emf.ecore.EObject;
@@ -29,6 +30,7 @@ import de.dfki.iui.basys.model.runtime.component.RequestStatus;
 import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
 import de.dfki.iui.basys.model.runtime.component.State;
 import de.dfki.iui.basys.model.runtime.component.StatusRequest;
+import de.dfki.iui.basys.model.runtime.component.Variable;
 import de.dfki.iui.basys.model.runtime.component.impl.ComponentRequestStatusImpl;
 import de.dfki.iui.basys.model.runtime.component.impl.ComponentResponseImpl;
 import de.dfki.iui.basys.runtime.component.BaseComponent;
@@ -290,6 +292,7 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 	}
 
 	protected void sendComponentResponse(ResponseStatus status, int statusCode) {
+		//sendComponentResponse(status, statusCode, null);
 		if (pendingRequest == null) {
 			LOGGER.error("Cannot send response to null request. Skipping.");
 			return;
@@ -309,7 +312,29 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	protected void sendComponentResponse(ResponseStatus status, int statusCode, List<Variable> resultVariables) {
+		if (pendingRequest == null) {
+			LOGGER.error("Cannot send response to null request. Skipping.");
+			return;
+		}
 		
+		ComponentRequest r = EcoreUtil.copy(pendingRequest);
+	
+		ComponentResponse response = new ComponentResponseImpl.Builder().componentId(getId()).status(status).statusCode(statusCode).request(pendingRequest).build();
+		response.setRequest(r);
+		response.getResultVariables().addAll(resultVariables);
+		try {
+			String payload = JsonUtils.toString(response);
+			Notification not = cf.createNotification(payload);
+			outChannel.sendNotification(not);			
+			
+			pendingRequest = null;
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	protected boolean isCapabilityRequestPending() {

@@ -2,7 +2,6 @@ package de.dfki.iui.basys.runtime.component.device.tecs;
 
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TProtocol;
-import org.apache.thrift.transport.TTransportException;
 
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
 import de.dfki.iui.basys.model.domain.capability.LoadCarrierUnitEnum;
@@ -73,7 +72,7 @@ public class Ur3Component extends TecsDeviceComponent{
 						BOMEntry bom2 = variant.getAppliedOn().get(1);
 						if (bom1.getId().equals("_IpqbzV29EeixDOGCyjgf_g") && bom2.getId().equals("_IpqbzF29EeixDOGCyjgf_g")) {
 							// place cap
-							config.setPayload(urConstants.KNOWN_POSE_1); // TODO KNOWN_POSE_6 ?!
+							config.setPayload(urConstants.KNOWN_POSE_8);
 						}
 					}
 				}
@@ -89,48 +88,52 @@ public class Ur3Component extends TecsDeviceComponent{
 		client = new Ur3TECS(protocol);
 	}
 	
+	private void gotoSafePosition() {
+		try {
+			client.MoveToKnownPosition(urConstants.KNOWN_POSE_6);
+			busyWait(); // block until in safe
+		} catch (MoveException e2) {
+			e2.printStackTrace();
+			stop();
+		} catch (TException e2) {
+			e2.printStackTrace();
+			stop();
+		}		
+	}
+	
+	
 	@Override
 	public void onResetting() {
-		close();
-		try {
-			open();
-			LOGGER.info("Moving to home position");
-			if (!simulated) {
-				client.MoveToKnownPosition(urConstants.KNOWN_POSE_1);
-				onExecute(); // block until in KnownPose1
-			}
-		} catch (TTransportException e) {
-			setErrorCode(1);
-			stop();
-			e.printStackTrace();
-		} catch (MoveException e) {
-			e.printStackTrace();
-			setErrorCode(1);
-			stop();
-		} catch (TException e) {
-			e.printStackTrace();
-			setErrorCode(1);
-			stop();
-		}
+		reconnect();
+		gotoSafePosition();
 	}
 
 	@Override
 	public void onStarting() {
+		String pose = (String) getUnitConfig().getPayload();
+		LOGGER.info("Start executing pose: " + pose);
+		
 		try {
-			String pose = (String)getUnitConfig().getPayload();
-			LOGGER.info("Start executing pose: " + pose);
-			if (!simulated) {				
-				client.Load(pose);
-			}			
-		} catch (TException e) {
-			e.printStackTrace();
-			setErrorCode(1);
+			client.MoveToKnownPosition(urConstants.KNOWN_POSE_7);
+			busyWait(); // block until in safe_2_home
+		
+			client.Load(pose);
+		
+		} catch (MoveException e2) {
+			e2.printStackTrace();
+			stop();
+		} catch (TException e2) {
+			e2.printStackTrace();
 			stop();
 		}
 	}
 
 	@Override
 	public void onExecute() {
+		busyWait();
+	}	
+	
+	public void busyWait() {
 		try {
 			boolean executing = true;
 			while(executing) {
@@ -188,40 +191,42 @@ public class Ur3Component extends TecsDeviceComponent{
 
 	@Override
 	public void onCompleting() {
+		gotoSafePosition();		
 		sendComponentResponse(ResponseStatus.OK, 0);
 	}
 
 	@Override
 	public void onStopping() {
+		gotoSafePosition();
 		sendComponentResponse(ResponseStatus.NOT_OK, getErrorCode());
 	}
-
-	@Override
-	public void onAborting() {}
-
-	@Override
-	public void onClearing() {
-		// perform reconecct
-		close();
-		try {
-			open();
-		} catch (TTransportException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	@Override
-	public void onHolding() {}
-
-	@Override
-	public void onUnholding() {}
-
-	@Override
-	public void onSuspending() {}
-
-	@Override
-	public void onUnsuspending() {}
+//
+//	@Override
+//	public void onAborting() {}
+//
+//	@Override
+//	public void onClearing() {
+//		// perform reconecct
+//		close();
+//		try {
+//			open();
+//		} catch (TTransportException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
+//
+//	@Override
+//	public void onHolding() {}
+//
+//	@Override
+//	public void onUnholding() {}
+//
+//	@Override
+//	public void onSuspending() {}
+//
+//	@Override
+//	public void onUnsuspending() {}
 
 	private class Ur3TECS extends UR.Client{
 

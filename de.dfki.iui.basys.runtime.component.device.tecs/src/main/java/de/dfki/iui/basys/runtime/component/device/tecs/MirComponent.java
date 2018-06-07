@@ -348,7 +348,8 @@ public class MirComponent extends TecsDeviceComponent {
 	}
 
 	private long getEstimatedETA(TopologyElement sourceLocation, TopologyElement targetLocation) {
-
+		if (sourceLocation.getId().equals(targetLocation.getId()))
+			return 1;
 		return mEstimatedETAs.get(new SimpleEntry<String, String>(sourceLocation.getName(), targetLocation.getName()));
 
 	}
@@ -371,7 +372,7 @@ public class MirComponent extends TecsDeviceComponent {
 				switch (cs.state) {
 				case ABORTED:
 					executing = false;
-					setErrorCode(1);
+					setErrorCode(0);
 					stop();
 					break;
 				case ACCEPTED:
@@ -436,6 +437,7 @@ public class MirComponent extends TecsDeviceComponent {
 
 	@Override
 	public void onStopping() {
+		mMoving = false;
 		sendComponentResponse(ResponseStatus.NOT_OK, getErrorCode());
 		try {
 			client.stopMovement();

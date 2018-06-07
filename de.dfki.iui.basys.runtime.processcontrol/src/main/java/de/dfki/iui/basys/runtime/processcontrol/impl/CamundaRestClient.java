@@ -6,7 +6,6 @@
 package de.dfki.iui.basys.runtime.processcontrol.impl;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -20,6 +19,8 @@ import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import de.dfki.iui.basys.model.runtime.component.Variable;
 
 public class CamundaRestClient {
 
@@ -79,12 +80,14 @@ public class CamundaRestClient {
     	LOGGER.debug("Complete task {} succeded with status code {}", taskId, response.getStatus());
     }
     
-    public void complete(String taskId, Map<String, String> processVariables) {
-    	LOGGER.debug("Complete task {} with process vars {}", taskId, processVariables.toString());
+    public void complete(String taskId, List<Variable> variables) {
+    	LOGGER.debug("Complete task {} with process vars {}", taskId, variables.toString());
     	String vars = "";
-    	for (String key : processVariables.keySet())
-    		vars += "\""+key+"\": { \"value\": \""+processVariables.get(key)+"\" },";
+    	for (Variable var : variables) {
+    		vars += "\""+var.getName()+"\": { \"value\": \""+var.getValue()+"\" , \"type\": \""+var.getType()+"\" },";
+    	}    	
     	vars = vars.substring(0, vars.length()-1);
+    	
     	Response response = client
     			.target(baseUrl + taskId + "/complete")
     			.request(MediaType.APPLICATION_JSON)

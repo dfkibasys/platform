@@ -307,4 +307,29 @@ public class JsonSerializationTest {
 		
 	}
 	
+	@Test
+	public void testSerializeOrder() {
+		Order order = OrderFactoryImpl.eINSTANCE.createOrder();
+		order.setCustomer("CEBIT");
+		order.setPriority(1);
+		order.setQuantity(1);
+		order.setStartDate(new Date(System.currentTimeMillis()));
+		order.setDueDate(new Date(System.currentTimeMillis() + 1000 * 60 * 60));
+		
+		OrderStatus orderStatus = OrderFactoryImpl.eINSTANCE.createOrderStatus();
+		orderStatus.setOrderId(order.getId());
+		orderStatus.setPieceCount(0);
+		orderStatus.setStatus(OrderStatusEnum.STARTED);
+		order.setStatus(orderStatus);
+
+		try {
+			String json = JsonUtils.toString(order);			
+			System.out.println(json);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
 }

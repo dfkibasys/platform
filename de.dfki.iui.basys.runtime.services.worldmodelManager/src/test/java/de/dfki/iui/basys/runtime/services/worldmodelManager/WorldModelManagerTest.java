@@ -3,9 +3,6 @@ package de.dfki.iui.basys.runtime.services.worldmodelManager;
 import java.io.File;
 import java.util.Date;
 
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -15,27 +12,19 @@ import org.junit.Test;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
-import de.dfki.iui.basys.model.domain.capability.CapabilityFactory;
-import de.dfki.iui.basys.model.domain.capability.MoveToLocation;
 import de.dfki.iui.basys.model.domain.order.Order;
 import de.dfki.iui.basys.model.domain.order.OrderStatus;
 import de.dfki.iui.basys.model.domain.order.OrderStatusEnum;
 import de.dfki.iui.basys.model.domain.order.impl.OrderFactoryImpl;
 import de.dfki.iui.basys.model.domain.productinstance.ProductInstance;
 import de.dfki.iui.basys.model.domain.productinstance.impl.ProductinstanceFactoryImpl;
-import de.dfki.iui.basys.model.domain.resourceinstance.GeneralCapabilityVariant;
-import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstanceFactory;
 import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
-import de.dfki.iui.basys.model.runtime.component.ComponentFactory;
 import de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl;
 import de.dfki.iui.basys.runtime.component.ComponentException;
-import de.dfki.iui.basys.runtime.processcontrol.TaskDescription;
-import de.dfki.iui.basys.runtime.processcontrol.impl.CamundaTaskScheduler;
 import de.dfki.iui.basys.runtime.services.OrderManager;
 import de.dfki.iui.basys.runtime.services.ProductDefinitionManager;
 import de.dfki.iui.basys.runtime.services.ProductInstanceManager;
-import de.dfki.iui.basys.runtime.services.TopologyManager;
 
 public class WorldModelManagerTest extends BaseComponentTest {
 
@@ -141,8 +130,6 @@ public class WorldModelManagerTest extends BaseComponentTest {
 	@Test
 	public void testAddOrder() throws ComponentException, InterruptedException, JsonProcessingException {
 		LOGGER.info("testAddOrder - start");
-		
-		Thread.sleep(5000);
 
 		OrderManager om = (OrderManager) componentManager.getLocalComponentById("order-manager");
 		ProductInstanceManager pim = (ProductInstanceManager) componentManager
@@ -172,35 +159,35 @@ public class WorldModelManagerTest extends BaseComponentTest {
 		pim.addProductInstance(productInstance);
 
 		//FIXME: nächste Zeile rein, alles danach raus
-		//om.addOrder(order);
+		om.addOrder(order);
 
-		Client client = ClientBuilder.newClient();
-		/*LinebalancingAnswer lba = client.target("http://10.2.0.81:9001/services/optimizer/")
-				.request(MediaType.APPLICATION_JSON).accept("application/json")
-				.get(LinebalancingAnswer.class);
-
-		System.out.println("\n\n\n\n===============================");
-		System.out.println(lba.resourceInstanceId);
-		System.out.println("===============================\n\n\n\n");
-*/
-		CamundaTaskScheduler cts = (CamundaTaskScheduler) context.getComponentManager()
-				.getLocalComponentById("task-scheduler");
-		TopologyManager tm = (TopologyManager) context.getComponentManager()
-				.getLocalComponentById("topology-manager");
-
-		MoveToLocation moveRequest = CapabilityFactory.eINSTANCE.createMoveToLocation();
-		moveRequest.setTargetLocation(tm.getTopologyElement("_zzNG4V2TEeit97PGgoQOAQ"));
-
-		GeneralCapabilityVariant variant = ResourceinstanceFactory.eINSTANCE
-				.createGeneralCapabilityVariant();
-		variant.setCapability(moveRequest);
-
-		de.dfki.iui.basys.model.runtime.component.CapabilityRequest req = ComponentFactory.eINSTANCE
-				.createCapabilityRequest();
-		req.setCapabilityVariant(variant);
-		req.setComponentId("_rUJzsDJhEei1p5hKOf5Slw");
-
-		TaskDescription task = new TaskDescription(req);
+//		Client client = ClientBuilder.newClient();
+//		/*LinebalancingAnswer lba = client.target("http://10.2.0.81:9001/services/optimizer/")
+//				.request(MediaType.APPLICATION_JSON).accept("application/json")
+//				.get(LinebalancingAnswer.class);
+//
+//		System.out.println("\n\n\n\n===============================");
+//		System.out.println(lba.resourceInstanceId);
+//		System.out.println("===============================\n\n\n\n");
+//*/
+//		CamundaTaskScheduler cts = (CamundaTaskScheduler) context.getComponentManager()
+//				.getLocalComponentById("task-scheduler");
+//		TopologyManager tm = (TopologyManager) context.getComponentManager()
+//				.getLocalComponentById("topology-manager");
+//
+//		MoveToLocation moveRequest = CapabilityFactory.eINSTANCE.createMoveToLocation();
+//		moveRequest.setTargetLocation(tm.getTopologyElement("_zzNG4V2TEeit97PGgoQOAQ"));
+//
+//		GeneralCapabilityVariant variant = ResourceinstanceFactory.eINSTANCE
+//				.createGeneralCapabilityVariant();
+//		variant.setCapability(moveRequest);
+//
+//		de.dfki.iui.basys.model.runtime.component.CapabilityRequest req = ComponentFactory.eINSTANCE
+//				.createCapabilityRequest();
+//		req.setCapabilityVariant(variant);
+//		req.setComponentId("_rUJzsDJhEei1p5hKOf5Slw");
+//
+//		TaskDescription task = new TaskDescription(req);
 	/*	if (lba.resourceInstanceId.equals("_jJdx4DD7EeiuBvcKgWzd3Q")) {
 			cts.scheduleTask(task);
 		} else {

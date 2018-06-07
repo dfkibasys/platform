@@ -68,7 +68,7 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 			if (!executor.isTerminated()) {
 				System.err.println("cancel non-finished tasks");
 			}
-			executor.shutdownNow();
+			List<Runnable> runnables = executor.shutdownNow();
 			System.out.println("shutdown finished");
 		}
 	}
@@ -143,7 +143,11 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 		}, executor).thenApply((ts) -> {
 			if (ts.getCorrelationId() != null) {
 				if (ts.getResponse().getStatus() == ResponseStatus.OK) {
-					client.complete(ts.getCorrelationId());
+					if (ts.getResponse().getResultVariables().size() > 0) {					
+						client.complete(ts.getCorrelationId(), ts.getResponse().getResultVariables());
+					} else {
+						client.complete(ts.getCorrelationId());
+					}
 				} else {
 					client.handleError(ts.getCorrelationId(), ts.getResponse().getMessage(), 0, 1000);
 				}
