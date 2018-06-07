@@ -6,6 +6,7 @@
 package de.dfki.iui.basys.runtime.processcontrol.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -75,6 +76,26 @@ public class CamundaRestClient {
     			.target(baseUrl + taskId + "/complete")
     			.request(MediaType.APPLICATION_JSON)
     			.post(Entity.entity("{\"workerId\": \""+workerId+"\"}", MediaType.APPLICATION_JSON));
+    	LOGGER.debug("Complete task {} succeded with status code {}", taskId, response.getStatus());
+    }
+    
+    public void complete(String taskId, Map<String, String> processVariables) {
+    	LOGGER.debug("Complete task {} with process vars {}", taskId, processVariables.toString());
+    	String vars = "";
+    	for (String key : processVariables.keySet())
+    		vars += "\""+key+"\": { \"value\": \""+processVariables.get(key)+"\" },";
+    	vars = vars.substring(0, vars.length()-1);
+    	Response response = client
+    			.target(baseUrl + taskId + "/complete")
+    			.request(MediaType.APPLICATION_JSON)
+    			.post(
+    					Entity.entity(
+    							  "{"
+    							   + "\"workerId\": \""+workerId+"\","
+    							   + "\"variables\": {"
+    							      + vars
+    							   + "}"
+    							+ "}", MediaType.APPLICATION_JSON));
     	LOGGER.debug("Complete task {} succeded with status code {}", taskId, response.getStatus());
     }
 
