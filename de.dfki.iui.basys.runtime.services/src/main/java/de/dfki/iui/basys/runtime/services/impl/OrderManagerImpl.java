@@ -1,6 +1,8 @@
 package de.dfki.iui.basys.runtime.services.impl;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import java.io.IOException;
+
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import de.dfki.iui.basys.common.emf.json.JsonUtils;
 import de.dfki.iui.basys.model.domain.order.Order;
@@ -35,10 +37,16 @@ public class OrderManagerImpl extends EmfServiceComponent implements OrderManage
 		store.getOrders().add(order);
 
 		try {
-			String payload = JsonUtils.toString(order);
+			
+			Order copiedOrder = EcoreUtil.copy(order);
+			//Order copiedOrder = EmfUtils.clone(order);
+			String payload = JsonUtils.toString(copiedOrder);
+			System.out.println(payload);
+			//Order deserializedOrder = JsonUtils.fromString(payload, Order.class);
+			
 			Notification not = CommFactory.getInstance().createNotification(payload);
 			outChannel.sendNotification(not);
-		} catch (JsonProcessingException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
