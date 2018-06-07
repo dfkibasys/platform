@@ -29,6 +29,7 @@ import de.dfki.iui.basys.model.runtime.component.RequestStatus;
 import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
 import de.dfki.iui.basys.model.runtime.component.State;
 import de.dfki.iui.basys.model.runtime.component.StatusRequest;
+import de.dfki.iui.basys.model.runtime.component.Variable;
 import de.dfki.iui.basys.model.runtime.component.ComponentPackage;
 import de.dfki.iui.basys.model.runtime.component.ComponentRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentRequestCollection;
@@ -129,6 +130,13 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 * @generated
 	 */
 	private EClass componentRequestCollectionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass variableEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -678,6 +686,15 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getComponentResponse_ResultVariables() {
+		return (EReference)componentResponseEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getComponentRequestCollection() {
 		return componentRequestCollectionEClass;
 	}
@@ -689,6 +706,42 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 */
 	public EReference getComponentRequestCollection_ComponentRequests() {
 		return (EReference)componentRequestCollectionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getVariable() {
+		return variableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getVariable_Name() {
+		return (EAttribute)variableEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getVariable_Value() {
+		return (EAttribute)variableEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getVariable_Type() {
+		return (EAttribute)variableEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -829,9 +882,15 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		createEAttribute(componentResponseEClass, COMPONENT_RESPONSE__STATUS_CODE);
 		createEAttribute(componentResponseEClass, COMPONENT_RESPONSE__MESSAGE);
 		createEReference(componentResponseEClass, COMPONENT_RESPONSE__REQUEST);
+		createEReference(componentResponseEClass, COMPONENT_RESPONSE__RESULT_VARIABLES);
 
 		componentRequestCollectionEClass = createEClass(COMPONENT_REQUEST_COLLECTION);
 		createEReference(componentRequestCollectionEClass, COMPONENT_REQUEST_COLLECTION__COMPONENT_REQUESTS);
+
+		variableEClass = createEClass(VARIABLE);
+		createEAttribute(variableEClass, VARIABLE__NAME);
+		createEAttribute(variableEClass, VARIABLE__VALUE);
+		createEAttribute(variableEClass, VARIABLE__TYPE);
 
 		// Create enums
 		componentCategoryEEnum = createEEnum(COMPONENT_CATEGORY);
@@ -941,9 +1000,15 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		initEAttribute(getComponentResponse_StatusCode(), theEcorePackage.getEInt(), "statusCode", null, 0, 1, ComponentResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getComponentResponse_Message(), theEcorePackage.getEString(), "message", null, 0, 1, ComponentResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getComponentResponse_Request(), this.getComponentRequest(), null, "request", null, 0, 1, ComponentResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getComponentResponse_ResultVariables(), this.getVariable(), null, "resultVariables", null, 0, -1, ComponentResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(componentRequestCollectionEClass, ComponentRequestCollection.class, "ComponentRequestCollection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getComponentRequestCollection_ComponentRequests(), this.getComponentRequest(), null, "componentRequests", null, 0, -1, ComponentRequestCollection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(variableEClass, Variable.class, "Variable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getVariable_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVariable_Value(), theEcorePackage.getEString(), "value", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVariable_Type(), theEcorePackage.getEString(), "type", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(componentCategoryEEnum, ComponentCategory.class, "ComponentCategory");
@@ -999,6 +1064,7 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		addEEnumLiteral(requestStatusEEnum, RequestStatus.UNDEFINED);
 		addEEnumLiteral(requestStatusEEnum, RequestStatus.ACCEPTED);
 		addEEnumLiteral(requestStatusEEnum, RequestStatus.REJECTED);
+		addEEnumLiteral(requestStatusEEnum, RequestStatus.NOOP);
 
 		initEEnum(responseStatusEEnum, ResponseStatus.class, "ResponseStatus");
 		addEEnumLiteral(responseStatusEEnum, ResponseStatus.UNDEFINED);

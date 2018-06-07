@@ -2,6 +2,7 @@
  */
 package de.dfki.iui.basys.model.runtime.component;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -18,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.ComponentResponse#getStatusCode <em>Status Code</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.ComponentResponse#getMessage <em>Message</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.ComponentResponse#getRequest <em>Request</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.runtime.component.ComponentResponse#getResultVariables <em>Result Variables</em>}</li>
  * </ul>
  *
  * @see de.dfki.iui.basys.model.runtime.component.ComponentPackage#getComponentResponse()
@@ -157,5 +159,21 @@ public interface ComponentResponse extends EObject {
 	 * @generated
 	 */
 	void setRequest(ComponentRequest value);
+
+	/**
+	 * Returns the value of the '<em><b>Result Variables</b></em>' containment reference list.
+	 * The list contents are of type {@link de.dfki.iui.basys.model.runtime.component.Variable}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Result Variables</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Result Variables</em>' containment reference list.
+	 * @see de.dfki.iui.basys.model.runtime.component.ComponentPackage#getComponentResponse_ResultVariables()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Variable> getResultVariables();
 
 } // ComponentResponse

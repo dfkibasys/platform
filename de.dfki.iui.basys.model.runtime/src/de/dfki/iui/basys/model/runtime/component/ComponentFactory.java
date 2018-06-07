@@ -112,6 +112,15 @@ public interface ComponentFactory extends EFactory {
 	ComponentRequestCollection createComponentRequestCollection();
 
 	/**
+	 * Returns a new object of class '<em>Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Variable</em>'.
+	 * @generated
+	 */
+	Variable createVariable();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

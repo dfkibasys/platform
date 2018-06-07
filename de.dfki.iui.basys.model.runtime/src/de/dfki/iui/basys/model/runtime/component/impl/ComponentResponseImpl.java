@@ -4,15 +4,20 @@ package de.dfki.iui.basys.model.runtime.component.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import de.dfki.iui.basys.model.runtime.component.ComponentPackage;
 import de.dfki.iui.basys.model.runtime.component.ComponentRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentResponse;
 import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
+import de.dfki.iui.basys.model.runtime.component.Variable;
+import java.util.Collection;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,6 +32,7 @@ import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.impl.ComponentResponseImpl#getStatusCode <em>Status Code</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.impl.ComponentResponseImpl#getMessage <em>Message</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.impl.ComponentResponseImpl#getRequest <em>Request</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.runtime.component.impl.ComponentResponseImpl#getResultVariables <em>Result Variables</em>}</li>
  * </ul>
  *
  * @generated
@@ -121,6 +127,16 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 	 * @ordered
 	 */
 	protected ComponentRequest request;
+
+	/**
+	 * The cached value of the '{@link #getResultVariables() <em>Result Variables</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getResultVariables()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Variable> resultVariables;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -283,11 +299,25 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Variable> getResultVariables() {
+		if (resultVariables == null) {
+			resultVariables = new EObjectContainmentEList<Variable>(Variable.class, this, ComponentPackage.COMPONENT_RESPONSE__RESULT_VARIABLES);
+		}
+		return resultVariables;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ComponentPackage.COMPONENT_RESPONSE__REQUEST:
 				return basicSetRequest(null, msgs);
+			case ComponentPackage.COMPONENT_RESPONSE__RESULT_VARIABLES:
+				return ((InternalEList<?>)getResultVariables()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -310,6 +340,8 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 				return getMessage();
 			case ComponentPackage.COMPONENT_RESPONSE__REQUEST:
 				return getRequest();
+			case ComponentPackage.COMPONENT_RESPONSE__RESULT_VARIABLES:
+				return getResultVariables();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -319,6 +351,7 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -336,6 +369,10 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 				return;
 			case ComponentPackage.COMPONENT_RESPONSE__REQUEST:
 				setRequest((ComponentRequest)newValue);
+				return;
+			case ComponentPackage.COMPONENT_RESPONSE__RESULT_VARIABLES:
+				getResultVariables().clear();
+				getResultVariables().addAll((Collection<? extends Variable>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -364,6 +401,9 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 			case ComponentPackage.COMPONENT_RESPONSE__REQUEST:
 				setRequest((ComponentRequest)null);
 				return;
+			case ComponentPackage.COMPONENT_RESPONSE__RESULT_VARIABLES:
+				getResultVariables().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -386,6 +426,8 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 				return MESSAGE_EDEFAULT == null ? message != null : !MESSAGE_EDEFAULT.equals(message);
 			case ComponentPackage.COMPONENT_RESPONSE__REQUEST:
 				return request != null;
+			case ComponentPackage.COMPONENT_RESPONSE__RESULT_VARIABLES:
+				return resultVariables != null && !resultVariables.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

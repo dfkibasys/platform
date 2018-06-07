@@ -691,13 +691,22 @@ public interface ComponentPackage extends EPackage {
 	int COMPONENT_RESPONSE__REQUEST = 4;
 
 	/**
+	 * The feature id for the '<em><b>Result Variables</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_RESPONSE__RESULT_VARIABLES = 5;
+
+	/**
 	 * The number of structural features of the '<em>Response</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_RESPONSE_FEATURE_COUNT = 5;
+	int COMPONENT_RESPONSE_FEATURE_COUNT = 6;
 
 	/**
 	 * The number of operations of the '<em>Response</em>' class.
@@ -746,6 +755,61 @@ public interface ComponentPackage extends EPackage {
 	int COMPONENT_REQUEST_COLLECTION_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.impl.VariableImpl <em>Variable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.runtime.component.impl.VariableImpl
+	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getVariable()
+	 * @generated
+	 */
+	int VARIABLE = 11;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE__NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE__VALUE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE__TYPE = 2;
+
+	/**
+	 * The number of structural features of the '<em>Variable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_FEATURE_COUNT = 3;
+
+	/**
+	 * The number of operations of the '<em>Variable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.ComponentCategory <em>Category</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -753,7 +817,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getComponentCategory()
 	 * @generated
 	 */
-	int COMPONENT_CATEGORY = 11;
+	int COMPONENT_CATEGORY = 12;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.State <em>State</em>}' enum.
@@ -763,7 +827,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getState()
 	 * @generated
 	 */
-	int STATE = 12;
+	int STATE = 13;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.ControlMode <em>Control Mode</em>}' enum.
@@ -773,7 +837,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getControlMode()
 	 * @generated
 	 */
-	int CONTROL_MODE = 13;
+	int CONTROL_MODE = 14;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.ControlCommand <em>Control Command</em>}' enum.
@@ -783,7 +847,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getControlCommand()
 	 * @generated
 	 */
-	int CONTROL_COMMAND = 14;
+	int CONTROL_COMMAND = 15;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.RequestStatus <em>Request Status</em>}' enum.
@@ -793,7 +857,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getRequestStatus()
 	 * @generated
 	 */
-	int REQUEST_STATUS = 15;
+	int REQUEST_STATUS = 16;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.ResponseStatus <em>Response Status</em>}' enum.
@@ -803,7 +867,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getResponseStatus()
 	 * @generated
 	 */
-	int RESPONSE_STATUS = 16;
+	int RESPONSE_STATUS = 17;
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.runtime.component.ComponentInfo <em>Info</em>}'.
@@ -1312,6 +1376,17 @@ public interface ComponentPackage extends EPackage {
 	EReference getComponentResponse_Request();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.runtime.component.ComponentResponse#getResultVariables <em>Result Variables</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Result Variables</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.ComponentResponse#getResultVariables()
+	 * @see #getComponentResponse()
+	 * @generated
+	 */
+	EReference getComponentResponse_ResultVariables();
+
+	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.runtime.component.ComponentRequestCollection <em>Request Collection</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1331,6 +1406,49 @@ public interface ComponentPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getComponentRequestCollection_ComponentRequests();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.runtime.component.Variable <em>Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Variable</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.Variable
+	 * @generated
+	 */
+	EClass getVariable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.runtime.component.Variable#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.Variable#getName()
+	 * @see #getVariable()
+	 * @generated
+	 */
+	EAttribute getVariable_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.runtime.component.Variable#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.Variable#getValue()
+	 * @see #getVariable()
+	 * @generated
+	 */
+	EAttribute getVariable_Value();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.runtime.component.Variable#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.Variable#getType()
+	 * @see #getVariable()
+	 * @generated
+	 */
+	EAttribute getVariable_Type();
 
 	/**
 	 * Returns the meta object for enum '{@link de.dfki.iui.basys.model.runtime.component.ComponentCategory <em>Category</em>}'.
@@ -1812,6 +1930,14 @@ public interface ComponentPackage extends EPackage {
 		EReference COMPONENT_RESPONSE__REQUEST = eINSTANCE.getComponentResponse_Request();
 
 		/**
+		 * The meta object literal for the '<em><b>Result Variables</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPONENT_RESPONSE__RESULT_VARIABLES = eINSTANCE.getComponentResponse_ResultVariables();
+
+		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.runtime.component.impl.ComponentRequestCollectionImpl <em>Request Collection</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1828,6 +1954,40 @@ public interface ComponentPackage extends EPackage {
 		 * @generated
 		 */
 		EReference COMPONENT_REQUEST_COLLECTION__COMPONENT_REQUESTS = eINSTANCE.getComponentRequestCollection_ComponentRequests();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.runtime.component.impl.VariableImpl <em>Variable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.runtime.component.impl.VariableImpl
+		 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getVariable()
+		 * @generated
+		 */
+		EClass VARIABLE = eINSTANCE.getVariable();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VARIABLE__NAME = eINSTANCE.getVariable_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VARIABLE__VALUE = eINSTANCE.getVariable_Value();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VARIABLE__TYPE = eINSTANCE.getVariable_Type();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.runtime.component.ComponentCategory <em>Category</em>}' enum.

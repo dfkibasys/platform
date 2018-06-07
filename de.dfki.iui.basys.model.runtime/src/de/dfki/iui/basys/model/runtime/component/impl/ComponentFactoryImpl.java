@@ -67,6 +67,7 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 			case ComponentPackage.STATUS_REQUEST: return createStatusRequest();
 			case ComponentPackage.COMPONENT_RESPONSE: return createComponentResponse();
 			case ComponentPackage.COMPONENT_REQUEST_COLLECTION: return createComponentRequestCollection();
+			case ComponentPackage.VARIABLE: return createVariable();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -220,6 +221,16 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 	public ComponentRequestCollection createComponentRequestCollection() {
 		ComponentRequestCollectionImpl componentRequestCollection = new ComponentRequestCollectionImpl();
 		return componentRequestCollection;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Variable createVariable() {
+		VariableImpl variable = new VariableImpl();
+		return variable;
 	}
 
 	/**
