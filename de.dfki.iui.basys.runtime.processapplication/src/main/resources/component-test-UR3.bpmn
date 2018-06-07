@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_0ov886a" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.14.0">
+  <bpmn:process id="Process_Component_UR3" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>SequenceFlow_0k3btpi</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:serviceTask id="ServiceTask_1k4umse" name="Deckel auflegen" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_jJdx4DD7EeiuBvcKgWzd3Q</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
+    "capabilityVariant" : {
+      "eClass" : "http://www.dfki.de/iui/basys/model/resourceinstance#//ManufacturingCapabilityVariant",
+      "id" : "_gTSWsV-lEeixtLE-b5nbbQ",
+      "name" : "Apply dark blue cap",
+      "capability" : {
+        "eClass" : "http://www.dfki.de/iui/basys/model/capability#//PickAndPlace",
+        "id" : "_xio67l8yEeiUo-65_7rTBQ",
+        "loadCarrierUnit" : "MATERIAL"
+      },
+      "appliedOn" : [ {
+        "eClass" : "http://www.dfki.de/iui/basys/model/productdefinition#//MaterialEntry",
+        "$ref" : "http://localhost:8080/services/entity/_IpqbzV29EeixDOGCyjgf_g"
+      }, {
+        "eClass" : "http://www.dfki.de/iui/basys/model/productdefinition#//AssemblyGroupEntry",
+        "$ref" : "http://localhost:8080/services/entity/_IpqbzF29EeixDOGCyjgf_g"
+      } ]
+    }
+  }</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0ot5qwm</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0l5mfg9</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="ServiceTask_0976ng9" name="Reset UR3" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_jJdx4DD7EeiuBvcKgWzd3Q</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CommandRequest",
+    "controlCommand" : "RESET"
+  }</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0k3btpi</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0ot5qwm</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_0k3btpi" sourceRef="StartEvent_1" targetRef="ServiceTask_0976ng9" />
+    <bpmn:sequenceFlow id="SequenceFlow_0ot5qwm" sourceRef="ServiceTask_0976ng9" targetRef="ServiceTask_1k4umse" />
+    <bpmn:endEvent id="EndEvent_05gxeum">
+      <bpmn:incoming>SequenceFlow_0l5mfg9</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0l5mfg9" sourceRef="ServiceTask_1k4umse" targetRef="EndEvent_05gxeum" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_Component_UR3">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="173" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1k4umse_di" bpmnElement="ServiceTask_1k4umse">
+        <dc:Bounds x="397" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_0976ng9_di" bpmnElement="ServiceTask_0976ng9">
+        <dc:Bounds x="263" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0k3btpi_di" bpmnElement="SequenceFlow_0k3btpi">
+        <di:waypoint x="209" y="120" />
+        <di:waypoint x="263" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="236" y="99" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0ot5qwm_di" bpmnElement="SequenceFlow_0ot5qwm">
+        <di:waypoint x="363" y="120" />
+        <di:waypoint x="397" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="380" y="99" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_05gxeum_di" bpmnElement="EndEvent_05gxeum">
+        <dc:Bounds x="531" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="549" y="142" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0l5mfg9_di" bpmnElement="SequenceFlow_0l5mfg9">
+        <di:waypoint x="497" y="120" />
+        <di:waypoint x="531" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="514" y="99" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
