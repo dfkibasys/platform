@@ -45,7 +45,7 @@
       </workCenters>
       <workCenters xsi:type="topology:StorageZone" id="_NQFk4zB5Eei1bbwBPPZWOA" name="Colastation">
         <equipmentModules xsi:type="topology:AGVStation" id="_rBfZoV2TEeit97PGgoQOAQ" name="Station-Cola"/>
-        <storageUnits id="_O8321zB5Eei1bbwBPPZWOA" name="">
+        <storageUnits id="_O8321zB5Eei1bbwBPPZWOA" name="Cola-Station">
           <equipmentModules id="_ROxA8zB5Eei1bbwBPPZWOA" name="Positioniereinheit">
             <assignedResourceType href="model.resourcetype#_0xCaqTD9EeiuBvcKgWzd3Q"/>
             <assignedResourceInstance href="model.resourceinstance#_I4a_oDD-EeiuBvcKgWzd3Q"/>
