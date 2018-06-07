@@ -332,7 +332,7 @@
   </catalogues>
   <catalogues manufacturer="Captron">
     <resourceTypes xsi:type="resourcetype:Tool" id="_GHTn8lIxEeidSe5vp9A3oA" name="Button">
-      <capabilityAssertions binding="Button Confirmation" id="_RrMR8GWlEeimHJMdsEZOIA">
+      <capabilityAssertions binding="" id="_RrMR8GWlEeimHJMdsEZOIA" name="Button Confirmation">
         <pattern>
           <type href="http://www.dfki.de/iui/basys/model/capability#//ConfirmationCapability"/>
         </pattern>
@@ -341,7 +341,7 @@
   </catalogues>
   <catalogues manufacturer="WGS">
     <resourceTypes xsi:type="resourcetype:Tool" id="_3cuNYlIxEeidSe5vp9A3oA" name="Worker Guidance">
-      <capabilityAssertions binding="WGS Confirmation" id="_be_uUGWlEeimHJMdsEZOIA">
+      <capabilityAssertions binding="" id="_be_uUGWlEeimHJMdsEZOIA" name="WGS Confirmation">
         <pattern>
           <type href="http://www.dfki.de/iui/basys/model/capability#//ConfirmationCapability"/>
         </pattern>

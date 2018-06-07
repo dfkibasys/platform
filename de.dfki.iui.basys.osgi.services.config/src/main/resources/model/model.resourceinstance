@@ -27,6 +27,7 @@
         <appliedOn xsi:type="productdefinition:AssemblyGroupEntry" href="model.productdefinition#_IpqbzF29EeixDOGCyjgf_g"/>
       </capabilityVariants>
     </capabilityApplications>
+    <role href="model.topology#_6lOowWnSEeiQ6ti_SIagCw"/>
   </resourceInstances>
   <resourceInstances id="_r4sy4DD7EeiuBvcKgWzd3Q" name="My UR10" serialNumber="345">
     <resourceType href="model.resourcetype#_LILOCTD5EeiuBvcKgWzd3Q"/>
@@ -43,6 +44,7 @@
         <appliedOn xsi:type="topology:AGVStation" href="model.topology#_xHhjwV2TEeit97PGgoQOAQ"/>
       </capabilityVariants>
     </capabilityApplications>
+    <role href="model.topology#_HlgntTB5Eei1bbwBPPZWOA"/>
   </resourceInstances>
   <resourceInstances id="_wojNMDD7EeiuBvcKgWzd3Q" name="My YuMi" serialNumber="567">
     <resourceType href="model.resourcetype#_NnuuyTD7EeiuBvcKgWzd3Q"/>
@@ -53,6 +55,7 @@
         <appliedOn xsi:type="productdefinition:AssemblyGroupEntry" href="model.productdefinition#_IphR0F29EeixDOGCyjgf_g"/>
       </capabilityVariants>
     </capabilityApplications>
+    <role href="model.topology#_IvknEDB5Eei1bbwBPPZWOA"/>
   </resourceInstances>
   <resourceInstances id="_I4a_oDD-EeiuBvcKgWzd3Q" name="My Panda" serialNumber="678">
     <resourceType href="model.resourcetype#_0xCaqTD9EeiuBvcKgWzd3Q"/>
@@ -69,6 +72,7 @@
         <appliedOn xsi:type="topology:AGVStation" href="model.topology#_rBfZoV2TEeit97PGgoQOAQ"/>
       </capabilityVariants>
     </capabilityApplications>
+    <role href="model.topology#_ROxA8zB5Eei1bbwBPPZWOA"/>
   </resourceInstances>
   <resourceInstances id="_rUJzsDJhEei1p5hKOf5Slw" name="My MiR 100" serialNumber="789">
     <resourceType href="model.resourcetype#_ZRW8sjJhEei1p5hKOf5Slw"/>
@@ -106,6 +110,7 @@
         </capability>
       </capabilityVariants>
     </capabilityApplications>
+    <role href="model.topology#_yb80hGnSEeiQ6ti_SIagCw"/>
   </resourceInstances>
   <resourceInstances id="_PwPREFIxEeidSe5vp9A3oA" name="My Button" serialNumber="890">
     <resourceType href="model.resourcetype#_GHTn8lIxEeidSe5vp9A3oA"/>

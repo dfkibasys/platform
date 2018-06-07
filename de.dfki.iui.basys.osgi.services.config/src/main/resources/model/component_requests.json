@@ -97,6 +97,25 @@
   }, {
     "eClass" : "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
     "capabilityVariant" : {
+      "eClass" : "http://www.dfki.de/iui/basys/model/resourceinstance#//LogisticsCapabilityVariant",
+      "id" : "_AdWdEmmvEei3B5AQTC2gAw",
+      "name" : "KLT from QA to table",
+      "capability" : {
+        "eClass" : "http://www.dfki.de/iui/basys/model/capability#//PickAndPlace",
+        "id" : "_NV9HPmmvEei3B5AQTC2gAw",
+        "loadCarrierUnit" : "R_KLT_3215"
+      },
+      "appliedOn" : [ {
+        "eClass" : "http://www.dfki.de/iui/basys/model/topology#//Station",
+        "$ref" : "http://localhost:8080/services/entity/_F6qPdzB5Eei1bbwBPPZWOA"
+      }, {
+        "eClass" : "http://www.dfki.de/iui/basys/model/topology#//Station",
+        "$ref" : "http://localhost:8080/services/entity/_7yRYkmmvEei3B5AQTC2gAw"
+      } ]
+    }
+  }, {
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
+    "capabilityVariant" : {
       "eClass" : "http://www.dfki.de/iui/basys/model/resourceinstance#//ManufacturingCapabilityVariant",
       "id" : "_gTUy-F-lEeixtLE-b5nbbQ",
       "name" : "Inspect radial seal ring",

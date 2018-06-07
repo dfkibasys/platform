@@ -6,7 +6,7 @@
   "componentImplementationJavaClass" : "de.dfki.iui.basys.runtime.component.device.tecs.Ur10Component",
   "inChannelName" : "_r4sy4DD7EeiuBvcKgWzd3Q#in",
   "outChannelName" : "_r4sy4DD7EeiuBvcKgWzd3Q#out",
-  "externalConnectionString" : "tecs.tcp://10.2.0.45:9031",
+  "externalConnectionString" : "tecs.tcp://10.2.0.107:9090",
   "properties" : [ {
     "key" : "simulated",
     "value" : "true"

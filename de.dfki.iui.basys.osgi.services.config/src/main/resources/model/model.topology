@@ -30,16 +30,26 @@
         <workCells id="_C-v38TB5Eei1bbwBPPZWOA" name="Qualitätssicherung">
           <equipmentModules xsi:type="topology:AGVStation" id="_xHhjwV2TEeit97PGgoQOAQ" name="Station-QA"/>
           <stations id="_F6qPdzB5Eei1bbwBPPZWOA" name="Inspektion">
-            <equipmentModules id="_HlgntTB5Eei1bbwBPPZWOA" name="Positioniereinheit"/>
-            <equipmentModules id="_IvknEDB5Eei1bbwBPPZWOA" name="Sichtkontrolle"/>
+            <equipmentModules id="_IvknEDB5Eei1bbwBPPZWOA" name="Sichtkontrolle">
+              <assignedResourceType href="model.resourcetype#_NnuuyTD7EeiuBvcKgWzd3Q"/>
+              <assignedResourceInstance href="model.resourceinstance#_wojNMDD7EeiuBvcKgWzd3Q"/>
+            </equipmentModules>
           </stations>
-          <stations id="_7yRYkmmvEei3B5AQTC2gAw" name="Table"/>
+          <stations id="_7yRYkmmvEei3B5AQTC2gAw" name="Materialbereitstellung">
+            <equipmentModules id="_HlgntTB5Eei1bbwBPPZWOA" name="Positioniereinheit">
+              <assignedResourceType href="model.resourcetype#_LILOCTD5EeiuBvcKgWzd3Q"/>
+              <assignedResourceInstance href="model.resourceinstance#_r4sy4DD7EeiuBvcKgWzd3Q"/>
+            </equipmentModules>
+          </stations>
         </workCells>
       </workCenters>
       <workCenters xsi:type="topology:StorageZone" id="_NQFk4zB5Eei1bbwBPPZWOA" name="Colastation">
         <equipmentModules xsi:type="topology:AGVStation" id="_rBfZoV2TEeit97PGgoQOAQ" name="Station-Cola"/>
         <storageUnits id="_O8321zB5Eei1bbwBPPZWOA" name="">
-          <equipmentModules id="_ROxA8zB5Eei1bbwBPPZWOA" name="Positioniereinheit"/>
+          <equipmentModules id="_ROxA8zB5Eei1bbwBPPZWOA" name="Positioniereinheit">
+            <assignedResourceType href="model.resourcetype#_0xCaqTD9EeiuBvcKgWzd3Q"/>
+            <assignedResourceInstance href="model.resourceinstance#_I4a_oDD-EeiuBvcKgWzd3Q"/>
+          </equipmentModules>
         </storageUnits>
       </workCenters>
       <equipmentModules id="_gUuXFFIxEeidSe5vp9A3oA" name="Laser Projection">
@@ -48,6 +58,14 @@
       </equipmentModules>
       <equipmentModules xsi:type="topology:AGVStation" id="_4Xw3NV2TEeit97PGgoQOAQ" name="Station-TeachIn"/>
       <equipmentModules xsi:type="topology:AGVStation" id="_5AENVV2TEeit97PGgoQOAQ" name="Station-Wait"/>
+      <equipmentModules id="_yb80hGnSEeiQ6ti_SIagCw" name="Milkrunner">
+        <equipmentModules id="_6lOowWnSEeiQ6ti_SIagCw" name="Positioniereinheit">
+          <assignedResourceType href="model.resourcetype#_Hi37STD5EeiuBvcKgWzd3Q"/>
+          <assignedResourceInstance href="model.resourceinstance#_jJdx4DD7EeiuBvcKgWzd3Q"/>
+        </equipmentModules>
+        <assignedResourceType href="model.resourcetype#_ZRW8sjJhEei1p5hKOf5Slw"/>
+        <assignedResourceInstance href="model.resourceinstance#_rUJzsDJhEei1p5hKOf5Slw"/>
+      </equipmentModules>
     </areas>
     <areas id="_JUNX8EegEeiuhP6xdl274w" name="DFKI Stand">
       <workCenters xsi:type="topology:ProductionLine" id="_Pn-cEkegEeiuhP6xdl274w">
