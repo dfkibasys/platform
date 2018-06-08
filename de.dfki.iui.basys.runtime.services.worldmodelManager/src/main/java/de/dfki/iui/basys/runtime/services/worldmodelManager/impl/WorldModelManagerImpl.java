@@ -13,7 +13,7 @@ import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.core.MediaType;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -168,8 +168,7 @@ public class WorldModelManagerImpl extends EmfServiceComponent implements WorldM
 				.getLocalComponentById("resource-instance-manager");
 
 		ResourceInstanceRepository repo = rim.getResourceInstanceRepository();
-		Resource r = repo.eResource();
-
+	
 		List<ResourceInstance> resourceInstances = repo.getResourceInstances();
 		WorldModel wm = new LinebalancingFactoryImpl().createWorldModel();
 
@@ -207,7 +206,13 @@ public class WorldModelManagerImpl extends EmfServiceComponent implements WorldM
 					wmri.setFrom_position(source);
 					wmri.setTo_position(target);
 					wmri.setEta(mEta);
-					wmri.getCapabilities().addAll(ri.getCapabilityApplications());
+					// Laut Metamodell ist das Feature capabilityApplication ein Containment Feature.
+					// Die folgende Zeile führt nun dazu, dass der Inhalt, also die CapabilityApplications
+					// ihren Container wechseln. Sie ziehen quasi um und haben leider keine Nachsendeadresse 
+					// hinterlassen.
+					//wmri.getCapabilities().addAll(ri.getCapabilityApplications());
+					// darum (Achtung: EcoreUtil wird erst nach einem 'mvn install' gefunden, das Manifest muss neu gebaut werden):					
+					wmri.getCapabilities().addAll(EcoreUtil.copyAll(ri.getCapabilityApplications()));
 					wm.getResourceInstances().add(wmri);
 
 				} catch (IOException e) {
@@ -218,7 +223,9 @@ public class WorldModelManagerImpl extends EmfServiceComponent implements WorldM
 
 				WMResourceInstance wmri = new LinebalancingFactoryImpl().createWMResourceInstance();
 				wmri.setSerialId(ri.getId());
-				wmri.getCapabilities().addAll(ri.getCapabilityApplications());
+				// siehe oben
+				//wmri.getCapabilities().addAll(ri.getCapabilityApplications());
+				wmri.getCapabilities().addAll(EcoreUtil.copyAll(ri.getCapabilityApplications()));
 				wm.getResourceInstances().add(wmri);
 				break;
 			}
