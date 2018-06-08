@@ -10,5 +10,16 @@
   "properties" : [ {
     "key" : "simulated",
     "value" : "true"
-  }]
+  }],
+  "simulationConfiguration" : {
+    "onResettingDuration" : 1750,
+    "onStartingDuration" : 1250,
+    "onExecuteDuration" : 2500,
+    "onCompletingDuration" : 500,
+    "onCompletingVariables" : [ {
+      "name" : "qaResult",
+      "value" : "true",
+      "type" : "BOOLEAN"
+    } ]
+  }
 }
