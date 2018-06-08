@@ -348,4 +348,19 @@
       </capabilityAssertions>
     </resourceTypes>
   </catalogues>
+  <catalogues manufacturer="Philips">
+    <resourceTypes xsi:type="resourcetype:Tool" id="_XEoEQmsVEeiPYI9_h6Hhzw" name="Hue Light" documentation="https://www2.meethue.com/de-de/p/hue-white-and-color-ambiance-white-and-color-ambiance-lightstrip-plus-basis/7190155PH/technische-daten" image="">
+      <capabilityAssertions id="_ndTi4GsVEeiPYI9_h6Hhzw" name="IO Signal">
+        <pattern>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//QAVisualisationCapability"/>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//QAVisualisationCapability/qaResult"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+            </range>
+          </slot>
+        </pattern>
+      </capabilityAssertions>
+    </resourceTypes>
+  </catalogues>
 </resourcetype:ResourceTypeCatalogueCollection>

@@ -105,4 +105,24 @@
       </capability>
     </capabilityVariant>
   </componentRequests>
+  <componentRequests xsi:type="component:CapabilityRequest">
+    <capabilityVariant xsi:type="resourceinstance:GeneralCapabilityVariant" id="_oONl82sWEeiPYI9_h6Hhzw" name="Signal IO">
+      <capability xsi:type="capability:QAVisualisationCapability" id="_pyvT22sWEeiPYI9_h6Hhzw" qaResult="true"/>
+    </capabilityVariant>
+  </componentRequests>
+  <componentRequests xsi:type="component:CapabilityRequest">
+    <capabilityVariant xsi:type="resourceinstance:GeneralCapabilityVariant" id="_VrxwEmsXEeiHwulcobhZhw" name="Intention Dialogue">
+      <capability xsi:type="capability:InteractionCapability" id="_bQ7lVGsYEeixZrynCv8ohQ" topic="intention"/>
+    </capabilityVariant>
+  </componentRequests>
+  <componentRequests xsi:type="component:CapabilityRequest">
+    <capabilityVariant xsi:type="resourceinstance:GeneralCapabilityVariant" id="_i9K4M2sYEeixZrynCv8ohQ" name="Cola Dialogue">
+      <capability xsi:type="capability:InteractionCapability" id="_jfPDhGsYEeixZrynCv8ohQ" name="" topic="cola"/>
+    </capabilityVariant>
+  </componentRequests>
+  <componentRequests xsi:type="component:CapabilityRequest">
+    <capabilityVariant xsi:type="resourceinstance:GeneralCapabilityVariant" id="_okBzA2sYEeixZrynCv8ohQ" name="Delivery Dialogue">
+      <capability xsi:type="capability:InteractionCapability" id="_pWLoxGsYEeixZrynCv8ohQ" topic="delivery"/>
+    </capabilityVariant>
+  </componentRequests>
 </component:ComponentRequestCollection>

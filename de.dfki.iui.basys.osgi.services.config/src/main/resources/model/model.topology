@@ -40,6 +40,7 @@
               <assignedResourceType href="model.resourcetype#_LILOCTD5EeiuBvcKgWzd3Q"/>
               <assignedResourceInstance href="model.resourceinstance#_r4sy4DD7EeiuBvcKgWzd3Q"/>
             </equipmentModules>
+            <equipmentModules id="_KjUf0GsVEeiPYI9_h6Hhzw" name="IO-Anzeige"/>
           </stations>
         </workCells>
       </workCenters>
@@ -49,6 +50,10 @@
           <equipmentModules id="_ROxA8zB5Eei1bbwBPPZWOA" name="Positioniereinheit">
             <assignedResourceType href="model.resourcetype#_0xCaqTD9EeiuBvcKgWzd3Q"/>
             <assignedResourceInstance href="model.resourceinstance#_I4a_oDD-EeiuBvcKgWzd3Q"/>
+          </equipmentModules>
+          <equipmentModules binding="" id="_bbI0sGsZEeixZrynCv8ohQ" name="IO Signal">
+            <assignedResourceType href="model.resourcetype#_XEoEQmsVEeiPYI9_h6Hhzw"/>
+            <assignedResourceInstance href="model.resourceinstance#_TgItAGsZEeixZrynCv8ohQ"/>
           </equipmentModules>
         </storageUnits>
       </workCenters>

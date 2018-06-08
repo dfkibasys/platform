@@ -160,4 +160,8 @@
       </capabilityVariants>
     </capabilityApplications>
   </resourceInstances>
+  <resourceInstances id="_TgItAGsZEeixZrynCv8ohQ" name="My Hue Light">
+    <resourceType href="model.resourcetype#_XEoEQmsVEeiPYI9_h6Hhzw"/>
+    <role href="model.topology#_bbI0sGsZEeixZrynCv8ohQ"/>
+  </resourceInstances>
 </resourceinstance:ResourceInstanceRepository>
