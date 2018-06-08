@@ -27,9 +27,11 @@ import de.dfki.iui.basys.model.runtime.component.ControlMode;
 import de.dfki.iui.basys.model.runtime.component.Property;
 import de.dfki.iui.basys.model.runtime.component.RequestStatus;
 import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
+import de.dfki.iui.basys.model.runtime.component.SimulationConfiguration;
 import de.dfki.iui.basys.model.runtime.component.State;
 import de.dfki.iui.basys.model.runtime.component.StatusRequest;
 import de.dfki.iui.basys.model.runtime.component.Variable;
+import de.dfki.iui.basys.model.runtime.component.VariableType;
 import de.dfki.iui.basys.model.runtime.component.ComponentPackage;
 import de.dfki.iui.basys.model.runtime.component.ComponentRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentRequestCollection;
@@ -143,6 +145,13 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass simulationConfigurationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum componentCategoryEEnum = null;
 
 	/**
@@ -179,6 +188,13 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 * @generated
 	 */
 	private EEnum responseStatusEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum variableTypeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -479,6 +495,15 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getComponentConfiguration_SimulationConfiguration() {
+		return (EReference)componentConfigurationEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EOperation getComponentConfiguration__GetProperty__String() {
 		return componentConfigurationEClass.getEOperations().get(0);
 	}
@@ -749,6 +774,141 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getSimulationConfiguration() {
+		return simulationConfigurationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationConfiguration_OnResettingDuration() {
+		return (EAttribute)simulationConfigurationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationConfiguration_OnStartingDuration() {
+		return (EAttribute)simulationConfigurationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationConfiguration_OnExecuteDuration() {
+		return (EAttribute)simulationConfigurationEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationConfiguration_OnCompletingDuration() {
+		return (EAttribute)simulationConfigurationEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationConfiguration_OnStoppingDuration() {
+		return (EAttribute)simulationConfigurationEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationConfiguration_OnAbortingDuration() {
+		return (EAttribute)simulationConfigurationEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationConfiguration_OnClearingDuration() {
+		return (EAttribute)simulationConfigurationEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationConfiguration_OnHoldingDuration() {
+		return (EAttribute)simulationConfigurationEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationConfiguration_OnUnholdingDuration() {
+		return (EAttribute)simulationConfigurationEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationConfiguration_OnSuspendingDuration() {
+		return (EAttribute)simulationConfigurationEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationConfiguration_OnUnsuspendingDuration() {
+		return (EAttribute)simulationConfigurationEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSimulationConfiguration_OnCompletingVariables() {
+		return (EReference)simulationConfigurationEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationConfiguration_OnCompletingStatusCode() {
+		return (EAttribute)simulationConfigurationEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSimulationConfiguration_OnStoppingStatusCode() {
+		return (EAttribute)simulationConfigurationEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getComponentCategory() {
 		return componentCategoryEEnum;
 	}
@@ -796,6 +956,15 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 */
 	public EEnum getResponseStatus() {
 		return responseStatusEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getVariableType() {
+		return variableTypeEEnum;
 	}
 
 	/**
@@ -851,6 +1020,7 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		createEAttribute(componentConfigurationEClass, COMPONENT_CONFIGURATION__OUT_CHANNEL_NAME);
 		createEAttribute(componentConfigurationEClass, COMPONENT_CONFIGURATION__EXTERNAL_CONNECTION_STRING);
 		createEReference(componentConfigurationEClass, COMPONENT_CONFIGURATION__PROPERTIES);
+		createEReference(componentConfigurationEClass, COMPONENT_CONFIGURATION__SIMULATION_CONFIGURATION);
 		createEOperation(componentConfigurationEClass, COMPONENT_CONFIGURATION___GET_PROPERTY__STRING);
 
 		propertyEClass = createEClass(PROPERTY);
@@ -892,6 +1062,22 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		createEAttribute(variableEClass, VARIABLE__VALUE);
 		createEAttribute(variableEClass, VARIABLE__TYPE);
 
+		simulationConfigurationEClass = createEClass(SIMULATION_CONFIGURATION);
+		createEAttribute(simulationConfigurationEClass, SIMULATION_CONFIGURATION__ON_RESETTING_DURATION);
+		createEAttribute(simulationConfigurationEClass, SIMULATION_CONFIGURATION__ON_STARTING_DURATION);
+		createEAttribute(simulationConfigurationEClass, SIMULATION_CONFIGURATION__ON_EXECUTE_DURATION);
+		createEAttribute(simulationConfigurationEClass, SIMULATION_CONFIGURATION__ON_COMPLETING_DURATION);
+		createEAttribute(simulationConfigurationEClass, SIMULATION_CONFIGURATION__ON_STOPPING_DURATION);
+		createEAttribute(simulationConfigurationEClass, SIMULATION_CONFIGURATION__ON_ABORTING_DURATION);
+		createEAttribute(simulationConfigurationEClass, SIMULATION_CONFIGURATION__ON_CLEARING_DURATION);
+		createEAttribute(simulationConfigurationEClass, SIMULATION_CONFIGURATION__ON_HOLDING_DURATION);
+		createEAttribute(simulationConfigurationEClass, SIMULATION_CONFIGURATION__ON_UNHOLDING_DURATION);
+		createEAttribute(simulationConfigurationEClass, SIMULATION_CONFIGURATION__ON_SUSPENDING_DURATION);
+		createEAttribute(simulationConfigurationEClass, SIMULATION_CONFIGURATION__ON_UNSUSPENDING_DURATION);
+		createEReference(simulationConfigurationEClass, SIMULATION_CONFIGURATION__ON_COMPLETING_VARIABLES);
+		createEAttribute(simulationConfigurationEClass, SIMULATION_CONFIGURATION__ON_COMPLETING_STATUS_CODE);
+		createEAttribute(simulationConfigurationEClass, SIMULATION_CONFIGURATION__ON_STOPPING_STATUS_CODE);
+
 		// Create enums
 		componentCategoryEEnum = createEEnum(COMPONENT_CATEGORY);
 		stateEEnum = createEEnum(STATE);
@@ -899,6 +1085,7 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		controlCommandEEnum = createEEnum(CONTROL_COMMAND);
 		requestStatusEEnum = createEEnum(REQUEST_STATUS);
 		responseStatusEEnum = createEEnum(RESPONSE_STATUS);
+		variableTypeEEnum = createEEnum(VARIABLE_TYPE);
 	}
 
 	/**
@@ -964,6 +1151,7 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		initEAttribute(getComponentConfiguration_OutChannelName(), theEcorePackage.getEString(), "outChannelName", null, 0, 1, ComponentConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getComponentConfiguration_ExternalConnectionString(), theEcorePackage.getEString(), "externalConnectionString", null, 0, 1, ComponentConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getComponentConfiguration_Properties(), this.getProperty(), null, "properties", null, 0, -1, ComponentConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getComponentConfiguration_SimulationConfiguration(), this.getSimulationConfiguration(), null, "simulationConfiguration", null, 0, 1, ComponentConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		EOperation op = initEOperation(getComponentConfiguration__GetProperty__String(), this.getProperty(), "getProperty", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theEcorePackage.getEString(), "key", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -1008,7 +1196,23 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		initEClass(variableEClass, Variable.class, "Variable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getVariable_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getVariable_Value(), theEcorePackage.getEString(), "value", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getVariable_Type(), theEcorePackage.getEString(), "type", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVariable_Type(), this.getVariableType(), "type", "", 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(simulationConfigurationEClass, SimulationConfiguration.class, "SimulationConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSimulationConfiguration_OnResettingDuration(), theEcorePackage.getEInt(), "onResettingDuration", "1000", 0, 1, SimulationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationConfiguration_OnStartingDuration(), theEcorePackage.getEInt(), "onStartingDuration", "1000", 0, 1, SimulationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationConfiguration_OnExecuteDuration(), theEcorePackage.getEInt(), "onExecuteDuration", "3000", 0, 1, SimulationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationConfiguration_OnCompletingDuration(), theEcorePackage.getEInt(), "onCompletingDuration", "1000", 0, 1, SimulationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationConfiguration_OnStoppingDuration(), theEcorePackage.getEInt(), "onStoppingDuration", "1000", 0, 1, SimulationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationConfiguration_OnAbortingDuration(), theEcorePackage.getEInt(), "onAbortingDuration", "1000", 0, 1, SimulationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationConfiguration_OnClearingDuration(), theEcorePackage.getEInt(), "onClearingDuration", "1000", 0, 1, SimulationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationConfiguration_OnHoldingDuration(), theEcorePackage.getEInt(), "onHoldingDuration", "1000", 0, 1, SimulationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationConfiguration_OnUnholdingDuration(), theEcorePackage.getEInt(), "onUnholdingDuration", "1000", 0, 1, SimulationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationConfiguration_OnSuspendingDuration(), theEcorePackage.getEInt(), "onSuspendingDuration", "1000", 0, 1, SimulationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationConfiguration_OnUnsuspendingDuration(), theEcorePackage.getEInt(), "onUnsuspendingDuration", "1000", 0, 1, SimulationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSimulationConfiguration_OnCompletingVariables(), this.getVariable(), null, "onCompletingVariables", null, 0, -1, SimulationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationConfiguration_OnCompletingStatusCode(), theEcorePackage.getEInt(), "onCompletingStatusCode", "0", 0, 1, SimulationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSimulationConfiguration_OnStoppingStatusCode(), theEcorePackage.getEInt(), "onStoppingStatusCode", "1", 0, 1, SimulationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(componentCategoryEEnum, ComponentCategory.class, "ComponentCategory");
@@ -1070,6 +1274,15 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		addEEnumLiteral(responseStatusEEnum, ResponseStatus.UNDEFINED);
 		addEEnumLiteral(responseStatusEEnum, ResponseStatus.OK);
 		addEEnumLiteral(responseStatusEEnum, ResponseStatus.NOT_OK);
+
+		initEEnum(variableTypeEEnum, VariableType.class, "VariableType");
+		addEEnumLiteral(variableTypeEEnum, VariableType.NULL);
+		addEEnumLiteral(variableTypeEEnum, VariableType.BOOLEAN);
+		addEEnumLiteral(variableTypeEEnum, VariableType.INTEGER);
+		addEEnumLiteral(variableTypeEEnum, VariableType.STRING);
+		addEEnumLiteral(variableTypeEEnum, VariableType.DOUBLE);
+		addEEnumLiteral(variableTypeEEnum, VariableType.LONG);
+		addEEnumLiteral(variableTypeEEnum, VariableType.DATE);
 
 		// Create resource
 		createResource(eNS_URI);

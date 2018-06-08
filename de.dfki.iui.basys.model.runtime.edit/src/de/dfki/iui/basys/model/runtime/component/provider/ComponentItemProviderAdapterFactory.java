@@ -302,6 +302,52 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.runtime.component.Variable} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected VariableItemProvider variableItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.runtime.component.Variable}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createVariableAdapter() {
+		if (variableItemProvider == null) {
+			variableItemProvider = new VariableItemProvider(this);
+		}
+
+		return variableItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.runtime.component.SimulationConfiguration} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SimulationConfigurationItemProvider simulationConfigurationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.runtime.component.SimulationConfiguration}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSimulationConfigurationAdapter() {
+		if (simulationConfigurationItemProvider == null) {
+			simulationConfigurationItemProvider = new SimulationConfigurationItemProvider(this);
+		}
+
+		return simulationConfigurationItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -410,6 +456,8 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 		if (statusRequestItemProvider != null) statusRequestItemProvider.dispose();
 		if (componentResponseItemProvider != null) componentResponseItemProvider.dispose();
 		if (componentRequestCollectionItemProvider != null) componentRequestCollectionItemProvider.dispose();
+		if (variableItemProvider != null) variableItemProvider.dispose();
+		if (simulationConfigurationItemProvider != null) simulationConfigurationItemProvider.dispose();
 	}
 
 }

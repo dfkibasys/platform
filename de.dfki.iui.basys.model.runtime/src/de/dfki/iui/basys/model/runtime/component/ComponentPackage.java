@@ -296,13 +296,22 @@ public interface ComponentPackage extends EPackage {
 	int COMPONENT_CONFIGURATION__PROPERTIES = 9;
 
 	/**
+	 * The feature id for the '<em><b>Simulation Configuration</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_CONFIGURATION__SIMULATION_CONFIGURATION = 10;
+
+	/**
 	 * The number of structural features of the '<em>Configuration</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_CONFIGURATION_FEATURE_COUNT = 10;
+	int COMPONENT_CONFIGURATION_FEATURE_COUNT = 11;
 
 	/**
 	 * The operation id for the '<em>Get Property</em>' operation.
@@ -810,6 +819,160 @@ public interface ComponentPackage extends EPackage {
 	int VARIABLE_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.impl.SimulationConfigurationImpl <em>Simulation Configuration</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.runtime.component.impl.SimulationConfigurationImpl
+	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getSimulationConfiguration()
+	 * @generated
+	 */
+	int SIMULATION_CONFIGURATION = 12;
+
+	/**
+	 * The feature id for the '<em><b>On Resetting Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_CONFIGURATION__ON_RESETTING_DURATION = 0;
+
+	/**
+	 * The feature id for the '<em><b>On Starting Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_CONFIGURATION__ON_STARTING_DURATION = 1;
+
+	/**
+	 * The feature id for the '<em><b>On Execute Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_CONFIGURATION__ON_EXECUTE_DURATION = 2;
+
+	/**
+	 * The feature id for the '<em><b>On Completing Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_CONFIGURATION__ON_COMPLETING_DURATION = 3;
+
+	/**
+	 * The feature id for the '<em><b>On Stopping Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_CONFIGURATION__ON_STOPPING_DURATION = 4;
+
+	/**
+	 * The feature id for the '<em><b>On Aborting Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_CONFIGURATION__ON_ABORTING_DURATION = 5;
+
+	/**
+	 * The feature id for the '<em><b>On Clearing Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_CONFIGURATION__ON_CLEARING_DURATION = 6;
+
+	/**
+	 * The feature id for the '<em><b>On Holding Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_CONFIGURATION__ON_HOLDING_DURATION = 7;
+
+	/**
+	 * The feature id for the '<em><b>On Unholding Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_CONFIGURATION__ON_UNHOLDING_DURATION = 8;
+
+	/**
+	 * The feature id for the '<em><b>On Suspending Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_CONFIGURATION__ON_SUSPENDING_DURATION = 9;
+
+	/**
+	 * The feature id for the '<em><b>On Unsuspending Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_CONFIGURATION__ON_UNSUSPENDING_DURATION = 10;
+
+	/**
+	 * The feature id for the '<em><b>On Completing Variables</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_CONFIGURATION__ON_COMPLETING_VARIABLES = 11;
+
+	/**
+	 * The feature id for the '<em><b>On Completing Status Code</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_CONFIGURATION__ON_COMPLETING_STATUS_CODE = 12;
+
+	/**
+	 * The feature id for the '<em><b>On Stopping Status Code</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_CONFIGURATION__ON_STOPPING_STATUS_CODE = 13;
+
+	/**
+	 * The number of structural features of the '<em>Simulation Configuration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_CONFIGURATION_FEATURE_COUNT = 14;
+
+	/**
+	 * The number of operations of the '<em>Simulation Configuration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIMULATION_CONFIGURATION_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.ComponentCategory <em>Category</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -817,7 +980,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getComponentCategory()
 	 * @generated
 	 */
-	int COMPONENT_CATEGORY = 12;
+	int COMPONENT_CATEGORY = 13;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.State <em>State</em>}' enum.
@@ -827,7 +990,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getState()
 	 * @generated
 	 */
-	int STATE = 13;
+	int STATE = 14;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.ControlMode <em>Control Mode</em>}' enum.
@@ -837,7 +1000,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getControlMode()
 	 * @generated
 	 */
-	int CONTROL_MODE = 14;
+	int CONTROL_MODE = 15;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.ControlCommand <em>Control Command</em>}' enum.
@@ -847,7 +1010,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getControlCommand()
 	 * @generated
 	 */
-	int CONTROL_COMMAND = 15;
+	int CONTROL_COMMAND = 16;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.RequestStatus <em>Request Status</em>}' enum.
@@ -857,7 +1020,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getRequestStatus()
 	 * @generated
 	 */
-	int REQUEST_STATUS = 16;
+	int REQUEST_STATUS = 17;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.ResponseStatus <em>Response Status</em>}' enum.
@@ -867,7 +1030,17 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getResponseStatus()
 	 * @generated
 	 */
-	int RESPONSE_STATUS = 17;
+	int RESPONSE_STATUS = 18;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.VariableType <em>Variable Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.runtime.component.VariableType
+	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getVariableType()
+	 * @generated
+	 */
+	int VARIABLE_TYPE = 19;
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.runtime.component.ComponentInfo <em>Info</em>}'.
@@ -1130,6 +1303,17 @@ public interface ComponentPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getComponentConfiguration_Properties();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link de.dfki.iui.basys.model.runtime.component.ComponentConfiguration#getSimulationConfiguration <em>Simulation Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Simulation Configuration</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.ComponentConfiguration#getSimulationConfiguration()
+	 * @see #getComponentConfiguration()
+	 * @generated
+	 */
+	EReference getComponentConfiguration_SimulationConfiguration();
 
 	/**
 	 * Returns the meta object for the '{@link de.dfki.iui.basys.model.runtime.component.ComponentConfiguration#getProperty(java.lang.String) <em>Get Property</em>}' operation.
@@ -1451,6 +1635,170 @@ public interface ComponentPackage extends EPackage {
 	EAttribute getVariable_Type();
 
 	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.runtime.component.SimulationConfiguration <em>Simulation Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Simulation Configuration</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.SimulationConfiguration
+	 * @generated
+	 */
+	EClass getSimulationConfiguration();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.runtime.component.SimulationConfiguration#getOnResettingDuration <em>On Resetting Duration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>On Resetting Duration</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.SimulationConfiguration#getOnResettingDuration()
+	 * @see #getSimulationConfiguration()
+	 * @generated
+	 */
+	EAttribute getSimulationConfiguration_OnResettingDuration();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.runtime.component.SimulationConfiguration#getOnStartingDuration <em>On Starting Duration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>On Starting Duration</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.SimulationConfiguration#getOnStartingDuration()
+	 * @see #getSimulationConfiguration()
+	 * @generated
+	 */
+	EAttribute getSimulationConfiguration_OnStartingDuration();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.runtime.component.SimulationConfiguration#getOnExecuteDuration <em>On Execute Duration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>On Execute Duration</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.SimulationConfiguration#getOnExecuteDuration()
+	 * @see #getSimulationConfiguration()
+	 * @generated
+	 */
+	EAttribute getSimulationConfiguration_OnExecuteDuration();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.runtime.component.SimulationConfiguration#getOnCompletingDuration <em>On Completing Duration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>On Completing Duration</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.SimulationConfiguration#getOnCompletingDuration()
+	 * @see #getSimulationConfiguration()
+	 * @generated
+	 */
+	EAttribute getSimulationConfiguration_OnCompletingDuration();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.runtime.component.SimulationConfiguration#getOnStoppingDuration <em>On Stopping Duration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>On Stopping Duration</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.SimulationConfiguration#getOnStoppingDuration()
+	 * @see #getSimulationConfiguration()
+	 * @generated
+	 */
+	EAttribute getSimulationConfiguration_OnStoppingDuration();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.runtime.component.SimulationConfiguration#getOnAbortingDuration <em>On Aborting Duration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>On Aborting Duration</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.SimulationConfiguration#getOnAbortingDuration()
+	 * @see #getSimulationConfiguration()
+	 * @generated
+	 */
+	EAttribute getSimulationConfiguration_OnAbortingDuration();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.runtime.component.SimulationConfiguration#getOnClearingDuration <em>On Clearing Duration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>On Clearing Duration</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.SimulationConfiguration#getOnClearingDuration()
+	 * @see #getSimulationConfiguration()
+	 * @generated
+	 */
+	EAttribute getSimulationConfiguration_OnClearingDuration();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.runtime.component.SimulationConfiguration#getOnHoldingDuration <em>On Holding Duration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>On Holding Duration</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.SimulationConfiguration#getOnHoldingDuration()
+	 * @see #getSimulationConfiguration()
+	 * @generated
+	 */
+	EAttribute getSimulationConfiguration_OnHoldingDuration();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.runtime.component.SimulationConfiguration#getOnUnholdingDuration <em>On Unholding Duration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>On Unholding Duration</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.SimulationConfiguration#getOnUnholdingDuration()
+	 * @see #getSimulationConfiguration()
+	 * @generated
+	 */
+	EAttribute getSimulationConfiguration_OnUnholdingDuration();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.runtime.component.SimulationConfiguration#getOnSuspendingDuration <em>On Suspending Duration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>On Suspending Duration</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.SimulationConfiguration#getOnSuspendingDuration()
+	 * @see #getSimulationConfiguration()
+	 * @generated
+	 */
+	EAttribute getSimulationConfiguration_OnSuspendingDuration();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.runtime.component.SimulationConfiguration#getOnUnsuspendingDuration <em>On Unsuspending Duration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>On Unsuspending Duration</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.SimulationConfiguration#getOnUnsuspendingDuration()
+	 * @see #getSimulationConfiguration()
+	 * @generated
+	 */
+	EAttribute getSimulationConfiguration_OnUnsuspendingDuration();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link de.dfki.iui.basys.model.runtime.component.SimulationConfiguration#getOnCompletingVariables <em>On Completing Variables</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>On Completing Variables</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.SimulationConfiguration#getOnCompletingVariables()
+	 * @see #getSimulationConfiguration()
+	 * @generated
+	 */
+	EReference getSimulationConfiguration_OnCompletingVariables();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.runtime.component.SimulationConfiguration#getOnCompletingStatusCode <em>On Completing Status Code</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>On Completing Status Code</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.SimulationConfiguration#getOnCompletingStatusCode()
+	 * @see #getSimulationConfiguration()
+	 * @generated
+	 */
+	EAttribute getSimulationConfiguration_OnCompletingStatusCode();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.runtime.component.SimulationConfiguration#getOnStoppingStatusCode <em>On Stopping Status Code</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>On Stopping Status Code</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.SimulationConfiguration#getOnStoppingStatusCode()
+	 * @see #getSimulationConfiguration()
+	 * @generated
+	 */
+	EAttribute getSimulationConfiguration_OnStoppingStatusCode();
+
+	/**
 	 * Returns the meta object for enum '{@link de.dfki.iui.basys.model.runtime.component.ComponentCategory <em>Category</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1509,6 +1857,16 @@ public interface ComponentPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getResponseStatus();
+
+	/**
+	 * Returns the meta object for enum '{@link de.dfki.iui.basys.model.runtime.component.VariableType <em>Variable Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Variable Type</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.VariableType
+	 * @generated
+	 */
+	EEnum getVariableType();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1728,6 +2086,14 @@ public interface ComponentPackage extends EPackage {
 		 * @generated
 		 */
 		EReference COMPONENT_CONFIGURATION__PROPERTIES = eINSTANCE.getComponentConfiguration_Properties();
+
+		/**
+		 * The meta object literal for the '<em><b>Simulation Configuration</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPONENT_CONFIGURATION__SIMULATION_CONFIGURATION = eINSTANCE.getComponentConfiguration_SimulationConfiguration();
 
 		/**
 		 * The meta object literal for the '<em><b>Get Property</b></em>' operation.
@@ -1990,6 +2356,128 @@ public interface ComponentPackage extends EPackage {
 		EAttribute VARIABLE__TYPE = eINSTANCE.getVariable_Type();
 
 		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.runtime.component.impl.SimulationConfigurationImpl <em>Simulation Configuration</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.runtime.component.impl.SimulationConfigurationImpl
+		 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getSimulationConfiguration()
+		 * @generated
+		 */
+		EClass SIMULATION_CONFIGURATION = eINSTANCE.getSimulationConfiguration();
+
+		/**
+		 * The meta object literal for the '<em><b>On Resetting Duration</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_CONFIGURATION__ON_RESETTING_DURATION = eINSTANCE.getSimulationConfiguration_OnResettingDuration();
+
+		/**
+		 * The meta object literal for the '<em><b>On Starting Duration</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_CONFIGURATION__ON_STARTING_DURATION = eINSTANCE.getSimulationConfiguration_OnStartingDuration();
+
+		/**
+		 * The meta object literal for the '<em><b>On Execute Duration</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_CONFIGURATION__ON_EXECUTE_DURATION = eINSTANCE.getSimulationConfiguration_OnExecuteDuration();
+
+		/**
+		 * The meta object literal for the '<em><b>On Completing Duration</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_CONFIGURATION__ON_COMPLETING_DURATION = eINSTANCE.getSimulationConfiguration_OnCompletingDuration();
+
+		/**
+		 * The meta object literal for the '<em><b>On Stopping Duration</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_CONFIGURATION__ON_STOPPING_DURATION = eINSTANCE.getSimulationConfiguration_OnStoppingDuration();
+
+		/**
+		 * The meta object literal for the '<em><b>On Aborting Duration</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_CONFIGURATION__ON_ABORTING_DURATION = eINSTANCE.getSimulationConfiguration_OnAbortingDuration();
+
+		/**
+		 * The meta object literal for the '<em><b>On Clearing Duration</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_CONFIGURATION__ON_CLEARING_DURATION = eINSTANCE.getSimulationConfiguration_OnClearingDuration();
+
+		/**
+		 * The meta object literal for the '<em><b>On Holding Duration</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_CONFIGURATION__ON_HOLDING_DURATION = eINSTANCE.getSimulationConfiguration_OnHoldingDuration();
+
+		/**
+		 * The meta object literal for the '<em><b>On Unholding Duration</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_CONFIGURATION__ON_UNHOLDING_DURATION = eINSTANCE.getSimulationConfiguration_OnUnholdingDuration();
+
+		/**
+		 * The meta object literal for the '<em><b>On Suspending Duration</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_CONFIGURATION__ON_SUSPENDING_DURATION = eINSTANCE.getSimulationConfiguration_OnSuspendingDuration();
+
+		/**
+		 * The meta object literal for the '<em><b>On Unsuspending Duration</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_CONFIGURATION__ON_UNSUSPENDING_DURATION = eINSTANCE.getSimulationConfiguration_OnUnsuspendingDuration();
+
+		/**
+		 * The meta object literal for the '<em><b>On Completing Variables</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SIMULATION_CONFIGURATION__ON_COMPLETING_VARIABLES = eINSTANCE.getSimulationConfiguration_OnCompletingVariables();
+
+		/**
+		 * The meta object literal for the '<em><b>On Completing Status Code</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_CONFIGURATION__ON_COMPLETING_STATUS_CODE = eINSTANCE.getSimulationConfiguration_OnCompletingStatusCode();
+
+		/**
+		 * The meta object literal for the '<em><b>On Stopping Status Code</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SIMULATION_CONFIGURATION__ON_STOPPING_STATUS_CODE = eINSTANCE.getSimulationConfiguration_OnStoppingStatusCode();
+
+		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.runtime.component.ComponentCategory <em>Category</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2048,6 +2536,16 @@ public interface ComponentPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum RESPONSE_STATUS = eINSTANCE.getResponseStatus();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.runtime.component.VariableType <em>Variable Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.runtime.component.VariableType
+		 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getVariableType()
+		 * @generated
+		 */
+		EEnum VARIABLE_TYPE = eINSTANCE.getVariableType();
 
 	}
 

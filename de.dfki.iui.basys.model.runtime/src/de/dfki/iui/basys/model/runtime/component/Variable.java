@@ -77,6 +77,8 @@ public interface Variable extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Type</b></em>' attribute.
+	 * The default value is <code>""</code>.
+	 * The literals are from the enumeration {@link de.dfki.iui.basys.model.runtime.component.VariableType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Type</em>' attribute isn't clear,
@@ -84,21 +86,23 @@ public interface Variable extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Type</em>' attribute.
-	 * @see #setType(String)
+	 * @see de.dfki.iui.basys.model.runtime.component.VariableType
+	 * @see #setType(VariableType)
 	 * @see de.dfki.iui.basys.model.runtime.component.ComponentPackage#getVariable_Type()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
-	String getType();
+	VariableType getType();
 
 	/**
 	 * Sets the value of the '{@link de.dfki.iui.basys.model.runtime.component.Variable#getType <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Type</em>' attribute.
+	 * @see de.dfki.iui.basys.model.runtime.component.VariableType
 	 * @see #getType()
 	 * @generated
 	 */
-	void setType(String value);
+	void setType(VariableType value);
 
 } // Variable

@@ -19,6 +19,7 @@ import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.ComponentPackage;
 import de.dfki.iui.basys.model.runtime.component.Property;
+import de.dfki.iui.basys.model.runtime.component.SimulationConfiguration;
 
 /**
  * <!-- begin-user-doc -->
@@ -38,6 +39,7 @@ import de.dfki.iui.basys.model.runtime.component.Property;
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl#getOutChannelName <em>Out Channel Name</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl#getExternalConnectionString <em>External Connection String</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl#getProperties <em>Properties</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl#getSimulationConfiguration <em>Simulation Configuration</em>}</li>
  * </ul>
  *
  * @generated
@@ -232,6 +234,16 @@ public class ComponentConfigurationImpl extends MinimalEObjectImpl.Container imp
 	 * @ordered
 	 */
 	protected EList<Property> properties;
+
+	/**
+	 * The cached value of the '{@link #getSimulationConfiguration() <em>Simulation Configuration</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSimulationConfiguration()
+	 * @generated
+	 * @ordered
+	 */
+	protected SimulationConfiguration simulationConfiguration;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -475,6 +487,49 @@ public class ComponentConfigurationImpl extends MinimalEObjectImpl.Container imp
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SimulationConfiguration getSimulationConfiguration() {
+		return simulationConfiguration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetSimulationConfiguration(SimulationConfiguration newSimulationConfiguration, NotificationChain msgs) {
+		SimulationConfiguration oldSimulationConfiguration = simulationConfiguration;
+		simulationConfiguration = newSimulationConfiguration;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ComponentPackage.COMPONENT_CONFIGURATION__SIMULATION_CONFIGURATION, oldSimulationConfiguration, newSimulationConfiguration);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSimulationConfiguration(SimulationConfiguration newSimulationConfiguration) {
+		if (newSimulationConfiguration != simulationConfiguration) {
+			NotificationChain msgs = null;
+			if (simulationConfiguration != null)
+				msgs = ((InternalEObject)simulationConfiguration).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ComponentPackage.COMPONENT_CONFIGURATION__SIMULATION_CONFIGURATION, null, msgs);
+			if (newSimulationConfiguration != null)
+				msgs = ((InternalEObject)newSimulationConfiguration).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ComponentPackage.COMPONENT_CONFIGURATION__SIMULATION_CONFIGURATION, null, msgs);
+			msgs = basicSetSimulationConfiguration(newSimulationConfiguration, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.COMPONENT_CONFIGURATION__SIMULATION_CONFIGURATION, newSimulationConfiguration, newSimulationConfiguration));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	@Override
@@ -496,6 +551,8 @@ public class ComponentConfigurationImpl extends MinimalEObjectImpl.Container imp
 		switch (featureID) {
 			case ComponentPackage.COMPONENT_CONFIGURATION__PROPERTIES:
 				return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
+			case ComponentPackage.COMPONENT_CONFIGURATION__SIMULATION_CONFIGURATION:
+				return basicSetSimulationConfiguration(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -528,6 +585,8 @@ public class ComponentConfigurationImpl extends MinimalEObjectImpl.Container imp
 				return getExternalConnectionString();
 			case ComponentPackage.COMPONENT_CONFIGURATION__PROPERTIES:
 				return getProperties();
+			case ComponentPackage.COMPONENT_CONFIGURATION__SIMULATION_CONFIGURATION:
+				return getSimulationConfiguration();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -572,6 +631,9 @@ public class ComponentConfigurationImpl extends MinimalEObjectImpl.Container imp
 				getProperties().clear();
 				getProperties().addAll((Collection<? extends Property>)newValue);
 				return;
+			case ComponentPackage.COMPONENT_CONFIGURATION__SIMULATION_CONFIGURATION:
+				setSimulationConfiguration((SimulationConfiguration)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -614,6 +676,9 @@ public class ComponentConfigurationImpl extends MinimalEObjectImpl.Container imp
 			case ComponentPackage.COMPONENT_CONFIGURATION__PROPERTIES:
 				getProperties().clear();
 				return;
+			case ComponentPackage.COMPONENT_CONFIGURATION__SIMULATION_CONFIGURATION:
+				setSimulationConfiguration((SimulationConfiguration)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -646,6 +711,8 @@ public class ComponentConfigurationImpl extends MinimalEObjectImpl.Container imp
 				return EXTERNAL_CONNECTION_STRING_EDEFAULT == null ? externalConnectionString != null : !EXTERNAL_CONNECTION_STRING_EDEFAULT.equals(externalConnectionString);
 			case ComponentPackage.COMPONENT_CONFIGURATION__PROPERTIES:
 				return properties != null && !properties.isEmpty();
+			case ComponentPackage.COMPONENT_CONFIGURATION__SIMULATION_CONFIGURATION:
+				return simulationConfiguration != null;
 		}
 		return super.eIsSet(featureID);
 	}

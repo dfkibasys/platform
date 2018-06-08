@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.ComponentConfiguration#getOutChannelName <em>Out Channel Name</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.ComponentConfiguration#getExternalConnectionString <em>External Connection String</em>}</li>
  *   <li>{@link de.dfki.iui.basys.model.runtime.component.ComponentConfiguration#getProperties <em>Properties</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.runtime.component.ComponentConfiguration#getSimulationConfiguration <em>Simulation Configuration</em>}</li>
  * </ul>
  *
  * @see de.dfki.iui.basys.model.runtime.component.ComponentPackage#getComponentConfiguration()
@@ -284,6 +285,32 @@ public interface ComponentConfiguration extends EObject {
 	 * @generated
 	 */
 	EList<Property> getProperties();
+
+	/**
+	 * Returns the value of the '<em><b>Simulation Configuration</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Simulation Configuration</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Simulation Configuration</em>' containment reference.
+	 * @see #setSimulationConfiguration(SimulationConfiguration)
+	 * @see de.dfki.iui.basys.model.runtime.component.ComponentPackage#getComponentConfiguration_SimulationConfiguration()
+	 * @model containment="true"
+	 * @generated
+	 */
+	SimulationConfiguration getSimulationConfiguration();
+
+	/**
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.runtime.component.ComponentConfiguration#getSimulationConfiguration <em>Simulation Configuration</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Simulation Configuration</em>' containment reference.
+	 * @see #getSimulationConfiguration()
+	 * @generated
+	 */
+	void setSimulationConfiguration(SimulationConfiguration value);
 
 	/**
 	 * <!-- begin-user-doc -->

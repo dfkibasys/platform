@@ -289,6 +289,7 @@ public class ComponentConfigurationItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ComponentPackage.Literals.COMPONENT_CONFIGURATION__PROPERTIES);
+			childrenFeatures.add(ComponentPackage.Literals.COMPONENT_CONFIGURATION__SIMULATION_CONFIGURATION);
 		}
 		return childrenFeatures;
 	}
@@ -345,6 +346,7 @@ public class ComponentConfigurationItemProvider
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case ComponentPackage.COMPONENT_CONFIGURATION__PROPERTIES:
+			case ComponentPackage.COMPONENT_CONFIGURATION__SIMULATION_CONFIGURATION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -366,6 +368,11 @@ public class ComponentConfigurationItemProvider
 			(createChildParameter
 				(ComponentPackage.Literals.COMPONENT_CONFIGURATION__PROPERTIES,
 				 ComponentFactory.eINSTANCE.createProperty()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ComponentPackage.Literals.COMPONENT_CONFIGURATION__SIMULATION_CONFIGURATION,
+				 ComponentFactory.eINSTANCE.createSimulationConfiguration()));
 	}
 
 	/**
