@@ -1,5 +1,8 @@
 package de.dfki.iui.basys.runtime.connector;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.jms.JMSException;
 import javax.jms.Session;
 import javax.jms.TextMessage;
@@ -8,8 +11,33 @@ public class MessageFactory {
 	
 	private Session session;
 	
+	// error code/message map
+	Map<Integer, String> jobErrorText = new HashMap<>();
+
+	
 	public MessageFactory(Session session) {
 		this.session = session;
+		
+		jobErrorText.put(0, "In Ordnung");
+		jobErrorText.put(1, "Lichtgitter durchbrochen");
+		jobErrorText.put(2, "Magazin A leer");
+		jobErrorText.put(3, "Magazin A falsch bestückt oder Deckel verklemmt");
+		jobErrorText.put(4, "Magazin B leer");
+		jobErrorText.put(5, "Magazin B falsch bestückt oder Deckel verklemmt");
+		jobErrorText.put(6, "Baugruppe nicht bestückt");
+		jobErrorText.put(7, "Baugruppe bereits mit Deckel bestückt");
+		jobErrorText.put(8, "Nicht erlaubte Achsposition");
+		jobErrorText.put(9, "Greifen fehlgeschlagen");
+		jobErrorText.put(10, "Achsen blockiert");
+		jobErrorText.put(11, "Notaus betätigt");
+		jobErrorText.put(13, "Deckel während des Greifens verloren");
+	}
+	
+	private String getJobErrorText(int jobErrorCode) {
+		if (jobErrorText.containsKey(jobErrorCode)) {
+			return jobErrorText.get(jobErrorCode);
+		}
+		return "Unbekannter Fehlercode";
 	}
 
 
@@ -72,6 +100,7 @@ public class MessageFactory {
 				"<Message>"
 				+ "<Parameter name=\"jobStatus\" value=\"" + jobStatus + "\" />"
 				+ "<Parameter name=\"jobErrorCode\" value=\"" + jobErrorCode + "\" />"
+				+ "<Parameter name=\"jobErrorText\" value=\"" + getJobErrorText(jobErrorCode) + "\" />"
 				+ "</Message>";
 		TextMessage msg = createMSG("MSG12", resourceId, text);
 		return msg;
@@ -82,6 +111,7 @@ public class MessageFactory {
 				"<Message>"
 				+ "<Parameter name=\"jobStatus\" value=\"" + jobStatus + "\" />"
 				+ "<Parameter name=\"jobErrorCode\" value=\"" + jobErrorCode + "\" />"
+				+ "<Parameter name=\"jobErrorText\" value=\"" + getJobErrorText(jobErrorCode) + "\" />"
 				+ "</Message>";
 		TextMessage msg = createMSG("MSG13", resourceId, text);
 		return msg;

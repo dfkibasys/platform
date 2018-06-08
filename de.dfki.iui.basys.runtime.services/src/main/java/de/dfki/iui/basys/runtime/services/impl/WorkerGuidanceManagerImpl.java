@@ -201,10 +201,10 @@ public class WorkerGuidanceManagerImpl extends EmfServiceComponent implements Wo
 
 	@Override
 	public Response presentWorkerGuidance(String id, int order, int serial, int matNr, int errorCode) {
-		String html = "" + "<html>" 
-	+ "<head></head>" + "<body>" + createBody(id, order, serial, matNr, errorCode)
-				+ "</body>" + "</html>";
-
+//		String html = "" + "<html>" 
+//	+ "<head></head>" + "<body>" + createBody(id, order, serial, matNr, errorCode)
+//				+ "</body>" + "</html>";
+		String html = createBody(id, order, serial, matNr, errorCode);
 		Response response = Response.ok(html).build();
 		return response;
 	}
