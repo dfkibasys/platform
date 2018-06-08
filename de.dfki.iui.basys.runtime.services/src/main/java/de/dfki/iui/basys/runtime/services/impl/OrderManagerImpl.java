@@ -6,8 +6,6 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import org.eclipse.emf.ecore.util.EcoreUtil;
-
 import de.dfki.iui.basys.common.emf.json.JsonUtils;
 import de.dfki.iui.basys.model.domain.order.Order;
 import de.dfki.iui.basys.model.domain.order.OrderPackage;
@@ -124,9 +122,9 @@ public class OrderManagerImpl extends EmfServiceComponent implements OrderManage
 
 		try {
 			
-			Order copiedOrder = EcoreUtil.copy(order);
+			//Order copiedOrder = EcoreUtil.copy(order);
 			//Order copiedOrder = EmfUtils.clone(order);
-			String payload = JsonUtils.toString(copiedOrder);
+			String payload = JsonUtils.toString(order);
 			System.out.println(payload);
 			//Order deserializedOrder = JsonUtils.fromString(payload, Order.class);
 			
