@@ -1,0 +1,21 @@
+{
+  "eClass" : "http://www.dfki.de/iui/basys/model/component#//ComponentConfiguration",
+  "componentCategory" : "SERVICE_COMPONENT",
+  "componentId" : "siam-service",
+  "componentName" : "SiAM Service (Sim)",
+  "componentImplementationJavaClass" : "de.dfki.iui.basys.runtime.component.device.tecs.SiAMServiceComponent",
+  "inChannelName" : "siam-service#in",
+  "outChannelName" : "siam-service#out",
+  "externalConnectionString" : "tecs.tcp://10.2.0.45:9031",
+  "properties" : [ {
+    "key" : "simulated",
+    "value" : "true"
+  }],
+  "simulationConfiguration" : {
+    "onCompletingVariables" : [ {
+      "name" : "qaResult",
+      "value" : "true",
+      "type" : "BOOLEAN"
+    } ]
+  }
+}
