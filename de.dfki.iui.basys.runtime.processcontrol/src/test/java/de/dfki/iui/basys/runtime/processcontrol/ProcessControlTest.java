@@ -2,7 +2,7 @@ package de.dfki.iui.basys.runtime.processcontrol;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.junit.Ignore;
@@ -10,7 +10,10 @@ import org.junit.Test;
 
 import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.Variable;
+import de.dfki.iui.basys.model.runtime.component.VariableType;
 import de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl;
+import de.dfki.iui.basys.model.runtime.component.impl.VariableImpl;
 import de.dfki.iui.basys.runtime.component.device.DeviceComponent;
 import de.dfki.iui.basys.runtime.processcontrol.impl.CamundaRestClient;
 import de.dfki.iui.basys.runtime.processcontrol.impl.ExternalServiceTaskDto;
@@ -96,17 +99,19 @@ public class ProcessControlTest extends BaseComponentTest {
 	}
 	
 	@Test
-	@Ignore
 	public void testSetProcessVariables() throws Exception {
-		HashMap<String,String> varMap = new HashMap<String,String>();
-		varMap.put("ProcessVariableOne", "one");
-		varMap.put("ProcessVariableTwo", "two");
+
+		List<Variable> vars = new LinkedList<>();
+		vars.add(new VariableImpl.Builder().name("StringVariable").value("aValueUpdate").type(VariableType.STRING).build());
+		vars.add(new VariableImpl.Builder().name("IntVariable").value("55").type(VariableType.INTEGER).build());
+		vars.add(new VariableImpl.Builder().name("BoolVariable").value("true").type(VariableType.BOOLEAN).build());
+		
 		CamundaRestClient camundaClient = new CamundaRestClient(taskSchedulerConfig.getComponentId(), taskSchedulerConfig.getExternalConnectionString());
 		List<ExternalServiceTaskDto> tasks = camundaClient.getExternalTasks("BasysTask", 5, 30 * 1000, 2000, "assignee", "command", "parameters");
 		assertEquals(1,	tasks.size());
-		//for (ExternalServiceTaskDto task : tasks)
-			//camundaClient.complete(task.getId(), varMap);
-		//Thread.currentThread().sleep(60*1000);
+		for (ExternalServiceTaskDto task : tasks)
+			camundaClient.complete(task.getId(), vars);
+		Thread.currentThread().sleep(60*1000);
 	}
 	
 	

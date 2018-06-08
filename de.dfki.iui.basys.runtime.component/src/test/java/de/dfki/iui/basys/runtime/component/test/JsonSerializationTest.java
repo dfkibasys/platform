@@ -57,7 +57,8 @@ public class JsonSerializationTest {
 		System.out.println(payload);
 	}
 
-	@Test	
+	@Test
+	@Ignore
 	public void testSerializeComponentRequests() {
 
 		JsonUtils.factory = new BasysResourceSetImpl.Factory();
@@ -71,6 +72,40 @@ public class JsonSerializationTest {
 		
 		//URI uri = URI.createFileURI("C:\\Projekte\\BaSys\\Dev\\basys-develop\\ws\\osgi\\de.dfki.iui.basys.osgi.services.config\\src\\main\\resources\\model\\requestcollection.component");
 		URI uri = URI.createFileURI("C:\\Tools\\basys-develop\\ws\\osgi\\de.dfki.iui.basys.osgi.services.config\\src\\main\\resources\\model\\requestcollection.component");
+			
+		Resource resource = resourceSet.createResource(uri);
+		try {
+			EmfPersistence.read(resource, null);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		EObject collection = resource.getContents().get(0);
+		
+		try {
+			String json = JsonUtils.toString(collection);
+			System.out.println(json);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+	@Test	
+	public void testSerializeComponentConfiguration() {
+
+		JsonUtils.factory = new BasysResourceSetImpl.Factory();
+		ResourceSet resourceSet = EmfServiceComponent.createResourceSet();
+
+			
+		
+		
+		//URI uri = URI.createPlatformPluginURI("/de.dfki.iui.basys.osgi.services.config/src/main/resources/model/requestcollection.component", true);
+		
+		
+		//URI uri = URI.createFileURI("C:\\Projekte\\BaSys\\Dev\\basys-develop\\ws\\osgi\\de.dfki.iui.basys.osgi.services.config\\src\\main\\resources\\model\\requestcollection.component");
+		URI uri = URI.createFileURI("C:\\Tools\\basys-develop\\ws\\osgi\\de.dfki.iui.basys.osgi.services.config\\src\\main\\resources\\model\\sampleComponentConfig.component");
 			
 		Resource resource = resourceSet.createResource(uri);
 		try {

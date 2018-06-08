@@ -17,6 +17,7 @@ import de.dfki.iui.basys.model.runtime.component.ComponentInfo;
 import de.dfki.iui.basys.model.runtime.component.ControlMode;
 import de.dfki.iui.basys.model.runtime.component.State;
 import de.dfki.iui.basys.model.runtime.component.impl.ComponentInfoImpl;
+import de.dfki.iui.basys.model.runtime.component.impl.SimulationConfigurationImpl;
 import de.dfki.iui.basys.runtime.communication.CommFactory;
 import de.dfki.iui.basys.runtime.component.registry.ComponentRegistration;
 import de.dfki.iui.basys.runtime.component.registry.ComponentRegistrationException;
@@ -47,6 +48,9 @@ public class BaseComponent implements Component, ChannelListener {
 		JsonUtils.factory = new BasysResourceSetImpl.Factory();
 		this.componentConfig = config;
 		LOGGER = LoggerFactory.getLogger("basys.component." + componentConfig.getComponentName().replaceAll(" ", "-"));
+		if (config.getSimulationConfiguration() == null) {
+			config.setSimulationConfiguration(new SimulationConfigurationImpl.Builder().build());
+		}
 		if (config.getProperty("simulated") != null) {
 			simulated = Boolean.parseBoolean(config.getProperty("simulated").getValue());
 			LOGGER.info("component is in SIMULATION mode");

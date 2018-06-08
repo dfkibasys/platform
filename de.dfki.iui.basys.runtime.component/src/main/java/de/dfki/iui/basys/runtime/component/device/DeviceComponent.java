@@ -1,6 +1,7 @@
 package de.dfki.iui.basys.runtime.component.device;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -292,26 +293,14 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 	}
 
 	protected void sendComponentResponse(ResponseStatus status, int statusCode) {
-		//sendComponentResponse(status, statusCode, null);
-		if (pendingRequest == null) {
-			LOGGER.error("Cannot send response to null request. Skipping.");
-			return;
-		}
-		
-		ComponentRequest r = EcoreUtil.copy(pendingRequest);
+		List<Variable> resultVariables = new ArrayList<>(0);
+		sendComponentResponse(status, statusCode, resultVariables);
+	}
 	
-		ComponentResponse response = new ComponentResponseImpl.Builder().componentId(getId()).status(status).statusCode(statusCode).request(pendingRequest).build();
-		response.setRequest(r);
-		try {
-			String payload = JsonUtils.toString(response);
-			Notification not = cf.createNotification(payload);
-			outChannel.sendNotification(not);			
-			
-			pendingRequest = null;
-		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	protected void sendComponentResponse(ResponseStatus status, int statusCode, Variable resultVariable) {
+		List<Variable> resultVariables = new ArrayList<>(1);
+		resultVariables.add(resultVariable);
+		sendComponentResponse(status, statusCode, resultVariables);
 	}
 	
 	protected void sendComponentResponse(ResponseStatus status, int statusCode, List<Variable> resultVariables) {
@@ -324,7 +313,8 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 	
 		ComponentResponse response = new ComponentResponseImpl.Builder().componentId(getId()).status(status).statusCode(statusCode).request(pendingRequest).build();
 		response.setRequest(r);
-		response.getResultVariables().addAll(resultVariables);
+		if (resultVariables != null)
+			response.getResultVariables().addAll(resultVariables);
 		try {
 			String payload = JsonUtils.toString(response);
 			Notification not = cf.createNotification(payload);

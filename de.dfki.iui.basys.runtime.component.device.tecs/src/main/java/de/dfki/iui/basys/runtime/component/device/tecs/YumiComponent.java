@@ -12,6 +12,9 @@ import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage;
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
+import de.dfki.iui.basys.model.runtime.component.Variable;
+import de.dfki.iui.basys.model.runtime.component.VariableType;
+import de.dfki.iui.basys.model.runtime.component.impl.VariableImpl;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
 import de.dfki.iui.hrc.hybritcommand.CommandResponse;
@@ -152,14 +155,18 @@ public class YumiComponent extends TecsDeviceComponent {
 		try {
 			CommandResponse cr = client.getCommandState();
 			LOGGER.info("QA result was " + cr.getDescription());
+			Variable qaResult = new VariableImpl.Builder()
+					.name("qaResult")
+					.type(VariableType.BOOLEAN)
+					.value(cr.getDescription().equals("io") ? "true" : "false")
+					.build();
+			
+			sendComponentResponse(ResponseStatus.OK, 0, qaResult);
+			//sendComponentResponse(ResponseStatus.OK, 0);
 		} catch (TException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//TODO: create result variable(s) for process
-		
-		//sendComponentResponse(ResponseStatus.OK, 0, resultVariables);
-		sendComponentResponse(ResponseStatus.OK, 0);
 	}
 
 	@Override

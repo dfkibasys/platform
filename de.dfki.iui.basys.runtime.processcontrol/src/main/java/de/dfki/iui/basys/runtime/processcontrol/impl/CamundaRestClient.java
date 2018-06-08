@@ -24,112 +24,91 @@ import de.dfki.iui.basys.model.runtime.component.Variable;
 
 public class CamundaRestClient {
 
-    private Logger LOGGER = LoggerFactory.getLogger(CamundaRestClient.class);
-	
-    String workerId;
-	String baseUrl;	
+	private Logger LOGGER = LoggerFactory.getLogger(CamundaRestClient.class);
+
+	String workerId;
+	String baseUrl;
 	Client client;
-	
+
 	public CamundaRestClient(String workerId, String baseUrl) {
 		this.workerId = workerId;
-		this.baseUrl = baseUrl;		
-		client = ClientBuilder.newClient();		
+		this.baseUrl = baseUrl;
+		client = ClientBuilder.newClient();
 	}
 
+	public List<ExternalServiceTaskDto> getExternalTasks(String topic, int maxCount, long lockDuration, long asyncResponseTimeout, String... fetchVariables) {
 
-    public List<ExternalServiceTaskDto> getExternalTasks(String topic, int maxCount, long lockDuration, long asyncResponseTimeout, String... fetchVariables) {
-    	
-    	String vars = "[]";
+		String vars = "[]";
 		try {
 			vars = new ObjectMapper().writeValueAsString(fetchVariables);
 		} catch (JsonProcessingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	
-		Entity<String> e = Entity.entity("{\n"
-                + "  \"workerId\":\""+workerId+"\",\n"
-                + "  \"maxTasks\":"+ maxCount + ",\n"
-                + "  \"usePriority\":true,\n"
-                + "  \"asyncResponseTimeout\":"+asyncResponseTimeout+",\n" // Long Polling timeout can be set to 30 minutes, 1800000 milliseconds maximum)
-                + "  \"topics\":\n"
-                + "      [{\"topicName\": \"" + topic + "\",\n"
-                + "      \"lockDuration\": " + lockDuration + ",\n"
-                + "      \"deserializeValues\" : true,\n"
-                + "      \"variables\": " + vars
-                + "      }]\n"
-                + "}", MediaType.APPLICATION_JSON);
-		
-    	Response response = client
-    			.target(baseUrl + "fetchAndLock").request(MediaType.APPLICATION_JSON)
-    			.post(e);
 
-    	//String resultE = response.readEntity(String.class);
-    	
-		List<ExternalServiceTaskDto> result = response.readEntity(new GenericType<List<ExternalServiceTaskDto>>() {});
+		Entity<String> e = Entity.entity(
+				"{\n" + "  \"workerId\":\"" + workerId + "\",\n" + "  \"maxTasks\":" + maxCount + ",\n" + "  \"usePriority\":true,\n" + "  \"asyncResponseTimeout\":" + asyncResponseTimeout + ",\n" // Long
+																																																		// Polling
+																																																		// timeout
+																																																		// can
+																																																		// be
+																																																		// set
+																																																		// to
+																																																		// 30
+																																																		// minutes,
+																																																		// 1800000
+																																																		// milliseconds
+																																																		// maximum)
+						+ "  \"topics\":\n" + "      [{\"topicName\": \"" + topic + "\",\n" + "      \"lockDuration\": " + lockDuration + ",\n" + "      \"deserializeValues\" : true,\n"
+						+ "      \"variables\": " + vars + "      }]\n" + "}",
+				MediaType.APPLICATION_JSON);
+
+		Response response = client.target(baseUrl + "fetchAndLock").request(MediaType.APPLICATION_JSON).post(e);
+
+		// String resultE = response.readEntity(String.class);
+
+		List<ExternalServiceTaskDto> result = response.readEntity(new GenericType<List<ExternalServiceTaskDto>>() {
+		});
 
 		return result;
-    }
+	}
 
-    public void complete(String taskId) {
-    	LOGGER.debug("Complete task {}", taskId);    	
-    	Response response = client
-    			.target(baseUrl + taskId + "/complete")
-    			.request(MediaType.APPLICATION_JSON)
-    			.post(Entity.entity("{\"workerId\": \""+workerId+"\"}", MediaType.APPLICATION_JSON));
-    	LOGGER.debug("Complete task {} succeded with status code {}", taskId, response.getStatus());
-    }
-    
-    public void complete(String taskId, List<Variable> variables) {
-    	LOGGER.debug("Complete task {} with process vars {}", taskId, variables.toString());
-    	String vars = "";
-    	for (Variable var : variables) {
-    		vars += "\""+var.getName()+"\": { \"value\": \""+var.getValue()+"\" , \"type\": \""+var.getType()+"\" },";
-    	}    	
-    	vars = vars.substring(0, vars.length()-1);
-    	
-    	Response response = client
-    			.target(baseUrl + taskId + "/complete")
-    			.request(MediaType.APPLICATION_JSON)
-    			.post(
-    					Entity.entity(
-    							  "{"
-    							   + "\"workerId\": \""+workerId+"\","
-    							   + "\"variables\": {"
-    							      + vars
-    							   + "}"
-    							+ "}", MediaType.APPLICATION_JSON));
-    	LOGGER.debug("Complete task {} succeded with status code {}", taskId, response.getStatus());
-    }
+	public void complete(String taskId) {
+		LOGGER.debug("Complete task {}", taskId);
+		Response response = client.target(baseUrl + taskId + "/complete").request(MediaType.APPLICATION_JSON).post(Entity.entity("{\"workerId\": \"" + workerId + "\"}", MediaType.APPLICATION_JSON));
+		LOGGER.debug("Complete task {} succeded with status code {}", taskId, response.getStatus());
+	}
 
-    public boolean isCanceled(String taskId) {
-    	LOGGER.debug("IsCanceled task {}", taskId);    
-    	Response response = client
-    			.target(baseUrl + taskId).request(MediaType.APPLICATION_JSON)
-    			.get();
-     	LOGGER.debug("IsCanceled task {} succeded with status code {}", taskId, response.getStatus());
-        
-    	if (response.getStatus() == 404) {
-    	    return true;
-        } else {
-            return false;
-        }
-    }
+	public void complete(String taskId, List<Variable> variables) {
+		LOGGER.debug("Complete task {} with process vars {}", taskId, variables.toString());
+		String vars = "";
+		for (Variable var : variables) {
+			vars += "\"" + var.getName() + "\": { \"value\": \"" + var.getValue() + "\" , \"type\": \"" + var.getType().getName().toLowerCase() + "\" },";
+		}
+		vars = vars.substring(0, vars.length() - 1);
 
-    public void handleError(String taskId, String message, int retries, int retryTimeout) {
-    	LOGGER.debug("HandleError task {}, message {}", taskId, message);    
-    	Response response = client
-    			.target(baseUrl + taskId + "/failure")
-    			.request(MediaType.APPLICATION_JSON)
-    			.post(Entity.entity("{\n"
-                        + "  \"workerId\": \""+workerId+"\",\n"
-                        + "  \"errorMessage\": \"" + message + "\",\n"
-                        + "  \"retries\": " + retries + ",\n"
-                        + "  \"retryTimeout\": " + retryTimeout + "\n"
-                        + "}", MediaType.APPLICATION_JSON));
-    	LOGGER.debug("HandleError task {} succeded with status code {}", taskId, response.getStatus());
-    }
-    
+		Response response = client.target(baseUrl + taskId + "/complete").request(MediaType.APPLICATION_JSON)
+				.post(Entity.entity("{" + "\"workerId\": \"" + workerId + "\"," + "\"variables\": {" + vars + "}" + "}", MediaType.APPLICATION_JSON));
+		LOGGER.debug("Complete task {} succeded with status code {}", taskId, response.getStatus());
+	}
 
+	public boolean isCanceled(String taskId) {
+		LOGGER.debug("IsCanceled task {}", taskId);
+		Response response = client.target(baseUrl + taskId).request(MediaType.APPLICATION_JSON).get();
+		LOGGER.debug("IsCanceled task {} succeded with status code {}", taskId, response.getStatus());
+
+		if (response.getStatus() == 404) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public void handleError(String taskId, String message, int retries, int retryTimeout) {
+		LOGGER.debug("HandleError task {}, message {}", taskId, message);
+		Response response = client.target(baseUrl + taskId + "/failure").request(MediaType.APPLICATION_JSON).post(Entity.entity("{\n" + "  \"workerId\": \"" + workerId + "\",\n"
+				+ "  \"errorMessage\": \"" + message + "\",\n" + "  \"retries\": " + retries + ",\n" + "  \"retryTimeout\": " + retryTimeout + "\n" + "}", MediaType.APPLICATION_JSON));
+		LOGGER.debug("HandleError task {} succeded with status code {}", taskId, response.getStatus());
+	}
 
 }
