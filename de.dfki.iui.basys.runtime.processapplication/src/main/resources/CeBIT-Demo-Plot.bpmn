@@ -660,7 +660,7 @@
     <bpmn:sequenceFlow id="SequenceFlow_02t4k79" sourceRef="ExclusiveGateway_0x92oio" targetRef="ServiceTask_1scsrl8" />
     <bpmn:sequenceFlow id="SequenceFlow_1ggeehv" sourceRef="ServiceTask_18mckfd" targetRef="ExclusiveGateway_1r891ys" />
     <bpmn:sequenceFlow id="SequenceFlow_1dcv4p8" name="Getränkeauftrag" sourceRef="ExclusiveGateway_0x92oio" targetRef="ServiceTask_0gdgri5">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${colaOrder==true}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${colaRequest==true}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:exclusiveGateway id="ExclusiveGateway_13skx98" default="SequenceFlow_1kjzl2n">
       <bpmn:incoming>SequenceFlow_02g4g15</bpmn:incoming>
