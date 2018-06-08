@@ -159,6 +159,10 @@ public class CapabilityAdapterFactory extends AdapterFactoryImpl {
 				return createWorkerAssistenceCapabilityAdapter();
 			}
 			@Override
+			public Adapter caseInteractionCapability(InteractionCapability object) {
+				return createInteractionCapabilityAdapter();
+			}
+			@Override
 			public Adapter caseConfirmationCapability(ConfirmationCapability object) {
 				return createConfirmationCapabilityAdapter();
 			}
@@ -355,6 +359,20 @@ public class CapabilityAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createWorkerAssistenceCapabilityAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.capability.InteractionCapability <em>Interaction Capability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.domain.capability.InteractionCapability
+	 * @generated
+	 */
+	public Adapter createInteractionCapabilityAdapter() {
 		return null;
 	}
 

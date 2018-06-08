@@ -12,7 +12,7 @@ package de.dfki.iui.basys.model.domain.capability;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.dfki.iui.basys.model.domain.capability.QAVisualisationCapability#getOK <em>OK</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.capability.QAVisualisationCapability#isQaResult <em>Qa Result</em>}</li>
  * </ul>
  *
  * @see de.dfki.iui.basys.model.domain.capability.CapabilityPackage#getQAVisualisationCapability()
@@ -21,29 +21,29 @@ package de.dfki.iui.basys.model.domain.capability;
  */
 public interface QAVisualisationCapability extends VisualisationCapability {
 	/**
-	 * Returns the value of the '<em><b>OK</b></em>' attribute.
+	 * Returns the value of the '<em><b>Qa Result</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>OK</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Qa Result</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>OK</em>' attribute.
-	 * @see #setOK(int)
-	 * @see de.dfki.iui.basys.model.domain.capability.CapabilityPackage#getQAVisualisationCapability_OK()
+	 * @return the value of the '<em>Qa Result</em>' attribute.
+	 * @see #setQaResult(boolean)
+	 * @see de.dfki.iui.basys.model.domain.capability.CapabilityPackage#getQAVisualisationCapability_QaResult()
 	 * @model
 	 * @generated
 	 */
-	int getOK();
+	boolean isQaResult();
 
 	/**
-	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.capability.QAVisualisationCapability#getOK <em>OK</em>}' attribute.
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.capability.QAVisualisationCapability#isQaResult <em>Qa Result</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>OK</em>' attribute.
-	 * @see #getOK()
+	 * @param value the new value of the '<em>Qa Result</em>' attribute.
+	 * @see #isQaResult()
 	 * @generated
 	 */
-	void setOK(int value);
+	void setQaResult(boolean value);
 
 } // QAVisualisationCapability

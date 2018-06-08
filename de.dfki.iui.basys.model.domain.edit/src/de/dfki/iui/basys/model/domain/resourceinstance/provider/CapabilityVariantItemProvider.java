@@ -270,6 +270,11 @@ public class CapabilityVariantItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(ResourceinstancePackage.Literals.CAPABILITY_VARIANT__CAPABILITY,
+				 CapabilityFactory.eINSTANCE.createInteractionCapability()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ResourceinstancePackage.Literals.CAPABILITY_VARIANT__CAPABILITY,
 				 CapabilityFactory.eINSTANCE.createConfirmationCapability()));
 
 		newChildDescriptors.add

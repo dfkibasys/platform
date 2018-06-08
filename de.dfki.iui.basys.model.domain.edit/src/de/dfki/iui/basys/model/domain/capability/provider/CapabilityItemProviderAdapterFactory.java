@@ -302,6 +302,29 @@ public class CapabilityItemProviderAdapterFactory extends CapabilityAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.InteractionCapability} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InteractionCapabilityItemProvider interactionCapabilityItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.InteractionCapability}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createInteractionCapabilityAdapter() {
+		if (interactionCapabilityItemProvider == null) {
+			interactionCapabilityItemProvider = new InteractionCapabilityItemProvider(this);
+		}
+
+		return interactionCapabilityItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.ConfirmationCapability} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -882,6 +905,7 @@ public class CapabilityItemProviderAdapterFactory extends CapabilityAdapterFacto
 		if (qoSCapabilityItemProvider != null) qoSCapabilityItemProvider.dispose();
 		if (inspectItemProvider != null) inspectItemProvider.dispose();
 		if (workerAssistenceCapabilityItemProvider != null) workerAssistenceCapabilityItemProvider.dispose();
+		if (interactionCapabilityItemProvider != null) interactionCapabilityItemProvider.dispose();
 		if (confirmationCapabilityItemProvider != null) confirmationCapabilityItemProvider.dispose();
 		if (switchConfirmationCapabilityItemProvider != null) switchConfirmationCapabilityItemProvider.dispose();
 		if (generalCapabilityItemProvider != null) generalCapabilityItemProvider.dispose();

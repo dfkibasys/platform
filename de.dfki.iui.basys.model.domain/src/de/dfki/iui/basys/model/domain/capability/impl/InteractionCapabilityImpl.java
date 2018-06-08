@@ -3,7 +3,7 @@
 package de.dfki.iui.basys.model.domain.capability.impl;
 
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
-import de.dfki.iui.basys.model.domain.capability.QAVisualisationCapability;
+import de.dfki.iui.basys.model.domain.capability.InteractionCapability;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -13,44 +13,44 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>QA Visualisation Capability</b></em>'.
+ * An implementation of the model object '<em><b>Interaction Capability</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.dfki.iui.basys.model.domain.capability.impl.QAVisualisationCapabilityImpl#isQaResult <em>Qa Result</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.capability.impl.InteractionCapabilityImpl#getTopic <em>Topic</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class QAVisualisationCapabilityImpl extends VisualisationCapabilityImpl implements QAVisualisationCapability {
+public class InteractionCapabilityImpl extends WorkerAssistenceCapabilityImpl implements InteractionCapability {
 	/**
-	 * The default value of the '{@link #isQaResult() <em>Qa Result</em>}' attribute.
+	 * The default value of the '{@link #getTopic() <em>Topic</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isQaResult()
+	 * @see #getTopic()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean QA_RESULT_EDEFAULT = false;
+	protected static final String TOPIC_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #isQaResult() <em>Qa Result</em>}' attribute.
+	 * The cached value of the '{@link #getTopic() <em>Topic</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isQaResult()
+	 * @see #getTopic()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean qaResult = QA_RESULT_EDEFAULT;
+	protected String topic = TOPIC_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected QAVisualisationCapabilityImpl() {
+	protected InteractionCapabilityImpl() {
 		super();
 	}
 
@@ -61,7 +61,7 @@ public class QAVisualisationCapabilityImpl extends VisualisationCapabilityImpl i
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return CapabilityPackage.Literals.QA_VISUALISATION_CAPABILITY;
+		return CapabilityPackage.Literals.INTERACTION_CAPABILITY;
 	}
 
 	/**
@@ -69,8 +69,8 @@ public class QAVisualisationCapabilityImpl extends VisualisationCapabilityImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isQaResult() {
-		return qaResult;
+	public String getTopic() {
+		return topic;
 	}
 
 	/**
@@ -78,11 +78,11 @@ public class QAVisualisationCapabilityImpl extends VisualisationCapabilityImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setQaResult(boolean newQaResult) {
-		boolean oldQaResult = qaResult;
-		qaResult = newQaResult;
+	public void setTopic(String newTopic) {
+		String oldTopic = topic;
+		topic = newTopic;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CapabilityPackage.QA_VISUALISATION_CAPABILITY__QA_RESULT, oldQaResult, qaResult));
+			eNotify(new ENotificationImpl(this, Notification.SET, CapabilityPackage.INTERACTION_CAPABILITY__TOPIC, oldTopic, topic));
 	}
 
 	/**
@@ -93,8 +93,8 @@ public class QAVisualisationCapabilityImpl extends VisualisationCapabilityImpl i
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CapabilityPackage.QA_VISUALISATION_CAPABILITY__QA_RESULT:
-				return isQaResult();
+			case CapabilityPackage.INTERACTION_CAPABILITY__TOPIC:
+				return getTopic();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -107,8 +107,8 @@ public class QAVisualisationCapabilityImpl extends VisualisationCapabilityImpl i
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CapabilityPackage.QA_VISUALISATION_CAPABILITY__QA_RESULT:
-				setQaResult((Boolean)newValue);
+			case CapabilityPackage.INTERACTION_CAPABILITY__TOPIC:
+				setTopic((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -122,8 +122,8 @@ public class QAVisualisationCapabilityImpl extends VisualisationCapabilityImpl i
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CapabilityPackage.QA_VISUALISATION_CAPABILITY__QA_RESULT:
-				setQaResult(QA_RESULT_EDEFAULT);
+			case CapabilityPackage.INTERACTION_CAPABILITY__TOPIC:
+				setTopic(TOPIC_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -137,8 +137,8 @@ public class QAVisualisationCapabilityImpl extends VisualisationCapabilityImpl i
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CapabilityPackage.QA_VISUALISATION_CAPABILITY__QA_RESULT:
-				return qaResult != QA_RESULT_EDEFAULT;
+			case CapabilityPackage.INTERACTION_CAPABILITY__TOPIC:
+				return TOPIC_EDEFAULT == null ? topic != null : !TOPIC_EDEFAULT.equals(topic);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -153,10 +153,10 @@ public class QAVisualisationCapabilityImpl extends VisualisationCapabilityImpl i
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (qaResult: ");
-		result.append(qaResult);
+		result.append(" (topic: ");
+		result.append(topic);
 		result.append(')');
 		return result.toString();
 	}
 
-} //QAVisualisationCapabilityImpl
+} //InteractionCapabilityImpl

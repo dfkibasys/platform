@@ -79,6 +79,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 			case CapabilityPackage.QO_SCAPABILITY: return createQoSCapability();
 			case CapabilityPackage.INSPECT: return createInspect();
 			case CapabilityPackage.WORKER_ASSISTENCE_CAPABILITY: return createWorkerAssistenceCapability();
+			case CapabilityPackage.INTERACTION_CAPABILITY: return createInteractionCapability();
 			case CapabilityPackage.CONFIRMATION_CAPABILITY: return createConfirmationCapability();
 			case CapabilityPackage.SWITCH_CONFIRMATION_CAPABILITY: return createSwitchConfirmationCapability();
 			case CapabilityPackage.GENERAL_CAPABILITY: return createGeneralCapability();
@@ -220,6 +221,16 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	public WorkerAssistenceCapability createWorkerAssistenceCapability() {
 		WorkerAssistenceCapabilityImpl workerAssistenceCapability = new WorkerAssistenceCapabilityImpl();
 		return workerAssistenceCapability;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InteractionCapability createInteractionCapability() {
+		InteractionCapabilityImpl interactionCapability = new InteractionCapabilityImpl();
+		return interactionCapability;
 	}
 
 	/**

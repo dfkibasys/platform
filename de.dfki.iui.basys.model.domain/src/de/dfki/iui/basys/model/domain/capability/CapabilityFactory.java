@@ -112,6 +112,15 @@ public interface CapabilityFactory extends EFactory {
 	WorkerAssistenceCapability createWorkerAssistenceCapability();
 
 	/**
+	 * Returns a new object of class '<em>Interaction Capability</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Interaction Capability</em>'.
+	 * @generated
+	 */
+	InteractionCapability createInteractionCapability();
+
+	/**
 	 * Returns a new object of class '<em>Confirmation Capability</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

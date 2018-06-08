@@ -17,6 +17,7 @@ import de.dfki.iui.basys.model.domain.capability.Fügen;
 import de.dfki.iui.basys.model.domain.capability.GeneralCapability;
 import de.dfki.iui.basys.model.domain.capability.HandlingCapability;
 import de.dfki.iui.basys.model.domain.capability.Inspect;
+import de.dfki.iui.basys.model.domain.capability.InteractionCapability;
 import de.dfki.iui.basys.model.domain.capability.LoadCarrierUnitEnum;
 import de.dfki.iui.basys.model.domain.capability.LogisticsCapability;
 import de.dfki.iui.basys.model.domain.capability.ManufacturingCapability;
@@ -167,6 +168,13 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * @generated
 	 */
 	private EClass workerAssistenceCapabilityEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass interactionCapabilityEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -611,6 +619,24 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getInteractionCapability() {
+		return interactionCapabilityEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInteractionCapability_Topic() {
+		return (EAttribute)interactionCapabilityEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getConfirmationCapability() {
 		return confirmationCapabilityEClass;
 	}
@@ -791,7 +817,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getQAVisualisationCapability_OK() {
+	public EAttribute getQAVisualisationCapability_QaResult() {
 		return (EAttribute)qaVisualisationCapabilityEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1064,6 +1090,9 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 
 		workerAssistenceCapabilityEClass = createEClass(WORKER_ASSISTENCE_CAPABILITY);
 
+		interactionCapabilityEClass = createEClass(INTERACTION_CAPABILITY);
+		createEAttribute(interactionCapabilityEClass, INTERACTION_CAPABILITY__TOPIC);
+
 		confirmationCapabilityEClass = createEClass(CONFIRMATION_CAPABILITY);
 
 		switchConfirmationCapabilityEClass = createEClass(SWITCH_CONFIRMATION_CAPABILITY);
@@ -1091,7 +1120,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		visualisationCapabilityEClass = createEClass(VISUALISATION_CAPABILITY);
 
 		qaVisualisationCapabilityEClass = createEClass(QA_VISUALISATION_CAPABILITY);
-		createEAttribute(qaVisualisationCapabilityEClass, QA_VISUALISATION_CAPABILITY__OK);
+		createEAttribute(qaVisualisationCapabilityEClass, QA_VISUALISATION_CAPABILITY__QA_RESULT);
 
 		// Create enums
 		loadCarrierUnitEnumEEnum = createEEnum(LOAD_CARRIER_UNIT_ENUM);
@@ -1153,6 +1182,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		qoSCapabilityEClass.getESuperTypes().add(this.getCapability());
 		inspectEClass.getESuperTypes().add(this.getQoSCapability());
 		workerAssistenceCapabilityEClass.getESuperTypes().add(this.getCapability());
+		interactionCapabilityEClass.getESuperTypes().add(this.getWorkerAssistenceCapability());
 		confirmationCapabilityEClass.getESuperTypes().add(this.getWorkerAssistenceCapability());
 		switchConfirmationCapabilityEClass.getESuperTypes().add(this.getConfirmationCapability());
 		generalCapabilityEClass.getESuperTypes().add(this.getCapability());
@@ -1224,6 +1254,9 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 
 		initEClass(workerAssistenceCapabilityEClass, WorkerAssistenceCapability.class, "WorkerAssistenceCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEClass(interactionCapabilityEClass, InteractionCapability.class, "InteractionCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getInteractionCapability_Topic(), theEcorePackage.getEString(), "topic", null, 0, 1, InteractionCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(confirmationCapabilityEClass, ConfirmationCapability.class, "ConfirmationCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(switchConfirmationCapabilityEClass, SwitchConfirmationCapability.class, "SwitchConfirmationCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1251,7 +1284,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		initEClass(visualisationCapabilityEClass, VisualisationCapability.class, "VisualisationCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(qaVisualisationCapabilityEClass, QAVisualisationCapability.class, "QAVisualisationCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getQAVisualisationCapability_OK(), theEcorePackage.getEInt(), "OK", null, 0, 1, QAVisualisationCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getQAVisualisationCapability_QaResult(), theEcorePackage.getEBoolean(), "qaResult", null, 0, 1, QAVisualisationCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(loadCarrierUnitEnumEEnum, LoadCarrierUnitEnum.class, "LoadCarrierUnitEnum");

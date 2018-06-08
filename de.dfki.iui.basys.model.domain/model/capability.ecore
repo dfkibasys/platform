@@ -68,6 +68,9 @@
     <eLiterals name="BOTTLE" value="3"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WorkerAssistenceCapability" eSuperTypes="#//Capability"/>
+  <eClassifiers xsi:type="ecore:EClass" name="InteractionCapability" eSuperTypes="#//WorkerAssistenceCapability">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="topic" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ConfirmationCapability" eSuperTypes="#//WorkerAssistenceCapability"/>
   <eClassifiers xsi:type="ecore:EClass" name="SwitchConfirmationCapability" eSuperTypes="#//ConfirmationCapability">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="State" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
@@ -94,6 +97,6 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="VisualisationCapability" eSuperTypes="#//WorkerAssistenceCapability"/>
   <eClassifiers xsi:type="ecore:EClass" name="QAVisualisationCapability" eSuperTypes="#//VisualisationCapability">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="OK" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="qaResult" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
   </eClassifiers>
 </ecore:EPackage>

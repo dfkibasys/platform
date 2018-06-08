@@ -413,6 +413,11 @@ public class EquipmentModuleItemProvider extends EntityItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createInteractionCapability()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
 				 CapabilityFactory.eINSTANCE.createConfirmationCapability()));
 
 		newChildDescriptors.add

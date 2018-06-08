@@ -290,6 +290,16 @@ public class CapabilitySwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case CapabilityPackage.INTERACTION_CAPABILITY: {
+				InteractionCapability interactionCapability = (InteractionCapability)theEObject;
+				T result = caseInteractionCapability(interactionCapability);
+				if (result == null) result = caseWorkerAssistenceCapability(interactionCapability);
+				if (result == null) result = caseCapability(interactionCapability);
+				if (result == null) result = caseEntity(interactionCapability);
+				if (result == null) result = caseBObject(interactionCapability);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case CapabilityPackage.CONFIRMATION_CAPABILITY: {
 				ConfirmationCapability confirmationCapability = (ConfirmationCapability)theEObject;
 				T result = caseConfirmationCapability(confirmationCapability);
@@ -522,6 +532,21 @@ public class CapabilitySwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseWorkerAssistenceCapability(WorkerAssistenceCapability object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Interaction Capability</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Interaction Capability</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseInteractionCapability(InteractionCapability object) {
 		return null;
 	}
 
