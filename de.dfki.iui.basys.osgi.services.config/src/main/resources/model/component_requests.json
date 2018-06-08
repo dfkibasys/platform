@@ -278,5 +278,54 @@
         }
       }
     }
+  }, {
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
+    "capabilityVariant" : {
+      "eClass" : "http://www.dfki.de/iui/basys/model/resourceinstance#//GeneralCapabilityVariant",
+      "id" : "_oONl82sWEeiPYI9_h6Hhzw",
+      "name" : "Signal IO",
+      "capability" : {
+        "eClass" : "http://www.dfki.de/iui/basys/model/capability#//QAVisualisationCapability",
+        "id" : "_pyvT22sWEeiPYI9_h6Hhzw",
+        "qaResult" : true
+      }
+    }
+  }, {
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
+    "capabilityVariant" : {
+      "eClass" : "http://www.dfki.de/iui/basys/model/resourceinstance#//GeneralCapabilityVariant",
+      "id" : "_VrxwEmsXEeiHwulcobhZhw",
+      "name" : "Intention Dialogue",
+      "capability" : {
+        "eClass" : "http://www.dfki.de/iui/basys/model/capability#//InteractionCapability",
+        "id" : "_bQ7lVGsYEeixZrynCv8ohQ",
+        "topic" : "intention"
+      }
+    }
+  }, {
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
+    "capabilityVariant" : {
+      "eClass" : "http://www.dfki.de/iui/basys/model/resourceinstance#//GeneralCapabilityVariant",
+      "id" : "_i9K4M2sYEeixZrynCv8ohQ",
+      "name" : "Cola Dialogue",
+      "capability" : {
+        "eClass" : "http://www.dfki.de/iui/basys/model/capability#//InteractionCapability",
+        "id" : "_jfPDhGsYEeixZrynCv8ohQ",
+        "name" : "",
+        "topic" : "cola"
+      }
+    }
+  }, {
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
+    "capabilityVariant" : {
+      "eClass" : "http://www.dfki.de/iui/basys/model/resourceinstance#//GeneralCapabilityVariant",
+      "id" : "_okBzA2sYEeixZrynCv8ohQ",
+      "name" : "Delivery Dialogue",
+      "capability" : {
+        "eClass" : "http://www.dfki.de/iui/basys/model/capability#//InteractionCapability",
+        "id" : "_pWLoxGsYEeixZrynCv8ohQ",
+        "topic" : "delivery"
+      }
+    }
   } ]
 }
