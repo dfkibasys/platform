@@ -98,8 +98,8 @@ public class WorldModelManagerImpl extends EmfServiceComponent implements WorldM
 						System.out.println(">>>>>>" + not);
 						String payl = not.getPayload();
 						try {
-							
-							//FIXME
+
+							// FIXME
 							EObject payload = JsonUtils.fromString(payl, EObject.class);
 
 							executor.submit(() -> {
@@ -168,7 +168,7 @@ public class WorldModelManagerImpl extends EmfServiceComponent implements WorldM
 				.getLocalComponentById("resource-instance-manager");
 
 		ResourceInstanceRepository repo = rim.getResourceInstanceRepository();
-	
+
 		List<ResourceInstance> resourceInstances = repo.getResourceInstances();
 		WorldModel wm = new LinebalancingFactoryImpl().createWorldModel();
 
@@ -184,15 +184,13 @@ public class WorldModelManagerImpl extends EmfServiceComponent implements WorldM
 					Property sourceProperty = avgConfig.getProperty("sourceLocation");
 					TopologyElement source = null;
 					if (sourceProperty != null) {
-						source = JsonUtils.fromString(sourceProperty.getValue(),
-								TopologyElement.class);
+						source = JsonUtils.fromString(sourceProperty.getValue(), TopologyElement.class);
 					}
 
 					Property targetProperty = avgConfig.getProperty("targetLocation");
 					TopologyElement target = null;
 					if (targetProperty != null) {
-						target = JsonUtils.fromString(targetProperty.getValue(),
-								TopologyElement.class);
+						target = JsonUtils.fromString(targetProperty.getValue(), TopologyElement.class);
 					}
 
 					mEta = 0;
@@ -206,12 +204,16 @@ public class WorldModelManagerImpl extends EmfServiceComponent implements WorldM
 					wmri.setFrom_position(source);
 					wmri.setTo_position(target);
 					wmri.setEta(mEta);
-					// Laut Metamodell ist das Feature capabilityApplication ein Containment Feature.
-					// Die folgende Zeile führt nun dazu, dass der Inhalt, also die CapabilityApplications
-					// ihren Container wechseln. Sie ziehen quasi um und haben leider keine Nachsendeadresse 
+					// Laut Metamodell ist das Feature capabilityApplication ein Containment
+					// Feature.
+					// Die folgende Zeile führt nun dazu, dass der Inhalt, also die
+					// CapabilityApplications
+					// ihren Container wechseln. Sie ziehen quasi um und haben leider keine
+					// Nachsendeadresse
 					// hinterlassen.
-					//wmri.getCapabilities().addAll(ri.getCapabilityApplications());
-					// darum (Achtung: EcoreUtil wird erst nach einem 'mvn install' gefunden, das Manifest muss neu gebaut werden):					
+					// wmri.getCapabilities().addAll(ri.getCapabilityApplications());
+					// darum (Achtung: EcoreUtil wird erst nach einem 'mvn install' gefunden, das
+					// Manifest muss neu gebaut werden):
 					wmri.getCapabilities().addAll(EcoreUtil.copyAll(ri.getCapabilityApplications()));
 					wm.getResourceInstances().add(wmri);
 
@@ -224,13 +226,13 @@ public class WorldModelManagerImpl extends EmfServiceComponent implements WorldM
 				WMResourceInstance wmri = new LinebalancingFactoryImpl().createWMResourceInstance();
 				wmri.setSerialId(ri.getId());
 				// siehe oben
-				//wmri.getCapabilities().addAll(ri.getCapabilityApplications());
+				// wmri.getCapabilities().addAll(ri.getCapabilityApplications());
 				wmri.getCapabilities().addAll(EcoreUtil.copyAll(ri.getCapabilityApplications()));
 				wm.getResourceInstances().add(wmri);
 				break;
 			}
 		}
-
+		TopologyManager tm = (TopologyManager) context.getComponentManager().getLocalComponentById("topology-manager");
 		for (ProductInstance pi : productInstances) {
 			String serialNumber = pi.getSerialNumber();
 			TopologyElement currentPosition = mCurrentProductPositions.get(serialNumber);
@@ -245,7 +247,7 @@ public class WorldModelManagerImpl extends EmfServiceComponent implements WorldM
 			}
 			WMProductInstance wmpi = new LinebalancingFactoryImpl().createWMProductInstance();
 			wmpi.setSerialId(serialNumber);
-			wmpi.setPosition(currentPosition);
+			wmpi.setPosition(tm.getTopologyElement("_14ta0V2TEeit97PGgoQOAQ"));
 			wmpi.setEta(eta);
 			wmpi.setVariant(pi.getManufacturedComponent());
 			wmpi.setIn_transit(currentPosition == null);
