@@ -6,7 +6,11 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import org.eclipse.emf.ecore.EObject;
+
 import de.dfki.iui.basys.common.emf.json.JsonUtils;
+import de.dfki.iui.basys.model.domain.linebalancing.LineBalancingAssignment;
+import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
 import de.dfki.iui.basys.model.domain.order.Order;
 import de.dfki.iui.basys.model.domain.order.OrderPackage;
 import de.dfki.iui.basys.model.domain.order.OrderStatus;
@@ -31,6 +35,8 @@ import de.dfki.iui.basys.runtime.services.ProductInstanceManager;
 
 public class OrderManagerImpl extends EmfServiceComponent implements OrderManager {
 
+	LineBalancingAssignment mLastAssigment = null;
+
 	public OrderManagerImpl(ComponentConfiguration config) {
 		super(config);
 	}
@@ -40,6 +46,44 @@ public class OrderManagerImpl extends EmfServiceComponent implements OrderManage
 		super.activate(context);
 
 		ExecutorService executor = Executors.newCachedThreadPool();
+
+		CommFactory.getInstance().openChannel(context.getSharedChannelPool(), "worldmodel-manager#out", false,
+				new ChannelListener() {
+
+					@Override
+					public Response handleRequest(Channel channel, Request req) {
+						// TODO Auto-generated method stub
+						return null;
+					}
+
+					@Override
+					public void handleNotification(Channel channel, Notification not) {
+
+						CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
+
+						executor.submit(() -> {
+
+							try {
+								EObject payload = JsonUtils.fromString(not.getPayload(), EObject.class);
+
+								if (payload.eClass()
+										.equals(LinebalancingPackage.eINSTANCE.getLineBalancingAssignment())) {
+									mLastAssigment = (LineBalancingAssignment) payload;
+								}
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+
+							cf.complete(true);
+						});
+					}
+
+					@Override
+					public void handleMessage(Channel channel, String msg) {
+
+					}
+
+				});
 
 		CommFactory.getInstance().openChannel(context.getSharedChannelPool(), "basys-connector#out", false,
 				new ChannelListener() {
@@ -121,19 +165,24 @@ public class OrderManagerImpl extends EmfServiceComponent implements OrderManage
 		store.getOrders().add(order);
 
 		try {
-			
-			//Order copiedOrder = EcoreUtil.copy(order);
-			//Order copiedOrder = EmfUtils.clone(order);
+
+			// Order copiedOrder = EcoreUtil.copy(order);
+			// Order copiedOrder = EmfUtils.clone(order);
 			String payload = JsonUtils.toString(order);
 			System.out.println(payload);
-			//Order deserializedOrder = JsonUtils.fromString(payload, Order.class);
-			
+			// Order deserializedOrder = JsonUtils.fromString(payload, Order.class);
+
 			Notification not = CommFactory.getInstance().createNotification(payload);
 			outChannel.sendNotification(not);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
+	}
+
+	@Override
+	public LineBalancingAssignment getOrderAssignment(String id) {
+		return mLastAssigment;
 	}
 
 }

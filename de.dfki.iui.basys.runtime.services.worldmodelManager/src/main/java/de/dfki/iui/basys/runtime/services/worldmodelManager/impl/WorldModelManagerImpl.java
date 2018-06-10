@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import de.dfki.iui.basys.common.emf.json.JsonUtils;
 import de.dfki.iui.basys.model.domain.capability.CapabilityFactory;
 import de.dfki.iui.basys.model.domain.capability.MoveToLocation;
+import de.dfki.iui.basys.model.domain.linebalancing.LineBalancingAssignment;
 import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
 import de.dfki.iui.basys.model.domain.linebalancing.StaticWorldModel;
 import de.dfki.iui.basys.model.domain.linebalancing.WMPathTime;
@@ -28,6 +29,7 @@ import de.dfki.iui.basys.model.domain.linebalancing.WMProductInstance;
 import de.dfki.iui.basys.model.domain.linebalancing.WMResourceInstance;
 import de.dfki.iui.basys.model.domain.linebalancing.WorldModel;
 import de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingFactoryImpl;
+import de.dfki.iui.basys.model.domain.order.Order;
 import de.dfki.iui.basys.model.domain.order.OrderPackage;
 import de.dfki.iui.basys.model.domain.productinstance.ProductInstance;
 import de.dfki.iui.basys.model.domain.resourceinstance.GeneralCapabilityVariant;
@@ -110,9 +112,18 @@ public class WorldModelManagerImpl extends EmfServiceComponent implements WorldM
 											.request(MediaType.APPLICATION_JSON).accept("application/json")
 											.get(LinebalancingAnswer.class);
 
-									System.out.println("\n\n\n\n===============================");
+									System.out.println("===============================");
 									System.out.println(lba.resourceInstanceId);
-									System.out.println("===============================\n\n\n\n");
+									System.out.println("===============================");
+
+									LineBalancingAssignment lbass = new LinebalancingFactoryImpl()
+											.createLineBalancingAssignment();
+									lbass.setResourceInstanceId(lba.resourceInstanceId);
+									lbass.setOrder((Order) payload);
+
+									String outPayload = JsonUtils.toString(lbass);
+									Notification outNot = CommFactory.getInstance().createNotification(outPayload);
+									outChannel.sendNotification(outNot);
 
 									CamundaTaskScheduler cts = (CamundaTaskScheduler) context.getComponentManager()
 											.getLocalComponentById("task-scheduler");

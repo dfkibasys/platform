@@ -8,6 +8,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import de.dfki.iui.basys.model.domain.linebalancing.LineBalancingAssignment;
 import de.dfki.iui.basys.model.domain.order.Order;
 import de.dfki.iui.basys.model.domain.order.OrderStore;
 
@@ -17,7 +18,7 @@ public interface OrderManager {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	OrderStore getOrderStore();
-	
+
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/{orderId}")
@@ -26,5 +27,9 @@ public interface OrderManager {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	void addOrder(Order order);
-	
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/{orderId}/assignment")
+	LineBalancingAssignment getOrderAssignment(@PathParam("orderId") String id);
 }
