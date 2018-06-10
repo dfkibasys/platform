@@ -92,6 +92,10 @@ public class LinebalancingAdapterFactory extends AdapterFactoryImpl {
 				return createWMPathTimesAdapter();
 			}
 			@Override
+			public Adapter caseLineBalancingAssignment(LineBalancingAssignment object) {
+				return createLineBalancingAssignmentAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -192,6 +196,20 @@ public class LinebalancingAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createWMPathTimesAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.linebalancing.LineBalancingAssignment <em>Line Balancing Assignment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.LineBalancingAssignment
+	 * @generated
+	 */
+	public Adapter createLineBalancingAssignmentAdapter() {
 		return null;
 	}
 

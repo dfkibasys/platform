@@ -8,6 +8,7 @@ import de.dfki.iui.basys.model.data.DataPackage;
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
 
 import de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl;
+import de.dfki.iui.basys.model.domain.linebalancing.LineBalancingAssignment;
 import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingFactory;
 import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
 
@@ -112,6 +113,13 @@ public class LinebalancingPackageImpl extends EPackageImpl implements Linebalanc
 	 * @generated
 	 */
 	private EClass wmPathTimesEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass lineBalancingAssignmentEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -436,6 +444,33 @@ public class LinebalancingPackageImpl extends EPackageImpl implements Linebalanc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getLineBalancingAssignment() {
+		return lineBalancingAssignmentEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLineBalancingAssignment_ResourceInstanceId() {
+		return (EAttribute)lineBalancingAssignmentEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLineBalancingAssignment_Order() {
+		return (EReference)lineBalancingAssignmentEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public LinebalancingFactory getLinebalancingFactory() {
 		return (LinebalancingFactory)getEFactoryInstance();
 	}
@@ -487,6 +522,10 @@ public class LinebalancingPackageImpl extends EPackageImpl implements Linebalanc
 		wmPathTimesEClass = createEClass(WM_PATH_TIMES);
 		createEReference(wmPathTimesEClass, WM_PATH_TIMES__FROM);
 		createEReference(wmPathTimesEClass, WM_PATH_TIMES__TO);
+
+		lineBalancingAssignmentEClass = createEClass(LINE_BALANCING_ASSIGNMENT);
+		createEAttribute(lineBalancingAssignmentEClass, LINE_BALANCING_ASSIGNMENT__RESOURCE_INSTANCE_ID);
+		createEReference(lineBalancingAssignmentEClass, LINE_BALANCING_ASSIGNMENT__ORDER);
 	}
 
 	/**
@@ -517,6 +556,7 @@ public class LinebalancingPackageImpl extends EPackageImpl implements Linebalanc
 		TopologyPackage theTopologyPackage = (TopologyPackage)EPackage.Registry.INSTANCE.getEPackage(TopologyPackage.eNS_URI);
 		ProductdefinitionPackage theProductdefinitionPackage = (ProductdefinitionPackage)EPackage.Registry.INSTANCE.getEPackage(ProductdefinitionPackage.eNS_URI);
 		ResourceinstancePackage theResourceinstancePackage = (ResourceinstancePackage)EPackage.Registry.INSTANCE.getEPackage(ResourceinstancePackage.eNS_URI);
+		OrderPackage theOrderPackage = (OrderPackage)EPackage.Registry.INSTANCE.getEPackage(OrderPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -553,6 +593,10 @@ public class LinebalancingPackageImpl extends EPackageImpl implements Linebalanc
 		initEClass(wmPathTimesEClass, WMPathTimes.class, "WMPathTimes", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getWMPathTimes_From(), theTopologyPackage.getTopologyElement(), null, "from", null, 0, 1, WMPathTimes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getWMPathTimes_To(), this.getWMPathTime(), null, "to", null, 0, -1, WMPathTimes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(lineBalancingAssignmentEClass, LineBalancingAssignment.class, "LineBalancingAssignment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLineBalancingAssignment_ResourceInstanceId(), theEcorePackage.getEString(), "resourceInstanceId", null, 0, 1, LineBalancingAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLineBalancingAssignment_Order(), theOrderPackage.getOrder(), null, "order", null, 0, 1, LineBalancingAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

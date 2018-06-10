@@ -41,4 +41,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="to" upperBound="-1" eType="#//WMPathTime"
         containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LineBalancingAssignment">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resourceInstanceId" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="order" eType="ecore:EClass order.ecore#//Order"/>
+  </eClassifiers>
 </ecore:EPackage>

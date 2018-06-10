@@ -210,6 +210,29 @@ public class LinebalancingItemProviderAdapterFactory extends LinebalancingAdapte
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.linebalancing.LineBalancingAssignment} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LineBalancingAssignmentItemProvider lineBalancingAssignmentItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.linebalancing.LineBalancingAssignment}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLineBalancingAssignmentAdapter() {
+		if (lineBalancingAssignmentItemProvider == null) {
+			lineBalancingAssignmentItemProvider = new LineBalancingAssignmentItemProvider(this);
+		}
+
+		return lineBalancingAssignmentItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -314,6 +337,7 @@ public class LinebalancingItemProviderAdapterFactory extends LinebalancingAdapte
 		if (wmResourceInstanceItemProvider != null) wmResourceInstanceItemProvider.dispose();
 		if (worldModelItemProvider != null) worldModelItemProvider.dispose();
 		if (wmPathTimesItemProvider != null) wmPathTimesItemProvider.dispose();
+		if (lineBalancingAssignmentItemProvider != null) lineBalancingAssignmentItemProvider.dispose();
 	}
 
 }

@@ -76,6 +76,15 @@ public interface LinebalancingFactory extends EFactory {
 	WMPathTimes createWMPathTimes();
 
 	/**
+	 * Returns a new object of class '<em>Line Balancing Assignment</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Line Balancing Assignment</em>'.
+	 * @generated
+	 */
+	LineBalancingAssignment createLineBalancingAssignment();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -62,6 +62,7 @@ public class LinebalancingFactoryImpl extends EFactoryImpl implements Linebalanc
 			case LinebalancingPackage.WM_RESOURCE_INSTANCE: return createWMResourceInstance();
 			case LinebalancingPackage.WORLD_MODEL: return createWorldModel();
 			case LinebalancingPackage.WM_PATH_TIMES: return createWMPathTimes();
+			case LinebalancingPackage.LINE_BALANCING_ASSIGNMENT: return createLineBalancingAssignment();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -125,6 +126,16 @@ public class LinebalancingFactoryImpl extends EFactoryImpl implements Linebalanc
 	public WMPathTimes createWMPathTimes() {
 		WMPathTimesImpl wmPathTimes = new WMPathTimesImpl();
 		return wmPathTimes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LineBalancingAssignment createLineBalancingAssignment() {
+		LineBalancingAssignmentImpl lineBalancingAssignment = new LineBalancingAssignmentImpl();
+		return lineBalancingAssignment;
 	}
 
 	/**

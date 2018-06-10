@@ -380,6 +380,53 @@ public interface LinebalancingPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.linebalancing.impl.LineBalancingAssignmentImpl <em>Line Balancing Assignment</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.LineBalancingAssignmentImpl
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl#getLineBalancingAssignment()
+	 * @generated
+	 */
+	int LINE_BALANCING_ASSIGNMENT = 6;
+
+	/**
+	 * The feature id for the '<em><b>Resource Instance Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINE_BALANCING_ASSIGNMENT__RESOURCE_INSTANCE_ID = 0;
+
+	/**
+	 * The feature id for the '<em><b>Order</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINE_BALANCING_ASSIGNMENT__ORDER = 1;
+
+	/**
+	 * The number of structural features of the '<em>Line Balancing Assignment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINE_BALANCING_ASSIGNMENT_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Line Balancing Assignment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINE_BALANCING_ASSIGNMENT_OPERATION_COUNT = 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.linebalancing.WMPathTime <em>WM Path Time</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -627,6 +674,38 @@ public interface LinebalancingPackage extends EPackage {
 	EReference getWMPathTimes_To();
 
 	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.linebalancing.LineBalancingAssignment <em>Line Balancing Assignment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Line Balancing Assignment</em>'.
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.LineBalancingAssignment
+	 * @generated
+	 */
+	EClass getLineBalancingAssignment();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.domain.linebalancing.LineBalancingAssignment#getResourceInstanceId <em>Resource Instance Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Resource Instance Id</em>'.
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.LineBalancingAssignment#getResourceInstanceId()
+	 * @see #getLineBalancingAssignment()
+	 * @generated
+	 */
+	EAttribute getLineBalancingAssignment_ResourceInstanceId();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.dfki.iui.basys.model.domain.linebalancing.LineBalancingAssignment#getOrder <em>Order</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Order</em>'.
+	 * @see de.dfki.iui.basys.model.domain.linebalancing.LineBalancingAssignment#getOrder()
+	 * @see #getLineBalancingAssignment()
+	 * @generated
+	 */
+	EReference getLineBalancingAssignment_Order();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -844,6 +923,32 @@ public interface LinebalancingPackage extends EPackage {
 		 * @generated
 		 */
 		EReference WM_PATH_TIMES__TO = eINSTANCE.getWMPathTimes_To();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.linebalancing.impl.LineBalancingAssignmentImpl <em>Line Balancing Assignment</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.LineBalancingAssignmentImpl
+		 * @see de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingPackageImpl#getLineBalancingAssignment()
+		 * @generated
+		 */
+		EClass LINE_BALANCING_ASSIGNMENT = eINSTANCE.getLineBalancingAssignment();
+
+		/**
+		 * The meta object literal for the '<em><b>Resource Instance Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LINE_BALANCING_ASSIGNMENT__RESOURCE_INSTANCE_ID = eINSTANCE.getLineBalancingAssignment_ResourceInstanceId();
+
+		/**
+		 * The meta object literal for the '<em><b>Order</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LINE_BALANCING_ASSIGNMENT__ORDER = eINSTANCE.getLineBalancingAssignment_Order();
 
 	}
 
