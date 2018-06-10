@@ -5,7 +5,9 @@
  */
 package de.dfki.iui.basys.runtime.processcontrol.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -30,13 +32,15 @@ public class CamundaRestClient {
 	String baseUrl;
 	Client client;
 
+	Map<String,String> taskToProcessInstanceMap = new HashMap<>();
+	
 	public CamundaRestClient(String workerId, String baseUrl) {
 		this.workerId = workerId;
 		this.baseUrl = baseUrl;
 		client = ClientBuilder.newClient();
 	}
 
-	public List<ExternalServiceTaskDto> getExternalTasks(String topic, int maxCount, long lockDuration, long asyncResponseTimeout, String... fetchVariables) {
+	public synchronized List<ExternalServiceTaskDto> getExternalTasks(String topic, int maxCount, long lockDuration, long asyncResponseTimeout, String... fetchVariables) {
 
 		String vars = "[]";
 		try {
@@ -47,39 +51,74 @@ public class CamundaRestClient {
 		}
 
 		Entity<String> e = Entity.entity(
-				"{\n" + "  \"workerId\":\"" + workerId + "\",\n" + "  \"maxTasks\":" + maxCount + ",\n" + "  \"usePriority\":true,\n" + "  \"asyncResponseTimeout\":" + asyncResponseTimeout + ",\n" // Long
-																																																		// Polling
-																																																		// timeout
-																																																		// can
-																																																		// be
-																																																		// set
-																																																		// to
-																																																		// 30
-																																																		// minutes,
-																																																		// 1800000
-																																																		// milliseconds
-																																																		// maximum)
-						+ "  \"topics\":\n" + "      [{\"topicName\": \"" + topic + "\",\n" + "      \"lockDuration\": " + lockDuration + ",\n" + "      \"deserializeValues\" : true,\n"
-						+ "      \"variables\": " + vars + "      }]\n" + "}",
+				"{\n" + "  \"workerId\":\"" + workerId + "\",\n" + "  \"maxTasks\":" + maxCount + ",\n"
+						+ "  \"usePriority\":true,\n" 
+						+ "  \"asyncResponseTimeout\":" + asyncResponseTimeout + ",\n"																																									// maximum)
+						+ "  \"topics\":\n" + "      [{\"topicName\": \"" + topic + "\",\n" 
+						+ "      \"lockDuration\": " + lockDuration + ",\n" 
+						+ "      \"deserializeValues\" : true,\n"
+						+ "      \"variables\": " + vars + "}]\n" 
+						+ "}",
 				MediaType.APPLICATION_JSON);
 
-		Response response = client.target(baseUrl + "fetchAndLock").request(MediaType.APPLICATION_JSON).post(e);
+		Response response = client.target(baseUrl + "external-task/fetchAndLock").request(MediaType.APPLICATION_JSON).post(e);
 
 		// String resultE = response.readEntity(String.class);
 
 		List<ExternalServiceTaskDto> result = response.readEntity(new GenericType<List<ExternalServiceTaskDto>>() {
 		});
+		
+		for (ExternalServiceTaskDto task : result) {
+			taskToProcessInstanceMap.put(task.getId(),task.getProcessInstanceId());
+		}
 
 		return result;
 	}
 
-	public void complete(String taskId) {
+	public synchronized void putVariable(Variable var, String processInstanceId) {
+		LOGGER.debug("Put variable {} with value {}", var.getName(), var.getValue());
+		String json = "{ \"value\": \"" + var.getValue() + "\" , \"type\": \"" + var.getType().getName().toLowerCase() + "\" }";
+	
+		Response response = client.target(baseUrl + "process-instance/" + processInstanceId + "/variables/" + var.getName()).request(MediaType.APPLICATION_JSON).put(Entity.entity(json, MediaType.APPLICATION_JSON));
+		if (response.getStatus()==204) {
+			LOGGER.debug("Variable set.");
+			LOGGER.debug(response.toString());
+		}
+			
+	}
+
+	public synchronized String getVariable(String name, String processInstanceId) {
+		LOGGER.debug("Get Variable {}", name);
+		Response response = client.target(baseUrl + "process-instance/"+ processInstanceId + "/variables/" + name).request(MediaType.APPLICATION_JSON).get();
+		if (response.getStatus() == 200) {
+			String var = response.readEntity(String.class); 
+			LOGGER.debug(name + " = " + var);
+			return var;
+		}
+		LOGGER.warn("Variable {} not set", name);
+		return null;
+	}
+	
+	public synchronized void complete(String taskId) {
 		LOGGER.debug("Complete task {}", taskId);
-		Response response = client.target(baseUrl + taskId + "/complete").request(MediaType.APPLICATION_JSON).post(Entity.entity("{\"workerId\": \"" + workerId + "\"}", MediaType.APPLICATION_JSON));
+		Response response = client.target(baseUrl + "external-task/" + taskId + "/complete").request(MediaType.APPLICATION_JSON).post(Entity.entity("{\"workerId\": \"" + workerId + "\"}", MediaType.APPLICATION_JSON));
 		LOGGER.debug("Complete task {} succeded with status code {}", taskId, response.getStatus());
 	}
 
-	public void complete(String taskId, List<Variable> variables) {
+	public synchronized void complete2(String taskId, List<Variable> variables) {
+		LOGGER.debug("Complete task {} with process vars {}", taskId, variables.toString());
+		
+		for (Variable var : variables) {
+			String processInstanceId = taskToProcessInstanceMap.get(taskId);
+			putVariable(var, processInstanceId);
+			String v = getVariable(var.getName(), processInstanceId);
+		}
+		
+		complete(taskId);
+	}
+	
+	
+	public synchronized void complete(String taskId, List<Variable> variables) {
 		LOGGER.debug("Complete task {} with process vars {}", taskId, variables.toString());
 		String vars = "";
 		for (Variable var : variables) {
@@ -87,14 +126,14 @@ public class CamundaRestClient {
 		}
 		vars = vars.substring(0, vars.length() - 1);
 
-		Response response = client.target(baseUrl + taskId + "/complete").request(MediaType.APPLICATION_JSON)
+		Response response = client.target(baseUrl + "external-task/" + taskId + "/complete").request(MediaType.APPLICATION_JSON)
 				.post(Entity.entity("{" + "\"workerId\": \"" + workerId + "\"," + "\"variables\": {" + vars + "}" + "}", MediaType.APPLICATION_JSON));
 		LOGGER.debug("Complete task {} succeded with status code {}", taskId, response.getStatus());
 	}
 
-	public boolean isCanceled(String taskId) {
+	public synchronized boolean isCanceled(String taskId) {
 		LOGGER.debug("IsCanceled task {}", taskId);
-		Response response = client.target(baseUrl + taskId).request(MediaType.APPLICATION_JSON).get();
+		Response response = client.target(baseUrl + "external-task/" + taskId).request(MediaType.APPLICATION_JSON).get();
 		LOGGER.debug("IsCanceled task {} succeded with status code {}", taskId, response.getStatus());
 
 		if (response.getStatus() == 404) {
@@ -104,9 +143,9 @@ public class CamundaRestClient {
 		}
 	}
 
-	public void handleError(String taskId, String message, int retries, int retryTimeout) {
+	public synchronized void handleError(String taskId, String message, int retries, int retryTimeout) {
 		LOGGER.debug("HandleError task {}, message {}", taskId, message);
-		Response response = client.target(baseUrl + taskId + "/failure").request(MediaType.APPLICATION_JSON).post(Entity.entity("{\n" + "  \"workerId\": \"" + workerId + "\",\n"
+		Response response = client.target(baseUrl + "external-task/" +  taskId + "/failure").request(MediaType.APPLICATION_JSON).post(Entity.entity("{\n" + "  \"workerId\": \"" + workerId + "\",\n"
 				+ "  \"errorMessage\": \"" + message + "\",\n" + "  \"retries\": " + retries + ",\n" + "  \"retryTimeout\": " + retryTimeout + "\n" + "}", MediaType.APPLICATION_JSON));
 		LOGGER.debug("HandleError task {} succeded with status code {}", taskId, response.getStatus());
 	}

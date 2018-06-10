@@ -43,7 +43,7 @@ public class CommUtils {
 	private static final Logger LOGGER = LoggerFactory.getLogger(CommUtils.class);
 
 
-	public static ArrayList<String> serverList = new ArrayList<>(Arrays.asList("lns-90165.sb.dfki.de", "basys-lnv-1", "10.2.10.4" ));
+	public static ArrayList<String> serverList = new ArrayList<>(Arrays.asList("lns-90165.sb.dfki.de", "basys-lnv-1", "10.2.10.4", "localhost" ));
 	
 	public static String getPreferredBasysMiddleware() throws UnknownHostException {
 

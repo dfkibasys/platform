@@ -1,20 +1,11 @@
 package de.dfki.iui.basys.runtime.component.device;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import de.dfki.iui.basys.common.emf.json.JsonUtils;
-import de.dfki.iui.basys.model.runtime.communication.Channel;
 import de.dfki.iui.basys.model.runtime.communication.Notification;
-import de.dfki.iui.basys.model.runtime.communication.Request;
-import de.dfki.iui.basys.model.runtime.communication.Response;
 import de.dfki.iui.basys.model.runtime.communication.exceptions.ChannelException;
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ChangeModeRequest;
@@ -22,18 +13,14 @@ import de.dfki.iui.basys.model.runtime.component.CommandRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.ComponentInfo;
 import de.dfki.iui.basys.model.runtime.component.ComponentPackage;
-import de.dfki.iui.basys.model.runtime.component.ComponentRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentRequestStatus;
-import de.dfki.iui.basys.model.runtime.component.ComponentResponse;
 import de.dfki.iui.basys.model.runtime.component.ControlCommand;
 import de.dfki.iui.basys.model.runtime.component.ControlMode;
 import de.dfki.iui.basys.model.runtime.component.RequestStatus;
 import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
 import de.dfki.iui.basys.model.runtime.component.State;
-import de.dfki.iui.basys.model.runtime.component.StatusRequest;
 import de.dfki.iui.basys.model.runtime.component.Variable;
 import de.dfki.iui.basys.model.runtime.component.impl.ComponentRequestStatusImpl;
-import de.dfki.iui.basys.model.runtime.component.impl.ComponentResponseImpl;
 import de.dfki.iui.basys.runtime.component.BaseComponent;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.ComponentException;
@@ -50,9 +37,6 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 	protected PackMLUnit packmlUnit;
 
 	protected boolean resetOnComplete, resetOnStopped = false;
-	
-	
-	protected ComponentRequest pendingRequest;
 
 	public DeviceComponent(ComponentConfiguration config) {
 		super(config);
@@ -115,50 +99,8 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 		return packmlUnit.getUnitConfig();
 	}
 
+
 	@Override
-	public Response handleRequest(Channel channel, Request request) {
-		ComponentRequestStatus status = null;
-		try {
-			EObject ob = JsonUtils.fromString(request.getPayload(), EObject.class);
-			if (ob instanceof ComponentRequest) {
-				ComponentRequest cr = (ComponentRequest) ob;
-
-				if (!getId().equals(cr.getComponentId())) {
-					// don't make the same mistake as BMW: https://www.heise.de/newsticker/meldung/ConnectedDrive-Der-BMW-Hack-im-Detail-2540786.html
-					status = new ComponentRequestStatusImpl.Builder().componentId(cr.getComponentId()).status(RequestStatus.REJECTED).message("componentId does not match").build();
-				} else {
-					if (cr instanceof ChangeModeRequest) {
-						ChangeModeRequest req = (ChangeModeRequest) cr;
-						status = handleChangeModeRequest(req);
-					} else if (cr instanceof CommandRequest) {
-						CommandRequest req = (CommandRequest) cr;
-						status = handleCommandRequest(req);
-					} else if (cr instanceof CapabilityRequest) {
-						CapabilityRequest req = (CapabilityRequest) cr;
-						status = handleCapabilityRequest(req);
-					} else if (cr instanceof StatusRequest) {
-						StatusRequest req = (StatusRequest) cr;
-						status = handleStatusRequest(req);
-					}
-				}
-			} else {
-				status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.REJECTED).message("unknown request").build();
-			}
-			String payload = JsonUtils.toString(status);
-			return cf.createResponse(request.getId(), payload);
-		} catch (IOException e) {
-			e.printStackTrace();
-			status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.REJECTED).message(e.getMessage()).build();
-			try {
-				String payload = JsonUtils.toString(status);
-				return cf.createResponse(request.getId(), payload);
-			} catch (IOException e1) {
-				e1.printStackTrace();
-				return cf.createResponse(request.getId(), e1.getMessage());
-			}
-		}
-	}
-
 	protected ComponentRequestStatus handleCapabilityRequest(CapabilityRequest req)	{
 		ComponentRequestStatus status = canExecuteCapabilityRequest(req);
 		
@@ -188,6 +130,7 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 	
 	protected abstract UnitConfiguration translateCapabilityRequest(CapabilityRequest req);
 	
+	@Override
 	protected ComponentRequestStatus handleCommandRequest(CommandRequest req) {
 		ComponentRequestStatus status = null;
 		switch (req.getControlCommand()) {
@@ -231,33 +174,12 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 		return status;
 	}
 
+	@Override
 	protected ComponentRequestStatus handleChangeModeRequest(ChangeModeRequest req) {
 		ComponentRequestStatus status = setMode(req.getMode());
 		return status;
 	}
 
-
-	protected ComponentRequestStatus handleStatusRequest(StatusRequest req) {
-		ComponentRequestStatus status;
-		
-		if (statusChannel != null && statusChannel.isOpen()) {
-			status = new ComponentRequestStatusImpl.Builder().componentId(getId()).status(RequestStatus.ACCEPTED).build();
-			LOGGER.info("send status update notification upon explicit request");
-			try {
-				ComponentInfo info = getComponentInfo();
-				Notification not = cf.createNotification(JsonUtils.toString(info));
-				//TODO ggf auf eigenem Thread?
-				statusChannel.sendNotification(not);
-				
-			} catch (ChannelException | JsonProcessingException e) {
-				e.printStackTrace();
-			}
-		} else {
-			status = new ComponentRequestStatusImpl.Builder().componentId(getId()).status(RequestStatus.REJECTED).message("status channel not available").build();
-		}
-		return status;
-	}
-	
 	protected void updateRegistrationAndNotify() {
 
 		LOGGER.debug("updateRegistrationAndNotify");
@@ -292,66 +214,25 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 		LOGGER.debug("updateRegistrationAndNotify - finished");
 	}
 
-	protected void sendComponentResponse(ResponseStatus status, int statusCode) {
-		List<Variable> resultVariables = new ArrayList<>(0);
-		sendComponentResponse(status, statusCode, resultVariables);
+	
+	@Override
+	protected void sendComponentResponse(ResponseStatus status, int statusCode) {	
+		super.sendComponentResponse(status, statusCode);
 	}
 	
+	@Override
 	protected void sendComponentResponse(ResponseStatus status, int statusCode, Variable resultVariable) {
-		List<Variable> resultVariables = new ArrayList<>(1);
-		resultVariables.add(resultVariable);
-		sendComponentResponse(status, statusCode, resultVariables);
+		super.sendComponentResponse(status, statusCode, resultVariable);
 	}
 	
-	protected void sendComponentResponse(ResponseStatus status, int statusCode, List<Variable> resultVariables) {
-		if (pendingRequest == null) {
-			LOGGER.error("Cannot send response to null request. Skipping.");
-			return;
-		}
-		
-		ComponentRequest r = EcoreUtil.copy(pendingRequest);
-	
-		ComponentResponse response = new ComponentResponseImpl.Builder().componentId(getId()).status(status).statusCode(statusCode).request(pendingRequest).build();
-		response.setRequest(r);
-		if (resultVariables != null)
-			response.getResultVariables().addAll(resultVariables);
-		try {
-			String payload = JsonUtils.toString(response);
-			Notification not = cf.createNotification(payload);
-			outChannel.sendNotification(not);			
-			
-			pendingRequest = null;
-		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	@Override
+	protected void sendComponentResponse(ResponseStatus status, int statusCode, List<Variable> resultVariables) {	
+		super.sendComponentResponse(status, statusCode, resultVariables);
 	}
-
+	
+	@Override
 	protected boolean isCapabilityRequestPending() {
-		if (pendingRequest != null && pendingRequest.eClass().equals(ComponentPackage.eINSTANCE.getCapabilityRequest())) 
-			return true;
-		return false;
-	}
-	
-	protected boolean isCommandRequestPending() {
-		if (pendingRequest != null && pendingRequest.eClass().equals(ComponentPackage.eINSTANCE.getCommandRequest())) 
-			return true;
-		return false;
-	}
-	
-	protected boolean isChangeModeRequestPending() {
-		if (pendingRequest != null && pendingRequest.eClass().equals(ComponentPackage.eINSTANCE.getChangeModeRequest())) 
-			return true;
-		return false;
-	}
-	
-	protected void sleep(long seconds) {
-		try {
-			TimeUnit.MILLISECONDS.sleep(seconds*1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		return super.isCapabilityRequestPending();
 	}
 	
 	/*
@@ -360,8 +241,16 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 
 	@Override
 	public ComponentRequestStatus setMode(ControlMode mode) {
-		ComponentRequestStatus status = packmlUnit.setMode(mode);
-
+		ComponentRequestStatus status;
+		
+		if (simulated) {
+			LOGGER.info("in SIMULATION mode: pretend mode switch");
+			status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.NOOP).message(String.format("pretending mode switch to {} in SIMULATION mode", mode)).build();
+			
+		} else {		
+			status = packmlUnit.setMode(mode);
+		}
+		
 		if (status.getStatus() == RequestStatus.ACCEPTED) {
 			updateRegistrationAndNotify();
 		}
@@ -373,11 +262,15 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 				sleep(1);
 				if (isChangeModeRequestPending()) {
 					ChangeModeRequest r = (ChangeModeRequest) pendingRequest;
-					if (r.getMode() == getMode()) {
+					if (simulated) {
 						sendComponentResponse(ResponseStatus.OK, 0);
 					} else {
-						sendComponentResponse(ResponseStatus.NOT_OK, 0);
-					}			
+						if (r.getMode() == getMode()) {
+							sendComponentResponse(ResponseStatus.OK, 0);
+						} else {
+							sendComponentResponse(ResponseStatus.NOT_OK, 0);
+						}		
+					}
 				}
 				
 			}

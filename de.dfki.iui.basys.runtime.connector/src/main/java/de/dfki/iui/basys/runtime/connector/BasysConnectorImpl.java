@@ -2,7 +2,6 @@ package de.dfki.iui.basys.runtime.connector;
 
 import java.io.IOException;
 import java.io.StringReader;
-import java.util.Date;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
@@ -23,23 +22,19 @@ import javax.xml.bind.Unmarshaller;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 import de.dfki.iui.basys.common.emf.json.JsonUtils;
-import de.dfki.iui.basys.model.domain.order.Order;
-import de.dfki.iui.basys.model.domain.order.OrderStatus;
-import de.dfki.iui.basys.model.domain.order.OrderStatusEnum;
-import de.dfki.iui.basys.model.domain.order.impl.OrderFactoryImpl;
-import de.dfki.iui.basys.model.domain.productinstance.ProductInstance;
-import de.dfki.iui.basys.model.domain.productinstance.impl.ProductinstanceFactoryImpl;
 import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
+import de.dfki.iui.basys.model.runtime.communication.Channel;
+import de.dfki.iui.basys.model.runtime.communication.ChannelListener;
+import de.dfki.iui.basys.model.runtime.communication.Notification;
+import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.ComponentResponse;
 import de.dfki.iui.basys.model.runtime.component.Property;
 import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
+import de.dfki.iui.basys.runtime.communication.CommFactory;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.DeviceComponentController;
 import de.dfki.iui.basys.runtime.component.service.ServiceComponent;
-import de.dfki.iui.basys.runtime.services.OrderManager;
-import de.dfki.iui.basys.runtime.services.ProductDefinitionManager;
-import de.dfki.iui.basys.runtime.services.ProductInstanceManager;
 
 public class BasysConnectorImpl extends ServiceComponent implements BasysConnector, MessageListener {
 
@@ -58,6 +53,9 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 
 	private final String jsonVariantLightBlue, jsonVariantDarkBlue;
 
+	private Channel ch = null;
+	private String designatedResourceId = null;
+	
 	public BasysConnectorImpl(ComponentConfiguration config) {
 		super(config);
 
@@ -87,6 +85,30 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 
 	}
 
+	@Override
+	protected void connectToBasys() {
+		super.connectToBasys();
+		ch = CommFactory.getInstance().openChannel(context.getSharedChannelPool(), "worldmodel-manager#out", false,
+			new ChannelListener() {
+
+				@Override
+				public de.dfki.iui.basys.model.runtime.communication.Response handleRequest(Channel channel, Request req) {
+					return null;
+				}
+
+				@Override
+				public void handleNotification(Channel channel, Notification not) {
+				}
+
+				@Override
+				public void handleMessage(Channel channel, String msg) {
+					
+				}
+
+			}
+		);
+	}
+	
 	@Override
 	public void connectToExternal() throws ComponentException {
 		ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory(
@@ -480,6 +502,7 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 		return false;
 	}
 
+	@Override
 	protected void sleep(long ms) {
 		try {
 			TimeUnit.MILLISECONDS.sleep(ms);

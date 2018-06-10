@@ -5,16 +5,55 @@ import java.util.Map;
 
 import javax.ws.rs.core.Response;
 
+import de.dfki.iui.basys.model.runtime.communication.Channel;
+import de.dfki.iui.basys.model.runtime.communication.ChannelListener;
+import de.dfki.iui.basys.model.runtime.communication.Notification;
+import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
-import de.dfki.iui.basys.runtime.component.service.EmfServiceComponent;
+import de.dfki.iui.basys.runtime.communication.CommFactory;
+import de.dfki.iui.basys.runtime.component.service.ServiceComponent;
 import de.dfki.iui.basys.runtime.services.WorkerGuidanceManager;
 
-public class WorkerGuidanceManagerImpl extends EmfServiceComponent implements WorkerGuidanceManager {
+public class WorkerGuidanceManagerImpl extends ServiceComponent implements WorkerGuidanceManager {
 
+	private Channel ch = null;
+	private String designatedResourceId = null;
+	
 	public WorkerGuidanceManagerImpl(ComponentConfiguration config) {
 		super(config);
 	}
 
+	@Override
+	protected void connectToBasys() {
+		super.connectToBasys();		
+
+		ch = CommFactory.getInstance().openChannel(context.getSharedChannelPool(), "worldmodel-manager#out", false,
+			new ChannelListener() {
+
+				@Override
+				public de.dfki.iui.basys.model.runtime.communication.Response handleRequest(Channel channel, Request req) {
+					return null;
+				}
+
+				@Override
+				public void handleNotification(Channel channel, Notification not) {
+					
+				}
+
+				@Override
+				public void handleMessage(Channel channel, String msg) {
+				}
+
+			}
+		);
+	}
+	
+	@Override
+	protected void disconnectFromBasys() {
+		ch.close();
+		super.disconnectFromBasys();
+	}
+	
 	private String createBody(String id, int order, int serial, int matNr, int errorCode) {
 
 		// job mockup

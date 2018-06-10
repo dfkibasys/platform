@@ -4,7 +4,6 @@ import java.awt.Button;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Frame;
-import java.awt.Label;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,7 +25,7 @@ public class SiAMTestGUI {
 				.componentCategory(ComponentCategory.DEVICE_COMPONENT)
 				.externalConnectionString(String.format("tecs.tcp://%s:%s", "10.2.0.71", 9030)).build();
 		
-		SiAMComponent mir100 = new SiAMComponent(config, "businessKey_ABCDEFGH123");
+		SiAMComponent mir100 = new SiAMComponent(config);
 		ComponentContext emptyContext = new ComponentContext.Builder().build();
 		try {
 			mir100.activate(emptyContext);

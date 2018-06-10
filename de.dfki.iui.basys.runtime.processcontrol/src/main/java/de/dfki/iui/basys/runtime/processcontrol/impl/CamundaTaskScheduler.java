@@ -51,7 +51,7 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 				pollCamunda();
 
 			}
-		}, 5000, 1000, TimeUnit.MILLISECONDS);
+		}, 5000, 100, TimeUnit.MILLISECONDS);
 	}
 
 	@Override
@@ -84,8 +84,9 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 
 		// long lockDuration = 24 * 60 * 60 * 1000;
 		long lockDuration = 5 * 60 * 1000;
-		List<ExternalServiceTaskDto> tasks = client.getExternalTasks("BasysTask", 5, lockDuration, asyncResponseTimeout, "assignee", "command", "parameters");
+		List<ExternalServiceTaskDto> tasks = client.getExternalTasks("BasysTask", 3, lockDuration, asyncResponseTimeout, "assignee", "command", "parameters");
 
+		LOGGER.debug("pollCamunda fetched {} tasks" + tasks.size());
 		for (ExternalServiceTaskDto task : tasks) {
 			if (task.variables.assignee == null || task.variables.assignee.value == null) {
 				client.handleError(task.id, "ExternalTask does not contain an assignee", 0, 1000);

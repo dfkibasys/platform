@@ -4,7 +4,6 @@ import java.awt.Button;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Frame;
-import java.awt.Label;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,7 +25,7 @@ public class HueLightsTestGUI {
 				.componentCategory(ComponentCategory.DEVICE_COMPONENT)
 				.externalConnectionString(String.format("tecs.tcp://%s:%s", "10.2.0.71", 9030)).build();
 		
-		HueLightsComponent mir100 = new HueLightsComponent(config, "0");
+		HueLightsComponent mir100 = new HueLightsComponent(config);
 		ComponentContext emptyContext = new ComponentContext.Builder().build();
 		try {
 			mir100.activate(emptyContext);

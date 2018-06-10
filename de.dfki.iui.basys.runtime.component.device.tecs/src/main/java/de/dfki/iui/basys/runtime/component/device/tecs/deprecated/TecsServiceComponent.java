@@ -1,4 +1,4 @@
-package de.dfki.iui.basys.runtime.component.device.tecs;
+package de.dfki.iui.basys.runtime.component.device.tecs.deprecated;
 
 import java.io.IOException;
 import java.util.regex.Matcher;

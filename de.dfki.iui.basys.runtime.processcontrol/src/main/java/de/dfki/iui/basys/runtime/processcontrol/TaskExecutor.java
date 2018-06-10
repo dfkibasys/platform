@@ -16,17 +16,17 @@ import de.dfki.iui.basys.model.runtime.component.ComponentResponse;
 import de.dfki.iui.basys.model.runtime.component.RequestStatus;
 import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
-import de.dfki.iui.basys.runtime.component.device.DeviceComponentController;
+import de.dfki.iui.basys.runtime.component.ComponentController;
 
 public class TaskExecutor implements ChannelListener {
 
 	TaskDescription task;
-	DeviceComponentController device;	
+	ComponentController remoteComponent;	
 	CountDownLatch counter = new CountDownLatch(1);
 
 	public TaskExecutor(TaskDescription task) {
 		this.task = task;
-		device = new DeviceComponentController(task.getRequest().getComponentId(), this);
+		remoteComponent = new ComponentController(task.getRequest().getComponentId(), this);
 	}
 
 	public TaskDescription getTask() {
@@ -34,10 +34,9 @@ public class TaskExecutor implements ChannelListener {
 	}
 	
 	public void execute(ComponentContext context) {
-		device.connect(context);
+		remoteComponent.connect(context);
 		
-		//ComponentRequestStatus status = device.executeCapability((CapabilityVariant<?>)(task.getRequest().getCapabilityVariant()));
-		ComponentRequestStatus status = device.sendComponentRequest(task.getRequest());
+		ComponentRequestStatus status = remoteComponent.sendComponentRequest(task.getRequest());
 		if (status.getStatus() == RequestStatus.ACCEPTED) {
 			try {
 				counter.await(5,TimeUnit.MINUTES);
@@ -49,7 +48,7 @@ public class TaskExecutor implements ChannelListener {
 			ComponentResponse response = ComponentFactory.eINSTANCE.createComponentResponse();
 			// TODO: ggf. Container-Wechsel?
 			response.setRequest(task.getRequest());
-			response.setComponentId(device.getId());
+			response.setComponentId(remoteComponent.getId());
 			response.setMessage(status.getMessage());
 			if (status.getStatus() == RequestStatus.NOOP) {
 				response.setStatus(ResponseStatus.OK);
@@ -60,17 +59,17 @@ public class TaskExecutor implements ChannelListener {
 		} 
 		
 		if (task.getResponse() == null) {
-			device.reset();
+			//remoteComponent.reset();
 			ComponentResponse response = ComponentFactory.eINSTANCE.createComponentResponse();
 			// TODO: ggf. Container-Wechsel?
 			response.setRequest(task.getRequest());
-			response.setComponentId(device.getId());
+			response.setComponentId(remoteComponent.getId());
 			response.setMessage("timeout reached");
 			response.setStatus(ResponseStatus.NOT_OK);	
 			task.setResponse(response);
 		}
 		
-		device.disconnect();
+		remoteComponent.disconnect();
 	}
 
 	
@@ -82,7 +81,7 @@ public class TaskExecutor implements ChannelListener {
 
 	@Override
 	public void handleNotification(Channel channel, Notification not) {
-		if (channel.getName().equals(device.getComponentInfo().getOutChannelName())) {
+		if (channel.getName().equals(remoteComponent.getComponentInfo().getOutChannelName())) {
 			try {
 				ComponentResponse response = JsonUtils.fromString(not.getPayload(), ComponentResponse.class);
 				task.setResponse(response);

@@ -1,16 +1,19 @@
-package de.dfki.iui.basys.runtime.component.device.tecs;
+package de.dfki.iui.basys.runtime.component.device.tecs.deprecated;
 
 import java.io.IOException;
 
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TProtocol;
 import org.eclipse.emf.ecore.EObject;
+
 import de.dfki.iui.basys.common.emf.json.JsonUtils;
 import de.dfki.iui.basys.model.runtime.communication.Channel;
 import de.dfki.iui.basys.model.runtime.communication.Notification;
 import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.communication.Response;
+import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.ComponentRequestStatus;
 import de.dfki.iui.basys.runtime.communication.CommFactory;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.hrc.hybritcommand.CommandResponse;
@@ -32,12 +35,15 @@ public class SiAMServiceComponent extends TecsServiceComponent{
 		client = new SiAMTECS(protocol, businessKey);
 	}
 	
-//	@Override
-//	public void activate(ComponentContext arg0) throws ComponentException {
-//		super.activate(arg0);
-//		//trigger here?
-//	}
-
+	@Override
+	protected ComponentRequestStatus handleCapabilityRequest(CapabilityRequest req) {
+		return null;
+		
+	}
+	
+	
+	
+	
 	/* 
 	 * Send: 'performColaDialog' to trgger the performColaDialog method.
 	 * Send: 'performIntentionDialog' to trigger the performIntentionDialog method.

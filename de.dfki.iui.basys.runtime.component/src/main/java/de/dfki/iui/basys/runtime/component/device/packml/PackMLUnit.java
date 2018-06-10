@@ -207,7 +207,7 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 			packml.raiseLifecycleEvent("reset");
 			status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.ACCEPTED).message("command accepted").build();
 		} else {
-			status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.REJECTED).message("not in COMPLETE or STOPPED state").build();
+			status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.REJECTED).message("not in COMPLETE or STOPPED state (" + getState() + ")").build();
 		}
 		return status;
 	}

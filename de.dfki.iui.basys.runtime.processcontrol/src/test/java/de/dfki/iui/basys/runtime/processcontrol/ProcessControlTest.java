@@ -34,7 +34,7 @@ public class ProcessControlTest extends BaseComponentTest {
 				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.processcontrol.impl.CamundaTaskScheduler")
 				//.inChannelName("component1#in")
 				//.outChannelName("component1#out")
-				.externalConnectionString("http://localhost:8081/engine-rest/engine/default/external-task/")
+				.externalConnectionString("http://localhost:8081/engine-rest/engine/default/")
 				.build();
 	}
 	
@@ -114,6 +114,32 @@ public class ProcessControlTest extends BaseComponentTest {
 		Thread.currentThread().sleep(60*1000);
 	}
 	
+	
+	@Test
+	public void testSetProcessVariablesAlt() throws Exception {
+		
+		List<Variable> vars = new LinkedList<>();
+		vars.add(new VariableImpl.Builder().name("StringVariable").value("aValueUpdate").type(VariableType.STRING).build());
+		vars.add(new VariableImpl.Builder().name("IntVariable").value("55").type(VariableType.INTEGER).build());
+		vars.add(new VariableImpl.Builder().name("BoolVariable").value("true").type(VariableType.BOOLEAN).build());
+		
+		CamundaRestClient camundaClient = new CamundaRestClient(taskSchedulerConfig.getComponentId(), taskSchedulerConfig.getExternalConnectionString());
+		
+		//String processdefinitionId = "";
+		//camundaClient.startProcessInstance(processdefinitionId);
+		
+		while (true) {
+			List<ExternalServiceTaskDto> tasks = camundaClient.getExternalTasks("BasysTask", 5, 30 * 1000, 2000, "assignee", "command", "parameters");
+			assertEquals(1,	tasks.size());
+			for (ExternalServiceTaskDto task : tasks) {
+				camundaClient.complete(task.getId(), vars);
+				Thread.currentThread().sleep(250);
+			}
+
+			Thread.currentThread().sleep(250);
+		}
+
+	}
 	
 	@Override
 	public void tearDown() throws Exception {

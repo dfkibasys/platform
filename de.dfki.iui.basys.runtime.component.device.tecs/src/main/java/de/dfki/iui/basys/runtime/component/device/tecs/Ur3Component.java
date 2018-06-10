@@ -105,7 +105,7 @@ public class Ur3Component extends TecsDeviceComponent{
 	@Override
 	public void onResetting() {
 		reconnect();
-		gotoSafePosition();
+		//gotoSafePosition();
 	}
 
 	@Override

@@ -1,4 +1,4 @@
-package de.dfki.iui.basys.runtime.component.device.tecs;
+package de.dfki.iui.basys.runtime.component.device.tecs.deprecated;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

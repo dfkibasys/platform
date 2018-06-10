@@ -1,12 +1,11 @@
 package de.dfki.iui.basys.runtime.component.device.tecs;
 
 import org.apache.thrift.TException;
-import org.apache.thrift.transport.TTransportException;
 
-import de.dfki.iui.basys.model.domain.capability.Capability;
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
 import de.dfki.iui.basys.model.domain.capability.QAVisualisationCapability;
-import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
+import de.dfki.iui.basys.model.domain.resourceinstance.GeneralCapabilityVariant;
+import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage;
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
@@ -18,31 +17,50 @@ public class HueLightsComponent extends TecsDeviceComponent {
 
 	private HueLightsNotifier client;
 	private final String lid;
-	private final long MS = 5000;
+	private final long duration = 5000;
 	
-	public HueLightsComponent(ComponentConfiguration config, String lid) {
+	public HueLightsComponent(ComponentConfiguration config) {
 		super(config);
-		this.lid = lid;
+		this.lid = "0";
 	}
 
 	@Override
 	protected void handleTecsEvent(Event event) {/* do nothing */}
 
+	
+	String capability = "{\n" + 
+			"    \"eClass\" : \"http://www.dfki.de/iui/basys/model/component#//CapabilityRequest\",\n" + 
+			"    \"capabilityVariant\" : {\n" + 
+			"      \"eClass\" : \"http://www.dfki.de/iui/basys/model/resourceinstance#//GeneralCapabilityVariant\",\n" + 
+			"      \"id\" : \"_oONl82sWEeiPYI9_h6Hhzw\",\n" + 
+			"      \"name\" : \"Signal IO\",\n" + 
+			"      \"capability\" : {\n" + 
+			"        \"eClass\" : \"http://www.dfki.de/iui/basys/model/capability#//QAVisualisationCapability\",\n" + 
+			"        \"id\" : \"_pyvT22sWEeiPYI9_h6Hhzw\",\n" + 
+			"        \"qaResult\" : true\n" + 
+			"      }\n" + 
+			"    }\n" + 
+			"  }";
+	
 	@Override
 	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
-
-		CapabilityVariant<?> variant = req.getCapabilityVariant();
-		Capability c = variant.getCapability();
-
-		QAVisualisationCapability qaVisualisationCapability = null;
-		if (c.eClass().equals(CapabilityPackage.eINSTANCE.getSwitchConfirmationCapability()))
-			qaVisualisationCapability = (QAVisualisationCapability) c;
-
-		UnitConfiguration uc = new UnitConfiguration();
-		if (qaVisualisationCapability!=null)
-			uc.setPayload(qaVisualisationCapability.getOK());
 		
-		return uc;
+		UnitConfiguration config = new UnitConfiguration();
+
+		if (req.getCapabilityVariant().eClass()
+				.equals(ResourceinstancePackage.eINSTANCE.getGeneralCapabilityVariant())) {
+			GeneralCapabilityVariant variant = (GeneralCapabilityVariant) req.getCapabilityVariant();
+			if (variant.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getQAVisualisationCapability())) {
+				QAVisualisationCapability capability = (QAVisualisationCapability) variant.getCapability();
+				if (capability.isQaResult()) {
+					config.setRecipe(1);
+				} else {
+					config.setRecipe(0);
+				}
+			}
+		}
+		
+		return config;
 
 	}
 
@@ -57,7 +75,7 @@ public class HueLightsComponent extends TecsDeviceComponent {
 		close();
 		try {
 			open();
-			client.disable();
+			client.disable(); // lieber in stopping/completing?
 		} catch (TException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -65,15 +83,21 @@ public class HueLightsComponent extends TecsDeviceComponent {
 	}
 
 	@Override
-	public void onStarting() {
-		UnitConfiguration unitConfiguration = getUnitConfig();
-		int state = (int) unitConfiguration.getPayload();
-		client.enableForTime(state > 0, MS);
+	public void onStarting() {		
+		int state = getUnitConfig().getRecipe();
+		client.enableForTime(state > 0, duration);
 	}
 
 	@Override
 	public void onExecute() {
-		while(client.isOn()) {/* wait until off */}
+		while(client.isOn()) {
+			/* wait until off */
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	@Override
@@ -86,31 +110,31 @@ public class HueLightsComponent extends TecsDeviceComponent {
 		sendComponentResponse(ResponseStatus.NOT_OK, 0);
 	}
 
-	@Override
-	public void onAborting() {}
-
-	@Override
-	public void onClearing() {
-		// perform reconecct
-		close();
-		try {
-			open();
-		} catch (TTransportException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	@Override
-	public void onHolding() {}
-
-	@Override
-	public void onUnholding() {}
-
-	@Override
-	public void onSuspending() {}
-
-	@Override
-	public void onUnsuspending() {}
+//	@Override
+//	public void onAborting() {}
+//
+//	@Override
+//	public void onClearing() {
+//		// perform reconecct
+//		close();
+//		try {
+//			open();
+//		} catch (TTransportException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
+//
+//	@Override
+//	public void onHolding() {}
+//
+//	@Override
+//	public void onUnholding() {}
+//
+//	@Override
+//	public void onSuspending() {}
+//
+//	@Override
+//	public void onUnsuspending() {}
 
 }
