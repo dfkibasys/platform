@@ -892,17 +892,17 @@ public class SimulationConfigurationImpl extends MinimalEObjectImpl.Container im
 	}
 
 	public static class Builder {
-		private int onResettingDuration;
-		private int onStartingDuration;
-		private int onExecuteDuration;
-		private int onCompletingDuration;
-		private int onStoppingDuration;
-		private int onAbortingDuration;
-		private int onClearingDuration;
-		private int onHoldingDuration;
-		private int onUnholdingDuration;
-		private int onSuspendingDuration;
-		private int onUnsuspendingDuration;
+		private int onResettingDuration = ON_RESETTING_DURATION_EDEFAULT;
+		private int onStartingDuration = ON_STARTING_DURATION_EDEFAULT;
+		private int onExecuteDuration = ON_EXECUTE_DURATION_EDEFAULT;
+		private int onCompletingDuration = ON_COMPLETING_DURATION_EDEFAULT;
+		private int onStoppingDuration = ON_STOPPING_DURATION_EDEFAULT;
+		private int onAbortingDuration = ON_ABORTING_DURATION_EDEFAULT;
+		private int onClearingDuration = ON_CLEARING_DURATION_EDEFAULT;
+		private int onHoldingDuration = ON_HOLDING_DURATION_EDEFAULT;
+		private int onUnholdingDuration = ON_UNHOLDING_DURATION_EDEFAULT;
+		private int onSuspendingDuration = ON_SUSPENDING_DURATION_EDEFAULT;
+		private int onUnsuspendingDuration = ON_UNSUSPENDING_DURATION_EDEFAULT;
 		private EList<Variable> onCompletingVariables;
 		private int onCompletingStatusCode;
 		private int onStoppingStatusCode;
