@@ -4,6 +4,5 @@
       <provide interface="de.dfki.iui.basys.runtime.services.WorkerGuidanceManager"/>
    </service>
    <reference bind="setComponentManager" interface="de.dfki.iui.basys.runtime.component.manager.ComponentManager" name="ComponentManager" unbind="unsetComponentManager"/>
-   <reference bind="setResourceSetProvider" interface="de.dfki.iui.basys.osgi.services.ResourceSetProvider" name="ResourceSetProvider" unbind="unsetResourceSetProvider"/>
    <implementation class="de.dfki.iui.basys.osgi.services.internal.WorkerGuidanceManagerServiceImpl"/>
 </scr:component>
