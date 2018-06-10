@@ -2,9 +2,9 @@
   "eClass" : "http://www.dfki.de/iui/basys/model/component#//ComponentConfiguration",
   "componentCategory" : "DEVICE_COMPONENT",
   "componentId" : "_TgItAGsZEeixZrynCv8ohQ",
-  "componentName" : "My Hue Lights (Sim)",
+  "componentName" : "My Hue Light",
   "componentImplementationJavaClass" : "de.dfki.iui.basys.runtime.component.device.tecs.HueLightsComponent",
   "inChannelName" : "_TgItAGsZEeixZrynCv8ohQ#in",
   "outChannelName" : "_TgItAGsZEeixZrynCv8ohQ#out",
-  "externalConnectionString" : "tecs.tcp://10.2.0.45:9031"
+  "externalConnectionString" : "tecs.tcp://10.2.0.28:8030"
 }

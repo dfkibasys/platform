@@ -363,4 +363,19 @@
       </capabilityAssertions>
     </resourceTypes>
   </catalogues>
+  <catalogues manufacturer="DFKI">
+    <resourceTypes xsi:type="resourcetype:Tool" id="_Euwm8mtnEeihVrieHNgo3Q" name="SiAM Multimodal Dialogue Platform" documentation="https://madmacs.dfki.de/?page_id=21">
+      <capabilityAssertions id="_NP5sIGtoEeihVrieHNgo3Q" name="Perform Dialogue">
+        <pattern>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//InteractionCapability"/>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//InteractionCapability/topic"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+            </range>
+          </slot>
+        </pattern>
+      </capabilityAssertions>
+    </resourceTypes>
+  </catalogues>
 </resourcetype:ResourceTypeCatalogueCollection>

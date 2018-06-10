@@ -68,6 +68,10 @@
           <assignedResourceType href="model.resourcetype#_Hi37STD5EeiuBvcKgWzd3Q"/>
           <assignedResourceInstance href="model.resourceinstance#_jJdx4DD7EeiuBvcKgWzd3Q"/>
         </equipmentModules>
+        <equipmentModules id="_uATSAWtmEeihVrieHNgo3Q" name="Dialogsystem">
+          <assignedResourceType href="model.resourcetype#_Euwm8mtnEeihVrieHNgo3Q"/>
+          <assignedResourceInstance href="model.resourceinstance#_7B_KMGtnEeihVrieHNgo3Q"/>
+        </equipmentModules>
         <assignedResourceType href="model.resourcetype#_ZRW8sjJhEei1p5hKOf5Slw"/>
         <assignedResourceInstance href="model.resourceinstance#_rUJzsDJhEei1p5hKOf5Slw"/>
       </equipmentModules>

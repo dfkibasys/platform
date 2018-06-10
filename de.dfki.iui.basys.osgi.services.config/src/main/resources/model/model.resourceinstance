@@ -142,26 +142,33 @@
     <resourceType href="model.resourcetype#_3cuNYlIxEeidSe5vp9A3oA"/>
     <role href="model.topology#_AzQQwDB5Eei1bbwBPPZWOA"/>
   </resourceInstances>
-  <resourceInstances id="_uFLRgDD7EeiuBvcKgWzd3Q" name="My iiwa" serialNumber="456">
-    <resourceType href="model.resourcetype#_Vvb1uTD7EeiuBvcKgWzd3Q"/>
-    <capabilityApplications>
-      <capabilityAssertion href="model.resourcetype#_jNgx8FNhEeibbdo05KXzGQ"/>
-      <capabilityVariants id="_gTYdYF-lEeixtLE-b5nbbQ">
-        <capability xsi:type="capability:PickAndPlace" id="_EPibTlN0Eeiceaq8G123Yg"/>
-      </capabilityVariants>
-    </capabilityApplications>
-  </resourceInstances>
-  <resourceInstances id="_mQ0kYDD7EeiuBvcKgWzd3Q" name="My UR5" serialNumber="345">
-    <resourceType href="model.resourcetype#_Jve8yTD5EeiuBvcKgWzd3Q"/>
-    <capabilityApplications>
-      <capabilityAssertion href="model.resourcetype#_jNgp8FNxEeibbdo05KXzGQ"/>
-      <capabilityVariants id="_gTZEZF-lEeixtLE-b5nbbQ">
-        <capability xsi:type="capability:PickAndPlace" id="_Cs7ZDlN0Eeiceaq8G123Yg"/>
-      </capabilityVariants>
-    </capabilityApplications>
-  </resourceInstances>
   <resourceInstances id="_TgItAGsZEeixZrynCv8ohQ" name="My Hue Light">
     <resourceType href="model.resourcetype#_XEoEQmsVEeiPYI9_h6Hhzw"/>
+    <capabilityApplications>
+      <capabilityAssertion href="model.resourcetype#_ndTi4GsVEeiPYI9_h6Hhzw"/>
+      <capabilityVariants xsi:type="resourceinstance:GeneralCapabilityVariant" id="_hjYo42tnEeihVrieHNgo3Q" name="Signal IO">
+        <capability xsi:type="capability:QAVisualisationCapability" id="_s2Vj7GtnEeihVrieHNgo3Q"/>
+      </capabilityVariants>
+      <capabilityVariants xsi:type="resourceinstance:GeneralCapabilityVariant" id="_xvBxE2tnEeihVrieHNgo3Q" name="Signal NIO">
+        <capability xsi:type="capability:QAVisualisationCapability" id="_yV0rbGtnEeihVrieHNgo3Q" qaResult="true"/>
+      </capabilityVariants>
+    </capabilityApplications>
     <role href="model.topology#_bbI0sGsZEeixZrynCv8ohQ"/>
+  </resourceInstances>
+  <resourceInstances id="_7B_KMGtnEeihVrieHNgo3Q" name="My SiAM" serialNumber="2018442378">
+    <resourceType href="model.resourcetype#_Euwm8mtnEeihVrieHNgo3Q"/>
+    <capabilityApplications>
+      <capabilityAssertion href="model.resourcetype#_NP5sIGtoEeihVrieHNgo3Q"/>
+      <capabilityVariants xsi:type="resourceinstance:GeneralCapabilityVariant" id="_JgT082toEeihVrieHNgo3Q">
+        <capability xsi:type="capability:InteractionCapability" id="_gLM4lGtoEeihVrieHNgo3Q" topic="intention"/>
+      </capabilityVariants>
+      <capabilityVariants xsi:type="resourceinstance:GeneralCapabilityVariant" id="_jiMCc2toEeihVrieHNgo3Q">
+        <capability xsi:type="capability:InteractionCapability" id="_j5pgRGtoEeihVrieHNgo3Q" topic="cola"/>
+      </capabilityVariants>
+      <capabilityVariants xsi:type="resourceinstance:GeneralCapabilityVariant" id="_l8wAY2toEeihVrieHNgo3Q">
+        <capability xsi:type="capability:InteractionCapability" id="_mOge1GtoEeihVrieHNgo3Q" topic="delivery"/>
+      </capabilityVariants>
+    </capabilityApplications>
+    <role href="model.topology#_uATSAWtmEeihVrieHNgo3Q"/>
   </resourceInstances>
 </resourceinstance:ResourceInstanceRepository>
