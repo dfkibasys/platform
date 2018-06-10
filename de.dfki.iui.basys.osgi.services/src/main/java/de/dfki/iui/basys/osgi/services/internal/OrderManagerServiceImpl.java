@@ -10,6 +10,7 @@ import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.component.annotations.Reference;
 
+import de.dfki.iui.basys.model.domain.linebalancing.LineBalancingAssignment;
 import de.dfki.iui.basys.model.domain.order.Order;
 import de.dfki.iui.basys.model.domain.order.OrderStore;
 import de.dfki.iui.basys.osgi.services.BasysOsgiComponent;
@@ -96,6 +97,11 @@ public final class OrderManagerServiceImpl extends BasysOsgiComponent implements
 	@Override
 	public void addOrder(Order order) {
 		impl.addOrder(order);		
+	}
+
+	@Override
+	public LineBalancingAssignment getOrderAssignment(String id) {
+		return impl.getOrderAssignment(id);
 	}
 
 
