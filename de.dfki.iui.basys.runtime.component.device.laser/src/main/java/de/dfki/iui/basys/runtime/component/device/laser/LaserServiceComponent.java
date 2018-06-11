@@ -198,12 +198,29 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 			orientation = 270;
 			break;
 		case "Station-BaSys":
+			targetPos.setX(0);
+			targetPos.setY(0);
+			targetPos.setZ(0);
+			orientation = 90;
 			break;
 		case "Station-Cola":
+			targetPos.setX(0);
+			targetPos.setY(0);
+			targetPos.setZ(0);
+			orientation = 90;
 			break;
 		case "Station-Wait":
+			targetPos.setX(0);
+			targetPos.setY(0);
+			targetPos.setZ(0);
+			orientation = 90;
 			break;
-
+		case "Station-TeachIn":
+			targetPos.setX(0);
+			targetPos.setY(0);
+			targetPos.setZ(0);
+			orientation = 90;
+			break;
 		}
 
 		ProjectETA capability = CapabilityFactory.eINSTANCE.createProjectETA();

@@ -48,7 +48,11 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 
 			@Override
 			public void run() {
+				try {
 				pollCamunda();
+				} catch (Exception e) {
+					LOGGER.error("Camunda could not be polled - is it running?");
+				}
 
 			}
 		}, 5000, 100, TimeUnit.MILLISECONDS);

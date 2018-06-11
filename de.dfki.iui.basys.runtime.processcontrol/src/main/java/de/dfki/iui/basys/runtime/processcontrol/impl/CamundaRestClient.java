@@ -16,6 +16,7 @@ import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.glassfish.jersey.client.ClientProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,6 +38,7 @@ public class CamundaRestClient {
 	public CamundaRestClient(String workerId, String baseUrl) {
 		this.workerId = workerId;
 		this.baseUrl = baseUrl;
+				
 		client = ClientBuilder.newClient();
 	}
 
@@ -61,7 +63,12 @@ public class CamundaRestClient {
 						+ "}",
 				MediaType.APPLICATION_JSON);
 
-		Response response = client.target(baseUrl + "external-task/fetchAndLock").request(MediaType.APPLICATION_JSON).post(e);
+		
+		Response response = client.target(baseUrl + "external-task/fetchAndLock")
+								.request(MediaType.APPLICATION_JSON)
+								.property(ClientProperties.CONNECT_TIMEOUT, (int) asyncResponseTimeout)
+								.property(ClientProperties.READ_TIMEOUT, (int) asyncResponseTimeout)
+								.post(e)	;
 
 		// String resultE = response.readEntity(String.class);
 
