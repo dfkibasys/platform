@@ -31,6 +31,7 @@ import de.dfki.iui.basys.model.runtime.communication.Response;
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.ComponentFactory;
+import de.dfki.iui.basys.model.runtime.component.Property;
 import de.dfki.iui.basys.model.runtime.component.State;
 import de.dfki.iui.basys.runtime.communication.CommFactory;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
@@ -48,7 +49,7 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 	protected long mVisualizeBeginningUntil;
 	protected boolean mETANotYetVisualized;
 	protected boolean mFinalPathNotYetVisualized;
-	//private String mTargetString;
+	// private String mTargetString;
 
 	private int mETA = 61;
 	protected boolean mBeginningVisualizationRunning;
@@ -142,8 +143,6 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 		}
 		return result;
 	}
-
-
 
 	private boolean coordEquals(CartesianCoordinate cc1, CartesianCoordinate cc2) {
 
@@ -245,65 +244,65 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 	public void activate(ComponentContext context) throws ComponentException {
 		super.activate(context);
 
-//		Thread t2 = new Thread(new Runnable() {
-//			@Override
-//			public void run() {
-//
-//				JFrame meinFrame = new JFrame("Beispiel JFrame");
-//				meinFrame.setSize(200, 200);
-//				JTextField edt = new JTextField();
-//				JButton btn = new JButton("Beispiel");
-//				btn.addActionListener(new ActionListener() {
-//
-//					@Override
-//					public void actionPerformed(ActionEvent e) {
-//
-//						mETA = Integer.parseInt(edt.getText());
-//					}
-//				});
-//
-//				JButton btn2 = new JButton("Center");
-//				btn2.addActionListener(new ActionListener() {
-//
-//					@Override
-//					public void actionPerformed(ActionEvent e) {
-//
-//						mTargetString = "Center";
-//						mWaitingForNewPath = true;
-//						mVisualizeBeginningUntil = System.currentTimeMillis() + 10000;
-//						mETANotYetVisualized = true;
-//						mFinalPathNotYetVisualized = true;
-//					}
-//				});
-//				JButton btn3 = new JButton("Station");
-//				btn3.addActionListener(new ActionListener() {
-//
-//					@Override
-//					public void actionPerformed(ActionEvent e) {
-//
-//						mTargetString = "Station";
-//						mWaitingForNewPath = true;
-//						mVisualizeBeginningUntil = System.currentTimeMillis() + 10000;
-//						mETANotYetVisualized = true;
-//						mFinalPathNotYetVisualized = true;
-//					}
-//				});
-//
-//				meinFrame.setLayout(new BorderLayout());
-//				meinFrame.add(edt, BorderLayout.NORTH);
-//				meinFrame.add(btn, BorderLayout.SOUTH);
-//				meinFrame.add(btn2, BorderLayout.WEST);
-//				meinFrame.add(btn3, BorderLayout.EAST);
-//
-//				meinFrame.setVisible(true);
-//			}
-//		});
-//		t2.start();
+		// Thread t2 = new Thread(new Runnable() {
+		// @Override
+		// public void run() {
+		//
+		// JFrame meinFrame = new JFrame("Beispiel JFrame");
+		// meinFrame.setSize(200, 200);
+		// JTextField edt = new JTextField();
+		// JButton btn = new JButton("Beispiel");
+		// btn.addActionListener(new ActionListener() {
+		//
+		// @Override
+		// public void actionPerformed(ActionEvent e) {
+		//
+		// mETA = Integer.parseInt(edt.getText());
+		// }
+		// });
+		//
+		// JButton btn2 = new JButton("Center");
+		// btn2.addActionListener(new ActionListener() {
+		//
+		// @Override
+		// public void actionPerformed(ActionEvent e) {
+		//
+		// mTargetString = "Center";
+		// mWaitingForNewPath = true;
+		// mVisualizeBeginningUntil = System.currentTimeMillis() + 10000;
+		// mETANotYetVisualized = true;
+		// mFinalPathNotYetVisualized = true;
+		// }
+		// });
+		// JButton btn3 = new JButton("Station");
+		// btn3.addActionListener(new ActionListener() {
+		//
+		// @Override
+		// public void actionPerformed(ActionEvent e) {
+		//
+		// mTargetString = "Station";
+		// mWaitingForNewPath = true;
+		// mVisualizeBeginningUntil = System.currentTimeMillis() + 10000;
+		// mETANotYetVisualized = true;
+		// mFinalPathNotYetVisualized = true;
+		// }
+		// });
+		//
+		// meinFrame.setLayout(new BorderLayout());
+		// meinFrame.add(edt, BorderLayout.NORTH);
+		// meinFrame.add(btn, BorderLayout.SOUTH);
+		// meinFrame.add(btn2, BorderLayout.WEST);
+		// meinFrame.add(btn3, BorderLayout.EAST);
+		//
+		// meinFrame.setVisible(true);
+		// }
+		// });
+		// t2.start();
 
 		executor = Executors.newCachedThreadPool();
 
-		mirOut = CommFactory.getInstance().openChannel(context.getSharedChannelPool(), "mir-component#out", false,
-				new ChannelListener() {
+		mirOut = CommFactory.getInstance().openChannel(context.getSharedChannelPool(), "_rUJzsDJhEei1p5hKOf5Slw#out",
+				false, new ChannelListener() {
 
 					@Override
 					public Response handleRequest(Channel channel, Request req) {
@@ -380,7 +379,14 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 			public void run() {
 
 				while (true) {
-					if (mETA < 60 && mETA > 15 && mETANotYetVisualized) {
+					Property etaProperty = context.getComponentManager()
+							.getLocalComponentById("_rUJzsDJhEei1p5hKOf5Slw").getConfig().getProperty("estimatedETA");
+
+					if (etaProperty != null) {
+						mETA = Integer.parseInt(etaProperty.getValue());
+					}
+
+					if (mETA < 60000 && mETA > 15000 && mETANotYetVisualized) {
 						mETANotYetVisualized = false;
 						visualizeETA();
 						mETAVisualizationRunning = true;
@@ -388,7 +394,7 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 
 					}
 
-					if (mETA < 15 && mFinalPathNotYetVisualized) {
+					if (mETA < 15000 && mFinalPathNotYetVisualized) {
 						mFinalPathNotYetVisualized = false;
 						visualizePath(getPathEnd(mPath, .4));
 						mFinalPathVisualizationRunning = true;
@@ -410,7 +416,7 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 
 					}
 					try {
-						Thread.sleep(500);
+						Thread.sleep(1000);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
