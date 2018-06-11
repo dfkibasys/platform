@@ -1,8 +1,5 @@
 package de.dfki.iui.basys.runtime.component.device.laser;
 
-import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,17 +8,12 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JTextField;
-
 import org.eclipse.emf.ecore.EObject;
 
 import de.dfki.iui.basys.common.emf.json.JsonUtils;
 import de.dfki.iui.basys.model.data.CartesianCoordinate;
 import de.dfki.iui.basys.model.data.DataPackage;
 import de.dfki.iui.basys.model.data.Path;
-import de.dfki.iui.basys.model.data.RobotPositionInformation;
 import de.dfki.iui.basys.model.data.impl.CartesianCoordinateImpl;
 import de.dfki.iui.basys.model.data.impl.DataFactoryImpl;
 import de.dfki.iui.basys.model.domain.capability.CapabilityFactory;
@@ -56,7 +48,7 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 	protected long mVisualizeBeginningUntil;
 	protected boolean mETANotYetVisualized;
 	protected boolean mFinalPathNotYetVisualized;
-	private String mTargetString;
+	//private String mTargetString;
 
 	private int mETA = 61;
 	protected boolean mBeginningVisualizationRunning;
@@ -117,11 +109,9 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 	private static List<CartesianCoordinate> beautifyPath(List<CartesianCoordinate> coords, double pathLengthToCover,
 			double interArrowDistance) {
 		if (coords == null) {
-			System.out.println("Coords was null");
 			return new ArrayList<>();
 		}
 		if (coords.size() < 2) {
-			System.out.println("Coords < 2: " + coords);
 			return coords;
 		}
 		List<CartesianCoordinate> result = new ArrayList<CartesianCoordinate>();
@@ -150,83 +140,10 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 			}
 			currentDesiredDistance -= remainingSegmentLength;
 		}
-		System.out.println("Original path: " + coords);
-		System.out.println("Beautified path: " + result);
 		return result;
 	}
 
-	// public static void main(String[] args) {
-	// List<CartesianCoordinate> input = new ArrayList<>();
-	// try {
-	// BufferedReader br = new BufferedReader(new
-	// FileReader("/Users/fkerber/Downloads/MIR100.csv"));
-	// String str = null;
-	// while ((str = br.readLine()) != null) {
-	// String[] spl = str.split(";");
-	//
-	// input.add(new CartesianCoordinateImpl.Builder().x(Double.parseDouble(spl[0]))
-	// .y(Double.parseDouble(spl[1])).z(0).build());
-	// }
-	// br.close();
-	//
-	// CartesianCoordinate mir1 = new
-	// CartesianCoordinateImpl.Builder().x(1.27).y(4.03).z(0).build();
-	//
-	// BufferedWriter bw = new BufferedWriter(new
-	// FileWriter("/Users/fkerber/Downloads/MIR100_beauty.csv"));
-	// for (CartesianCoordinate cc : beautifyPath(input, 15, .1)) {
-	// String xString = cc.getX() + "";
-	// String yString = cc.getY() + "";
-	// xString = xString.replace(".", ",");
-	// yString = yString.replace(".", ",");
-	// bw.write(xString + ";" + yString + "\n");
-	// }
-	// bw.close();
-	//
-	// CartesianCoordinate mir2 = new
-	// CartesianCoordinateImpl.Builder().x(1.238023998).y(3.93520143).z(0).build();
-	//
-	// if (getDistance(mir2, input.get(0)) < 0.11) {
-	// input.remove(0);
-	// }
-	// input.add(0, mir2);
-	//
-	// bw = new BufferedWriter(new
-	// FileWriter("/Users/fkerber/Downloads/MIR100_2_beauty.csv"));
-	// for (CartesianCoordinate cc : beautifyPath(input, 15, .1)) {
-	// String xString = cc.getX() + "";
-	// String yString = cc.getY() + "";
-	// xString = xString.replace(".", ",");
-	// yString = yString.replace(".", ",");
-	// bw.write(xString + ";" + yString + "\n");
-	// }
-	// bw.close();
-	//
-	// CartesianCoordinate mir3 = new
-	// CartesianCoordinateImpl.Builder().x(1.206047997).y(3.840500287).z(0).build();
-	//
-	// input.remove(0);
-	// if (getDistance(mir3, input.get(0)) < 0.11) {
-	// input.remove(0);
-	// }
-	// input.add(0, mir3);
-	//
-	// bw = new BufferedWriter(new
-	// FileWriter("/Users/fkerber/Downloads/MIR100_3_beauty.csv"));
-	// for (CartesianCoordinate cc : beautifyPath(input, 15, .1)) {
-	// String xString = cc.getX() + "";
-	// String yString = cc.getY() + "";
-	// xString = xString.replace(".", ",");
-	// yString = yString.replace(".", ",");
-	// bw.write(xString + ";" + yString + "\n");
-	// }
-	// bw.close();
-	//
-	// } catch (IOException e) {
-	// e.printStackTrace();
-	// }
-	//
-	// }
+
 
 	private boolean coordEquals(CartesianCoordinate cc1, CartesianCoordinate cc2) {
 
@@ -266,19 +183,25 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 	private void visualizeETA() {
 		CartesianCoordinate targetPos = new DataFactoryImpl().createCartesianCoordinate();
 		int orientation = 0;
-		switch (mTargetString) {
+		switch (mCurrentTargetPosition.getName()) {
 
-		case "Center":
+		case "Station-QA":
 			targetPos.setX(0);
 			targetPos.setY(0);
 			targetPos.setZ(0);
 			orientation = 90;
 			break;
-		case "Station":
+		case "Station-Festo":
 			targetPos.setX(-1);
 			targetPos.setY(-1);
 			targetPos.setZ(0);
 			orientation = 270;
+			break;
+		case "Station-BaSys":
+			break;
+		case "Station-Cola":
+			break;
+		case "Station-Wait":
 			break;
 
 		}
@@ -305,60 +228,60 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 	public void activate(ComponentContext context) throws ComponentException {
 		super.activate(context);
 
-		Thread t2 = new Thread(new Runnable() {
-			@Override
-			public void run() {
-
-				JFrame meinFrame = new JFrame("Beispiel JFrame");
-				meinFrame.setSize(200, 200);
-				JTextField edt = new JTextField();
-				JButton btn = new JButton("Beispiel");
-				btn.addActionListener(new ActionListener() {
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-
-						mETA = Integer.parseInt(edt.getText());
-					}
-				});
-
-				JButton btn2 = new JButton("Center");
-				btn2.addActionListener(new ActionListener() {
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-
-						mTargetString = "Center";
-						mWaitingForNewPath = true;
-						mVisualizeBeginningUntil = System.currentTimeMillis() + 10000;
-						mETANotYetVisualized = true;
-						mFinalPathNotYetVisualized = true;
-					}
-				});
-				JButton btn3 = new JButton("Station");
-				btn3.addActionListener(new ActionListener() {
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-
-						mTargetString = "Station";
-						mWaitingForNewPath = true;
-						mVisualizeBeginningUntil = System.currentTimeMillis() + 10000;
-						mETANotYetVisualized = true;
-						mFinalPathNotYetVisualized = true;
-					}
-				});
-
-				meinFrame.setLayout(new BorderLayout());
-				meinFrame.add(edt, BorderLayout.NORTH);
-				meinFrame.add(btn, BorderLayout.SOUTH);
-				meinFrame.add(btn2, BorderLayout.WEST);
-				meinFrame.add(btn3, BorderLayout.EAST);
-
-				meinFrame.setVisible(true);
-			}
-		});
-		t2.start();
+//		Thread t2 = new Thread(new Runnable() {
+//			@Override
+//			public void run() {
+//
+//				JFrame meinFrame = new JFrame("Beispiel JFrame");
+//				meinFrame.setSize(200, 200);
+//				JTextField edt = new JTextField();
+//				JButton btn = new JButton("Beispiel");
+//				btn.addActionListener(new ActionListener() {
+//
+//					@Override
+//					public void actionPerformed(ActionEvent e) {
+//
+//						mETA = Integer.parseInt(edt.getText());
+//					}
+//				});
+//
+//				JButton btn2 = new JButton("Center");
+//				btn2.addActionListener(new ActionListener() {
+//
+//					@Override
+//					public void actionPerformed(ActionEvent e) {
+//
+//						mTargetString = "Center";
+//						mWaitingForNewPath = true;
+//						mVisualizeBeginningUntil = System.currentTimeMillis() + 10000;
+//						mETANotYetVisualized = true;
+//						mFinalPathNotYetVisualized = true;
+//					}
+//				});
+//				JButton btn3 = new JButton("Station");
+//				btn3.addActionListener(new ActionListener() {
+//
+//					@Override
+//					public void actionPerformed(ActionEvent e) {
+//
+//						mTargetString = "Station";
+//						mWaitingForNewPath = true;
+//						mVisualizeBeginningUntil = System.currentTimeMillis() + 10000;
+//						mETANotYetVisualized = true;
+//						mFinalPathNotYetVisualized = true;
+//					}
+//				});
+//
+//				meinFrame.setLayout(new BorderLayout());
+//				meinFrame.add(edt, BorderLayout.NORTH);
+//				meinFrame.add(btn, BorderLayout.SOUTH);
+//				meinFrame.add(btn2, BorderLayout.WEST);
+//				meinFrame.add(btn3, BorderLayout.EAST);
+//
+//				meinFrame.setVisible(true);
+//			}
+//		});
+//		t2.start();
 
 		executor = Executors.newCachedThreadPool();
 
