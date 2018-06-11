@@ -183,12 +183,12 @@ public class VariableImpl extends MinimalEObjectImpl.Container implements Variab
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case ComponentPackage.VARIABLE__NAME:
-			return getName();
-		case ComponentPackage.VARIABLE__VALUE:
-			return getValue();
-		case ComponentPackage.VARIABLE__TYPE:
-			return getType();
+			case ComponentPackage.VARIABLE__NAME:
+				return getName();
+			case ComponentPackage.VARIABLE__VALUE:
+				return getValue();
+			case ComponentPackage.VARIABLE__TYPE:
+				return getType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -201,15 +201,15 @@ public class VariableImpl extends MinimalEObjectImpl.Container implements Variab
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case ComponentPackage.VARIABLE__NAME:
-			setName((String) newValue);
-			return;
-		case ComponentPackage.VARIABLE__VALUE:
-			setValue((String) newValue);
-			return;
-		case ComponentPackage.VARIABLE__TYPE:
-			setType((VariableType) newValue);
-			return;
+			case ComponentPackage.VARIABLE__NAME:
+				setName((String)newValue);
+				return;
+			case ComponentPackage.VARIABLE__VALUE:
+				setValue((String)newValue);
+				return;
+			case ComponentPackage.VARIABLE__TYPE:
+				setType((VariableType)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -222,15 +222,15 @@ public class VariableImpl extends MinimalEObjectImpl.Container implements Variab
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case ComponentPackage.VARIABLE__NAME:
-			setName(NAME_EDEFAULT);
-			return;
-		case ComponentPackage.VARIABLE__VALUE:
-			setValue(VALUE_EDEFAULT);
-			return;
-		case ComponentPackage.VARIABLE__TYPE:
-			setType(TYPE_EDEFAULT);
-			return;
+			case ComponentPackage.VARIABLE__NAME:
+				setName(NAME_EDEFAULT);
+				return;
+			case ComponentPackage.VARIABLE__VALUE:
+				setValue(VALUE_EDEFAULT);
+				return;
+			case ComponentPackage.VARIABLE__TYPE:
+				setType(TYPE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -243,12 +243,12 @@ public class VariableImpl extends MinimalEObjectImpl.Container implements Variab
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case ComponentPackage.VARIABLE__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-		case ComponentPackage.VARIABLE__VALUE:
-			return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
-		case ComponentPackage.VARIABLE__TYPE:
-			return type != TYPE_EDEFAULT;
+			case ComponentPackage.VARIABLE__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case ComponentPackage.VARIABLE__VALUE:
+				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+			case ComponentPackage.VARIABLE__TYPE:
+				return type != TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -260,8 +260,7 @@ public class VariableImpl extends MinimalEObjectImpl.Container implements Variab
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");

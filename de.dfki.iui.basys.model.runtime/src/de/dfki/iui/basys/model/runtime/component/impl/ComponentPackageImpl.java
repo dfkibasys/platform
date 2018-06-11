@@ -24,6 +24,7 @@ import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.ComponentFactory;
 import de.dfki.iui.basys.model.runtime.component.ComponentInfo;
 import de.dfki.iui.basys.model.runtime.component.ControlMode;
+import de.dfki.iui.basys.model.runtime.component.ProcessRequest;
 import de.dfki.iui.basys.model.runtime.component.Property;
 import de.dfki.iui.basys.model.runtime.component.RequestStatus;
 import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
@@ -146,6 +147,13 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 * @generated
 	 */
 	private EClass simulationConfigurationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass processRequestEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -909,6 +917,42 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getProcessRequest() {
+		return processRequestEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProcessRequest_Name() {
+		return (EAttribute)processRequestEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProcessRequest_BusinessKey() {
+		return (EAttribute)processRequestEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getProcessRequest_Variable() {
+		return (EReference)processRequestEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getComponentCategory() {
 		return componentCategoryEEnum;
 	}
@@ -1078,6 +1122,11 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		createEAttribute(simulationConfigurationEClass, SIMULATION_CONFIGURATION__ON_COMPLETING_STATUS_CODE);
 		createEAttribute(simulationConfigurationEClass, SIMULATION_CONFIGURATION__ON_STOPPING_STATUS_CODE);
 
+		processRequestEClass = createEClass(PROCESS_REQUEST);
+		createEAttribute(processRequestEClass, PROCESS_REQUEST__NAME);
+		createEAttribute(processRequestEClass, PROCESS_REQUEST__BUSINESS_KEY);
+		createEReference(processRequestEClass, PROCESS_REQUEST__VARIABLE);
+
 		// Create enums
 		componentCategoryEEnum = createEEnum(COMPONENT_CATEGORY);
 		stateEEnum = createEEnum(STATE);
@@ -1213,6 +1262,11 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		initEReference(getSimulationConfiguration_OnCompletingVariables(), this.getVariable(), null, "onCompletingVariables", null, 0, -1, SimulationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimulationConfiguration_OnCompletingStatusCode(), theEcorePackage.getEInt(), "onCompletingStatusCode", "0", 0, 1, SimulationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSimulationConfiguration_OnStoppingStatusCode(), theEcorePackage.getEInt(), "onStoppingStatusCode", "1", 0, 1, SimulationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(processRequestEClass, ProcessRequest.class, "ProcessRequest", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getProcessRequest_Name(), theEcorePackage.getEString(), "name", null, 0, 1, ProcessRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProcessRequest_BusinessKey(), theEcorePackage.getEString(), "businessKey", null, 0, 1, ProcessRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcessRequest_Variable(), this.getVariable(), null, "variable", null, 0, 1, ProcessRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(componentCategoryEEnum, ComponentCategory.class, "ComponentCategory");

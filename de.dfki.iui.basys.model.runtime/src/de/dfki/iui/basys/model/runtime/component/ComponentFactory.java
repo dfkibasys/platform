@@ -130,6 +130,15 @@ public interface ComponentFactory extends EFactory {
 	SimulationConfiguration createSimulationConfiguration();
 
 	/**
+	 * Returns a new object of class '<em>Process Request</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Process Request</em>'.
+	 * @generated
+	 */
+	ProcessRequest createProcessRequest();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

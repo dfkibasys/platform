@@ -348,6 +348,29 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.runtime.component.ProcessRequest} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ProcessRequestItemProvider processRequestItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.runtime.component.ProcessRequest}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createProcessRequestAdapter() {
+		if (processRequestItemProvider == null) {
+			processRequestItemProvider = new ProcessRequestItemProvider(this);
+		}
+
+		return processRequestItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -458,6 +481,7 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 		if (componentRequestCollectionItemProvider != null) componentRequestCollectionItemProvider.dispose();
 		if (variableItemProvider != null) variableItemProvider.dispose();
 		if (simulationConfigurationItemProvider != null) simulationConfigurationItemProvider.dispose();
+		if (processRequestItemProvider != null) processRequestItemProvider.dispose();
 	}
 
 }

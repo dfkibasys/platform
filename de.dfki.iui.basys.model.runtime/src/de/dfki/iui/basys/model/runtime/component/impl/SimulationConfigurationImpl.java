@@ -654,8 +654,8 @@ public class SimulationConfigurationImpl extends MinimalEObjectImpl.Container im
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_COMPLETING_VARIABLES:
-			return ((InternalEList<?>) getOnCompletingVariables()).basicRemove(otherEnd, msgs);
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_COMPLETING_VARIABLES:
+				return ((InternalEList<?>)getOnCompletingVariables()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -668,34 +668,34 @@ public class SimulationConfigurationImpl extends MinimalEObjectImpl.Container im
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_RESETTING_DURATION:
-			return getOnResettingDuration();
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_STARTING_DURATION:
-			return getOnStartingDuration();
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_EXECUTE_DURATION:
-			return getOnExecuteDuration();
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_COMPLETING_DURATION:
-			return getOnCompletingDuration();
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_STOPPING_DURATION:
-			return getOnStoppingDuration();
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_ABORTING_DURATION:
-			return getOnAbortingDuration();
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_CLEARING_DURATION:
-			return getOnClearingDuration();
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_HOLDING_DURATION:
-			return getOnHoldingDuration();
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_UNHOLDING_DURATION:
-			return getOnUnholdingDuration();
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_SUSPENDING_DURATION:
-			return getOnSuspendingDuration();
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_UNSUSPENDING_DURATION:
-			return getOnUnsuspendingDuration();
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_COMPLETING_VARIABLES:
-			return getOnCompletingVariables();
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_COMPLETING_STATUS_CODE:
-			return getOnCompletingStatusCode();
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_STOPPING_STATUS_CODE:
-			return getOnStoppingStatusCode();
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_RESETTING_DURATION:
+				return getOnResettingDuration();
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_STARTING_DURATION:
+				return getOnStartingDuration();
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_EXECUTE_DURATION:
+				return getOnExecuteDuration();
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_COMPLETING_DURATION:
+				return getOnCompletingDuration();
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_STOPPING_DURATION:
+				return getOnStoppingDuration();
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_ABORTING_DURATION:
+				return getOnAbortingDuration();
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_CLEARING_DURATION:
+				return getOnClearingDuration();
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_HOLDING_DURATION:
+				return getOnHoldingDuration();
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_UNHOLDING_DURATION:
+				return getOnUnholdingDuration();
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_SUSPENDING_DURATION:
+				return getOnSuspendingDuration();
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_UNSUSPENDING_DURATION:
+				return getOnUnsuspendingDuration();
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_COMPLETING_VARIABLES:
+				return getOnCompletingVariables();
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_COMPLETING_STATUS_CODE:
+				return getOnCompletingStatusCode();
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_STOPPING_STATUS_CODE:
+				return getOnStoppingStatusCode();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -709,49 +709,49 @@ public class SimulationConfigurationImpl extends MinimalEObjectImpl.Container im
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_RESETTING_DURATION:
-			setOnResettingDuration((Integer) newValue);
-			return;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_STARTING_DURATION:
-			setOnStartingDuration((Integer) newValue);
-			return;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_EXECUTE_DURATION:
-			setOnExecuteDuration((Integer) newValue);
-			return;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_COMPLETING_DURATION:
-			setOnCompletingDuration((Integer) newValue);
-			return;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_STOPPING_DURATION:
-			setOnStoppingDuration((Integer) newValue);
-			return;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_ABORTING_DURATION:
-			setOnAbortingDuration((Integer) newValue);
-			return;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_CLEARING_DURATION:
-			setOnClearingDuration((Integer) newValue);
-			return;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_HOLDING_DURATION:
-			setOnHoldingDuration((Integer) newValue);
-			return;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_UNHOLDING_DURATION:
-			setOnUnholdingDuration((Integer) newValue);
-			return;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_SUSPENDING_DURATION:
-			setOnSuspendingDuration((Integer) newValue);
-			return;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_UNSUSPENDING_DURATION:
-			setOnUnsuspendingDuration((Integer) newValue);
-			return;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_COMPLETING_VARIABLES:
-			getOnCompletingVariables().clear();
-			getOnCompletingVariables().addAll((Collection<? extends Variable>) newValue);
-			return;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_COMPLETING_STATUS_CODE:
-			setOnCompletingStatusCode((Integer) newValue);
-			return;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_STOPPING_STATUS_CODE:
-			setOnStoppingStatusCode((Integer) newValue);
-			return;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_RESETTING_DURATION:
+				setOnResettingDuration((Integer)newValue);
+				return;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_STARTING_DURATION:
+				setOnStartingDuration((Integer)newValue);
+				return;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_EXECUTE_DURATION:
+				setOnExecuteDuration((Integer)newValue);
+				return;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_COMPLETING_DURATION:
+				setOnCompletingDuration((Integer)newValue);
+				return;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_STOPPING_DURATION:
+				setOnStoppingDuration((Integer)newValue);
+				return;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_ABORTING_DURATION:
+				setOnAbortingDuration((Integer)newValue);
+				return;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_CLEARING_DURATION:
+				setOnClearingDuration((Integer)newValue);
+				return;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_HOLDING_DURATION:
+				setOnHoldingDuration((Integer)newValue);
+				return;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_UNHOLDING_DURATION:
+				setOnUnholdingDuration((Integer)newValue);
+				return;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_SUSPENDING_DURATION:
+				setOnSuspendingDuration((Integer)newValue);
+				return;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_UNSUSPENDING_DURATION:
+				setOnUnsuspendingDuration((Integer)newValue);
+				return;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_COMPLETING_VARIABLES:
+				getOnCompletingVariables().clear();
+				getOnCompletingVariables().addAll((Collection<? extends Variable>)newValue);
+				return;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_COMPLETING_STATUS_CODE:
+				setOnCompletingStatusCode((Integer)newValue);
+				return;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_STOPPING_STATUS_CODE:
+				setOnStoppingStatusCode((Integer)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -764,48 +764,48 @@ public class SimulationConfigurationImpl extends MinimalEObjectImpl.Container im
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_RESETTING_DURATION:
-			setOnResettingDuration(ON_RESETTING_DURATION_EDEFAULT);
-			return;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_STARTING_DURATION:
-			setOnStartingDuration(ON_STARTING_DURATION_EDEFAULT);
-			return;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_EXECUTE_DURATION:
-			setOnExecuteDuration(ON_EXECUTE_DURATION_EDEFAULT);
-			return;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_COMPLETING_DURATION:
-			setOnCompletingDuration(ON_COMPLETING_DURATION_EDEFAULT);
-			return;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_STOPPING_DURATION:
-			setOnStoppingDuration(ON_STOPPING_DURATION_EDEFAULT);
-			return;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_ABORTING_DURATION:
-			setOnAbortingDuration(ON_ABORTING_DURATION_EDEFAULT);
-			return;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_CLEARING_DURATION:
-			setOnClearingDuration(ON_CLEARING_DURATION_EDEFAULT);
-			return;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_HOLDING_DURATION:
-			setOnHoldingDuration(ON_HOLDING_DURATION_EDEFAULT);
-			return;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_UNHOLDING_DURATION:
-			setOnUnholdingDuration(ON_UNHOLDING_DURATION_EDEFAULT);
-			return;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_SUSPENDING_DURATION:
-			setOnSuspendingDuration(ON_SUSPENDING_DURATION_EDEFAULT);
-			return;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_UNSUSPENDING_DURATION:
-			setOnUnsuspendingDuration(ON_UNSUSPENDING_DURATION_EDEFAULT);
-			return;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_COMPLETING_VARIABLES:
-			getOnCompletingVariables().clear();
-			return;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_COMPLETING_STATUS_CODE:
-			setOnCompletingStatusCode(ON_COMPLETING_STATUS_CODE_EDEFAULT);
-			return;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_STOPPING_STATUS_CODE:
-			setOnStoppingStatusCode(ON_STOPPING_STATUS_CODE_EDEFAULT);
-			return;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_RESETTING_DURATION:
+				setOnResettingDuration(ON_RESETTING_DURATION_EDEFAULT);
+				return;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_STARTING_DURATION:
+				setOnStartingDuration(ON_STARTING_DURATION_EDEFAULT);
+				return;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_EXECUTE_DURATION:
+				setOnExecuteDuration(ON_EXECUTE_DURATION_EDEFAULT);
+				return;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_COMPLETING_DURATION:
+				setOnCompletingDuration(ON_COMPLETING_DURATION_EDEFAULT);
+				return;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_STOPPING_DURATION:
+				setOnStoppingDuration(ON_STOPPING_DURATION_EDEFAULT);
+				return;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_ABORTING_DURATION:
+				setOnAbortingDuration(ON_ABORTING_DURATION_EDEFAULT);
+				return;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_CLEARING_DURATION:
+				setOnClearingDuration(ON_CLEARING_DURATION_EDEFAULT);
+				return;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_HOLDING_DURATION:
+				setOnHoldingDuration(ON_HOLDING_DURATION_EDEFAULT);
+				return;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_UNHOLDING_DURATION:
+				setOnUnholdingDuration(ON_UNHOLDING_DURATION_EDEFAULT);
+				return;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_SUSPENDING_DURATION:
+				setOnSuspendingDuration(ON_SUSPENDING_DURATION_EDEFAULT);
+				return;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_UNSUSPENDING_DURATION:
+				setOnUnsuspendingDuration(ON_UNSUSPENDING_DURATION_EDEFAULT);
+				return;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_COMPLETING_VARIABLES:
+				getOnCompletingVariables().clear();
+				return;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_COMPLETING_STATUS_CODE:
+				setOnCompletingStatusCode(ON_COMPLETING_STATUS_CODE_EDEFAULT);
+				return;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_STOPPING_STATUS_CODE:
+				setOnStoppingStatusCode(ON_STOPPING_STATUS_CODE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -818,34 +818,34 @@ public class SimulationConfigurationImpl extends MinimalEObjectImpl.Container im
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_RESETTING_DURATION:
-			return onResettingDuration != ON_RESETTING_DURATION_EDEFAULT;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_STARTING_DURATION:
-			return onStartingDuration != ON_STARTING_DURATION_EDEFAULT;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_EXECUTE_DURATION:
-			return onExecuteDuration != ON_EXECUTE_DURATION_EDEFAULT;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_COMPLETING_DURATION:
-			return onCompletingDuration != ON_COMPLETING_DURATION_EDEFAULT;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_STOPPING_DURATION:
-			return onStoppingDuration != ON_STOPPING_DURATION_EDEFAULT;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_ABORTING_DURATION:
-			return onAbortingDuration != ON_ABORTING_DURATION_EDEFAULT;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_CLEARING_DURATION:
-			return onClearingDuration != ON_CLEARING_DURATION_EDEFAULT;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_HOLDING_DURATION:
-			return onHoldingDuration != ON_HOLDING_DURATION_EDEFAULT;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_UNHOLDING_DURATION:
-			return onUnholdingDuration != ON_UNHOLDING_DURATION_EDEFAULT;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_SUSPENDING_DURATION:
-			return onSuspendingDuration != ON_SUSPENDING_DURATION_EDEFAULT;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_UNSUSPENDING_DURATION:
-			return onUnsuspendingDuration != ON_UNSUSPENDING_DURATION_EDEFAULT;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_COMPLETING_VARIABLES:
-			return onCompletingVariables != null && !onCompletingVariables.isEmpty();
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_COMPLETING_STATUS_CODE:
-			return onCompletingStatusCode != ON_COMPLETING_STATUS_CODE_EDEFAULT;
-		case ComponentPackage.SIMULATION_CONFIGURATION__ON_STOPPING_STATUS_CODE:
-			return onStoppingStatusCode != ON_STOPPING_STATUS_CODE_EDEFAULT;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_RESETTING_DURATION:
+				return onResettingDuration != ON_RESETTING_DURATION_EDEFAULT;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_STARTING_DURATION:
+				return onStartingDuration != ON_STARTING_DURATION_EDEFAULT;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_EXECUTE_DURATION:
+				return onExecuteDuration != ON_EXECUTE_DURATION_EDEFAULT;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_COMPLETING_DURATION:
+				return onCompletingDuration != ON_COMPLETING_DURATION_EDEFAULT;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_STOPPING_DURATION:
+				return onStoppingDuration != ON_STOPPING_DURATION_EDEFAULT;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_ABORTING_DURATION:
+				return onAbortingDuration != ON_ABORTING_DURATION_EDEFAULT;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_CLEARING_DURATION:
+				return onClearingDuration != ON_CLEARING_DURATION_EDEFAULT;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_HOLDING_DURATION:
+				return onHoldingDuration != ON_HOLDING_DURATION_EDEFAULT;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_UNHOLDING_DURATION:
+				return onUnholdingDuration != ON_UNHOLDING_DURATION_EDEFAULT;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_SUSPENDING_DURATION:
+				return onSuspendingDuration != ON_SUSPENDING_DURATION_EDEFAULT;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_UNSUSPENDING_DURATION:
+				return onUnsuspendingDuration != ON_UNSUSPENDING_DURATION_EDEFAULT;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_COMPLETING_VARIABLES:
+				return onCompletingVariables != null && !onCompletingVariables.isEmpty();
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_COMPLETING_STATUS_CODE:
+				return onCompletingStatusCode != ON_COMPLETING_STATUS_CODE_EDEFAULT;
+			case ComponentPackage.SIMULATION_CONFIGURATION__ON_STOPPING_STATUS_CODE:
+				return onStoppingStatusCode != ON_STOPPING_STATUS_CODE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -857,8 +857,7 @@ public class SimulationConfigurationImpl extends MinimalEObjectImpl.Container im
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (onResettingDuration: ");

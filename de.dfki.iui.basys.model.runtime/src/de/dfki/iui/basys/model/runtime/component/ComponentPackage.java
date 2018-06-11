@@ -973,6 +973,61 @@ public interface ComponentPackage extends EPackage {
 	int SIMULATION_CONFIGURATION_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.impl.ProcessRequestImpl <em>Process Request</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.runtime.component.impl.ProcessRequestImpl
+	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getProcessRequest()
+	 * @generated
+	 */
+	int PROCESS_REQUEST = 13;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_REQUEST__NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Business Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_REQUEST__BUSINESS_KEY = 1;
+
+	/**
+	 * The feature id for the '<em><b>Variable</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_REQUEST__VARIABLE = 2;
+
+	/**
+	 * The number of structural features of the '<em>Process Request</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_REQUEST_FEATURE_COUNT = 3;
+
+	/**
+	 * The number of operations of the '<em>Process Request</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_REQUEST_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.ComponentCategory <em>Category</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -980,7 +1035,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getComponentCategory()
 	 * @generated
 	 */
-	int COMPONENT_CATEGORY = 13;
+	int COMPONENT_CATEGORY = 14;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.State <em>State</em>}' enum.
@@ -990,7 +1045,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getState()
 	 * @generated
 	 */
-	int STATE = 14;
+	int STATE = 15;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.ControlMode <em>Control Mode</em>}' enum.
@@ -1000,7 +1055,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getControlMode()
 	 * @generated
 	 */
-	int CONTROL_MODE = 15;
+	int CONTROL_MODE = 16;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.ControlCommand <em>Control Command</em>}' enum.
@@ -1010,7 +1065,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getControlCommand()
 	 * @generated
 	 */
-	int CONTROL_COMMAND = 16;
+	int CONTROL_COMMAND = 17;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.RequestStatus <em>Request Status</em>}' enum.
@@ -1020,7 +1075,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getRequestStatus()
 	 * @generated
 	 */
-	int REQUEST_STATUS = 17;
+	int REQUEST_STATUS = 18;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.ResponseStatus <em>Response Status</em>}' enum.
@@ -1030,7 +1085,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getResponseStatus()
 	 * @generated
 	 */
-	int RESPONSE_STATUS = 18;
+	int RESPONSE_STATUS = 19;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.runtime.component.VariableType <em>Variable Type</em>}' enum.
@@ -1040,7 +1095,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getVariableType()
 	 * @generated
 	 */
-	int VARIABLE_TYPE = 19;
+	int VARIABLE_TYPE = 20;
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.runtime.component.ComponentInfo <em>Info</em>}'.
@@ -1799,6 +1854,49 @@ public interface ComponentPackage extends EPackage {
 	EAttribute getSimulationConfiguration_OnStoppingStatusCode();
 
 	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.runtime.component.ProcessRequest <em>Process Request</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Process Request</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.ProcessRequest
+	 * @generated
+	 */
+	EClass getProcessRequest();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.runtime.component.ProcessRequest#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.ProcessRequest#getName()
+	 * @see #getProcessRequest()
+	 * @generated
+	 */
+	EAttribute getProcessRequest_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.iui.basys.model.runtime.component.ProcessRequest#getBusinessKey <em>Business Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Business Key</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.ProcessRequest#getBusinessKey()
+	 * @see #getProcessRequest()
+	 * @generated
+	 */
+	EAttribute getProcessRequest_BusinessKey();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link de.dfki.iui.basys.model.runtime.component.ProcessRequest#getVariable <em>Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Variable</em>'.
+	 * @see de.dfki.iui.basys.model.runtime.component.ProcessRequest#getVariable()
+	 * @see #getProcessRequest()
+	 * @generated
+	 */
+	EReference getProcessRequest_Variable();
+
+	/**
 	 * Returns the meta object for enum '{@link de.dfki.iui.basys.model.runtime.component.ComponentCategory <em>Category</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2476,6 +2574,40 @@ public interface ComponentPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SIMULATION_CONFIGURATION__ON_STOPPING_STATUS_CODE = eINSTANCE.getSimulationConfiguration_OnStoppingStatusCode();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.runtime.component.impl.ProcessRequestImpl <em>Process Request</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.runtime.component.impl.ProcessRequestImpl
+		 * @see de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl#getProcessRequest()
+		 * @generated
+		 */
+		EClass PROCESS_REQUEST = eINSTANCE.getProcessRequest();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROCESS_REQUEST__NAME = eINSTANCE.getProcessRequest_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Business Key</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROCESS_REQUEST__BUSINESS_KEY = eINSTANCE.getProcessRequest_BusinessKey();
+
+		/**
+		 * The meta object literal for the '<em><b>Variable</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROCESS_REQUEST__VARIABLE = eINSTANCE.getProcessRequest_Variable();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.runtime.component.ComponentCategory <em>Category</em>}' enum.

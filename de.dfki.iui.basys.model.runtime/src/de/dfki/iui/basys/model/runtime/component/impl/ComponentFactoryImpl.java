@@ -69,6 +69,7 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 			case ComponentPackage.COMPONENT_REQUEST_COLLECTION: return createComponentRequestCollection();
 			case ComponentPackage.VARIABLE: return createVariable();
 			case ComponentPackage.SIMULATION_CONFIGURATION: return createSimulationConfiguration();
+			case ComponentPackage.PROCESS_REQUEST: return createProcessRequest();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -246,6 +247,16 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 	public SimulationConfiguration createSimulationConfiguration() {
 		SimulationConfigurationImpl simulationConfiguration = new SimulationConfigurationImpl();
 		return simulationConfiguration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ProcessRequest createProcessRequest() {
+		ProcessRequestImpl processRequest = new ProcessRequestImpl();
+		return processRequest;
 	}
 
 	/**
