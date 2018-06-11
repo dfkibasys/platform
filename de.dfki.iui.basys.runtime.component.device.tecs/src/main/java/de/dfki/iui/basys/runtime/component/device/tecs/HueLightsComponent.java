@@ -21,7 +21,7 @@ public class HueLightsComponent extends TecsDeviceComponent {
 	
 	public HueLightsComponent(ComponentConfiguration config) {
 		super(config);
-		this.lid = "0";
+		this.lid = "2";
 	}
 
 	@Override

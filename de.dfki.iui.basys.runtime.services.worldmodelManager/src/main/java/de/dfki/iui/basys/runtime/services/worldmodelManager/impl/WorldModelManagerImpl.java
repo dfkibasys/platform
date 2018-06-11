@@ -14,6 +14,7 @@ import javax.ws.rs.core.MediaType;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.json.JSONObject;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -108,17 +109,19 @@ public class WorldModelManagerImpl extends EmfServiceComponent implements WorldM
 
 								if (payload.eClass().equals(OrderPackage.eINSTANCE.getOrder())) {
 
-									LinebalancingAnswer lba = client.target("http://10.2.0.81:9001/services/optimizer/")
+									String response = client.target("http://127.0.0.1:9002/services/optimizer/")
 											.request(MediaType.APPLICATION_JSON).accept("application/json")
-											.get(LinebalancingAnswer.class);
+											.get(String.class);
 
 									System.out.println("===============================");
-									System.out.println(lba.resourceInstanceId);
+									System.out.println(response);
 									System.out.println("===============================");
 
+									JSONObject ob = new JSONObject(response);
+									
 									LineBalancingAssignment lbass = new LinebalancingFactoryImpl()
 											.createLineBalancingAssignment();
-									lbass.setResourceInstanceId(lba.resourceInstanceId);
+									lbass.setResourceInstanceId(ob.getString("resourceInstanceId"));
 									lbass.setOrder((Order) payload);
 
 									String outPayload = JsonUtils.toString(lbass);
@@ -143,7 +146,7 @@ public class WorldModelManagerImpl extends EmfServiceComponent implements WorldM
 									req.setComponentId("_rUJzsDJhEei1p5hKOf5Slw");
 
 									TaskDescription task = new TaskDescription(req);
-									if (lba.resourceInstanceId.equals("_jJdx4DD7EeiuBvcKgWzd3Q")) {
+									if (lbass.getResourceInstanceId().equals("_jJdx4DD7EeiuBvcKgWzd3Q")) {
 										cts.scheduleTask(task);
 									} else {
 										cts.scheduleTask(task, 10000); // TODO fine tuning

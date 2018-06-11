@@ -2,6 +2,7 @@ package de.dfki.iui.basys.runtime.connector;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
@@ -20,17 +21,27 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
+import org.eclipse.emf.ecore.EObject;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 import de.dfki.iui.basys.common.emf.json.JsonUtils;
+import de.dfki.iui.basys.model.domain.linebalancing.LineBalancingAssignment;
+import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
 import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
 import de.dfki.iui.basys.model.runtime.communication.Channel;
 import de.dfki.iui.basys.model.runtime.communication.ChannelListener;
 import de.dfki.iui.basys.model.runtime.communication.Notification;
 import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.ComponentFactory;
 import de.dfki.iui.basys.model.runtime.component.ComponentResponse;
+import de.dfki.iui.basys.model.runtime.component.ProcessRequest;
 import de.dfki.iui.basys.model.runtime.component.Property;
 import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
+import de.dfki.iui.basys.model.runtime.component.Variable;
+import de.dfki.iui.basys.model.runtime.component.VariableType;
+import de.dfki.iui.basys.model.runtime.component.impl.VariableImpl;
 import de.dfki.iui.basys.runtime.communication.CommFactory;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.DeviceComponentController;
@@ -54,7 +65,7 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 	private final String jsonVariantLightBlue, jsonVariantDarkBlue;
 
 	private Channel ch = null;
-	private String designatedResourceId = null;
+	private LineBalancingAssignment assignedResource = null;
 	
 	public BasysConnectorImpl(ComponentConfiguration config) {
 		super(config);
@@ -98,6 +109,16 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 
 				@Override
 				public void handleNotification(Channel channel, Notification not) {
+					try {
+						EObject payload = JsonUtils.fromString(not.getPayload(), EObject.class);
+						if (payload.eClass()
+								.equals(LinebalancingPackage.eINSTANCE.getLineBalancingAssignment())) {
+							assignedResource = (LineBalancingAssignment) payload;
+						}					
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}	
 				}
 
 				@Override
@@ -107,6 +128,12 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 
 			}
 		);
+	}
+	
+	@Override
+	protected void disconnectFromBasys() {
+		ch.close();
+		super.disconnectFromBasys();
 	}
 	
 	@Override
@@ -253,6 +280,8 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 				LOGGER.info("Basys: Neuer Auftrag");
 				// Auftrag und Produktinstanz anlegen.
 
+				
+				
 				outChannel.sendMessage("NEW_ORDER");
 
 				// Entscheiden, wer den Deckel-Auflege-Job ausführt, Ergebnis ist eine
@@ -275,10 +304,18 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 				LOGGER.info("Basys: Homeposition anfahren");
 				// Falls UR3: ignorieren
 				// Falls Festokomponente: ebenfalls ignorieren, s.u.
-
+				// RESET muss in den Prozess
 				// Melde IO
 				try {
-					sender.send(msg12);
+					//HACK: Falls Festo, dass errorCode = 1, ansonsten 2 (UR3)
+					TextMessage msg12Hack;
+					if (assignedResource.getResourceInstanceId().equals("_SE5NIDB4Eei1bbwBPPZWOA")) {
+						msg12Hack = messageFactory.createMSG12(getCaaResourceId(), 1, 1);
+					} else {
+						msg12Hack = messageFactory.createMSG12(getCaaResourceId(), 1, 2);
+					}
+					
+					sender.send(msg12Hack);
 					LOGGER.info("MSG12 sent to " + sender.getDestination().toString());
 				} catch (JMSException e) {
 					LOGGER.error(e.getMessage(), e);
@@ -289,17 +326,37 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 
 				LOGGER.info("Basys: Deckel fügen");
 				if (!checkDebug(msg)) {
-					// Es ist bekannt, welche Komponente den Job ausführt,
-					// Trigger Werkerführung
-					// Werker bestätigt auf GUI die Bestückung der Komponente.
+					
+					String resourceInstanceId = assignedResource.getResourceInstanceId();
+					
+					ProcessRequest request = ComponentFactory.eINSTANCE.createProcessRequest();
+					request.setName("Process.Manufacture");
+					request.setBusinessKey(UUID.randomUUID().toString());
+					
+					Variable var = new VariableImpl.Builder().name("resourceInstanceId").value(resourceInstanceId).type(VariableType.STRING).build();
+					request.setVariable(var);
+					
+					try {
+						String payload = JsonUtils.toString(request);
+						Notification not = CommFactory.getInstance().createNotification(payload);						
+						Channel taskSchedulerIn = CommFactory.getInstance().openChannel(context.getSharedChannelPool(), "task-scheduler#in", false, null);
+						taskSchedulerIn.sendNotification(not);
+					} catch (JsonProcessingException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+
 					// Falls Festo: sequezieller Ablauf,
 					// nach Auflegen, WF aktualisieren: Gehäuse auf Mir aufladen
 					// Falls Mir
 					// Gehäuse auflegen
 					// Prozess für restliche Produktion incl. QA und ggf. Colarun starten
 					// Rückmeldung abwarten
+					
+					// wie bekommt caa mit, dass job erfolgreich?
 				}
-				;
+				
 
 				break;
 

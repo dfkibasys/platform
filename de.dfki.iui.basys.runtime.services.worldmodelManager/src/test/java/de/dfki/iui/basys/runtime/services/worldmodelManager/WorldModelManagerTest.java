@@ -65,7 +65,7 @@ public class WorldModelManagerTest extends BaseComponentTest {
 		mirComponentConfig = new ComponentConfigurationImpl.Builder().componentId("_rUJzsDJhEei1p5hKOf5Slw")
 				.componentName("My MiR 100").componentCategory(ComponentCategory.DEVICE_COMPONENT)
 				.componentImplementationJavaClass(
-						"de.dfki.iui.basys.runtime.component.device.tecs.SimulatedMirComponent")
+						"de.dfki.iui.basys.runtime.component.device.tecs.deprecated.SimulatedMirComponent")
 				.inChannelName("_rUJzsDJhEei1p5hKOf5Slw#in").outChannelName("_rUJzsDJhEei1p5hKOf5Slw#out").build();
 
 		ur3ComponentConfig = new ComponentConfigurationImpl.Builder().componentId("_jJdx4DD7EeiuBvcKgWzd3Q")

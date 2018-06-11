@@ -8,14 +8,18 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import org.eclipse.emf.ecore.EObject;
+
 import de.dfki.iui.basys.common.emf.json.JsonUtils;
 import de.dfki.iui.basys.model.runtime.communication.Channel;
 import de.dfki.iui.basys.model.runtime.communication.Notification;
 import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.communication.Response;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
+import de.dfki.iui.basys.model.runtime.component.ComponentPackage;
 import de.dfki.iui.basys.model.runtime.component.ComponentRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentResponse;
+import de.dfki.iui.basys.model.runtime.component.ProcessRequest;
 import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
 import de.dfki.iui.basys.runtime.communication.CommFactory;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
@@ -90,7 +94,7 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 		long lockDuration = 5 * 60 * 1000;
 		List<ExternalServiceTaskDto> tasks = client.getExternalTasks("BasysTask", 3, lockDuration, asyncResponseTimeout, "assignee", "command", "parameters");
 
-		LOGGER.debug("pollCamunda fetched {} tasks" + tasks.size());
+		LOGGER.debug("pollCamunda fetched " + tasks.size() + " tasks" );
 		for (ExternalServiceTaskDto task : tasks) {
 			if (task.variables.assignee == null || task.variables.assignee.value == null) {
 				client.handleError(task.id, "ExternalTask does not contain an assignee", 0, 1000);
@@ -187,8 +191,19 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 	@Override
 	public void handleNotification(Channel channel, Notification not) {
 		try {
-			ComponentRequest request = JsonUtils.fromString(not.getPayload(), ComponentRequest.class);
-			scheduleTask(new TaskDescription(request, null));
+			EObject payload = JsonUtils.fromString(not.getPayload(), EObject.class);		
+			
+			if (payload.eClass().equals(ComponentPackage.eINSTANCE.getComponentRequest())) {
+				ComponentRequest request = (ComponentRequest)payload;
+				scheduleTask(new TaskDescription(request, null));
+			} else if (payload.eClass().equals(ComponentPackage.eINSTANCE.getProcessRequest())) {
+				ProcessRequest request = (ProcessRequest)payload;
+				if (request.getVariable() != null) {
+					client.sendMessage(request.getName(), request.getBusinessKey(), request.getVariable());
+				} else {
+					client.sendMessage(request.getName(), request.getBusinessKey());
+				}
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

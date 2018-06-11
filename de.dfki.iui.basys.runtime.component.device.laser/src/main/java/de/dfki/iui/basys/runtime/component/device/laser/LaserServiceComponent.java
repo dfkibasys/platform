@@ -21,6 +21,7 @@ import de.dfki.iui.basys.model.domain.capability.ProjectETA;
 import de.dfki.iui.basys.model.domain.capability.ProjectPath;
 import de.dfki.iui.basys.model.domain.resourceinstance.GeneralCapabilityVariant;
 import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstanceFactory;
+import de.dfki.iui.basys.model.domain.topology.AGVStation;
 import de.dfki.iui.basys.model.domain.topology.TopologyElement;
 import de.dfki.iui.basys.model.domain.topology.TopologyPackage;
 import de.dfki.iui.basys.model.runtime.communication.Channel;
@@ -32,7 +33,6 @@ import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.ComponentFactory;
 import de.dfki.iui.basys.model.runtime.component.Property;
-import de.dfki.iui.basys.model.runtime.component.State;
 import de.dfki.iui.basys.runtime.communication.CommFactory;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.ComponentException;
@@ -62,18 +62,27 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 	}
 
 	private synchronized void stopDevice() {
-
-		if (device.getState() != State.IDLE) {
-			device.stop();
-
-			while (device.getState() != State.IDLE) {
-				try {
-					Thread.sleep(200);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
+		LOGGER.info("Device State is " + device.getState());
+		device.stop();
+		try {
+			TimeUnit.MILLISECONDS.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		
+		
+//		if (device.getState() != State.IDLE) {
+//			device.stop();
+//
+//			while (device.getState() != State.IDLE) {
+//				try {
+//					Thread.sleep(200);
+//				} catch (InterruptedException e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		}
 	}
 
 	private static double getDistance(CartesianCoordinate cc1, CartesianCoordinate cc2) {
@@ -312,34 +321,39 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 
 					@Override
 					public void handleNotification(Channel channel, Notification not) {
+						try {
+							EObject payload = JsonUtils.fromString(not.getPayload(), EObject.class);
 
-						CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
+							if (payload.eClass().equals(TopologyPackage.eINSTANCE.getAGVStation())) {
+								AGVStation station = (AGVStation)payload;
+								
+								LOGGER.info("Neue Position: " + station.getName());
+								
+								// MIR should go somewhere
+								mWaitingForNewPath = true;
+								mVisualizeBeginningUntil = System.currentTimeMillis() + 10000;
+								mCurrentTargetPosition = (TopologyElement) payload;
+								mETANotYetVisualized = true;
+								mFinalPathNotYetVisualized = true;
+							}
+							if (payload.eClass().equals(DataPackage.eINSTANCE.getPath())) {
+								
 
-						executor.submit(() -> {
+								LOGGER.info("Path received");
+								
+								CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
 
-							try {
-								EObject payload = JsonUtils.fromString(not.getPayload(), EObject.class);
-
-								if (payload.eClass().equals(TopologyPackage.eINSTANCE.getTopologyElement())) {
-									// MIR should go somewhere
-									mWaitingForNewPath = true;
-									mVisualizeBeginningUntil = System.currentTimeMillis() + 10000;
-									mCurrentTargetPosition = (TopologyElement) payload;
-									mETANotYetVisualized = true;
-									mFinalPathNotYetVisualized = true;
-								}
-
-								// if
-								// (payload.eClass().equals(DataPackage.eINSTANCE.getRobotPositionInformation()))
-								// {
-								//
-								// RobotPositionInformation MIRPosition = (RobotPositionInformation) payload;
-								// CartesianCoordinate MIRPos = MIRPosition.getPosition();
-								// MIRPos.setZ(0);
-								//
-								// }
-
-								if (payload.eClass().equals(DataPackage.eINSTANCE.getPath())) {
+								executor.submit(() -> {
+									
+									// if
+									// (payload.eClass().equals(DataPackage.eINSTANCE.getRobotPositionInformation()))
+									// {
+									//
+									// RobotPositionInformation MIRPosition = (RobotPositionInformation) payload;
+									// CartesianCoordinate MIRPos = MIRPosition.getPosition();
+									// MIRPos.setZ(0);
+									//
+									// }
 
 									if (mWaitingForNewPath) {
 										mWaitingForNewPath = false;
@@ -355,14 +369,14 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 										mBeginningVisualizationRunning = true;
 
 									}
-								}
 
-							} catch (IOException e) {
-								e.printStackTrace();
+									cf.complete(true);
+									return null;
+								});
 							}
-							cf.complete(true);
-							return null;
-						});
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
 
 					}
 

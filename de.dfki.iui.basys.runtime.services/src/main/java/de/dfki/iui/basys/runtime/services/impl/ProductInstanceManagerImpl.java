@@ -3,8 +3,6 @@ package de.dfki.iui.basys.runtime.services.impl;
 import de.dfki.iui.basys.model.domain.productinstance.ProductInstance;
 import de.dfki.iui.basys.model.domain.productinstance.ProductInstanceStore;
 import de.dfki.iui.basys.model.domain.productinstance.ProductinstancePackage;
-import de.dfki.iui.basys.model.domain.productinstance.impl.ProductinstancePackageImpl;
-import de.dfki.iui.basys.model.domain.productinstance.util.ProductinstanceResourceFactoryImpl;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.service.EmfServiceComponent;
 import de.dfki.iui.basys.runtime.services.ProductInstanceManager;
@@ -29,6 +27,7 @@ public class ProductInstanceManagerImpl extends EmfServiceComponent implements P
 	@Override
 	public void addProductInstance(ProductInstance productInstance) {
 		ProductInstanceStore store = getProductInstanceStore();
+		store.getProductInstances().clear(); //HACK
 		store.getProductInstances().add(productInstance);
 	}
 

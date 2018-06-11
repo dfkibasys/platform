@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TProtocol;
+import org.json.JSONObject;
 
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
 import de.dfki.iui.basys.model.domain.capability.InteractionCapability;
@@ -15,6 +16,8 @@ import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
 import de.dfki.iui.basys.model.runtime.component.Variable;
+import de.dfki.iui.basys.model.runtime.component.VariableType;
+import de.dfki.iui.basys.model.runtime.component.impl.VariableImpl;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
 import de.dfki.iui.hrc.hybritcommand.CommandResponse;
@@ -150,22 +153,21 @@ public class SiAMComponent extends TecsDeviceComponent {
 			CommandResponse cr = client.getCommandState();
 			LOGGER.info("Dialogue result was " + cr.getDescription());
 
-//			JsonParser parser = new JsonParser();
-//			JsonObject json = parser.parse(cr.getDescription()).getAsJsonObject();
-
+			JSONObject ob = new JSONObject(cr.getDescription());
+			
 			String[] props = new String[] { "colaRequest", "emptyBottle", "milkrunRequest", "qaRequest" };
 
 			List<Variable> variables = new ArrayList<>(4);
-//			for (String prop : props) {
-//				Variable var = new VariableImpl.Builder()
-//						.name("prop").type(VariableType.BOOLEAN).value("false")
-//						.build();
-//				if (json.has(prop)) {
-//					String value = json.get(prop).getAsString();
-//					var.setValue(value);
-//				}
-//				variables.add(var);
-//			}
+			for (String prop : props) {
+				Variable var = new VariableImpl.Builder()
+						.name("prop").type(VariableType.BOOLEAN).value("false")
+						.build();
+				if (ob.has(prop)) {
+					String value = ob.getString(prop);
+					var.setValue(value);
+				}
+				variables.add(var);
+			}
 
 			sendComponentResponse(ResponseStatus.OK, 0, variables);
 

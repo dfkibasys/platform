@@ -3,6 +3,7 @@ package de.dfki.iui.basys.runtime.component.device.tecs;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -76,41 +77,41 @@ public class MirComponent extends TecsDeviceComponent {
 		connectToTecs("robot-mir-04", subscribeTo, "tecs.mrk40.dfki.lan", 9000);
 		mRest_URI = "http://robot-mir-04.mrk40.dfki.lan:8080/v1.0.0/mission_queue";
 
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Wait", "Station-QA"), 10000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Wait", "Station-Festo"), 10000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Wait", "Station-BaSys"), 10000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Wait", "Station-Cola"), 10000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Wait", "Station-TeachIn"), 10000L);
+		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Wait", "Station-QA"), 65000L);
+		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Wait", "Station-Festo"), 65000L);
+		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Wait", "Station-BaSys"), 65000L);
+		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Wait", "Station-Cola"), 65000L);
+		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Wait", "Station-TeachIn"), 65000L);
 
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-QA", "Station-Wait"), 10000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-QA", "Station-Festo"), 10000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-QA", "Station-BaSys"), 10000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-QA", "Station-Cola"), 10000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-QA", "Station-TeachIn"), 10000L);
+		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-QA", "Station-Wait"), 65000L);
+		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-QA", "Station-Festo"), 65000L);
+		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-QA", "Station-BaSys"), 65000L);
+		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-QA", "Station-Cola"), 65000L);
+		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-QA", "Station-TeachIn"), 65000L);
 
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Festo", "Station-QA"), 10000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Festo", "Station-Wait"), 10000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Festo", "Station-BaSys"), 10000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Festo", "Station-Cola"), 10000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Festo", "Station-TeachIn"), 10000L);
+		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Festo", "Station-QA"), 65000L);
+		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Festo", "Station-Wait"), 65000L);
+		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Festo", "Station-BaSys"), 65000L);
+		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Festo", "Station-Cola"), 65000L);
+		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Festo", "Station-TeachIn"), 65000L);
 
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-BaSys", "Station-QA"), 10000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-BaSys", "Station-Festo"), 10000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-BaSys", "Station-Wait"), 10000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-BaSys", "Station-Cola"), 10000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-BaSys", "Station-TeachIn"), 10000L);
+		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-BaSys", "Station-QA"), 65000L);
+		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-BaSys", "Station-Festo"), 65000L);
+		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-BaSys", "Station-Wait"), 65000L);
+		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-BaSys", "Station-Cola"), 65000L);
+		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-BaSys", "Station-TeachIn"), 65000L);
 
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Cola", "Station-QA"), 10000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Cola", "Station-Festo"), 10000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Cola", "Station-BaSys"), 10000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Cola", "Station-Wait"), 10000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Cola", "Station-TeachIn"), 10000L);
+		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Cola", "Station-QA"), 65000L);
+		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Cola", "Station-Festo"), 65000L);
+		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Cola", "Station-BaSys"), 65000L);
+		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Cola", "Station-Wait"), 65000L);
+		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-Cola", "Station-TeachIn"), 65000L);
 
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-TeachIn", "Station-QA"), 10000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-TeachIn", "Station-Festo"), 10000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-TeachIn", "Station-BaSys"), 10000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-TeachIn", "Station-Wait"), 10000L);
-		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-TeachIn", "Station-Cola"), 10000L);
+		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-TeachIn", "Station-QA"), 65000L);
+		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-TeachIn", "Station-Festo"), 65000L);
+		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-TeachIn", "Station-BaSys"), 65000L);
+		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-TeachIn", "Station-Wait"), 65000L);
+		mEstimatedETAs.put(new SimpleEntry<String, String>("Station-TeachIn", "Station-Cola"), 65000L);
 
 		restClient = ClientBuilder.newClient();
 
@@ -320,24 +321,30 @@ public class MirComponent extends TecsDeviceComponent {
 			mETAThread.start();
 
 			LOGGER.info("Moving to position: " + targetElement.getName());
+			String payload = JsonUtils.toString(targetElement);
+			Notification not = CommFactory.getInstance().createNotification(payload);
+			outChannel.sendNotification(not);
+			try {
+				TimeUnit.MILLISECONDS.sleep(250);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			if (mSourceLocation != null && mSourceLocation.getName().equals("Station-Festo")
 					&& mTargetLocation.getName().equals("Station-QA")) {
 
 				// Get mission list from here:
 				// http://robot-mir-04.mrk40.dfki.lan:8080/v1.0.0/missions
 
-				String payload = "{\"mission\":\"f4c63d9a-696a-11e8-a644-f44d3061d9da\"}";
+				String mission = "{\"mission\":\"69e0bd1d-6d6f-11e8-af15-f44d3061d9da\"}";
 				Response r = restClient.target(mRest_URI).request(MediaType.APPLICATION_JSON)
-						.post(Entity.json(payload));
+						.post(Entity.json(mission));
 				LOGGER.debug("Status: " + r.getStatus());
 			} else {
-				client.gotoNamedPosition(targetElement.getName());
+				client.gotoNamedPositionDelayed(targetElement.getName(), 5);
 			}
 
-			String payload = JsonUtils.toString(targetElement);
-			Notification not = CommFactory.getInstance().createNotification(payload);
-
-			outChannel.sendNotification(not);
+			
 
 		} catch (TException e) {
 			e.printStackTrace();
@@ -382,7 +389,7 @@ public class MirComponent extends TecsDeviceComponent {
 					// nothing to do, wait until finished
 					break;
 				case FINISHED:
-					System.out.println("FINISHED");
+					LOGGER.debug("FINISHED");
 					executing = false;
 					break;
 				case PAUSED:
