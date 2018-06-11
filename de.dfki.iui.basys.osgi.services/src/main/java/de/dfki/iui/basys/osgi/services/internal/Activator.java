@@ -13,7 +13,9 @@ public final class Activator implements BundleActivator {
 	 */
 	@Override
 	public void start(BundleContext bc) throws Exception {
+		System.out.println("******************************************************");
 		System.out.println("STARTING de.dfki.iui.basys.osgi.services (BundleID: " + bc.getBundle().getBundleId() + ")");
+		System.out.println("******************************************************");
 	}
 
 	/**

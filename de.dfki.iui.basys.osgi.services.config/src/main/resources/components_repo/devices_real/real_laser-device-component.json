@@ -6,5 +6,5 @@
   "componentImplementationJavaClass" : "de.dfki.iui.basys.runtime.component.device.laser.LaserDeviceComponent",
   "inChannelName" : "_RtlHgFIxEeidSe5vp9A3oA#in",
   "outChannelName" : "_RtlHgFIxEeidSe5vp9A3oA#out",
-  "externalConnectionString" : "http://192.168.100.3:9000/laserControl"
+  "externalConnectionString" : "http://10.2.10.3:9000/laserControl"
 }
