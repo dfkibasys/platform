@@ -309,7 +309,7 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 				try {
 					//HACK: Falls Festo, dass errorCode = 1, ansonsten 2 (UR3)
 					TextMessage msg12Hack;
-					if (assignedResource.getResourceInstanceId().equals("_SE5NIDB4Eei1bbwBPPZWOA")) {
+					if (assignedResource == null || assignedResource.getResourceInstanceId() == null || assignedResource.getResourceInstanceId().equals("_SE5NIDB4Eei1bbwBPPZWOA")) {
 						msg12Hack = messageFactory.createMSG12(getCaaResourceId(), 1, 1);
 					} else {
 						msg12Hack = messageFactory.createMSG12(getCaaResourceId(), 1, 2);
@@ -327,7 +327,10 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 				LOGGER.info("Basys: Deckel fügen");
 				if (!checkDebug(msg)) {
 					
-					String resourceInstanceId = assignedResource.getResourceInstanceId();
+					String resourceInstanceId = "_SE5NIDB4Eei1bbwBPPZWOA";
+					if (assignedResource != null && assignedResource.getResourceInstanceId() != null) {
+						resourceInstanceId = assignedResource.getResourceInstanceId();
+					}
 					
 					ProcessRequest request = ComponentFactory.eINSTANCE.createProcessRequest();
 					request.setName("Process.Manufacture");
@@ -395,8 +398,8 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 
 				// Melde IO
 				try {
-
-					sender.send(msg12);
+					TextMessage msg12Hack = messageFactory.createMSG12(getCaaResourceId(), 1, 1);
+					sender.send(msg12Hack);
 					LOGGER.info("MSG12 sent to " + sender.getDestination().toString());
 				} catch (JMSException e) {
 					LOGGER.error(e.getMessage(), e);

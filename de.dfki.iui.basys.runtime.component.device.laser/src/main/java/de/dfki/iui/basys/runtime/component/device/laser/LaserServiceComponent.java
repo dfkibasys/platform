@@ -368,6 +368,13 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 										visualizePath(mPath, true);
 										mBeginningVisualizationRunning = true;
 
+									} else {
+										Path epath = (Path) payload;
+										mPath.clear();
+										for (CartesianCoordinate cc : epath.getCoordinates()) {
+											cc.setZ(0);
+											mPath.add(cc);
+										}
 									}
 
 									cf.complete(true);

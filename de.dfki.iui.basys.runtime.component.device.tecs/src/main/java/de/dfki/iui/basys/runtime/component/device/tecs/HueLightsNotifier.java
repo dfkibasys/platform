@@ -2,6 +2,7 @@ package de.dfki.iui.basys.runtime.component.device.tecs;
 
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TProtocol;
+
 import hue.gen.Color;
 import hue.gen.HueError;
 import hue.gen.HueService;
@@ -41,7 +42,7 @@ public class HueLightsNotifier {
 				}
 			}
 		});
-    	thread.setDaemon(true);
+    	//thread.setDaemon(true);
     	thread.start();
     }
     

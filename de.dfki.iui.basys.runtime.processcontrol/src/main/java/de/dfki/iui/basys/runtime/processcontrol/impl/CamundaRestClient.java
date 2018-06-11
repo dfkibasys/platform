@@ -43,7 +43,7 @@ public class CamundaRestClient {
 		client = ClientBuilder.newClient();
 	}
 
-	public synchronized List<ExternalServiceTaskDto> getExternalTasks(String topic, int maxCount, long lockDuration, long asyncResponseTimeout, String... fetchVariables) {
+	public List<ExternalServiceTaskDto> getExternalTasks(String topic, int maxCount, long lockDuration, long asyncResponseTimeout, String... fetchVariables) {
 
 		String vars = "[]";
 		try {
@@ -107,13 +107,13 @@ public class CamundaRestClient {
 		return null;
 	}
 	
-	public synchronized void complete(String taskId) {
+	public void complete(String taskId) {
 		LOGGER.debug("Complete task {}", taskId);
 		Response response = client.target(baseUrl + externalTaskPath + taskId + "/complete").request(MediaType.APPLICATION_JSON).post(Entity.entity("{\"workerId\": \"" + workerId + "\"}", MediaType.APPLICATION_JSON));
 		LOGGER.debug("Complete task {} succeded with status code {}", taskId, response.getStatus());
 	}
 
-	public synchronized void complete2(String taskId, List<Variable> variables) {
+	public void complete2(String taskId, List<Variable> variables) {
 		LOGGER.debug("Complete task {} with process vars {}", taskId, variables.toString());
 		
 		for (Variable var : variables) {
@@ -126,7 +126,7 @@ public class CamundaRestClient {
 	}
 	
 	
-	public synchronized void complete(String taskId, List<Variable> variables) {
+	public void complete(String taskId, List<Variable> variables) {
 		LOGGER.debug("Complete task {} with process vars {}", taskId, variables.toString());
 		String vars = "";
 		for (Variable var : variables) {
@@ -158,7 +158,7 @@ public class CamundaRestClient {
 		LOGGER.debug("HandleError task {} succeded with status code {}", taskId, response.getStatus());
 	}
 	
-	public synchronized void sendMessage(String message, String businessKey) {
+	public void sendMessage(String message, String businessKey) {
 		LOGGER.debug("Send message {} with businessKey {}", message, businessKey);
 		String entity = "{\n" + 
 				"  \"messageName\" : \"" + message + "\",\n" + 

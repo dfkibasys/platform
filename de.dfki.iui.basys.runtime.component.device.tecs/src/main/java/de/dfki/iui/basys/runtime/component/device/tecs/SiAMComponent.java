@@ -32,6 +32,8 @@ public class SiAMComponent extends TecsDeviceComponent {
 	public SiAMComponent(ComponentConfiguration config) {
 		super(config);
 		this.businessKey = UUID.randomUUID().toString();
+		resetOnComplete = true;
+		resetOnStopped = true;
 	}
 
 	private String capability = "{\n" + "    \"eClass\" : \"http://www.dfki.de/iui/basys/model/component#//CapabilityRequest\",\n" + "    \"capabilityVariant\" : {\n"
@@ -153,23 +155,27 @@ public class SiAMComponent extends TecsDeviceComponent {
 			CommandResponse cr = client.getCommandState();
 			LOGGER.info("Dialogue result was " + cr.getDescription());
 
-			JSONObject ob = new JSONObject(cr.getDescription());
-			
-			String[] props = new String[] { "colaRequest", "emptyBottle", "milkrunRequest", "qaRequest" };
-
-			List<Variable> variables = new ArrayList<>(4);
-			for (String prop : props) {
-				Variable var = new VariableImpl.Builder()
-						.name("prop").type(VariableType.BOOLEAN).value("false")
-						.build();
-				if (ob.has(prop)) {
-					String value = ob.getString(prop);
-					var.setValue(value);
+			if (cr.getDescription().startsWith("{")) {
+				JSONObject ob = new JSONObject(cr.getDescription());
+				
+				String[] props = new String[] { "colaRequest", "emptyBottle", "milkrunRequest", "qaRequest" };
+	
+				List<Variable> variables = new ArrayList<>(4);
+				for (String prop : props) {
+					Variable var = new VariableImpl.Builder()
+							.name(prop).type(VariableType.BOOLEAN).value("false")
+							.build();
+					if (ob.has(prop)) {
+						String value = ob.getString(prop);
+						var.setValue(value);
+					}
+					variables.add(var);
 				}
-				variables.add(var);
+	
+				sendComponentResponse(ResponseStatus.OK, 0, variables);
+			} else {
+				sendComponentResponse(ResponseStatus.OK, 0);
 			}
-
-			sendComponentResponse(ResponseStatus.OK, 0, variables);
 
 		} catch (TException e) {
 			// TODO Auto-generated catch block

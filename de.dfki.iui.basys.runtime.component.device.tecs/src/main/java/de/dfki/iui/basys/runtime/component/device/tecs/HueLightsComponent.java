@@ -1,7 +1,5 @@
 package de.dfki.iui.basys.runtime.component.device.tecs;
 
-import org.apache.thrift.TException;
-
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
 import de.dfki.iui.basys.model.domain.capability.QAVisualisationCapability;
 import de.dfki.iui.basys.model.domain.resourceinstance.GeneralCapabilityVariant;
@@ -72,14 +70,14 @@ public class HueLightsComponent extends TecsDeviceComponent {
 	
 	@Override
 	public void onResetting() {
-		close();
-		try {
-			open();
-			client.disable(); // lieber in stopping/completing?
-		} catch (TException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		close();
+//		try {
+//			open();
+//			//client.disable(); // lieber in stopping/completing?
+//		} catch (TException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	}
 
 	@Override

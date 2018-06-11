@@ -193,7 +193,7 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 		try {
 			EObject payload = JsonUtils.fromString(not.getPayload(), EObject.class);		
 			
-			if (payload.eClass().equals(ComponentPackage.eINSTANCE.getComponentRequest())) {
+			if (ComponentPackage.eINSTANCE.getComponentRequest().isSuperTypeOf(payload.eClass())) {
 				ComponentRequest request = (ComponentRequest)payload;
 				scheduleTask(new TaskDescription(request, null));
 			} else if (payload.eClass().equals(ComponentPackage.eINSTANCE.getProcessRequest())) {

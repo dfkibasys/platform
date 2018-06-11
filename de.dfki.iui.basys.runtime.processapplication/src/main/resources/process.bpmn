@@ -413,7 +413,7 @@ params</camunda:script>
       <bpmn:incoming>SequenceFlow_0qo1yt7</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_18oe3tq</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:intermediateThrowEvent id="IntermediateThrowEvent_0i67nnl" name="achinachin">
+    <bpmn:intermediateThrowEvent id="IntermediateThrowEvent_0i67nnl" name="">
       <bpmn:extensionElements />
       <bpmn:incoming>SequenceFlow_0j4fyzc</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0l3opju</bpmn:outgoing>
@@ -460,8 +460,7 @@ params</camunda:script>
           <camunda:inputParameter name="command">{
  "eClass" : "http://www.dfki.de/iui/basys/model/component#//CommandRequest",
  "controlCommand" : "RESET"
-}
-</camunda:inputParameter>
+}</camunda:inputParameter>
           <camunda:inputParameter name="parameters">
             <camunda:script scriptFormat="groovy">params = new HashMap&lt;String, String&gt;();
 params.put("aKey","aValue");

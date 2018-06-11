@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1v63zp2" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.15.1">
   <bpmn:collaboration id="Collaboration_1b5wmpw">
-    <bpmn:participant id="Participant_13haujb" name="CEBIT Demo" processRef="Process_CEBIT-DEMO-PLOT" />
+    <bpmn:participant id="Participant_13haujb" name="CEBIT Demo Ministerin" processRef="Process_CEBIT-DEMO-Ministerin" />
   </bpmn:collaboration>
-  <bpmn:process id="Process_CEBIT-DEMO-PLOT" isExecutable="true">
+  <bpmn:process id="Process_CEBIT-DEMO-Ministerin" isExecutable="true">
     <bpmn:intermediateCatchEvent id="IntermediateCatchEvent_084i7x6">
       <bpmn:incoming>SequenceFlow_09ifb16</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_11qew1c</bpmn:outgoing>
