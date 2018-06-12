@@ -4,9 +4,12 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.UUID;
 
 import org.junit.Test;
 
+import de.dfki.iui.basys.model.runtime.component.ComponentFactory;
+import de.dfki.iui.basys.model.runtime.component.ProcessRequest;
 import de.dfki.iui.basys.model.runtime.component.Variable;
 import de.dfki.iui.basys.model.runtime.component.VariableType;
 import de.dfki.iui.basys.model.runtime.component.impl.VariableImpl;
@@ -28,7 +31,7 @@ public class CamundaClientTest {
 		vars.add(new VariableImpl.Builder().name("qaRequest").value("true").type(VariableType.BOOLEAN).build());
 		vars.add(new VariableImpl.Builder().name("milkrunRequest").value("true").type(VariableType.BOOLEAN).build());
 		
-		CamundaRestClient camundaClient = new CamundaRestClient("test", "http://localhost:8081/engine-rest/engine/default/");
+		CamundaRestClient camundaClient = new CamundaRestClient("test", "http://localhost:8081/engine-rest/");
 		
 		//String processdefinitionId = "";
 		//camundaClient.startProcessInstance(processdefinitionId);
@@ -43,6 +46,29 @@ public class CamundaClientTest {
 
 			Thread.currentThread().sleep(250);
 		}
+
+	}
+	
+	
+	@Test
+	public void testSpawnProcess() throws Exception {
+		
+	
+		CamundaRestClient camundaClient = new CamundaRestClient("test", "http://localhost:8081/engine-rest/");
+		
+		ProcessRequest request = ComponentFactory.eINSTANCE.createProcessRequest();
+		request.setName("Process.Manufacture");
+		request.setBusinessKey(UUID.randomUUID().toString());
+		
+		Variable var = new VariableImpl.Builder().name("resourceInstanceId").value("testResouceId").type(VariableType.STRING).build();
+		request.setVariable(var);
+		
+		if (request.getVariable() != null) {
+			camundaClient.sendMessage(request.getName(), request.getBusinessKey(), request.getVariable());
+		} else {
+			camundaClient.sendMessage(request.getName(), request.getBusinessKey());
+		}
+	
 
 	}
 

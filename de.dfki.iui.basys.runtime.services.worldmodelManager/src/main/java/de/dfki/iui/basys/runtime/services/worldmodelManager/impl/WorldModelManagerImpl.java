@@ -122,6 +122,10 @@ public class WorldModelManagerImpl extends EmfServiceComponent implements WorldM
 									LineBalancingAssignment lbass = new LinebalancingFactoryImpl()
 											.createLineBalancingAssignment();
 									lbass.setResourceInstanceId(ob.getString("resourceInstanceId"));
+									if ("_rUJzsDJhEei1p5hKOf5Slw".equals(lbass.getResourceInstanceId())) {
+										lbass.setResourceInstanceId("_jJdx4DD7EeiuBvcKgWzd3Q");
+									}
+									
 									lbass.setOrder((Order) payload);
 
 									String outPayload = JsonUtils.toString(lbass);

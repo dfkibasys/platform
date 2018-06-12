@@ -174,11 +174,13 @@ public class CamundaRestClient {
 
 		String entity = "{\n" + 
 				"  \"messageName\" : \"" + message + "\",\n" + 
-				"  \"businessKey\" : \"" +businessKey+ "\"\n" + 
+				"  \"businessKey\" : \"" +businessKey+ "\",\n" + 
 				"  \"processVariables\" : {\n" + 
-				"    \"" + var.getName() + "\" : {\"value\" : \"" + var.getValue() + "\", \"type\": \"" + var.getType() + "\"}\n" + 
+				"    \"" + var.getName() + "\" : {\"value\" : \"" + var.getValue() + "\", \"type\": \"" + var.getType().getName().toLowerCase() + "\"}\n" + 
 				"  }\n" + 
 				"}";
+		LOGGER.debug(baseUrl + "message");
+		LOGGER.debug(entity);
 		Response response = client.target(baseUrl + "message").request(MediaType.APPLICATION_JSON).post(Entity.entity(entity, MediaType.APPLICATION_JSON));	
 		LOGGER.debug("sendMessage succeded with status code {}", response.getStatus());
 	}

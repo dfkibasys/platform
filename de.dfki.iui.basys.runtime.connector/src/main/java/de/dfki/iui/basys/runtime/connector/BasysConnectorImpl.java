@@ -35,6 +35,7 @@ import de.dfki.iui.basys.model.runtime.communication.Notification;
 import de.dfki.iui.basys.model.runtime.communication.Request;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.ComponentFactory;
+import de.dfki.iui.basys.model.runtime.component.ComponentPackage;
 import de.dfki.iui.basys.model.runtime.component.ComponentResponse;
 import de.dfki.iui.basys.model.runtime.component.ProcessRequest;
 import de.dfki.iui.basys.model.runtime.component.Property;
@@ -66,6 +67,8 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 
 	private Channel ch = null;
 	private LineBalancingAssignment assignedResource = null;
+	
+	private Channel componentOut = null;
 	
 	public BasysConnectorImpl(ComponentConfiguration config) {
 		super(config);
@@ -308,11 +311,13 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 				// Melde IO
 				try {
 					//HACK: Falls Festo, dass errorCode = 1, ansonsten 2 (UR3)
-					TextMessage msg12Hack;
-					if (assignedResource == null || assignedResource.getResourceInstanceId() == null || assignedResource.getResourceInstanceId().equals("_SE5NIDB4Eei1bbwBPPZWOA")) {
-						msg12Hack = messageFactory.createMSG12(getCaaResourceId(), 1, 1);
-					} else {
-						msg12Hack = messageFactory.createMSG12(getCaaResourceId(), 1, 2);
+					TextMessage msg12Hack = messageFactory.createMSG12(getCaaResourceId(), 1, 1);
+					if (assignedResource != null && assignedResource.getResourceInstanceId() != null) {
+						if ("_SE5NIDB4Eei1bbwBPPZWOA".equals(assignedResource.getResourceInstanceId())) {
+							msg12Hack = messageFactory.createMSG12(getCaaResourceId(), 1, 1);
+						} else {
+							msg12Hack = messageFactory.createMSG12(getCaaResourceId(), 1, 2);
+						}
 					}
 					
 					sender.send(msg12Hack);
@@ -338,6 +343,55 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 					
 					Variable var = new VariableImpl.Builder().name("resourceInstanceId").value(resourceInstanceId).type(VariableType.STRING).build();
 					request.setVariable(var);
+					
+					componentOut = CommFactory.getInstance().openChannel(context.getSharedChannelPool(), resourceInstanceId + "#out", false,
+							new ChannelListener() {
+
+								@Override
+								public de.dfki.iui.basys.model.runtime.communication.Response handleRequest(Channel channel, Request req) {
+									return null;
+								}
+
+								@Override
+								public void handleNotification(Channel channel, Notification not) {
+									try {
+										EObject payload = JsonUtils.fromString(not.getPayload(), EObject.class);
+										if (payload.eClass().equals(ComponentPackage.eINSTANCE.getComponentResponse())) {
+											ComponentResponse response = (ComponentResponse) payload;
+											if (response.getStatus() == ResponseStatus.OK) {
+												try {
+													sender.send(msg12);
+													LOGGER.info("MSG12 sent to " + sender.getDestination().toString());
+												} catch (JMSException e) {
+													LOGGER.error(e.getMessage(), e);
+												}
+											} else {
+												TextMessage newMsg12 = messageFactory.createMSG12(getCaaResourceId(), 2,
+														response.getStatusCode());
+												try {
+													sender.send(newMsg12);
+													LOGGER.info("MSG12 sent to " + sender.getDestination().toString());
+												} catch (JMSException e) {
+													LOGGER.error(e.getMessage(), e);
+												}
+											}
+											// remove registration
+											componentOut.close();
+											componentOut = null;
+										}					
+									} catch (IOException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}	
+								}
+
+								@Override
+								public void handleMessage(Channel channel, String msg) {
+									
+								}
+
+							}
+						);
 					
 					try {
 						String payload = JsonUtils.toString(request);
@@ -390,7 +444,7 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 				// Festokomponente explizit in Homeposition fahren
 				// irrelevant, da durch Komponente sichergestellt
 				festoController.reset();
-
+				//HACK
 				sleep(4000);
 
 				if (cancelled)
