@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1v63zp2" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.15.1">
   <bpmn:collaboration id="Collaboration_1b5wmpw">
-    <bpmn:participant id="Participant_13haujb" name="CEBIT Demo CAA" processRef="Process_CEBIT-DEMO-CAA" />
+    <bpmn:participant id="Participant_13haujb" name="Demo.CAA.Integration_ALL" processRef="Demo.CAA.Integration_ALL" />
   </bpmn:collaboration>
-  <bpmn:process id="Process_CEBIT-DEMO-CAA" isExecutable="true">
+  <bpmn:process id="Demo.CAA.Integration_ALL" name="Demo.CAAIntegration_ALL" isExecutable="true">
     <bpmn:sequenceFlow id="SequenceFlow_1k167zn" sourceRef="ServiceTask_0j938sq" targetRef="ParallelGateway_0oy4ovk" />
     <bpmn:sequenceFlow id="SequenceFlow_0xwns7f" sourceRef="ServiceTask_1nd3uvw" targetRef="ServiceTask_1g9ly80" />
     <bpmn:sequenceFlow id="SequenceFlow_13h25gk" sourceRef="ServiceTask_17l1vth" targetRef="ServiceTask_18ca1s4" />
@@ -288,7 +288,7 @@
     </bpmn:endEvent>
     <bpmn:startEvent id="StartEvent_0nwpl6p">
       <bpmn:outgoing>SequenceFlow_0w6q8hd</bpmn:outgoing>
-      <bpmn:messageEventDefinition id="MessageEventDefinition_0s63qeb" />
+      <bpmn:messageEventDefinition id="MessageEventDefinition_0s63qeb" messageRef="Message_1vk4576" />
     </bpmn:startEvent>
     <bpmn:parallelGateway id="ParallelGateway_0h588ax">
       <bpmn:incoming>SequenceFlow_027epgs</bpmn:incoming>
@@ -578,6 +578,7 @@
       </bpmn:timerEventDefinition>
     </bpmn:intermediateCatchEvent>
   </bpmn:process>
+  <bpmn:message id="Message_1vk4576" name="Process.Manufacture" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1b5wmpw">
       <bpmndi:BPMNShape id="Participant_13haujb_di" bpmnElement="Participant_13haujb">

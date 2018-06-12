@@ -84,6 +84,7 @@ public class Ur10Component extends TecsDeviceComponent {
 
 	@Override
 	public void onResetting() {
+		reconnect();
 //		close();
 //		try {
 //			open();

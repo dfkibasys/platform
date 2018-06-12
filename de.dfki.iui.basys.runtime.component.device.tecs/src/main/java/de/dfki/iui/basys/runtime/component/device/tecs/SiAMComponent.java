@@ -79,6 +79,11 @@ public class SiAMComponent extends TecsDeviceComponent {
 	// }
 
 	@Override
+	public void onResetting() {
+		reconnect();
+	}
+	
+	@Override
 	public void onStarting() {
 		String topic = (String) getUnitConfig().getPayload();
 		LOGGER.info("Performing dialogue " + topic);

@@ -58,13 +58,7 @@ public class YumiComponent extends TecsDeviceComponent {
 
 	@Override
 	public void onResetting() {
-		close();
-		try {
-			open();
-		} catch (TTransportException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		reconnect();
 	}
 
 	@Override

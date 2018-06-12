@@ -70,14 +70,7 @@ public class HueLightsComponent extends TecsDeviceComponent {
 	
 	@Override
 	public void onResetting() {
-//		close();
-//		try {
-//			open();
-//			//client.disable(); // lieber in stopping/completing?
-//		} catch (TException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		reconnect();
 	}
 
 	@Override

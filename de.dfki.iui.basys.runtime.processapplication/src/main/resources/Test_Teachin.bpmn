@@ -1,0 +1,940 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.15.1">
+  <bpmn:collaboration id="Collaboration_1iv70a6">
+    <bpmn:participant id="Participant_0mln3la" name="Test_TeachIn" processRef="Test_Teachin" />
+  </bpmn:collaboration>
+  <bpmn:process id="Test_Teachin" name="Test_Teachin" isExecutable="true">
+    <bpmn:serviceTask id="ServiceTask_1f0edyt" name="Stop MiR" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:field name="resourceInstanceId">
+          <camunda:string>qwe</camunda:string>
+        </camunda:field>
+        <camunda:field name="jsonCapability">
+          <camunda:string>qwertz</camunda:string>
+        </camunda:field>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_rUJzsDJhEei1p5hKOf5Slw</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+	"eClass": "http://www.dfki.de/iui/basys/model/component#//CommandRequest",
+	"controlCommand": "STOP"
+}</camunda:inputParameter>
+          <camunda:inputParameter name="parameters">
+            <camunda:script scriptFormat="groovy">params = new HashMap&lt;String, String&gt;();
+params.put("aKey","aValue");
+params</camunda:script>
+          </camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_12d2mwe</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0zwjkhk</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="ServiceTask_0dozrup" name="Change Mode Change Over MiR" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:field name="resourceInstanceId">
+          <camunda:string>qwe</camunda:string>
+        </camunda:field>
+        <camunda:field name="jsonCapability">
+          <camunda:string>qwertz</camunda:string>
+        </camunda:field>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_rUJzsDJhEei1p5hKOf5Slw</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+	"eClass": "http://www.dfki.de/iui/basys/model/component#//ChangeModeRequest",
+	"mode": "CHANGE_OVER"
+}</camunda:inputParameter>
+          <camunda:inputParameter name="parameters">
+            <camunda:script scriptFormat="groovy">params = new HashMap&lt;String, String&gt;();
+params.put("aKey","aValue");
+params</camunda:script>
+          </camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_1o7don2</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0cd4d92</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="ServiceTask_0vndicc" name="Change Mode Production MiR" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:field name="resourceInstanceId">
+          <camunda:string>qwe</camunda:string>
+        </camunda:field>
+        <camunda:field name="jsonCapability">
+          <camunda:string>qwertz</camunda:string>
+        </camunda:field>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_rUJzsDJhEei1p5hKOf5Slw</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+	"eClass": "http://www.dfki.de/iui/basys/model/component#//ChangeModeRequest",
+	"mode": "PRODUCTION"
+}</camunda:inputParameter>
+          <camunda:inputParameter name="parameters">
+            <camunda:script scriptFormat="groovy">params = new HashMap&lt;String, String&gt;();
+params.put("aKey","aValue");
+params</camunda:script>
+          </camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0mlkap9</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1qmsfxx</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="ServiceTask_0cy0bgd" name="Reset MiR" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:field name="resourceInstanceId">
+          <camunda:string>qwe</camunda:string>
+        </camunda:field>
+        <camunda:field name="jsonCapability">
+          <camunda:string>qwertz</camunda:string>
+        </camunda:field>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_rUJzsDJhEei1p5hKOf5Slw</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+	"eClass": "http://www.dfki.de/iui/basys/model/component#//CommandRequest",
+	"controlCommand": "RESET"
+}</camunda:inputParameter>
+          <camunda:inputParameter name="parameters">
+            <camunda:script scriptFormat="groovy">params = new HashMap&lt;String, String&gt;();
+params.put("aKey","aValue");
+params</camunda:script>
+          </camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_05ikv6i</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1fkeikw</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="ServiceTask_08hgj9u" name="Change Mode Production Panda" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:field name="resourceInstanceId">
+          <camunda:string>qwe</camunda:string>
+        </camunda:field>
+        <camunda:field name="jsonCapability">
+          <camunda:string>qwertz</camunda:string>
+        </camunda:field>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_I4a_oDD-EeiuBvcKgWzd3Q</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+	"eClass": "http://www.dfki.de/iui/basys/model/component#//ChangeModeRequest",
+	"mode": "PRODUCTION"
+}</camunda:inputParameter>
+          <camunda:inputParameter name="parameters">
+            <camunda:script scriptFormat="groovy">params = new HashMap&lt;String, String&gt;();
+params.put("aKey","aValue");
+params</camunda:script>
+          </camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_14jw1y9</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1ox9qtv</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="ServiceTask_1f3bbnu" name="Reset Panda" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:field name="resourceInstanceId">
+          <camunda:string>qwe</camunda:string>
+        </camunda:field>
+        <camunda:field name="jsonCapability">
+          <camunda:string>qwertz</camunda:string>
+        </camunda:field>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_I4a_oDD-EeiuBvcKgWzd3Q</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+	"eClass": "http://www.dfki.de/iui/basys/model/component#//CommandRequest",
+	"controlCommand": "RESET"
+}</camunda:inputParameter>
+          <camunda:inputParameter name="parameters">
+            <camunda:script scriptFormat="groovy">params = new HashMap&lt;String, String&gt;();
+params.put("aKey","aValue");
+params</camunda:script>
+          </camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_1pndv4i</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0b5a9rd</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="ServiceTask_1almfgs" name="MoveTo Position TeachIn MiR" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:field name="resourceInstanceId">
+          <camunda:string>qwe</camunda:string>
+        </camunda:field>
+        <camunda:field name="jsonCapability">
+          <camunda:string>qwertz</camunda:string>
+        </camunda:field>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_rUJzsDJhEei1p5hKOf5Slw</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+	"eClass": "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
+	"capabilityVariant": {
+		"eClass": "http://www.dfki.de/iui/basys/model/resourceinstance#//LogisticsCapabilityVariant",
+		"capability": {
+			"eClass": "http://www.dfki.de/iui/basys/model/capability#//MoveToLocation",
+			"id": "_1HsNt19AEeiUo-65_7rTBQ",
+			"name": "TeachIn"
+		},
+		"appliedOn": [{
+			"eClass": "http://www.dfki.de/iui/basys/model/topology#//AGVStation",
+			"$ref": "http://localhost:8080/services/entity/_4Xw3NV2TEeit97PGgoQOAQ"
+		}]
+	}
+}</camunda:inputParameter>
+          <camunda:inputParameter name="parameters">
+            <camunda:script scriptFormat="groovy">params = new HashMap&lt;String, String&gt;();
+params.put("aKey","aValue");
+params</camunda:script>
+          </camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_1kc9oef</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0rc4y2h</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="ExclusiveGateway_16g61fs">
+      <bpmn:incoming>SequenceFlow_1uud42n</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_0zwjkhk</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_18oe3tq</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_096pa3v</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:parallelGateway id="ExclusiveGateway_0u7rimo">
+      <bpmn:incoming>SequenceFlow_096pa3v</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0g3jeaa</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_1o7don2</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_0gap11q</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:parallelGateway id="ExclusiveGateway_1k9wfa8">
+      <bpmn:incoming>SequenceFlow_05o62q9</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_0cd4d92</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1p2ogbg</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1k2nitp</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:parallelGateway id="ExclusiveGateway_0zhvbbp">
+      <bpmn:incoming>SequenceFlow_1n1tzfm</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0si7i3i</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_0mlkap9</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_14jw1y9</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:parallelGateway id="ExclusiveGateway_1diodfd">
+      <bpmn:incoming>SequenceFlow_1icilx7</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1qmsfxx</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1ox9qtv</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0y618rp</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:parallelGateway id="ExclusiveGateway_1b74rr2">
+      <bpmn:incoming>SequenceFlow_0y618rp</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_02m091c</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_05ikv6i</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_1pndv4i</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:parallelGateway id="ExclusiveGateway_0lnn8dw">
+      <bpmn:incoming>SequenceFlow_1b5k0hc</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1fkeikw</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_0b5a9rd</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0dt2oxm</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:serviceTask id="ServiceTask_04c7rrf" name="MoveTo Position Waiting MiR" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:field name="resourceInstanceId">
+          <camunda:string>qwe</camunda:string>
+        </camunda:field>
+        <camunda:field name="jsonCapability">
+          <camunda:string>qwertz</camunda:string>
+        </camunda:field>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_rUJzsDJhEei1p5hKOf5Slw</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+	"eClass": "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
+	"capabilityVariant": {
+		"eClass": "http://www.dfki.de/iui/basys/model/resourceinstance#//LogisticsCapabilityVariant",
+		"capability": {
+			"eClass": "http://www.dfki.de/iui/basys/model/capability#//MoveToLocation",
+			"id": "_1HsNt19AEeiUo-65_7rTBQ",
+			"name": "Wait"
+		},
+		"appliedOn": [{
+			"eClass": "http://www.dfki.de/iui/basys/model/topology#//AGVStation",
+			"$ref": "http://localhost:8080/services/entity/_4Xw3NV2TEeit97PGgoQOAQ"
+		}]
+	}
+}</camunda:inputParameter>
+          <camunda:inputParameter name="parameters">
+            <camunda:script scriptFormat="groovy">params = new HashMap&lt;String, String&gt;();
+params.put("aKey","aValue");
+params</camunda:script>
+          </camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0dt2oxm</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1mr7xxm</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:intermediateThrowEvent id="IntermediateThrowEvent_1vyymk8">
+      <bpmn:incoming>SequenceFlow_1mr7xxm</bpmn:incoming>
+    </bpmn:intermediateThrowEvent>
+    <bpmn:parallelGateway id="ExclusiveGateway_1w7emjy">
+      <bpmn:incoming>SequenceFlow_0rc4y2h</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1c15pvd</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_12d2mwe</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_0qo1yt7</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:serviceTask id="ServiceTask_01u35hr" name="Stop UR3" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:field name="resourceInstanceId">
+          <camunda:string>qwe</camunda:string>
+        </camunda:field>
+        <camunda:field name="jsonCapability">
+          <camunda:string>qwertz</camunda:string>
+        </camunda:field>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_jJdx4DD7EeiuBvcKgWzd3Q</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+ "eClass" : "http://www.dfki.de/iui/basys/model/component#//CommandRequest",
+ "controlCommand" : "STOP"
+}</camunda:inputParameter>
+          <camunda:inputParameter name="parameters">
+            <camunda:script scriptFormat="groovy">params = new HashMap&lt;String, String&gt;();
+params.put("aKey","aValue");
+params</camunda:script>
+          </camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_1c15pvd</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1uud42n</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="ServiceTask_1a5sz6x" name="Change Mode Change Over UR3" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:field name="resourceInstanceId">
+          <camunda:string>qwe</camunda:string>
+        </camunda:field>
+        <camunda:field name="jsonCapability">
+          <camunda:string>qwertz</camunda:string>
+        </camunda:field>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_jJdx4DD7EeiuBvcKgWzd3Q</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+ "eClass" : "http://www.dfki.de/iui/basys/model/component#//ChangeModeRequest",
+ "mode" : "CHANGE_OVER"
+}</camunda:inputParameter>
+          <camunda:inputParameter name="parameters">
+            <camunda:script scriptFormat="groovy">params = new HashMap&lt;String, String&gt;();
+params.put("aKey","aValue");
+params</camunda:script>
+          </camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0g3jeaa</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_05o62q9</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="ServiceTask_1r52rms" name="Change Mode Production UR3" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:field name="resourceInstanceId">
+          <camunda:string>qwe</camunda:string>
+        </camunda:field>
+        <camunda:field name="jsonCapability">
+          <camunda:string>qwertz</camunda:string>
+        </camunda:field>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_jJdx4DD7EeiuBvcKgWzd3Q</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+ "eClass" : "http://www.dfki.de/iui/basys/model/component#//ChangeModeRequest",
+ "mode" : "PRODUCTION"
+}</camunda:inputParameter>
+          <camunda:inputParameter name="parameters">
+            <camunda:script scriptFormat="groovy">params = new HashMap&lt;String, String&gt;();
+params.put("aKey","aValue");
+params</camunda:script>
+          </camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0si7i3i</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1icilx7</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="ServiceTask_00z5zm8" name="Reset UR3" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:field name="resourceInstanceId">
+          <camunda:string>qwe</camunda:string>
+        </camunda:field>
+        <camunda:field name="jsonCapability">
+          <camunda:string>qwertz</camunda:string>
+        </camunda:field>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_jJdx4DD7EeiuBvcKgWzd3Q</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+ "eClass" : "http://www.dfki.de/iui/basys/model/component#//CommandRequest",
+ "controlCommand" : "RESET"
+}</camunda:inputParameter>
+          <camunda:inputParameter name="parameters">
+            <camunda:script scriptFormat="groovy">params = new HashMap&lt;String, String&gt;();
+params.put("aKey","aValue");
+params</camunda:script>
+          </camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_02m091c</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1b5k0hc</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="ServiceTask_04yp61v" name="Change Mode Change Over Panda" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:field name="resourceInstanceId">
+          <camunda:string>qwe</camunda:string>
+        </camunda:field>
+        <camunda:field name="jsonCapability">
+          <camunda:string>qwertz</camunda:string>
+        </camunda:field>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_I4a_oDD-EeiuBvcKgWzd3Q</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+	"eClass": "http://www.dfki.de/iui/basys/model/component#//ChangeModeRequest",
+	"mode": "CHANGE_OVER"
+}</camunda:inputParameter>
+          <camunda:inputParameter name="parameters">
+            <camunda:script scriptFormat="groovy">params = new HashMap&lt;String, String&gt;();
+params.put("aKey","aValue");
+params</camunda:script>
+          </camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0gap11q</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1p2ogbg</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="ServiceTask_0z36ere" name="Stop Panda" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:field name="resourceInstanceId">
+          <camunda:string>qwe</camunda:string>
+        </camunda:field>
+        <camunda:field name="jsonCapability">
+          <camunda:string>qwertz</camunda:string>
+        </camunda:field>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_I4a_oDD-EeiuBvcKgWzd3Q</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+	"eClass": "http://www.dfki.de/iui/basys/model/component#//CommandRequest",
+	"controlCommand": "STOP"
+}</camunda:inputParameter>
+          <camunda:inputParameter name="parameters">
+            <camunda:script scriptFormat="groovy">params = new HashMap&lt;String, String&gt;();
+params.put("aKey","aValue");
+params</camunda:script>
+          </camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0qo1yt7</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_18oe3tq</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="ServiceTask_1rzz96o" name="Reset UR3" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:field name="resourceInstanceId">
+          <camunda:string>qwe</camunda:string>
+        </camunda:field>
+        <camunda:field name="jsonCapability">
+          <camunda:string>qwertz</camunda:string>
+        </camunda:field>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_jJdx4DD7EeiuBvcKgWzd3Q</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+ "eClass" : "http://www.dfki.de/iui/basys/model/component#//CommandRequest",
+ "controlCommand" : "RESET"
+}</camunda:inputParameter>
+          <camunda:inputParameter name="parameters">
+            <camunda:script scriptFormat="groovy">params = new HashMap&lt;String, String&gt;();
+params.put("aKey","aValue");
+params</camunda:script>
+          </camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_076wau0</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0nd9xqm</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="ServiceTask_04yjaha" name="Reset MiR" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:field name="resourceInstanceId">
+          <camunda:string>qwe</camunda:string>
+        </camunda:field>
+        <camunda:field name="jsonCapability">
+          <camunda:string>qwertz</camunda:string>
+        </camunda:field>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_rUJzsDJhEei1p5hKOf5Slw</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+	"eClass": "http://www.dfki.de/iui/basys/model/component#//CommandRequest",
+	"controlCommand": "RESET"
+}</camunda:inputParameter>
+          <camunda:inputParameter name="parameters">
+            <camunda:script scriptFormat="groovy">params = new HashMap&lt;String, String&gt;();
+params.put("aKey","aValue");
+params</camunda:script>
+          </camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0xfn7g2</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0ywn0s9</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="ServiceTask_1bidhnu" name="Reset Panda" camunda:type="external" camunda:topic="BasysTask">
+      <bpmn:extensionElements>
+        <camunda:field name="resourceInstanceId">
+          <camunda:string>qwe</camunda:string>
+        </camunda:field>
+        <camunda:field name="jsonCapability">
+          <camunda:string>qwertz</camunda:string>
+        </camunda:field>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="assignee">_I4a_oDD-EeiuBvcKgWzd3Q</camunda:inputParameter>
+          <camunda:inputParameter name="command">{
+	"eClass": "http://www.dfki.de/iui/basys/model/component#//CommandRequest",
+	"controlCommand": "RESET"
+}</camunda:inputParameter>
+          <camunda:inputParameter name="parameters">
+            <camunda:script scriptFormat="groovy">params = new HashMap&lt;String, String&gt;();
+params.put("aKey","aValue");
+params</camunda:script>
+          </camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0ro959z</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_15gp05t</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="ExclusiveGateway_047ytee">
+      <bpmn:incoming>SequenceFlow_0x8bf99</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0xfn7g2</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_076wau0</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_0ro959z</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:parallelGateway id="ExclusiveGateway_05jps6i">
+      <bpmn:incoming>SequenceFlow_0ywn0s9</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_15gp05t</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_0nd9xqm</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1kc9oef</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:sequenceFlow id="SequenceFlow_0b5a9rd" sourceRef="ServiceTask_1f3bbnu" targetRef="ExclusiveGateway_0lnn8dw" />
+    <bpmn:sequenceFlow id="SequenceFlow_1pndv4i" sourceRef="ExclusiveGateway_1b74rr2" targetRef="ServiceTask_1f3bbnu" />
+    <bpmn:sequenceFlow id="SequenceFlow_1ox9qtv" sourceRef="ServiceTask_08hgj9u" targetRef="ExclusiveGateway_1diodfd" />
+    <bpmn:sequenceFlow id="SequenceFlow_14jw1y9" sourceRef="ExclusiveGateway_0zhvbbp" targetRef="ServiceTask_08hgj9u" />
+    <bpmn:sequenceFlow id="SequenceFlow_1p2ogbg" sourceRef="ServiceTask_04yp61v" targetRef="ExclusiveGateway_1k9wfa8" />
+    <bpmn:sequenceFlow id="SequenceFlow_0gap11q" sourceRef="ExclusiveGateway_0u7rimo" targetRef="ServiceTask_04yp61v" />
+    <bpmn:sequenceFlow id="SequenceFlow_18oe3tq" sourceRef="ServiceTask_0z36ere" targetRef="ExclusiveGateway_16g61fs" />
+    <bpmn:sequenceFlow id="SequenceFlow_0qo1yt7" sourceRef="ExclusiveGateway_1w7emjy" targetRef="ServiceTask_0z36ere" />
+    <bpmn:sequenceFlow id="SequenceFlow_1mr7xxm" sourceRef="ServiceTask_04c7rrf" targetRef="IntermediateThrowEvent_1vyymk8" />
+    <bpmn:sequenceFlow id="SequenceFlow_0dt2oxm" sourceRef="ExclusiveGateway_0lnn8dw" targetRef="ServiceTask_04c7rrf" />
+    <bpmn:sequenceFlow id="SequenceFlow_0y618rp" sourceRef="ExclusiveGateway_1diodfd" targetRef="ExclusiveGateway_1b74rr2" />
+    <bpmn:sequenceFlow id="SequenceFlow_096pa3v" sourceRef="ExclusiveGateway_16g61fs" targetRef="ExclusiveGateway_0u7rimo" />
+    <bpmn:sequenceFlow id="SequenceFlow_0rc4y2h" sourceRef="ServiceTask_1almfgs" targetRef="ExclusiveGateway_1w7emjy" />
+    <bpmn:sequenceFlow id="SequenceFlow_0mlkap9" sourceRef="ExclusiveGateway_0zhvbbp" targetRef="ServiceTask_0vndicc" />
+    <bpmn:sequenceFlow id="SequenceFlow_0si7i3i" sourceRef="ExclusiveGateway_0zhvbbp" targetRef="ServiceTask_1r52rms" />
+    <bpmn:sequenceFlow id="SequenceFlow_1fkeikw" sourceRef="ServiceTask_0cy0bgd" targetRef="ExclusiveGateway_0lnn8dw" />
+    <bpmn:sequenceFlow id="SequenceFlow_1b5k0hc" sourceRef="ServiceTask_00z5zm8" targetRef="ExclusiveGateway_0lnn8dw" />
+    <bpmn:sequenceFlow id="SequenceFlow_05ikv6i" sourceRef="ExclusiveGateway_1b74rr2" targetRef="ServiceTask_0cy0bgd" />
+    <bpmn:sequenceFlow id="SequenceFlow_02m091c" sourceRef="ExclusiveGateway_1b74rr2" targetRef="ServiceTask_00z5zm8" />
+    <bpmn:sequenceFlow id="SequenceFlow_1qmsfxx" sourceRef="ServiceTask_0vndicc" targetRef="ExclusiveGateway_1diodfd" />
+    <bpmn:sequenceFlow id="SequenceFlow_1icilx7" sourceRef="ServiceTask_1r52rms" targetRef="ExclusiveGateway_1diodfd" />
+    <bpmn:sequenceFlow id="SequenceFlow_0cd4d92" sourceRef="ServiceTask_0dozrup" targetRef="ExclusiveGateway_1k9wfa8" />
+    <bpmn:sequenceFlow id="SequenceFlow_05o62q9" sourceRef="ServiceTask_1a5sz6x" targetRef="ExclusiveGateway_1k9wfa8" />
+    <bpmn:sequenceFlow id="SequenceFlow_1o7don2" sourceRef="ExclusiveGateway_0u7rimo" targetRef="ServiceTask_0dozrup" />
+    <bpmn:sequenceFlow id="SequenceFlow_0zwjkhk" sourceRef="ServiceTask_1f0edyt" targetRef="ExclusiveGateway_16g61fs" />
+    <bpmn:sequenceFlow id="SequenceFlow_12d2mwe" sourceRef="ExclusiveGateway_1w7emjy" targetRef="ServiceTask_1f0edyt" />
+    <bpmn:sequenceFlow id="SequenceFlow_1uud42n" sourceRef="ServiceTask_01u35hr" targetRef="ExclusiveGateway_16g61fs" />
+    <bpmn:sequenceFlow id="SequenceFlow_1c15pvd" sourceRef="ExclusiveGateway_1w7emjy" targetRef="ServiceTask_01u35hr" />
+    <bpmn:sequenceFlow id="SequenceFlow_0g3jeaa" sourceRef="ExclusiveGateway_0u7rimo" targetRef="ServiceTask_1a5sz6x" />
+    <bpmn:sequenceFlow id="SequenceFlow_0xfn7g2" sourceRef="ExclusiveGateway_047ytee" targetRef="ServiceTask_04yjaha" />
+    <bpmn:sequenceFlow id="SequenceFlow_0ywn0s9" sourceRef="ServiceTask_04yjaha" targetRef="ExclusiveGateway_05jps6i" />
+    <bpmn:sequenceFlow id="SequenceFlow_1kc9oef" sourceRef="ExclusiveGateway_05jps6i" targetRef="ServiceTask_1almfgs" />
+    <bpmn:sequenceFlow id="SequenceFlow_15gp05t" sourceRef="ServiceTask_1bidhnu" targetRef="ExclusiveGateway_05jps6i" />
+    <bpmn:sequenceFlow id="SequenceFlow_0nd9xqm" sourceRef="ServiceTask_1rzz96o" targetRef="ExclusiveGateway_05jps6i" />
+    <bpmn:sequenceFlow id="SequenceFlow_076wau0" sourceRef="ExclusiveGateway_047ytee" targetRef="ServiceTask_1rzz96o" />
+    <bpmn:sequenceFlow id="SequenceFlow_0ro959z" sourceRef="ExclusiveGateway_047ytee" targetRef="ServiceTask_1bidhnu" />
+    <bpmn:intermediateCatchEvent id="IntermediateCatchEvent_1i42aku">
+      <bpmn:incoming>SequenceFlow_1k2nitp</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1n1tzfm</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_0tse21g">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT1S</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1k2nitp" sourceRef="ExclusiveGateway_1k9wfa8" targetRef="IntermediateCatchEvent_1i42aku" />
+    <bpmn:sequenceFlow id="SequenceFlow_1n1tzfm" sourceRef="IntermediateCatchEvent_1i42aku" targetRef="ExclusiveGateway_0zhvbbp" />
+    <bpmn:startEvent id="StartEvent_01517o6">
+      <bpmn:outgoing>SequenceFlow_0x8bf99</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0x8bf99" sourceRef="StartEvent_01517o6" targetRef="ExclusiveGateway_047ytee" />
+  </bpmn:process>
+  <bpmn:message id="Message_0jd57om" name="Process.TeachIn.Prepare" />
+  <bpmn:message id="Message_1g6sxmq" name="Process.TeachIn.Start" />
+  <bpmn:message id="Message_137prot" name="Process.TeachIn.Finished" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1iv70a6">
+      <bpmndi:BPMNShape id="Participant_0mln3la_di" bpmnElement="Participant_0mln3la">
+        <dc:Bounds x="-447" y="174" width="1890" height="315" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_01u35hr_di" bpmnElement="ServiceTask_01u35hr">
+        <dc:Bounds x="99" y="194" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1a5sz6x_di" bpmnElement="ServiceTask_1a5sz6x">
+        <dc:Bounds x="365" y="194" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1r52rms_di" bpmnElement="ServiceTask_1r52rms">
+        <dc:Bounds x="799" y="194" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_00z5zm8_di" bpmnElement="ServiceTask_00z5zm8">
+        <dc:Bounds x="1061" y="194" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_0dozrup_di" bpmnElement="ServiceTask_0dozrup">
+        <dc:Bounds x="365" y="292" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_0vndicc_di" bpmnElement="ServiceTask_0vndicc">
+        <dc:Bounds x="799" y="292" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_0cy0bgd_di" bpmnElement="ServiceTask_0cy0bgd">
+        <dc:Bounds x="1061" y="292" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1f0edyt_di" bpmnElement="ServiceTask_1f0edyt">
+        <dc:Bounds x="99" y="292" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1almfgs_di" bpmnElement="ServiceTask_1almfgs">
+        <dc:Bounds x="-99" y="292" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_04c7rrf_di" bpmnElement="ServiceTask_04c7rrf">
+        <dc:Bounds x="1257" y="292" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0rc4y2h_di" bpmnElement="SequenceFlow_0rc4y2h">
+        <di:waypoint x="1" y="332" />
+        <di:waypoint x="24" y="332" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="380.5" y="261" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1uud42n_di" bpmnElement="SequenceFlow_1uud42n">
+        <di:waypoint x="199" y="234" />
+        <di:waypoint x="246" y="234" />
+        <di:waypoint x="246" y="307" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="590.5" y="163" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_096pa3v_di" bpmnElement="SequenceFlow_096pa3v">
+        <di:waypoint x="271" y="332" />
+        <di:waypoint x="297" y="332" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="652" y="261" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1c15pvd_di" bpmnElement="SequenceFlow_1c15pvd">
+        <di:waypoint x="49" y="307" />
+        <di:waypoint x="49" y="234" />
+        <di:waypoint x="99" y="234" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="432" y="214.5" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_12d2mwe_di" bpmnElement="SequenceFlow_12d2mwe">
+        <di:waypoint x="74" y="332" />
+        <di:waypoint x="99" y="332" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="454.5" y="261" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0zwjkhk_di" bpmnElement="SequenceFlow_0zwjkhk">
+        <di:waypoint x="199" y="332" />
+        <di:waypoint x="221" y="332" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="578" y="261" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0g3jeaa_di" bpmnElement="SequenceFlow_0g3jeaa">
+        <di:waypoint x="322" y="307" />
+        <di:waypoint x="322" y="234" />
+        <di:waypoint x="365" y="234" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="705" y="214.5" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1o7don2_di" bpmnElement="SequenceFlow_1o7don2">
+        <di:waypoint x="347" y="332" />
+        <di:waypoint x="365" y="332" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="724" y="261" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ParallelGateway_1v4htgc_di" bpmnElement="ExclusiveGateway_1w7emjy">
+        <dc:Bounds x="24" y="307" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="417" y="317" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ParallelGateway_1s5xb5l_di" bpmnElement="ExclusiveGateway_16g61fs">
+        <dc:Bounds x="221" y="307" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="614" y="317" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ParallelGateway_1appcwx_di" bpmnElement="ExclusiveGateway_0u7rimo">
+        <dc:Bounds x="297" y="307" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="690" y="317" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_05o62q9_di" bpmnElement="SequenceFlow_05o62q9">
+        <di:waypoint x="465" y="234" />
+        <di:waypoint x="512" y="234" />
+        <di:waypoint x="512" y="307" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="856.5" y="163" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0cd4d92_di" bpmnElement="SequenceFlow_0cd4d92">
+        <di:waypoint x="465" y="332" />
+        <di:waypoint x="487" y="332" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="844" y="261" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ParallelGateway_1dfbc9i_di" bpmnElement="ExclusiveGateway_1k9wfa8">
+        <dc:Bounds x="487" y="307" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="880" y="317" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1icilx7_di" bpmnElement="SequenceFlow_1icilx7">
+        <di:waypoint x="899" y="234" />
+        <di:waypoint x="946" y="234" />
+        <di:waypoint x="946" y="307" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1290.5" y="163" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1qmsfxx_di" bpmnElement="SequenceFlow_1qmsfxx">
+        <di:waypoint x="899" y="332" />
+        <di:waypoint x="921" y="332" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1278" y="261" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0y618rp_di" bpmnElement="SequenceFlow_0y618rp">
+        <di:waypoint x="971" y="332" />
+        <di:waypoint x="993" y="332" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1350" y="261" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_02m091c_di" bpmnElement="SequenceFlow_02m091c">
+        <di:waypoint x="1018" y="307" />
+        <di:waypoint x="1018" y="234" />
+        <di:waypoint x="1061" y="234" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1401" y="214.5" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_05ikv6i_di" bpmnElement="SequenceFlow_05ikv6i">
+        <di:waypoint x="1043" y="332" />
+        <di:waypoint x="1061" y="332" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1420" y="261" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1b5k0hc_di" bpmnElement="SequenceFlow_1b5k0hc">
+        <di:waypoint x="1161" y="234" />
+        <di:waypoint x="1202" y="234" />
+        <di:waypoint x="1202" y="307" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1549.5" y="163" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1fkeikw_di" bpmnElement="SequenceFlow_1fkeikw">
+        <di:waypoint x="1161" y="332" />
+        <di:waypoint x="1177" y="332" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1537" y="261" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0dt2oxm_di" bpmnElement="SequenceFlow_0dt2oxm">
+        <di:waypoint x="1227" y="332" />
+        <di:waypoint x="1257" y="332" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1610" y="261" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0si7i3i_di" bpmnElement="SequenceFlow_0si7i3i">
+        <di:waypoint x="750" y="307" />
+        <di:waypoint x="750" y="234" />
+        <di:waypoint x="799" y="234" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1133" y="214.5" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0mlkap9_di" bpmnElement="SequenceFlow_0mlkap9">
+        <di:waypoint x="775" y="332" />
+        <di:waypoint x="799" y="332" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1155" y="261" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ParallelGateway_18wi50e_di" bpmnElement="ExclusiveGateway_0zhvbbp">
+        <dc:Bounds x="725" y="307" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1118" y="317" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ParallelGateway_0wncc7l_di" bpmnElement="ExclusiveGateway_1diodfd">
+        <dc:Bounds x="921" y="307" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1314" y="317" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ParallelGateway_13fobq9_di" bpmnElement="ExclusiveGateway_1b74rr2">
+        <dc:Bounds x="993" y="307" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1386" y="317" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ParallelGateway_1p7lzca_di" bpmnElement="ExclusiveGateway_0lnn8dw">
+        <dc:Bounds x="1177" y="307" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1570" y="317" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="IntermediateThrowEvent_1vyymk8_di" bpmnElement="IntermediateThrowEvent_1vyymk8">
+        <dc:Bounds x="1387" y="314" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1773" y="304" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1mr7xxm_di" bpmnElement="SequenceFlow_1mr7xxm">
+        <di:waypoint x="1357" y="332" />
+        <di:waypoint x="1387" y="332" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1740" y="261" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_0z36ere_di" bpmnElement="ServiceTask_0z36ere">
+        <dc:Bounds x="99" y="389" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_04yp61v_di" bpmnElement="ServiceTask_04yp61v">
+        <dc:Bounds x="365" y="389" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_08hgj9u_di" bpmnElement="ServiceTask_08hgj9u">
+        <dc:Bounds x="799" y="389" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1f3bbnu_di" bpmnElement="ServiceTask_1f3bbnu">
+        <dc:Bounds x="1061" y="389" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0qo1yt7_di" bpmnElement="SequenceFlow_0qo1yt7">
+        <di:waypoint x="49" y="357" />
+        <di:waypoint x="49" y="429" />
+        <di:waypoint x="99" y="429" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="432" y="337" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_18oe3tq_di" bpmnElement="SequenceFlow_18oe3tq">
+        <di:waypoint x="199" y="429" />
+        <di:waypoint x="246" y="429" />
+        <di:waypoint x="246" y="357" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="590.5" y="358" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_14jw1y9_di" bpmnElement="SequenceFlow_14jw1y9">
+        <di:waypoint x="750" y="357" />
+        <di:waypoint x="750" y="429" />
+        <di:waypoint x="799" y="429" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1133" y="337" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1ox9qtv_di" bpmnElement="SequenceFlow_1ox9qtv">
+        <di:waypoint x="899" y="429" />
+        <di:waypoint x="946" y="429" />
+        <di:waypoint x="946" y="357" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1290.5" y="358" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1pndv4i_di" bpmnElement="SequenceFlow_1pndv4i">
+        <di:waypoint x="1018" y="357" />
+        <di:waypoint x="1018" y="429" />
+        <di:waypoint x="1061" y="429" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1401" y="337" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0b5a9rd_di" bpmnElement="SequenceFlow_0b5a9rd">
+        <di:waypoint x="1161" y="429" />
+        <di:waypoint x="1202" y="429" />
+        <di:waypoint x="1202" y="357" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1549.5" y="358" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_1rzz96o_di" bpmnElement="ServiceTask_1rzz96o">
+        <dc:Bounds x="-284" y="194" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_04yjaha_di" bpmnElement="ServiceTask_04yjaha">
+        <dc:Bounds x="-284" y="292" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1bidhnu_di" bpmnElement="ServiceTask_1bidhnu">
+        <dc:Bounds x="-284" y="389" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0xfn7g2_di" bpmnElement="SequenceFlow_0xfn7g2">
+        <di:waypoint x="-299" y="332" />
+        <di:waypoint x="-284" y="332" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0ywn0s9_di" bpmnElement="SequenceFlow_0ywn0s9">
+        <di:waypoint x="-184" y="332" />
+        <di:waypoint x="-167" y="332" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1kc9oef_di" bpmnElement="SequenceFlow_1kc9oef">
+        <di:waypoint x="-117" y="332" />
+        <di:waypoint x="-99" y="332" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_15gp05t_di" bpmnElement="SequenceFlow_15gp05t">
+        <di:waypoint x="-184" y="429" />
+        <di:waypoint x="-142" y="429" />
+        <di:waypoint x="-142" y="357" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0nd9xqm_di" bpmnElement="SequenceFlow_0nd9xqm">
+        <di:waypoint x="-184" y="234" />
+        <di:waypoint x="-142" y="234" />
+        <di:waypoint x="-142" y="307" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_076wau0_di" bpmnElement="SequenceFlow_076wau0">
+        <di:waypoint x="-324" y="307" />
+        <di:waypoint x="-324" y="234" />
+        <di:waypoint x="-284" y="234" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0ro959z_di" bpmnElement="SequenceFlow_0ro959z">
+        <di:waypoint x="-324" y="357" />
+        <di:waypoint x="-324" y="429" />
+        <di:waypoint x="-284" y="429" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ParallelGateway_0ommk32_di" bpmnElement="ExclusiveGateway_047ytee">
+        <dc:Bounds x="-349" y="307" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ParallelGateway_12sy7p4_di" bpmnElement="ExclusiveGateway_05jps6i">
+        <dc:Bounds x="-167" y="307" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0gap11q_di" bpmnElement="SequenceFlow_0gap11q">
+        <di:waypoint x="322" y="357" />
+        <di:waypoint x="322" y="429" />
+        <di:waypoint x="365" y="429" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="705" y="337" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1p2ogbg_di" bpmnElement="SequenceFlow_1p2ogbg">
+        <di:waypoint x="465" y="429" />
+        <di:waypoint x="512" y="429" />
+        <di:waypoint x="512" y="357" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="856.5" y="358" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="IntermediateCatchEvent_1i42aku_di" bpmnElement="IntermediateCatchEvent_1i42aku">
+        <dc:Bounds x="610" y="314" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1k2nitp_di" bpmnElement="SequenceFlow_1k2nitp">
+        <di:waypoint x="537" y="332" />
+        <di:waypoint x="610" y="332" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1n1tzfm_di" bpmnElement="SequenceFlow_1n1tzfm">
+        <di:waypoint x="646" y="332" />
+        <di:waypoint x="725" y="332" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="StartEvent_01517o6_di" bpmnElement="StartEvent_01517o6">
+        <dc:Bounds x="-404.9" y="314" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0x8bf99_di" bpmnElement="SequenceFlow_0x8bf99">
+        <di:waypoint x="-369" y="332" />
+        <di:waypoint x="-349" y="332" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

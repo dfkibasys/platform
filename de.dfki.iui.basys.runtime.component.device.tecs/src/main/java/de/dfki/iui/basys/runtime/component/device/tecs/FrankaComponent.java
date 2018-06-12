@@ -161,18 +161,7 @@ public class FrankaComponent extends TecsDeviceComponent{
 	
 	@Override
 	public void onResetting() {
-//		close();
-//		try {
-//			open();
-//			LOGGER.info("Moving to home position");			
-//			client.MoveToKnownPosition(FrankaConstants.KNOWN_POSE_1);
-//			onExecute(); // block until in KnownPose1
-//			
-//		} catch (TException e) {
-//			e.printStackTrace();
-//			setErrorCode(1);
-//			stop();
-//		}
+		reconnect();
 	}
 
 	@Override

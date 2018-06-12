@@ -7,9 +7,6 @@ import java.util.concurrent.TimeUnit;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TProtocol;
@@ -275,6 +272,7 @@ public class MirComponent extends TecsDeviceComponent {
 		// open();
 		// } catch (TTransportException e1) {
 		// e1.printStackTrace();
+		reconnect();
 		// }
 		try {
 			client.setState(MIRState.Ready);
@@ -333,15 +331,16 @@ public class MirComponent extends TecsDeviceComponent {
 			if (mSourceLocation != null && mSourceLocation.getName().equals("Station-Festo")
 					&& mTargetLocation.getName().equals("Station-QA")) {
 
-				// Get mission list from here:
-				// http://robot-mir-04.mrk40.dfki.lan:8080/v1.0.0/missions
-
-				String mission = "{\"mission\":\"69e0bd1d-6d6f-11e8-af15-f44d3061d9da\"}";
-				Response r = restClient.target(mRest_URI).request(MediaType.APPLICATION_JSON)
-						.post(Entity.json(mission));
-				LOGGER.debug("Status: " + r.getStatus());
+//				// Get mission list from here:
+//				// http://robot-mir-04.mrk40.dfki.lan:8080/v1.0.0/missions
+//
+//				String mission = "{\"mission\":\"69e0bd1d-6d6f-11e8-af15-f44d3061d9da\"}";
+//				Response r = restClient.target(mRest_URI).request(MediaType.APPLICATION_JSON)
+//						.post(Entity.json(mission));
+//				LOGGER.debug("Status: " + r.getStatus());
+				client.gotoNamedPosition(targetElement.getName());
 			} else {
-				client.gotoNamedPositionDelayed(targetElement.getName(), 5);
+				client.gotoNamedPosition(targetElement.getName());
 			}
 
 			
