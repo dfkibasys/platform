@@ -1,0 +1,10 @@
+{
+  "eClass" : "http://www.dfki.de/iui/basys/model/component#//ComponentConfiguration",
+  "componentCategory" : "DEVICE_COMPONENT",
+  "componentId" : "_jJdx4DD7EeiuBvcKgWzd3Q",
+  "componentName" : "My UR3",
+   "componentImplementationJavaClass" : "de.dfki.iui.basys.runtime.component.device.tecs.Ur3Component",
+  "inChannelName" : "_jJdx4DD7EeiuBvcKgWzd3Q#in",
+  "outChannelName" : "_jJdx4DD7EeiuBvcKgWzd3Q#out",
+  "externalConnectionString" : "tecs.tcp://10.2.0.105:9090"
+}

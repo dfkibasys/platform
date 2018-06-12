@@ -43,6 +43,11 @@
         <appliedOn xsi:type="topology:Station" href="model.topology#_F6qPdzB5Eei1bbwBPPZWOA"/>
         <appliedOn xsi:type="topology:AGVStation" href="model.topology#_xHhjwV2TEeit97PGgoQOAQ"/>
       </capabilityVariants>
+      <capabilityVariants xsi:type="resourceinstance:LogisticsCapabilityVariant" id="_gTUL4F5lEeixtLE-b5nbbQ" name="Clear YuMi (KLT)">
+        <capability xsi:type="capability:PickAndPlace" id="_DmqkDlN0Eeiceaq8G123Yg" name="" loadCarrierUnit="R_KLT_3215"/>
+        <appliedOn xsi:type="topology:AGVStation" href="model.topology#_xHhjwV2TEeit97PGgoQOAQ"/>
+        <appliedOn xsi:type="topology:Station" href="model.topology#_F6qPdzB5Eei1bbwBPPZWOA"/>
+      </capabilityVariants>
     </capabilityApplications>
     <role href="model.topology#_HlgntTB5Eei1bbwBPPZWOA"/>
   </resourceInstances>
@@ -142,7 +147,7 @@
     <resourceType href="model.resourcetype#_3cuNYlIxEeidSe5vp9A3oA"/>
     <role href="model.topology#_AzQQwDB5Eei1bbwBPPZWOA"/>
   </resourceInstances>
-  <resourceInstances id="_TgItAGsZEeixZrynCv8ohQ" name="My Hue Light">
+  <resourceInstances id="_TgItAGsZEeixZrynCv8ohQ" name="My Hue Light" serialNumber="882378">
     <resourceType href="model.resourcetype#_XEoEQmsVEeiPYI9_h6Hhzw"/>
     <capabilityApplications>
       <capabilityAssertion href="model.resourcetype#_ndTi4GsVEeiPYI9_h6Hhzw"/>

@@ -1,0 +1,25 @@
+{
+  "eClass" : "http://www.dfki.de/iui/basys/model/component#//ComponentConfiguration",
+  "componentId" : "basys-connector",
+  "componentName" : "basys-connector",
+  "componentCategory" : "SERVICE_COMPONENT",
+  "componentImplementationJavaClass" : "de.dfki.iui.basys.runtime.connector.BasysConnectorImpl",
+  "externalConnectionString" : "failover:(tcp://10.2.100.1:61616)?randomize=false&priorityBackup=true",
+  "outChannelName" : "basys-connector#out",
+  "properties" : [ {
+    "key" : "caaResourceId",
+    "value" : "300999013"
+  }, {
+    "key" : "caaInTopic",
+    "value" : "Sbr.Line.003.Basys.Preassembly.Iss.OpcUa.In"
+  }, {
+    "key" : "caaOutTopic",
+    "value" : "Sbr.Line.003.Basys.Preassembly.Iss.OpcUa.Out"
+  }, {
+    "key" : "basysMatNr",
+    "value" : "1104136031"
+  }, {
+    "key" : "festoComponentId",
+    "value" : "_SE5NIDB4Eei1bbwBPPZWOA"
+  }]
+}
