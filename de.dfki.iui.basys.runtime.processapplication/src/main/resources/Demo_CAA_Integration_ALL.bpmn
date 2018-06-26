@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1v63zp2" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.15.1">
   <bpmn:collaboration id="Collaboration_1b5wmpw">
-    <bpmn:participant id="Participant_13haujb" name="Demo.CAA.Integration_ALL" processRef="Demo.CAA.Integration_ALL" />
+    <bpmn:participant id="Participant_13haujb" name="Demo_CAA_Integration_ALL" processRef="Demo_CAA_Integration_ALL" />
   </bpmn:collaboration>
-  <bpmn:process id="Demo.CAA.Integration_ALL" name="Demo.CAAIntegration_ALL" isExecutable="true">
+  <bpmn:process id="Demo_CAA_Integration_ALL" name="Demo_CAA_Integration_ALL" isExecutable="true">
     <bpmn:sequenceFlow id="SequenceFlow_1k167zn" sourceRef="ServiceTask_0j938sq" targetRef="ParallelGateway_0oy4ovk" />
     <bpmn:sequenceFlow id="SequenceFlow_0xwns7f" sourceRef="ServiceTask_1nd3uvw" targetRef="ServiceTask_1g9ly80" />
     <bpmn:sequenceFlow id="SequenceFlow_13h25gk" sourceRef="ServiceTask_17l1vth" targetRef="ServiceTask_18ca1s4" />
@@ -323,7 +323,7 @@
   }</camunda:inputParameter>
         </camunda:inputOutput>
       </bpmn:extensionElements>
-      <bpmn:incoming>SequenceFlow_02qxwo9</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_0ms38w8</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1b31pzl</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:serviceTask id="ServiceTask_09jj6x9" name="Deckel auflegen" camunda:type="external" camunda:topic="BasysTask">
@@ -381,13 +381,6 @@
       <bpmn:incoming>SequenceFlow_16c3y99</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0wue134</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:intermediateCatchEvent id="IntermediateCatchEvent_0eeordg">
-      <bpmn:incoming>SequenceFlow_0ms38w8</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_02qxwo9</bpmn:outgoing>
-      <bpmn:timerEventDefinition id="TimerEventDefinition_1iljzx1">
-        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT1S</bpmn:timeDuration>
-      </bpmn:timerEventDefinition>
-    </bpmn:intermediateCatchEvent>
     <bpmn:exclusiveGateway id="ExclusiveGateway_1skg1ot" default="SequenceFlow_1jgd6e9">
       <bpmn:incoming>SequenceFlow_0w6q8hd</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_027epgs</bpmn:outgoing>
@@ -402,13 +395,12 @@
     <bpmn:sequenceFlow id="SequenceFlow_027epgs" sourceRef="ExclusiveGateway_1skg1ot" targetRef="ParallelGateway_0h588ax">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${resourceInstanceId == "_jJdx4DD7EeiuBvcKgWzd3Q"}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="SequenceFlow_0ms38w8" sourceRef="ParallelGateway_0h588ax" targetRef="IntermediateCatchEvent_0eeordg" />
+    <bpmn:sequenceFlow id="SequenceFlow_0ms38w8" sourceRef="ParallelGateway_0h588ax" targetRef="ServiceTask_1arqxtc" />
     <bpmn:sequenceFlow id="SequenceFlow_1296nhf" sourceRef="ParallelGateway_0h588ax" targetRef="ServiceTask_1t3dh6d" />
     <bpmn:sequenceFlow id="SequenceFlow_16c3y99" sourceRef="ServiceTask_1t3dh6d" targetRef="ServiceTask_01pqbts" />
     <bpmn:sequenceFlow id="SequenceFlow_12o0a25" sourceRef="ServiceTask_09jj6x9" targetRef="ParallelGateway_0s553o9" />
     <bpmn:sequenceFlow id="SequenceFlow_0wue134" sourceRef="ServiceTask_01pqbts" targetRef="ParallelGateway_0s553o9" />
     <bpmn:sequenceFlow id="SequenceFlow_0yb95fr" sourceRef="ParallelGateway_0s553o9" targetRef="ExclusiveGateway_1in5cqj" />
-    <bpmn:sequenceFlow id="SequenceFlow_02qxwo9" sourceRef="IntermediateCatchEvent_0eeordg" targetRef="ServiceTask_1arqxtc" />
     <bpmn:sequenceFlow id="SequenceFlow_1b31pzl" sourceRef="ServiceTask_1arqxtc" targetRef="ServiceTask_09jj6x9" />
     <bpmn:sequenceFlow id="SequenceFlow_1jgd6e9" sourceRef="ExclusiveGateway_1skg1ot" targetRef="ServiceTask_04dwpbo" />
     <bpmn:sequenceFlow id="SequenceFlow_1x9pi8u" sourceRef="ServiceTask_15a5v3y" targetRef="IntermediateCatchEvent_0spofte" />
@@ -854,13 +846,10 @@
       <bpmndi:BPMNShape id="ServiceTask_01pqbts_di" bpmnElement="ServiceTask_01pqbts">
         <dc:Bounds x="1604" y="768" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="IntermediateCatchEvent_0eeordg_di" bpmnElement="IntermediateCatchEvent_0eeordg">
-        <dc:Bounds x="1415" y="896" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_0ms38w8_di" bpmnElement="SequenceFlow_0ms38w8">
         <di:waypoint x="1377" y="886" />
         <di:waypoint x="1377" y="914" />
-        <di:waypoint x="1415" y="914" />
+        <di:waypoint x="1477" y="914" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_1296nhf_di" bpmnElement="SequenceFlow_1296nhf">
         <di:waypoint x="1377" y="836" />
@@ -880,10 +869,6 @@
         <di:waypoint x="1704" y="808" />
         <di:waypoint x="1783" y="808" />
         <di:waypoint x="1783" y="836" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SequenceFlow_02qxwo9_di" bpmnElement="SequenceFlow_02qxwo9">
-        <di:waypoint x="1451" y="914" />
-        <di:waypoint x="1477" y="914" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_1b31pzl_di" bpmnElement="SequenceFlow_1b31pzl">
         <di:waypoint x="1577" y="914" />

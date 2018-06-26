@@ -34,6 +34,7 @@ import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.ComponentFactory;
 import de.dfki.iui.basys.model.runtime.component.Property;
 import de.dfki.iui.basys.runtime.communication.CommFactory;
+import de.dfki.iui.basys.runtime.component.Component;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.service.DeviceControllerServiceComponent;
@@ -61,6 +62,13 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 		super(config);
 	}
 
+	@Override
+	public void connectToExternal() throws ComponentException {
+		// TODO Auto-generated method stub
+		super.connectToExternal();
+		device.reset();
+	}
+	
 	private synchronized void stopDevice() {
 		LOGGER.info("Device State is " + device.getState());
 		device.stop();
@@ -194,48 +202,49 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 		switch (mCurrentTargetPosition.getName()) {
 
 		case "Station-QA":
-			targetPos.setX(0);
-			targetPos.setY(0);
+			targetPos.setX(-1.75);
+			targetPos.setY(-.5);
 			targetPos.setZ(0);
 			orientation = 90;
 			break;
 		case "Station-Festo":
-			targetPos.setX(-1);
-			targetPos.setY(-1);
+			targetPos.setX(2);
+			targetPos.setY(-3.25);
 			targetPos.setZ(0);
 			orientation = 270;
 			break;
 		case "Station-BaSys":
-			targetPos.setX(0);
+			targetPos.setX(2);
 			targetPos.setY(0);
 			targetPos.setZ(0);
 			orientation = 90;
 			break;
 		case "Station-Cola":
-			targetPos.setX(0);
-			targetPos.setY(0);
+			targetPos.setX(0.15);
+			targetPos.setY(-2.75);
 			targetPos.setZ(0);
-			orientation = 90;
+			orientation = 270;
 			break;
 		case "Station-Wait":
-			targetPos.setX(0);
-			targetPos.setY(0);
+			targetPos.setX(1.35);
+			targetPos.setY(0.25);
 			targetPos.setZ(0);
 			orientation = 90;
 			break;
 		case "Station-TeachIn":
-			targetPos.setX(0);
-			targetPos.setY(0);
+			targetPos.setX(0.15);
+			targetPos.setY(-2.75);
 			targetPos.setZ(0);
-			orientation = 90;
+			orientation = 270;
 			break;
 		}
 
 		ProjectETA capability = CapabilityFactory.eINSTANCE.createProjectETA();
 
-		capability.setEta(45000);
+		
+		capability.setEta(22500);
 		capability.setPosition(targetPos);
-		capability.setRadius(.15);
+		capability.setRadius(.1);
 		capability.setOrientation(orientation);
 		capability.setColor(0);
 		GeneralCapabilityVariant variant = ResourceinstanceFactory.eINSTANCE.createGeneralCapabilityVariant();
@@ -331,7 +340,7 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 								
 								// MIR should go somewhere
 								mWaitingForNewPath = true;
-								mVisualizeBeginningUntil = System.currentTimeMillis() + 10000;
+								mVisualizeBeginningUntil = System.currentTimeMillis() + 4500;
 								mCurrentTargetPosition = (TopologyElement) payload;
 								mETANotYetVisualized = true;
 								mFinalPathNotYetVisualized = true;
@@ -400,18 +409,20 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 			public void run() {
 
 				while (true) {
-					Property etaProperty = context.getComponentManager()
-							.getLocalComponentById("_rUJzsDJhEei1p5hKOf5Slw").getConfig().getProperty("estimatedETA");
+					try {
+					Component mir =  context.getComponentManager()
+							.getLocalComponentById("_rUJzsDJhEei1p5hKOf5Slw");
+					Property etaProperty =mir.getConfig().getProperty("estimatedETA");
 
 					if (etaProperty != null) {
 						mETA = Integer.parseInt(etaProperty.getValue());
 					}
 
-					if (mETA < 60000 && mETA > 15000 && mETANotYetVisualized) {
+					if (mETA < 30000 && mETA > 15000 && mETANotYetVisualized) {
 						mETANotYetVisualized = false;
 						visualizeETA();
 						mETAVisualizationRunning = true;
-						mVisualizeETACircleUntil = System.currentTimeMillis() + 30000;
+						mVisualizeETACircleUntil = System.currentTimeMillis() + 15000;
 
 					}
 
@@ -419,7 +430,7 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 						mFinalPathNotYetVisualized = false;
 						visualizePath(getPathEnd(mPath, .4));
 						mFinalPathVisualizationRunning = true;
-						mVisualizeFinalPathUntil = System.currentTimeMillis() + 15000;
+						mVisualizeFinalPathUntil = System.currentTimeMillis() + 5000;
 					}
 
 					if (mBeginningVisualizationRunning && System.currentTimeMillis() >= mVisualizeBeginningUntil) {
@@ -437,8 +448,11 @@ public class LaserServiceComponent extends DeviceControllerServiceComponent {
 
 					}
 					try {
-						Thread.sleep(1000);
+						Thread.sleep(500);
 					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					} catch (Exception e) {
 						e.printStackTrace();
 					}
 

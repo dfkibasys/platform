@@ -119,6 +119,8 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 		
 		if (status.getStatus() == RequestStatus.ACCEPTED)
 			pendingRequest = req;
+		else
+			LOGGER.info("NOT ACCEPTED");
 		
 		return status;
 	}

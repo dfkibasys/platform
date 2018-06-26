@@ -10,7 +10,7 @@ public class SimulatedStatesHandler implements ActiveStatesHandler {
 
 	private DeviceComponent component;
 	private SimulationConfiguration config;
-	private double speedFactor = 0.2;
+	private double speedFactor = 1.0;
 	
 	public SimulatedStatesHandler(DeviceComponent component) {
 		this.component = component;

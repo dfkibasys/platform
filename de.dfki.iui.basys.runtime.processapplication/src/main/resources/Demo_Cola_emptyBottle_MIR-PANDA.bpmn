@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_062ggb8" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.15.1">
-  <bpmn:process id="Demo.Cola.emptyBottle_MIR-PANDA" name="Demo.Cola.emptyBottle_MIR-PANDA" isExecutable="true">
+  <bpmn:process id="Demo_Cola_emptyBottle_MIR-PANDA" name="Demo_Cola_emptyBottle_MIR-PANDA" isExecutable="true">
     <bpmn:sequenceFlow id="SequenceFlow_1xza5xu" sourceRef="Task_1lrr1h0" targetRef="ServiceTask_07pmx0i" />
     <bpmn:sequenceFlow id="SequenceFlow_0uhgzbr" sourceRef="Task_1e26cks" targetRef="ServiceTask_0egvrxt" />
     <bpmn:serviceTask id="Task_1lrr1h0" name="Mobiler Roboter fährt zu Getränkestation" camunda:type="external" camunda:topic="BasysTask">
@@ -180,7 +180,7 @@
     </bpmn:endEvent>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Demo.Cola.emptyBottle_MIR-PANDA">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Demo_Cola_emptyBottle_MIR-PANDA">
       <bpmndi:BPMNEdge id="SequenceFlow_1xza5xu_di" bpmnElement="SequenceFlow_1xza5xu">
         <di:waypoint x="918" y="120" />
         <di:waypoint x="954" y="120" />

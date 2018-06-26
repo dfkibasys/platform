@@ -17,7 +17,7 @@
       <bpmn:incoming>SequenceFlow_1w2c58b</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0g4cfyk</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:serviceTask id="ServiceTask_0s1u5jw" name="Mobiler Roboter fährt zu Warteposition" camunda:type="external" camunda:topic="BasysTask">
+    <bpmn:serviceTask id="ServiceTask_0s1u5jw" name="Mobiler Roboter fährt zu Festo" camunda:type="external" camunda:topic="BasysTask">
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="assignee">_rUJzsDJhEei1p5hKOf5Slw</camunda:inputParameter>
@@ -33,7 +33,7 @@
         "name" : "",
         "targetLocation" : {
           "eClass" : "http://www.dfki.de/iui/basys/model/topology#//AGVStation",
-          "$ref" : "http://localhost:8080/services/entity/_5AENVV2TEeit97PGgoQOAQ"
+          "$ref" : "http://localhost:8080/services/entity/_zzNG4V2TEeit97PGgoQOAQ"
         }
       }
     }
@@ -44,7 +44,7 @@
       <bpmn:incoming>SequenceFlow_01ycc0e</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0k2pfsh</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:serviceTask id="ServiceTask_0m1jh9o" name="Mobiler Roboter fährt zu Festo-Station" camunda:type="external" camunda:topic="BasysTask">
+    <bpmn:serviceTask id="ServiceTask_0m1jh9o" name="Mobiler Roboter fährt zu Cola-Station" camunda:type="external" camunda:topic="BasysTask">
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="assignee">_rUJzsDJhEei1p5hKOf5Slw</camunda:inputParameter>
@@ -53,14 +53,14 @@
     "capabilityVariant" : {
       "eClass" : "http://www.dfki.de/iui/basys/model/resourceinstance#//GeneralCapabilityVariant",
       "id" : "_gTX2RV-lEeixtLE-b5nbbQ",
-      "name" : "Move to Station-Festo",
+      "name" : "Move to Station-QA",
       "capability" : {
         "eClass" : "http://www.dfki.de/iui/basys/model/capability#//MoveToLocation",
         "id" : "_t1_rp1-WEeieWai6RAB66w",
         "name" : "",
         "targetLocation" : {
           "eClass" : "http://www.dfki.de/iui/basys/model/topology#//AGVStation",
-          "$ref" : "http://localhost:8080/services/entity/_zzNG4V2TEeit97PGgoQOAQ"
+          "$ref" : "http://localhost:8080/services/entity/_rBfZoV2TEeit97PGgoQOAQ"
         }
       }
     }

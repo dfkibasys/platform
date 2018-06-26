@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_062ggb8" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.15.1">
-  <bpmn:process id="Demo.QA_YUMI-HUE" name="Demo.QA_YUMI-HUE" isExecutable="true">
+  <bpmn:process id="Demo_QA_YUMI-HUE" name="Demo_QA_YUMI-HUE" isExecutable="true">
     <bpmn:serviceTask id="ServiceTask_113hhhk" name="Reset YuMi" camunda:type="external" camunda:topic="BasysTask">
       <bpmn:extensionElements>
         <camunda:inputOutput>
@@ -125,7 +125,7 @@
     <bpmn:sequenceFlow id="SequenceFlow_1fq8uxm" sourceRef="ServiceTask_0nrgxf0" targetRef="ServiceTask_1sz8sl7" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Demo.QA_YUMI-HUE">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Demo_QA_YUMI-HUE">
       <bpmndi:BPMNShape id="ServiceTask_113hhhk_di" bpmnElement="ServiceTask_113hhhk">
         <dc:Bounds x="413" y="137" width="100" height="80" />
       </bpmndi:BPMNShape>

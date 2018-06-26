@@ -356,29 +356,31 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 								public void handleNotification(Channel channel, Notification not) {
 									try {
 										EObject payload = JsonUtils.fromString(not.getPayload(), EObject.class);
-										if (payload.eClass().equals(ComponentPackage.eINSTANCE.getComponentResponse())) {
+										if (payload.eClass().equals(ComponentPackage.eINSTANCE.getComponentResponse())) {											
 											ComponentResponse response = (ComponentResponse) payload;
-											if (response.getStatus() == ResponseStatus.OK) {
-												try {
-													sender.send(msg12);
-													LOGGER.info("MSG12 sent to " + sender.getDestination().toString());
-												} catch (JMSException e) {
-													LOGGER.error(e.getMessage(), e);
+											if (response.getRequest().eClass().equals(ComponentPackage.eINSTANCE.getCapabilityRequest())) {
+												if (response.getStatus() == ResponseStatus.OK) {
+													try {
+														sender.send(msg12);
+														LOGGER.info("MSG12 sent to " + sender.getDestination().toString());
+													} catch (JMSException e) {
+														LOGGER.error(e.getMessage(), e);
+													}
+												} else {
+													TextMessage newMsg12 = messageFactory.createMSG12(getCaaResourceId(), 2,
+															response.getStatusCode());
+													try {
+														sender.send(newMsg12);
+														LOGGER.info("MSG12 sent to " + sender.getDestination().toString());
+													} catch (JMSException e) {
+														LOGGER.error(e.getMessage(), e);
+													}
 												}
-											} else {
-												TextMessage newMsg12 = messageFactory.createMSG12(getCaaResourceId(), 2,
-														response.getStatusCode());
-												try {
-													sender.send(newMsg12);
-													LOGGER.info("MSG12 sent to " + sender.getDestination().toString());
-												} catch (JMSException e) {
-													LOGGER.error(e.getMessage(), e);
-												}
-											}
-											// remove registration
-											componentOut.close();
-											componentOut = null;
-										}					
+												// remove registration
+												componentOut.close();
+												componentOut = null;
+											}				
+										}
 									} catch (IOException e) {
 										// TODO Auto-generated catch block
 										e.printStackTrace();

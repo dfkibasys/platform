@@ -90,8 +90,8 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 
 		LOGGER.debug("pollCamunda");
 
-		// long lockDuration = 24 * 60 * 60 * 1000;
-		long lockDuration = 5 * 60 * 1000;
+		 long lockDuration = 24 * 60 * 60 * 1000;
+		//long lockDuration = 5 * 60 * 1000;
 		List<ExternalServiceTaskDto> tasks = client.getExternalTasks("BasysTask", 3, lockDuration, asyncResponseTimeout, "assignee", "command", "parameters");
 
 		LOGGER.debug("pollCamunda fetched " + tasks.size() + " tasks" );

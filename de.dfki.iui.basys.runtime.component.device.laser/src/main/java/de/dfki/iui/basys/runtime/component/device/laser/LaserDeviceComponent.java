@@ -7,6 +7,10 @@ import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.MediaType;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
+
 import de.dfki.iui.basys.model.data.CartesianCoordinate;
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
 import de.dfki.iui.basys.model.domain.capability.ProjectETA;
@@ -68,7 +72,7 @@ public class LaserDeviceComponent extends DeviceComponent {
 
 		CartesianCoordinate center = cap.getPosition();
 		p.addEntity(new PEMovingETA(center.getX(), center.getY(), center.getZ(), cap.getRadius(), cap.getOrientation(),
-				60 * 1000, cap.getEta(), EProjectionColor.getColorByIndex(cap.getColor())));
+				30000, cap.getEta(), EProjectionColor.getColorByIndex(cap.getColor())));
 
 		return p;
 	}
@@ -85,9 +89,17 @@ public class LaserDeviceComponent extends DeviceComponent {
 		Projection p = (Projection) (getUnitConfig().getPayload());
 
 		LOGGER.info("call rest client");
-		client.target(getConfig().getExternalConnectionString()).request(MediaType.APPLICATION_JSON)
-				.put(Entity.entity(p, MediaType.APPLICATION_JSON));
-
+		
+		ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+		
+		try {
+			String json = ow.writeValueAsString(p);
+			client.target(getConfig().getExternalConnectionString()).request(MediaType.APPLICATION_JSON)
+				.put(Entity.entity(json, MediaType.APPLICATION_JSON));
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
