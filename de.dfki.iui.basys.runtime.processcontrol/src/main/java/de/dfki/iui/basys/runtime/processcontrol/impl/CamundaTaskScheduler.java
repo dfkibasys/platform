@@ -104,6 +104,12 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 				client.handleError(task.id, "ExternalTask does not contain a command", 0, 1000);
 				continue;
 			}
+			
+			if (task.variables.assignee.value.equals("WAIT")) {
+				int duration = Integer.parseInt(task.variables.command.value);
+				scheduleWait(task.getId(),duration);
+			}
+			
 			// if (task.variables.parameters == null || task.variables.parameters.value ==
 			// null) {
 			// client.handleError(task.id, "ExternalTask does not contain parameters", 0,
@@ -123,6 +129,16 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 
 		}
 	}
+	
+	private void scheduleWait(String id, int duration) {
+		executor.schedule(new Runnable() {
+			@Override
+			public void run() {
+				client.complete(id);
+			}
+		}, duration, TimeUnit.MILLISECONDS);
+	}
+	
 
 	/*
 	 * TaskScheduler interface
