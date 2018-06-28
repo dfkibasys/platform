@@ -141,14 +141,16 @@ public class MqttGatewayTest extends BaseComponentTest {
 				@Override
 				public void handleNotification(Channel channel, Notification not) {
 					// TODO Auto-generated method stub
-					
+					LOGGER.info(not.getPayload());
+					assertEquals(testMessage, not.getPayload());
+					counter.countDown();
 				}
 				
 				@Override
 				public void handleMessage(Channel channel, String msg) {
-					LOGGER.info(msg);	
-					assertEquals(testMessage, msg);
-					counter.countDown();
+					//LOGGER.info(msg);	
+					//assertEquals(testMessage, msg);
+					//counter.countDown();
 				}
 			});			
 			

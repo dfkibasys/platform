@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import de.dfki.iui.basys.model.runtime.component.ComponentFactory;
@@ -19,6 +20,7 @@ import de.dfki.iui.basys.runtime.processcontrol.impl.ExternalServiceTaskDto;
 public class CamundaClientTest {
 
 	@Test
+	@Ignore
 	public void testSetProcessVariablesAlt() throws Exception {
 		
 		List<Variable> vars = new LinkedList<>();
@@ -51,6 +53,7 @@ public class CamundaClientTest {
 	
 	
 	@Test
+	@Ignore
 	public void testSpawnProcess() throws Exception {
 		
 	

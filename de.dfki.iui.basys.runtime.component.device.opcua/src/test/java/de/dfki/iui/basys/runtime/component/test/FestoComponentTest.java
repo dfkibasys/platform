@@ -73,6 +73,7 @@ public class FestoComponentTest {
 	*/
 	
 	@Test
+	@Ignore
 	public void testExecuteJob() throws ComponentException {
 		OpcUaDeviceComponent component = new FestoComponent(opcuaConfig);
 		assertTrue(!component.isConnectedToExternal());
@@ -134,6 +135,7 @@ public class FestoComponentTest {
 	}
 	
 	@Test
+	@Ignore
 	public void testExecuteJobAndStop() throws ComponentException {
 		OpcUaDeviceComponent component = new FestoComponent(opcuaConfig);
 		assertTrue(!component.isConnectedToExternal());

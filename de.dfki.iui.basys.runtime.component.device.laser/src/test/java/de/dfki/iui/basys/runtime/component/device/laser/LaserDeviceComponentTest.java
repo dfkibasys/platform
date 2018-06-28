@@ -9,6 +9,7 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -72,6 +73,7 @@ public class LaserDeviceComponentTest {
 	}
 
 	@Test
+	@Ignore
 	public void testConnection() throws ComponentException {
 		
 		LaserDeviceComponent component = new LaserDeviceComponent(componentConfig);
@@ -85,6 +87,7 @@ public class LaserDeviceComponentTest {
 	}
 	
 	@Test
+	@Ignore
 	public void testPathProjection() throws ComponentException {
 		LaserDeviceComponent component = new LaserDeviceComponent(componentConfig);
 		assertTrue(!component.isConnectedToExternal());
@@ -146,6 +149,7 @@ public class LaserDeviceComponentTest {
 	}
 	
 	@Test
+	@Ignore
 	public void testEtaProjection() throws ComponentException {
 		LaserDeviceComponent component = new LaserDeviceComponent(componentConfig);
 		assertTrue(!component.isConnectedToExternal());

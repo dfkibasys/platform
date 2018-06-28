@@ -1,28 +1,20 @@
 package de.dfki.iui.basys.runtime.component.device.laser;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import de.dfki.iui.basys.common.emf.json.JsonUtils;
-import de.dfki.iui.basys.model.data.CartesianCoordinate;
-import de.dfki.iui.basys.model.data.DataFactory;
-import de.dfki.iui.basys.model.data.Path;
-import de.dfki.iui.basys.model.data.impl.CartesianCoordinateImpl;
-import de.dfki.iui.basys.model.runtime.communication.Channel;
-import de.dfki.iui.basys.model.runtime.communication.Notification;
 import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
-import de.dfki.iui.basys.model.runtime.component.State;
 import de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl;
-import de.dfki.iui.basys.runtime.communication.CommFactory;
 import de.dfki.iui.basys.runtime.component.Component;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.ComponentException;
@@ -76,6 +68,7 @@ public class LaserServiceComponentTest extends BaseComponentTest {
 	}
 
 	@Test
+	@Ignore
 	public void testConnection() throws ComponentException {
 		try {
 			System.out.println(JsonUtils.toString(deviceComponentConfig));

@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import de.dfki.iui.basys.model.domain.order.Order;
@@ -29,6 +30,7 @@ public class OrderManagerTest extends BaseEmfServiceComponentTest<OrderManagerIm
 	}
 
 	@Test
+	@Ignore
 	public void testGetOrderStore() {
 		OrderStore store = service.getOrderStore();
 
@@ -37,6 +39,7 @@ public class OrderManagerTest extends BaseEmfServiceComponentTest<OrderManagerIm
 	}
 
 	@Test
+	@Ignore
 	public void testGetOrder() {
 		String id = "_CcNFcFIAEeivcqRF4-9YHA";
 		Order order = service.getOrder(id);
@@ -45,6 +48,7 @@ public class OrderManagerTest extends BaseEmfServiceComponentTest<OrderManagerIm
 	}
 
 	@Test
+	@Ignore
 	public void testAddOrder() {
 		//TODO: implement
 	}

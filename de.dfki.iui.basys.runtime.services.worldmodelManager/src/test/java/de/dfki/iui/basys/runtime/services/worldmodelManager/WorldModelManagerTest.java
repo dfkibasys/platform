@@ -7,6 +7,7 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -128,6 +129,7 @@ public class WorldModelManagerTest extends BaseComponentTest {
 	}
 	
 	@Test
+	@Ignore
 	public void testAddOrder() throws ComponentException, InterruptedException, JsonProcessingException {
 		LOGGER.info("testAddOrder - start");
 

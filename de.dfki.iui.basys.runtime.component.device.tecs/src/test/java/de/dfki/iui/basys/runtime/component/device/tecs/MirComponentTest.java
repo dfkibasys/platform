@@ -111,6 +111,7 @@ public class MirComponentTest extends BaseComponentTest {
 	}
 
 	@Test
+	@Ignore
 	public void testMission() {
 		
 		

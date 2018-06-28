@@ -56,7 +56,6 @@ public class BasysResourceSetImpl extends ResourceSetImpl {
 		
 	}
 	
-	Client client = ClientBuilder.newClient();
 	
 	public BasysResourceSetImpl() {
 		
@@ -132,7 +131,8 @@ public class BasysResourceSetImpl extends ResourceSetImpl {
 		EObject obj = null;
 		
 		String url = uri.toString();		
-		if (url.contains("services/entity/")) {			
+		if (url.contains("services/entity/")) {	
+			Client client = ClientBuilder.newClient();
 			Response response = client.target(url).request(MediaType.APPLICATION_JSON).get();
 			if (response.getStatus() == 200) {
 				String content = response.readEntity(String.class);

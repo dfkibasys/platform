@@ -99,6 +99,7 @@ public class ProcessControlTest extends BaseComponentTest {
 	}
 	
 	@Test
+	@Ignore
 	public void testSetProcessVariables() throws Exception {
 
 		List<Variable> vars = new LinkedList<>();
@@ -116,6 +117,7 @@ public class ProcessControlTest extends BaseComponentTest {
 	
 	
 	@Test
+	@Ignore
 	public void testSetProcessVariablesAlt() throws Exception {
 		
 		List<Variable> vars = new LinkedList<>();
