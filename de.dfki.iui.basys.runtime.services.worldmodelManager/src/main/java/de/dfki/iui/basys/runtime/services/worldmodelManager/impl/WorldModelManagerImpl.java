@@ -265,10 +265,10 @@ public class WorldModelManagerImpl extends EmfServiceComponent implements WorldM
 			}
 			WMProductInstance wmpi = new LinebalancingFactoryImpl().createWMProductInstance();
 			wmpi.setSerialId(serialNumber);
-			wmpi.setPosition(tm.getTopologyElement("_14ta0V2TEeit97PGgoQOAQ")); // HACK (currentPosition)
+			wmpi.setPosition(tm.getTopologyElement("_14ta0V2TEeit97PGgoQOAQ")); // TODO (currentPosition)
 			wmpi.setEta(eta);
 			wmpi.setVariant(pi.getManufacturedComponent());
-			wmpi.setIn_transit(false); // HACK (currentPosition == null)
+			wmpi.setIn_transit(false); // TODO (currentPosition == null)
 			wm.getProductInstances().add(wmpi);
 
 		}

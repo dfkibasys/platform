@@ -1,7 +1,5 @@
 package de.dfki.iui.basys.runtime.component.device.tecs;
 
-import java.util.concurrent.TimeUnit;
-
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TProtocol;
 
@@ -108,13 +106,12 @@ public class Ur3Component extends TecsDeviceComponent{
 	public void onResetting() {
 		reconnect();
 		
-		//HACK:
-		try {
-			TimeUnit.SECONDS.sleep(15);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			TimeUnit.SECONDS.sleep(15);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 		//gotoSafePosition();
 	}

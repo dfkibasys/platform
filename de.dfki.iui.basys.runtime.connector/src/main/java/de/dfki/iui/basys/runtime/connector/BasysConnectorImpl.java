@@ -310,7 +310,7 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 				// RESET muss in den Prozess
 				// Melde IO
 				try {
-					//HACK: Falls Festo, dass errorCode = 1, ansonsten 2 (UR3)
+					//Falls Festo, dann errorCode = 1, ansonsten 2 (UR3)
 					TextMessage msg12Hack = messageFactory.createMSG12(getCaaResourceId(), 1, 1);
 					if (assignedResource != null && assignedResource.getResourceInstanceId() != null) {
 						if ("_SE5NIDB4Eei1bbwBPPZWOA".equals(assignedResource.getResourceInstanceId())) {
@@ -446,7 +446,7 @@ public class BasysConnectorImpl extends ServiceComponent implements BasysConnect
 				// Festokomponente explizit in Homeposition fahren
 				// irrelevant, da durch Komponente sichergestellt
 				festoController.reset();
-				//HACK
+				//Wait until reset complete
 				sleep(4000);
 
 				if (cancelled)

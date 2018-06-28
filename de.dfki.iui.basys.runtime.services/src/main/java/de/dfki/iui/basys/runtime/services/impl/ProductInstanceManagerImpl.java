@@ -27,7 +27,8 @@ public class ProductInstanceManagerImpl extends EmfServiceComponent implements P
 	@Override
 	public void addProductInstance(ProductInstance productInstance) {
 		ProductInstanceStore store = getProductInstanceStore();
-		store.getProductInstances().clear(); //HACK
+		//TODO: support multiple products at a time
+		store.getProductInstances().clear();
 		store.getProductInstances().add(productInstance);
 	}
 
