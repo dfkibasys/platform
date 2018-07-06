@@ -50,9 +50,9 @@
 	</modules>
 
 	<scm>
-		<url>https://lns-90165.sb.dfki.de/gitlab/basys/build</url>
-		<connection>scm:git:ssh://git@lns-90165.sb.dfki.de:10022/basys/build.git</connection>
-		<developerConnection>scm:git:ssh://git@lns-90165.sb.dfki.de:10022/basys/build.git</developerConnection>
+		<url>https://lns-90165.sb.dfki.de/gitlab/i40/basys/build</url>
+		<connection>scm:git:ssh://git@lns-90165.sb.dfki.de:10022/i40/basys/build.git</connection>
+		<developerConnection>scm:git:ssh://git@lns-90165.sb.dfki.de:10022/i40/basys/build.git</developerConnection>
 	</scm>
 
 	<repositories>
