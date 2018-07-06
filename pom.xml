@@ -46,6 +46,7 @@
 		<module>../models</module>
 		<module>../runtime</module>
 		<module>../osgi</module>
+		<module>../demonstrator</module>
 		<module>../deployment</module>
 	</modules>
 
