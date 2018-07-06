@@ -11,13 +11,13 @@
 	</parent>
 
 	<properties>
-		<bundle.symbolicName>de.dfki.iui.basys.runtime.component.device.laser</bundle.symbolicName>
-		<bundle.namespace>de.dfki.iui.basys.runtime.component.device.laser</bundle.namespace>
+		<bundle.symbolicName>de.dfki.iui.basys.runtime.component.device.rest</bundle.symbolicName>
+		<bundle.namespace>de.dfki.iui.basys.runtime.component.device.rest</bundle.namespace>
 	</properties>
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.dfki.iui.basys.runtime</groupId>
-	<artifactId>de.dfki.iui.basys.runtime.component.device.laser</artifactId>
+	<artifactId>de.dfki.iui.basys.runtime.component.device.rest</artifactId>
 
 	<name>${bundle.symbolicName}</name>
 
