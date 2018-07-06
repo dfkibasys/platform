@@ -22,7 +22,6 @@
 		<module>de.dfki.iui.basys.osgi.cm</module>
 		<module>de.dfki.iui.basys.osgi.logging</module>
 		<module>de.dfki.iui.basys.osgi.services</module>
-		<module>de.dfki.iui.basys.osgi.services.config</module>
 	</modules>
 
 	<scm>

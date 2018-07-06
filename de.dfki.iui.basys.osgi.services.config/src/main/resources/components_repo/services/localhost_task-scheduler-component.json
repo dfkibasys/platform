@@ -1,9 +1,0 @@
-{
-  "eClass" : "http://www.dfki.de/iui/basys/model/component#//ComponentConfiguration",
-  "componentId" : "task-scheduler",
-  "componentName" : "task-scheduler",
-  "componentCategory" : "SERVICE_COMPONENT",
-  "componentImplementationJavaClass" : "de.dfki.iui.basys.runtime.processcontrol.impl.CamundaTaskScheduler",
-  "inChannelName" : "task-scheduler#in",
-  "externalConnectionString" : "http://localhost:8081/engine-rest/engine/default/"
-}
