@@ -42,7 +42,7 @@ public abstract class MqttDeviceComponent extends DeviceComponent {
 				}
 			}).waitForCompletion();
 		} catch (MqttException e) {
-			throw new ComponentException( getName() + "\" cannot connect to \"" + componentConfig.getExternalConnectionString() + "\"", e);
+			throw new ComponentException( getName() + " cannot connect to \"" + componentConfig.getExternalConnectionString() + "\"", e);
 		}
 
 	}
@@ -52,7 +52,7 @@ public abstract class MqttDeviceComponent extends DeviceComponent {
 		try {
 			mqttClient.disconnect().waitForCompletion();
 		} catch (MqttException e) {
-			LOGGER.warn("MqttGatewayComponent \"" + getId() + "\"" + " cannot disconnect", e);
+			LOGGER.warn(getName() + " cannot disconnect", e);
 		}
 	}
 
