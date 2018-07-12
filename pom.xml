@@ -66,11 +66,11 @@
 	<distributionManagement>
 		<repository>
 			<id>nexus-releases</id>
-			<url>http://lns-90165.sb.dfki.de:8081/repository/maven-releases/</url>
+			<url>${env.MAVEN_REPO_URL}/maven-releases/</url>
 		</repository>
 		<snapshotRepository>
 			<id>nexus-snapshots</id>
-			<url>http://lns-90165.sb.dfki.de:8081/repository/maven-snapshots/</url>
+			<url>${env.MAVEN_REPO_URL}/maven-snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
 
@@ -149,6 +149,12 @@
 		      <groupId>com.github.ferstl</groupId>
 		      <artifactId>depgraph-maven-plugin</artifactId>
 		      <version>3.1.0</version>
+		    </plugin>
+		    
+		    <plugin>
+			    <groupId>org.codehaus.mojo</groupId>
+			    <artifactId>license-maven-plugin</artifactId>
+			    <version>1.16</version>
 		    </plugin>
 
 		</plugins>
