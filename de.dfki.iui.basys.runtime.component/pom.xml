@@ -35,6 +35,12 @@
 		</dependency>
 		
 		<dependency>
+			<groupId>de.dfki.iui.basys.common</groupId>
+			<artifactId>de.dfki.iui.basys.common.scxml</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+		<dependency>
 			<groupId>de.dfki.iui.basys.model</groupId>
 			<artifactId>de.dfki.iui.basys.model.domain</artifactId>
 			<version>${project.version}</version>
@@ -53,11 +59,11 @@
 		</dependency>
 
 		<!-- BaSys DFKI Nexus -->
-		<dependency>
+	<!-- 	<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-scxml2</artifactId>
 			<version>${scxml.version}</version>
-		</dependency>
+		</dependency> -->
 
 		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-jexl3 -->
 		<dependency>
