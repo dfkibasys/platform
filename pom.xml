@@ -66,11 +66,11 @@
 	<distributionManagement>
 		<repository>
 			<id>nexus-releases</id>
-			<url>${env.MAVEN_REPO_URL}/maven-releases/</url>
+			<url>http://lns-90165.sb.dfki.de:8081/repository/maven-releases/</url>
 		</repository>
 		<snapshotRepository>
 			<id>nexus-snapshots</id>
-			<url>${env.MAVEN_REPO_URL}/maven-snapshots/</url>
+			<url>http://lns-90165.sb.dfki.de:8081/repository/maven-snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
 
