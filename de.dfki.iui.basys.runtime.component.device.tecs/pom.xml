@@ -33,13 +33,6 @@
 
 		<dependency>
 			<groupId>de.dfki.iui.basys.runtime</groupId>
-			<artifactId>de.dfki.iui.basys.runtime.component.device.laser</artifactId>
-			<version>${project.version}</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>de.dfki.iui.basys.runtime</groupId>
 			<artifactId>de.dfki.iui.basys.runtime.component.registry.zookeeper</artifactId>
 			<version>${project.version}</version>
 			<scope>test</scope>
@@ -120,17 +113,7 @@
 			<version>1.0.0-SNAPSHOT</version> </dependency> <dependency> <groupId>de.dfki.iui</groupId> 
 			<artifactId>de.dfki.iui.hue-thrift-service</artifactId> <version>1.0.0-SNAPSHOT</version> 
 			</dependency> -->
-		<dependency>
-			<groupId>de.dfki.iui.basys.build.wrapper-bundle-settings</groupId>
-			<artifactId>de.dfki.iui.hue-api</artifactId>
-			<version>1.0.0-001-SNAPSHOT</version>
-		</dependency>
 
-		<dependency>
-			<groupId>de.dfki.iui.basys.build.wrapper-bundle-settings</groupId>
-			<artifactId>de.dfki.iui.hue-thrift-service</artifactId>
-			<version>1.0.0-001-SNAPSHOT</version>
-		</dependency>
 
 
 		<!-- comment to remove all imported (non-local) bundles from your compilation 
