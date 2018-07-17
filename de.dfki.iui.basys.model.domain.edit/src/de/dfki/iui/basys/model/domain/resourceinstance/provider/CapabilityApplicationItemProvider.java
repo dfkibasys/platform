@@ -20,8 +20,8 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
-
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
 import de.dfki.iui.basys.model.domain.capability.CapabilityAssertion;
 import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
 import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityApplication;
@@ -173,6 +173,10 @@ public class CapabilityApplicationItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
+		CapabilityApplication app = (CapabilityApplication) object;
+		if (app.getCapabilityAssertion() != null) {
+			return getString("_UI_CapabilityApplication_type") + " " + app.getCapabilityAssertion().getName();
+		}
 		return getString("_UI_CapabilityApplication_type");
 	}
 	
