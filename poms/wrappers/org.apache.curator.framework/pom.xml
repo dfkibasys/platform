@@ -5,7 +5,7 @@
     <relativePath>../</relativePath>
     <groupId>de.dfki.iui.basys.build</groupId>
     <artifactId>wrapper-bundle-settings</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.1-SNAPSHOT</version>
   </parent>
 
   <properties>
@@ -18,7 +18,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>de.dfki.iui.basys.build.wrapper-bundle-settings</groupId>
   <artifactId>org.apache.curator.framework</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.1-SNAPSHOT</version>
 
   <name>${bundle.symbolicName} ${wrapped.version} [osgi]</name>
 
