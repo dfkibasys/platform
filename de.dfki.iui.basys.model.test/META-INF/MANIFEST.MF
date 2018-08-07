@@ -6,7 +6,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: de.dfki.iui.basys.model.test
 Bundle-SymbolicName: de.dfki.iui.basys.model.test
 Bundle-Vendor: DFKI GmbH
-Bundle-Version: 1.0.0.SNAPSHOT
+Bundle-Version: 0.1.1.SNAPSHOT
 Created-By: Apache Maven Bundle Plugin
 Include-Resource: readme.txt=src/main/resources/readme.txt
 Private-Package: readme.txt
