@@ -5,7 +5,7 @@
 		<relativePath>../../build/poms/</relativePath>
 		<groupId>de.dfki.iui.basys.build</groupId>
 		<artifactId>shared-plugin-settings</artifactId>
-		<version>0.1.0-SNAPSHOT</version>
+		<version>0.1.1-SNAPSHOT</version>
 	</parent>
   
   <modelVersion>4.0.0</modelVersion>
