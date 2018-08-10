@@ -104,6 +104,15 @@ public class ComponentManagerImpl extends BaseComponent implements ComponentMana
 
 	@Override
 	public Component createLocalComponent(ComponentConfiguration config) throws ComponentManagerException {
+		
+		if (components.containsKey(config.getComponentId())) {
+			Component old = components.get(config.getComponentId());
+			LOGGER.error("Duplicate component with Id: " + config.getComponentId());
+			LOGGER.error("Name of 1st component: " + old.getConfig().getComponentName());
+			LOGGER.error("Name of 2nd component: " + config.getComponentName());
+			throw new ComponentManagerException("Duplicate component with Id " + config.getComponentId());
+		}
+		
 		Class c = null;
 		try {
 			
