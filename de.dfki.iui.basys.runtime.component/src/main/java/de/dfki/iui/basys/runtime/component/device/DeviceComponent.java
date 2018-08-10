@@ -43,7 +43,7 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 		
 		NotifyingStatesHandlerFacade handler = new NotifyingStatesHandlerFacade(this);
 
-		packmlUnit = new PackMLUnit(getId());
+		packmlUnit = new PackMLUnit(getId(), getName());
 		packmlUnit.setActiveStatesHandler(handler);
 		packmlUnit.setSimStatesHandler(new SimulatedStatesHandler(this));
 		packmlUnit.setWaitStatesHandler(handler);

@@ -20,7 +20,7 @@ public class PackMLTest extends TestCase {
 	protected void setUp() throws Exception {		
 		super.setUp();
 		LOGGER.info("setUp");
-		unit = new PackMLUnit("test_unit");
+		unit = new PackMLUnit("test_unit","test_unit");
 		handler = new TestHandler(unit);
 		unit.setActiveStatesHandler(handler);
 		unit.initialize();
