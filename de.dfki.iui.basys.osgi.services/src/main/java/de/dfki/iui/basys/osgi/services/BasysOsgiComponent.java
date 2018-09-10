@@ -2,6 +2,7 @@ package de.dfki.iui.basys.osgi.services;
 
 import java.util.Map;
 
+import org.apache.commons.lang3.text.StrSubstitutor;
 import org.osgi.service.component.ComponentContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,7 +47,7 @@ public class BasysOsgiComponent {
 			.communicationProviderConnectionString((String)properties.get("communicationProviderConnectionString"))
 			.inChannelName((String)properties.get("inChannelName"))
 			.outChannelName((String)properties.get("outChannelName"))
-			.externalConnectionString((String)properties.get("externalConnectionString"))
+			.externalConnectionString(StrSubstitutor.replaceSystemProperties((properties.get("externalConnectionString"))))
 			.build();
 
 		return config;
