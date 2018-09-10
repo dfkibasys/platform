@@ -43,7 +43,7 @@ public class ComponentManagerImpl extends BaseComponent implements ComponentMana
 			
 			@Override
 			public void run() {
-				URI uri = URI.createURI(getConfig().getExternalConnectionString());
+				URI uri = URI.createFileURI(getConfig().getExternalConnectionString());
 				if (uri.isFile()) {
 					String fileString = uri.toFileString();
 
