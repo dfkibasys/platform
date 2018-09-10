@@ -144,7 +144,7 @@
 			<groupId>org.glassfish.jersey.core</groupId>
 			<artifactId>jersey-client</artifactId>
 			<version>2.25.1</version>
-			 <scope>provided</scope>
+			 <scope>test</scope>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.glassfish.jersey.media/jersey-media-json-jackson -->

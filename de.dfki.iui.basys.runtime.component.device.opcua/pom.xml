@@ -11,11 +11,6 @@
 	<properties>
 		<bundle.symbolicName>de.dfki.iui.basys.runtime.component.device.opcua</bundle.symbolicName>
 		<bundle.namespace>de.dfki.iui.basys.runtime.component.device.opcua</bundle.namespace>
-		<curator.version>4.0.1</curator.version>
-		<curator-x.version>4.0.0</curator-x.version>
-		<scxml.version>2.0-SNAPSHOT</scxml.version>
-		<jexl.version>3.1</jexl.version>
-		<milo.version>0.2.1</milo.version>
 	</properties>
 
 	<modelVersion>4.0.0</modelVersion>
@@ -32,52 +27,44 @@
 			<groupId>de.dfki.iui.basys.runtime</groupId>
 			<artifactId>de.dfki.iui.basys.runtime.component</artifactId>
 			<version>${project.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>com.google.guava</groupId>
-					<artifactId>guava</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-
-		<dependency>
-			<groupId>io.dropwizard.metrics</groupId>
-			<artifactId>metrics-core</artifactId>
-			<version>3.1.2</version>
-			<exclusions>
-				<exclusion>
-					<groupId>org.slf4j</groupId>
-					<artifactId>slf4j-api</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-
-		<dependency>
-			<groupId>org.eclipse.milo</groupId>
-			<artifactId>stack-core</artifactId>
-			<version>${milo.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>org.slf4j</groupId>
-					<artifactId>slf4j-api</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 
 		<dependency>
 			<groupId>org.eclipse.milo</groupId>
 			<artifactId>sdk-client</artifactId>
 			<version>${milo.version}</version>
+			<exclusions>
+				<!-- <exclusion>
+	    			<groupId>javax.xml.bind</groupId>
+	    			<artifactId>jaxb-api</artifactId>
+	        	</exclusion> -->
+	        	<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
-		<dependency>
+		<!-- <dependency>
+			<groupId>de.dfki.iui.basys.build.wrapper-bundle-settings</groupId>
+			<artifactId>javax.xml.bind.jaxb-api</artifactId>
+			<version>${project.version}</version>
+		</dependency> -->
+
+	 	<dependency>
 			<groupId>org.eclipse.milo</groupId>
 			<artifactId>sdk-server</artifactId>
 			<version>${milo.version}</version>
+		 	<exclusions>
+	        	<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<!-- Redeclare our dependency on Bouncy Castle because we use SelfSignedCertificateBuilder -->
-		<dependency>
+ 		<dependency>
 			<groupId>org.bouncycastle</groupId>
 			<artifactId>bcprov-jdk15on</artifactId>
 			<version>1.58</version>
@@ -92,7 +79,7 @@
 
 		<!-- comment to remove all imported (non-local) bundles from your compilation 
 			classpath -->
-		<dependency>
+	 	<dependency>
 			<type>pom</type>
 			<groupId>${project.parent.groupId}</groupId>
 			<artifactId>provision</artifactId>

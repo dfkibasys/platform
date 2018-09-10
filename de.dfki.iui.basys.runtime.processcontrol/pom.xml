@@ -22,10 +22,24 @@
 
 	<dependencies>
 	
+		<!-- https://mvnrepository.com/artifact/javax.ws.rs/javax.ws.rs-api -->
+		<dependency>
+		    <groupId>javax.ws.rs</groupId>
+		    <artifactId>javax.ws.rs-api</artifactId>
+		    <version>${jaxrs-version}</version>
+		</dependency>
+	
+		<dependency>
+			<groupId>de.dfki.iui.basys.runtime</groupId>
+			<artifactId>de.dfki.iui.basys.runtime.component</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	
 		<dependency>
 			<groupId>de.dfki.iui.basys.runtime</groupId>
 			<artifactId>de.dfki.iui.basys.runtime.component.registry.zookeeper</artifactId>
 			<version>${project.version}</version>
+			<scope>test</scope>
 		</dependency>
 		
 <!-- 		<dependency>
