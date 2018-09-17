@@ -56,13 +56,6 @@
 			<version>${project.version}</version>
 		</dependency>
 
-		<!-- BaSys DFKI Nexus -->
-	<!-- 	<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-scxml2</artifactId>
-			<version>${scxml.version}</version>
-		</dependency> -->
-
 		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-jexl3 -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>

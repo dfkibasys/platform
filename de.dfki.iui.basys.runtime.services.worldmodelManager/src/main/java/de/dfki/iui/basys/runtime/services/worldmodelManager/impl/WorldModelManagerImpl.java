@@ -64,6 +64,10 @@ public class WorldModelManagerImpl extends EmfServiceComponent implements WorldM
 	private ExecutorService executor;
 	private Client client = ClientBuilder.newClient();
 
+	private static String FESTO_ID = "_SE5NIDB4Eei1bbwBPPZWOA";
+	private static String UR3_ID = "_jJdx4DD7EeiuBvcKgWzd3Q";
+	
+	
 	// TODO
 	// CurrentProductPosition
 
@@ -107,20 +111,11 @@ public class WorldModelManagerImpl extends EmfServiceComponent implements WorldM
 						if (payload != null) {
 							if (payload.eClass().equals(OrderPackage.eINSTANCE.getOrder())) {
 
-								String response = client.target("http://127.0.0.1:9002/services/optimizer/").request(MediaType.APPLICATION_JSON).accept("application/json").get(String.class);
-
-								System.out.println("===============================");
-								System.out.println(response);
-								System.out.println("===============================");
-
-								JSONObject ob = new JSONObject(response);
-
+								//TODO: switch back to optimizer here
+								String resourceInstanceId = getResourceInstanceIdIntern();
+															
 								LineBalancingAssignment lbass = new LinebalancingFactoryImpl().createLineBalancingAssignment();
-								lbass.setResourceInstanceId(ob.getString("resourceInstanceId"));
-								if ("_rUJzsDJhEei1p5hKOf5Slw".equals(lbass.getResourceInstanceId())) {
-									lbass.setResourceInstanceId("_jJdx4DD7EeiuBvcKgWzd3Q");
-								}
-
+								lbass.setResourceInstanceId(resourceInstanceId);
 								lbass.setOrder((Order) payload);
 
 								String outPayload = JsonUtils.toString(lbass);
@@ -356,6 +351,28 @@ public class WorldModelManagerImpl extends EmfServiceComponent implements WorldM
 			}
 		}
 		return -1;
+	}
+	
+	public String getResourceInstanceIdOpt() {
+		String response = client.target("http://127.0.0.1:9002/services/optimizer/").request(MediaType.APPLICATION_JSON).accept("application/json").get(String.class);
+
+		System.out.println("===============================");
+		System.out.println(response);
+		System.out.println("===============================");
+
+		JSONObject ob = new JSONObject(response);
+
+		String result = ob.getString("resourceInstanceId");
+		if ("_rUJzsDJhEei1p5hKOf5Slw".equals(result)) {
+			result = "_jJdx4DD7EeiuBvcKgWzd3Q";
+		}
+		return result;
+	}	
+	
+	public String getResourceInstanceIdIntern() {
+		//TODO: 1. check capabilities
+		//TODO: 2. check current availability
+		return UR3_ID;
 	}
 
 }

@@ -3,6 +3,7 @@ package de.dfki.iui.basys.runtime.component.device.tecs;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TSocket;
@@ -11,6 +12,7 @@ import org.apache.thrift.transport.TTransportException;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.DeviceComponent;
+import de.dfki.iui.hrc.hybritcommand.CommandResponse;
 import de.dfki.tecs.Event;
 import de.dfki.tecs.ps.PSClient;
 
@@ -86,7 +88,71 @@ public abstract class TecsDeviceComponent extends DeviceComponent {
 		receiverThread.start();
 	}
 	
-	protected abstract void handleTecsEvent(Event event);
+	@Override
+	public void onResetting() {
+		reconnect();	
+	}	
+	
+	protected void handleTecsEvent(Event event) {
+		// do nothing;
+	};
+	
+	public void busyWait(DeviceStatus device) {
+		try {
+			boolean executing = true;
+			while(executing) {
+				CommandResponse cr = device.getCommandState();
+				LOGGER.debug("CommandState is " + cr.state);
+				 
+//				URState urs = client.getState();				
+//				if (urs == URState.Error || urs == URState.Manual) {
+//					executing = false;
+//					setErrorCode(1);
+//					stop();
+//					break;
+//				}
+				
+				switch(cr.state) {
+				case ACCEPTED: 
+					// wait
+					break;
+				case ABORTED: 
+					executing= false;
+					setErrorCode(1);
+					stop();
+					break;
+				case EXECUTING:
+					// wait
+					break;
+				case FINISHED: 
+					executing=false;
+					break;
+				case PAUSED: 
+					//?
+					break;
+				case READY: 
+					//?
+					break;
+				case REJECTED: 
+					executing=false;
+					setErrorCode(2);
+					stop();
+					break;
+				default: break;
+				}
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		} catch (TException e) {
+			e.printStackTrace();
+			setErrorCode(3);
+			stop();
+		}
+	}
+	
 	
 	@Override
 	public void disconnectFromExternal() {

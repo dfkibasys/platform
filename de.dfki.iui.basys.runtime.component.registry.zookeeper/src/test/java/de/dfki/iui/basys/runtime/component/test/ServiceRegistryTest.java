@@ -190,7 +190,6 @@ public class ServiceRegistryTest extends BaseComponentTest {
 		assertEquals(State.COMPLETE,info.getCurrentState());
 		
 		comp.stop();
-		assertEquals(State.RESETTING, comp.getLastState());
 		assertEquals(State.STOPPING, comp.getLastState());
 		assertEquals(State.STOPPED, comp.getLastState());		
 		info = registry.getComponentById(comp.getCategory(), comp.getId());
