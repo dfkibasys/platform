@@ -24,6 +24,8 @@
 		<module>de.dfki.iui.basys.runtime.component.device.opcua</module>
 		<module>de.dfki.iui.basys.runtime.component.device.tecs</module>
 		<module>de.dfki.iui.basys.runtime.component.device.mqtt</module>
+		<module>de.dfki.iui.basys.runtime.component.device.ros</module>
+		<module>de.dfki.iui.basys.runtime.component.device.stako</module>
 		<module>de.dfki.iui.basys.runtime.connector</module>
 		<module>de.dfki.iui.basys.runtime.gateway</module>
 		<module>de.dfki.iui.basys.runtime.processcontrol</module>
