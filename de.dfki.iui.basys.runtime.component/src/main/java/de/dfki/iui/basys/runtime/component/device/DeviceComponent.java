@@ -38,15 +38,17 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 
 	protected boolean resetOnComplete, resetOnStopped = false;
 
+	PackMLStatesHandlerFacade handlerFacade = null;
+	
 	public DeviceComponent(ComponentConfiguration config) {
 		super(config);
 		
-		NotifyingStatesHandlerFacade handler = new NotifyingStatesHandlerFacade(this);
+		handlerFacade = new PackMLStatesHandlerFacade(this);
 
 		packmlUnit = new PackMLUnit(getId(), getName());
-		packmlUnit.setActiveStatesHandler(handler);
+		packmlUnit.setActiveStatesHandler(handlerFacade);
 		packmlUnit.setSimStatesHandler(new SimulatedStatesHandler(this));
-		packmlUnit.setWaitStatesHandler(handler);
+		packmlUnit.setWaitStatesHandler(handlerFacade);
 		if (simulated) {
 			packmlUnit.setMode(ControlMode.SIMULATION);
 		}	
@@ -86,7 +88,14 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 
 	@Override
 	public State getState() {
-		return packmlUnit.getState();
+		return getState(false);
+	}
+	
+	public State getState(boolean fromRecord) {
+		if (fromRecord)
+			return handlerFacade.getLastState();
+		else 
+			return packmlUnit.getState();
 	}
 
 	@Override
@@ -214,8 +223,7 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 		}
 
 		LOGGER.debug("updateRegistrationAndNotify - finished");
-	}
-
+	}	
 	
 	@Override
 	protected void sendComponentResponse(ResponseStatus status, int statusCode) {	
