@@ -3,7 +3,12 @@ package de.dfki.iui.basys.runtime.component.device.ros;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.io.StringReader;
 import java.util.concurrent.TimeUnit;
+
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonReader;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -19,8 +24,9 @@ import de.dfki.iui.basys.model.runtime.component.impl.PropertyImpl;
 import de.dfki.iui.basys.runtime.component.ComponentContext;
 import de.dfki.iui.basys.runtime.component.ComponentException;
 import de.dfki.iui.basys.runtime.component.device.DeviceComponent;
+import de.dfki.iui.basys.runtime.component.device.packml.UnitConfiguration;
 
-public class RosComponentTest {
+public class FibonacciComponentTest {
 
 	ComponentConfiguration componentConfig;
 	ComponentContext emptyContext = new ComponentContext.Builder().build();
@@ -35,7 +41,7 @@ public class RosComponentTest {
 
 	@Before
 	public void setUp() throws Exception {
-		componentConfig = new ComponentConfigurationImpl.Builder().componentId("test-ros-component").componentName("test-ros-component")
+		componentConfig = new ComponentConfigurationImpl.Builder().componentId("fibonacci-component").componentName("fibonacci-component")
 				.externalConnectionString(String.format("ws://%s:%s", "lns-90165.sb.dfki.de", 9090)).build();
 		componentConfig.getProperties().add(new PropertyImpl.Builder().key("unittesting").value("true").build());
 	}
@@ -56,7 +62,7 @@ public class RosComponentTest {
 	@Test
 	@Ignore
 	public void testConnection() throws ComponentException {
-		DeviceComponent component = new TestRosComponent(componentConfig);
+		DeviceComponent component = new ChimpComponent(componentConfig);
 		assertTrue(!component.isConnectedToExternal());
 
 		component.activate(emptyContext);
@@ -68,7 +74,7 @@ public class RosComponentTest {
 
 	@Test
 	public void testComponentLifecycleComplete() throws ComponentException {
-		DeviceComponent component = new TestRosComponent(componentConfig);
+		DeviceComponent component = new ChimpComponent(componentConfig);
 		assertTrue(!component.isConnectedToExternal());
 
 		component.activate(emptyContext);		
@@ -78,6 +84,14 @@ public class RosComponentTest {
 		component.reset();		
 		assertEquals(State.RESETTING, component.getState(true));
 		assertEquals(State.IDLE, component.getState(true));
+		
+		String goalString = "{ \"order\" : 7 }"; 		
+		JsonReader jsonReader = Json.createReader(new StringReader(goalString));
+		JsonObject goalObject = jsonReader.readObject();
+		jsonReader.close();
+		UnitConfiguration config = new UnitConfiguration();
+		config.setPayload(goalObject);
+		component.setUnitConfig(config);
 		
 		component.start();	
 		assertEquals(State.STARTING, component.getState(true));			
@@ -92,7 +106,7 @@ public class RosComponentTest {
 	@Test
 	@Ignore
 	public void testComponentLifecycleStop() throws ComponentException {
-		DeviceComponent component = new TestRosComponent(componentConfig);
+		DeviceComponent component = new ChimpComponent(componentConfig);
 		assertTrue(!component.isConnectedToExternal());
 
 		component.activate(emptyContext);		
