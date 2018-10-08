@@ -31,7 +31,7 @@ public class ChimpComponent extends RosDeviceComponent {
 	public void activate(ComponentContext context) throws ComponentException {	
 		super.activate(context);
 		
-		client = new ActionClient(ros, "/fibonacci", "actionlib_tutorials/FibonacciAction");
+		client = new ActionClient(ros, "/mobipick/actor/plan_and_execute", "pbr_msgs/PlanAndExecuteAction");
 		client.initialize();		
 	}
 	
@@ -50,7 +50,7 @@ public class ChimpComponent extends RosDeviceComponent {
 				"	\"tasks\" : [\r\n" + 
 				"		{\r\n" + 
 				"			\"id\" : \"task0\",\r\n" + 
-				"			\"type\" : \"mobipick_bring\" ,\r\n" + 
+				"			\"type\" : \"bring\" ,\r\n" + 
 				"			\"args\" : [\"screwdriver1\", \"worker1\", \"workArea1\"]\r\n" + 
 				"		}\r\n" + 
 				"	],\r\n" + 

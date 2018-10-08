@@ -41,8 +41,8 @@ public class ChimpComponentTest {
 
 	@Before
 	public void setUp() throws Exception {
-		componentConfig = new ComponentConfigurationImpl.Builder().componentId("fibonacci-component").componentName("fibonacci-component")
-				.externalConnectionString(String.format("ws://%s:%s", "lns-90165.sb.dfki.de", 9090)).build();
+		componentConfig = new ComponentConfigurationImpl.Builder().componentId("chimp-component").componentName("chimp-component")
+				.externalConnectionString(String.format("ws://%s:%s", "10.250.6.12", 9090)).build();
 		componentConfig.getProperties().add(new PropertyImpl.Builder().key("unittesting").value("true").build());
 	}
 
@@ -60,7 +60,6 @@ public class ChimpComponentTest {
 	}
 
 	@Test
-	@Ignore
 	public void testConnection() throws ComponentException {
 		DeviceComponent component = new ChimpComponent(componentConfig);
 		assertTrue(!component.isConnectedToExternal());
