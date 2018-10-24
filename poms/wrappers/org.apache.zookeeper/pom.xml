@@ -12,7 +12,7 @@
     <bundle.symbolicName>org.apache.zookeeper</bundle.symbolicName>
     <wrapped.groupId>org.apache.zookeeper</wrapped.groupId>
     <wrapped.artifactId>zookeeper</wrapped.artifactId>
-    <wrapped.version>3.5.3-beta</wrapped.version>
+    <wrapped.version>3.5.4-beta</wrapped.version>
   </properties>
 
   <modelVersion>4.0.0</modelVersion>
