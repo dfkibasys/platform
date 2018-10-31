@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <parent>
     <relativePath>../</relativePath>
     <groupId>de.dfki.iui.basys.build</groupId>
     <artifactId>wrapper-bundle-settings</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.1.1-SNAPSHOT</version>
   </parent>
 
   <properties>
     <bundle.symbolicName>de.dfki.iui.libHRC</bundle.symbolicName>
     <wrapped.groupId>de.dfki.iui</wrapped.groupId>
     <wrapped.artifactId>libHRC</wrapped.artifactId>
-    <wrapped.version>0.4.0-SNAPSHOT</wrapped.version>
+    <wrapped.version>0.4.0</wrapped.version>
   </properties>
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>de.dfki.iui.basys.build.wrapper-bundle-settings</groupId>
   <artifactId>de.dfki.iui.libHRC</artifactId>
-  <version>0.0.4-001-SNAPSHOT</version>
+  <version>0.1.1-SNAPSHOT</version>
 
   <name>${bundle.symbolicName} ${wrapped.version} [osgi]</name>
 
