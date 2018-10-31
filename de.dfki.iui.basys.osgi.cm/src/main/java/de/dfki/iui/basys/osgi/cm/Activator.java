@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.nio.file.StandardWatchEventKinds;
 import java.nio.file.WatchEvent;
 import java.nio.file.WatchKey;
@@ -20,7 +19,7 @@ import org.osgi.util.tracker.ServiceTracker;
 import org.osgi.util.tracker.ServiceTrackerCustomizer;
 
 public class Activator implements BundleActivator {
-	private static final String LOCPROPERTY = "basys.configuration.location";
+	private static final String BASYS_HOME = "basys.home";
 	private ServiceTracker tracker;
 	private WatchService watcher;
 	private boolean isRunning = false;
@@ -28,21 +27,27 @@ public class Activator implements BundleActivator {
 	@Override
 	public void start(final BundleContext context) throws Exception {
 		isRunning = true;
-		String dir = context.getProperty(LOCPROPERTY);
+
+		String basysHome = context.getProperty(BASYS_HOME);
 		
-		System.out.println("Current working dir: " + Paths.get(".").toAbsolutePath().normalize().toString());
+		//System.out.println("Current working dir: " + Paths.get(".").toAbsolutePath().normalize().toString());
 		
-		if (dir == null) {
-			System.out.println("basys.configuration.location not specified, aborting");
+		if (basysHome == null) {
+			System.out.println("basys.home not specified, aborting");
 			return;
+		} else {
+			Path homePath = FileSystems.getDefault().getPath(basysHome).toAbsolutePath().normalize();
+			File homeFile = homePath.toFile();
+			System.out.println("basys.home resolved to " + homeFile.toString());
 		}
-
-		watcher = FileSystems.getDefault().newWatchService();
-		Path path = FileSystems.getDefault().getPath(dir).toAbsolutePath().normalize();
-
-		final Map<String, PropertyFileHandler> persisters = new HashMap<String, PropertyFileHandler>();
+		
+		String configDir = basysHome + "/config";
+		Path path = FileSystems.getDefault().getPath(configDir).toAbsolutePath().normalize();
 		File file = path.toFile();
-		System.out.println("basys.configuration.location resolved to " + file.toString());
+		
+		watcher = FileSystems.getDefault().newWatchService();
+		final Map<String, PropertyFileHandler> persisters = new HashMap<String, PropertyFileHandler>();
+		
 		if (!file.isDirectory()) {
 			if (PropertyFileHandler.filter().accept(file)) {
 				persisters.put(file.toString(), new PropertyFileHandler(file));
