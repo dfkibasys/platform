@@ -14,15 +14,13 @@ import org.apache.commons.scxml2.env.jexl.JexlEvaluator;
 import org.apache.commons.scxml2.io.SCXMLReader;
 import org.apache.commons.scxml2.model.ModelException;
 import org.apache.commons.scxml2.model.SCXML;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import de.dfki.iui.basys.model.runtime.component.ControlMode;
 import de.dfki.iui.basys.model.runtime.component.State;
 
 public class PackML {
 
-	protected final Logger LOGGER = LoggerFactory.getLogger(PackML.class.getName());
+	//protected final Logger LOGGER = LoggerFactory.getLogger(PackML.class.getName());
 		
 	private PackMLUnit unit = null;
 
@@ -32,7 +30,7 @@ public class PackML {
 	private SCXMLExecutor exec = null;
 
 	public PackML(PackMLUnit unit) {
-		this.unit = unit;
+		this.unit = unit;		
 	}
 
 	public void initialize() {
@@ -88,9 +86,9 @@ public class PackML {
 	}
 
 	public void raiseLifecycleEvent(String event) {
-		LOGGER.info("raiseLifecycleEvent: " + event);
+		unit.LOGGER.info("raiseLifecycleEvent: " + event);
 		if (!initialized) {
-			LOGGER.warn("PackML automaton not yet initialized, skipping event: " + event);
+			unit.LOGGER.warn("PackML automaton not yet initialized, skipping event: " + event);
 			return;
 		}
 		exec.addEvent(new EventBuilder("lifecycle.events." + event, TriggerEvent.SIGNAL_EVENT).build());

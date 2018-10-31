@@ -64,6 +64,10 @@ public class WorldModelManagerImpl extends EmfServiceComponent implements WorldM
 	private ExecutorService executor;
 	private Client client = ClientBuilder.newClient();
 
+	private static String FESTO_ID = "_SE5NIDB4Eei1bbwBPPZWOA";
+	private static String UR3_ID = "_jJdx4DD7EeiuBvcKgWzd3Q";
+	
+	
 	// TODO
 	// CurrentProductPosition
 
@@ -86,104 +90,154 @@ public class WorldModelManagerImpl extends EmfServiceComponent implements WorldM
 
 		executor = Executors.newCachedThreadPool();
 
-		CommFactory.getInstance().openChannel(context.getSharedChannelPool(), "order-manager#out", false,
-				new ChannelListener() {
+		CommFactory.getInstance().openChannel(context.getSharedChannelPool(), "order-manager#out", false, new ChannelListener() {
 
-					@Override
-					public Response handleRequest(Channel channel, Request req) {
-						return null;
-					}
+			@Override
+			public Response handleRequest(Channel channel, Request req) {
+				return null;
+			}
 
-					@Override
-					public void handleNotification(Channel channel, Notification not) {
+			@Override
+			public void handleNotification(Channel channel, Notification not) {
 
-						CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
-						System.out.println(">>>>>>" + not);
-						String payl = not.getPayload();
-						try {
+				System.out.println(">>>>>>" + not);
+				String payl = not.getPayload();
+				
+				CompletableFuture<Void> cf = CompletableFuture.supplyAsync(() -> {
+					try {
+						// FIXME
+						EObject payload = JsonUtils.fromString(payl, EObject.class);
 
-							// FIXME
-							EObject payload = JsonUtils.fromString(payl, EObject.class);
+						if (payload != null) {
+							if (payload.eClass().equals(OrderPackage.eINSTANCE.getOrder())) {
 
-							executor.submit(() -> {
+								//TODO: switch back to optimizer here
+								String resourceInstanceId = getResourceInstanceIdIntern();
+															
+								LineBalancingAssignment lbass = new LinebalancingFactoryImpl().createLineBalancingAssignment();
+								lbass.setResourceInstanceId(resourceInstanceId);
+								lbass.setOrder((Order) payload);
 
-								if (payload.eClass().equals(OrderPackage.eINSTANCE.getOrder())) {
+								String outPayload = JsonUtils.toString(lbass);
+								Notification outNot = CommFactory.getInstance().createNotification(outPayload);
+								outChannel.sendNotification(outNot);
 
-									String response = client.target("http://127.0.0.1:9002/services/optimizer/")
-											.request(MediaType.APPLICATION_JSON).accept("application/json")
-											.get(String.class);
+								CamundaTaskScheduler cts = (CamundaTaskScheduler) context.getComponentManager().getLocalComponentById("task-scheduler");
+								TopologyManager tm = (TopologyManager) context.getComponentManager().getLocalComponentById("topology-manager");
 
-									System.out.println("===============================");
-									System.out.println(response);
-									System.out.println("===============================");
+								MoveToLocation moveRequest = CapabilityFactory.eINSTANCE.createMoveToLocation();
+								moveRequest.setTargetLocation(tm.getTopologyElement("_zzNG4V2TEeit97PGgoQOAQ"));
 
-									JSONObject ob = new JSONObject(response);
-									
-									LineBalancingAssignment lbass = new LinebalancingFactoryImpl()
-											.createLineBalancingAssignment();
-									lbass.setResourceInstanceId(ob.getString("resourceInstanceId"));
-									if ("_rUJzsDJhEei1p5hKOf5Slw".equals(lbass.getResourceInstanceId())) {
-										lbass.setResourceInstanceId("_jJdx4DD7EeiuBvcKgWzd3Q");
-									}
-									
-									lbass.setOrder((Order) payload);
+								GeneralCapabilityVariant variant = ResourceinstanceFactory.eINSTANCE.createGeneralCapabilityVariant();
+								variant.setCapability(moveRequest);
 
-									String outPayload = JsonUtils.toString(lbass);
-									Notification outNot = CommFactory.getInstance().createNotification(outPayload);
-									outChannel.sendNotification(outNot);
+								de.dfki.iui.basys.model.runtime.component.CapabilityRequest req = ComponentFactory.eINSTANCE.createCapabilityRequest();
+								req.setCapabilityVariant(variant);
+								req.setComponentId("_rUJzsDJhEei1p5hKOf5Slw");
 
-									CamundaTaskScheduler cts = (CamundaTaskScheduler) context.getComponentManager()
-											.getLocalComponentById("task-scheduler");
-									TopologyManager tm = (TopologyManager) context.getComponentManager()
-											.getLocalComponentById("topology-manager");
-
-									MoveToLocation moveRequest = CapabilityFactory.eINSTANCE.createMoveToLocation();
-									moveRequest.setTargetLocation(tm.getTopologyElement("_zzNG4V2TEeit97PGgoQOAQ"));
-
-									GeneralCapabilityVariant variant = ResourceinstanceFactory.eINSTANCE
-											.createGeneralCapabilityVariant();
-									variant.setCapability(moveRequest);
-
-									de.dfki.iui.basys.model.runtime.component.CapabilityRequest req = ComponentFactory.eINSTANCE
-											.createCapabilityRequest();
-									req.setCapabilityVariant(variant);
-									req.setComponentId("_rUJzsDJhEei1p5hKOf5Slw");
-
-									TaskDescription task = new TaskDescription(req);
-									if (lbass.getResourceInstanceId().equals("_jJdx4DD7EeiuBvcKgWzd3Q")) {
-										cts.scheduleTask(task);
-									} else {
-										cts.scheduleTask(task, 10000); // TODO fine tuning
-									}
+								TaskDescription task = new TaskDescription(req);
+								if (lbass.getResourceInstanceId().equals("_jJdx4DD7EeiuBvcKgWzd3Q")) {
+									cts.scheduleTask(task);
+								} else {
+									cts.scheduleTask(task, 10000); // TODO fine tuning
 								}
+							}
+						}
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					return null;
+				}, executor).handle((_void_, ex) -> {
+					if (ex != null) {
+						LOGGER.error(ex.getMessage(), ex);
+					}
+					return null;
+				});
 
-								cf.complete(true);
-								return null;
-							});
-						} catch (IOException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
+			}
+			
+			@Deprecated
+			public void handleNotificationOLD(Channel channel, Notification not) {
+
+				CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
+				System.out.println(">>>>>>" + not);
+				String payl = not.getPayload();
+				try {
+
+					// FIXME
+					EObject payload = JsonUtils.fromString(payl, EObject.class);
+
+					executor.submit(() -> {
+
+						if (payload.eClass().equals(OrderPackage.eINSTANCE.getOrder())) {
+
+							String response = client.target("http://127.0.0.1:9002/services/optimizer/").request(MediaType.APPLICATION_JSON).accept("application/json").get(String.class);
+
+							System.out.println("===============================");
+							System.out.println(response);
+							System.out.println("===============================");
+
+							JSONObject ob = new JSONObject(response);
+
+							LineBalancingAssignment lbass = new LinebalancingFactoryImpl().createLineBalancingAssignment();
+							lbass.setResourceInstanceId(ob.getString("resourceInstanceId"));
+							if ("_rUJzsDJhEei1p5hKOf5Slw".equals(lbass.getResourceInstanceId())) {
+								lbass.setResourceInstanceId("_jJdx4DD7EeiuBvcKgWzd3Q");
+							}
+
+							lbass.setOrder((Order) payload);
+
+							String outPayload = JsonUtils.toString(lbass);
+							Notification outNot = CommFactory.getInstance().createNotification(outPayload);
+							outChannel.sendNotification(outNot);
+
+							CamundaTaskScheduler cts = (CamundaTaskScheduler) context.getComponentManager().getLocalComponentById("task-scheduler");
+							TopologyManager tm = (TopologyManager) context.getComponentManager().getLocalComponentById("topology-manager");
+
+							MoveToLocation moveRequest = CapabilityFactory.eINSTANCE.createMoveToLocation();
+							moveRequest.setTargetLocation(tm.getTopologyElement("_zzNG4V2TEeit97PGgoQOAQ"));
+
+							GeneralCapabilityVariant variant = ResourceinstanceFactory.eINSTANCE.createGeneralCapabilityVariant();
+							variant.setCapability(moveRequest);
+
+							de.dfki.iui.basys.model.runtime.component.CapabilityRequest req = ComponentFactory.eINSTANCE.createCapabilityRequest();
+							req.setCapabilityVariant(variant);
+							req.setComponentId("_rUJzsDJhEei1p5hKOf5Slw");
+
+							TaskDescription task = new TaskDescription(req);
+							if (lbass.getResourceInstanceId().equals("_jJdx4DD7EeiuBvcKgWzd3Q")) {
+								cts.scheduleTask(task);
+							} else {
+								cts.scheduleTask(task, 10000); // TODO fine tuning
+							}
 						}
 
-					}
+						cf.complete(true);
+						return null;
+					});
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 
-					@Override
-					public void handleMessage(Channel channel, String msg) {
-					}
+			}
 
-				});
+			@Override
+			public void handleMessage(Channel channel, String msg) {
+			}
+
+		});
 
 	}
 
 	@Override
 	public WorldModel getCurrentWorld() {
 
-		ProductInstanceManager pim = (ProductInstanceManager) context.getComponentManager()
-				.getLocalComponentById("product-instance-manager");
+		ProductInstanceManager pim = (ProductInstanceManager) context.getComponentManager().getLocalComponentById("product-instance-manager");
 		List<ProductInstance> productInstances = pim.getProductInstanceStore().getProductInstances();
 
-		ResourceInstanceManager rim = (ResourceInstanceManager) context.getComponentManager()
-				.getLocalComponentById("resource-instance-manager");
+		ResourceInstanceManager rim = (ResourceInstanceManager) context.getComponentManager().getLocalComponentById("resource-instance-manager");
 
 		ResourceInstanceRepository repo = rim.getResourceInstanceRepository();
 
@@ -197,8 +251,7 @@ public class WorldModelManagerImpl extends EmfServiceComponent implements WorldM
 			case "MiR 100":
 
 				try {
-					ComponentConfiguration avgConfig = context.getComponentManager().getLocalComponentById(ri.getId())
-							.getConfig();
+					ComponentConfiguration avgConfig = context.getComponentManager().getLocalComponentById(ri.getId()).getConfig();
 					Property sourceProperty = avgConfig.getProperty("sourceLocation");
 					TopologyElement source = null;
 					if (sourceProperty != null) {
@@ -298,6 +351,28 @@ public class WorldModelManagerImpl extends EmfServiceComponent implements WorldM
 			}
 		}
 		return -1;
+	}
+	
+	public String getResourceInstanceIdOpt() {
+		String response = client.target("http://127.0.0.1:9002/services/optimizer/").request(MediaType.APPLICATION_JSON).accept("application/json").get(String.class);
+
+		System.out.println("===============================");
+		System.out.println(response);
+		System.out.println("===============================");
+
+		JSONObject ob = new JSONObject(response);
+
+		String result = ob.getString("resourceInstanceId");
+		if ("_rUJzsDJhEei1p5hKOf5Slw".equals(result)) {
+			result = "_jJdx4DD7EeiuBvcKgWzd3Q";
+		}
+		return result;
+	}	
+	
+	public String getResourceInstanceIdIntern() {
+		//TODO: 1. check capabilities
+		//TODO: 2. check current availability
+		return UR3_ID;
 	}
 
 }

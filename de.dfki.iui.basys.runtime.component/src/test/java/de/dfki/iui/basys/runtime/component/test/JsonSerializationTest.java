@@ -93,6 +93,7 @@ public class JsonSerializationTest {
 		
 	}
 	@Test	
+	@Ignore
 	public void testSerializeComponentConfiguration() {
 
 		JsonUtils.factory = new BasysResourceSetImpl.Factory();
@@ -128,6 +129,7 @@ public class JsonSerializationTest {
 	}
 	
 	@Test
+	@Ignore
 	public void testSerializeDeserializeComponentRequests() {
 		
 		ResourceSet resourceSet = EmfServiceComponent.createResourceSet();

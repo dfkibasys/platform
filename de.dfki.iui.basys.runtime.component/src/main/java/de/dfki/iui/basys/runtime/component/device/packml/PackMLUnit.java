@@ -15,68 +15,68 @@ import de.dfki.iui.basys.model.runtime.component.RequestStatus;
 import de.dfki.iui.basys.model.runtime.component.State;
 import de.dfki.iui.basys.model.runtime.component.impl.ComponentRequestStatusImpl;
 
-
 public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStatesHandler, WaitStatesHandler {
 
-	protected final Logger LOGGER = LoggerFactory.getLogger(PackMLUnit.class.getName());
+	protected final Logger LOGGER;// = LoggerFactory.getLogger(PackMLUnit.class.getName());
 
-	private String id;
-
+	private String id, name;
+	private ControlMode mode = ControlMode.PRODUCTION;
+	private UnitConfiguration config;
+	private int errorCode = 0;	
+	
 	private boolean initialized = false;
 	private boolean wait = false;
-
 	private PackML packml = null;
-
-	private ControlMode mode = ControlMode.PRODUCTION;
-
-	private UnitConfiguration config;
-
+	private ExecutorService executor;
+	private CompletableFuture<Void> currentTask;
+	
 	private ActiveStatesHandler actHandler = null;
 	private ActiveStatesHandler simHandler = null;
 	private WaitStatesHandler waitHandler = null;
 
-	ExecutorService executor;
-	CompletableFuture<Boolean> currentTask;
-
-	protected int errorCode = 0;
-
-	public PackMLUnit(String id) {
+	public PackMLUnit(String id, String name) {
 		this.id = id;
+		this.name = name;
+		LOGGER = LoggerFactory.getLogger("basys.component." + name.replaceAll(" ", "-") + ".packml");
 		packml = new PackML(this);
-
 	}
 
 	public void initialize() {
-		executor = Executors.newCachedThreadPool();
-		// executor = Executors.newFixedThreadPool(2);
-		// executor = Executors.newSingleThreadExecutor();
-
-		packml.initialize();
+		if (!initialized) {
+			executor = Executors.newCachedThreadPool();
+			// executor = Executors.newFixedThreadPool(2);
+			// executor = Executors.newSingleThreadExecutor();
+	
+			packml.initialize();
+			initialized = true;
+		}
 	}
 
 	public void dispose() {
-		packml.dispose();
-
-		try {
-			System.out.println("attempt to shutdown executor");
-			executor.shutdown();
-			executor.awaitTermination(5, TimeUnit.SECONDS);
-		} catch (InterruptedException e) {
-			System.err.println("tasks interrupted");
-		} finally {
-			if (!executor.isTerminated()) {
-				System.err.println("cancel non-finished tasks");
+		if (initialized) {
+			packml.dispose();
+	
+			try {
+				System.out.println("attempt to shutdown executor");
+				executor.shutdown();
+				executor.awaitTermination(5, TimeUnit.SECONDS);
+			} catch (InterruptedException e) {
+				System.err.println("tasks interrupted");
+			} finally {
+				if (!executor.isTerminated()) {
+					System.err.println("cancel non-finished tasks");
+				}
+				executor.shutdownNow();
+				System.out.println("shutdown finished");
 			}
-			executor.shutdownNow();
-			System.out.println("shutdown finished");
+			initialized = false;
 		}
-
 	}
 
 	public void setActiveStatesHandler(ActiveStatesHandler actHandler) {
 		this.actHandler = actHandler;
 	}
-	
+
 	public void setSimStatesHandler(ActiveStatesHandler simHandler) {
 		this.simHandler = simHandler;
 	}
@@ -85,42 +85,68 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 		this.waitHandler = waitHandler;
 	}
 
-	public boolean cancelCurrentTask(boolean immediately) {
+	public void cancelCurrentTask(boolean immediately) {
+		LOGGER.debug("cancelCurrentTask");
 		if (currentTask != null) {
-			if (currentTask.isDone())
-				return true;
-			else {
-				try {
-					currentTask.completeExceptionally(new PackMLException("Execution cancelled"));
-					// currentTask.cancel(immediately);
-					return currentTask.join();
-				} catch (Exception e) {
+			if (!currentTask.isDone()) {
+				// try {
+				currentTask.completeExceptionally(new PackMLException("Execution cancelled"));
+				// currentTask.cancel(immediately);
+				// currentTask.join();
+				// } catch (Exception e) {
+				//
+				// }
+			}
+			currentTask = null;
+		}
+	}
 
-				}
+	private void schedule(Runnable r) {
+
+		currentTask = CompletableFuture.runAsync(r, executor).thenAccept((_void_) -> {
+			packml.raiseLifecycleEvent("done");
+		}).handle((result, ex) -> {
+			if (ex != null) {
+				LOGGER.error(ex.getMessage(), ex);				
+			}
+			return null;
+		});
+
+		if (wait) {
+			try {
+				currentTask.get();
+			} catch (InterruptedException | ExecutionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				// throw new PackMLException(e);
 			}
 		}
-		return true;
+
 	}
 
-	private void waitForCompletion(CompletableFuture<Boolean> cf) {
-
-		cf.thenCompose((result) -> {
-			packml.raiseLifecycleEvent("done");
-			return CompletableFuture.completedFuture(true);
-		});
-		currentTask = cf;
-		if (!wait)
-			return;
-
-		try {
-			currentTask.get();
-		} catch (InterruptedException | ExecutionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			// throw new PackMLException(e);
-		}
-		int i = 0;
-	}
+//	private void waitForCompletion(CompletableFuture<Void> cf) {
+//
+//		currentTask = cf.thenCompose((result) -> {
+//			packml.raiseLifecycleEvent("done");
+//			return null;
+//		}).handle((result, ex) -> {
+//			if (ex != null) {
+//				LOGGER.error(ex.getMessage(), ex);
+//				ex.printStackTrace();
+//			}
+//			return null;
+//		});
+//
+//		if (wait) {
+//			try {
+//				currentTask.get();
+//			} catch (InterruptedException | ExecutionException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//				// throw new PackMLException(e);
+//			}
+//		}
+//	}
 
 	public int getErrorCode() {
 		return errorCode;
@@ -138,7 +164,7 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 	public String getId() {
 		return id;
 	}
-
+	
 	@Override
 	public State getState() {
 		return packml.getState();
@@ -164,7 +190,7 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 		if (getMode() == mode) {
 			ComponentRequestStatus status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.NOOP).message(String.format("already in mode %s", mode)).build();
 			return status;
-		}		
+		}
 		if (mode == ControlMode.MANUAL && state == State.ABORTED) {
 			this.mode = mode;
 			ComponentRequestStatus status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.ACCEPTED).message("mode switched").build();
@@ -191,7 +217,7 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 			return status;
 		} else {
 			// illegal state
-			LOGGER.error(String.format("cannot set config in state %s", getState()));		
+			LOGGER.error(String.format("cannot set config in state %s", getState()));
 			ComponentRequestStatus status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.REJECTED).message(String.format("cannot set config in state %s", getState())).build();
 			return status;
 		}
@@ -223,7 +249,7 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 			status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.ACCEPTED).message("command accepted").build();
 		} else {
 			status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.REJECTED).message("not in COMPLETE or STOPPED state").build();
-		}		
+		}
 		return status;
 	}
 
@@ -236,10 +262,10 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 		} else {
 			packml.raiseLifecycleEvent("stop");
 			status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.ACCEPTED).message("command accepted").build();
-		} 
-//		else {
-//			status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.NOOP).message("not in COMPLETE or STOPPED state").build();
-//		}		
+		}
+		// else {
+		// status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.NOOP).message("not in COMPLETE or STOPPED state").build();
+		// }
 		return status;
 	}
 
@@ -294,7 +320,7 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 	/*
 	 * ActiveStatesHandler facade
 	 */
-	
+
 	private ActiveStatesHandler getHandler() {
 		if (getMode() == ControlMode.SIMULATION) {
 			return simHandler;
@@ -306,18 +332,30 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 	public void onResetting() {
 		LOGGER.info("onResetting()");
 		setErrorCode(0);
-		
-		ActiveStatesHandler handler = getHandler();		
+
+		ActiveStatesHandler handler = getHandler();
 		if (handler != null) {
-			CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
+			// CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
 
-			executor.submit(() -> {
-				handler.onResetting();
-				cf.complete(true);
-				return null;
+			// executor.submit(() -> {
+			// handler.onResetting();
+			// cf.complete(true);
+			// return null;
+			// });
+
+			// CompletableFuture<Void> cf = CompletableFuture.supplyAsync(() -> {
+			// handler.onResetting();
+			// return null;
+			// }, executor);
+			//
+			// waitForCompletion(cf);
+
+			schedule(new Runnable() {
+				@Override
+				public void run() {
+					handler.onResetting();
+				}
 			});
-
-			waitForCompletion(cf);
 		}
 
 	}
@@ -325,170 +363,290 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 	@Override
 	public void onStarting() {
 		LOGGER.info("onStarting()");
-		ActiveStatesHandler handler = getHandler();		
+		ActiveStatesHandler handler = getHandler();
 		if (handler != null) {
-			CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
+			// CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
+			//
+			// executor.submit(() -> {
+			// handler.onStarting();
+			// cf.complete(true);
+			// return null;
+			// });
 
-			executor.submit(() -> {
-				handler.onStarting();
-				cf.complete(true);
-				return null;
+			// CompletableFuture<Void> cf = CompletableFuture.supplyAsync(() -> {
+			// handler.onStarting();
+			// return null;
+			// }, executor);
+			//
+			// waitForCompletion(cf);
+
+			schedule(new Runnable() {
+				@Override
+				public void run() {
+					handler.onStarting();
+				}
 			});
-
-			waitForCompletion(cf);
 		}
 	}
 
 	@Override
 	public void onExecute() {
 		LOGGER.info("onExecute()");
-		ActiveStatesHandler handler = getHandler();		
+		ActiveStatesHandler handler = getHandler();
 		if (handler != null) {
-			CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
+			// CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
+			//
+			// executor.submit(() -> {
+			// handler.onExecute();
+			// cf.complete(true);
+			// return null;
+			// });
 
-			executor.submit(() -> {
-				handler.onExecute();
-				cf.complete(true);
-				return null;
+			// CompletableFuture<Void> cf = CompletableFuture.supplyAsync(() -> {
+			// handler.onExecute();
+			// return null;
+			// }, executor);
+			//
+			// waitForCompletion(cf);
+
+			schedule(new Runnable() {
+				@Override
+				public void run() {
+					handler.onExecute();
+				}
 			});
-
-			waitForCompletion(cf);
 		}
 	}
 
 	@Override
 	public void onCompleting() {
 		LOGGER.info("onCompleting()");
-		ActiveStatesHandler handler = getHandler();		
+		ActiveStatesHandler handler = getHandler();
 		if (handler != null) {
-			CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
+			// CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
+			//
+			// executor.submit(() -> {
+			// handler.onCompleting();
+			// cf.complete(true);
+			// return null;
+			// });
 
-			executor.submit(() -> {
-				handler.onCompleting();
-				cf.complete(true);
-				return null;
+			// CompletableFuture<Void> cf = CompletableFuture.supplyAsync(() -> {
+			// handler.onCompleting();
+			// return null;
+			// }, executor);
+			//
+			// waitForCompletion(cf);
+
+			schedule(new Runnable() {
+				@Override
+				public void run() {
+					handler.onCompleting();
+				}
 			});
-
-			waitForCompletion(cf);
 		}
 	}
 
 	@Override
 	public void onHolding() {
 		LOGGER.info("onHolding()");
-		ActiveStatesHandler handler = getHandler();		
+		ActiveStatesHandler handler = getHandler();
 		if (handler != null) {
-			CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
+			// CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
+			//
+			// executor.submit(() -> {
+			// handler.onHolding();
+			// cf.complete(true);
+			// return null;
+			// });
 
-			executor.submit(() -> {
-				handler.onHolding();
-				cf.complete(true);
-				return null;
+			// CompletableFuture<Void> cf = CompletableFuture.supplyAsync(() -> {
+			// handler.onHolding();
+			// return null;
+			// }, executor);
+			//
+			// waitForCompletion(cf);
+
+			schedule(new Runnable() {
+				@Override
+				public void run() {
+					handler.onHolding();
+				}
 			});
-
-			waitForCompletion(cf);
 		}
 	}
 
 	@Override
 	public void onUnholding() {
 		LOGGER.info("onUnholding()");
-		ActiveStatesHandler handler = getHandler();		
+		ActiveStatesHandler handler = getHandler();
 		if (handler != null) {
-			CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
+			// CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
+			//
+			// executor.submit(() -> {
+			// handler.onUnholding();
+			// cf.complete(true);
+			// return null;
+			// });
 
-			executor.submit(() -> {
-				handler.onUnholding();
-				cf.complete(true);
-				return null;
+			// CompletableFuture<Void> cf = CompletableFuture.supplyAsync(() -> {
+			// handler.onUnholding();
+			// return null;
+			// }, executor);
+			//
+			// waitForCompletion(cf);
+
+			schedule(new Runnable() {
+				@Override
+				public void run() {
+					handler.onUnholding();
+				}
 			});
-
-			waitForCompletion(cf);
 		}
 	}
 
 	@Override
 	public void onSuspending() {
 		LOGGER.info("onSuspending()");
-		ActiveStatesHandler handler = getHandler();		
+		ActiveStatesHandler handler = getHandler();
 		if (handler != null) {
-			CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
+			// CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
+			//
+			// executor.submit(() -> {
+			// handler.onSuspending();
+			// cf.complete(true);
+			// return null;
+			// });
 
-			executor.submit(() -> {
-				handler.onSuspending();
-				cf.complete(true);
-				return null;
+			// CompletableFuture<Void> cf = CompletableFuture.supplyAsync(() -> {
+			// handler.onSuspending();
+			// return null;
+			// }, executor);
+			//
+			// waitForCompletion(cf);
+
+			schedule(new Runnable() {
+				@Override
+				public void run() {
+					handler.onSuspending();
+				}
 			});
-
-			waitForCompletion(cf);
 		}
 	}
 
 	@Override
 	public void onUnsuspending() {
 		LOGGER.info("onUnsuspending()");
-		ActiveStatesHandler handler = getHandler();		
+		ActiveStatesHandler handler = getHandler();
 		if (handler != null) {
-			CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
+			// CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
+			//
+			// executor.submit(() -> {
+			// handler.onUnsuspending();
+			// cf.complete(true);
+			// return null;
+			// });
 
-			executor.submit(() -> {
-				handler.onUnsuspending();
-				cf.complete(true);
-				return null;
+			// CompletableFuture<Void> cf = CompletableFuture.supplyAsync(() -> {
+			// handler.onUnsuspending();
+			// return null;
+			// }, executor);
+			//
+			// waitForCompletion(cf);
+
+			schedule(new Runnable() {
+				@Override
+				public void run() {
+					handler.onUnsuspending();
+				}
 			});
-
-			waitForCompletion(cf);
 		}
 	}
 
 	@Override
 	public void onAborting() {
 		LOGGER.info("onAborting()");
-		ActiveStatesHandler handler = getHandler();		
+		ActiveStatesHandler handler = getHandler();
 		if (handler != null) {
-			CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
+			// CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
+			//
+			// executor.submit(() -> {
+			// handler.onAborting();
+			// cf.complete(true);
+			// return null;
+			// });
 
-			executor.submit(() -> {
-				handler.onAborting();
-				cf.complete(true);
-				return null;
+			// CompletableFuture<Void> cf = CompletableFuture.supplyAsync(() -> {
+			// handler.onAborting();
+			// return null;
+			// }, executor);
+			//
+			// waitForCompletion(cf);
+
+			schedule(new Runnable() {
+				@Override
+				public void run() {
+					handler.onAborting();
+				}
 			});
-
-			waitForCompletion(cf);
 		}
 	}
 
 	@Override
 	public void onClearing() {
 		LOGGER.info("onClearing()");
-		ActiveStatesHandler handler = getHandler();		
+		ActiveStatesHandler handler = getHandler();
 		if (handler != null) {
-			CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
+			// CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
+			//
+			// executor.submit(() -> {
+			// handler.onClearing();
+			// cf.complete(true);
+			// return null;
+			// });
 
-			executor.submit(() -> {
-				handler.onClearing();
-				cf.complete(true);
-				return null;
+			// CompletableFuture<Void> cf = CompletableFuture.supplyAsync(() -> {
+			// handler.onClearing();
+			// return null;
+			// }, executor);
+			//
+			// waitForCompletion(cf);
+
+			schedule(new Runnable() {
+				@Override
+				public void run() {
+					handler.onClearing();
+				}
 			});
-
-			waitForCompletion(cf);
 		}
 	}
 
 	@Override
 	public void onStopping() {
 		LOGGER.info("onStopping()");
-		ActiveStatesHandler handler = getHandler();		
+		ActiveStatesHandler handler = getHandler();
 		if (handler != null) {
-			CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
+			// CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
+			//
+			// executor.submit(() -> {
+			// handler.onStopping();
+			// cf.complete(true);
+			// return null;
+			// });
 
-			executor.submit(() -> {
-				handler.onStopping();
-				cf.complete(true);
-				return null;
+			// CompletableFuture<Void> cf = CompletableFuture.supplyAsync(() -> {
+			// handler.onStopping();
+			// return null;
+			// }, executor);
+			//
+			// waitForCompletion(cf);
+
+			schedule(new Runnable() {
+				@Override
+				public void run() {
+					handler.onStopping();
+				}
 			});
-
-			waitForCompletion(cf);
 		}
 	}
 

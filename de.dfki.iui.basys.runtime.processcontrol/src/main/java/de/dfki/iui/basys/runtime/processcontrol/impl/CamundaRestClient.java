@@ -107,7 +107,7 @@ public class CamundaRestClient {
 		return null;
 	}
 	
-	public void complete(String taskId) {
+	public synchronized void complete(String taskId) {
 		LOGGER.debug("Complete task {}", taskId);
 		Response response = client.target(baseUrl + externalTaskPath + taskId + "/complete").request(MediaType.APPLICATION_JSON).post(Entity.entity("{\"workerId\": \"" + workerId + "\"}", MediaType.APPLICATION_JSON));
 		LOGGER.debug("Complete task {} succeded with status code {}", taskId, response.getStatus());
@@ -126,7 +126,7 @@ public class CamundaRestClient {
 	}
 	
 	
-	public void complete(String taskId, List<Variable> variables) {
+	public synchronized void complete(String taskId, List<Variable> variables) {
 		LOGGER.debug("Complete task {} with process vars {}", taskId, variables.toString());
 		String vars = "";
 		for (Variable var : variables) {
@@ -169,7 +169,7 @@ public class CamundaRestClient {
 		
 	}
 
-	public synchronized void sendMessage(String message, String businessKey, Variable var) {
+	public void sendMessage(String message, String businessKey, Variable var) {
 		LOGGER.debug("Send message {} with businessKey {}", message, businessKey);
 
 		String entity = "{\n" + 

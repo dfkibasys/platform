@@ -180,7 +180,7 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 			return ts.getResponse();
 		}).handle((response, ex) -> {
 			if (ex != null) {
-				ex.printStackTrace();
+				LOGGER.error(ex.getMessage(), ex);
 			}
 			return response;
 		});

@@ -30,7 +30,7 @@ public class BaseEmfServiceComponentTest<T extends EmfServiceComponent> {
 				.componentId(UUID.randomUUID().toString())
 				.componentName("TestComponent")
 				.componentImplementationJavaClass(javaClassName)
-				.externalConnectionString("file:/" + new File(".").getAbsolutePath() + "/src/test/resources/model/" + file).build();
+				.externalConnectionString(new File(".").getAbsolutePath() + "/src/test/resources/model/" + file).build();
 		
 		ComponentConfiguration managerConfig = new ComponentConfigurationImpl.Builder()
 				.componentId("component-manager")

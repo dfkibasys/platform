@@ -74,7 +74,7 @@ public abstract class EmfServiceComponent extends ServiceComponent {
 		
 		String resourceUri = getConfig().getExternalConnectionString();
 				
-		uri = URI.createURI(resourceUri);
+		uri = URI.createFileURI(resourceUri);
 		LOGGER.debug("loading resource " + uri);
 		Resource resource = resourceSet.createResource(uri);
 		try {

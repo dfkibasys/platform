@@ -1,6 +1,9 @@
 package de.dfki.iui.basys.runtime.component.device;
 
 import java.util.List;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
@@ -38,15 +41,21 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 
 	protected boolean resetOnComplete, resetOnStopped = false;
 
+	private Lock lock;
+	private Condition executeCondition;
+	PackMLStatesHandlerFacade handlerFacade = null;	
+	
 	public DeviceComponent(ComponentConfiguration config) {
 		super(config);
 		
-		NotifyingStatesHandlerFacade handler = new NotifyingStatesHandlerFacade(this);
+		lock = new ReentrantLock();
+		executeCondition = lock.newCondition();		
+		handlerFacade = new PackMLStatesHandlerFacade(this);
 
-		packmlUnit = new PackMLUnit(getId());
-		packmlUnit.setActiveStatesHandler(handler);
+		packmlUnit = new PackMLUnit(getId(), getName());
+		packmlUnit.setActiveStatesHandler(handlerFacade);
 		packmlUnit.setSimStatesHandler(new SimulatedStatesHandler(this));
-		packmlUnit.setWaitStatesHandler(handler);
+		packmlUnit.setWaitStatesHandler(handlerFacade);
 		if (simulated) {
 			packmlUnit.setMode(ControlMode.SIMULATION);
 		}	
@@ -72,6 +81,24 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 		LOGGER.info("deactivated");
 	}
 
+	public void awaitExecuteComplete() {
+		lock.lock();
+		try {
+			executeCondition.await();						
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+			return;
+		} finally {
+			lock.unlock();
+		}
+	}
+	
+	public void signalExecuteComplete() {
+		lock.lock();
+		executeCondition.signalAll();
+		lock.unlock();
+	}
+	
 	public int getErrorCode() {
 		return packmlUnit.getErrorCode();
 	}
@@ -86,7 +113,14 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 
 	@Override
 	public State getState() {
-		return packmlUnit.getState();
+		return getState(false);
+	}
+	
+	public State getState(boolean fromRecord) {
+		if (fromRecord)
+			return handlerFacade.getLastState();
+		else 
+			return packmlUnit.getState();
 	}
 
 	@Override
@@ -214,8 +248,7 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 		}
 
 		LOGGER.debug("updateRegistrationAndNotify - finished");
-	}
-
+	}	
 	
 	@Override
 	protected void sendComponentResponse(ResponseStatus status, int statusCode) {	

@@ -67,6 +67,7 @@ public class KeyStoreLoader {
                 .addIpAddress("127.0.0.1");
 
             // Get as many hostnames and IP addresses as we can listed in the certificate.
+            //FIXME: implement alternative to get rid of the server-sdk dependency
             for (String hostname : HostnameUtil.getHostnames("0.0.0.0")) {
                 if (IP_ADDR_PATTERN.matcher(hostname).matches()) {
                     builder.addIpAddress(hostname);

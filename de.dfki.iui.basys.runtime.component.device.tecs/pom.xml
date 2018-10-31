@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<parent>
 		<relativePath>../../build/poms/compiled/</relativePath>
 		<groupId>de.dfki.iui.basys.build</groupId>
 		<artifactId>compiled-bundle-settings</artifactId>
-		<version>1.0-SNAPSHOT</version>
+		<version>0.1.1-SNAPSHOT</version>
 	</parent>
 
 	<properties>
@@ -33,13 +31,6 @@
 
 		<dependency>
 			<groupId>de.dfki.iui.basys.runtime</groupId>
-			<artifactId>de.dfki.iui.basys.runtime.component.device.laser</artifactId>
-			<version>${project.version}</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>de.dfki.iui.basys.runtime</groupId>
 			<artifactId>de.dfki.iui.basys.runtime.component.registry.zookeeper</artifactId>
 			<version>${project.version}</version>
 			<scope>test</scope>
@@ -48,7 +39,7 @@
 		<dependency>
 			<groupId>org.glassfish.jersey.core</groupId>
 			<artifactId>jersey-client</artifactId>
-			<version>2.25.1</version>
+			<version>${jersey-version}</version>
 			 <scope>test</scope>
 		</dependency>
 
@@ -56,7 +47,7 @@
 		<dependency>
 			<groupId>org.glassfish.jersey.media</groupId>
 			<artifactId>jersey-media-json-jackson</artifactId>
-			<version>2.25.1</version>
+			<version>${jersey-version}</version>
 			<scope>test</scope>
 			<exclusions>
 				<exclusion>
@@ -72,25 +63,25 @@
 		<dependency>
 			<groupId>de.dfki.iui.basys.build.wrapper-bundle-settings</groupId>
 			<artifactId>org.apache.httpcomponents.httpcore</artifactId>
-			<version>4.4.1-001-SNAPSHOT</version>
+			<version>0.1.1-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>
 			<groupId>de.dfki.iui.basys.build.wrapper-bundle-settings</groupId>
 			<artifactId>org.apache.httpcomponents.httpclient</artifactId>
-			<version>4.4.1-001-SNAPSHOT</version>
+			<version>0.1.1-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>
 			<groupId>de.dfki.iui.basys.build.wrapper-bundle-settings</groupId>
 			<artifactId>de.dfki.iui.libHRC</artifactId>
-			<version>0.0.4-001-SNAPSHOT</version>
+			<version>0.1.1-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>
 			<groupId>de.dfki.iui.basys.build.wrapper-bundle-settings</groupId>
 			<artifactId>de.dfki.tecs.libtecs</artifactId>
-			<version>2.0.6-001-SNAPSHOT</version>
+			<version>0.1.1-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>
@@ -101,6 +92,14 @@
 				<exclusion>
 					<groupId>org.slf4j</groupId>
 					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.httpcomponents</groupId>
+					<artifactId>httpclient</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.httpcomponents</groupId>
+					<artifactId>httpcore</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
@@ -120,17 +119,7 @@
 			<version>1.0.0-SNAPSHOT</version> </dependency> <dependency> <groupId>de.dfki.iui</groupId> 
 			<artifactId>de.dfki.iui.hue-thrift-service</artifactId> <version>1.0.0-SNAPSHOT</version> 
 			</dependency> -->
-		<dependency>
-			<groupId>de.dfki.iui.basys.build.wrapper-bundle-settings</groupId>
-			<artifactId>de.dfki.iui.hue-api</artifactId>
-			<version>1.0.0-001-SNAPSHOT</version>
-		</dependency>
 
-		<dependency>
-			<groupId>de.dfki.iui.basys.build.wrapper-bundle-settings</groupId>
-			<artifactId>de.dfki.iui.hue-thrift-service</artifactId>
-			<version>1.0.0-001-SNAPSHOT</version>
-		</dependency>
 
 
 		<!-- comment to remove all imported (non-local) bundles from your compilation 
