@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="CP1252"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<parent>
+		<relativePath>../build</relativePath>
+		<groupId>de.dfki.iui</groupId>
+		<artifactId>basys</artifactId>
+		<version>0.1.1-SNAPSHOT</version>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>de.dfki.iui.basys</groupId>
+	<artifactId>model</artifactId>
+
+	<name>BaSys 4.0 Models Module</name>
+
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>de.dfki.iui.basys.model.base</module>
+		<module>de.dfki.iui.basys.model.domain</module>
+		<module>de.dfki.iui.basys.model.service</module>
+		<module>de.dfki.iui.basys.model.runtime</module>
+		<module>de.dfki.iui.basys.model.aas</module>
+		<module>de.dfki.iui.basys.model.test</module>
+	</modules>
+	
+	<scm>
+		<url>https://lns-90165.sb.dfki.de/gitlab/i40/basys/models</url>
+		<connection>scm:git:ssh://git@lns-90165.sb.dfki.de:10022/i40/basys/models.git</connection>
+		<developerConnection>scm:git:ssh://git@lns-90165.sb.dfki.de:10022/i40/basys/models.git</developerConnection>
+	</scm>
+	
+</project>

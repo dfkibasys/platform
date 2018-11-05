@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resourceinstance:ResourceInstanceRepository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:resourceinstance="http://www.dfki.de/iui/basys/model/resourceinstance">
+  <resourceInstances id="_SE5NIDB4Eei1bbwBPPZWOA" name="My Festo Component" serialNumber="65465464">
+    <resourceType href="cebit.resourcetype#_yIFSQjB3Eei1bbwBPPZWOA"/>
+    <role href="cebit.topology#_6CV9oDB4Eei1bbwBPPZWOA"/>
+  </resourceInstances>
+  <resourceInstances id="_jJdx4DD7EeiuBvcKgWzd3Q" name="My UR3">
+    <resourceType href="cebit.resourcetype#_Hi37STD5EeiuBvcKgWzd3Q"/>
+  </resourceInstances>
+  <resourceInstances id="_mQ0kYDD7EeiuBvcKgWzd3Q" name="My UR5">
+    <resourceType href="cebit.resourcetype#_Jve8yTD5EeiuBvcKgWzd3Q"/>
+  </resourceInstances>
+  <resourceInstances id="_r4sy4DD7EeiuBvcKgWzd3Q" name="My UR10">
+    <resourceType href="cebit.resourcetype#_LILOCTD5EeiuBvcKgWzd3Q"/>
+  </resourceInstances>
+  <resourceInstances id="_uFLRgDD7EeiuBvcKgWzd3Q" name="My iiwa">
+    <resourceType href="cebit.resourcetype#_Vvb1uTD7EeiuBvcKgWzd3Q"/>
+  </resourceInstances>
+  <resourceInstances id="_wojNMDD7EeiuBvcKgWzd3Q" name="My YuMi">
+    <resourceType href="cebit.resourcetype#_NnuuyTD7EeiuBvcKgWzd3Q"/>
+  </resourceInstances>
+  <resourceInstances id="_I4a_oDD-EeiuBvcKgWzd3Q" name="My Panda">
+    <resourceType href="cebit.resourcetype#_0xCaqTD9EeiuBvcKgWzd3Q"/>
+  </resourceInstances>
+  <resourceInstances id="_rUJzsDJhEei1p5hKOf5Slw" name="My MiR 100">
+    <resourceType href="cebit.resourcetype#_ZRW8sjJhEei1p5hKOf5Slw"/>
+  </resourceInstances>
+</resourceinstance:ResourceInstanceRepository>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service:ServiceDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:service="http://www.dfki.de/iui/basys/model/service" name="PromiseMonitoring" id="_355IENTeEee5TqqyIpbNqg">
+  <operations name="getLocations" upperBound="-1">
+    <eType xsi:type="ecore:EClass" href="http://www.dfki.de/iui/basys/model/linebalancing#//LBLocations"/>
+    <eParameters name="componentId">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eParameters>
+  </operations>
+  <subscriptions>
+    <eType xsi:type="ecore:EClass" href="http://www.dfki.de/iui/basys/model/staff#//StaffLocationChangeEvent"/>
+  </subscriptions>
+  <subscriptions>
+    <eType xsi:type="ecore:EClass" href="http://www.dfki.de/iui/basys/model/product#//ProductInstanceLocationChangeEvent"/>
+  </subscriptions>
+</service:ServiceDescription>

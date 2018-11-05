@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated runtime -->
+      <package
+            uri="http://www.dfki.de/iui/basys/model/communication"
+            class="de.dfki.iui.basys.model.runtime.communication.CommunicationPackage"
+            genModel="model/runtime.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated runtime -->
+      <package
+            uri="http://www.dfki.de/iui/basys/model/component"
+            class="de.dfki.iui.basys.model.runtime.component.ComponentPackage"
+            genModel="model/runtime.genmodel"/>
+   </extension>
+
+</plugin>

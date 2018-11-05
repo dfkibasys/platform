@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<topology:Enterprise xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:topology="http://www.dfki.de/iui/basys/model/topology" id="BoschRexroth">
+  <sites id="HOM">
+    <areas id="Buildung 5.2">
+      <workCenters xsi:type="topology:ProductionLine" id="I4.0">
+        <workCells id="complete">
+          <stations id="1"/>
+          <stations id="2"/>
+          <stations id="3"/>
+          <stations id="4"/>
+          <stations id="5"/>
+          <stations id="6"/>
+          <stations id="7"/>
+          <stations id="8"/>
+          <stations id="9"/>
+        </workCells>
+      </workCenters>
+    </areas>
+  </sites>
+</topology:Enterprise>

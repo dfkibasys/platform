@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="communication" nsURI="http://www.dfki.de/iui/basys/model/communication"
+    nsPrefix="communication">
+  <eAnnotations source="http://de.dfki.iui.mmds/CoreModel"/>
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
+    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
+    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="Client" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
+    <eOperations name="connect" eExceptions="#//ClientException"/>
+    <eOperations name="disconnect" eExceptions="#//ClientException"/>
+    <eOperations name="isConnected" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eOperations name="getChannel" eType="#//Channel">
+      <eParameters name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="sendMessage" eExceptions="#//ClientException">
+      <eParameters name="channelId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="msg" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="sendRequest" eExceptions="#//ClientException">
+      <eParameters name="channelId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="req" eType="#//Request"/>
+      <eParameters name="cb" eType="#//ResponseCallback"/>
+    </eOperations>
+    <eOperations name="sendRequest" eType="#//Response" eExceptions="#//ClientException">
+      <eParameters name="channelId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="req" eType="#//Request"/>
+    </eOperations>
+    <eOperations name="sendNotification" eExceptions="#//ClientException">
+      <eParameters name="channelId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="not" eType="#//Notification"/>
+    </eOperations>
+    <eOperations name="getPool" eType="#//ChannelPool">
+      <eParameters name="id" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="authentication" eType="#//Authentication"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pools" upperBound="-1"
+        eType="#//ChannelPool" eOpposite="#//ChannelPool/client"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ChannelPool" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
+    <eOperations name="connect" eExceptions="#//ChannelPoolException"/>
+    <eOperations name="disconnect" eExceptions="#//ChannelPoolException"/>
+    <eOperations name="getChannel" eType="#//Channel">
+      <eParameters name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="getChannelByName" eType="#//Channel">
+      <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="channels" upperBound="-1"
+        eType="#//Channel" eOpposite="#//Channel/pool"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="provider" lowerBound="1"
+        eType="#//CommunicationProvider"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uri" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="client" lowerBound="1"
+        eType="#//Client" eOpposite="#//Client/pools"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="connected" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        changeable="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Channel" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
+    <eOperations name="open" eExceptions="#//ChannelException"/>
+    <eOperations name="close" eExceptions="#//ChannelException"/>
+    <eOperations name="sendMessage" eExceptions="#//ChannelException">
+      <eParameters name="msg" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="sendNotification" eExceptions="#//ChannelException">
+      <eParameters name="not" eType="#//Notification"/>
+    </eOperations>
+    <eOperations name="sendRequest" eType="#//Response" eExceptions="#//ChannelException">
+      <eParameters name="req" eType="#//Request"/>
+    </eOperations>
+    <eOperations name="sendRequest" eExceptions="#//ChannelException">
+      <eParameters name="req" eType="#//Request"/>
+      <eParameters name="cb" eType="#//ResponseCallback"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="listener" eType="#//ChannelListener"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pool" lowerBound="1" eType="#//ChannelPool"
+        eOpposite="#//ChannelPool/channels"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="open" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        changeable="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="queued" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ChannelListener" abstract="true" interface="true">
+    <eOperations name="handleMessage">
+      <eParameters name="channel" eType="#//Channel"/>
+      <eParameters name="msg" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="handleNotification">
+      <eParameters name="channel" eType="#//Channel"/>
+      <eParameters name="not" eType="#//Notification"/>
+    </eOperations>
+    <eOperations name="handleRequest" eType="#//Response">
+      <eParameters name="channel" eType="#//Channel"/>
+      <eParameters name="req" eType="#//Request"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CommunicationProvider" abstract="true"
+      interface="true">
+    <eOperations name="doConnect" eExceptions="#//ProviderException">
+      <eParameters name="pool" eType="#//ChannelPool"/>
+    </eOperations>
+    <eOperations name="doDisconnect" eExceptions="#//ProviderException">
+      <eParameters name="pool" eType="#//ChannelPool"/>
+    </eOperations>
+    <eOperations name="doOpenChannel" eExceptions="#//ProviderException">
+      <eParameters name="channel" eType="#//Channel"/>
+    </eOperations>
+    <eOperations name="doCloseChannel" eExceptions="#//ProviderException">
+      <eParameters name="channel" eType="#//Channel"/>
+    </eOperations>
+    <eOperations name="doSendMessage" eExceptions="#//ProviderException">
+      <eParameters name="channel" eType="#//Channel"/>
+      <eParameters name="msg" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="doSendRequest" eExceptions="#//ProviderException">
+      <eParameters name="channel" eType="#//Channel"/>
+      <eParameters name="req" eType="#//Request"/>
+      <eParameters name="cb" eType="#//ResponseCallback"/>
+    </eOperations>
+    <eOperations name="doSendRequest" eType="#//Response" eExceptions="#//ProviderException">
+      <eParameters name="channel" eType="#//Channel"/>
+      <eParameters name="req" eType="#//Request"/>
+    </eOperations>
+    <eOperations name="doSendNotification" eExceptions="#//ProviderException">
+      <eParameters name="channel" eType="#//Channel"/>
+      <eParameters name="not" eType="#//Notification"/>
+    </eOperations>
+    <eOperations name="supportQueuedChannels" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Message" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="payload" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Notification" eSuperTypes="#//Message"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Response" eSuperTypes="#//Message">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="requestId" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Request" eSuperTypes="#//Message"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ResponseCallback" abstract="true" interface="true">
+    <eOperations name="handleResponse">
+      <eParameters name="res" eType="#//Response"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Authentication">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="username" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="password" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="certificate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="CommunicationException" instanceClassName="de.dfki.iui.basys.model.runtime.communication.exceptions.CommunicationException"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="ChannelPoolException" instanceClassName="de.dfki.iui.basys.model.runtime.communication.exceptions.ChannelPoolException"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="ProviderException" instanceClassName="de.dfki.iui.basys.model.runtime.communication.exceptions.ProviderException"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="MessageException" instanceClassName="de.dfki.iui.basys.model.runtime.communication.exceptions.MessageException"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="ClientException" instanceClassName="de.dfki.iui.basys.model.runtime.communication.exceptions.ClientException"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="ChannelException" instanceClassName="de.dfki.iui.basys.model.runtime.communication.exceptions.ChannelException"/>
+</ecore:EPackage>
