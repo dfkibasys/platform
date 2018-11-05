@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<parent>
+		<relativePath>../../build/poms/compiled/</relativePath>
+		<groupId>de.dfki.iui.basys.build</groupId>
+		<artifactId>compiled-bundle-settings</artifactId>
+		<version>0.1.1-SNAPSHOT</version>
+	</parent>
+
+	<properties>
+		<bundle.symbolicName>de.dfki.iui.basys.osgi.logging</bundle.symbolicName>
+		<bundle.namespace>de.dfki.iui.basys.osgi.logging</bundle.namespace>
+	</properties>
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>de.dfki.iui.basys.osgi</groupId>
+	<artifactId>de.dfki.iui.basys.osgi.logging</artifactId>
+
+	<name>${bundle.symbolicName}</name>
+
+	<packaging>bundle</packaging>
+
+	<dependencies>
+
+
+		<!-- https://mvnrepository.com/artifact/org.ops4j.pax.logging/pax-logging-api -->
+		<dependency>
+			<groupId>org.ops4j.pax.logging</groupId>
+			<artifactId>pax-logging-api</artifactId>
+			<version>1.10.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.ops4j.pax.logging/pax-logging-service -->
+		<dependency>
+			<groupId>org.ops4j.pax.logging</groupId>
+			<artifactId>pax-logging-service</artifactId>
+			<version>1.10.1</version>
+		</dependency>
+
+
+		<!-- comment to remove all imported (non-local) bundles from your compilation 
+			classpath -->
+		<!-- 
+		<dependency>
+			<type>pom</type>
+			<groupId>${project.parent.groupId}</groupId>
+			<artifactId>provision</artifactId>
+			<optional>true</optional>
+		</dependency>
+ -->
+<!-- 		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>osgi_R4_core</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>osgi_R4_compendium</artifactId>
+			<optional>true</optional>
+		</dependency> -->
+	</dependencies>
+
+</project>
