@@ -3,7 +3,7 @@
 
   <parent>
     <relativePath>../</relativePath>
-    <groupId>de.dfki.iui.basys.build</groupId>
+    <groupId>de.dfki.cos.basys.platform</groupId>
     <artifactId>wrapper-bundle-settings</artifactId>
     <version>0.1.1-SNAPSHOT</version>
   </parent>

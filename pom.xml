@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-
 	<organization>
 		<name>DFKI GmbH</name>
 		<url>http://www.dfki.de</url>
@@ -17,11 +16,11 @@
 	</licenses>
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>de.dfki.iui</groupId>
-	<artifactId>basys</artifactId>
+	<groupId>de.dfki.cos.basys</groupId>
+	<artifactId>platform</artifactId>
 	<version>0.1.1-SNAPSHOT</version>
 
-	<name>BaSys 4.0</name>
+	<name>The BaSys 4.0 Platform</name>
 
 	<!-- | describe your project here -->
 
@@ -39,21 +38,18 @@
 
 	<modules>
 		<module>poms</module>
-		<module>provision</module>
-		<module>../common</module>
-		<module>../models</module>
-		<module>../runtime</module>
-		<module>../osgi</module>
-		<module>../demonstrator</module>
-		<module>../deployment</module>
+		<module>provision</module>		
+		<module>models</module>		
+		<module>runtime</module>
+		<module>osgi</module>		
 	</modules>
 
 	<scm>
-		<url>https://lns-90165.sb.dfki.de/gitlab/i40/basys/build</url>
-		<connection>scm:git:ssh://git@lns-90165.sb.dfki.de:10022/i40/basys/build.git</connection>
-		<developerConnection>scm:git:ssh://git@lns-90165.sb.dfki.de:10022/i40/basys/build.git</developerConnection>
-	  <tag>HEAD</tag>
-  </scm>
+		<url>https://lns-90165.sb.dfki.de/gitlab/i40/basys/platform</url>
+		<connection>scm:git:ssh://git@lns-90165.sb.dfki.de:10022/i40/basys/platform.git</connection>
+		<developerConnection>scm:git:ssh://git@lns-90165.sb.dfki.de:10022/i40/basys/platform.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
 
 	<repositories>
 		<repository>
