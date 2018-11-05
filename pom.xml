@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<parent>
+		<relativePath>../build</relativePath>
+		<groupId>de.dfki.iui</groupId>
+		<artifactId>basys</artifactId>
+		<version>0.1.1-SNAPSHOT</version>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>de.dfki.iui.basys</groupId>
+	<artifactId>runtime</artifactId>
+
+	<name>BaSys 4.0 Runtime Module</name>
+
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>de.dfki.iui.basys.runtime.communication</module>
+		<module>de.dfki.iui.basys.runtime.component</module>
+		<module>de.dfki.iui.basys.runtime.component.registry.zookeeper</module>
+		<module>de.dfki.iui.basys.runtime.component.device.rest</module>
+		<module>de.dfki.iui.basys.runtime.component.device.opcua</module>
+		<module>de.dfki.iui.basys.runtime.component.device.tecs</module>
+		<module>de.dfki.iui.basys.runtime.component.device.mqtt</module>
+		<module>de.dfki.iui.basys.runtime.component.device.ros</module>
+		<module>de.dfki.iui.basys.runtime.component.device.stako</module>
+		<module>de.dfki.iui.basys.runtime.connector</module>
+		<module>de.dfki.iui.basys.runtime.gateway</module>
+		<module>de.dfki.iui.basys.runtime.processcontrol</module>
+		<module>de.dfki.iui.basys.runtime.services</module>
+        <module>de.dfki.iui.basys.runtime.services.worldmodelManager</module>
+	</modules>
+
+	<scm>
+		<url>https://lns-90165.sb.dfki.de/gitlab/i40/basys/runtime</url>
+		<connection>scm:git:ssh://git@lns-90165.sb.dfki.de:10022/i40/basys/runtime.git</connection>
+		<developerConnection>scm:git:ssh://git@lns-90165.sb.dfki.de:10022/i40/basys/runtime.git</developerConnection>
+	</scm>
+
+</project>

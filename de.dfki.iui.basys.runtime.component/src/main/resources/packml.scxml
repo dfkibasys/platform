@@ -1,0 +1,347 @@
+<?xml version="1.0"?>
+<scxml xmlns="http://www.w3.org/2005/07/scxml" initial="initialized" version="1.0">
+  <final id="disposed">
+  </final>
+  <state id="initialized" initial="_mode_switch">
+    <transition event="lifecycle.events.dispose" target="disposed"/>
+    <state id="_mode_switch">
+      <transition cond="unit.getMode() == Mode.PRODUCTION" target="MODE_PRODUCTION"/>
+      <transition cond="unit.getMode() == Mode.MAINTENANCE" target="MODE_MAINTENANCE"/>
+      <transition cond="unit.getMode() == Mode.CHANGE_OVER" target="MODE_CHANGE_OVER"/>
+      <transition cond="unit.getMode() == Mode.SET_UP" target="MODE_SET_UP"/>
+      <transition cond="unit.getMode() == Mode.MANUAL" target="MODE_MANUAL"/>
+      <transition cond="unit.getMode() == Mode.CLEAN" target="MODE_CLEAN"/>
+      <transition cond="unit.getMode() == Mode.EMPTY_OUT" target="MODE_EMPTY_OUT"/>
+      <transition cond="unit.getMode() == Mode.SIMULATION" target="MODE_SIMULATION"/>
+    </state>
+    <state id="MODE_MAINTENANCE"/>
+	<state id="MODE_CHANGE_OVER" initial="_abortable.co">
+	  <transition event="lifecycle.events.switch_mode" target="_mode_switch">
+	    <!-- transition should reside in STOPPED state, triggering the event in other states is prevented from the PackML.java class -->
+	  </transition>
+      <state id="ABORTING.co">
+        <onentry>
+          <script>packml.setState(State.ABORTING)</script>
+          <script>unit.onAborting()</script>
+        </onentry>
+        <transition target="ABORTED.co" event="lifecycle.events.done"/>
+      </state>
+      <state id="ABORTED.co">
+        <onentry>
+          <script>packml.setState(State.ABORTED)</script>
+          <script>unit.onAborted()</script>
+        </onentry>
+        <transition event="lifecycle.events.clear" target="CLEARING.co"/>
+      </state>
+      <state id="_abortable.co" initial="STOPPED.co">
+        <transition event="lifecycle.events.abort" target="ABORTING.co">
+          <script>unit.cancelCurrentTask(true)</script>
+        </transition>
+        <state id="CLEARING.co">
+          <onentry>
+            <script>packml.setState(State.STOPPED)</script>
+            <script>unit.onClearing()</script>
+          </onentry>
+          <transition target="STOPPED.co" event="lifecycle.events.done"/>
+        </state>
+        <state id="STOPPING.co">
+          <onentry>
+            <script>packml.setState(State.STOPPING)</script>
+            <script>unit.onStopping()</script>
+          </onentry>
+          <transition target="STOPPED.co" event="lifecycle.events.done"/>
+        </state>
+        <state id="STOPPED.co">
+          <onentry>
+            <script>packml.setState(State.STOPPED)</script>
+            <script>unit.onStopped()</script>
+          </onentry>
+        </state>
+       </state>
+    </state>
+    <state id="MODE_SET_UP"/>
+    <state id="MODE_MANUAL"/>
+    <state id="MODE_CLEAN"/>
+    <state id="MODE_EMPTY_OUT"/>
+	<state id="MODE_SIMULATION" initial="_abortable.sim">
+	  <transition event="lifecycle.events.switch_mode" target="_mode_switch">
+	    <!-- transition should reside in STOPPED state, triggering the event in other states is prevented from the PackML.java class -->
+	  </transition>
+      <state id="ABORTING.sim">
+        <onentry>
+          <script>packml.setState(State.ABORTING)</script>
+          <script>unit.onAborting()</script>
+        </onentry>
+        <transition target="ABORTED.sim" event="lifecycle.events.done"/>
+      </state>
+      <state id="ABORTED.sim">
+        <onentry>
+          <script>packml.setState(State.ABORTED)</script>
+          <script>unit.onAborted()</script>
+        </onentry>
+        <transition event="lifecycle.events.clear" target="CLEARING.sim"/>
+      </state>
+      <state id="_abortable.sim" initial="STOPPED.sim">
+        <transition event="lifecycle.events.abort" target="ABORTING.sim">
+          <script>unit.cancelCurrentTask(true)</script>
+        </transition>
+        <state id="CLEARING.sim">
+          <onentry>
+          <script>packml.setState(State.CLEARING)</script>
+            <script>unit.onClearing()</script>
+          </onentry>
+          <transition target="STOPPED.sim" event="lifecycle.events.done"/>
+        </state>
+        <state id="STOPPING.sim">
+          <onentry>
+          <script>packml.setState(State.STOPPING)</script>
+            <script>unit.onStopping()</script>
+          </onentry>
+          <transition target="STOPPED.sim" event="lifecycle.events.done"/>
+        </state>
+        <state id="STOPPED.sim">
+          <onentry>
+          <script>packml.setState(State.STOPPED)</script>
+            <script>unit.onStopped()</script>
+          </onentry>
+          <transition event="lifecycle.events.reset" target="_stoppable.sim"/>
+        </state>
+        <state id="_stoppable.sim" initial="RESETTING.sim">
+          <transition event="lifecycle.events.stop" target="STOPPING.sim">
+            <script>unit.cancelCurrentTask(true)</script>
+          </transition>
+          <state id="RESETTING.sim">
+            <onentry>
+          <script>packml.setState(State.RESETTING)</script>
+              <script>unit.onResetting()</script>
+            </onentry>
+            <transition target="IDLE.sim" event="lifecycle.events.done"/>
+          </state>
+          <state id="IDLE.sim">
+            <onentry>
+          <script>packml.setState(State.IDLE)</script>
+              <script>unit.onIdle()</script>
+            </onentry>
+            <transition event="lifecycle.events.start" target="STARTING.sim"/>
+          </state>
+          <state id="STARTING.sim">
+            <onentry>
+          <script>packml.setState(State.STARTING)</script>
+              <script>unit.onStarting()</script>
+            </onentry>
+            <transition target="EXECUTE.sim" event="lifecycle.events.done"/>
+          </state>
+          <state id="EXECUTE.sim">
+            <onentry>
+          <script>packml.setState(State.EXECUTE)</script>
+              <script>unit.onExecute()</script>
+            </onentry>
+            <transition event="lifecycle.events.hold" target="HOLDING.sim">
+              <script>unit.cancelCurrentTask(true)</script>
+            </transition>
+            <transition event="lifecycle.events.suspend" target="SUSPENDING.sim">
+              <script>unit.cancelCurrentTask(true)</script>
+            </transition>
+            <transition target="COMPLETING.sim" event="lifecycle.events.done"/>
+          </state>
+          <state id="COMPLETING.sim">
+            <onentry>
+          <script>packml.setState(State.COMPLETING)</script>
+              <script>unit.onCompleting()</script>
+            </onentry>
+            <transition target="COMPLETE.sim" event="lifecycle.events.done"/>
+          </state>
+          <state id="COMPLETE.sim">
+            <onentry>
+          <script>packml.setState(State.COMPLETE)</script>
+              <script>unit.onComplete()</script>
+            </onentry>
+            <transition event="lifecycle.events.reset" target="RESETTING.sim"/>
+          </state>
+          <state id="HOLDING.sim">
+            <onentry>
+          <script>packml.setState(State.HOLDING)</script>
+              <script>unit.onHolding()</script>
+            </onentry>
+            <transition target="HELD.sim" event="lifecycle.events.done"/>
+          </state>
+          <state id="HELD.sim">
+            <onentry>
+          <script>packml.setState(State.HELD)</script>
+              <script>unit.onHeld()</script>
+            </onentry>
+            <transition event="lifecycle.events.unhold" target="UNHOLDING.sim"/>
+          </state>
+          <state id="UNHOLDING.sim">
+            <onentry>
+          <script>packml.setState(State.UNHOLDING)</script>
+              <script>unit.onUnholding()</script>
+            </onentry>
+            <transition target="EXECUTE.sim" event="lifecycle.events.done"/>
+          </state>
+          <state id="SUSPENDING.sim">
+            <onentry>
+          <script>packml.setState(State.SUSPENDING)</script>
+              <script>unit.onSuspending()</script>
+            </onentry>
+            <transition target="SUSPENDED.sim" event="lifecycle.events.done"/>
+          </state>
+          <state id="SUSPENDED.sim">
+            <onentry>
+          <script>packml.setState(State.SUSPENDED)</script>
+              <script>unit.onSuspended()</script>
+            </onentry>
+            <transition event="lifecycle.events.unsuspend" target="UNSUSPENDING.sim"/>
+          </state>
+          <state id="UNSUSPENDING.sim">
+            <onentry>
+          <script>packml.setState(State.UNSUSPENDING)</script>
+              <script>unit.onUnsuspending()</script>
+            </onentry>
+            <transition target="EXECUTE.sim" event="lifecycle.events.done"/>
+          </state>
+        </state>
+      </state>
+    </state>
+    <state id="MODE_PRODUCTION" initial="_abortable.prod">
+	  <transition event="lifecycle.events.switch_mode" target="_mode_switch">
+	    <!-- transition should reside in STOPPED state, triggering the event in other states is prevented from the PackML.java class -->
+	  </transition>
+      <state id="ABORTING.prod">
+        <onentry>
+          <script>packml.setState(State.ABORTING)</script>
+          <script>unit.onAborting()</script>
+        </onentry>
+        <transition target="ABORTED.prod" event="lifecycle.events.done"/>
+      </state>
+      <state id="ABORTED.prod">
+        <onentry>
+          <script>packml.setState(State.ABORTED)</script>
+          <script>unit.onAborted()</script>
+        </onentry>
+        <transition event="lifecycle.events.clear" target="CLEARING.prod"/>
+      </state>
+      <state id="_abortable.prod" initial="STOPPED.prod">
+        <transition event="lifecycle.events.abort" target="ABORTING.prod">
+          <script>unit.cancelCurrentTask(true)</script>
+        </transition>
+        <state id="CLEARING.prod">
+          <onentry>
+          <script>packml.setState(State.CLEARING)</script>
+            <script>unit.onClearing()</script>
+          </onentry>
+          <transition target="STOPPED.prod" event="lifecycle.events.done"/>
+        </state>
+        <state id="STOPPING.prod">
+          <onentry>
+          <script>packml.setState(State.STOPPING)</script>
+            <script>unit.onStopping()</script>
+          </onentry>
+          <transition target="STOPPED.prod" event="lifecycle.events.done"/>
+        </state>
+        <state id="STOPPED.prod">
+          <onentry>
+          <script>packml.setState(State.STOPPED)</script>
+            <script>unit.onStopped()</script>
+          </onentry>
+          <transition event="lifecycle.events.reset" target="_stoppable.prod"/>
+        </state>
+        <state id="_stoppable.prod" initial="RESETTING.prod">
+          <transition event="lifecycle.events.stop" target="STOPPING.prod">
+            <script>unit.cancelCurrentTask(true)</script>
+          </transition>
+          <state id="RESETTING.prod">
+            <onentry>
+          <script>packml.setState(State.RESETTING)</script>
+              <script>unit.onResetting()</script>
+            </onentry>
+            <transition target="IDLE.prod" event="lifecycle.events.done"/>
+          </state>
+          <state id="IDLE.prod">
+            <onentry>
+          <script>packml.setState(State.IDLE)</script>
+              <script>unit.onIdle()</script>
+            </onentry>
+            <transition event="lifecycle.events.start" target="STARTING.prod"/>
+          </state>
+          <state id="STARTING.prod">
+            <onentry>
+          <script>packml.setState(State.STARTING)</script>
+              <script>unit.onStarting()</script>
+            </onentry>
+            <transition target="EXECUTE.prod" event="lifecycle.events.done"/>
+          </state>
+          <state id="EXECUTE.prod">
+            <onentry>
+          <script>packml.setState(State.EXECUTE)</script>
+              <script>unit.onExecute()</script>
+            </onentry>
+            <transition event="lifecycle.events.hold" target="HOLDING.prod">
+              <script>unit.cancelCurrentTask(true)</script>
+            </transition>
+            <transition event="lifecycle.events.suspend" target="SUSPENDING.prod">
+              <script>unit.cancelCurrentTask(true)</script>
+            </transition>
+            <transition target="COMPLETING.prod" event="lifecycle.events.done"/>
+          </state>
+          <state id="COMPLETING.prod">
+            <onentry>
+          <script>packml.setState(State.COMPLETING)</script>
+              <script>unit.onCompleting()</script>
+            </onentry>
+            <transition target="COMPLETE.prod" event="lifecycle.events.done"/>
+          </state>
+          <state id="COMPLETE.prod">
+            <onentry>
+          <script>packml.setState(State.COMPLETE)</script>
+              <script>unit.onComplete()</script>
+            </onentry>
+            <transition event="lifecycle.events.reset" target="RESETTING.prod"/>
+          </state>
+          <state id="HOLDING.prod">
+            <onentry>
+          <script>packml.setState(State.HOLDING)</script>
+              <script>unit.onHolding()</script>
+            </onentry>
+            <transition target="HELD.prod" event="lifecycle.events.done"/>
+          </state>
+          <state id="HELD.prod">
+            <onentry>
+          <script>packml.setState(State.HELD)</script>
+              <script>unit.onHeld()</script>
+            </onentry>
+            <transition event="lifecycle.events.unhold" target="UNHOLDING.prod"/>
+          </state>
+          <state id="UNHOLDING.prod">
+            <onentry>
+          <script>packml.setState(State.UNHOLDING)</script>
+              <script>unit.onUnholding()</script>
+            </onentry>
+            <transition target="EXECUTE.prod" event="lifecycle.events.done"/>
+          </state>
+          <state id="SUSPENDING.prod">
+            <onentry>
+          <script>packml.setState(State.SUSPENDING)</script>
+              <script>unit.onSuspending()</script>
+            </onentry>
+            <transition target="SUSPENDED.prod" event="lifecycle.events.done"/>
+          </state>
+          <state id="SUSPENDED.prod">
+            <onentry>
+          <script>packml.setState(State.SUSPENDED)</script>
+              <script>unit.onSuspended()</script>
+            </onentry>
+            <transition event="lifecycle.events.unsuspend" target="UNSUSPENDING.prod"/>
+          </state>
+          <state id="UNSUSPENDING.prod">
+            <onentry>
+          <script>packml.setState(State.UNSUSPENDING)</script>
+              <script>unit.onUnsuspending()</script>
+            </onentry>
+            <transition target="EXECUTE.prod" event="lifecycle.events.done"/>
+          </state>
+        </state>
+      </state>
+    </state>
+  </state>
+</scxml>
