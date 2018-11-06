@@ -3,14 +3,14 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<parent>
-		<relativePath>../../build/poms/compiled/</relativePath>
-		<groupId>de.dfki.iui.basys.build</groupId>
+		<relativePath>../../poms/compiled/</relativePath>
+		<groupId>de.dfki.cos.basys.platform</groupId>
 		<artifactId>compiled-bundle-settings</artifactId>
 		<version>0.1.1-SNAPSHOT</version>
 	</parent>
 
 	<properties>
-		<bundle.symbolicName>de.dfki.iui.basys.osgi.services</bundle.symbolicName>
+		<bundle.symbolicName>de.dfki.cos.basys.platform.osgi.services</bundle.symbolicName>
 		<bundle.namespace>de.dfki.iui.basys.osgi.services</bundle.namespace>
 	</properties>
 

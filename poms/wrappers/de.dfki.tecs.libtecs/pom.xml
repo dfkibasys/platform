@@ -16,7 +16,7 @@
   </properties>
 
   <modelVersion>4.0.0</modelVersion>
-  <groupId>de.dfki.iui.basys.build.wrapper-bundle-settings</groupId>
+  <groupId>de.dfki.cos.basys.platform.wrapper-bundle-settings</groupId>
   <artifactId>de.dfki.tecs.libtecs</artifactId>
   <version>0.1.1-SNAPSHOT</version>
 

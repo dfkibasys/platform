@@ -16,7 +16,7 @@
   </properties>
 
   <modelVersion>4.0.0</modelVersion>
-  <groupId>de.dfki.iui.basys.build.wrapper-bundle-settings</groupId>
+  <groupId>de.dfki.cos.basys.platform.wrapper-bundle-settings</groupId>
   <artifactId>de.dfki.iui.hue-thrift-service</artifactId>
   <version>1.0.0-001-SNAPSHOT</version>
 

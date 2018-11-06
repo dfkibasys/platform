@@ -2,14 +2,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<parent>
-		<relativePath>../../build/poms/compiled/</relativePath>
-		<groupId>de.dfki.iui.basys.build</groupId>
+		<relativePath>../../poms/compiled/</relativePath>
+		<groupId>de.dfki.cos.basys.platform</groupId>
 		<artifactId>compiled-bundle-settings</artifactId>
 		<version>0.1.1-SNAPSHOT</version>
 	</parent>
 
 	<properties>
-		<bundle.symbolicName>de.dfki.iui.basys.runtime.component.device.opcua</bundle.symbolicName>
+		<bundle.symbolicName>de.dfki.cos.basys.platform.runtime.component.device.opcua</bundle.symbolicName>
 		<bundle.namespace>de.dfki.iui.basys.runtime.component.device.opcua</bundle.namespace>
 	</properties>
 
@@ -46,7 +46,7 @@
 		</dependency>
 
 		<!-- <dependency>
-			<groupId>de.dfki.iui.basys.build.wrapper-bundle-settings</groupId>
+			<groupId>de.dfki.cos.basys.platform.wrapper-bundle-settings</groupId>
 			<artifactId>javax.xml.bind.jaxb-api</artifactId>
 			<version>${project.version}</version>
 		</dependency> -->

@@ -3,8 +3,8 @@ Bundle-Description: Generated using Pax-Construct
 Bundle-DocURL: http://www.dfki.de
 Bundle-License: https://www.eclipse.org/legal/epl-v10.html
 Bundle-ManifestVersion: 2
-Bundle-Name: de.dfki.iui.basys.model.test
-Bundle-SymbolicName: de.dfki.iui.basys.model.test
+Bundle-Name: de.dfki.cos.basys.platform.model.test
+Bundle-SymbolicName: de.dfki.cos.basys.platform.model.test
 Bundle-Vendor: DFKI GmbH
 Bundle-Version: 0.1.1.SNAPSHOT
 Created-By: Apache Maven Bundle Plugin
