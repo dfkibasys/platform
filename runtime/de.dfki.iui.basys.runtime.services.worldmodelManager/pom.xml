@@ -13,8 +13,8 @@
 	</properties>
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>de.dfki.iui.basys.runtime</groupId>
-	<artifactId>de.dfki.iui.basys.runtime.services.worldmodelManager</artifactId>
+	<groupId>de.dfki.cos.basys.platform.runtime</groupId>
+	<artifactId>de.dfki.cos.basys.platform.runtime.services.worldmodelManager</artifactId>
 
 	<name>${bundle.symbolicName}</name>
 
@@ -23,27 +23,27 @@
 	<dependencies>
 
 		<dependency>
-			<groupId>de.dfki.iui.basys.runtime</groupId>
-			<artifactId>de.dfki.iui.basys.runtime.services</artifactId>
+			<groupId>de.dfki.cos.basys.platform.runtime</groupId>
+			<artifactId>de.dfki.cos.basys.platform.runtime.services</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 
 		<dependency>
-			<groupId>de.dfki.iui.basys.runtime</groupId>
-			<artifactId>de.dfki.iui.basys.runtime.processcontrol</artifactId>
+			<groupId>de.dfki.cos.basys.platform.runtime</groupId>
+			<artifactId>de.dfki.cos.basys.platform.runtime.processcontrol</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 
 		<dependency>
-			<groupId>de.dfki.iui.basys.runtime</groupId>
-			<artifactId>de.dfki.iui.basys.runtime.component.registry.zookeeper</artifactId>
+			<groupId>de.dfki.cos.basys.platform.runtime</groupId>
+			<artifactId>de.dfki.cos.basys.platform.runtime.component.registry.zookeeper</artifactId>
 			<version>${project.version}</version>
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
-			<groupId>de.dfki.iui.basys.runtime</groupId>
-			<artifactId>de.dfki.iui.basys.runtime.component.device.tecs</artifactId>
+			<groupId>de.dfki.cos.basys.platform.runtime</groupId>
+			<artifactId>de.dfki.cos.basys.platform.runtime.component.device.tecs</artifactId>
 			<version>${project.version}</version>
 			<scope>test</scope>
 		</dependency>

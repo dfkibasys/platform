@@ -14,8 +14,8 @@
 	</properties>
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>de.dfki.iui.basys.osgi</groupId>
-	<artifactId>de.dfki.iui.basys.osgi.logging</artifactId>
+	<groupId>de.dfki.cos.basys.platform.osgi</groupId>
+	<artifactId>de.dfki.cos.basys.platform.osgi.logging</artifactId>
 
 	<name>${bundle.symbolicName}</name>
 

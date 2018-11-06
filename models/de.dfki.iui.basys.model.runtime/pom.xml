@@ -14,8 +14,8 @@
 	</properties>
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>de.dfki.iui.basys.model</groupId>
-	<artifactId>de.dfki.iui.basys.model.runtime</artifactId>
+	<groupId>de.dfki.cos.basys.platform.model</groupId>
+	<artifactId>de.dfki.cos.basys.platform.model.runtime</artifactId>
 
 	<name>${bundle.symbolicName}</name>
 
@@ -28,15 +28,15 @@
 	<dependencies>
 	
 		<dependency>
-			<groupId>de.dfki.iui.basys.model</groupId>
-			<artifactId>de.dfki.iui.basys.model.base</artifactId>
+			<groupId>de.dfki.cos.basys.platform.model</groupId>
+			<artifactId>de.dfki.cos.basys.platform.model.base</artifactId>
 			<version>${project.version}</version>
 			<type>bundle</type>
 		</dependency>
 		
 		<dependency>
-			<groupId>de.dfki.iui.basys.model</groupId>
-			<artifactId>de.dfki.iui.basys.model.domain</artifactId>
+			<groupId>de.dfki.cos.basys.platform.model</groupId>
+			<artifactId>de.dfki.cos.basys.platform.model.domain</artifactId>
 			<version>${project.version}</version>
 			<type>bundle</type>
 		</dependency>

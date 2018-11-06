@@ -16,8 +16,8 @@
 	</properties>
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>de.dfki.iui.basys.runtime</groupId>
-	<artifactId>de.dfki.iui.basys.runtime.component.registry.zookeeper</artifactId>
+	<groupId>de.dfki.cos.basys.platform.runtime</groupId>
+	<artifactId>de.dfki.cos.basys.platform.runtime.component.registry.zookeeper</artifactId>
 
 	<name>${bundle.symbolicName}</name>
 
@@ -26,8 +26,8 @@
 	<dependencies>
 
 		<dependency>
-			<groupId>de.dfki.iui.basys.runtime</groupId>
-			<artifactId>de.dfki.iui.basys.runtime.component</artifactId>
+			<groupId>de.dfki.cos.basys.platform.runtime</groupId>
+			<artifactId>de.dfki.cos.basys.platform.runtime.component</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 

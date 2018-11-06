@@ -17,8 +17,8 @@
 	</properties>
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>de.dfki.iui.basys.runtime</groupId>
-	<artifactId>de.dfki.iui.basys.runtime.component</artifactId>
+	<groupId>de.dfki.cos.basys.platform.runtime</groupId>
+	<artifactId>de.dfki.cos.basys.platform.runtime.component</artifactId>
 
 	<name>${bundle.symbolicName}</name>
 
@@ -39,20 +39,20 @@
 		</dependency>
 		
 		<dependency>
-			<groupId>de.dfki.iui.basys.model</groupId>
-			<artifactId>de.dfki.iui.basys.model.domain</artifactId>
+			<groupId>de.dfki.cos.basys.platform.model</groupId>
+			<artifactId>de.dfki.cos.basys.platform.model.domain</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 
 		<dependency>
-			<groupId>de.dfki.iui.basys.model</groupId>
-			<artifactId>de.dfki.iui.basys.model.runtime</artifactId>
+			<groupId>de.dfki.cos.basys.platform.model</groupId>
+			<artifactId>de.dfki.cos.basys.platform.model.runtime</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 
 		<dependency>
-			<groupId>de.dfki.iui.basys.runtime</groupId>
-			<artifactId>de.dfki.iui.basys.runtime.communication</artifactId>
+			<groupId>de.dfki.cos.basys.platform.runtime</groupId>
+			<artifactId>de.dfki.cos.basys.platform.runtime.communication</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 
