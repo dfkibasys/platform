@@ -27,14 +27,14 @@
 	<dependencies>
 
 		<dependency>
-			<groupId>de.dfki.iui.basys.common</groupId>
-			<artifactId>de.dfki.iui.basys.common.emf.jaxrs</artifactId>
+			<groupId>de.dfki.cos.basys.common</groupId>
+			<artifactId>de.dfki.cos.basys.common.emf.jaxrs</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		
 		<dependency>
-			<groupId>de.dfki.iui.basys.common</groupId>
-			<artifactId>de.dfki.iui.basys.common.scxml</artifactId>
+			<groupId>de.dfki.cos.basys.common</groupId>
+			<artifactId>de.dfki.cos.basys.common.scxml</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		

@@ -28,8 +28,8 @@
 	<dependencies>
 	
 		<dependency>
-			<groupId>de.dfki.iui.basys.common</groupId>
-			<artifactId>de.dfki.iui.basys.common.emf</artifactId>
+			<groupId>de.dfki.cos.basys.common</groupId>
+			<artifactId>de.dfki.cos.basys.common.emf</artifactId>
 			<version>${project.version}</version>
 			<type>bundle</type>
 		</dependency>

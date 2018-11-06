@@ -11,7 +11,7 @@
 	<groupId>de.dfki.cos.basys.platform</groupId>
 	<artifactId>provision</artifactId>
 
-	<name>The BaSys 4.0 Platform - Imported Bundles</name>
+	<name>BaSys 4.0 Platform - Imported Bundles</name>
 
 	<packaging>pom</packaging>
 

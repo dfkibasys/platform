@@ -10,7 +10,7 @@
   <modelVersion>4.0.0</modelVersion>
   <artifactId>compiled-bundle-settings</artifactId>
 
-  <name>The BaSys 4.0 Platform - Bundle Instructions</name>
+  <name>BaSys 4.0 Platform - Bundle Instructions</name>
 
   <packaging>pom</packaging>
 

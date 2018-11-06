@@ -11,7 +11,7 @@
 	<groupId>de.dfki.cos.basys.platform</groupId>
 	<artifactId>shared-plugin-settings</artifactId>
 
-	<name>The BaSys 4.0 Platform - Plugin Configuration</name>
+	<name>BaSys 4.0 Platform - Plugin Configuration</name>
 
 	<packaging>pom</packaging>
 

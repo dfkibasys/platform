@@ -27,8 +27,8 @@
 	<dependencies>
 
 		<dependency>
-			<groupId>de.dfki.iui.basys.common</groupId>
-			<artifactId>de.dfki.iui.basys.common.emf.json</artifactId>
+			<groupId>de.dfki.cos.basys.common</groupId>
+			<artifactId>de.dfki.cos.basys.common.emf.json</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 

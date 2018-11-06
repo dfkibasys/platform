@@ -10,7 +10,7 @@
   <modelVersion>4.0.0</modelVersion>
   <artifactId>wrapper-bundle-settings</artifactId>
 
-  <name>The BaSys 4.0 Platform - Wrapper Instructions</name>
+  <name>BaSys 4.0 Platform - Wrapper Instructions</name>
 
   <!--
    | don't apply project details to wrapped jars
