@@ -11,14 +11,14 @@
 	<groupId>de.dfki.cos.basys.platform</groupId>
 	<artifactId>osgi</artifactId>
 
-	<name>BaSys 4.0 OSGi Integration Module</name>
+	<name>BaSys 4.0 Platform - OSGi Integration Module</name>
 
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>de.dfki.iui.basys.osgi.cm</module>
-		<module>de.dfki.iui.basys.osgi.logging</module>
-		<module>de.dfki.iui.basys.osgi.services</module>
+		<module>de.dfki.cos.basys.osgi.cm</module>
+		<module>de.dfki.cos.basys.osgi.logging</module>
+		<module>de.dfki.cos.basys.osgi.services</module>
 	</modules>
 	
 </project>

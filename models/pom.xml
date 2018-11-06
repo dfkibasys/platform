@@ -11,7 +11,7 @@
 	<groupId>de.dfki.cos.basys.platform</groupId>
 	<artifactId>model</artifactId>
 
-	<name>BaSys 4.0 Models Module</name>
+	<name>BaSys 4.0 Platform - Models Module</name>
 
 	<packaging>pom</packaging>
 
