@@ -39,15 +39,7 @@
 			<artifactId>de.dfki.cos.basys.platform.runtime.component.registry.zookeeper</artifactId>
 			<version>${project.version}</version>
 			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>de.dfki.cos.basys.platform.runtime</groupId>
-			<artifactId>de.dfki.cos.basys.platform.runtime.component.device.tecs</artifactId>
-			<version>${project.version}</version>
-			<scope>test</scope>
-		</dependency>
-		
+		</dependency>		
 		
 		<!-- comment to remove all imported (non-local) bundles from your compilation 
 			classpath -->

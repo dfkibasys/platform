@@ -48,7 +48,6 @@
 		<url>https://lns-90165.sb.dfki.de/gitlab/i40/basys/platform</url>
 		<connection>scm:git:ssh://git@lns-90165.sb.dfki.de:10022/i40/basys/platform.git</connection>
 		<developerConnection>scm:git:ssh://git@lns-90165.sb.dfki.de:10022/i40/basys/platform.git</developerConnection>
-		<tag>HEAD</tag>
 	</scm>
 
 	<repositories>

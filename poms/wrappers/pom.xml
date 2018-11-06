@@ -59,14 +59,6 @@
     <module>org.apache.curator.framework</module>
     <module>org.apache.curator.x.discovery</module>
     <module>org.apache.zookeeper</module>
-    <module>org.apache.httpcomponents.httpclient</module>
-    <module>org.apache.httpcomponents.httpcore</module>
-    <module>de.dfki.iui.libHRC</module>
-    <module>de.dfki.tecs.libtecs</module>
-    <module>de.dfki.iui.hue-api</module>
-    <!-- 
-    <module>de.dfki.iui.hue-thrift-service</module>
-    -->
   </modules>
 
 </project>
