@@ -153,7 +153,7 @@ public class Subsumes {
 
 	/**
 	 * Checks whether the given list of patterns matches some instances in the given list. The number of given patterns must be less or equal to the number of given instances, i.e.
-	 * <CODE>patterns.size() <= instances.size()</CODE>, to be able to perform the validation. <BR>
+	 * <CODE>patterns.size() &le; instances.size()</CODE>, to be able to perform the validation. <BR>
 	 * Otherwise <CODE>null</CODE> is returned.
 	 * 
 	 * 

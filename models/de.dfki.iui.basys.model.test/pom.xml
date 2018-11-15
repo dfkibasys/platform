@@ -49,6 +49,7 @@
 			<type>pom</type>
 			<groupId>${project.parent.groupId}</groupId>
 			<artifactId>provision</artifactId>
+			<version>${project.version}</version>
 			<optional>true</optional>
 		</dependency>
 		
@@ -60,17 +61,6 @@
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>org.osgi</groupId>
-			<artifactId>osgi_R4_core</artifactId>
-			<optional>true</optional>
-		</dependency>
-
-		<dependency>
-			<groupId>org.osgi</groupId>
-			<artifactId>osgi_R4_compendium</artifactId>
-			<optional>true</optional>
-		</dependency>
 	</dependencies>
 
 </project>
