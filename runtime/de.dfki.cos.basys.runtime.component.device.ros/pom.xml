@@ -33,16 +33,25 @@
 		<dependency>
 			<groupId>de.dfki.cos.basys.common</groupId>
 			<artifactId>de.dfki.cos.basys.common.jrosbridge</artifactId>
-			<version>${project.version}</version>
+			<version>${version.basys.common}</version>
 		</dependency>
-
+		
 		<!-- comment to remove all imported (non-local) bundles from your compilation 
 			classpath -->
 		<dependency>
 			<type>pom</type>
 			<groupId>${project.parent.groupId}</groupId>
 			<artifactId>provision</artifactId>
+			<version>${project.version}</version>
 			<optional>true</optional>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/junit/junit/4.12 -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/javax-websocket-client-impl -->
@@ -77,14 +86,7 @@
 		    <scope>test</scope>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/junit/junit/4.12 -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
-		</dependency>
-
+		
 	</dependencies>
 
 </project>

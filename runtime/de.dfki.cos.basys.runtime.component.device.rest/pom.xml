@@ -29,6 +29,24 @@
 			<version>${project.version}</version>
 		</dependency>
 
+		<!-- comment to remove all imported (non-local) bundles from your compilation 
+			classpath -->
+		<dependency>
+			<type>pom</type>
+			<groupId>${project.parent.groupId}</groupId>
+			<artifactId>provision</artifactId>
+			<version>${project.version}</version>
+			<optional>true</optional>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/junit/junit/4.12 -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+
 		<dependency>
 			<groupId>org.glassfish.jersey.core</groupId>
 			<artifactId>jersey-client</artifactId>
@@ -49,25 +67,7 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-
-
-		<!-- comment to remove all imported (non-local) bundles from your compilation 
-			classpath -->
-		<dependency>
-			<type>pom</type>
-			<groupId>${project.parent.groupId}</groupId>
-			<artifactId>provision</artifactId>
-			<optional>true</optional>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/junit/junit/4.12 -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
-		</dependency>
-
+		
 	</dependencies>
 
 </project>

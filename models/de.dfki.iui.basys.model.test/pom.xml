@@ -39,7 +39,7 @@
 		<dependency>
 			<groupId>de.dfki.cos.basys.common</groupId>
 			<artifactId>de.dfki.cos.basys.common.emf.json</artifactId>
-			<version>${project.version}</version>
+			<version>${version.basys.common}</version>
 			<type>bundle</type>
 		</dependency>
 	

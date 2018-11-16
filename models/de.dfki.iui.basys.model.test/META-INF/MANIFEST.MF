@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bundle-Description: Generated using Pax-Construct
+Bundle-Description: This is the root POM for the BaSys 4.0 project
 Bundle-DocURL: http://www.dfki.de
 Bundle-License: https://www.eclipse.org/legal/epl-v10.html
 Bundle-ManifestVersion: 2

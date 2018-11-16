@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>de.dfki.cos.basys</groupId>
 		<artifactId>pom</artifactId>
-		<version>0.1.2-SNAPSHOT</version>
+		<version>0.2.0</version>
 		<relativePath></relativePath>
 	</parent>
 
@@ -15,9 +15,7 @@
 
 	<name>BaSys 4.0 Platform</name>
 
-	<!-- | describe your project here -->
-
-	<description>Generated using Pax-Construct</description>
+	<description>The BaSys 4.0 platform consisting of models, runtime services and OSGi integration</description>
 
 	<packaging>pom</packaging>
 
@@ -30,9 +28,10 @@
 	</modules>
 
 	<scm>
-		<url>https://lns-90165.sb.dfki.de/gitlab/i40/basys/platform</url>
-		<connection>scm:git:ssh://git@lns-90165.sb.dfki.de:10022/i40/basys/platform.git</connection>
-		<developerConnection>scm:git:ssh://git@lns-90165.sb.dfki.de:10022/i40/basys/platform.git</developerConnection>
+		<url>https://github.com/BaSys-PC1</url>
+		<connection>${gitUrl}/platform.git</connection>
+		<developerConnection>${gitUrl}/platform.git</developerConnection>
+		<tag>HEAD</tag>
 	</scm>
 
 </project>
