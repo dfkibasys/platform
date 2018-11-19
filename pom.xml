@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>de.dfki.cos.basys</groupId>
 		<artifactId>pom</artifactId>
-		<version>0.2.0</version>
+		<version>0.2.1</version>
 		<relativePath></relativePath>
 	</parent>
 
@@ -25,6 +25,7 @@
 		<module>models</module>		
 		<module>runtime</module>
 		<module>osgi</module>
+		<module>karaf</module>
 	</modules>
 
 	<scm>

@@ -24,9 +24,9 @@ Export-Package: de.dfki.iui.basys.model.domain.capability.provider,
  de.dfki.iui.basys.model.domain.workforce.provider,
  de.dfki.iui.basys.model.domain.workplan.provider
 Require-Bundle: org.eclipse.core.runtime,
- de.dfki.iui.basys.model.domain;visibility:=reexport,
+ de.dfki.cos.basys.platform.model.domain;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport,
- de.dfki.iui.basys.model.base;visibility:=reexport,
+ de.dfki.cos.basys.platform.model.base;visibility:=reexport,
  de.dfki.iui.basys.model.base.edit;visibility:=reexport,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.emf.ecore.edit;visibility:=reexport
