@@ -16,6 +16,7 @@
 
   	<modules>
 		<module>basys-models</module>
+		<module>basys-runtime</module>
 	</modules>  
   
 	<build>
