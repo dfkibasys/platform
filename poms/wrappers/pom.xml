@@ -5,13 +5,13 @@
     <groupId>de.dfki.cos.basys.pom</groupId>
     <artifactId>wrapper-bundle-settings</artifactId>
 	<version>0.2.1</version>
-	<relativePath></relativePath>
+	<relativePath />
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>de.dfki.cos.basys.platform</groupId>
   <artifactId>wrapper-bundle-settings</artifactId>
-  <version>0.1.1-SNAPSHOT</version>
+  <version>0.2.0</version>
   
   <name>BaSys 4.0 Platform - Wrapper Instructions</name>
 
@@ -31,4 +31,8 @@
     <module>org.apache.zookeeper</module>
   </modules>
 
+
+  <scm>
+    <tag>v0.2.0</tag>
+  </scm>
 </project>

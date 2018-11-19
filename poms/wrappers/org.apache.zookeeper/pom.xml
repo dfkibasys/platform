@@ -5,7 +5,7 @@
     <relativePath>../</relativePath>
     <groupId>de.dfki.cos.basys.platform</groupId>
     <artifactId>wrapper-bundle-settings</artifactId>
-    <version>0.1.1-SNAPSHOT</version>
+    <version>0.2.0</version>
   </parent>
 	
   <properties>

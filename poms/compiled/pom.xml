@@ -5,13 +5,13 @@
     <groupId>de.dfki.cos.basys.pom</groupId>
     <artifactId>compiled-bundle-settings</artifactId>
 	<version>0.2.1</version>
-	<relativePath></relativePath>
+	<relativePath />
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>de.dfki.cos.basys.platform</groupId>
   <artifactId>compiled-bundle-settings</artifactId>
-  <version>0.1.1-SNAPSHOT</version>
+  <version>0.2.0</version>
   
   <name>BaSys 4.0 Platform - Bundle Instructions</name>
 
@@ -21,4 +21,8 @@
 	<version.basys.common>0.2.1</version.basys.common>
   </properties>
 
+
+  <scm>
+    <tag>v0.2.0</tag>
+  </scm>
 </project>
