@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>de.dfki.cos.basys.platform.karaf</groupId>
+		<artifactId>features</artifactId>
+		<version>0.1.1-SNAPSHOT</version>
+	</parent>
+
+	<groupId>de.dfki.cos.basys.platform.karaf.features</groupId>
+	<artifactId>basys-runtime</artifactId>
+
+	<name>BaSys 4.0 Platform - Karaf Feature - Runtime</name>
+	<description>The BaSys 4.0 Platform Runtime Karaf Feature</description>
+
+	<packaging>kar</packaging>
+
+	<dependencies>
+	
+<!-- 
+		<dependency>
+			<groupId>de.dfki.cos.basys.common.karaf.features</groupId>
+			<artifactId>basys-common</artifactId>
+			<version>${version.basys.common}</version>
+			<classifier>features</classifier>
+			<type>xml</type>
+		</dependency>
+		
+		<dependency>
+			<groupId>de.dfki.cos.basys.platform.karaf.features</groupId>
+			<artifactId>basys-models</artifactId>
+			<version>${project.version}</version>
+			<classifier>features</classifier>
+			<type>xml</type>
+		</dependency>
+ -->
+		<dependency>
+			<groupId>de.dfki.cos.basys.platform.runtime</groupId>
+			<artifactId>de.dfki.cos.basys.platform.runtime.communication</artifactId>
+			<version>${project.version}</version>
+			<type>bundle</type>
+		</dependency>
+
+		<dependency>
+			<groupId>de.dfki.cos.basys.platform.runtime</groupId>
+			<artifactId>de.dfki.cos.basys.platform.runtime.component</artifactId>
+			<version>${project.version}</version>
+			<type>bundle</type>
+		</dependency>
+
+		<dependency>
+			<groupId>de.dfki.cos.basys.platform.runtime</groupId>
+			<artifactId>de.dfki.cos.basys.platform.runtime.component.device.mqtt</artifactId>
+			<version>${project.version}</version>
+			<type>bundle</type>
+		</dependency>
+
+		<dependency>
+			<groupId>de.dfki.cos.basys.platform.runtime</groupId>
+			<artifactId>de.dfki.cos.basys.platform.runtime.component.device.opcua</artifactId>
+			<version>${project.version}</version>
+			<type>bundle</type>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.xml.bind</groupId>
+					<artifactId>jaxb-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>de.dfki.cos.basys.platform.runtime</groupId>
+			<artifactId>de.dfki.cos.basys.platform.runtime.component.device.rest</artifactId>
+			<version>${project.version}</version>
+			<type>bundle</type>
+		</dependency>
+
+		<dependency>
+			<groupId>de.dfki.cos.basys.platform.runtime</groupId>
+			<artifactId>de.dfki.cos.basys.platform.runtime.component.device.ros</artifactId>
+			<version>${project.version}</version>
+			<type>bundle</type>
+		</dependency>
+
+		<dependency>
+			<groupId>de.dfki.cos.basys.platform.runtime</groupId>
+			<artifactId>de.dfki.cos.basys.platform.runtime.component.registry.zookeeper</artifactId>
+			<version>${project.version}</version>
+			<type>bundle</type>
+		</dependency>
+
+		<dependency>
+			<groupId>de.dfki.cos.basys.platform.runtime</groupId>
+			<artifactId>de.dfki.cos.basys.platform.runtime.gateway</artifactId>
+			<version>${project.version}</version>
+			<type>bundle</type>
+		</dependency>
+
+		<dependency>
+			<groupId>de.dfki.cos.basys.platform.runtime</groupId>
+			<artifactId>de.dfki.cos.basys.platform.runtime.processcontrol</artifactId>
+			<version>${project.version}</version>
+			<type>bundle</type>
+		</dependency>
+
+		<dependency>
+			<groupId>de.dfki.cos.basys.platform.runtime</groupId>
+			<artifactId>de.dfki.cos.basys.platform.runtime.services</artifactId>
+			<version>${project.version}</version>
+			<type>bundle</type>
+		</dependency>
+
+		<dependency>
+			<groupId>de.dfki.cos.basys.platform.runtime</groupId>
+			<artifactId>de.dfki.cos.basys.platform.runtime.services.worldmodelManager</artifactId>
+			<version>${project.version}</version>
+			<type>bundle</type>
+		</dependency>
+
+		<dependency>
+			<groupId>de.dfki.cos.basys.platform.osgi</groupId>
+			<artifactId>de.dfki.cos.basys.platform.osgi.cm</artifactId>
+			<version>${project.version}</version>
+			<type>bundle</type>
+		</dependency>
+
+		<dependency>
+			<groupId>de.dfki.cos.basys.platform.osgi</groupId>
+			<artifactId>de.dfki.cos.basys.platform.osgi.services</artifactId>
+			<version>${project.version}</version>
+			<type>bundle</type>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.ops4j.pax.logging/pax-logging-service -->
+		<!-- <dependency> <groupId>org.ops4j.pax.logging</groupId> <artifactId>pax-logging-service</artifactId> 
+			<version>${pax-logging-version}</version> </dependency> -->
+
+		<!-- https://mvnrepository.com/artifact/org.apache.geronimo.specs/geronimo-jta_1.1_spec -->
+		<dependency>
+			<groupId>org.apache.geronimo.specs</groupId>
+			<artifactId>geronimo-jta_1.1_spec</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.eclipsesource.jaxrs</groupId>
+			<artifactId>features</artifactId>
+			<version>5.3.1</version>
+			<classifier>features</classifier>
+			<type>xml</type>
+			<scope>runtime</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider -->
+		<!-- <dependency> <groupId>com.fasterxml.jackson.jaxrs</groupId> <artifactId>jackson-jaxrs-json-provider</artifactId> 
+			<version>${jackson-version}</version> </dependency> <dependency> <groupId>org.glassfish.jersey.media</groupId> 
+			<artifactId>jersey-media-json-jackson</artifactId> <version>${jersey-version}</version> 
+			</dependency> -->
+	</dependencies>
+
+</project>

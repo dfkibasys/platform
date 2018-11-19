@@ -9,7 +9,7 @@
 		<version>0.1.1-SNAPSHOT</version>
 	</parent>
 
-	<groupId>de.dfki.iui.basys.karaf.features</groupId>
+	<groupId>de.dfki.cos.basys.platform.karaf.features</groupId>
 	<artifactId>basys-models</artifactId>
 
 	<name>BaSys 4.0 Platform - Karaf Feature - Models</name>
