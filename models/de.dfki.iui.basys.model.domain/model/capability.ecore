@@ -8,24 +8,24 @@
     <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
     <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
   </eAnnotations>
-  <eClassifiers xsi:type="ecore:EClass" name="CapabilityAssertion" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="pattern" eType="ecore:EClass ../../de.dfki.iui.basys.model.base/model/pattern.ecore#//PObject"
+  <eClassifiers xsi:type="ecore:EClass" name="CapabilityAssertion" eSuperTypes="../../de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pattern" eType="ecore:EClass ../../de.dfki.cos.basys.platform.model.base/model/pattern.ecore#//PObject"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="prerequisites" eType="#//CapabilityAssertion"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CapabilityRequest">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="who" eType="ecore:EClass ../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="who" eType="ecore:EClass ../../de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="what" eType="#//Capability"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="whom" upperBound="-1" eType="ecore:EClass ../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="whom" upperBound="-1" eType="ecore:EClass ../../de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="where" upperBound="-1"
-        eType="ecore:EClass ../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity"/>
+        eType="ecore:EClass ../../de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="when" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="how" upperBound="-1" eType="ecore:EClass ../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="how" upperBound="-1" eType="ecore:EClass ../../de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Capability" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Capability" eSuperTypes="../../de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity"/>
   <eClassifiers xsi:type="ecore:EClass" name="HandlingCapability" eSuperTypes="#//Capability"/>
   <eClassifiers xsi:type="ecore:EClass" name="ManufacturingCapability" eSuperTypes="#//ProductionCapability"/>
   <eClassifiers xsi:type="ecore:EClass" name="Fügen" eSuperTypes="#//ManufacturingCapability"/>
@@ -80,7 +80,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="targetLocation" eType="ecore:EClass topology.ecore#//TopologyElement"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ProjectPath" eSuperTypes="#//WorkerAssistenceCapability">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="path" eType="ecore:EClass ../../de.dfki.iui.basys.model.base/model/data.ecore#//Path"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="path" eType="ecore:EClass ../../de.dfki.cos.basys.platform.model.base/model/data.ecore#//Path"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="delay" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//ELong"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="arrowCount" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
@@ -89,7 +89,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ProjectETA" eSuperTypes="#//WorkerAssistenceCapability">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="eta" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//ELong"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="position" eType="ecore:EClass ../../de.dfki.iui.basys.model.base/model/data.ecore#//CartesianCoordinate"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="position" eType="ecore:EClass ../../de.dfki.cos.basys.platform.model.base/model/data.ecore#//CartesianCoordinate"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="radius" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EDouble"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="color" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>

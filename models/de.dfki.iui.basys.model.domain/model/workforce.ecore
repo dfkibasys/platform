@@ -6,7 +6,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="agents" upperBound="-1"
         eType="#//Agent" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Agent" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Agent" eSuperTypes="../../de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity"/>
   <eClassifiers xsi:type="ecore:EClass" name="Person" eSuperTypes="#//Agent">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="givenName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

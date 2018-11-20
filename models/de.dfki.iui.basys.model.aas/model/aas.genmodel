@@ -3,7 +3,7 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.dfki.iui.basys.model.aas/src" modelPluginID="de.dfki.iui.basys.model.aas"
     modelName="Aas" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
-    usedGenPackages="../../de.dfki.iui.basys.model.base/model/base.genmodel#//base ../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../de.dfki.iui.basys.model.service/model/service.genmodel#//service"
+    usedGenPackages="../../de.dfki.cos.basys.platform.model.base/model/base.genmodel#//base ../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../de.dfki.cos.basys.platform.model.service/model/service.genmodel#//service"
     operationReflection="true" importOrganizing="true">
   <foreignModel>aas.ecore</foreignModel>
   <genPackages prefix="Aas" basePackage="de.dfki.iui.basys.model" disposableProviderFactory="true"

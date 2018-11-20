@@ -4,9 +4,9 @@
     <semanticResources>aas.ecore</semanticResources>
     <semanticResources>platform:/resource/de.dfki.iui.basys.model/model/base.ecore</semanticResources>
     <semanticResources>platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore</semanticResources>
-    <semanticResources>platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore</semanticResources>
+    <semanticResources>platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore</semanticResources>
     <semanticResources>http://www.eclipse.org/emf/2002/Ecore</semanticResources>
-    <semanticResources>platform:/resource/de.dfki.iui.basys.model.base/model/base.ecore</semanticResources>
+    <semanticResources>platform:/resource/de.dfki.cos.basys.platform.model.base/model/base.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_S-VmEHd6Eee1CK6eRF99zw">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_Uu8oEHd6Eee1CK6eRF99zw" name="aas class diagram" repPath="#_Uu8oEXd6Eee1CK6eRF99zw">
@@ -440,8 +440,8 @@
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
       </ownedElements>
       <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_36e-ENNWEeeJ7IQ3t131fA" name=" metadata : Metadata" tooltipText="">
-        <target xmi:type="ecore:EReference" href="platform:/resource/de.dfki.iui.basys.model.base/model/base.ecore#//Entity/metadata"/>
-        <semanticElements xmi:type="ecore:EReference" href="platform:/resource/de.dfki.iui.basys.model.base/model/base.ecore#//Entity/metadata"/>
+        <target xmi:type="ecore:EReference" href="platform:/resource/de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity/metadata"/>
+        <semanticElements xmi:type="ecore:EReference" href="platform:/resource/de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity/metadata"/>
         <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_36flINNWEeeJ7IQ3t131fA" labelColor="125,125,125" labelAlignment="LEFT">
           <labelFormat>italic</labelFormat>
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']/@conditionnalStyles.0/@style"/>
@@ -563,8 +563,8 @@
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_dc1lQHd6Eee1CK6eRF99zw" name="Operation" tooltipText="" incomingEdges="_dc-IIHd6Eee1CK6eRF99zw" width="12" height="10">
-      <target xmi:type="ecore:EClass" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//Operation"/>
-      <semanticElements xmi:type="ecore:EClass" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//Operation"/>
+      <target xmi:type="ecore:EClass" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//Operation"/>
+      <semanticElements xmi:type="ecore:EClass" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//Operation"/>
       <decorations xmi:type="viewpoint:Decoration" xmi:id="_dc86AHd6Eee1CK6eRF99zw">
         <description xmi:type="description:SemanticBasedDecoration" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='External']"/>
       </decorations>
@@ -648,16 +648,16 @@
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']"/>
       </ownedElements>
       <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_YclXUNNXEeeJ7IQ3t131fA" name="capability : EString" tooltipText="">
-        <target xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//Operation/capability"/>
-        <semanticElements xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//Operation/capability"/>
+        <target xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//Operation/capability"/>
+        <semanticElements xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//Operation/capability"/>
         <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_YclXUdNXEeeJ7IQ3t131fA" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
       </ownedElements>
       <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_Ycl-YNNXEeeJ7IQ3t131fA" name="qos : EString" tooltipText="">
-        <target xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//Operation/qos"/>
-        <semanticElements xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//Operation/qos"/>
+        <target xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//Operation/qos"/>
+        <semanticElements xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//Operation/qos"/>
         <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_Ycl-YdNXEeeJ7IQ3t131fA" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
         </ownedStyle>
@@ -775,8 +775,8 @@
       </ownedElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_IQE3IHd7Eee1CK6eRF99zw" name="ServiceInstance" tooltipText="" outgoingEdges="_KShQAHd7Eee1CK6eRF99zw" width="12" height="10">
-      <target xmi:type="ecore:EClass" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//ServiceInstance"/>
-      <semanticElements xmi:type="ecore:EClass" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//ServiceInstance"/>
+      <target xmi:type="ecore:EClass" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//ServiceInstance"/>
+      <semanticElements xmi:type="ecore:EClass" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//ServiceInstance"/>
       <decorations xmi:type="viewpoint:Decoration" xmi:id="_IQLk03d7Eee1CK6eRF99zw">
         <description xmi:type="description:SemanticBasedDecoration" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='External']"/>
       </decorations>
@@ -788,24 +788,24 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
       <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_36lrwNNWEeeJ7IQ3t131fA" name="serviceDescriptionId : EString" tooltipText="">
-        <target xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//ServiceInstance/serviceDescriptionId"/>
-        <semanticElements xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//ServiceInstance/serviceDescriptionId"/>
+        <target xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//ServiceInstance/serviceDescriptionId"/>
+        <semanticElements xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//ServiceInstance/serviceDescriptionId"/>
         <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_36mS0NNWEeeJ7IQ3t131fA" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
       </ownedElements>
       <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_36mS0dNWEeeJ7IQ3t131fA" name="serviceImplementationId : EString" tooltipText="">
-        <target xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//ServiceInstance/serviceImplementationId"/>
-        <semanticElements xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//ServiceInstance/serviceImplementationId"/>
+        <target xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//ServiceInstance/serviceImplementationId"/>
+        <semanticElements xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//ServiceInstance/serviceImplementationId"/>
         <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_36mS0tNWEeeJ7IQ3t131fA" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
       </ownedElements>
       <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_36m54NNWEeeJ7IQ3t131fA" name=" metadata : Metadata" tooltipText="">
-        <target xmi:type="ecore:EReference" href="platform:/resource/de.dfki.iui.basys.model.base/model/base.ecore#//Entity/metadata"/>
-        <semanticElements xmi:type="ecore:EReference" href="platform:/resource/de.dfki.iui.basys.model.base/model/base.ecore#//Entity/metadata"/>
+        <target xmi:type="ecore:EReference" href="platform:/resource/de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity/metadata"/>
+        <semanticElements xmi:type="ecore:EReference" href="platform:/resource/de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity/metadata"/>
         <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_36m54dNWEeeJ7IQ3t131fA" labelColor="125,125,125" labelAlignment="LEFT">
           <labelFormat>italic</labelFormat>
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']/@conditionnalStyles.0/@style"/>
@@ -814,8 +814,8 @@
       </ownedElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_KSYGEHd7Eee1CK6eRF99zw" name="ServiceEndpoint" tooltipText="" incomingEdges="_KShQAHd7Eee1CK6eRF99zw _LqnrYHd7Eee1CK6eRF99zw _MEjOUHd7Eee1CK6eRF99zw" width="12" height="10">
-      <target xmi:type="ecore:EClass" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//ServiceEndpoint"/>
-      <semanticElements xmi:type="ecore:EClass" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//ServiceEndpoint"/>
+      <target xmi:type="ecore:EClass" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//ServiceEndpoint"/>
+      <semanticElements xmi:type="ecore:EClass" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//ServiceEndpoint"/>
       <decorations xmi:type="viewpoint:Decoration" xmi:id="_KSgB4Xd7Eee1CK6eRF99zw">
         <description xmi:type="description:SemanticBasedDecoration" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='External']"/>
       </decorations>
@@ -827,16 +827,16 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
       <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_KSfa0Hd7Eee1CK6eRF99zw" name="ipAddress : EString" tooltipText="">
-        <target xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//ServiceEndpoint/ipAddress"/>
-        <semanticElements xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//ServiceEndpoint/ipAddress"/>
+        <target xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//ServiceEndpoint/ipAddress"/>
+        <semanticElements xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//ServiceEndpoint/ipAddress"/>
         <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_KSfa0Xd7Eee1CK6eRF99zw" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
       </ownedElements>
       <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_KSfa0nd7Eee1CK6eRF99zw" name="port : EInt" tooltipText="">
-        <target xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//ServiceEndpoint/port"/>
-        <semanticElements xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//ServiceEndpoint/port"/>
+        <target xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//ServiceEndpoint/port"/>
+        <semanticElements xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//ServiceEndpoint/port"/>
         <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_KSgB4Hd7Eee1CK6eRF99zw" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
         </ownedStyle>
@@ -844,8 +844,8 @@
       </ownedElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_KShQAHd7Eee1CK6eRF99zw" name="[1..*] endpoints" sourceNode="_IQE3IHd7Eee1CK6eRF99zw" targetNode="_KSYGEHd7Eee1CK6eRF99zw">
-      <target xmi:type="ecore:EReference" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//ServiceInstance/endpoints"/>
-      <semanticElements xmi:type="ecore:EReference" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//ServiceInstance/endpoints"/>
+      <target xmi:type="ecore:EReference" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//ServiceInstance/endpoints"/>
+      <semanticElements xmi:type="ecore:EReference" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//ServiceInstance/endpoints"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_KSh3EHd7Eee1CK6eRF99zw" description="_WkbjAXd6Eee1CK6eRF99zw" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_KSh3EXd7Eee1CK6eRF99zw" showIcon="false">
           <customFeatures>labelSize</customFeatures>
@@ -858,8 +858,8 @@
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_LqgWoHd7Eee1CK6eRF99zw" name="RestEndpoint" visible="false" tooltipText="" outgoingEdges="_LqnrYHd7Eee1CK6eRF99zw" width="12" height="10">
-      <target xmi:type="ecore:EClass" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//RestEndpoint"/>
-      <semanticElements xmi:type="ecore:EClass" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//RestEndpoint"/>
+      <target xmi:type="ecore:EClass" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//RestEndpoint"/>
+      <semanticElements xmi:type="ecore:EClass" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//RestEndpoint"/>
       <decorations xmi:type="viewpoint:Decoration" xmi:id="_Lql2MHd7Eee1CK6eRF99zw">
         <description xmi:type="description:SemanticBasedDecoration" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='External']"/>
       </decorations>
@@ -873,8 +873,8 @@
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_LqnrYHd7Eee1CK6eRF99zw" visible="false" sourceNode="_LqgWoHd7Eee1CK6eRF99zw" targetNode="_KSYGEHd7Eee1CK6eRF99zw">
-      <target xmi:type="ecore:EClass" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//RestEndpoint"/>
-      <semanticElements xmi:type="ecore:EClass" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//RestEndpoint"/>
+      <target xmi:type="ecore:EClass" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//RestEndpoint"/>
+      <semanticElements xmi:type="ecore:EClass" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//RestEndpoint"/>
       <decorations xmi:type="viewpoint:Decoration" xmi:id="_36tAgNNWEeeJ7IQ3t131fA">
         <description xmi:type="description:SemanticBasedDecoration" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='External']"/>
       </decorations>
@@ -889,8 +889,8 @@
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_MEb5kHd7Eee1CK6eRF99zw" name="SoapEndpoint" visible="false" tooltipText="" outgoingEdges="_MEjOUHd7Eee1CK6eRF99zw" width="12" height="10">
-      <target xmi:type="ecore:EClass" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//SoapEndpoint"/>
-      <semanticElements xmi:type="ecore:EClass" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//SoapEndpoint"/>
+      <target xmi:type="ecore:EClass" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//SoapEndpoint"/>
+      <semanticElements xmi:type="ecore:EClass" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//SoapEndpoint"/>
       <decorations xmi:type="viewpoint:Decoration" xmi:id="_MEiAMHd7Eee1CK6eRF99zw">
         <description xmi:type="description:SemanticBasedDecoration" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='External']"/>
       </decorations>
@@ -904,8 +904,8 @@
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_MEjOUHd7Eee1CK6eRF99zw" visible="false" sourceNode="_MEb5kHd7Eee1CK6eRF99zw" targetNode="_KSYGEHd7Eee1CK6eRF99zw">
-      <target xmi:type="ecore:EClass" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//SoapEndpoint"/>
-      <semanticElements xmi:type="ecore:EClass" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//SoapEndpoint"/>
+      <target xmi:type="ecore:EClass" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//SoapEndpoint"/>
+      <semanticElements xmi:type="ecore:EClass" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//SoapEndpoint"/>
       <decorations xmi:type="viewpoint:Decoration" xmi:id="_36uOoNNWEeeJ7IQ3t131fA">
         <description xmi:type="description:SemanticBasedDecoration" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='External']"/>
       </decorations>
@@ -920,8 +920,8 @@
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_MzkQcHd7Eee1CK6eRF99zw" name="ServiceImplementation" tooltipText="" width="12" height="10">
-      <target xmi:type="ecore:EClass" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//ServiceImplementation"/>
-      <semanticElements xmi:type="ecore:EClass" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//ServiceImplementation"/>
+      <target xmi:type="ecore:EClass" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//ServiceImplementation"/>
+      <semanticElements xmi:type="ecore:EClass" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//ServiceImplementation"/>
       <decorations xmi:type="viewpoint:Decoration" xmi:id="_MzqXE3d7Eee1CK6eRF99zw">
         <description xmi:type="description:SemanticBasedDecoration" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='External']"/>
       </decorations>
@@ -933,40 +933,40 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
       <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_36oIANNWEeeJ7IQ3t131fA" name="serviceDescriptionId : EString" tooltipText="">
-        <target xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//ServiceImplementation/serviceDescriptionId"/>
-        <semanticElements xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//ServiceImplementation/serviceDescriptionId"/>
+        <target xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//ServiceImplementation/serviceDescriptionId"/>
+        <semanticElements xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//ServiceImplementation/serviceDescriptionId"/>
         <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_36oIAdNWEeeJ7IQ3t131fA" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
       </ownedElements>
       <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_MzpwAXd7Eee1CK6eRF99zw" name="version : EString" tooltipText="">
-        <target xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//ServiceImplementation/version"/>
-        <semanticElements xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//ServiceImplementation/version"/>
+        <target xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//ServiceImplementation/version"/>
+        <semanticElements xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//ServiceImplementation/version"/>
         <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_MzpwAnd7Eee1CK6eRF99zw" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
       </ownedElements>
       <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_MzpwA3d7Eee1CK6eRF99zw" name="platform : EString" tooltipText="">
-        <target xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//ServiceImplementation/platform"/>
-        <semanticElements xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//ServiceImplementation/platform"/>
+        <target xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//ServiceImplementation/platform"/>
+        <semanticElements xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//ServiceImplementation/platform"/>
         <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_MzpwBHd7Eee1CK6eRF99zw" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
       </ownedElements>
       <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_MzpwBXd7Eee1CK6eRF99zw" name="bundleLocation : EString" tooltipText="">
-        <target xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//ServiceImplementation/bundleLocation"/>
-        <semanticElements xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.iui.basys.model.service/model/service.ecore#//ServiceImplementation/bundleLocation"/>
+        <target xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//ServiceImplementation/bundleLocation"/>
+        <semanticElements xmi:type="ecore:EAttribute" href="platform:/resource/de.dfki.cos.basys.platform.model.service/model/service.ecore#//ServiceImplementation/bundleLocation"/>
         <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_MzqXEHd7Eee1CK6eRF99zw" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
       </ownedElements>
       <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_36ovENNWEeeJ7IQ3t131fA" name=" metadata : Metadata" tooltipText="">
-        <target xmi:type="ecore:EReference" href="platform:/resource/de.dfki.iui.basys.model.base/model/base.ecore#//Entity/metadata"/>
-        <semanticElements xmi:type="ecore:EReference" href="platform:/resource/de.dfki.iui.basys.model.base/model/base.ecore#//Entity/metadata"/>
+        <target xmi:type="ecore:EReference" href="platform:/resource/de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity/metadata"/>
+        <semanticElements xmi:type="ecore:EReference" href="platform:/resource/de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity/metadata"/>
         <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_36pWINNWEeeJ7IQ3t131fA" labelColor="125,125,125" labelAlignment="LEFT">
           <labelFormat>italic</labelFormat>
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']/@conditionnalStyles.0/@style"/>

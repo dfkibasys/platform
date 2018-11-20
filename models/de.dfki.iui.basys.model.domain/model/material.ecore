@@ -12,11 +12,11 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="materialGroups" upperBound="-1"
         eType="#//MaterialGroup" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MaterialGroup" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
+  <eClassifiers xsi:type="ecore:EClass" name="MaterialGroup" eSuperTypes="../../de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity">
     <eStructuralFeatures xsi:type="ecore:EReference" name="materialGroups" upperBound="-1"
         eType="#//MaterialGroup" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="materials" upperBound="-1"
         eType="#//Material" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Material" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Material" eSuperTypes="../../de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity"/>
 </ecore:EPackage>

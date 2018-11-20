@@ -8,7 +8,7 @@
     <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
     <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
   </eAnnotations>
-  <eClassifiers xsi:type="ecore:EClass" name="ProcessInstance" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
+  <eClassifiers xsi:type="ecore:EClass" name="ProcessInstance" eSuperTypes="../../de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity">
     <eStructuralFeatures xsi:type="ecore:EReference" name="processDefinition" lowerBound="1"
         eType="ecore:EClass processdefinition.ecore#//ProcessDefinition"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="order" lowerBound="1" eType="ecore:EClass order.ecore#//Order"/>
@@ -17,7 +17,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="taskInstances" upperBound="-1"
         eType="#//TaskInstance" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TaskInstance" eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity">
+  <eClassifiers xsi:type="ecore:EClass" name="TaskInstance" eSuperTypes="../../de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" eType="ecore:EEnum processdefinition.ecore#//TaskStateEnum"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="task" lowerBound="1" eType="ecore:EClass processdefinition.ecore#//Task"/>
   </eClassifiers>

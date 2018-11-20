@@ -3,7 +3,7 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="topology" nsURI="http://www.dfki.de/iui/basys/model/topology"
     nsPrefix="topology">
   <eClassifiers xsi:type="ecore:EClass" name="TopologyElement" abstract="true" interface="true"
-      eSuperTypes="../../de.dfki.iui.basys.model.base/model/base.ecore#//Entity"/>
+      eSuperTypes="../../de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity"/>
   <eClassifiers xsi:type="ecore:EClass" name="Enterprise" eSuperTypes="#//TopologyElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="sites" lowerBound="1" upperBound="-1"
         eType="#//Site" containment="true"/>

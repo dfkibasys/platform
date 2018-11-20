@@ -3,7 +3,7 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.dfki.iui.basys.model.domain/src" modelPluginID="de.dfki.iui.basys.model.domain"
     modelName="Domain" modelPluginClass="" rootExtendsClass="de.dfki.iui.basys.model.util.BasysEObjectImpl"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
-    providerRootExtendsClass="" usedGenPackages="../../de.dfki.iui.basys.model.base/model/base.genmodel#//base ../../de.dfki.iui.basys.model.base/model/base.genmodel#//pattern ../../de.dfki.iui.basys.model.base/model/base.genmodel#//data ../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"
+    providerRootExtendsClass="" usedGenPackages="../../de.dfki.cos.basys.platform.model.base/model/base.genmodel#//base ../../de.dfki.cos.basys.platform.model.base/model/base.genmodel#//pattern ../../de.dfki.cos.basys.platform.model.base/model/base.genmodel#//data ../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"
     interfaceNamePattern="" classNamePattern="" operationReflection="true" importOrganizing="true">
   <foreignModel>order.ecore</foreignModel>
   <foreignModel>productdefinition.ecore</foreignModel>
