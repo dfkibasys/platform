@@ -5,8 +5,8 @@
     <semanticResources>platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore</semanticResources>
     <semanticResources>platform:/resource/de.dfki.iui.basys.model/model/base.ecore</semanticResources>
     <semanticResources>http://www.eclipse.org/emf/2002/Ecore</semanticResources>
-    <semanticResources>platform:/resource/de.dfki.iui.basys.model.base/model/base.ecore</semanticResources>
-    <semanticResources>platform:/resource/de.dfki.iui.basys.model.domain/model/capability.ecore</semanticResources>
+    <semanticResources>platform:/resource/de.dfki.cos.basys.platform.model.base/model/base.ecore</semanticResources>
+    <semanticResources>platform:/resource/de.dfki.cos.basys.platform.model.domain/model/capability.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_Kq3AMHOZEee1CK6eRF99zw">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']"/>
     </ownedViews>

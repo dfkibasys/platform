@@ -3,7 +3,7 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.dfki.iui.basys.model.service/src" modelPluginID="de.dfki.iui.basys.model.service"
     modelName="Service" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
-    usedGenPackages="../../de.dfki.iui.basys.model.base/model/base.genmodel#//base ../../de.dfki.iui.basys.model.domain/model/domain.genmodel#//capability ../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"
+    usedGenPackages="../../de.dfki.cos.basys.platform.model.base/model/base.genmodel#//base ../../de.dfki.cos.basys.platform.model.domain/model/domain.genmodel#//capability ../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"
     operationReflection="true" importOrganizing="true">
   <foreignModel>service.ecore</foreignModel>
   <genPackages prefix="Service" basePackage="de.dfki.iui.basys.model" disposableProviderFactory="true"
