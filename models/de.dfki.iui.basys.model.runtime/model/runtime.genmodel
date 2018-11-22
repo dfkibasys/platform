@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.dfki.iui.basys.model.runtime/src" modelPluginID="de.dfki.iui.basys.model.runtime"
-    modelName="Runtime" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.dfki.cos.basys.platform.model.runtime/src"
+    modelPluginID="de.dfki.iui.basys.model.runtime" modelName="Runtime" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     featureMapWrapperClass="" importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0"
     copyrightFields="false" usedGenPackages="../../de.dfki.cos.basys.platform.model.base/model/base.genmodel#//base ../../de.dfki.cos.basys.platform.model.base/model/base.genmodel#//pattern ../../de.dfki.cos.basys.platform.model.base/model/base.genmodel#//data ../../de.dfki.cos.basys.platform.model.domain/model/domain.genmodel#//productdefinition ../../de.dfki.cos.basys.platform.model.domain/model/domain.genmodel#//topology ../../de.dfki.cos.basys.platform.model.domain/model/domain.genmodel#//capability ../../de.dfki.cos.basys.platform.model.domain/model/domain.genmodel#//material ../../de.dfki.cos.basys.platform.model.domain/model/domain.genmodel#//resourcetype ../../de.dfki.cos.basys.platform.model.domain/model/domain.genmodel#//resourceinstance ../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"
     operationReflection="true" importOrganizing="true">
@@ -201,11 +201,21 @@
       <genEnumLiterals ecoreEnumLiteral="component.ecore#//RequestStatus/UNDEFINED"/>
       <genEnumLiterals ecoreEnumLiteral="component.ecore#//RequestStatus/ACCEPTED"/>
       <genEnumLiterals ecoreEnumLiteral="component.ecore#//RequestStatus/REJECTED"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//RequestStatus/NOOP"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="component.ecore#//ResponseStatus">
       <genEnumLiterals ecoreEnumLiteral="component.ecore#//ResponseStatus/UNDEFINED"/>
       <genEnumLiterals ecoreEnumLiteral="component.ecore#//ResponseStatus/OK"/>
       <genEnumLiterals ecoreEnumLiteral="component.ecore#//ResponseStatus/NOT_OK"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="component.ecore#//VariableType">
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//VariableType/NULL"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//VariableType/BOOLEAN"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//VariableType/INTEGER"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//VariableType/STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//VariableType/DOUBLE"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//VariableType/LONG"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//VariableType/DATE"/>
     </genEnums>
     <genClasses image="false" ecoreClass="component.ecore#//ComponentInfo">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentInfo/componentId"/>
@@ -232,6 +242,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentConfiguration/outChannelName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentConfiguration/externalConnectionString"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference component.ecore#//ComponentConfiguration/properties"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference component.ecore#//ComponentConfiguration/simulationConfiguration"/>
       <genOperations ecoreOperation="component.ecore#//ComponentConfiguration/getProperty">
         <genParameters ecoreParameter="component.ecore#//ComponentConfiguration/getProperty/key"/>
       </genOperations>
@@ -264,9 +275,36 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentResponse/statusCode"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentResponse/message"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference component.ecore#//ComponentResponse/request"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference component.ecore#//ComponentResponse/resultVariables"/>
     </genClasses>
     <genClasses ecoreClass="component.ecore#//ComponentRequestCollection">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference component.ecore#//ComponentRequestCollection/requests"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference component.ecore#//ComponentRequestCollection/componentRequests"/>
+    </genClasses>
+    <genClasses ecoreClass="component.ecore#//Variable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//Variable/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//Variable/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//Variable/type"/>
+    </genClasses>
+    <genClasses ecoreClass="component.ecore#//SimulationConfiguration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//SimulationConfiguration/onResettingDuration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//SimulationConfiguration/onStartingDuration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//SimulationConfiguration/onExecuteDuration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//SimulationConfiguration/onCompletingDuration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//SimulationConfiguration/onStoppingDuration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//SimulationConfiguration/onAbortingDuration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//SimulationConfiguration/onClearingDuration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//SimulationConfiguration/onHoldingDuration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//SimulationConfiguration/onUnholdingDuration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//SimulationConfiguration/onSuspendingDuration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//SimulationConfiguration/onUnsuspendingDuration"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference component.ecore#//SimulationConfiguration/onCompletingVariables"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//SimulationConfiguration/onCompletingStatusCode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//SimulationConfiguration/onStoppingStatusCode"/>
+    </genClasses>
+    <genClasses ecoreClass="component.ecore#//ProcessRequest">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ProcessRequest/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ProcessRequest/businessKey"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference component.ecore#//ProcessRequest/variable"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -66,6 +66,7 @@
     <eLiterals name="MATERIAL" value="1" literal="MATERIAL"/>
     <eLiterals name="R_KLT_3215" value="2" literal="R_KLT_3215"/>
     <eLiterals name="BOTTLE" value="3"/>
+    <eLiterals name="TOOL" value="4"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WorkerAssistenceCapability" eSuperTypes="#//Capability"/>
   <eClassifiers xsi:type="ecore:EClass" name="InteractionCapability" eSuperTypes="#//WorkerAssistenceCapability">
@@ -98,5 +99,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="VisualisationCapability" eSuperTypes="#//WorkerAssistenceCapability"/>
   <eClassifiers xsi:type="ecore:EClass" name="QAVisualisationCapability" eSuperTypes="#//VisualisationCapability">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="qaResult" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Provisioning" eSuperTypes="#//LogisticsCapability"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NotifyWorker" eSuperTypes="#//WorkerAssistenceCapability">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

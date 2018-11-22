@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.dfki.iui.basys.model.domain/src" modelPluginID="de.dfki.iui.basys.model.domain"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.dfki.cos.basys.platform.model.domain/src" editDirectory="/de.dfki.iui.basys.model.domain.edit/src"
+    editorDirectory="/de.dfki.iui.basys.platfom.model.domain.editor/src" modelPluginID="de.dfki.iui.basys.model.domain"
     modelName="Domain" modelPluginClass="" rootExtendsClass="de.dfki.iui.basys.model.util.BasysEObjectImpl"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
     providerRootExtendsClass="" usedGenPackages="../../de.dfki.cos.basys.platform.model.base/model/base.genmodel#//base ../../de.dfki.cos.basys.platform.model.base/model/base.genmodel#//pattern ../../de.dfki.cos.basys.platform.model.base/model/base.genmodel#//data ../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"
@@ -173,6 +174,7 @@
     <genClasses ecoreClass="topology.ecore#//Station">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference topology.ecore#//Station/equipmentModules"/>
     </genClasses>
+    <genClasses ecoreClass="topology.ecore#//AGVStation"/>
   </genPackages>
   <genPackages prefix="Workerguidance" basePackage="de.dfki.iui.basys.model.domain"
       resource="XMI" disposableProviderFactory="true" ecorePackage="workerguidance.ecore#/">
@@ -241,21 +243,38 @@
   </genPackages>
   <genPackages prefix="Linebalancing" basePackage="de.dfki.iui.basys.model.domain"
       resource="XMI" disposableProviderFactory="true" ecorePackage="linebalancing.ecore#/">
-    <genClasses ecoreClass="linebalancing.ecore#//LBProductInstance">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute linebalancing.ecore#//LBProductInstance/componentId"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute linebalancing.ecore#//LBProductInstance/workstepInstanceId"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute linebalancing.ecore#//LBProductInstance/remainingTime"/>
+    <genClasses ecoreClass="linebalancing.ecore#//WMPathTime">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute linebalancing.ecore#//WMPathTime/time"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference linebalancing.ecore#//WMPathTime/to"/>
     </genClasses>
-    <genClasses ecoreClass="linebalancing.ecore#//LBStaff">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute linebalancing.ecore#//LBStaff/assignment"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute linebalancing.ecore#//LBStaff/componentId_src"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute linebalancing.ecore#//LBStaff/componentId_target"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute linebalancing.ecore#//LBStaff/currentProductInstanceId"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute linebalancing.ecore#//LBStaff/remainingMovementTime"/>
+    <genClasses ecoreClass="linebalancing.ecore#//StaticWorldModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference linebalancing.ecore#//StaticWorldModel/pathTimes"/>
     </genClasses>
-    <genClasses ecoreClass="linebalancing.ecore#//LBLocations">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference linebalancing.ecore#//LBLocations/staff"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference linebalancing.ecore#//LBLocations/productInstances"/>
+    <genClasses ecoreClass="linebalancing.ecore#//WMProductInstance">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute linebalancing.ecore#//WMProductInstance/serialId"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference linebalancing.ecore#//WMProductInstance/position"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute linebalancing.ecore#//WMProductInstance/in_transit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute linebalancing.ecore#//WMProductInstance/eta"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference linebalancing.ecore#//WMProductInstance/variant"/>
+    </genClasses>
+    <genClasses ecoreClass="linebalancing.ecore#//WMResourceInstance">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute linebalancing.ecore#//WMResourceInstance/serialId"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference linebalancing.ecore#//WMResourceInstance/from_position"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference linebalancing.ecore#//WMResourceInstance/to_position"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute linebalancing.ecore#//WMResourceInstance/eta"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference linebalancing.ecore#//WMResourceInstance/capabilities"/>
+    </genClasses>
+    <genClasses ecoreClass="linebalancing.ecore#//WorldModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference linebalancing.ecore#//WorldModel/productInstances"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference linebalancing.ecore#//WorldModel/resourceInstances"/>
+    </genClasses>
+    <genClasses ecoreClass="linebalancing.ecore#//WMPathTimes">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference linebalancing.ecore#//WMPathTimes/from"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference linebalancing.ecore#//WMPathTimes/to"/>
+    </genClasses>
+    <genClasses ecoreClass="linebalancing.ecore#//LineBalancingAssignment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute linebalancing.ecore#//LineBalancingAssignment/resourceInstanceId"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference linebalancing.ecore#//LineBalancingAssignment/order"/>
     </genClasses>
   </genPackages>
   <genPackages prefix="Capability" basePackage="de.dfki.iui.basys.model.domain" resource="XMI"
@@ -264,6 +283,8 @@
       <genEnumLiterals ecoreEnumLiteral="capability.ecore#//LoadCarrierUnitEnum/UNDEFINED"/>
       <genEnumLiterals ecoreEnumLiteral="capability.ecore#//LoadCarrierUnitEnum/MATERIAL"/>
       <genEnumLiterals ecoreEnumLiteral="capability.ecore#//LoadCarrierUnitEnum/R_KLT_3215"/>
+      <genEnumLiterals ecoreEnumLiteral="capability.ecore#//LoadCarrierUnitEnum/BOTTLE"/>
+      <genEnumLiterals ecoreEnumLiteral="capability.ecore#//LoadCarrierUnitEnum/TOOL"/>
     </genEnums>
     <genClasses ecoreClass="capability.ecore#//CapabilityAssertion">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference capability.ecore#//CapabilityAssertion/pattern"/>
@@ -311,19 +332,38 @@
     <genClasses ecoreClass="capability.ecore#//QoSCapability"/>
     <genClasses ecoreClass="capability.ecore#//Inspect"/>
     <genClasses ecoreClass="capability.ecore#//WorkerAssistenceCapability"/>
+    <genClasses ecoreClass="capability.ecore#//InteractionCapability">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute capability.ecore#//InteractionCapability/topic"/>
+    </genClasses>
+    <genClasses ecoreClass="capability.ecore#//ConfirmationCapability"/>
+    <genClasses ecoreClass="capability.ecore#//SwitchConfirmationCapability">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute capability.ecore#//SwitchConfirmationCapability/State"/>
+    </genClasses>
     <genClasses ecoreClass="capability.ecore#//GeneralCapability"/>
-    <genClasses ecoreClass="capability.ecore#//MoveToLocation"/>
+    <genClasses ecoreClass="capability.ecore#//MoveToLocation">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference capability.ecore#//MoveToLocation/targetLocation"/>
+    </genClasses>
     <genClasses ecoreClass="capability.ecore#//ProjectPath">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference capability.ecore#//ProjectPath/path"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute capability.ecore#//ProjectPath/delay"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute capability.ecore#//ProjectPath/arrowCount"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute capability.ecore#//ProjectPath/color"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute capability.ecore#//ProjectPath/eta"/>
     </genClasses>
     <genClasses ecoreClass="capability.ecore#//ProjectETA">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute capability.ecore#//ProjectETA/eta"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference capability.ecore#//ProjectETA/position"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute capability.ecore#//ProjectETA/radius"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute capability.ecore#//ProjectETA/color"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute capability.ecore#//ProjectETA/orientation"/>
+    </genClasses>
+    <genClasses ecoreClass="capability.ecore#//VisualisationCapability"/>
+    <genClasses ecoreClass="capability.ecore#//QAVisualisationCapability">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute capability.ecore#//QAVisualisationCapability/qaResult"/>
+    </genClasses>
+    <genClasses ecoreClass="capability.ecore#//Provisioning"/>
+    <genClasses ecoreClass="capability.ecore#//NotifyWorker">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute capability.ecore#//NotifyWorker/content"/>
     </genClasses>
   </genPackages>
   <genPackages prefix="Processdefinition" basePackage="de.dfki.iui.basys.model.domain"
@@ -532,6 +572,7 @@
     <genClasses ecoreClass="resourcetype.ecore#//ResourceType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference resourcetype.ecore#//ResourceType/capabilityAssertions"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute resourcetype.ecore#//ResourceType/documentation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute resourcetype.ecore#//ResourceType/image"/>
     </genClasses>
     <genClasses ecoreClass="resourcetype.ecore#//DiscreteManufacturingEquipmentModule"/>
     <genClasses ecoreClass="resourcetype.ecore#//Tool"/>
@@ -576,19 +617,17 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference resourceinstance.ecore#//ResourceInstance/capabilityApplications"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference resourceinstance.ecore#//ResourceInstance/role"/>
     </genClasses>
-    <genClasses ecoreClass="resourceinstance.ecore#//ResourceInstanceStatus">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute resourceinstance.ecore#//ResourceInstanceStatus/resourceInstanceId"/>
-    </genClasses>
-    <genClasses ecoreClass="resourceinstance.ecore#//ResourceInstanceStatusChangeEvent">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute resourceinstance.ecore#//ResourceInstanceStatusChangeEvent/timestamp"/>
-    </genClasses>
     <genClasses ecoreClass="resourceinstance.ecore#//CapabilityApplication">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference resourceinstance.ecore#//CapabilityApplication/capabilityAssertion"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference resourceinstance.ecore#//CapabilityApplication/capabilityVariants"/>
     </genClasses>
     <genClasses ecoreClass="resourceinstance.ecore#//CapabilityVariant">
+      <genTypeParameters ecoreTypeParameter="resourceinstance.ecore#//CapabilityVariant/T"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference resourceinstance.ecore#//CapabilityVariant/capability"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference resourceinstance.ecore#//CapabilityVariant/bomEntries"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference resourceinstance.ecore#//CapabilityVariant/appliedOn"/>
     </genClasses>
+    <genClasses ecoreClass="resourceinstance.ecore#//ManufacturingCapabilityVariant"/>
+    <genClasses ecoreClass="resourceinstance.ecore#//LogisticsCapabilityVariant"/>
+    <genClasses ecoreClass="resourceinstance.ecore#//GeneralCapabilityVariant"/>
   </genPackages>
 </genmodel:GenModel>
