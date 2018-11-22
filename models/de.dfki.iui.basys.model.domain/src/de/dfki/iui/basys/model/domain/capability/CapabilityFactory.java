@@ -193,6 +193,24 @@ public interface CapabilityFactory extends EFactory {
 	QAVisualisationCapability createQAVisualisationCapability();
 
 	/**
+	 * Returns a new object of class '<em>Provisioning</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Provisioning</em>'.
+	 * @generated
+	 */
+	Provisioning createProvisioning();
+
+	/**
+	 * Returns a new object of class '<em>Notify Worker</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Notify Worker</em>'.
+	 * @generated
+	 */
+	NotifyWorker createNotifyWorker();
+
+	/**
 	 * Returns a new object of class '<em>Urformen</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

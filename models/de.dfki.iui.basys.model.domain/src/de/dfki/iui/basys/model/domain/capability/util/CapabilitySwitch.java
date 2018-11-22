@@ -381,6 +381,26 @@ public class CapabilitySwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case CapabilityPackage.PROVISIONING: {
+				Provisioning provisioning = (Provisioning)theEObject;
+				T result = caseProvisioning(provisioning);
+				if (result == null) result = caseLogisticsCapability(provisioning);
+				if (result == null) result = caseCapability(provisioning);
+				if (result == null) result = caseEntity(provisioning);
+				if (result == null) result = caseBObject(provisioning);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CapabilityPackage.NOTIFY_WORKER: {
+				NotifyWorker notifyWorker = (NotifyWorker)theEObject;
+				T result = caseNotifyWorker(notifyWorker);
+				if (result == null) result = caseWorkerAssistenceCapability(notifyWorker);
+				if (result == null) result = caseCapability(notifyWorker);
+				if (result == null) result = caseEntity(notifyWorker);
+				if (result == null) result = caseBObject(notifyWorker);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -667,6 +687,36 @@ public class CapabilitySwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseQAVisualisationCapability(QAVisualisationCapability object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Provisioning</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Provisioning</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseProvisioning(Provisioning object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Notify Worker</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Notify Worker</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNotifyWorker(NotifyWorker object) {
 		return null;
 	}
 

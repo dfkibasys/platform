@@ -509,6 +509,52 @@ public class CapabilityItemProviderAdapterFactory extends CapabilityAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.Provisioning} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ProvisioningItemProvider provisioningItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.Provisioning}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createProvisioningAdapter() {
+		if (provisioningItemProvider == null) {
+			provisioningItemProvider = new ProvisioningItemProvider(this);
+		}
+
+		return provisioningItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.NotifyWorker} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected NotifyWorkerItemProvider notifyWorkerItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.NotifyWorker}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createNotifyWorkerAdapter() {
+		if (notifyWorkerItemProvider == null) {
+			notifyWorkerItemProvider = new NotifyWorkerItemProvider(this);
+		}
+
+		return notifyWorkerItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.Urformen} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -914,6 +960,8 @@ public class CapabilityItemProviderAdapterFactory extends CapabilityAdapterFacto
 		if (projectETAItemProvider != null) projectETAItemProvider.dispose();
 		if (visualisationCapabilityItemProvider != null) visualisationCapabilityItemProvider.dispose();
 		if (qaVisualisationCapabilityItemProvider != null) qaVisualisationCapabilityItemProvider.dispose();
+		if (provisioningItemProvider != null) provisioningItemProvider.dispose();
+		if (notifyWorkerItemProvider != null) notifyWorkerItemProvider.dispose();
 	}
 
 }

@@ -54,7 +54,15 @@ public enum LoadCarrierUnitEnum implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	BOTTLE(3, "BOTTLE", "BOTTLE");
+	BOTTLE(3, "BOTTLE", "BOTTLE"), /**
+	 * The '<em><b>TOOL</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #TOOL_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	TOOL(4, "TOOL", "TOOL");
 
 	/**
 	 * The '<em><b>UNDEFINED</b></em>' literal value.
@@ -117,6 +125,21 @@ public enum LoadCarrierUnitEnum implements Enumerator {
 	public static final int BOTTLE_VALUE = 3;
 
 	/**
+	 * The '<em><b>TOOL</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>TOOL</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #TOOL
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TOOL_VALUE = 4;
+
+	/**
 	 * An array of all the '<em><b>Load Carrier Unit Enum</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -128,6 +151,7 @@ public enum LoadCarrierUnitEnum implements Enumerator {
 			MATERIAL,
 			RKLT_3215,
 			BOTTLE,
+			TOOL,
 		};
 
 	/**
@@ -188,6 +212,7 @@ public enum LoadCarrierUnitEnum implements Enumerator {
 			case MATERIAL_VALUE: return MATERIAL;
 			case RKLT_3215_VALUE: return RKLT_3215;
 			case BOTTLE_VALUE: return BOTTLE;
+			case TOOL_VALUE: return TOOL;
 		}
 		return null;
 	}

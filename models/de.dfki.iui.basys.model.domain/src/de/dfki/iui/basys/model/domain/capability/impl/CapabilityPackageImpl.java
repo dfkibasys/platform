@@ -22,11 +22,13 @@ import de.dfki.iui.basys.model.domain.capability.LoadCarrierUnitEnum;
 import de.dfki.iui.basys.model.domain.capability.LogisticsCapability;
 import de.dfki.iui.basys.model.domain.capability.ManufacturingCapability;
 import de.dfki.iui.basys.model.domain.capability.MoveToLocation;
+import de.dfki.iui.basys.model.domain.capability.NotifyWorker;
 import de.dfki.iui.basys.model.domain.capability.PickAndPlace;
 import de.dfki.iui.basys.model.domain.capability.Pressing;
 import de.dfki.iui.basys.model.domain.capability.ProductionCapability;
 import de.dfki.iui.basys.model.domain.capability.ProjectETA;
 import de.dfki.iui.basys.model.domain.capability.ProjectPath;
+import de.dfki.iui.basys.model.domain.capability.Provisioning;
 import de.dfki.iui.basys.model.domain.capability.QAVisualisationCapability;
 import de.dfki.iui.basys.model.domain.capability.QoSCapability;
 import de.dfki.iui.basys.model.domain.capability.Screwing;
@@ -231,6 +233,20 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * @generated
 	 */
 	private EClass qaVisualisationCapabilityEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass provisioningEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass notifyWorkerEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -826,6 +842,33 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getProvisioning() {
+		return provisioningEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getNotifyWorker() {
+		return notifyWorkerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNotifyWorker_Content() {
+		return (EAttribute)notifyWorkerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getLoadCarrierUnitEnum() {
 		return loadCarrierUnitEnumEEnum;
 	}
@@ -1122,6 +1165,11 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		qaVisualisationCapabilityEClass = createEClass(QA_VISUALISATION_CAPABILITY);
 		createEAttribute(qaVisualisationCapabilityEClass, QA_VISUALISATION_CAPABILITY__QA_RESULT);
 
+		provisioningEClass = createEClass(PROVISIONING);
+
+		notifyWorkerEClass = createEClass(NOTIFY_WORKER);
+		createEAttribute(notifyWorkerEClass, NOTIFY_WORKER__CONTENT);
+
 		// Create enums
 		loadCarrierUnitEnumEEnum = createEEnum(LOAD_CARRIER_UNIT_ENUM);
 	}
@@ -1191,6 +1239,8 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		projectETAEClass.getESuperTypes().add(this.getWorkerAssistenceCapability());
 		visualisationCapabilityEClass.getESuperTypes().add(this.getWorkerAssistenceCapability());
 		qaVisualisationCapabilityEClass.getESuperTypes().add(this.getVisualisationCapability());
+		provisioningEClass.getESuperTypes().add(this.getLogisticsCapability());
+		notifyWorkerEClass.getESuperTypes().add(this.getWorkerAssistenceCapability());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(capabilityAssertionEClass, CapabilityAssertion.class, "CapabilityAssertion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1286,12 +1336,18 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		initEClass(qaVisualisationCapabilityEClass, QAVisualisationCapability.class, "QAVisualisationCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getQAVisualisationCapability_QaResult(), theEcorePackage.getEBoolean(), "qaResult", null, 0, 1, QAVisualisationCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(provisioningEClass, Provisioning.class, "Provisioning", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(notifyWorkerEClass, NotifyWorker.class, "NotifyWorker", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getNotifyWorker_Content(), theEcorePackage.getEString(), "content", null, 0, 1, NotifyWorker.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(loadCarrierUnitEnumEEnum, LoadCarrierUnitEnum.class, "LoadCarrierUnitEnum");
 		addEEnumLiteral(loadCarrierUnitEnumEEnum, LoadCarrierUnitEnum.UNDEFINED);
 		addEEnumLiteral(loadCarrierUnitEnumEEnum, LoadCarrierUnitEnum.MATERIAL);
 		addEEnumLiteral(loadCarrierUnitEnumEEnum, LoadCarrierUnitEnum.RKLT_3215);
 		addEEnumLiteral(loadCarrierUnitEnumEEnum, LoadCarrierUnitEnum.BOTTLE);
+		addEEnumLiteral(loadCarrierUnitEnumEEnum, LoadCarrierUnitEnum.TOOL);
 
 		// Create resource
 		createResource(eNS_URI);

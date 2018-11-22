@@ -173,10 +173,6 @@ public class CapabilityApplicationItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		CapabilityApplication app = (CapabilityApplication) object;
-		if (app.getCapabilityAssertion() != null) {
-			return getString("_UI_CapabilityApplication_type") + " " + app.getCapabilityAssertion().getName();
-		}
 		return getString("_UI_CapabilityApplication_type");
 	}
 	
