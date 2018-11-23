@@ -289,14 +289,14 @@ public interface CapabilityPackage extends EPackage {
 	int CAPABILITY_OPERATION_COUNT = BasePackage.ENTITY_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.HandlingCapabilityImpl <em>Handling Capability</em>}' class.
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.HandlingImpl <em>Handling</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.capability.impl.HandlingCapabilityImpl
-	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getHandlingCapability()
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.HandlingImpl
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getHandling()
 	 * @generated
 	 */
-	int HANDLING_CAPABILITY = 3;
+	int HANDLING = 3;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -305,7 +305,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HANDLING_CAPABILITY__BINDING = CAPABILITY__BINDING;
+	int HANDLING__BINDING = CAPABILITY__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -314,7 +314,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HANDLING_CAPABILITY__ID = CAPABILITY__ID;
+	int HANDLING__ID = CAPABILITY__ID;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -323,7 +323,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HANDLING_CAPABILITY__NAME = CAPABILITY__NAME;
+	int HANDLING__NAME = CAPABILITY__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -332,25 +332,25 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HANDLING_CAPABILITY__METADATA = CAPABILITY__METADATA;
+	int HANDLING__METADATA = CAPABILITY__METADATA;
 
 	/**
-	 * The number of structural features of the '<em>Handling Capability</em>' class.
+	 * The number of structural features of the '<em>Handling</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HANDLING_CAPABILITY_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 0;
+	int HANDLING_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of operations of the '<em>Handling Capability</em>' class.
+	 * The number of operations of the '<em>Handling</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int HANDLING_CAPABILITY_OPERATION_COUNT = CAPABILITY_OPERATION_COUNT + 0;
+	int HANDLING_OPERATION_COUNT = CAPABILITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.ProductionCapabilityImpl <em>Production Capability</em>}' class.
@@ -718,7 +718,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getLoadCarrierUnitEnum()
 	 * @generated
 	 */
-	int LOAD_CARRIER_UNIT_ENUM = 33;
+	int LOAD_CARRIER_UNIT_ENUM = 44;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.UrformenImpl <em>Urformen</em>}' class.
@@ -1414,14 +1414,14 @@ public interface CapabilityPackage extends EPackage {
 	int TRANSPORT_OPERATION_COUNT = LOGISTICS_CAPABILITY_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.StoreImpl <em>Store</em>}' class.
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.BufferingImpl <em>Buffering</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.dfki.iui.basys.model.domain.capability.impl.StoreImpl
-	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getStore()
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.BufferingImpl
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getBuffering()
 	 * @generated
 	 */
-	int STORE = 18;
+	int BUFFERING = 18;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -1430,7 +1430,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STORE__BINDING = LOGISTICS_CAPABILITY__BINDING;
+	int BUFFERING__BINDING = HANDLING__BINDING;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1439,7 +1439,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STORE__ID = LOGISTICS_CAPABILITY__ID;
+	int BUFFERING__ID = HANDLING__ID;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1448,7 +1448,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STORE__NAME = LOGISTICS_CAPABILITY__NAME;
+	int BUFFERING__NAME = HANDLING__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -1457,52 +1457,25 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STORE__METADATA = LOGISTICS_CAPABILITY__METADATA;
+	int BUFFERING__METADATA = HANDLING__METADATA;
 
 	/**
-	 * The feature id for the '<em><b>Load Carrier Unit</b></em>' attribute.
+	 * The number of structural features of the '<em>Buffering</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STORE__LOAD_CARRIER_UNIT = LOGISTICS_CAPABILITY__LOAD_CARRIER_UNIT;
+	int BUFFERING_FEATURE_COUNT = HANDLING_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Capacity</b></em>' attribute.
+	 * The number of operations of the '<em>Buffering</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STORE__CAPACITY = LOGISTICS_CAPABILITY__CAPACITY;
-
-	/**
-	 * The feature id for the '<em><b>Payload</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STORE__PAYLOAD = LOGISTICS_CAPABILITY__PAYLOAD;
-
-	/**
-	 * The number of structural features of the '<em>Store</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STORE_FEATURE_COUNT = LOGISTICS_CAPABILITY_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Store</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STORE_OPERATION_COUNT = LOGISTICS_CAPABILITY_OPERATION_COUNT + 0;
+	int BUFFERING_OPERATION_COUNT = HANDLING_OPERATION_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
@@ -2543,6 +2516,710 @@ public interface CapabilityPackage extends EPackage {
 	int NOTIFY_WORKER_OPERATION_COUNT = WORKER_ASSISTENCE_CAPABILITY_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.ChangingQuantityImpl <em>Changing Quantity</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.ChangingQuantityImpl
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getChangingQuantity()
+	 * @generated
+	 */
+	int CHANGING_QUANTITY = 33;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGING_QUANTITY__BINDING = HANDLING__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGING_QUANTITY__ID = HANDLING__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGING_QUANTITY__NAME = HANDLING__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGING_QUANTITY__METADATA = HANDLING__METADATA;
+
+	/**
+	 * The number of structural features of the '<em>Changing Quantity</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGING_QUANTITY_FEATURE_COUNT = HANDLING_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Changing Quantity</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGING_QUANTITY_OPERATION_COUNT = HANDLING_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.MovingImpl <em>Moving</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.MovingImpl
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getMoving()
+	 * @generated
+	 */
+	int MOVING = 34;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVING__BINDING = HANDLING__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVING__ID = HANDLING__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVING__NAME = HANDLING__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVING__METADATA = HANDLING__METADATA;
+
+	/**
+	 * The number of structural features of the '<em>Moving</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVING_FEATURE_COUNT = HANDLING_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Moving</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOVING_OPERATION_COUNT = HANDLING_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.SecuringImpl <em>Securing</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.SecuringImpl
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getSecuring()
+	 * @generated
+	 */
+	int SECURING = 35;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SECURING__BINDING = HANDLING__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SECURING__ID = HANDLING__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SECURING__NAME = HANDLING__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SECURING__METADATA = HANDLING__METADATA;
+
+	/**
+	 * The number of structural features of the '<em>Securing</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SECURING_FEATURE_COUNT = HANDLING_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Securing</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SECURING_OPERATION_COUNT = HANDLING_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.CheckingImpl <em>Checking</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CheckingImpl
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getChecking()
+	 * @generated
+	 */
+	int CHECKING = 36;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHECKING__BINDING = HANDLING__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHECKING__ID = HANDLING__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHECKING__NAME = HANDLING__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHECKING__METADATA = HANDLING__METADATA;
+
+	/**
+	 * The number of structural features of the '<em>Checking</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHECKING_FEATURE_COUNT = HANDLING_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Checking</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHECKING_OPERATION_COUNT = HANDLING_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.SwivelImpl <em>Swivel</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.SwivelImpl
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getSwivel()
+	 * @generated
+	 */
+	int SWIVEL = 37;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SWIVEL__BINDING = MOVING__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SWIVEL__ID = MOVING__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SWIVEL__NAME = MOVING__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SWIVEL__METADATA = MOVING__METADATA;
+
+	/**
+	 * The number of structural features of the '<em>Swivel</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SWIVEL_FEATURE_COUNT = MOVING_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Swivel</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SWIVEL_OPERATION_COUNT = MOVING_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.OrientatingImpl <em>Orientating</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.OrientatingImpl
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getOrientating()
+	 * @generated
+	 */
+	int ORIENTATING = 38;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORIENTATING__BINDING = MOVING__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORIENTATING__ID = MOVING__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORIENTATING__NAME = MOVING__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORIENTATING__METADATA = MOVING__METADATA;
+
+	/**
+	 * The number of structural features of the '<em>Orientating</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORIENTATING_FEATURE_COUNT = MOVING_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Orientating</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORIENTATING_OPERATION_COUNT = MOVING_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.PlacingImpl <em>Placing</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.PlacingImpl
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getPlacing()
+	 * @generated
+	 */
+	int PLACING = 39;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLACING__BINDING = MOVING__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLACING__ID = MOVING__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLACING__NAME = MOVING__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLACING__METADATA = MOVING__METADATA;
+
+	/**
+	 * The number of structural features of the '<em>Placing</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLACING_FEATURE_COUNT = MOVING_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Placing</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLACING_OPERATION_COUNT = MOVING_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.OrderingImpl <em>Ordering</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.OrderingImpl
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getOrdering()
+	 * @generated
+	 */
+	int ORDERING = 40;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORDERING__BINDING = MOVING__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORDERING__ID = MOVING__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORDERING__NAME = MOVING__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORDERING__METADATA = MOVING__METADATA;
+
+	/**
+	 * The number of structural features of the '<em>Ordering</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORDERING_FEATURE_COUNT = MOVING_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Ordering</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORDERING_OPERATION_COUNT = MOVING_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.GuidingImpl <em>Guiding</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.GuidingImpl
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getGuiding()
+	 * @generated
+	 */
+	int GUIDING = 41;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GUIDING__BINDING = MOVING__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GUIDING__ID = MOVING__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GUIDING__NAME = MOVING__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GUIDING__METADATA = MOVING__METADATA;
+
+	/**
+	 * The number of structural features of the '<em>Guiding</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GUIDING_FEATURE_COUNT = MOVING_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Guiding</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GUIDING_OPERATION_COUNT = MOVING_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.PassingOnImpl <em>Passing On</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.PassingOnImpl
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getPassingOn()
+	 * @generated
+	 */
+	int PASSING_ON = 42;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSING_ON__BINDING = MOVING__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSING_ON__ID = MOVING__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSING_ON__NAME = MOVING__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSING_ON__METADATA = MOVING__METADATA;
+
+	/**
+	 * The number of structural features of the '<em>Passing On</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSING_ON_FEATURE_COUNT = MOVING_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Passing On</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PASSING_ON_OPERATION_COUNT = MOVING_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.ConveyingImpl <em>Conveying</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.ConveyingImpl
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getConveying()
+	 * @generated
+	 */
+	int CONVEYING = 43;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONVEYING__BINDING = MOVING__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONVEYING__ID = MOVING__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONVEYING__NAME = MOVING__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONVEYING__METADATA = MOVING__METADATA;
+
+	/**
+	 * The number of structural features of the '<em>Conveying</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONVEYING_FEATURE_COUNT = MOVING_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Conveying</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONVEYING_OPERATION_COUNT = MOVING_OPERATION_COUNT + 0;
+
+	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.CapabilityAssertion <em>Assertion</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2661,14 +3338,14 @@ public interface CapabilityPackage extends EPackage {
 	EClass getCapability();
 
 	/**
-	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.HandlingCapability <em>Handling Capability</em>}'.
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.Handling <em>Handling</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Handling Capability</em>'.
-	 * @see de.dfki.iui.basys.model.domain.capability.HandlingCapability
+	 * @return the meta object for class '<em>Handling</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.Handling
 	 * @generated
 	 */
-	EClass getHandlingCapability();
+	EClass getHandling();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.ManufacturingCapability <em>Manufacturing Capability</em>}'.
@@ -3028,6 +3705,116 @@ public interface CapabilityPackage extends EPackage {
 	EAttribute getNotifyWorker_Content();
 
 	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.ChangingQuantity <em>Changing Quantity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Changing Quantity</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.ChangingQuantity
+	 * @generated
+	 */
+	EClass getChangingQuantity();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.Moving <em>Moving</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Moving</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.Moving
+	 * @generated
+	 */
+	EClass getMoving();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.Securing <em>Securing</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Securing</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.Securing
+	 * @generated
+	 */
+	EClass getSecuring();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.Checking <em>Checking</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Checking</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.Checking
+	 * @generated
+	 */
+	EClass getChecking();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.Swivel <em>Swivel</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Swivel</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.Swivel
+	 * @generated
+	 */
+	EClass getSwivel();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.Orientating <em>Orientating</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Orientating</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.Orientating
+	 * @generated
+	 */
+	EClass getOrientating();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.Placing <em>Placing</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Placing</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.Placing
+	 * @generated
+	 */
+	EClass getPlacing();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.Ordering <em>Ordering</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Ordering</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.Ordering
+	 * @generated
+	 */
+	EClass getOrdering();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.Guiding <em>Guiding</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Guiding</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.Guiding
+	 * @generated
+	 */
+	EClass getGuiding();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.PassingOn <em>Passing On</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Passing On</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.PassingOn
+	 * @generated
+	 */
+	EClass getPassingOn();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.Conveying <em>Conveying</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Conveying</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.Conveying
+	 * @generated
+	 */
+	EClass getConveying();
+
+	/**
 	 * Returns the meta object for enum '{@link de.dfki.iui.basys.model.domain.capability.LoadCarrierUnitEnum <em>Load Carrier Unit Enum</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3225,14 +4012,14 @@ public interface CapabilityPackage extends EPackage {
 	EAttribute getTransport_Distance();
 
 	/**
-	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.Store <em>Store</em>}'.
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.Buffering <em>Buffering</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Store</em>'.
-	 * @see de.dfki.iui.basys.model.domain.capability.Store
+	 * @return the meta object for class '<em>Buffering</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.Buffering
 	 * @generated
 	 */
-	EClass getStore();
+	EClass getBuffering();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -3352,14 +4139,14 @@ public interface CapabilityPackage extends EPackage {
 		EClass CAPABILITY = eINSTANCE.getCapability();
 
 		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.HandlingCapabilityImpl <em>Handling Capability</em>}' class.
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.HandlingImpl <em>Handling</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.domain.capability.impl.HandlingCapabilityImpl
-		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getHandlingCapability()
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.HandlingImpl
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getHandling()
 		 * @generated
 		 */
-		EClass HANDLING_CAPABILITY = eINSTANCE.getHandlingCapability();
+		EClass HANDLING = eINSTANCE.getHandling();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.ManufacturingCapabilityImpl <em>Manufacturing Capability</em>}' class.
@@ -3668,6 +4455,116 @@ public interface CapabilityPackage extends EPackage {
 		EAttribute NOTIFY_WORKER__CONTENT = eINSTANCE.getNotifyWorker_Content();
 
 		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.ChangingQuantityImpl <em>Changing Quantity</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.ChangingQuantityImpl
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getChangingQuantity()
+		 * @generated
+		 */
+		EClass CHANGING_QUANTITY = eINSTANCE.getChangingQuantity();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.MovingImpl <em>Moving</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.MovingImpl
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getMoving()
+		 * @generated
+		 */
+		EClass MOVING = eINSTANCE.getMoving();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.SecuringImpl <em>Securing</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.SecuringImpl
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getSecuring()
+		 * @generated
+		 */
+		EClass SECURING = eINSTANCE.getSecuring();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.CheckingImpl <em>Checking</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CheckingImpl
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getChecking()
+		 * @generated
+		 */
+		EClass CHECKING = eINSTANCE.getChecking();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.SwivelImpl <em>Swivel</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.SwivelImpl
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getSwivel()
+		 * @generated
+		 */
+		EClass SWIVEL = eINSTANCE.getSwivel();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.OrientatingImpl <em>Orientating</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.OrientatingImpl
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getOrientating()
+		 * @generated
+		 */
+		EClass ORIENTATING = eINSTANCE.getOrientating();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.PlacingImpl <em>Placing</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.PlacingImpl
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getPlacing()
+		 * @generated
+		 */
+		EClass PLACING = eINSTANCE.getPlacing();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.OrderingImpl <em>Ordering</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.OrderingImpl
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getOrdering()
+		 * @generated
+		 */
+		EClass ORDERING = eINSTANCE.getOrdering();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.GuidingImpl <em>Guiding</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.GuidingImpl
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getGuiding()
+		 * @generated
+		 */
+		EClass GUIDING = eINSTANCE.getGuiding();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.PassingOnImpl <em>Passing On</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.PassingOnImpl
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getPassingOn()
+		 * @generated
+		 */
+		EClass PASSING_ON = eINSTANCE.getPassingOn();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.ConveyingImpl <em>Conveying</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.ConveyingImpl
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getConveying()
+		 * @generated
+		 */
+		EClass CONVEYING = eINSTANCE.getConveying();
+
+		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.LoadCarrierUnitEnum <em>Load Carrier Unit Enum</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3844,14 +4741,14 @@ public interface CapabilityPackage extends EPackage {
 		EAttribute TRANSPORT__DISTANCE = eINSTANCE.getTransport_Distance();
 
 		/**
-		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.StoreImpl <em>Store</em>}' class.
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.BufferingImpl <em>Buffering</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.dfki.iui.basys.model.domain.capability.impl.StoreImpl
-		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getStore()
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.BufferingImpl
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getBuffering()
 		 * @generated
 		 */
-		EClass STORE = eINSTANCE.getStore();
+		EClass BUFFERING = eINSTANCE.getBuffering();
 
 	}
 

@@ -3,24 +3,24 @@
 package de.dfki.iui.basys.model.domain.capability.impl;
 
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
-import de.dfki.iui.basys.model.domain.capability.HandlingCapability;
+import de.dfki.iui.basys.model.domain.capability.Orientating;
 
 import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Handling Capability</b></em>'.
+ * An implementation of the model object '<em><b>Orientating</b></em>'.
  * <!-- end-user-doc -->
  *
  * @generated
  */
-public class HandlingCapabilityImpl extends CapabilityImpl implements HandlingCapability {
+public class OrientatingImpl extends MovingImpl implements Orientating {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected HandlingCapabilityImpl() {
+	protected OrientatingImpl() {
 		super();
 	}
 
@@ -31,7 +31,7 @@ public class HandlingCapabilityImpl extends CapabilityImpl implements HandlingCa
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return CapabilityPackage.Literals.HANDLING_CAPABILITY;
+		return CapabilityPackage.Literals.ORIENTATING;
 	}
 
-} //HandlingCapabilityImpl
+} //OrientatingImpl

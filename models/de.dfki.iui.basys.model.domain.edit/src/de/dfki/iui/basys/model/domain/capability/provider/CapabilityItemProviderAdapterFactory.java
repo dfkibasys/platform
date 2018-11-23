@@ -141,26 +141,26 @@ public class CapabilityItemProviderAdapterFactory extends CapabilityAdapterFacto
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.HandlingCapability} instances.
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.Handling} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected HandlingCapabilityItemProvider handlingCapabilityItemProvider;
+	protected HandlingItemProvider handlingItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.HandlingCapability}.
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.Handling}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createHandlingCapabilityAdapter() {
-		if (handlingCapabilityItemProvider == null) {
-			handlingCapabilityItemProvider = new HandlingCapabilityItemProvider(this);
+	public Adapter createHandlingAdapter() {
+		if (handlingItemProvider == null) {
+			handlingItemProvider = new HandlingItemProvider(this);
 		}
 
-		return handlingCapabilityItemProvider;
+		return handlingItemProvider;
 	}
 
 	/**
@@ -555,6 +555,259 @@ public class CapabilityItemProviderAdapterFactory extends CapabilityAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.ChangingQuantity} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ChangingQuantityItemProvider changingQuantityItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.ChangingQuantity}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createChangingQuantityAdapter() {
+		if (changingQuantityItemProvider == null) {
+			changingQuantityItemProvider = new ChangingQuantityItemProvider(this);
+		}
+
+		return changingQuantityItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.Moving} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MovingItemProvider movingItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.Moving}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMovingAdapter() {
+		if (movingItemProvider == null) {
+			movingItemProvider = new MovingItemProvider(this);
+		}
+
+		return movingItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.Securing} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SecuringItemProvider securingItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.Securing}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSecuringAdapter() {
+		if (securingItemProvider == null) {
+			securingItemProvider = new SecuringItemProvider(this);
+		}
+
+		return securingItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.Checking} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CheckingItemProvider checkingItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.Checking}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCheckingAdapter() {
+		if (checkingItemProvider == null) {
+			checkingItemProvider = new CheckingItemProvider(this);
+		}
+
+		return checkingItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.Swivel} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SwivelItemProvider swivelItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.Swivel}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSwivelAdapter() {
+		if (swivelItemProvider == null) {
+			swivelItemProvider = new SwivelItemProvider(this);
+		}
+
+		return swivelItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.Orientating} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OrientatingItemProvider orientatingItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.Orientating}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOrientatingAdapter() {
+		if (orientatingItemProvider == null) {
+			orientatingItemProvider = new OrientatingItemProvider(this);
+		}
+
+		return orientatingItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.Placing} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PlacingItemProvider placingItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.Placing}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPlacingAdapter() {
+		if (placingItemProvider == null) {
+			placingItemProvider = new PlacingItemProvider(this);
+		}
+
+		return placingItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.Ordering} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OrderingItemProvider orderingItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.Ordering}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOrderingAdapter() {
+		if (orderingItemProvider == null) {
+			orderingItemProvider = new OrderingItemProvider(this);
+		}
+
+		return orderingItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.Guiding} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected GuidingItemProvider guidingItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.Guiding}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createGuidingAdapter() {
+		if (guidingItemProvider == null) {
+			guidingItemProvider = new GuidingItemProvider(this);
+		}
+
+		return guidingItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.PassingOn} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PassingOnItemProvider passingOnItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.PassingOn}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPassingOnAdapter() {
+		if (passingOnItemProvider == null) {
+			passingOnItemProvider = new PassingOnItemProvider(this);
+		}
+
+		return passingOnItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.Conveying} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ConveyingItemProvider conveyingItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.Conveying}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createConveyingAdapter() {
+		if (conveyingItemProvider == null) {
+			conveyingItemProvider = new ConveyingItemProvider(this);
+		}
+
+		return conveyingItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.Urformen} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -808,26 +1061,26 @@ public class CapabilityItemProviderAdapterFactory extends CapabilityAdapterFacto
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.Store} instances.
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.Buffering} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected StoreItemProvider storeItemProvider;
+	protected BufferingItemProvider bufferingItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.Store}.
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.Buffering}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createStoreAdapter() {
-		if (storeItemProvider == null) {
-			storeItemProvider = new StoreItemProvider(this);
+	public Adapter createBufferingAdapter() {
+		if (bufferingItemProvider == null) {
+			bufferingItemProvider = new BufferingItemProvider(this);
 		}
 
-		return storeItemProvider;
+		return bufferingItemProvider;
 	}
 
 	/**
@@ -932,7 +1185,7 @@ public class CapabilityItemProviderAdapterFactory extends CapabilityAdapterFacto
 		if (capabilityAssertionItemProvider != null) capabilityAssertionItemProvider.dispose();
 		if (capabilityRequestItemProvider != null) capabilityRequestItemProvider.dispose();
 		if (capabilityItemProvider != null) capabilityItemProvider.dispose();
-		if (handlingCapabilityItemProvider != null) handlingCapabilityItemProvider.dispose();
+		if (handlingItemProvider != null) handlingItemProvider.dispose();
 		if (manufacturingCapabilityItemProvider != null) manufacturingCapabilityItemProvider.dispose();
 		if (fügenItemProvider != null) fügenItemProvider.dispose();
 		if (pressingItemProvider != null) pressingItemProvider.dispose();
@@ -947,7 +1200,7 @@ public class CapabilityItemProviderAdapterFactory extends CapabilityAdapterFacto
 		if (logisticsCapabilityItemProvider != null) logisticsCapabilityItemProvider.dispose();
 		if (pickAndPlaceItemProvider != null) pickAndPlaceItemProvider.dispose();
 		if (transportItemProvider != null) transportItemProvider.dispose();
-		if (storeItemProvider != null) storeItemProvider.dispose();
+		if (bufferingItemProvider != null) bufferingItemProvider.dispose();
 		if (qoSCapabilityItemProvider != null) qoSCapabilityItemProvider.dispose();
 		if (inspectItemProvider != null) inspectItemProvider.dispose();
 		if (workerAssistenceCapabilityItemProvider != null) workerAssistenceCapabilityItemProvider.dispose();
@@ -962,6 +1215,17 @@ public class CapabilityItemProviderAdapterFactory extends CapabilityAdapterFacto
 		if (qaVisualisationCapabilityItemProvider != null) qaVisualisationCapabilityItemProvider.dispose();
 		if (provisioningItemProvider != null) provisioningItemProvider.dispose();
 		if (notifyWorkerItemProvider != null) notifyWorkerItemProvider.dispose();
+		if (changingQuantityItemProvider != null) changingQuantityItemProvider.dispose();
+		if (movingItemProvider != null) movingItemProvider.dispose();
+		if (securingItemProvider != null) securingItemProvider.dispose();
+		if (checkingItemProvider != null) checkingItemProvider.dispose();
+		if (swivelItemProvider != null) swivelItemProvider.dispose();
+		if (orientatingItemProvider != null) orientatingItemProvider.dispose();
+		if (placingItemProvider != null) placingItemProvider.dispose();
+		if (orderingItemProvider != null) orderingItemProvider.dispose();
+		if (guidingItemProvider != null) guidingItemProvider.dispose();
+		if (passingOnItemProvider != null) passingOnItemProvider.dispose();
+		if (conveyingItemProvider != null) conveyingItemProvider.dispose();
 	}
 
 }

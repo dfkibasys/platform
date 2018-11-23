@@ -49,13 +49,13 @@ public interface CapabilityFactory extends EFactory {
 	Capability createCapability();
 
 	/**
-	 * Returns a new object of class '<em>Handling Capability</em>'.
+	 * Returns a new object of class '<em>Handling</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Handling Capability</em>'.
+	 * @return a new object of class '<em>Handling</em>'.
 	 * @generated
 	 */
-	HandlingCapability createHandlingCapability();
+	Handling createHandling();
 
 	/**
 	 * Returns a new object of class '<em>Manufacturing Capability</em>'.
@@ -211,6 +211,105 @@ public interface CapabilityFactory extends EFactory {
 	NotifyWorker createNotifyWorker();
 
 	/**
+	 * Returns a new object of class '<em>Changing Quantity</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Changing Quantity</em>'.
+	 * @generated
+	 */
+	ChangingQuantity createChangingQuantity();
+
+	/**
+	 * Returns a new object of class '<em>Moving</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Moving</em>'.
+	 * @generated
+	 */
+	Moving createMoving();
+
+	/**
+	 * Returns a new object of class '<em>Securing</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Securing</em>'.
+	 * @generated
+	 */
+	Securing createSecuring();
+
+	/**
+	 * Returns a new object of class '<em>Checking</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Checking</em>'.
+	 * @generated
+	 */
+	Checking createChecking();
+
+	/**
+	 * Returns a new object of class '<em>Swivel</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Swivel</em>'.
+	 * @generated
+	 */
+	Swivel createSwivel();
+
+	/**
+	 * Returns a new object of class '<em>Orientating</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Orientating</em>'.
+	 * @generated
+	 */
+	Orientating createOrientating();
+
+	/**
+	 * Returns a new object of class '<em>Placing</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Placing</em>'.
+	 * @generated
+	 */
+	Placing createPlacing();
+
+	/**
+	 * Returns a new object of class '<em>Ordering</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Ordering</em>'.
+	 * @generated
+	 */
+	Ordering createOrdering();
+
+	/**
+	 * Returns a new object of class '<em>Guiding</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Guiding</em>'.
+	 * @generated
+	 */
+	Guiding createGuiding();
+
+	/**
+	 * Returns a new object of class '<em>Passing On</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Passing On</em>'.
+	 * @generated
+	 */
+	PassingOn createPassingOn();
+
+	/**
+	 * Returns a new object of class '<em>Conveying</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Conveying</em>'.
+	 * @generated
+	 */
+	Conveying createConveying();
+
+	/**
 	 * Returns a new object of class '<em>Urformen</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -310,13 +409,13 @@ public interface CapabilityFactory extends EFactory {
 	Transport createTransport();
 
 	/**
-	 * Returns a new object of class '<em>Store</em>'.
+	 * Returns a new object of class '<em>Buffering</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Store</em>'.
+	 * @return a new object of class '<em>Buffering</em>'.
 	 * @generated
 	 */
-	Store createStore();
+	Buffering createBuffering();
 
 	/**
 	 * Returns the package supported by this factory.

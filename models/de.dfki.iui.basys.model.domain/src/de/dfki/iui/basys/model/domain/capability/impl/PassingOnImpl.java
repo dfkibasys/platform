@@ -3,24 +3,24 @@
 package de.dfki.iui.basys.model.domain.capability.impl;
 
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
-import de.dfki.iui.basys.model.domain.capability.Store;
+import de.dfki.iui.basys.model.domain.capability.PassingOn;
 
 import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Store</b></em>'.
+ * An implementation of the model object '<em><b>Passing On</b></em>'.
  * <!-- end-user-doc -->
  *
  * @generated
  */
-public class StoreImpl extends LogisticsCapabilityImpl implements Store {
+public class PassingOnImpl extends MovingImpl implements PassingOn {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected StoreImpl() {
+	protected PassingOnImpl() {
 		super();
 	}
 
@@ -31,7 +31,7 @@ public class StoreImpl extends LogisticsCapabilityImpl implements Store {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return CapabilityPackage.Literals.STORE;
+		return CapabilityPackage.Literals.PASSING_ON;
 	}
 
-} //StoreImpl
+} //PassingOnImpl

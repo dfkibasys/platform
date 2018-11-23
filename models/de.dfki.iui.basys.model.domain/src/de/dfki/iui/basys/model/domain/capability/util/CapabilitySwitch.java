@@ -91,12 +91,12 @@ public class CapabilitySwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CapabilityPackage.HANDLING_CAPABILITY: {
-				HandlingCapability handlingCapability = (HandlingCapability)theEObject;
-				T result = caseHandlingCapability(handlingCapability);
-				if (result == null) result = caseCapability(handlingCapability);
-				if (result == null) result = caseEntity(handlingCapability);
-				if (result == null) result = caseBObject(handlingCapability);
+			case CapabilityPackage.HANDLING: {
+				Handling handling = (Handling)theEObject;
+				T result = caseHandling(handling);
+				if (result == null) result = caseCapability(handling);
+				if (result == null) result = caseEntity(handling);
+				if (result == null) result = caseBObject(handling);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -252,13 +252,13 @@ public class CapabilitySwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CapabilityPackage.STORE: {
-				Store store = (Store)theEObject;
-				T result = caseStore(store);
-				if (result == null) result = caseLogisticsCapability(store);
-				if (result == null) result = caseCapability(store);
-				if (result == null) result = caseEntity(store);
-				if (result == null) result = caseBObject(store);
+			case CapabilityPackage.BUFFERING: {
+				Buffering buffering = (Buffering)theEObject;
+				T result = caseBuffering(buffering);
+				if (result == null) result = caseHandling(buffering);
+				if (result == null) result = caseCapability(buffering);
+				if (result == null) result = caseEntity(buffering);
+				if (result == null) result = caseBObject(buffering);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -401,6 +401,123 @@ public class CapabilitySwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case CapabilityPackage.CHANGING_QUANTITY: {
+				ChangingQuantity changingQuantity = (ChangingQuantity)theEObject;
+				T result = caseChangingQuantity(changingQuantity);
+				if (result == null) result = caseHandling(changingQuantity);
+				if (result == null) result = caseCapability(changingQuantity);
+				if (result == null) result = caseEntity(changingQuantity);
+				if (result == null) result = caseBObject(changingQuantity);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CapabilityPackage.MOVING: {
+				Moving moving = (Moving)theEObject;
+				T result = caseMoving(moving);
+				if (result == null) result = caseHandling(moving);
+				if (result == null) result = caseCapability(moving);
+				if (result == null) result = caseEntity(moving);
+				if (result == null) result = caseBObject(moving);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CapabilityPackage.SECURING: {
+				Securing securing = (Securing)theEObject;
+				T result = caseSecuring(securing);
+				if (result == null) result = caseHandling(securing);
+				if (result == null) result = caseCapability(securing);
+				if (result == null) result = caseEntity(securing);
+				if (result == null) result = caseBObject(securing);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CapabilityPackage.CHECKING: {
+				Checking checking = (Checking)theEObject;
+				T result = caseChecking(checking);
+				if (result == null) result = caseHandling(checking);
+				if (result == null) result = caseCapability(checking);
+				if (result == null) result = caseEntity(checking);
+				if (result == null) result = caseBObject(checking);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CapabilityPackage.SWIVEL: {
+				Swivel swivel = (Swivel)theEObject;
+				T result = caseSwivel(swivel);
+				if (result == null) result = caseMoving(swivel);
+				if (result == null) result = caseHandling(swivel);
+				if (result == null) result = caseCapability(swivel);
+				if (result == null) result = caseEntity(swivel);
+				if (result == null) result = caseBObject(swivel);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CapabilityPackage.ORIENTATING: {
+				Orientating orientating = (Orientating)theEObject;
+				T result = caseOrientating(orientating);
+				if (result == null) result = caseMoving(orientating);
+				if (result == null) result = caseHandling(orientating);
+				if (result == null) result = caseCapability(orientating);
+				if (result == null) result = caseEntity(orientating);
+				if (result == null) result = caseBObject(orientating);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CapabilityPackage.PLACING: {
+				Placing placing = (Placing)theEObject;
+				T result = casePlacing(placing);
+				if (result == null) result = caseMoving(placing);
+				if (result == null) result = caseHandling(placing);
+				if (result == null) result = caseCapability(placing);
+				if (result == null) result = caseEntity(placing);
+				if (result == null) result = caseBObject(placing);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CapabilityPackage.ORDERING: {
+				Ordering ordering = (Ordering)theEObject;
+				T result = caseOrdering(ordering);
+				if (result == null) result = caseMoving(ordering);
+				if (result == null) result = caseHandling(ordering);
+				if (result == null) result = caseCapability(ordering);
+				if (result == null) result = caseEntity(ordering);
+				if (result == null) result = caseBObject(ordering);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CapabilityPackage.GUIDING: {
+				Guiding guiding = (Guiding)theEObject;
+				T result = caseGuiding(guiding);
+				if (result == null) result = caseMoving(guiding);
+				if (result == null) result = caseHandling(guiding);
+				if (result == null) result = caseCapability(guiding);
+				if (result == null) result = caseEntity(guiding);
+				if (result == null) result = caseBObject(guiding);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CapabilityPackage.PASSING_ON: {
+				PassingOn passingOn = (PassingOn)theEObject;
+				T result = casePassingOn(passingOn);
+				if (result == null) result = caseMoving(passingOn);
+				if (result == null) result = caseHandling(passingOn);
+				if (result == null) result = caseCapability(passingOn);
+				if (result == null) result = caseEntity(passingOn);
+				if (result == null) result = caseBObject(passingOn);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CapabilityPackage.CONVEYING: {
+				Conveying conveying = (Conveying)theEObject;
+				T result = caseConveying(conveying);
+				if (result == null) result = caseMoving(conveying);
+				if (result == null) result = caseHandling(conveying);
+				if (result == null) result = caseCapability(conveying);
+				if (result == null) result = caseEntity(conveying);
+				if (result == null) result = caseBObject(conveying);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -451,17 +568,17 @@ public class CapabilitySwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Handling Capability</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Handling</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Handling Capability</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Handling</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseHandlingCapability(HandlingCapability object) {
+	public T caseHandling(Handling object) {
 		return null;
 	}
 
@@ -721,6 +838,171 @@ public class CapabilitySwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Changing Quantity</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Changing Quantity</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseChangingQuantity(ChangingQuantity object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Moving</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Moving</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMoving(Moving object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Securing</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Securing</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSecuring(Securing object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Checking</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Checking</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseChecking(Checking object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Swivel</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Swivel</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSwivel(Swivel object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Orientating</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Orientating</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOrientating(Orientating object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Placing</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Placing</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePlacing(Placing object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Ordering</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Ordering</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOrdering(Ordering object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Guiding</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Guiding</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGuiding(Guiding object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Passing On</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Passing On</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePassingOn(PassingOn object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Conveying</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Conveying</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConveying(Conveying object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Urformen</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -886,17 +1168,17 @@ public class CapabilitySwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Store</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Buffering</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Store</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Buffering</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseStore(Store object) {
+	public T caseBuffering(Buffering object) {
 		return null;
 	}
 

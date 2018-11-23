@@ -318,7 +318,7 @@ public class EquipmentModuleItemProvider extends EntityItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
-				 CapabilityFactory.eINSTANCE.createHandlingCapability()));
+				 CapabilityFactory.eINSTANCE.createHandling()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -393,7 +393,7 @@ public class EquipmentModuleItemProvider extends EntityItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
-				 CapabilityFactory.eINSTANCE.createStore()));
+				 CapabilityFactory.eINSTANCE.createBuffering()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -454,6 +454,71 @@ public class EquipmentModuleItemProvider extends EntityItemProvider {
 			(createChildParameter
 				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
 				 CapabilityFactory.eINSTANCE.createQAVisualisationCapability()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createProvisioning()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createNotifyWorker()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createChangingQuantity()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createMoving()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createSecuring()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createChecking()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createSwivel()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createOrientating()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createPlacing()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createOrdering()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createGuiding()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createPassingOn()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TopologyPackage.Literals.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT,
+				 CapabilityFactory.eINSTANCE.createConveying()));
 	}
 
 	/**

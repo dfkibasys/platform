@@ -294,7 +294,7 @@ public class CapabilityRequestItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
-				 CapabilityFactory.eINSTANCE.createHandlingCapability()));
+				 CapabilityFactory.eINSTANCE.createHandling()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -369,7 +369,7 @@ public class CapabilityRequestItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
-				 CapabilityFactory.eINSTANCE.createStore()));
+				 CapabilityFactory.eINSTANCE.createBuffering()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -440,6 +440,61 @@ public class CapabilityRequestItemProvider
 			(createChildParameter
 				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
 				 CapabilityFactory.eINSTANCE.createNotifyWorker()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
+				 CapabilityFactory.eINSTANCE.createChangingQuantity()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
+				 CapabilityFactory.eINSTANCE.createMoving()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
+				 CapabilityFactory.eINSTANCE.createSecuring()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
+				 CapabilityFactory.eINSTANCE.createChecking()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
+				 CapabilityFactory.eINSTANCE.createSwivel()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
+				 CapabilityFactory.eINSTANCE.createOrientating()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
+				 CapabilityFactory.eINSTANCE.createPlacing()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
+				 CapabilityFactory.eINSTANCE.createOrdering()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
+				 CapabilityFactory.eINSTANCE.createGuiding()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
+				 CapabilityFactory.eINSTANCE.createPassingOn()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHO,
+				 CapabilityFactory.eINSTANCE.createConveying()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -949,7 +1004,7 @@ public class CapabilityRequestItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHAT,
-				 CapabilityFactory.eINSTANCE.createHandlingCapability()));
+				 CapabilityFactory.eINSTANCE.createHandling()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -1024,7 +1079,7 @@ public class CapabilityRequestItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHAT,
-				 CapabilityFactory.eINSTANCE.createStore()));
+				 CapabilityFactory.eINSTANCE.createBuffering()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -1095,6 +1150,61 @@ public class CapabilityRequestItemProvider
 			(createChildParameter
 				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHAT,
 				 CapabilityFactory.eINSTANCE.createNotifyWorker()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHAT,
+				 CapabilityFactory.eINSTANCE.createChangingQuantity()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHAT,
+				 CapabilityFactory.eINSTANCE.createMoving()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHAT,
+				 CapabilityFactory.eINSTANCE.createSecuring()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHAT,
+				 CapabilityFactory.eINSTANCE.createChecking()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHAT,
+				 CapabilityFactory.eINSTANCE.createSwivel()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHAT,
+				 CapabilityFactory.eINSTANCE.createOrientating()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHAT,
+				 CapabilityFactory.eINSTANCE.createPlacing()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHAT,
+				 CapabilityFactory.eINSTANCE.createOrdering()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHAT,
+				 CapabilityFactory.eINSTANCE.createGuiding()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHAT,
+				 CapabilityFactory.eINSTANCE.createPassingOn()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CapabilityPackage.Literals.CAPABILITY_REQUEST__WHAT,
+				 CapabilityFactory.eINSTANCE.createConveying()));
 	}
 
 	/**

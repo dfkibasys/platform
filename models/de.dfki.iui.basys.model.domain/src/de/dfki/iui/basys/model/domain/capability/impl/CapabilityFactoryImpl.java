@@ -60,7 +60,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 			case CapabilityPackage.CAPABILITY_ASSERTION: return createCapabilityAssertion();
 			case CapabilityPackage.CAPABILITY_REQUEST: return createCapabilityRequest();
 			case CapabilityPackage.CAPABILITY: return createCapability();
-			case CapabilityPackage.HANDLING_CAPABILITY: return createHandlingCapability();
+			case CapabilityPackage.HANDLING: return createHandling();
 			case CapabilityPackage.MANUFACTURING_CAPABILITY: return createManufacturingCapability();
 			case CapabilityPackage.FÜGEN: return createFügen();
 			case CapabilityPackage.PRESSING: return createPressing();
@@ -75,7 +75,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 			case CapabilityPackage.LOGISTICS_CAPABILITY: return createLogisticsCapability();
 			case CapabilityPackage.PICK_AND_PLACE: return createPickAndPlace();
 			case CapabilityPackage.TRANSPORT: return createTransport();
-			case CapabilityPackage.STORE: return createStore();
+			case CapabilityPackage.BUFFERING: return createBuffering();
 			case CapabilityPackage.QO_SCAPABILITY: return createQoSCapability();
 			case CapabilityPackage.INSPECT: return createInspect();
 			case CapabilityPackage.WORKER_ASSISTENCE_CAPABILITY: return createWorkerAssistenceCapability();
@@ -90,6 +90,17 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 			case CapabilityPackage.QA_VISUALISATION_CAPABILITY: return createQAVisualisationCapability();
 			case CapabilityPackage.PROVISIONING: return createProvisioning();
 			case CapabilityPackage.NOTIFY_WORKER: return createNotifyWorker();
+			case CapabilityPackage.CHANGING_QUANTITY: return createChangingQuantity();
+			case CapabilityPackage.MOVING: return createMoving();
+			case CapabilityPackage.SECURING: return createSecuring();
+			case CapabilityPackage.CHECKING: return createChecking();
+			case CapabilityPackage.SWIVEL: return createSwivel();
+			case CapabilityPackage.ORIENTATING: return createOrientating();
+			case CapabilityPackage.PLACING: return createPlacing();
+			case CapabilityPackage.ORDERING: return createOrdering();
+			case CapabilityPackage.GUIDING: return createGuiding();
+			case CapabilityPackage.PASSING_ON: return createPassingOn();
+			case CapabilityPackage.CONVEYING: return createConveying();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -160,9 +171,9 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public HandlingCapability createHandlingCapability() {
-		HandlingCapabilityImpl handlingCapability = new HandlingCapabilityImpl();
-		return handlingCapability;
+	public Handling createHandling() {
+		HandlingImpl handling = new HandlingImpl();
+		return handling;
 	}
 
 	/**
@@ -340,6 +351,116 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ChangingQuantity createChangingQuantity() {
+		ChangingQuantityImpl changingQuantity = new ChangingQuantityImpl();
+		return changingQuantity;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Moving createMoving() {
+		MovingImpl moving = new MovingImpl();
+		return moving;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Securing createSecuring() {
+		SecuringImpl securing = new SecuringImpl();
+		return securing;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Checking createChecking() {
+		CheckingImpl checking = new CheckingImpl();
+		return checking;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Swivel createSwivel() {
+		SwivelImpl swivel = new SwivelImpl();
+		return swivel;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Orientating createOrientating() {
+		OrientatingImpl orientating = new OrientatingImpl();
+		return orientating;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Placing createPlacing() {
+		PlacingImpl placing = new PlacingImpl();
+		return placing;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Ordering createOrdering() {
+		OrderingImpl ordering = new OrderingImpl();
+		return ordering;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Guiding createGuiding() {
+		GuidingImpl guiding = new GuidingImpl();
+		return guiding;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PassingOn createPassingOn() {
+		PassingOnImpl passingOn = new PassingOnImpl();
+		return passingOn;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Conveying createConveying() {
+		ConveyingImpl conveying = new ConveyingImpl();
+		return conveying;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public LoadCarrierUnitEnum createLoadCarrierUnitEnumFromString(EDataType eDataType, String initialValue) {
 		LoadCarrierUnitEnum result = LoadCarrierUnitEnum.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -470,9 +591,9 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Store createStore() {
-		StoreImpl store = new StoreImpl();
-		return store;
+	public Buffering createBuffering() {
+		BufferingImpl buffering = new BufferingImpl();
+		return buffering;
 	}
 
 	/**

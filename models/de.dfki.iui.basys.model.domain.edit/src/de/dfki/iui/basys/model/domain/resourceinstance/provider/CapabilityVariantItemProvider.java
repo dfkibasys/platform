@@ -175,7 +175,7 @@ public class CapabilityVariantItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(ResourceinstancePackage.Literals.CAPABILITY_VARIANT__CAPABILITY,
-				 CapabilityFactory.eINSTANCE.createHandlingCapability()));
+				 CapabilityFactory.eINSTANCE.createHandling()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -250,7 +250,7 @@ public class CapabilityVariantItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(ResourceinstancePackage.Literals.CAPABILITY_VARIANT__CAPABILITY,
-				 CapabilityFactory.eINSTANCE.createStore()));
+				 CapabilityFactory.eINSTANCE.createBuffering()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -321,6 +321,61 @@ public class CapabilityVariantItemProvider
 			(createChildParameter
 				(ResourceinstancePackage.Literals.CAPABILITY_VARIANT__CAPABILITY,
 				 CapabilityFactory.eINSTANCE.createNotifyWorker()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ResourceinstancePackage.Literals.CAPABILITY_VARIANT__CAPABILITY,
+				 CapabilityFactory.eINSTANCE.createChangingQuantity()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ResourceinstancePackage.Literals.CAPABILITY_VARIANT__CAPABILITY,
+				 CapabilityFactory.eINSTANCE.createMoving()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ResourceinstancePackage.Literals.CAPABILITY_VARIANT__CAPABILITY,
+				 CapabilityFactory.eINSTANCE.createSecuring()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ResourceinstancePackage.Literals.CAPABILITY_VARIANT__CAPABILITY,
+				 CapabilityFactory.eINSTANCE.createChecking()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ResourceinstancePackage.Literals.CAPABILITY_VARIANT__CAPABILITY,
+				 CapabilityFactory.eINSTANCE.createSwivel()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ResourceinstancePackage.Literals.CAPABILITY_VARIANT__CAPABILITY,
+				 CapabilityFactory.eINSTANCE.createOrientating()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ResourceinstancePackage.Literals.CAPABILITY_VARIANT__CAPABILITY,
+				 CapabilityFactory.eINSTANCE.createPlacing()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ResourceinstancePackage.Literals.CAPABILITY_VARIANT__CAPABILITY,
+				 CapabilityFactory.eINSTANCE.createOrdering()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ResourceinstancePackage.Literals.CAPABILITY_VARIANT__CAPABILITY,
+				 CapabilityFactory.eINSTANCE.createGuiding()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ResourceinstancePackage.Literals.CAPABILITY_VARIANT__CAPABILITY,
+				 CapabilityFactory.eINSTANCE.createPassingOn()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ResourceinstancePackage.Literals.CAPABILITY_VARIANT__CAPABILITY,
+				 CapabilityFactory.eINSTANCE.createConveying()));
 	}
 
 	/**

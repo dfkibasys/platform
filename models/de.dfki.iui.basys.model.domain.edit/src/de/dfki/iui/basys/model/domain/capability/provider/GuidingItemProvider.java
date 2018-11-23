@@ -3,7 +3,7 @@
 package de.dfki.iui.basys.model.domain.capability.provider;
 
 
-import de.dfki.iui.basys.model.domain.capability.HandlingCapability;
+import de.dfki.iui.basys.model.domain.capability.Guiding;
 
 import java.util.Collection;
 import java.util.List;
@@ -14,19 +14,19 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 /**
- * This is the item provider adapter for a {@link de.dfki.iui.basys.model.domain.capability.HandlingCapability} object.
+ * This is the item provider adapter for a {@link de.dfki.iui.basys.model.domain.capability.Guiding} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class HandlingCapabilityItemProvider extends CapabilityItemProvider {
+public class GuidingItemProvider extends MovingItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public HandlingCapabilityItemProvider(AdapterFactory adapterFactory) {
+	public GuidingItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -46,14 +46,14 @@ public class HandlingCapabilityItemProvider extends CapabilityItemProvider {
 	}
 
 	/**
-	 * This returns HandlingCapability.gif.
+	 * This returns Guiding.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/HandlingCapability"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Guiding"));
 	}
 
 	/**
@@ -64,10 +64,10 @@ public class HandlingCapabilityItemProvider extends CapabilityItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((HandlingCapability)object).getName();
+		String label = ((Guiding)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_HandlingCapability_type") :
-			getString("_UI_HandlingCapability_type") + " " + label;
+			getString("_UI_Guiding_type") :
+			getString("_UI_Guiding_type") + " " + label;
 	}
 	
 

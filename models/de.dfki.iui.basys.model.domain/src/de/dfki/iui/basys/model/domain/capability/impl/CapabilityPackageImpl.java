@@ -7,23 +7,33 @@ import de.dfki.iui.basys.model.base.BasePackage;
 import de.dfki.iui.basys.model.data.DataPackage;
 import de.dfki.iui.basys.model.domain.capability.AnEinpressen;
 import de.dfki.iui.basys.model.domain.capability.Beschichten;
+import de.dfki.iui.basys.model.domain.capability.Buffering;
 import de.dfki.iui.basys.model.domain.capability.Capability;
 import de.dfki.iui.basys.model.domain.capability.CapabilityAssertion;
 import de.dfki.iui.basys.model.domain.capability.CapabilityFactory;
 import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
 import de.dfki.iui.basys.model.domain.capability.CapabilityRequest;
+import de.dfki.iui.basys.model.domain.capability.ChangingQuantity;
+import de.dfki.iui.basys.model.domain.capability.Checking;
 import de.dfki.iui.basys.model.domain.capability.ConfirmationCapability;
+import de.dfki.iui.basys.model.domain.capability.Conveying;
 import de.dfki.iui.basys.model.domain.capability.Fügen;
 import de.dfki.iui.basys.model.domain.capability.GeneralCapability;
-import de.dfki.iui.basys.model.domain.capability.HandlingCapability;
+import de.dfki.iui.basys.model.domain.capability.Guiding;
+import de.dfki.iui.basys.model.domain.capability.Handling;
 import de.dfki.iui.basys.model.domain.capability.Inspect;
 import de.dfki.iui.basys.model.domain.capability.InteractionCapability;
 import de.dfki.iui.basys.model.domain.capability.LoadCarrierUnitEnum;
 import de.dfki.iui.basys.model.domain.capability.LogisticsCapability;
 import de.dfki.iui.basys.model.domain.capability.ManufacturingCapability;
 import de.dfki.iui.basys.model.domain.capability.MoveToLocation;
+import de.dfki.iui.basys.model.domain.capability.Moving;
 import de.dfki.iui.basys.model.domain.capability.NotifyWorker;
+import de.dfki.iui.basys.model.domain.capability.Ordering;
+import de.dfki.iui.basys.model.domain.capability.Orientating;
+import de.dfki.iui.basys.model.domain.capability.PassingOn;
 import de.dfki.iui.basys.model.domain.capability.PickAndPlace;
+import de.dfki.iui.basys.model.domain.capability.Placing;
 import de.dfki.iui.basys.model.domain.capability.Pressing;
 import de.dfki.iui.basys.model.domain.capability.ProductionCapability;
 import de.dfki.iui.basys.model.domain.capability.ProjectETA;
@@ -32,9 +42,10 @@ import de.dfki.iui.basys.model.domain.capability.Provisioning;
 import de.dfki.iui.basys.model.domain.capability.QAVisualisationCapability;
 import de.dfki.iui.basys.model.domain.capability.QoSCapability;
 import de.dfki.iui.basys.model.domain.capability.Screwing;
+import de.dfki.iui.basys.model.domain.capability.Securing;
 import de.dfki.iui.basys.model.domain.capability.Stoffeigenschaften;
-import de.dfki.iui.basys.model.domain.capability.Store;
 import de.dfki.iui.basys.model.domain.capability.SwitchConfirmationCapability;
+import de.dfki.iui.basys.model.domain.capability.Swivel;
 import de.dfki.iui.basys.model.domain.capability.Transport;
 import de.dfki.iui.basys.model.domain.capability.Trennen;
 import de.dfki.iui.basys.model.domain.capability.Umformen;
@@ -127,7 +138,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass handlingCapabilityEClass = null;
+	private EClass handlingEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -253,6 +264,83 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass changingQuantityEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass movingEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass securingEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass checkingEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass swivelEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass orientatingEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass placingEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass orderingEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass guidingEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass passingOnEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass conveyingEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum loadCarrierUnitEnumEEnum = null;
 
 	/**
@@ -337,7 +425,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass storeEClass = null;
+	private EClass bufferingEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -554,8 +642,8 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getHandlingCapability() {
-		return handlingCapabilityEClass;
+	public EClass getHandling() {
+		return handlingEClass;
 	}
 
 	/**
@@ -869,6 +957,105 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getChangingQuantity() {
+		return changingQuantityEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getMoving() {
+		return movingEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSecuring() {
+		return securingEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getChecking() {
+		return checkingEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSwivel() {
+		return swivelEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getOrientating() {
+		return orientatingEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getPlacing() {
+		return placingEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getOrdering() {
+		return orderingEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getGuiding() {
+		return guidingEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getPassingOn() {
+		return passingOnEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getConveying() {
+		return conveyingEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getLoadCarrierUnitEnum() {
 		return loadCarrierUnitEnumEEnum;
 	}
@@ -1040,8 +1227,8 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getStore() {
-		return storeEClass;
+	public EClass getBuffering() {
+		return bufferingEClass;
 	}
 
 	/**
@@ -1086,7 +1273,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 
 		capabilityEClass = createEClass(CAPABILITY);
 
-		handlingCapabilityEClass = createEClass(HANDLING_CAPABILITY);
+		handlingEClass = createEClass(HANDLING);
 
 		manufacturingCapabilityEClass = createEClass(MANUFACTURING_CAPABILITY);
 
@@ -1125,7 +1312,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		transportEClass = createEClass(TRANSPORT);
 		createEAttribute(transportEClass, TRANSPORT__DISTANCE);
 
-		storeEClass = createEClass(STORE);
+		bufferingEClass = createEClass(BUFFERING);
 
 		qoSCapabilityEClass = createEClass(QO_SCAPABILITY);
 
@@ -1170,6 +1357,28 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		notifyWorkerEClass = createEClass(NOTIFY_WORKER);
 		createEAttribute(notifyWorkerEClass, NOTIFY_WORKER__CONTENT);
 
+		changingQuantityEClass = createEClass(CHANGING_QUANTITY);
+
+		movingEClass = createEClass(MOVING);
+
+		securingEClass = createEClass(SECURING);
+
+		checkingEClass = createEClass(CHECKING);
+
+		swivelEClass = createEClass(SWIVEL);
+
+		orientatingEClass = createEClass(ORIENTATING);
+
+		placingEClass = createEClass(PLACING);
+
+		orderingEClass = createEClass(ORDERING);
+
+		guidingEClass = createEClass(GUIDING);
+
+		passingOnEClass = createEClass(PASSING_ON);
+
+		conveyingEClass = createEClass(CONVEYING);
+
 		// Create enums
 		loadCarrierUnitEnumEEnum = createEEnum(LOAD_CARRIER_UNIT_ENUM);
 	}
@@ -1211,7 +1420,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		// Add supertypes to classes
 		capabilityAssertionEClass.getESuperTypes().add(theBasePackage.getEntity());
 		capabilityEClass.getESuperTypes().add(theBasePackage.getEntity());
-		handlingCapabilityEClass.getESuperTypes().add(this.getCapability());
+		handlingEClass.getESuperTypes().add(this.getCapability());
 		manufacturingCapabilityEClass.getESuperTypes().add(this.getProductionCapability());
 		fügenEClass.getESuperTypes().add(this.getManufacturingCapability());
 		pressingEClass.getESuperTypes().add(this.getAnEinpressen());
@@ -1226,7 +1435,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		logisticsCapabilityEClass.getESuperTypes().add(this.getCapability());
 		pickAndPlaceEClass.getESuperTypes().add(this.getLogisticsCapability());
 		transportEClass.getESuperTypes().add(this.getLogisticsCapability());
-		storeEClass.getESuperTypes().add(this.getLogisticsCapability());
+		bufferingEClass.getESuperTypes().add(this.getHandling());
 		qoSCapabilityEClass.getESuperTypes().add(this.getCapability());
 		inspectEClass.getESuperTypes().add(this.getQoSCapability());
 		workerAssistenceCapabilityEClass.getESuperTypes().add(this.getCapability());
@@ -1241,6 +1450,17 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		qaVisualisationCapabilityEClass.getESuperTypes().add(this.getVisualisationCapability());
 		provisioningEClass.getESuperTypes().add(this.getLogisticsCapability());
 		notifyWorkerEClass.getESuperTypes().add(this.getWorkerAssistenceCapability());
+		changingQuantityEClass.getESuperTypes().add(this.getHandling());
+		movingEClass.getESuperTypes().add(this.getHandling());
+		securingEClass.getESuperTypes().add(this.getHandling());
+		checkingEClass.getESuperTypes().add(this.getHandling());
+		swivelEClass.getESuperTypes().add(this.getMoving());
+		orientatingEClass.getESuperTypes().add(this.getMoving());
+		placingEClass.getESuperTypes().add(this.getMoving());
+		orderingEClass.getESuperTypes().add(this.getMoving());
+		guidingEClass.getESuperTypes().add(this.getMoving());
+		passingOnEClass.getESuperTypes().add(this.getMoving());
+		conveyingEClass.getESuperTypes().add(this.getMoving());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(capabilityAssertionEClass, CapabilityAssertion.class, "CapabilityAssertion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1257,7 +1477,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 
 		initEClass(capabilityEClass, Capability.class, "Capability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(handlingCapabilityEClass, HandlingCapability.class, "HandlingCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(handlingEClass, Handling.class, "Handling", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(manufacturingCapabilityEClass, ManufacturingCapability.class, "ManufacturingCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1296,7 +1516,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		initEClass(transportEClass, Transport.class, "Transport", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTransport_Distance(), ecorePackage.getEDouble(), "distance", null, 0, 1, Transport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(storeEClass, Store.class, "Store", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(bufferingEClass, Buffering.class, "Buffering", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(qoSCapabilityEClass, QoSCapability.class, "QoSCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1340,6 +1560,28 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 
 		initEClass(notifyWorkerEClass, NotifyWorker.class, "NotifyWorker", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNotifyWorker_Content(), theEcorePackage.getEString(), "content", null, 0, 1, NotifyWorker.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(changingQuantityEClass, ChangingQuantity.class, "ChangingQuantity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(movingEClass, Moving.class, "Moving", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(securingEClass, Securing.class, "Securing", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(checkingEClass, Checking.class, "Checking", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(swivelEClass, Swivel.class, "Swivel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(orientatingEClass, Orientating.class, "Orientating", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(placingEClass, Placing.class, "Placing", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(orderingEClass, Ordering.class, "Ordering", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(guidingEClass, Guiding.class, "Guiding", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(passingOnEClass, PassingOn.class, "PassingOn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(conveyingEClass, Conveying.class, "Conveying", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize enums and add enum literals
 		initEEnum(loadCarrierUnitEnumEEnum, LoadCarrierUnitEnum.class, "LoadCarrierUnitEnum");
