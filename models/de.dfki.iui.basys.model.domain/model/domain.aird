@@ -1746,7 +1746,7 @@
             <styles xmi:type="notation:FilteringStyle" xmi:id="_l9HpE1LYEei2pcQtDL3wYQ"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_l9HCAVLYEei2pcQtDL3wYQ" fontName="Segoe UI" fontHeight="8"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_l9HCAlLYEei2pcQtDL3wYQ" x="685" y="655" width="166" height="100"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_l9HCAlLYEei2pcQtDL3wYQ" x="558" y="620" width="166" height="100"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_0KZhYFddEeiXir4zBmSUnw" type="2003" element="_0JvaEFddEeiXir4zBmSUnw">
           <children xmi:type="notation:Node" xmi:id="_0KeZ4FddEeiXir4zBmSUnw" type="5007"/>
