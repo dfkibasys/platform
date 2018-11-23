@@ -6,6 +6,8 @@ import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
 
+import de.dfki.iui.basys.model.domain.capability.CapabilityPackage;
+import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
 import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
 import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
@@ -46,23 +48,31 @@ public class ChimpComponent extends RosDeviceComponent {
 	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {
 		// TODO Auto-generated method stub
 		
-		String goalString = "{\r\n" + 
-				"	\"tasks\" : [\r\n" + 
-				"		{\r\n" + 
-				"			\"id\" : \"task0\",\r\n" + 
-				"			\"type\" : \"bring\" ,\r\n" + 
-				"			\"args\" : [\"screwdriver1\", \"worker1\", \"workArea1\"]\r\n" + 
-				"		}\r\n" + 
-				"	],\r\n" + 
-				"	\"constraints\" : []\r\n" + 
-				"}"; 
+		UnitConfiguration config = new UnitConfiguration();
 		
-		JsonReader jsonReader = Json.createReader(new StringReader(goalString));
-		JsonObject goalObject = jsonReader.readObject();
-		jsonReader.close();
+		CapabilityVariant<?, ?> c = req.getCapabilityVariant();
 		
-		getUnitConfig().setPayload(goalObject);
-		return null;
+		// TODO insert correct args
+		if (c.getCapability().eClass().equals(CapabilityPackage.eINSTANCE.getTransport())) {
+			String goalString = "{\r\n" + 
+					"	\"tasks\" : [\r\n" + 
+					"		{\r\n" + 
+					"			\"id\" : \"task0\",\r\n" + 
+					"			\"type\" : \"bring\" ,\r\n" + 
+					"			\"args\" : [\"screwdriver1\", \"worker1\", \"workArea1\"]\r\n" + 
+					"		}\r\n" + 
+					"	],\r\n" + 
+					"	\"constraints\" : []\r\n" + 
+					"}"; 
+			
+			JsonReader jsonReader = Json.createReader(new StringReader(goalString));
+			JsonObject goalObject = jsonReader.readObject();
+			jsonReader.close();
+			
+			config.setPayload(goalObject);
+		}
+
+		return config;
 	}	
 
 	
