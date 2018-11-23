@@ -115,4 +115,5 @@
   <eClassifiers xsi:type="ecore:EClass" name="Guiding" eSuperTypes="#//Moving"/>
   <eClassifiers xsi:type="ecore:EClass" name="PassingOn" eSuperTypes="#//Moving"/>
   <eClassifiers xsi:type="ecore:EClass" name="Conveying" eSuperTypes="#//Moving"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Take" eSuperTypes="#//GeneralCapability"/>
 </ecore:EPackage>

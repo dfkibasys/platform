@@ -30,6 +30,7 @@
         containment="true">
       <eGenericType eClassifier="#//CapabilityVariant">
         <eTypeArguments/>
+        <eTypeArguments/>
       </eGenericType>
     </eStructuralFeatures>
   </eClassifiers>
@@ -37,8 +38,12 @@
     <eTypeParameters name="T">
       <eBounds eClassifier="ecore:EClass ../../de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity"/>
     </eTypeParameters>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="capability" eType="ecore:EClass capability.ecore#//Capability"
-        containment="true"/>
+    <eTypeParameters name="C">
+      <eBounds eClassifier="ecore:EClass capability.ecore#//Capability"/>
+    </eTypeParameters>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capability" containment="true">
+      <eGenericType eTypeParameter="#//CapabilityVariant/C"/>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="appliedOn" upperBound="-1">
       <eGenericType eTypeParameter="#//CapabilityVariant/T"/>
     </eStructuralFeatures>
@@ -46,16 +51,19 @@
   <eClassifiers xsi:type="ecore:EClass" name="ManufacturingCapabilityVariant">
     <eGenericSuperTypes eClassifier="#//CapabilityVariant">
       <eTypeArguments eClassifier="ecore:EClass productdefinition.ecore#//BOMEntry"/>
+      <eTypeArguments eClassifier="ecore:EClass capability.ecore#//Capability"/>
     </eGenericSuperTypes>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LogisticsCapabilityVariant">
     <eGenericSuperTypes eClassifier="#//CapabilityVariant">
       <eTypeArguments eClassifier="ecore:EClass topology.ecore#//TopologyElement"/>
+      <eTypeArguments eClassifier="ecore:EClass capability.ecore#//Capability"/>
     </eGenericSuperTypes>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GeneralCapabilityVariant">
     <eGenericSuperTypes eClassifier="#//CapabilityVariant">
       <eTypeArguments eClassifier="ecore:EClass ../../de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity"/>
+      <eTypeArguments eClassifier="ecore:EClass capability.ecore#//Capability"/>
     </eGenericSuperTypes>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HandlingCapabilityVariant">
@@ -64,6 +72,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="to" eType="ecore:EClass ../../de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity"/>
     <eGenericSuperTypes eClassifier="#//CapabilityVariant">
       <eTypeArguments eClassifier="ecore:EClass ../../de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity"/>
+      <eTypeArguments eClassifier="ecore:EClass capability.ecore#//Handling"/>
     </eGenericSuperTypes>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AssemblyCapabilityVariant">
@@ -72,6 +81,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="to" eType="ecore:EClass ../../de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity"/>
     <eGenericSuperTypes eClassifier="#//CapabilityVariant">
       <eTypeArguments eClassifier="ecore:EClass ../../de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity"/>
+      <eTypeArguments eClassifier="ecore:EClass capability.ecore#//Fügen"/>
     </eGenericSuperTypes>
   </eClassifiers>
 </ecore:EPackage>
