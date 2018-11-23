@@ -1,16 +1,25 @@
 /**
  */
-package de.dfki.iui.basys.model.domain.resourceinstance.provider;
+package de.dfki.iui.basys.model.runtime.component.provider;
 
+
+import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstanceFactory;
+
+import de.dfki.iui.basys.model.runtime.communication.provider.RuntimeEditPlugin;
+
+import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
+import de.dfki.iui.basys.model.runtime.component.ComponentPackage;
 
 import java.util.Collection;
-import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -22,20 +31,13 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import de.dfki.iui.basys.model.domain.capability.CapabilityAssertion;
-import de.dfki.iui.basys.model.domain.order.provider.DomainEditPlugin;
-import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityApplication;
-import de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstance;
-import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstanceFactory;
-import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage;
-
 /**
- * This is the item provider adapter for a {@link de.dfki.iui.basys.model.domain.resourceinstance.CapabilityApplication} object.
+ * This is the item provider adapter for a {@link de.dfki.iui.basys.model.runtime.component.CapabilityRequest} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class CapabilityApplicationItemProvider 
+public class CapabilityRequestItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -49,7 +51,7 @@ public class CapabilityApplicationItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CapabilityApplicationItemProvider(AdapterFactory adapterFactory) {
+	public CapabilityRequestItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -64,64 +66,31 @@ public class CapabilityApplicationItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addCapabilityAssertionPropertyDescriptor(object);
+			addComponentIdPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Capability Assertion feature.
+	 * This adds a property descriptor for the Component Id feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
-	protected void addCapabilityAssertionPropertyDescriptor(Object object) {
-//		itemPropertyDescriptors.add
-//			(createItemPropertyDescriptor
-//				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-//				 getResourceLocator(),
-//				 getString("_UI_CapabilityApplication_capabilityAssertion_feature"),
-//				 getString("_UI_PropertyDescriptor_description", "_UI_CapabilityApplication_capabilityAssertion_feature", "_UI_CapabilityApplication_type"),
-//				 ResourceinstancePackage.Literals.CAPABILITY_APPLICATION__CAPABILITY_ASSERTION,
-//				 true,
-//				 false,
-//				 true,
-//				 null,
-//				 null,
-//				 null));
-		
-		itemPropertyDescriptors.add(new ItemPropertyDescriptor(
-				((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+	protected void addComponentIdPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_CapabilityApplication_capabilityAssertion_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CapabilityApplication_capabilityAssertion_feature", "_UI_CapabilityApplication_type"),
-				 ResourceinstancePackage.Literals.CAPABILITY_APPLICATION__CAPABILITY_ASSERTION,
+				 getString("_UI_ComponentRequest_componentId_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ComponentRequest_componentId_feature", "_UI_ComponentRequest_type"),
+				 ComponentPackage.Literals.COMPONENT_REQUEST__COMPONENT_ID,
 				 true,
 				 false,
-				 true,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
-				 null,
-				 null) {
-			@Override
-			public Collection<?> getChoiceOfValues(Object object) {
-				
-				CapabilityApplication e = (CapabilityApplication) object;
-				Collection<?> result = super.getChoiceOfValues(object);
-				List<CapabilityAssertion> filtered = new LinkedList<>();
-				
-				result.forEach(entry -> {
-					if (entry != null) {
-						CapabilityAssertion ass = (CapabilityAssertion) entry;
-						if (ass.eContainer() == ((ResourceInstance)e.eContainer()).getResourceType()) {
-							filtered.add(ass);
-						}
-					}
-				});				
-				
-				return filtered;
-			}
-		});
-		
+				 null));
 	}
 
 	/**
@@ -136,7 +105,7 @@ public class CapabilityApplicationItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(ResourceinstancePackage.Literals.CAPABILITY_APPLICATION__CAPABILITY_VARIANTS);
+			childrenFeatures.add(ComponentPackage.Literals.CAPABILITY_REQUEST__CAPABILITY_VARIANT);
 		}
 		return childrenFeatures;
 	}
@@ -155,14 +124,14 @@ public class CapabilityApplicationItemProvider
 	}
 
 	/**
-	 * This returns CapabilityApplication.gif.
+	 * This returns CapabilityRequest.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/CapabilityApplication"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/CapabilityRequest"));
 	}
 
 	/**
@@ -173,7 +142,10 @@ public class CapabilityApplicationItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_CapabilityApplication_type");
+		String label = ((CapabilityRequest)object).getComponentId();
+		return label == null || label.length() == 0 ?
+			getString("_UI_CapabilityRequest_type") :
+			getString("_UI_CapabilityRequest_type") + " " + label;
 	}
 	
 
@@ -188,8 +160,11 @@ public class CapabilityApplicationItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(CapabilityApplication.class)) {
-			case ResourceinstancePackage.CAPABILITY_APPLICATION__CAPABILITY_VARIANTS:
+		switch (notification.getFeatureID(CapabilityRequest.class)) {
+			case ComponentPackage.CAPABILITY_REQUEST__COMPONENT_ID:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+			case ComponentPackage.CAPABILITY_REQUEST__CAPABILITY_VARIANT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -209,27 +184,27 @@ public class CapabilityApplicationItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ResourceinstancePackage.Literals.CAPABILITY_APPLICATION__CAPABILITY_VARIANTS,
+				(ComponentPackage.Literals.CAPABILITY_REQUEST__CAPABILITY_VARIANT,
 				 ResourceinstanceFactory.eINSTANCE.createCapabilityVariant()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ResourceinstancePackage.Literals.CAPABILITY_APPLICATION__CAPABILITY_VARIANTS,
+				(ComponentPackage.Literals.CAPABILITY_REQUEST__CAPABILITY_VARIANT,
 				 ResourceinstanceFactory.eINSTANCE.createManufacturingCapabilityVariant()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ResourceinstancePackage.Literals.CAPABILITY_APPLICATION__CAPABILITY_VARIANTS,
+				(ComponentPackage.Literals.CAPABILITY_REQUEST__CAPABILITY_VARIANT,
 				 ResourceinstanceFactory.eINSTANCE.createLogisticsCapabilityVariant()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ResourceinstancePackage.Literals.CAPABILITY_APPLICATION__CAPABILITY_VARIANTS,
+				(ComponentPackage.Literals.CAPABILITY_REQUEST__CAPABILITY_VARIANT,
 				 ResourceinstanceFactory.eINSTANCE.createGeneralCapabilityVariant()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ResourceinstancePackage.Literals.CAPABILITY_APPLICATION__CAPABILITY_VARIANTS,
+				(ComponentPackage.Literals.CAPABILITY_REQUEST__CAPABILITY_VARIANT,
 				 ResourceinstanceFactory.eINSTANCE.createHandlingCapabilityVariant()));
 	}
 
@@ -241,7 +216,7 @@ public class CapabilityApplicationItemProvider
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return DomainEditPlugin.INSTANCE;
+		return RuntimeEditPlugin.INSTANCE;
 	}
 
 }

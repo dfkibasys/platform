@@ -86,6 +86,15 @@ public interface ResourceinstanceFactory extends EFactory {
 	GeneralCapabilityVariant createGeneralCapabilityVariant();
 
 	/**
+	 * Returns a new object of class '<em>Handling Capability Variant</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Handling Capability Variant</em>'.
+	 * @generated
+	 */
+	HandlingCapabilityVariant createHandlingCapabilityVariant();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

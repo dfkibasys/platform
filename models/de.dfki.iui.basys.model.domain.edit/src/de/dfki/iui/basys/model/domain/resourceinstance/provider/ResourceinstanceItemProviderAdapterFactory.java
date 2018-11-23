@@ -232,6 +232,29 @@ public class ResourceinstanceItemProviderAdapterFactory extends Resourceinstance
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.resourceinstance.HandlingCapabilityVariant} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected HandlingCapabilityVariantItemProvider handlingCapabilityVariantItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.resourceinstance.HandlingCapabilityVariant}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createHandlingCapabilityVariantAdapter() {
+		if (handlingCapabilityVariantItemProvider == null) {
+			handlingCapabilityVariantItemProvider = new HandlingCapabilityVariantItemProvider(this);
+		}
+
+		return handlingCapabilityVariantItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

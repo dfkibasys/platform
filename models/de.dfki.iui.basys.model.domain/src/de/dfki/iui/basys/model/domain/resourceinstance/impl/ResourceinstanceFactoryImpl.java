@@ -64,6 +64,7 @@ public class ResourceinstanceFactoryImpl extends EFactoryImpl implements Resourc
 			case ResourceinstancePackage.MANUFACTURING_CAPABILITY_VARIANT: return createManufacturingCapabilityVariant();
 			case ResourceinstancePackage.LOGISTICS_CAPABILITY_VARIANT: return createLogisticsCapabilityVariant();
 			case ResourceinstancePackage.GENERAL_CAPABILITY_VARIANT: return createGeneralCapabilityVariant();
+			case ResourceinstancePackage.HANDLING_CAPABILITY_VARIANT: return createHandlingCapabilityVariant();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -137,6 +138,16 @@ public class ResourceinstanceFactoryImpl extends EFactoryImpl implements Resourc
 	public GeneralCapabilityVariant createGeneralCapabilityVariant() {
 		GeneralCapabilityVariantImpl generalCapabilityVariant = new GeneralCapabilityVariantImpl();
 		return generalCapabilityVariant;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public HandlingCapabilityVariant createHandlingCapabilityVariant() {
+		HandlingCapabilityVariantImpl handlingCapabilityVariant = new HandlingCapabilityVariantImpl();
+		return handlingCapabilityVariant;
 	}
 
 	/**

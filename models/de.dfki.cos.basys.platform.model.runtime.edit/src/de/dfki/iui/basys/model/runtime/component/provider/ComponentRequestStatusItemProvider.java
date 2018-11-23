@@ -3,13 +3,19 @@
 package de.dfki.iui.basys.model.runtime.component.provider;
 
 
+import de.dfki.iui.basys.model.runtime.communication.provider.RuntimeEditPlugin;
+
+import de.dfki.iui.basys.model.runtime.component.ComponentPackage;
+import de.dfki.iui.basys.model.runtime.component.ComponentRequestStatus;
+
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.ResourceLocator;
-import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -21,18 +27,13 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstanceFactory;
-import de.dfki.iui.basys.model.runtime.communication.provider.RuntimeEditPlugin;
-import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
-import de.dfki.iui.basys.model.runtime.component.ComponentPackage;
-
 /**
- * This is the item provider adapter for a {@link de.dfki.iui.basys.model.runtime.component.CapabilityRequest} object.
+ * This is the item provider adapter for a {@link de.dfki.iui.basys.model.runtime.component.ComponentRequestStatus} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class CapabilityRequestItemProvider 
+public class ComponentRequestStatusItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -46,7 +47,7 @@ public class CapabilityRequestItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CapabilityRequestItemProvider(AdapterFactory adapterFactory) {
+	public ComponentRequestStatusItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -62,6 +63,8 @@ public class CapabilityRequestItemProvider
 			super.getPropertyDescriptors(object);
 
 			addComponentIdPropertyDescriptor(object);
+			addStatusPropertyDescriptor(object);
+			addMessagePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -77,9 +80,9 @@ public class CapabilityRequestItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ComponentRequest_componentId_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ComponentRequest_componentId_feature", "_UI_ComponentRequest_type"),
-				 ComponentPackage.Literals.COMPONENT_REQUEST__COMPONENT_ID,
+				 getString("_UI_ComponentRequestStatus_componentId_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ComponentRequestStatus_componentId_feature", "_UI_ComponentRequestStatus_type"),
+				 ComponentPackage.Literals.COMPONENT_REQUEST_STATUS__COMPONENT_ID,
 				 true,
 				 false,
 				 false,
@@ -89,59 +92,72 @@ public class CapabilityRequestItemProvider
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * This adds a property descriptor for the Status feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(ComponentPackage.Literals.CAPABILITY_REQUEST__CAPABILITY_VARIANT);
-		}
-		return childrenFeatures;
+	protected void addStatusPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ComponentRequestStatus_status_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ComponentRequestStatus_status_feature", "_UI_ComponentRequestStatus_type"),
+				 ComponentPackage.Literals.COMPONENT_REQUEST_STATUS__STATUS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
+	 * This adds a property descriptor for the Message feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
+	protected void addMessagePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ComponentRequestStatus_message_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ComponentRequestStatus_message_feature", "_UI_ComponentRequestStatus_type"),
+				 ComponentPackage.Literals.COMPONENT_REQUEST_STATUS__MESSAGE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
-	 * This returns CapabilityRequest.gif.
+	 * This returns ComponentRequestStatus.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/CapabilityRequest"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ComponentRequestStatus"));
 	}
 
 	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((CapabilityRequest)object).getComponentId();
-		if (label == null || label.length() == 0) {
-			label = " ??? ";
-		}			
-		return getString("_UI_CapabilityRequest_type") + " <" + label + ">";
+		String label = ((ComponentRequestStatus)object).getComponentId();
+		return label == null || label.length() == 0 ?
+			getString("_UI_ComponentRequestStatus_type") :
+			getString("_UI_ComponentRequestStatus_type") + " " + label;
 	}
 	
 
@@ -156,12 +172,11 @@ public class CapabilityRequestItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(CapabilityRequest.class)) {
-			case ComponentPackage.CAPABILITY_REQUEST__COMPONENT_ID:
+		switch (notification.getFeatureID(ComponentRequestStatus.class)) {
+			case ComponentPackage.COMPONENT_REQUEST_STATUS__COMPONENT_ID:
+			case ComponentPackage.COMPONENT_REQUEST_STATUS__STATUS:
+			case ComponentPackage.COMPONENT_REQUEST_STATUS__MESSAGE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case ComponentPackage.CAPABILITY_REQUEST__CAPABILITY_VARIANT:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -177,31 +192,6 @@ public class CapabilityRequestItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ComponentPackage.Literals.CAPABILITY_REQUEST__CAPABILITY_VARIANT,
-				 ResourceinstanceFactory.eINSTANCE.createCapabilityVariant()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ComponentPackage.Literals.CAPABILITY_REQUEST__CAPABILITY_VARIANT,
-				 ResourceinstanceFactory.eINSTANCE.createManufacturingCapabilityVariant()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ComponentPackage.Literals.CAPABILITY_REQUEST__CAPABILITY_VARIANT,
-				 ResourceinstanceFactory.eINSTANCE.createLogisticsCapabilityVariant()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ComponentPackage.Literals.CAPABILITY_REQUEST__CAPABILITY_VARIANT,
-				 ResourceinstanceFactory.eINSTANCE.createGeneralCapabilityVariant()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ComponentPackage.Literals.CAPABILITY_REQUEST__CAPABILITY_VARIANT,
-				 ResourceinstanceFactory.eINSTANCE.createHandlingCapabilityVariant()));
 	}
 
 	/**

@@ -33,6 +33,7 @@ import de.dfki.iui.basys.model.domain.productinstance.impl.ProductinstancePackag
 import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityApplication;
 import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
 import de.dfki.iui.basys.model.domain.resourceinstance.GeneralCapabilityVariant;
+import de.dfki.iui.basys.model.domain.resourceinstance.HandlingCapabilityVariant;
 import de.dfki.iui.basys.model.domain.resourceinstance.LogisticsCapabilityVariant;
 import de.dfki.iui.basys.model.domain.resourceinstance.ManufacturingCapabilityVariant;
 import de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstance;
@@ -129,6 +130,13 @@ public class ResourceinstancePackageImpl extends EPackageImpl implements Resourc
 	 * @generated
 	 */
 	private EClass generalCapabilityVariantEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass handlingCapabilityVariantEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -390,6 +398,42 @@ public class ResourceinstancePackageImpl extends EPackageImpl implements Resourc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getHandlingCapabilityVariant() {
+		return handlingCapabilityVariantEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getHandlingCapabilityVariant_Object() {
+		return (EReference)handlingCapabilityVariantEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getHandlingCapabilityVariant_From() {
+		return (EReference)handlingCapabilityVariantEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getHandlingCapabilityVariant_To() {
+		return (EReference)handlingCapabilityVariantEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ResourceinstanceFactory getResourceinstanceFactory() {
 		return (ResourceinstanceFactory)getEFactoryInstance();
 	}
@@ -435,6 +479,11 @@ public class ResourceinstancePackageImpl extends EPackageImpl implements Resourc
 		logisticsCapabilityVariantEClass = createEClass(LOGISTICS_CAPABILITY_VARIANT);
 
 		generalCapabilityVariantEClass = createEClass(GENERAL_CAPABILITY_VARIANT);
+
+		handlingCapabilityVariantEClass = createEClass(HANDLING_CAPABILITY_VARIANT);
+		createEReference(handlingCapabilityVariantEClass, HANDLING_CAPABILITY_VARIANT__OBJECT);
+		createEReference(handlingCapabilityVariantEClass, HANDLING_CAPABILITY_VARIANT__FROM);
+		createEReference(handlingCapabilityVariantEClass, HANDLING_CAPABILITY_VARIANT__TO);
 	}
 
 	/**
@@ -489,6 +538,10 @@ public class ResourceinstancePackageImpl extends EPackageImpl implements Resourc
 		g2 = createEGenericType(theBasePackage.getEntity());
 		g1.getETypeArguments().add(g2);
 		generalCapabilityVariantEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(this.getCapabilityVariant());
+		g2 = createEGenericType(theBasePackage.getEntity());
+		g1.getETypeArguments().add(g2);
+		handlingCapabilityVariantEClass.getEGenericSuperTypes().add(g1);
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(resourceInstanceRepositoryEClass, ResourceInstanceRepository.class, "ResourceInstanceRepository", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -517,6 +570,11 @@ public class ResourceinstancePackageImpl extends EPackageImpl implements Resourc
 		initEClass(logisticsCapabilityVariantEClass, LogisticsCapabilityVariant.class, "LogisticsCapabilityVariant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(generalCapabilityVariantEClass, GeneralCapabilityVariant.class, "GeneralCapabilityVariant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(handlingCapabilityVariantEClass, HandlingCapabilityVariant.class, "HandlingCapabilityVariant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getHandlingCapabilityVariant_Object(), theBasePackage.getEntity(), null, "object", null, 0, 1, HandlingCapabilityVariant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHandlingCapabilityVariant_From(), theBasePackage.getEntity(), null, "from", null, 0, 1, HandlingCapabilityVariant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getHandlingCapabilityVariant_To(), theBasePackage.getEntity(), null, "to", null, 0, 1, HandlingCapabilityVariant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

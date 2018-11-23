@@ -573,6 +573,116 @@ public interface ResourceinstancePackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.resourceinstance.impl.HandlingCapabilityVariantImpl <em>Handling Capability Variant</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.impl.HandlingCapabilityVariantImpl
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceinstancePackageImpl#getHandlingCapabilityVariant()
+	 * @generated
+	 */
+	int HANDLING_CAPABILITY_VARIANT = 7;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HANDLING_CAPABILITY_VARIANT__BINDING = CAPABILITY_VARIANT__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HANDLING_CAPABILITY_VARIANT__ID = CAPABILITY_VARIANT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HANDLING_CAPABILITY_VARIANT__NAME = CAPABILITY_VARIANT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HANDLING_CAPABILITY_VARIANT__METADATA = CAPABILITY_VARIANT__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Capability</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HANDLING_CAPABILITY_VARIANT__CAPABILITY = CAPABILITY_VARIANT__CAPABILITY;
+
+	/**
+	 * The feature id for the '<em><b>Applied On</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HANDLING_CAPABILITY_VARIANT__APPLIED_ON = CAPABILITY_VARIANT__APPLIED_ON;
+
+	/**
+	 * The feature id for the '<em><b>Object</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HANDLING_CAPABILITY_VARIANT__OBJECT = CAPABILITY_VARIANT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>From</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HANDLING_CAPABILITY_VARIANT__FROM = CAPABILITY_VARIANT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>To</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HANDLING_CAPABILITY_VARIANT__TO = CAPABILITY_VARIANT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Handling Capability Variant</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HANDLING_CAPABILITY_VARIANT_FEATURE_COUNT = CAPABILITY_VARIANT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Handling Capability Variant</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HANDLING_CAPABILITY_VARIANT_OPERATION_COUNT = CAPABILITY_VARIANT_OPERATION_COUNT + 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstanceRepository <em>Resource Instance Repository</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -742,6 +852,49 @@ public interface ResourceinstancePackage extends EPackage {
 	EClass getGeneralCapabilityVariant();
 
 	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.resourceinstance.HandlingCapabilityVariant <em>Handling Capability Variant</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Handling Capability Variant</em>'.
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.HandlingCapabilityVariant
+	 * @generated
+	 */
+	EClass getHandlingCapabilityVariant();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.dfki.iui.basys.model.domain.resourceinstance.HandlingCapabilityVariant#getObject <em>Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Object</em>'.
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.HandlingCapabilityVariant#getObject()
+	 * @see #getHandlingCapabilityVariant()
+	 * @generated
+	 */
+	EReference getHandlingCapabilityVariant_Object();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.dfki.iui.basys.model.domain.resourceinstance.HandlingCapabilityVariant#getFrom <em>From</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>From</em>'.
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.HandlingCapabilityVariant#getFrom()
+	 * @see #getHandlingCapabilityVariant()
+	 * @generated
+	 */
+	EReference getHandlingCapabilityVariant_From();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.dfki.iui.basys.model.domain.resourceinstance.HandlingCapabilityVariant#getTo <em>To</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>To</em>'.
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.HandlingCapabilityVariant#getTo()
+	 * @see #getHandlingCapabilityVariant()
+	 * @generated
+	 */
+	EReference getHandlingCapabilityVariant_To();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -905,6 +1058,40 @@ public interface ResourceinstancePackage extends EPackage {
 		 * @generated
 		 */
 		EClass GENERAL_CAPABILITY_VARIANT = eINSTANCE.getGeneralCapabilityVariant();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.resourceinstance.impl.HandlingCapabilityVariantImpl <em>Handling Capability Variant</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.resourceinstance.impl.HandlingCapabilityVariantImpl
+		 * @see de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceinstancePackageImpl#getHandlingCapabilityVariant()
+		 * @generated
+		 */
+		EClass HANDLING_CAPABILITY_VARIANT = eINSTANCE.getHandlingCapabilityVariant();
+
+		/**
+		 * The meta object literal for the '<em><b>Object</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HANDLING_CAPABILITY_VARIANT__OBJECT = eINSTANCE.getHandlingCapabilityVariant_Object();
+
+		/**
+		 * The meta object literal for the '<em><b>From</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HANDLING_CAPABILITY_VARIANT__FROM = eINSTANCE.getHandlingCapabilityVariant_From();
+
+		/**
+		 * The meta object literal for the '<em><b>To</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference HANDLING_CAPABILITY_VARIANT__TO = eINSTANCE.getHandlingCapabilityVariant_To();
 
 	}
 

@@ -124,6 +124,15 @@ public class ResourceinstanceSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ResourceinstancePackage.HANDLING_CAPABILITY_VARIANT: {
+				HandlingCapabilityVariant handlingCapabilityVariant = (HandlingCapabilityVariant)theEObject;
+				T1 result = caseHandlingCapabilityVariant(handlingCapabilityVariant);
+				if (result == null) result = caseCapabilityVariant(handlingCapabilityVariant);
+				if (result == null) result = caseEntity(handlingCapabilityVariant);
+				if (result == null) result = caseBObject(handlingCapabilityVariant);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -230,6 +239,21 @@ public class ResourceinstanceSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseGeneralCapabilityVariant(GeneralCapabilityVariant object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Handling Capability Variant</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Handling Capability Variant</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseHandlingCapabilityVariant(HandlingCapabilityVariant object) {
 		return null;
 	}
 
