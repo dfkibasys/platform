@@ -58,4 +58,20 @@
       <eTypeArguments eClassifier="ecore:EClass ../../de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity"/>
     </eGenericSuperTypes>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HandlingCapabilityVariant">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="object" eType="ecore:EClass ../../de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="from" eType="ecore:EClass ../../de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="to" eType="ecore:EClass ../../de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity"/>
+    <eGenericSuperTypes eClassifier="#//CapabilityVariant">
+      <eTypeArguments eClassifier="ecore:EClass ../../de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AssemblyCapabilityVariant">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="object" eType="ecore:EClass ../../de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="from" eType="ecore:EClass ../../de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="to" eType="ecore:EClass ../../de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity"/>
+    <eGenericSuperTypes eClassifier="#//CapabilityVariant">
+      <eTypeArguments eClassifier="ecore:EClass ../../de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
 </ecore:EPackage>
