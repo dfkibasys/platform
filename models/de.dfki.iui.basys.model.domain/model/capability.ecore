@@ -26,7 +26,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="how" upperBound="-1" eType="ecore:EClass ../../de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Capability" eSuperTypes="../../de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity"/>
-  <eClassifiers xsi:type="ecore:EClass" name="HandlingCapability" eSuperTypes="#//Capability"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Handling" eSuperTypes="#//Capability"/>
   <eClassifiers xsi:type="ecore:EClass" name="ManufacturingCapability" eSuperTypes="#//ProductionCapability"/>
   <eClassifiers xsi:type="ecore:EClass" name="Fügen" eSuperTypes="#//ManufacturingCapability"/>
   <eClassifiers xsi:type="ecore:EClass" name="Pressing" eSuperTypes="#//AnEinpressen">
@@ -58,7 +58,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Transport" eSuperTypes="#//LogisticsCapability">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="distance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Store" eSuperTypes="#//LogisticsCapability"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Buffering" eSuperTypes="#//Handling"/>
   <eClassifiers xsi:type="ecore:EClass" name="QoSCapability" eSuperTypes="#//Capability"/>
   <eClassifiers xsi:type="ecore:EClass" name="Inspect" eSuperTypes="#//QoSCapability"/>
   <eClassifiers xsi:type="ecore:EEnum" name="LoadCarrierUnitEnum">
@@ -104,4 +104,15 @@
   <eClassifiers xsi:type="ecore:EClass" name="NotifyWorker" eSuperTypes="#//WorkerAssistenceCapability">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ChangingQuantity" eSuperTypes="#//Handling"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Moving" eSuperTypes="#//Handling"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Securing" eSuperTypes="#//Handling"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Checking" eSuperTypes="#//Handling"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Swivel" eSuperTypes="#//Moving"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Orientating" eSuperTypes="#//Moving"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Placing" eSuperTypes="#//Moving"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Ordering" eSuperTypes="#//Moving"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Guiding" eSuperTypes="#//Moving"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PassingOn" eSuperTypes="#//Moving"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Conveying" eSuperTypes="#//Moving"/>
 </ecore:EPackage>
