@@ -35,7 +35,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *
  * @generated
  */
-public class CapabilityVariantImpl<T extends Entity> extends EntityImpl implements CapabilityVariant<T> {
+public class CapabilityVariantImpl<T extends Entity, C extends Capability> extends EntityImpl implements CapabilityVariant<T, C> {
 	/**
 	 * The cached value of the '{@link #getCapability() <em>Capability</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -44,7 +44,7 @@ public class CapabilityVariantImpl<T extends Entity> extends EntityImpl implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected Capability capability;
+	protected C capability;
 
 	/**
 	 * The cached value of the '{@link #getAppliedOn() <em>Applied On</em>}' reference list.
@@ -80,7 +80,7 @@ public class CapabilityVariantImpl<T extends Entity> extends EntityImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Capability getCapability() {
+	public C getCapability() {
 		return capability;
 	}
 
@@ -89,8 +89,8 @@ public class CapabilityVariantImpl<T extends Entity> extends EntityImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetCapability(Capability newCapability, NotificationChain msgs) {
-		Capability oldCapability = capability;
+	public NotificationChain basicSetCapability(C newCapability, NotificationChain msgs) {
+		C oldCapability = capability;
 		capability = newCapability;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ResourceinstancePackage.CAPABILITY_VARIANT__CAPABILITY, oldCapability, newCapability);
@@ -104,7 +104,7 @@ public class CapabilityVariantImpl<T extends Entity> extends EntityImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setCapability(Capability newCapability) {
+	public void setCapability(C newCapability) {
 		if (newCapability != capability) {
 			NotificationChain msgs = null;
 			if (capability != null)
@@ -170,7 +170,7 @@ public class CapabilityVariantImpl<T extends Entity> extends EntityImpl implemen
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ResourceinstancePackage.CAPABILITY_VARIANT__CAPABILITY:
-				setCapability((Capability)newValue);
+				setCapability((C)newValue);
 				return;
 			case ResourceinstancePackage.CAPABILITY_VARIANT__APPLIED_ON:
 				getAppliedOn().clear();
@@ -189,7 +189,7 @@ public class CapabilityVariantImpl<T extends Entity> extends EntityImpl implemen
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ResourceinstancePackage.CAPABILITY_VARIANT__CAPABILITY:
-				setCapability((Capability)null);
+				setCapability((C)null);
 				return;
 			case ResourceinstancePackage.CAPABILITY_VARIANT__APPLIED_ON:
 				getAppliedOn().clear();

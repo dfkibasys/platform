@@ -23,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface CapabilityVariant<T extends Entity> extends Entity {
+public interface CapabilityVariant<T extends Entity, C extends Capability> extends Entity {
 	/**
 	 * Returns the value of the '<em><b>Capability</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -38,7 +38,7 @@ public interface CapabilityVariant<T extends Entity> extends Entity {
 	 * @model containment="true"
 	 * @generated
 	 */
-	Capability getCapability();
+	C getCapability();
 
 	/**
 	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant#getCapability <em>Capability</em>}' containment reference.
@@ -48,7 +48,7 @@ public interface CapabilityVariant<T extends Entity> extends Entity {
 	 * @see #getCapability()
 	 * @generated
 	 */
-	void setCapability(Capability value);
+	void setCapability(C value);
 
 	/**
 	 * Returns the value of the '<em><b>Applied On</b></em>' reference list.

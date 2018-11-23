@@ -52,10 +52,10 @@ public class ResourceInstanceManagerImpl extends EmfServiceComponent implements 
 	}
 
 	@Override
-	public CapabilityVariant<?> getCapabilityVariant(String id, String assertionId, String variantId) {
+	public CapabilityVariant<?,?> getCapabilityVariant(String id, String assertionId, String variantId) {
 		CapabilityApplication ca = getCapabilityApplication(id, assertionId);
 		if (ca != null) {
-			for (CapabilityVariant<?> cv : ca.getCapabilityVariants()) {
+			for (CapabilityVariant<?,?> cv : ca.getCapabilityVariants()) {
 				if (cv.getId().equals(variantId))
 					return cv;
 			}
@@ -64,7 +64,7 @@ public class ResourceInstanceManagerImpl extends EmfServiceComponent implements 
 	}
 
 	@Override
-	public void addCapabilityVariant(String id, String assertionId, CapabilityVariant<?> variant) {
+	public void addCapabilityVariant(String id, String assertionId, CapabilityVariant<?,?> variant) {
 		CapabilityApplication ca = getCapabilityApplication(id, assertionId);
 		ca.getCapabilityVariants().add(variant);		
 	}

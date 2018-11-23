@@ -2,6 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.resourceinstance.impl;
 
+import de.dfki.iui.basys.model.domain.capability.Capability;
 import de.dfki.iui.basys.model.domain.resourceinstance.LogisticsCapabilityVariant;
 import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage;
 
@@ -20,7 +21,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *
  * @generated
  */
-public class LogisticsCapabilityVariantImpl extends CapabilityVariantImpl<TopologyElement> implements LogisticsCapabilityVariant {
+public class LogisticsCapabilityVariantImpl extends CapabilityVariantImpl<TopologyElement, Capability> implements LogisticsCapabilityVariant {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

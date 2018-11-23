@@ -50,12 +50,12 @@ public interface ResourceInstanceManager {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/{resourceInstanceId}/capability/{capabilityAssertionId}/variant/{capabilityVariantId}")
-	CapabilityVariant<?> getCapabilityVariant(@PathParam("resourceInstanceId") String id, @PathParam("capabilityAssertionId") String assertionId, @PathParam("capabilityVariantId") String variantId);
+	CapabilityVariant<?,?> getCapabilityVariant(@PathParam("resourceInstanceId") String id, @PathParam("capabilityAssertionId") String assertionId, @PathParam("capabilityVariantId") String variantId);
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/{resourceInstanceId}/capability/{capabilityAssertionId}/variant")
-	void addCapabilityVariant(@PathParam("resourceInstanceId") String id, @PathParam("capabilityAssertionId") String assertionId, CapabilityVariant<?> variant);
+	void addCapabilityVariant(@PathParam("resourceInstanceId") String id, @PathParam("capabilityAssertionId") String assertionId, CapabilityVariant<?,?> variant);
 
 	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)

@@ -35,7 +35,7 @@ public interface CapabilityRequest extends ComponentRequest {
 	 * @model containment="true"
 	 * @generated
 	 */
-	CapabilityVariant<?> getCapabilityVariant();
+	CapabilityVariant<?, ?> getCapabilityVariant();
 
 	/**
 	 * Sets the value of the '{@link de.dfki.iui.basys.model.runtime.component.CapabilityRequest#getCapabilityVariant <em>Capability Variant</em>}' containment reference.
@@ -45,6 +45,6 @@ public interface CapabilityRequest extends ComponentRequest {
 	 * @see #getCapabilityVariant()
 	 * @generated
 	 */
-	void setCapabilityVariant(CapabilityVariant<?> value);
+	void setCapabilityVariant(CapabilityVariant<?, ?> value);
 
 } // CapabilityRequest

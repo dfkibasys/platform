@@ -30,6 +30,7 @@ import de.dfki.iui.basys.model.domain.productdefinition.impl.ProductdefinitionPa
 import de.dfki.iui.basys.model.domain.productinstance.ProductinstancePackage;
 
 import de.dfki.iui.basys.model.domain.productinstance.impl.ProductinstancePackageImpl;
+import de.dfki.iui.basys.model.domain.resourceinstance.AssemblyCapabilityVariant;
 import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityApplication;
 import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
 import de.dfki.iui.basys.model.domain.resourceinstance.GeneralCapabilityVariant;
@@ -137,6 +138,13 @@ public class ResourceinstancePackageImpl extends EPackageImpl implements Resourc
 	 * @generated
 	 */
 	private EClass handlingCapabilityVariantEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass assemblyCapabilityVariantEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -434,6 +442,42 @@ public class ResourceinstancePackageImpl extends EPackageImpl implements Resourc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getAssemblyCapabilityVariant() {
+		return assemblyCapabilityVariantEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAssemblyCapabilityVariant_Object() {
+		return (EReference)assemblyCapabilityVariantEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAssemblyCapabilityVariant_From() {
+		return (EReference)assemblyCapabilityVariantEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAssemblyCapabilityVariant_To() {
+		return (EReference)assemblyCapabilityVariantEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ResourceinstanceFactory getResourceinstanceFactory() {
 		return (ResourceinstanceFactory)getEFactoryInstance();
 	}
@@ -484,6 +528,11 @@ public class ResourceinstancePackageImpl extends EPackageImpl implements Resourc
 		createEReference(handlingCapabilityVariantEClass, HANDLING_CAPABILITY_VARIANT__OBJECT);
 		createEReference(handlingCapabilityVariantEClass, HANDLING_CAPABILITY_VARIANT__FROM);
 		createEReference(handlingCapabilityVariantEClass, HANDLING_CAPABILITY_VARIANT__TO);
+
+		assemblyCapabilityVariantEClass = createEClass(ASSEMBLY_CAPABILITY_VARIANT);
+		createEReference(assemblyCapabilityVariantEClass, ASSEMBLY_CAPABILITY_VARIANT__OBJECT);
+		createEReference(assemblyCapabilityVariantEClass, ASSEMBLY_CAPABILITY_VARIANT__FROM);
+		createEReference(assemblyCapabilityVariantEClass, ASSEMBLY_CAPABILITY_VARIANT__TO);
 	}
 
 	/**
@@ -518,10 +567,13 @@ public class ResourceinstancePackageImpl extends EPackageImpl implements Resourc
 
 		// Create type parameters
 		ETypeParameter capabilityVariantEClass_T = addETypeParameter(capabilityVariantEClass, "T");
+		ETypeParameter capabilityVariantEClass_C = addETypeParameter(capabilityVariantEClass, "C");
 
 		// Set bounds for type parameters
 		EGenericType g1 = createEGenericType(theBasePackage.getEntity());
 		capabilityVariantEClass_T.getEBounds().add(g1);
+		g1 = createEGenericType(theCapabilityPackage.getCapability());
+		capabilityVariantEClass_C.getEBounds().add(g1);
 
 		// Add supertypes to classes
 		resourceInstanceEClass.getESuperTypes().add(theBasePackage.getEntity());
@@ -529,19 +581,33 @@ public class ResourceinstancePackageImpl extends EPackageImpl implements Resourc
 		g1 = createEGenericType(this.getCapabilityVariant());
 		EGenericType g2 = createEGenericType(theProductdefinitionPackage.getBOMEntry());
 		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(theCapabilityPackage.getCapability());
+		g1.getETypeArguments().add(g2);
 		manufacturingCapabilityVariantEClass.getEGenericSuperTypes().add(g1);
 		g1 = createEGenericType(this.getCapabilityVariant());
 		g2 = createEGenericType(theTopologyPackage.getTopologyElement());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(theCapabilityPackage.getCapability());
 		g1.getETypeArguments().add(g2);
 		logisticsCapabilityVariantEClass.getEGenericSuperTypes().add(g1);
 		g1 = createEGenericType(this.getCapabilityVariant());
 		g2 = createEGenericType(theBasePackage.getEntity());
 		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(theCapabilityPackage.getCapability());
+		g1.getETypeArguments().add(g2);
 		generalCapabilityVariantEClass.getEGenericSuperTypes().add(g1);
 		g1 = createEGenericType(this.getCapabilityVariant());
 		g2 = createEGenericType(theBasePackage.getEntity());
 		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(theCapabilityPackage.getHandling());
+		g1.getETypeArguments().add(g2);
 		handlingCapabilityVariantEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(this.getCapabilityVariant());
+		g2 = createEGenericType(theBasePackage.getEntity());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(theCapabilityPackage.getFügen());
+		g1.getETypeArguments().add(g2);
+		assemblyCapabilityVariantEClass.getEGenericSuperTypes().add(g1);
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(resourceInstanceRepositoryEClass, ResourceInstanceRepository.class, "ResourceInstanceRepository", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -558,10 +624,13 @@ public class ResourceinstancePackageImpl extends EPackageImpl implements Resourc
 		g1 = createEGenericType(this.getCapabilityVariant());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
 		initEReference(getCapabilityApplication_CapabilityVariants(), g1, null, "capabilityVariants", null, 0, -1, CapabilityApplication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(capabilityVariantEClass, CapabilityVariant.class, "CapabilityVariant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCapabilityVariant_Capability(), theCapabilityPackage.getCapability(), null, "capability", null, 0, 1, CapabilityVariant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		g1 = createEGenericType(capabilityVariantEClass_C);
+		initEReference(getCapabilityVariant_Capability(), g1, null, "capability", null, 0, 1, CapabilityVariant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		g1 = createEGenericType(capabilityVariantEClass_T);
 		initEReference(getCapabilityVariant_AppliedOn(), g1, null, "appliedOn", null, 0, -1, CapabilityVariant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -575,6 +644,11 @@ public class ResourceinstancePackageImpl extends EPackageImpl implements Resourc
 		initEReference(getHandlingCapabilityVariant_Object(), theBasePackage.getEntity(), null, "object", null, 0, 1, HandlingCapabilityVariant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHandlingCapabilityVariant_From(), theBasePackage.getEntity(), null, "from", null, 0, 1, HandlingCapabilityVariant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getHandlingCapabilityVariant_To(), theBasePackage.getEntity(), null, "to", null, 0, 1, HandlingCapabilityVariant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(assemblyCapabilityVariantEClass, AssemblyCapabilityVariant.class, "AssemblyCapabilityVariant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getAssemblyCapabilityVariant_Object(), theBasePackage.getEntity(), null, "object", null, 0, 1, AssemblyCapabilityVariant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAssemblyCapabilityVariant_From(), theBasePackage.getEntity(), null, "from", null, 0, 1, AssemblyCapabilityVariant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAssemblyCapabilityVariant_To(), theBasePackage.getEntity(), null, "to", null, 0, 1, AssemblyCapabilityVariant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -2,6 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.resourceinstance;
 
+import de.dfki.iui.basys.model.domain.capability.Capability;
 import de.dfki.iui.basys.model.domain.productdefinition.BOMEntry;
 
 /**
@@ -14,5 +15,5 @@ import de.dfki.iui.basys.model.domain.productdefinition.BOMEntry;
  * @model
  * @generated
  */
-public interface ManufacturingCapabilityVariant extends CapabilityVariant<BOMEntry> {
+public interface ManufacturingCapabilityVariant extends CapabilityVariant<BOMEntry, Capability> {
 } // ManufacturingCapabilityVariant

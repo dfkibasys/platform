@@ -3,27 +3,28 @@
 package de.dfki.iui.basys.model.domain.resourceinstance;
 
 import de.dfki.iui.basys.model.base.Entity;
-import de.dfki.iui.basys.model.domain.capability.Handling;
+
+import de.dfki.iui.basys.model.domain.capability.Fügen;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Handling Capability Variant</b></em>'.
+ * A representation of the model object '<em><b>Assembly Capability Variant</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.dfki.iui.basys.model.domain.resourceinstance.HandlingCapabilityVariant#getObject <em>Object</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.domain.resourceinstance.HandlingCapabilityVariant#getFrom <em>From</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.domain.resourceinstance.HandlingCapabilityVariant#getTo <em>To</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.resourceinstance.AssemblyCapabilityVariant#getObject <em>Object</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.resourceinstance.AssemblyCapabilityVariant#getFrom <em>From</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.resourceinstance.AssemblyCapabilityVariant#getTo <em>To</em>}</li>
  * </ul>
  *
- * @see de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage#getHandlingCapabilityVariant()
+ * @see de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage#getAssemblyCapabilityVariant()
  * @model
  * @generated
  */
-public interface HandlingCapabilityVariant extends CapabilityVariant<Entity, Handling> {
+public interface AssemblyCapabilityVariant extends CapabilityVariant<Entity, Fügen> {
 	/**
 	 * Returns the value of the '<em><b>Object</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -34,14 +35,14 @@ public interface HandlingCapabilityVariant extends CapabilityVariant<Entity, Han
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Object</em>' reference.
 	 * @see #setObject(Entity)
-	 * @see de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage#getHandlingCapabilityVariant_Object()
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage#getAssemblyCapabilityVariant_Object()
 	 * @model
 	 * @generated
 	 */
 	Entity getObject();
 
 	/**
-	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.resourceinstance.HandlingCapabilityVariant#getObject <em>Object</em>}' reference.
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.resourceinstance.AssemblyCapabilityVariant#getObject <em>Object</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Object</em>' reference.
@@ -60,14 +61,14 @@ public interface HandlingCapabilityVariant extends CapabilityVariant<Entity, Han
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>From</em>' reference.
 	 * @see #setFrom(Entity)
-	 * @see de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage#getHandlingCapabilityVariant_From()
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage#getAssemblyCapabilityVariant_From()
 	 * @model
 	 * @generated
 	 */
 	Entity getFrom();
 
 	/**
-	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.resourceinstance.HandlingCapabilityVariant#getFrom <em>From</em>}' reference.
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.resourceinstance.AssemblyCapabilityVariant#getFrom <em>From</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>From</em>' reference.
@@ -86,14 +87,14 @@ public interface HandlingCapabilityVariant extends CapabilityVariant<Entity, Han
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>To</em>' reference.
 	 * @see #setTo(Entity)
-	 * @see de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage#getHandlingCapabilityVariant_To()
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage#getAssemblyCapabilityVariant_To()
 	 * @model
 	 * @generated
 	 */
 	Entity getTo();
 
 	/**
-	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.resourceinstance.HandlingCapabilityVariant#getTo <em>To</em>}' reference.
+	 * Sets the value of the '{@link de.dfki.iui.basys.model.domain.resourceinstance.AssemblyCapabilityVariant#getTo <em>To</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>To</em>' reference.
@@ -102,4 +103,4 @@ public interface HandlingCapabilityVariant extends CapabilityVariant<Entity, Han
 	 */
 	void setTo(Entity value);
 
-} // HandlingCapabilityVariant
+} // AssemblyCapabilityVariant

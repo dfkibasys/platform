@@ -40,7 +40,7 @@ public class DeviceComponentController extends ComponentController implements Co
 		return sendComponentRequest(cr);
 	}
 
-	public ComponentRequestStatus executeCapability(CapabilityVariant<?> capability) {
+	public ComponentRequestStatus executeCapability(CapabilityVariant<?,?> capability) {
 		ComponentRequestStatus status = sendCapabilityRequest(capability);
 		return status;
 	}

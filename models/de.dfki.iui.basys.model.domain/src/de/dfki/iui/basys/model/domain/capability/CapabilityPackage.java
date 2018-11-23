@@ -718,7 +718,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getLoadCarrierUnitEnum()
 	 * @generated
 	 */
-	int LOAD_CARRIER_UNIT_ENUM = 44;
+	int LOAD_CARRIER_UNIT_ENUM = 45;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.UrformenImpl <em>Urformen</em>}' class.
@@ -3220,6 +3220,70 @@ public interface CapabilityPackage extends EPackage {
 	int CONVEYING_OPERATION_COUNT = MOVING_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.capability.impl.TakeImpl <em>Take</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.TakeImpl
+	 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getTake()
+	 * @generated
+	 */
+	int TAKE = 44;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAKE__BINDING = GENERAL_CAPABILITY__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAKE__ID = GENERAL_CAPABILITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAKE__NAME = GENERAL_CAPABILITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAKE__METADATA = GENERAL_CAPABILITY__METADATA;
+
+	/**
+	 * The number of structural features of the '<em>Take</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAKE_FEATURE_COUNT = GENERAL_CAPABILITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Take</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TAKE_OPERATION_COUNT = GENERAL_CAPABILITY_OPERATION_COUNT + 0;
+
+	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.CapabilityAssertion <em>Assertion</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3813,6 +3877,16 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getConveying();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.capability.Take <em>Take</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Take</em>'.
+	 * @see de.dfki.iui.basys.model.domain.capability.Take
+	 * @generated
+	 */
+	EClass getTake();
 
 	/**
 	 * Returns the meta object for enum '{@link de.dfki.iui.basys.model.domain.capability.LoadCarrierUnitEnum <em>Load Carrier Unit Enum</em>}'.
@@ -4563,6 +4637,16 @@ public interface CapabilityPackage extends EPackage {
 		 * @generated
 		 */
 		EClass CONVEYING = eINSTANCE.getConveying();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.impl.TakeImpl <em>Take</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.TakeImpl
+		 * @see de.dfki.iui.basys.model.domain.capability.impl.CapabilityPackageImpl#getTake()
+		 * @generated
+		 */
+		EClass TAKE = eINSTANCE.getTake();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.capability.LoadCarrierUnitEnum <em>Load Carrier Unit Enum</em>}' enum.

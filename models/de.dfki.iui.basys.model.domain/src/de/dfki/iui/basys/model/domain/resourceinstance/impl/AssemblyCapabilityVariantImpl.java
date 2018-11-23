@@ -4,13 +4,14 @@ package de.dfki.iui.basys.model.domain.resourceinstance.impl;
 
 import de.dfki.iui.basys.model.base.Entity;
 
-import de.dfki.iui.basys.model.domain.capability.Handling;
-import de.dfki.iui.basys.model.domain.resourceinstance.HandlingCapabilityVariant;
+import de.dfki.iui.basys.model.domain.capability.Fügen;
+
+import de.dfki.iui.basys.model.domain.resourceinstance.AssemblyCapabilityVariant;
 import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -18,20 +19,20 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Handling Capability Variant</b></em>'.
+ * An implementation of the model object '<em><b>Assembly Capability Variant</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.dfki.iui.basys.model.domain.resourceinstance.impl.HandlingCapabilityVariantImpl#getObject <em>Object</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.domain.resourceinstance.impl.HandlingCapabilityVariantImpl#getFrom <em>From</em>}</li>
- *   <li>{@link de.dfki.iui.basys.model.domain.resourceinstance.impl.HandlingCapabilityVariantImpl#getTo <em>To</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.resourceinstance.impl.AssemblyCapabilityVariantImpl#getObject <em>Object</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.resourceinstance.impl.AssemblyCapabilityVariantImpl#getFrom <em>From</em>}</li>
+ *   <li>{@link de.dfki.iui.basys.model.domain.resourceinstance.impl.AssemblyCapabilityVariantImpl#getTo <em>To</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class HandlingCapabilityVariantImpl extends CapabilityVariantImpl<Entity, Handling> implements HandlingCapabilityVariant {
+public class AssemblyCapabilityVariantImpl extends CapabilityVariantImpl<Entity, Fügen> implements AssemblyCapabilityVariant {
 	/**
 	 * The cached value of the '{@link #getObject() <em>Object</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -67,7 +68,7 @@ public class HandlingCapabilityVariantImpl extends CapabilityVariantImpl<Entity,
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected HandlingCapabilityVariantImpl() {
+	protected AssemblyCapabilityVariantImpl() {
 		super();
 	}
 
@@ -78,7 +79,7 @@ public class HandlingCapabilityVariantImpl extends CapabilityVariantImpl<Entity,
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ResourceinstancePackage.Literals.HANDLING_CAPABILITY_VARIANT;
+		return ResourceinstancePackage.Literals.ASSEMBLY_CAPABILITY_VARIANT;
 	}
 
 	/**
@@ -88,7 +89,7 @@ public class HandlingCapabilityVariantImpl extends CapabilityVariantImpl<Entity,
 	 * @generated
 	 */
 	@Override
-	public NotificationChain basicSetCapability(Handling newCapability, NotificationChain msgs) {
+	public NotificationChain basicSetCapability(Fügen newCapability, NotificationChain msgs) {
 		return super.basicSetCapability(newCapability, msgs);
 	}
 
@@ -103,7 +104,7 @@ public class HandlingCapabilityVariantImpl extends CapabilityVariantImpl<Entity,
 			object = (Entity)eResolveProxy(oldObject);
 			if (object != oldObject) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ResourceinstancePackage.HANDLING_CAPABILITY_VARIANT__OBJECT, oldObject, object));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ResourceinstancePackage.ASSEMBLY_CAPABILITY_VARIANT__OBJECT, oldObject, object));
 			}
 		}
 		return object;
@@ -127,7 +128,7 @@ public class HandlingCapabilityVariantImpl extends CapabilityVariantImpl<Entity,
 		Entity oldObject = object;
 		object = newObject;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ResourceinstancePackage.HANDLING_CAPABILITY_VARIANT__OBJECT, oldObject, object));
+			eNotify(new ENotificationImpl(this, Notification.SET, ResourceinstancePackage.ASSEMBLY_CAPABILITY_VARIANT__OBJECT, oldObject, object));
 	}
 
 	/**
@@ -141,7 +142,7 @@ public class HandlingCapabilityVariantImpl extends CapabilityVariantImpl<Entity,
 			from = (Entity)eResolveProxy(oldFrom);
 			if (from != oldFrom) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ResourceinstancePackage.HANDLING_CAPABILITY_VARIANT__FROM, oldFrom, from));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ResourceinstancePackage.ASSEMBLY_CAPABILITY_VARIANT__FROM, oldFrom, from));
 			}
 		}
 		return from;
@@ -165,7 +166,7 @@ public class HandlingCapabilityVariantImpl extends CapabilityVariantImpl<Entity,
 		Entity oldFrom = from;
 		from = newFrom;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ResourceinstancePackage.HANDLING_CAPABILITY_VARIANT__FROM, oldFrom, from));
+			eNotify(new ENotificationImpl(this, Notification.SET, ResourceinstancePackage.ASSEMBLY_CAPABILITY_VARIANT__FROM, oldFrom, from));
 	}
 
 	/**
@@ -179,7 +180,7 @@ public class HandlingCapabilityVariantImpl extends CapabilityVariantImpl<Entity,
 			to = (Entity)eResolveProxy(oldTo);
 			if (to != oldTo) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ResourceinstancePackage.HANDLING_CAPABILITY_VARIANT__TO, oldTo, to));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ResourceinstancePackage.ASSEMBLY_CAPABILITY_VARIANT__TO, oldTo, to));
 			}
 		}
 		return to;
@@ -203,7 +204,7 @@ public class HandlingCapabilityVariantImpl extends CapabilityVariantImpl<Entity,
 		Entity oldTo = to;
 		to = newTo;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ResourceinstancePackage.HANDLING_CAPABILITY_VARIANT__TO, oldTo, to));
+			eNotify(new ENotificationImpl(this, Notification.SET, ResourceinstancePackage.ASSEMBLY_CAPABILITY_VARIANT__TO, oldTo, to));
 	}
 
 	/**
@@ -214,13 +215,13 @@ public class HandlingCapabilityVariantImpl extends CapabilityVariantImpl<Entity,
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ResourceinstancePackage.HANDLING_CAPABILITY_VARIANT__OBJECT:
+			case ResourceinstancePackage.ASSEMBLY_CAPABILITY_VARIANT__OBJECT:
 				if (resolve) return getObject();
 				return basicGetObject();
-			case ResourceinstancePackage.HANDLING_CAPABILITY_VARIANT__FROM:
+			case ResourceinstancePackage.ASSEMBLY_CAPABILITY_VARIANT__FROM:
 				if (resolve) return getFrom();
 				return basicGetFrom();
-			case ResourceinstancePackage.HANDLING_CAPABILITY_VARIANT__TO:
+			case ResourceinstancePackage.ASSEMBLY_CAPABILITY_VARIANT__TO:
 				if (resolve) return getTo();
 				return basicGetTo();
 		}
@@ -235,13 +236,13 @@ public class HandlingCapabilityVariantImpl extends CapabilityVariantImpl<Entity,
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ResourceinstancePackage.HANDLING_CAPABILITY_VARIANT__OBJECT:
+			case ResourceinstancePackage.ASSEMBLY_CAPABILITY_VARIANT__OBJECT:
 				setObject((Entity)newValue);
 				return;
-			case ResourceinstancePackage.HANDLING_CAPABILITY_VARIANT__FROM:
+			case ResourceinstancePackage.ASSEMBLY_CAPABILITY_VARIANT__FROM:
 				setFrom((Entity)newValue);
 				return;
-			case ResourceinstancePackage.HANDLING_CAPABILITY_VARIANT__TO:
+			case ResourceinstancePackage.ASSEMBLY_CAPABILITY_VARIANT__TO:
 				setTo((Entity)newValue);
 				return;
 		}
@@ -256,13 +257,13 @@ public class HandlingCapabilityVariantImpl extends CapabilityVariantImpl<Entity,
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ResourceinstancePackage.HANDLING_CAPABILITY_VARIANT__OBJECT:
+			case ResourceinstancePackage.ASSEMBLY_CAPABILITY_VARIANT__OBJECT:
 				setObject((Entity)null);
 				return;
-			case ResourceinstancePackage.HANDLING_CAPABILITY_VARIANT__FROM:
+			case ResourceinstancePackage.ASSEMBLY_CAPABILITY_VARIANT__FROM:
 				setFrom((Entity)null);
 				return;
-			case ResourceinstancePackage.HANDLING_CAPABILITY_VARIANT__TO:
+			case ResourceinstancePackage.ASSEMBLY_CAPABILITY_VARIANT__TO:
 				setTo((Entity)null);
 				return;
 		}
@@ -277,14 +278,14 @@ public class HandlingCapabilityVariantImpl extends CapabilityVariantImpl<Entity,
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ResourceinstancePackage.HANDLING_CAPABILITY_VARIANT__OBJECT:
+			case ResourceinstancePackage.ASSEMBLY_CAPABILITY_VARIANT__OBJECT:
 				return object != null;
-			case ResourceinstancePackage.HANDLING_CAPABILITY_VARIANT__FROM:
+			case ResourceinstancePackage.ASSEMBLY_CAPABILITY_VARIANT__FROM:
 				return from != null;
-			case ResourceinstancePackage.HANDLING_CAPABILITY_VARIANT__TO:
+			case ResourceinstancePackage.ASSEMBLY_CAPABILITY_VARIANT__TO:
 				return to != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //HandlingCapabilityVariantImpl
+} //AssemblyCapabilityVariantImpl

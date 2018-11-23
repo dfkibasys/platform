@@ -5,6 +5,7 @@ package de.dfki.iui.basys.model.domain.resourceinstance.util;
 import de.dfki.iui.basys.model.base.BObject;
 import de.dfki.iui.basys.model.base.Entity;
 
+import de.dfki.iui.basys.model.domain.capability.Capability;
 import de.dfki.iui.basys.model.domain.resourceinstance.*;
 
 import org.eclipse.emf.ecore.EObject;
@@ -90,7 +91,7 @@ public class ResourceinstanceSwitch<T1> extends Switch<T1> {
 				return result;
 			}
 			case ResourceinstancePackage.CAPABILITY_VARIANT: {
-				CapabilityVariant<?> capabilityVariant = (CapabilityVariant<?>)theEObject;
+				CapabilityVariant<?, ?> capabilityVariant = (CapabilityVariant<?, ?>)theEObject;
 				T1 result = caseCapabilityVariant(capabilityVariant);
 				if (result == null) result = caseEntity(capabilityVariant);
 				if (result == null) result = caseBObject(capabilityVariant);
@@ -130,6 +131,15 @@ public class ResourceinstanceSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseCapabilityVariant(handlingCapabilityVariant);
 				if (result == null) result = caseEntity(handlingCapabilityVariant);
 				if (result == null) result = caseBObject(handlingCapabilityVariant);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ResourceinstancePackage.ASSEMBLY_CAPABILITY_VARIANT: {
+				AssemblyCapabilityVariant assemblyCapabilityVariant = (AssemblyCapabilityVariant)theEObject;
+				T1 result = caseAssemblyCapabilityVariant(assemblyCapabilityVariant);
+				if (result == null) result = caseCapabilityVariant(assemblyCapabilityVariant);
+				if (result == null) result = caseEntity(assemblyCapabilityVariant);
+				if (result == null) result = caseBObject(assemblyCapabilityVariant);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -193,7 +203,7 @@ public class ResourceinstanceSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public <T extends Entity> T1 caseCapabilityVariant(CapabilityVariant<T> object) {
+	public <T extends Entity, C extends Capability> T1 caseCapabilityVariant(CapabilityVariant<T, C> object) {
 		return null;
 	}
 
@@ -254,6 +264,21 @@ public class ResourceinstanceSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseHandlingCapabilityVariant(HandlingCapabilityVariant object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Assembly Capability Variant</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Assembly Capability Variant</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseAssemblyCapabilityVariant(AssemblyCapabilityVariant object) {
 		return null;
 	}
 

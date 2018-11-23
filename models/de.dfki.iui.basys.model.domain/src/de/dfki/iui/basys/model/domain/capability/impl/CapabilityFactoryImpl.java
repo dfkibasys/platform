@@ -101,6 +101,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 			case CapabilityPackage.GUIDING: return createGuiding();
 			case CapabilityPackage.PASSING_ON: return createPassingOn();
 			case CapabilityPackage.CONVEYING: return createConveying();
+			case CapabilityPackage.TAKE: return createTake();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -454,6 +455,16 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	public Conveying createConveying() {
 		ConveyingImpl conveying = new ConveyingImpl();
 		return conveying;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Take createTake() {
+		TakeImpl take = new TakeImpl();
+		return take;
 	}
 
 	/**

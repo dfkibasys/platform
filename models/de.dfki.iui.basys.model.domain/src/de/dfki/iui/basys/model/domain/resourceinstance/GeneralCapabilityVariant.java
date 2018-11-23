@@ -3,6 +3,7 @@
 package de.dfki.iui.basys.model.domain.resourceinstance;
 
 import de.dfki.iui.basys.model.base.Entity;
+import de.dfki.iui.basys.model.domain.capability.Capability;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,5 +15,5 @@ import de.dfki.iui.basys.model.base.Entity;
  * @model
  * @generated
  */
-public interface GeneralCapabilityVariant extends CapabilityVariant<Entity> {
+public interface GeneralCapabilityVariant extends CapabilityVariant<Entity, Capability> {
 } // GeneralCapabilityVariant

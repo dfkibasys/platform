@@ -4,6 +4,7 @@ package de.dfki.iui.basys.model.domain.resourceinstance.impl;
 
 import de.dfki.iui.basys.model.base.Entity;
 
+import de.dfki.iui.basys.model.domain.capability.Capability;
 import de.dfki.iui.basys.model.domain.resourceinstance.GeneralCapabilityVariant;
 import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage;
 
@@ -16,7 +17,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class GeneralCapabilityVariantImpl extends CapabilityVariantImpl<Entity> implements GeneralCapabilityVariant {
+public class GeneralCapabilityVariantImpl extends CapabilityVariantImpl<Entity, Capability> implements GeneralCapabilityVariant {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

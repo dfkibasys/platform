@@ -808,6 +808,29 @@ public class CapabilityItemProviderAdapterFactory extends CapabilityAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.Take} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TakeItemProvider takeItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.capability.Take}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTakeAdapter() {
+		if (takeItemProvider == null) {
+			takeItemProvider = new TakeItemProvider(this);
+		}
+
+		return takeItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.capability.Urformen} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1226,6 +1249,7 @@ public class CapabilityItemProviderAdapterFactory extends CapabilityAdapterFacto
 		if (guidingItemProvider != null) guidingItemProvider.dispose();
 		if (passingOnItemProvider != null) passingOnItemProvider.dispose();
 		if (conveyingItemProvider != null) conveyingItemProvider.dispose();
+		if (takeItemProvider != null) takeItemProvider.dispose();
 	}
 
 }

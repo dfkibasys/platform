@@ -113,6 +113,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityVariant" containment="true">
       <eGenericType eClassifier="ecore:EClass ../../de.dfki.cos.basys.platform.model.domain/model/resourceinstance.ecore#//CapabilityVariant">
         <eTypeArguments/>
+        <eTypeArguments/>
       </eGenericType>
     </eStructuralFeatures>
   </eClassifiers>

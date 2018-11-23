@@ -54,7 +54,7 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected CapabilityVariant<?> capabilityVariant;
+	protected CapabilityVariant<?, ?> capabilityVariant;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -103,7 +103,7 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 */
 	@Override
-	public CapabilityVariant<?> getCapabilityVariant() {
+	public CapabilityVariant<?, ?> getCapabilityVariant() {
 		return capabilityVariant;
 	}
 
@@ -112,8 +112,8 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetCapabilityVariant(CapabilityVariant<?> newCapabilityVariant, NotificationChain msgs) {
-		CapabilityVariant<?> oldCapabilityVariant = capabilityVariant;
+	public NotificationChain basicSetCapabilityVariant(CapabilityVariant<?, ?> newCapabilityVariant, NotificationChain msgs) {
+		CapabilityVariant<?, ?> oldCapabilityVariant = capabilityVariant;
 		capabilityVariant = newCapabilityVariant;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ComponentPackage.CAPABILITY_REQUEST__CAPABILITY_VARIANT, oldCapabilityVariant, newCapabilityVariant);
@@ -128,7 +128,7 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 */
 	@Override
-	public void setCapabilityVariant(CapabilityVariant<?> newCapabilityVariant) {
+	public void setCapabilityVariant(CapabilityVariant<?, ?> newCapabilityVariant) {
 		if (newCapabilityVariant != capabilityVariant) {
 			NotificationChain msgs = null;
 			if (capabilityVariant != null)
@@ -184,7 +184,7 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 				setComponentId((String)newValue);
 				return;
 			case ComponentPackage.CAPABILITY_REQUEST__CAPABILITY_VARIANT:
-				setCapabilityVariant((CapabilityVariant<?>)newValue);
+				setCapabilityVariant((CapabilityVariant<?, ?>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -202,7 +202,7 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 				setComponentId(COMPONENT_ID_EDEFAULT);
 				return;
 			case ComponentPackage.CAPABILITY_REQUEST__CAPABILITY_VARIANT:
-				setCapabilityVariant((CapabilityVariant<?>)null);
+				setCapabilityVariant((CapabilityVariant<?, ?>)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -242,14 +242,14 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 
 	public static class Builder {
 		private String componentId;
-		private CapabilityVariant<?> capabilityVariant;
+		private CapabilityVariant<?,?> capabilityVariant;
 
 		public Builder componentId(String componentId) {
 			this.componentId = componentId;
 			return this;
 		}
 
-		public Builder capabilityVariant(CapabilityVariant<?> capabilityVariant) {
+		public Builder capabilityVariant(CapabilityVariant<?,?> capabilityVariant) {
 			this.capabilityVariant = capabilityVariant;
 			return this;
 		}

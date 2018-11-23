@@ -2,6 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.resourceinstance;
 
+import de.dfki.iui.basys.model.domain.capability.Capability;
 import de.dfki.iui.basys.model.domain.topology.TopologyElement;
 
 /**
@@ -14,5 +15,5 @@ import de.dfki.iui.basys.model.domain.topology.TopologyElement;
  * @model
  * @generated
  */
-public interface LogisticsCapabilityVariant extends CapabilityVariant<TopologyElement> {
+public interface LogisticsCapabilityVariant extends CapabilityVariant<TopologyElement, Capability> {
 } // LogisticsCapabilityVariant

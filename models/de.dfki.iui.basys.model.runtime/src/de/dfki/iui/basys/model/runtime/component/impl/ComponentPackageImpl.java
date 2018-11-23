@@ -1222,6 +1222,8 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		EGenericType g1 = createEGenericType(theResourceinstancePackage.getCapabilityVariant());
 		EGenericType g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
 		initEReference(getCapabilityRequest_CapabilityVariant(), g1, null, "capabilityVariant", null, 0, 1, CapabilityRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(componentRequestStatusEClass, ComponentRequestStatus.class, "ComponentRequestStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

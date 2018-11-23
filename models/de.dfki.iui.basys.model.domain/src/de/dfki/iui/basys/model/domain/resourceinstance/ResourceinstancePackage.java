@@ -683,6 +683,116 @@ public interface ResourceinstancePackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link de.dfki.iui.basys.model.domain.resourceinstance.impl.AssemblyCapabilityVariantImpl <em>Assembly Capability Variant</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.impl.AssemblyCapabilityVariantImpl
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceinstancePackageImpl#getAssemblyCapabilityVariant()
+	 * @generated
+	 */
+	int ASSEMBLY_CAPABILITY_VARIANT = 8;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSEMBLY_CAPABILITY_VARIANT__BINDING = CAPABILITY_VARIANT__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSEMBLY_CAPABILITY_VARIANT__ID = CAPABILITY_VARIANT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSEMBLY_CAPABILITY_VARIANT__NAME = CAPABILITY_VARIANT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSEMBLY_CAPABILITY_VARIANT__METADATA = CAPABILITY_VARIANT__METADATA;
+
+	/**
+	 * The feature id for the '<em><b>Capability</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSEMBLY_CAPABILITY_VARIANT__CAPABILITY = CAPABILITY_VARIANT__CAPABILITY;
+
+	/**
+	 * The feature id for the '<em><b>Applied On</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSEMBLY_CAPABILITY_VARIANT__APPLIED_ON = CAPABILITY_VARIANT__APPLIED_ON;
+
+	/**
+	 * The feature id for the '<em><b>Object</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSEMBLY_CAPABILITY_VARIANT__OBJECT = CAPABILITY_VARIANT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>From</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSEMBLY_CAPABILITY_VARIANT__FROM = CAPABILITY_VARIANT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>To</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSEMBLY_CAPABILITY_VARIANT__TO = CAPABILITY_VARIANT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Assembly Capability Variant</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSEMBLY_CAPABILITY_VARIANT_FEATURE_COUNT = CAPABILITY_VARIANT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Assembly Capability Variant</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSEMBLY_CAPABILITY_VARIANT_OPERATION_COUNT = CAPABILITY_VARIANT_OPERATION_COUNT + 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstanceRepository <em>Resource Instance Repository</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -895,6 +1005,49 @@ public interface ResourceinstancePackage extends EPackage {
 	EReference getHandlingCapabilityVariant_To();
 
 	/**
+	 * Returns the meta object for class '{@link de.dfki.iui.basys.model.domain.resourceinstance.AssemblyCapabilityVariant <em>Assembly Capability Variant</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Assembly Capability Variant</em>'.
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.AssemblyCapabilityVariant
+	 * @generated
+	 */
+	EClass getAssemblyCapabilityVariant();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.dfki.iui.basys.model.domain.resourceinstance.AssemblyCapabilityVariant#getObject <em>Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Object</em>'.
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.AssemblyCapabilityVariant#getObject()
+	 * @see #getAssemblyCapabilityVariant()
+	 * @generated
+	 */
+	EReference getAssemblyCapabilityVariant_Object();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.dfki.iui.basys.model.domain.resourceinstance.AssemblyCapabilityVariant#getFrom <em>From</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>From</em>'.
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.AssemblyCapabilityVariant#getFrom()
+	 * @see #getAssemblyCapabilityVariant()
+	 * @generated
+	 */
+	EReference getAssemblyCapabilityVariant_From();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.dfki.iui.basys.model.domain.resourceinstance.AssemblyCapabilityVariant#getTo <em>To</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>To</em>'.
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.AssemblyCapabilityVariant#getTo()
+	 * @see #getAssemblyCapabilityVariant()
+	 * @generated
+	 */
+	EReference getAssemblyCapabilityVariant_To();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1092,6 +1245,40 @@ public interface ResourceinstancePackage extends EPackage {
 		 * @generated
 		 */
 		EReference HANDLING_CAPABILITY_VARIANT__TO = eINSTANCE.getHandlingCapabilityVariant_To();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.iui.basys.model.domain.resourceinstance.impl.AssemblyCapabilityVariantImpl <em>Assembly Capability Variant</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.iui.basys.model.domain.resourceinstance.impl.AssemblyCapabilityVariantImpl
+		 * @see de.dfki.iui.basys.model.domain.resourceinstance.impl.ResourceinstancePackageImpl#getAssemblyCapabilityVariant()
+		 * @generated
+		 */
+		EClass ASSEMBLY_CAPABILITY_VARIANT = eINSTANCE.getAssemblyCapabilityVariant();
+
+		/**
+		 * The meta object literal for the '<em><b>Object</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ASSEMBLY_CAPABILITY_VARIANT__OBJECT = eINSTANCE.getAssemblyCapabilityVariant_Object();
+
+		/**
+		 * The meta object literal for the '<em><b>From</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ASSEMBLY_CAPABILITY_VARIANT__FROM = eINSTANCE.getAssemblyCapabilityVariant_From();
+
+		/**
+		 * The meta object literal for the '<em><b>To</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ASSEMBLY_CAPABILITY_VARIANT__TO = eINSTANCE.getAssemblyCapabilityVariant_To();
 
 	}
 

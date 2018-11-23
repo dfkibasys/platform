@@ -167,7 +167,7 @@ public class ComponentController implements ChannelListener, StatusInterface {
 		lock.unlock();
 	}
 	
-	public CompletableFuture<ComponentResponse> executeCapabilityFuture(CapabilityVariant<?> capability) {
+	public CompletableFuture<ComponentResponse> executeCapabilityFuture(CapabilityVariant<?,?> capability) {
 		CapabilityRequest cr = new CapabilityRequestImpl.Builder().componentId(componentId).capabilityVariant(capability)
 				.build();
 		return executeComponentRequest(cr);

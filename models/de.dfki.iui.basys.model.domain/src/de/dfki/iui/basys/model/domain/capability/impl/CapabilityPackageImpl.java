@@ -46,6 +46,7 @@ import de.dfki.iui.basys.model.domain.capability.Securing;
 import de.dfki.iui.basys.model.domain.capability.Stoffeigenschaften;
 import de.dfki.iui.basys.model.domain.capability.SwitchConfirmationCapability;
 import de.dfki.iui.basys.model.domain.capability.Swivel;
+import de.dfki.iui.basys.model.domain.capability.Take;
 import de.dfki.iui.basys.model.domain.capability.Transport;
 import de.dfki.iui.basys.model.domain.capability.Trennen;
 import de.dfki.iui.basys.model.domain.capability.Umformen;
@@ -335,6 +336,13 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * @generated
 	 */
 	private EClass conveyingEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass takeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1056,6 +1064,15 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getTake() {
+		return takeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getLoadCarrierUnitEnum() {
 		return loadCarrierUnitEnumEEnum;
 	}
@@ -1379,6 +1396,8 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 
 		conveyingEClass = createEClass(CONVEYING);
 
+		takeEClass = createEClass(TAKE);
+
 		// Create enums
 		loadCarrierUnitEnumEEnum = createEEnum(LOAD_CARRIER_UNIT_ENUM);
 	}
@@ -1461,6 +1480,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		guidingEClass.getESuperTypes().add(this.getMoving());
 		passingOnEClass.getESuperTypes().add(this.getMoving());
 		conveyingEClass.getESuperTypes().add(this.getMoving());
+		takeEClass.getESuperTypes().add(this.getGeneralCapability());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(capabilityAssertionEClass, CapabilityAssertion.class, "CapabilityAssertion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1582,6 +1602,8 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		initEClass(passingOnEClass, PassingOn.class, "PassingOn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(conveyingEClass, Conveying.class, "Conveying", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(takeEClass, Take.class, "Take", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize enums and add enum literals
 		initEEnum(loadCarrierUnitEnumEEnum, LoadCarrierUnitEnum.class, "LoadCarrierUnitEnum");

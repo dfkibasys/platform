@@ -2,6 +2,7 @@
  */
 package de.dfki.iui.basys.model.domain.resourceinstance.impl;
 
+import de.dfki.iui.basys.model.domain.capability.Capability;
 import de.dfki.iui.basys.model.domain.productdefinition.BOMEntry;
 
 import de.dfki.iui.basys.model.domain.resourceinstance.ManufacturingCapabilityVariant;
@@ -20,7 +21,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *
  * @generated
  */
-public class ManufacturingCapabilityVariantImpl extends CapabilityVariantImpl<BOMEntry> implements ManufacturingCapabilityVariant {
+public class ManufacturingCapabilityVariantImpl extends CapabilityVariantImpl<BOMEntry, Capability> implements ManufacturingCapabilityVariant {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

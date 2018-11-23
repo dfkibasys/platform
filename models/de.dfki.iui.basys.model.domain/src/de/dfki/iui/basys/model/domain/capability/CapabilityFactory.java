@@ -310,6 +310,15 @@ public interface CapabilityFactory extends EFactory {
 	Conveying createConveying();
 
 	/**
+	 * Returns a new object of class '<em>Take</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Take</em>'.
+	 * @generated
+	 */
+	Take createTake();
+
+	/**
 	 * Returns a new object of class '<em>Urformen</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -3,6 +3,7 @@
 package de.dfki.iui.basys.model.domain.resourceinstance.impl;
 
 import de.dfki.iui.basys.model.base.Entity;
+import de.dfki.iui.basys.model.domain.capability.Capability;
 import de.dfki.iui.basys.model.domain.resourceinstance.*;
 
 import org.eclipse.emf.ecore.EClass;
@@ -65,6 +66,7 @@ public class ResourceinstanceFactoryImpl extends EFactoryImpl implements Resourc
 			case ResourceinstancePackage.LOGISTICS_CAPABILITY_VARIANT: return createLogisticsCapabilityVariant();
 			case ResourceinstancePackage.GENERAL_CAPABILITY_VARIANT: return createGeneralCapabilityVariant();
 			case ResourceinstancePackage.HANDLING_CAPABILITY_VARIANT: return createHandlingCapabilityVariant();
+			case ResourceinstancePackage.ASSEMBLY_CAPABILITY_VARIANT: return createAssemblyCapabilityVariant();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -105,8 +107,8 @@ public class ResourceinstanceFactoryImpl extends EFactoryImpl implements Resourc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public <T extends Entity> CapabilityVariant<T> createCapabilityVariant() {
-		CapabilityVariantImpl<T> capabilityVariant = new CapabilityVariantImpl<T>();
+	public <T extends Entity, C extends Capability> CapabilityVariant<T, C> createCapabilityVariant() {
+		CapabilityVariantImpl<T, C> capabilityVariant = new CapabilityVariantImpl<T, C>();
 		return capabilityVariant;
 	}
 
@@ -148,6 +150,16 @@ public class ResourceinstanceFactoryImpl extends EFactoryImpl implements Resourc
 	public HandlingCapabilityVariant createHandlingCapabilityVariant() {
 		HandlingCapabilityVariantImpl handlingCapabilityVariant = new HandlingCapabilityVariantImpl();
 		return handlingCapabilityVariant;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AssemblyCapabilityVariant createAssemblyCapabilityVariant() {
+		AssemblyCapabilityVariantImpl assemblyCapabilityVariant = new AssemblyCapabilityVariantImpl();
+		return assemblyCapabilityVariant;
 	}
 
 	/**

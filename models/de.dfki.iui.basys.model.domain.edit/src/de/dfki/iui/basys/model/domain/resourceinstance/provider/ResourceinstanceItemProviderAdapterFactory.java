@@ -255,6 +255,29 @@ public class ResourceinstanceItemProviderAdapterFactory extends Resourceinstance
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.iui.basys.model.domain.resourceinstance.AssemblyCapabilityVariant} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AssemblyCapabilityVariantItemProvider assemblyCapabilityVariantItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.iui.basys.model.domain.resourceinstance.AssemblyCapabilityVariant}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAssemblyCapabilityVariantAdapter() {
+		if (assemblyCapabilityVariantItemProvider == null) {
+			assemblyCapabilityVariantItemProvider = new AssemblyCapabilityVariantItemProvider(this);
+		}
+
+		return assemblyCapabilityVariantItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

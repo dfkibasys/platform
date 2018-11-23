@@ -5,6 +5,7 @@ package de.dfki.iui.basys.model.domain.resourceinstance.util;
 import de.dfki.iui.basys.model.base.BObject;
 import de.dfki.iui.basys.model.base.Entity;
 
+import de.dfki.iui.basys.model.domain.capability.Capability;
 import de.dfki.iui.basys.model.domain.resourceinstance.*;
 
 import org.eclipse.emf.common.notify.Adapter;
@@ -83,7 +84,7 @@ public class ResourceinstanceAdapterFactory extends AdapterFactoryImpl {
 				return createCapabilityApplicationAdapter();
 			}
 			@Override
-			public <T extends Entity> Adapter caseCapabilityVariant(CapabilityVariant<T> object) {
+			public <T extends Entity, C extends Capability> Adapter caseCapabilityVariant(CapabilityVariant<T, C> object) {
 				return createCapabilityVariantAdapter();
 			}
 			@Override
@@ -101,6 +102,10 @@ public class ResourceinstanceAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseHandlingCapabilityVariant(HandlingCapabilityVariant object) {
 				return createHandlingCapabilityVariantAdapter();
+			}
+			@Override
+			public Adapter caseAssemblyCapabilityVariant(AssemblyCapabilityVariant object) {
+				return createAssemblyCapabilityVariantAdapter();
 			}
 			@Override
 			public Adapter caseBObject(BObject object) {
@@ -239,6 +244,20 @@ public class ResourceinstanceAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createHandlingCapabilityVariantAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.iui.basys.model.domain.resourceinstance.AssemblyCapabilityVariant <em>Assembly Capability Variant</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.iui.basys.model.domain.resourceinstance.AssemblyCapabilityVariant
+	 * @generated
+	 */
+	public Adapter createAssemblyCapabilityVariantAdapter() {
 		return null;
 	}
 

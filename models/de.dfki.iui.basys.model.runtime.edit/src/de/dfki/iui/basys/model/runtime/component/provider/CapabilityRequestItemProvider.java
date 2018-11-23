@@ -202,6 +202,11 @@ public class CapabilityRequestItemProvider
 			(createChildParameter
 				(ComponentPackage.Literals.CAPABILITY_REQUEST__CAPABILITY_VARIANT,
 				 ResourceinstanceFactory.eINSTANCE.createHandlingCapabilityVariant()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ComponentPackage.Literals.CAPABILITY_REQUEST__CAPABILITY_VARIANT,
+				 ResourceinstanceFactory.eINSTANCE.createAssemblyCapabilityVariant()));
 	}
 
 	/**

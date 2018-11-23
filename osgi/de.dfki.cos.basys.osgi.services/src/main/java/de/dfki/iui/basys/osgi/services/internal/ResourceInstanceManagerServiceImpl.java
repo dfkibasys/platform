@@ -113,12 +113,12 @@ public final class ResourceInstanceManagerServiceImpl extends BasysOsgiComponent
 	}
 
 	@Override
-	public CapabilityVariant<?> getCapabilityVariant(String id, String assertionId, String variantId) {
+	public CapabilityVariant<?,?> getCapabilityVariant(String id, String assertionId, String variantId) {
 		return  impl.getCapabilityVariant(id, assertionId, variantId);
 	}
 
 	@Override
-	public void addCapabilityVariant(String id, String assertionId, CapabilityVariant<?> variant) {
+	public void addCapabilityVariant(String id, String assertionId, CapabilityVariant<?,?> variant) {
 		impl.addCapabilityVariant(id, assertionId, variant);		
 	}
 

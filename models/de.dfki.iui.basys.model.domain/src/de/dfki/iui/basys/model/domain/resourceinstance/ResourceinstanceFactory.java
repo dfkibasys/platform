@@ -3,6 +3,7 @@
 package de.dfki.iui.basys.model.domain.resourceinstance;
 
 import de.dfki.iui.basys.model.base.Entity;
+import de.dfki.iui.basys.model.domain.capability.Capability;
 import org.eclipse.emf.ecore.EFactory;
 
 /**
@@ -56,7 +57,7 @@ public interface ResourceinstanceFactory extends EFactory {
 	 * @return a new object of class '<em>Capability Variant</em>'.
 	 * @generated
 	 */
-	<T extends Entity> CapabilityVariant<T> createCapabilityVariant();
+	<T extends Entity, C extends Capability> CapabilityVariant<T, C> createCapabilityVariant();
 
 	/**
 	 * Returns a new object of class '<em>Manufacturing Capability Variant</em>'.
@@ -93,6 +94,15 @@ public interface ResourceinstanceFactory extends EFactory {
 	 * @generated
 	 */
 	HandlingCapabilityVariant createHandlingCapabilityVariant();
+
+	/**
+	 * Returns a new object of class '<em>Assembly Capability Variant</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Assembly Capability Variant</em>'.
+	 * @generated
+	 */
+	AssemblyCapabilityVariant createAssemblyCapabilityVariant();
 
 	/**
 	 * Returns the package supported by this factory.

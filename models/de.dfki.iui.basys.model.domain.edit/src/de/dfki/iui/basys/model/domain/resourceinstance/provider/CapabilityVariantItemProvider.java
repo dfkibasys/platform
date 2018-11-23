@@ -130,7 +130,7 @@ public class CapabilityVariantItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((CapabilityVariant<?>)object).getName();
+		String label = ((CapabilityVariant<?, ?>)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_CapabilityVariant_type") :
 			getString("_UI_CapabilityVariant_type") + " " + label;
@@ -376,6 +376,11 @@ public class CapabilityVariantItemProvider
 			(createChildParameter
 				(ResourceinstancePackage.Literals.CAPABILITY_VARIANT__CAPABILITY,
 				 CapabilityFactory.eINSTANCE.createConveying()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ResourceinstancePackage.Literals.CAPABILITY_VARIANT__CAPABILITY,
+				 CapabilityFactory.eINSTANCE.createTake()));
 	}
 
 	/**
