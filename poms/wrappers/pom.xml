@@ -29,5 +29,6 @@
     <module>org.apache.curator.framework</module>
     <module>org.apache.curator.x.discovery</module>
     <module>org.apache.zookeeper</module>
+    <module>org.apache.xmlrpc.xmlrpc-client</module>
   </modules>
 </project>

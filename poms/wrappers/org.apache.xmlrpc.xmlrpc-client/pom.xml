@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <parent>
+    <relativePath>../</relativePath>
+    <groupId>de.dfki.cos.basys.platform</groupId>
+    <artifactId>wrapper-bundle-settings</artifactId>
+    <version>0.2.1-SNAPSHOT</version>
+  </parent>
+  
+  <properties>
+    <bundle.symbolicName>org.apache.xmlrpc.xmlrpc-client</bundle.symbolicName>
+    <wrapped.groupId>org.apache.xmlrpc</wrapped.groupId>
+    <wrapped.artifactId>xmlrpc-client</wrapped.artifactId>
+    <wrapped.version>3.1.3</wrapped.version>
+  </properties>
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>de.dfki.cos.basys.platform.wrapper-bundle-settings</groupId>
+  <artifactId>org.apache.xmlrpc.xmlrpc-client</artifactId>
+
+  <name>${bundle.symbolicName} ${wrapped.version} [osgi]</name>
+
+  <packaging>bundle</packaging>
+
+  <dependencies>
+    <dependency>
+      <groupId>${wrapped.groupId}</groupId>
+      <artifactId>${wrapped.artifactId}</artifactId>
+      <version>${wrapped.version}</version>
+      <optional>false</optional>
+    </dependency>
+  </dependencies>
+
+</project>
