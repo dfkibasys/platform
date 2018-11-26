@@ -2,12 +2,15 @@ package de.dfki.iui.basys.runtime.processcontrol.impl;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.scxml2.TriggerEvent;
 import org.eclipse.emf.ecore.EObject;
 
 import de.dfki.iui.basys.common.emf.json.JsonUtils;
@@ -34,6 +37,8 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 	CamundaRestClient client;
 	// private final LinkedBlockingDeque<TaskInstanceDto> taskInstances = new
 	// LinkedBlockingDeque<>();
+	
+	BlockingQueue<TaskDescription> responseQueue = new LinkedBlockingQueue<TaskDescription>(32);
 
 	ScheduledExecutorService executor = Executors.newScheduledThreadPool(50000);
 	
@@ -60,6 +65,32 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 
 			}
 		}, 5000, 100, TimeUnit.MILLISECONDS);
+		
+		executor.schedule(new Runnable() {
+
+			@Override
+			public void run() {
+				while (true) {
+					try {
+						TaskDescription ts = responseQueue.poll(1000, TimeUnit.MILLISECONDS);
+						if (ts != null) {
+							if (ts.getResponse().getStatus() == ResponseStatus.OK) {
+								if (ts.getResponse().getResultVariables().size() > 0) {
+									client.complete(ts.getCorrelationId(), ts.getResponse().getResultVariables());
+								} else {
+									client.complete(ts.getCorrelationId());
+								}
+							} else {
+								client.handleError(ts.getCorrelationId(), ts.getResponse().getMessage(), 0, 1000);
+							}
+						}
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+			
+		}, 5000, TimeUnit.MILLISECONDS);
 	}
 
 	@Override
@@ -167,15 +198,21 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 			return ce.getTask();
 		}, executor).thenApply((ts) -> {
 			if (ts.getCorrelationId() != null) {
-				if (ts.getResponse().getStatus() == ResponseStatus.OK) {
-					if (ts.getResponse().getResultVariables().size() > 0) {					
-						client.complete(ts.getCorrelationId(), ts.getResponse().getResultVariables());
-					} else {
-						client.complete(ts.getCorrelationId());
-					}
-				} else {
-					client.handleError(ts.getCorrelationId(), ts.getResponse().getMessage(), 0, 1000);
+				try {
+					responseQueue.put(ts);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
+//				if (ts.getResponse().getStatus() == ResponseStatus.OK) {
+//					if (ts.getResponse().getResultVariables().size() > 0) {					
+//						client.complete(ts.getCorrelationId(), ts.getResponse().getResultVariables());
+//					} else {
+//						client.complete(ts.getCorrelationId());
+//					}
+//				} else {
+//					client.handleError(ts.getCorrelationId(), ts.getResponse().getMessage(), 0, 1000);
+//				}
 			}
 			return ts.getResponse();
 		}).handle((response, ex) -> {
