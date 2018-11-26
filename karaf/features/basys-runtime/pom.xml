@@ -83,6 +83,13 @@
 			<version>${project.version}</version>
 			<type>bundle</type>
 		</dependency>
+		
+		<dependency>
+			<groupId>de.dfki.cos.basys.platform.runtime</groupId>
+			<artifactId>de.dfki.cos.basys.platform.runtime.component.device.xmlrpc</artifactId>
+			<version>${project.version}</version>
+			<type>bundle</type>
+		</dependency>
 
 		<dependency>
 			<groupId>de.dfki.cos.basys.platform.runtime</groupId>
