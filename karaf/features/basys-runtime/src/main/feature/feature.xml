@@ -2,16 +2,29 @@
 <features xmlns="http://karaf.apache.org/xmlns/features/v1.5.0" name="BaSys-4.0">
     <repository>mvn:org.apache.karaf.features/standard/4.2.1/xml/features</repository>
     <repository>mvn:com.eclipsesource.jaxrs/features/5.3.1/xml/features</repository>
+<!--     <feature name="basys-jax-rs-connector">
+	    <bundle dependency="true">mvn:com.eclipsesource.jaxrs/jersey-all/2.22.2</bundle>
+	    <bundle dependency="true">mvn:com.eclipsesource.jaxrs/consumer/5.3.1</bundle>
+	    <bundle>mvn:com.eclipsesource.jaxrs/publisher/5.3.1</bundle>
+    </feature> -->
     <feature name="basys-runtime">
     	<!-- <feature>war</feature>  -->
 		<!--<feature>basys-common</feature>
 		<feature>basys-models</feature>-->
 		
-        <feature>jax-rs-connector</feature>
-        <feature>jax-rs-provider-multipart</feature>
+        <!-- <feature>jax-rs-connector</feature>
+        <feature>jax-rs-provider-multipart</feature> -->
+        <!-- 
+        <bundle start-level="75">mvn:com.eclipsesource.jaxrs/jersey-all/2.22.2</bundle> -->
         
         <bundle>mvn:com.google.guava/guava/19.0</bundle>        
         <bundle>mvn:com.google.guava/guava/20.0</bundle>
+ 
+        <!-- 
+        <bundle>mvn:com.fasterxml.jackson.core/jackson-annotations/2.8.4</bundle>       
+        <bundle>mvn:com.fasterxml.jackson.core/jackson-annotations/2.9.5</bundle> 
+         -->
+        
       <!--   <bundle start-level="75">mvn:org.ops4j.pax.logging/pax-logging-service/1.10.1</bundle>
         <bundle start-level="75">mvn:org.ops4j.pax.logging/pax-logging-api/1.10.1</bundle> -->
     </feature>

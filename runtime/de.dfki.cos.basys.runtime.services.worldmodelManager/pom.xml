@@ -33,6 +33,13 @@
 			<artifactId>de.dfki.cos.basys.platform.runtime.processcontrol</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.json/json -->
+		<dependency>
+		    <groupId>org.json</groupId>
+		    <artifactId>json</artifactId>
+		    <version>20180130</version>
+		</dependency>	
 
 		<!-- comment to remove all imported (non-local) bundles from your compilation 
 			classpath -->
@@ -79,13 +86,7 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/org.json/json -->
-		<dependency>
-		    <groupId>org.json</groupId>
-		    <artifactId>json</artifactId>
-		    <version>20180130</version>
-		</dependency>	
+	
 
 	</dependencies>
 
