@@ -6,6 +6,7 @@
 package de.dfki.iui.basys.runtime.processcontrol.impl;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -73,14 +74,24 @@ public class CamundaRestClient {
 
 		// String resultE = response.readEntity(String.class);
 
-		List<ExternalServiceTaskDto> result = response.readEntity(new GenericType<List<ExternalServiceTaskDto>>() {
-		});
 		
-		for (ExternalServiceTaskDto task : result) {
-			taskToProcessInstanceMap.put(task.getId(),task.getProcessInstanceId());
+		LOGGER.debug("getExternalTasks finished with status code " + response.getStatus() + " - " + response.getStatusInfo());
+		try {
+			List<ExternalServiceTaskDto> result = response.readEntity(new GenericType<List<ExternalServiceTaskDto>>() {
+			});
+			
+			LOGGER.debug("retrieved " + result.size() + " tasks");
+			
+			for (ExternalServiceTaskDto task : result) {
+				taskToProcessInstanceMap.put(task.getId(),task.getProcessInstanceId());
+			}
+	
+			return result;
+		} catch (Exception ex) {
+			LOGGER.warn(ex.getMessage());
+			LOGGER.warn("JSON deserialization failed.");
+			return new LinkedList<ExternalServiceTaskDto>();
 		}
-
-		return result;
 	}
 
 	public synchronized void putVariable(Variable var, String processInstanceId) {
