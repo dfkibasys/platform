@@ -30,7 +30,7 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 	
 	public State getLastState() {
 		try {
-			return recentStates.poll(20,TimeUnit.SECONDS);
+			return recentStates.poll(20,TimeUnit.MINUTES);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
