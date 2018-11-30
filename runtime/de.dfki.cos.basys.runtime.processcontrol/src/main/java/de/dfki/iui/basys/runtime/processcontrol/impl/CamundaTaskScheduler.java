@@ -60,7 +60,15 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 				try {
 				pollCamunda();
 				} catch (Exception e) {
+					LOGGER.error(e.getMessage());
+					e.printStackTrace();
 					LOGGER.error("Camunda could not be polled - is it running?");
+					try {
+						Thread.sleep(5000);
+					} catch (InterruptedException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 
 			}
