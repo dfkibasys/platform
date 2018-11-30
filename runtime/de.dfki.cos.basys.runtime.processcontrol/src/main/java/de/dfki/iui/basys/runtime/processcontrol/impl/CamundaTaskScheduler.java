@@ -147,6 +147,7 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 			if (task.variables.assignee.value.equals("WAIT")) {
 				int duration = Integer.parseInt(task.variables.command.value);
 				scheduleWait(task.getId(),duration);
+				return;
 			}
 			
 			// if (task.variables.parameters == null || task.variables.parameters.value ==
@@ -157,6 +158,7 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 			// }
 
 			try {
+				//LOGGER.debug(task.variables.command.value);
 				ComponentRequest request = JsonUtils.fromString(task.variables.command.value, ComponentRequest.class);
 				if (task.variables.assignee != null || task.variables.assignee.value != null) {
 					request.setComponentId(task.variables.assignee.value);
