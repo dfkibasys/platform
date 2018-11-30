@@ -91,6 +91,7 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 							} else {
 								client.handleError(ts.getCorrelationId(), ts.getResponse().getMessage(), 0, 1000);
 							}
+							Thread.sleep(200);
 						}
 					} catch (InterruptedException e) {
 						e.printStackTrace();
@@ -147,7 +148,7 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 			if (task.variables.assignee.value.equals("WAIT")) {
 				int duration = Integer.parseInt(task.variables.command.value);
 				scheduleWait(task.getId(),duration);
-				return;
+				continue;
 			}
 			
 			// if (task.variables.parameters == null || task.variables.parameters.value ==
@@ -199,6 +200,15 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 
 	}
 
+	private synchronized void enqueueTaskResponse(TaskDescription task) {
+		try {
+			responseQueue.put(task);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	@Override
 	public CompletableFuture<ComponentResponse> scheduleTask(TaskDescription task) {
 		LOGGER.debug("scheduleTask");
@@ -207,13 +217,8 @@ public class CamundaTaskScheduler extends ServiceComponent implements TaskSchedu
 			ce.execute(context);
 			return ce.getTask();
 		}, executor).thenApply((ts) -> {
-			if (ts.getCorrelationId() != null) {
-				try {
-					responseQueue.put(ts);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+			if (ts.getCorrelationId() != null) {				
+					enqueueTaskResponse(ts);				
 //				if (ts.getResponse().getStatus() == ResponseStatus.OK) {
 //					if (ts.getResponse().getResultVariables().size() > 0) {					
 //						client.complete(ts.getCorrelationId(), ts.getResponse().getResultVariables());
