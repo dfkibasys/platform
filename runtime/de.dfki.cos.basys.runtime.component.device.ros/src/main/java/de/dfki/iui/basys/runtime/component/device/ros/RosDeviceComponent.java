@@ -12,6 +12,7 @@ import edu.wpi.rail.jrosbridge.Ros;
 public abstract class RosDeviceComponent extends DeviceComponent {
 
 	protected Ros ros = null;	
+	protected String protocol = "ws";
 	protected String host = "localhost";
 	protected int port = 9090;
 	
@@ -21,7 +22,7 @@ public abstract class RosDeviceComponent extends DeviceComponent {
 
 	@Override
 	public void connectToExternal() throws ComponentException {
-		String patternString = "ws:\\/\\/(?<host>.*):(?<port>\\d*)";
+		String patternString = "(?<protocol>wss?):\\/\\/(?<host>.*):(?<port>\\d*)";
 
 		Pattern pattern = Pattern.compile(patternString);
 
@@ -30,12 +31,12 @@ public abstract class RosDeviceComponent extends DeviceComponent {
 		if (!matches) {
 			throw new ComponentException("Invalid external connection string! " + componentConfig.getExternalConnectionString() + " does not match the expected pattern " + patternString);
 		}
-
+		protocol = matcher.group("protocol");
 		host = matcher.group("host");
 		port = Integer.parseInt(matcher.group("port"));
 				
 		//TODO: support also wss
-		ros = new Ros(host, port, WebSocketType.ws);
+		ros = new Ros(host, port, WebSocketType.valueOf(protocol));
 		if (!ros.connect()) {
 			throw new ComponentException( getName() + " cannot connect to \"" + componentConfig.getExternalConnectionString() + "\"");
 		}
