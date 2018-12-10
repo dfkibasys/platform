@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
-import de.dfki.iui.basys.common.emf.EmfUtils;
+import de.dfki.cos.basys.common.emf.EmfUtils;
 
 public class Overlay extends Computation {
 

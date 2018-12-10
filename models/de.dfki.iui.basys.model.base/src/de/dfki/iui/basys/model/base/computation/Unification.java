@@ -11,7 +11,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
-import de.dfki.iui.basys.common.emf.EmfUtils;
+import de.dfki.cos.basys.common.emf.EmfUtils;
 //import de.dfki.iui.basys.model.base.BasePackage;
 
 public class Unification extends Computation {

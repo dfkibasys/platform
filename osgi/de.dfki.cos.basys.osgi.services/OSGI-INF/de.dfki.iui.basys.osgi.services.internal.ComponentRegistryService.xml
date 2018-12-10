@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" activate="activate" configuration-policy="require" deactivate="deactivate" immediate="true" modified="modified" name="de.dfki.iui.basys.osgi.services.internal.ComponentRegistryService">
-   <service>
-      <provide interface="de.dfki.iui.basys.runtime.component.registry.ComponentRegistry"/>
-   </service>
-   <reference bind="setChannelPoolProvider" interface="de.dfki.iui.basys.osgi.services.ChannelPoolProvider" name="ChannelPoolProvider" unbind="unsetChannelPoolProvider"/>
-   <implementation class="de.dfki.iui.basys.osgi.services.internal.ComponentRegistryService"/>
-</scr:component>

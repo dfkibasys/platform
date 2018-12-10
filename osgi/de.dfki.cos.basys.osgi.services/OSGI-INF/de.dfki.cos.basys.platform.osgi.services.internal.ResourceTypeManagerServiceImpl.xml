@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" activate="activate" configuration-policy="require" deactivate="deactivate" immediate="true" modified="modified" name="de.dfki.cos.basys.platform.osgi.services.internal.ResourceTypeManagerServiceImpl">
+   <service>
+      <provide interface="de.dfki.cos.basys.platform.runtime.services.ResourceTypeManager"/>
+   </service>
+   <reference bind="setComponentManager" interface="de.dfki.cos.basys.platform.runtime.component.manager.ComponentManager" name="ComponentManager" unbind="unsetComponentManager"/>
+   <reference bind="setResourceSetProvider" interface="de.dfki.cos.basys.platform.osgi.services.ResourceSetProvider" name="ResourceSetProvider" unbind="unsetResourceSetProvider"/>
+   <implementation class="de.dfki.cos.basys.platform.osgi.services.internal.ResourceTypeManagerServiceImpl"/>
+</scr:component>

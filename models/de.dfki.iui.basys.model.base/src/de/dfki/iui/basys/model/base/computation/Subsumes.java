@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.dfki.iui.basys.common.emf.EmfPersistence;
+import de.dfki.cos.basys.common.emf.EmfPersistence;
 import de.dfki.iui.basys.model.base.computation.MatchReport.MatchResult;
 import de.dfki.iui.basys.model.base.computation.SubsumeReport.SubsumeResult;
 import de.dfki.iui.basys.model.pattern.PEmptySlot;

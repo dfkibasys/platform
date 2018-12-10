@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" activate="activate" configuration-policy="require" deactivate="deactivate" modified="modified" name="de.dfki.iui.basys.osgi.services.internal.ResourceSetProviderImpl">
-   <service>
-      <provide interface="de.dfki.iui.basys.osgi.services.ResourceSetProvider"/>
-   </service>
-   <implementation class="de.dfki.iui.basys.osgi.services.internal.ResourceSetProviderImpl"/>
-</scr:component>

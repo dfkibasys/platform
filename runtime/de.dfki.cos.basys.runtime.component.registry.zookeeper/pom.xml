@@ -10,7 +10,7 @@
 
 	<properties>
 		<bundle.symbolicName>de.dfki.cos.basys.platform.runtime.component.registry.zookeeper</bundle.symbolicName>
-		<bundle.namespace>de.dfki.iui.basys.runtime.component.registry.zookeeper</bundle.namespace>
+		<bundle.namespace>de.dfki.cos.basys.platform.runtime.component.registry.zookeeper</bundle.namespace>
 		<curator.version>4.0.1</curator.version>
 		<curator-x.version>4.0.0</curator-x.version>
 	</properties>

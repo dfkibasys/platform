@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" activate="activate" configuration-policy="require" deactivate="deactivate" immediate="true" modified="modified" name="de.dfki.cos.basys.platform.osgi.services.internal.WorkerGuidanceManagerServiceImpl">
+   <service>
+      <provide interface="de.dfki.cos.basys.platform.runtime.services.WorkerGuidanceManager"/>
+   </service>
+   <reference bind="setComponentManager" interface="de.dfki.cos.basys.platform.runtime.component.manager.ComponentManager" name="ComponentManager" unbind="unsetComponentManager"/>
+   <implementation class="de.dfki.cos.basys.platform.osgi.services.internal.WorkerGuidanceManagerServiceImpl"/>
+</scr:component>

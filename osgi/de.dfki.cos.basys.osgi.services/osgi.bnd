@@ -4,4 +4,4 @@
 
 Bundle-Activator: ${bundle.namespace}.internal.Activator
 #Service-Component: OSGI-INF/*.xml
-Require-Bundle: com.eclipsesource.jaxrs.jersey-min;bundle-version="2.22.2";resolution:=optional, com.google.guava;bundle-version="20.0.0";resolution:=optional
+Require-Bundle: de.dfki.cos.basys.common.jersey-min;bundle-version="2.22.2";resolution:=optional, com.google.guava;bundle-version="20.0.0";resolution:=optional

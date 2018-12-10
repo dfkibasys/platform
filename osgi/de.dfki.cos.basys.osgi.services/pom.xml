@@ -9,7 +9,7 @@
 
 	<properties>
 		<bundle.symbolicName>de.dfki.cos.basys.platform.osgi.services</bundle.symbolicName>
-		<bundle.namespace>de.dfki.iui.basys.osgi.services</bundle.namespace>
+		<bundle.namespace>de.dfki.cos.basys.platform.osgi.services</bundle.namespace>
 	</properties>
 
 	<modelVersion>4.0.0</modelVersion>

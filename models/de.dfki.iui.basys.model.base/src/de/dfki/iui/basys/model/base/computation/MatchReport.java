@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 import org.eclipse.emf.ecore.EObject;
 
-import de.dfki.iui.basys.common.emf.EmfPersistence;
+import de.dfki.cos.basys.common.emf.EmfPersistence;
 import de.dfki.iui.basys.model.pattern.PPattern;
 
 public class MatchReport {

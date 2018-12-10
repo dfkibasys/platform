@@ -9,7 +9,7 @@
 
 	<properties>
 		<bundle.symbolicName>de.dfki.cos.basys.platform.runtime.gateway</bundle.symbolicName>
-		<bundle.namespace>de.dfki.iui.basys.runtime.gateway</bundle.namespace>
+		<bundle.namespace>de.dfki.cos.basys.platform.runtime.gateway</bundle.namespace>
 	</properties>
 
 	<modelVersion>4.0.0</modelVersion>
