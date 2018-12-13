@@ -17,14 +17,14 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
+import de.dfki.cos.basys.platform.model.runtime.component.State;
+import de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentConfigurationImpl;
+import de.dfki.cos.basys.platform.model.runtime.component.impl.PropertyImpl;
 import de.dfki.cos.basys.platform.runtime.component.ComponentContext;
 import de.dfki.cos.basys.platform.runtime.component.ComponentException;
 import de.dfki.cos.basys.platform.runtime.component.device.DeviceComponent;
 import de.dfki.cos.basys.platform.runtime.component.device.packml.UnitConfiguration;
-import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
-import de.dfki.iui.basys.model.runtime.component.State;
-import de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl;
-import de.dfki.iui.basys.model.runtime.component.impl.PropertyImpl;
 
 public class FibonacciComponentTest {
 

@@ -6,14 +6,14 @@ import java.util.concurrent.TimeUnit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import de.dfki.cos.basys.platform.model.runtime.communication.Channel;
+import de.dfki.cos.basys.platform.model.runtime.communication.ChannelPool;
+import de.dfki.cos.basys.platform.model.runtime.communication.Client;
+import de.dfki.cos.basys.platform.model.runtime.communication.Notification;
+import de.dfki.cos.basys.platform.model.runtime.communication.Request;
+import de.dfki.cos.basys.platform.model.runtime.communication.Response;
 import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
 import de.dfki.cos.basys.platform.runtime.communication.provider.JmsCommunicationProvider;
-import de.dfki.iui.basys.model.runtime.communication.Channel;
-import de.dfki.iui.basys.model.runtime.communication.ChannelPool;
-import de.dfki.iui.basys.model.runtime.communication.Client;
-import de.dfki.iui.basys.model.runtime.communication.Notification;
-import de.dfki.iui.basys.model.runtime.communication.Request;
-import de.dfki.iui.basys.model.runtime.communication.Response;
 import junit.framework.TestCase;
 
 public class JmsCommunicationProviderTest extends TestCase {

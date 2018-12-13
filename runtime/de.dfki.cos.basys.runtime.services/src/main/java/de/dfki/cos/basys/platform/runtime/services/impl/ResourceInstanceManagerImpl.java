@@ -3,15 +3,15 @@ package de.dfki.cos.basys.platform.runtime.services.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.dfki.cos.basys.platform.model.domain.capability.Capability;
+import de.dfki.cos.basys.platform.model.domain.resourceinstance.CapabilityApplication;
+import de.dfki.cos.basys.platform.model.domain.resourceinstance.CapabilityVariant;
+import de.dfki.cos.basys.platform.model.domain.resourceinstance.ResourceInstance;
+import de.dfki.cos.basys.platform.model.domain.resourceinstance.ResourceInstanceRepository;
+import de.dfki.cos.basys.platform.model.domain.resourceinstance.ResourceinstancePackage;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
 import de.dfki.cos.basys.platform.runtime.component.service.EmfServiceComponent;
 import de.dfki.cos.basys.platform.runtime.services.ResourceInstanceManager;
-import de.dfki.iui.basys.model.domain.capability.Capability;
-import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityApplication;
-import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
-import de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstance;
-import de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstanceRepository;
-import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstancePackage;
-import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 
 public class ResourceInstanceManagerImpl extends EmfServiceComponent implements ResourceInstanceManager {
 

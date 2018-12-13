@@ -3,9 +3,9 @@ package de.dfki.cos.basys.platform.runtime.component.service;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
 import de.dfki.cos.basys.platform.runtime.component.ComponentException;
 import de.dfki.cos.basys.platform.runtime.component.device.DeviceComponentController;
-import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 
 public class DeviceControllerServiceComponent extends ServiceComponent {
 

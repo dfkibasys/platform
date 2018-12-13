@@ -14,6 +14,9 @@ import org.apache.curator.x.discovery.ServiceDiscoveryBuilder;
 import org.apache.curator.x.discovery.ServiceInstance;
 import org.apache.curator.x.discovery.details.JsonInstanceSerializer;
 
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo;
 import de.dfki.cos.basys.platform.runtime.communication.CommUtils;
 import de.dfki.cos.basys.platform.runtime.component.BaseComponent;
 import de.dfki.cos.basys.platform.runtime.component.Component;
@@ -21,9 +24,6 @@ import de.dfki.cos.basys.platform.runtime.component.ComponentException;
 import de.dfki.cos.basys.platform.runtime.component.registry.ComponentRegistration;
 import de.dfki.cos.basys.platform.runtime.component.registry.ComponentRegistrationException;
 import de.dfki.cos.basys.platform.runtime.component.registry.ComponentRegistry;
-import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
-import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
-import de.dfki.iui.basys.model.runtime.component.ComponentInfo;
 
 public class ZookeeperComponentRegistry extends BaseComponent implements ComponentRegistry {
 

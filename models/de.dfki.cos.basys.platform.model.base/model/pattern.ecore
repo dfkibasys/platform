@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="pattern" nsURI="http://www.dfki.de/iui/basys/model/pattern"
+    nsPrefix="pattern">
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
+    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
+    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
+  </eAnnotations>
+  <eAnnotations source="http://de.dfki.iui.mmds/CoreModel"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PPattern" abstract="true">
+    <eOperations name="matches" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return Matches.matches(object, this).result == MatchResult.MATCH_SUCCESS;"/>
+      </eAnnotations>
+      <eParameters name="object" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
+    <eOperations name="createSkeleton" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&lt;CODE>createSkeleton()&lt;/CODE> is used to construct a skeleton for a PPattern. At the first mapping of a mapping chain&#xD;&#xA;usually there is no target content needed but can be constructed using the target PPattern. Based on that skeleton further&#xD;&#xA;mappings can rely on and set the corresponding features."/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="unify" eType="#//PPattern">
+      <eParameters name="ppatt" eType="#//PPattern"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="varName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="instIdx" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="-1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="quantor" eType="#//PQuantorEnum"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PObject" eSuperTypes="#//PPattern">
+    <eOperations name="getSlot" eType="#//PSlot">
+      <eParameters name="feature" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
+    </eOperations>
+    <eOperations name="createSkeleton" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+    <eOperations name="unify" eType="#//PPattern">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return unify( (PObject) ppatt );"/>
+      </eAnnotations>
+      <eParameters name="ppatt" eType="#//PPattern">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="body" value="PObject co = EcoreUtil.copy( this );&#xD;&#xA;&#xD;&#xA;// 1) compare the types&#xD;&#xA;EClass eclCo = getType(),&#xD;&#xA;&#x9;   eclBg = bg.getType();&#xD;&#xA;EPackage pCo = eclCo.getEPackage();&#xD;&#xA;EPackage pBg = eclBg.getEPackage();&#xD;&#xA;&#xD;&#xA;if ( !(eclCo.equals( eclBg ) || pCo.getName().equals( pBg.getName() ) || pCo.getNsPrefix().equals( pBg.getNsPrefix() ) || pCo.getNsURI().equals( pBg.getNsURI() )) ) {&#xD;&#xA;&#x9;return null;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;// 2) collect the slots&#xD;&#xA;Map&lt;EStructuralFeature, List&lt; PSlot >> allSlots = new HashMap&lt;>();&#xD;&#xA;EStructuralFeature feat;&#xD;&#xA;PSlot slot;&#xD;&#xA;for ( EList&lt; ? > slotList : new EList&lt;?>[]{ co.getSlot(), bg.getSlot()} ) {&#xD;&#xA;&#x9;for ( Object obj : slotList ) {&#xD;&#xA;&#x9;&#x9;slot = (PSlot) obj;&#xD;&#xA;&#x9;&#x9;feat = slot.getFeature();&#xD;&#xA;&#x9;&#x9;if ( !allSlots.containsKey( feat )) {&#xD;&#xA;&#x9;&#x9;&#x9;allSlots.put( feat, new ArrayList&lt; PSlot >( 2 ));&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;allSlots.get( feat ).add( slot );&#xD;&#xA;&#x9;}&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;// 3) unify all slots with the same feature&#xD;&#xA;co.getSlot().clear();&#xD;&#xA;List&lt; PSlot > slots;&#xD;&#xA;for ( EStructuralFeature f : allSlots.keySet() ) {&#xD;&#xA;&#x9;slots = allSlots.get( f );&#xD;&#xA;&#x9;slot = slots.get( 0 );&#xD;&#xA;&#x9;for ( int i = 1, size = slots.size(); i &lt; size; i++ ) {&#xD;&#xA;&#x9;&#x9;slot = slot.unify( slots.get( i ));&#xD;&#xA;&#x9;&#x9;if ( slot == null ) {&#xD;&#xA;&#x9;&#x9;&#x9;return null;&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;co.getSlot().add( slot );&#xD;&#xA;}&#xD;&#xA;return co;"/>
+        </eAnnotations>
+      </eParameters>
+    </eOperations>
+    <eOperations name="unify" eType="#//PObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="PObject co = this;&#xD;&#xA;&#xD;&#xA;// 1) compare the types&#xD;&#xA;EClass eclCo = getType(),&#xD;&#xA;&#x9;   eclBg = bg.getType();&#xD;&#xA;EPackage pCo = eclCo.getEPackage();&#xD;&#xA;EPackage pBg = eclBg.getEPackage();&#xD;&#xA;&#xD;&#xA;if ( !(eclCo.equals( eclBg ) || pCo.getName().equals( pBg.getName() ) || pCo.getNsPrefix().equals( pBg.getNsPrefix() ) || pCo.getNsURI().equals( pBg.getNsURI() )) ) {&#xD;&#xA;&#x9;return null;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;// 2) collect the slots&#xD;&#xA;Map&lt;EStructuralFeature, List&lt; PSlot >> allSlots = new HashMap&lt;>();&#xD;&#xA;EStructuralFeature feat;&#xD;&#xA;PSlot slot;&#xD;&#xA;for ( EList&lt; ? > slotList : new EList&lt;?>[]{ co.getSlot(), bg.getSlot()} ) {&#xD;&#xA;&#x9;for ( Object obj : slotList ) {&#xD;&#xA;&#x9;&#x9;slot = (PSlot) obj;&#xD;&#xA;&#x9;&#x9;feat = slot.getFeature();&#xD;&#xA;&#x9;&#x9;if ( !allSlots.containsKey( feat )) {&#xD;&#xA;&#x9;&#x9;&#x9;allSlots.put( feat, new ArrayList&lt; PSlot >( 2 ));&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;allSlots.get( feat ).add( slot );&#xD;&#xA;&#x9;}&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;// 3) unify all slots with the same feature&#xD;&#xA;co.getSlot().clear();&#xD;&#xA;List&lt; PSlot > slots;&#xD;&#xA;for ( EStructuralFeature f : allSlots.keySet() ) {&#xD;&#xA;&#x9;slots = allSlots.get( f );&#xD;&#xA;&#x9;slot = slots.get( 0 );&#xD;&#xA;&#x9;for ( int i = 1, size = slots.size(); i &lt; size; i++ ) {&#xD;&#xA;&#x9;&#x9;slot = slot.unify( slots.get( i ));&#xD;&#xA;&#x9;&#x9;if ( slot == null ) {&#xD;&#xA;&#x9;&#x9;&#x9;return null;&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;co.getSlot().add( slot );&#xD;&#xA;}&#xD;&#xA;return co;"/>
+      </eAnnotations>
+      <eParameters name="bg" eType="#//PObject"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="slot" upperBound="-1" eType="#//PSlot"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PEmptySlot" eSuperTypes="#//PPattern"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PSlot">
+    <eOperations name="getRangeValue" eType="#//PValue"/>
+    <eOperations name="getRangeValues">
+      <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EEList">
+        <eTypeArguments eClassifier="#//PValue"/>
+      </eGenericType>
+    </eOperations>
+    <eOperations name="getRangeObject" eType="#//PObject"/>
+    <eOperations name="getRangeObjects">
+      <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EEList">
+        <eTypeArguments eClassifier="#//PObject"/>
+      </eGenericType>
+    </eOperations>
+    <eOperations name="unify" eType="#//PSlot">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="PSlot co = this;&#xD;&#xA;&#xD;&#xA;// 1) compare the features&#xD;&#xA;EStructuralFeature fCo = getFeature(),&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;   fBg = bg.getFeature();&#xD;&#xA;EPackage pCo = fCo.getEContainingClass().getEPackage();&#xD;&#xA;EPackage pBg = fBg.getEContainingClass().getEPackage();&#xD;&#xA;if ( !(fCo.equals( fBg ) || pCo.getName().equals( pBg.getName() ) || pCo.getNsPrefix().equals( pBg.getNsPrefix() ) || pCo.getNsURI().equals( pBg.getNsURI() )) ) {&#xD;&#xA;&#x9;return null;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;// 2) unify all range patterns dependent on the feature 'type'&#xD;&#xA;if ( fCo.isMany() ) {&#xD;&#xA;&#x9;// In this case the semantics of many-feature slots is considered to be an existential manner:&#xD;&#xA;&#x9;// Assume the PSlot has n many range patterns: p1, p2, .., pn. Then the semantics for an instance is considered to be: p1 or p2 or .. or pn&#xD;&#xA;&#x9;// If there is another PSlot with m many range patterns: q1, q2, .., qm and the second PSlot has to be satisfied as well then&#xD;&#xA;&#x9;// all patterns of the first PSLot can be distributed over the patterns of the second PSlot.&#xD;&#xA;&#x9;List&lt; PPattern > unifiedRange = new ArrayList&lt;>( bg.getRange().size() * co.getRange().size() );&#xD;&#xA;&#x9;if ( bg.getRange().isEmpty() ) {&#xD;&#xA;&#x9;&#x9;unifiedRange.addAll( co.getRange() );&#xD;&#xA;&#x9;} else if ( co.getRange().isEmpty() ) {&#xD;&#xA;&#x9;&#x9;unifiedRange.addAll( bg.getRange() );&#xD;&#xA;&#x9;} else {&#xD;&#xA;&#x9;&#x9;PPattern tmp;&#xD;&#xA;&#x9;&#x9;for ( PPattern pattBg : bg.getRange() ) {&#xD;&#xA;&#x9;&#x9;&#x9;for ( PPattern pattCo : co.getRange() ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;if ( (tmp = pattCo.unify( pattBg )) != null ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;unifiedRange.add( tmp );&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;} else {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;// some range pattern did not unify -> it is ok since it was only one alternative&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;if ( unifiedRange.isEmpty() ) {&#xD;&#xA;&#x9;&#x9;&#x9;return null;&#x9;// there is no alternative which could be true -> stop unification&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;co.getRange().clear();&#xD;&#xA;&#x9;co.getRange().addAll( unifiedRange );&#xD;&#xA;} else {&#xD;&#xA;&#x9;// In case of a non-many feature only the range patterns are considered to be conjuncted and have to be unified to one single pattern.&#xD;&#xA;&#x9;PPattern range = null;&#xD;&#xA;&#x9;for ( PPattern pattBg : bg.getRange() ) {&#xD;&#xA;&#x9;&#x9;if ( range == null ) {&#xD;&#xA;&#x9;&#x9;&#x9;range = pattBg;&#xD;&#xA;&#x9;&#x9;} else {&#xD;&#xA;&#x9;&#x9;&#x9;if ( (range = range.unify( pattBg )) == null ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;return null;&#x9;&#x9;// some range pattern did not unify -> stop unification&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;for ( PPattern pattCo : co.getRange() ) {&#xD;&#xA;&#x9;&#x9;if ( range == null ) {&#xD;&#xA;&#x9;&#x9;&#x9;range = pattCo;&#xD;&#xA;&#x9;&#x9;} else {&#xD;&#xA;&#x9;&#x9;&#x9;if ( (range = range.unify( pattCo )) == null ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;return null;&#x9;&#x9;// some range pattern did not unify -> stop unification&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;if ( range != null ) {&#xD;&#xA;&#x9;&#x9;co.getRange().clear();&#xD;&#xA;&#x9;&#x9;co.getRange().add( range );&#xD;&#xA;&#x9;}&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;return co;"/>
+      </eAnnotations>
+      <eParameters name="bg" eType="#//PSlot"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="feature" lowerBound="1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="range" lowerBound="1" upperBound="-1"
+        eType="#//PPattern" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="featureName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        changeable="false" volatile="true" transient="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PValue" eSuperTypes="#//PPattern">
+    <eOperations name="createSkeleton" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="Object value = null;&#xD;&#xA;&#x9;&#x9;if (getRestrictions() != null) {&#xD;&#xA;&#x9;&#x9;&#x9;value = getRestrictions().getDefaultValue(null);&#xD;&#xA;&#x9;&#x9;} else {&#xD;&#xA;&#x9;&#x9;&#x9;try {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;value = this.getType().getInstanceClass().newInstance();&#xD;&#xA;&#x9;&#x9;&#x9;} catch (InstantiationException | IllegalAccessException e) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;// TODO Auto-generated catch block&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;e.printStackTrace();&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;if (value != null) {&#xD;&#xA;&#x9;&#x9;&#x9;PValueObject obj = PatternFactory.eINSTANCE.createPValueObject();&#xD;&#xA;&#x9;&#x9;&#x9;obj.setValue(value);&#xD;&#xA;&#x9;&#x9;&#x9;return obj;&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;return null;"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="unify" eType="#//PPattern">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return unify( (PValue) ppatt );"/>
+      </eAnnotations>
+      <eParameters name="ppatt" eType="#//PPattern">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="body" value="PObject co = EcoreUtil.copy( this );&#xD;&#xA;&#xD;&#xA;// 1) compare the types&#xD;&#xA;EClass eclCo = getType(),&#xD;&#xA;&#x9;   eclBg = bg.getType();&#xD;&#xA;EPackage pCo = eclCo.getEPackage();&#xD;&#xA;EPackage pBg = eclBg.getEPackage();&#xD;&#xA;&#xD;&#xA;if ( !(eclCo.equals( eclBg ) || pCo.getName().equals( pBg.getName() ) || pCo.getNsPrefix().equals( pBg.getNsPrefix() ) || pCo.getNsURI().equals( pBg.getNsURI() )) ) {&#xD;&#xA;&#x9;return null;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;// 2) collect the slots&#xD;&#xA;Map&lt;EStructuralFeature, List&lt; PSlot >> allSlots = new HashMap&lt;>();&#xD;&#xA;EStructuralFeature feat;&#xD;&#xA;PSlot slot;&#xD;&#xA;for ( EList&lt; ? > slotList : new EList&lt;?>[]{ co.getSlot(), bg.getSlot()} ) {&#xD;&#xA;&#x9;for ( Object obj : slotList ) {&#xD;&#xA;&#x9;&#x9;slot = (PSlot) obj;&#xD;&#xA;&#x9;&#x9;feat = slot.getFeature();&#xD;&#xA;&#x9;&#x9;if ( !allSlots.containsKey( feat )) {&#xD;&#xA;&#x9;&#x9;&#x9;allSlots.put( feat, new ArrayList&lt; PSlot >( 2 ));&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;allSlots.get( feat ).add( slot );&#xD;&#xA;&#x9;}&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;// 3) unify all slots with the same feature&#xD;&#xA;co.getSlot().clear();&#xD;&#xA;List&lt; PSlot > slots;&#xD;&#xA;for ( EStructuralFeature f : allSlots.keySet() ) {&#xD;&#xA;&#x9;slots = allSlots.get( f );&#xD;&#xA;&#x9;slot = slots.get( 0 );&#xD;&#xA;&#x9;for ( int i = 1, size = slots.size(); i &lt; size; i++ ) {&#xD;&#xA;&#x9;&#x9;slot = slot.unify( slots.get( i ));&#xD;&#xA;&#x9;&#x9;if ( slot == null ) {&#xD;&#xA;&#x9;&#x9;&#x9;return null;&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;co.getSlot().add( slot );&#xD;&#xA;}&#xD;&#xA;return co;"/>
+        </eAnnotations>
+      </eParameters>
+    </eOperations>
+    <eOperations name="unify" eType="#//PValue">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="PValue co = this;&#xD;&#xA;&#xD;&#xA;// 1) compare types; they must be equal&#xD;&#xA;EDataType dtCo = co.getType(),&#xD;&#xA;&#x9;&#x9;  dtBg = bg.getType();&#xD;&#xA;EPackage pCo = dtCo.getEPackage();&#xD;&#xA;EPackage pBg = dtBg.getEPackage();&#xD;&#xA;if ( !(dtCo.equals( dtBg ) || pCo.getName().equals( pBg.getName() ) || pCo.getNsPrefix().equals( pBg.getNsPrefix() ) || pCo.getNsURI().equals( pBg.getNsURI() )) ) {&#xD;&#xA;&#x9;return null;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;// 2) add the restrictions of the background to the restrictions of the covering&#xD;&#xA;co.setRestrictions( co.getRestrictions().unify( bg.getRestrictions() ));&#xD;&#xA;&#xD;&#xA;return co;"/>
+      </eAnnotations>
+      <eParameters name="bg" eType="#//PValue"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" unique="false" lowerBound="1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EDataType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="restrictions" eType="#//PRestrictions"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PValueObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PValueGen" abstract="true" interface="true">
+    <eOperations name="getDefaultValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject">
+      <eParameters name="defVal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PRestrictions" eSuperTypes="#//PValueGen">
+    <eOperations name="getDefaultValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Returns a default value for this set of restrictions. If the given result is not null then it satisfies all restrictions. Otherwise no value could be found&#xD;&#xA;although there could exist one."/>
+        <details key="body" value="Object defVal = defVal_;&#xD;&#xA;&#x9;&#x9;PRestrictionsEnum f = getFunction();&#xD;&#xA;&#x9;&#x9;List&lt;PValueGen> gens = new ArrayList&lt;PValueGen>(getRestriction());&#xD;&#xA;&#x9;&#x9;gens.addAll(getRestrictions());&#xD;&#xA;&#x9;&#x9;for (PValueGen gen : gens) {&#xD;&#xA;&#x9;&#x9;&#x9;defVal = gen.getDefaultValue(defVal);&#xD;&#xA;&#x9;&#x9;&#x9;Class&lt;?> instanceClass = ((PValueImpl) gen.eContainer().eContainer()).getType().getInstanceClass();&#xD;&#xA;&#x9;&#x9;&#x9;if (instanceClass != null &amp;&amp; instanceClass.getSuperclass() == BDataType.class) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;try {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;BDataType&lt;?> newInstance = (BDataType&lt;?>) instanceClass.newInstance();&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;newInstance.setValue(defVal.toString());&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;defVal = newInstance;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;} catch (SecurityException | InstantiationException | IllegalAccessException e) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;// TODO Auto-generated catch block&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;e.printStackTrace();&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;if (defVal == null) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;switch (f) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;case AND:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;// in this case all values have to be non null&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;return null;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;default:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;} else {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;switch (f) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;case OR:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;// in this case only the first value can be used&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;return defVal;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;default:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;return defVal;"/>
+      </eAnnotations>
+      <eParameters name="defVal_" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
+    <eOperations name="unify" eType="#//PRestrictions">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="PRestrictions co = this;&#xD;&#xA;&#xD;&#xA;PRestriction&lt; ?, ? > urest = null,&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9; tmp;&#xD;&#xA;PRestrictions urests = null,&#xD;&#xA;&#x9;&#x9;&#x9;  tmp2;&#xD;&#xA;boolean broken = false;&#xD;&#xA;switch ( co.getFunction() ) {&#xD;&#xA;&#x9;case AND:&#xD;&#xA;&#x9;&#x9;switch ( bg.getFunction() ) {&#xD;&#xA;&#x9;&#x9;&#x9;case AND:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;// unify all restrictions to get only one restriction&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;loop1 : for ( List&lt;?> rlist : new List&lt;?>[]{ co.getRestriction(), bg.getRestriction() } ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;for ( Object r : rlist ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;tmp = (PRestriction&lt; ?, ? >) r;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;if ( urest == null ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;urest = tmp;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;} else {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;urest = urest.unify( tmp );&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;if ( urest == null ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;co = null;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;broken = true;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;break loop1;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;if ( !broken ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;loop1 : for ( List&lt;?> rlist : new List&lt;?>[]{ co.getRestrictions(), bg.getRestrictions() } ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;for ( Object r : rlist ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;tmp2 = (PRestrictions) r;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;if ( urests == null ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;urests = tmp2;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;} else {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;urests = urests.unify( tmp2 );&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;if ( urests == null ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;co = null;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;broken = true;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;break loop1;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;if ( !broken ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if ( urest != null ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;co.getRestriction().clear();&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;co.getRestriction().add( urest );&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if ( urests != null ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;co.getRestrictions().clear();&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;co.getRestrictions().add( urests );&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;case OR:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;// TODO: implement a distribution of AND over OR restrictions &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;default:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;break;&#xD;&#xA;&#x9;case OR:&#xD;&#xA;&#x9;&#x9;switch ( bg.getFunction() ) {&#xD;&#xA;&#x9;&#x9;&#x9;case AND:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;// TODO: implement a distribution of OR over AND restrictions&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;case OR:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;co.getRestriction().addAll( bg.getRestriction() );&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;co.getRestrictions().addAll( bg.getRestrictions() );&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;default:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;break;&#xD;&#xA;&#x9;default:&#xD;&#xA;&#x9;&#x9;break;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;if ( co == null ) {&#xD;&#xA;&#x9;// some unification did not work -> provide general result&#xD;&#xA;&#x9;PRestrictions newRests = PatternFactory.eINSTANCE.createPRestrictions();&#xD;&#xA;&#x9;newRests.setFunction( PRestrictionsEnum.AND );&#xD;&#xA;&#x9;for (PRestrictions prests : new PRestrictions[]{ co, bg }) {&#xD;&#xA;&#x9;&#x9;if ( prests != null ) {&#xD;&#xA;&#x9;&#x9;&#x9;newRests.getRestrictions().add( prests );&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;return newRests;&#xD;&#xA;}&#xD;&#xA;return co;"/>
+      </eAnnotations>
+      <eParameters name="bg" eType="#//PRestrictions"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="restriction" upperBound="-1"
+        containment="true">
+      <eGenericType eClassifier="#//PRestriction">
+        <eTypeArguments/>
+        <eTypeArguments/>
+      </eGenericType>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="restrictions" upperBound="-1"
+        eType="#//PRestrictions" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="function" lowerBound="1"
+        eType="#//PRestrictionsEnum"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PRestriction" abstract="true" interface="true"
+      eSuperTypes="#//PValueGen">
+    <eTypeParameters name="F"/>
+    <eTypeParameters name="V"/>
+    <eOperations name="isSatisfiedBy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
+    <eOperations name="getFunction">
+      <eGenericType eTypeParameter="#//PRestriction/F"/>
+    </eOperations>
+    <eOperations name="setFunction">
+      <eParameters name="function">
+        <eGenericType eTypeParameter="#//PRestriction/F"/>
+      </eParameters>
+    </eOperations>
+    <eOperations name="getValue">
+      <eGenericType eTypeParameter="#//PRestriction/V"/>
+    </eOperations>
+    <eOperations name="setValue">
+      <eParameters name="value">
+        <eGenericType eTypeParameter="#//PRestriction/V"/>
+      </eParameters>
+    </eOperations>
+    <eOperations name="unify">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel"/>
+      <eGenericType eClassifier="#//PRestriction">
+        <eTypeArguments/>
+        <eTypeArguments/>
+      </eGenericType>
+      <eParameters name="bg">
+        <eGenericType eClassifier="#//PRestriction">
+          <eTypeArguments/>
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="expression" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PBooleanRestriction">
+    <eOperations name="isSatisfiedBy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="Object value=value_;&#xD;&#xA;if (value instanceof Boolean || value instanceof de.dfki.cos.basys.platform.model.base.datatypes.BBoolean) {&#x9;&#xD;&#xA;value = value instanceof Boolean ? value : ((de.dfki.cos.basys.platform.model.base.datatypes.BBoolean) value).getValue();&#x9;&#xD;&#xA;switch (getFunction()) {&#xD;&#xA;&#x9;case EQUALS:&#xD;&#xA;&#x9;&#x9;return getValue().equals(value);&#xD;&#xA;&#x9;case NOT_EQUALS:&#xD;&#xA;&#x9;&#x9;return !getValue().equals(value);&#xD;&#xA;&#x9;default:&#xD;&#xA;&#x9;&#x9;return false;&#xD;&#xA;&#x9;}&#xD;&#xA;}&#xD;&#xA;return false;"/>
+      </eAnnotations>
+      <eParameters name="value_" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
+    <eOperations name="getDefaultValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="if ( defVal != null ) {&#xD;&#xA;&#x9;return isSatisfiedBy( defVal ) ? defVal : null;&#xD;&#xA;}&#xD;&#xA;// create a value based on this restriction&#xD;&#xA;Boolean v = getValue().getValue();&#xD;&#xA;switch ( getFunction() ) {&#xD;&#xA;&#x9;case EQUALS:&#xD;&#xA;&#x9;&#x9;return v;&#xD;&#xA;&#x9;case NOT_EQUALS:&#xD;&#xA;&#x9;&#x9;return !v;&#xD;&#xA;&#x9;default:&#xD;&#xA;&#x9;&#x9;return null;&#xD;&#xA;}"/>
+      </eAnnotations>
+      <eParameters name="defVal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType base.ecore#//BBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="function" lowerBound="1"
+        eType="#//PBooleanRestrictionEnum"/>
+    <eGenericSuperTypes eClassifier="#//PRestriction">
+      <eTypeArguments eClassifier="#//PBooleanRestrictionEnum"/>
+      <eTypeArguments eClassifier="ecore:EDataType base.ecore#//BBoolean"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PEnumRestriction">
+    <eOperations name="isSatisfiedBy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="&#x9;if (value != null) {&#xD;&#xA;&#x9;&#x9;&#x9;Enumerator enumInst = getValue();&#xD;&#xA;&#x9;&#x9;&#x9;boolean isEq = getFunction() == PEnumRestrictionEnum.EQUALS;&#xD;&#xA;&#x9;&#x9;&#x9;return isEq == value.toString().equals(enumInst.getLiteral());&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;return false;"/>
+      </eAnnotations>
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
+    <eOperations name="getDefaultValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="&#x9;if (defVal != null)&#xD;&#xA;&#x9;&#x9;&#x9;return isSatisfiedBy(defVal) ? defVal : null;&#xD;&#xA;&#x9;&#x9;// create a value based on this restriction&#xD;&#xA;&#x9;&#x9;Enumerator enumInst = getValue();&#xD;&#xA;&#x9;&#x9;switch (getFunction()) {&#xD;&#xA;&#x9;&#x9;case EQUALS:&#xD;&#xA;&#x9;&#x9;&#x9;return getEnumDataType().getInstanceClass().getEnumConstants()[enumInst.getValue()];&#xD;&#xA;&#x9;&#x9;case NOT_EQUALS:&#xD;&#xA;&#x9;&#x9;&#x9;String instName = enumInst.getName();&#xD;&#xA;&#x9;&#x9;&#x9;for (EEnumLiteral lit : getEnumDataType().getELiterals()) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;if (!lit.getName().equals(instName))&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;return getEnumDataType().getInstanceClass().getEnumConstants()[lit.getValue()];&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;default:&#xD;&#xA;&#x9;&#x9;&#x9;return null;&#xD;&#xA;&#x9;&#x9;}"/>
+      </eAnnotations>
+      <eParameters name="defVal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
+    <eOperations name="unify">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="PEnumRestriction co = this;&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;if (bgrest instanceof PEnumRestriction) {&#xD;&#xA;&#x9;&#x9;&#x9;PEnumRestriction bg = (PEnumRestriction) bgrest;&#xD;&#xA;&#x9;&#x9;&#x9;switch (co.getFunction()) {&#xD;&#xA;&#x9;&#x9;&#x9;case EQUALS:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;switch (bg.getFunction()) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;case EQUALS:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if (co.getValue() == null) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;co.setValue(bg.getValue());&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return co;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if (bg.getValue() == null || co.getValue().equals(bg.getValue()) &amp;&amp; co.getEnumDataType().equals(bg.getEnumDataType()))&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return co;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;case NOT_EQUALS:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if (bg.getValue() == null)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return co;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if (co.getValue() == null) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;co.setFunction(bg.getFunction());&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;co.setEnumDataType(bg.getEnumDataType());&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;co.setValue(bg.getValue());&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return co;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if (!co.getValue().equals(bg.getValue()))&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return co;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;default:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;case NOT_EQUALS:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;switch (bg.getFunction()) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;case EQUALS:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if (bg.getValue() == null)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return co;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if (co.getValue() == null || !co.getValue().equals(bg.getValue())) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;co.setFunction(bg.getFunction());&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;co.setEnumDataType(bg.getEnumDataType());&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;co.setValue(bg.getValue());&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return co;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;case NOT_EQUALS:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if (co.getValue() == null) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;co.setValue(bg.getValue());&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return co;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if (bg.getValue() == null || co.getValue().equals(bg.getValue()) &amp;&amp; co.getEnumDataType().equals(bg.getEnumDataType()))&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return co;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;default:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;default:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;return null;"/>
+      </eAnnotations>
+      <eGenericType eClassifier="#//PRestriction">
+        <eTypeArguments/>
+        <eTypeArguments/>
+      </eGenericType>
+      <eParameters name="bgrest">
+        <eGenericType eClassifier="#//PRestriction">
+          <eTypeArguments/>
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="function" lowerBound="1"
+        eType="#//PEnumRestrictionEnum"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EEnumLiteral"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="enumDataType" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EEnum"/>
+    <eGenericSuperTypes eClassifier="#//PRestriction">
+      <eTypeArguments eClassifier="#//PEnumRestrictionEnum"/>
+      <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PCharRestriction">
+    <eOperations name="isSatisfiedBy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="Object newValue = value;&#xD;&#xA;if (value instanceof Character || value instanceof de.dfki.cos.basys.platform.model.base.datatypes.BChar) {&#xD;&#xA;&#x9;newValue = value instanceof Character ? value : ((de.dfki.cos.basys.platform.model.base.datatypes.BChar) value).getValue();&#xD;&#xA;&#x9;Character p = getValue().getValue();&#xD;&#xA;&#x9;Character v = (Character) newValue;&#xD;&#xA;&#x9;if (this.ignoreCase) {&#xD;&#xA;&#x9;&#x9;v = Character.toLowerCase(v);&#xD;&#xA;&#x9;&#x9;p = Character.toLowerCase(p);&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;switch (getFunction()) {&#xD;&#xA;&#x9;case EQUALS:&#xD;&#xA;&#x9;&#x9;return v.equals(p);&#xD;&#xA;&#x9;case NOT_EQUALS:&#xD;&#xA;&#x9;&#x9;return !v.equals(p);&#xD;&#xA;&#x9;default:&#xD;&#xA;&#x9;&#x9;return false;&#xD;&#xA;&#x9;}&#xD;&#xA;}&#xD;&#xA;return false;"/>
+      </eAnnotations>
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
+    <eOperations name="getDefaultValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="if ( defVal != null ) {&#xD;&#xA;&#x9;&#x9;&#x9;return isSatisfiedBy( defVal ) ? defVal : null;&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;// create a value based on this restriction&#xD;&#xA;&#x9;&#x9;char v = getValue().getValue();&#xD;&#xA;&#x9;&#x9;switch ( getFunction() ) {&#xD;&#xA;&#x9;&#x9;&#x9;case EQUALS:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;return v;&#xD;&#xA;&#x9;&#x9;&#x9;case NOT_EQUALS:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;return &quot;_&quot; + v;&#xD;&#xA;&#x9;&#x9;&#x9;default:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;return null;&#xD;&#xA;&#x9;&#x9;}"/>
+      </eAnnotations>
+      <eParameters name="defVal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
+    <eOperations name="unify">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="PCharRestriction co = this;&#xD;&#xA;&#xD;&#xA;if ( bgrest instanceof PCharRestriction ) {&#xD;&#xA;&#x9;PCharRestriction bg = (PCharRestriction) bgrest;&#xD;&#xA;&#x9;switch ( co.getFunction() ) {&#xD;&#xA;&#x9;&#x9;case EQUALS:&#xD;&#xA;&#x9;&#x9;&#x9;switch ( bg.getFunction() ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;case EQUALS:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if ( co.getValue() == null ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;co.setValue( bg.getValue() );&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return co;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if ( bg.getValue() == null || co.getValue().equals( bg.getValue()) ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return co;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;case NOT_EQUALS:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if ( bg.getValue() == null ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return co;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if ( co.getValue() == null ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;co.setFunction( bg.getFunction() );&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;co.setValue( bg.getValue() );&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;co.setIgnoreCase( bg.isIgnoreCase() );&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return co;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if (!co.getValue().equals( bg.getValue() )) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return co;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;default:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;case NOT_EQUALS:&#xD;&#xA;&#x9;&#x9;&#x9;switch ( bg.getFunction() ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;case EQUALS:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if ( bg.getValue() == null ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return co;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if ( co.getValue() == null || !co.getValue().equals( bg.getValue() ) ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;co.setFunction( bg.getFunction() );&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;co.setValue( bg.getValue() );&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;co.setIgnoreCase( bg.isIgnoreCase() );&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return co;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;case NOT_EQUALS:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if ( co.getValue() == null ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;co.setValue( bg.getValue() );&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return co;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if ( bg.getValue() == null || co.getValue().equals( bg.getValue()) ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return co;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;default:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;default:&#xD;&#xA;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;}&#xD;&#xA;}&#xD;&#xA;return null;"/>
+      </eAnnotations>
+      <eGenericType eClassifier="#//PRestriction">
+        <eTypeArguments/>
+        <eTypeArguments/>
+      </eGenericType>
+      <eParameters name="bgrest">
+        <eGenericType eClassifier="#//PRestriction">
+          <eTypeArguments/>
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ignoreCase" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType base.ecore#//BChar"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="function" lowerBound="1"
+        eType="#//PCharRestrictionEnum"/>
+    <eGenericSuperTypes eClassifier="#//PRestriction">
+      <eTypeArguments eClassifier="#//PCharRestrictionEnum"/>
+      <eTypeArguments eClassifier="ecore:EDataType base.ecore#//BChar"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PStringRestriction">
+    <eOperations name="isSatisfiedBy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="if (value instanceof String || value instanceof de.dfki.cos.basys.platform.model.base.datatypes.BString) {&#xD;&#xA;&#x9;String p = getValue().getValue();&#xD;&#xA;&#x9;String v = (String)value.toString();&#xD;&#xA;&#x9;if (this.ignoreCase) {&#xD;&#xA;&#x9;&#x9;v = v.toLowerCase();&#xD;&#xA;&#x9;&#x9;p = p.toLowerCase();&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;switch (getFunction()) {&#xD;&#xA;&#x9;case CONTAINS:&#xD;&#xA;&#x9;&#x9;return v.contains(p);&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;case ENDS_WITH:&#xD;&#xA;&#x9;&#x9;return v.endsWith(p);&#xD;&#xA;&#x9;case EQUALS:&#xD;&#xA;&#x9;&#x9;return v.equals(p);&#xD;&#xA;&#x9;case MATCHES:&#xD;&#xA;&#x9;&#x9;return v.matches(p);&#xD;&#xA;&#x9;case NOT_EQUALS:&#xD;&#xA;&#x9;&#x9;return !v.equals(p);&#xD;&#xA;&#x9;case STARTS_WITH:&#xD;&#xA;&#x9;&#x9;return v.startsWith(p);&#xD;&#xA;&#x9;default:&#xD;&#xA;&#x9;&#x9;return false;&#xD;&#xA;&#x9;}&#xD;&#xA;}&#xD;&#xA;return false;"/>
+      </eAnnotations>
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
+    <eOperations name="getDefaultValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="if ( defVal != null ) {&#xD;&#xA;&#x9;return isSatisfiedBy( defVal ) ? defVal : null;&#xD;&#xA;}&#xD;&#xA;// create a value based on this restriction&#xD;&#xA;String v = getValue().getValue();&#xD;&#xA;switch ( getFunction() ) {&#xD;&#xA;&#x9;case EQUALS:&#xD;&#xA;&#x9;case STARTS_WITH:&#xD;&#xA;&#x9;case ENDS_WITH:&#xD;&#xA;&#x9;case CONTAINS:&#xD;&#xA;&#x9;&#x9;return v;&#xD;&#xA;&#x9;case NOT_EQUALS:&#xD;&#xA;&#x9;&#x9;return &quot;_&quot; + v;&#xD;&#xA;&#x9;default:&#xD;&#xA;&#x9;&#x9;return null;&#xD;&#xA;}"/>
+      </eAnnotations>
+      <eParameters name="defVal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
+    <eOperations name="unify">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="PStringRestriction co = this;&#xD;&#xA;&#xD;&#xA;if ( bgrest instanceof PStringRestriction ) {&#xD;&#xA;&#x9;PStringRestriction bg = (PStringRestriction) bgrest;&#xD;&#xA;&#x9;switch ( co.getFunction() ) {&#xD;&#xA;&#x9;&#x9;case EQUALS:&#xD;&#xA;&#x9;&#x9;&#x9;switch ( bg.getFunction() ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;case EQUALS:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if ( co.getValue() == null ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;co.setValue( bg.getValue() );&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return co;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if ( bg.getValue() == null || co.getValue().equals( bg.getValue()) ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return co;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;case NOT_EQUALS:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if ( bg.getValue() == null ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return co;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if ( co.getValue() == null ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;co.setFunction( bg.getFunction() );&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;co.setValue( bg.getValue() );&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;co.setIgnoreCase( bg.isIgnoreCase() );&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return co;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if (!co.getValue().equals( bg.getValue() )) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return co;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;default:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;case NOT_EQUALS:&#xD;&#xA;&#x9;&#x9;&#x9;switch ( bg.getFunction() ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;case EQUALS:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if ( bg.getValue() == null ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return co;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if ( co.getValue() == null || !co.getValue().equals( bg.getValue() ) ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;co.setFunction( bg.getFunction() );&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;co.setValue( bg.getValue() );&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;co.setIgnoreCase( bg.isIgnoreCase() );&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return co;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;case NOT_EQUALS:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if ( co.getValue() == null ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;co.setValue( bg.getValue() );&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return co;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if ( bg.getValue() == null || co.getValue().equals( bg.getValue()) ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return co;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;default:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;default:&#xD;&#xA;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;}&#xD;&#xA;}&#xD;&#xA;return null;"/>
+      </eAnnotations>
+      <eGenericType eClassifier="#//PRestriction">
+        <eTypeArguments/>
+        <eTypeArguments/>
+      </eGenericType>
+      <eParameters name="bgrest">
+        <eGenericType eClassifier="#//PRestriction">
+          <eTypeArguments/>
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ignoreCase" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType base.ecore#//BString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="function" lowerBound="1"
+        eType="#//PStringRestrictionEnum"/>
+    <eGenericSuperTypes eClassifier="#//PRestriction">
+      <eTypeArguments eClassifier="#//PStringRestrictionEnum"/>
+      <eTypeArguments eClassifier="ecore:EDataType base.ecore#//BString"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PNumberRestriction" abstract="true">
+    <eTypeParameters name="V"/>
+    <eOperations name="_compareTo" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="switch (function) {&#xD;&#xA;case EQUALS:&#xD;&#xA;&#x9;if (compareToResult == 0)&#xD;&#xA;&#x9;&#x9;return true;&#xD;&#xA;&#x9;break;&#xD;&#xA;case GREATER_EQUALS:&#xD;&#xA;&#x9;if (compareToResult >= 0)&#xD;&#xA;&#x9;&#x9;return true;&#xD;&#xA;&#x9;break;&#xD;&#xA;case GREATER_THAN:&#xD;&#xA;&#x9;if (compareToResult > 0)&#xD;&#xA;&#x9;&#x9;return true;&#xD;&#xA;&#x9;break;&#xD;&#xA;case LESS_EQUALS:&#xD;&#xA;&#x9;if (compareToResult &lt;= 0)&#xD;&#xA;&#x9;&#x9;return true;&#xD;&#xA;&#x9;break;&#xD;&#xA;case LESS_THAN:&#xD;&#xA;&#x9;if (compareToResult &lt; 0)&#xD;&#xA;&#x9;&#x9;return true;&#xD;&#xA;&#x9;break;&#xD;&#xA;case NOT_EQUALS:&#xD;&#xA;&#x9;if (compareToResult != 0)&#xD;&#xA;&#x9;&#x9;return true;&#xD;&#xA;&#x9;break;&#xD;&#xA;default:&#xD;&#xA;&#x9;break;&#xD;&#xA;}&#xD;&#xA;return false;"/>
+      </eAnnotations>
+      <eParameters name="compareToResult" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="function" eType="#//PNumberRestrictionEnum"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="function" lowerBound="1"
+        eType="#//PNumberRestrictionEnum"/>
+    <eGenericSuperTypes eClassifier="#//PRestriction">
+      <eTypeArguments eClassifier="#//PNumberRestrictionEnum"/>
+      <eTypeArguments eTypeParameter="#//PNumberRestriction/V"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PByteRestriction">
+    <eOperations name="isSatisfiedBy" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="Object newValue = value;&#xD;&#xA;if (value instanceof Byte || value instanceof de.dfki.cos.basys.platform.model.base.datatypes.BByte) {&#xD;&#xA;&#x9;newValue = value instanceof Byte ? value : ((de.dfki.cos.basys.platform.model.base.datatypes.BByte) value).getValue();&#xD;&#xA;&#x9;int result = ((Byte) newValue).compareTo(getValue().getValue());&#xD;&#xA;&#x9;return _compareTo(result, getFunction());&#xD;&#xA;}&#xD;&#xA;return false;"/>
+      </eAnnotations>
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
+    <eOperations name="getDefaultValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="if ( defVal != null ) {&#xD;&#xA;&#x9;return isSatisfiedBy( defVal ) ? defVal : null;&#xD;&#xA;}&#xD;&#xA;// create a value based on this restriction&#xD;&#xA;Byte v = getValue().getValue();&#xD;&#xA;switch ( getFunction() ) {&#xD;&#xA;&#x9;case EQUALS:&#xD;&#xA;&#x9;case GREATER_EQUALS:&#xD;&#xA;&#x9;case LESS_EQUALS:&#xD;&#xA;&#x9;&#x9;return v;&#xD;&#xA;&#x9;case GREATER_THAN:&#xD;&#xA;&#x9;case NOT_EQUALS:&#xD;&#xA;&#x9;&#x9;return ((Float) Math.nextAfter( v, Byte.MAX_VALUE)).byteValue();&#xD;&#xA;&#x9;case LESS_THAN:&#xD;&#xA;&#x9;&#x9;return ((Float) Math.nextAfter( v, Byte.MIN_VALUE)).byteValue();&#xD;&#xA;&#x9;default:&#xD;&#xA;&#x9;&#x9;return null;&#xD;&#xA;}"/>
+      </eAnnotations>
+      <eParameters name="defVal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType base.ecore#//BByte"/>
+    <eGenericSuperTypes eClassifier="#//PNumberRestriction">
+      <eTypeArguments eClassifier="ecore:EDataType base.ecore#//BByte"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PShortRestriction">
+    <eOperations name="isSatisfiedBy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="Object newValue;&#xD;&#xA;if (value instanceof Short  || value instanceof de.dfki.cos.basys.platform.model.base.datatypes.BShort) {&#xD;&#xA;&#x9;newValue = value instanceof Short  ? value : ((de.dfki.cos.basys.platform.model.base.datatypes.BShort) value).getValue();&#x9;&#xD;&#xA;int result = ((Short)newValue).compareTo(getValue().getValue());&#xD;&#xA;&#x9;return _compareTo(result, getFunction());&#xD;&#xA;}&#xD;&#xA;return false;"/>
+      </eAnnotations>
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
+    <eOperations name="getDefaultValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="if ( defVal != null ) {&#xD;&#xA;&#x9;return isSatisfiedBy( defVal ) ? defVal : null;&#xD;&#xA;}&#xD;&#xA;// create a value based on this restriction&#xD;&#xA;Short v = getValue().getValue();&#xD;&#xA;switch ( getFunction() ) {&#xD;&#xA;&#x9;case EQUALS:&#xD;&#xA;&#x9;case GREATER_EQUALS:&#xD;&#xA;&#x9;case LESS_EQUALS:&#xD;&#xA;&#x9;&#x9;return v;&#xD;&#xA;&#x9;case GREATER_THAN:&#xD;&#xA;&#x9;case NOT_EQUALS:&#xD;&#xA;&#x9;&#x9;return ((Float) Math.nextAfter( v, Short.MAX_VALUE )).shortValue();&#xD;&#xA;&#x9;case LESS_THAN:&#xD;&#xA;&#x9;&#x9;return ((Float) Math.nextAfter( v, Short.MIN_VALUE )).shortValue();&#xD;&#xA;&#x9;default:&#xD;&#xA;&#x9;&#x9;return null;&#xD;&#xA;}"/>
+      </eAnnotations>
+      <eParameters name="defVal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType base.ecore#//BShort"/>
+    <eGenericSuperTypes eClassifier="#//PNumberRestriction">
+      <eTypeArguments eClassifier="ecore:EDataType base.ecore#//BShort"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PIntegerRestriction">
+    <eOperations name="isSatisfiedBy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="Object newValue;&#xD;&#xA;if (value instanceof Integer  || value instanceof de.dfki.cos.basys.platform.model.base.datatypes.BInteger) {&#xD;&#xA;newValue = value instanceof Integer  ? value : ((de.dfki.cos.basys.platform.model.base.datatypes.BInteger) value).getValue();&#x9;&#x9;&#xD;&#xA;int result = ((Integer) newValue).compareTo(getValue().getValue());&#xD;&#xA;&#x9;return _compareTo(result, getFunction());&#xD;&#xA;}&#xD;&#xA;return false;"/>
+      </eAnnotations>
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
+    <eOperations name="getDefaultValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="if ( defVal != null ) {&#xD;&#xA;&#x9;return isSatisfiedBy( defVal ) ? defVal : null;&#xD;&#xA;}&#xD;&#xA;// create a value based on this restriction&#xD;&#xA;Integer v = getValue().getValue();&#xD;&#xA;switch ( getFunction() ) {&#xD;&#xA;&#x9;case EQUALS:&#xD;&#xA;&#x9;case GREATER_EQUALS:&#xD;&#xA;&#x9;case LESS_EQUALS:&#xD;&#xA;&#x9;&#x9;return v;&#xD;&#xA;&#x9;case GREATER_THAN:&#xD;&#xA;&#x9;case NOT_EQUALS:&#xD;&#xA;&#x9;&#x9;return v + 1;&#xD;&#xA;&#x9;case LESS_THAN:&#xD;&#xA;&#x9;&#x9;return v - 1;&#xD;&#xA;&#x9;default:&#xD;&#xA;&#x9;&#x9;break;&#xD;&#xA;}&#xD;&#xA;return null;"/>
+      </eAnnotations>
+      <eParameters name="defVal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
+    <eOperations name="unify">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="PIntegerRestriction co = this;&#xD;&#xA;&#xD;&#xA;if ( bgrest instanceof PIntegerRestriction ) {&#xD;&#xA;&#x9;PIntegerRestriction bg = (PIntegerRestriction) bgrest;&#xD;&#xA;&#x9;switch ( co.getFunction() ) {&#xD;&#xA;&#x9;&#x9;case EQUALS:&#xD;&#xA;&#x9;&#x9;&#x9;switch ( bg.getFunction() ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;case EQUALS:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if ( co.getValue() == null ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;co.setValue( bg.getValue() );&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return co;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if ( bg.getValue() == null || co.getValue().equals( bg.getValue() )) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return co;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;case GREATER_EQUALS:&#x9;// TODO: implement this case&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;case GREATER_THAN:&#x9;&#x9;// TODO: implement this case&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;case LESS_EQUALS:&#x9;&#x9;// TODO: implement this case&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;case LESS_THAN:&#x9;&#x9;&#x9;// TODO: implement this case&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;case NOT_EQUALS:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if ( bg.getValue() == null ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return co;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if ( co.getValue() == null ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;co.setFunction( bg.getFunction() );&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;co.setValue( bg.getValue() );&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return co;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if ( !co.getValue().equals( bg.getValue() ) ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return co;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;default:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;case GREATER_EQUALS:&#x9;&#x9;&#x9;// TODO: implement this case&#xD;&#xA;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;case GREATER_THAN:&#x9;&#x9;&#x9;&#x9;// TODO: implement this case&#xD;&#xA;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;case LESS_EQUALS:&#x9;&#x9;&#x9;&#x9;// TODO: implement this case&#xD;&#xA;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;case LESS_THAN:&#x9;&#x9;&#x9;&#x9;&#x9;// TODO: implement this case&#xD;&#xA;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;case NOT_EQUALS:&#xD;&#xA;&#x9;&#x9;&#x9;switch ( bg.getFunction() ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;case EQUALS:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if ( bg.getValue() == null ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return co;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if ( co.getValue() == null || !co.getValue().equals( bg.getValue() ) ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;co.setFunction( bg.getFunction() );&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;co.setValue( bg.getValue() );&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return co;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;case GREATER_EQUALS:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;case GREATER_THAN:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;case LESS_EQUALS:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;case LESS_THAN:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;case NOT_EQUALS:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if ( co.getValue() == null ) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;co.setValue( bg.getValue() );&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return co;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if ( bg.getValue() == null || co.getValue().equals( bg.getValue() )) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;return co;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;default:&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;default:&#xD;&#xA;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;}&#xD;&#xA;}&#xD;&#xA;return null;"/>
+      </eAnnotations>
+      <eGenericType eClassifier="#//PRestriction">
+        <eTypeArguments/>
+        <eTypeArguments/>
+      </eGenericType>
+      <eParameters name="bgrest">
+        <eGenericType eClassifier="#//PRestriction">
+          <eTypeArguments/>
+          <eTypeArguments/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType base.ecore#//BInteger"/>
+    <eGenericSuperTypes eClassifier="#//PNumberRestriction">
+      <eTypeArguments eClassifier="ecore:EDataType base.ecore#//BInteger"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PLongRestriction">
+    <eOperations name="isSatisfiedBy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="Object newValue;&#xD;&#xA;if (value instanceof Long  || value instanceof de.dfki.cos.basys.platform.model.base.datatypes.BLong) {&#xD;&#xA;newValue = value instanceof Long  ? value : ((de.dfki.cos.basys.platform.model.base.datatypes.BLong) value).getValue();&#x9;&#x9;&#x9;&#xD;&#xA;int result = ((Long) newValue).compareTo(getValue().getValue());&#xD;&#xA;&#x9;return _compareTo(result, getFunction());&#xD;&#xA;}&#xD;&#xA;return false;"/>
+      </eAnnotations>
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
+    <eOperations name="getDefaultValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="if ( defVal != null ) {&#xD;&#xA;&#x9;return isSatisfiedBy( defVal ) ? defVal : null;&#xD;&#xA;}&#xD;&#xA;// create a value based on this restriction&#xD;&#xA;Long v = getValue().getValue();&#xD;&#xA;switch ( getFunction() ) {&#xD;&#xA;&#x9;case EQUALS:&#xD;&#xA;&#x9;case GREATER_EQUALS:&#xD;&#xA;&#x9;case LESS_EQUALS:&#xD;&#xA;&#x9;&#x9;return v;&#xD;&#xA;&#x9;case GREATER_THAN:&#xD;&#xA;&#x9;case NOT_EQUALS:&#xD;&#xA;&#x9;&#x9;return v + 1;&#xD;&#xA;&#x9;case LESS_THAN:&#xD;&#xA;&#x9;&#x9;return v - 1;&#xD;&#xA;&#x9;default:&#xD;&#xA;&#x9;&#x9;return null;&#xD;&#xA;}"/>
+      </eAnnotations>
+      <eParameters name="defVal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType base.ecore#//BLong"/>
+    <eGenericSuperTypes eClassifier="#//PNumberRestriction">
+      <eTypeArguments eClassifier="ecore:EDataType base.ecore#//BLong"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PFloatRestriction">
+    <eOperations name="isSatisfiedBy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="Object newValue=value;&#xD;&#xA;if (value instanceof Float  || value instanceof de.dfki.cos.basys.platform.model.base.datatypes.BFloat) {&#xD;&#xA;newValue = value instanceof Float  ? value : ((de.dfki.cos.basys.platform.model.base.datatypes.BFloat) value).getValue();&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;int result = ((Float) newValue).compareTo(getValue().getValue());&#xD;&#xA;&#x9;return _compareTo(result, getFunction());&#xD;&#xA;}&#xD;&#xA;return false;"/>
+      </eAnnotations>
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
+    <eOperations name="getDefaultValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="if ( defVal != null ) {&#xD;&#xA;&#x9;return isSatisfiedBy( defVal ) ? defVal : null;&#xD;&#xA;}&#xD;&#xA;// create a value based on this restriction&#xD;&#xA;Float v = getValue().getValue();&#xD;&#xA;switch ( getFunction() ) {&#xD;&#xA;&#x9;case EQUALS:&#xD;&#xA;&#x9;case GREATER_EQUALS:&#xD;&#xA;&#x9;case LESS_EQUALS:&#xD;&#xA;&#x9;&#x9;return v;&#xD;&#xA;&#x9;case GREATER_THAN:&#xD;&#xA;&#x9;case NOT_EQUALS:&#xD;&#xA;&#x9;&#x9;return Math.nextAfter( v, Float.MAX_VALUE);&#xD;&#xA;&#x9;case LESS_THAN:&#xD;&#xA;&#x9;&#x9;return Math.nextAfter( v, Float.MIN_VALUE);&#xD;&#xA;&#x9;default:&#xD;&#xA;&#x9;&#x9;return null;&#xD;&#xA;}"/>
+      </eAnnotations>
+      <eParameters name="defVal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType base.ecore#//BFloat"/>
+    <eGenericSuperTypes eClassifier="#//PNumberRestriction">
+      <eTypeArguments eClassifier="ecore:EDataType base.ecore#//BFloat"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PDoubleRestriction">
+    <eOperations name="isSatisfiedBy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="Object newValue = value;&#xD;&#xA;if (value instanceof Double || value instanceof de.dfki.cos.basys.platform.model.base.datatypes.BDouble) {&#xD;&#xA;&#x9;newValue = value instanceof Double ? value : ((de.dfki.cos.basys.platform.model.base.datatypes.BDouble) value).getValue();&#xD;&#xA;&#x9;int result = ((Double) newValue).compareTo(getValue().getValue());&#xD;&#xA;&#x9;return _compareTo(result, getFunction());&#xD;&#xA;}&#xD;&#xA;return false;"/>
+      </eAnnotations>
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
+    <eOperations name="getDefaultValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="if ( defVal != null ) {&#xD;&#xA;&#x9;return isSatisfiedBy( defVal ) ? defVal : null;&#xD;&#xA;}&#xD;&#xA;// create a value based on this restriction&#xD;&#xA;Double v = getValue().getValue();&#xD;&#xA;switch ( getFunction() ) {&#xD;&#xA;&#x9;case EQUALS:&#xD;&#xA;&#x9;case GREATER_EQUALS:&#xD;&#xA;&#x9;case LESS_EQUALS:&#xD;&#xA;&#x9;&#x9;return v;&#xD;&#xA;&#x9;case GREATER_THAN:&#xD;&#xA;&#x9;case NOT_EQUALS:&#xD;&#xA;&#x9;&#x9;return Math.nextAfter( v, Double.MAX_VALUE);&#xD;&#xA;&#x9;case LESS_THAN:&#xD;&#xA;&#x9;&#x9;return Math.nextAfter( v, Double.MIN_VALUE);&#xD;&#xA;&#x9;default:&#xD;&#xA;&#x9;&#x9;return null;&#xD;&#xA;}"/>
+      </eAnnotations>
+      <eParameters name="defVal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType base.ecore#//BDouble"/>
+    <eGenericSuperTypes eClassifier="#//PNumberRestriction">
+      <eTypeArguments eClassifier="ecore:EDataType base.ecore#//BDouble"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PDateRestriction">
+    <eOperations name="isSatisfiedBy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="if (value instanceof Date) {&#xD;&#xA;&#x9;int result = ((Date) value).compareTo(getValue());&#xD;&#xA;&#x9;return _compareTo(result, getFunction());&#xD;&#xA;}&#xD;&#xA;return false;"/>
+      </eAnnotations>
+      <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
+    <eOperations name="getDefaultValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="if ( defVal != null ) {&#xD;&#xA;&#x9;return isSatisfiedBy( defVal ) ? defVal : null;&#xD;&#xA;}&#xD;&#xA;// create a value based on this restriction&#xD;&#xA;Date v = getValue();&#xD;&#xA;GregorianCalendar cal = new GregorianCalendar();&#xD;&#xA;cal.setTime( v );&#xD;&#xA;switch ( getFunction() ) {&#xD;&#xA;&#x9;case EQUALS:&#xD;&#xA;&#x9;case GREATER_EQUALS:&#xD;&#xA;&#x9;case LESS_EQUALS:&#xD;&#xA;&#x9;&#x9;return v;&#xD;&#xA;&#x9;case GREATER_THAN:&#xD;&#xA;&#x9;case NOT_EQUALS:&#xD;&#xA;&#x9;&#x9;cal.add( GregorianCalendar.SECOND, 1 );&#xD;&#xA;&#x9;&#x9;return cal.getTime();&#xD;&#xA;&#x9;case LESS_THAN:&#xD;&#xA;&#x9;&#x9;cal.add( GregorianCalendar.SECOND, -1 );&#xD;&#xA;&#x9;&#x9;return cal.getTime();&#xD;&#xA;&#x9;default:&#xD;&#xA;&#x9;&#x9;return null;&#xD;&#xA;}"/>
+      </eAnnotations>
+      <eParameters name="defVal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eGenericSuperTypes eClassifier="#//PNumberRestriction">
+      <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Computation">
+    <eLiterals name="SET" literal="Set"/>
+    <eLiterals name="OVERLAY" value="1" literal="Overlay"/>
+    <eLiterals name="UNIFICATION" value="2" literal="Unification"/>
+    <eLiterals name="RESTRICTED_UNIFICATION" value="3" literal="RestrictedUnification"/>
+    <eLiterals name="ADD" value="4" literal="Add"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PBooleanRestrictionEnum">
+    <eLiterals name="EQUALS" literal="=="/>
+    <eLiterals name="NOT_EQUALS" value="1" literal="!="/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PNumberRestrictionEnum">
+    <eLiterals name="EQUALS" literal="=="/>
+    <eLiterals name="NOT_EQUALS" value="1" literal="!="/>
+    <eLiterals name="GREATER_THAN" value="2" literal=">"/>
+    <eLiterals name="GREATER_EQUALS" value="3" literal=">="/>
+    <eLiterals name="LESS_EQUALS" value="4" literal="&lt;="/>
+    <eLiterals name="LESS_THAN" value="5" literal="&lt;"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PEnumRestrictionEnum">
+    <eLiterals name="EQUALS" literal="=="/>
+    <eLiterals name="NOT_EQUALS" value="1" literal="!="/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PEnumRestrictionType">
+    <eLiterals name="VALUE"/>
+    <eLiterals name="LITERAL" value="1"/>
+    <eLiterals name="NAME" value="2"/>
+    <eLiterals name="INSTANCE" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PStringRestrictionEnum">
+    <eLiterals name="EQUALS" literal="=="/>
+    <eLiterals name="NOT_EQUALS" value="1" literal="!="/>
+    <eLiterals name="STARTS_WITH" value="2" literal="()----"/>
+    <eLiterals name="ENDS_WITH" value="3" literal="----()"/>
+    <eLiterals name="CONTAINS" value="4" literal="--()--"/>
+    <eLiterals name="MATCHES" value="5" literal="(----)"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PCharRestrictionEnum">
+    <eLiterals name="EQUALS" literal="=="/>
+    <eLiterals name="NOT_EQUALS" value="1" literal="!="/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PRestrictionsEnum">
+    <eLiterals name="AND"/>
+    <eLiterals name="OR" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PQuantorEnum">
+    <eLiterals name="EXISTS" literal="EXISTS"/>
+    <eLiterals name="NOT_EXISTS" value="1" literal="NOT_EXISTS"/>
+    <eLiterals name="FOR_ALL" value="2" literal="FOR_ALL"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="PEObjectArray" instanceTypeName="EObject[]"
+      serializable="false"/>
+</ecore:EPackage>

@@ -1,8 +1,8 @@
 package de.dfki.cos.basys.platform.runtime.component;
 
+import de.dfki.cos.basys.platform.model.runtime.communication.ChannelPool;
 import de.dfki.cos.basys.platform.runtime.component.manager.ComponentManager;
 import de.dfki.cos.basys.platform.runtime.component.registry.ComponentRegistry;
-import de.dfki.iui.basys.model.runtime.communication.ChannelPool;
 
 public class ComponentContext {
 

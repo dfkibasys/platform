@@ -11,12 +11,12 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
+import de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentConfigurationImpl;
 import de.dfki.cos.basys.platform.runtime.communication.provider.MqttCommunicationProvider;
 import de.dfki.cos.basys.platform.runtime.component.ComponentContext;
 import de.dfki.cos.basys.platform.runtime.component.ComponentException;
-import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
-import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
-import de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl;
 
 public class MqttDeviceComponentTest {
 

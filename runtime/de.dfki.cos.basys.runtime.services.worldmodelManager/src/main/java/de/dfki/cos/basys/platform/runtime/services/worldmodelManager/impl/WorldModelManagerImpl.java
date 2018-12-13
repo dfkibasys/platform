@@ -19,6 +19,33 @@ import org.json.JSONObject;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import de.dfki.cos.basys.common.emf.json.JsonUtils;
+import de.dfki.cos.basys.platform.model.domain.capability.CapabilityFactory;
+import de.dfki.cos.basys.platform.model.domain.capability.MoveToLocation;
+import de.dfki.cos.basys.platform.model.domain.linebalancing.LineBalancingAssignment;
+import de.dfki.cos.basys.platform.model.domain.linebalancing.LinebalancingPackage;
+import de.dfki.cos.basys.platform.model.domain.linebalancing.StaticWorldModel;
+import de.dfki.cos.basys.platform.model.domain.linebalancing.WMPathTime;
+import de.dfki.cos.basys.platform.model.domain.linebalancing.WMPathTimes;
+import de.dfki.cos.basys.platform.model.domain.linebalancing.WMProductInstance;
+import de.dfki.cos.basys.platform.model.domain.linebalancing.WMResourceInstance;
+import de.dfki.cos.basys.platform.model.domain.linebalancing.WorldModel;
+import de.dfki.cos.basys.platform.model.domain.linebalancing.impl.LinebalancingFactoryImpl;
+import de.dfki.cos.basys.platform.model.domain.order.Order;
+import de.dfki.cos.basys.platform.model.domain.order.OrderPackage;
+import de.dfki.cos.basys.platform.model.domain.productinstance.ProductInstance;
+import de.dfki.cos.basys.platform.model.domain.resourceinstance.GeneralCapabilityVariant;
+import de.dfki.cos.basys.platform.model.domain.resourceinstance.ResourceInstance;
+import de.dfki.cos.basys.platform.model.domain.resourceinstance.ResourceInstanceRepository;
+import de.dfki.cos.basys.platform.model.domain.resourceinstance.ResourceinstanceFactory;
+import de.dfki.cos.basys.platform.model.domain.topology.TopologyElement;
+import de.dfki.cos.basys.platform.model.runtime.communication.Channel;
+import de.dfki.cos.basys.platform.model.runtime.communication.ChannelListener;
+import de.dfki.cos.basys.platform.model.runtime.communication.Notification;
+import de.dfki.cos.basys.platform.model.runtime.communication.Request;
+import de.dfki.cos.basys.platform.model.runtime.communication.Response;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentFactory;
+import de.dfki.cos.basys.platform.model.runtime.component.Property;
 import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
 import de.dfki.cos.basys.platform.runtime.component.ComponentContext;
 import de.dfki.cos.basys.platform.runtime.component.ComponentException;
@@ -29,33 +56,6 @@ import de.dfki.cos.basys.platform.runtime.services.ProductInstanceManager;
 import de.dfki.cos.basys.platform.runtime.services.ResourceInstanceManager;
 import de.dfki.cos.basys.platform.runtime.services.TopologyManager;
 import de.dfki.cos.basys.platform.runtime.services.worldmodelManager.WorldModelManager;
-import de.dfki.iui.basys.model.domain.capability.CapabilityFactory;
-import de.dfki.iui.basys.model.domain.capability.MoveToLocation;
-import de.dfki.iui.basys.model.domain.linebalancing.LineBalancingAssignment;
-import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
-import de.dfki.iui.basys.model.domain.linebalancing.StaticWorldModel;
-import de.dfki.iui.basys.model.domain.linebalancing.WMPathTime;
-import de.dfki.iui.basys.model.domain.linebalancing.WMPathTimes;
-import de.dfki.iui.basys.model.domain.linebalancing.WMProductInstance;
-import de.dfki.iui.basys.model.domain.linebalancing.WMResourceInstance;
-import de.dfki.iui.basys.model.domain.linebalancing.WorldModel;
-import de.dfki.iui.basys.model.domain.linebalancing.impl.LinebalancingFactoryImpl;
-import de.dfki.iui.basys.model.domain.order.Order;
-import de.dfki.iui.basys.model.domain.order.OrderPackage;
-import de.dfki.iui.basys.model.domain.productinstance.ProductInstance;
-import de.dfki.iui.basys.model.domain.resourceinstance.GeneralCapabilityVariant;
-import de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstance;
-import de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstanceRepository;
-import de.dfki.iui.basys.model.domain.resourceinstance.ResourceinstanceFactory;
-import de.dfki.iui.basys.model.domain.topology.TopologyElement;
-import de.dfki.iui.basys.model.runtime.communication.Channel;
-import de.dfki.iui.basys.model.runtime.communication.ChannelListener;
-import de.dfki.iui.basys.model.runtime.communication.Notification;
-import de.dfki.iui.basys.model.runtime.communication.Request;
-import de.dfki.iui.basys.model.runtime.communication.Response;
-import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
-import de.dfki.iui.basys.model.runtime.component.ComponentFactory;
-import de.dfki.iui.basys.model.runtime.component.Property;
 
 public class WorldModelManagerImpl extends EmfServiceComponent implements WorldModelManager {
 
@@ -131,7 +131,7 @@ public class WorldModelManagerImpl extends EmfServiceComponent implements WorldM
 								GeneralCapabilityVariant variant = ResourceinstanceFactory.eINSTANCE.createGeneralCapabilityVariant();
 								variant.setCapability(moveRequest);
 
-								de.dfki.iui.basys.model.runtime.component.CapabilityRequest req = ComponentFactory.eINSTANCE.createCapabilityRequest();
+								de.dfki.cos.basys.platform.model.runtime.component.CapabilityRequest req = ComponentFactory.eINSTANCE.createCapabilityRequest();
 								req.setCapabilityVariant(variant);
 								req.setComponentId("_rUJzsDJhEei1p5hKOf5Slw");
 
@@ -201,7 +201,7 @@ public class WorldModelManagerImpl extends EmfServiceComponent implements WorldM
 							GeneralCapabilityVariant variant = ResourceinstanceFactory.eINSTANCE.createGeneralCapabilityVariant();
 							variant.setCapability(moveRequest);
 
-							de.dfki.iui.basys.model.runtime.component.CapabilityRequest req = ComponentFactory.eINSTANCE.createCapabilityRequest();
+							de.dfki.cos.basys.platform.model.runtime.component.CapabilityRequest req = ComponentFactory.eINSTANCE.createCapabilityRequest();
 							req.setCapabilityVariant(variant);
 							req.setComponentId("_rUJzsDJhEei1p5hKOf5Slw");
 

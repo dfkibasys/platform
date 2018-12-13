@@ -6,11 +6,11 @@ import java.util.UUID;
 import org.junit.After;
 import org.junit.Before;
 
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
+import de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentConfigurationImpl;
 import de.dfki.cos.basys.platform.runtime.component.ComponentContext;
 import de.dfki.cos.basys.platform.runtime.component.manager.impl.ComponentManagerImpl;
 import de.dfki.cos.basys.platform.runtime.component.service.EmfServiceComponent;
-import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
-import de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl;
 
 public class BaseEmfServiceComponentTest<T extends EmfServiceComponent> {
 

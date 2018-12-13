@@ -14,6 +14,16 @@ import org.apache.commons.scxml2.TriggerEvent;
 import org.eclipse.emf.ecore.EObject;
 
 import de.dfki.cos.basys.common.emf.json.JsonUtils;
+import de.dfki.cos.basys.platform.model.runtime.communication.Channel;
+import de.dfki.cos.basys.platform.model.runtime.communication.Notification;
+import de.dfki.cos.basys.platform.model.runtime.communication.Request;
+import de.dfki.cos.basys.platform.model.runtime.communication.Response;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentResponse;
+import de.dfki.cos.basys.platform.model.runtime.component.ProcessRequest;
+import de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus;
 import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
 import de.dfki.cos.basys.platform.runtime.component.ComponentContext;
 import de.dfki.cos.basys.platform.runtime.component.ComponentException;
@@ -21,16 +31,6 @@ import de.dfki.cos.basys.platform.runtime.component.service.ServiceComponent;
 import de.dfki.cos.basys.platform.runtime.processcontrol.TaskDescription;
 import de.dfki.cos.basys.platform.runtime.processcontrol.TaskExecutor;
 import de.dfki.cos.basys.platform.runtime.processcontrol.TaskScheduler;
-import de.dfki.iui.basys.model.runtime.communication.Channel;
-import de.dfki.iui.basys.model.runtime.communication.Notification;
-import de.dfki.iui.basys.model.runtime.communication.Request;
-import de.dfki.iui.basys.model.runtime.communication.Response;
-import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
-import de.dfki.iui.basys.model.runtime.component.ComponentPackage;
-import de.dfki.iui.basys.model.runtime.component.ComponentRequest;
-import de.dfki.iui.basys.model.runtime.component.ComponentResponse;
-import de.dfki.iui.basys.model.runtime.component.ProcessRequest;
-import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
 
 public class CamundaTaskScheduler extends ServiceComponent implements TaskScheduler {
 

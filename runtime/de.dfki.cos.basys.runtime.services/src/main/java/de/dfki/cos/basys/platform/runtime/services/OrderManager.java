@@ -8,9 +8,9 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import de.dfki.iui.basys.model.domain.linebalancing.LineBalancingAssignment;
-import de.dfki.iui.basys.model.domain.order.Order;
-import de.dfki.iui.basys.model.domain.order.OrderStore;
+import de.dfki.cos.basys.platform.model.domain.linebalancing.LineBalancingAssignment;
+import de.dfki.cos.basys.platform.model.domain.order.Order;
+import de.dfki.cos.basys.platform.model.domain.order.OrderStore;
 
 @Path("/order")
 public interface OrderManager {

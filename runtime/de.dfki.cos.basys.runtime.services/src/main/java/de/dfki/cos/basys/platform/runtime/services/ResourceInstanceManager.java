@@ -11,11 +11,11 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import de.dfki.iui.basys.model.domain.capability.Capability;
-import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityApplication;
-import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
-import de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstance;
-import de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstanceRepository;
+import de.dfki.cos.basys.platform.model.domain.capability.Capability;
+import de.dfki.cos.basys.platform.model.domain.resourceinstance.CapabilityApplication;
+import de.dfki.cos.basys.platform.model.domain.resourceinstance.CapabilityVariant;
+import de.dfki.cos.basys.platform.model.domain.resourceinstance.ResourceInstance;
+import de.dfki.cos.basys.platform.model.domain.resourceinstance.ResourceInstanceRepository;
 
 @Path("/resourceinstance")
 public interface ResourceInstanceManager {

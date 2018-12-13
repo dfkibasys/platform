@@ -12,9 +12,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo;
 import de.dfki.cos.basys.platform.runtime.component.Component;
 import de.dfki.cos.basys.platform.runtime.component.manager.ComponentManagerException;
-import de.dfki.iui.basys.model.runtime.component.ComponentInfo;
 
 public class ComponentManagerTest extends BaseComponentTest {
 	

@@ -1,7 +1,7 @@
 package de.dfki.cos.basys.platform.runtime.component.device.packml;
 
-import de.dfki.iui.basys.model.runtime.component.ComponentRequestStatus;
-import de.dfki.iui.basys.model.runtime.component.ControlMode;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentRequestStatus;
+import de.dfki.cos.basys.platform.model.runtime.component.ControlMode;
 
 public interface CommandInterface {
 

@@ -9,11 +9,11 @@ import java.util.concurrent.TimeUnit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.dfki.iui.basys.model.runtime.component.ComponentRequestStatus;
-import de.dfki.iui.basys.model.runtime.component.ControlMode;
-import de.dfki.iui.basys.model.runtime.component.RequestStatus;
-import de.dfki.iui.basys.model.runtime.component.State;
-import de.dfki.iui.basys.model.runtime.component.impl.ComponentRequestStatusImpl;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentRequestStatus;
+import de.dfki.cos.basys.platform.model.runtime.component.ControlMode;
+import de.dfki.cos.basys.platform.model.runtime.component.RequestStatus;
+import de.dfki.cos.basys.platform.model.runtime.component.State;
+import de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentRequestStatusImpl;
 
 public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStatesHandler, WaitStatesHandler {
 

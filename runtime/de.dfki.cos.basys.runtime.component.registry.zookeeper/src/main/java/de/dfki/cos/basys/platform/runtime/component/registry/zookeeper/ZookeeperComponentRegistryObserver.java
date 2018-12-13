@@ -10,14 +10,14 @@ import org.apache.curator.utils.CloseableUtils;
 import org.apache.curator.x.discovery.ServiceInstance;
 import org.apache.curator.x.discovery.details.JsonInstanceSerializer;
 
+import de.dfki.cos.basys.platform.model.runtime.communication.Notification;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo;
 import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
 import de.dfki.cos.basys.platform.runtime.component.BaseComponent;
 import de.dfki.cos.basys.platform.runtime.component.ComponentException;
 import de.dfki.cos.basys.platform.runtime.component.registry.ComponentRegistryObserver;
-import de.dfki.iui.basys.model.runtime.communication.Notification;
-import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
-import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
-import de.dfki.iui.basys.model.runtime.component.ComponentInfo;
 
 public class ZookeeperComponentRegistryObserver extends BaseComponent implements ComponentRegistryObserver, PathChildrenCacheListener {
 

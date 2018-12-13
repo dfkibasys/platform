@@ -39,9 +39,9 @@ import org.eclipse.milo.opcua.stack.core.types.structured.MonitoredItemCreateReq
 import org.eclipse.milo.opcua.stack.core.types.structured.MonitoringParameters;
 import org.eclipse.milo.opcua.stack.core.types.structured.ReadValueId;
 
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
 import de.dfki.cos.basys.platform.runtime.component.ComponentException;
 import de.dfki.cos.basys.platform.runtime.component.device.DeviceComponent;
-import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 
 public abstract class OpcUaDeviceComponent extends DeviceComponent {
 

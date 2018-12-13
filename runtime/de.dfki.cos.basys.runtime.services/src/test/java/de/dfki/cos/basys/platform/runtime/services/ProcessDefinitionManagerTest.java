@@ -13,8 +13,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import de.dfki.cos.basys.platform.model.domain.processdefinition.ProcessDefinition;
 import de.dfki.cos.basys.platform.runtime.services.impl.ProcessDefinitionManagerImpl;
-import de.dfki.iui.basys.model.domain.processdefinition.ProcessDefinition;
 
 public class ProcessDefinitionManagerTest extends BaseEmfServiceComponentTest<ProcessDefinitionManagerImpl> {
 

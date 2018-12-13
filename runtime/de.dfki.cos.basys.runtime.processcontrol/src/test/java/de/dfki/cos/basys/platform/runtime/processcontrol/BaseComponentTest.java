@@ -11,17 +11,17 @@ import org.junit.BeforeClass;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import de.dfki.cos.basys.platform.model.runtime.communication.ChannelPool;
+import de.dfki.cos.basys.platform.model.runtime.communication.Client;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
+import de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentConfigurationImpl;
 import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
 import de.dfki.cos.basys.platform.runtime.communication.provider.JmsCommunicationProvider;
 import de.dfki.cos.basys.platform.runtime.component.ComponentContext;
 import de.dfki.cos.basys.platform.runtime.component.manager.impl.ComponentManagerImpl;
 import de.dfki.cos.basys.platform.runtime.component.registry.zookeeper.ZookeeperComponentRegistry;
 import de.dfki.cos.basys.platform.runtime.component.registry.zookeeper.ZookeeperComponentRegistryObserver;
-import de.dfki.iui.basys.model.runtime.communication.ChannelPool;
-import de.dfki.iui.basys.model.runtime.communication.Client;
-import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
-import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
-import de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl;
 
 public class BaseComponentTest {
 

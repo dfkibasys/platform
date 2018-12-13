@@ -11,11 +11,11 @@ import org.osgi.service.component.annotations.Modified;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import de.dfki.cos.basys.platform.model.runtime.communication.Authentication;
+import de.dfki.cos.basys.platform.model.runtime.communication.ChannelPool;
+import de.dfki.cos.basys.platform.model.runtime.communication.Client;
 import de.dfki.cos.basys.platform.osgi.services.ChannelPoolProvider;
 import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
-import de.dfki.iui.basys.model.runtime.communication.Authentication;
-import de.dfki.iui.basys.model.runtime.communication.ChannelPool;
-import de.dfki.iui.basys.model.runtime.communication.Client;
 
 @Component(configurationPolicy = ConfigurationPolicy.REQUIRE)
 public class ChannelPoolProviderImpl implements ChannelPoolProvider {

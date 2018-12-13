@@ -8,7 +8,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import de.dfki.iui.basys.model.domain.processdefinition.ProcessDefinition;
+import de.dfki.cos.basys.platform.model.domain.processdefinition.ProcessDefinition;
 
 @Path("/processdefinition")
 public interface ProcessDefinitionManager {

@@ -5,9 +5,9 @@ import java.util.concurrent.TimeUnit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import de.dfki.cos.basys.platform.model.runtime.component.State;
 import de.dfki.cos.basys.platform.runtime.component.device.packml.ActiveStatesHandler;
 import de.dfki.cos.basys.platform.runtime.component.device.packml.PackMLUnit;
-import de.dfki.iui.basys.model.runtime.component.State;
 import junit.framework.TestCase;
 
 public class TestHandler implements ActiveStatesHandler {

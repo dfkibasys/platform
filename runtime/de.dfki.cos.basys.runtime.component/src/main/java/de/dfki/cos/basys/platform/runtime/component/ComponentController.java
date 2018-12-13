@@ -7,27 +7,27 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 import de.dfki.cos.basys.common.emf.json.JsonUtils;
+import de.dfki.cos.basys.platform.model.domain.resourceinstance.CapabilityVariant;
+import de.dfki.cos.basys.platform.model.runtime.communication.Channel;
+import de.dfki.cos.basys.platform.model.runtime.communication.ChannelListener;
+import de.dfki.cos.basys.platform.model.runtime.communication.Notification;
+import de.dfki.cos.basys.platform.model.runtime.communication.Request;
+import de.dfki.cos.basys.platform.model.runtime.communication.Response;
+import de.dfki.cos.basys.platform.model.runtime.component.CapabilityRequest;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentFactory;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentRequestStatus;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentResponse;
+import de.dfki.cos.basys.platform.model.runtime.component.ControlMode;
+import de.dfki.cos.basys.platform.model.runtime.component.RequestStatus;
+import de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus;
+import de.dfki.cos.basys.platform.model.runtime.component.State;
+import de.dfki.cos.basys.platform.model.runtime.component.impl.CapabilityRequestImpl;
 import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
 import de.dfki.cos.basys.platform.runtime.component.device.packml.StatusInterface;
 import de.dfki.cos.basys.platform.runtime.component.device.packml.UnitConfiguration;
-import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
-import de.dfki.iui.basys.model.runtime.communication.Channel;
-import de.dfki.iui.basys.model.runtime.communication.ChannelListener;
-import de.dfki.iui.basys.model.runtime.communication.Notification;
-import de.dfki.iui.basys.model.runtime.communication.Request;
-import de.dfki.iui.basys.model.runtime.communication.Response;
-import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
-import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
-import de.dfki.iui.basys.model.runtime.component.ComponentFactory;
-import de.dfki.iui.basys.model.runtime.component.ComponentInfo;
-import de.dfki.iui.basys.model.runtime.component.ComponentRequest;
-import de.dfki.iui.basys.model.runtime.component.ComponentRequestStatus;
-import de.dfki.iui.basys.model.runtime.component.ComponentResponse;
-import de.dfki.iui.basys.model.runtime.component.ControlMode;
-import de.dfki.iui.basys.model.runtime.component.RequestStatus;
-import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
-import de.dfki.iui.basys.model.runtime.component.State;
-import de.dfki.iui.basys.model.runtime.component.impl.CapabilityRequestImpl;
 
 public class ComponentController implements ChannelListener, StatusInterface {
 

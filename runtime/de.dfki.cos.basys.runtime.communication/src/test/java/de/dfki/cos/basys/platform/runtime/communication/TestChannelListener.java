@@ -3,11 +3,11 @@ package de.dfki.cos.basys.platform.runtime.communication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import de.dfki.cos.basys.platform.model.runtime.communication.Channel;
+import de.dfki.cos.basys.platform.model.runtime.communication.ChannelListener;
+import de.dfki.cos.basys.platform.model.runtime.communication.Request;
+import de.dfki.cos.basys.platform.model.runtime.communication.Response;
 import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
-import de.dfki.iui.basys.model.runtime.communication.Channel;
-import de.dfki.iui.basys.model.runtime.communication.ChannelListener;
-import de.dfki.iui.basys.model.runtime.communication.Request;
-import de.dfki.iui.basys.model.runtime.communication.Response;
 
 public class TestChannelListener implements ChannelListener {
 
@@ -44,7 +44,7 @@ public class TestChannelListener implements ChannelListener {
 	}
 
 	@Override
-	public void handleNotification(Channel channel, de.dfki.iui.basys.model.runtime.communication.Notification not) {
+	public void handleNotification(Channel channel, de.dfki.cos.basys.platform.model.runtime.communication.Notification not) {
 		LOGGER.info("handleNotification: " + not.getPayload());
 		if (not.getPayload().equals(expectedMessage))
 			success = true;

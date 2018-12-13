@@ -1,13 +1,13 @@
 package de.dfki.cos.basys.platform.runtime.communication.provider;
 
-import de.dfki.iui.basys.model.runtime.communication.Channel;
-import de.dfki.iui.basys.model.runtime.communication.ChannelPool;
-import de.dfki.iui.basys.model.runtime.communication.CommunicationProvider;
-import de.dfki.iui.basys.model.runtime.communication.Notification;
-import de.dfki.iui.basys.model.runtime.communication.Request;
-import de.dfki.iui.basys.model.runtime.communication.Response;
-import de.dfki.iui.basys.model.runtime.communication.ResponseCallback;
-import de.dfki.iui.basys.model.runtime.communication.exceptions.ProviderException;
+import de.dfki.cos.basys.platform.model.runtime.communication.Channel;
+import de.dfki.cos.basys.platform.model.runtime.communication.ChannelPool;
+import de.dfki.cos.basys.platform.model.runtime.communication.CommunicationProvider;
+import de.dfki.cos.basys.platform.model.runtime.communication.Notification;
+import de.dfki.cos.basys.platform.model.runtime.communication.Request;
+import de.dfki.cos.basys.platform.model.runtime.communication.Response;
+import de.dfki.cos.basys.platform.model.runtime.communication.ResponseCallback;
+import de.dfki.cos.basys.platform.model.runtime.communication.exceptions.ProviderException;
 
 public class WsCommunicationProvider implements CommunicationProvider {
 

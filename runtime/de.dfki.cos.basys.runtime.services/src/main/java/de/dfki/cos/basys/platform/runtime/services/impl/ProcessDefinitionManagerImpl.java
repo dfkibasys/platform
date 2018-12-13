@@ -2,13 +2,13 @@ package de.dfki.cos.basys.platform.runtime.services.impl;
 
 import java.util.List;
 
+import de.dfki.cos.basys.platform.model.domain.processdefinition.ProcessDefinition;
+import de.dfki.cos.basys.platform.model.domain.processdefinition.ProcessdefinitionPackage;
+import de.dfki.cos.basys.platform.model.domain.processdefinition.impl.ProcessdefinitionPackageImpl;
+import de.dfki.cos.basys.platform.model.domain.processdefinition.util.ProcessdefinitionResourceFactoryImpl;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
 import de.dfki.cos.basys.platform.runtime.component.service.EmfServiceComponent;
 import de.dfki.cos.basys.platform.runtime.services.ProcessDefinitionManager;
-import de.dfki.iui.basys.model.domain.processdefinition.ProcessDefinition;
-import de.dfki.iui.basys.model.domain.processdefinition.ProcessdefinitionPackage;
-import de.dfki.iui.basys.model.domain.processdefinition.impl.ProcessdefinitionPackageImpl;
-import de.dfki.iui.basys.model.domain.processdefinition.util.ProcessdefinitionResourceFactoryImpl;
-import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 
 public class ProcessDefinitionManagerImpl extends EmfServiceComponent implements ProcessDefinitionManager {
 

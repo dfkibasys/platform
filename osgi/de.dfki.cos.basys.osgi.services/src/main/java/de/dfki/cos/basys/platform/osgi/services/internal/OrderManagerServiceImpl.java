@@ -10,15 +10,15 @@ import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.component.annotations.Reference;
 
+import de.dfki.cos.basys.platform.model.domain.linebalancing.LineBalancingAssignment;
+import de.dfki.cos.basys.platform.model.domain.order.Order;
+import de.dfki.cos.basys.platform.model.domain.order.OrderStore;
 import de.dfki.cos.basys.platform.osgi.services.BasysOsgiComponent;
 import de.dfki.cos.basys.platform.osgi.services.ResourceSetProvider;
 import de.dfki.cos.basys.platform.runtime.component.manager.ComponentManager;
 import de.dfki.cos.basys.platform.runtime.component.manager.ComponentManagerException;
 import de.dfki.cos.basys.platform.runtime.services.OrderManager;
 import de.dfki.cos.basys.platform.runtime.services.impl.OrderManagerImpl;
-import de.dfki.iui.basys.model.domain.linebalancing.LineBalancingAssignment;
-import de.dfki.iui.basys.model.domain.order.Order;
-import de.dfki.iui.basys.model.domain.order.OrderStore;
 
 @Component(configurationPolicy = ConfigurationPolicy.REQUIRE, immediate = true)
 public final class OrderManagerServiceImpl extends BasysOsgiComponent implements OrderManager {

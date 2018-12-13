@@ -7,9 +7,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import de.dfki.cos.basys.platform.model.domain.resourcetype.ResourceType;
+import de.dfki.cos.basys.platform.model.domain.resourcetype.ResourceTypeCatalogueCollection;
 import de.dfki.cos.basys.platform.runtime.services.impl.ResourceTypeManagerImpl;
-import de.dfki.iui.basys.model.domain.resourcetype.ResourceType;
-import de.dfki.iui.basys.model.domain.resourcetype.ResourceTypeCatalogueCollection;
 
 public class ResourceTypeManagerTest extends BaseEmfServiceComponentTest<ResourceTypeManagerImpl> {
 

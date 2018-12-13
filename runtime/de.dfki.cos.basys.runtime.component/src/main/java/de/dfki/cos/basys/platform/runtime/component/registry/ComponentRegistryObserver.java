@@ -1,6 +1,6 @@
 package de.dfki.cos.basys.platform.runtime.component.registry;
 
-import de.dfki.iui.basys.model.runtime.component.ComponentInfo;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo;
 
 public interface ComponentRegistryObserver {
 

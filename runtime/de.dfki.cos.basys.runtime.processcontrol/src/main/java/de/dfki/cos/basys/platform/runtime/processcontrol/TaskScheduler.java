@@ -4,7 +4,7 @@ import java.util.concurrent.CompletableFuture;
 
 import javax.ws.rs.Path;
 
-import de.dfki.iui.basys.model.runtime.component.ComponentResponse;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentResponse;
 
 @Path("/task")
 public interface TaskScheduler {

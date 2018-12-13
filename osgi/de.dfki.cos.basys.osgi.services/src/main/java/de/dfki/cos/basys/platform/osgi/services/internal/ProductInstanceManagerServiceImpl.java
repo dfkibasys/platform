@@ -10,14 +10,14 @@ import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.component.annotations.Reference;
 
+import de.dfki.cos.basys.platform.model.domain.productinstance.ProductInstance;
+import de.dfki.cos.basys.platform.model.domain.productinstance.ProductInstanceStore;
 import de.dfki.cos.basys.platform.osgi.services.BasysOsgiComponent;
 import de.dfki.cos.basys.platform.osgi.services.ResourceSetProvider;
 import de.dfki.cos.basys.platform.runtime.component.manager.ComponentManager;
 import de.dfki.cos.basys.platform.runtime.component.manager.ComponentManagerException;
 import de.dfki.cos.basys.platform.runtime.services.ProductInstanceManager;
 import de.dfki.cos.basys.platform.runtime.services.impl.ProductInstanceManagerImpl;
-import de.dfki.iui.basys.model.domain.productinstance.ProductInstance;
-import de.dfki.iui.basys.model.domain.productinstance.ProductInstanceStore;
 
 @Component(configurationPolicy = ConfigurationPolicy.REQUIRE, immediate = true)
 public final class ProductInstanceManagerServiceImpl extends BasysOsgiComponent implements ProductInstanceManager {

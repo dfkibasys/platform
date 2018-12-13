@@ -11,6 +11,8 @@ import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.component.annotations.Reference;
 
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo;
 import de.dfki.cos.basys.platform.osgi.services.BasysOsgiComponent;
 import de.dfki.cos.basys.platform.osgi.services.ChannelPoolProvider;
 import de.dfki.cos.basys.platform.runtime.component.ComponentException;
@@ -18,8 +20,6 @@ import de.dfki.cos.basys.platform.runtime.component.registry.ComponentRegistrati
 import de.dfki.cos.basys.platform.runtime.component.registry.ComponentRegistrationException;
 import de.dfki.cos.basys.platform.runtime.component.registry.ComponentRegistry;
 import de.dfki.cos.basys.platform.runtime.component.registry.zookeeper.ZookeeperComponentRegistry;
-import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
-import de.dfki.iui.basys.model.runtime.component.ComponentInfo;
 
 @Component(configurationPolicy = ConfigurationPolicy.REQUIRE, immediate = true)
 public class ComponentRegistryService extends BasysOsgiComponent implements ComponentRegistry {

@@ -10,15 +10,15 @@ import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.component.annotations.Reference;
 
+import de.dfki.cos.basys.platform.model.domain.resourcetype.ResourceType;
+import de.dfki.cos.basys.platform.model.domain.resourcetype.ResourceTypeCatalogue;
+import de.dfki.cos.basys.platform.model.domain.resourcetype.ResourceTypeCatalogueCollection;
 import de.dfki.cos.basys.platform.osgi.services.BasysOsgiComponent;
 import de.dfki.cos.basys.platform.osgi.services.ResourceSetProvider;
 import de.dfki.cos.basys.platform.runtime.component.manager.ComponentManager;
 import de.dfki.cos.basys.platform.runtime.component.manager.ComponentManagerException;
 import de.dfki.cos.basys.platform.runtime.services.ResourceTypeManager;
 import de.dfki.cos.basys.platform.runtime.services.impl.ResourceTypeManagerImpl;
-import de.dfki.iui.basys.model.domain.resourcetype.ResourceType;
-import de.dfki.iui.basys.model.domain.resourcetype.ResourceTypeCatalogue;
-import de.dfki.iui.basys.model.domain.resourcetype.ResourceTypeCatalogueCollection;
 
 @Component(configurationPolicy = ConfigurationPolicy.REQUIRE, immediate = true)
 public final class ResourceTypeManagerServiceImpl extends BasysOsgiComponent implements ResourceTypeManager {

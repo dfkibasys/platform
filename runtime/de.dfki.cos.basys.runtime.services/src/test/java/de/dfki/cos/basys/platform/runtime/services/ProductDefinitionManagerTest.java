@@ -7,11 +7,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import de.dfki.cos.basys.platform.model.domain.productdefinition.AssemblyGroup;
+import de.dfki.cos.basys.platform.model.domain.productdefinition.ProductCatalogue;
+import de.dfki.cos.basys.platform.model.domain.productdefinition.ProductGroup;
+import de.dfki.cos.basys.platform.model.domain.productdefinition.ProductVariant;
 import de.dfki.cos.basys.platform.runtime.services.impl.ProductDefinitionManagerImpl;
-import de.dfki.iui.basys.model.domain.productdefinition.AssemblyGroup;
-import de.dfki.iui.basys.model.domain.productdefinition.ProductCatalogue;
-import de.dfki.iui.basys.model.domain.productdefinition.ProductGroup;
-import de.dfki.iui.basys.model.domain.productdefinition.ProductVariant;
 
 public class ProductDefinitionManagerTest extends BaseEmfServiceComponentTest<ProductDefinitionManagerImpl> {
 

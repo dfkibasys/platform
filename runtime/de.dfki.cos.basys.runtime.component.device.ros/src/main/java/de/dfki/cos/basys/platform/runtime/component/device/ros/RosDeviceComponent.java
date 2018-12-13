@@ -3,9 +3,9 @@ package de.dfki.cos.basys.platform.runtime.component.device.ros;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
 import de.dfki.cos.basys.platform.runtime.component.ComponentException;
 import de.dfki.cos.basys.platform.runtime.component.device.DeviceComponent;
-import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 import edu.wpi.rail.jrosbridge.JRosbridge.WebSocketType;
 import edu.wpi.rail.jrosbridge.Ros;
 

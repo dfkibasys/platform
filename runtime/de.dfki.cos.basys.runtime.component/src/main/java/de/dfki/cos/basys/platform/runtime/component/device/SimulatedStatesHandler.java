@@ -2,9 +2,9 @@ package de.dfki.cos.basys.platform.runtime.component.device;
 
 import java.util.concurrent.TimeUnit;
 
+import de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus;
+import de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration;
 import de.dfki.cos.basys.platform.runtime.component.device.packml.ActiveStatesHandler;
-import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
-import de.dfki.iui.basys.model.runtime.component.SimulationConfiguration;
 
 public class SimulatedStatesHandler implements ActiveStatesHandler {
 

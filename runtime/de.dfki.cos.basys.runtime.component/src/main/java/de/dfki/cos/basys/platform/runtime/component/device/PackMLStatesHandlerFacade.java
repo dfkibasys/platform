@@ -3,9 +3,9 @@ package de.dfki.cos.basys.platform.runtime.component.device;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
+import de.dfki.cos.basys.platform.model.runtime.component.State;
 import de.dfki.cos.basys.platform.runtime.component.device.packml.ActiveStatesHandler;
 import de.dfki.cos.basys.platform.runtime.component.device.packml.WaitStatesHandler;
-import de.dfki.iui.basys.model.runtime.component.State;
 
 public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitStatesHandler {
 

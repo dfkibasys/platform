@@ -6,8 +6,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import de.dfki.cos.basys.platform.model.domain.topology.TopologyElement;
 import de.dfki.cos.basys.platform.runtime.services.impl.TopologyManagerImpl;
-import de.dfki.iui.basys.model.domain.topology.TopologyElement;
 
 public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyManagerImpl> {
 

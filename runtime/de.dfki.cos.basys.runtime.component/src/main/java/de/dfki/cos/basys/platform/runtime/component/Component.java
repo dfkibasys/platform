@@ -1,10 +1,10 @@
 package de.dfki.cos.basys.platform.runtime.component;
 
-import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
-import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
-import de.dfki.iui.basys.model.runtime.component.ComponentInfo;
-import de.dfki.iui.basys.model.runtime.component.ControlMode;
-import de.dfki.iui.basys.model.runtime.component.State;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo;
+import de.dfki.cos.basys.platform.model.runtime.component.ControlMode;
+import de.dfki.cos.basys.platform.model.runtime.component.State;
 
 public interface Component {
 

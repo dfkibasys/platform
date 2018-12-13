@@ -5,14 +5,14 @@ package de.dfki.cos.basys.platform.runtime.component.manager;
 import java.io.File;
 import java.util.List;
 
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
 import de.dfki.cos.basys.platform.runtime.component.Component;
-import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Manager</b></em>'. <!-- end-user-doc -->
  *
  *
- * @see de.dfki.iui.basys.model.runtime.component.ComponentPackage#getComponentManager()
+ * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage#getComponentManager()
  * @model interface="true" abstract="true"
  * @generated
  */
@@ -44,7 +44,7 @@ public interface ComponentManager {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @model exceptions="de.dfki.iui.basys.model.runtime.component.ComponentManagerException"
+	 * @model exceptions="de.dfki.cos.basys.platform.model.runtime.component.ComponentManagerException"
 	 * @generated
 	 */
 	Component createLocalComponent(ComponentConfiguration config) throws ComponentManagerException;
@@ -56,7 +56,7 @@ public interface ComponentManager {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @model exceptions="de.dfki.iui.basys.model.runtime.component.ComponentManagerException"
+	 * @model exceptions="de.dfki.cos.basys.platform.model.runtime.component.ComponentManagerException"
 	 * @generated
 	 */
 	void deleteLocalComponent(String id) throws ComponentManagerException;

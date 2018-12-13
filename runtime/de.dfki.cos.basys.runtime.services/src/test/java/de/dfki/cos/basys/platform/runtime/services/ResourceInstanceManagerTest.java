@@ -7,9 +7,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import de.dfki.cos.basys.platform.model.domain.resourceinstance.ResourceInstance;
+import de.dfki.cos.basys.platform.model.domain.resourceinstance.ResourceInstanceRepository;
 import de.dfki.cos.basys.platform.runtime.services.impl.ResourceInstanceManagerImpl;
-import de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstance;
-import de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstanceRepository;
 
 public class ResourceInstanceManagerTest extends BaseEmfServiceComponentTest<ResourceInstanceManagerImpl> {
 

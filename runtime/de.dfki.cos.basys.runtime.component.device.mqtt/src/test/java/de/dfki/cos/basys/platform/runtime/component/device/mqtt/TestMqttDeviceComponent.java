@@ -1,9 +1,9 @@
 package de.dfki.cos.basys.platform.runtime.component.device.mqtt;
 
+import de.dfki.cos.basys.platform.model.runtime.component.CapabilityRequest;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
 import de.dfki.cos.basys.platform.runtime.component.device.mqtt.MqttDeviceComponent;
 import de.dfki.cos.basys.platform.runtime.component.device.packml.UnitConfiguration;
-import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
-import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 
 public class TestMqttDeviceComponent extends MqttDeviceComponent {
 

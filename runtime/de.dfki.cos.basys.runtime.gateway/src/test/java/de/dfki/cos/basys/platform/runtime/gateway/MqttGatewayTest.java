@@ -10,19 +10,19 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import de.dfki.cos.basys.platform.model.runtime.communication.Channel;
+import de.dfki.cos.basys.platform.model.runtime.communication.ChannelListener;
+import de.dfki.cos.basys.platform.model.runtime.communication.ChannelPool;
+import de.dfki.cos.basys.platform.model.runtime.communication.Notification;
+import de.dfki.cos.basys.platform.model.runtime.communication.Request;
+import de.dfki.cos.basys.platform.model.runtime.communication.Response;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
+import de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentConfigurationImpl;
 import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
 import de.dfki.cos.basys.platform.runtime.communication.provider.MqttCommunicationProvider;
 import de.dfki.cos.basys.platform.runtime.component.manager.ComponentManagerException;
 import de.dfki.cos.basys.platform.runtime.gateway.MqttGatewayComponent;
-import de.dfki.iui.basys.model.runtime.communication.Channel;
-import de.dfki.iui.basys.model.runtime.communication.ChannelListener;
-import de.dfki.iui.basys.model.runtime.communication.ChannelPool;
-import de.dfki.iui.basys.model.runtime.communication.Notification;
-import de.dfki.iui.basys.model.runtime.communication.Request;
-import de.dfki.iui.basys.model.runtime.communication.Response;
-import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
-import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
-import de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl;
 
 public class MqttGatewayTest extends BaseComponentTest {
 

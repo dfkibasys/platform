@@ -1,18 +1,18 @@
 package de.dfki.cos.basys.platform.runtime.component.device;
 
+import de.dfki.cos.basys.platform.model.domain.resourceinstance.CapabilityVariant;
+import de.dfki.cos.basys.platform.model.runtime.communication.ChannelListener;
+import de.dfki.cos.basys.platform.model.runtime.component.CapabilityRequest;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentRequestStatus;
+import de.dfki.cos.basys.platform.model.runtime.component.ControlCommand;
+import de.dfki.cos.basys.platform.model.runtime.component.ControlMode;
+import de.dfki.cos.basys.platform.model.runtime.component.impl.CapabilityRequestImpl;
+import de.dfki.cos.basys.platform.model.runtime.component.impl.ChangeModeRequestImpl;
+import de.dfki.cos.basys.platform.model.runtime.component.impl.CommandRequestImpl;
 import de.dfki.cos.basys.platform.runtime.component.ComponentController;
 import de.dfki.cos.basys.platform.runtime.component.device.packml.CommandInterface;
 import de.dfki.cos.basys.platform.runtime.component.device.packml.UnitConfiguration;
-import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
-import de.dfki.iui.basys.model.runtime.communication.ChannelListener;
-import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
-import de.dfki.iui.basys.model.runtime.component.ComponentRequest;
-import de.dfki.iui.basys.model.runtime.component.ComponentRequestStatus;
-import de.dfki.iui.basys.model.runtime.component.ControlCommand;
-import de.dfki.iui.basys.model.runtime.component.ControlMode;
-import de.dfki.iui.basys.model.runtime.component.impl.CapabilityRequestImpl;
-import de.dfki.iui.basys.model.runtime.component.impl.ChangeModeRequestImpl;
-import de.dfki.iui.basys.model.runtime.component.impl.CommandRequestImpl;
 
 public class DeviceComponentController extends ComponentController implements CommandInterface {
 

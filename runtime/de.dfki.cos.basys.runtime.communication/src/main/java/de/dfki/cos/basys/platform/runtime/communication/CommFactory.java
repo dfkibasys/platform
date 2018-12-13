@@ -1,19 +1,19 @@
 package de.dfki.cos.basys.platform.runtime.communication;
 
+import de.dfki.cos.basys.platform.model.runtime.communication.Authentication;
+import de.dfki.cos.basys.platform.model.runtime.communication.Channel;
+import de.dfki.cos.basys.platform.model.runtime.communication.ChannelListener;
+import de.dfki.cos.basys.platform.model.runtime.communication.ChannelPool;
+import de.dfki.cos.basys.platform.model.runtime.communication.Client;
+import de.dfki.cos.basys.platform.model.runtime.communication.CommunicationFactory;
+import de.dfki.cos.basys.platform.model.runtime.communication.CommunicationProvider;
+import de.dfki.cos.basys.platform.model.runtime.communication.Notification;
+import de.dfki.cos.basys.platform.model.runtime.communication.Request;
+import de.dfki.cos.basys.platform.model.runtime.communication.Response;
+import de.dfki.cos.basys.platform.model.runtime.communication.exceptions.CommunicationException;
 import de.dfki.cos.basys.platform.runtime.communication.provider.JmsCommunicationProvider;
 import de.dfki.cos.basys.platform.runtime.communication.provider.MqttCommunicationProvider;
 import de.dfki.cos.basys.platform.runtime.communication.provider.WsCommunicationProvider;
-import de.dfki.iui.basys.model.runtime.communication.Authentication;
-import de.dfki.iui.basys.model.runtime.communication.Channel;
-import de.dfki.iui.basys.model.runtime.communication.ChannelListener;
-import de.dfki.iui.basys.model.runtime.communication.ChannelPool;
-import de.dfki.iui.basys.model.runtime.communication.Client;
-import de.dfki.iui.basys.model.runtime.communication.CommunicationFactory;
-import de.dfki.iui.basys.model.runtime.communication.CommunicationProvider;
-import de.dfki.iui.basys.model.runtime.communication.Notification;
-import de.dfki.iui.basys.model.runtime.communication.Request;
-import de.dfki.iui.basys.model.runtime.communication.Response;
-import de.dfki.iui.basys.model.runtime.communication.exceptions.CommunicationException;
 
 public class CommFactory {
 

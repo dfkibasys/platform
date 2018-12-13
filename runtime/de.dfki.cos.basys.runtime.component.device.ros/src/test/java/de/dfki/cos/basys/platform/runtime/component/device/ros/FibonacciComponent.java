@@ -6,13 +6,13 @@ import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
 
+import de.dfki.cos.basys.platform.model.runtime.component.CapabilityRequest;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
+import de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus;
 import de.dfki.cos.basys.platform.runtime.component.ComponentContext;
 import de.dfki.cos.basys.platform.runtime.component.ComponentException;
 import de.dfki.cos.basys.platform.runtime.component.device.packml.UnitConfiguration;
 import de.dfki.cos.basys.platform.runtime.component.device.ros.RosDeviceComponent;
-import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
-import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
-import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
 import edu.wpi.rail.jrosbridge.ActionClient;
 import edu.wpi.rail.jrosbridge.Goal;
 import edu.wpi.rail.jrosbridge.callback.ActionCallback;

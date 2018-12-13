@@ -5,9 +5,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import de.dfki.iui.basys.model.domain.linebalancing.StaticWorldModel;
-import de.dfki.iui.basys.model.domain.linebalancing.WorldModel;
-import de.dfki.iui.basys.model.domain.topology.TopologyElement;
+import de.dfki.cos.basys.platform.model.domain.linebalancing.StaticWorldModel;
+import de.dfki.cos.basys.platform.model.domain.linebalancing.WorldModel;
+import de.dfki.cos.basys.platform.model.domain.topology.TopologyElement;
 
 @Path("/worldmodelmanager")
 public interface WorldModelManager {

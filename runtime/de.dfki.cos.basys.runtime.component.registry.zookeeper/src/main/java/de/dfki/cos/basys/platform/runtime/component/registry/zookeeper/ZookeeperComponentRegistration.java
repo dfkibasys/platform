@@ -4,10 +4,10 @@ import org.apache.curator.x.discovery.ServiceDiscovery;
 import org.apache.curator.x.discovery.ServiceInstance;
 import org.apache.curator.x.discovery.UriSpec;
 
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo;
 import de.dfki.cos.basys.platform.runtime.component.Component;
 import de.dfki.cos.basys.platform.runtime.component.registry.ComponentRegistration;
 import de.dfki.cos.basys.platform.runtime.component.registry.ComponentRegistrationException;
-import de.dfki.iui.basys.model.runtime.component.ComponentInfo;
 
 public class ZookeeperComponentRegistration implements ComponentRegistration {
 

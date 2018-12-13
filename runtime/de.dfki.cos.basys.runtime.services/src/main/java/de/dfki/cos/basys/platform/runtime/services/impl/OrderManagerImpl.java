@@ -9,6 +9,22 @@ import java.util.concurrent.Executors;
 import org.eclipse.emf.ecore.EObject;
 
 import de.dfki.cos.basys.common.emf.json.JsonUtils;
+import de.dfki.cos.basys.platform.model.domain.linebalancing.LineBalancingAssignment;
+import de.dfki.cos.basys.platform.model.domain.linebalancing.LinebalancingPackage;
+import de.dfki.cos.basys.platform.model.domain.order.Order;
+import de.dfki.cos.basys.platform.model.domain.order.OrderPackage;
+import de.dfki.cos.basys.platform.model.domain.order.OrderStatus;
+import de.dfki.cos.basys.platform.model.domain.order.OrderStatusEnum;
+import de.dfki.cos.basys.platform.model.domain.order.OrderStore;
+import de.dfki.cos.basys.platform.model.domain.order.impl.OrderFactoryImpl;
+import de.dfki.cos.basys.platform.model.domain.productinstance.ProductInstance;
+import de.dfki.cos.basys.platform.model.domain.productinstance.impl.ProductinstanceFactoryImpl;
+import de.dfki.cos.basys.platform.model.runtime.communication.Channel;
+import de.dfki.cos.basys.platform.model.runtime.communication.ChannelListener;
+import de.dfki.cos.basys.platform.model.runtime.communication.Notification;
+import de.dfki.cos.basys.platform.model.runtime.communication.Request;
+import de.dfki.cos.basys.platform.model.runtime.communication.Response;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
 import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
 import de.dfki.cos.basys.platform.runtime.component.ComponentContext;
 import de.dfki.cos.basys.platform.runtime.component.ComponentException;
@@ -16,22 +32,6 @@ import de.dfki.cos.basys.platform.runtime.component.service.EmfServiceComponent;
 import de.dfki.cos.basys.platform.runtime.services.OrderManager;
 import de.dfki.cos.basys.platform.runtime.services.ProductDefinitionManager;
 import de.dfki.cos.basys.platform.runtime.services.ProductInstanceManager;
-import de.dfki.iui.basys.model.domain.linebalancing.LineBalancingAssignment;
-import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
-import de.dfki.iui.basys.model.domain.order.Order;
-import de.dfki.iui.basys.model.domain.order.OrderPackage;
-import de.dfki.iui.basys.model.domain.order.OrderStatus;
-import de.dfki.iui.basys.model.domain.order.OrderStatusEnum;
-import de.dfki.iui.basys.model.domain.order.OrderStore;
-import de.dfki.iui.basys.model.domain.order.impl.OrderFactoryImpl;
-import de.dfki.iui.basys.model.domain.productinstance.ProductInstance;
-import de.dfki.iui.basys.model.domain.productinstance.impl.ProductinstanceFactoryImpl;
-import de.dfki.iui.basys.model.runtime.communication.Channel;
-import de.dfki.iui.basys.model.runtime.communication.ChannelListener;
-import de.dfki.iui.basys.model.runtime.communication.Notification;
-import de.dfki.iui.basys.model.runtime.communication.Request;
-import de.dfki.iui.basys.model.runtime.communication.Response;
-import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 
 public class OrderManagerImpl extends EmfServiceComponent implements OrderManager {
 

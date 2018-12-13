@@ -7,10 +7,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import de.dfki.cos.basys.platform.model.domain.material.Material;
+import de.dfki.cos.basys.platform.model.domain.material.MaterialCatalogue;
+import de.dfki.cos.basys.platform.model.domain.material.MaterialGroup;
 import de.dfki.cos.basys.platform.runtime.services.impl.MaterialManagerImpl;
-import de.dfki.iui.basys.model.domain.material.Material;
-import de.dfki.iui.basys.model.domain.material.MaterialCatalogue;
-import de.dfki.iui.basys.model.domain.material.MaterialGroup;
 
 public class MaterialManagerTest extends BaseEmfServiceComponentTest<MaterialManagerImpl> {
 

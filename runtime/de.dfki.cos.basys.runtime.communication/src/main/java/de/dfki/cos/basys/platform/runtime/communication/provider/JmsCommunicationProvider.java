@@ -23,16 +23,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import de.dfki.cos.basys.common.emf.json.JsonUtils;
+import de.dfki.cos.basys.platform.model.runtime.communication.Authentication;
+import de.dfki.cos.basys.platform.model.runtime.communication.Channel;
+import de.dfki.cos.basys.platform.model.runtime.communication.ChannelPool;
+import de.dfki.cos.basys.platform.model.runtime.communication.CommunicationProvider;
+import de.dfki.cos.basys.platform.model.runtime.communication.Notification;
+import de.dfki.cos.basys.platform.model.runtime.communication.Request;
+import de.dfki.cos.basys.platform.model.runtime.communication.Response;
+import de.dfki.cos.basys.platform.model.runtime.communication.ResponseCallback;
+import de.dfki.cos.basys.platform.model.runtime.communication.exceptions.ProviderException;
 import de.dfki.cos.basys.platform.runtime.communication.CommUtils;
-import de.dfki.iui.basys.model.runtime.communication.Authentication;
-import de.dfki.iui.basys.model.runtime.communication.Channel;
-import de.dfki.iui.basys.model.runtime.communication.ChannelPool;
-import de.dfki.iui.basys.model.runtime.communication.CommunicationProvider;
-import de.dfki.iui.basys.model.runtime.communication.Notification;
-import de.dfki.iui.basys.model.runtime.communication.Request;
-import de.dfki.iui.basys.model.runtime.communication.Response;
-import de.dfki.iui.basys.model.runtime.communication.ResponseCallback;
-import de.dfki.iui.basys.model.runtime.communication.exceptions.ProviderException;
 
 public class JmsCommunicationProvider implements CommunicationProvider {
 
@@ -178,8 +178,8 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 							message.acknowledge();
 							String content = textMessage.getText();
 							try {
-								de.dfki.iui.basys.model.runtime.communication.Message incomingMessage = 
-										JsonUtils.fromString(content, de.dfki.iui.basys.model.runtime.communication.Message.class);
+								de.dfki.cos.basys.platform.model.runtime.communication.Message incomingMessage = 
+										JsonUtils.fromString(content, de.dfki.cos.basys.platform.model.runtime.communication.Message.class);
 								if (textMessage.getJMSCorrelationID() != null) {
 									Request req = (Request) incomingMessage;
 									Response res = channel.getListener().handleRequest(channel, req);
@@ -233,8 +233,8 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 							message.acknowledge();
 							String content = textMessage.getText();
 							try {
-								de.dfki.iui.basys.model.runtime.communication.Message incomingMessage = 
-										JsonUtils.fromString(content, de.dfki.iui.basys.model.runtime.communication.Message.class);
+								de.dfki.cos.basys.platform.model.runtime.communication.Message incomingMessage = 
+										JsonUtils.fromString(content, de.dfki.cos.basys.platform.model.runtime.communication.Message.class);
 								if (textMessage.getJMSCorrelationID() != null) {
 									Request req = (Request) incomingMessage;
 									Response res = channel.getListener().handleRequest(channel, req);
@@ -289,7 +289,7 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 
 		JmsDestination internal_destination = this.destinations.get(channel.getId());
 
-		// de.dfki.iui.basys.model.runtime.communication.Message message = ClientFactory.getInstance()
+		// de.dfki.cos.basys.platform.model.runtime.communication.Message message = ClientFactory.getInstance()
 		// .createNotification(payload);
 
 		try {

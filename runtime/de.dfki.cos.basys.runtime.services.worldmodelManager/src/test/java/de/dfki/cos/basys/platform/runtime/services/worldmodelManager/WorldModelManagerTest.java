@@ -13,19 +13,19 @@ import org.junit.Test;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import de.dfki.cos.basys.platform.model.domain.order.Order;
+import de.dfki.cos.basys.platform.model.domain.order.OrderStatus;
+import de.dfki.cos.basys.platform.model.domain.order.OrderStatusEnum;
+import de.dfki.cos.basys.platform.model.domain.order.impl.OrderFactoryImpl;
+import de.dfki.cos.basys.platform.model.domain.productinstance.ProductInstance;
+import de.dfki.cos.basys.platform.model.domain.productinstance.impl.ProductinstanceFactoryImpl;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
+import de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentConfigurationImpl;
 import de.dfki.cos.basys.platform.runtime.component.ComponentException;
 import de.dfki.cos.basys.platform.runtime.services.OrderManager;
 import de.dfki.cos.basys.platform.runtime.services.ProductDefinitionManager;
 import de.dfki.cos.basys.platform.runtime.services.ProductInstanceManager;
-import de.dfki.iui.basys.model.domain.order.Order;
-import de.dfki.iui.basys.model.domain.order.OrderStatus;
-import de.dfki.iui.basys.model.domain.order.OrderStatusEnum;
-import de.dfki.iui.basys.model.domain.order.impl.OrderFactoryImpl;
-import de.dfki.iui.basys.model.domain.productinstance.ProductInstance;
-import de.dfki.iui.basys.model.domain.productinstance.impl.ProductinstanceFactoryImpl;
-import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
-import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
-import de.dfki.iui.basys.model.runtime.component.impl.ComponentConfigurationImpl;
 
 public class WorldModelManagerTest extends BaseComponentTest {
 
@@ -184,7 +184,7 @@ public class WorldModelManagerTest extends BaseComponentTest {
 //				.createGeneralCapabilityVariant();
 //		variant.setCapability(moveRequest);
 //
-//		de.dfki.iui.basys.model.runtime.component.CapabilityRequest req = ComponentFactory.eINSTANCE
+//		de.dfki.cos.basys.platform.model.runtime.component.CapabilityRequest req = ComponentFactory.eINSTANCE
 //				.createCapabilityRequest();
 //		req.setCapabilityVariant(variant);
 //		req.setComponentId("_rUJzsDJhEei1p5hKOf5Slw");

@@ -3,12 +3,12 @@ package de.dfki.cos.basys.platform.runtime.component.device;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
+import de.dfki.cos.basys.platform.model.runtime.component.CapabilityRequest;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
+import de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus;
+import de.dfki.cos.basys.platform.model.runtime.component.State;
 import de.dfki.cos.basys.platform.runtime.component.ComponentException;
 import de.dfki.cos.basys.platform.runtime.component.device.packml.UnitConfiguration;
-import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
-import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
-import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
-import de.dfki.iui.basys.model.runtime.component.State;
 
 public class TestDeviceComponent extends DeviceComponent {
 

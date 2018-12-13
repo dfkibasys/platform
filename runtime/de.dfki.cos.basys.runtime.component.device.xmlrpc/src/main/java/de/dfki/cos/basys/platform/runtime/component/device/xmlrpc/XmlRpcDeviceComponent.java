@@ -8,9 +8,9 @@ import java.util.regex.Pattern;
 import org.apache.xmlrpc.client.XmlRpcClient;
 import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
 
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
 import de.dfki.cos.basys.platform.runtime.component.ComponentException;
 import de.dfki.cos.basys.platform.runtime.component.device.DeviceComponent;
-import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 
 
 public abstract class XmlRpcDeviceComponent extends DeviceComponent {

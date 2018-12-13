@@ -8,9 +8,9 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import de.dfki.cos.basys.platform.model.domain.order.Order;
+import de.dfki.cos.basys.platform.model.domain.order.OrderStore;
 import de.dfki.cos.basys.platform.runtime.services.impl.OrderManagerImpl;
-import de.dfki.iui.basys.model.domain.order.Order;
-import de.dfki.iui.basys.model.domain.order.OrderStore;
 
 public class OrderManagerTest extends BaseEmfServiceComponentTest<OrderManagerImpl> {
 

@@ -6,9 +6,9 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import de.dfki.iui.basys.model.domain.resourcetype.ResourceType;
-import de.dfki.iui.basys.model.domain.resourcetype.ResourceTypeCatalogue;
-import de.dfki.iui.basys.model.domain.resourcetype.ResourceTypeCatalogueCollection;
+import de.dfki.cos.basys.platform.model.domain.resourcetype.ResourceType;
+import de.dfki.cos.basys.platform.model.domain.resourcetype.ResourceTypeCatalogue;
+import de.dfki.cos.basys.platform.model.domain.resourcetype.ResourceTypeCatalogueCollection;
 
 @Path("/resourcetype")
 public interface ResourceTypeManager {

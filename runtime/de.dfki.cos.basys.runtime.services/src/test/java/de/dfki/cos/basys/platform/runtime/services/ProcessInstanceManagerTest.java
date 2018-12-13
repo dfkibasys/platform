@@ -7,9 +7,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import de.dfki.cos.basys.platform.model.domain.processinstance.ProcessInstance;
+import de.dfki.cos.basys.platform.model.domain.processinstance.ProcessInstanceStore;
 import de.dfki.cos.basys.platform.runtime.services.impl.ProcessInstanceManagerImpl;
-import de.dfki.iui.basys.model.domain.processinstance.ProcessInstance;
-import de.dfki.iui.basys.model.domain.processinstance.ProcessInstanceStore;
 
 public class ProcessInstanceManagerTest extends BaseEmfServiceComponentTest<ProcessInstanceManagerImpl> {
 

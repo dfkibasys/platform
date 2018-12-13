@@ -8,8 +8,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import de.dfki.iui.basys.model.domain.productinstance.ProductInstance;
-import de.dfki.iui.basys.model.domain.productinstance.ProductInstanceStore;
+import de.dfki.cos.basys.platform.model.domain.productinstance.ProductInstance;
+import de.dfki.cos.basys.platform.model.domain.productinstance.ProductInstanceStore;
 
 @Path("/productinstance")
 public interface ProductInstanceManager {

@@ -11,17 +11,17 @@ import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.component.annotations.Reference;
 
+import de.dfki.cos.basys.platform.model.domain.capability.Capability;
+import de.dfki.cos.basys.platform.model.domain.resourceinstance.CapabilityApplication;
+import de.dfki.cos.basys.platform.model.domain.resourceinstance.CapabilityVariant;
+import de.dfki.cos.basys.platform.model.domain.resourceinstance.ResourceInstance;
+import de.dfki.cos.basys.platform.model.domain.resourceinstance.ResourceInstanceRepository;
 import de.dfki.cos.basys.platform.osgi.services.BasysOsgiComponent;
 import de.dfki.cos.basys.platform.osgi.services.ResourceSetProvider;
 import de.dfki.cos.basys.platform.runtime.component.manager.ComponentManager;
 import de.dfki.cos.basys.platform.runtime.component.manager.ComponentManagerException;
 import de.dfki.cos.basys.platform.runtime.services.ResourceInstanceManager;
 import de.dfki.cos.basys.platform.runtime.services.impl.ResourceInstanceManagerImpl;
-import de.dfki.iui.basys.model.domain.capability.Capability;
-import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityApplication;
-import de.dfki.iui.basys.model.domain.resourceinstance.CapabilityVariant;
-import de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstance;
-import de.dfki.iui.basys.model.domain.resourceinstance.ResourceInstanceRepository;
 
 @Component(configurationPolicy = ConfigurationPolicy.REQUIRE, immediate = true)
 public final class ResourceInstanceManagerServiceImpl extends BasysOsgiComponent implements ResourceInstanceManager {

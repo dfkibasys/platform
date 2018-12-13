@@ -17,13 +17,13 @@ import org.apache.commons.io.filefilter.SuffixFileFilter;
 import org.eclipse.emf.common.util.URI;
 
 import de.dfki.cos.basys.common.emf.json.JsonUtils;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
+import de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl;
 import de.dfki.cos.basys.platform.runtime.component.BaseComponent;
 import de.dfki.cos.basys.platform.runtime.component.Component;
 import de.dfki.cos.basys.platform.runtime.component.ComponentException;
 import de.dfki.cos.basys.platform.runtime.component.manager.ComponentManager;
 import de.dfki.cos.basys.platform.runtime.component.manager.ComponentManagerException;
-import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
-import de.dfki.iui.basys.model.runtime.component.impl.ComponentPackageImpl;
 
 public class ComponentManagerImpl extends BaseComponent implements ComponentManager {
 

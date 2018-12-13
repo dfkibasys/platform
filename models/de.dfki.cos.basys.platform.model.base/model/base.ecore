@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="base" nsURI="http://www.dfki.de/iui/basys/model/base" nsPrefix="base">
+  <eAnnotations source="http://de.dfki.iui.mmds/CoreModel"/>
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
+    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
+    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="BObject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="binding" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Metadata">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Weitere Attribute: für wen? cachable? "/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="creator" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Welcher Dienst hat das Objekt erzeugt?"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="creationDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Wann wurde das Object erzeugt?"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="expiryDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Wie lange ist das Object gültig?"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Entity" eSuperTypes="#//BObject">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="BaSys-Basisklasse, TODO: weitere klassen hiervon ableiten, Metadata wird dann automatisch gesetzt."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="metadata" eType="#//Metadata"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="KeyValuePair">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="BBoolean" instanceClassName="de.dfki.cos.basys.platform.model.base.datatypes.BBoolean"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="BByte" instanceClassName="de.dfki.cos.basys.platform.model.base.datatypes.BByte"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="BChar" instanceClassName="de.dfki.cos.basys.platform.model.base.datatypes.BChar"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="BDouble" instanceClassName="de.dfki.cos.basys.platform.model.base.datatypes.BDouble"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="BFloat" instanceClassName="de.dfki.cos.basys.platform.model.base.datatypes.BFloat"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="BInteger" instanceClassName="de.dfki.cos.basys.platform.model.base.datatypes.BInteger"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="BLong" instanceClassName="de.dfki.cos.basys.platform.model.base.datatypes.BLong"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="BShort" instanceClassName="de.dfki.cos.basys.platform.model.base.datatypes.BShort"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="BString" instanceClassName="de.dfki.cos.basys.platform.model.base.datatypes.BString"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="List" instanceClassName="java.util.List">
+    <eTypeParameters name="T"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="Collection" instanceClassName="java.util.Collection">
+    <eTypeParameters name="T"/>
+  </eClassifiers>
+</ecore:EPackage>

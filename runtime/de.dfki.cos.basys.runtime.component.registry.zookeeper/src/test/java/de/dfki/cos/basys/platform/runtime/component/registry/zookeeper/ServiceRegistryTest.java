@@ -12,11 +12,11 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo;
+import de.dfki.cos.basys.platform.model.runtime.component.State;
 import de.dfki.cos.basys.platform.runtime.component.ComponentException;
 import de.dfki.cos.basys.platform.runtime.component.device.TestDeviceComponent;
-import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
-import de.dfki.iui.basys.model.runtime.component.ComponentInfo;
-import de.dfki.iui.basys.model.runtime.component.State;
 
 public class ServiceRegistryTest extends BaseComponentTest {
 

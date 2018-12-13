@@ -8,6 +8,22 @@ import java.util.concurrent.locks.ReentrantLock;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import de.dfki.cos.basys.common.emf.json.JsonUtils;
+import de.dfki.cos.basys.platform.model.runtime.communication.Notification;
+import de.dfki.cos.basys.platform.model.runtime.communication.exceptions.ChannelException;
+import de.dfki.cos.basys.platform.model.runtime.component.CapabilityRequest;
+import de.dfki.cos.basys.platform.model.runtime.component.ChangeModeRequest;
+import de.dfki.cos.basys.platform.model.runtime.component.CommandRequest;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentRequestStatus;
+import de.dfki.cos.basys.platform.model.runtime.component.ControlCommand;
+import de.dfki.cos.basys.platform.model.runtime.component.ControlMode;
+import de.dfki.cos.basys.platform.model.runtime.component.RequestStatus;
+import de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus;
+import de.dfki.cos.basys.platform.model.runtime.component.State;
+import de.dfki.cos.basys.platform.model.runtime.component.Variable;
+import de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentRequestStatusImpl;
 import de.dfki.cos.basys.platform.runtime.component.BaseComponent;
 import de.dfki.cos.basys.platform.runtime.component.ComponentContext;
 import de.dfki.cos.basys.platform.runtime.component.ComponentException;
@@ -18,22 +34,6 @@ import de.dfki.cos.basys.platform.runtime.component.device.packml.StatusInterfac
 import de.dfki.cos.basys.platform.runtime.component.device.packml.UnitConfiguration;
 import de.dfki.cos.basys.platform.runtime.component.device.packml.WaitStatesHandler;
 import de.dfki.cos.basys.platform.runtime.component.registry.ComponentRegistrationException;
-import de.dfki.iui.basys.model.runtime.communication.Notification;
-import de.dfki.iui.basys.model.runtime.communication.exceptions.ChannelException;
-import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
-import de.dfki.iui.basys.model.runtime.component.ChangeModeRequest;
-import de.dfki.iui.basys.model.runtime.component.CommandRequest;
-import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
-import de.dfki.iui.basys.model.runtime.component.ComponentInfo;
-import de.dfki.iui.basys.model.runtime.component.ComponentPackage;
-import de.dfki.iui.basys.model.runtime.component.ComponentRequestStatus;
-import de.dfki.iui.basys.model.runtime.component.ControlCommand;
-import de.dfki.iui.basys.model.runtime.component.ControlMode;
-import de.dfki.iui.basys.model.runtime.component.RequestStatus;
-import de.dfki.iui.basys.model.runtime.component.ResponseStatus;
-import de.dfki.iui.basys.model.runtime.component.State;
-import de.dfki.iui.basys.model.runtime.component.Variable;
-import de.dfki.iui.basys.model.runtime.component.impl.ComponentRequestStatusImpl;
 
 public abstract class DeviceComponent extends BaseComponent implements StatusInterface, CommandInterface, ActiveStatesHandler, WaitStatesHandler {
 

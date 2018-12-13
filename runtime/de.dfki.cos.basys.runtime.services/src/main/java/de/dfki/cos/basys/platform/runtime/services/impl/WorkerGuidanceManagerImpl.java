@@ -9,16 +9,16 @@ import javax.ws.rs.core.Response;
 import org.eclipse.emf.ecore.EObject;
 
 import de.dfki.cos.basys.common.emf.json.JsonUtils;
+import de.dfki.cos.basys.platform.model.domain.linebalancing.LineBalancingAssignment;
+import de.dfki.cos.basys.platform.model.domain.linebalancing.LinebalancingPackage;
+import de.dfki.cos.basys.platform.model.runtime.communication.Channel;
+import de.dfki.cos.basys.platform.model.runtime.communication.ChannelListener;
+import de.dfki.cos.basys.platform.model.runtime.communication.Notification;
+import de.dfki.cos.basys.platform.model.runtime.communication.Request;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
 import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
 import de.dfki.cos.basys.platform.runtime.component.service.ServiceComponent;
 import de.dfki.cos.basys.platform.runtime.services.WorkerGuidanceManager;
-import de.dfki.iui.basys.model.domain.linebalancing.LineBalancingAssignment;
-import de.dfki.iui.basys.model.domain.linebalancing.LinebalancingPackage;
-import de.dfki.iui.basys.model.runtime.communication.Channel;
-import de.dfki.iui.basys.model.runtime.communication.ChannelListener;
-import de.dfki.iui.basys.model.runtime.communication.Notification;
-import de.dfki.iui.basys.model.runtime.communication.Request;
-import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 
 public class WorkerGuidanceManagerImpl extends ServiceComponent implements WorkerGuidanceManager {
 
@@ -49,7 +49,7 @@ public class WorkerGuidanceManagerImpl extends ServiceComponent implements Worke
 			new ChannelListener() {
 
 				@Override
-				public de.dfki.iui.basys.model.runtime.communication.Response handleRequest(Channel channel, Request req) {
+				public de.dfki.cos.basys.platform.model.runtime.communication.Response handleRequest(Channel channel, Request req) {
 					return null;
 				}
 

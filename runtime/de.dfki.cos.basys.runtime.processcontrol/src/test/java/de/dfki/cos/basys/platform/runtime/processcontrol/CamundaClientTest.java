@@ -9,13 +9,13 @@ import java.util.UUID;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentFactory;
+import de.dfki.cos.basys.platform.model.runtime.component.ProcessRequest;
+import de.dfki.cos.basys.platform.model.runtime.component.Variable;
+import de.dfki.cos.basys.platform.model.runtime.component.VariableType;
+import de.dfki.cos.basys.platform.model.runtime.component.impl.VariableImpl;
 import de.dfki.cos.basys.platform.runtime.processcontrol.impl.CamundaRestClient;
 import de.dfki.cos.basys.platform.runtime.processcontrol.impl.ExternalServiceTaskDto;
-import de.dfki.iui.basys.model.runtime.component.ComponentFactory;
-import de.dfki.iui.basys.model.runtime.component.ProcessRequest;
-import de.dfki.iui.basys.model.runtime.component.Variable;
-import de.dfki.iui.basys.model.runtime.component.VariableType;
-import de.dfki.iui.basys.model.runtime.component.impl.VariableImpl;
 
 public class CamundaClientTest {
 

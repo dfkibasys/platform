@@ -16,19 +16,19 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 
 import de.dfki.cos.basys.common.emf.EmfPersistence;
 import de.dfki.cos.basys.common.emf.json.JsonUtils;
+import de.dfki.cos.basys.platform.model.domain.material.Material;
+import de.dfki.cos.basys.platform.model.domain.order.Order;
+import de.dfki.cos.basys.platform.model.domain.order.OrderStatus;
+import de.dfki.cos.basys.platform.model.domain.order.OrderStatusEnum;
+import de.dfki.cos.basys.platform.model.domain.order.impl.OrderFactoryImpl;
+import de.dfki.cos.basys.platform.model.domain.productdefinition.MaterialEntry;
+import de.dfki.cos.basys.platform.model.domain.resourceinstance.ManufacturingCapabilityVariant;
+import de.dfki.cos.basys.platform.model.runtime.component.CapabilityRequest;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest;
+import de.dfki.cos.basys.platform.model.runtime.component.ControlMode;
+import de.dfki.cos.basys.platform.model.runtime.component.impl.ChangeModeRequestImpl;
 import de.dfki.cos.basys.platform.runtime.component.service.EmfServiceComponent;
 import de.dfki.cos.basys.platform.runtime.component.util.BasysResourceSetImpl;
-import de.dfki.iui.basys.model.domain.material.Material;
-import de.dfki.iui.basys.model.domain.order.Order;
-import de.dfki.iui.basys.model.domain.order.OrderStatus;
-import de.dfki.iui.basys.model.domain.order.OrderStatusEnum;
-import de.dfki.iui.basys.model.domain.order.impl.OrderFactoryImpl;
-import de.dfki.iui.basys.model.domain.productdefinition.MaterialEntry;
-import de.dfki.iui.basys.model.domain.resourceinstance.ManufacturingCapabilityVariant;
-import de.dfki.iui.basys.model.runtime.component.CapabilityRequest;
-import de.dfki.iui.basys.model.runtime.component.ComponentRequest;
-import de.dfki.iui.basys.model.runtime.component.ControlMode;
-import de.dfki.iui.basys.model.runtime.component.impl.ChangeModeRequestImpl;
 
 public class JsonSerializationTest {
 

@@ -10,7 +10,7 @@
       <!-- @generated runtime -->
       <factory
             uri="http://www.dfki.de/iui/basys/model/communication"
-            class="de.dfki.iui.basys.model.runtime.communication.provider.CommunicationItemProviderAdapterFactory"
+            class="de.dfki.cos.basys.platform.model.runtime.communication.provider.CommunicationItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider
@@ -23,7 +23,7 @@
       <!-- @generated runtime -->
       <factory
             uri="http://www.dfki.de/iui/basys/model/component"
-            class="de.dfki.iui.basys.model.runtime.component.provider.ComponentItemProviderAdapterFactory"
+            class="de.dfki.cos.basys.platform.model.runtime.component.provider.ComponentItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider

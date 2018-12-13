@@ -6,10 +6,10 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import de.dfki.iui.basys.model.domain.productdefinition.AssemblyGroup;
-import de.dfki.iui.basys.model.domain.productdefinition.ProductCatalogue;
-import de.dfki.iui.basys.model.domain.productdefinition.ProductGroup;
-import de.dfki.iui.basys.model.domain.productdefinition.ProductVariant;
+import de.dfki.cos.basys.platform.model.domain.productdefinition.AssemblyGroup;
+import de.dfki.cos.basys.platform.model.domain.productdefinition.ProductCatalogue;
+import de.dfki.cos.basys.platform.model.domain.productdefinition.ProductGroup;
+import de.dfki.cos.basys.platform.model.domain.productdefinition.ProductVariant;
 
 @Path("/productdefinition")
 public interface ProductDefinitionManager {

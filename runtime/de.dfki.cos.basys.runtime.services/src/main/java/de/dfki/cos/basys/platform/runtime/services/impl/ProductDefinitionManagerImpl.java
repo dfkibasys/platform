@@ -1,15 +1,15 @@
 package de.dfki.cos.basys.platform.runtime.services.impl;
 
+import de.dfki.cos.basys.platform.model.domain.productdefinition.AssemblyGroup;
+import de.dfki.cos.basys.platform.model.domain.productdefinition.ProductCatalogue;
+import de.dfki.cos.basys.platform.model.domain.productdefinition.ProductGroup;
+import de.dfki.cos.basys.platform.model.domain.productdefinition.ProductVariant;
+import de.dfki.cos.basys.platform.model.domain.productdefinition.ProductdefinitionPackage;
+import de.dfki.cos.basys.platform.model.domain.productdefinition.impl.ProductdefinitionPackageImpl;
+import de.dfki.cos.basys.platform.model.domain.productdefinition.util.ProductdefinitionResourceFactoryImpl;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
 import de.dfki.cos.basys.platform.runtime.component.service.EmfServiceComponent;
 import de.dfki.cos.basys.platform.runtime.services.ProductDefinitionManager;
-import de.dfki.iui.basys.model.domain.productdefinition.AssemblyGroup;
-import de.dfki.iui.basys.model.domain.productdefinition.ProductCatalogue;
-import de.dfki.iui.basys.model.domain.productdefinition.ProductGroup;
-import de.dfki.iui.basys.model.domain.productdefinition.ProductVariant;
-import de.dfki.iui.basys.model.domain.productdefinition.ProductdefinitionPackage;
-import de.dfki.iui.basys.model.domain.productdefinition.impl.ProductdefinitionPackageImpl;
-import de.dfki.iui.basys.model.domain.productdefinition.util.ProductdefinitionResourceFactoryImpl;
-import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 
 public class ProductDefinitionManagerImpl extends EmfServiceComponent implements ProductDefinitionManager {
 

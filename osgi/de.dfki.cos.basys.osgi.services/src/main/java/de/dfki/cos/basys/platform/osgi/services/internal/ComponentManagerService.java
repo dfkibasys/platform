@@ -12,6 +12,7 @@ import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.component.annotations.Reference;
 
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
 import de.dfki.cos.basys.platform.osgi.services.BasysOsgiComponent;
 import de.dfki.cos.basys.platform.osgi.services.ChannelPoolProvider;
 import de.dfki.cos.basys.platform.runtime.component.ComponentException;
@@ -19,7 +20,6 @@ import de.dfki.cos.basys.platform.runtime.component.manager.ComponentManager;
 import de.dfki.cos.basys.platform.runtime.component.manager.ComponentManagerException;
 import de.dfki.cos.basys.platform.runtime.component.manager.impl.ComponentManagerImpl;
 import de.dfki.cos.basys.platform.runtime.component.registry.ComponentRegistry;
-import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 
 @Component(configurationPolicy = ConfigurationPolicy.REQUIRE, immediate = true)
 public class ComponentManagerService extends BasysOsgiComponent implements ComponentManager {

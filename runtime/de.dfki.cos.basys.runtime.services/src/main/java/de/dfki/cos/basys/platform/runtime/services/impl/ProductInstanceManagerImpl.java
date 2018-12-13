@@ -1,11 +1,11 @@
 package de.dfki.cos.basys.platform.runtime.services.impl;
 
+import de.dfki.cos.basys.platform.model.domain.productinstance.ProductInstance;
+import de.dfki.cos.basys.platform.model.domain.productinstance.ProductInstanceStore;
+import de.dfki.cos.basys.platform.model.domain.productinstance.ProductinstancePackage;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
 import de.dfki.cos.basys.platform.runtime.component.service.EmfServiceComponent;
 import de.dfki.cos.basys.platform.runtime.services.ProductInstanceManager;
-import de.dfki.iui.basys.model.domain.productinstance.ProductInstance;
-import de.dfki.iui.basys.model.domain.productinstance.ProductInstanceStore;
-import de.dfki.iui.basys.model.domain.productinstance.ProductinstancePackage;
-import de.dfki.iui.basys.model.runtime.component.ComponentConfiguration;
 
 public class ProductInstanceManagerImpl extends EmfServiceComponent implements ProductInstanceManager {
 

@@ -7,9 +7,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import de.dfki.cos.basys.platform.model.domain.productinstance.ProductInstance;
+import de.dfki.cos.basys.platform.model.domain.productinstance.ProductInstanceStore;
 import de.dfki.cos.basys.platform.runtime.services.impl.ProductInstanceManagerImpl;
-import de.dfki.iui.basys.model.domain.productinstance.ProductInstance;
-import de.dfki.iui.basys.model.domain.productinstance.ProductInstanceStore;
 
 public class ProductInstanceManagerTest extends BaseEmfServiceComponentTest<ProductInstanceManagerImpl> {
 

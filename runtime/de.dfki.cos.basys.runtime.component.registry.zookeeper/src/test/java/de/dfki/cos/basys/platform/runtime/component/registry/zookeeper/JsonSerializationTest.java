@@ -6,9 +6,9 @@ import java.net.URLClassLoader;
 import org.junit.Test;
 
 import de.dfki.cos.basys.common.emf.json.JsonUtils;
-import de.dfki.iui.basys.model.runtime.component.ComponentRequest;
-import de.dfki.iui.basys.model.runtime.component.ControlMode;
-import de.dfki.iui.basys.model.runtime.component.impl.ChangeModeRequestImpl;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest;
+import de.dfki.cos.basys.platform.model.runtime.component.ControlMode;
+import de.dfki.cos.basys.platform.model.runtime.component.impl.ChangeModeRequestImpl;
 
 public class JsonSerializationTest {
 

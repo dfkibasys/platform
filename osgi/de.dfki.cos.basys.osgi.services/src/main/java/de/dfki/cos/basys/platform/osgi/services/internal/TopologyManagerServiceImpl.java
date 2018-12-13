@@ -10,14 +10,14 @@ import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.component.annotations.Reference;
 
+import de.dfki.cos.basys.platform.model.domain.topology.Enterprise;
+import de.dfki.cos.basys.platform.model.domain.topology.TopologyElement;
 import de.dfki.cos.basys.platform.osgi.services.BasysOsgiComponent;
 import de.dfki.cos.basys.platform.osgi.services.ResourceSetProvider;
 import de.dfki.cos.basys.platform.runtime.component.manager.ComponentManager;
 import de.dfki.cos.basys.platform.runtime.component.manager.ComponentManagerException;
 import de.dfki.cos.basys.platform.runtime.services.TopologyManager;
 import de.dfki.cos.basys.platform.runtime.services.impl.TopologyManagerImpl;
-import de.dfki.iui.basys.model.domain.topology.Enterprise;
-import de.dfki.iui.basys.model.domain.topology.TopologyElement;
 
 @Component(configurationPolicy = ConfigurationPolicy.REQUIRE, immediate = true)
 public final class TopologyManagerServiceImpl extends BasysOsgiComponent implements TopologyManager {

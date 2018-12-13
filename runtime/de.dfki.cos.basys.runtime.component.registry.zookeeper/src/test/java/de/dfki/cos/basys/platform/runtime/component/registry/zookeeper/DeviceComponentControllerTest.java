@@ -4,13 +4,13 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo;
+import de.dfki.cos.basys.platform.model.runtime.component.ControlMode;
+import de.dfki.cos.basys.platform.model.runtime.component.State;
 import de.dfki.cos.basys.platform.runtime.component.device.DeviceComponentController;
 import de.dfki.cos.basys.platform.runtime.component.device.TestDeviceComponent;
 import de.dfki.cos.basys.platform.runtime.component.manager.ComponentManagerException;
-import de.dfki.iui.basys.model.runtime.component.ComponentCategory;
-import de.dfki.iui.basys.model.runtime.component.ComponentInfo;
-import de.dfki.iui.basys.model.runtime.component.ControlMode;
-import de.dfki.iui.basys.model.runtime.component.State;
 
 public class DeviceComponentControllerTest extends BaseComponentTest {
 

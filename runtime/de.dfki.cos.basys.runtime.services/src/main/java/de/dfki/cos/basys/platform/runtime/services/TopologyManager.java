@@ -6,8 +6,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import de.dfki.iui.basys.model.domain.topology.Enterprise;
-import de.dfki.iui.basys.model.domain.topology.TopologyElement;
+import de.dfki.cos.basys.platform.model.domain.topology.Enterprise;
+import de.dfki.cos.basys.platform.model.domain.topology.TopologyElement;
 
 @Path("/topology")
 public interface TopologyManager {
