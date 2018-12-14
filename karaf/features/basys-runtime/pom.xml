@@ -140,89 +140,12 @@
 			<type>bundle</type>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.ops4j.pax.logging/pax-logging-service -->
-		<!-- <dependency> <groupId>org.ops4j.pax.logging</groupId> <artifactId>pax-logging-service</artifactId> 
-			<version>${pax-logging-version}</version> </dependency> -->
-
 		<!-- https://mvnrepository.com/artifact/org.apache.geronimo.specs/geronimo-jta_1.1_spec -->
 		<dependency>
 			<groupId>org.apache.geronimo.specs</groupId>
 			<artifactId>geronimo-jta_1.1_spec</artifactId>
 			<version>1.1.1</version>
 		</dependency>
-
-	<!-- 	<dependency>
-			<groupId>com.eclipsesource.jaxrs</groupId>
-			<artifactId>features</artifactId>
-			<version>5.3.1</version>
-			<classifier>features</classifier>
-			<type>xml</type>
-			<scope>runtime</scope>
-		</dependency> -->
-
-		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
-<!-- 	 	<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-annotations</artifactId>
-			<version>${jackson-version}</version>
-		</dependency> -->
-
- 		<!-- <dependency>
-			<groupId>com.eclipsesource.jaxrs</groupId>
-			<artifactId>publisher</artifactId>
-			<version>5.3.1</version>
- 			<exclusions>
-				<exclusion>
-					<groupId>com.eclipsesource.jaxrs</groupId>
-					<artifactId>jersey-all</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		
-	 	<dependency>
-			<groupId>org.glassfish.jersey.core</groupId>
-			<artifactId>jersey-server</artifactId>
-			<version>2.25.1</version>
-		</dependency>
-	 	<dependency>
-			<groupId>org.glassfish.jersey.core</groupId>
-			<artifactId>jersey-client</artifactId>
-			<version>2.25.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.glassfish.jersey.containers</groupId>
-			<artifactId>jersey-container-servlet</artifactId>
-			<version>2.25.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.glassfish.jersey.media</groupId>
-			<artifactId>jersey-media-sse</artifactId>
-			<version>2.25.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.glassfish.jersey.media</groupId>
-			<artifactId>jersey-media-multipart</artifactId>
-			<version>2.25.1</version>
-		</dependency>		
-		<dependency>
-			<groupId>org.glassfish.jersey.media</groupId>
-			<artifactId>jersey-media-json-jackson</artifactId>
-			<version>2.25.1</version> 
-		</dependency> -->
-		
-		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider -->
-	<!-- 	<dependency>
-			<groupId>com.fasterxml.jackson.jaxrs</groupId>
-			<artifactId>jackson-jaxrs-json-provider</artifactId>
-			<version>${jackson-version}</version>
-		</dependency> -->
-
-<!-- Problem: version < 2.9.0  -->
-<!--  		<dependency>
-			<groupId>org.glassfish.jersey.media</groupId>
-			<artifactId>jersey-media-json-jackson</artifactId>
-			<version>${jersey-version}</version>
-		</dependency> -->
  
 	</dependencies>
 

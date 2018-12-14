@@ -32,5 +32,6 @@
     <module>org.apache.xmlrpc.xmlrpc-client</module>
     <module>commons-httpclient.commons-httpclient</module>
     <module>javax.websocket-api</module>
+	<module>de.dfki.cos.basys.platform.osgi.jersey-bundle</module>
   </modules>
 </project>
