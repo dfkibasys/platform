@@ -11,7 +11,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>de.dfki.cos.basys.platform</groupId>
   <artifactId>wrapper-bundle-settings</artifactId>
-  <version>0.2.1-SNAPSHOT</version>
+  <version>0.2.3</version>
   
   <name>BaSys 4.0 Platform - Wrapper Instructions</name>
 
@@ -34,4 +34,8 @@
     <module>javax.websocket-api</module>
 	<module>de.dfki.cos.basys.platform.osgi.jersey-bundle</module>
   </modules>
+
+  <scm>
+    <tag>v0.2.3</tag>
+  </scm>
 </project>
