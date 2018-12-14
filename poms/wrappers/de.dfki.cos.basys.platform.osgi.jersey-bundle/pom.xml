@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <parent>
+    <relativePath>../</relativePath>
+    <groupId>de.dfki.cos.basys.platform</groupId>
+    <artifactId>wrapper-bundle-settings</artifactId>
+    <version>0.2.1-SNAPSHOT</version>
+  </parent>
+  
+  <properties>
+    <bundle.symbolicName>de.dfki.cos.basys.platform.osgi.jersey-bundle</bundle.symbolicName>
+    <!--
+	<wrapped.groupId>org.glassfish.jersey.core</wrapped.groupId>
+    <wrapped.artifactId>jersey-client</wrapped.artifactId>
+	-->
+    <wrapped.version>2.27</wrapped.version>
+  </properties>
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>de.dfki.cos.basys.platform.wrapper-bundle-settings</groupId>
+  <artifactId>jersey-bundle</artifactId>
+
+  <name>${bundle.symbolicName} ${wrapped.version} [osgi]</name>
+
+  <packaging>bundle</packaging>
+
+<dependencies>
+<!--
+	<dependency>
+		<groupId>${wrapped.groupId}</groupId>
+		<artifactId>${wrapped.artifactId}</artifactId>
+		<version>${wrapped.version}</version>
+		<optional>false</optional>
+	</dependency>
+	-->
+	<dependency>
+		<groupId>org.glassfish.jersey.containers</groupId>
+		<artifactId>jersey-container-servlet</artifactId>
+		<version>${wrapped.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.glassfish.jersey.media</groupId>
+		<artifactId>jersey-media-sse</artifactId>
+		<version>${wrapped.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.glassfish.jersey.media</groupId>
+		<artifactId>jersey-media-multipart</artifactId>
+		<version>${wrapped.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.glassfish.jersey.media</groupId>
+		<artifactId>jersey-media-json-jackson</artifactId>
+		<version>${wrapped.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.glassfish.jersey.inject</groupId>
+		<artifactId>jersey-hk2</artifactId>
+		<version>${wrapped.version}</version>
+	</dependency>
+</dependencies>
+
+</project>
