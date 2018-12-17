@@ -5,7 +5,7 @@
 		<relativePath>../../poms/compiled/</relativePath>
 		<groupId>de.dfki.cos.basys.platform</groupId>
 		<artifactId>compiled-bundle-settings</artifactId>
-		<version>0.2.4-SNAPSHOT</version>
+		<version>0.2.4</version>
 	</parent>
 
 	<properties>
@@ -77,25 +77,25 @@
 		<dependency>
 			<groupId>de.dfki.cos.basys.platform.wrapper-bundle-settings</groupId>
 			<artifactId>org.apache.curator.client</artifactId>
-			<version>0.2.4-SNAPSHOT</version>			
+			<version>0.2.4</version>			
 		</dependency>
 		
 		<dependency>
 			<groupId>de.dfki.cos.basys.platform.wrapper-bundle-settings</groupId>
 			<artifactId>org.apache.curator.framework</artifactId>
-			<version>0.2.4-SNAPSHOT</version>			
+			<version>0.2.4</version>			
 		</dependency>
 		
 		<dependency>
 			<groupId>de.dfki.cos.basys.platform.wrapper-bundle-settings</groupId>
 			<artifactId>org.apache.curator.x.discovery</artifactId>
-			<version>0.2.4-SNAPSHOT</version>			
+			<version>0.2.4</version>			
 		</dependency>
 		
 		<dependency>
 			<groupId>de.dfki.cos.basys.platform.wrapper-bundle-settings</groupId>
 			<artifactId>org.apache.zookeeper</artifactId>
-			<version>0.2.4-SNAPSHOT</version>			
+			<version>0.2.4</version>			
 		</dependency>
 
  
