@@ -5,7 +5,7 @@
 		<relativePath>../../poms/compiled/</relativePath>
 		<groupId>de.dfki.cos.basys.platform</groupId>
 		<artifactId>compiled-bundle-settings</artifactId>
-		<version>0.2.4</version>
+		<version>0.2.5-SNAPSHOT</version>
 	</parent>
 
 	<properties>
@@ -63,7 +63,7 @@
 			<type>pom</type>
 			<groupId>${project.parent.groupId}</groupId>
 			<artifactId>provision</artifactId>
-			<version>0.2.4</version>
+			<version>0.2.5-SNAPSHOT</version>
 			<optional>true</optional>
 		</dependency>
 
