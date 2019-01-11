@@ -31,23 +31,27 @@ public class DeviceComponentControllerTest extends BaseComponentTest {
 		DeviceComponentController controller = new DeviceComponentController(config1.getComponentId());
 		controller.connect(context);
 		
-		assertEquals(State.STOPPED, comp.getLastState());
+		assertEquals(State.STOPPED, comp.getState(true));
 		ComponentInfo info = context.getComponentRegistry().getComponentById(ComponentCategory.DEVICE_COMPONENT, config1.getComponentId());
 		assertEquals(ControlMode.PRODUCTION, info.getCurrentMode());
 		assertEquals(State.STOPPED, info.getCurrentState());		
 		
 		controller.reset();
 
-		assertEquals(State.RESETTING, comp.getLastState());
-		assertEquals(State.IDLE, comp.getLastState());		
+		sleep(1);
+		
+		assertEquals(State.RESETTING, comp.getState(true));
+		assertEquals(State.IDLE, comp.getState(true));		
 		info = context.getComponentRegistry().getComponentById(ComponentCategory.DEVICE_COMPONENT, config1.getComponentId());
 		assertEquals(ControlMode.PRODUCTION, info.getCurrentMode());
 		assertEquals(State.IDLE, info.getCurrentState());
 		
 		controller.stop();
 		
-		assertEquals(State.STOPPING, comp.getLastState());
-		assertEquals(State.STOPPED, comp.getLastState());		
+		sleep(1);
+		
+		assertEquals(State.STOPPING, comp.getState(true));
+		assertEquals(State.STOPPED, comp.getState(true));		
 		info = context.getComponentRegistry().getComponentById(ComponentCategory.DEVICE_COMPONENT, config1.getComponentId());
 		assertEquals(ControlMode.PRODUCTION, info.getCurrentMode());
 		assertEquals(State.STOPPED, info.getCurrentState());

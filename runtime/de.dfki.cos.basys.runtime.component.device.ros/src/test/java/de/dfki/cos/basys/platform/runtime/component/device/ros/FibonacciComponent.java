@@ -136,13 +136,13 @@ public class FibonacciComponent extends RosDeviceComponent {
 
 	@Override
 	public void onCompleting() {
-		sendComponentResponse(ResponseStatus.OK, 0);
+		handleCapabilityResponse(ResponseStatus.OK, 0);
 	}
 
 	@Override
 	public void onStopping() {
 		//TODO: handle cancellation from user
-		sendComponentResponse(ResponseStatus.NOT_OK, getErrorCode());
+		handleCapabilityResponse(ResponseStatus.NOT_OK, getErrorCode());
 	}
 
 	

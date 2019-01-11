@@ -54,9 +54,9 @@ public class SimulatedStatesHandler implements ActiveStatesHandler {
 		component.updateRegistrationAndNotify();
 		sleep(config.getOnCompletingDuration());
 		if (config.getOnCompletingVariables().size() > 0) {
-			component.sendComponentResponse(ResponseStatus.OK, config.getOnCompletingStatusCode(), config.getOnCompletingVariables());					
+			component.handleCapabilityResponse(ResponseStatus.OK, config.getOnCompletingStatusCode(), config.getOnCompletingVariables());					
 		} else {
-			component.sendComponentResponse(ResponseStatus.OK, config.getOnCompletingStatusCode());
+			component.handleCapabilityResponse(ResponseStatus.OK, config.getOnCompletingStatusCode());
 		}
 	}
 
@@ -107,8 +107,7 @@ public class SimulatedStatesHandler implements ActiveStatesHandler {
 		//recentStates.add(State.STOPPING);
 		component.updateRegistrationAndNotify();
 		sleep(config.getOnStoppingDuration());
-		if (component.isCapabilityRequestPending())
-			component.sendComponentResponse(ResponseStatus.NOT_OK, config.getOnStoppingStatusCode());
+		component.handleCapabilityResponse(ResponseStatus.NOT_OK, config.getOnStoppingStatusCode());
 	}
 
 }

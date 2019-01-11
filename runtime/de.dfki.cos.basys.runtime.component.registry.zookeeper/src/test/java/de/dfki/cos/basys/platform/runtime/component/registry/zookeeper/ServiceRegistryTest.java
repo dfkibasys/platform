@@ -98,24 +98,24 @@ public class ServiceRegistryTest extends BaseComponentTest {
 		TestDeviceComponent comp = new TestDeviceComponent(config1);
 		comp.activate(context);
 
-		assertEquals(State.STOPPED, comp.getLastState());
+		assertEquals(State.STOPPED, comp.getState(true));
 			
 		comp.reset();
-		assertEquals(State.RESETTING, comp.getLastState());
-		assertEquals(State.IDLE, comp.getLastState());
+		assertEquals(State.RESETTING, comp.getState(true));
+		assertEquals(State.IDLE, comp.getState(true));
 		
 		comp.start();
-		assertEquals(State.STARTING, comp.getLastState());
-		assertEquals(State.EXECUTE, comp.getLastState());
-
-		assertEquals(State.COMPLETING, comp.getLastState());
-
-		comp.stop();
-		//assertEquals(State.COMPLETE, comp.getLastState());		
+		assertEquals(State.STARTING, comp.getState(true));
+		assertEquals(State.EXECUTE, comp.getState(true));
+		assertEquals(State.COMPLETING, comp.getState(true));
+		assertEquals(State.COMPLETE, comp.getState(true));	
 		
-		assertEquals(State.STOPPING, comp.getLastState());
-		assertEquals(State.STOPPED, comp.getLastState());		
+		comp.stop();	
 		
+		assertEquals(State.STOPPING, comp.getState(true));
+		assertEquals(State.STOPPED, comp.getState(true));		
+		
+		sleep(2);
 		comp.deactivate();
 		
 		LOGGER.info("testServiceLifecycle - complete");
@@ -128,26 +128,27 @@ public class ServiceRegistryTest extends BaseComponentTest {
 		TestDeviceComponent comp = new TestDeviceComponent(config1);
 		comp.activate(context);
 
-		assertEquals(State.STOPPED, comp.getLastState());
+		assertEquals(State.STOPPED, comp.getState(true));
 			
 		comp.reset();
-		assertEquals(State.RESETTING, comp.getLastState());
-		assertEquals(State.IDLE, comp.getLastState());
+		assertEquals(State.RESETTING, comp.getState(true));
+		assertEquals(State.IDLE, comp.getState(true));
 		
 		comp.start();
-		assertEquals(State.STARTING, comp.getLastState());
-		assertEquals(State.EXECUTE, comp.getLastState());
+		assertEquals(State.STARTING, comp.getState(true));
+		assertEquals(State.EXECUTE, comp.getState(true));
 		
 		comp.stop();
 		
-//		assertEquals(State.COMPLETING, comp.getLastState());
-//		assertEquals(State.COMPLETE, comp.getLastState());		
+//		assertEquals(State.COMPLETING, comp.getState(true));
+//		assertEquals(State.COMPLETE, comp.getState(true));		
 //		
 //		
-//		assertEquals(State.RESETTING, comp.getLastState());
-		assertEquals(State.STOPPING, comp.getLastState());
-		assertEquals(State.STOPPED, comp.getLastState());		
+//		assertEquals(State.RESETTING, comp.getState(true));
+		assertEquals(State.STOPPING, comp.getState(true));
+		assertEquals(State.STOPPED, comp.getState(true));		
 		
+		sleep(2);
 		comp.deactivate();
 		
 		LOGGER.info("testServiceLifecycle - complete");
@@ -160,43 +161,50 @@ public class ServiceRegistryTest extends BaseComponentTest {
 		TestDeviceComponent comp = new TestDeviceComponent(config1);
 		comp.activate(context);
 
-		assertEquals(State.STOPPED, comp.getLastState());
+		assertEquals(State.STOPPED, comp.getState(true));
 		ComponentInfo info = registry.getComponentById(comp.getCategory(), comp.getId());
 		assertNotNull(info);
 		assertEquals(config1.getComponentId(), info.getComponentId());
 		assertEquals(State.STOPPED,info.getCurrentState());
 			
 		comp.reset();
-		assertEquals(State.RESETTING, comp.getLastState());
-		assertEquals(State.IDLE, comp.getLastState());
+		sleep(1);
+		
+		assertEquals(State.RESETTING, comp.getState(true));
+		assertEquals(State.IDLE, comp.getState(true));
 		info = registry.getComponentById(comp.getCategory(), comp.getId());
 		assertNotNull(info);
 		assertEquals(config1.getComponentId(), info.getComponentId());		
 		assertEquals(State.IDLE,info.getCurrentState());
 		
 		comp.start();
-		assertEquals(State.STARTING, comp.getLastState());
-		assertEquals(State.EXECUTE, comp.getLastState());
+		sleep(1);
+		
+		assertEquals(State.STARTING, comp.getState(true));
+		assertEquals(State.EXECUTE, comp.getState(true));
 		info = registry.getComponentById(comp.getCategory(), comp.getId());
 		assertNotNull(info);
 		assertEquals(config1.getComponentId(), info.getComponentId());
 		assertEquals(State.EXECUTE,info.getCurrentState());
 
-		assertEquals(State.COMPLETING, comp.getLastState());
-		assertEquals(State.COMPLETE, comp.getLastState());		
+		assertEquals(State.COMPLETING, comp.getState(true));
+		assertEquals(State.COMPLETE, comp.getState(true));		
 		info = registry.getComponentById(comp.getCategory(), comp.getId());
 		assertNotNull(info);
 		assertEquals(config1.getComponentId(), info.getComponentId());
 		assertEquals(State.COMPLETE,info.getCurrentState());
 		
 		comp.stop();
-		assertEquals(State.STOPPING, comp.getLastState());
-		assertEquals(State.STOPPED, comp.getLastState());		
+		sleep(1);
+		
+		assertEquals(State.STOPPING, comp.getState(true));
+		assertEquals(State.STOPPED, comp.getState(true));		
 		info = registry.getComponentById(comp.getCategory(), comp.getId());
 		assertNotNull(info);
 		assertEquals(config1.getComponentId(), info.getComponentId());
 		assertEquals(State.STOPPED,info.getCurrentState());
 		
+		sleep(2);
 		comp.deactivate();
 		info = registry.getComponentById(comp.getCategory(), comp.getId());
 		assertNull(info);

@@ -67,7 +67,7 @@ public class BaseComponent implements Component, ChannelListener {
 	private boolean connectedToExternal = false;
 	private boolean activated = false;
 	
-	protected ComponentRequest pendingRequest;
+	//protected ComponentRequest pendingRequest;
 
 	public BaseComponent(ComponentConfiguration config) {
 		JsonUtils.factory = new BasysResourceSetImpl.Factory();
@@ -384,28 +384,28 @@ public class BaseComponent implements Component, ChannelListener {
 		return status;
 	}
 
-	protected void sendComponentResponse(ResponseStatus status, int statusCode) {
+	protected void sendComponentResponse(ComponentRequest request, ResponseStatus status, int statusCode) {
 		List<Variable> resultVariables = new ArrayList<>(0);
-		sendComponentResponse(status, statusCode, resultVariables);
+		sendComponentResponse(request, status, statusCode, resultVariables);
 	}
 	
-	protected void sendComponentResponse(ResponseStatus status, int statusCode, Variable resultVariable) {
+	protected void sendComponentResponse(ComponentRequest request, ResponseStatus status, int statusCode, Variable resultVariable) {
 		List<Variable> resultVariables = new ArrayList<>(1);
 		// Copy variable(s) is important for simulation: Variables are 'contained' in a SimulationConfiguration
 		resultVariables.add(EcoreUtil.copy(resultVariable));
-		sendComponentResponse(status, statusCode, resultVariables);
+		sendComponentResponse(request, status, statusCode, resultVariables);
 	}
 	
-	protected void sendComponentResponse(ResponseStatus status, int statusCode, List<Variable> resultVariables) {
-		if (pendingRequest == null) {
+	protected void sendComponentResponse(ComponentRequest request, ResponseStatus status, int statusCode, List<Variable> resultVariables) {
+		if (request == null) {
 			LOGGER.error("Cannot send response to null request. Skipping.");
 			return;
 		}
 		
-		ComponentRequest r = EcoreUtil.copy(pendingRequest);
+		ComponentRequest r = EcoreUtil.copy(request);
 	
-		ComponentResponse response = new ComponentResponseImpl.Builder().componentId(getId()).status(status).statusCode(statusCode).request(pendingRequest).build();
-		response.setRequest(r);
+		ComponentResponse response = new ComponentResponseImpl.Builder().componentId(getId()).status(status).statusCode(statusCode).request(r).build();
+		
 		if (resultVariables != null) {
 			// Copy variable(s) is important for simulation: Variables are 'contained' in a SimulationConfiguration
 			response.getResultVariables().addAll(EcoreUtil.copyAll(resultVariables));
@@ -413,32 +413,30 @@ public class BaseComponent implements Component, ChannelListener {
 		try {
 			String payload = JsonUtils.toString(response);
 			Notification not = cf.createNotification(payload);
-			outChannel.sendNotification(not);			
-			
-			pendingRequest = null;
+			outChannel.sendNotification(not);
 		} catch (JsonProcessingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	protected boolean isCapabilityRequestPending() {
-		if (pendingRequest != null && pendingRequest.eClass().equals(ComponentPackage.eINSTANCE.getCapabilityRequest())) 
-			return true;
-		return false;
-	}
-	
-	protected boolean isCommandRequestPending() {
-		if (pendingRequest != null && pendingRequest.eClass().equals(ComponentPackage.eINSTANCE.getCommandRequest())) 
-			return true;
-		return false;
-	}
-	
-	protected boolean isChangeModeRequestPending() {
-		if (pendingRequest != null && pendingRequest.eClass().equals(ComponentPackage.eINSTANCE.getChangeModeRequest())) 
-			return true;
-		return false;
-	}
+//	protected boolean isCapabilityRequestPending() {
+//		if (pendingRequest != null && pendingRequest.eClass().equals(ComponentPackage.eINSTANCE.getCapabilityRequest())) 
+//			return true;
+//		return false;
+//	}
+//	
+//	protected boolean isCommandRequestPending() {
+//		if (pendingRequest != null && pendingRequest.eClass().equals(ComponentPackage.eINSTANCE.getCommandRequest())) 
+//			return true;
+//		return false;
+//	}
+//	
+//	protected boolean isChangeModeRequestPending() {
+//		if (pendingRequest != null && pendingRequest.eClass().equals(ComponentPackage.eINSTANCE.getChangeModeRequest())) 
+//			return true;
+//		return false;
+//	}
 	
 	protected void sleep(long seconds) {
 		try {

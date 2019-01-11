@@ -1,9 +1,15 @@
 package de.dfki.cos.basys.platform.runtime.component.device;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
@@ -16,7 +22,9 @@ import de.dfki.cos.basys.platform.model.runtime.component.CommandRequest;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentRequestStatus;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentResponse;
 import de.dfki.cos.basys.platform.model.runtime.component.ControlCommand;
 import de.dfki.cos.basys.platform.model.runtime.component.ControlMode;
 import de.dfki.cos.basys.platform.model.runtime.component.RequestStatus;
@@ -24,6 +32,7 @@ import de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus;
 import de.dfki.cos.basys.platform.model.runtime.component.State;
 import de.dfki.cos.basys.platform.model.runtime.component.Variable;
 import de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentRequestStatusImpl;
+import de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentResponseImpl;
 import de.dfki.cos.basys.platform.runtime.component.BaseComponent;
 import de.dfki.cos.basys.platform.runtime.component.ComponentContext;
 import de.dfki.cos.basys.platform.runtime.component.ComponentException;
@@ -41,12 +50,27 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 
 	protected boolean resetOnComplete, resetOnStopped = false;
 
+	private BlockingQueue<CapabilityRequest> requestQueue = new LinkedBlockingQueue<CapabilityRequest>(32);
+	protected CommandRequest currentCommandRequest;
+	protected ChangeModeRequest currentChangeModeRequest;
+	protected CapabilityRequest currentCapabilityRequest;
+	
+	
 	private Lock lock;
 	private Condition executeCondition;
 	PackMLStatesHandlerFacade handlerFacade = null;	
 	
 	public DeviceComponent(ComponentConfiguration config) {
 		super(config);
+		
+		if (config.getProperty("resetOnComplete") != null) {
+			resetOnComplete = Boolean.parseBoolean(config.getProperty("resetOnComplete").getValue());
+			LOGGER.info("resetOnComplete = " + resetOnComplete);
+		}
+		if (config.getProperty("resetOnStopped") != null) {
+			resetOnStopped = Boolean.parseBoolean(config.getProperty("resetOnStopped").getValue());
+			LOGGER.info("resetOnStopped = " + resetOnStopped);
+		}
 		
 		lock = new ReentrantLock();
 		executeCondition = lock.newCondition();		
@@ -62,22 +86,16 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 	}
 
 	@Override
-	public void activate(ComponentContext context) throws ComponentException {
-
-			
+	public void activate(ComponentContext context) throws ComponentException {			
 		packmlUnit.initialize();
-
 		super.activate(context);
-
 		LOGGER.info("activated");
 	}
 
 	@Override
 	public void deactivate() throws ComponentException {
 		super.deactivate();
-
 		packmlUnit.dispose();
-
 		LOGGER.info("deactivated");
 	}
 
@@ -140,25 +158,27 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 		
 		if (status.getStatus() == RequestStatus.REJECTED)
 			return status;
-		
-		// "translate"
-		UnitConfiguration config = translateCapabilityRequest(req);
-		// set config
-		status = setUnitConfig(config);
-		
-		if (status.getStatus() == RequestStatus.REJECTED)
-			return status;
-		
-		status = start();
-		
-		if (status.getStatus() == RequestStatus.ACCEPTED)
-			pendingRequest = req;
-		else
-			LOGGER.info("NOT ACCEPTED");
+				
+		if (currentCapabilityRequest == null && getState() == State.IDLE) {
+			LOGGER.info("Execute capability request");
+			currentCapabilityRequest = req;
+			UnitConfiguration config = translateCapabilityRequest(currentCapabilityRequest);		
+			status = setUnitConfig(config);					
+			status = start();	
+		} else {
+			LOGGER.info("Enqueue capability request");
+			if (requestQueue.remainingCapacity()>0) {
+				requestQueue.add(req);
+				status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.ACCEPTED).message("capability request enqueued").build();
+			} else {
+				status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.REJECTED).message("capability request queue full").build();
+			}
+		}
 		
 		return status;
+		
 	}
-
+	
 	public ComponentRequestStatus canExecuteCapabilityRequest(CapabilityRequest req) {
 		ComponentRequestStatus status = new ComponentRequestStatusImpl.Builder().componentId(getId()).status(RequestStatus.ACCEPTED).build();
 		return status;
@@ -205,7 +225,7 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 		}
 		
 		if (status.getStatus() == RequestStatus.ACCEPTED)
-			pendingRequest = req;
+			currentCommandRequest = req;
 		
 		return status;
 	}
@@ -250,24 +270,34 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 		LOGGER.debug("updateRegistrationAndNotify - finished");
 	}	
 	
-	@Override
-	protected void sendComponentResponse(ResponseStatus status, int statusCode) {	
-		super.sendComponentResponse(status, statusCode);
+	protected void handleCapabilityResponse(ResponseStatus status, int statusCode) {
+		if (currentCapabilityRequest != null) {
+			sendComponentResponse(currentCapabilityRequest, status, statusCode);
+			currentCapabilityRequest = null;
+		} else {
+			// might occur in onStopping if stop() is triggered externally without executing capability request
+			LOGGER.info("no current capability request to respond to");
+		}
 	}
 	
-	@Override
-	protected void sendComponentResponse(ResponseStatus status, int statusCode, Variable resultVariable) {
-		super.sendComponentResponse(status, statusCode, resultVariable);
+	protected void handleCapabilityResponse(ResponseStatus status, int statusCode, Variable resultVariable) {
+		if (currentCapabilityRequest != null) {
+			sendComponentResponse(currentCapabilityRequest, status, statusCode, resultVariable);
+			currentCapabilityRequest = null;
+		} else {
+			// might occur in onStopping if stop() is triggered externally without executing capability request
+			LOGGER.info("no current capability request to respond to");
+		}
 	}
 	
-	@Override
-	protected void sendComponentResponse(ResponseStatus status, int statusCode, List<Variable> resultVariables) {	
-		super.sendComponentResponse(status, statusCode, resultVariables);
-	}
-	
-	@Override
-	protected boolean isCapabilityRequestPending() {
-		return super.isCapabilityRequestPending();
+	protected void handleCapabilityResponse(ResponseStatus status, int statusCode, List<Variable> resultVariables) {
+		if (currentCapabilityRequest != null) {
+			sendComponentResponse(currentCapabilityRequest, status, statusCode, resultVariables);
+			currentCapabilityRequest = null;
+		} else {
+			// might occur in onStopping if stop() is triggered externally without executing capability request
+			LOGGER.info("no current capability request to respond to");
+		}
 	}
 	
 	/*
@@ -295,17 +325,17 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 			@Override
 			public void run() {
 				sleep(1);
-				if (isChangeModeRequestPending()) {
-					ChangeModeRequest r = (ChangeModeRequest) pendingRequest;
+				if (currentChangeModeRequest != null) {					
 					if (simulated) {
-						sendComponentResponse(ResponseStatus.OK, 0);
+						sendComponentResponse(currentChangeModeRequest, ResponseStatus.OK, 0);
 					} else {
-						if (r.getMode() == getMode()) {
-							sendComponentResponse(ResponseStatus.OK, 0);
+						if (currentChangeModeRequest.getMode() == getMode()) {
+							sendComponentResponse(currentChangeModeRequest, ResponseStatus.OK, 0);
 						} else {
-							sendComponentResponse(ResponseStatus.NOT_OK, 0);
+							sendComponentResponse(currentChangeModeRequest, ResponseStatus.NOT_OK, 0);
 						}		
 					}
+					currentChangeModeRequest = null;
 				}
 				
 			}
@@ -369,14 +399,15 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 	 */
 
 	@Override
-	public void onStopped() {
-		if (pendingRequest != null && pendingRequest.eClass().equals(ComponentPackage.eINSTANCE.getCommandRequest())) {
-			CommandRequest r = (CommandRequest) pendingRequest;
-			if (r.getControlCommand() == ControlCommand.STOP || r.getControlCommand() == ControlCommand.CLEAR) {
-				sendComponentResponse(ResponseStatus.OK, 0);
-			}			
+	public void onStopped() {		
+		if (currentCommandRequest != null) {
+			if (currentCommandRequest.getControlCommand() == ControlCommand.STOP || currentCommandRequest.getControlCommand() == ControlCommand.CLEAR) {
+				sendComponentResponse(currentCommandRequest, ResponseStatus.OK, 0);
+			} else {
+				sendComponentResponse(currentCommandRequest, ResponseStatus.NOT_OK, 0);
+			} 
+			currentCommandRequest = null;
 		}
-		
 		
 		if (resetOnStopped) {
 			reset();
@@ -385,21 +416,31 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 
 	@Override
 	public void onIdle() {
-		if (pendingRequest != null && pendingRequest.eClass().equals(ComponentPackage.eINSTANCE.getCommandRequest())) {
-			CommandRequest r = (CommandRequest) pendingRequest;
-			if (r.getControlCommand() == ControlCommand.RESET) {
-				sendComponentResponse(ResponseStatus.OK, 0);
-			}			
+		if (currentCommandRequest != null) {
+			if (currentCommandRequest.getControlCommand() == ControlCommand.RESET) {
+				sendComponentResponse(currentCommandRequest, ResponseStatus.OK, 0);
+			} else {
+				sendComponentResponse(currentCommandRequest, ResponseStatus.NOT_OK, 0);
+			} 
+			currentCommandRequest = null;			
 		}
+		
+		CapabilityRequest queuedRequest = requestQueue.poll();
+		if (queuedRequest != null) {
+			handleCapabilityRequest(queuedRequest);
+		}
+		
 	}
 
 	@Override
 	public void onComplete() {
-		if (pendingRequest != null && pendingRequest.eClass().equals(ComponentPackage.eINSTANCE.getCommandRequest())) {
-			CommandRequest r = (CommandRequest) pendingRequest;
-			if (r.getControlCommand() == ControlCommand.START) {
-				sendComponentResponse(ResponseStatus.OK, 0);
-			}			
+		if (currentCommandRequest != null) {
+			if (currentCommandRequest.getControlCommand() == ControlCommand.START) {
+				sendComponentResponse(currentCommandRequest, ResponseStatus.OK, 0);
+			} else {
+				sendComponentResponse(currentCommandRequest, ResponseStatus.NOT_OK, 0);
+			} 
+			currentCommandRequest = null;			
 		}
 		
 		if (resetOnComplete) {
@@ -409,34 +450,41 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 
 	@Override
 	public void onHeld() {
-		if (pendingRequest != null && pendingRequest.eClass().equals(ComponentPackage.eINSTANCE.getCommandRequest())) {
-			CommandRequest r = (CommandRequest) pendingRequest;
-			if (r.getControlCommand() == ControlCommand.HOLD) {
-				sendComponentResponse(ResponseStatus.OK, 0);
-			}			
+		if (currentCommandRequest != null) {
+			if (currentCommandRequest.getControlCommand() == ControlCommand.HOLD) {
+				sendComponentResponse(currentCommandRequest, ResponseStatus.OK, 0);
+			} else {
+				sendComponentResponse(currentCommandRequest, ResponseStatus.NOT_OK, 0);
+			} 
+			currentCommandRequest = null;			
 		}
 	}
 
 	@Override
 	public void onSuspended() {
-		if (pendingRequest != null && pendingRequest.eClass().equals(ComponentPackage.eINSTANCE.getCommandRequest())) {
-			CommandRequest r = (CommandRequest) pendingRequest;
-			if (r.getControlCommand() == ControlCommand.SUSPEND) {
-				sendComponentResponse(ResponseStatus.OK, 0);
-			}			
+		if (currentCommandRequest != null) {
+			if (currentCommandRequest.getControlCommand() == ControlCommand.SUSPEND) {
+				sendComponentResponse(currentCommandRequest, ResponseStatus.OK, 0);
+			} else {
+				sendComponentResponse(currentCommandRequest, ResponseStatus.NOT_OK, 0);
+			} 
+			currentCommandRequest = null;			
 		}
 	}
 
 	@Override
 	public void onAborted() {
-		if (pendingRequest != null && pendingRequest.eClass().equals(ComponentPackage.eINSTANCE.getCommandRequest())) {
-			CommandRequest r = (CommandRequest) pendingRequest;
-			if (r.getControlCommand() == ControlCommand.ABORT) {
-				sendComponentResponse(ResponseStatus.OK, 0);
-			}			
+		if (currentCommandRequest != null) {
+			if (currentCommandRequest.getControlCommand() == ControlCommand.ABORT) {
+				sendComponentResponse(currentCommandRequest, ResponseStatus.OK, 0);
+			} else {
+				sendComponentResponse(currentCommandRequest, ResponseStatus.NOT_OK, 0);
+			} 
+			currentCommandRequest = null;			
 		}
 	}
 
+	
 	/*
 	 * default ActiveStatesHandler implementation -> trigger logic on device
 	 */
@@ -455,6 +503,7 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 
 	@Override
 	public void onCompleting() {
+		handleCapabilityResponse(ResponseStatus.OK, getErrorCode());
 	}
 
 	@Override
@@ -483,6 +532,8 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 
 	@Override
 	public void onStopping() {
+		handleCapabilityResponse(ResponseStatus.NOT_OK, getErrorCode());
 	}
+
 
 }

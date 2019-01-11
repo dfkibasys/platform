@@ -16,6 +16,7 @@ import de.dfki.cos.basys.platform.model.runtime.communication.Client;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
 import de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentConfigurationImpl;
+import de.dfki.cos.basys.platform.model.runtime.component.impl.PropertyImpl;
 import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
 import de.dfki.cos.basys.platform.runtime.communication.provider.JmsCommunicationProvider;
 import de.dfki.cos.basys.platform.runtime.component.ComponentContext;
@@ -53,7 +54,7 @@ public class BaseComponentTest {
 				.componentId("component-1")
 				.componentName("component-1")
 				.componentCategory(ComponentCategory.DEVICE_COMPONENT)
-				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.component.device.TestDeviceComponent")
+				.componentImplementationJavaClass("de.dfki.cos.basys.platform.runtime.component.device.TestDeviceComponent")
 				.inChannelName("component1#in")
 				.outChannelName("component1#out")
 				.build();		
@@ -62,7 +63,7 @@ public class BaseComponentTest {
 				.componentId("component-2")
 				.componentName("component-2")
 				.componentCategory(ComponentCategory.DEVICE_COMPONENT)
-				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.component.device.TestDeviceComponent")
+				.componentImplementationJavaClass("de.dfki.cos.basys.platform.runtime.component.device.TestDeviceComponent")
 				.inChannelName("component2#in")
 				.outChannelName("component2#out")
 				.build();	
@@ -71,11 +72,15 @@ public class BaseComponentTest {
 				.componentId("component-3")
 				.componentName("component-3")
 				.componentCategory(ComponentCategory.DEVICE_COMPONENT)
-				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.component.device.TestDeviceComponent")
+				.componentImplementationJavaClass("de.dfki.cos.basys.platform.runtime.component.device.TestDeviceComponent")
 				.inChannelName("component3#in")
 				.outChannelName("component3#out")
 				.build();	
 				
+		config1.getProperties().add(new PropertyImpl.Builder().key("unittesting").value("true").build());
+		config2.getProperties().add(new PropertyImpl.Builder().key("unittesting").value("true").build());
+		config3.getProperties().add(new PropertyImpl.Builder().key("unittesting").value("true").build());
+		
 		registryConfig = new ComponentConfigurationImpl.Builder()
 				.componentId("component-registry")
 				.componentName("component-registry")
@@ -135,4 +140,12 @@ public class BaseComponentTest {
         System.out.println("####################################################");
 	}
 	
+	protected void sleep(long seconds) {
+		try {
+			TimeUnit.MILLISECONDS.sleep(seconds*1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
