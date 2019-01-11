@@ -124,6 +124,14 @@ public class ComponentAdapterFactory extends AdapterFactoryImpl {
 				return createProcessRequestAdapter();
 			}
 			@Override
+			public Adapter caseProcessRequestStatus(ProcessRequestStatus object) {
+				return createProcessRequestStatusAdapter();
+			}
+			@Override
+			public Adapter caseProcessResponse(ProcessResponse object) {
+				return createProcessResponseAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -336,6 +344,34 @@ public class ComponentAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createProcessRequestAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.cos.basys.platform.model.runtime.component.ProcessRequestStatus <em>Process Request Status</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ProcessRequestStatus
+	 * @generated
+	 */
+	public Adapter createProcessRequestStatusAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.cos.basys.platform.model.runtime.component.ProcessResponse <em>Process Response</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ProcessResponse
+	 * @generated
+	 */
+	public Adapter createProcessResponseAdapter() {
 		return null;
 	}
 

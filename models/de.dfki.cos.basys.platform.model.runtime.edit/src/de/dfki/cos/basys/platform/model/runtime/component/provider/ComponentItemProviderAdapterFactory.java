@@ -371,6 +371,52 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.model.runtime.component.ProcessRequestStatus} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ProcessRequestStatusItemProvider processRequestStatusItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.cos.basys.platform.model.runtime.component.ProcessRequestStatus}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createProcessRequestStatusAdapter() {
+		if (processRequestStatusItemProvider == null) {
+			processRequestStatusItemProvider = new ProcessRequestStatusItemProvider(this);
+		}
+
+		return processRequestStatusItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.model.runtime.component.ProcessResponse} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ProcessResponseItemProvider processResponseItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.cos.basys.platform.model.runtime.component.ProcessResponse}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createProcessResponseAdapter() {
+		if (processResponseItemProvider == null) {
+			processResponseItemProvider = new ProcessResponseItemProvider(this);
+		}
+
+		return processResponseItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -482,6 +528,8 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 		if (variableItemProvider != null) variableItemProvider.dispose();
 		if (simulationConfigurationItemProvider != null) simulationConfigurationItemProvider.dispose();
 		if (processRequestItemProvider != null) processRequestItemProvider.dispose();
+		if (processRequestStatusItemProvider != null) processRequestStatusItemProvider.dispose();
+		if (processResponseItemProvider != null) processResponseItemProvider.dispose();
 	}
 
 }

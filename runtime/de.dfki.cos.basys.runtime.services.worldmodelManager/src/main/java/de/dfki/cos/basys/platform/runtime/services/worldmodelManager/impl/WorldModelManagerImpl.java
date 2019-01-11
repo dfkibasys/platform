@@ -50,8 +50,8 @@ import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
 import de.dfki.cos.basys.platform.runtime.component.ComponentContext;
 import de.dfki.cos.basys.platform.runtime.component.ComponentException;
 import de.dfki.cos.basys.platform.runtime.component.service.EmfServiceComponent;
+import de.dfki.cos.basys.platform.runtime.processcontrol.ProcessController;
 import de.dfki.cos.basys.platform.runtime.processcontrol.TaskDescription;
-import de.dfki.cos.basys.platform.runtime.processcontrol.impl.CamundaTaskScheduler;
 import de.dfki.cos.basys.platform.runtime.services.ProductInstanceManager;
 import de.dfki.cos.basys.platform.runtime.services.ResourceInstanceManager;
 import de.dfki.cos.basys.platform.runtime.services.TopologyManager;
@@ -122,7 +122,7 @@ public class WorldModelManagerImpl extends EmfServiceComponent implements WorldM
 								Notification outNot = CommFactory.getInstance().createNotification(outPayload);
 								outChannel.sendNotification(outNot);
 
-								CamundaTaskScheduler cts = (CamundaTaskScheduler) context.getComponentManager().getLocalComponentById("task-scheduler");
+								ProcessController cts = (ProcessController) context.getComponentManager().getLocalComponentById("process-controller");
 								TopologyManager tm = (TopologyManager) context.getComponentManager().getLocalComponentById("topology-manager");
 
 								MoveToLocation moveRequest = CapabilityFactory.eINSTANCE.createMoveToLocation();
@@ -192,7 +192,7 @@ public class WorldModelManagerImpl extends EmfServiceComponent implements WorldM
 							Notification outNot = CommFactory.getInstance().createNotification(outPayload);
 							outChannel.sendNotification(outNot);
 
-							CamundaTaskScheduler cts = (CamundaTaskScheduler) context.getComponentManager().getLocalComponentById("task-scheduler");
+							ProcessController cts = (ProcessController) context.getComponentManager().getLocalComponentById("process-controller");
 							TopologyManager tm = (TopologyManager) context.getComponentManager().getLocalComponentById("topology-manager");
 
 							MoveToLocation moveRequest = CapabilityFactory.eINSTANCE.createMoveToLocation();

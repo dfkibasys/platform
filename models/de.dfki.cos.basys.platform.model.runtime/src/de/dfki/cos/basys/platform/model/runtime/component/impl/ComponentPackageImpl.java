@@ -28,6 +28,8 @@ import de.dfki.cos.basys.platform.model.runtime.component.ComponentResponse;
 import de.dfki.cos.basys.platform.model.runtime.component.ControlCommand;
 import de.dfki.cos.basys.platform.model.runtime.component.ControlMode;
 import de.dfki.cos.basys.platform.model.runtime.component.ProcessRequest;
+import de.dfki.cos.basys.platform.model.runtime.component.ProcessRequestStatus;
+import de.dfki.cos.basys.platform.model.runtime.component.ProcessResponse;
 import de.dfki.cos.basys.platform.model.runtime.component.Property;
 import de.dfki.cos.basys.platform.model.runtime.component.RequestStatus;
 import de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus;
@@ -158,6 +160,20 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass processRequestStatusEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass processResponseEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum componentCategoryEEnum = null;
 
 	/**
@@ -230,7 +246,7 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link ComponentPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -244,7 +260,8 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		if (isInited) return (ComponentPackage)EPackage.Registry.INSTANCE.getEPackage(ComponentPackage.eNS_URI);
 
 		// Obtain or create and register package
-		ComponentPackageImpl theComponentPackage = (ComponentPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ComponentPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new ComponentPackageImpl());
+		Object registeredComponentPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		ComponentPackageImpl theComponentPackage = registeredComponentPackage instanceof ComponentPackageImpl ? (ComponentPackageImpl)registeredComponentPackage : new ComponentPackageImpl();
 
 		isInited = true;
 
@@ -261,7 +278,8 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		EcorePackage.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies
-		CommunicationPackageImpl theCommunicationPackage = (CommunicationPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CommunicationPackage.eNS_URI) instanceof CommunicationPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CommunicationPackage.eNS_URI) : CommunicationPackage.eINSTANCE);
+		Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CommunicationPackage.eNS_URI);
+		CommunicationPackageImpl theCommunicationPackage = (CommunicationPackageImpl)(registeredPackage instanceof CommunicationPackageImpl ? registeredPackage : CommunicationPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theComponentPackage.createPackageContents();
@@ -274,7 +292,6 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		// Mark meta-data to indicate it can't be changed
 		theComponentPackage.freeze();
 
-  
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(ComponentPackage.eNS_URI, theComponentPackage);
 		return theComponentPackage;
@@ -942,8 +959,125 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getProcessRequest_Variable() {
+	public EReference getProcessRequest_Variables() {
 		return (EReference)processRequestEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getProcessRequestStatus() {
+		return processRequestStatusEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProcessRequestStatus_ProcessInstanceId() {
+		return (EAttribute)processRequestStatusEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProcessRequestStatus_BusinessKey() {
+		return (EAttribute)processRequestStatusEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProcessRequestStatus_Status() {
+		return (EAttribute)processRequestStatusEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProcessRequestStatus_Message() {
+		return (EAttribute)processRequestStatusEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getProcessResponse() {
+		return processResponseEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProcessResponse_ProcessInstanceId() {
+		return (EAttribute)processResponseEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProcessResponse_BusinessKey() {
+		return (EAttribute)processResponseEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProcessResponse_Status() {
+		return (EAttribute)processResponseEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProcessResponse_StatusCode() {
+		return (EAttribute)processResponseEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProcessResponse_Message() {
+		return (EAttribute)processResponseEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getProcessResponse_Request() {
+		return (EReference)processResponseEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getProcessResponse_ResultVariables() {
+		return (EReference)processResponseEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -1123,7 +1257,22 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		processRequestEClass = createEClass(PROCESS_REQUEST);
 		createEAttribute(processRequestEClass, PROCESS_REQUEST__NAME);
 		createEAttribute(processRequestEClass, PROCESS_REQUEST__BUSINESS_KEY);
-		createEReference(processRequestEClass, PROCESS_REQUEST__VARIABLE);
+		createEReference(processRequestEClass, PROCESS_REQUEST__VARIABLES);
+
+		processRequestStatusEClass = createEClass(PROCESS_REQUEST_STATUS);
+		createEAttribute(processRequestStatusEClass, PROCESS_REQUEST_STATUS__PROCESS_INSTANCE_ID);
+		createEAttribute(processRequestStatusEClass, PROCESS_REQUEST_STATUS__BUSINESS_KEY);
+		createEAttribute(processRequestStatusEClass, PROCESS_REQUEST_STATUS__STATUS);
+		createEAttribute(processRequestStatusEClass, PROCESS_REQUEST_STATUS__MESSAGE);
+
+		processResponseEClass = createEClass(PROCESS_RESPONSE);
+		createEAttribute(processResponseEClass, PROCESS_RESPONSE__PROCESS_INSTANCE_ID);
+		createEAttribute(processResponseEClass, PROCESS_RESPONSE__BUSINESS_KEY);
+		createEAttribute(processResponseEClass, PROCESS_RESPONSE__STATUS);
+		createEAttribute(processResponseEClass, PROCESS_RESPONSE__STATUS_CODE);
+		createEAttribute(processResponseEClass, PROCESS_RESPONSE__MESSAGE);
+		createEReference(processResponseEClass, PROCESS_RESPONSE__REQUEST);
+		createEReference(processResponseEClass, PROCESS_RESPONSE__RESULT_VARIABLES);
 
 		// Create enums
 		componentCategoryEEnum = createEEnum(COMPONENT_CATEGORY);
@@ -1266,7 +1415,22 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		initEClass(processRequestEClass, ProcessRequest.class, "ProcessRequest", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getProcessRequest_Name(), theEcorePackage.getEString(), "name", null, 0, 1, ProcessRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProcessRequest_BusinessKey(), theEcorePackage.getEString(), "businessKey", null, 0, 1, ProcessRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProcessRequest_Variable(), this.getVariable(), null, "variable", null, 0, 1, ProcessRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcessRequest_Variables(), this.getVariable(), null, "variables", null, 0, -1, ProcessRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(processRequestStatusEClass, ProcessRequestStatus.class, "ProcessRequestStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getProcessRequestStatus_ProcessInstanceId(), theEcorePackage.getEString(), "processInstanceId", null, 0, 1, ProcessRequestStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProcessRequestStatus_BusinessKey(), theEcorePackage.getEString(), "businessKey", null, 0, 1, ProcessRequestStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProcessRequestStatus_Status(), this.getRequestStatus(), "status", null, 0, 1, ProcessRequestStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProcessRequestStatus_Message(), theEcorePackage.getEString(), "message", null, 0, 1, ProcessRequestStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(processResponseEClass, ProcessResponse.class, "ProcessResponse", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getProcessResponse_ProcessInstanceId(), theEcorePackage.getEString(), "processInstanceId", null, 0, 1, ProcessResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProcessResponse_BusinessKey(), theEcorePackage.getEString(), "businessKey", null, 0, 1, ProcessResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProcessResponse_Status(), this.getResponseStatus(), "status", null, 0, 1, ProcessResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProcessResponse_StatusCode(), theEcorePackage.getEInt(), "statusCode", null, 0, 1, ProcessResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProcessResponse_Message(), theEcorePackage.getEString(), "message", null, 0, 1, ProcessResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcessResponse_Request(), this.getProcessRequest(), null, "request", null, 0, 1, ProcessResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcessResponse_ResultVariables(), this.getVariable(), null, "resultVariables", null, 0, -1, ProcessResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(componentCategoryEEnum, ComponentCategory.class, "ComponentCategory");
@@ -1355,10 +1519,10 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 * @generated
 	 */
 	protected void createCoreModelAnnotations() {
-		String source = "http://de.dfki.iui.mmds/CoreModel";	
+		String source = "http://de.dfki.iui.mmds/CoreModel";
 		addAnnotation
-		  (this, 
-		   source, 
+		  (this,
+		   source,
 		   new String[] {
 		   });
 	}
@@ -1370,14 +1534,14 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 * @generated
 	 */
 	protected void createEcoreAnnotations() {
-		String source = "http://www.eclipse.org/emf/2002/Ecore";	
+		String source = "http://www.eclipse.org/emf/2002/Ecore";
 		addAnnotation
-		  (this, 
-		   source, 
+		  (this,
+		   source,
 		   new String[] {
-			 "settingDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL",
-			 "invocationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL",
-			 "validationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL"
+			   "settingDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL",
+			   "invocationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL",
+			   "validationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL"
 		   });
 	}
 

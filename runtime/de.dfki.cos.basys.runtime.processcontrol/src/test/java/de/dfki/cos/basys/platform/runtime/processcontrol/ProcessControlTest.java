@@ -15,8 +15,8 @@ import de.dfki.cos.basys.platform.model.runtime.component.VariableType;
 import de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentConfigurationImpl;
 import de.dfki.cos.basys.platform.model.runtime.component.impl.VariableImpl;
 import de.dfki.cos.basys.platform.runtime.component.device.DeviceComponent;
-import de.dfki.cos.basys.platform.runtime.processcontrol.impl.CamundaRestClient;
-import de.dfki.cos.basys.platform.runtime.processcontrol.impl.ExternalServiceTaskDto;
+import de.dfki.cos.basys.platform.runtime.processcontrol.camunda.CamundaRestClient;
+import de.dfki.cos.basys.platform.runtime.processcontrol.camunda.ExternalServiceTaskDto;
 
 public class ProcessControlTest extends BaseComponentTest {
 

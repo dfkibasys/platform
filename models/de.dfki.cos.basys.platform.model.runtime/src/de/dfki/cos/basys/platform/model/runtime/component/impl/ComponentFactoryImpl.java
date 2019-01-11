@@ -70,6 +70,8 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 			case ComponentPackage.VARIABLE: return createVariable();
 			case ComponentPackage.SIMULATION_CONFIGURATION: return createSimulationConfiguration();
 			case ComponentPackage.PROCESS_REQUEST: return createProcessRequest();
+			case ComponentPackage.PROCESS_REQUEST_STATUS: return createProcessRequestStatus();
+			case ComponentPackage.PROCESS_RESPONSE: return createProcessResponse();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -257,6 +259,26 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 	public ProcessRequest createProcessRequest() {
 		ProcessRequestImpl processRequest = new ProcessRequestImpl();
 		return processRequest;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ProcessRequestStatus createProcessRequestStatus() {
+		ProcessRequestStatusImpl processRequestStatus = new ProcessRequestStatusImpl();
+		return processRequestStatus;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ProcessResponse createProcessResponse() {
+		ProcessResponseImpl processResponse = new ProcessResponseImpl();
+		return processResponse;
 	}
 
 	/**

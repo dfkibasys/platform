@@ -1,4 +1,4 @@
-package de.dfki.cos.basys.platform.runtime.processcontrol;
+package de.dfki.cos.basys.platform.runtime.processcontrol.impl;
 
 import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
@@ -17,6 +17,7 @@ import de.dfki.cos.basys.platform.model.runtime.component.RequestStatus;
 import de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus;
 import de.dfki.cos.basys.platform.runtime.component.ComponentContext;
 import de.dfki.cos.basys.platform.runtime.component.ComponentController;
+import de.dfki.cos.basys.platform.runtime.processcontrol.TaskDescription;
 
 public class TaskExecutor implements ChannelListener {
 

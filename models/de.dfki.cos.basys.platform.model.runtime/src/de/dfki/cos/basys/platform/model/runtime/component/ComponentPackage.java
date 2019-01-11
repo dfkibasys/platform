@@ -1001,13 +1001,13 @@ public interface ComponentPackage extends EPackage {
 	int PROCESS_REQUEST__BUSINESS_KEY = 1;
 
 	/**
-	 * The feature id for the '<em><b>Variable</b></em>' containment reference.
+	 * The feature id for the '<em><b>Variables</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROCESS_REQUEST__VARIABLE = 2;
+	int PROCESS_REQUEST__VARIABLES = 2;
 
 	/**
 	 * The number of structural features of the '<em>Process Request</em>' class.
@@ -1028,6 +1028,161 @@ public interface ComponentPackage extends EPackage {
 	int PROCESS_REQUEST_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ProcessRequestStatusImpl <em>Process Request Status</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ProcessRequestStatusImpl
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getProcessRequestStatus()
+	 * @generated
+	 */
+	int PROCESS_REQUEST_STATUS = 14;
+
+	/**
+	 * The feature id for the '<em><b>Process Instance Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_REQUEST_STATUS__PROCESS_INSTANCE_ID = 0;
+
+	/**
+	 * The feature id for the '<em><b>Business Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_REQUEST_STATUS__BUSINESS_KEY = 1;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_REQUEST_STATUS__STATUS = 2;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_REQUEST_STATUS__MESSAGE = 3;
+
+	/**
+	 * The number of structural features of the '<em>Process Request Status</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_REQUEST_STATUS_FEATURE_COUNT = 4;
+
+	/**
+	 * The number of operations of the '<em>Process Request Status</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_REQUEST_STATUS_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ProcessResponseImpl <em>Process Response</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ProcessResponseImpl
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getProcessResponse()
+	 * @generated
+	 */
+	int PROCESS_RESPONSE = 15;
+
+	/**
+	 * The feature id for the '<em><b>Process Instance Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_RESPONSE__PROCESS_INSTANCE_ID = 0;
+
+	/**
+	 * The feature id for the '<em><b>Business Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_RESPONSE__BUSINESS_KEY = 1;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_RESPONSE__STATUS = 2;
+
+	/**
+	 * The feature id for the '<em><b>Status Code</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_RESPONSE__STATUS_CODE = 3;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_RESPONSE__MESSAGE = 4;
+
+	/**
+	 * The feature id for the '<em><b>Request</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_RESPONSE__REQUEST = 5;
+
+	/**
+	 * The feature id for the '<em><b>Result Variables</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_RESPONSE__RESULT_VARIABLES = 6;
+
+	/**
+	 * The number of structural features of the '<em>Process Response</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_RESPONSE_FEATURE_COUNT = 7;
+
+	/**
+	 * The number of operations of the '<em>Process Response</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS_RESPONSE_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory <em>Category</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1035,7 +1190,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getComponentCategory()
 	 * @generated
 	 */
-	int COMPONENT_CATEGORY = 14;
+	int COMPONENT_CATEGORY = 16;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.State <em>State</em>}' enum.
@@ -1045,7 +1200,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getState()
 	 * @generated
 	 */
-	int STATE = 15;
+	int STATE = 17;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.ControlMode <em>Control Mode</em>}' enum.
@@ -1055,7 +1210,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getControlMode()
 	 * @generated
 	 */
-	int CONTROL_MODE = 16;
+	int CONTROL_MODE = 18;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.ControlCommand <em>Control Command</em>}' enum.
@@ -1065,7 +1220,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getControlCommand()
 	 * @generated
 	 */
-	int CONTROL_COMMAND = 17;
+	int CONTROL_COMMAND = 19;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.RequestStatus <em>Request Status</em>}' enum.
@@ -1075,7 +1230,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getRequestStatus()
 	 * @generated
 	 */
-	int REQUEST_STATUS = 18;
+	int REQUEST_STATUS = 20;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus <em>Response Status</em>}' enum.
@@ -1085,7 +1240,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getResponseStatus()
 	 * @generated
 	 */
-	int RESPONSE_STATUS = 19;
+	int RESPONSE_STATUS = 21;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.VariableType <em>Variable Type</em>}' enum.
@@ -1095,7 +1250,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getVariableType()
 	 * @generated
 	 */
-	int VARIABLE_TYPE = 20;
+	int VARIABLE_TYPE = 22;
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo <em>Info</em>}'.
@@ -1886,15 +2041,156 @@ public interface ComponentPackage extends EPackage {
 	EAttribute getProcessRequest_BusinessKey();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link de.dfki.cos.basys.platform.model.runtime.component.ProcessRequest#getVariable <em>Variable</em>}'.
+	 * Returns the meta object for the containment reference list '{@link de.dfki.cos.basys.platform.model.runtime.component.ProcessRequest#getVariables <em>Variables</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Variable</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ProcessRequest#getVariable()
+	 * @return the meta object for the containment reference list '<em>Variables</em>'.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ProcessRequest#getVariables()
 	 * @see #getProcessRequest()
 	 * @generated
 	 */
-	EReference getProcessRequest_Variable();
+	EReference getProcessRequest_Variables();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.cos.basys.platform.model.runtime.component.ProcessRequestStatus <em>Process Request Status</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Process Request Status</em>'.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ProcessRequestStatus
+	 * @generated
+	 */
+	EClass getProcessRequestStatus();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.ProcessRequestStatus#getProcessInstanceId <em>Process Instance Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Process Instance Id</em>'.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ProcessRequestStatus#getProcessInstanceId()
+	 * @see #getProcessRequestStatus()
+	 * @generated
+	 */
+	EAttribute getProcessRequestStatus_ProcessInstanceId();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.ProcessRequestStatus#getBusinessKey <em>Business Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Business Key</em>'.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ProcessRequestStatus#getBusinessKey()
+	 * @see #getProcessRequestStatus()
+	 * @generated
+	 */
+	EAttribute getProcessRequestStatus_BusinessKey();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.ProcessRequestStatus#getStatus <em>Status</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Status</em>'.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ProcessRequestStatus#getStatus()
+	 * @see #getProcessRequestStatus()
+	 * @generated
+	 */
+	EAttribute getProcessRequestStatus_Status();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.ProcessRequestStatus#getMessage <em>Message</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Message</em>'.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ProcessRequestStatus#getMessage()
+	 * @see #getProcessRequestStatus()
+	 * @generated
+	 */
+	EAttribute getProcessRequestStatus_Message();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.cos.basys.platform.model.runtime.component.ProcessResponse <em>Process Response</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Process Response</em>'.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ProcessResponse
+	 * @generated
+	 */
+	EClass getProcessResponse();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.ProcessResponse#getProcessInstanceId <em>Process Instance Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Process Instance Id</em>'.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ProcessResponse#getProcessInstanceId()
+	 * @see #getProcessResponse()
+	 * @generated
+	 */
+	EAttribute getProcessResponse_ProcessInstanceId();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.ProcessResponse#getBusinessKey <em>Business Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Business Key</em>'.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ProcessResponse#getBusinessKey()
+	 * @see #getProcessResponse()
+	 * @generated
+	 */
+	EAttribute getProcessResponse_BusinessKey();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.ProcessResponse#getStatus <em>Status</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Status</em>'.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ProcessResponse#getStatus()
+	 * @see #getProcessResponse()
+	 * @generated
+	 */
+	EAttribute getProcessResponse_Status();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.ProcessResponse#getStatusCode <em>Status Code</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Status Code</em>'.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ProcessResponse#getStatusCode()
+	 * @see #getProcessResponse()
+	 * @generated
+	 */
+	EAttribute getProcessResponse_StatusCode();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.ProcessResponse#getMessage <em>Message</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Message</em>'.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ProcessResponse#getMessage()
+	 * @see #getProcessResponse()
+	 * @generated
+	 */
+	EAttribute getProcessResponse_Message();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.dfki.cos.basys.platform.model.runtime.component.ProcessResponse#getRequest <em>Request</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Request</em>'.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ProcessResponse#getRequest()
+	 * @see #getProcessResponse()
+	 * @generated
+	 */
+	EReference getProcessResponse_Request();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link de.dfki.cos.basys.platform.model.runtime.component.ProcessResponse#getResultVariables <em>Result Variables</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Result Variables</em>'.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ProcessResponse#getResultVariables()
+	 * @see #getProcessResponse()
+	 * @generated
+	 */
+	EReference getProcessResponse_ResultVariables();
 
 	/**
 	 * Returns the meta object for enum '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory <em>Category</em>}'.
@@ -2602,12 +2898,120 @@ public interface ComponentPackage extends EPackage {
 		EAttribute PROCESS_REQUEST__BUSINESS_KEY = eINSTANCE.getProcessRequest_BusinessKey();
 
 		/**
-		 * The meta object literal for the '<em><b>Variable</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Variables</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PROCESS_REQUEST__VARIABLE = eINSTANCE.getProcessRequest_Variable();
+		EReference PROCESS_REQUEST__VARIABLES = eINSTANCE.getProcessRequest_Variables();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ProcessRequestStatusImpl <em>Process Request Status</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ProcessRequestStatusImpl
+		 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getProcessRequestStatus()
+		 * @generated
+		 */
+		EClass PROCESS_REQUEST_STATUS = eINSTANCE.getProcessRequestStatus();
+
+		/**
+		 * The meta object literal for the '<em><b>Process Instance Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROCESS_REQUEST_STATUS__PROCESS_INSTANCE_ID = eINSTANCE.getProcessRequestStatus_ProcessInstanceId();
+
+		/**
+		 * The meta object literal for the '<em><b>Business Key</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROCESS_REQUEST_STATUS__BUSINESS_KEY = eINSTANCE.getProcessRequestStatus_BusinessKey();
+
+		/**
+		 * The meta object literal for the '<em><b>Status</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROCESS_REQUEST_STATUS__STATUS = eINSTANCE.getProcessRequestStatus_Status();
+
+		/**
+		 * The meta object literal for the '<em><b>Message</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROCESS_REQUEST_STATUS__MESSAGE = eINSTANCE.getProcessRequestStatus_Message();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ProcessResponseImpl <em>Process Response</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ProcessResponseImpl
+		 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getProcessResponse()
+		 * @generated
+		 */
+		EClass PROCESS_RESPONSE = eINSTANCE.getProcessResponse();
+
+		/**
+		 * The meta object literal for the '<em><b>Process Instance Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROCESS_RESPONSE__PROCESS_INSTANCE_ID = eINSTANCE.getProcessResponse_ProcessInstanceId();
+
+		/**
+		 * The meta object literal for the '<em><b>Business Key</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROCESS_RESPONSE__BUSINESS_KEY = eINSTANCE.getProcessResponse_BusinessKey();
+
+		/**
+		 * The meta object literal for the '<em><b>Status</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROCESS_RESPONSE__STATUS = eINSTANCE.getProcessResponse_Status();
+
+		/**
+		 * The meta object literal for the '<em><b>Status Code</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROCESS_RESPONSE__STATUS_CODE = eINSTANCE.getProcessResponse_StatusCode();
+
+		/**
+		 * The meta object literal for the '<em><b>Message</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROCESS_RESPONSE__MESSAGE = eINSTANCE.getProcessResponse_Message();
+
+		/**
+		 * The meta object literal for the '<em><b>Request</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROCESS_RESPONSE__REQUEST = eINSTANCE.getProcessResponse_Request();
+
+		/**
+		 * The meta object literal for the '<em><b>Result Variables</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROCESS_RESPONSE__RESULT_VARIABLES = eINSTANCE.getProcessResponse_ResultVariables();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory <em>Category</em>}' enum.

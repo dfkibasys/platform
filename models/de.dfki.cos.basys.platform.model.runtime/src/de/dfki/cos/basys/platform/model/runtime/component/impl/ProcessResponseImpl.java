@@ -2,63 +2,87 @@
  */
 package de.dfki.cos.basys.platform.model.runtime.component.impl;
 
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
+import de.dfki.cos.basys.platform.model.runtime.component.ProcessRequest;
+import de.dfki.cos.basys.platform.model.runtime.component.ProcessResponse;
+import de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus;
+import de.dfki.cos.basys.platform.model.runtime.component.Variable;
+
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentResponse;
-import de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus;
-import de.dfki.cos.basys.platform.model.runtime.component.Variable;
-
-import java.util.Collection;
-
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Response</b></em>'.
+ * An implementation of the model object '<em><b>Process Response</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentResponseImpl#getComponentId <em>Component Id</em>}</li>
- *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentResponseImpl#getStatus <em>Status</em>}</li>
- *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentResponseImpl#getStatusCode <em>Status Code</em>}</li>
- *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentResponseImpl#getMessage <em>Message</em>}</li>
- *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentResponseImpl#getRequest <em>Request</em>}</li>
- *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentResponseImpl#getResultVariables <em>Result Variables</em>}</li>
+ *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ProcessResponseImpl#getProcessInstanceId <em>Process Instance Id</em>}</li>
+ *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ProcessResponseImpl#getBusinessKey <em>Business Key</em>}</li>
+ *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ProcessResponseImpl#getStatus <em>Status</em>}</li>
+ *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ProcessResponseImpl#getStatusCode <em>Status Code</em>}</li>
+ *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ProcessResponseImpl#getMessage <em>Message</em>}</li>
+ *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ProcessResponseImpl#getRequest <em>Request</em>}</li>
+ *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ProcessResponseImpl#getResultVariables <em>Result Variables</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ComponentResponseImpl extends MinimalEObjectImpl.Container implements ComponentResponse {
+public class ProcessResponseImpl extends MinimalEObjectImpl.Container implements ProcessResponse {
 	/**
-	 * The default value of the '{@link #getComponentId() <em>Component Id</em>}' attribute.
+	 * The default value of the '{@link #getProcessInstanceId() <em>Process Instance Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getComponentId()
+	 * @see #getProcessInstanceId()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String COMPONENT_ID_EDEFAULT = null;
+	protected static final String PROCESS_INSTANCE_ID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getComponentId() <em>Component Id</em>}' attribute.
+	 * The cached value of the '{@link #getProcessInstanceId() <em>Process Instance Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getComponentId()
+	 * @see #getProcessInstanceId()
 	 * @generated
 	 * @ordered
 	 */
-	protected String componentId = COMPONENT_ID_EDEFAULT;
+	protected String processInstanceId = PROCESS_INSTANCE_ID_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getBusinessKey() <em>Business Key</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBusinessKey()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String BUSINESS_KEY_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getBusinessKey() <em>Business Key</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBusinessKey()
+	 * @generated
+	 * @ordered
+	 */
+	protected String businessKey = BUSINESS_KEY_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getStatus() <em>Status</em>}' attribute.
@@ -121,14 +145,14 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 	protected String message = MESSAGE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getRequest() <em>Request</em>}' containment reference.
+	 * The cached value of the '{@link #getRequest() <em>Request</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getRequest()
 	 * @generated
 	 * @ordered
 	 */
-	protected ComponentRequest request;
+	protected ProcessRequest request;
 
 	/**
 	 * The cached value of the '{@link #getResultVariables() <em>Result Variables</em>}' containment reference list.
@@ -145,7 +169,7 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ComponentResponseImpl() {
+	protected ProcessResponseImpl() {
 		super();
 	}
 
@@ -156,7 +180,7 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ComponentPackage.Literals.COMPONENT_RESPONSE;
+		return ComponentPackage.Literals.PROCESS_RESPONSE;
 	}
 
 	/**
@@ -164,9 +188,8 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public String getComponentId() {
-		return componentId;
+	public String getProcessInstanceId() {
+		return processInstanceId;
 	}
 
 	/**
@@ -174,12 +197,11 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void setComponentId(String newComponentId) {
-		String oldComponentId = componentId;
-		componentId = newComponentId;
+	public void setProcessInstanceId(String newProcessInstanceId) {
+		String oldProcessInstanceId = processInstanceId;
+		processInstanceId = newProcessInstanceId;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.COMPONENT_RESPONSE__COMPONENT_ID, oldComponentId, componentId));
+			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.PROCESS_RESPONSE__PROCESS_INSTANCE_ID, oldProcessInstanceId, processInstanceId));
 	}
 
 	/**
@@ -187,7 +209,27 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
+	public String getBusinessKey() {
+		return businessKey;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBusinessKey(String newBusinessKey) {
+		String oldBusinessKey = businessKey;
+		businessKey = newBusinessKey;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.PROCESS_RESPONSE__BUSINESS_KEY, oldBusinessKey, businessKey));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ResponseStatus getStatus() {
 		return status;
 	}
@@ -197,12 +239,11 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setStatus(ResponseStatus newStatus) {
 		ResponseStatus oldStatus = status;
 		status = newStatus == null ? STATUS_EDEFAULT : newStatus;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.COMPONENT_RESPONSE__STATUS, oldStatus, status));
+			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.PROCESS_RESPONSE__STATUS, oldStatus, status));
 	}
 
 	/**
@@ -210,7 +251,6 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public int getStatusCode() {
 		return statusCode;
 	}
@@ -220,12 +260,11 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setStatusCode(int newStatusCode) {
 		int oldStatusCode = statusCode;
 		statusCode = newStatusCode;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.COMPONENT_RESPONSE__STATUS_CODE, oldStatusCode, statusCode));
+			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.PROCESS_RESPONSE__STATUS_CODE, oldStatusCode, statusCode));
 	}
 
 	/**
@@ -233,7 +272,6 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public String getMessage() {
 		return message;
 	}
@@ -243,12 +281,11 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setMessage(String newMessage) {
 		String oldMessage = message;
 		message = newMessage;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.COMPONENT_RESPONSE__MESSAGE, oldMessage, message));
+			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.PROCESS_RESPONSE__MESSAGE, oldMessage, message));
 	}
 
 	/**
@@ -256,8 +293,15 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public ComponentRequest getRequest() {
+	public ProcessRequest getRequest() {
+		if (request != null && request.eIsProxy()) {
+			InternalEObject oldRequest = (InternalEObject)request;
+			request = (ProcessRequest)eResolveProxy(oldRequest);
+			if (request != oldRequest) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ComponentPackage.PROCESS_RESPONSE__REQUEST, oldRequest, request));
+			}
+		}
 		return request;
 	}
 
@@ -266,14 +310,8 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetRequest(ComponentRequest newRequest, NotificationChain msgs) {
-		ComponentRequest oldRequest = request;
-		request = newRequest;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ComponentPackage.COMPONENT_RESPONSE__REQUEST, oldRequest, newRequest);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
+	public ProcessRequest basicGetRequest() {
+		return request;
 	}
 
 	/**
@@ -281,19 +319,11 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void setRequest(ComponentRequest newRequest) {
-		if (newRequest != request) {
-			NotificationChain msgs = null;
-			if (request != null)
-				msgs = ((InternalEObject)request).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ComponentPackage.COMPONENT_RESPONSE__REQUEST, null, msgs);
-			if (newRequest != null)
-				msgs = ((InternalEObject)newRequest).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ComponentPackage.COMPONENT_RESPONSE__REQUEST, null, msgs);
-			msgs = basicSetRequest(newRequest, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.COMPONENT_RESPONSE__REQUEST, newRequest, newRequest));
+	public void setRequest(ProcessRequest newRequest) {
+		ProcessRequest oldRequest = request;
+		request = newRequest;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.PROCESS_RESPONSE__REQUEST, oldRequest, request));
 	}
 
 	/**
@@ -303,7 +333,7 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 	 */
 	public EList<Variable> getResultVariables() {
 		if (resultVariables == null) {
-			resultVariables = new EObjectContainmentEList<Variable>(Variable.class, this, ComponentPackage.COMPONENT_RESPONSE__RESULT_VARIABLES);
+			resultVariables = new EObjectContainmentEList<Variable>(Variable.class, this, ComponentPackage.PROCESS_RESPONSE__RESULT_VARIABLES);
 		}
 		return resultVariables;
 	}
@@ -316,9 +346,7 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ComponentPackage.COMPONENT_RESPONSE__REQUEST:
-				return basicSetRequest(null, msgs);
-			case ComponentPackage.COMPONENT_RESPONSE__RESULT_VARIABLES:
+			case ComponentPackage.PROCESS_RESPONSE__RESULT_VARIABLES:
 				return ((InternalEList<?>)getResultVariables()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -332,17 +360,20 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ComponentPackage.COMPONENT_RESPONSE__COMPONENT_ID:
-				return getComponentId();
-			case ComponentPackage.COMPONENT_RESPONSE__STATUS:
+			case ComponentPackage.PROCESS_RESPONSE__PROCESS_INSTANCE_ID:
+				return getProcessInstanceId();
+			case ComponentPackage.PROCESS_RESPONSE__BUSINESS_KEY:
+				return getBusinessKey();
+			case ComponentPackage.PROCESS_RESPONSE__STATUS:
 				return getStatus();
-			case ComponentPackage.COMPONENT_RESPONSE__STATUS_CODE:
+			case ComponentPackage.PROCESS_RESPONSE__STATUS_CODE:
 				return getStatusCode();
-			case ComponentPackage.COMPONENT_RESPONSE__MESSAGE:
+			case ComponentPackage.PROCESS_RESPONSE__MESSAGE:
 				return getMessage();
-			case ComponentPackage.COMPONENT_RESPONSE__REQUEST:
-				return getRequest();
-			case ComponentPackage.COMPONENT_RESPONSE__RESULT_VARIABLES:
+			case ComponentPackage.PROCESS_RESPONSE__REQUEST:
+				if (resolve) return getRequest();
+				return basicGetRequest();
+			case ComponentPackage.PROCESS_RESPONSE__RESULT_VARIABLES:
 				return getResultVariables();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -357,22 +388,25 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ComponentPackage.COMPONENT_RESPONSE__COMPONENT_ID:
-				setComponentId((String)newValue);
+			case ComponentPackage.PROCESS_RESPONSE__PROCESS_INSTANCE_ID:
+				setProcessInstanceId((String)newValue);
 				return;
-			case ComponentPackage.COMPONENT_RESPONSE__STATUS:
+			case ComponentPackage.PROCESS_RESPONSE__BUSINESS_KEY:
+				setBusinessKey((String)newValue);
+				return;
+			case ComponentPackage.PROCESS_RESPONSE__STATUS:
 				setStatus((ResponseStatus)newValue);
 				return;
-			case ComponentPackage.COMPONENT_RESPONSE__STATUS_CODE:
+			case ComponentPackage.PROCESS_RESPONSE__STATUS_CODE:
 				setStatusCode((Integer)newValue);
 				return;
-			case ComponentPackage.COMPONENT_RESPONSE__MESSAGE:
+			case ComponentPackage.PROCESS_RESPONSE__MESSAGE:
 				setMessage((String)newValue);
 				return;
-			case ComponentPackage.COMPONENT_RESPONSE__REQUEST:
-				setRequest((ComponentRequest)newValue);
+			case ComponentPackage.PROCESS_RESPONSE__REQUEST:
+				setRequest((ProcessRequest)newValue);
 				return;
-			case ComponentPackage.COMPONENT_RESPONSE__RESULT_VARIABLES:
+			case ComponentPackage.PROCESS_RESPONSE__RESULT_VARIABLES:
 				getResultVariables().clear();
 				getResultVariables().addAll((Collection<? extends Variable>)newValue);
 				return;
@@ -388,22 +422,25 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ComponentPackage.COMPONENT_RESPONSE__COMPONENT_ID:
-				setComponentId(COMPONENT_ID_EDEFAULT);
+			case ComponentPackage.PROCESS_RESPONSE__PROCESS_INSTANCE_ID:
+				setProcessInstanceId(PROCESS_INSTANCE_ID_EDEFAULT);
 				return;
-			case ComponentPackage.COMPONENT_RESPONSE__STATUS:
+			case ComponentPackage.PROCESS_RESPONSE__BUSINESS_KEY:
+				setBusinessKey(BUSINESS_KEY_EDEFAULT);
+				return;
+			case ComponentPackage.PROCESS_RESPONSE__STATUS:
 				setStatus(STATUS_EDEFAULT);
 				return;
-			case ComponentPackage.COMPONENT_RESPONSE__STATUS_CODE:
+			case ComponentPackage.PROCESS_RESPONSE__STATUS_CODE:
 				setStatusCode(STATUS_CODE_EDEFAULT);
 				return;
-			case ComponentPackage.COMPONENT_RESPONSE__MESSAGE:
+			case ComponentPackage.PROCESS_RESPONSE__MESSAGE:
 				setMessage(MESSAGE_EDEFAULT);
 				return;
-			case ComponentPackage.COMPONENT_RESPONSE__REQUEST:
-				setRequest((ComponentRequest)null);
+			case ComponentPackage.PROCESS_RESPONSE__REQUEST:
+				setRequest((ProcessRequest)null);
 				return;
-			case ComponentPackage.COMPONENT_RESPONSE__RESULT_VARIABLES:
+			case ComponentPackage.PROCESS_RESPONSE__RESULT_VARIABLES:
 				getResultVariables().clear();
 				return;
 		}
@@ -418,17 +455,19 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ComponentPackage.COMPONENT_RESPONSE__COMPONENT_ID:
-				return COMPONENT_ID_EDEFAULT == null ? componentId != null : !COMPONENT_ID_EDEFAULT.equals(componentId);
-			case ComponentPackage.COMPONENT_RESPONSE__STATUS:
+			case ComponentPackage.PROCESS_RESPONSE__PROCESS_INSTANCE_ID:
+				return PROCESS_INSTANCE_ID_EDEFAULT == null ? processInstanceId != null : !PROCESS_INSTANCE_ID_EDEFAULT.equals(processInstanceId);
+			case ComponentPackage.PROCESS_RESPONSE__BUSINESS_KEY:
+				return BUSINESS_KEY_EDEFAULT == null ? businessKey != null : !BUSINESS_KEY_EDEFAULT.equals(businessKey);
+			case ComponentPackage.PROCESS_RESPONSE__STATUS:
 				return status != STATUS_EDEFAULT;
-			case ComponentPackage.COMPONENT_RESPONSE__STATUS_CODE:
+			case ComponentPackage.PROCESS_RESPONSE__STATUS_CODE:
 				return statusCode != STATUS_CODE_EDEFAULT;
-			case ComponentPackage.COMPONENT_RESPONSE__MESSAGE:
+			case ComponentPackage.PROCESS_RESPONSE__MESSAGE:
 				return MESSAGE_EDEFAULT == null ? message != null : !MESSAGE_EDEFAULT.equals(message);
-			case ComponentPackage.COMPONENT_RESPONSE__REQUEST:
+			case ComponentPackage.PROCESS_RESPONSE__REQUEST:
 				return request != null;
-			case ComponentPackage.COMPONENT_RESPONSE__RESULT_VARIABLES:
+			case ComponentPackage.PROCESS_RESPONSE__RESULT_VARIABLES:
 				return resultVariables != null && !resultVariables.isEmpty();
 		}
 		return super.eIsSet(featureID);
@@ -444,8 +483,10 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 		if (eIsProxy()) return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (componentId: ");
-		result.append(componentId);
+		result.append(" (processInstanceId: ");
+		result.append(processInstanceId);
+		result.append(", businessKey: ");
+		result.append(businessKey);
 		result.append(", status: ");
 		result.append(status);
 		result.append(", statusCode: ");
@@ -456,48 +497,4 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 		return result.toString();
 	}
 
-	public static class Builder {
-		private String componentId;
-		private ResponseStatus status;
-		private int statusCode;
-		private String message;
-		private ComponentRequest request;
-
-		public Builder componentId(String componentId) {
-			this.componentId = componentId;
-			return this;
-		}
-
-		public Builder status(ResponseStatus status) {
-			this.status = status;
-			return this;
-		}
-
-		public Builder statusCode(int statusCode) {
-			this.statusCode = statusCode;
-			return this;
-		}
-
-		public Builder message(String message) {
-			this.message = message;
-			return this;
-		}
-
-		public Builder request(ComponentRequest request) {
-			this.request = request;
-			return this;
-		}
-
-		public ComponentResponse build() {
-			return new ComponentResponseImpl(this);
-		}
-	}
-
-	private ComponentResponseImpl(Builder builder) {
-		this.componentId = builder.componentId;
-		this.status = builder.status;
-		this.statusCode = builder.statusCode;
-		this.message = builder.message;
-		this.request = builder.request;
-	}
-}
+} //ProcessResponseImpl

@@ -139,6 +139,24 @@ public interface ComponentFactory extends EFactory {
 	ProcessRequest createProcessRequest();
 
 	/**
+	 * Returns a new object of class '<em>Process Request Status</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Process Request Status</em>'.
+	 * @generated
+	 */
+	ProcessRequestStatus createProcessRequestStatus();
+
+	/**
+	 * Returns a new object of class '<em>Process Response</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Process Response</em>'.
+	 * @generated
+	 */
+	ProcessResponse createProcessResponse();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

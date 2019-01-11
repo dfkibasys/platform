@@ -154,6 +154,18 @@ public class ComponentSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ComponentPackage.PROCESS_REQUEST_STATUS: {
+				ProcessRequestStatus processRequestStatus = (ProcessRequestStatus)theEObject;
+				T result = caseProcessRequestStatus(processRequestStatus);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ComponentPackage.PROCESS_RESPONSE: {
+				ProcessResponse processResponse = (ProcessResponse)theEObject;
+				T result = caseProcessResponse(processResponse);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -365,6 +377,36 @@ public class ComponentSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseProcessRequest(ProcessRequest object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Process Request Status</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Process Request Status</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseProcessRequestStatus(ProcessRequestStatus object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Process Response</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Process Response</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseProcessResponse(ProcessResponse object) {
 		return null;
 	}
 

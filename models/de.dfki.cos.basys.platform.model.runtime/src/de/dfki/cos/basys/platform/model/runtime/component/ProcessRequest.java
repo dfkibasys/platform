@@ -2,6 +2,7 @@
  */
 package de.dfki.cos.basys.platform.model.runtime.component;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -15,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.ProcessRequest#getName <em>Name</em>}</li>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.ProcessRequest#getBusinessKey <em>Business Key</em>}</li>
- *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.ProcessRequest#getVariable <em>Variable</em>}</li>
+ *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.ProcessRequest#getVariables <em>Variables</em>}</li>
  * </ul>
  *
  * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage#getProcessRequest()
@@ -76,29 +77,19 @@ public interface ProcessRequest extends EObject {
 	void setBusinessKey(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Variable</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Variables</b></em>' containment reference list.
+	 * The list contents are of type {@link de.dfki.cos.basys.platform.model.runtime.component.Variable}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Variable</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Variables</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Variable</em>' containment reference.
-	 * @see #setVariable(Variable)
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage#getProcessRequest_Variable()
+	 * @return the value of the '<em>Variables</em>' containment reference list.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage#getProcessRequest_Variables()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Variable getVariable();
-
-	/**
-	 * Sets the value of the '{@link de.dfki.cos.basys.platform.model.runtime.component.ProcessRequest#getVariable <em>Variable</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Variable</em>' containment reference.
-	 * @see #getVariable()
-	 * @generated
-	 */
-	void setVariable(Variable value);
+	EList<Variable> getVariables();
 
 } // ProcessRequest

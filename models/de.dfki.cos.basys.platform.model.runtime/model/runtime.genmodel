@@ -147,8 +147,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute communication.ecore#//Authentication/certificate"/>
     </genClasses>
   </genPackages>
-  <genPackages prefix="Component" basePackage="de.dfki.cos.basys.platform.model.runtime" disposableProviderFactory="true"
-      ecorePackage="component.ecore#/">
+  <genPackages prefix="Component" basePackage="de.dfki.cos.basys.platform.model.runtime"
+      disposableProviderFactory="true" ecorePackage="component.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="component.ecore#//ComponentCategory">
       <genEnumLiterals ecoreEnumLiteral="component.ecore#//ComponentCategory/NONE"/>
       <genEnumLiterals ecoreEnumLiteral="component.ecore#//ComponentCategory/SERVICE_COMPONENT"/>
@@ -305,7 +305,22 @@
     <genClasses ecoreClass="component.ecore#//ProcessRequest">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ProcessRequest/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ProcessRequest/businessKey"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference component.ecore#//ProcessRequest/variable"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference component.ecore#//ProcessRequest/variables"/>
+    </genClasses>
+    <genClasses ecoreClass="component.ecore#//ProcessRequestStatus">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ProcessRequestStatus/processInstanceId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ProcessRequestStatus/businessKey"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ProcessRequestStatus/status"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ProcessRequestStatus/message"/>
+    </genClasses>
+    <genClasses ecoreClass="component.ecore#//ProcessResponse">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ProcessResponse/processInstanceId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ProcessResponse/businessKey"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ProcessResponse/status"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ProcessResponse/statusCode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ProcessResponse/message"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference component.ecore#//ProcessResponse/request"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference component.ecore#//ProcessResponse/resultVariables"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

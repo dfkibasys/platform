@@ -14,8 +14,8 @@ import de.dfki.cos.basys.platform.model.runtime.component.ProcessRequest;
 import de.dfki.cos.basys.platform.model.runtime.component.Variable;
 import de.dfki.cos.basys.platform.model.runtime.component.VariableType;
 import de.dfki.cos.basys.platform.model.runtime.component.impl.VariableImpl;
-import de.dfki.cos.basys.platform.runtime.processcontrol.impl.CamundaRestClient;
-import de.dfki.cos.basys.platform.runtime.processcontrol.impl.ExternalServiceTaskDto;
+import de.dfki.cos.basys.platform.runtime.processcontrol.camunda.CamundaRestClient;
+import de.dfki.cos.basys.platform.runtime.processcontrol.camunda.ExternalServiceTaskDto;
 
 public class CamundaClientTest {
 
@@ -54,22 +54,21 @@ public class CamundaClientTest {
 	
 	@Test
 	@Ignore
-	public void testSpawnProcess() throws Exception {
-		
+	public void testSpawnProcess() throws Exception {		
 	
-		CamundaRestClient camundaClient = new CamundaRestClient("test", "http://localhost:8081/engine-rest/");
+		CamundaRestClient camundaClient = new CamundaRestClient("test", "http://localhost:8081/engine-rest");
 		
 		ProcessRequest request = ComponentFactory.eINSTANCE.createProcessRequest();
 		request.setName("Process.Manufacture");
 		request.setBusinessKey(UUID.randomUUID().toString());
 		
 		Variable var = new VariableImpl.Builder().name("resourceInstanceId").value("testResouceId").type(VariableType.STRING).build();
-		request.setVariable(var);
+		request.getVariables().add(var);
 		
-		if (request.getVariable() != null) {
-			camundaClient.sendMessage(request.getName(), request.getBusinessKey(), request.getVariable());
+		if (!request.getVariables().isEmpty()) {
+			camundaClient.createProcessInstanceByKey(request.getName(), request.getBusinessKey(), request.getVariables());
 		} else {
-			camundaClient.sendMessage(request.getName(), request.getBusinessKey());
+			camundaClient.createProcessInstanceByKey(request.getName(), request.getBusinessKey());
 		}
 	
 
