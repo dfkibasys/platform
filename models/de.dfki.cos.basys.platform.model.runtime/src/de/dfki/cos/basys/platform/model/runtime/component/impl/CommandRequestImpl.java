@@ -20,6 +20,7 @@ import de.dfki.cos.basys.platform.model.runtime.component.ControlCommand;
  * </p>
  * <ul>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.CommandRequestImpl#getComponentId <em>Component Id</em>}</li>
+ *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.CommandRequestImpl#getCorrelationId <em>Correlation Id</em>}</li>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.CommandRequestImpl#getControlCommand <em>Control Command</em>}</li>
  * </ul>
  *
@@ -45,6 +46,26 @@ public class CommandRequestImpl extends MinimalEObjectImpl.Container implements 
 	 * @ordered
 	 */
 	protected String componentId = COMPONENT_ID_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getCorrelationId() <em>Correlation Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCorrelationId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String CORRELATION_ID_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getCorrelationId() <em>Correlation Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCorrelationId()
+	 * @generated
+	 * @ordered
+	 */
+	protected String correlationId = CORRELATION_ID_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getControlCommand() <em>Control Command</em>}' attribute.
@@ -113,6 +134,27 @@ public class CommandRequestImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getCorrelationId() {
+		return correlationId;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCorrelationId(String newCorrelationId) {
+		String oldCorrelationId = correlationId;
+		correlationId = newCorrelationId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.COMMAND_REQUEST__CORRELATION_ID, oldCorrelationId, correlationId));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public ControlCommand getControlCommand() {
 		return controlCommand;
@@ -141,6 +183,8 @@ public class CommandRequestImpl extends MinimalEObjectImpl.Container implements 
 		switch (featureID) {
 			case ComponentPackage.COMMAND_REQUEST__COMPONENT_ID:
 				return getComponentId();
+			case ComponentPackage.COMMAND_REQUEST__CORRELATION_ID:
+				return getCorrelationId();
 			case ComponentPackage.COMMAND_REQUEST__CONTROL_COMMAND:
 				return getControlCommand();
 		}
@@ -157,6 +201,9 @@ public class CommandRequestImpl extends MinimalEObjectImpl.Container implements 
 		switch (featureID) {
 			case ComponentPackage.COMMAND_REQUEST__COMPONENT_ID:
 				setComponentId((String)newValue);
+				return;
+			case ComponentPackage.COMMAND_REQUEST__CORRELATION_ID:
+				setCorrelationId((String)newValue);
 				return;
 			case ComponentPackage.COMMAND_REQUEST__CONTROL_COMMAND:
 				setControlCommand((ControlCommand)newValue);
@@ -176,6 +223,9 @@ public class CommandRequestImpl extends MinimalEObjectImpl.Container implements 
 			case ComponentPackage.COMMAND_REQUEST__COMPONENT_ID:
 				setComponentId(COMPONENT_ID_EDEFAULT);
 				return;
+			case ComponentPackage.COMMAND_REQUEST__CORRELATION_ID:
+				setCorrelationId(CORRELATION_ID_EDEFAULT);
+				return;
 			case ComponentPackage.COMMAND_REQUEST__CONTROL_COMMAND:
 				setControlCommand(CONTROL_COMMAND_EDEFAULT);
 				return;
@@ -193,6 +243,8 @@ public class CommandRequestImpl extends MinimalEObjectImpl.Container implements 
 		switch (featureID) {
 			case ComponentPackage.COMMAND_REQUEST__COMPONENT_ID:
 				return COMPONENT_ID_EDEFAULT == null ? componentId != null : !COMPONENT_ID_EDEFAULT.equals(componentId);
+			case ComponentPackage.COMMAND_REQUEST__CORRELATION_ID:
+				return CORRELATION_ID_EDEFAULT == null ? correlationId != null : !CORRELATION_ID_EDEFAULT.equals(correlationId);
 			case ComponentPackage.COMMAND_REQUEST__CONTROL_COMMAND:
 				return controlCommand != CONTROL_COMMAND_EDEFAULT;
 		}
@@ -211,6 +263,8 @@ public class CommandRequestImpl extends MinimalEObjectImpl.Container implements 
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (componentId: ");
 		result.append(componentId);
+		result.append(", correlationId: ");
+		result.append(correlationId);
 		result.append(", controlCommand: ");
 		result.append(controlCommand);
 		result.append(')');

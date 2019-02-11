@@ -163,13 +163,15 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 			LOGGER.info("Execute capability request");
 			currentCapabilityRequest = req;
 			UnitConfiguration config = translateCapabilityRequest(currentCapabilityRequest);		
-			status = setUnitConfig(config);					
-			status = start();	
+			status = setUnitConfig(config);		
+			if (status.getStatus() != RequestStatus.REJECTED) {				
+				status = start();
+			}
 		} else {
 			LOGGER.info("Enqueue capability request");
 			if (requestQueue.remainingCapacity()>0) {
 				requestQueue.add(req);
-				status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.ACCEPTED).message("capability request enqueued").build();
+				status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.QUEUED).message("capability request enqueued").build();
 			} else {
 				status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.REJECTED).message("capability request queue full").build();
 			}
@@ -426,8 +428,18 @@ public abstract class DeviceComponent extends BaseComponent implements StatusInt
 		}
 		
 		CapabilityRequest queuedRequest = requestQueue.poll();
-		if (queuedRequest != null) {
-			handleCapabilityRequest(queuedRequest);
+		if (queuedRequest != null) {			
+			 
+			try {
+				ComponentRequestStatus status = handleCapabilityRequest(queuedRequest);
+				String payload = JsonUtils.toString(status);
+				Notification not = cf.createNotification(payload);
+				this.outChannel.sendNotification(not);
+			} catch (JsonProcessingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 		
 	}

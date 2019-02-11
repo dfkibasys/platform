@@ -203,6 +203,7 @@
       <genEnumLiterals ecoreEnumLiteral="component.ecore#//RequestStatus/ACCEPTED"/>
       <genEnumLiterals ecoreEnumLiteral="component.ecore#//RequestStatus/REJECTED"/>
       <genEnumLiterals ecoreEnumLiteral="component.ecore#//RequestStatus/NOOP"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//RequestStatus/QUEUED"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="component.ecore#//ResponseStatus">
       <genEnumLiterals ecoreEnumLiteral="component.ecore#//ResponseStatus/UNDEFINED"/>
@@ -254,6 +255,7 @@
     </genClasses>
     <genClasses image="false" ecoreClass="component.ecore#//ComponentRequest">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentRequest/componentId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentRequest/correlationId"/>
     </genClasses>
     <genClasses ecoreClass="component.ecore#//CommandRequest">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//CommandRequest/controlCommand"/>

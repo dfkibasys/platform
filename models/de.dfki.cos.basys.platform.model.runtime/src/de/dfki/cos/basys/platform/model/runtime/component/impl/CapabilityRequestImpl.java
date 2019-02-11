@@ -22,6 +22,7 @@ import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
  * </p>
  * <ul>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.CapabilityRequestImpl#getComponentId <em>Component Id</em>}</li>
+ *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.CapabilityRequestImpl#getCorrelationId <em>Correlation Id</em>}</li>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.CapabilityRequestImpl#getCapabilityVariant <em>Capability Variant</em>}</li>
  * </ul>
  *
@@ -46,6 +47,24 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 	 * @ordered
 	 */
 	protected String componentId = COMPONENT_ID_EDEFAULT;
+	/**
+	 * The default value of the '{@link #getCorrelationId() <em>Correlation Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCorrelationId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String CORRELATION_ID_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getCorrelationId() <em>Correlation Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCorrelationId()
+	 * @generated
+	 * @ordered
+	 */
+	protected String correlationId = CORRELATION_ID_EDEFAULT;
 	/**
 	 * The cached value of the '{@link #getCapabilityVariant() <em>Capability Variant</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -95,6 +114,27 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 		componentId = newComponentId;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.CAPABILITY_REQUEST__COMPONENT_ID, oldComponentId, componentId));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getCorrelationId() {
+		return correlationId;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCorrelationId(String newCorrelationId) {
+		String oldCorrelationId = correlationId;
+		correlationId = newCorrelationId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.CAPABILITY_REQUEST__CORRELATION_ID, oldCorrelationId, correlationId));
 	}
 
 	/**
@@ -166,6 +206,8 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 		switch (featureID) {
 			case ComponentPackage.CAPABILITY_REQUEST__COMPONENT_ID:
 				return getComponentId();
+			case ComponentPackage.CAPABILITY_REQUEST__CORRELATION_ID:
+				return getCorrelationId();
 			case ComponentPackage.CAPABILITY_REQUEST__CAPABILITY_VARIANT:
 				return getCapabilityVariant();
 		}
@@ -182,6 +224,9 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 		switch (featureID) {
 			case ComponentPackage.CAPABILITY_REQUEST__COMPONENT_ID:
 				setComponentId((String)newValue);
+				return;
+			case ComponentPackage.CAPABILITY_REQUEST__CORRELATION_ID:
+				setCorrelationId((String)newValue);
 				return;
 			case ComponentPackage.CAPABILITY_REQUEST__CAPABILITY_VARIANT:
 				setCapabilityVariant((CapabilityVariant<?, ?>)newValue);
@@ -201,6 +246,9 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 			case ComponentPackage.CAPABILITY_REQUEST__COMPONENT_ID:
 				setComponentId(COMPONENT_ID_EDEFAULT);
 				return;
+			case ComponentPackage.CAPABILITY_REQUEST__CORRELATION_ID:
+				setCorrelationId(CORRELATION_ID_EDEFAULT);
+				return;
 			case ComponentPackage.CAPABILITY_REQUEST__CAPABILITY_VARIANT:
 				setCapabilityVariant((CapabilityVariant<?, ?>)null);
 				return;
@@ -218,6 +266,8 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 		switch (featureID) {
 			case ComponentPackage.CAPABILITY_REQUEST__COMPONENT_ID:
 				return COMPONENT_ID_EDEFAULT == null ? componentId != null : !COMPONENT_ID_EDEFAULT.equals(componentId);
+			case ComponentPackage.CAPABILITY_REQUEST__CORRELATION_ID:
+				return CORRELATION_ID_EDEFAULT == null ? correlationId != null : !CORRELATION_ID_EDEFAULT.equals(correlationId);
 			case ComponentPackage.CAPABILITY_REQUEST__CAPABILITY_VARIANT:
 				return capabilityVariant != null;
 		}
@@ -236,6 +286,8 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (componentId: ");
 		result.append(componentId);
+		result.append(", correlationId: ");
+		result.append(correlationId);
 		result.append(')');
 		return result.toString();
 	}

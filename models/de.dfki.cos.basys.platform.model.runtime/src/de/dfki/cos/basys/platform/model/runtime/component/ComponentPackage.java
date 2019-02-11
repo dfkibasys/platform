@@ -397,13 +397,22 @@ public interface ComponentPackage extends EPackage {
 	int COMPONENT_REQUEST__COMPONENT_ID = 0;
 
 	/**
+	 * The feature id for the '<em><b>Correlation Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_REQUEST__CORRELATION_ID = 1;
+
+	/**
 	 * The number of structural features of the '<em>Request</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_REQUEST_FEATURE_COUNT = 1;
+	int COMPONENT_REQUEST_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Request</em>' class.
@@ -432,6 +441,15 @@ public interface ComponentPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMMAND_REQUEST__COMPONENT_ID = COMPONENT_REQUEST__COMPONENT_ID;
+
+	/**
+	 * The feature id for the '<em><b>Correlation Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMAND_REQUEST__CORRELATION_ID = COMPONENT_REQUEST__CORRELATION_ID;
 
 	/**
 	 * The feature id for the '<em><b>Control Command</b></em>' attribute.
@@ -480,6 +498,15 @@ public interface ComponentPackage extends EPackage {
 	int CHANGE_MODE_REQUEST__COMPONENT_ID = COMPONENT_REQUEST__COMPONENT_ID;
 
 	/**
+	 * The feature id for the '<em><b>Correlation Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_MODE_REQUEST__CORRELATION_ID = COMPONENT_REQUEST__CORRELATION_ID;
+
+	/**
 	 * The feature id for the '<em><b>Mode</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -524,6 +551,15 @@ public interface ComponentPackage extends EPackage {
 	 * @ordered
 	 */
 	int CAPABILITY_REQUEST__COMPONENT_ID = COMPONENT_REQUEST__COMPONENT_ID;
+
+	/**
+	 * The feature id for the '<em><b>Correlation Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_REQUEST__CORRELATION_ID = COMPONENT_REQUEST__CORRELATION_ID;
 
 	/**
 	 * The feature id for the '<em><b>Capability Variant</b></em>' containment reference.
@@ -625,6 +661,15 @@ public interface ComponentPackage extends EPackage {
 	 * @ordered
 	 */
 	int STATUS_REQUEST__COMPONENT_ID = COMPONENT_REQUEST__COMPONENT_ID;
+
+	/**
+	 * The feature id for the '<em><b>Correlation Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATUS_REQUEST__CORRELATION_ID = COMPONENT_REQUEST__CORRELATION_ID;
 
 	/**
 	 * The number of structural features of the '<em>Status Request</em>' class.
@@ -1589,6 +1634,17 @@ public interface ComponentPackage extends EPackage {
 	EAttribute getComponentRequest_ComponentId();
 
 	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest#getCorrelationId <em>Correlation Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Correlation Id</em>'.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest#getCorrelationId()
+	 * @see #getComponentRequest()
+	 * @generated
+	 */
+	EAttribute getComponentRequest_CorrelationId();
+
+	/**
 	 * Returns the meta object for class '{@link de.dfki.cos.basys.platform.model.runtime.component.CommandRequest <em>Command Request</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2540,6 +2596,14 @@ public interface ComponentPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute COMPONENT_REQUEST__COMPONENT_ID = eINSTANCE.getComponentRequest_ComponentId();
+
+		/**
+		 * The meta object literal for the '<em><b>Correlation Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMPONENT_REQUEST__CORRELATION_ID = eINSTANCE.getComponentRequest_CorrelationId();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.cos.basys.platform.model.runtime.component.impl.CommandRequestImpl <em>Command Request</em>}' class.

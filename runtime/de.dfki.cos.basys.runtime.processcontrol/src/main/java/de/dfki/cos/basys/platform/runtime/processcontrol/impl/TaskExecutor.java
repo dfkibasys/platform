@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
+import org.eclipse.emf.ecore.EObject;
+
 import de.dfki.cos.basys.common.emf.json.JsonUtils;
 import de.dfki.cos.basys.platform.model.runtime.communication.Channel;
 import de.dfki.cos.basys.platform.model.runtime.communication.ChannelListener;
@@ -11,8 +13,11 @@ import de.dfki.cos.basys.platform.model.runtime.communication.Notification;
 import de.dfki.cos.basys.platform.model.runtime.communication.Request;
 import de.dfki.cos.basys.platform.model.runtime.communication.Response;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentFactory;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentRequestStatus;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentResponse;
+import de.dfki.cos.basys.platform.model.runtime.component.ProcessRequest;
 import de.dfki.cos.basys.platform.model.runtime.component.RequestStatus;
 import de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus;
 import de.dfki.cos.basys.platform.runtime.component.ComponentContext;
@@ -38,7 +43,7 @@ public class TaskExecutor implements ChannelListener {
 		remoteComponent.connect(context);
 		
 		ComponentRequestStatus status = remoteComponent.sendComponentRequest(task.getRequest());
-		if (status.getStatus() == RequestStatus.ACCEPTED) {
+		if (status.getStatus() == RequestStatus.ACCEPTED || status.getStatus() == RequestStatus.QUEUED) {
 			try {
 				counter.await(5,TimeUnit.MINUTES);
 			} catch (InterruptedException e) {
@@ -84,15 +89,37 @@ public class TaskExecutor implements ChannelListener {
 	public void handleNotification(Channel channel, Notification not) {
 		if (channel.getName().equals(remoteComponent.getComponentInfo().getOutChannelName())) {
 			try {
-				ComponentResponse response = JsonUtils.fromString(not.getPayload(), ComponentResponse.class);
-				task.setResponse(response);
-				counter.countDown();
+				EObject payload = JsonUtils.fromString(not.getPayload(), EObject.class);		
+				
+				if (ComponentPackage.eINSTANCE.getComponentRequestStatus().isSuperTypeOf(payload.eClass())) {
+					ComponentRequestStatus status = (ComponentRequestStatus)payload;
+					if (status.getStatus() != RequestStatus.ACCEPTED) {						
+						ComponentResponse response = ComponentFactory.eINSTANCE.createComponentResponse();
+						// TODO: ggf. Container-Wechsel?
+						response.setRequest(task.getRequest());
+						response.setComponentId(remoteComponent.getId());
+						response.setMessage(status.getMessage());
+						if (status.getStatus() == RequestStatus.NOOP) {
+							response.setStatus(ResponseStatus.OK);
+						} else {
+							response.setStatus(ResponseStatus.NOT_OK);
+						}						
+						task.setResponse(response);
+						counter.countDown();
+					}					
+				} else if (payload.eClass().equals(ComponentPackage.eINSTANCE.getComponentResponse())) {
+					ComponentResponse response = (ComponentResponse)payload;
+					if (task.getRequest().getCorrelationId().equals(response.getRequest().getCorrelationId())) {
+						task.setResponse(response);
+						counter.countDown();
+					}			
+				}
+				
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		
 	}
 
 	@Override

@@ -54,7 +54,15 @@ public enum RequestStatus implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	NOOP(3, "NOOP", "NOOP");
+	NOOP(3, "NOOP", "NOOP"), /**
+	 * The '<em><b>QUEUED</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #QUEUED_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	QUEUED(4, "QUEUED", "QUEUED");
 
 	/**
 	 * The '<em><b>UNDEFINED</b></em>' literal value.
@@ -117,6 +125,21 @@ public enum RequestStatus implements Enumerator {
 	public static final int NOOP_VALUE = 3;
 
 	/**
+	 * The '<em><b>QUEUED</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>QUEUED</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #QUEUED
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int QUEUED_VALUE = 4;
+
+	/**
 	 * An array of all the '<em><b>Request Status</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -128,6 +151,7 @@ public enum RequestStatus implements Enumerator {
 			ACCEPTED,
 			REJECTED,
 			NOOP,
+			QUEUED,
 		};
 
 	/**
@@ -188,6 +212,7 @@ public enum RequestStatus implements Enumerator {
 			case ACCEPTED_VALUE: return ACCEPTED;
 			case REJECTED_VALUE: return REJECTED;
 			case NOOP_VALUE: return NOOP;
+			case QUEUED_VALUE: return QUEUED;
 		}
 		return null;
 	}

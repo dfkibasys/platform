@@ -78,7 +78,7 @@ public class ProcessControllerImpl extends ServiceComponent implements ProcessCo
 			ce.execute(context);
 			return ce.getTask();
 		}, executor).thenApply((ts) -> {
-			if (ts.getCorrelationId() != null) {				
+			if (ts.getRequest().getCorrelationId() != null) {				
 				provider.handleTaskResponse(ts);				
 			}
 			return ts.getResponse();
@@ -124,7 +124,7 @@ public class ProcessControllerImpl extends ServiceComponent implements ProcessCo
 			
 			if (ComponentPackage.eINSTANCE.getComponentRequest().isSuperTypeOf(payload.eClass())) {
 				ComponentRequest request = (ComponentRequest)payload;
-				scheduleTask(new TaskDescription(request, null));
+				scheduleTask(new TaskDescription(request));
 			} else if (payload.eClass().equals(ComponentPackage.eINSTANCE.getProcessRequest())) {
 				ProcessRequest request = (ProcessRequest)payload;
 				startProcessInstance(request);				

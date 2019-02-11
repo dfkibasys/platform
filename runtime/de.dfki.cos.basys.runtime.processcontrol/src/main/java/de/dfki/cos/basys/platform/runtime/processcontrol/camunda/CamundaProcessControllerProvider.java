@@ -83,12 +83,12 @@ public class CamundaProcessControllerProvider implements ProcessControllerProvid
 						if (ts != null) {
 							if (ts.getResponse().getStatus() == ResponseStatus.OK) {
 								if (ts.getResponse().getResultVariables().size() > 0) {
-									client.complete(ts.getCorrelationId(), ts.getResponse().getResultVariables());
+									client.complete(ts.getRequest().getCorrelationId(), ts.getResponse().getResultVariables());
 								} else {
-									client.complete(ts.getCorrelationId());
+									client.complete(ts.getRequest().getCorrelationId());
 								}
 							} else {
-								client.handleError(ts.getCorrelationId(), ts.getResponse().getMessage(), 0, 1000);
+								client.handleError(ts.getRequest().getCorrelationId(), ts.getResponse().getMessage(), 0, 1000);
 							}
 							Thread.sleep(200);
 						}
@@ -148,9 +148,10 @@ public class CamundaProcessControllerProvider implements ProcessControllerProvid
 				//LOGGER.debug(task.variables.command.value);
 				ComponentRequest request = JsonUtils.fromString(task.variables.command.value, ComponentRequest.class);
 				if (task.variables.assignee != null || task.variables.assignee.value != null) {
+					request.setCorrelationId(task.id);
 					request.setComponentId(task.variables.assignee.value);
 				}
-				controller.scheduleTask(new TaskDescription(request, task.id));
+				controller.scheduleTask(new TaskDescription(request));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

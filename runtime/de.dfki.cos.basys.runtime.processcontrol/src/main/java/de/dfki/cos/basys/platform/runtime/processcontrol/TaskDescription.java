@@ -5,22 +5,22 @@ import de.dfki.cos.basys.platform.model.runtime.component.ComponentResponse;
 
 public class TaskDescription {
 
-	String correlationId;
+	//String correlationId;
 	ComponentRequest request;
 	ComponentResponse response;
 	
 	public TaskDescription(ComponentRequest request) {
-		this(request, null);
+		//this(request, null);
 	}
 	
-	public TaskDescription(ComponentRequest request, String correlationId) {
-		this.request = request;
-		this.correlationId = correlationId;
-	}
+//	public TaskDescription(ComponentRequest request, String correlationId) {
+//		this.request = request;
+//		this.correlationId = correlationId;
+//	}
 
-	public String getCorrelationId() {
-		return correlationId;
-	}
+//	public String getCorrelationId() {
+//		return correlationId;
+//	}
 	
 	public ComponentRequest getRequest() {
 		return request;

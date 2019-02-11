@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest#getComponentId <em>Component Id</em>}</li>
+ *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest#getCorrelationId <em>Correlation Id</em>}</li>
  * </ul>
  *
  * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage#getComponentRequest()
@@ -46,5 +47,31 @@ public interface ComponentRequest extends EObject {
 	 * @generated
 	 */
 	void setComponentId(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Correlation Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Correlation Id</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Correlation Id</em>' attribute.
+	 * @see #setCorrelationId(String)
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage#getComponentRequest_CorrelationId()
+	 * @model
+	 * @generated
+	 */
+	String getCorrelationId();
+
+	/**
+	 * Sets the value of the '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest#getCorrelationId <em>Correlation Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Correlation Id</em>' attribute.
+	 * @see #getCorrelationId()
+	 * @generated
+	 */
+	void setCorrelationId(String value);
 
 } // ComponentRequest

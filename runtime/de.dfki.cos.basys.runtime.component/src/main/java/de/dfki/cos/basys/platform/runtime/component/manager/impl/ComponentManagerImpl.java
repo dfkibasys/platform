@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -18,6 +19,7 @@ import org.eclipse.emf.common.util.URI;
 
 import de.dfki.cos.basys.common.emf.json.JsonUtils;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentResponse;
 import de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl;
 import de.dfki.cos.basys.platform.runtime.component.BaseComponent;
 import de.dfki.cos.basys.platform.runtime.component.Component;
@@ -39,8 +41,7 @@ public class ComponentManagerImpl extends BaseComponent implements ComponentMana
 	@Override
 	public void connectToExternal() throws ComponentException {
 
-		scheduledExecutorService.schedule(new Runnable() {
-			
+		Runnable r = new Runnable() {				
 			@Override
 			public void run() {
 				URI uri = URI.createFileURI(getConfig().getExternalConnectionString());
@@ -54,15 +55,31 @@ public class ComponentManagerImpl extends BaseComponent implements ComponentMana
 						} else {
 							createLocalComponent(file);
 						}
-					} catch (ComponentManagerException e) {
+					} 
+					catch (ComponentManagerException e) {
 						// TODO Auto-generated catch block
-						e.printStackTrace();
+						//e.printStackTrace();
+						throw new RuntimeException(e);
 					}
 				}
 				LOGGER.info("connectToExternal complete");
 				
 			}
-		}, 10, TimeUnit.SECONDS);
+		};
+		
+		
+		//scheduledExecutorService.schedule(r, 10, TimeUnit.SECONDS);
+		
+	
+		
+		
+		CompletableFuture<Void> cf = CompletableFuture.runAsync(r, scheduledExecutorService).exceptionally(e-> {		    
+			e.printStackTrace();
+			LOGGER.error(e.getMessage(), e);
+		    return null;
+		});
+		
+
 		
 
 	}

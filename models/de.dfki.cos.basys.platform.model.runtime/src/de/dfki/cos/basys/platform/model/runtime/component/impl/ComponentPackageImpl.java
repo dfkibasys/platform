@@ -581,6 +581,15 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getComponentRequest_CorrelationId() {
+		return (EAttribute)componentRequestEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getCommandRequest() {
 		return commandRequestEClass;
 	}
@@ -1205,6 +1214,7 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 
 		componentRequestEClass = createEClass(COMPONENT_REQUEST);
 		createEAttribute(componentRequestEClass, COMPONENT_REQUEST__COMPONENT_ID);
+		createEAttribute(componentRequestEClass, COMPONENT_REQUEST__CORRELATION_ID);
 
 		commandRequestEClass = createEClass(COMMAND_REQUEST);
 		createEAttribute(commandRequestEClass, COMMAND_REQUEST__CONTROL_COMMAND);
@@ -1358,6 +1368,7 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 
 		initEClass(componentRequestEClass, ComponentRequest.class, "ComponentRequest", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getComponentRequest_ComponentId(), theEcorePackage.getEString(), "componentId", null, 0, 1, ComponentRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getComponentRequest_CorrelationId(), theEcorePackage.getEString(), "correlationId", null, 0, 1, ComponentRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(commandRequestEClass, CommandRequest.class, "CommandRequest", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCommandRequest_ControlCommand(), this.getControlCommand(), "controlCommand", null, 0, 1, CommandRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1487,6 +1498,7 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		addEEnumLiteral(requestStatusEEnum, RequestStatus.ACCEPTED);
 		addEEnumLiteral(requestStatusEEnum, RequestStatus.REJECTED);
 		addEEnumLiteral(requestStatusEEnum, RequestStatus.NOOP);
+		addEEnumLiteral(requestStatusEEnum, RequestStatus.QUEUED);
 
 		initEEnum(responseStatusEEnum, ResponseStatus.class, "ResponseStatus");
 		addEEnumLiteral(responseStatusEEnum, ResponseStatus.UNDEFINED);

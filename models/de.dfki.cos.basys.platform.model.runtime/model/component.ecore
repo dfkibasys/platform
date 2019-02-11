@@ -102,6 +102,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ComponentRequest" abstract="true" interface="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="componentId" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="correlationId" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CommandRequest" eSuperTypes="#//ComponentRequest">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="controlCommand" eType="#//ControlCommand"/>
@@ -138,6 +139,7 @@
     <eLiterals name="ACCEPTED" value="1"/>
     <eLiterals name="REJECTED" value="2"/>
     <eLiterals name="NOOP" value="3" literal="NOOP"/>
+    <eLiterals name="QUEUED" value="4" literal="QUEUED"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ResponseStatus">
     <eLiterals name="UNDEFINED"/>
