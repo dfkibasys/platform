@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="capability_v2" nsURI="http://www.dfki.de/cos/basys/model/capability/v2"
+    nsPrefix="capability_v2">
+  <eAnnotations source="http://de.dfki.iui.mmds/CoreModel"/>
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
+    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
+    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="CapabilityAssertion" eSuperTypes="../../de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pattern" eType="ecore:EClass ../../de.dfki.cos.basys.platform.model.base/model/pattern.ecore#//PObject"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="prerequisites" eType="#//CapabilityAssertion"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CapabilityRequest">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="who" eType="ecore:EClass ../../de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="what" eType="#//Capability"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="whom" upperBound="-1" eType="ecore:EClass ../../de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="where" upperBound="-1"
+        eType="ecore:EClass ../../de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="when" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="how" upperBound="-1" eType="ecore:EClass ../../de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Capability" eSuperTypes="../../de.dfki.cos.basys.platform.model.base/model/base.ecore#//Entity"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LogisticsCapability" eSuperTypes="#//Capability">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="loadCarrierUnit" eType="#//LoadCarrierUnitEnum"
+        defaultValueLiteral="UNDEFINED"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="capacity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="payload" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PickAndPlace" eSuperTypes="#//LogisticsCapability">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reach" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        defaultValueLiteral="0.0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="positionRepeatability"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Transport" eSuperTypes="#//LogisticsCapability">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="distance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="LoadCarrierUnitEnum">
+    <eLiterals name="UNDEFINED" literal="UNDEFINED"/>
+    <eLiterals name="MATERIAL" value="1" literal="MATERIAL"/>
+    <eLiterals name="R_KLT_3215" value="2" literal="R_KLT_3215"/>
+    <eLiterals name="BOTTLE" value="3"/>
+    <eLiterals name="TOOL" value="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WorkerAssistenceCapability" eSuperTypes="#//Capability"/>
+  <eClassifiers xsi:type="ecore:EClass" name="InteractionCapability" eSuperTypes="#//WorkerAssistenceCapability">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="topic" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConfirmationCapability" eSuperTypes="#//WorkerAssistenceCapability"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SwitchConfirmationCapability" eSuperTypes="#//ConfirmationCapability">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="State" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GeneralCapability" eSuperTypes="#//Capability"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MoveToLocation" eSuperTypes="#//GeneralCapability">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetLocation" eType="ecore:EClass topology.ecore#//TopologyElement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProjectPath" eSuperTypes="#//WorkerAssistenceCapability">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="path" eType="ecore:EClass ../../de.dfki.cos.basys.platform.model.base/model/data.ecore#//Path"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="delay" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="arrowCount" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="color" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="eta" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//ELong"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProjectETA" eSuperTypes="#//WorkerAssistenceCapability">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="eta" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="position" eType="ecore:EClass ../../de.dfki.cos.basys.platform.model.base/model/data.ecore#//CartesianCoordinate"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="radius" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="color" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="orientation" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VisualisationCapability" eSuperTypes="#//WorkerAssistenceCapability"/>
+  <eClassifiers xsi:type="ecore:EClass" name="QAVisualisationCapability" eSuperTypes="#//VisualisationCapability">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="qaResult" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Provisioning" eSuperTypes="#//LogisticsCapability"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NotifyWorker" eSuperTypes="#//WorkerAssistenceCapability">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Take" eSuperTypes="#//GeneralCapability"/>
+  <eSubpackages name="handling" nsURI="http://www.dfki.de/cos/basys/model/capability/v2/handling"
+      nsPrefix="handling">
+    <eClassifiers xsi:type="ecore:EClass" name="Handling" abstract="true" interface="true"
+        eSuperTypes="#//Capability"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Buffering" abstract="true" interface="true"
+        eSuperTypes="#//handling/Handling"/>
+    <eClassifiers xsi:type="ecore:EClass" name="OrderedBuffering" eSuperTypes="#//handling/Buffering"/>
+    <eClassifiers xsi:type="ecore:EClass" name="PartlyOrderedBuffering" eSuperTypes="#//handling/Buffering"/>
+    <eClassifiers xsi:type="ecore:EClass" name="UnorderedBuffering" eSuperTypes="#//handling/Buffering"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ChangingQuantity" abstract="true"
+        interface="true" eSuperTypes="#//handling/Handling"/>
+    <eClassifiers xsi:type="ecore:EClass" name="SplitQuantity" eSuperTypes="#//handling/ChangingQuantity"/>
+    <eClassifiers xsi:type="ecore:EClass" name="JoinQuantity" eSuperTypes="#//handling/ChangingQuantity"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Moving" abstract="true" interface="true"
+        eSuperTypes="#//handling/Handling"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Rotating" eSuperTypes="#//handling/Moving"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Shifting" eSuperTypes="#//handling/Moving"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Swivel" eSuperTypes="#//handling/Moving"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Orientating" eSuperTypes="#//handling/Moving"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Positioning" eSuperTypes="#//handling/Moving"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Ordering" eSuperTypes="#//handling/Moving"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Guiding" eSuperTypes="#//handling/Moving"/>
+    <eClassifiers xsi:type="ecore:EClass" name="PassingOn" eSuperTypes="#//handling/Moving"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Conveying" eSuperTypes="#//handling/Moving"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Securing" abstract="true" interface="true"
+        eSuperTypes="#//handling/Handling"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Holding" eSuperTypes="#//handling/Securing"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Releasing" eSuperTypes="#//handling/Securing"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Clamping" eSuperTypes="#//handling/Securing"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Declamping" eSuperTypes="#//handling/Securing"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Checking" abstract="true" interface="true"
+        eSuperTypes="#//handling/Handling"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Asserting" eSuperTypes="#//handling/Checking"/>
+    <eClassifiers xsi:type="ecore:EClass" name="AssertPresence" eSuperTypes="#//handling/Asserting"/>
+    <eClassifiers xsi:type="ecore:EClass" name="AssertIdentity" eSuperTypes="#//handling/Asserting"/>
+    <eClassifiers xsi:type="ecore:EClass" name="AssertShape" eSuperTypes="#//handling/Asserting"/>
+    <eClassifiers xsi:type="ecore:EClass" name="AssertSize" eSuperTypes="#//handling/Asserting"/>
+    <eClassifiers xsi:type="ecore:EClass" name="AssertColor" eSuperTypes="#//handling/Asserting"/>
+    <eClassifiers xsi:type="ecore:EClass" name="AssertWeight" eSuperTypes="#//handling/Asserting"/>
+    <eClassifiers xsi:type="ecore:EClass" name="AssertPosition" eSuperTypes="#//handling/Asserting"/>
+    <eClassifiers xsi:type="ecore:EClass" name="AssertOrientation" eSuperTypes="#//handling/Asserting"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Measuring" eSuperTypes="#//handling/Checking"/>
+    <eClassifiers xsi:type="ecore:EClass" name="MeasurePosition" eSuperTypes="#//handling/Measuring"/>
+    <eClassifiers xsi:type="ecore:EClass" name="MeasureOrientation" eSuperTypes="#//handling/Measuring"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Counting" eSuperTypes="#//handling/Checking"/>
+  </eSubpackages>
+  <eSubpackages name="manufacturing" nsURI="http://www.dfki.de/cos/basys/model/capability/v2/manufacturing"
+      nsPrefix="manufacturing">
+    <eClassifiers xsi:type="ecore:EClass" name="Manufacturing" eSuperTypes="#//Capability"/>
+    <eClassifiers xsi:type="ecore:EClass" name="PrimaryShaping" eSuperTypes="#//manufacturing/Manufacturing"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Forming" eSuperTypes="#//manufacturing/Manufacturing"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Sepatating" eSuperTypes="#//manufacturing/Manufacturing"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Joining" eSuperTypes="#//manufacturing/Manufacturing"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Coating" eSuperTypes="#//manufacturing/Manufacturing"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ChangeMaterialCharacteristics" eSuperTypes="#//manufacturing/Manufacturing"/>
+  </eSubpackages>
+</ecore:EPackage>
