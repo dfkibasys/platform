@@ -137,7 +137,7 @@ public class ComponentController implements ChannelListener, StatusInterface {
 		CompletableFuture<ComponentResponse> cf = CompletableFuture.supplyAsync(() -> {
 			envelop = new ComponentRequestEnvelop(request);
 			ComponentRequestStatus status = sendComponentRequest(request);
-			if (status.getStatus() == RequestStatus.ACCEPTED) {
+			if (status.getStatus() == RequestStatus.ACCEPTED || status.getStatus() == RequestStatus.QUEUED) {
 				lock.lock();
 				try {
 					executeCondition.await();

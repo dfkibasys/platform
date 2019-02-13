@@ -11,6 +11,7 @@ public class TaskDescription {
 	
 	public TaskDescription(ComponentRequest request) {
 		//this(request, null);
+		this.request = request;
 	}
 	
 //	public TaskDescription(ComponentRequest request, String correlationId) {
