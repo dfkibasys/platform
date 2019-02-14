@@ -102,7 +102,6 @@ public interface ResourceInstance extends Entity {
 
 	/**
 	 * Returns the value of the '<em><b>Role</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link de.dfki.cos.basys.platform.model.domain.topology.EquipmentModule#getAssignedResourceInstance <em>Assigned Resource Instance</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Role</em>' reference isn't clear,
@@ -112,8 +111,7 @@ public interface ResourceInstance extends Entity {
 	 * @return the value of the '<em>Role</em>' reference.
 	 * @see #setRole(EquipmentModule)
 	 * @see de.dfki.cos.basys.platform.model.domain.resourceinstance.ResourceinstancePackage#getResourceInstance_Role()
-	 * @see de.dfki.cos.basys.platform.model.domain.topology.EquipmentModule#getAssignedResourceInstance
-	 * @model opposite="assignedResourceInstance"
+	 * @model
 	 * @generated
 	 */
 	EquipmentModule getRole();

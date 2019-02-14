@@ -68,7 +68,7 @@
         eType="ecore:EClass capability.ecore#//Capability" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="assignedResourceType" eType="ecore:EClass resourcetype.ecore#//ResourceType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="assignedResourceInstance"
-        eType="ecore:EClass resourceinstance.ecore#//ResourceInstance" eOpposite="resourceinstance.ecore#//ResourceInstance/role"/>
+        eType="ecore:EClass resourceinstance.ecore#//ResourceInstance"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ControlModule" eSuperTypes="#//TopologyElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="controlModules" upperBound="-1"

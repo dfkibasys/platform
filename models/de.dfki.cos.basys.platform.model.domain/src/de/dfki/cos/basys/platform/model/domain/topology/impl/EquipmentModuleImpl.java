@@ -5,7 +5,6 @@ package de.dfki.cos.basys.platform.model.domain.topology.impl;
 import de.dfki.cos.basys.platform.model.base.impl.EntityImpl;
 import de.dfki.cos.basys.platform.model.domain.capability.Capability;
 import de.dfki.cos.basys.platform.model.domain.resourceinstance.ResourceInstance;
-import de.dfki.cos.basys.platform.model.domain.resourceinstance.ResourceinstancePackage;
 import de.dfki.cos.basys.platform.model.domain.resourcetype.ResourceType;
 import de.dfki.cos.basys.platform.model.domain.topology.ControlModule;
 import de.dfki.cos.basys.platform.model.domain.topology.EquipmentModule;
@@ -249,49 +248,11 @@ public class EquipmentModuleImpl extends EntityImpl implements EquipmentModule {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetAssignedResourceInstance(ResourceInstance newAssignedResourceInstance, NotificationChain msgs) {
+	public void setAssignedResourceInstance(ResourceInstance newAssignedResourceInstance) {
 		ResourceInstance oldAssignedResourceInstance = assignedResourceInstance;
 		assignedResourceInstance = newAssignedResourceInstance;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TopologyPackage.EQUIPMENT_MODULE__ASSIGNED_RESOURCE_INSTANCE, oldAssignedResourceInstance, newAssignedResourceInstance);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setAssignedResourceInstance(ResourceInstance newAssignedResourceInstance) {
-		if (newAssignedResourceInstance != assignedResourceInstance) {
-			NotificationChain msgs = null;
-			if (assignedResourceInstance != null)
-				msgs = ((InternalEObject)assignedResourceInstance).eInverseRemove(this, ResourceinstancePackage.RESOURCE_INSTANCE__ROLE, ResourceInstance.class, msgs);
-			if (newAssignedResourceInstance != null)
-				msgs = ((InternalEObject)newAssignedResourceInstance).eInverseAdd(this, ResourceinstancePackage.RESOURCE_INSTANCE__ROLE, ResourceInstance.class, msgs);
-			msgs = basicSetAssignedResourceInstance(newAssignedResourceInstance, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TopologyPackage.EQUIPMENT_MODULE__ASSIGNED_RESOURCE_INSTANCE, newAssignedResourceInstance, newAssignedResourceInstance));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case TopologyPackage.EQUIPMENT_MODULE__ASSIGNED_RESOURCE_INSTANCE:
-				if (assignedResourceInstance != null)
-					msgs = ((InternalEObject)assignedResourceInstance).eInverseRemove(this, ResourceinstancePackage.RESOURCE_INSTANCE__ROLE, ResourceInstance.class, msgs);
-				return basicSetAssignedResourceInstance((ResourceInstance)otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TopologyPackage.EQUIPMENT_MODULE__ASSIGNED_RESOURCE_INSTANCE, oldAssignedResourceInstance, assignedResourceInstance));
 	}
 
 	/**
@@ -308,8 +269,6 @@ public class EquipmentModuleImpl extends EntityImpl implements EquipmentModule {
 				return ((InternalEList<?>)getEquipmentModules()).basicRemove(otherEnd, msgs);
 			case TopologyPackage.EQUIPMENT_MODULE__CAPABILITY_REQUIREMENT:
 				return basicSetCapabilityRequirement(null, msgs);
-			case TopologyPackage.EQUIPMENT_MODULE__ASSIGNED_RESOURCE_INSTANCE:
-				return basicSetAssignedResourceInstance(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}

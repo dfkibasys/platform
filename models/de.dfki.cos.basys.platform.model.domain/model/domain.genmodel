@@ -21,8 +21,8 @@
   <foreignModel>material.ecore</foreignModel>
   <foreignModel>resourcetype.ecore</foreignModel>
   <foreignModel>resourceinstance.ecore</foreignModel>
-  <genPackages prefix="Order" basePackage="de.dfki.cos.basys.platform.model.domain" resource="XMI"
-      disposableProviderFactory="true" ecorePackage="order.ecore#/">
+  <genPackages prefix="Order" basePackage="de.dfki.cos.basys.platform.model.domain"
+      resource="XMI" disposableProviderFactory="true" ecorePackage="order.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="order.ecore#//OrderStatusEnum">
       <genEnumLiterals ecoreEnumLiteral="order.ecore#//OrderStatusEnum/UNKNOWN"/>
       <genEnumLiterals ecoreEnumLiteral="order.ecore#//OrderStatusEnum/PLANNED"/>
@@ -83,8 +83,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference productdefinition.ecore#//ManufacturedComponent/bom"/>
     </genClasses>
   </genPackages>
-  <genPackages prefix="Staff" basePackage="de.dfki.cos.basys.platform.model.domain" resource="XMI"
-      disposableProviderFactory="true" ecorePackage="staff.ecore#/">
+  <genPackages prefix="Staff" basePackage="de.dfki.cos.basys.platform.model.domain"
+      resource="XMI" disposableProviderFactory="true" ecorePackage="staff.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="staff.ecore#//StaffDetectionEnum">
       <genEnumLiterals ecoreEnumLiteral="staff.ecore#//StaffDetectionEnum/UNKNOWN"/>
       <genEnumLiterals ecoreEnumLiteral="staff.ecore#//StaffDetectionEnum/PRESENT"/>
@@ -124,8 +124,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference staff.ecore#//StaffSkills/abilities"/>
     </genClasses>
   </genPackages>
-  <genPackages prefix="Topology" basePackage="de.dfki.cos.basys.platform.model.domain" resource="XMI"
-      disposableProviderFactory="true" contentTypeIdentifier="" ecorePackage="topology.ecore#/">
+  <genPackages prefix="Topology" basePackage="de.dfki.cos.basys.platform.model.domain"
+      resource="XMI" disposableProviderFactory="true" contentTypeIdentifier="" ecorePackage="topology.ecore#/">
     <genClasses image="false" ecoreClass="topology.ecore#//TopologyElement"/>
     <genClasses ecoreClass="topology.ecore#//Enterprise">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference topology.ecore#//Enterprise/sites"/>
@@ -207,8 +207,8 @@
     </genClasses>
     <genClasses ecoreClass="workerguidance.ecore#//Document"/>
   </genPackages>
-  <genPackages prefix="Workplan" basePackage="de.dfki.cos.basys.platform.model.domain" resource="XMI"
-      disposableProviderFactory="true" ecorePackage="workplan.ecore#/">
+  <genPackages prefix="Workplan" basePackage="de.dfki.cos.basys.platform.model.domain"
+      resource="XMI" disposableProviderFactory="true" ecorePackage="workplan.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="workplan.ecore#//WorkstepInstanceStatusEnum">
       <genEnumLiterals ecoreEnumLiteral="workplan.ecore#//WorkstepInstanceStatusEnum/UNKNOWN"/>
       <genEnumLiterals ecoreEnumLiteral="workplan.ecore#//WorkstepInstanceStatusEnum/STARTED"/>
@@ -277,8 +277,8 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference linebalancing.ecore#//LineBalancingAssignment/order"/>
     </genClasses>
   </genPackages>
-  <genPackages prefix="Capability" basePackage="de.dfki.cos.basys.platform.model.domain" resource="XMI"
-      disposableProviderFactory="true" ecorePackage="capability.ecore#/">
+  <genPackages prefix="Capability" basePackage="de.dfki.cos.basys.platform.model.domain"
+      resource="XMI" disposableProviderFactory="true" ecorePackage="capability.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="capability.ecore#//LoadCarrierUnitEnum">
       <genEnumLiterals ecoreEnumLiteral="capability.ecore#//LoadCarrierUnitEnum/UNDEFINED"/>
       <genEnumLiterals ecoreEnumLiteral="capability.ecore#//LoadCarrierUnitEnum/MATERIAL"/>
@@ -299,7 +299,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference capability.ecore#//CapabilityRequest/how"/>
     </genClasses>
     <genClasses ecoreClass="capability.ecore#//Capability"/>
-    <genClasses ecoreClass="capability.ecore#//HandlingCapability"/>
+    <genClasses ecoreClass="capability.ecore#//Handling"/>
     <genClasses ecoreClass="capability.ecore#//ManufacturingCapability"/>
     <genClasses ecoreClass="capability.ecore#//Fügen"/>
     <genClasses ecoreClass="capability.ecore#//Pressing">
@@ -328,7 +328,7 @@
     <genClasses ecoreClass="capability.ecore#//Transport">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute capability.ecore#//Transport/distance"/>
     </genClasses>
-    <genClasses ecoreClass="capability.ecore#//Store"/>
+    <genClasses ecoreClass="capability.ecore#//Buffering"/>
     <genClasses ecoreClass="capability.ecore#//QoSCapability"/>
     <genClasses ecoreClass="capability.ecore#//Inspect"/>
     <genClasses ecoreClass="capability.ecore#//WorkerAssistenceCapability"/>
@@ -365,6 +365,18 @@
     <genClasses ecoreClass="capability.ecore#//NotifyWorker">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute capability.ecore#//NotifyWorker/content"/>
     </genClasses>
+    <genClasses ecoreClass="capability.ecore#//ChangingQuantity"/>
+    <genClasses ecoreClass="capability.ecore#//Moving"/>
+    <genClasses ecoreClass="capability.ecore#//Securing"/>
+    <genClasses ecoreClass="capability.ecore#//Checking"/>
+    <genClasses ecoreClass="capability.ecore#//Swivel"/>
+    <genClasses ecoreClass="capability.ecore#//Orientating"/>
+    <genClasses ecoreClass="capability.ecore#//Placing"/>
+    <genClasses ecoreClass="capability.ecore#//Ordering"/>
+    <genClasses ecoreClass="capability.ecore#//Guiding"/>
+    <genClasses ecoreClass="capability.ecore#//PassingOn"/>
+    <genClasses ecoreClass="capability.ecore#//Conveying"/>
+    <genClasses ecoreClass="capability.ecore#//Take"/>
   </genPackages>
   <genPackages prefix="Processdefinition" basePackage="de.dfki.cos.basys.platform.model.domain"
       resource="XMI" disposableProviderFactory="true" ecorePackage="processdefinition.ecore#/">
@@ -444,28 +456,36 @@
       <genOperations ecoreOperation="processdefinition.ecore#//TaskState/toEnum"/>
     </genClasses>
     <genClasses ecoreClass="processdefinition.ecore#//TaskInactive">
-      <genOperations ecoreOperation="processdefinition.ecore#//TaskInactive/toEnum"/>
+      <genOperations ecoreOperation="processdefinition.ecore#//TaskInactive/toEnum"
+          body="return TaskStateEnum.INACTIVE;"/>
     </genClasses>
     <genClasses ecoreClass="processdefinition.ecore#//TaskActive">
-      <genOperations ecoreOperation="processdefinition.ecore#//TaskActive/toEnum"/>
+      <genOperations ecoreOperation="processdefinition.ecore#//TaskActive/toEnum"
+          body="return TaskStateEnum.ACTIVE;"/>
     </genClasses>
     <genClasses ecoreClass="processdefinition.ecore#//TaskPaused">
-      <genOperations ecoreOperation="processdefinition.ecore#//TaskPaused/toEnum"/>
+      <genOperations ecoreOperation="processdefinition.ecore#//TaskPaused/toEnum"
+          body="return TaskStateEnum.PAUSED;"/>
     </genClasses>
     <genClasses ecoreClass="processdefinition.ecore#//TaskExecuting">
-      <genOperations ecoreOperation="processdefinition.ecore#//TaskExecuting/toEnum"/>
+      <genOperations ecoreOperation="processdefinition.ecore#//TaskExecuting/toEnum"
+          body="return TaskStateEnum.EXECUTING;"/>
     </genClasses>
     <genClasses ecoreClass="processdefinition.ecore#//TaskFinished">
-      <genOperations ecoreOperation="processdefinition.ecore#//TaskFinished/toEnum"/>
+      <genOperations ecoreOperation="processdefinition.ecore#//TaskFinished/toEnum"
+          body="return TaskStateEnum.FINISHED;"/>
     </genClasses>
     <genClasses ecoreClass="processdefinition.ecore#//TaskSuccessful">
-      <genOperations ecoreOperation="processdefinition.ecore#//TaskSuccessful/toEnum"/>
+      <genOperations ecoreOperation="processdefinition.ecore#//TaskSuccessful/toEnum"
+          body="return TaskStateEnum.SUCCESSFUL;"/>
     </genClasses>
     <genClasses ecoreClass="processdefinition.ecore#//TaskFailed">
-      <genOperations ecoreOperation="processdefinition.ecore#//TaskFailed/toEnum"/>
+      <genOperations ecoreOperation="processdefinition.ecore#//TaskFailed/toEnum"
+          body="return TaskStateEnum.FAILED;"/>
     </genClasses>
     <genClasses ecoreClass="processdefinition.ecore#//TaskCancelled">
-      <genOperations ecoreOperation="processdefinition.ecore#//TaskCancelled/toEnum"/>
+      <genOperations ecoreOperation="processdefinition.ecore#//TaskCancelled/toEnum"
+          body="return TaskStateEnum.CANCELLED;"/>
     </genClasses>
     <genClasses ecoreClass="processdefinition.ecore#//UsedMaterial">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute processdefinition.ecore#//UsedMaterial/count"/>
@@ -529,8 +549,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference productinstance.ecore#//ProductInstanceStore/productInstances"/>
     </genClasses>
   </genPackages>
-  <genPackages prefix="Workforce" basePackage="de.dfki.cos.basys.platform.model.domain" resource="XMI"
-      disposableProviderFactory="true" ecorePackage="workforce.ecore#/">
+  <genPackages prefix="Workforce" basePackage="de.dfki.cos.basys.platform.model.domain"
+      resource="XMI" disposableProviderFactory="true" ecorePackage="workforce.ecore#/">
     <genClasses ecoreClass="workforce.ecore#//Workforce">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workforce.ecore#//Workforce/agents"/>
     </genClasses>
@@ -549,8 +569,8 @@
     </genClasses>
     <genClasses ecoreClass="workforce.ecore#//Organization"/>
   </genPackages>
-  <genPackages prefix="Material" basePackage="de.dfki.cos.basys.platform.model.domain" resource="XMI"
-      ecorePackage="material.ecore#/">
+  <genPackages prefix="Material" basePackage="de.dfki.cos.basys.platform.model.domain"
+      resource="XMI" ecorePackage="material.ecore#/">
     <genClasses ecoreClass="material.ecore#//MaterialCatalogue">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference material.ecore#//MaterialCatalogue/materialGroups"/>
     </genClasses>
@@ -623,11 +643,22 @@
     </genClasses>
     <genClasses ecoreClass="resourceinstance.ecore#//CapabilityVariant">
       <genTypeParameters ecoreTypeParameter="resourceinstance.ecore#//CapabilityVariant/T"/>
+      <genTypeParameters ecoreTypeParameter="resourceinstance.ecore#//CapabilityVariant/C"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference resourceinstance.ecore#//CapabilityVariant/capability"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference resourceinstance.ecore#//CapabilityVariant/appliedOn"/>
     </genClasses>
     <genClasses ecoreClass="resourceinstance.ecore#//ManufacturingCapabilityVariant"/>
     <genClasses ecoreClass="resourceinstance.ecore#//LogisticsCapabilityVariant"/>
     <genClasses ecoreClass="resourceinstance.ecore#//GeneralCapabilityVariant"/>
+    <genClasses ecoreClass="resourceinstance.ecore#//HandlingCapabilityVariant">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference resourceinstance.ecore#//HandlingCapabilityVariant/object"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference resourceinstance.ecore#//HandlingCapabilityVariant/from"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference resourceinstance.ecore#//HandlingCapabilityVariant/to"/>
+    </genClasses>
+    <genClasses ecoreClass="resourceinstance.ecore#//AssemblyCapabilityVariant">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference resourceinstance.ecore#//AssemblyCapabilityVariant/object"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference resourceinstance.ecore#//AssemblyCapabilityVariant/from"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference resourceinstance.ecore#//AssemblyCapabilityVariant/to"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

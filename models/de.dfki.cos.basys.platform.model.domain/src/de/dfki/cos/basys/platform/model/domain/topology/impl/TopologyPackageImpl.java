@@ -222,7 +222,7 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link TopologyPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -236,7 +236,8 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		if (isInited) return (TopologyPackage)EPackage.Registry.INSTANCE.getEPackage(TopologyPackage.eNS_URI);
 
 		// Obtain or create and register package
-		TopologyPackageImpl theTopologyPackage = (TopologyPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof TopologyPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new TopologyPackageImpl());
+		Object registeredTopologyPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		TopologyPackageImpl theTopologyPackage = registeredTopologyPackage instanceof TopologyPackageImpl ? (TopologyPackageImpl)registeredTopologyPackage : new TopologyPackageImpl();
 
 		isInited = true;
 
@@ -247,20 +248,34 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		EcorePackage.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies
-		OrderPackageImpl theOrderPackage = (OrderPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(OrderPackage.eNS_URI) instanceof OrderPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(OrderPackage.eNS_URI) : OrderPackage.eINSTANCE);
-		ProductdefinitionPackageImpl theProductdefinitionPackage = (ProductdefinitionPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ProductdefinitionPackage.eNS_URI) instanceof ProductdefinitionPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ProductdefinitionPackage.eNS_URI) : ProductdefinitionPackage.eINSTANCE);
-		StaffPackageImpl theStaffPackage = (StaffPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(StaffPackage.eNS_URI) instanceof StaffPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(StaffPackage.eNS_URI) : StaffPackage.eINSTANCE);
-		WorkerguidancePackageImpl theWorkerguidancePackage = (WorkerguidancePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkerguidancePackage.eNS_URI) instanceof WorkerguidancePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkerguidancePackage.eNS_URI) : WorkerguidancePackage.eINSTANCE);
-		WorkplanPackageImpl theWorkplanPackage = (WorkplanPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkplanPackage.eNS_URI) instanceof WorkplanPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkplanPackage.eNS_URI) : WorkplanPackage.eINSTANCE);
-		LinebalancingPackageImpl theLinebalancingPackage = (LinebalancingPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(LinebalancingPackage.eNS_URI) instanceof LinebalancingPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(LinebalancingPackage.eNS_URI) : LinebalancingPackage.eINSTANCE);
-		CapabilityPackageImpl theCapabilityPackage = (CapabilityPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CapabilityPackage.eNS_URI) instanceof CapabilityPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CapabilityPackage.eNS_URI) : CapabilityPackage.eINSTANCE);
-		ProcessdefinitionPackageImpl theProcessdefinitionPackage = (ProcessdefinitionPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ProcessdefinitionPackage.eNS_URI) instanceof ProcessdefinitionPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ProcessdefinitionPackage.eNS_URI) : ProcessdefinitionPackage.eINSTANCE);
-		ProcessinstancePackageImpl theProcessinstancePackage = (ProcessinstancePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ProcessinstancePackage.eNS_URI) instanceof ProcessinstancePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ProcessinstancePackage.eNS_URI) : ProcessinstancePackage.eINSTANCE);
-		ProductinstancePackageImpl theProductinstancePackage = (ProductinstancePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ProductinstancePackage.eNS_URI) instanceof ProductinstancePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ProductinstancePackage.eNS_URI) : ProductinstancePackage.eINSTANCE);
-		WorkforcePackageImpl theWorkforcePackage = (WorkforcePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkforcePackage.eNS_URI) instanceof WorkforcePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkforcePackage.eNS_URI) : WorkforcePackage.eINSTANCE);
-		MaterialPackageImpl theMaterialPackage = (MaterialPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(MaterialPackage.eNS_URI) instanceof MaterialPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(MaterialPackage.eNS_URI) : MaterialPackage.eINSTANCE);
-		ResourcetypePackageImpl theResourcetypePackage = (ResourcetypePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ResourcetypePackage.eNS_URI) instanceof ResourcetypePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ResourcetypePackage.eNS_URI) : ResourcetypePackage.eINSTANCE);
-		ResourceinstancePackageImpl theResourceinstancePackage = (ResourceinstancePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ResourceinstancePackage.eNS_URI) instanceof ResourceinstancePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ResourceinstancePackage.eNS_URI) : ResourceinstancePackage.eINSTANCE);
+		Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(OrderPackage.eNS_URI);
+		OrderPackageImpl theOrderPackage = (OrderPackageImpl)(registeredPackage instanceof OrderPackageImpl ? registeredPackage : OrderPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ProductdefinitionPackage.eNS_URI);
+		ProductdefinitionPackageImpl theProductdefinitionPackage = (ProductdefinitionPackageImpl)(registeredPackage instanceof ProductdefinitionPackageImpl ? registeredPackage : ProductdefinitionPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(StaffPackage.eNS_URI);
+		StaffPackageImpl theStaffPackage = (StaffPackageImpl)(registeredPackage instanceof StaffPackageImpl ? registeredPackage : StaffPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(WorkerguidancePackage.eNS_URI);
+		WorkerguidancePackageImpl theWorkerguidancePackage = (WorkerguidancePackageImpl)(registeredPackage instanceof WorkerguidancePackageImpl ? registeredPackage : WorkerguidancePackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(WorkplanPackage.eNS_URI);
+		WorkplanPackageImpl theWorkplanPackage = (WorkplanPackageImpl)(registeredPackage instanceof WorkplanPackageImpl ? registeredPackage : WorkplanPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(LinebalancingPackage.eNS_URI);
+		LinebalancingPackageImpl theLinebalancingPackage = (LinebalancingPackageImpl)(registeredPackage instanceof LinebalancingPackageImpl ? registeredPackage : LinebalancingPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CapabilityPackage.eNS_URI);
+		CapabilityPackageImpl theCapabilityPackage = (CapabilityPackageImpl)(registeredPackage instanceof CapabilityPackageImpl ? registeredPackage : CapabilityPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ProcessdefinitionPackage.eNS_URI);
+		ProcessdefinitionPackageImpl theProcessdefinitionPackage = (ProcessdefinitionPackageImpl)(registeredPackage instanceof ProcessdefinitionPackageImpl ? registeredPackage : ProcessdefinitionPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ProcessinstancePackage.eNS_URI);
+		ProcessinstancePackageImpl theProcessinstancePackage = (ProcessinstancePackageImpl)(registeredPackage instanceof ProcessinstancePackageImpl ? registeredPackage : ProcessinstancePackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ProductinstancePackage.eNS_URI);
+		ProductinstancePackageImpl theProductinstancePackage = (ProductinstancePackageImpl)(registeredPackage instanceof ProductinstancePackageImpl ? registeredPackage : ProductinstancePackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(WorkforcePackage.eNS_URI);
+		WorkforcePackageImpl theWorkforcePackage = (WorkforcePackageImpl)(registeredPackage instanceof WorkforcePackageImpl ? registeredPackage : WorkforcePackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(MaterialPackage.eNS_URI);
+		MaterialPackageImpl theMaterialPackage = (MaterialPackageImpl)(registeredPackage instanceof MaterialPackageImpl ? registeredPackage : MaterialPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ResourcetypePackage.eNS_URI);
+		ResourcetypePackageImpl theResourcetypePackage = (ResourcetypePackageImpl)(registeredPackage instanceof ResourcetypePackageImpl ? registeredPackage : ResourcetypePackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ResourceinstancePackage.eNS_URI);
+		ResourceinstancePackageImpl theResourceinstancePackage = (ResourceinstancePackageImpl)(registeredPackage instanceof ResourceinstancePackageImpl ? registeredPackage : ResourceinstancePackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theTopologyPackage.createPackageContents();
@@ -299,7 +314,6 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		// Mark meta-data to indicate it can't be changed
 		theTopologyPackage.freeze();
 
-  
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(TopologyPackage.eNS_URI, theTopologyPackage);
 		return theTopologyPackage;
@@ -810,7 +824,7 @@ public class TopologyPackageImpl extends EPackageImpl implements TopologyPackage
 		initEReference(getEquipmentModule_EquipmentModules(), this.getEquipmentModule(), null, "equipmentModules", null, 0, -1, EquipmentModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEquipmentModule_CapabilityRequirement(), theCapabilityPackage.getCapability(), null, "capabilityRequirement", null, 0, 1, EquipmentModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEquipmentModule_AssignedResourceType(), theResourcetypePackage.getResourceType(), null, "assignedResourceType", null, 0, 1, EquipmentModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEquipmentModule_AssignedResourceInstance(), theResourceinstancePackage.getResourceInstance(), theResourceinstancePackage.getResourceInstance_Role(), "assignedResourceInstance", null, 0, 1, EquipmentModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEquipmentModule_AssignedResourceInstance(), theResourceinstancePackage.getResourceInstance(), null, "assignedResourceInstance", null, 0, 1, EquipmentModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(controlModuleEClass, ControlModule.class, "ControlModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getControlModule_ControlModules(), this.getControlModule(), null, "controlModules", null, 0, -1, ControlModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

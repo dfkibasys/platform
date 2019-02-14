@@ -8,8 +8,6 @@ import de.dfki.cos.basys.platform.model.domain.resourceinstance.ResourceInstance
 import de.dfki.cos.basys.platform.model.domain.resourceinstance.ResourceinstancePackage;
 import de.dfki.cos.basys.platform.model.domain.resourcetype.ResourceType;
 import de.dfki.cos.basys.platform.model.domain.topology.EquipmentModule;
-import de.dfki.cos.basys.platform.model.domain.topology.TopologyPackage;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -213,49 +211,11 @@ public class ResourceInstanceImpl extends EntityImpl implements ResourceInstance
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetRole(EquipmentModule newRole, NotificationChain msgs) {
+	public void setRole(EquipmentModule newRole) {
 		EquipmentModule oldRole = role;
 		role = newRole;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ResourceinstancePackage.RESOURCE_INSTANCE__ROLE, oldRole, newRole);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setRole(EquipmentModule newRole) {
-		if (newRole != role) {
-			NotificationChain msgs = null;
-			if (role != null)
-				msgs = ((InternalEObject)role).eInverseRemove(this, TopologyPackage.EQUIPMENT_MODULE__ASSIGNED_RESOURCE_INSTANCE, EquipmentModule.class, msgs);
-			if (newRole != null)
-				msgs = ((InternalEObject)newRole).eInverseAdd(this, TopologyPackage.EQUIPMENT_MODULE__ASSIGNED_RESOURCE_INSTANCE, EquipmentModule.class, msgs);
-			msgs = basicSetRole(newRole, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ResourceinstancePackage.RESOURCE_INSTANCE__ROLE, newRole, newRole));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ResourceinstancePackage.RESOURCE_INSTANCE__ROLE:
-				if (role != null)
-					msgs = ((InternalEObject)role).eInverseRemove(this, TopologyPackage.EQUIPMENT_MODULE__ASSIGNED_RESOURCE_INSTANCE, EquipmentModule.class, msgs);
-				return basicSetRole((EquipmentModule)otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ResourceinstancePackage.RESOURCE_INSTANCE__ROLE, oldRole, role));
 	}
 
 	/**
@@ -268,8 +228,6 @@ public class ResourceInstanceImpl extends EntityImpl implements ResourceInstance
 		switch (featureID) {
 			case ResourceinstancePackage.RESOURCE_INSTANCE__CAPABILITY_APPLICATIONS:
 				return ((InternalEList<?>)getCapabilityApplications()).basicRemove(otherEnd, msgs);
-			case ResourceinstancePackage.RESOURCE_INSTANCE__ROLE:
-				return basicSetRole(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -375,7 +333,7 @@ public class ResourceInstanceImpl extends EntityImpl implements ResourceInstance
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (serialNumber: ");
 		result.append(serialNumber);
 		result.append(')');

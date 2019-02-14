@@ -118,7 +118,6 @@ public interface EquipmentModule extends TopologyElement {
 
 	/**
 	 * Returns the value of the '<em><b>Assigned Resource Instance</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link de.dfki.cos.basys.platform.model.domain.resourceinstance.ResourceInstance#getRole <em>Role</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Assigned Resource Instance</em>' reference isn't clear,
@@ -128,8 +127,7 @@ public interface EquipmentModule extends TopologyElement {
 	 * @return the value of the '<em>Assigned Resource Instance</em>' reference.
 	 * @see #setAssignedResourceInstance(ResourceInstance)
 	 * @see de.dfki.cos.basys.platform.model.domain.topology.TopologyPackage#getEquipmentModule_AssignedResourceInstance()
-	 * @see de.dfki.cos.basys.platform.model.domain.resourceinstance.ResourceInstance#getRole
-	 * @model opposite="role"
+	 * @model
 	 * @generated
 	 */
 	ResourceInstance getAssignedResourceInstance();
