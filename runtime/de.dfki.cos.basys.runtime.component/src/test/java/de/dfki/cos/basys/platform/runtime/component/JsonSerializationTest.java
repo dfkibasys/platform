@@ -70,7 +70,7 @@ public class JsonSerializationTest {
 		
 		
 		//URI uri = URI.createFileURI("C:\\Projekte\\BaSys\\Dev\\basys-develop\\ws\\osgi\\de.dfki.iui.basys.osgi.services.config\\src\\main\\resources\\model\\requestcollection.component");
-		URI uri = URI.createFileURI("C:\\Users\\mrk\\workspace-BaSys\\basys-master\\ws\\demonstrator\\configs\\de.dfki.cos.basys.demonstrator.config.pss2\\src\\main\\resources\\model\\requestcollection.component");
+		URI uri = URI.createFileURI("C:\\Tools\\basys-develop\\ws\\demonstrator\\configs\\de.dfki.cos.basys.demonstrator.config.hmi2019\\src\\main\\resources\\model\\requestcollection_broetje.component");
 			
 		Resource resource = resourceSet.createResource(uri);
 		try {

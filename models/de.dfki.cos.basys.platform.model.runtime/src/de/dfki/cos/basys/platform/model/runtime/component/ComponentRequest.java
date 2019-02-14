@@ -2,6 +2,7 @@
  */
 package de.dfki.cos.basys.platform.model.runtime.component;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -15,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest#getComponentId <em>Component Id</em>}</li>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest#getCorrelationId <em>Correlation Id</em>}</li>
+ *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest#getInputParameters <em>Input Parameters</em>}</li>
  * </ul>
  *
  * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage#getComponentRequest()
@@ -73,5 +75,21 @@ public interface ComponentRequest extends EObject {
 	 * @generated
 	 */
 	void setCorrelationId(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Input Parameters</b></em>' containment reference list.
+	 * The list contents are of type {@link de.dfki.cos.basys.platform.model.runtime.component.Variable}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Input Parameters</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Input Parameters</em>' containment reference list.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage#getComponentRequest_InputParameters()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Variable> getInputParameters();
 
 } // ComponentRequest

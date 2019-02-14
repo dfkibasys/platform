@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentResponse#getStatusCode <em>Status Code</em>}</li>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentResponse#getMessage <em>Message</em>}</li>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentResponse#getRequest <em>Request</em>}</li>
- *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentResponse#getResultVariables <em>Result Variables</em>}</li>
+ *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentResponse#getOutputParameters <em>Output Parameters</em>}</li>
  * </ul>
  *
  * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage#getComponentResponse()
@@ -161,19 +161,19 @@ public interface ComponentResponse extends EObject {
 	void setRequest(ComponentRequest value);
 
 	/**
-	 * Returns the value of the '<em><b>Result Variables</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Output Parameters</b></em>' containment reference list.
 	 * The list contents are of type {@link de.dfki.cos.basys.platform.model.runtime.component.Variable}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Result Variables</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Output Parameters</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Result Variables</em>' containment reference list.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage#getComponentResponse_ResultVariables()
+	 * @return the value of the '<em>Output Parameters</em>' containment reference list.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage#getComponentResponse_OutputParameters()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Variable> getResultVariables();
+	EList<Variable> getOutputParameters();
 
 } // ComponentResponse

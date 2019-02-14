@@ -256,6 +256,7 @@
     <genClasses image="false" ecoreClass="component.ecore#//ComponentRequest">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentRequest/componentId"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentRequest/correlationId"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference component.ecore#//ComponentRequest/inputParameters"/>
     </genClasses>
     <genClasses ecoreClass="component.ecore#//CommandRequest">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//CommandRequest/controlCommand"/>
@@ -278,7 +279,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentResponse/statusCode"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentResponse/message"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference component.ecore#//ComponentResponse/request"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference component.ecore#//ComponentResponse/resultVariables"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference component.ecore#//ComponentResponse/outputParameters"/>
     </genClasses>
     <genClasses ecoreClass="component.ecore#//ComponentRequestCollection">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference component.ecore#//ComponentRequestCollection/componentRequests"/>

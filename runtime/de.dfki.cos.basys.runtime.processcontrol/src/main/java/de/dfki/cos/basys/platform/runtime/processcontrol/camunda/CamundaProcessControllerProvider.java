@@ -82,8 +82,8 @@ public class CamundaProcessControllerProvider implements ProcessControllerProvid
 						TaskDescription ts = responseQueue.poll(1000, TimeUnit.MILLISECONDS);
 						if (ts != null) {
 							if (ts.getResponse().getStatus() == ResponseStatus.OK) {
-								if (ts.getResponse().getResultVariables().size() > 0) {
-									client.complete(ts.getRequest().getCorrelationId(), ts.getResponse().getResultVariables());
+								if (ts.getResponse().getOutputParameters().size() > 0) {
+									client.complete(ts.getRequest().getCorrelationId(), ts.getResponse().getOutputParameters());
 								} else {
 									client.complete(ts.getRequest().getCorrelationId());
 								}

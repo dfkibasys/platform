@@ -3,13 +3,20 @@
 package de.dfki.cos.basys.platform.model.runtime.component.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import de.dfki.cos.basys.platform.model.runtime.component.CommandRequest;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
 import de.dfki.cos.basys.platform.model.runtime.component.ControlCommand;
+import de.dfki.cos.basys.platform.model.runtime.component.Variable;
+import java.util.Collection;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,6 +28,7 @@ import de.dfki.cos.basys.platform.model.runtime.component.ControlCommand;
  * <ul>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.CommandRequestImpl#getComponentId <em>Component Id</em>}</li>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.CommandRequestImpl#getCorrelationId <em>Correlation Id</em>}</li>
+ *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.CommandRequestImpl#getInputParameters <em>Input Parameters</em>}</li>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.CommandRequestImpl#getControlCommand <em>Control Command</em>}</li>
  * </ul>
  *
@@ -66,6 +74,16 @@ public class CommandRequestImpl extends MinimalEObjectImpl.Container implements 
 	 * @ordered
 	 */
 	protected String correlationId = CORRELATION_ID_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getInputParameters() <em>Input Parameters</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInputParameters()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Variable> inputParameters;
 
 	/**
 	 * The default value of the '{@link #getControlCommand() <em>Control Command</em>}' attribute.
@@ -155,6 +173,18 @@ public class CommandRequestImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Variable> getInputParameters() {
+		if (inputParameters == null) {
+			inputParameters = new EObjectContainmentEList<Variable>(Variable.class, this, ComponentPackage.COMMAND_REQUEST__INPUT_PARAMETERS);
+		}
+		return inputParameters;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public ControlCommand getControlCommand() {
 		return controlCommand;
@@ -179,12 +209,28 @@ public class CommandRequestImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ComponentPackage.COMMAND_REQUEST__INPUT_PARAMETERS:
+				return ((InternalEList<?>)getInputParameters()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ComponentPackage.COMMAND_REQUEST__COMPONENT_ID:
 				return getComponentId();
 			case ComponentPackage.COMMAND_REQUEST__CORRELATION_ID:
 				return getCorrelationId();
+			case ComponentPackage.COMMAND_REQUEST__INPUT_PARAMETERS:
+				return getInputParameters();
 			case ComponentPackage.COMMAND_REQUEST__CONTROL_COMMAND:
 				return getControlCommand();
 		}
@@ -196,6 +242,7 @@ public class CommandRequestImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -204,6 +251,10 @@ public class CommandRequestImpl extends MinimalEObjectImpl.Container implements 
 				return;
 			case ComponentPackage.COMMAND_REQUEST__CORRELATION_ID:
 				setCorrelationId((String)newValue);
+				return;
+			case ComponentPackage.COMMAND_REQUEST__INPUT_PARAMETERS:
+				getInputParameters().clear();
+				getInputParameters().addAll((Collection<? extends Variable>)newValue);
 				return;
 			case ComponentPackage.COMMAND_REQUEST__CONTROL_COMMAND:
 				setControlCommand((ControlCommand)newValue);
@@ -226,6 +277,9 @@ public class CommandRequestImpl extends MinimalEObjectImpl.Container implements 
 			case ComponentPackage.COMMAND_REQUEST__CORRELATION_ID:
 				setCorrelationId(CORRELATION_ID_EDEFAULT);
 				return;
+			case ComponentPackage.COMMAND_REQUEST__INPUT_PARAMETERS:
+				getInputParameters().clear();
+				return;
 			case ComponentPackage.COMMAND_REQUEST__CONTROL_COMMAND:
 				setControlCommand(CONTROL_COMMAND_EDEFAULT);
 				return;
@@ -245,6 +299,8 @@ public class CommandRequestImpl extends MinimalEObjectImpl.Container implements 
 				return COMPONENT_ID_EDEFAULT == null ? componentId != null : !COMPONENT_ID_EDEFAULT.equals(componentId);
 			case ComponentPackage.COMMAND_REQUEST__CORRELATION_ID:
 				return CORRELATION_ID_EDEFAULT == null ? correlationId != null : !CORRELATION_ID_EDEFAULT.equals(correlationId);
+			case ComponentPackage.COMMAND_REQUEST__INPUT_PARAMETERS:
+				return inputParameters != null && !inputParameters.isEmpty();
 			case ComponentPackage.COMMAND_REQUEST__CONTROL_COMMAND:
 				return controlCommand != CONTROL_COMMAND_EDEFAULT;
 		}

@@ -3,13 +3,20 @@
 package de.dfki.cos.basys.platform.model.runtime.component.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import de.dfki.cos.basys.platform.model.runtime.component.ChangeModeRequest;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
 import de.dfki.cos.basys.platform.model.runtime.component.ControlMode;
+import de.dfki.cos.basys.platform.model.runtime.component.Variable;
+import java.util.Collection;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,6 +28,7 @@ import de.dfki.cos.basys.platform.model.runtime.component.ControlMode;
  * <ul>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ChangeModeRequestImpl#getComponentId <em>Component Id</em>}</li>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ChangeModeRequestImpl#getCorrelationId <em>Correlation Id</em>}</li>
+ *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ChangeModeRequestImpl#getInputParameters <em>Input Parameters</em>}</li>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ChangeModeRequestImpl#getMode <em>Mode</em>}</li>
  * </ul>
  *
@@ -66,6 +74,16 @@ public class ChangeModeRequestImpl extends MinimalEObjectImpl.Container implemen
 	 * @ordered
 	 */
 	protected String correlationId = CORRELATION_ID_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getInputParameters() <em>Input Parameters</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInputParameters()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Variable> inputParameters;
 
 	/**
 	 * The default value of the '{@link #getMode() <em>Mode</em>}' attribute.
@@ -155,6 +173,18 @@ public class ChangeModeRequestImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Variable> getInputParameters() {
+		if (inputParameters == null) {
+			inputParameters = new EObjectContainmentEList<Variable>(Variable.class, this, ComponentPackage.CHANGE_MODE_REQUEST__INPUT_PARAMETERS);
+		}
+		return inputParameters;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public ControlMode getMode() {
 		return mode;
@@ -179,12 +209,28 @@ public class ChangeModeRequestImpl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ComponentPackage.CHANGE_MODE_REQUEST__INPUT_PARAMETERS:
+				return ((InternalEList<?>)getInputParameters()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ComponentPackage.CHANGE_MODE_REQUEST__COMPONENT_ID:
 				return getComponentId();
 			case ComponentPackage.CHANGE_MODE_REQUEST__CORRELATION_ID:
 				return getCorrelationId();
+			case ComponentPackage.CHANGE_MODE_REQUEST__INPUT_PARAMETERS:
+				return getInputParameters();
 			case ComponentPackage.CHANGE_MODE_REQUEST__MODE:
 				return getMode();
 		}
@@ -196,6 +242,7 @@ public class ChangeModeRequestImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -204,6 +251,10 @@ public class ChangeModeRequestImpl extends MinimalEObjectImpl.Container implemen
 				return;
 			case ComponentPackage.CHANGE_MODE_REQUEST__CORRELATION_ID:
 				setCorrelationId((String)newValue);
+				return;
+			case ComponentPackage.CHANGE_MODE_REQUEST__INPUT_PARAMETERS:
+				getInputParameters().clear();
+				getInputParameters().addAll((Collection<? extends Variable>)newValue);
 				return;
 			case ComponentPackage.CHANGE_MODE_REQUEST__MODE:
 				setMode((ControlMode)newValue);
@@ -226,6 +277,9 @@ public class ChangeModeRequestImpl extends MinimalEObjectImpl.Container implemen
 			case ComponentPackage.CHANGE_MODE_REQUEST__CORRELATION_ID:
 				setCorrelationId(CORRELATION_ID_EDEFAULT);
 				return;
+			case ComponentPackage.CHANGE_MODE_REQUEST__INPUT_PARAMETERS:
+				getInputParameters().clear();
+				return;
 			case ComponentPackage.CHANGE_MODE_REQUEST__MODE:
 				setMode(MODE_EDEFAULT);
 				return;
@@ -245,6 +299,8 @@ public class ChangeModeRequestImpl extends MinimalEObjectImpl.Container implemen
 				return COMPONENT_ID_EDEFAULT == null ? componentId != null : !COMPONENT_ID_EDEFAULT.equals(componentId);
 			case ComponentPackage.CHANGE_MODE_REQUEST__CORRELATION_ID:
 				return CORRELATION_ID_EDEFAULT == null ? correlationId != null : !CORRELATION_ID_EDEFAULT.equals(correlationId);
+			case ComponentPackage.CHANGE_MODE_REQUEST__INPUT_PARAMETERS:
+				return inputParameters != null && !inputParameters.isEmpty();
 			case ComponentPackage.CHANGE_MODE_REQUEST__MODE:
 				return mode != MODE_EDEFAULT;
 		}

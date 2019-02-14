@@ -24,6 +24,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import de.dfki.cos.basys.platform.model.domain.resourceinstance.ResourceinstanceFactory;
 import de.dfki.cos.basys.platform.model.runtime.communication.provider.RuntimeEditPlugin;
 import de.dfki.cos.basys.platform.model.runtime.component.CapabilityRequest;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentFactory;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
 
 /**
@@ -123,6 +124,7 @@ public class CapabilityRequestItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
+			childrenFeatures.add(ComponentPackage.Literals.COMPONENT_REQUEST__INPUT_PARAMETERS);
 			childrenFeatures.add(ComponentPackage.Literals.CAPABILITY_REQUEST__CAPABILITY_VARIANT);
 		}
 		return childrenFeatures;
@@ -184,6 +186,7 @@ public class CapabilityRequestItemProvider
 			case ComponentPackage.CAPABILITY_REQUEST__CORRELATION_ID:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
+			case ComponentPackage.CAPABILITY_REQUEST__INPUT_PARAMETERS:
 			case ComponentPackage.CAPABILITY_REQUEST__CAPABILITY_VARIANT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -201,6 +204,11 @@ public class CapabilityRequestItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ComponentPackage.Literals.COMPONENT_REQUEST__INPUT_PARAMETERS,
+				 ComponentFactory.eINSTANCE.createVariable()));
 
 		newChildDescriptors.add
 			(createChildParameter

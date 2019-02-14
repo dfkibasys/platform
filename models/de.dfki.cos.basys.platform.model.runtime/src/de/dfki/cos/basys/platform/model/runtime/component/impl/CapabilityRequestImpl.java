@@ -4,14 +4,19 @@ package de.dfki.cos.basys.platform.model.runtime.component.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import de.dfki.cos.basys.platform.model.domain.resourceinstance.CapabilityVariant;
 import de.dfki.cos.basys.platform.model.runtime.component.CapabilityRequest;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
+import de.dfki.cos.basys.platform.model.runtime.component.Variable;
+import java.util.Collection;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,6 +28,7 @@ import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
  * <ul>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.CapabilityRequestImpl#getComponentId <em>Component Id</em>}</li>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.CapabilityRequestImpl#getCorrelationId <em>Correlation Id</em>}</li>
+ *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.CapabilityRequestImpl#getInputParameters <em>Input Parameters</em>}</li>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.CapabilityRequestImpl#getCapabilityVariant <em>Capability Variant</em>}</li>
  * </ul>
  *
@@ -65,6 +71,15 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 	 * @ordered
 	 */
 	protected String correlationId = CORRELATION_ID_EDEFAULT;
+	/**
+	 * The cached value of the '{@link #getInputParameters() <em>Input Parameters</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInputParameters()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Variable> inputParameters;
 	/**
 	 * The cached value of the '{@link #getCapabilityVariant() <em>Capability Variant</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -142,6 +157,18 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Variable> getInputParameters() {
+		if (inputParameters == null) {
+			inputParameters = new EObjectContainmentEList<Variable>(Variable.class, this, ComponentPackage.CAPABILITY_REQUEST__INPUT_PARAMETERS);
+		}
+		return inputParameters;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public CapabilityVariant<?, ?> getCapabilityVariant() {
 		return capabilityVariant;
@@ -190,6 +217,8 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case ComponentPackage.CAPABILITY_REQUEST__INPUT_PARAMETERS:
+				return ((InternalEList<?>)getInputParameters()).basicRemove(otherEnd, msgs);
 			case ComponentPackage.CAPABILITY_REQUEST__CAPABILITY_VARIANT:
 				return basicSetCapabilityVariant(null, msgs);
 		}
@@ -208,6 +237,8 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 				return getComponentId();
 			case ComponentPackage.CAPABILITY_REQUEST__CORRELATION_ID:
 				return getCorrelationId();
+			case ComponentPackage.CAPABILITY_REQUEST__INPUT_PARAMETERS:
+				return getInputParameters();
 			case ComponentPackage.CAPABILITY_REQUEST__CAPABILITY_VARIANT:
 				return getCapabilityVariant();
 		}
@@ -219,6 +250,7 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -227,6 +259,10 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 				return;
 			case ComponentPackage.CAPABILITY_REQUEST__CORRELATION_ID:
 				setCorrelationId((String)newValue);
+				return;
+			case ComponentPackage.CAPABILITY_REQUEST__INPUT_PARAMETERS:
+				getInputParameters().clear();
+				getInputParameters().addAll((Collection<? extends Variable>)newValue);
 				return;
 			case ComponentPackage.CAPABILITY_REQUEST__CAPABILITY_VARIANT:
 				setCapabilityVariant((CapabilityVariant<?, ?>)newValue);
@@ -249,6 +285,9 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 			case ComponentPackage.CAPABILITY_REQUEST__CORRELATION_ID:
 				setCorrelationId(CORRELATION_ID_EDEFAULT);
 				return;
+			case ComponentPackage.CAPABILITY_REQUEST__INPUT_PARAMETERS:
+				getInputParameters().clear();
+				return;
 			case ComponentPackage.CAPABILITY_REQUEST__CAPABILITY_VARIANT:
 				setCapabilityVariant((CapabilityVariant<?, ?>)null);
 				return;
@@ -268,6 +307,8 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 				return COMPONENT_ID_EDEFAULT == null ? componentId != null : !COMPONENT_ID_EDEFAULT.equals(componentId);
 			case ComponentPackage.CAPABILITY_REQUEST__CORRELATION_ID:
 				return CORRELATION_ID_EDEFAULT == null ? correlationId != null : !CORRELATION_ID_EDEFAULT.equals(correlationId);
+			case ComponentPackage.CAPABILITY_REQUEST__INPUT_PARAMETERS:
+				return inputParameters != null && !inputParameters.isEmpty();
 			case ComponentPackage.CAPABILITY_REQUEST__CAPABILITY_VARIANT:
 				return capabilityVariant != null;
 		}

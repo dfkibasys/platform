@@ -406,13 +406,22 @@ public interface ComponentPackage extends EPackage {
 	int COMPONENT_REQUEST__CORRELATION_ID = 1;
 
 	/**
+	 * The feature id for the '<em><b>Input Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_REQUEST__INPUT_PARAMETERS = 2;
+
+	/**
 	 * The number of structural features of the '<em>Request</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_REQUEST_FEATURE_COUNT = 2;
+	int COMPONENT_REQUEST_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Request</em>' class.
@@ -450,6 +459,15 @@ public interface ComponentPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMMAND_REQUEST__CORRELATION_ID = COMPONENT_REQUEST__CORRELATION_ID;
+
+	/**
+	 * The feature id for the '<em><b>Input Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMAND_REQUEST__INPUT_PARAMETERS = COMPONENT_REQUEST__INPUT_PARAMETERS;
 
 	/**
 	 * The feature id for the '<em><b>Control Command</b></em>' attribute.
@@ -507,6 +525,15 @@ public interface ComponentPackage extends EPackage {
 	int CHANGE_MODE_REQUEST__CORRELATION_ID = COMPONENT_REQUEST__CORRELATION_ID;
 
 	/**
+	 * The feature id for the '<em><b>Input Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_MODE_REQUEST__INPUT_PARAMETERS = COMPONENT_REQUEST__INPUT_PARAMETERS;
+
+	/**
 	 * The feature id for the '<em><b>Mode</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -560,6 +587,15 @@ public interface ComponentPackage extends EPackage {
 	 * @ordered
 	 */
 	int CAPABILITY_REQUEST__CORRELATION_ID = COMPONENT_REQUEST__CORRELATION_ID;
+
+	/**
+	 * The feature id for the '<em><b>Input Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_REQUEST__INPUT_PARAMETERS = COMPONENT_REQUEST__INPUT_PARAMETERS;
 
 	/**
 	 * The feature id for the '<em><b>Capability Variant</b></em>' containment reference.
@@ -672,6 +708,15 @@ public interface ComponentPackage extends EPackage {
 	int STATUS_REQUEST__CORRELATION_ID = COMPONENT_REQUEST__CORRELATION_ID;
 
 	/**
+	 * The feature id for the '<em><b>Input Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATUS_REQUEST__INPUT_PARAMETERS = COMPONENT_REQUEST__INPUT_PARAMETERS;
+
+	/**
 	 * The number of structural features of the '<em>Status Request</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -745,13 +790,13 @@ public interface ComponentPackage extends EPackage {
 	int COMPONENT_RESPONSE__REQUEST = 4;
 
 	/**
-	 * The feature id for the '<em><b>Result Variables</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Output Parameters</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_RESPONSE__RESULT_VARIABLES = 5;
+	int COMPONENT_RESPONSE__OUTPUT_PARAMETERS = 5;
 
 	/**
 	 * The number of structural features of the '<em>Response</em>' class.
@@ -1645,6 +1690,17 @@ public interface ComponentPackage extends EPackage {
 	EAttribute getComponentRequest_CorrelationId();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest#getInputParameters <em>Input Parameters</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Input Parameters</em>'.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest#getInputParameters()
+	 * @see #getComponentRequest()
+	 * @generated
+	 */
+	EReference getComponentRequest_InputParameters();
+
+	/**
 	 * Returns the meta object for class '{@link de.dfki.cos.basys.platform.model.runtime.component.CommandRequest <em>Command Request</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1826,15 +1882,15 @@ public interface ComponentPackage extends EPackage {
 	EReference getComponentResponse_Request();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentResponse#getResultVariables <em>Result Variables</em>}'.
+	 * Returns the meta object for the containment reference list '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentResponse#getOutputParameters <em>Output Parameters</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Result Variables</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentResponse#getResultVariables()
+	 * @return the meta object for the containment reference list '<em>Output Parameters</em>'.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentResponse#getOutputParameters()
 	 * @see #getComponentResponse()
 	 * @generated
 	 */
-	EReference getComponentResponse_ResultVariables();
+	EReference getComponentResponse_OutputParameters();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentRequestCollection <em>Request Collection</em>}'.
@@ -2606,6 +2662,14 @@ public interface ComponentPackage extends EPackage {
 		EAttribute COMPONENT_REQUEST__CORRELATION_ID = eINSTANCE.getComponentRequest_CorrelationId();
 
 		/**
+		 * The meta object literal for the '<em><b>Input Parameters</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPONENT_REQUEST__INPUT_PARAMETERS = eINSTANCE.getComponentRequest_InputParameters();
+
+		/**
 		 * The meta object literal for the '{@link de.dfki.cos.basys.platform.model.runtime.component.impl.CommandRequestImpl <em>Command Request</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2754,12 +2818,12 @@ public interface ComponentPackage extends EPackage {
 		EReference COMPONENT_RESPONSE__REQUEST = eINSTANCE.getComponentResponse_Request();
 
 		/**
-		 * The meta object literal for the '<em><b>Result Variables</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Output Parameters</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference COMPONENT_RESPONSE__RESULT_VARIABLES = eINSTANCE.getComponentResponse_ResultVariables();
+		EReference COMPONENT_RESPONSE__OUTPUT_PARAMETERS = eINSTANCE.getComponentResponse_OutputParameters();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentRequestCollectionImpl <em>Request Collection</em>}' class.

@@ -408,7 +408,7 @@ public class BaseComponent implements Component, ChannelListener {
 		
 		if (resultVariables != null) {
 			// Copy variable(s) is important for simulation: Variables are 'contained' in a SimulationConfiguration
-			response.getResultVariables().addAll(EcoreUtil.copyAll(resultVariables));
+			response.getOutputParameters().addAll(EcoreUtil.copyAll(resultVariables));
 		}
 		try {
 			String payload = JsonUtils.toString(response);

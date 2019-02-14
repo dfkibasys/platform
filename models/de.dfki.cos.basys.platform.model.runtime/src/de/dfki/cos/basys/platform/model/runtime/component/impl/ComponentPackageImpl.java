@@ -590,6 +590,15 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getComponentRequest_InputParameters() {
+		return (EReference)componentRequestEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getCommandRequest() {
 		return commandRequestEClass;
 	}
@@ -743,7 +752,7 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getComponentResponse_ResultVariables() {
+	public EReference getComponentResponse_OutputParameters() {
 		return (EReference)componentResponseEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -1215,6 +1224,7 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		componentRequestEClass = createEClass(COMPONENT_REQUEST);
 		createEAttribute(componentRequestEClass, COMPONENT_REQUEST__COMPONENT_ID);
 		createEAttribute(componentRequestEClass, COMPONENT_REQUEST__CORRELATION_ID);
+		createEReference(componentRequestEClass, COMPONENT_REQUEST__INPUT_PARAMETERS);
 
 		commandRequestEClass = createEClass(COMMAND_REQUEST);
 		createEAttribute(commandRequestEClass, COMMAND_REQUEST__CONTROL_COMMAND);
@@ -1238,7 +1248,7 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		createEAttribute(componentResponseEClass, COMPONENT_RESPONSE__STATUS_CODE);
 		createEAttribute(componentResponseEClass, COMPONENT_RESPONSE__MESSAGE);
 		createEReference(componentResponseEClass, COMPONENT_RESPONSE__REQUEST);
-		createEReference(componentResponseEClass, COMPONENT_RESPONSE__RESULT_VARIABLES);
+		createEReference(componentResponseEClass, COMPONENT_RESPONSE__OUTPUT_PARAMETERS);
 
 		componentRequestCollectionEClass = createEClass(COMPONENT_REQUEST_COLLECTION);
 		createEReference(componentRequestCollectionEClass, COMPONENT_REQUEST_COLLECTION__COMPONENT_REQUESTS);
@@ -1369,6 +1379,7 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		initEClass(componentRequestEClass, ComponentRequest.class, "ComponentRequest", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getComponentRequest_ComponentId(), theEcorePackage.getEString(), "componentId", null, 0, 1, ComponentRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getComponentRequest_CorrelationId(), theEcorePackage.getEString(), "correlationId", null, 0, 1, ComponentRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getComponentRequest_InputParameters(), this.getVariable(), null, "inputParameters", null, 0, -1, ComponentRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(commandRequestEClass, CommandRequest.class, "CommandRequest", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCommandRequest_ControlCommand(), this.getControlCommand(), "controlCommand", null, 0, 1, CommandRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1397,7 +1408,7 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		initEAttribute(getComponentResponse_StatusCode(), theEcorePackage.getEInt(), "statusCode", null, 0, 1, ComponentResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getComponentResponse_Message(), theEcorePackage.getEString(), "message", null, 0, 1, ComponentResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getComponentResponse_Request(), this.getComponentRequest(), null, "request", null, 0, 1, ComponentResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getComponentResponse_ResultVariables(), this.getVariable(), null, "resultVariables", null, 0, -1, ComponentResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getComponentResponse_OutputParameters(), this.getVariable(), null, "outputParameters", null, 0, -1, ComponentResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(componentRequestCollectionEClass, ComponentRequestCollection.class, "ComponentRequestCollection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getComponentRequestCollection_ComponentRequests(), this.getComponentRequest(), null, "componentRequests", null, 0, -1, ComponentRequestCollection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

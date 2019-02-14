@@ -34,7 +34,7 @@ import java.util.Collection;
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentResponseImpl#getStatusCode <em>Status Code</em>}</li>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentResponseImpl#getMessage <em>Message</em>}</li>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentResponseImpl#getRequest <em>Request</em>}</li>
- *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentResponseImpl#getResultVariables <em>Result Variables</em>}</li>
+ *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentResponseImpl#getOutputParameters <em>Output Parameters</em>}</li>
  * </ul>
  *
  * @generated
@@ -131,14 +131,14 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 	protected ComponentRequest request;
 
 	/**
-	 * The cached value of the '{@link #getResultVariables() <em>Result Variables</em>}' containment reference list.
+	 * The cached value of the '{@link #getOutputParameters() <em>Output Parameters</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getResultVariables()
+	 * @see #getOutputParameters()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Variable> resultVariables;
+	protected EList<Variable> outputParameters;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -301,11 +301,11 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Variable> getResultVariables() {
-		if (resultVariables == null) {
-			resultVariables = new EObjectContainmentEList<Variable>(Variable.class, this, ComponentPackage.COMPONENT_RESPONSE__RESULT_VARIABLES);
+	public EList<Variable> getOutputParameters() {
+		if (outputParameters == null) {
+			outputParameters = new EObjectContainmentEList<Variable>(Variable.class, this, ComponentPackage.COMPONENT_RESPONSE__OUTPUT_PARAMETERS);
 		}
-		return resultVariables;
+		return outputParameters;
 	}
 
 	/**
@@ -318,8 +318,8 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 		switch (featureID) {
 			case ComponentPackage.COMPONENT_RESPONSE__REQUEST:
 				return basicSetRequest(null, msgs);
-			case ComponentPackage.COMPONENT_RESPONSE__RESULT_VARIABLES:
-				return ((InternalEList<?>)getResultVariables()).basicRemove(otherEnd, msgs);
+			case ComponentPackage.COMPONENT_RESPONSE__OUTPUT_PARAMETERS:
+				return ((InternalEList<?>)getOutputParameters()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -342,8 +342,8 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 				return getMessage();
 			case ComponentPackage.COMPONENT_RESPONSE__REQUEST:
 				return getRequest();
-			case ComponentPackage.COMPONENT_RESPONSE__RESULT_VARIABLES:
-				return getResultVariables();
+			case ComponentPackage.COMPONENT_RESPONSE__OUTPUT_PARAMETERS:
+				return getOutputParameters();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -372,9 +372,9 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 			case ComponentPackage.COMPONENT_RESPONSE__REQUEST:
 				setRequest((ComponentRequest)newValue);
 				return;
-			case ComponentPackage.COMPONENT_RESPONSE__RESULT_VARIABLES:
-				getResultVariables().clear();
-				getResultVariables().addAll((Collection<? extends Variable>)newValue);
+			case ComponentPackage.COMPONENT_RESPONSE__OUTPUT_PARAMETERS:
+				getOutputParameters().clear();
+				getOutputParameters().addAll((Collection<? extends Variable>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -403,8 +403,8 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 			case ComponentPackage.COMPONENT_RESPONSE__REQUEST:
 				setRequest((ComponentRequest)null);
 				return;
-			case ComponentPackage.COMPONENT_RESPONSE__RESULT_VARIABLES:
-				getResultVariables().clear();
+			case ComponentPackage.COMPONENT_RESPONSE__OUTPUT_PARAMETERS:
+				getOutputParameters().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -428,8 +428,8 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 				return MESSAGE_EDEFAULT == null ? message != null : !MESSAGE_EDEFAULT.equals(message);
 			case ComponentPackage.COMPONENT_RESPONSE__REQUEST:
 				return request != null;
-			case ComponentPackage.COMPONENT_RESPONSE__RESULT_VARIABLES:
-				return resultVariables != null && !resultVariables.isEmpty();
+			case ComponentPackage.COMPONENT_RESPONSE__OUTPUT_PARAMETERS:
+				return outputParameters != null && !outputParameters.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
