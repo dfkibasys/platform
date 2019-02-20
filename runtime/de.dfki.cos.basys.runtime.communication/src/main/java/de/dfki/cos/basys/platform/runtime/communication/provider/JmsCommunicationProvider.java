@@ -5,6 +5,10 @@ import java.net.UnknownHostException;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ThreadPoolExecutor;
 
 import javax.jms.Connection;
 import javax.jms.JMSException;
@@ -21,6 +25,8 @@ import javax.jms.Topic;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 import de.dfki.cos.basys.common.emf.json.JsonUtils;
 import de.dfki.cos.basys.platform.model.runtime.communication.Authentication;
@@ -49,7 +55,9 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 	private Map<String, ResponseCallback> requestCorrelations = new ConcurrentHashMap<String, ResponseCallback>();
 
 	private Map<String, JmsDestination> destinations = new ConcurrentHashMap<String, JmsDestination>();
-
+	
+	ExecutorService executor = Executors.newCachedThreadPool();
+	
 	static {
 		try {
 			String serverName = CommUtils.getPreferredBasysMiddleware();
@@ -236,14 +244,30 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 								de.dfki.cos.basys.platform.model.runtime.communication.Message incomingMessage = 
 										JsonUtils.fromString(content, de.dfki.cos.basys.platform.model.runtime.communication.Message.class);
 								if (textMessage.getJMSCorrelationID() != null) {
-									Request req = (Request) incomingMessage;
-									Response res = channel.getListener().handleRequest(channel, req);
-									String payload = JsonUtils.toString(res);
-
-									TextMessage responseMessage = session.createTextMessage();
-									responseMessage.setText(payload);
-									responseMessage.setJMSCorrelationID(textMessage.getJMSCorrelationID());
-									replyProducer.send(textMessage.getJMSReplyTo(), responseMessage);
+									
+									Runnable task = new Runnable() {
+										
+										@Override
+										public void run() {											
+											try {
+												Request req = (Request) incomingMessage;
+												Response res = channel.getListener().handleRequest(channel, req);
+												String payload = JsonUtils.toString(res);
+												TextMessage responseMessage = session.createTextMessage();
+												responseMessage.setText(payload);
+												responseMessage.setJMSCorrelationID(textMessage.getJMSCorrelationID());
+												
+												replyProducer.send(textMessage.getJMSReplyTo(), responseMessage);
+											} catch (JsonProcessingException e) {
+												e.printStackTrace();
+											} catch (JMSException e) {
+												e.printStackTrace();
+											}											
+										}
+									};
+									
+									executor.execute(task);									
+									
 								} else {
 									if (incomingMessage instanceof Notification) {
 										channel.getListener().handleNotification(channel, (Notification) incomingMessage);
