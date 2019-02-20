@@ -31,7 +31,7 @@ import java.util.Arrays;
 
 public class CommUtils {
 
-	public static ArrayList<String> serverList = new ArrayList<>(Arrays.asList("10.250.5.26","basys-lnv-1", "10.2.10.4", "lns-90165.sb.dfki.de", "10.250.6.206", "localhost" ));
+	public static ArrayList<String> serverList = new ArrayList<>(Arrays.asList("basys-lnv-1", "10.250.5.26", "10.250.5.10", "10.2.10.4", "lns-90165.sb.dfki.de", "10.250.6.206", "localhost" ));
 	
 	public static String getPreferredBasysMiddleware() throws UnknownHostException {
 		
