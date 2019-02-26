@@ -58,7 +58,7 @@ public enum State implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	IDLE(3, "IDLE", "IDLE"), /**
+	IDLE(4, "IDLE", "IDLE"), /**
 	 * The '<em><b>SUSPENDED</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

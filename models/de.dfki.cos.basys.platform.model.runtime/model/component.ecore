@@ -62,7 +62,7 @@
     <eLiterals name="CLEARING" value="1"/>
     <eLiterals name="STOPPED" value="2"/>
     <eLiterals name="STARTING" value="3"/>
-    <eLiterals name="IDLE" value="3"/>
+    <eLiterals name="IDLE" value="4"/>
     <eLiterals name="SUSPENDED" value="5"/>
     <eLiterals name="EXECUTE" value="6"/>
     <eLiterals name="STOPPING" value="7"/>
