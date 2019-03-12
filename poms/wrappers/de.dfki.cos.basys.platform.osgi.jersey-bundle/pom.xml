@@ -14,7 +14,10 @@
 	<wrapped.groupId>org.glassfish.jersey.core</wrapped.groupId>
     <wrapped.artifactId>jersey-client</wrapped.artifactId>
 	-->
-    <wrapped.version>2.27</wrapped.version>
+    <!--
+	<wrapped.version>2.27</wrapped.version>
+	-->
+    <wrapped.version>${jersey-version}</wrapped.version>
   </properties>
 
   <modelVersion>4.0.0</modelVersion>
