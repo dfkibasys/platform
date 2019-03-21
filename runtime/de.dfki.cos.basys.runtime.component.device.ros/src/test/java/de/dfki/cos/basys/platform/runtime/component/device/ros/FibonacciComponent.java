@@ -11,8 +11,8 @@ import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration
 import de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus;
 import de.dfki.cos.basys.platform.runtime.component.ComponentContext;
 import de.dfki.cos.basys.platform.runtime.component.ComponentException;
-import de.dfki.cos.basys.platform.runtime.component.device.packml.UnitConfiguration;
 import de.dfki.cos.basys.platform.runtime.component.device.ros.RosDeviceComponent;
+import de.dfki.cos.basys.platform.runtime.component.packml.UnitConfiguration;
 import edu.wpi.rail.jrosbridge.ActionClient;
 import edu.wpi.rail.jrosbridge.Goal;
 import edu.wpi.rail.jrosbridge.callback.ActionCallback;

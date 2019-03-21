@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import de.dfki.cos.basys.platform.model.runtime.component.State;
-import de.dfki.cos.basys.platform.runtime.component.device.packml.PackMLUnit;
+import de.dfki.cos.basys.platform.runtime.component.packml.PackMLUnit;
 import junit.framework.TestCase;
 
 public class PackMLTest extends TestCase {

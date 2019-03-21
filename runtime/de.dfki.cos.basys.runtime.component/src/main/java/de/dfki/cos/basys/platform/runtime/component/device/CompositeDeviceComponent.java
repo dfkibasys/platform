@@ -8,7 +8,7 @@ import de.dfki.cos.basys.platform.model.runtime.communication.Channel;
 import de.dfki.cos.basys.platform.model.runtime.communication.Notification;
 import de.dfki.cos.basys.platform.model.runtime.component.CapabilityRequest;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
-import de.dfki.cos.basys.platform.runtime.component.device.packml.UnitConfiguration;
+import de.dfki.cos.basys.platform.runtime.component.packml.UnitConfiguration;
 
 public class CompositeDeviceComponent extends DeviceComponent {
 

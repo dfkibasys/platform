@@ -3,6 +3,7 @@ package de.dfki.cos.basys.platform.osgi.services.internal;
 import java.io.File;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ScheduledExecutorService;
 
 import org.osgi.service.component.ComponentContext;
 import org.osgi.service.component.annotations.Activate;
@@ -133,6 +134,11 @@ public class ComponentManagerService extends BasysOsgiComponent implements Compo
 	@Override
 	public void createLocalComponents(File configFolder, boolean recursive) throws ComponentManagerException {
 		impl.createLocalComponents(configFolder, recursive);
+	}
+
+	@Override
+	public ScheduledExecutorService getScheduledExecutorService() {
+		return impl.getScheduledExecutorService();
 	}
 
 }

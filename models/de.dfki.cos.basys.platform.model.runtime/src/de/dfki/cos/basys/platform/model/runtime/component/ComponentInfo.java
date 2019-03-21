@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo#getConnectionString <em>Connection String</em>}</li>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo#getHostName <em>Host Name</em>}</li>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo#getUriSpec <em>Uri Spec</em>}</li>
+ *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo#isConnected <em>Connected</em>}</li>
  * </ul>
  *
  * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage#getComponentInfo()
@@ -353,5 +354,31 @@ public interface ComponentInfo extends EObject {
 	 * @generated
 	 */
 	void setUriSpec(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Connected</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Connected</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Connected</em>' attribute.
+	 * @see #setConnected(boolean)
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage#getComponentInfo_Connected()
+	 * @model
+	 * @generated
+	 */
+	boolean isConnected();
+
+	/**
+	 * Sets the value of the '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo#isConnected <em>Connected</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Connected</em>' attribute.
+	 * @see #isConnected()
+	 * @generated
+	 */
+	void setConnected(boolean value);
 
 } // ComponentInfo

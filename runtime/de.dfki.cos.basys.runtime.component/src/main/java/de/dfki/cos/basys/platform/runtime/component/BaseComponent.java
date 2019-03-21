@@ -3,6 +3,7 @@ package de.dfki.cos.basys.platform.runtime.component;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 import org.eclipse.emf.ecore.EObject;
@@ -53,7 +54,6 @@ public class BaseComponent implements Component, ChannelListener {
 	protected ComponentConfiguration componentConfig;
 	protected ComponentContext context;
 
-	protected boolean simulated = false;
 	
 	protected CommFactory cf = CommFactory.getInstance();
 	protected Client privateClient;
@@ -65,6 +65,8 @@ public class BaseComponent implements Component, ChannelListener {
 	protected ComponentRegistration registration;
 
 	private boolean connectedToExternal = false;
+	protected boolean observeExternalConnection = false;
+	private ScheduledFuture<?> externalConnectionHandle = null;
 	private boolean activated = false;
 	
 	//protected ComponentRequest pendingRequest;
@@ -73,15 +75,7 @@ public class BaseComponent implements Component, ChannelListener {
 		JsonUtils.factory = new BasysResourceSetImpl.Factory();
 		this.componentConfig = config;
 		LOGGER = LoggerFactory.getLogger("basys.component." + componentConfig.getComponentName().replaceAll(" ", "-"));
-		if (config.getSimulationConfiguration() == null) {
-			config.setSimulationConfiguration(new SimulationConfigurationImpl.Builder().build());
-		} else {
-			LOGGER.debug("using provided simulation config");
-		}
-		if (config.getProperty("simulated") != null) {
-			simulated = Boolean.parseBoolean(config.getProperty("simulated").getValue());
-			LOGGER.info("component is in SIMULATION mode");
-		}
+
 		
 	}
 
@@ -112,8 +106,6 @@ public class BaseComponent implements Component, ChannelListener {
 
 	@Override
 	public ControlMode getMode() {
-		if (simulated)
-			return ControlMode.SIMULATION;
 		return ControlMode.PRODUCTION;
 	}
 
@@ -124,7 +116,7 @@ public class BaseComponent implements Component, ChannelListener {
 
 	@Override
 	public void activate(ComponentContext context) throws ComponentException {
-		LOGGER.debug("activate");
+		LOGGER.info("activate");
 		if (!activated) {
 
 			if (context == null) {
@@ -135,20 +127,24 @@ public class BaseComponent implements Component, ChannelListener {
 			this.context = new ComponentContext(context);
 
 			if (componentConfig.getExternalConnectionString() != null && !componentConfig.getExternalConnectionString().equals("")) {
-				
-				LOGGER.debug("connectToExternal: " + getConfig().getExternalConnectionString());
+								
+				LOGGER.info("connectToExternal: " + getConfig().getExternalConnectionString());
 				try {
-					if (simulated) {
-						LOGGER.info("component is simulated, skipping connectToExternal()");
-					} else {
+					if (canConnectToExternal()) {
 						connectToExternal();
 						connectedToExternal = true;
+					} else {
+						LOGGER.warn("component cannot connectToExternal(), skip ...");
 					}
 					LOGGER.debug("connectToExternal - finished");
 				} catch (ComponentException e) {
 					LOGGER.error(e.getMessage());
+					LOGGER.warn("component could not connectToExternal()");
 					e.printStackTrace();
 				}
+				
+				observeExternalConnection();
+				
 			}
 			// else {
 			// LOGGER.warn("no device connection string provided, enter simulation mode");
@@ -166,12 +162,12 @@ public class BaseComponent implements Component, ChannelListener {
 				}
 			}
 			activated = true;
-			LOGGER.debug("activate - finished");
+			LOGGER.info("activate - finished");
 		} else {
 			LOGGER.info("already activated");
 		}
 	}
-
+	
 	@Override
 	public void deactivate() throws ComponentException {
 		if (activated) {
@@ -184,16 +180,69 @@ public class BaseComponent implements Component, ChannelListener {
 				}
 				disconnectFromBasys();
 			}
-			if (connectedToExternal) {
+			if (connectedToExternal) {				
+				unobserveExternalConnection();
 				disconnectFromExternal();
 				connectedToExternal = false;
 			}
 			activated = false;
 		}
 	}
+	
+	private void observeExternalConnection() {
+		if (observeExternalConnection) {
+			LOGGER.info("observeExternalConnection()");
+			externalConnectionHandle = context.getComponentManager().getScheduledExecutorService().scheduleWithFixedDelay(new Runnable() {
+				
+				@Override
+				public void run() {
+					
+					if (isConnectedToExternal()) {
+						try {
+							if (!canConnectToExternal()) {
+								connectedToExternal = false;
+							}
+						} catch (Exception e) {
+							connectedToExternal = false;
+						}						
+					}					
+					
+					if (!isConnectedToExternal()) {
+						LOGGER.info("connectToExternal: " + getConfig().getExternalConnectionString());
+						try {
+							if (canConnectToExternal()) {
+								connectToExternal();
+								connectedToExternal = true;
+							} else {
+								LOGGER.warn("component cannot connectToExternal(), retry ...");
+							}
+							LOGGER.debug("connectToExternal - finished");
+						} catch (ComponentException e) {
+							LOGGER.error(e.getMessage());
+							LOGGER.warn("component could not connectToExternal(), retry ...");
+							e.printStackTrace();
+						}
+					}
+					
+				}
+				
+			}, 5000, 5000, TimeUnit.MILLISECONDS);
+		}				
+	}
+	
+	private void unobserveExternalConnection() {
+		if (observeExternalConnection) {
+			LOGGER.info("unobserveExternalConnection()");
+			externalConnectionHandle.cancel(true);
+		}
+	}
 
 	public boolean isConnectedToExternal() {
 		return connectedToExternal;
+	}
+	
+	protected boolean canConnectToExternal() throws ComponentException {
+		return true;
 	}
 
 	public void connectToExternal() throws ComponentException {
@@ -267,7 +316,7 @@ public class BaseComponent implements Component, ChannelListener {
 			LOGGER.debug("not registered");
 		}
 	}
-
+	
 	@Override
 	public ComponentInfo getComponentInfo() {
 		ComponentInfo componentInfo = new ComponentInfoImpl.Builder()
@@ -281,6 +330,7 @@ public class BaseComponent implements Component, ChannelListener {
 				.statusChannelName(Component.baseStatusChannelName + "#" + getId())
 				.currentState(getState())
 				.currentMode(getMode())
+				.isConnected(isConnectedToExternal())
 				//.properties(getConfig().getProperties())
 				.build();
 		return componentInfo;		

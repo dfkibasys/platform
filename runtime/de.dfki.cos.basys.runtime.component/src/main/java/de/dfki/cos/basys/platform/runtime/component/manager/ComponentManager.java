@@ -4,6 +4,7 @@ package de.dfki.cos.basys.platform.runtime.component.manager;
 
 import java.io.File;
 import java.util.List;
+import java.util.concurrent.ScheduledExecutorService;
 
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
 import de.dfki.cos.basys.platform.runtime.component.Component;
@@ -61,6 +62,6 @@ public interface ComponentManager {
 	 */
 	void deleteLocalComponent(String id) throws ComponentManagerException;
 	
-	
+	ScheduledExecutorService getScheduledExecutorService();
 
 } // ComponentManager

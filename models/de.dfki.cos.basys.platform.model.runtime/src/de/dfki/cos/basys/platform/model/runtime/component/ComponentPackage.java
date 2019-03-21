@@ -178,13 +178,22 @@ public interface ComponentPackage extends EPackage {
 	int COMPONENT_INFO__URI_SPEC = 11;
 
 	/**
+	 * The feature id for the '<em><b>Connected</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_INFO__CONNECTED = 12;
+
+	/**
 	 * The number of structural features of the '<em>Info</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_INFO_FEATURE_COUNT = 12;
+	int COMPONENT_INFO_FEATURE_COUNT = 13;
 
 	/**
 	 * The number of operations of the '<em>Info</em>' class.
@@ -1485,6 +1494,17 @@ public interface ComponentPackage extends EPackage {
 	EAttribute getComponentInfo_UriSpec();
 
 	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo#isConnected <em>Connected</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Connected</em>'.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo#isConnected()
+	 * @see #getComponentInfo()
+	 * @generated
+	 */
+	EAttribute getComponentInfo_Connected();
+
+	/**
 	 * Returns the meta object for class '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration <em>Configuration</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2502,6 +2522,14 @@ public interface ComponentPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute COMPONENT_INFO__URI_SPEC = eINSTANCE.getComponentInfo_UriSpec();
+
+		/**
+		 * The meta object literal for the '<em><b>Connected</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMPONENT_INFO__CONNECTED = eINSTANCE.getComponentInfo_Connected();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentConfigurationImpl <em>Configuration</em>}' class.

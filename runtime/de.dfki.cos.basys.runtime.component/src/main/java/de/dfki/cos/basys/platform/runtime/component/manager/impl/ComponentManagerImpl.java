@@ -31,7 +31,7 @@ public class ComponentManagerImpl extends BaseComponent implements ComponentMana
 
 	private Map<String, Component> components = new HashMap<>();
 	
-	private ScheduledExecutorService scheduledExecutorService =  Executors.newScheduledThreadPool(1);
+	private ScheduledExecutorService scheduledExecutorService =  Executors.newScheduledThreadPool(32);
 	
 	public ComponentManagerImpl(ComponentConfiguration config) {
 		super(config);
@@ -212,6 +212,10 @@ public class ComponentManagerImpl extends BaseComponent implements ComponentMana
 				createLocalComponents(entry ,recursive);
 			}		
 		}
+	}
+	
+	public ScheduledExecutorService getScheduledExecutorService() {
+		return scheduledExecutorService;
 	}
 
 }

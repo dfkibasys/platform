@@ -11,8 +11,8 @@ import de.dfki.cos.basys.platform.model.runtime.component.impl.CapabilityRequest
 import de.dfki.cos.basys.platform.model.runtime.component.impl.ChangeModeRequestImpl;
 import de.dfki.cos.basys.platform.model.runtime.component.impl.CommandRequestImpl;
 import de.dfki.cos.basys.platform.runtime.component.ComponentController;
-import de.dfki.cos.basys.platform.runtime.component.device.packml.CommandInterface;
-import de.dfki.cos.basys.platform.runtime.component.device.packml.UnitConfiguration;
+import de.dfki.cos.basys.platform.runtime.component.packml.CommandInterface;
+import de.dfki.cos.basys.platform.runtime.component.packml.UnitConfiguration;
 
 public class DeviceComponentController extends ComponentController implements CommandInterface {
 

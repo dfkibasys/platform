@@ -154,6 +154,7 @@
       <genEnumLiterals ecoreEnumLiteral="component.ecore#//ComponentCategory/SERVICE_COMPONENT"/>
       <genEnumLiterals ecoreEnumLiteral="component.ecore#//ComponentCategory/DEVICE_COMPONENT"/>
       <genEnumLiterals ecoreEnumLiteral="component.ecore#//ComponentCategory/MANAGEMENT_COMPONENT"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ComponentCategory/PROCESS_COMPONENT"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="component.ecore#//State">
       <genEnumLiterals ecoreEnumLiteral="component.ecore#//State/UNDEFINED"/>
@@ -232,6 +233,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentInfo/connectionString"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentInfo/hostName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentInfo/uriSpec"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentInfo/connected"/>
     </genClasses>
     <genClasses image="false" ecoreClass="component.ecore#//ComponentConfiguration">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentConfiguration/componentId"/>

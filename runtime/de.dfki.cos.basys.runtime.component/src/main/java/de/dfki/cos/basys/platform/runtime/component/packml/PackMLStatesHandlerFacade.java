@@ -1,27 +1,31 @@
-package de.dfki.cos.basys.platform.runtime.component.device;
+package de.dfki.cos.basys.platform.runtime.component.packml;
 
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
 import de.dfki.cos.basys.platform.model.runtime.component.State;
-import de.dfki.cos.basys.platform.runtime.component.device.packml.ActiveStatesHandler;
-import de.dfki.cos.basys.platform.runtime.component.device.packml.WaitStatesHandler;
+import de.dfki.cos.basys.platform.runtime.component.BaseComponent;
 
 public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitStatesHandler {
 
-	DeviceComponent component;
+	PackMLComponent component;
 
 	boolean notifyStateChanges = true;
 	boolean recordStateChanges = false;
 
 	private LinkedBlockingQueue<State> recentStates = new LinkedBlockingQueue<>();
 	
-	public PackMLStatesHandlerFacade(DeviceComponent component) {
+	public PackMLStatesHandlerFacade(PackMLComponent component) {
 		this.component = component;
-		if (component.getConfig().getProperty("unittesting") != null) {
-			recordStateChanges = Boolean.parseBoolean(component.getConfig().getProperty("unittesting").getValue());
+		if (component.getConfig().getProperty("notifyStateChanges") != null) {
+			notifyStateChanges = Boolean.parseBoolean(component.getConfig().getProperty("notifyStateChanges").getValue());
 			component.LOGGER.info("component is under unit test");
 		}
+		if (component.getConfig().getProperty("recordStateChanges") != null) {
+			recordStateChanges = Boolean.parseBoolean(component.getConfig().getProperty("recordStateChanges").getValue());
+			component.LOGGER.info("component is under unit test");
+		}
+		
 	}
 	
 	public LinkedBlockingQueue<State> getRecentStates() {

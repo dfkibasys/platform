@@ -1,18 +1,18 @@
-package de.dfki.cos.basys.platform.runtime.component.device;
+package de.dfki.cos.basys.platform.runtime.component.packml;
 
 import java.util.concurrent.TimeUnit;
 
 import de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus;
 import de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration;
-import de.dfki.cos.basys.platform.runtime.component.device.packml.ActiveStatesHandler;
+import de.dfki.cos.basys.platform.runtime.component.BaseComponent;
 
 public class SimulatedStatesHandler implements ActiveStatesHandler {
 
-	private DeviceComponent component;
+	private PackMLComponent component;
 	private SimulationConfiguration config;
 	private double speedFactor = 1.0;
 	
-	public SimulatedStatesHandler(DeviceComponent component) {
+	public SimulatedStatesHandler(PackMLComponent component) {
 		this.component = component;
 		this.config = component.getConfig().getSimulationConfiguration();
 	}

@@ -23,12 +23,14 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="connectionString" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="hostName" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="uriSpec" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="connected" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ComponentCategory">
     <eLiterals name="NONE"/>
     <eLiterals name="SERVICE_COMPONENT" value="1"/>
     <eLiterals name="DEVICE_COMPONENT" value="2"/>
     <eLiterals name="MANAGEMENT_COMPONENT" value="3"/>
+    <eLiterals name="PROCESS_COMPONENT" value="4" literal="PROCESS_COMPONENT"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ComponentConfiguration">
     <eOperations name="getProperty" eType="#//Property">

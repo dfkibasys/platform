@@ -26,8 +26,8 @@ import de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus;
 import de.dfki.cos.basys.platform.model.runtime.component.State;
 import de.dfki.cos.basys.platform.model.runtime.component.impl.CapabilityRequestImpl;
 import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
-import de.dfki.cos.basys.platform.runtime.component.device.packml.StatusInterface;
-import de.dfki.cos.basys.platform.runtime.component.device.packml.UnitConfiguration;
+import de.dfki.cos.basys.platform.runtime.component.packml.StatusInterface;
+import de.dfki.cos.basys.platform.runtime.component.packml.UnitConfiguration;
 
 public class ComponentController implements ChannelListener, StatusInterface {
 

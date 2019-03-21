@@ -22,6 +22,8 @@ import java.io.IOException;
  */
 
 import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -48,5 +50,17 @@ public class CommUtils {
 		throw new UnknownHostException("Cannot reach the BaSys 4.0 middleware");
 		
 	}
+	
+    public static boolean isServerListening(String serverHost, int serverPort, int timeoutMs) {
+        try (Socket s = new Socket()) {
+            s.connect(new InetSocketAddress(serverHost, serverPort), timeoutMs);
+            s.close();
+            return true;
+        } catch (Exception e) {  
+            //String errMsg = String.format("Can't connect to [%s:%d] (timeout was %d ms) - %s, - %s", serverHost, serverPort, timeoutMs, exDetails, e.getMessage());
+            //throw new IllegalStateException(errMsg);
+        }
+        return false;
+    }
 	
 }

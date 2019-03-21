@@ -1,4 +1,4 @@
-package de.dfki.cos.basys.platform.runtime.component.device.packml;
+package de.dfki.cos.basys.platform.runtime.component.packml;
 
 import java.util.HashMap;
 

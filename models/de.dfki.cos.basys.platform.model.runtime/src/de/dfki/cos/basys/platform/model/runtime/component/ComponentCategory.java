@@ -56,7 +56,15 @@ public enum ComponentCategory implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	MANAGEMENT_COMPONENT(3, "MANAGEMENT_COMPONENT", "MANAGEMENT_COMPONENT");
+	MANAGEMENT_COMPONENT(3, "MANAGEMENT_COMPONENT", "MANAGEMENT_COMPONENT"), /**
+	 * The '<em><b>PROCESS COMPONENT</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #PROCESS_COMPONENT_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	PROCESS_COMPONENT(4, "PROCESS_COMPONENT", "PROCESS_COMPONENT");
 
 	/**
 	 * The '<em><b>NONE</b></em>' literal value.
@@ -119,6 +127,21 @@ public enum ComponentCategory implements Enumerator {
 	public static final int MANAGEMENT_COMPONENT_VALUE = 3;
 
 	/**
+	 * The '<em><b>PROCESS COMPONENT</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>PROCESS COMPONENT</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #PROCESS_COMPONENT
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int PROCESS_COMPONENT_VALUE = 4;
+
+	/**
 	 * An array of all the '<em><b>Category</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -130,6 +153,7 @@ public enum ComponentCategory implements Enumerator {
 			SERVICE_COMPONENT,
 			DEVICE_COMPONENT,
 			MANAGEMENT_COMPONENT,
+			PROCESS_COMPONENT,
 		};
 
 	/**
@@ -190,6 +214,7 @@ public enum ComponentCategory implements Enumerator {
 			case SERVICE_COMPONENT_VALUE: return SERVICE_COMPONENT;
 			case DEVICE_COMPONENT_VALUE: return DEVICE_COMPONENT;
 			case MANAGEMENT_COMPONENT_VALUE: return MANAGEMENT_COMPONENT;
+			case PROCESS_COMPONENT_VALUE: return PROCESS_COMPONENT;
 		}
 		return null;
 	}

@@ -237,7 +237,7 @@ public enum State implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int IDLE_VALUE = 3;
+	public static final int IDLE_VALUE = 4;
 
 	/**
 	 * The '<em><b>SUSPENDED</b></em>' literal value.
@@ -520,6 +520,7 @@ public enum State implements Enumerator {
 			case CLEARING_VALUE: return CLEARING;
 			case STOPPED_VALUE: return STOPPED;
 			case STARTING_VALUE: return STARTING;
+			case IDLE_VALUE: return IDLE;
 			case SUSPENDED_VALUE: return SUSPENDED;
 			case EXECUTE_VALUE: return EXECUTE;
 			case STOPPING_VALUE: return STOPPING;

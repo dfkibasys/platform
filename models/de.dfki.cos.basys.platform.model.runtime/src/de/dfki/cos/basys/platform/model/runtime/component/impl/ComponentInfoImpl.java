@@ -33,6 +33,7 @@ import de.dfki.cos.basys.platform.model.runtime.component.State;
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentInfoImpl#getConnectionString <em>Connection String</em>}</li>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentInfoImpl#getHostName <em>Host Name</em>}</li>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentInfoImpl#getUriSpec <em>Uri Spec</em>}</li>
+ *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentInfoImpl#isConnected <em>Connected</em>}</li>
  * </ul>
  *
  * @generated
@@ -277,6 +278,26 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 	 * @ordered
 	 */
 	protected String uriSpec = URI_SPEC_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isConnected() <em>Connected</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isConnected()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean CONNECTED_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isConnected() <em>Connected</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isConnected()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean connected = CONNECTED_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -578,6 +599,27 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isConnected() {
+		return connected;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setConnected(boolean newConnected) {
+		boolean oldConnected = connected;
+		connected = newConnected;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.COMPONENT_INFO__CONNECTED, oldConnected, connected));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -605,6 +647,8 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 				return getHostName();
 			case ComponentPackage.COMPONENT_INFO__URI_SPEC:
 				return getUriSpec();
+			case ComponentPackage.COMPONENT_INFO__CONNECTED:
+				return isConnected();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -654,6 +698,9 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 			case ComponentPackage.COMPONENT_INFO__URI_SPEC:
 				setUriSpec((String)newValue);
 				return;
+			case ComponentPackage.COMPONENT_INFO__CONNECTED:
+				setConnected((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -702,6 +749,9 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 			case ComponentPackage.COMPONENT_INFO__URI_SPEC:
 				setUriSpec(URI_SPEC_EDEFAULT);
 				return;
+			case ComponentPackage.COMPONENT_INFO__CONNECTED:
+				setConnected(CONNECTED_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -738,6 +788,8 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 				return HOST_NAME_EDEFAULT == null ? hostName != null : !HOST_NAME_EDEFAULT.equals(hostName);
 			case ComponentPackage.COMPONENT_INFO__URI_SPEC:
 				return URI_SPEC_EDEFAULT == null ? uriSpec != null : !URI_SPEC_EDEFAULT.equals(uriSpec);
+			case ComponentPackage.COMPONENT_INFO__CONNECTED:
+				return connected != CONNECTED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -776,6 +828,8 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 		result.append(hostName);
 		result.append(", uriSpec: ");
 		result.append(uriSpec);
+		result.append(", connected: ");
+		result.append(connected);
 		result.append(')');
 		return result.toString();
 	}
@@ -793,6 +847,7 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 		private String connectionString;
 		private String hostName;
 		private String uriSpec;
+		private boolean connected; 
 		//private List<Property> properties;
 
 		public Builder componentId(String componentId) {
@@ -855,6 +910,11 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 			return this;
 		}
 		
+		public Builder isConnected(boolean connected) {
+			this.connected = connected;
+			return this;
+		}
+		
 //		public Builder properties(List<Property> properties) {
 //			this.properties = properties;
 //			return this;
@@ -878,6 +938,7 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 		this.connectionString = builder.connectionString;
 		this.hostName = builder.hostName;
 		this.uriSpec = builder.uriSpec;
+		this.connected = builder.connected;
 		//this.getProperties().addAll(builder.properties);
 	}
 }

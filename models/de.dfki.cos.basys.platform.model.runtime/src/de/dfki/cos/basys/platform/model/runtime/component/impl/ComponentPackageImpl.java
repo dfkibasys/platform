@@ -419,6 +419,15 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getComponentInfo_Connected() {
+		return (EAttribute)componentInfoEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getComponentConfiguration() {
 		return componentConfigurationEClass;
 	}
@@ -1202,6 +1211,7 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		createEAttribute(componentInfoEClass, COMPONENT_INFO__CONNECTION_STRING);
 		createEAttribute(componentInfoEClass, COMPONENT_INFO__HOST_NAME);
 		createEAttribute(componentInfoEClass, COMPONENT_INFO__URI_SPEC);
+		createEAttribute(componentInfoEClass, COMPONENT_INFO__CONNECTED);
 
 		componentConfigurationEClass = createEClass(COMPONENT_CONFIGURATION);
 		createEAttribute(componentConfigurationEClass, COMPONENT_CONFIGURATION__COMPONENT_ID);
@@ -1355,6 +1365,7 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		initEAttribute(getComponentInfo_ConnectionString(), theEcorePackage.getEString(), "connectionString", null, 0, 1, ComponentInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getComponentInfo_HostName(), theEcorePackage.getEString(), "hostName", null, 0, 1, ComponentInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getComponentInfo_UriSpec(), theEcorePackage.getEString(), "uriSpec", null, 0, 1, ComponentInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getComponentInfo_Connected(), theEcorePackage.getEBoolean(), "connected", null, 0, 1, ComponentInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(componentConfigurationEClass, ComponentConfiguration.class, "ComponentConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getComponentConfiguration_ComponentId(), theEcorePackage.getEString(), "componentId", null, 0, 1, ComponentConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1460,6 +1471,7 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		addEEnumLiteral(componentCategoryEEnum, ComponentCategory.SERVICE_COMPONENT);
 		addEEnumLiteral(componentCategoryEEnum, ComponentCategory.DEVICE_COMPONENT);
 		addEEnumLiteral(componentCategoryEEnum, ComponentCategory.MANAGEMENT_COMPONENT);
+		addEEnumLiteral(componentCategoryEEnum, ComponentCategory.PROCESS_COMPONENT);
 
 		initEEnum(stateEEnum, State.class, "State");
 		addEEnumLiteral(stateEEnum, State.UNDEFINED);
