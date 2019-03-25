@@ -321,7 +321,7 @@ public class BaseComponent implements Component, ChannelListener {
 				.statusChannelName(Component.baseStatusChannelName + "#" + getId())
 				.currentState(getState())
 				.currentMode(getMode())
-				.isConnected(isConnectedToExternal())
+				//.isConnected(isConnectedToExternal())
 				//.properties(getConfig().getProperties())
 				.build();
 		return componentInfo;		
