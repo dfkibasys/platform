@@ -1,6 +1,7 @@
 package de.dfki.cos.basys.platform.runtime.processcontrol.impl;
 
 import java.io.IOException;
+import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
@@ -124,6 +125,9 @@ public class ProcessControllerImpl extends ServiceComponent implements ProcessCo
 			
 			if (ComponentPackage.eINSTANCE.getComponentRequest().isSuperTypeOf(payload.eClass())) {
 				ComponentRequest request = (ComponentRequest)payload;
+				if (request.getCorrelationId() == null) {
+					request.setCorrelationId(UUID.randomUUID().toString());
+				}
 				scheduleTask(new TaskDescription(request));
 			} else if (payload.eClass().equals(ComponentPackage.eINSTANCE.getProcessRequest())) {
 				ProcessRequest request = (ProcessRequest)payload;
