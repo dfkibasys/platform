@@ -64,7 +64,7 @@ public class BaseComponent implements Component, ChannelListener {
 
 	protected ComponentRegistration registration;
 
-	private boolean connectedToExternal = false;
+	protected boolean connectedToExternal = false;
 	protected boolean observeExternalConnection = false;
 	private ScheduledFuture<?> externalConnectionHandle = null;
 	private boolean activated = false;
@@ -140,7 +140,8 @@ public class BaseComponent implements Component, ChannelListener {
 				} catch (ComponentException e) {
 					LOGGER.error(e.getMessage());
 					LOGGER.warn("component could not connectToExternal()");
-					e.printStackTrace();
+					//e.printStackTrace();
+					connectedToExternal = false;
 				}
 				
 				observeExternalConnection();
@@ -195,24 +196,14 @@ public class BaseComponent implements Component, ChannelListener {
 			externalConnectionHandle = context.getComponentManager().getScheduledExecutorService().scheduleWithFixedDelay(new Runnable() {
 				
 				@Override
-				public void run() {
-					
-					if (isConnectedToExternal()) {
-						try {
-							if (!canConnectToExternal()) {
-								connectedToExternal = false;
-							}
-						} catch (Exception e) {
-							connectedToExternal = false;
-						}						
-					}					
+				public void run() {			
 					
 					if (!isConnectedToExternal()) {
 						LOGGER.info("connectToExternal: " + getConfig().getExternalConnectionString());
 						try {
 							if (canConnectToExternal()) {
 								connectToExternal();
-								connectedToExternal = true;
+								//connectedToExternal = true;
 							} else {
 								LOGGER.warn("component cannot connectToExternal(), retry ...");
 							}

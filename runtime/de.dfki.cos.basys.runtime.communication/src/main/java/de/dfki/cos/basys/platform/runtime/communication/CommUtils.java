@@ -54,8 +54,9 @@ public class CommUtils {
     public static boolean isServerListening(String serverHost, int serverPort, int timeoutMs) {
         try (Socket s = new Socket()) {
             s.connect(new InetSocketAddress(serverHost, serverPort), timeoutMs);
+            boolean result = s.isConnected();
             s.close();
-            return true;
+            return result;
         } catch (Exception e) {  
             //String errMsg = String.format("Can't connect to [%s:%d] (timeout was %d ms) - %s, - %s", serverHost, serverPort, timeoutMs, exDetails, e.getMessage());
             //throw new IllegalStateException(errMsg);
