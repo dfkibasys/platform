@@ -18,6 +18,6 @@
   <packaging>pom</packaging>
   
   <properties>
-	<version.basys.common>0.2.4</version.basys.common>
+	<version.basys.common>0.2.5-SNAPSHOT</version.basys.common>
   </properties>
 </project>
