@@ -60,6 +60,7 @@ public abstract class XmlRpcDeviceComponent extends DeviceComponent {
 			result = !s.isClosed() && s.isConnected();			
 			s.close();
         } catch (Exception e) {  
+        	LOGGER.warn("!!!!!!!!!!!! CONNECTION LOST !!!!!!!!!!!!");
         	LOGGER.warn(e.getMessage());
          	result = false;
         }		

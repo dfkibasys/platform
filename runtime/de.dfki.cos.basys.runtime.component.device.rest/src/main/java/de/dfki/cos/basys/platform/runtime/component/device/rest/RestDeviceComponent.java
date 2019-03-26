@@ -40,17 +40,19 @@ public abstract class RestDeviceComponent extends DeviceComponent {
 		boolean result = true;
 		try (Socket s = new Socket()) {
 			URL url = new URL(getConfig().getExternalConnectionString());
-			s.connect(new InetSocketAddress(url.getHost(), url.getPort()), 2000);   	
+			int port = url.getPort() > 0 ? url.getPort() : 80;
+			s.connect(new InetSocketAddress(url.getHost(), port), 2000);   	
 			result = !s.isClosed() && s.isConnected();			
 			s.close();
         } catch (Exception e) {  
+        	LOGGER.warn("!!!!!!!!!!!! CONNECTION LOST !!!!!!!!!!!!");
         	LOGGER.warn(e.getMessage());
          	result = false;
         }		
 		if (result != connectedToExternal) {
 			LOGGER.info("connectedToExternal changed: " + result);
 			connectedToExternal = result;
-			updateRegistrationAndNotify();
+			//updateRegistrationAndNotify();
 		}
 		return result;
 	}
