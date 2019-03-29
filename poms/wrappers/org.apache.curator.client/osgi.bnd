@@ -13,6 +13,6 @@ Import-Package: \
 	!org.apache.curator.shaded.com.google.errorprone.annotations.concurrent,\
 	*
 Export-Package: \
-	org.apache.curator.shaded.*;version=,\
+	org.apache.curator.shaded.*;\
 	*
 Require-Bundle: com.google.guava;bundle-version="20.0.0"
