@@ -41,7 +41,7 @@ public class ProcessControllerImpl extends ServiceComponent implements ProcessCo
 
 	@Override
 	public void connectToExternal() throws ComponentException {
-		provider = new CamundaProcessControllerProvider(getConfig().getExternalConnectionString(), this);
+		provider = new CamundaProcessControllerProvider(getConfig(), this);
 		provider.activate();
 	}	
 	

@@ -13,11 +13,13 @@ import org.slf4j.LoggerFactory;
 
 import de.dfki.cos.basys.common.emf.json.JsonUtils;
 import de.dfki.cos.basys.platform.model.runtime.component.CommandRequest;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentFactory;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest;
 import de.dfki.cos.basys.platform.model.runtime.component.ProcessRequest;
 import de.dfki.cos.basys.platform.model.runtime.component.ProcessRequestStatus;
 import de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus;
+import de.dfki.cos.basys.platform.model.runtime.component.impl.SimulationConfigurationImpl;
 import de.dfki.cos.basys.platform.runtime.component.ComponentContext;
 import de.dfki.cos.basys.platform.runtime.component.ComponentException;
 import de.dfki.cos.basys.platform.runtime.processcontrol.ProcessControllerProvider;
@@ -28,25 +30,57 @@ public class CamundaProcessControllerProvider implements ProcessControllerProvid
 
 	Logger LOGGER = LoggerFactory.getLogger(this.getClass().getName());
 	
-	String restEndpoint;
-	String workerId = this.getClass().getName();
 	ProcessControllerImpl controller;
-	CamundaRestClient client;
+	CamundaRestClient client;	
 	
 	BlockingQueue<TaskDescription> responseQueue = new LinkedBlockingQueue<TaskDescription>(32);
 
 	ScheduledExecutorService executor = Executors.newScheduledThreadPool(32);
-	
+
+	String workerId = this.getClass().getName();
+	int maxFetchCount = 1;
+	long lockDuration = 24 * 60 * 60 * 1000; // 1 day
 	long asyncResponseTimeout = 10000; // Long Polling request timeout in milliseconds
+	int maxRetryCount = 0;
+	int retryTimeout = 1000;
 	
-	
-	public CamundaProcessControllerProvider(String restEndpoint, ProcessControllerImpl controller) {
-		if (restEndpoint.endsWith("/"))
-			this.restEndpoint = restEndpoint.substring(0, restEndpoint.length()-1);
-		else 
-			this.restEndpoint = restEndpoint;
+	public CamundaProcessControllerProvider(ComponentConfiguration config, ProcessControllerImpl controller) {
 		
-		this.client = new CamundaRestClient(workerId, this.restEndpoint);
+		String restEndpoint = config.getExternalConnectionString();
+		if (restEndpoint.endsWith("/"))
+			restEndpoint = restEndpoint.substring(0, restEndpoint.length()-1);			
+		
+		if (config.getProperty("workerId") != null) {
+			workerId = config.getProperty("workerId").getValue();
+			LOGGER.info("workerId = " + workerId);
+		}
+		
+		if (config.getProperty("maxFetchCount") != null) {
+			maxFetchCount = Integer.parseInt(config.getProperty("maxFetchCount").getValue());
+			LOGGER.info("maxFetchCount = " + maxFetchCount);
+		}	
+		
+		if (config.getProperty("lockDuration") != null) {
+			lockDuration = Long.parseLong(config.getProperty("lockDuration").getValue());
+			LOGGER.info("lockDuration = " + lockDuration);
+		}	
+		
+		if (config.getProperty("asyncResponseTimeout") != null) {
+			asyncResponseTimeout = Long.parseLong(config.getProperty("asyncResponseTimeout").getValue());
+			LOGGER.info("asyncResponseTimeout = " + asyncResponseTimeout);
+		}	
+
+		if (config.getProperty("maxRetryCount") != null) {
+			maxRetryCount = Integer.parseInt(config.getProperty("maxRetryCount").getValue());
+			LOGGER.info("maxRetryCount = " + maxRetryCount);
+		}	
+		
+		if (config.getProperty("retryTimeout") != null) {
+			retryTimeout = Integer.parseInt(config.getProperty("retryTimeout").getValue());
+			LOGGER.info("retryTimeout = " + retryTimeout);
+		}			
+		
+		this.client = new CamundaRestClient(workerId, restEndpoint);
 		this.controller = controller;
 	}
 	
@@ -123,18 +157,16 @@ public class CamundaProcessControllerProvider implements ProcessControllerProvid
 
 		LOGGER.debug("pollCamunda");
 
-		 long lockDuration = 24 * 60 * 60 * 1000;
-		//long lockDuration = 5 * 60 * 1000;
-		List<ExternalServiceTaskDto> tasks = client.getExternalTasks("BasysTask", 3, lockDuration, asyncResponseTimeout, "assignee", "command", "parameters");
+		List<ExternalServiceTaskDto> tasks = client.getExternalTasks("BasysTask", maxFetchCount, lockDuration, asyncResponseTimeout, "assignee", "command", "parameters");
 
 		LOGGER.debug("pollCamunda fetched " + tasks.size() + " tasks" );
 		for (ExternalServiceTaskDto task : tasks) {
 			if (task.variables.assignee == null || task.variables.assignee.value == null) {
-				client.handleError(task.id, "ExternalTask does not contain an assignee", 0, 1000);
+				client.handleError(task.id, "ExternalTask does not contain an assignee", maxRetryCount, retryTimeout);
 				continue;
 			}
 			if (task.variables.command == null || task.variables.command.value == null) {
-				client.handleError(task.id, "ExternalTask does not contain a command", 0, 1000);
+				client.handleError(task.id, "ExternalTask does not contain a command", maxRetryCount, retryTimeout);
 				continue;
 			}
 			

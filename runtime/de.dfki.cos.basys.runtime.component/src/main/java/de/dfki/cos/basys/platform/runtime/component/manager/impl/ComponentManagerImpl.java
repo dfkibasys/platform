@@ -121,7 +121,7 @@ public class ComponentManagerImpl extends BaseComponent implements ComponentMana
 
 	@Override
 	public Component createLocalComponent(ComponentConfiguration config) throws ComponentManagerException {
-		
+		//FIXME: actually, we must check globally via the registry
 		if (components.containsKey(config.getComponentId())) {
 			Component old = components.get(config.getComponentId());
 			LOGGER.error("Duplicate component with Id: " + config.getComponentId());
