@@ -80,13 +80,15 @@ public class CamundaRestClient {
 
 		// String resultE = response.readEntity(String.class);
 
+		if (response.getStatus() != 200) {		
+			LOGGER.warn("getExternalTasks finished with status code " + response.getStatus() + " - " + response.getStatusInfo());
+		}
 		
-		LOGGER.debug("getExternalTasks finished with status code " + response.getStatus() + " - " + response.getStatusInfo());
 		try {
 			List<ExternalServiceTaskDto> result = response.readEntity(new GenericType<List<ExternalServiceTaskDto>>() {
 			});
 			
-			LOGGER.debug("retrieved " + result.size() + " tasks");
+			//LOGGER.debug("retrieved " + result.size() + " tasks");
 			
 			for (ExternalServiceTaskDto task : result) {
 				taskToProcessInstanceMap.put(task.getId(),task.getProcessInstanceId());

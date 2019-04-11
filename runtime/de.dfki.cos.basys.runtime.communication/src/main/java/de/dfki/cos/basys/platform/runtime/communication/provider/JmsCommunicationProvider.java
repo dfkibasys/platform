@@ -148,7 +148,7 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 
 	@Override
 	public void doOpenChannel(Channel channel) throws ProviderException {
-		LOGGER.debug("doOpenChannel: " + channel.getName());
+		LOGGER.trace("doOpenChannel: " + channel.getName());
 
 		JmsDestination internalDestination = this.destinations.get(channel.getId());
 
@@ -309,7 +309,7 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 
 	@Override
 	public void doSendMessage(Channel channel, String payload) throws ProviderException {
-		LOGGER.debug("doSendMessage: " + channel.getName());
+		LOGGER.trace("doSendMessage: " + channel.getName());
 
 		JmsDestination internal_destination = this.destinations.get(channel.getId());
 
@@ -335,7 +335,7 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 
 	@Override
 	public void doSendRequest(Channel channel, Request req, ResponseCallback cb) throws ProviderException {
-		LOGGER.debug("doSendRequest: " + channel.getName());
+		LOGGER.trace("doSendRequest: " + channel.getName());
 
 		JmsDestination internal_destination = this.destinations.get(channel.getId());
 
@@ -371,7 +371,7 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 
 	@Override
 	public void doSendNotification(Channel channel, Notification not) throws ProviderException {
-		LOGGER.debug("doSendNotification: " + channel.getName());
+		LOGGER.trace("doSendNotification: " + channel.getName());
 
 		JmsDestination internal_destination = this.destinations.get(channel.getId());
 

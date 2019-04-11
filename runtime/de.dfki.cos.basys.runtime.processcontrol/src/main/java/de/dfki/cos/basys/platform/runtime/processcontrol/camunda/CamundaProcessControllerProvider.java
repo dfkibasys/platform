@@ -155,11 +155,14 @@ public class CamundaProcessControllerProvider implements ProcessControllerProvid
 
 	private void pollCamunda() {
 
-		LOGGER.debug("pollCamunda");
+		LOGGER.trace("pollCamunda");
 
 		List<ExternalServiceTaskDto> tasks = client.getExternalTasks("BasysTask", maxFetchCount, lockDuration, asyncResponseTimeout, "assignee", "command", "parameters");
-
-		LOGGER.debug("pollCamunda fetched " + tasks.size() + " tasks" );
+		
+		if (tasks.size() > 0) {
+			LOGGER.info("pollCamunda fetched " + tasks.size() + " task(s)" );
+		}
+		
 		for (ExternalServiceTaskDto task : tasks) {
 			if (task.variables.assignee == null || task.variables.assignee.value == null) {
 				client.handleError(task.id, "ExternalTask does not contain an assignee", maxRetryCount, retryTimeout);

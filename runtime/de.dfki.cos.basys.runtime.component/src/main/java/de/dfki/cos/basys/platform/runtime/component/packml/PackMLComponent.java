@@ -91,18 +91,20 @@ public abstract class PackMLComponent extends BaseComponent implements StatusInt
 
 	protected void updateRegistrationAndNotify() {
 
-		LOGGER.debug("updateRegistrationAndNotify");
+		LOGGER.trace("updateRegistrationAndNotify");
 		// TODO: something like:Notification not = createStatusUpdate();
 
 		LOGGER.info(String.format("component '%s' (id=%s) is now in state %s and mode %s", getName(), getId(), getState(), getMode()));
 
 		if (statusChannel != null && statusChannel.isOpen()) {
-			LOGGER.debug("send status update notification");
+			LOGGER.trace("send status update notification");
 			try {
 				ComponentInfo info = getComponentInfo();
 				Notification not = cf.createNotification(JsonUtils.toString(info));
 				statusChannel.sendNotification(not);
 			} catch (ChannelException | JsonProcessingException e) {
+				LOGGER.warn("could not send status update notification");
+				LOGGER.warn(e.getMessage());
 				e.printStackTrace();
 			}
 		} else {
@@ -110,17 +112,18 @@ public abstract class PackMLComponent extends BaseComponent implements StatusInt
 		}
 		if (registration != null) {
 			try {
-				LOGGER.debug("update registration");
+				LOGGER.trace("update registration");
 				registration.update();
 			} catch (ComponentRegistrationException e) {
-				// TODO Auto-generated catch block
+				LOGGER.warn("could not update registration");
+				LOGGER.warn(e.getMessage());
 				e.printStackTrace();
 			}
 		} else {
 			LOGGER.info("cannot update registration, not registered");
 		}
 
-		LOGGER.debug("updateRegistrationAndNotify - finished");
+		LOGGER.trace("updateRegistrationAndNotify - finished");
 	}	
 	
 	public void awaitExecuteComplete() {
@@ -177,6 +180,8 @@ public abstract class PackMLComponent extends BaseComponent implements StatusInt
 
 	@Override
 	protected ComponentRequestStatus handleCommandRequest(CommandRequest req) {
+		LOGGER.info(String.format("Execute command request '%s'", req.getControlCommand()));
+		
 		ComponentRequestStatus status = null;
 		switch (req.getControlCommand()) {
 		case ABORT:

@@ -19,11 +19,11 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 		this.component = component;
 		if (component.getConfig().getProperty("notifyStateChanges") != null) {
 			notifyStateChanges = Boolean.parseBoolean(component.getConfig().getProperty("notifyStateChanges").getValue());
-			component.LOGGER.info("component is under unit test");
+			component.LOGGER.info("notifyStateChanges=" + notifyStateChanges);
 		}
 		if (component.getConfig().getProperty("recordStateChanges") != null) {
 			recordStateChanges = Boolean.parseBoolean(component.getConfig().getProperty("recordStateChanges").getValue());
-			component.LOGGER.info("component is under unit test");
+			component.LOGGER.info("recordStateChanges=" + recordStateChanges);
 		}
 		
 	}
@@ -48,68 +48,68 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 
 	@Override
 	public void onStopped() {		
-		component.LOGGER.info("onStopped - start");
+		component.LOGGER.debug("onStopped - start");
 		if (notifyStateChanges)
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(component.getState());
 		component.onStopped();
-		component.LOGGER.info("onStopped - finished");
+		component.LOGGER.debug("onStopped - finished");
 	}
 
 	@Override
 	public void onIdle() {
-		component.LOGGER.info("onIdle - start");
+		component.LOGGER.debug("onIdle - start");
 		if (notifyStateChanges)
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(component.getState());
 		component.onIdle();
-		component.LOGGER.info("onIdle - finished");
+		component.LOGGER.debug("onIdle - finished");
 	}
 
 	@Override
 	public void onComplete() {
-		component.LOGGER.info("onComplete - start");
+		component.LOGGER.debug("onComplete - start");
 		if (notifyStateChanges)
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(component.getState());
 		component.onComplete();
-		component.LOGGER.info("onComplete - finished");
+		component.LOGGER.debug("onComplete - finished");
 	}
 
 	@Override
 	public void onHeld() {
-		component.LOGGER.info("onHeld - start");
+		component.LOGGER.debug("onHeld - start");
 		if (notifyStateChanges)
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(component.getState());
 		component.onHeld();
-		component.LOGGER.info("onHeld - finished");
+		component.LOGGER.debug("onHeld - finished");
 	}
 
 	@Override
 	public void onSuspended() {
-		component.LOGGER.info("onSuspended - start");
+		component.LOGGER.debug("onSuspended - start");
 		if (notifyStateChanges)
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(component.getState());
 		component.onSuspended();
-		component.LOGGER.info("onSuspended - finished");
+		component.LOGGER.debug("onSuspended - finished");
 	}
 
 	@Override
 	public void onAborted() {
-		component.LOGGER.info("onAborted - start");
+		component.LOGGER.debug("onAborted - start");
 		if (notifyStateChanges)
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(component.getState());
 		component.onAborted();
-		component.LOGGER.info("onAborted - finished");
+		component.LOGGER.debug("onAborted - finished");
 	}
 
 	/*
@@ -118,123 +118,123 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 
 	@Override
 	public void onResetting() {
-		component.LOGGER.info("onResetting - start");
+		component.LOGGER.debug("onResetting - start");
 		if (notifyStateChanges)
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(component.getState());
 		component.onResetting();
-		component.LOGGER.info("onResetting - finished");
+		component.LOGGER.debug("onResetting - finished");
 	}
 
 	@Override
 	public void onStarting() {
-		component.LOGGER.info("onStarting - start");
+		component.LOGGER.debug("onStarting - start");
 		if (notifyStateChanges)
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(component.getState());
 		component.onStarting();
-		component.LOGGER.info("onStarting - finished");
+		component.LOGGER.debug("onStarting - finished");
 	}
 
 	@Override
 	public void onExecute() {
-		component.LOGGER.info("onExecute - start");
+		component.LOGGER.debug("onExecute - start");
 		if (notifyStateChanges)
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(component.getState());
 		component.onExecute();
-		component.LOGGER.info("onExecute - finished");
+		component.LOGGER.debug("onExecute - finished");
 	}
 
 	@Override
 	public void onCompleting() {
-		component.LOGGER.info("onCompleting - start");
+		component.LOGGER.debug("onCompleting - start");
 		if (notifyStateChanges)
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(component.getState());
 		component.onCompleting();
-		component.LOGGER.info("onCompleting - finished");
+		component.LOGGER.debug("onCompleting - finished");
 	}
 
 	@Override
 	public void onHolding() {
-		component.LOGGER.info("onHolding - start");
+		component.LOGGER.debug("onHolding - start");
 		if (notifyStateChanges)
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(component.getState());
 		component.onHolding();
-		component.LOGGER.info("onHolding - finished");
+		component.LOGGER.debug("onHolding - finished");
 	}
 
 	@Override
 	public void onUnholding() {
-		component.LOGGER.info("onUnholding - start");
+		component.LOGGER.debug("onUnholding - start");
 		if (notifyStateChanges)
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(component.getState());
 		component.onUnholding();
-		component.LOGGER.info("onUnholding - finished");
+		component.LOGGER.debug("onUnholding - finished");
 	}
 
 	@Override
 	public void onSuspending() {
-		component.LOGGER.info("onSuspending - start");
+		component.LOGGER.debug("onSuspending - start");
 		if (notifyStateChanges)
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(component.getState());
 		component.onSuspending();
-		component.LOGGER.info("onSuspending - finished");
+		component.LOGGER.debug("onSuspending - finished");
 	}
 
 	@Override
 	public void onUnsuspending() {
-		component.LOGGER.info("onUnsuspending - start");
+		component.LOGGER.debug("onUnsuspending - start");
 		if (notifyStateChanges)
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(component.getState());
 		component.onUnsuspending();
-		component.LOGGER.info("onUnsuspending - finished");
+		component.LOGGER.debug("onUnsuspending - finished");
 	}
 
 	@Override
 	public void onAborting() {
-		component.LOGGER.info("onAborting - start");
+		component.LOGGER.debug("onAborting - start");
 		if (notifyStateChanges)
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(component.getState());
 		component.onAborting();
-		component.LOGGER.info("onAborting - finished");
+		component.LOGGER.debug("onAborting - finished");
 	}
 
 	@Override
 	public void onClearing() {
-		component.LOGGER.info("onClearing - start");
+		component.LOGGER.debug("onClearing - start");
 		if (notifyStateChanges)
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(component.getState());
 		component.onClearing();
-		component.LOGGER.info("onClearing - finished");
+		component.LOGGER.debug("onClearing - finished");
 	}
 
 	@Override
 	public void onStopping() {
-		component.LOGGER.info("onStopping - start");
+		component.LOGGER.debug("onStopping - start");
 		if (notifyStateChanges)
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(component.getState());
 		component.onStopping();
-		component.LOGGER.info("onStopping - finished");
+		component.LOGGER.debug("onStopping - finished");
 	}
 
 }

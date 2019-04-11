@@ -225,7 +225,7 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 
 	@Override
 	public ComponentRequestStatus reset() {
-		LOGGER.info("reset()");
+		LOGGER.trace("reset()");
 		ComponentRequestStatus status = null;
 		if (getState() == State.IDLE) {
 			status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.NOOP).message("already in state " + getState()).build();
@@ -240,7 +240,7 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 
 	@Override
 	public ComponentRequestStatus start() {
-		LOGGER.info("start()");
+		LOGGER.trace("start()");
 		ComponentRequestStatus status = null;
 		if (getState() == State.STARTING || getState() == State.EXECUTE) {
 			status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.NOOP).message("already in state " + getState()).build();
@@ -255,7 +255,7 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 
 	@Override
 	public ComponentRequestStatus stop() {
-		LOGGER.info("stop()");
+		LOGGER.trace("stop()");
 		ComponentRequestStatus status = null;
 		if (getState() == State.STOPPING || getState() == State.STOPPED) {
 			status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.NOOP).message("already in state " + getState()).build();
@@ -271,7 +271,7 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 
 	@Override
 	public ComponentRequestStatus hold() {
-		LOGGER.info("hold()");
+		LOGGER.trace("hold()");
 		packml.raiseLifecycleEvent("hold");
 		ComponentRequestStatus status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.ACCEPTED).message("command accepted").build();
 		return status;
@@ -279,7 +279,7 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 
 	@Override
 	public ComponentRequestStatus unhold() {
-		LOGGER.info("unhold()");
+		LOGGER.trace("unhold()");
 		packml.raiseLifecycleEvent("unhold");
 		ComponentRequestStatus status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.ACCEPTED).message("command accepted").build();
 		return status;
@@ -287,7 +287,7 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 
 	@Override
 	public ComponentRequestStatus suspend() {
-		LOGGER.info("suspend()");
+		LOGGER.trace("suspend()");
 		packml.raiseLifecycleEvent("suspend");
 		ComponentRequestStatus status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.ACCEPTED).message("command accepted").build();
 		return status;
@@ -295,7 +295,7 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 
 	@Override
 	public ComponentRequestStatus unsuspend() {
-		LOGGER.info("unsuspend()");
+		LOGGER.trace("unsuspend()");
 		packml.raiseLifecycleEvent("unsuspend");
 		ComponentRequestStatus status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.ACCEPTED).message("command accepted").build();
 		return status;
@@ -303,7 +303,7 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 
 	@Override
 	public ComponentRequestStatus abort() {
-		LOGGER.info("abort()");
+		LOGGER.trace("abort()");
 		packml.raiseLifecycleEvent("abort");
 		ComponentRequestStatus status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.ACCEPTED).message("command accepted").build();
 		return status;
@@ -311,7 +311,7 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 
 	@Override
 	public ComponentRequestStatus clear() {
-		LOGGER.info("clear()");
+		LOGGER.trace("clear()");
 		packml.raiseLifecycleEvent("clear");
 		ComponentRequestStatus status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.ACCEPTED).message("command accepted").build();
 		return status;
@@ -330,7 +330,7 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 
 	@Override
 	public void onResetting() {
-		LOGGER.info("onResetting()");
+		LOGGER.trace("onResetting()");
 		setErrorCode(0);
 
 		ActiveStatesHandler handler = getHandler();
@@ -362,7 +362,7 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 
 	@Override
 	public void onStarting() {
-		LOGGER.info("onStarting()");
+		LOGGER.trace("onStarting()");
 		ActiveStatesHandler handler = getHandler();
 		if (handler != null) {
 			// CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
@@ -391,7 +391,7 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 
 	@Override
 	public void onExecute() {
-		LOGGER.info("onExecute()");
+		LOGGER.trace("onExecute()");
 		ActiveStatesHandler handler = getHandler();
 		if (handler != null) {
 			// CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
@@ -420,7 +420,7 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 
 	@Override
 	public void onCompleting() {
-		LOGGER.info("onCompleting()");
+		LOGGER.trace("onCompleting()");
 		ActiveStatesHandler handler = getHandler();
 		if (handler != null) {
 			// CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
@@ -449,7 +449,7 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 
 	@Override
 	public void onHolding() {
-		LOGGER.info("onHolding()");
+		LOGGER.trace("onHolding()");
 		ActiveStatesHandler handler = getHandler();
 		if (handler != null) {
 			// CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
@@ -478,7 +478,7 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 
 	@Override
 	public void onUnholding() {
-		LOGGER.info("onUnholding()");
+		LOGGER.trace("onUnholding()");
 		ActiveStatesHandler handler = getHandler();
 		if (handler != null) {
 			// CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
@@ -507,7 +507,7 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 
 	@Override
 	public void onSuspending() {
-		LOGGER.info("onSuspending()");
+		LOGGER.trace("onSuspending()");
 		ActiveStatesHandler handler = getHandler();
 		if (handler != null) {
 			// CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
@@ -536,7 +536,7 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 
 	@Override
 	public void onUnsuspending() {
-		LOGGER.info("onUnsuspending()");
+		LOGGER.trace("onUnsuspending()");
 		ActiveStatesHandler handler = getHandler();
 		if (handler != null) {
 			// CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
@@ -565,7 +565,7 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 
 	@Override
 	public void onAborting() {
-		LOGGER.info("onAborting()");
+		LOGGER.trace("onAborting()");
 		ActiveStatesHandler handler = getHandler();
 		if (handler != null) {
 			// CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
@@ -594,7 +594,7 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 
 	@Override
 	public void onClearing() {
-		LOGGER.info("onClearing()");
+		LOGGER.trace("onClearing()");
 		ActiveStatesHandler handler = getHandler();
 		if (handler != null) {
 			// CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
@@ -623,7 +623,7 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 
 	@Override
 	public void onStopping() {
-		LOGGER.info("onStopping()");
+		LOGGER.trace("onStopping()");
 		ActiveStatesHandler handler = getHandler();
 		if (handler != null) {
 			// CompletableFuture<Boolean> cf = new CompletableFuture<Boolean>();
@@ -656,7 +656,7 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 
 	@Override
 	public void onStopped() {
-		LOGGER.info("onStopped()");
+		LOGGER.trace("onStopped()");
 		if (waitHandler != null) {
 			waitHandler.onStopped();
 
@@ -674,7 +674,7 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 
 	@Override
 	public void onIdle() {
-		LOGGER.info("onIdle()");
+		LOGGER.trace("onIdle()");
 		if (waitHandler != null) {
 			waitHandler.onIdle();
 
@@ -692,7 +692,7 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 
 	@Override
 	public void onComplete() {
-		LOGGER.info("onComplete()");
+		LOGGER.trace("onComplete()");
 		if (waitHandler != null) {
 			waitHandler.onComplete();
 
@@ -710,7 +710,7 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 
 	@Override
 	public void onHeld() {
-		LOGGER.info("onHeld()");
+		LOGGER.trace("onHeld()");
 		if (waitHandler != null) {
 			waitHandler.onHeld();
 
@@ -728,7 +728,7 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 
 	@Override
 	public void onSuspended() {
-		LOGGER.info("onSuspended()");
+		LOGGER.trace("onSuspended()");
 		if (waitHandler != null) {
 			waitHandler.onSuspended();
 
@@ -746,7 +746,7 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 
 	@Override
 	public void onAborted() {
-		LOGGER.info("onAborted()");
+		LOGGER.trace("onAborted()");
 		if (waitHandler != null) {
 			waitHandler.onAborted();
 

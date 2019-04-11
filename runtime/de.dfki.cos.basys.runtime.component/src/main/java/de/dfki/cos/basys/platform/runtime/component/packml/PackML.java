@@ -86,7 +86,7 @@ public class PackML {
 	}
 
 	public void raiseLifecycleEvent(String event) {
-		unit.LOGGER.info("raiseLifecycleEvent: " + event);
+		unit.LOGGER.trace("raiseLifecycleEvent: " + event);
 		if (!initialized) {
 			unit.LOGGER.warn("PackML automaton not yet initialized, skipping event: " + event);
 			return;

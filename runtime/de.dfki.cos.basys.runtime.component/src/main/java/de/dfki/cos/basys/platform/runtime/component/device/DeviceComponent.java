@@ -113,7 +113,7 @@ public abstract class DeviceComponent extends PackMLComponent {
 			return status;
 				
 		if (currentCapabilityRequest == null && getState() == State.IDLE) {
-			LOGGER.info("Execute capability request");
+			LOGGER.info(String.format("Execute capability request '%s'", req.getCapabilityVariant().getName()));
 			currentCapabilityRequest = req;
 			UnitConfiguration config = translateCapabilityRequest(currentCapabilityRequest);		
 			status = setUnitConfig(config);		
@@ -121,7 +121,7 @@ public abstract class DeviceComponent extends PackMLComponent {
 				status = start();
 			}
 		} else {
-			LOGGER.info("Enqueue capability request");
+			LOGGER.info(String.format("Enqueue capability request '%s'", req.getCapabilityVariant().getName()));
 			if (requestQueue.remainingCapacity()>0) {
 				requestQueue.add(req);
 				status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.QUEUED).message("capability request enqueued").build();
