@@ -16,7 +16,7 @@ public class ProductInstanceManagerTest extends BaseEmfServiceComponentTest<Prod
 	@Override
 	@Before
 	public void setUp() throws Exception {
-		javaClassName = "de.dfki.iui.basys.runtime.services.impl.ProductInstanceManagerImpl";
+		javaClassName += "ProductInstanceManagerImpl";
 		file = "model.productinstance";
 
 		super.setUp();

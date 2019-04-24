@@ -18,7 +18,7 @@ public class BaseEmfServiceComponentTest<T extends EmfServiceComponent> {
 	protected ComponentManagerImpl componentManager;
 	protected T service;
 
-	protected String javaClassName = "";
+	protected String javaClassName = "de.dfki.cos.basys.platform.runtime.services.impl.";
 	protected String file = "";
 	
 	protected ComponentConfiguration componentConfig;

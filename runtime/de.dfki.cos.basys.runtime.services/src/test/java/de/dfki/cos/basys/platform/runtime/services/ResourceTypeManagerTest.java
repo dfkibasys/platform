@@ -16,7 +16,7 @@ public class ResourceTypeManagerTest extends BaseEmfServiceComponentTest<Resourc
 	@Override
 	@Before
 	public void setUp() throws Exception {
-		javaClassName = "de.dfki.iui.basys.runtime.services.impl.ResourceTypeManagerImpl";
+		javaClassName += "ResourceTypeManagerImpl";
 		file = "model.resourcetype";
 
 		super.setUp();

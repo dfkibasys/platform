@@ -58,6 +58,7 @@ public class JsonSerializationTest {
 	}
 
 	@Test
+	@Ignore
 	public void testSerializeComponentRequests() {
 
 		JsonUtils.factory = new BasysResourceSetImpl.Factory();

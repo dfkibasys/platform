@@ -69,9 +69,9 @@ public class BaseComponentTest {
 				.outChannelName("component3#out")
 				.build();	
 				
-		config1.getProperties().add(new PropertyImpl.Builder().key("unittesting").value("true").build());
-		config2.getProperties().add(new PropertyImpl.Builder().key("unittesting").value("true").build());
-		config3.getProperties().add(new PropertyImpl.Builder().key("unittesting").value("true").build());
+		config1.getProperties().add(new PropertyImpl.Builder().key("recordStateChanges").value("true").build());
+		config2.getProperties().add(new PropertyImpl.Builder().key("recordStateChanges").value("true").build());
+		config3.getProperties().add(new PropertyImpl.Builder().key("recordStateChanges").value("true").build());
 		
 		communicationClient = CommFactory.getInstance().createClient("client", null);
 		sharedPool = CommFactory.getInstance().connectJmsChannelPool(communicationClient, null);	

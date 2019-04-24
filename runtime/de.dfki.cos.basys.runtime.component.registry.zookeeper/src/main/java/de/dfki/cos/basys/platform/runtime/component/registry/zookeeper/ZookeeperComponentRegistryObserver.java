@@ -1,5 +1,8 @@
 package de.dfki.cos.basys.platform.runtime.component.registry.zookeeper;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.framework.recipes.cache.PathChildrenCache;
@@ -19,34 +22,39 @@ import de.dfki.cos.basys.platform.runtime.component.BaseComponent;
 import de.dfki.cos.basys.platform.runtime.component.ComponentException;
 import de.dfki.cos.basys.platform.runtime.component.registry.ComponentRegistryObserver;
 
-public class ZookeeperComponentRegistryObserver extends BaseComponent implements ComponentRegistryObserver, PathChildrenCacheListener {
+public class ZookeeperComponentRegistryObserver extends BaseComponent
+		implements ComponentRegistryObserver, PathChildrenCacheListener {
 
-	public static final String defaultConnectionString = "10.2.10.4:2181";
 	public static final String PATH = "/basys/registry";
 	private CuratorFramework client;
 	private JsonInstanceSerializer<ComponentInfo> serializer;
 	private PathChildrenCache managementCache, serviceCache, deviceCache;
 
+	private Map<String, ComponentInfo> componentCache = new HashMap<>();
+	
 	public ZookeeperComponentRegistryObserver(ComponentConfiguration config) {
 		super(config);
 
-		String connectionString = defaultConnectionString;
-		if (componentConfig.getExternalConnectionString() != null) {
-			connectionString = componentConfig.getExternalConnectionString();
+		if (componentConfig.getExternalConnectionString() == null) {
+			componentConfig.setExternalConnectionString(ZookeeperComponentRegistry.defaultConnectionString);
+			LOGGER.warn("External connection string not provided. Defaulting to "
+					+ ZookeeperComponentRegistry.defaultConnectionString);
 		}
-		client = CuratorFrameworkFactory.newClient(connectionString, new ExponentialBackoffRetry(1000, 3));
+
+		client = CuratorFrameworkFactory.newClient(componentConfig.getExternalConnectionString(),
+				new ExponentialBackoffRetry(1000, 3));
 
 		serializer = new JsonInstanceSerializer<ComponentInfo>(ComponentInfo.class);
 
-		managementCache = new PathChildrenCache(client, PATH + "/" + ComponentCategory.MANAGEMENT_COMPONENT.getName(), true);
+		managementCache = new PathChildrenCache(client, PATH + "/" + ComponentCategory.MANAGEMENT_COMPONENT.getName(),
+				true);
 		managementCache.getListenable().addListener(this);
-		
+
 		serviceCache = new PathChildrenCache(client, PATH + "/" + ComponentCategory.SERVICE_COMPONENT.getName(), true);
 		serviceCache.getListenable().addListener(this);
-		
-		deviceCache = new PathChildrenCache(client, PATH + "/" + ComponentCategory.DEVICE_COMPONENT.getName(), true);
-		deviceCache.getListenable().addListener(this);
 
+		deviceCache = new PathChildrenCache(client, PATH + "/" + ComponentCategory.DEVICE_COMPONENT.getName(), true);
+		deviceCache.getListenable().addListener(this);	
 	}
 
 	@Override
@@ -75,47 +83,56 @@ public class ZookeeperComponentRegistryObserver extends BaseComponent implements
 		switch (event.getType()) {
 		case CHILD_ADDED: {
 			LOGGER.info(event.getType() + ": " + event.getData().getPath());
-			ServiceInstance<ComponentInfo> info = serializer.deserialize(event.getData().getData());			
+			ServiceInstance<ComponentInfo> info = serializer.deserialize(event.getData().getData());
 			handleComponentAdded(info.getPayload());
 			break;
 		}
 		case CHILD_UPDATED: {
 			LOGGER.info(event.getType() + ": " + event.getData().getPath());
-			ServiceInstance<ComponentInfo> info = serializer.deserialize(event.getData().getData());			
+			ServiceInstance<ComponentInfo> info = serializer.deserialize(event.getData().getData());
 			handleComponentUpdated(info.getPayload());
 			break;
 		}
 		case CHILD_REMOVED: {
 			LOGGER.info(event.getType() + ": " + event.getData().getPath());
-			ServiceInstance<ComponentInfo> info = serializer.deserialize(event.getData().getData());			
+			ServiceInstance<ComponentInfo> info = serializer.deserialize(event.getData().getData());
 			handleComponentRemoved(info.getPayload());
 			break;
 		}
+		default:
 		}
 	}
 
 	@Override
-	public void handleComponentAdded(ComponentInfo info) {		
-		if (outChannel != null) {
-			Notification not = CommFactory.getInstance().createNotification("");
-			outChannel.sendNotification(not);
-		}
+	public ComponentInfo getComponentInfo(String componentId) {
+		return componentCache.get(componentId);
+	}
+	
+	@Override
+	public void handleComponentAdded(ComponentInfo info) {
+		componentCache.put(info.getComponentId(), info);
+//		if (outChannel != null) {
+//			Notification not = CommFactory.getInstance().createNotification("");
+//			outChannel.sendNotification(not);
+//		}
 	}
 
 	@Override
 	public void handleComponentUpdated(ComponentInfo info) {
-		if (outChannel != null) {
-			Notification not = CommFactory.getInstance().createNotification("");
-			outChannel.sendNotification(not);
-		}
+		componentCache.put(info.getComponentId(), info);
+//		if (outChannel != null) {
+//			Notification not = CommFactory.getInstance().createNotification("");
+//			outChannel.sendNotification(not);
+//		}
 	}
 
 	@Override
 	public void handleComponentRemoved(ComponentInfo info) {
-		if (outChannel != null) {
-			Notification not = CommFactory.getInstance().createNotification("");
-			outChannel.sendNotification(not);
-		}
+		componentCache.remove(info.getComponentId(), info);
+//		if (outChannel != null) {
+//			Notification not = CommFactory.getInstance().createNotification("");
+//			outChannel.sendNotification(not);
+//		}
 	}
 
 }

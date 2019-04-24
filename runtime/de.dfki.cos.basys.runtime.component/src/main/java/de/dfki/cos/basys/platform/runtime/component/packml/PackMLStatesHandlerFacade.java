@@ -52,7 +52,7 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 		if (notifyStateChanges)
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
-			recentStates.add(component.getState());
+			recentStates.add(State.STOPPED);
 		component.onStopped();
 		component.LOGGER.debug("onStopped - finished");
 	}
@@ -63,7 +63,7 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 		if (notifyStateChanges)
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
-			recentStates.add(component.getState());
+			recentStates.add(State.IDLE);
 		component.onIdle();
 		component.LOGGER.debug("onIdle - finished");
 	}
@@ -74,7 +74,7 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 		if (notifyStateChanges)
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
-			recentStates.add(component.getState());
+			recentStates.add(State.COMPLETE);
 		component.onComplete();
 		component.LOGGER.debug("onComplete - finished");
 	}
@@ -85,7 +85,7 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 		if (notifyStateChanges)
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
-			recentStates.add(component.getState());
+			recentStates.add(State.HELD);
 		component.onHeld();
 		component.LOGGER.debug("onHeld - finished");
 	}
@@ -96,7 +96,7 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 		if (notifyStateChanges)
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
-			recentStates.add(component.getState());
+			recentStates.add(State.SUSPENDED);
 		component.onSuspended();
 		component.LOGGER.debug("onSuspended - finished");
 	}
@@ -107,7 +107,7 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 		if (notifyStateChanges)
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
-			recentStates.add(component.getState());
+			recentStates.add(State.ABORTED);
 		component.onAborted();
 		component.LOGGER.debug("onAborted - finished");
 	}
@@ -122,7 +122,7 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 		if (notifyStateChanges)
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
-			recentStates.add(component.getState());
+			recentStates.add(State.RESETTING);
 		component.onResetting();
 		component.LOGGER.debug("onResetting - finished");
 	}
@@ -133,7 +133,7 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 		if (notifyStateChanges)
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
-			recentStates.add(component.getState());
+			recentStates.add(State.STARTING);
 		component.onStarting();
 		component.LOGGER.debug("onStarting - finished");
 	}
@@ -144,7 +144,7 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 		if (notifyStateChanges)
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
-			recentStates.add(component.getState());
+			recentStates.add(State.EXECUTE);
 		component.onExecute();
 		component.LOGGER.debug("onExecute - finished");
 	}
@@ -155,7 +155,7 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 		if (notifyStateChanges)
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
-			recentStates.add(component.getState());
+			recentStates.add(State.COMPLETING);
 		component.onCompleting();
 		component.LOGGER.debug("onCompleting - finished");
 	}
@@ -166,7 +166,7 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 		if (notifyStateChanges)
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
-			recentStates.add(component.getState());
+			recentStates.add(State.HOLDING);
 		component.onHolding();
 		component.LOGGER.debug("onHolding - finished");
 	}
@@ -177,7 +177,7 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 		if (notifyStateChanges)
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
-			recentStates.add(component.getState());
+			recentStates.add(State.UNHOLDING);
 		component.onUnholding();
 		component.LOGGER.debug("onUnholding - finished");
 	}
@@ -188,7 +188,7 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 		if (notifyStateChanges)
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
-			recentStates.add(component.getState());
+			recentStates.add(State.SUSPENDING);
 		component.onSuspending();
 		component.LOGGER.debug("onSuspending - finished");
 	}
@@ -199,7 +199,7 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 		if (notifyStateChanges)
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
-			recentStates.add(component.getState());
+			recentStates.add(State.UNSUSPENDING);
 		component.onUnsuspending();
 		component.LOGGER.debug("onUnsuspending - finished");
 	}
@@ -210,7 +210,7 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 		if (notifyStateChanges)
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
-			recentStates.add(component.getState());
+			recentStates.add(State.ABORTING);
 		component.onAborting();
 		component.LOGGER.debug("onAborting - finished");
 	}
@@ -221,7 +221,7 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 		if (notifyStateChanges)
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
-			recentStates.add(component.getState());
+			recentStates.add(State.CLEARING);
 		component.onClearing();
 		component.LOGGER.debug("onClearing - finished");
 	}
@@ -232,7 +232,7 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 		if (notifyStateChanges)
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
-			recentStates.add(component.getState());
+			recentStates.add(State.STOPPING);
 		component.onStopping();
 		component.LOGGER.debug("onStopping - finished");
 	}

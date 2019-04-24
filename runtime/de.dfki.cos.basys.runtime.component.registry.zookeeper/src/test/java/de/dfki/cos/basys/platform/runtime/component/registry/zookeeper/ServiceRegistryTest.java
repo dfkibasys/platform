@@ -10,6 +10,7 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory;
@@ -91,70 +92,10 @@ public class ServiceRegistryTest extends BaseComponentTest {
 		LOGGER.info("testRegisterServicesAndList - complete");
 	}
 
-	@Test
-	public void testDeviceComponentLifecycle() throws ComponentException {
-		LOGGER.info("testServiceLifecycle - start");
-		
-		TestDeviceComponent comp = new TestDeviceComponent(config1);
-		comp.activate(context);
-
-		assertEquals(State.STOPPED, comp.getState(true));
-			
-		comp.reset();
-		assertEquals(State.RESETTING, comp.getState(true));
-		assertEquals(State.IDLE, comp.getState(true));
-		
-		comp.start();
-		assertEquals(State.STARTING, comp.getState(true));
-		assertEquals(State.EXECUTE, comp.getState(true));
-		assertEquals(State.COMPLETING, comp.getState(true));
-		assertEquals(State.COMPLETE, comp.getState(true));	
-		
-		comp.stop();	
-		
-		assertEquals(State.STOPPING, comp.getState(true));
-		assertEquals(State.STOPPED, comp.getState(true));		
-		
-		sleep(2);
-		comp.deactivate();
-		
-		LOGGER.info("testServiceLifecycle - complete");
-	}
-		
-	@Test
-	public void testDeviceComponentLifecycle2() throws ComponentException {
-		LOGGER.info("testServiceLifecycle - start");
-		
-		TestDeviceComponent comp = new TestDeviceComponent(config1);
-		comp.activate(context);
-
-		assertEquals(State.STOPPED, comp.getState(true));
-			
-		comp.reset();
-		assertEquals(State.RESETTING, comp.getState(true));
-		assertEquals(State.IDLE, comp.getState(true));
-		
-		comp.start();
-		assertEquals(State.STARTING, comp.getState(true));
-		assertEquals(State.EXECUTE, comp.getState(true));
-		
-		comp.stop();
-		
-//		assertEquals(State.COMPLETING, comp.getState(true));
-//		assertEquals(State.COMPLETE, comp.getState(true));		
-//		
-//		
-//		assertEquals(State.RESETTING, comp.getState(true));
-		assertEquals(State.STOPPING, comp.getState(true));
-		assertEquals(State.STOPPED, comp.getState(true));		
-		
-		sleep(2);
-		comp.deactivate();
-		
-		LOGGER.info("testServiceLifecycle - complete");
-	}
+	
 
 	@Test
+	@Ignore
 	public void testDeviceComponentLifecycle3() throws ComponentException {
 		LOGGER.info("testServiceLifecycle - start");
 		

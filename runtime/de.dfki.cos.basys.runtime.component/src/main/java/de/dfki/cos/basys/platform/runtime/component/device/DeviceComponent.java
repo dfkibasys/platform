@@ -56,9 +56,6 @@ public abstract class DeviceComponent extends PackMLComponent {
 	protected boolean resetOnComplete, resetOnStopped = false;
 
 	private BlockingQueue<CapabilityRequest> requestQueue = new LinkedBlockingQueue<CapabilityRequest>(32);
-	protected CommandRequest currentCommandRequest;
-	protected ChangeModeRequest currentChangeModeRequest;
-	protected CapabilityRequest currentCapabilityRequest;
 	
 	protected boolean simulated = false;	
 		

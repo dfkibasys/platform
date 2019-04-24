@@ -41,7 +41,7 @@ public class JmsGatewayTest extends BaseComponentTest {
 				.componentId("jms-gateway")
 				.componentName("jms-gateway-component")
 				.componentCategory(ComponentCategory.MANAGEMENT_COMPONENT)
-				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.gateway.JmsGatewayComponent")
+				.componentImplementationJavaClass("de.dfki.cos.basys.platform.runtime.gateway.JmsGatewayComponent")
 				.inChannelName("jmsgateway#in")
 				.outChannelName("jmsgateway#out")
 				.externalConnectionString(JmsCommunicationProvider.defaultConnectionString)

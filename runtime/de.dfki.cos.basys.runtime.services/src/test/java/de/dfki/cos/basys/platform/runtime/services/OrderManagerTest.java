@@ -17,7 +17,7 @@ public class OrderManagerTest extends BaseEmfServiceComponentTest<OrderManagerIm
 	@Override
 	@Before
 	public void setUp() throws Exception {
-		javaClassName = "de.dfki.iui.basys.runtime.services.impl.OrderManagerImpl";
+		javaClassName += "OrderManagerImpl";
 		file = "model.order";
 
 		super.setUp();

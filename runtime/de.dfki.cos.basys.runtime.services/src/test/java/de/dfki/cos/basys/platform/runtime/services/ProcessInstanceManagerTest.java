@@ -16,7 +16,7 @@ public class ProcessInstanceManagerTest extends BaseEmfServiceComponentTest<Proc
 	@Override
 	@Before
 	public void setUp() throws Exception {
-		javaClassName = "de.dfki.iui.basys.runtime.services.impl.ProcessInstanceManagerImpl";
+		javaClassName += "ProcessInstanceManagerImpl";
 		file = "model.processinstance";
 
 		super.setUp();

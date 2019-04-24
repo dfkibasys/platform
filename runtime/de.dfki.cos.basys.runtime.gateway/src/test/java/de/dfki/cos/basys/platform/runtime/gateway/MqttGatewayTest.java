@@ -41,7 +41,7 @@ public class MqttGatewayTest extends BaseComponentTest {
 				.componentId("mqtt-gateway")
 				.componentName("mqtt-gateway-component")
 				.componentCategory(ComponentCategory.MANAGEMENT_COMPONENT)
-				.componentImplementationJavaClass("de.dfki.iui.basys.runtime.gateway.MqttGatewayComponent")
+				.componentImplementationJavaClass("de.dfki.cos.basys.platform.runtime.gateway.MqttGatewayComponent")
 				.inChannelName("mqttgateway#in")
 				.outChannelName("mqttgateway#out")
 				.externalConnectionString(MqttCommunicationProvider.defaultConnectionString)

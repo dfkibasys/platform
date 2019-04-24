@@ -21,7 +21,7 @@ public class ProcessDefinitionManagerTest extends BaseEmfServiceComponentTest<Pr
 	@Override
 	@Before
 	public void setUp() throws Exception {
-		javaClassName = "de.dfki.iui.basys.runtime.services.impl.ProcessDefinitionManagerImpl";
+		javaClassName += "ProcessDefinitionManagerImpl";
 		file = "model.processdefinition";
 
 		super.setUp();

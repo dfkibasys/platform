@@ -32,7 +32,7 @@ public class TestHandler implements ActiveStatesHandler {
 		unit.dispose();
 	}
 	
-	private void sleep(double seconds) {
+	public void sleep(double seconds) {
 		try {
 			TimeUnit.MILLISECONDS.sleep((long)(seconds*100));
 		} catch (InterruptedException e) {

@@ -16,7 +16,7 @@ public class ResourceInstanceManagerTest extends BaseEmfServiceComponentTest<Res
 	@Override
 	@Before
 	public void setUp() throws Exception {
-		javaClassName = "de.dfki.iui.basys.runtime.services.impl.ResourceInstanceManagerImpl";
+		javaClassName += "ResourceInstanceManagerImpl";
 		file = "model.resourceinstance";
 
 		super.setUp();

@@ -9,10 +9,7 @@ public class TestDeviceComponent extends DeviceComponent {
 
 	public TestDeviceComponent(ComponentConfiguration config) {
 		super(config);
-		resetOnComplete = true;
 	}
-		
-	
 	
 	@Override
 	protected UnitConfiguration translateCapabilityRequest(CapabilityRequest req) {

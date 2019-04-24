@@ -17,7 +17,7 @@ public class MaterialManagerTest extends BaseEmfServiceComponentTest<MaterialMan
 	@Override
 	@Before
 	public void setUp() throws Exception {
-		javaClassName = "de.dfki.iui.basys.runtime.services.impl.MaterialManagerImpl";
+		javaClassName += "MaterialManagerImpl";
 		file = "model.material";
 
 		super.setUp();

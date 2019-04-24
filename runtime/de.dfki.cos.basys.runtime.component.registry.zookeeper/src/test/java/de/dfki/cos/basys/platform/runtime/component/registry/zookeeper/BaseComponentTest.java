@@ -77,9 +77,9 @@ public class BaseComponentTest {
 				.outChannelName("component3#out")
 				.build();	
 				
-		config1.getProperties().add(new PropertyImpl.Builder().key("unittesting").value("true").build());
-		config2.getProperties().add(new PropertyImpl.Builder().key("unittesting").value("true").build());
-		config3.getProperties().add(new PropertyImpl.Builder().key("unittesting").value("true").build());
+		config1.getProperties().add(new PropertyImpl.Builder().key("recordStateChanges").value("true").build());
+		config2.getProperties().add(new PropertyImpl.Builder().key("recordStateChanges").value("true").build());
+		config3.getProperties().add(new PropertyImpl.Builder().key("recordStateChanges").value("true").build());
 		
 		registryConfig = new ComponentConfigurationImpl.Builder()
 				.componentId("component-registry")
