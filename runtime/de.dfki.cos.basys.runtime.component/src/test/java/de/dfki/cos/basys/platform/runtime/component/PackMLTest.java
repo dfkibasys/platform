@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import de.dfki.cos.basys.platform.model.runtime.component.State;
+import de.dfki.cos.basys.platform.model.runtime.component.impl.PropertyImpl;
 import de.dfki.cos.basys.platform.runtime.component.device.TestDeviceComponent;
 import de.dfki.cos.basys.platform.runtime.component.packml.PackMLUnit;
 
@@ -157,8 +158,8 @@ public class PackMLTest extends BaseComponentTest {
 	
 
 	@Test
-	public void testPackMLComponentLifecycle() throws ComponentException {
-		LOGGER.info("testServiceLifecycle - start");
+	public void testComponentLifecycleDefault() throws ComponentException {
+		LOGGER.info("testComponentLifecycleDefault - start");
 		
 		TestDeviceComponent comp = new TestDeviceComponent(config1);
 		comp.activate(context);
@@ -183,12 +184,12 @@ public class PackMLTest extends BaseComponentTest {
 		sleep(2);
 		comp.deactivate();
 		
-		LOGGER.info("testServiceLifecycle - complete");
+		LOGGER.info("testComponentLifecycleDefault - complete");
 	}
 		
 	@Test
-	public void testPackMLComponentLifecycle2() throws ComponentException {
-		LOGGER.info("testServiceLifecycle - start");
+	public void testComponentLifecycleStopInExecute() throws ComponentException {
+		LOGGER.info("testComponentLifecycleStopInExecute - start");
 		
 		TestDeviceComponent comp = new TestDeviceComponent(config1);
 		comp.activate(context);
@@ -216,8 +217,75 @@ public class PackMLTest extends BaseComponentTest {
 		sleep(2);
 		comp.deactivate();
 		
-		LOGGER.info("testServiceLifecycle - complete");
+		LOGGER.info("testComponentLifecycleStopInExecute - complete");
 	}
 
+
+	@Test
+	public void testComponentLifecycleDefaultSim() throws ComponentException {
+		LOGGER.info("testComponentLifecycleDefault - start");
+
+		config1.getProperties().add(new PropertyImpl.Builder().key("simulated").value("true").build());
+		
+		TestDeviceComponent comp = new TestDeviceComponent(config1);
+		comp.activate(context);
+
+		assertEquals(State.STOPPED, comp.getState(true));
+			
+		comp.reset();
+		assertEquals(State.RESETTING, comp.getState(true));
+		assertEquals(State.IDLE, comp.getState(true));
+		
+		comp.start();
+		assertEquals(State.STARTING, comp.getState(true));
+		assertEquals(State.EXECUTE, comp.getState(true));
+		assertEquals(State.COMPLETING, comp.getState(true));
+		assertEquals(State.COMPLETE, comp.getState(true));	
+		
+		comp.stop();	
+		
+		assertEquals(State.STOPPING, comp.getState(true));
+		assertEquals(State.STOPPED, comp.getState(true));		
+		
+		sleep(2);
+		comp.deactivate();
+		
+		LOGGER.info("testComponentLifecycleDefault - complete");
+	}
+		
+	@Test
+	public void testComponentLifecycleStopInExecuteSim() throws ComponentException {
+		LOGGER.info("testComponentLifecycleStopInExecute - start");
+
+		config1.getProperties().add(new PropertyImpl.Builder().key("simulated").value("true").build());
+		
+		TestDeviceComponent comp = new TestDeviceComponent(config1);
+		comp.activate(context);
+
+		assertEquals(State.STOPPED, comp.getState(true));
+			
+		comp.reset();
+		assertEquals(State.RESETTING, comp.getState(true));
+		assertEquals(State.IDLE, comp.getState(true));
+		
+		comp.start();
+		assertEquals(State.STARTING, comp.getState(true));
+		assertEquals(State.EXECUTE, comp.getState(true));
+		
+		comp.stop();
+		
+//		assertEquals(State.COMPLETING, comp.getState(true));
+//		assertEquals(State.COMPLETE, comp.getState(true));		
+//		
+//		
+//		assertEquals(State.RESETTING, comp.getState(true));
+		assertEquals(State.STOPPING, comp.getState(true));
+		assertEquals(State.STOPPED, comp.getState(true));		
+		
+		sleep(2);
+		comp.deactivate();
+		
+		LOGGER.info("testComponentLifecycleStopInExecute - complete");
+	}
 	
 }

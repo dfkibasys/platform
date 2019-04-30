@@ -87,14 +87,18 @@ public abstract class DeviceComponent extends PackMLComponent {
 		
 		if (config.getProperty("simulated") != null) {
 			simulated = Boolean.parseBoolean(config.getProperty("simulated").getValue());
-			LOGGER.info("component is in SIMULATION mode");
+			if (simulated) {
+				packmlUnit.setMode(ControlMode.SIMULATION);
+				observeExternalConnection = false;
+				LOGGER.info("component is in SIMULATION mode");
+			}
 		}
 		
-		packmlUnit.setSimStatesHandler(new SimulatedStatesHandler(this));
-		if (simulated) {
-			packmlUnit.setMode(ControlMode.SIMULATION);
-			observeExternalConnection = false;
-		}	
+//		packmlUnit.setSimStatesHandler(new SimulatedStatesHandler(this));
+//		if (simulated) {
+//			packmlUnit.setMode(ControlMode.SIMULATION);
+//			observeExternalConnection = false;
+//		}	
 	}
 
 	@Override

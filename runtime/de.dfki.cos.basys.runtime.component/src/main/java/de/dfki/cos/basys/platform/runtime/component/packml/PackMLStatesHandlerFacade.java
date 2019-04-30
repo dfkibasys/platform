@@ -3,38 +3,44 @@ package de.dfki.cos.basys.platform.runtime.component.packml;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
+import de.dfki.cos.basys.platform.model.runtime.component.ControlMode;
+import de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus;
 import de.dfki.cos.basys.platform.model.runtime.component.State;
 import de.dfki.cos.basys.platform.runtime.component.BaseComponent;
 
 public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitStatesHandler {
 
 	PackMLComponent component;
+	SimulatedStatesHandler simulatedStatesHandler;
 
 	boolean notifyStateChanges = true;
 	boolean recordStateChanges = false;
 
 	private LinkedBlockingQueue<State> recentStates = new LinkedBlockingQueue<>();
-	
+
 	public PackMLStatesHandlerFacade(PackMLComponent component) {
 		this.component = component;
+		this.simulatedStatesHandler = new SimulatedStatesHandler(component);
 		if (component.getConfig().getProperty("notifyStateChanges") != null) {
-			notifyStateChanges = Boolean.parseBoolean(component.getConfig().getProperty("notifyStateChanges").getValue());
+			notifyStateChanges = Boolean
+					.parseBoolean(component.getConfig().getProperty("notifyStateChanges").getValue());
 			component.LOGGER.info("notifyStateChanges=" + notifyStateChanges);
 		}
 		if (component.getConfig().getProperty("recordStateChanges") != null) {
-			recordStateChanges = Boolean.parseBoolean(component.getConfig().getProperty("recordStateChanges").getValue());
+			recordStateChanges = Boolean
+					.parseBoolean(component.getConfig().getProperty("recordStateChanges").getValue());
 			component.LOGGER.info("recordStateChanges=" + recordStateChanges);
 		}
-		
+
 	}
-	
+
 	public LinkedBlockingQueue<State> getRecentStates() {
 		return recentStates;
 	}
-	
+
 	public State getLastState() {
 		try {
-			return recentStates.poll(20,TimeUnit.MINUTES);
+			return recentStates.poll(20, TimeUnit.MINUTES);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -47,13 +53,17 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 	 */
 
 	@Override
-	public void onStopped() {		
+	public void onStopped() {
 		component.LOGGER.debug("onStopped - start");
 		if (notifyStateChanges)
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(State.STOPPED);
-		component.onStopped();
+		if (component.getMode() == ControlMode.SIMULATION) {
+
+		} else {
+			component.onStopped();
+		}
 		component.LOGGER.debug("onStopped - finished");
 	}
 
@@ -64,7 +74,11 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(State.IDLE);
-		component.onIdle();
+		if (component.getMode() == ControlMode.SIMULATION) {
+
+		} else {
+			component.onIdle();
+		}
 		component.LOGGER.debug("onIdle - finished");
 	}
 
@@ -75,7 +89,11 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(State.COMPLETE);
-		component.onComplete();
+		if (component.getMode() == ControlMode.SIMULATION) {
+
+		} else {
+			component.onComplete();
+		}
 		component.LOGGER.debug("onComplete - finished");
 	}
 
@@ -86,7 +104,11 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(State.HELD);
-		component.onHeld();
+		if (component.getMode() == ControlMode.SIMULATION) {
+
+		} else {
+			component.onHeld();
+		}
 		component.LOGGER.debug("onHeld - finished");
 	}
 
@@ -97,7 +119,11 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(State.SUSPENDED);
-		component.onSuspended();
+		if (component.getMode() == ControlMode.SIMULATION) {
+
+		} else {
+			component.onSuspended();
+		}
 		component.LOGGER.debug("onSuspended - finished");
 	}
 
@@ -108,7 +134,11 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(State.ABORTED);
-		component.onAborted();
+		if (component.getMode() == ControlMode.SIMULATION) {
+
+		} else {
+			component.onAborted();
+		}
 		component.LOGGER.debug("onAborted - finished");
 	}
 
@@ -123,7 +153,11 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(State.RESETTING);
-		component.onResetting();
+		if (component.getMode() == ControlMode.SIMULATION) {
+			simulatedStatesHandler.onResetting();
+		} else {
+			component.onResetting();
+		}
 		component.LOGGER.debug("onResetting - finished");
 	}
 
@@ -134,7 +168,11 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(State.STARTING);
-		component.onStarting();
+		if (component.getMode() == ControlMode.SIMULATION) {
+			simulatedStatesHandler.onStarting();
+		} else {
+			component.onStarting();
+		}
 		component.LOGGER.debug("onStarting - finished");
 	}
 
@@ -145,7 +183,11 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(State.EXECUTE);
-		component.onExecute();
+		if (component.getMode() == ControlMode.SIMULATION) {
+			simulatedStatesHandler.onExecute();
+		} else {
+			component.onExecute();
+		}
 		component.LOGGER.debug("onExecute - finished");
 	}
 
@@ -156,7 +198,11 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(State.COMPLETING);
-		component.onCompleting();
+		if (component.getMode() == ControlMode.SIMULATION) {
+			simulatedStatesHandler.onCompleting();
+		} else {
+			component.onCompleting();
+		}
 		component.LOGGER.debug("onCompleting - finished");
 	}
 
@@ -167,7 +213,11 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(State.HOLDING);
-		component.onHolding();
+		if (component.getMode() == ControlMode.SIMULATION) {
+			simulatedStatesHandler.onHolding();
+		} else {
+			component.onHolding();
+		}
 		component.LOGGER.debug("onHolding - finished");
 	}
 
@@ -178,7 +228,11 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(State.UNHOLDING);
-		component.onUnholding();
+		if (component.getMode() == ControlMode.SIMULATION) {
+			simulatedStatesHandler.onUnholding();
+		} else {
+			component.onUnholding();
+		}
 		component.LOGGER.debug("onUnholding - finished");
 	}
 
@@ -189,7 +243,11 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(State.SUSPENDING);
-		component.onSuspending();
+		if (component.getMode() == ControlMode.SIMULATION) {
+			simulatedStatesHandler.onSuspending();
+		} else {
+			component.onSuspending();
+		}
 		component.LOGGER.debug("onSuspending - finished");
 	}
 
@@ -200,7 +258,11 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(State.UNSUSPENDING);
-		component.onUnsuspending();
+		if (component.getMode() == ControlMode.SIMULATION) {
+			simulatedStatesHandler.onUnsuspending();
+		} else {
+			component.onUnsuspending();
+		}
 		component.LOGGER.debug("onUnsuspending - finished");
 	}
 
@@ -211,7 +273,11 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(State.ABORTING);
-		component.onAborting();
+		if (component.getMode() == ControlMode.SIMULATION) {
+			simulatedStatesHandler.onAborting();
+		} else {
+			component.onAborting();
+		}
 		component.LOGGER.debug("onAborting - finished");
 	}
 
@@ -222,7 +288,11 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(State.CLEARING);
-		component.onClearing();
+		if (component.getMode() == ControlMode.SIMULATION) {
+			simulatedStatesHandler.onClearing();
+		} else {
+			component.onClearing();
+		}
 		component.LOGGER.debug("onClearing - finished");
 	}
 
@@ -233,7 +303,11 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(State.STOPPING);
-		component.onStopping();
+		if (component.getMode() == ControlMode.SIMULATION) {
+			simulatedStatesHandler.onStopping();
+		} else {
+			component.onStopping();
+		}
 		component.LOGGER.debug("onStopping - finished");
 	}
 

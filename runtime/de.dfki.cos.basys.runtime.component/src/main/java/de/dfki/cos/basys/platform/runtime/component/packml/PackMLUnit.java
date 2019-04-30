@@ -31,7 +31,7 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 	private CompletableFuture<Void> currentTask;
 	
 	private ActiveStatesHandler actHandler = null;
-	private ActiveStatesHandler simHandler = null;
+	//private ActiveStatesHandler simHandler = null;
 	private WaitStatesHandler waitHandler = null;
 
 	public PackMLUnit(String id, String name) {
@@ -77,9 +77,9 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 		this.actHandler = actHandler;
 	}
 
-	public void setSimStatesHandler(ActiveStatesHandler simHandler) {
-		this.simHandler = simHandler;
-	}
+//	public void setSimStatesHandler(ActiveStatesHandler simHandler) {
+//		this.simHandler = simHandler;
+//	}
 
 	public void setWaitStatesHandler(WaitStatesHandler waitHandler) {
 		this.waitHandler = waitHandler;
@@ -322,9 +322,9 @@ public class PackMLUnit implements StatusInterface, CommandInterface, ActiveStat
 	 */
 
 	private ActiveStatesHandler getHandler() {
-		if (getMode() == ControlMode.SIMULATION) {
-			return simHandler;
-		}
+		//if (getMode() == ControlMode.SIMULATION) {
+		//	return simHandler;
+		//}
 		return actHandler;
 	}
 
