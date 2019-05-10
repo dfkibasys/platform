@@ -29,7 +29,7 @@ Communication in the platform is realized by a Communication API that abstracts 
  - Request - Response (synchronous and asynchronous)
  - Publish - Subscribe
 
- <img src='/docs/communication_api.png?raw=true' width='50%' height='50%'>
+ <img src='/docs/communication_api.png?raw=true' width='75%' height='75%'>
  
 In short, a Client manages a set of ChannelPools. 
 A ChannelPool itself manages a set of named Channels.
