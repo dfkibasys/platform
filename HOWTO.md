@@ -24,6 +24,9 @@
 ## configure a device component?
 *TODO:* explain
 
+## model the capabilities of a device component?
+*TODO:* explain
+
 ## implement a Camunda BPMN process that controls devices?
 *TODO:* explain
 
