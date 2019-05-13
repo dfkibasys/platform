@@ -34,4 +34,14 @@
 *TODO:* explain
 
 ## build a new demonstrator?
+1. Model your topology.
+2. Model your product (variants) to produce.
+3. Model your device types including basic capabilities.
+4. Model your device instances including product-specific capabilities.
+5. Assign your device instances to topology elements.
+6. Model your manufacturing process as sequence of product-specific capability requirements.
+7. Implement your PackML-based device components for each distinct device instance in (4).
+8. Create appropriate configuration files for instantiation implemented device components.
+
+
 *TODO:* explain
