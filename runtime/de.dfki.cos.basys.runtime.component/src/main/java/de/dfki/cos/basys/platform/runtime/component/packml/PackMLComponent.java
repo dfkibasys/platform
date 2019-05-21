@@ -235,6 +235,19 @@ public abstract class PackMLComponent extends BaseComponent implements StatusInt
 		return status;
 	}
 	
+	@Override
+	protected ComponentRequestStatus handleCapabilityRequest(CapabilityRequest req)	{
+		ComponentRequestStatus status = canExecuteCapabilityRequest(req);
+				
+		return status;		
+	}
+	
+	public ComponentRequestStatus canExecuteCapabilityRequest(CapabilityRequest req) {
+		ComponentRequestStatus status = new ComponentRequestStatusImpl.Builder().componentId(getId()).status(RequestStatus.ACCEPTED).build();
+		return status;
+	}
+	
+
 	protected void handleCapabilityResponse(ResponseStatus status, int statusCode) {
 		if (currentCapabilityRequest != null) {
 			sendComponentResponse(currentCapabilityRequest, status, statusCode);

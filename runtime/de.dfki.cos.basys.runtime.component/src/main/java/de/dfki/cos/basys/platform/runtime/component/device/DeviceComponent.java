@@ -53,7 +53,7 @@ import de.dfki.cos.basys.platform.runtime.component.registry.ComponentRegistrati
 
 public abstract class DeviceComponent extends PackMLComponent {
 
-	protected boolean resetOnComplete, resetOnStopped = false;
+	protected boolean resetOnComplete, resetOnStopped, initialStartOnIdle, initialSuspendOnExecute = false;
 
 	private BlockingQueue<CapabilityRequest> requestQueue = new LinkedBlockingQueue<CapabilityRequest>(32);
 	
@@ -84,6 +84,16 @@ public abstract class DeviceComponent extends PackMLComponent {
 			observeExternalConnection = Boolean.parseBoolean(config.getProperty("observeExternalConnection").getValue());
 			LOGGER.info("observeExternalConnection = " + observeExternalConnection);
 		}
+
+		if (config.getProperty("initialStartOnIdle") != null) {
+			initialStartOnIdle = Boolean.parseBoolean(config.getProperty("initialStartOnIdle").getValue());
+			LOGGER.info("initialStartOnIdle = " + initialStartOnIdle);
+		}
+		
+		if (config.getProperty("initialSuspendOnExecute") != null) {
+			initialSuspendOnExecute = Boolean.parseBoolean(config.getProperty("initialSuspendOnExecute").getValue());
+			LOGGER.info("initialSuspendOnExecute = " + initialSuspendOnExecute);
+		}
 		
 		if (config.getProperty("simulated") != null) {
 			simulated = Boolean.parseBoolean(config.getProperty("simulated").getValue());
@@ -108,7 +118,7 @@ public abstract class DeviceComponent extends PackMLComponent {
 
 	@Override
 	protected ComponentRequestStatus handleCapabilityRequest(CapabilityRequest req)	{
-		ComponentRequestStatus status = canExecuteCapabilityRequest(req);
+		ComponentRequestStatus status = super.handleCapabilityRequest(req);
 		
 		if (status.getStatus() == RequestStatus.REJECTED)
 			return status;
@@ -132,47 +142,10 @@ public abstract class DeviceComponent extends PackMLComponent {
 		}
 		
 		return status;
-		
-	}
-	
-	public ComponentRequestStatus canExecuteCapabilityRequest(CapabilityRequest req) {
-		ComponentRequestStatus status = new ComponentRequestStatusImpl.Builder().componentId(getId()).status(RequestStatus.ACCEPTED).build();
-		return status;
 	}
 	
 	protected abstract UnitConfiguration translateCapabilityRequest(CapabilityRequest req);
 	
-	protected void handleCapabilityResponse(ResponseStatus status, int statusCode) {
-		if (currentCapabilityRequest != null) {
-			sendComponentResponse(currentCapabilityRequest, status, statusCode);
-			currentCapabilityRequest = null;
-		} else {
-			// might occur in onStopping if stop() is triggered externally without executing capability request
-			LOGGER.info("no current capability request to respond to");
-		}
-	}
-	
-	protected void handleCapabilityResponse(ResponseStatus status, int statusCode, Variable resultVariable) {
-		if (currentCapabilityRequest != null) {
-			sendComponentResponse(currentCapabilityRequest, status, statusCode, resultVariable);
-			currentCapabilityRequest = null;
-		} else {
-			// might occur in onStopping if stop() is triggered externally without executing capability request
-			LOGGER.info("no current capability request to respond to");
-		}
-	}
-	
-	protected void handleCapabilityResponse(ResponseStatus status, int statusCode, List<Variable> resultVariables) {
-		if (currentCapabilityRequest != null) {
-			sendComponentResponse(currentCapabilityRequest, status, statusCode, resultVariables);
-			currentCapabilityRequest = null;
-		} else {
-			// might occur in onStopping if stop() is triggered externally without executing capability request
-			LOGGER.info("no current capability request to respond to");
-		}
-	}
-	
-
 	/*
 	 * CommandInterface
 	 */
@@ -205,18 +178,33 @@ public abstract class DeviceComponent extends PackMLComponent {
 	public void onIdle() {
 		super.onIdle();
 		
-		CapabilityRequest queuedRequest = requestQueue.poll();
-		if (queuedRequest != null) {				 
-			try {
-				ComponentRequestStatus status = handleCapabilityRequest(queuedRequest);
-				String payload = JsonUtils.toString(status);
-				Notification not = cf.createNotification(payload);
-				this.outChannel.sendNotification(not);
-			} catch (JsonProcessingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}			
-		}		
+		if (initialStartOnIdle) {
+			initialStartOnIdle = false;
+			// TODO: what about handling a capability request instead? The translate method could then be used for configuring a sensor device
+			start();			
+		} else {		
+			CapabilityRequest queuedRequest = requestQueue.poll();
+			if (queuedRequest != null) {				 
+				try {
+					ComponentRequestStatus status = handleCapabilityRequest(queuedRequest);
+					String payload = JsonUtils.toString(status);
+					Notification not = cf.createNotification(payload);
+					this.outChannel.sendNotification(not);
+				} catch (JsonProcessingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}			
+			}		
+		}
+	}
+	
+	@Override
+	public void onExecute() {	
+		super.onExecute();
+		if (initialSuspendOnExecute) {
+			initialSuspendOnExecute = false;
+			suspend();
+		} 
 	}
 
 	@Override

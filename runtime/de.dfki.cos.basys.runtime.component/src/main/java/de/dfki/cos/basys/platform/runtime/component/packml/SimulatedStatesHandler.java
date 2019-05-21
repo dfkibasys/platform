@@ -39,7 +39,12 @@ public class SimulatedStatesHandler implements ActiveStatesHandler {
 
 	@Override
 	public void onExecute() {
-		sleep(config.getOnExecuteDuration());
+		if (config.getOnExecuteDuration() > 0) {
+			sleep(config.getOnExecuteDuration());
+		} else {
+			//TODO: respect initialSuspendOnExecute flag
+			//TODO: we simulate a sensor device: busywait4ever and generate predefined sensor events with a certain degree of freedom
+		}
 	}
 
 	@Override
