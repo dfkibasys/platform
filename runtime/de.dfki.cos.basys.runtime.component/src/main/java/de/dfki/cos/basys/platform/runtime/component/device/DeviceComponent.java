@@ -64,12 +64,6 @@ public abstract class DeviceComponent extends PackMLComponent {
 		
 		allowedControlModes = new HashSet<>(Arrays.asList(ControlMode.PRODUCTION, ControlMode.SIMULATION));	
 
-		if (config.getSimulationConfiguration() == null) {
-			config.setSimulationConfiguration(new SimulationConfigurationImpl.Builder().build());
-		} else {
-			LOGGER.debug("using provided simulation config");
-		}		
-		
 		if (config.getProperty("resetOnComplete") != null) {
 			resetOnComplete = Boolean.parseBoolean(config.getProperty("resetOnComplete").getValue());
 			LOGGER.info("resetOnComplete = " + resetOnComplete);
@@ -97,18 +91,20 @@ public abstract class DeviceComponent extends PackMLComponent {
 		
 		if (config.getProperty("simulated") != null) {
 			simulated = Boolean.parseBoolean(config.getProperty("simulated").getValue());
-			if (simulated) {
-				packmlUnit.setMode(ControlMode.SIMULATION);
-				observeExternalConnection = false;
-				LOGGER.info("component is in SIMULATION mode");
-			}
+			LOGGER.info("simulated = " + simulated);			
 		}
 		
-//		packmlUnit.setSimStatesHandler(new SimulatedStatesHandler(this));
-//		if (simulated) {
-//			packmlUnit.setMode(ControlMode.SIMULATION);
-//			observeExternalConnection = false;
-//		}	
+	}
+	
+	@Override
+	public void activate(ComponentContext context) throws ComponentException {	
+		super.activate(context);
+
+		if (simulated) {
+			packmlUnit.setMode(ControlMode.SIMULATION);
+			observeExternalConnection = false;
+			LOGGER.info("set component to SIMULATION mode");
+		}
 	}
 
 	@Override

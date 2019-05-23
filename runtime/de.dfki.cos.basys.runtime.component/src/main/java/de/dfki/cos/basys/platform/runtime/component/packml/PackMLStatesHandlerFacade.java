@@ -59,11 +59,9 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(State.STOPPED);
-		if (component.getMode() == ControlMode.SIMULATION) {
 
-		} else {
-			component.onStopped();
-		}
+		component.onStopped();
+
 		component.LOGGER.debug("onStopped - finished");
 	}
 
@@ -74,11 +72,9 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(State.IDLE);
-		if (component.getMode() == ControlMode.SIMULATION) {
 
-		} else {
-			component.onIdle();
-		}
+		component.onIdle();
+
 		component.LOGGER.debug("onIdle - finished");
 	}
 
@@ -89,11 +85,9 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(State.COMPLETE);
-		if (component.getMode() == ControlMode.SIMULATION) {
 
-		} else {
-			component.onComplete();
-		}
+		component.onComplete();
+
 		component.LOGGER.debug("onComplete - finished");
 	}
 
@@ -104,11 +98,9 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(State.HELD);
-		if (component.getMode() == ControlMode.SIMULATION) {
 
-		} else {
-			component.onHeld();
-		}
+		component.onHeld();
+
 		component.LOGGER.debug("onHeld - finished");
 	}
 
@@ -119,11 +111,9 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(State.SUSPENDED);
-		if (component.getMode() == ControlMode.SIMULATION) {
 
-		} else {
-			component.onSuspended();
-		}
+		component.onSuspended();
+
 		component.LOGGER.debug("onSuspended - finished");
 	}
 
@@ -134,11 +124,9 @@ public class PackMLStatesHandlerFacade implements ActiveStatesHandler, WaitState
 			component.updateRegistrationAndNotify();
 		if (recordStateChanges)
 			recentStates.add(State.ABORTED);
-		if (component.getMode() == ControlMode.SIMULATION) {
 
-		} else {
-			component.onAborted();
-		}
+		component.onAborted();
+
 		component.LOGGER.debug("onAborted - finished");
 	}
 

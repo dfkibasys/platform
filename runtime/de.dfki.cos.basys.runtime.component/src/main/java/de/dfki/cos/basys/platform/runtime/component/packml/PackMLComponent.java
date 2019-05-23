@@ -64,20 +64,28 @@ public abstract class PackMLComponent extends BaseComponent implements StatusInt
 	PackMLStatesHandlerFacade handlerFacade = null;	
 	
 	public PackMLComponent(ComponentConfiguration config) {
-		super(config);		
+		super(config);			
+
+		if (config.getSimulationConfiguration() == null) {
+			config.setSimulationConfiguration(new SimulationConfigurationImpl.Builder().build());
+		} else {
+			LOGGER.debug("using provided simulation config");
+		}
+	}
+
+	@Override
+	public void activate(ComponentContext context) throws ComponentException {	
 		
 		lock = new ReentrantLock();
 		executeCondition = lock.newCondition();		
+		
 		handlerFacade = new PackMLStatesHandlerFacade(this);
 		
 		packmlUnit = new PackMLUnit(getId(), getName());
 		packmlUnit.setActiveStatesHandler(handlerFacade);
-		packmlUnit.setWaitStatesHandler(handlerFacade);
-	}
-
-	@Override
-	public void activate(ComponentContext context) throws ComponentException {			
+		packmlUnit.setWaitStatesHandler(handlerFacade);		
 		packmlUnit.initialize();
+		
 		super.activate(context);
 		LOGGER.info("activated");
 	}
