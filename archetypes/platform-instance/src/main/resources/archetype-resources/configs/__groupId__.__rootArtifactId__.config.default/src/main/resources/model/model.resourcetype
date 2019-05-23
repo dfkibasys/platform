@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resourcetype:ResourceTypeCatalogueCollection xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:pattern="http://www.dfki.de/iui/basys/model/pattern" xmlns:resourcetype="http://www.dfki.de/iui/basys/model/resourcetype">
+  <catalogues manufacturer="Festo">
+    <resourceTypes xsi:type="resourcetype:Tool" id="_yIFSQjB3Eei1bbwBPPZWOA" name="Festo Component">
+      <capabilityAssertions id="_QGmo8F8yEeiUo-65_7rTBQ" name="Festo Component PickAndPlace">
+        <pattern>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace"/>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//LogisticsCapability/payload"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <restrictions>
+                <restriction xsi:type="pattern:PDoubleRestriction" expression="" function="&lt;" value="0.1"/>
+              </restrictions>
+            </range>
+          </slot>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace/positionRepeatability"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <restrictions>
+                <restriction xsi:type="pattern:PDoubleRestriction" expression="" function="&lt;" value="0.1"/>
+              </restrictions>
+            </range>
+          </slot>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace/reach"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <restrictions>
+                <restriction xsi:type="pattern:PDoubleRestriction" expression="" function="&lt;" value="200.0"/>
+              </restrictions>
+            </range>
+          </slot>
+        </pattern>
+      </capabilityAssertions>
+    </resourceTypes>
+  </catalogues>
+  <catalogues manufacturer="Universal Robotics">
+    <resourceTypes xsi:type="resourcetype:Robot" id="_Hi37STD5EeiuBvcKgWzd3Q" name="UR3" documentation="https://www.universal-robots.com/media/1801288/eng_199901_ur3_tech_spec_web_a4.pdf">
+      <capabilityAssertions id="_jNgp8FNhEeibbdo05KXxGQ" name="UR3 PickAndPlace">
+        <pattern>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace"/>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//LogisticsCapability/payload"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <restrictions>
+                <restriction xsi:type="pattern:PDoubleRestriction" function="&lt;" value="3.0"/>
+              </restrictions>
+            </range>
+          </slot>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace/reach"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <restrictions>
+                <restriction xsi:type="pattern:PDoubleRestriction" function="&lt;" value="500.0"/>
+              </restrictions>
+            </range>
+          </slot>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace/positionRepeatability"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <restrictions>
+                <restriction xsi:type="pattern:PDoubleRestriction" value="0.1"/>
+              </restrictions>
+            </range>
+          </slot>
+        </pattern>
+      </capabilityAssertions>
+    </resourceTypes>
+    <resourceTypes xsi:type="resourcetype:Robot" id="_Jve8yTD5EeiuBvcKgWzd3Q" name="UR5" documentation="https://www.universal-robots.com/media/1801303/eng_199901_ur5_tech_spec_web_a4.pdf">
+      <capabilityAssertions id="_jNgp8FNxEeibbdo05KXzGQ" name="UR5 PickAndPlace">
+        <pattern>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace"/>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//LogisticsCapability/payload"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <restrictions>
+                <restriction xsi:type="pattern:PDoubleRestriction" function="&lt;" value="5.0"/>
+              </restrictions>
+            </range>
+          </slot>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace/reach"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <restrictions>
+                <restriction xsi:type="pattern:PDoubleRestriction" function="&lt;" value="850.0"/>
+              </restrictions>
+            </range>
+          </slot>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace/positionRepeatability"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <restrictions>
+                <restriction xsi:type="pattern:PDoubleRestriction" value="0.1"/>
+              </restrictions>
+            </range>
+          </slot>
+        </pattern>
+      </capabilityAssertions>
+    </resourceTypes>
+    <resourceTypes xsi:type="resourcetype:Robot" id="_LILOCTD5EeiuBvcKgWzd3Q" name="UR10" documentation="https://www.universal-robots.com/media/1801323/eng_199901_ur10_tech_spec_web_a4.pdf">
+      <capabilityAssertions id="_jNgp8FNhEexbbdo05KXzGQ" name="UR10 PickAndPlace">
+        <pattern>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace"/>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//LogisticsCapability/payload"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <restrictions>
+                <restriction xsi:type="pattern:PDoubleRestriction" function="&lt;" value="10.0"/>
+              </restrictions>
+            </range>
+          </slot>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace/reach"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <restrictions>
+                <restriction xsi:type="pattern:PDoubleRestriction" function="&lt;" value="1300.0"/>
+              </restrictions>
+            </range>
+          </slot>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace/positionRepeatability"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <restrictions>
+                <restriction xsi:type="pattern:PDoubleRestriction" value="0.1"/>
+              </restrictions>
+            </range>
+          </slot>
+        </pattern>
+      </capabilityAssertions>
+    </resourceTypes>
+  </catalogues>
+  <catalogues manufacturer="Kuka">
+    <resourceTypes xsi:type="resourcetype:Robot" id="_Vvb1uTD7EeiuBvcKgWzd3Q" name="LBR iiwa 7 R800" documentation="https://www.kuka.com/de-de/produkte-leistungen/robotersysteme/industrieroboter/lbr-iiwa">
+      <capabilityAssertions id="_jNgx8FNhEeibbdo05KXzGQ" name="LBR iiwa 7 PickAndPlace">
+        <pattern>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace"/>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//LogisticsCapability/payload"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <restrictions>
+                <restriction xsi:type="pattern:PDoubleRestriction" function="&lt;" value="7.0"/>
+              </restrictions>
+            </range>
+          </slot>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace/reach"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <restrictions>
+                <restriction xsi:type="pattern:PDoubleRestriction" function="&lt;" value="800.0"/>
+              </restrictions>
+            </range>
+          </slot>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace/positionRepeatability"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <restrictions>
+                <restriction xsi:type="pattern:PDoubleRestriction" value="0.1"/>
+              </restrictions>
+            </range>
+          </slot>
+        </pattern>
+      </capabilityAssertions>
+    </resourceTypes>
+    <resourceTypes xsi:type="resourcetype:Robot" id="_9rqBszD8EeiuBvcKgWzd3Q" name="LBR iiwa 14 R820">
+      <capabilityAssertions id="_jNgp8FNhEeibbdx05KXzGQ" name="LBR iiwa 14 PickAndPlace">
+        <pattern>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace"/>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//LogisticsCapability/payload"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <restrictions>
+                <restriction xsi:type="pattern:PDoubleRestriction" function="&lt;" value="14.0"/>
+              </restrictions>
+            </range>
+          </slot>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace/reach"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <restrictions>
+                <restriction xsi:type="pattern:PDoubleRestriction" function="&lt;" value="820.0"/>
+              </restrictions>
+            </range>
+          </slot>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace/positionRepeatability"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <restrictions>
+                <restriction xsi:type="pattern:PDoubleRestriction" value="0.1"/>
+              </restrictions>
+            </range>
+          </slot>
+        </pattern>
+      </capabilityAssertions>
+      <capabilityAssertions id="_P8-n0Dm4EemMb7KLTLHqMg" name="Assembling">
+        <pattern>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//Fügen"/>
+        </pattern>
+      </capabilityAssertions>
+    </resourceTypes>
+    <resourceTypes xsi:type="resourcetype:Robot" id="_ciTbgjm2EemMb7KLTLHqMg" name="Agilus">
+      <capabilityAssertions id="_jNgp8FNhEeibbdx05KXzGQ" name="Agilus PickAndPlace">
+        <pattern>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace"/>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//LogisticsCapability/payload"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <restrictions>
+                <restriction xsi:type="pattern:PDoubleRestriction" function="&lt;" value="11.0"/>
+              </restrictions>
+            </range>
+          </slot>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace/reach"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <restrictions>
+                <restriction xsi:type="pattern:PDoubleRestriction" function="&lt;" value="1101.0"/>
+              </restrictions>
+            </range>
+          </slot>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace/positionRepeatability"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <restrictions>
+                <restriction xsi:type="pattern:PDoubleRestriction" value="0.1"/>
+              </restrictions>
+            </range>
+          </slot>
+        </pattern>
+      </capabilityAssertions>
+      <capabilityAssertions id="_P8-n0Dm4EemMb7KLTLHqMg" name="Assembling">
+        <pattern>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//Fügen"/>
+        </pattern>
+      </capabilityAssertions>
+    </resourceTypes>
+  </catalogues>
+  <catalogues manufacturer="ABB">
+    <resourceTypes xsi:type="resourcetype:Robot" id="_NnuuyTD7EeiuBvcKgWzd3Q" name="YuMi" documentation="https://library.e.abb.com/public/848462e58ba244f38532d23534bb4067/Datenblatt%20YuMi_lowres.pdf">
+      <capabilityAssertions id="_jNg99FNhEeibbdo05KXzGQ" name="YuMi PickAndPlace">
+        <pattern>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace"/>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//LogisticsCapability/payload"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <restrictions>
+                <restriction xsi:type="pattern:PDoubleRestriction" function="&lt;" value="0.5"/>
+              </restrictions>
+            </range>
+          </slot>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace/reach"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <restrictions>
+                <restriction xsi:type="pattern:PDoubleRestriction" function="&lt;" value="559.0"/>
+              </restrictions>
+            </range>
+          </slot>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace/positionRepeatability"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <restrictions>
+                <restriction xsi:type="pattern:PDoubleRestriction" value="0.02"/>
+              </restrictions>
+            </range>
+          </slot>
+        </pattern>
+      </capabilityAssertions>
+    </resourceTypes>
+  </catalogues>
+  <catalogues manufacturer="Franka Emika">
+    <resourceTypes xsi:type="resourcetype:Robot" id="_0xCaqTD9EeiuBvcKgWzd3Q" name="Panda" documentation="https://s3-eu-central-1.amazonaws.com/franka-de-uploads-staging/uploads/2018/04/2018-04-datasheet-panda.pdf">
+      <capabilityAssertions id="_jNgp8FNhEeibbdo05KXzGQ" name="Panda PickAndPlace">
+        <pattern>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace"/>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//LogisticsCapability/payload"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <restrictions>
+                <restriction xsi:type="pattern:PDoubleRestriction" function="&lt;" value="3.0"/>
+              </restrictions>
+            </range>
+          </slot>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace/reach"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <restrictions>
+                <restriction xsi:type="pattern:PDoubleRestriction" function="&lt;" value="855.0"/>
+              </restrictions>
+            </range>
+          </slot>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//PickAndPlace/positionRepeatability"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <restrictions>
+                <restriction xsi:type="pattern:PDoubleRestriction" value="0.1"/>
+              </restrictions>
+            </range>
+          </slot>
+        </pattern>
+      </capabilityAssertions>
+    </resourceTypes>
+  </catalogues>
+  <catalogues manufacturer="Mobile Industrial Robots">
+    <resourceTypes xsi:type="resourcetype:AVG" id="_ZRW8sjJhEei1p5hKOf5Slw" name="MiR 100" documentation="http://www.mobile-industrial-robots.com/media/2947/mir100_specs_eng_corrected.pdf">
+      <capabilityAssertions id="_vmBh8FNlEei1Nvtoff5AwQ" name="MiR100 Transport">
+        <pattern varName="">
+          <type href="http://www.dfki.de/iui/basys/model/capability#//Transport"/>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//LogisticsCapability/payload"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <restrictions>
+                <restriction xsi:type="pattern:PDoubleRestriction" function="&lt;" value="100.0"/>
+              </restrictions>
+            </range>
+          </slot>
+        </pattern>
+      </capabilityAssertions>
+    </resourceTypes>
+    <resourceTypes xsi:type="resourcetype:AVG" id="_77wTIlNmEei1Nvtofg5AwQ" name="MiR 200" documentation="http://www.mobile-industrial-robots.com/media/3026/mir200_specs_eng_corrected.pdf">
+      <capabilityAssertions id="_vmBh8FNlEei1Nvtofg5AwQ" name="MiR200 Transport">
+        <pattern varName="">
+          <type href="http://www.dfki.de/iui/basys/model/capability#//Transport"/>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//LogisticsCapability/payload"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <restrictions>
+                <restriction xsi:type="pattern:PDoubleRestriction" function="&lt;" value="200.0"/>
+              </restrictions>
+            </range>
+          </slot>
+        </pattern>
+      </capabilityAssertions>
+    </resourceTypes>
+  </catalogues>
+  <catalogues manufacturer="LAP Laser">
+    <resourceTypes xsi:type="resourcetype:Tool" id="_BcwkYlIxEeidSe5vp9A3oA" name="Projection Laser">
+      <capabilityAssertions id="_fijDUGWlEeimHJMdsEZOIA" name="Project Path">
+        <pattern>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//ProjectPath"/>
+        </pattern>
+      </capabilityAssertions>
+      <capabilityAssertions id="_ks7dgGWlEeimHJMdsEZOIA" name="Project ETA">
+        <pattern>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//ProjectETA"/>
+        </pattern>
+      </capabilityAssertions>
+    </resourceTypes>
+  </catalogues>
+  <catalogues manufacturer="Captron">
+    <resourceTypes xsi:type="resourcetype:Tool" id="_GHTn8lIxEeidSe5vp9A3oA" name="Button">
+      <capabilityAssertions binding="" id="_RrMR8GWlEeimHJMdsEZOIA" name="Button Confirmation">
+        <pattern>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//ConfirmationCapability"/>
+        </pattern>
+      </capabilityAssertions>
+    </resourceTypes>
+  </catalogues>
+  <catalogues manufacturer="WGS">
+    <resourceTypes xsi:type="resourcetype:Tool" id="_3cuNYlIxEeidSe5vp9A3oA" name="Worker Guidance">
+      <capabilityAssertions binding="" id="_be_uUGWlEeimHJMdsEZOIA" name="WGS Confirmation">
+        <pattern>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//ConfirmationCapability"/>
+        </pattern>
+      </capabilityAssertions>
+    </resourceTypes>
+  </catalogues>
+  <catalogues manufacturer="Philips">
+    <resourceTypes xsi:type="resourcetype:Tool" id="_XEoEQmsVEeiPYI9_h6Hhzw" name="Hue Light" documentation="https://www2.meethue.com/de-de/p/hue-white-and-color-ambiance-white-and-color-ambiance-lightstrip-plus-basis/7190155PH/technische-daten" image="">
+      <capabilityAssertions id="_ndTi4GsVEeiPYI9_h6Hhzw" name="IO Signal">
+        <pattern>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//QAVisualisationCapability"/>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//QAVisualisationCapability/qaResult"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+            </range>
+          </slot>
+        </pattern>
+      </capabilityAssertions>
+    </resourceTypes>
+  </catalogues>
+  <catalogues manufacturer="DFKI">
+    <resourceTypes xsi:type="resourcetype:Tool" id="_Euwm8mtnEeihVrieHNgo3Q" name="SiAM Multimodal Dialogue Platform" documentation="https://madmacs.dfki.de/?page_id=21">
+      <capabilityAssertions id="_NP5sIGtoEeihVrieHNgo3Q" name="Perform Dialogue">
+        <pattern>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//InteractionCapability"/>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//InteractionCapability/topic"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+            </range>
+          </slot>
+        </pattern>
+      </capabilityAssertions>
+    </resourceTypes>
+  </catalogues>
+  <catalogues manufacturer="Other">
+    <resourceTypes xsi:type="resourcetype:Carrier" id="_sjIa2jm2EemMb7KLTLHqMg" name="Carrier">
+      <capabilityAssertions id="_nslT4Dm8EemMb7KLTLHqMg" name="Transport">
+        <pattern>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//Transport"/>
+        </pattern>
+      </capabilityAssertions>
+    </resourceTypes>
+    <resourceTypes xsi:type="resourcetype:Fixture" id="_udw7hzm2EemMb7KLTLHqMg" name="Fixture">
+      <capabilityAssertions id="_uypXoDm8EemMb7KLTLHqMg">
+        <pattern>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//Capability"/>
+        </pattern>
+      </capabilityAssertions>
+    </resourceTypes>
+  </catalogues>
+  <catalogues manufacturer="Rexroth">
+    <resourceTypes xsi:type="resourcetype:Tool" id="_ME-j8n1CEem1lalb0WVzJA" name="Nexo Cordless Nutrunner NXP" documentation="https://www.boschrexroth.com/en/xc/products/product-groups/tightening-technology/cordless-nutrunner/nxp-pistolgrip-nutrunner">
+      <capabilityAssertions id="_tUCJ0H1CEem1lalb0WVzJA" name="ScrewTightening">
+        <pattern>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//Screwing"/>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//Screwing/torque"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <restrictions>
+                <restriction xsi:type="pattern:PDoubleRestriction" function=">=" value="1.8"/>
+                <restriction xsi:type="pattern:PDoubleRestriction" function="&lt;=" value="12.0"/>
+              </restrictions>
+            </range>
+          </slot>
+        </pattern>
+      </capabilityAssertions>
+    </resourceTypes>
+    <resourceTypes xsi:type="resourcetype:Tool" binding="" id="_Umy0An1CEem1lalb0WVzJA" name="Nexo Cordless Nutrunner NXA" documentation="https://www.boschrexroth.com/en/xc/products/product-groups/tightening-technology/cordless-nutrunner/nxa-right-angle-nutrunner">
+      <capabilityAssertions id="_t50-gH1CEem1lalb0WVzJA" name="ScrewTightening">
+        <pattern>
+          <type href="http://www.dfki.de/iui/basys/model/capability#//Screwing"/>
+          <slot>
+            <feature xsi:type="ecore:EAttribute" href="http://www.dfki.de/iui/basys/model/capability#//Screwing/torque"/>
+            <range xsi:type="pattern:PValue">
+              <type href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <restrictions>
+                <restriction xsi:type="pattern:PDoubleRestriction" function=">=" value="3.0"/>
+                <restriction xsi:type="pattern:PDoubleRestriction" function="&lt;=" value="65.0"/>
+              </restrictions>
+            </range>
+          </slot>
+        </pattern>
+      </capabilityAssertions>
+    </resourceTypes>
+  </catalogues>
+</resourcetype:ResourceTypeCatalogueCollection>

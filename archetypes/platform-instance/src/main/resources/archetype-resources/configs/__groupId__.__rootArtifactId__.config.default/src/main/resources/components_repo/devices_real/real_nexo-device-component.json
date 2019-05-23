@@ -1,0 +1,10 @@
+{
+  "eClass" : "http://www.dfki.de/iui/basys/model/component#//ComponentConfiguration",
+  "componentCategory" : "DEVICE_COMPONENT",
+  "componentId" : "_zRX5sH08Eem1lalb0WVzJA",
+  "componentName" : "My Nexo NXA",
+  "componentImplementationJavaClass" : "${groupId}.${rootArtifactId}.device.rest.NexoDeviceComponent",
+  "inChannelName" : "_zRX5sH08Eem1lalb0WVzJA#in",
+  "outChannelName" : "_zRX5sH08Eem1lalb0WVzJA#out",
+  "externalConnectionString" : "http://localhost:8888/rest"
+}

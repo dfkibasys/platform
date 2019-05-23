@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<topology:Enterprise xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:topology="http://www.dfki.de/iui/basys/model/topology" id="_mkrEADB4Eei1bbwBPPZWOA" name="DFKI">
+  <sites id="_5zYDkH07Eem1lalb0WVzJA" name="Saarbrücken">
+    <areas id="_8R4GUH07Eem1lalb0WVzJA" name="COS">
+      <workCenters xsi:type="topology:ProductionLine" id="__yu98n07Eem1lalb0WVzJA" name="BaSys 4.0">
+        <workCells id="_J5a6En08Eem1lalb0WVzJA" name="Final Assembly">
+          <stations id="_LfVH8n08Eem1lalb0WVzJA" name="S1">
+            <equipmentModules id="_GOHF8H08Eem1lalb0WVzJA" name="Nutrunner">
+              <assignedResourceType href="model.resourcetype#_Umy0An1CEem1lalb0WVzJA"/>
+              <assignedResourceInstance href="model.resourceinstance#_zRX5sH08Eem1lalb0WVzJA"/>
+            </equipmentModules>
+          </stations>
+        </workCells>
+      </workCenters>
+    </areas>
+  </sites>
+</topology:Enterprise>

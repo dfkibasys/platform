@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<parent>
+		<relativePath>../../poms/compiled/</relativePath>
+		<groupId>${groupId}.${rootArtifactId}</groupId>
+		<artifactId>compiled-bundle-settings</artifactId>
+		<version>${version}</version>
+	</parent>
+
+	<properties>
+		<bundle.symbolicName>${groupId}.${rootArtifactId}.device.${artifactId}</bundle.symbolicName>
+		<bundle.namespace>${groupId}.${rootArtifactId}.device.${artifactId}</bundle.namespace>
+	</properties>
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>${groupId}.${rootArtifactId}.device</groupId>
+	<artifactId>${groupId}.${rootArtifactId}.device.${artifactId}</artifactId>
+
+	<name>${bundle.symbolicName}</name>
+
+	<packaging>bundle</packaging>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>de.dfki.cos.basys.platform.runtime</groupId>
+			<artifactId>de.dfki.cos.basys.platform.runtime.component.device.rest</artifactId>
+			<version>${version.basys.platform}</version>
+		</dependency>
+
+		<!-- comment to remove all imported (non-local) bundles from your compilation 
+			classpath -->
+		<dependency>
+			<type>pom</type>
+			<groupId>${project.parent.groupId}</groupId>
+			<artifactId>provision</artifactId>
+			<version>${project.version}</version>
+			<optional>true</optional>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/junit/junit/4.12 -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+</project>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<productdefinition:ProductCatalogue xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:productdefinition="http://www.dfki.de/iui/basys/model/productdefinition">
+  <productGroups id="_xn7U4EjIEei9sPQ0bCp2Ew" name="My Product">
+    <productVariants id="_6odhQEjIEei9sPQ0bCp2Ew" name="My Product Variant A">
+      <bom id="_HHxhwEjJEei9sPQ0bCp2Ew">
+        <entries xsi:type="productdefinition:AssemblyGroupEntry" binding="" id="_KrK8kH07Eem1lalb0WVzJA" assemblyGroup="_7vVPYX06Eem1lalb0WVzJA"/>
+        <entries xsi:type="productdefinition:AssemblyGroupEntry" id="_ILcKwH07Eem1lalb0WVzJA" name="" assemblyGroup="_tZoTAUjJEei9sPQ0bCp2Ew"/>
+        <entries xsi:type="productdefinition:MaterialEntry" id="_OUoWkX07Eem1lalb0WVzJA" count="4">
+          <material href="model.material#_LaKmAX06Eem1lalb0WVzJA"/>
+        </entries>
+      </bom>
+      <assemblyGroups id="_tZoTAUjJEei9sPQ0bCp2Ew" name="A">
+        <bom id="_ImdecEjPEeiKNvOOp20QBg"/>
+      </assemblyGroups>
+    </productVariants>
+    <productVariants id="_6odhQEjIEei9sPQ0bCp2Eq" name="My Product Variant B">
+      <bom id="_HHxhoEjJEei9sPQ0bCp2Ew">
+        <entries xsi:type="productdefinition:AssemblyGroupEntry" id="_NUP3oH07Eem1lalb0WVzJA" assemblyGroup="_7vVPYX06Eem1lalb0WVzJA"/>
+        <entries xsi:type="productdefinition:AssemblyGroupEntry" binding="" id="_L9pREH07Eem1lalb0WVzJA" assemblyGroup="_z4pnAX06Eem1lalb0WVzJA"/>
+        <entries xsi:type="productdefinition:MaterialEntry" binding="" id="_Q54hkX07Eem1lalb0WVzJA" name="" count="3">
+          <material href="model.material#_HPR58X06Eem1lalb0WVzJA"/>
+        </entries>
+      </bom>
+      <assemblyGroups id="_z4pnAX06Eem1lalb0WVzJA" name="B">
+        <bom id="_02wOAH06Eem1lalb0WVzJA"/>
+      </assemblyGroups>
+    </productVariants>
+    <assemblyGroups id="_7vVPYX06Eem1lalb0WVzJA" name="Frame">
+      <bom id="_DetV4H07Eem1lalb0WVzJA"/>
+    </assemblyGroups>
+  </productGroups>
+</productdefinition:ProductCatalogue>

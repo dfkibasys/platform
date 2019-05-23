@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype-descriptor 
+	xsi:schemaLocation="https://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.1.0 http://maven.apache.org/xsd/archetype-descriptor-1.1.0.xsd" name="cluster40"
+    xmlns="https://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  	
+	<requiredProperties>
+		<requiredProperty key="name" >
+			<!--
+			<defaultValue>PlatformName</defaultValue>			
+			<validationRegex/>
+			-->
+		</requiredProperty>
+		<requiredProperty key="description" >
+			<!--
+			<defaultValue>PlatformDescription</defaultValue>			
+			<validationRegex/>
+			-->
+		</requiredProperty>
+		<requiredProperty key="basysPlatformVersion" >			
+			<defaultValue>0.2.6</defaultValue>			
+			<!--
+			<validationRegex/>
+			-->
+		</requiredProperty>
+	</requiredProperties>
+  
+  <fileSets>
+    <fileSet filtered="true" encoding="UTF-8">
+      <directory>.m2</directory>
+      <includes>
+        <include>**/*.xml</include>
+      </includes>
+    </fileSet>
+    <fileSet encoding="UTF-8">
+      <directory>.gitlab/issue_templates</directory>
+      <includes>
+        <include>**/*.md</include>
+      </includes>
+    </fileSet>
+    <fileSet encoding="UTF-8">
+      <directory></directory>
+      <includes>
+        <include>.gitignore</include>
+        <include>LICENSE</include>
+        <include>README.md</include>
+      </includes>
+    </fileSet>
+  </fileSets>
+  <modules>
+    <module id="shared-plugin-settings" dir="poms" name="shared-plugin-settings">
+      <modules>
+        <module id="wrapper-bundle-settings" dir="wrappers" name="wrapper-bundle-settings" />
+        <module id="compiled-bundle-settings" dir="compiled" name="compiled-bundle-settings" />
+      </modules>
+    </module>
+    <module id="provision" dir="provision" name="provision" />
+    <module id="platform" dir="platform" name="platform" />
+	
+    <module id="device" dir="devices" name="device">
+	  <modules>
+        <module id="rest" dir="__groupId__.__rootArtifactId__.device.rest" name="rest">
+          <fileSets>
+            <fileSet filtered="true" packaged="true" encoding="UTF-8">
+              <directory>src/main/java</directory>
+              <includes>
+                <include>**/*.java</include>
+              </includes>
+            </fileSet>
+            <fileSet filtered="true" encoding="UTF-8">
+              <directory>src/main/resources</directory>
+              <includes>
+                <include>**/*.txt</include>
+              </includes>
+            </fileSet>
+            <fileSet filtered="true" packaged="true" encoding="UTF-8">
+              <directory>src/test/java</directory>
+              <includes>
+                <include>**/*.java</include>
+              </includes>
+            </fileSet>
+            <fileSet encoding="UTF-8">
+              <directory></directory>
+              <includes>
+                <include>.gitignore</include>
+                <include>osgi.bnd</include>
+              </includes>
+            </fileSet>
+          </fileSets>
+        </module>
+      </modules>
+    </module>
+    <module id="config" dir="configs" name="config">
+	  <modules>
+        <module id="default" dir="__groupId__.__rootArtifactId__.config.default" name="default">
+          <fileSets>
+            <fileSet filtered="true" encoding="UTF-8">
+              <directory>src/main/resources</directory>
+              <includes>
+                <include>**/*.txt</include>
+                <include>**/*.properties</include>
+                <include>**/*.json</include>
+              </includes>
+            </fileSet>
+            <fileSet encoding="UTF-8">
+              <directory>src/main/resources</directory>
+              <includes>
+                <include>**/*.bpmn</include>
+                <include>**/*.topology</include>
+                <include>**/*.productdefinition</include>
+                <include>**/*.resourcetype</include>
+                <include>**/*.linebalancing</include>
+                <include>**/*.processdefinition</include>
+                <include>**/*.component</include>
+                <include>**/*.material</include>
+                <include>**/*.processinstance</include>
+                <include>**/*.productinstance</include>
+                <include>**/*.order</include>
+                <include>**/*.resourceinstance</include>
+              </includes>
+            </fileSet>
+            <fileSet encoding="UTF-8">
+              <directory></directory>
+              <includes>
+                <include>.gitignore</include>
+                <include>osgi.bnd</include>
+              </includes>
+            </fileSet>			
+            <fileSet filtered="true" encoding="UTF-8">
+              <directory></directory>
+              <includes>
+                <include>BaSys __name__ __artifactId__.launch</include>
+              </includes>
+            </fileSet>
+          </fileSets>
+        </module>
+      </modules>
+    </module>
+    <module id="karaf" dir="karaf" name="karaf">
+      <modules>
+        <module id="features" dir="features" name="features">
+          <modules>
+            <module id="${rootArtifactId}-feature" dir="__rootArtifactId__-feature" name="${rootArtifactId}-feature">
+              <fileSets>
+                <fileSet filtered="true" encoding="UTF-8">
+                  <directory>src/main/feature</directory>
+                  <includes>
+                    <include>**/*.xml</include>
+                  </includes>
+                </fileSet>
+              </fileSets>
+            </module>
+          </modules>
+        </module>
+        <module id="distribution" dir="distribution" name="distribution">
+          <fileSets>
+            <fileSet filtered="true" encoding="UTF-8">
+              <directory>src/main/resources</directory>
+              <includes>
+                <include>**/*.properties</include>
+              </includes>
+            </fileSet>
+            <fileSet encoding="UTF-8">
+              <directory>src/main/resources</directory>
+              <includes>
+                <include>**/*.</include>
+                <include>**/*.bat</include>
+                <include>**/*.cfg</include>
+              </includes>
+            </fileSet>
+          </fileSets>
+        </module>
+      </modules>
+    </module>
+  </modules>
+</archetype-descriptor>

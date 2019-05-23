@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component:ComponentRequestCollection xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:capability="http://www.dfki.de/iui/basys/model/capability" xmlns:component="http://www.dfki.de/iui/basys/model/component" xmlns:productdefinition="http://www.dfki.de/iui/basys/model/productdefinition" xmlns:resourceinstance="http://www.dfki.de/iui/basys/model/resourceinstance">
+  <componentRequests xsi:type="component:ChangeModeRequest" mode="CHANGE_OVER"/>
+  <componentRequests xsi:type="component:ChangeModeRequest" mode="PRODUCTION"/>
+  <componentRequests xsi:type="component:ChangeModeRequest" mode="SIMULATION"/>
+  <componentRequests xsi:type="component:CommandRequest" controlCommand="RESET"/>
+  <componentRequests xsi:type="component:CommandRequest" controlCommand="STOP"/>
+  <componentRequests xsi:type="component:CapabilityRequest">
+    <capabilityVariant xsi:type="resourceinstance:ManufacturingCapabilityVariant" id="_rmfJQX1KEem1lalb0WVzJA" name="Join Frame and A with screws">
+      <capability xsi:type="capability:Fügen" id="_tpjNNH1KEem1lalb0WVzJA"/>
+      <appliedOn xsi:type="productdefinition:AssemblyGroupEntry" href="model.productdefinition#_ILcKwH07Eem1lalb0WVzJA"/>
+      <appliedOn xsi:type="productdefinition:AssemblyGroupEntry" href="model.productdefinition#_KrK8kH07Eem1lalb0WVzJA"/>
+      <appliedOn xsi:type="productdefinition:MaterialEntry" href="model.productdefinition#_OUoWkX07Eem1lalb0WVzJA"/>
+    </capabilityVariant>
+  </componentRequests>
+</component:ComponentRequestCollection>

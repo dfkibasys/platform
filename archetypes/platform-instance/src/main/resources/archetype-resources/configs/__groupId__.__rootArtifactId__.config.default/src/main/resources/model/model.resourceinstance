@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resourceinstance:ResourceInstanceRepository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:capability="http://www.dfki.de/iui/basys/model/capability" xmlns:productdefinition="http://www.dfki.de/iui/basys/model/productdefinition" xmlns:resourceinstance="http://www.dfki.de/iui/basys/model/resourceinstance">
+  <resourceInstances id="_zRX5sH08Eem1lalb0WVzJA" name="My Nexo NXA" serialNumber="123">
+    <resourceType href="model.resourcetype#_Umy0An1CEem1lalb0WVzJA"/>
+    <capabilityApplications>
+      <capabilityAssertion href="model.resourcetype#_t50-gH1CEem1lalb0WVzJA"/>
+      <capabilityVariants xsi:type="resourceinstance:ManufacturingCapabilityVariant" id="_YGupIX1DEem1lalb0WVzJA">
+        <capability xsi:type="capability:Screwing" id="_YqUebH1DEem1lalb0WVzJA" torque="10.0"/>
+        <appliedOn xsi:type="productdefinition:AssemblyGroupEntry" href="model.productdefinition#_ILcKwH07Eem1lalb0WVzJA"/>
+        <appliedOn xsi:type="productdefinition:AssemblyGroupEntry" href="model.productdefinition#_KrK8kH07Eem1lalb0WVzJA"/>
+        <appliedOn xsi:type="productdefinition:MaterialEntry" href="model.productdefinition#_OUoWkX07Eem1lalb0WVzJA"/>
+      </capabilityVariants>
+    </capabilityApplications>
+    <role href="model.topology#_GOHF8H08Eem1lalb0WVzJA"/>
+  </resourceInstances>
+</resourceinstance:ResourceInstanceRepository>

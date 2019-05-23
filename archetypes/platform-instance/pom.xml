@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<relativePath>../../poms/</relativePath>
+		<groupId>de.dfki.cos.basys.platform</groupId>
+		<artifactId>shared-plugin-settings</artifactId>
+		<version>0.2.7-SNAPSHOT</version>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>de.dfki.cos.basys.platform.archetype</groupId>
+	<artifactId>de.dfki.cos.basys.platform.archetype.platform-instance</artifactId>
+
+	<name>platform-instance</name>
+  <packaging>maven-archetype</packaging>
+
+
+  <build>
+    <extensions>
+      <extension>
+        <groupId>org.apache.maven.archetype</groupId>
+        <artifactId>archetype-packaging</artifactId>
+        <version>3.1.0</version>
+      </extension>
+    </extensions>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <artifactId>maven-archetype-plugin</artifactId>
+          <version>3.1.0</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <description>The BaSys 4.0 Platform Instance Archetype</description>
+
+  <url>https://www.basys40.de/cluster40/</url>
+
+  <developers>
+    <developer>
+      <id>dp</id>
+      <name>Daniel Porta</name>
+      <email>daniel.porta@dfki.de</email>
+      <organization>German Research Center for Artificial Intelligence (DFKI GmbH)</organization>
+      <organizationUrl>http://www.dfki.de</organizationUrl>
+    </developer>
+  </developers>
+
+  <licenses>
+    <license>
+      <name>Eclipse Public License - v 1.0</name>
+      <url>https://www.eclipse.org/legal/epl-v10.html</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <scm>
+    <connection>scm:git:ssh://git@lns-90165.sb.dfki.de:10022/i40/basys/cluster40.git</connection>
+    <developerConnection>scm:git:ssh://git@lns-90165.sb.dfki.de:10022/i40/basys/cluster40.git</developerConnection>
+    <url>https://github.com/BaSys-PC1</url>
+  </scm>
+
+  <distributionManagement>
+    <repository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
+</project>

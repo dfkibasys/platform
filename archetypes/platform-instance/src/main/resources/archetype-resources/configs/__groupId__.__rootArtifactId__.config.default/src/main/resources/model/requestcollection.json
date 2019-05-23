@@ -1,0 +1,40 @@
+{
+  "eClass" : "http://www.dfki.de/iui/basys/model/component#//ComponentRequestCollection",
+  "componentRequests" : [ {
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//ChangeModeRequest",
+    "mode" : "CHANGE_OVER"
+  }, {
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//ChangeModeRequest",
+    "mode" : "PRODUCTION"
+  }, {
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//ChangeModeRequest",
+    "mode" : "SIMULATION"
+  }, {
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CommandRequest",
+    "controlCommand" : "RESET"
+  }, {
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CommandRequest",
+    "controlCommand" : "STOP"
+  }, {
+    "eClass" : "http://www.dfki.de/iui/basys/model/component#//CapabilityRequest",
+    "capabilityVariant" : {
+      "eClass" : "http://www.dfki.de/iui/basys/model/resourceinstance#//ManufacturingCapabilityVariant",
+      "id" : "_rmfJQX1KEem1lalb0WVzJA",
+      "name" : "Join Frame and A with screws",
+      "capability" : {
+        "eClass" : "http://www.dfki.de/iui/basys/model/capability#//Fügen",
+        "id" : "_tpjNNH1KEem1lalb0WVzJA"
+      },
+      "appliedOn" : [ {
+        "eClass" : "http://www.dfki.de/iui/basys/model/productdefinition#//AssemblyGroupEntry",
+        "$ref" : "http://localhost:8080/services/entity/_ILcKwH07Eem1lalb0WVzJA"
+      }, {
+        "eClass" : "http://www.dfki.de/iui/basys/model/productdefinition#//AssemblyGroupEntry",
+        "$ref" : "http://localhost:8080/services/entity/_KrK8kH07Eem1lalb0WVzJA"
+      }, {
+        "eClass" : "http://www.dfki.de/iui/basys/model/productdefinition#//MaterialEntry",
+        "$ref" : "http://localhost:8080/services/entity/_OUoWkX07Eem1lalb0WVzJA"
+      } ]
+    }
+  } ]
+}

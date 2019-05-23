@@ -1,0 +1,15 @@
+{
+  "eClass" : "http://www.dfki.de/iui/basys/model/component#//ComponentConfiguration",
+  "componentId" : "mqtt-gateway",
+  "componentName" : "mqtt-gateway",
+  "componentCategory" : "MANAGEMENT_COMPONENT",
+  "componentImplementationJavaClass" : "de.dfki.cos.basys.platform.runtime.gateway.MqttGatewayComponent",
+  "externalConnectionString" : "tcp://lns-90165.sb.dfki.de:1883",
+  "properties" : [ {
+    "key" : "incoming",
+    "value" : "basys/components/command task-scheduler#in"
+  }, {
+    "key" : "outgoing",
+    "value" : "basys#components#status#> hybrit/devices"
+  }]
+}

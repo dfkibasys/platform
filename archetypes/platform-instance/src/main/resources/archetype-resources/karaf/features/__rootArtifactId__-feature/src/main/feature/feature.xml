@@ -1,0 +1,15 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<${parentArtifactId} xmlns="http://karaf.apache.org/xmlns/${parentArtifactId}/v1.5.0" name="${artifactId}">
+    <feature name="${artifactId}">   
+    	<!--  <bundle start-level="30">mvn:com.eclipsesource.jaxrs/jersey-min/2.22.2</bundle>  	 
+        <bundle start-level="30">mvn:org.glassfish.jersey.media/jersey-media-json-jackson/2.22.2</bundle> -->
+<!--     	
+        <bundle start-level="20">mvn:org.glassfish.jersey.media/jersey-media-json-jackson/2.26</bundle>
+        --><!-- 
+        <bundle start-level="12">mvn:org.glassfish.jersey.inject/jersey-hk2/2.26</bundle> 
+        <bundle start-level="20"> mvn:org.glassfish.jersey.containers/jersey-container-servlet/2.26</bundle> -->
+    </feature>
+</${parentArtifactId}> 

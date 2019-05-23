@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<material:MaterialCatalogue xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:material="http://www.dfki.de/iui/basys/model/material">
+  <materialGroups id="_b9ZKAhMxEeiF0dM90lRpcg" name="Hexagon Screws DIN 933">
+    <materials id="_b9ZKAxMxEeiF0dM90lRpcg" name="M6x20"/>
+    <materials id="_b9ZKAxMxEeiF0dM30lRpcg" name="M6x30"/>
+    <materials id="_b9ZKAxMxEeiF0dM40lRpcg" name="M6x40"/>
+    <materials id="_HPR58X06Eem1lalb0WVzJA" name="M6x50"/>
+    <materials id="_KXkgkX06Eem1lalb0WVzJA" name="M8x20"/>
+    <materials id="_K1hn4X06Eem1lalb0WVzJA" name="M8x30"/>
+    <materials id="_LIRkwX06Eem1lalb0WVzJA" name="M8x40"/>
+    <materials id="_LaKmAX06Eem1lalb0WVzJA" name="M8x50"/>
+    <materials id="_LqI7sX06Eem1lalb0WVzJA" name="M10x20"/>
+    <materials id="_L6DnAX06Eem1lalb0WVzJA" name="M10x30"/>
+    <materials id="_MNMlcX06Eem1lalb0WVzJA" name="M10x40"/>
+    <materials id="_MkZkgX06Eem1lalb0WVzJA" name="M10x50"/>
+  </materialGroups>
+</material:MaterialCatalogue>

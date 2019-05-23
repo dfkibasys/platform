@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>${groupId}.${rootArtifactId}.karaf</groupId>
+		<artifactId>features</artifactId>
+		<version>${version}</version>
+	</parent>
+
+	<groupId>${groupId}.${rootArtifactId}.karaf.features</groupId>
+	<artifactId>${artifactId}</artifactId>
+
+	<name>${name} - Karaf Feature - Extensions and Devices</name>
+	<description>${name} Karaf Feature with platform extensions and device implementations</description>
+
+	<packaging>kar</packaging>
+
+	<dependencies>
+			
+		<dependency>
+			<groupId>de.dfki.cos.basys.platform.karaf.features</groupId>
+			<artifactId>basys-runtime</artifactId>
+			<version>${version.basys.platform}</version>
+			<classifier>features</classifier>
+			<type>xml</type>
+		</dependency>
+ 		
+		<!--
+		<dependency>
+			<groupId>${groupId}.cluster40.device</groupId>
+			<artifactId>de.dfki.cos.basys.${rootArtifactId}.device.kuka</artifactId>
+			<version>${version}</version>
+			<type>bundle</type>
+		</dependency>
+		-->
+		
+		<!-- add further basys extensions -->
+		
+		<dependency>
+			<groupId>de.dfki.cos.basys.platform.wrapper-bundle-settings</groupId>
+			<artifactId>jersey-bundle</artifactId>
+			<version>${version.basys.platform}</version>
+			<type>bundle</type>
+			<exclusions>
+				<exclusion>
+					<groupId>*</groupId>
+					<artifactId>*</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>com.eclipsesource.jaxrs</groupId>
+			<artifactId>publisher</artifactId>
+			<version>5.3.1</version>
+ 			<exclusions>
+				<exclusion>
+					<groupId>com.eclipsesource.jaxrs</groupId>
+					<artifactId>jersey-all</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+	</dependencies>
+
+</project>

@@ -1,0 +1,9 @@
+{
+  "eClass" : "http://www.dfki.de/iui/basys/model/component#//ComponentConfiguration",
+  "componentId" : "process-controller",
+  "componentName" : "process-controller",
+  "componentCategory" : "SERVICE_COMPONENT",
+  "componentImplementationJavaClass" : "de.dfki.cos.basys.platform.runtime.processcontrol.impl.ProcessControllerImpl",
+  "inChannelName" : "process-controller#in",
+  "externalConnectionString" : "http://localhost:9080/engine-rest/engine/default/"
+}
