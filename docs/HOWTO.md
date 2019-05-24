@@ -1,5 +1,19 @@
 # How to ...
 
+## ... jump right into the cold water (a.k.a quick start)
+
+1. Download and start a provided virtual machine with required third party software
+1. Create a new platform instance in ws-folder: what do we get, project outline?
+1. Install the Eclipse IDE with relevant sources
+1. Import projects in Eclipse IDE
+1. Launch the new platform instance via Eclipse Launcher
+1. Deploy the sample process
+1. Start an instance of the deployed sample process
+1. Observe the 
+	* Console output
+	* Component Dashboard
+	* Process Dashboard
+
 ## ... create a new platform instance? ##
 
 In order to instantiate the BaSys 4.0 service platform, use the corresponding Apache Maven Archetype. 
@@ -19,12 +33,6 @@ From this point onwards, you may want to ...
 * Launch the platform instance from the Eclipse IDE
 * Launch the platform instance as standalone Apache Karaf Distribution
 
-## ... work with the Commmunication API? 
-*TODO:* explain
-
-## ... implement a new CommunicationProvider?
-*TODO:* explain
-
 ## ... implement a new service component?
 *TODO:* explain
 
@@ -34,8 +42,7 @@ From this point onwards, you may want to ...
 ## ... configure a service component?
 *TODO:* explain
 
-## ... implement a new technology adapter for device integration?
-*TODO:* explain
+
 
 ## ... implement a device component based on an available technology adapter?
 *TODO:* explain
@@ -50,6 +57,15 @@ From this point onwards, you may want to ...
 *TODO:* explain
 
 ## ... deploy a BPMN process to the Camunda BPM platform?
+*TODO:* explain
+
+## ... implement a new technology adapter for device integration?
+*TODO:* explain
+
+## ... work with the Commmunication API? 
+*TODO:* explain
+
+## ... implement a new CommunicationProvider?
 *TODO:* explain
 
 ## ... build a new demonstrator?
