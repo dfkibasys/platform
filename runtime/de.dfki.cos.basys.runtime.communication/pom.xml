@@ -12,7 +12,7 @@
 		<bundle.symbolicName>de.dfki.cos.basys.platform.runtime.communication</bundle.symbolicName>
 		<bundle.namespace>de.dfki.cos.basys.platform.runtime.communication</bundle.namespace>
 
-		<paho-version>1.2.0</paho-version>
+		<paho-version>1.2.1</paho-version>
 		<activemq-version>5.15.7</activemq-version>
 	</properties>
 

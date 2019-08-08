@@ -1,6 +1,7 @@
 package de.dfki.cos.basys.platform.runtime.communication;
 
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -181,7 +182,8 @@ public class MqttCommunicationProviderTest extends TestCase {
 		Channel ch_1_sender = fac.openChannel(cp_11, prefix + "#channel_1", false, null);
 		// Channel ch_2_sender = fac.openChannel(cp_21, "channel_2", false, null);
 
-		Channel ch_1_receiver = fac.openChannel(cp_21, prefix + "#channel_1", false, tester_1);
+		Channel ch_1_receiver_1 = fac.openChannel(cp_21, prefix + "#channel_1", false, tester_1);
+		Channel ch_1_receiver_2 = fac.openChannel(cp_21, prefix + "#channel_1", false, tester_2);
 		// Channel ch_2_receiver = fac.openChannel(cp_21, "channel_2", false, tester_2);
 
 		Notification not = fac.createNotification(message);
@@ -189,14 +191,16 @@ public class MqttCommunicationProviderTest extends TestCase {
 		ch_1_sender.sendNotification(not);
 
 		try {
-			Thread.currentThread().join(1000);
+			TimeUnit.SECONDS.sleep(2);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
+		// see: https://github.com/eclipse/paho.mqtt.java/issues/378
+		// see: https://github.com/eclipse/paho.mqtt.python/issues/336
 		assertTrue(tester_1.isSuccess());
-		// assertTrue(tester_2.isSuccess());
+		assertTrue(tester_2.isSuccess());
 	}
 
 	public void testSendRequestSync() {
@@ -206,9 +210,13 @@ public class MqttCommunicationProviderTest extends TestCase {
 		String prefix = UUID.randomUUID().toString();
 
 		TestChannelListener tester_1 = new TestChannelListener(message);
+		TestChannelListener tester_2 = new TestChannelListener(message);
 
 		Channel ch_1_sender = fac.openChannel(cp_11, prefix + "#channel_1", false, null);
+		// Channel ch_2_sender = fac.openChannel(cp_21, "channel_2", false, null);
+
 		Channel ch_1_receiver = fac.openChannel(cp_21, prefix + "#channel_1", false, tester_1);
+		// Channel ch_2_receiver = fac.openChannel(cp_21, "channel_2", false, tester_2);
 
 		Request req = fac.createRequest(message);
 

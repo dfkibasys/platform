@@ -63,9 +63,7 @@ public class MqttCommunicationProvider implements CommunicationProvider {
 
 	@Override
 	public void doConnect(ChannelPool pool) throws ProviderException {
-
 		String poolId = pool.getId();
-
 		LOGGER.info("doConnect ChannelPool: " + poolId);
 		Authentication auth = pool.getClient().getAuthentication();
 
@@ -101,9 +99,7 @@ public class MqttCommunicationProvider implements CommunicationProvider {
 
 	@Override
 	public void doDisconnect(ChannelPool pool) throws ProviderException {
-
 		String poolId = pool.getId();
-
 		LOGGER.info("doDisconnect ChannelPool: " + poolId);
 
 		try {
@@ -116,13 +112,13 @@ public class MqttCommunicationProvider implements CommunicationProvider {
 	@Override
 	public void doOpenChannel(Channel channel) throws ProviderException {
 
-		LOGGER.info("doOpenChannel: " + channel.getName());
-
-		String topic = toTopic(channel);
+		LOGGER.trace("doOpenChannel: " + channel.getName());
 
 		if (channel.isQueued())
 			throw new ProviderException("MQTT does not support queued channels");
 
+		String topic = toTopic(channel);
+		
 		if (channel.getListener() != null) {
 			try {
 				mqttClient.subscribe(topic, 2, new IMqttMessageListener() {
