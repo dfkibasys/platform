@@ -49,7 +49,7 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 	private Session session;
 
 	private MessageProducer replyProducer;
-	private TemporaryQueue tmpQueue;
+	private TemporaryQueue responseQueue;
 	private MessageConsumer responseConsumer;
 
 	private Map<String, ResponseCallback> requestCorrelations = new ConcurrentHashMap<String, ResponseCallback>();
@@ -68,11 +68,20 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 		}		
 	}	
 	
+	private static String toTopic(Channel channel) {
+		return toTopic(channel.getName());
+	}
+
+	private static String toTopic(String channelName) {
+		if (channelName == null)
+			return null;
+		return channelName.replaceAll("#", ".");
+	}
+	
 	@Override
 	public void doConnect(ChannelPool pool) throws ProviderException {
 		String poolId = pool.getId();
-
-		LOGGER.info("doConnect ChannelPool: " + poolId);
+		LOGGER.info("doConnect ChannelPool: " + poolId);		
 		Authentication auth = pool.getClient().getAuthentication();
 
 		if (pool.getUri() == null) {
@@ -93,8 +102,8 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 			this.session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 
 			this.replyProducer = this.session.createProducer(null);
-			tmpQueue = session.createTemporaryQueue();
-			responseConsumer = session.createConsumer(tmpQueue);
+			responseQueue = session.createTemporaryQueue();
+			responseConsumer = session.createConsumer(responseQueue);
 
 			responseConsumer.setMessageListener(new MessageListener() {
 
@@ -129,9 +138,9 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 
 	@Override
 	public void doDisconnect(ChannelPool pool) throws ProviderException {
-
 		String poolId = pool.getId();
-
+		LOGGER.info("doDisconnect ChannelPool: " + poolId);
+		
 		try {
 			this.connection.stop();
 			this.session.close();
@@ -142,9 +151,6 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 
 	}
 
-	private String getJmsChannelName(Channel channel) {
-		return channel.getName().replaceAll("#", ".");
-	}
 
 	@Override
 	public void doOpenChannel(Channel channel) throws ProviderException {
@@ -153,13 +159,14 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 		JmsDestination internalDestination = this.destinations.get(channel.getId());
 
 		if (internalDestination == null) {
-			internalDestination = new JmsDestination(getJmsChannelName(channel));
+			internalDestination = new JmsDestination(toTopic(channel));
 			this.destinations.put(channel.getId(), internalDestination);
 		}
 
-		if (internalDestination.getMessageConsumer() != null) {
-			return;
-		}
+		//useless?
+//		if (internalDestination.getMessageConsumer() != null) {
+//			return;
+//		}
 
 		if (channel.isQueued()) {
 
@@ -293,18 +300,17 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 
 	@Override
 	public void doCloseChannel(Channel channel) throws ProviderException {
+		LOGGER.trace("doCloseChannel: " + channel.getName());
+		
 		JmsDestination internal_destination = this.destinations.get(channel.getId());
-
-		if (internal_destination.getMessageConsumer() != null) {
-			try {
-				internal_destination.getMessageConsumer().close();
-			} catch (JMSException e) {
-				throw new ProviderException("Cannot close channel " + channel.getId() + " (" + channel.getName() + ")", e);
-			}
-		}
-
+		
+		try {
+			internal_destination.close();
+		} catch (JMSException e) {
+			throw new ProviderException("Cannot close channel " + channel.getId() + " (" + channel.getName() + ")", e);
+		}		
+		
 		this.destinations.remove(channel.getId());
-
 	}
 
 	@Override
@@ -313,22 +319,11 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 
 		JmsDestination internal_destination = this.destinations.get(channel.getId());
 
-		// de.dfki.cos.basys.platform.model.runtime.communication.Message message = ClientFactory.getInstance()
-		// .createNotification(payload);
-
 		try {
-			// String payloadString = JsonUtils.toString(payload);
-			Message jmsMsg = session.createTextMessage(payload);
-			// if (internal_destination.getMessageProducer() == null) {
-			// Topic jmsTopic = session.createTopic(channel.getName());
-			// MessageProducer jmsProducer = session.createProducer(jmsTopic);
-			// internal_destination.setMessageProducer(jmsProducer);
-			// }
+			Message jmsMsg = session.createTextMessage(payload);			
 			internal_destination.getMessageProducer().send(jmsMsg);
 		} catch (JMSException e) {
 			throw new ProviderException("Message could not be published on " + channel.getName() + ".", e);
-			// } catch (IOException e) {
-			// e.printStackTrace();
 		}
 
 	}
@@ -344,7 +339,7 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 			Message jmsMsg = session.createTextMessage(payload);
 			String correlationId = UUID.randomUUID().toString();
 			jmsMsg.setJMSCorrelationID(correlationId);
-			jmsMsg.setJMSReplyTo(tmpQueue);
+			jmsMsg.setJMSReplyTo(responseQueue);
 			this.requestCorrelations.put(correlationId, cb);
 			internal_destination.getMessageProducer().send(jmsMsg);
 		} catch (JMSException e) {
@@ -401,7 +396,7 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 		public String getName() {
 			return this.name;
 		}
-
+	
 		public JmsDestination(String name) {
 			this.name = name;
 		}
@@ -421,7 +416,13 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 		public MessageProducer getMessageProducer() {
 			return messageProducer;
 		}
-
+		
+		public void close() throws JMSException {
+			if (messageConsumer != null) {
+				messageConsumer.close();
+			}
+		}
+		
 	}
 
 	class SyncResponseCallback implements ResponseCallback {
