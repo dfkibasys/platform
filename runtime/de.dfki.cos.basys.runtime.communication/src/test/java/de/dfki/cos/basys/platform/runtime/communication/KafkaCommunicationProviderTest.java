@@ -17,6 +17,7 @@ import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
 import de.dfki.cos.basys.platform.runtime.communication.provider.KafkaCommunicationProvider;
 import junit.framework.TestCase;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 
@@ -85,6 +86,7 @@ public class KafkaCommunicationProviderTest extends TestCase {
 		assertFalse(client_2.isConnected());
 	}
 
+	@Ignore
 	public void testSubscribeUnsubscribe() {
 		LOGGER.info("testSubscribeUnsubscribe");
 //
@@ -135,8 +137,9 @@ public class KafkaCommunicationProviderTest extends TestCase {
 		assertFalse(ch_21_2.isOpen());
 		assertFalse(ch_22_1.isOpen());
 		assertTrue(ch_22_2.isOpen());
-
+		
 		ch_22_2.close();
+		
 		assertFalse(ch_11_1.isOpen());
 		assertFalse(ch_11_2.isOpen());
 		assertFalse(ch_12_1.isOpen());
@@ -146,8 +149,15 @@ public class KafkaCommunicationProviderTest extends TestCase {
 		assertFalse(ch_22_1.isOpen());
 		assertFalse(ch_22_2.isOpen());
 		
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
-
+	
 	public void testSendMessage() {
 		LOGGER.info("testSendMessage");
 
@@ -156,12 +166,12 @@ public class KafkaCommunicationProviderTest extends TestCase {
 
 		TestChannelListener tester_1 = new TestChannelListener(message);
 		TestChannelListener tester_2 = new TestChannelListener(message);
-//
+
 		Channel ch_1_sender = fac.openChannel(cp_11, prefix + "#channel_1", false, null);
-//		// Channel ch_2_sender = fac.openChannel(cp_21, "channel_2", false, null);
-//
+		// Channel ch_2_sender = fac.openChannel(cp_21, "channel_2", false, null);
+
 		Channel ch_1_receiver = fac.openChannel(cp_21, prefix + "#channel_1", false, tester_1);
-//		// Channel ch_2_receiver = fac.openChannel(cp_21, "channel_2", false, tester_2);
+		// Channel ch_2_receiver = fac.openChannel(cp_21, "channel_2", false, tester_2);
 
 		ch_1_sender.sendMessage(message);
 
@@ -174,13 +184,40 @@ public class KafkaCommunicationProviderTest extends TestCase {
 
 		assertTrue(tester_1.isSuccess());
 		// assertTrue(tester_2.isSuccess());
-		
 	}
 
 	public void testSendNotification() {
-		
-	}
+		LOGGER.info("testSendNotification");
 
+		String message = "this is a test message!";
+		String prefix = UUID.randomUUID().toString();
+
+		TestChannelListener tester_1 = new TestChannelListener(message);
+		TestChannelListener tester_2 = new TestChannelListener(message);
+
+		Channel ch_1_sender = fac.openChannel(cp_11, prefix + "#channel_1", false, null);
+		// Channel ch_2_sender = fac.openChannel(cp_21, "channel_2", false, null);
+
+		Channel ch_1_receiver_1 = fac.openChannel(cp_21, prefix + "#channel_1", false, tester_1);
+		Channel ch_1_receiver_2 = fac.openChannel(cp_21, prefix + "#channel_1", false, tester_2);
+		// Channel ch_2_receiver = fac.openChannel(cp_21, "channel_2", false, tester_2);
+
+		Notification not = fac.createNotification(message);
+
+		ch_1_sender.sendNotification(not);
+
+		try {
+			TimeUnit.SECONDS.sleep(5);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		assertTrue(tester_1.isSuccess());
+		assertTrue(tester_2.isSuccess());
+	}
+	
+	@Ignore
 	public void testSendRequestSync() {
 		
 	}
