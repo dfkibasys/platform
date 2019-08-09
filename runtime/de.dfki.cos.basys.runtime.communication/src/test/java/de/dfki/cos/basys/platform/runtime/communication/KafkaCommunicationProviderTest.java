@@ -161,15 +161,15 @@ public class KafkaCommunicationProviderTest extends TestCase {
 
 		Channel ch_1_receiver = fac.openChannel(cp_21, prefix + "#channel_1", false, tester_1);
 		// Channel ch_2_receiver = fac.openChannel(cp_21, "channel_2", false, tester_2);
-
-		ch_1_sender.sendMessage(message);
-
+		
 		try {
-			Thread.sleep(5000);
+			Thread.sleep(500);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		ch_1_sender.sendMessage(message);
 
 		assertTrue(tester_1.isSuccess());
 		// assertTrue(tester_2.isSuccess());
@@ -191,16 +191,15 @@ public class KafkaCommunicationProviderTest extends TestCase {
 		Channel ch_1_receiver_2 = fac.openChannel(cp_21, prefix + "#channel_1", false, tester_2);
 		// Channel ch_2_receiver = fac.openChannel(cp_21, "channel_2", false, tester_2);
 
-		Notification not = fac.createNotification(message);
-
-		ch_1_sender.sendNotification(not);
-
 		try {
-			Thread.sleep(5000);
+			Thread.sleep(500);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		Notification not = fac.createNotification(message);		
+		ch_1_sender.sendNotification(not);
 
 		assertTrue(tester_1.isSuccess());
 		assertTrue(tester_2.isSuccess());

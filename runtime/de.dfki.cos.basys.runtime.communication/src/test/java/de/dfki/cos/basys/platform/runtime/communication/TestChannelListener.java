@@ -1,5 +1,9 @@
 package de.dfki.cos.basys.platform.runtime.communication;
 
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -7,6 +11,7 @@ import de.dfki.cos.basys.platform.model.runtime.communication.Channel;
 import de.dfki.cos.basys.platform.model.runtime.communication.ChannelListener;
 import de.dfki.cos.basys.platform.model.runtime.communication.Request;
 import de.dfki.cos.basys.platform.model.runtime.communication.Response;
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentResponse;
 import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
 
 public class TestChannelListener implements ChannelListener {
@@ -16,6 +21,9 @@ public class TestChannelListener implements ChannelListener {
 	boolean success;
 	String expectedMessage;
 
+
+	CountDownLatch counter = new CountDownLatch(1);
+	
 	public TestChannelListener() {
 
 	}
@@ -24,7 +32,13 @@ public class TestChannelListener implements ChannelListener {
 		expectedMessage = msg;
 	}
 
-	public boolean isSuccess() {
+	public boolean isSuccess() {			
+		try {
+			counter.await(10,TimeUnit.SECONDS);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return success;
 	}
 
@@ -41,6 +55,8 @@ public class TestChannelListener implements ChannelListener {
 		LOGGER.info("handleMessage: " + msg);
 		if (msg.equals(expectedMessage))
 			success = true;
+		
+		counter.countDown();
 	}
 
 	@Override
@@ -48,6 +64,8 @@ public class TestChannelListener implements ChannelListener {
 		LOGGER.info("handleNotification: " + not.getPayload());
 		if (not.getPayload().equals(expectedMessage))
 			success = true;
+		
+		counter.countDown();
 	}
 
 	@Override
@@ -56,6 +74,8 @@ public class TestChannelListener implements ChannelListener {
 		if (req.getPayload().equals(expectedMessage))
 			success = true;
 
+		counter.countDown();
+		
 		Response response = CommFactory.getInstance().createResponse(req.getId(), expectedMessage.toUpperCase());
 		return response;
 	}

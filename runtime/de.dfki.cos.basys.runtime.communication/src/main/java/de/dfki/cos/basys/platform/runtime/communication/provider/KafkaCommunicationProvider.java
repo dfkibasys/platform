@@ -96,11 +96,11 @@ public class KafkaCommunicationProvider implements CommunicationProvider {
 			this.sharedProducer = createProducer();
 			this.sharedResponseTopic = poolId + "_reply_" + UUID.randomUUID().toString();
 			this.sharedResponseConsumer = createConsumer();
-
+			this.sharedResponseConsumer.subscribe(Arrays.asList(sharedResponseTopic));
+			
 			Runnable task = new Runnable() {
 				@Override
 				public void run() {
-					sharedResponseConsumer.subscribe(Arrays.asList(sharedResponseTopic));
 					try {
 						while (!disconnected.get()) {
 							ConsumerRecords<String, String> records = sharedResponseConsumer
@@ -329,17 +329,18 @@ public class KafkaCommunicationProvider implements CommunicationProvider {
 
 				try {
 					this.messageConsumer = createConsumer();
-
+					messageConsumer.subscribe(Arrays.asList(name));
+					
 					Runnable task = new Runnable() {
 						@Override
 						public void run() { // denklestir alttaki run
 							try {
-								messageConsumer.subscribe(Arrays.asList(name));
 								while (!closed.get()) {
 									ConsumerRecords<String, String> records = messageConsumer
 											.poll(Duration.ofMillis(1000));
 									if (!records.isEmpty()) {
 										for (ConsumerRecord<String, String> record : records) {
+
 											String content = (String) record.value();
 											try {
 												Message incomingMessage = JsonUtils.fromString(content, Message.class);
@@ -373,6 +374,7 @@ public class KafkaCommunicationProvider implements CommunicationProvider {
 
 												} else {
 													if (incomingMessage instanceof Notification) {
+
 														channel.getListener().handleNotification(channel,
 																(Notification) incomingMessage);
 													} else {
