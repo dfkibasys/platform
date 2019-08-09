@@ -373,11 +373,6 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 		try {
 			String payload = JsonUtils.toString(not);
 			Message jmsMsg = session.createTextMessage(payload);
-			// if (internal_destination.getMessageProducer() == null) {
-			// Topic jmsTopic = session.createTopic(internal_destination.getName());
-			// MessageProducer jmsProducer = session.createProducer(jmsTopic);
-			// internal_destination.setMessageProducer(jmsProducer);
-			// }
 			internal_destination.getMessageProducer().send(jmsMsg);
 		} catch (IOException e) {
 			LOGGER.error(e.getMessage(), e);
@@ -423,18 +418,6 @@ public class JmsCommunicationProvider implements CommunicationProvider {
 			}
 		}
 		
-	}
-
-	class SyncResponseCallback implements ResponseCallback {
-
-		public Response response;
-
-		@Override
-		public synchronized void handleResponse(Response res) {
-			response = res;
-			notifyAll();
-		}
-
 	}
 
 	@Override

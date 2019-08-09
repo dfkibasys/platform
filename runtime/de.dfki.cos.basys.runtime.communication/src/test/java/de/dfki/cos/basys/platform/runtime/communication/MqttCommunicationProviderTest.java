@@ -3,6 +3,7 @@ package de.dfki.cos.basys.platform.runtime.communication;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.Ignore;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -170,6 +171,7 @@ public class MqttCommunicationProviderTest extends TestCase {
 		// assertTrue(tester_2.isSuccess());
 	}
 
+	@Ignore
 	public void testSendNotification() {
 		LOGGER.info("testSendNotification");
 

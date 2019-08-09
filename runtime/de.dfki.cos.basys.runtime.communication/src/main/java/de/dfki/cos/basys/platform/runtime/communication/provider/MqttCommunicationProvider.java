@@ -296,18 +296,6 @@ public class MqttCommunicationProvider implements CommunicationProvider {
 		return false;
 	}
 
-	class SyncResponseCallback implements ResponseCallback {
-
-		public Response response;
-
-		@Override
-		public synchronized void handleResponse(Response res) {
-			response = res;
-			notifyAll();
-		}
-
-	}
-
 	static class MqttProtocolMessage {
 
 		private String payload;

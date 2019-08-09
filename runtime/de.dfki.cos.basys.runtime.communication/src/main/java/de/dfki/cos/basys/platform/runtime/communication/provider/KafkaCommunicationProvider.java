@@ -51,15 +51,18 @@ public class KafkaCommunicationProvider implements CommunicationProvider {
 
 	public static String defaultConnectionString;
 
-	private KafkaProducer<String, String> replyProducer;// I can map them or create a list of them
-	private String responseTopic;
-	private KafkaConsumer<String, String> responseConsumer;
+	private KafkaProducer<String, String> sharedProducer;
+
+	private String sharedResponseTopic;
+	private KafkaConsumer<String, String> sharedResponseConsumer;
 
 	private Map<String, ResponseCallback> requestCorrelations = new ConcurrentHashMap<String, ResponseCallback>();
 
 	private Map<String, KafkaChannel> channels = new ConcurrentHashMap<String, KafkaChannel>();
 
 	ExecutorService executor = Executors.newCachedThreadPool();
+
+	private final String correlationIdKey = "correlationId";
 
 	static {
 		try {
@@ -86,11 +89,42 @@ public class KafkaCommunicationProvider implements CommunicationProvider {
 			LOGGER.warn(String.format("ConnectionString not specified, using VM internal default %s", pool.getUri()));
 		}
 		try {
-			// replyProducer = createProducer(poolId);
-			// responseTopic = poolId + "_response_" + UUID.randomUUID().toString();
-			// responseConsumer = createConsumer(poolId);
 
-			// TODO: subscribe responseConsumer to responseTopic
+			this.sharedProducer = createProducer();
+			this.sharedResponseTopic = poolId + "_reply_" + UUID.randomUUID().toString();
+			this.sharedResponseConsumer = createConsumer();
+			this.sharedResponseConsumer.subscribe(Arrays.asList(sharedResponseTopic));
+
+			Runnable task = new Runnable() {
+				@Override
+				public void run() {
+
+					do {
+						ConsumerRecords<String, String> records = sharedResponseConsumer.poll(Duration.ofMillis(5000));
+						if (!records.isEmpty() && pool.isConnected()) {
+							try {
+								for (ConsumerRecord<String, String> record : records) {
+									Response response = JsonUtils.fromString(record.value(), Response.class);
+									String correlationId = new String(
+											record.headers().lastHeader(correlationIdKey).value());
+									ResponseCallback listener = requestCorrelations.get(correlationId);
+									if (listener != null) {
+										listener.handleResponse(response);
+									} else {
+										LOGGER.warn("listener is null, correlationId " + correlationId);
+									}
+									requestCorrelations.remove(correlationId);
+								}
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
+					} while (pool.isConnected());
+					sharedResponseConsumer.close();
+				}
+			};
+			executor.execute(task);
 
 			LOGGER.info("ChannelPool connected: " + poolId);
 		} catch (Exception e) {
@@ -100,16 +134,15 @@ public class KafkaCommunicationProvider implements CommunicationProvider {
 
 	}
 
-	// close/deconstructor for producer and consumer
 	@Override
 	public void doDisconnect(ChannelPool pool) throws ProviderException {
 		String poolId = pool.getId();
 		LOGGER.info("doDisconnect ChannelPool: " + poolId);
 
 		try {
-			// replyProducer.close();
-			// responseConsumer.close();
-
+			sharedProducer.close();
+			// the sharedResponseConsumer is closed after doDisconnect when the
+			// connected-flag of the pool is set to false and the consumer thread runs out
 		} catch (Exception e) {
 			throw new ProviderException("ChannelPool \"" + poolId + "\"" + " cannot disconnect", e);
 		}
@@ -148,10 +181,9 @@ public class KafkaCommunicationProvider implements CommunicationProvider {
 	public void doSendMessage(Channel channel, String msg) throws ProviderException {
 		LOGGER.trace("doSendMessage: " + channel.getName());
 
-		KafkaChannel internalChannel = this.channels.get(channel.getId());
-
 		try {
-			internalChannel.send(msg);
+			ProducerRecord<String, String> pr = new ProducerRecord<>(toTopic(channel.getName()), msg);
+			sharedProducer.send(pr);
 		} catch (Exception e) {
 			throw new ProviderException("Message could not be published on " + channel.getName() + ".", e);
 		}
@@ -159,25 +191,46 @@ public class KafkaCommunicationProvider implements CommunicationProvider {
 
 	@Override
 	public void doSendRequest(Channel channel, Request req, ResponseCallback cb) throws ProviderException {
-		// TODO Auto-generated method stub
+		LOGGER.trace("doSendRequest: " + channel.getName());
 
+		try {
+			String payload = JsonUtils.toString(req);
+			String correlationId = UUID.randomUUID().toString();
+			this.requestCorrelations.put(correlationId, cb);
+			ProducerRecord<String, String> pr = new ProducerRecord<>(toTopic(channel.getName()), payload);
+			pr.headers().add(correlationIdKey, correlationId.getBytes());
+			pr.headers().add("replyTo", sharedResponseTopic.getBytes());
+			sharedProducer.send(pr);
+		} catch (Exception e) {
+			throw new ProviderException("Message could not be published on " + channel.getName() + ".", e);
+		}
 	}
 
 	@Override
 	public Response doSendRequest(Channel channel, Request req) throws ProviderException {
-		// TODO Auto-generated method stub
-		return null;
+
+		SyncResponseCallback cb = new SyncResponseCallback();
+		synchronized (cb) {
+			doSendRequest(channel, req, cb);
+			try {
+				cb.wait();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+		return cb.response;
 	}
 
 	@Override
 	public void doSendNotification(Channel channel, Notification not) throws ProviderException {
 		LOGGER.trace("doSendNotification: " + channel.getName());
 
-		KafkaChannel internalChannel = this.channels.get(channel.getId());
-
 		try {
 			String payload = JsonUtils.toString(not);
-			internalChannel.send(payload);
+			ProducerRecord<String, String> pr = new ProducerRecord<>(toTopic(channel.getName()), payload);
+			sharedProducer.send(pr);
 		} catch (Exception e) {
 			throw new ProviderException("Message could not be published on " + channel.getName() + ".", e);
 		}
@@ -223,11 +276,21 @@ public class KafkaCommunicationProvider implements CommunicationProvider {
 		return new KafkaConsumer<>(props);
 	}
 
+	private String toTopic(Channel channel) {
+		return toTopic(channel.getName());
+	}
+
+	private String toTopic(String channelName) {
+		if (channelName == null)
+			return null;
+		return channelName.replaceAll("#", ".");
+	}
+
 	class KafkaChannel {
 
 		private Channel channel;
 		private KafkaConsumer<String, String> messageConsumer;
-		private KafkaProducer<String, String> messageProducer;
+		// private KafkaProducer<String, String> messageProducer;
 
 		private String name;
 		private boolean isOpen;
@@ -241,28 +304,13 @@ public class KafkaCommunicationProvider implements CommunicationProvider {
 			return this.name;
 		}
 
-//		public void setMessageConsumer(KafkaConsumer<String, String> messageConsumer) {
-//			this.messageConsumer = messageConsumer;
-//		}
-
-//		public KafkaConsumer<String, String> getMessageConsumer() {
-//			return messageConsumer;
-//		}
-
-//		public void setMessageProducer(KafkaProducer<String, String> messageProducer) {
-//			this.messageProducer = messageProducer;
-//		}
-
-//		public KafkaProducer<String, String> getMessageProducer() {
-//			return messageProducer;
-//		}
-
 		public void open() {
 
 			if (channel.isQueued())
 				throw new ProviderException("KAKFA does currently not support queued channels.");
 
-			this.messageProducer = createProducer();
+			// this.messageProducer = sharedProducer;
+			// this.messageProducer = createProducer();
 
 			if (channel.getListener() != null) {
 
@@ -287,19 +335,39 @@ public class KafkaCommunicationProvider implements CommunicationProvider {
 
 							while (isOpen) {
 
-								ConsumerRecords<String, String> records = messageConsumer.poll(Duration.ofMillis(1000));
+								ConsumerRecords<String, String> records = messageConsumer.poll(Duration.ofMillis(5000));
 								if (!records.isEmpty() && isOpen) {
 									for (ConsumerRecord<String, String> record : records) {
 										String content = (String) record.value();
 										try {
 											Message incomingMessage = JsonUtils.fromString(content, Message.class);
+											if (incomingMessage instanceof Request) {
 
-											if (record.key() != null) {
-												Request req = (Request) incomingMessage;
-												Response res = channel.getListener().handleRequest(channel, req);
-												String payload = JsonUtils.toString(res);
-												replyProducer.send(new ProducerRecord<String, String>(channel.getName(),
-														record.key(), payload));
+												Runnable task = new Runnable() {
+
+													@Override
+													public void run() {
+														try {
+															Request req = (Request) incomingMessage;
+															Response res = channel.getListener().handleRequest(channel,
+																	req);
+															String payload = JsonUtils.toString(res);
+															String correlationId = new String(record.headers()
+																	.lastHeader("correlationId").value());
+															String replyTo = new String(
+																	record.headers().lastHeader("replyTo").value());
+															ProducerRecord<String, String> pr = new ProducerRecord<>(
+																	replyTo, payload);
+															pr.headers().add(correlationIdKey,
+																	correlationId.getBytes());
+															sharedProducer.send(pr);
+														} catch (JsonProcessingException e) {
+															e.printStackTrace();
+														}
+													}
+												};
+
+												executor.execute(task);
 
 											} else {
 												if (incomingMessage instanceof Notification) {
@@ -310,7 +378,7 @@ public class KafkaCommunicationProvider implements CommunicationProvider {
 															incomingMessage.getPayload());
 												}
 											}
-										} catch (IOException | ClassCastException e) {
+										} catch (Exception e) {
 											channel.getListener().handleMessage(channel, content);
 										}
 
@@ -330,26 +398,12 @@ public class KafkaCommunicationProvider implements CommunicationProvider {
 
 		public void close() {
 			isOpen = false;
-			messageProducer.close();
 
 			if (messageConsumer != null) {
 				// messageConsumer.wakeup();
 			}
 		};
 
-		private void send(String msg) {
-			messageProducer.send(new ProducerRecord<String, String>(name, msg));
-		}
-
-		private String toTopic(Channel channel) {
-			return toTopic(channel.getName());
-		}
-
-		private String toTopic(String channelName) {
-			if (channelName == null)
-				return null;
-			return channelName.replaceAll("#", ".");
-		}
 	}
 
 }
