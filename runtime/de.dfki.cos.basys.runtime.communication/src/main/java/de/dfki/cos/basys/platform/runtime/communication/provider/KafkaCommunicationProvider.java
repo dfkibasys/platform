@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -64,6 +65,8 @@ public class KafkaCommunicationProvider implements CommunicationProvider {
 
 	private final String correlationIdKey = "correlationId";
 
+	private final AtomicBoolean disconnected = new AtomicBoolean(false);
+
 	static {
 		try {
 			String serverName = CommUtils.getPreferredBasysMiddleware();
@@ -93,35 +96,43 @@ public class KafkaCommunicationProvider implements CommunicationProvider {
 			this.sharedProducer = createProducer();
 			this.sharedResponseTopic = poolId + "_reply_" + UUID.randomUUID().toString();
 			this.sharedResponseConsumer = createConsumer();
-			this.sharedResponseConsumer.subscribe(Arrays.asList(sharedResponseTopic));
 
 			Runnable task = new Runnable() {
 				@Override
 				public void run() {
-
-					do {
-						ConsumerRecords<String, String> records = sharedResponseConsumer.poll(Duration.ofMillis(5000));
-						if (!records.isEmpty() && pool.isConnected()) {
-							try {
-								for (ConsumerRecord<String, String> record : records) {
-									Response response = JsonUtils.fromString(record.value(), Response.class);
-									String correlationId = new String(
-											record.headers().lastHeader(correlationIdKey).value());
-									ResponseCallback listener = requestCorrelations.get(correlationId);
-									if (listener != null) {
-										listener.handleResponse(response);
-									} else {
-										LOGGER.warn("listener is null, correlationId " + correlationId);
+					sharedResponseConsumer.subscribe(Arrays.asList(sharedResponseTopic));
+					try {
+						while (!disconnected.get()) {
+							ConsumerRecords<String, String> records = sharedResponseConsumer
+									.poll(Duration.ofMillis(1000));
+							if (!records.isEmpty()) {
+								try {
+									for (ConsumerRecord<String, String> record : records) {
+										Response response = JsonUtils.fromString(record.value(), Response.class);
+										String correlationId = new String(
+												record.headers().lastHeader(correlationIdKey).value());
+										ResponseCallback listener = requestCorrelations.get(correlationId);
+										if (listener != null) {
+											listener.handleResponse(response);
+										} else {
+											LOGGER.warn("listener is null, correlationId " + correlationId);
+										}
+										requestCorrelations.remove(correlationId);
 									}
-									requestCorrelations.remove(correlationId);
+								} catch (IOException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
 								}
-							} catch (IOException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
 							}
 						}
-					} while (pool.isConnected());
-					sharedResponseConsumer.close();
+						;
+					} catch (WakeupException e) {
+						// Ignore exception if closing
+						if (!disconnected.get())
+							throw e;
+					} finally {
+						sharedResponseConsumer.close();
+					}
 				}
 			};
 			executor.execute(task);
@@ -141,6 +152,8 @@ public class KafkaCommunicationProvider implements CommunicationProvider {
 
 		try {
 			sharedProducer.close();
+			disconnected.set(true);
+			sharedResponseConsumer.wakeup();
 			// the sharedResponseConsumer is closed after doDisconnect when the
 			// connected-flag of the pool is set to false and the consumer thread runs out
 		} catch (Exception e) {
@@ -183,7 +196,7 @@ public class KafkaCommunicationProvider implements CommunicationProvider {
 
 		try {
 			ProducerRecord<String, String> pr = new ProducerRecord<>(toTopic(channel.getName()), msg);
-			sharedProducer.send(pr);
+			sharedProducer.send(pr).get();
 		} catch (Exception e) {
 			throw new ProviderException("Message could not be published on " + channel.getName() + ".", e);
 		}
@@ -200,7 +213,7 @@ public class KafkaCommunicationProvider implements CommunicationProvider {
 			ProducerRecord<String, String> pr = new ProducerRecord<>(toTopic(channel.getName()), payload);
 			pr.headers().add(correlationIdKey, correlationId.getBytes());
 			pr.headers().add("replyTo", sharedResponseTopic.getBytes());
-			sharedProducer.send(pr);
+			sharedProducer.send(pr).get();
 		} catch (Exception e) {
 			throw new ProviderException("Message could not be published on " + channel.getName() + ".", e);
 		}
@@ -230,7 +243,7 @@ public class KafkaCommunicationProvider implements CommunicationProvider {
 		try {
 			String payload = JsonUtils.toString(not);
 			ProducerRecord<String, String> pr = new ProducerRecord<>(toTopic(channel.getName()), payload);
-			sharedProducer.send(pr);
+			sharedProducer.send(pr).get();
 		} catch (Exception e) {
 			throw new ProviderException("Message could not be published on " + channel.getName() + ".", e);
 		}
@@ -267,7 +280,7 @@ public class KafkaCommunicationProvider implements CommunicationProvider {
 			props.put(ConsumerConfig.CLIENT_ID_CONFIG, clientId);
 		props.put(ConsumerConfig.GROUP_ID_CONFIG, UUID.randomUUID().toString());
 		props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, defaultConnectionString);
-		props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "false");
+		//props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "true");
 		props.put(ConsumerConfig.AUTO_COMMIT_INTERVAL_MS_CONFIG, "1000");
 		props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG,
 				"org.apache.kafka.common.serialization.StringDeserializer");
@@ -293,7 +306,7 @@ public class KafkaCommunicationProvider implements CommunicationProvider {
 		// private KafkaProducer<String, String> messageProducer;
 
 		private String name;
-		private boolean isOpen;
+		private final AtomicBoolean closed = new AtomicBoolean(false);
 
 		public KafkaChannel(Channel channel) {
 			this.channel = channel;
@@ -316,76 +329,72 @@ public class KafkaCommunicationProvider implements CommunicationProvider {
 
 				try {
 					this.messageConsumer = createConsumer();
-					this.messageConsumer.subscribe(Arrays.asList(name));
-
-					isOpen = true;
 
 					Runnable task = new Runnable() {
 						@Override
 						public void run() { // denklestir alttaki run
+							try {
+								messageConsumer.subscribe(Arrays.asList(name));
+								while (!closed.get()) {
+									ConsumerRecords<String, String> records = messageConsumer
+											.poll(Duration.ofMillis(1000));
+									if (!records.isEmpty()) {
+										for (ConsumerRecord<String, String> record : records) {
+											String content = (String) record.value();
+											try {
+												Message incomingMessage = JsonUtils.fromString(content, Message.class);
+												if (incomingMessage instanceof Request) {
 
-							// while thread is not closed poll
-							// if poll returns nonempty results then for each record get the message and
-							// create a comm package message
-							// if key is not null then it means that it's a request.
-							// if its a request based on chanel's listener handle the request
+													Runnable task = new Runnable() {
 
-							// if key is null then check if incoming message is an instanceOfNotification or
-							// a message
-
-							while (isOpen) {
-
-								ConsumerRecords<String, String> records = messageConsumer.poll(Duration.ofMillis(5000));
-								if (!records.isEmpty() && isOpen) {
-									for (ConsumerRecord<String, String> record : records) {
-										String content = (String) record.value();
-										try {
-											Message incomingMessage = JsonUtils.fromString(content, Message.class);
-											if (incomingMessage instanceof Request) {
-
-												Runnable task = new Runnable() {
-
-													@Override
-													public void run() {
-														try {
-															Request req = (Request) incomingMessage;
-															Response res = channel.getListener().handleRequest(channel,
-																	req);
-															String payload = JsonUtils.toString(res);
-															String correlationId = new String(record.headers()
-																	.lastHeader("correlationId").value());
-															String replyTo = new String(
-																	record.headers().lastHeader("replyTo").value());
-															ProducerRecord<String, String> pr = new ProducerRecord<>(
-																	replyTo, payload);
-															pr.headers().add(correlationIdKey,
-																	correlationId.getBytes());
-															sharedProducer.send(pr);
-														} catch (JsonProcessingException e) {
-															e.printStackTrace();
+														@Override
+														public void run() {
+															try {
+																Request req = (Request) incomingMessage;
+																Response res = channel.getListener()
+																		.handleRequest(channel, req);
+																String payload = JsonUtils.toString(res);
+																String correlationId = new String(record.headers()
+																		.lastHeader("correlationId").value());
+																String replyTo = new String(
+																		record.headers().lastHeader("replyTo").value());
+																ProducerRecord<String, String> pr = new ProducerRecord<>(
+																		replyTo, payload);
+																pr.headers().add(correlationIdKey,
+																		correlationId.getBytes());
+																sharedProducer.send(pr).get();
+															} catch (JsonProcessingException | InterruptedException | ExecutionException e) {
+																e.printStackTrace();
+															}
 														}
-													}
-												};
+													};
 
-												executor.execute(task);
+													executor.execute(task);
 
-											} else {
-												if (incomingMessage instanceof Notification) {
-													channel.getListener().handleNotification(channel,
-															(Notification) incomingMessage);
 												} else {
-													channel.getListener().handleMessage(channel,
-															incomingMessage.getPayload());
+													if (incomingMessage instanceof Notification) {
+														channel.getListener().handleNotification(channel,
+																(Notification) incomingMessage);
+													} else {
+														channel.getListener().handleMessage(channel,
+																incomingMessage.getPayload());
+													}
 												}
+											} catch (Exception e) {
+												channel.getListener().handleMessage(channel, content);
 											}
-										} catch (Exception e) {
-											channel.getListener().handleMessage(channel, content);
-										}
 
+										}
 									}
 								}
+							} catch (WakeupException e) {
+								// Ignore exception if closing
+								if (!closed.get())
+									throw e;
+							} finally {
+								messageConsumer.close();
 							}
-							messageConsumer.close();
+
 						}
 					};
 					executor.execute(task);
@@ -397,10 +406,9 @@ public class KafkaCommunicationProvider implements CommunicationProvider {
 		};
 
 		public void close() {
-			isOpen = false;
-
+			closed.set(true);
 			if (messageConsumer != null) {
-				// messageConsumer.wakeup();
+				messageConsumer.wakeup();
 			}
 		};
 
