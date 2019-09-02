@@ -831,6 +831,29 @@ public class CapabilityItemProviderAdapterFactory extends CapabilityAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.model.domain.capability.TestCapability} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TestCapabilityItemProvider testCapabilityItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.cos.basys.platform.model.domain.capability.TestCapability}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTestCapabilityAdapter() {
+		if (testCapabilityItemProvider == null) {
+			testCapabilityItemProvider = new TestCapabilityItemProvider(this);
+		}
+
+		return testCapabilityItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.model.domain.capability.Urformen} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1112,6 +1135,7 @@ public class CapabilityItemProviderAdapterFactory extends CapabilityAdapterFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ComposeableAdapterFactory getRootAdapterFactory() {
 		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
 	}
@@ -1122,6 +1146,7 @@ public class CapabilityItemProviderAdapterFactory extends CapabilityAdapterFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
@@ -1170,6 +1195,7 @@ public class CapabilityItemProviderAdapterFactory extends CapabilityAdapterFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void addListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.addListener(notifyChangedListener);
 	}
@@ -1180,6 +1206,7 @@ public class CapabilityItemProviderAdapterFactory extends CapabilityAdapterFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void removeListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.removeListener(notifyChangedListener);
 	}
@@ -1190,6 +1217,7 @@ public class CapabilityItemProviderAdapterFactory extends CapabilityAdapterFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void fireNotifyChanged(Notification notification) {
 		changeNotifier.fireNotifyChanged(notification);
 
@@ -1204,6 +1232,7 @@ public class CapabilityItemProviderAdapterFactory extends CapabilityAdapterFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void dispose() {
 		if (capabilityAssertionItemProvider != null) capabilityAssertionItemProvider.dispose();
 		if (capabilityRequestItemProvider != null) capabilityRequestItemProvider.dispose();
@@ -1250,6 +1279,7 @@ public class CapabilityItemProviderAdapterFactory extends CapabilityAdapterFacto
 		if (passingOnItemProvider != null) passingOnItemProvider.dispose();
 		if (conveyingItemProvider != null) conveyingItemProvider.dispose();
 		if (takeItemProvider != null) takeItemProvider.dispose();
+		if (testCapabilityItemProvider != null) testCapabilityItemProvider.dispose();
 	}
 
 }

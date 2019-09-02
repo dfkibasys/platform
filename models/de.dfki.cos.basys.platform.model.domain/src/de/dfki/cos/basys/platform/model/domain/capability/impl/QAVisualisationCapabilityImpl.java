@@ -69,6 +69,7 @@ public class QAVisualisationCapabilityImpl extends VisualisationCapabilityImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isQaResult() {
 		return qaResult;
 	}
@@ -78,6 +79,7 @@ public class QAVisualisationCapabilityImpl extends VisualisationCapabilityImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setQaResult(boolean newQaResult) {
 		boolean oldQaResult = qaResult;
 		qaResult = newQaResult;
@@ -152,7 +154,7 @@ public class QAVisualisationCapabilityImpl extends VisualisationCapabilityImpl i
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (qaResult: ");
 		result.append(qaResult);
 		result.append(')');

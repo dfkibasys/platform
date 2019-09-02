@@ -146,6 +146,7 @@ public class ProjectPathImpl extends WorkerAssistenceCapabilityImpl implements P
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Path getPath() {
 		return path;
 	}
@@ -170,6 +171,7 @@ public class ProjectPathImpl extends WorkerAssistenceCapabilityImpl implements P
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPath(Path newPath) {
 		if (newPath != path) {
 			NotificationChain msgs = null;
@@ -189,6 +191,7 @@ public class ProjectPathImpl extends WorkerAssistenceCapabilityImpl implements P
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public long getDelay() {
 		return delay;
 	}
@@ -198,6 +201,7 @@ public class ProjectPathImpl extends WorkerAssistenceCapabilityImpl implements P
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDelay(long newDelay) {
 		long oldDelay = delay;
 		delay = newDelay;
@@ -210,6 +214,7 @@ public class ProjectPathImpl extends WorkerAssistenceCapabilityImpl implements P
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getArrowCount() {
 		return arrowCount;
 	}
@@ -219,6 +224,7 @@ public class ProjectPathImpl extends WorkerAssistenceCapabilityImpl implements P
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setArrowCount(int newArrowCount) {
 		int oldArrowCount = arrowCount;
 		arrowCount = newArrowCount;
@@ -231,6 +237,7 @@ public class ProjectPathImpl extends WorkerAssistenceCapabilityImpl implements P
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getColor() {
 		return color;
 	}
@@ -240,6 +247,7 @@ public class ProjectPathImpl extends WorkerAssistenceCapabilityImpl implements P
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setColor(int newColor) {
 		int oldColor = color;
 		color = newColor;
@@ -252,6 +260,7 @@ public class ProjectPathImpl extends WorkerAssistenceCapabilityImpl implements P
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public long getEta() {
 		return eta;
 	}
@@ -261,6 +270,7 @@ public class ProjectPathImpl extends WorkerAssistenceCapabilityImpl implements P
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEta(long newEta) {
 		long oldEta = eta;
 		eta = newEta;
@@ -389,7 +399,7 @@ public class ProjectPathImpl extends WorkerAssistenceCapabilityImpl implements P
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (delay: ");
 		result.append(delay);
 		result.append(", arrowCount: ");

@@ -90,6 +90,7 @@ public class PressingImpl extends AnEinpressenImpl implements Pressing {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getPressure() {
 		return pressure;
 	}
@@ -99,6 +100,7 @@ public class PressingImpl extends AnEinpressenImpl implements Pressing {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPressure(double newPressure) {
 		double oldPressure = pressure;
 		pressure = newPressure;
@@ -111,6 +113,7 @@ public class PressingImpl extends AnEinpressenImpl implements Pressing {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getStroke() {
 		return stroke;
 	}
@@ -120,6 +123,7 @@ public class PressingImpl extends AnEinpressenImpl implements Pressing {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setStroke(double newStroke) {
 		double oldStroke = stroke;
 		stroke = newStroke;
@@ -204,7 +208,7 @@ public class PressingImpl extends AnEinpressenImpl implements Pressing {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (pressure: ");
 		result.append(pressure);
 		result.append(", stroke: ");

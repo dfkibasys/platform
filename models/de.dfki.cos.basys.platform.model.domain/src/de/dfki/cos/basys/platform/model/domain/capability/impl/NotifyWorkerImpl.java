@@ -69,6 +69,7 @@ public class NotifyWorkerImpl extends WorkerAssistenceCapabilityImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getContent() {
 		return content;
 	}
@@ -78,6 +79,7 @@ public class NotifyWorkerImpl extends WorkerAssistenceCapabilityImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setContent(String newContent) {
 		String oldContent = content;
 		content = newContent;
@@ -152,7 +154,7 @@ public class NotifyWorkerImpl extends WorkerAssistenceCapabilityImpl implements 
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (content: ");
 		result.append(content);
 		result.append(')');

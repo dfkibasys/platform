@@ -85,6 +85,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Take" eSuperTypes="#//GeneralCapability"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TestCapability" eSuperTypes="#//Capability"/>
   <eSubpackages name="handling" nsURI="http://www.dfki.de/cos/basys/model/capability/v2/handling"
       nsPrefix="handling">
     <eClassifiers xsi:type="ecore:EClass" name="Handling" abstract="true" interface="true"

@@ -250,6 +250,10 @@ public class CapabilityAdapterFactory extends AdapterFactoryImpl {
 				return createTakeAdapter();
 			}
 			@Override
+			public Adapter caseTestCapability(TestCapability object) {
+				return createTestCapabilityAdapter();
+			}
+			@Override
 			public Adapter caseBObject(BObject object) {
 				return createBObjectAdapter();
 			}
@@ -736,6 +740,20 @@ public class CapabilityAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTakeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.cos.basys.platform.model.domain.capability.TestCapability <em>Test Capability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.cos.basys.platform.model.domain.capability.TestCapability
+	 * @generated
+	 */
+	public Adapter createTestCapabilityAdapter() {
 		return null;
 	}
 

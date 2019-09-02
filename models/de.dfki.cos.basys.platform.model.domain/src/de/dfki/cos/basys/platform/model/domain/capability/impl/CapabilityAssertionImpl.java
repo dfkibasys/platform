@@ -73,6 +73,7 @@ public class CapabilityAssertionImpl extends EntityImpl implements CapabilityAss
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PObject getPattern() {
 		return pattern;
 	}
@@ -97,6 +98,7 @@ public class CapabilityAssertionImpl extends EntityImpl implements CapabilityAss
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPattern(PObject newPattern) {
 		if (newPattern != pattern) {
 			NotificationChain msgs = null;
@@ -116,6 +118,7 @@ public class CapabilityAssertionImpl extends EntityImpl implements CapabilityAss
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CapabilityAssertion getPrerequisites() {
 		return prerequisites;
 	}
@@ -140,6 +143,7 @@ public class CapabilityAssertionImpl extends EntityImpl implements CapabilityAss
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPrerequisites(CapabilityAssertion newPrerequisites) {
 		if (newPrerequisites != prerequisites) {
 			NotificationChain msgs = null;

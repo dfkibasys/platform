@@ -377,6 +377,7 @@
     <genClasses ecoreClass="capability.ecore#//PassingOn"/>
     <genClasses ecoreClass="capability.ecore#//Conveying"/>
     <genClasses ecoreClass="capability.ecore#//Take"/>
+    <genClasses ecoreClass="capability.ecore#//TestCapability"/>
   </genPackages>
   <genPackages prefix="Processdefinition" basePackage="de.dfki.cos.basys.platform.model.domain"
       resource="XMI" disposableProviderFactory="true" ecorePackage="processdefinition.ecore#/">

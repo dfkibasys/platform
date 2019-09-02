@@ -46,6 +46,7 @@ import de.dfki.cos.basys.platform.model.domain.capability.Stoffeigenschaften;
 import de.dfki.cos.basys.platform.model.domain.capability.SwitchConfirmationCapability;
 import de.dfki.cos.basys.platform.model.domain.capability.Swivel;
 import de.dfki.cos.basys.platform.model.domain.capability.Take;
+import de.dfki.cos.basys.platform.model.domain.capability.TestCapability;
 import de.dfki.cos.basys.platform.model.domain.capability.Transport;
 import de.dfki.cos.basys.platform.model.domain.capability.Trennen;
 import de.dfki.cos.basys.platform.model.domain.capability.Umformen;
@@ -334,6 +335,13 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass testCapabilityEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum loadCarrierUnitEnumEEnum = null;
 
 	/**
@@ -448,7 +456,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link CapabilityPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -462,7 +470,8 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		if (isInited) return (CapabilityPackage)EPackage.Registry.INSTANCE.getEPackage(CapabilityPackage.eNS_URI);
 
 		// Obtain or create and register package
-		CapabilityPackageImpl theCapabilityPackage = (CapabilityPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof CapabilityPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new CapabilityPackageImpl());
+		Object registeredCapabilityPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		CapabilityPackageImpl theCapabilityPackage = registeredCapabilityPackage instanceof CapabilityPackageImpl ? (CapabilityPackageImpl)registeredCapabilityPackage : new CapabilityPackageImpl();
 
 		isInited = true;
 
@@ -473,20 +482,34 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		EcorePackage.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies
-		OrderPackageImpl theOrderPackage = (OrderPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(OrderPackage.eNS_URI) instanceof OrderPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(OrderPackage.eNS_URI) : OrderPackage.eINSTANCE);
-		ProductdefinitionPackageImpl theProductdefinitionPackage = (ProductdefinitionPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ProductdefinitionPackage.eNS_URI) instanceof ProductdefinitionPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ProductdefinitionPackage.eNS_URI) : ProductdefinitionPackage.eINSTANCE);
-		StaffPackageImpl theStaffPackage = (StaffPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(StaffPackage.eNS_URI) instanceof StaffPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(StaffPackage.eNS_URI) : StaffPackage.eINSTANCE);
-		TopologyPackageImpl theTopologyPackage = (TopologyPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(TopologyPackage.eNS_URI) instanceof TopologyPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(TopologyPackage.eNS_URI) : TopologyPackage.eINSTANCE);
-		WorkerguidancePackageImpl theWorkerguidancePackage = (WorkerguidancePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkerguidancePackage.eNS_URI) instanceof WorkerguidancePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkerguidancePackage.eNS_URI) : WorkerguidancePackage.eINSTANCE);
-		WorkplanPackageImpl theWorkplanPackage = (WorkplanPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkplanPackage.eNS_URI) instanceof WorkplanPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkplanPackage.eNS_URI) : WorkplanPackage.eINSTANCE);
-		LinebalancingPackageImpl theLinebalancingPackage = (LinebalancingPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(LinebalancingPackage.eNS_URI) instanceof LinebalancingPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(LinebalancingPackage.eNS_URI) : LinebalancingPackage.eINSTANCE);
-		ProcessdefinitionPackageImpl theProcessdefinitionPackage = (ProcessdefinitionPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ProcessdefinitionPackage.eNS_URI) instanceof ProcessdefinitionPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ProcessdefinitionPackage.eNS_URI) : ProcessdefinitionPackage.eINSTANCE);
-		ProcessinstancePackageImpl theProcessinstancePackage = (ProcessinstancePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ProcessinstancePackage.eNS_URI) instanceof ProcessinstancePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ProcessinstancePackage.eNS_URI) : ProcessinstancePackage.eINSTANCE);
-		ProductinstancePackageImpl theProductinstancePackage = (ProductinstancePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ProductinstancePackage.eNS_URI) instanceof ProductinstancePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ProductinstancePackage.eNS_URI) : ProductinstancePackage.eINSTANCE);
-		WorkforcePackageImpl theWorkforcePackage = (WorkforcePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkforcePackage.eNS_URI) instanceof WorkforcePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkforcePackage.eNS_URI) : WorkforcePackage.eINSTANCE);
-		MaterialPackageImpl theMaterialPackage = (MaterialPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(MaterialPackage.eNS_URI) instanceof MaterialPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(MaterialPackage.eNS_URI) : MaterialPackage.eINSTANCE);
-		ResourcetypePackageImpl theResourcetypePackage = (ResourcetypePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ResourcetypePackage.eNS_URI) instanceof ResourcetypePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ResourcetypePackage.eNS_URI) : ResourcetypePackage.eINSTANCE);
-		ResourceinstancePackageImpl theResourceinstancePackage = (ResourceinstancePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ResourceinstancePackage.eNS_URI) instanceof ResourceinstancePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ResourceinstancePackage.eNS_URI) : ResourceinstancePackage.eINSTANCE);
+		Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(OrderPackage.eNS_URI);
+		OrderPackageImpl theOrderPackage = (OrderPackageImpl)(registeredPackage instanceof OrderPackageImpl ? registeredPackage : OrderPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ProductdefinitionPackage.eNS_URI);
+		ProductdefinitionPackageImpl theProductdefinitionPackage = (ProductdefinitionPackageImpl)(registeredPackage instanceof ProductdefinitionPackageImpl ? registeredPackage : ProductdefinitionPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(StaffPackage.eNS_URI);
+		StaffPackageImpl theStaffPackage = (StaffPackageImpl)(registeredPackage instanceof StaffPackageImpl ? registeredPackage : StaffPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(TopologyPackage.eNS_URI);
+		TopologyPackageImpl theTopologyPackage = (TopologyPackageImpl)(registeredPackage instanceof TopologyPackageImpl ? registeredPackage : TopologyPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(WorkerguidancePackage.eNS_URI);
+		WorkerguidancePackageImpl theWorkerguidancePackage = (WorkerguidancePackageImpl)(registeredPackage instanceof WorkerguidancePackageImpl ? registeredPackage : WorkerguidancePackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(WorkplanPackage.eNS_URI);
+		WorkplanPackageImpl theWorkplanPackage = (WorkplanPackageImpl)(registeredPackage instanceof WorkplanPackageImpl ? registeredPackage : WorkplanPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(LinebalancingPackage.eNS_URI);
+		LinebalancingPackageImpl theLinebalancingPackage = (LinebalancingPackageImpl)(registeredPackage instanceof LinebalancingPackageImpl ? registeredPackage : LinebalancingPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ProcessdefinitionPackage.eNS_URI);
+		ProcessdefinitionPackageImpl theProcessdefinitionPackage = (ProcessdefinitionPackageImpl)(registeredPackage instanceof ProcessdefinitionPackageImpl ? registeredPackage : ProcessdefinitionPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ProcessinstancePackage.eNS_URI);
+		ProcessinstancePackageImpl theProcessinstancePackage = (ProcessinstancePackageImpl)(registeredPackage instanceof ProcessinstancePackageImpl ? registeredPackage : ProcessinstancePackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ProductinstancePackage.eNS_URI);
+		ProductinstancePackageImpl theProductinstancePackage = (ProductinstancePackageImpl)(registeredPackage instanceof ProductinstancePackageImpl ? registeredPackage : ProductinstancePackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(WorkforcePackage.eNS_URI);
+		WorkforcePackageImpl theWorkforcePackage = (WorkforcePackageImpl)(registeredPackage instanceof WorkforcePackageImpl ? registeredPackage : WorkforcePackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(MaterialPackage.eNS_URI);
+		MaterialPackageImpl theMaterialPackage = (MaterialPackageImpl)(registeredPackage instanceof MaterialPackageImpl ? registeredPackage : MaterialPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ResourcetypePackage.eNS_URI);
+		ResourcetypePackageImpl theResourcetypePackage = (ResourcetypePackageImpl)(registeredPackage instanceof ResourcetypePackageImpl ? registeredPackage : ResourcetypePackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ResourceinstancePackage.eNS_URI);
+		ResourceinstancePackageImpl theResourceinstancePackage = (ResourceinstancePackageImpl)(registeredPackage instanceof ResourceinstancePackageImpl ? registeredPackage : ResourceinstancePackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theCapabilityPackage.createPackageContents();
@@ -525,7 +548,6 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		// Mark meta-data to indicate it can't be changed
 		theCapabilityPackage.freeze();
 
-  
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(CapabilityPackage.eNS_URI, theCapabilityPackage);
 		return theCapabilityPackage;
@@ -536,6 +558,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getCapabilityAssertion() {
 		return capabilityAssertionEClass;
 	}
@@ -545,6 +568,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCapabilityAssertion_Pattern() {
 		return (EReference)capabilityAssertionEClass.getEStructuralFeatures().get(0);
 	}
@@ -554,6 +578,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCapabilityAssertion_Prerequisites() {
 		return (EReference)capabilityAssertionEClass.getEStructuralFeatures().get(1);
 	}
@@ -563,6 +588,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getCapabilityRequest() {
 		return capabilityRequestEClass;
 	}
@@ -572,6 +598,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCapabilityRequest_Who() {
 		return (EReference)capabilityRequestEClass.getEStructuralFeatures().get(0);
 	}
@@ -581,6 +608,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCapabilityRequest_What() {
 		return (EReference)capabilityRequestEClass.getEStructuralFeatures().get(1);
 	}
@@ -590,6 +618,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCapabilityRequest_Whom() {
 		return (EReference)capabilityRequestEClass.getEStructuralFeatures().get(2);
 	}
@@ -599,6 +628,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCapabilityRequest_Where() {
 		return (EReference)capabilityRequestEClass.getEStructuralFeatures().get(3);
 	}
@@ -608,6 +638,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCapabilityRequest_When() {
 		return (EAttribute)capabilityRequestEClass.getEStructuralFeatures().get(4);
 	}
@@ -617,6 +648,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCapabilityRequest_How() {
 		return (EReference)capabilityRequestEClass.getEStructuralFeatures().get(5);
 	}
@@ -626,6 +658,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getCapability() {
 		return capabilityEClass;
 	}
@@ -635,6 +668,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getHandling() {
 		return handlingEClass;
 	}
@@ -644,6 +678,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getManufacturingCapability() {
 		return manufacturingCapabilityEClass;
 	}
@@ -653,6 +688,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getFügen() {
 		return fügenEClass;
 	}
@@ -662,6 +698,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getPressing() {
 		return pressingEClass;
 	}
@@ -671,6 +708,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getPressing_Pressure() {
 		return (EAttribute)pressingEClass.getEStructuralFeatures().get(0);
 	}
@@ -680,6 +718,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getPressing_Stroke() {
 		return (EAttribute)pressingEClass.getEStructuralFeatures().get(1);
 	}
@@ -689,6 +728,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getQoSCapability() {
 		return qoSCapabilityEClass;
 	}
@@ -698,6 +738,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getInspect() {
 		return inspectEClass;
 	}
@@ -707,6 +748,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getWorkerAssistenceCapability() {
 		return workerAssistenceCapabilityEClass;
 	}
@@ -716,6 +758,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getInteractionCapability() {
 		return interactionCapabilityEClass;
 	}
@@ -725,6 +768,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getInteractionCapability_Topic() {
 		return (EAttribute)interactionCapabilityEClass.getEStructuralFeatures().get(0);
 	}
@@ -734,6 +778,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getConfirmationCapability() {
 		return confirmationCapabilityEClass;
 	}
@@ -743,6 +788,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSwitchConfirmationCapability() {
 		return switchConfirmationCapabilityEClass;
 	}
@@ -752,6 +798,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getSwitchConfirmationCapability_State() {
 		return (EAttribute)switchConfirmationCapabilityEClass.getEStructuralFeatures().get(0);
 	}
@@ -761,6 +808,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getGeneralCapability() {
 		return generalCapabilityEClass;
 	}
@@ -770,6 +818,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getMoveToLocation() {
 		return moveToLocationEClass;
 	}
@@ -779,6 +828,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getMoveToLocation_TargetLocation() {
 		return (EReference)moveToLocationEClass.getEStructuralFeatures().get(0);
 	}
@@ -788,6 +838,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getProjectPath() {
 		return projectPathEClass;
 	}
@@ -797,6 +848,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getProjectPath_Path() {
 		return (EReference)projectPathEClass.getEStructuralFeatures().get(0);
 	}
@@ -806,6 +858,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getProjectPath_Delay() {
 		return (EAttribute)projectPathEClass.getEStructuralFeatures().get(1);
 	}
@@ -815,6 +868,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getProjectPath_ArrowCount() {
 		return (EAttribute)projectPathEClass.getEStructuralFeatures().get(2);
 	}
@@ -824,6 +878,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getProjectPath_Color() {
 		return (EAttribute)projectPathEClass.getEStructuralFeatures().get(3);
 	}
@@ -833,6 +888,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getProjectPath_Eta() {
 		return (EAttribute)projectPathEClass.getEStructuralFeatures().get(4);
 	}
@@ -842,6 +898,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getProjectETA() {
 		return projectETAEClass;
 	}
@@ -851,6 +908,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getProjectETA_Eta() {
 		return (EAttribute)projectETAEClass.getEStructuralFeatures().get(0);
 	}
@@ -860,6 +918,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getProjectETA_Position() {
 		return (EReference)projectETAEClass.getEStructuralFeatures().get(1);
 	}
@@ -869,6 +928,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getProjectETA_Radius() {
 		return (EAttribute)projectETAEClass.getEStructuralFeatures().get(2);
 	}
@@ -878,6 +938,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getProjectETA_Color() {
 		return (EAttribute)projectETAEClass.getEStructuralFeatures().get(3);
 	}
@@ -887,6 +948,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getProjectETA_Orientation() {
 		return (EAttribute)projectETAEClass.getEStructuralFeatures().get(4);
 	}
@@ -896,6 +958,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getVisualisationCapability() {
 		return visualisationCapabilityEClass;
 	}
@@ -905,6 +968,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getQAVisualisationCapability() {
 		return qaVisualisationCapabilityEClass;
 	}
@@ -914,6 +978,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getQAVisualisationCapability_QaResult() {
 		return (EAttribute)qaVisualisationCapabilityEClass.getEStructuralFeatures().get(0);
 	}
@@ -923,6 +988,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getProvisioning() {
 		return provisioningEClass;
 	}
@@ -932,6 +998,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getNotifyWorker() {
 		return notifyWorkerEClass;
 	}
@@ -941,6 +1008,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getNotifyWorker_Content() {
 		return (EAttribute)notifyWorkerEClass.getEStructuralFeatures().get(0);
 	}
@@ -950,6 +1018,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getChangingQuantity() {
 		return changingQuantityEClass;
 	}
@@ -959,6 +1028,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getMoving() {
 		return movingEClass;
 	}
@@ -968,6 +1038,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSecuring() {
 		return securingEClass;
 	}
@@ -977,6 +1048,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getChecking() {
 		return checkingEClass;
 	}
@@ -986,6 +1058,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSwivel() {
 		return swivelEClass;
 	}
@@ -995,6 +1068,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getOrientating() {
 		return orientatingEClass;
 	}
@@ -1004,6 +1078,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getPlacing() {
 		return placingEClass;
 	}
@@ -1013,6 +1088,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getOrdering() {
 		return orderingEClass;
 	}
@@ -1022,6 +1098,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getGuiding() {
 		return guidingEClass;
 	}
@@ -1031,6 +1108,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getPassingOn() {
 		return passingOnEClass;
 	}
@@ -1040,6 +1118,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getConveying() {
 		return conveyingEClass;
 	}
@@ -1049,6 +1128,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTake() {
 		return takeEClass;
 	}
@@ -1058,6 +1138,17 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public EClass getTestCapability() {
+		return testCapabilityEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EEnum getLoadCarrierUnitEnum() {
 		return loadCarrierUnitEnumEEnum;
 	}
@@ -1067,6 +1158,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getUrformen() {
 		return urformenEClass;
 	}
@@ -1076,6 +1168,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getUmformen() {
 		return umformenEClass;
 	}
@@ -1085,6 +1178,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTrennen() {
 		return trennenEClass;
 	}
@@ -1094,6 +1188,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getBeschichten() {
 		return beschichtenEClass;
 	}
@@ -1103,6 +1198,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getStoffeigenschaften() {
 		return stoffeigenschaftenEClass;
 	}
@@ -1112,6 +1208,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getAnEinpressen() {
 		return anEinpressenEClass;
 	}
@@ -1121,6 +1218,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getScrewing() {
 		return screwingEClass;
 	}
@@ -1130,6 +1228,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getScrewing_Torque() {
 		return (EAttribute)screwingEClass.getEStructuralFeatures().get(0);
 	}
@@ -1139,6 +1238,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getProductionCapability() {
 		return productionCapabilityEClass;
 	}
@@ -1148,6 +1248,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getLogisticsCapability() {
 		return logisticsCapabilityEClass;
 	}
@@ -1157,6 +1258,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getLogisticsCapability_LoadCarrierUnit() {
 		return (EAttribute)logisticsCapabilityEClass.getEStructuralFeatures().get(0);
 	}
@@ -1166,6 +1268,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getLogisticsCapability_Capacity() {
 		return (EAttribute)logisticsCapabilityEClass.getEStructuralFeatures().get(1);
 	}
@@ -1175,6 +1278,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getLogisticsCapability_Payload() {
 		return (EAttribute)logisticsCapabilityEClass.getEStructuralFeatures().get(2);
 	}
@@ -1184,6 +1288,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getPickAndPlace() {
 		return pickAndPlaceEClass;
 	}
@@ -1193,6 +1298,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getPickAndPlace_Reach() {
 		return (EAttribute)pickAndPlaceEClass.getEStructuralFeatures().get(0);
 	}
@@ -1202,6 +1308,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getPickAndPlace_PositionRepeatability() {
 		return (EAttribute)pickAndPlaceEClass.getEStructuralFeatures().get(1);
 	}
@@ -1211,6 +1318,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTransport() {
 		return transportEClass;
 	}
@@ -1220,6 +1328,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTransport_Distance() {
 		return (EAttribute)transportEClass.getEStructuralFeatures().get(0);
 	}
@@ -1229,6 +1338,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getBuffering() {
 		return bufferingEClass;
 	}
@@ -1238,6 +1348,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CapabilityFactory getCapabilityFactory() {
 		return (CapabilityFactory)getEFactoryInstance();
 	}
@@ -1383,6 +1494,8 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 
 		takeEClass = createEClass(TAKE);
 
+		testCapabilityEClass = createEClass(TEST_CAPABILITY);
+
 		// Create enums
 		loadCarrierUnitEnumEEnum = createEEnum(LOAD_CARRIER_UNIT_ENUM);
 	}
@@ -1466,6 +1579,7 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 		passingOnEClass.getESuperTypes().add(this.getMoving());
 		conveyingEClass.getESuperTypes().add(this.getMoving());
 		takeEClass.getESuperTypes().add(this.getGeneralCapability());
+		testCapabilityEClass.getESuperTypes().add(this.getCapability());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(capabilityAssertionEClass, CapabilityAssertion.class, "CapabilityAssertion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1590,6 +1704,8 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 
 		initEClass(takeEClass, Take.class, "Take", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEClass(testCapabilityEClass, TestCapability.class, "TestCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		// Initialize enums and add enum literals
 		initEEnum(loadCarrierUnitEnumEEnum, LoadCarrierUnitEnum.class, "LoadCarrierUnitEnum");
 		addEEnumLiteral(loadCarrierUnitEnumEEnum, LoadCarrierUnitEnum.UNDEFINED);
@@ -1615,10 +1731,10 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * @generated
 	 */
 	protected void createCoreModelAnnotations() {
-		String source = "http://de.dfki.iui.mmds/CoreModel";	
+		String source = "http://de.dfki.iui.mmds/CoreModel";
 		addAnnotation
-		  (this, 
-		   source, 
+		  (this,
+		   source,
 		   new String[] {
 		   });
 	}
@@ -1630,14 +1746,14 @@ public class CapabilityPackageImpl extends EPackageImpl implements CapabilityPac
 	 * @generated
 	 */
 	protected void createEcoreAnnotations() {
-		String source = "http://www.eclipse.org/emf/2002/Ecore";	
+		String source = "http://www.eclipse.org/emf/2002/Ecore";
 		addAnnotation
-		  (this, 
-		   source, 
+		  (this,
+		   source,
 		   new String[] {
-			 "settingDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL",
-			 "invocationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL",
-			 "validationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL"
+			   "settingDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL",
+			   "invocationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL",
+			   "validationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL"
 		   });
 	}
 

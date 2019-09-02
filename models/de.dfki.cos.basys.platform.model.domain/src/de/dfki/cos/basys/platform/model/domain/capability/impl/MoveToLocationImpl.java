@@ -59,6 +59,7 @@ public class MoveToLocationImpl extends GeneralCapabilityImpl implements MoveToL
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TopologyElement getTargetLocation() {
 		if (targetLocation != null && targetLocation.eIsProxy()) {
 			InternalEObject oldTargetLocation = (InternalEObject)targetLocation;
@@ -85,6 +86,7 @@ public class MoveToLocationImpl extends GeneralCapabilityImpl implements MoveToL
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTargetLocation(TopologyElement newTargetLocation) {
 		TopologyElement oldTargetLocation = targetLocation;
 		targetLocation = newTargetLocation;

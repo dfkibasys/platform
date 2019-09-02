@@ -319,6 +319,15 @@ public interface CapabilityFactory extends EFactory {
 	Take createTake();
 
 	/**
+	 * Returns a new object of class '<em>Test Capability</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Test Capability</em>'.
+	 * @generated
+	 */
+	TestCapability createTestCapability();
+
+	/**
 	 * Returns a new object of class '<em>Urformen</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

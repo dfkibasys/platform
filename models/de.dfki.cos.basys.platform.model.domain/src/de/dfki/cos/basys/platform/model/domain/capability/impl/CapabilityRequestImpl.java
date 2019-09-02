@@ -136,6 +136,7 @@ public class CapabilityRequestImpl extends BasysEObjectImpl implements Capabilit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Entity getWho() {
 		return who;
 	}
@@ -160,6 +161,7 @@ public class CapabilityRequestImpl extends BasysEObjectImpl implements Capabilit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setWho(Entity newWho) {
 		if (newWho != who) {
 			NotificationChain msgs = null;
@@ -179,6 +181,7 @@ public class CapabilityRequestImpl extends BasysEObjectImpl implements Capabilit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Capability getWhat() {
 		return what;
 	}
@@ -203,6 +206,7 @@ public class CapabilityRequestImpl extends BasysEObjectImpl implements Capabilit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setWhat(Capability newWhat) {
 		if (newWhat != what) {
 			NotificationChain msgs = null;
@@ -222,6 +226,7 @@ public class CapabilityRequestImpl extends BasysEObjectImpl implements Capabilit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Entity> getWhom() {
 		if (whom == null) {
 			whom = new EObjectResolvingEList<Entity>(Entity.class, this, CapabilityPackage.CAPABILITY_REQUEST__WHOM);
@@ -234,6 +239,7 @@ public class CapabilityRequestImpl extends BasysEObjectImpl implements Capabilit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Entity> getWhere() {
 		if (where == null) {
 			where = new EObjectResolvingEList<Entity>(Entity.class, this, CapabilityPackage.CAPABILITY_REQUEST__WHERE);
@@ -246,6 +252,7 @@ public class CapabilityRequestImpl extends BasysEObjectImpl implements Capabilit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Date getWhen() {
 		return when;
 	}
@@ -255,6 +262,7 @@ public class CapabilityRequestImpl extends BasysEObjectImpl implements Capabilit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setWhen(Date newWhen) {
 		Date oldWhen = when;
 		when = newWhen;
@@ -267,6 +275,7 @@ public class CapabilityRequestImpl extends BasysEObjectImpl implements Capabilit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Entity> getHow() {
 		if (how == null) {
 			how = new EObjectResolvingEList<Entity>(Entity.class, this, CapabilityPackage.CAPABILITY_REQUEST__HOW);
@@ -411,7 +420,7 @@ public class CapabilityRequestImpl extends BasysEObjectImpl implements Capabilit
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (when: ");
 		result.append(when);
 		result.append(')');

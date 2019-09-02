@@ -146,6 +146,7 @@ public class ProjectETAImpl extends WorkerAssistenceCapabilityImpl implements Pr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public long getEta() {
 		return eta;
 	}
@@ -155,6 +156,7 @@ public class ProjectETAImpl extends WorkerAssistenceCapabilityImpl implements Pr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEta(long newEta) {
 		long oldEta = eta;
 		eta = newEta;
@@ -167,6 +169,7 @@ public class ProjectETAImpl extends WorkerAssistenceCapabilityImpl implements Pr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CartesianCoordinate getPosition() {
 		return position;
 	}
@@ -191,6 +194,7 @@ public class ProjectETAImpl extends WorkerAssistenceCapabilityImpl implements Pr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPosition(CartesianCoordinate newPosition) {
 		if (newPosition != position) {
 			NotificationChain msgs = null;
@@ -210,6 +214,7 @@ public class ProjectETAImpl extends WorkerAssistenceCapabilityImpl implements Pr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getRadius() {
 		return radius;
 	}
@@ -219,6 +224,7 @@ public class ProjectETAImpl extends WorkerAssistenceCapabilityImpl implements Pr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setRadius(double newRadius) {
 		double oldRadius = radius;
 		radius = newRadius;
@@ -231,6 +237,7 @@ public class ProjectETAImpl extends WorkerAssistenceCapabilityImpl implements Pr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getColor() {
 		return color;
 	}
@@ -240,6 +247,7 @@ public class ProjectETAImpl extends WorkerAssistenceCapabilityImpl implements Pr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setColor(int newColor) {
 		int oldColor = color;
 		color = newColor;
@@ -252,6 +260,7 @@ public class ProjectETAImpl extends WorkerAssistenceCapabilityImpl implements Pr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getOrientation() {
 		return orientation;
 	}
@@ -261,6 +270,7 @@ public class ProjectETAImpl extends WorkerAssistenceCapabilityImpl implements Pr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setOrientation(int newOrientation) {
 		int oldOrientation = orientation;
 		orientation = newOrientation;
@@ -389,7 +399,7 @@ public class ProjectETAImpl extends WorkerAssistenceCapabilityImpl implements Pr
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (eta: ");
 		result.append(eta);
 		result.append(", radius: ");

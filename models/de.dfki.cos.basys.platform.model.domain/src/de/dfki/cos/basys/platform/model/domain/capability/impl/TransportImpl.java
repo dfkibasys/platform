@@ -69,6 +69,7 @@ public class TransportImpl extends LogisticsCapabilityImpl implements Transport 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getDistance() {
 		return distance;
 	}
@@ -78,6 +79,7 @@ public class TransportImpl extends LogisticsCapabilityImpl implements Transport 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDistance(double newDistance) {
 		double oldDistance = distance;
 		distance = newDistance;
@@ -152,7 +154,7 @@ public class TransportImpl extends LogisticsCapabilityImpl implements Transport 
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (distance: ");
 		result.append(distance);
 		result.append(')');

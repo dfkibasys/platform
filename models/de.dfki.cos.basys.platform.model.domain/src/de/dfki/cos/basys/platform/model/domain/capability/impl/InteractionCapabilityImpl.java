@@ -69,6 +69,7 @@ public class InteractionCapabilityImpl extends WorkerAssistenceCapabilityImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getTopic() {
 		return topic;
 	}
@@ -78,6 +79,7 @@ public class InteractionCapabilityImpl extends WorkerAssistenceCapabilityImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTopic(String newTopic) {
 		String oldTopic = topic;
 		topic = newTopic;
@@ -152,7 +154,7 @@ public class InteractionCapabilityImpl extends WorkerAssistenceCapabilityImpl im
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (topic: ");
 		result.append(topic);
 		result.append(')');

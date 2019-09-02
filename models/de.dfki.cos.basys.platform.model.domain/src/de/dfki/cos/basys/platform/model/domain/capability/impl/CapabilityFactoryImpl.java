@@ -102,6 +102,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 			case CapabilityPackage.PASSING_ON: return createPassingOn();
 			case CapabilityPackage.CONVEYING: return createConveying();
 			case CapabilityPackage.TAKE: return createTake();
+			case CapabilityPackage.TEST_CAPABILITY: return createTestCapability();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -142,6 +143,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CapabilityAssertion createCapabilityAssertion() {
 		CapabilityAssertionImpl capabilityAssertion = new CapabilityAssertionImpl();
 		return capabilityAssertion;
@@ -152,6 +154,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CapabilityRequest createCapabilityRequest() {
 		CapabilityRequestImpl capabilityRequest = new CapabilityRequestImpl();
 		return capabilityRequest;
@@ -162,6 +165,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Capability createCapability() {
 		CapabilityImpl capability = new CapabilityImpl();
 		return capability;
@@ -172,6 +176,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Handling createHandling() {
 		HandlingImpl handling = new HandlingImpl();
 		return handling;
@@ -182,6 +187,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ManufacturingCapability createManufacturingCapability() {
 		ManufacturingCapabilityImpl manufacturingCapability = new ManufacturingCapabilityImpl();
 		return manufacturingCapability;
@@ -192,6 +198,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Fügen createFügen() {
 		FügenImpl fügen = new FügenImpl();
 		return fügen;
@@ -202,6 +209,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Pressing createPressing() {
 		PressingImpl pressing = new PressingImpl();
 		return pressing;
@@ -212,6 +220,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public QoSCapability createQoSCapability() {
 		QoSCapabilityImpl qoSCapability = new QoSCapabilityImpl();
 		return qoSCapability;
@@ -222,6 +231,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Inspect createInspect() {
 		InspectImpl inspect = new InspectImpl();
 		return inspect;
@@ -232,6 +242,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public WorkerAssistenceCapability createWorkerAssistenceCapability() {
 		WorkerAssistenceCapabilityImpl workerAssistenceCapability = new WorkerAssistenceCapabilityImpl();
 		return workerAssistenceCapability;
@@ -242,6 +253,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public InteractionCapability createInteractionCapability() {
 		InteractionCapabilityImpl interactionCapability = new InteractionCapabilityImpl();
 		return interactionCapability;
@@ -252,6 +264,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ConfirmationCapability createConfirmationCapability() {
 		ConfirmationCapabilityImpl confirmationCapability = new ConfirmationCapabilityImpl();
 		return confirmationCapability;
@@ -262,6 +275,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SwitchConfirmationCapability createSwitchConfirmationCapability() {
 		SwitchConfirmationCapabilityImpl switchConfirmationCapability = new SwitchConfirmationCapabilityImpl();
 		return switchConfirmationCapability;
@@ -272,6 +286,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public GeneralCapability createGeneralCapability() {
 		GeneralCapabilityImpl generalCapability = new GeneralCapabilityImpl();
 		return generalCapability;
@@ -282,6 +297,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public MoveToLocation createMoveToLocation() {
 		MoveToLocationImpl moveToLocation = new MoveToLocationImpl();
 		return moveToLocation;
@@ -292,6 +308,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProjectPath createProjectPath() {
 		ProjectPathImpl projectPath = new ProjectPathImpl();
 		return projectPath;
@@ -302,6 +319,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProjectETA createProjectETA() {
 		ProjectETAImpl projectETA = new ProjectETAImpl();
 		return projectETA;
@@ -312,6 +330,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public VisualisationCapability createVisualisationCapability() {
 		VisualisationCapabilityImpl visualisationCapability = new VisualisationCapabilityImpl();
 		return visualisationCapability;
@@ -322,6 +341,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public QAVisualisationCapability createQAVisualisationCapability() {
 		QAVisualisationCapabilityImpl qaVisualisationCapability = new QAVisualisationCapabilityImpl();
 		return qaVisualisationCapability;
@@ -332,6 +352,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Provisioning createProvisioning() {
 		ProvisioningImpl provisioning = new ProvisioningImpl();
 		return provisioning;
@@ -342,6 +363,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotifyWorker createNotifyWorker() {
 		NotifyWorkerImpl notifyWorker = new NotifyWorkerImpl();
 		return notifyWorker;
@@ -352,6 +374,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ChangingQuantity createChangingQuantity() {
 		ChangingQuantityImpl changingQuantity = new ChangingQuantityImpl();
 		return changingQuantity;
@@ -362,6 +385,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Moving createMoving() {
 		MovingImpl moving = new MovingImpl();
 		return moving;
@@ -372,6 +396,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Securing createSecuring() {
 		SecuringImpl securing = new SecuringImpl();
 		return securing;
@@ -382,6 +407,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Checking createChecking() {
 		CheckingImpl checking = new CheckingImpl();
 		return checking;
@@ -392,6 +418,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Swivel createSwivel() {
 		SwivelImpl swivel = new SwivelImpl();
 		return swivel;
@@ -402,6 +429,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Orientating createOrientating() {
 		OrientatingImpl orientating = new OrientatingImpl();
 		return orientating;
@@ -412,6 +440,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Placing createPlacing() {
 		PlacingImpl placing = new PlacingImpl();
 		return placing;
@@ -422,6 +451,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Ordering createOrdering() {
 		OrderingImpl ordering = new OrderingImpl();
 		return ordering;
@@ -432,6 +462,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Guiding createGuiding() {
 		GuidingImpl guiding = new GuidingImpl();
 		return guiding;
@@ -442,6 +473,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PassingOn createPassingOn() {
 		PassingOnImpl passingOn = new PassingOnImpl();
 		return passingOn;
@@ -452,6 +484,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Conveying createConveying() {
 		ConveyingImpl conveying = new ConveyingImpl();
 		return conveying;
@@ -462,9 +495,21 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Take createTake() {
 		TakeImpl take = new TakeImpl();
 		return take;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public TestCapability createTestCapability() {
+		TestCapabilityImpl testCapability = new TestCapabilityImpl();
+		return testCapability;
 	}
 
 	/**
@@ -492,6 +537,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Urformen createUrformen() {
 		UrformenImpl urformen = new UrformenImpl();
 		return urformen;
@@ -502,6 +548,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Umformen createUmformen() {
 		UmformenImpl umformen = new UmformenImpl();
 		return umformen;
@@ -512,6 +559,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Trennen createTrennen() {
 		TrennenImpl trennen = new TrennenImpl();
 		return trennen;
@@ -522,6 +570,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Beschichten createBeschichten() {
 		BeschichtenImpl beschichten = new BeschichtenImpl();
 		return beschichten;
@@ -532,6 +581,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Stoffeigenschaften createStoffeigenschaften() {
 		StoffeigenschaftenImpl stoffeigenschaften = new StoffeigenschaftenImpl();
 		return stoffeigenschaften;
@@ -542,6 +592,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AnEinpressen createAnEinpressen() {
 		AnEinpressenImpl anEinpressen = new AnEinpressenImpl();
 		return anEinpressen;
@@ -552,6 +603,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Screwing createScrewing() {
 		ScrewingImpl screwing = new ScrewingImpl();
 		return screwing;
@@ -562,6 +614,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProductionCapability createProductionCapability() {
 		ProductionCapabilityImpl productionCapability = new ProductionCapabilityImpl();
 		return productionCapability;
@@ -572,6 +625,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LogisticsCapability createLogisticsCapability() {
 		LogisticsCapabilityImpl logisticsCapability = new LogisticsCapabilityImpl();
 		return logisticsCapability;
@@ -582,6 +636,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PickAndPlace createPickAndPlace() {
 		PickAndPlaceImpl pickAndPlace = new PickAndPlaceImpl();
 		return pickAndPlace;
@@ -592,6 +647,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Transport createTransport() {
 		TransportImpl transport = new TransportImpl();
 		return transport;
@@ -602,6 +658,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Buffering createBuffering() {
 		BufferingImpl buffering = new BufferingImpl();
 		return buffering;
@@ -612,6 +669,7 @@ public class CapabilityFactoryImpl extends EFactoryImpl implements CapabilityFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CapabilityPackage getCapabilityPackage() {
 		return (CapabilityPackage)getEPackage();
 	}

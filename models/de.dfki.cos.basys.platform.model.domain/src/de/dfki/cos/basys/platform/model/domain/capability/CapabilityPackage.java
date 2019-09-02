@@ -24,6 +24,7 @@ import de.dfki.cos.basys.platform.model.base.BasePackage;
  * <!-- end-user-doc -->
  * @see de.dfki.cos.basys.platform.model.domain.capability.CapabilityFactory
  * @model kind="package"
+ *        annotation="http://de.dfki.iui.mmds/CoreModel"
  *        annotation="http://www.eclipse.org/emf/2002/Ecore settingDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL' invocationDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL' validationDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL'"
  * @generated
  */
@@ -718,7 +719,7 @@ public interface CapabilityPackage extends EPackage {
 	 * @see de.dfki.cos.basys.platform.model.domain.capability.impl.CapabilityPackageImpl#getLoadCarrierUnitEnum()
 	 * @generated
 	 */
-	int LOAD_CARRIER_UNIT_ENUM = 45;
+	int LOAD_CARRIER_UNIT_ENUM = 46;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.domain.capability.impl.UrformenImpl <em>Urformen</em>}' class.
@@ -3284,6 +3285,70 @@ public interface CapabilityPackage extends EPackage {
 	int TAKE_OPERATION_COUNT = GENERAL_CAPABILITY_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.domain.capability.impl.TestCapabilityImpl <em>Test Capability</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.cos.basys.platform.model.domain.capability.impl.TestCapabilityImpl
+	 * @see de.dfki.cos.basys.platform.model.domain.capability.impl.CapabilityPackageImpl#getTestCapability()
+	 * @generated
+	 */
+	int TEST_CAPABILITY = 45;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_CAPABILITY__BINDING = CAPABILITY__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_CAPABILITY__ID = CAPABILITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_CAPABILITY__NAME = CAPABILITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_CAPABILITY__METADATA = CAPABILITY__METADATA;
+
+	/**
+	 * The number of structural features of the '<em>Test Capability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_CAPABILITY_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Test Capability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEST_CAPABILITY_OPERATION_COUNT = CAPABILITY_OPERATION_COUNT + 0;
+
+	/**
 	 * Returns the meta object for class '{@link de.dfki.cos.basys.platform.model.domain.capability.CapabilityAssertion <em>Assertion</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3887,6 +3952,16 @@ public interface CapabilityPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getTake();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.cos.basys.platform.model.domain.capability.TestCapability <em>Test Capability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Test Capability</em>'.
+	 * @see de.dfki.cos.basys.platform.model.domain.capability.TestCapability
+	 * @generated
+	 */
+	EClass getTestCapability();
 
 	/**
 	 * Returns the meta object for enum '{@link de.dfki.cos.basys.platform.model.domain.capability.LoadCarrierUnitEnum <em>Load Carrier Unit Enum</em>}'.
@@ -4647,6 +4722,16 @@ public interface CapabilityPackage extends EPackage {
 		 * @generated
 		 */
 		EClass TAKE = eINSTANCE.getTake();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.cos.basys.platform.model.domain.capability.impl.TestCapabilityImpl <em>Test Capability</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.cos.basys.platform.model.domain.capability.impl.TestCapabilityImpl
+		 * @see de.dfki.cos.basys.platform.model.domain.capability.impl.CapabilityPackageImpl#getTestCapability()
+		 * @generated
+		 */
+		EClass TEST_CAPABILITY = eINSTANCE.getTestCapability();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.cos.basys.platform.model.domain.capability.LoadCarrierUnitEnum <em>Load Carrier Unit Enum</em>}' enum.

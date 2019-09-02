@@ -90,6 +90,7 @@ public class PickAndPlaceImpl extends LogisticsCapabilityImpl implements PickAnd
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getReach() {
 		return reach;
 	}
@@ -99,6 +100,7 @@ public class PickAndPlaceImpl extends LogisticsCapabilityImpl implements PickAnd
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setReach(double newReach) {
 		double oldReach = reach;
 		reach = newReach;
@@ -111,6 +113,7 @@ public class PickAndPlaceImpl extends LogisticsCapabilityImpl implements PickAnd
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getPositionRepeatability() {
 		return positionRepeatability;
 	}
@@ -120,6 +123,7 @@ public class PickAndPlaceImpl extends LogisticsCapabilityImpl implements PickAnd
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPositionRepeatability(double newPositionRepeatability) {
 		double oldPositionRepeatability = positionRepeatability;
 		positionRepeatability = newPositionRepeatability;
@@ -204,7 +208,7 @@ public class PickAndPlaceImpl extends LogisticsCapabilityImpl implements PickAnd
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (reach: ");
 		result.append(reach);
 		result.append(", positionRepeatability: ");

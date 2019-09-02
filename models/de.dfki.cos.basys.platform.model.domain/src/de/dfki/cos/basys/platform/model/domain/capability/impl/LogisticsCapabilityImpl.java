@@ -112,6 +112,7 @@ public class LogisticsCapabilityImpl extends CapabilityImpl implements Logistics
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LoadCarrierUnitEnum getLoadCarrierUnit() {
 		return loadCarrierUnit;
 	}
@@ -121,6 +122,7 @@ public class LogisticsCapabilityImpl extends CapabilityImpl implements Logistics
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setLoadCarrierUnit(LoadCarrierUnitEnum newLoadCarrierUnit) {
 		LoadCarrierUnitEnum oldLoadCarrierUnit = loadCarrierUnit;
 		loadCarrierUnit = newLoadCarrierUnit == null ? LOAD_CARRIER_UNIT_EDEFAULT : newLoadCarrierUnit;
@@ -133,6 +135,7 @@ public class LogisticsCapabilityImpl extends CapabilityImpl implements Logistics
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getCapacity() {
 		return capacity;
 	}
@@ -142,6 +145,7 @@ public class LogisticsCapabilityImpl extends CapabilityImpl implements Logistics
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCapacity(int newCapacity) {
 		int oldCapacity = capacity;
 		capacity = newCapacity;
@@ -154,6 +158,7 @@ public class LogisticsCapabilityImpl extends CapabilityImpl implements Logistics
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getPayload() {
 		return payload;
 	}
@@ -163,6 +168,7 @@ public class LogisticsCapabilityImpl extends CapabilityImpl implements Logistics
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPayload(double newPayload) {
 		double oldPayload = payload;
 		payload = newPayload;
@@ -257,7 +263,7 @@ public class LogisticsCapabilityImpl extends CapabilityImpl implements Logistics
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (loadCarrierUnit: ");
 		result.append(loadCarrierUnit);
 		result.append(", capacity: ");

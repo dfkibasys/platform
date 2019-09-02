@@ -69,6 +69,7 @@ public class ScrewingImpl extends AnEinpressenImpl implements Screwing {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getTorque() {
 		return torque;
 	}
@@ -78,6 +79,7 @@ public class ScrewingImpl extends AnEinpressenImpl implements Screwing {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTorque(double newTorque) {
 		double oldTorque = torque;
 		torque = newTorque;
@@ -152,7 +154,7 @@ public class ScrewingImpl extends AnEinpressenImpl implements Screwing {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (torque: ");
 		result.append(torque);
 		result.append(')');

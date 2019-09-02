@@ -69,6 +69,7 @@ public class SwitchConfirmationCapabilityImpl extends ConfirmationCapabilityImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getState() {
 		return state;
 	}
@@ -78,6 +79,7 @@ public class SwitchConfirmationCapabilityImpl extends ConfirmationCapabilityImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setState(int newState) {
 		int oldState = state;
 		state = newState;
@@ -152,7 +154,7 @@ public class SwitchConfirmationCapabilityImpl extends ConfirmationCapabilityImpl
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (State: ");
 		result.append(state);
 		result.append(')');

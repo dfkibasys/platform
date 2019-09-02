@@ -116,4 +116,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="PassingOn" eSuperTypes="#//Moving"/>
   <eClassifiers xsi:type="ecore:EClass" name="Conveying" eSuperTypes="#//Moving"/>
   <eClassifiers xsi:type="ecore:EClass" name="Take" eSuperTypes="#//GeneralCapability"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TestCapability" eSuperTypes="#//Capability">
+    <eStructuralFeatures xsi:type="ecore:EAttribute"/>
+  </eClassifiers>
 </ecore:EPackage>
