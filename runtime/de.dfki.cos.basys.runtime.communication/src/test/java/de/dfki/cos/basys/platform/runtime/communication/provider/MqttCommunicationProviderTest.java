@@ -1,9 +1,9 @@
-package de.dfki.cos.basys.platform.runtime.communication;
+package de.dfki.cos.basys.platform.runtime.communication.provider;
 
-import static org.junit.Assert.*;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.Ignore;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,17 +14,15 @@ import de.dfki.cos.basys.platform.model.runtime.communication.Notification;
 import de.dfki.cos.basys.platform.model.runtime.communication.Request;
 import de.dfki.cos.basys.platform.model.runtime.communication.Response;
 import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
-import de.dfki.cos.basys.platform.runtime.communication.provider.KafkaCommunicationProvider;
+import de.dfki.cos.basys.platform.runtime.communication.provider.MqttCommunicationProvider;
+import de.dfki.cos.basys.platform.runtime.communication.provider.TestChannelListener;
 import junit.framework.TestCase;
 
-import org.junit.Ignore;
-import org.junit.Test;
+public class MqttCommunicationProviderTest extends TestCase {
 
+	protected final Logger LOGGER = LoggerFactory.getLogger(MqttCommunicationProviderTest.class.getName());
 
-public class KafkaCommunicationProviderTest extends TestCase {
-	protected final Logger LOGGER = LoggerFactory.getLogger(KafkaCommunicationProvider.class);
-
-	// String brokerUri = "vm://localhost?broker.persistent=false";
+	// String brokerUri = "tcp://iot.eclipse.org:1883";
 	String brokerUri = null;
 
 	CommFactory fac = CommFactory.getInstance();
@@ -32,24 +30,25 @@ public class KafkaCommunicationProviderTest extends TestCase {
 	Client client_1, client_2;
 	ChannelPool cp_11, cp_12, cp_21, cp_22;
 
-
 	@Override
 	protected void setUp() throws Exception {
 		super.setUp();
+
 		LOGGER.info("setUp");
 
 		client_1 = fac.createClient("client_1", null);
 		client_2 = fac.createClient("client_2", null);
 
-		cp_11 = fac.connectChannelPool(client_1, brokerUri, new KafkaCommunicationProvider());
-		cp_12 = fac.connectChannelPool(client_1, brokerUri, new KafkaCommunicationProvider());
-		cp_21 = fac.connectChannelPool(client_2, brokerUri, new KafkaCommunicationProvider());
-		cp_22 = fac.connectChannelPool(client_2, brokerUri, new KafkaCommunicationProvider());
+		cp_11 = fac.connectChannelPool(client_1, brokerUri, new MqttCommunicationProvider());
+		cp_12 = fac.connectChannelPool(client_1, brokerUri, new MqttCommunicationProvider());
+		cp_21 = fac.connectChannelPool(client_2, brokerUri, new MqttCommunicationProvider());
+		cp_22 = fac.connectChannelPool(client_2, brokerUri, new MqttCommunicationProvider());
 	}
 
 	@Override
 	protected void tearDown() throws Exception {
 		super.tearDown();
+
 		LOGGER.info("tearDown");
 
 		client_1.disconnect();
@@ -85,7 +84,7 @@ public class KafkaCommunicationProviderTest extends TestCase {
 
 	public void testSubscribeUnsubscribe() {
 		LOGGER.info("testSubscribeUnsubscribe");
-//
+
 		Channel ch_11_1 = fac.openChannel(cp_11, "channel_11_1", false, new TestChannelListener());
 		Channel ch_11_2 = fac.openChannel(cp_11, "channel_11_2", false, new TestChannelListener());
 		Channel ch_12_1 = fac.openChannel(cp_12, "channel_12_1", false, new TestChannelListener());
@@ -133,9 +132,8 @@ public class KafkaCommunicationProviderTest extends TestCase {
 		assertFalse(ch_21_2.isOpen());
 		assertFalse(ch_22_1.isOpen());
 		assertTrue(ch_22_2.isOpen());
-		
+
 		ch_22_2.close();
-		
 		assertFalse(ch_11_1.isOpen());
 		assertFalse(ch_11_2.isOpen());
 		assertFalse(ch_12_1.isOpen());
@@ -144,9 +142,8 @@ public class KafkaCommunicationProviderTest extends TestCase {
 		assertFalse(ch_21_2.isOpen());
 		assertFalse(ch_22_1.isOpen());
 		assertFalse(ch_22_2.isOpen());
-		
 	}
-	
+
 	public void testSendMessage() {
 		LOGGER.info("testSendMessage");
 
@@ -161,20 +158,21 @@ public class KafkaCommunicationProviderTest extends TestCase {
 
 		Channel ch_1_receiver = fac.openChannel(cp_21, prefix + "#channel_1", false, tester_1);
 		// Channel ch_2_receiver = fac.openChannel(cp_21, "channel_2", false, tester_2);
-		
+
+		ch_1_sender.sendMessage(message);
+
 		try {
-			Thread.sleep(500);
+			Thread.currentThread().join(1000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		ch_1_sender.sendMessage(message);
 
 		assertTrue(tester_1.isSuccess());
 		// assertTrue(tester_2.isSuccess());
 	}
 
+	@Ignore
 	public void testSendNotification() {
 		LOGGER.info("testSendNotification");
 
@@ -191,20 +189,23 @@ public class KafkaCommunicationProviderTest extends TestCase {
 		Channel ch_1_receiver_2 = fac.openChannel(cp_21, prefix + "#channel_1", false, tester_2);
 		// Channel ch_2_receiver = fac.openChannel(cp_21, "channel_2", false, tester_2);
 
+		Notification not = fac.createNotification(message);
+
+		ch_1_sender.sendNotification(not);
+
 		try {
-			Thread.sleep(500);
+			TimeUnit.SECONDS.sleep(2);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		Notification not = fac.createNotification(message);		
-		ch_1_sender.sendNotification(not);
 
+		// see: https://github.com/eclipse/paho.mqtt.java/issues/378
+		// see: https://github.com/eclipse/paho.mqtt.python/issues/336
 		assertTrue(tester_1.isSuccess());
 		assertTrue(tester_2.isSuccess());
 	}
-	
+
 	public void testSendRequestSync() {
 		LOGGER.info("testSendRequestSync");
 

@@ -1,9 +1,8 @@
-package de.dfki.cos.basys.platform.runtime.communication;
+package de.dfki.cos.basys.platform.runtime.communication.provider;
 
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
-import org.junit.Ignore;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,14 +13,15 @@ import de.dfki.cos.basys.platform.model.runtime.communication.Notification;
 import de.dfki.cos.basys.platform.model.runtime.communication.Request;
 import de.dfki.cos.basys.platform.model.runtime.communication.Response;
 import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
-import de.dfki.cos.basys.platform.runtime.communication.provider.MqttCommunicationProvider;
+import de.dfki.cos.basys.platform.runtime.communication.provider.JmsCommunicationProvider;
+import de.dfki.cos.basys.platform.runtime.communication.provider.TestChannelListener;
 import junit.framework.TestCase;
 
-public class MqttCommunicationProviderTest extends TestCase {
+public class JmsCommunicationProviderTest extends TestCase {
 
-	protected final Logger LOGGER = LoggerFactory.getLogger(MqttCommunicationProviderTest.class.getName());
+	protected final Logger LOGGER = LoggerFactory.getLogger(JmsCommunicationProviderTest.class);
 
-	// String brokerUri = "tcp://iot.eclipse.org:1883";
+	// String brokerUri = "vm://localhost?broker.persistent=false";
 	String brokerUri = null;
 
 	CommFactory fac = CommFactory.getInstance();
@@ -38,10 +38,10 @@ public class MqttCommunicationProviderTest extends TestCase {
 		client_1 = fac.createClient("client_1", null);
 		client_2 = fac.createClient("client_2", null);
 
-		cp_11 = fac.connectChannelPool(client_1, brokerUri, new MqttCommunicationProvider());
-		cp_12 = fac.connectChannelPool(client_1, brokerUri, new MqttCommunicationProvider());
-		cp_21 = fac.connectChannelPool(client_2, brokerUri, new MqttCommunicationProvider());
-		cp_22 = fac.connectChannelPool(client_2, brokerUri, new MqttCommunicationProvider());
+		cp_11 = fac.connectChannelPool(client_1, brokerUri, new JmsCommunicationProvider());
+		cp_12 = fac.connectChannelPool(client_1, brokerUri, new JmsCommunicationProvider());
+		cp_21 = fac.connectChannelPool(client_2, brokerUri, new JmsCommunicationProvider());
+		cp_22 = fac.connectChannelPool(client_2, brokerUri, new JmsCommunicationProvider());
 	}
 
 	@Override
@@ -171,7 +171,6 @@ public class MqttCommunicationProviderTest extends TestCase {
 		// assertTrue(tester_2.isSuccess());
 	}
 
-	@Ignore
 	public void testSendNotification() {
 		LOGGER.info("testSendNotification");
 
@@ -193,14 +192,12 @@ public class MqttCommunicationProviderTest extends TestCase {
 		ch_1_sender.sendNotification(not);
 
 		try {
-			TimeUnit.SECONDS.sleep(2);
+			TimeUnit.SECONDS.sleep(1);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		// see: https://github.com/eclipse/paho.mqtt.java/issues/378
-		// see: https://github.com/eclipse/paho.mqtt.python/issues/336
 		assertTrue(tester_1.isSuccess());
 		assertTrue(tester_2.isSuccess());
 	}

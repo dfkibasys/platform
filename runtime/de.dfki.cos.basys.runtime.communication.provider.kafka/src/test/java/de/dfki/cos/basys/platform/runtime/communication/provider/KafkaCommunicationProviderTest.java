@@ -1,5 +1,6 @@
-package de.dfki.cos.basys.platform.runtime.communication;
+package de.dfki.cos.basys.platform.runtime.communication.provider;
 
+import static org.junit.Assert.*;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
@@ -13,12 +14,14 @@ import de.dfki.cos.basys.platform.model.runtime.communication.Notification;
 import de.dfki.cos.basys.platform.model.runtime.communication.Request;
 import de.dfki.cos.basys.platform.model.runtime.communication.Response;
 import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
-import de.dfki.cos.basys.platform.runtime.communication.provider.JmsCommunicationProvider;
 import junit.framework.TestCase;
 
-public class JmsCommunicationProviderTest extends TestCase {
+import org.junit.Ignore;
+import org.junit.Test;
 
-	protected final Logger LOGGER = LoggerFactory.getLogger(JmsCommunicationProviderTest.class);
+
+public class KafkaCommunicationProviderTest extends TestCase {
+	protected final Logger LOGGER = LoggerFactory.getLogger(KafkaCommunicationProvider.class);
 
 	// String brokerUri = "vm://localhost?broker.persistent=false";
 	String brokerUri = null;
@@ -28,25 +31,24 @@ public class JmsCommunicationProviderTest extends TestCase {
 	Client client_1, client_2;
 	ChannelPool cp_11, cp_12, cp_21, cp_22;
 
+
 	@Override
 	protected void setUp() throws Exception {
 		super.setUp();
-
 		LOGGER.info("setUp");
 
 		client_1 = fac.createClient("client_1", null);
 		client_2 = fac.createClient("client_2", null);
 
-		cp_11 = fac.connectChannelPool(client_1, brokerUri, new JmsCommunicationProvider());
-		cp_12 = fac.connectChannelPool(client_1, brokerUri, new JmsCommunicationProvider());
-		cp_21 = fac.connectChannelPool(client_2, brokerUri, new JmsCommunicationProvider());
-		cp_22 = fac.connectChannelPool(client_2, brokerUri, new JmsCommunicationProvider());
+		cp_11 = fac.connectChannelPool(client_1, brokerUri, new KafkaCommunicationProvider());
+		cp_12 = fac.connectChannelPool(client_1, brokerUri, new KafkaCommunicationProvider());
+		cp_21 = fac.connectChannelPool(client_2, brokerUri, new KafkaCommunicationProvider());
+		cp_22 = fac.connectChannelPool(client_2, brokerUri, new KafkaCommunicationProvider());
 	}
 
 	@Override
 	protected void tearDown() throws Exception {
 		super.tearDown();
-
 		LOGGER.info("tearDown");
 
 		client_1.disconnect();
@@ -82,7 +84,7 @@ public class JmsCommunicationProviderTest extends TestCase {
 
 	public void testSubscribeUnsubscribe() {
 		LOGGER.info("testSubscribeUnsubscribe");
-
+//
 		Channel ch_11_1 = fac.openChannel(cp_11, "channel_11_1", false, new TestChannelListener());
 		Channel ch_11_2 = fac.openChannel(cp_11, "channel_11_2", false, new TestChannelListener());
 		Channel ch_12_1 = fac.openChannel(cp_12, "channel_12_1", false, new TestChannelListener());
@@ -130,8 +132,9 @@ public class JmsCommunicationProviderTest extends TestCase {
 		assertFalse(ch_21_2.isOpen());
 		assertFalse(ch_22_1.isOpen());
 		assertTrue(ch_22_2.isOpen());
-
+		
 		ch_22_2.close();
+		
 		assertFalse(ch_11_1.isOpen());
 		assertFalse(ch_11_2.isOpen());
 		assertFalse(ch_12_1.isOpen());
@@ -140,8 +143,9 @@ public class JmsCommunicationProviderTest extends TestCase {
 		assertFalse(ch_21_2.isOpen());
 		assertFalse(ch_22_1.isOpen());
 		assertFalse(ch_22_2.isOpen());
+		
 	}
-
+	
 	public void testSendMessage() {
 		LOGGER.info("testSendMessage");
 
@@ -156,15 +160,15 @@ public class JmsCommunicationProviderTest extends TestCase {
 
 		Channel ch_1_receiver = fac.openChannel(cp_21, prefix + "#channel_1", false, tester_1);
 		// Channel ch_2_receiver = fac.openChannel(cp_21, "channel_2", false, tester_2);
-
-		ch_1_sender.sendMessage(message);
-
+		
 		try {
-			Thread.currentThread().join(1000);
+			Thread.sleep(500);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		ch_1_sender.sendMessage(message);
 
 		assertTrue(tester_1.isSuccess());
 		// assertTrue(tester_2.isSuccess());
@@ -186,21 +190,20 @@ public class JmsCommunicationProviderTest extends TestCase {
 		Channel ch_1_receiver_2 = fac.openChannel(cp_21, prefix + "#channel_1", false, tester_2);
 		// Channel ch_2_receiver = fac.openChannel(cp_21, "channel_2", false, tester_2);
 
-		Notification not = fac.createNotification(message);
-
-		ch_1_sender.sendNotification(not);
-
 		try {
-			TimeUnit.SECONDS.sleep(1);
+			Thread.sleep(500);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		Notification not = fac.createNotification(message);		
+		ch_1_sender.sendNotification(not);
 
 		assertTrue(tester_1.isSuccess());
 		assertTrue(tester_2.isSuccess());
 	}
-
+	
 	public void testSendRequestSync() {
 		LOGGER.info("testSendRequestSync");
 

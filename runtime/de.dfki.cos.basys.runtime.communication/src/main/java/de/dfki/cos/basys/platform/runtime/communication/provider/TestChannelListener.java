@@ -1,4 +1,4 @@
-package de.dfki.cos.basys.platform.runtime.communication;
+package de.dfki.cos.basys.platform.runtime.communication.provider;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CountDownLatch;

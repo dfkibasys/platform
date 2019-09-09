@@ -9,17 +9,14 @@
 	</parent>
 
 	<properties>
-		<bundle.symbolicName>de.dfki.cos.basys.platform.runtime.communication</bundle.symbolicName>
-		<bundle.namespace>de.dfki.cos.basys.platform.runtime.communication</bundle.namespace>
-
-		<paho-version>1.2.1</paho-version>
-		<activemq-version>5.15.7</activemq-version>
+		<bundle.symbolicName>de.dfki.cos.basys.platform.runtime.communication.provider.kafka</bundle.symbolicName>
+		<bundle.namespace>de.dfki.cos.basys.platform.runtime.communication.provider</bundle.namespace>
 		<kafka-version>2.3.0</kafka-version>
 	</properties>
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.dfki.cos.basys.platform.runtime</groupId>
-	<artifactId>de.dfki.cos.basys.platform.runtime.communication</artifactId>
+	<artifactId>de.dfki.cos.basys.platform.runtime.communication.provider.kafka</artifactId>
 
 	<name>${bundle.symbolicName}</name>
 
@@ -28,36 +25,19 @@
 	<dependencies>
 
 		<dependency>
-			<groupId>de.dfki.cos.basys.common</groupId>
-			<artifactId>de.dfki.cos.basys.common.emf.json</artifactId>
-			<version>${version.basys.common}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>de.dfki.cos.basys.platform.model</groupId>
-			<artifactId>de.dfki.cos.basys.platform.model.runtime</artifactId>
+			<groupId>de.dfki.cos.basys.platform.runtime</groupId>
+			<artifactId>de.dfki.cos.basys.platform.runtime.communication</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-
+			
+				
+		<!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka -->
 		<dependency>
-			<groupId>org.eclipse.paho</groupId>
-			<artifactId>org.eclipse.paho.client.mqttv3</artifactId>
-			<version>${paho-version}</version>
+		    <groupId>org.apache.kafka</groupId>
+		    <artifactId>kafka_2.12</artifactId>
+			<version>${kafka-version}</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.apache.activemq/activemq-client -->
-		<dependency>
-			<groupId>org.apache.activemq</groupId>
-			<artifactId>activemq-client</artifactId>
-			<version>${activemq-version}</version>
-			<exclusions>
-				<exclusion>
-	          		<groupId>org.slf4j</groupId>
-	          		<artifactId>slf4j-api</artifactId>
-	        	</exclusion>
-			</exclusions>
-		</dependency>
-	
 		<!-- comment to remove all imported (non-local) bundles from your compilation 
 			classpath -->
 		<dependency>
