@@ -26,6 +26,14 @@
 
 	<dependencies>
 
+
+		<dependency>
+			<groupId>de.dfki.cos.basys.common</groupId>
+			<artifactId>de.dfki.cos.basys.common.component</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+
 		<dependency>
 			<groupId>de.dfki.cos.basys.common</groupId>
 			<artifactId>de.dfki.cos.basys.common.emf.jaxrs</artifactId>
