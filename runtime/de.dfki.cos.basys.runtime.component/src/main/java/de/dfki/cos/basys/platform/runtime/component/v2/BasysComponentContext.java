@@ -1,5 +1,9 @@
 package de.dfki.cos.basys.platform.runtime.component.v2;
 
+import java.util.concurrent.Executors;
+
+import com.google.common.eventbus.EventBus;
+
 import de.dfki.cos.basys.common.component.ComponentContext;
 import de.dfki.cos.basys.platform.model.runtime.communication.ChannelPool;
 import de.dfki.cos.basys.platform.runtime.component.manager.ComponentManager;
@@ -7,10 +11,23 @@ import de.dfki.cos.basys.platform.runtime.component.v2.registry.ComponentRegistr
 
 public class BasysComponentContext extends ComponentContext {
 
-	private ComponentRegistry componentRegistry;
-	private ComponentManager componentManager;
-	private ChannelPool sharedChannelPool;
+	protected ComponentRegistry componentRegistry;
+	protected ComponentManager componentManager;
+	protected ChannelPool sharedChannelPool;
 
+	private static BasysComponentContext staticContext = null;
+	
+	public static BasysComponentContext getStaticContext() {
+		if (staticContext == null) {			
+			staticContext = new BasysComponentContext();
+			staticContext.setEventBus(ComponentContext.getStaticContext().getEventBus());
+			staticContext.setScheduledExecutorService(ComponentContext.getStaticContext().getScheduledExecutorService());
+		}
+		return staticContext;
+	}
+	
+	
+	
 	public BasysComponentContext() {
 	}
 	

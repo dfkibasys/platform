@@ -61,6 +61,8 @@ public class BasysComponent extends BaseComponent implements ChannelListener {
 	protected Channel outChannel;
 	protected Channel statusChannel;
 	// protected Channel telemetryChannel;
+	
+	protected boolean connectedToBasys = false;
 
 	protected ComponentRegistration registration;
 	
@@ -69,6 +71,12 @@ public class BasysComponent extends BaseComponent implements ChannelListener {
 	public BasysComponent(Properties config) {
 		super(config);
 		JsonUtils.factory = new BasysResourceSetImpl.Factory();
+	}
+	
+	@Override
+	public void activate(ComponentContext context) throws ComponentException {
+		this.context = (BasysComponentContext) context; 
+		super.activate(context);
 	}
 	
 	@Override
@@ -114,38 +122,51 @@ public class BasysComponent extends BaseComponent implements ChannelListener {
 		statusChannel = cf.openChannel(pool, StringConstants.baseStatusChannelName + "#" + getId(), false, null);
 
 		if (config.containsKey(StringConstants.inChannelName)) {
-			String channelName = config.getProperty(StringConstants.inChannelName);
-			//TODO: check for empty String if neccessary
-			LOGGER.debug("open inChannel " + channelName);
-			inChannel = cf.openChannel(pool, channelName, false, this);
+			String channelName = config.getProperty(StringConstants.inChannelName);			
+			if (!channelName.isEmpty()) {
+				LOGGER.debug("open inChannel " + channelName);
+				inChannel = cf.openChannel(pool, channelName, false, this);
+			} else {
+				LOGGER.debug("no input channel specified - empty");
+			}
 		} else {
-			LOGGER.debug("no input channel specified");
+			LOGGER.debug("no input channel specified - null");
 		}
 		
 		if (config.containsKey(StringConstants.outChannelName)) {
 			String channelName = config.getProperty(StringConstants.outChannelName);
-			//TODO: check for empty String if neccessary
-			LOGGER.debug("open outChannel " + channelName);
-			outChannel = cf.openChannel(pool, channelName, false, null);
+			if (!channelName.isEmpty()) {
+				LOGGER.debug("open outChannel " + channelName);
+				outChannel = cf.openChannel(pool, channelName, false, null);
+			} else {
+				LOGGER.debug("no output channel specified - empty");
+			}			
 		} else {
-			LOGGER.debug("no output channel specified");
+			LOGGER.debug("no output channel specified - null");
 		}
+		connectedToBasys = true;
 		LOGGER.debug("connectToBasys finished");
 	}
 
 	protected void disconnectFromBasys() {
 		LOGGER.debug("disconnectFromBasys");
-		if (inChannel != null)
+		if (inChannel != null) {
 			inChannel.close();
-		if (outChannel != null)
+			inChannel = null;
+		}
+		if (outChannel != null) {
 			outChannel.close();
-		if (statusChannel != null)
+			outChannel = null;			
+		}
+		if (statusChannel != null) {
 			statusChannel.close();
-
+			statusChannel = null;
+		}
 		if (privateClient != null) {
 			privateClient.disconnect();
 			privateClient = null;
 		}
+		connectedToBasys = false;
 		LOGGER.debug("disconnectFromBasys - finished");
 	}
 
@@ -164,6 +185,7 @@ public class BasysComponent extends BaseComponent implements ChannelListener {
 		LOGGER.debug("unregister");
 		if (registration != null) {
 			registration.unregister();
+			registration = null;
 			LOGGER.debug("unregister - finished");
 		} else {
 			LOGGER.debug("not registered");
@@ -176,6 +198,14 @@ public class BasysComponent extends BaseComponent implements ChannelListener {
 		info.putAll(config);
 		info.setProperty(StringConstants.statusChannelName, StringConstants.baseStatusChannelName + "#" + getId());					
 		return info;
+	}
+	
+	public boolean isConnectedToBasys() {
+		return connectedToBasys;
+	}
+	
+	public boolean isRegistered() {
+		return registration != null;
 	}
 	
 	/*

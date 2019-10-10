@@ -10,7 +10,7 @@ import javax.ws.rs.core.MediaType;
 
 import de.dfki.cos.basys.common.component.Component;
 import de.dfki.cos.basys.common.component.ComponentInfo;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory;
+
 
 @Path("/registry")
 public interface ComponentRegistry {
@@ -20,16 +20,16 @@ public interface ComponentRegistry {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/{componentCategory}")
-	List<ComponentInfo> getComponents(@PathParam("componentCategory") ComponentCategory category);
+	List<ComponentInfo> getComponents(@PathParam("componentCategory") String category);
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/{componentCategory}/{componentId}")
-	ComponentInfo getComponentById(@PathParam("componentCategory") ComponentCategory category, @PathParam("componentId") String id);
+	ComponentInfo getComponentById(@PathParam("componentCategory") String category, @PathParam("componentId") String id);
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/{componentCategory}/name/{componentName}")
-	ComponentInfo getComponentByName(@PathParam("componentCategory") ComponentCategory category, @PathParam("componentName") String name);
+	ComponentInfo getComponentByName(@PathParam("componentCategory") String category, @PathParam("componentName") String name);
 
 }

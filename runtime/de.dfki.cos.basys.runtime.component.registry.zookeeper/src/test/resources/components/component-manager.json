@@ -1,0 +1,10 @@
+{
+  "id": "component-manager",
+  "name": "component-manager",
+  "category" : "MANAGEMENT_COMPONENT",
+  "externalConnectionString": "",
+  "implementationJavaClass": "de.dfki.cos.basys.common.component.manager.impl.ComponentManagerImpl",
+  "key1": "value1",
+  "key2": "value2",
+  "key3": "value3"  
+}
