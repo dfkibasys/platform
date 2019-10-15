@@ -208,23 +208,56 @@ public class BasysComponent extends BaseComponent implements ChannelListener {
 		return registration != null;
 	}
 	
+	@Override
+	protected void notifyChange() {
+		LOGGER.trace("notifyChange");
+		// TODO: something like:Notification not = createStatusUpdate();
+
+		//LOGGER.info(String.format("component '%s' (id=%s) is now in state %s and mode %s", getName(), getId(), getState(), getMode()));
+
+//		if (statusChannel != null && statusChannel.isOpen()) {
+//			LOGGER.trace("send status update notification");
+//			try {
+//				ComponentInfo info = getComponentInfo();
+//				Notification not = cf.createNotification(JsonUtils.toString(info));
+//				statusChannel.sendNotification(not);
+//			} catch (ChannelException | JsonProcessingException e) {
+//				LOGGER.warn("could not send status update notification");
+//				LOGGER.warn(e.getMessage());
+//				e.printStackTrace();
+//			}
+//		} else {
+//			LOGGER.info("cannot send status update notification");
+//		}
+		if (registration != null) {
+			try {
+				LOGGER.trace("update registration");
+				registration.update();
+			} catch (ComponentRegistrationException e) {
+				LOGGER.warn("could not update registration");
+				LOGGER.warn(e.getMessage());
+				e.printStackTrace();
+			}
+		} else {
+			LOGGER.info("cannot update registration, not registered");
+		}
+
+		LOGGER.trace("notifyChange - finished");
+	}
+	
 	/*
 	 * ChannelListener interface
 	 */
 
 	@Override
 	public void handleMessage(Channel channel, String msg) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
-	public void handleNotification(Channel channel, Notification not) {
-		// TODO Auto-generated method stub
+	public void handleNotification(Channel channel, Notification not) {		
 
 	}
-
-
+	
 	@Override
 	public Response handleRequest(Channel channel, Request request) {
 		ComponentRequestStatus status = null;
@@ -232,25 +265,12 @@ public class BasysComponent extends BaseComponent implements ChannelListener {
 			EObject ob = JsonUtils.fromString(request.getPayload(), EObject.class);
 			if (ob instanceof ComponentRequest) {
 				ComponentRequest cr = (ComponentRequest) ob;
-
 				if (!getId().equals(cr.getComponentId())) {
 					// don't make the same mistake as BMW: https://www.heise.de/newsticker/meldung/ConnectedDrive-Der-BMW-Hack-im-Detail-2540786.html
 					status = new ComponentRequestStatusImpl.Builder().componentId(cr.getComponentId()).status(RequestStatus.REJECTED).message("componentId does not match").build();
 				} else {
-					if (cr instanceof ChangeModeRequest) {
-						ChangeModeRequest req = (ChangeModeRequest) cr;
-						status = handleChangeModeRequest(req);
-					} else if (cr instanceof CommandRequest) {
-						CommandRequest req = (CommandRequest) cr;
-						status = handleCommandRequest(req);
-					} else if (cr instanceof CapabilityRequest) {
-						CapabilityRequest req = (CapabilityRequest) cr;
-						status = handleCapabilityRequest(req);
-					} else if (cr instanceof StatusRequest) {
-						StatusRequest req = (StatusRequest) cr;
-						status = handleStatusRequest(req);
-					}
-				}
+					status = handleComponentRequest(cr);
+				}				
 			} else {
 				status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.REJECTED).message("unknown request").build();
 			}
@@ -268,7 +288,20 @@ public class BasysComponent extends BaseComponent implements ChannelListener {
 			}
 		}
 	}
-
+	
+	protected ComponentRequestStatus handleComponentRequest(ComponentRequest cr) {
+		ComponentRequestStatus status;
+		
+		if (cr instanceof StatusRequest) {
+			StatusRequest req = (StatusRequest) cr;
+			status = handleStatusRequest(req);
+		} else {
+			status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.REJECTED).message("unknown request").build();
+		}
+		
+		return status;
+	}
+	
 	protected ComponentRequestStatus handleStatusRequest(StatusRequest req) {
 		ComponentRequestStatus status;
 		
@@ -294,22 +327,6 @@ public class BasysComponent extends BaseComponent implements ChannelListener {
 		return status;
 	}
 	
-
-	protected ComponentRequestStatus handleCapabilityRequest(CapabilityRequest req) {
-		ComponentRequestStatus status = new ComponentRequestStatusImpl.Builder().componentId(getId()).status(RequestStatus.REJECTED).message("not supported").build();
-		return status;
-	}
-
-	protected ComponentRequestStatus handleCommandRequest(CommandRequest req) {
-		ComponentRequestStatus status = new ComponentRequestStatusImpl.Builder().componentId(getId()).status(RequestStatus.REJECTED).message("not supported").build();
-		return status;
-	}
-
-	protected ComponentRequestStatus handleChangeModeRequest(ChangeModeRequest req) {
-		ComponentRequestStatus status = new ComponentRequestStatusImpl.Builder().componentId(getId()).status(RequestStatus.REJECTED).message("not supported").build();
-		return status;
-	}
-
 	protected void sendComponentResponse(ComponentRequest request, ResponseStatus status, int statusCode) {
 		List<Variable> resultVariables = new ArrayList<>(0);
 		sendComponentResponse(request, status, statusCode, resultVariables);

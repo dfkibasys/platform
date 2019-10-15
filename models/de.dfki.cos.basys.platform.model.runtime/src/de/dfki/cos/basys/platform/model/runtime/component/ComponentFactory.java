@@ -157,6 +157,42 @@ public interface ComponentFactory extends EFactory {
 	ProcessResponse createProcessResponse();
 
 	/**
+	 * Returns a new object of class '<em>Occupation Level Request</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Occupation Level Request</em>'.
+	 * @generated
+	 */
+	OccupationLevelRequest createOccupationLevelRequest();
+
+	/**
+	 * Returns a new object of class '<em>Execution Mode Request</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Execution Mode Request</em>'.
+	 * @generated
+	 */
+	ExecutionModeRequest createExecutionModeRequest();
+
+	/**
+	 * Returns a new object of class '<em>Execution Command Request</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Execution Command Request</em>'.
+	 * @generated
+	 */
+	ExecutionCommandRequest createExecutionCommandRequest();
+
+	/**
+	 * Returns a new object of class '<em>Operation Mode Request</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Operation Mode Request</em>'.
+	 * @generated
+	 */
+	OperationModeRequest createOperationModeRequest();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

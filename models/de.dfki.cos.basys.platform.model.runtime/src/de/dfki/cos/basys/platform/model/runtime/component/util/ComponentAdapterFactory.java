@@ -132,6 +132,22 @@ public class ComponentAdapterFactory extends AdapterFactoryImpl {
 				return createProcessResponseAdapter();
 			}
 			@Override
+			public Adapter caseOccupationLevelRequest(OccupationLevelRequest object) {
+				return createOccupationLevelRequestAdapter();
+			}
+			@Override
+			public Adapter caseExecutionModeRequest(ExecutionModeRequest object) {
+				return createExecutionModeRequestAdapter();
+			}
+			@Override
+			public Adapter caseExecutionCommandRequest(ExecutionCommandRequest object) {
+				return createExecutionCommandRequestAdapter();
+			}
+			@Override
+			public Adapter caseOperationModeRequest(OperationModeRequest object) {
+				return createOperationModeRequestAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -372,6 +388,62 @@ public class ComponentAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createProcessResponseAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.cos.basys.platform.model.runtime.component.OccupationLevelRequest <em>Occupation Level Request</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.OccupationLevelRequest
+	 * @generated
+	 */
+	public Adapter createOccupationLevelRequestAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.cos.basys.platform.model.runtime.component.ExecutionModeRequest <em>Execution Mode Request</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ExecutionModeRequest
+	 * @generated
+	 */
+	public Adapter createExecutionModeRequestAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.cos.basys.platform.model.runtime.component.ExecutionCommandRequest <em>Execution Command Request</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ExecutionCommandRequest
+	 * @generated
+	 */
+	public Adapter createExecutionCommandRequestAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.dfki.cos.basys.platform.model.runtime.component.OperationModeRequest <em>Operation Mode Request</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.OperationModeRequest
+	 * @generated
+	 */
+	public Adapter createOperationModeRequestAdapter() {
 		return null;
 	}
 

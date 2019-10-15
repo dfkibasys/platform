@@ -27,6 +27,13 @@ import de.dfki.cos.basys.platform.model.runtime.component.ComponentRequestStatus
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentResponse;
 import de.dfki.cos.basys.platform.model.runtime.component.ControlCommand;
 import de.dfki.cos.basys.platform.model.runtime.component.ControlMode;
+import de.dfki.cos.basys.platform.model.runtime.component.ExecutionCommand;
+import de.dfki.cos.basys.platform.model.runtime.component.ExecutionCommandRequest;
+import de.dfki.cos.basys.platform.model.runtime.component.ExecutionMode;
+import de.dfki.cos.basys.platform.model.runtime.component.ExecutionModeRequest;
+import de.dfki.cos.basys.platform.model.runtime.component.OccupationLevel;
+import de.dfki.cos.basys.platform.model.runtime.component.OccupationLevelRequest;
+import de.dfki.cos.basys.platform.model.runtime.component.OperationModeRequest;
 import de.dfki.cos.basys.platform.model.runtime.component.ProcessRequest;
 import de.dfki.cos.basys.platform.model.runtime.component.ProcessRequestStatus;
 import de.dfki.cos.basys.platform.model.runtime.component.ProcessResponse;
@@ -174,6 +181,34 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass occupationLevelRequestEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass executionModeRequestEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass executionCommandRequestEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass operationModeRequestEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum componentCategoryEEnum = null;
 
 	/**
@@ -217,6 +252,27 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 * @generated
 	 */
 	private EEnum variableTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum executionModeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum executionCommandEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum occupationLevelEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -599,8 +655,17 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getComponentRequest_OccupierId() {
+		return (EAttribute)componentRequestEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getComponentRequest_InputParameters() {
-		return (EReference)componentRequestEClass.getEStructuralFeatures().get(2);
+		return (EReference)componentRequestEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1112,6 +1177,78 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getOccupationLevelRequest() {
+		return occupationLevelRequestEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOccupationLevelRequest_OccupationLevel() {
+		return (EAttribute)occupationLevelRequestEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getExecutionModeRequest() {
+		return executionModeRequestEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getExecutionModeRequest_ExecutionMode() {
+		return (EAttribute)executionModeRequestEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getExecutionCommandRequest() {
+		return executionCommandRequestEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getExecutionCommandRequest_ExecutionCommand() {
+		return (EAttribute)executionCommandRequestEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getOperationModeRequest() {
+		return operationModeRequestEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOperationModeRequest_OperationMode() {
+		return (EAttribute)operationModeRequestEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getComponentCategory() {
 		return componentCategoryEEnum;
 	}
@@ -1168,6 +1305,33 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 */
 	public EEnum getVariableType() {
 		return variableTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getExecutionMode() {
+		return executionModeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getExecutionCommand() {
+		return executionCommandEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getOccupationLevel() {
+		return occupationLevelEEnum;
 	}
 
 	/**
@@ -1234,6 +1398,7 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		componentRequestEClass = createEClass(COMPONENT_REQUEST);
 		createEAttribute(componentRequestEClass, COMPONENT_REQUEST__COMPONENT_ID);
 		createEAttribute(componentRequestEClass, COMPONENT_REQUEST__CORRELATION_ID);
+		createEAttribute(componentRequestEClass, COMPONENT_REQUEST__OCCUPIER_ID);
 		createEReference(componentRequestEClass, COMPONENT_REQUEST__INPUT_PARAMETERS);
 
 		commandRequestEClass = createEClass(COMMAND_REQUEST);
@@ -1304,6 +1469,18 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		createEReference(processResponseEClass, PROCESS_RESPONSE__REQUEST);
 		createEReference(processResponseEClass, PROCESS_RESPONSE__RESULT_VARIABLES);
 
+		occupationLevelRequestEClass = createEClass(OCCUPATION_LEVEL_REQUEST);
+		createEAttribute(occupationLevelRequestEClass, OCCUPATION_LEVEL_REQUEST__OCCUPATION_LEVEL);
+
+		executionModeRequestEClass = createEClass(EXECUTION_MODE_REQUEST);
+		createEAttribute(executionModeRequestEClass, EXECUTION_MODE_REQUEST__EXECUTION_MODE);
+
+		executionCommandRequestEClass = createEClass(EXECUTION_COMMAND_REQUEST);
+		createEAttribute(executionCommandRequestEClass, EXECUTION_COMMAND_REQUEST__EXECUTION_COMMAND);
+
+		operationModeRequestEClass = createEClass(OPERATION_MODE_REQUEST);
+		createEAttribute(operationModeRequestEClass, OPERATION_MODE_REQUEST__OPERATION_MODE);
+
 		// Create enums
 		componentCategoryEEnum = createEEnum(COMPONENT_CATEGORY);
 		stateEEnum = createEEnum(STATE);
@@ -1312,6 +1489,9 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		requestStatusEEnum = createEEnum(REQUEST_STATUS);
 		responseStatusEEnum = createEEnum(RESPONSE_STATUS);
 		variableTypeEEnum = createEEnum(VARIABLE_TYPE);
+		executionModeEEnum = createEEnum(EXECUTION_MODE);
+		executionCommandEEnum = createEEnum(EXECUTION_COMMAND);
+		occupationLevelEEnum = createEEnum(OCCUPATION_LEVEL);
 	}
 
 	/**
@@ -1350,6 +1530,10 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		changeModeRequestEClass.getESuperTypes().add(this.getComponentRequest());
 		capabilityRequestEClass.getESuperTypes().add(this.getComponentRequest());
 		statusRequestEClass.getESuperTypes().add(this.getComponentRequest());
+		occupationLevelRequestEClass.getESuperTypes().add(this.getComponentRequest());
+		executionModeRequestEClass.getESuperTypes().add(this.getComponentRequest());
+		executionCommandRequestEClass.getESuperTypes().add(this.getComponentRequest());
+		operationModeRequestEClass.getESuperTypes().add(this.getComponentRequest());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(componentInfoEClass, ComponentInfo.class, "ComponentInfo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1390,6 +1574,7 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		initEClass(componentRequestEClass, ComponentRequest.class, "ComponentRequest", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getComponentRequest_ComponentId(), theEcorePackage.getEString(), "componentId", null, 0, 1, ComponentRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getComponentRequest_CorrelationId(), theEcorePackage.getEString(), "correlationId", null, 0, 1, ComponentRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getComponentRequest_OccupierId(), theEcorePackage.getEString(), "occupierId", null, 0, 1, ComponentRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getComponentRequest_InputParameters(), this.getVariable(), null, "inputParameters", null, 0, -1, ComponentRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(commandRequestEClass, CommandRequest.class, "CommandRequest", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1465,6 +1650,18 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		initEReference(getProcessResponse_Request(), this.getProcessRequest(), null, "request", null, 0, 1, ProcessResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProcessResponse_ResultVariables(), this.getVariable(), null, "resultVariables", null, 0, -1, ProcessResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(occupationLevelRequestEClass, OccupationLevelRequest.class, "OccupationLevelRequest", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getOccupationLevelRequest_OccupationLevel(), this.getOccupationLevel(), "occupationLevel", null, 0, 1, OccupationLevelRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(executionModeRequestEClass, ExecutionModeRequest.class, "ExecutionModeRequest", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getExecutionModeRequest_ExecutionMode(), this.getExecutionMode(), "executionMode", null, 0, 1, ExecutionModeRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(executionCommandRequestEClass, ExecutionCommandRequest.class, "ExecutionCommandRequest", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getExecutionCommandRequest_ExecutionCommand(), this.getExecutionCommand(), "executionCommand", null, 0, 1, ExecutionCommandRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(operationModeRequestEClass, OperationModeRequest.class, "OperationModeRequest", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getOperationModeRequest_OperationMode(), theEcorePackage.getEString(), "operationMode", null, 0, 1, OperationModeRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(componentCategoryEEnum, ComponentCategory.class, "ComponentCategory");
 		addEEnumLiteral(componentCategoryEEnum, ComponentCategory.NONE);
@@ -1536,6 +1733,33 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		addEEnumLiteral(variableTypeEEnum, VariableType.DOUBLE);
 		addEEnumLiteral(variableTypeEEnum, VariableType.LONG);
 		addEEnumLiteral(variableTypeEEnum, VariableType.DATE);
+
+		initEEnum(executionModeEEnum, ExecutionMode.class, "ExecutionMode");
+		addEEnumLiteral(executionModeEEnum, ExecutionMode.PRODUCTION);
+		addEEnumLiteral(executionModeEEnum, ExecutionMode.MAINTENANCE);
+		addEEnumLiteral(executionModeEEnum, ExecutionMode.MANUAL);
+		addEEnumLiteral(executionModeEEnum, ExecutionMode.CHANGE_OVER);
+		addEEnumLiteral(executionModeEEnum, ExecutionMode.CLEAN);
+		addEEnumLiteral(executionModeEEnum, ExecutionMode.SET_UP);
+		addEEnumLiteral(executionModeEEnum, ExecutionMode.EMPTY_OUT);
+		addEEnumLiteral(executionModeEEnum, ExecutionMode.SIMULATION);
+
+		initEEnum(executionCommandEEnum, ExecutionCommand.class, "ExecutionCommand");
+		addEEnumLiteral(executionCommandEEnum, ExecutionCommand.RESET);
+		addEEnumLiteral(executionCommandEEnum, ExecutionCommand.START);
+		addEEnumLiteral(executionCommandEEnum, ExecutionCommand.STOP);
+		addEEnumLiteral(executionCommandEEnum, ExecutionCommand.HOLD);
+		addEEnumLiteral(executionCommandEEnum, ExecutionCommand.UNHOLD);
+		addEEnumLiteral(executionCommandEEnum, ExecutionCommand.SUSPEND);
+		addEEnumLiteral(executionCommandEEnum, ExecutionCommand.UNSUSPEND);
+		addEEnumLiteral(executionCommandEEnum, ExecutionCommand.ABORT);
+		addEEnumLiteral(executionCommandEEnum, ExecutionCommand.CLEAR);
+
+		initEEnum(occupationLevelEEnum, OccupationLevel.class, "OccupationLevel");
+		addEEnumLiteral(occupationLevelEEnum, OccupationLevel.FREE);
+		addEEnumLiteral(occupationLevelEEnum, OccupationLevel.OCCUPIED);
+		addEEnumLiteral(occupationLevelEEnum, OccupationLevel.PRIORITY);
+		addEEnumLiteral(occupationLevelEEnum, OccupationLevel.LOCAL);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -105,6 +105,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="ComponentRequest" abstract="true" interface="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="componentId" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="correlationId" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="occupierId" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="inputParameters" upperBound="-1"
         eType="#//Variable" containment="true"/>
   </eClassifiers>
@@ -222,5 +223,44 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="request" eType="#//ProcessRequest"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="resultVariables" upperBound="-1"
         eType="#//Variable" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ExecutionMode">
+    <eLiterals name="PRODUCTION"/>
+    <eLiterals name="MAINTENANCE" value="1"/>
+    <eLiterals name="MANUAL" value="2"/>
+    <eLiterals name="CHANGE_OVER" value="3"/>
+    <eLiterals name="CLEAN" value="4"/>
+    <eLiterals name="SET_UP" value="5"/>
+    <eLiterals name="EMPTY_OUT" value="6"/>
+    <eLiterals name="SIMULATION" value="7"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ExecutionCommand">
+    <eLiterals name="RESET"/>
+    <eLiterals name="START" value="1"/>
+    <eLiterals name="STOP" value="2"/>
+    <eLiterals name="HOLD" value="3"/>
+    <eLiterals name="UNHOLD" value="4" literal="UNHOLD"/>
+    <eLiterals name="SUSPEND" value="5"/>
+    <eLiterals name="UNSUSPEND" value="6"/>
+    <eLiterals name="ABORT" value="7"/>
+    <eLiterals name="CLEAR" value="8"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="OccupationLevel">
+    <eLiterals name="FREE"/>
+    <eLiterals name="OCCUPIED" value="1"/>
+    <eLiterals name="PRIORITY" value="2"/>
+    <eLiterals name="LOCAL" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OccupationLevelRequest" eSuperTypes="#//ComponentRequest">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="occupationLevel" eType="#//OccupationLevel"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExecutionModeRequest" eSuperTypes="#//ComponentRequest">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="executionMode" eType="#//ExecutionMode"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExecutionCommandRequest" eSuperTypes="#//ComponentRequest">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="executionCommand" eType="#//ExecutionCommand"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OperationModeRequest" eSuperTypes="#//ComponentRequest">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operationMode" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

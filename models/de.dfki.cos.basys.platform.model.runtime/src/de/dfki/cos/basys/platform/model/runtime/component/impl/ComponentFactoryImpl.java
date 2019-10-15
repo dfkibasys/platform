@@ -72,6 +72,10 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 			case ComponentPackage.PROCESS_REQUEST: return createProcessRequest();
 			case ComponentPackage.PROCESS_REQUEST_STATUS: return createProcessRequestStatus();
 			case ComponentPackage.PROCESS_RESPONSE: return createProcessResponse();
+			case ComponentPackage.OCCUPATION_LEVEL_REQUEST: return createOccupationLevelRequest();
+			case ComponentPackage.EXECUTION_MODE_REQUEST: return createExecutionModeRequest();
+			case ComponentPackage.EXECUTION_COMMAND_REQUEST: return createExecutionCommandRequest();
+			case ComponentPackage.OPERATION_MODE_REQUEST: return createOperationModeRequest();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -99,6 +103,12 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 				return createResponseStatusFromString(eDataType, initialValue);
 			case ComponentPackage.VARIABLE_TYPE:
 				return createVariableTypeFromString(eDataType, initialValue);
+			case ComponentPackage.EXECUTION_MODE:
+				return createExecutionModeFromString(eDataType, initialValue);
+			case ComponentPackage.EXECUTION_COMMAND:
+				return createExecutionCommandFromString(eDataType, initialValue);
+			case ComponentPackage.OCCUPATION_LEVEL:
+				return createOccupationLevelFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -126,6 +136,12 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 				return convertResponseStatusToString(eDataType, instanceValue);
 			case ComponentPackage.VARIABLE_TYPE:
 				return convertVariableTypeToString(eDataType, instanceValue);
+			case ComponentPackage.EXECUTION_MODE:
+				return convertExecutionModeToString(eDataType, instanceValue);
+			case ComponentPackage.EXECUTION_COMMAND:
+				return convertExecutionCommandToString(eDataType, instanceValue);
+			case ComponentPackage.OCCUPATION_LEVEL:
+				return convertOccupationLevelToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -286,6 +302,46 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public OccupationLevelRequest createOccupationLevelRequest() {
+		OccupationLevelRequestImpl occupationLevelRequest = new OccupationLevelRequestImpl();
+		return occupationLevelRequest;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExecutionModeRequest createExecutionModeRequest() {
+		ExecutionModeRequestImpl executionModeRequest = new ExecutionModeRequestImpl();
+		return executionModeRequest;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExecutionCommandRequest createExecutionCommandRequest() {
+		ExecutionCommandRequestImpl executionCommandRequest = new ExecutionCommandRequestImpl();
+		return executionCommandRequest;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OperationModeRequest createOperationModeRequest() {
+		OperationModeRequestImpl operationModeRequest = new OperationModeRequestImpl();
+		return operationModeRequest;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ComponentCategory createComponentCategoryFromString(EDataType eDataType, String initialValue) {
 		ComponentCategory result = ComponentCategory.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -418,6 +474,66 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 	 * @generated
 	 */
 	public String convertVariableTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExecutionMode createExecutionModeFromString(EDataType eDataType, String initialValue) {
+		ExecutionMode result = ExecutionMode.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertExecutionModeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExecutionCommand createExecutionCommandFromString(EDataType eDataType, String initialValue) {
+		ExecutionCommand result = ExecutionCommand.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertExecutionCommandToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OccupationLevel createOccupationLevelFromString(EDataType eDataType, String initialValue) {
+		OccupationLevel result = OccupationLevel.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertOccupationLevelToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

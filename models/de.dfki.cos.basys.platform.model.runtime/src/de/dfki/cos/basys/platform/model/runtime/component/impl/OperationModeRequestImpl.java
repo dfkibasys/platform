@@ -2,40 +2,44 @@
  */
 package de.dfki.cos.basys.platform.model.runtime.component.impl;
 
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
+import de.dfki.cos.basys.platform.model.runtime.component.OperationModeRequest;
+import de.dfki.cos.basys.platform.model.runtime.component.Variable;
+
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import de.dfki.cos.basys.platform.model.runtime.component.ChangeModeRequest;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
-import de.dfki.cos.basys.platform.model.runtime.component.ControlMode;
-import de.dfki.cos.basys.platform.model.runtime.component.Variable;
-import java.util.Collection;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Change Mode Request</b></em>'.
+ * An implementation of the model object '<em><b>Operation Mode Request</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ChangeModeRequestImpl#getComponentId <em>Component Id</em>}</li>
- *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ChangeModeRequestImpl#getCorrelationId <em>Correlation Id</em>}</li>
- *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ChangeModeRequestImpl#getOccupierId <em>Occupier Id</em>}</li>
- *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ChangeModeRequestImpl#getInputParameters <em>Input Parameters</em>}</li>
- *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ChangeModeRequestImpl#getMode <em>Mode</em>}</li>
+ *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.OperationModeRequestImpl#getComponentId <em>Component Id</em>}</li>
+ *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.OperationModeRequestImpl#getCorrelationId <em>Correlation Id</em>}</li>
+ *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.OperationModeRequestImpl#getOccupierId <em>Occupier Id</em>}</li>
+ *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.OperationModeRequestImpl#getInputParameters <em>Input Parameters</em>}</li>
+ *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.OperationModeRequestImpl#getOperationMode <em>Operation Mode</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ChangeModeRequestImpl extends MinimalEObjectImpl.Container implements ChangeModeRequest {
+public class OperationModeRequestImpl extends MinimalEObjectImpl.Container implements OperationModeRequest {
 	/**
 	 * The default value of the '{@link #getComponentId() <em>Component Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -107,31 +111,31 @@ public class ChangeModeRequestImpl extends MinimalEObjectImpl.Container implemen
 	protected EList<Variable> inputParameters;
 
 	/**
-	 * The default value of the '{@link #getMode() <em>Mode</em>}' attribute.
+	 * The default value of the '{@link #getOperationMode() <em>Operation Mode</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getMode()
+	 * @see #getOperationMode()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final ControlMode MODE_EDEFAULT = ControlMode.UNDEFINED;
+	protected static final String OPERATION_MODE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getMode() <em>Mode</em>}' attribute.
+	 * The cached value of the '{@link #getOperationMode() <em>Operation Mode</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getMode()
+	 * @see #getOperationMode()
 	 * @generated
 	 * @ordered
 	 */
-	protected ControlMode mode = MODE_EDEFAULT;
+	protected String operationMode = OPERATION_MODE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ChangeModeRequestImpl() {
+	protected OperationModeRequestImpl() {
 		super();
 	}
 
@@ -142,7 +146,7 @@ public class ChangeModeRequestImpl extends MinimalEObjectImpl.Container implemen
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ComponentPackage.Literals.CHANGE_MODE_REQUEST;
+		return ComponentPackage.Literals.OPERATION_MODE_REQUEST;
 	}
 
 	/**
@@ -150,7 +154,6 @@ public class ChangeModeRequestImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public String getComponentId() {
 		return componentId;
 	}
@@ -160,12 +163,11 @@ public class ChangeModeRequestImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public void setComponentId(String newComponentId) {
 		String oldComponentId = componentId;
 		componentId = newComponentId;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.CHANGE_MODE_REQUEST__COMPONENT_ID, oldComponentId, componentId));
+			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.OPERATION_MODE_REQUEST__COMPONENT_ID, oldComponentId, componentId));
 	}
 
 	/**
@@ -186,7 +188,7 @@ public class ChangeModeRequestImpl extends MinimalEObjectImpl.Container implemen
 		String oldCorrelationId = correlationId;
 		correlationId = newCorrelationId;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.CHANGE_MODE_REQUEST__CORRELATION_ID, oldCorrelationId, correlationId));
+			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.OPERATION_MODE_REQUEST__CORRELATION_ID, oldCorrelationId, correlationId));
 	}
 
 	/**
@@ -207,7 +209,7 @@ public class ChangeModeRequestImpl extends MinimalEObjectImpl.Container implemen
 		String oldOccupierId = occupierId;
 		occupierId = newOccupierId;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.CHANGE_MODE_REQUEST__OCCUPIER_ID, oldOccupierId, occupierId));
+			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.OPERATION_MODE_REQUEST__OCCUPIER_ID, oldOccupierId, occupierId));
 	}
 
 	/**
@@ -217,7 +219,7 @@ public class ChangeModeRequestImpl extends MinimalEObjectImpl.Container implemen
 	 */
 	public EList<Variable> getInputParameters() {
 		if (inputParameters == null) {
-			inputParameters = new EObjectContainmentEList<Variable>(Variable.class, this, ComponentPackage.CHANGE_MODE_REQUEST__INPUT_PARAMETERS);
+			inputParameters = new EObjectContainmentEList<Variable>(Variable.class, this, ComponentPackage.OPERATION_MODE_REQUEST__INPUT_PARAMETERS);
 		}
 		return inputParameters;
 	}
@@ -227,9 +229,8 @@ public class ChangeModeRequestImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public ControlMode getMode() {
-		return mode;
+	public String getOperationMode() {
+		return operationMode;
 	}
 
 	/**
@@ -237,12 +238,11 @@ public class ChangeModeRequestImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void setMode(ControlMode newMode) {
-		ControlMode oldMode = mode;
-		mode = newMode == null ? MODE_EDEFAULT : newMode;
+	public void setOperationMode(String newOperationMode) {
+		String oldOperationMode = operationMode;
+		operationMode = newOperationMode;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.CHANGE_MODE_REQUEST__MODE, oldMode, mode));
+			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.OPERATION_MODE_REQUEST__OPERATION_MODE, oldOperationMode, operationMode));
 	}
 
 	/**
@@ -253,7 +253,7 @@ public class ChangeModeRequestImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ComponentPackage.CHANGE_MODE_REQUEST__INPUT_PARAMETERS:
+			case ComponentPackage.OPERATION_MODE_REQUEST__INPUT_PARAMETERS:
 				return ((InternalEList<?>)getInputParameters()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -267,16 +267,16 @@ public class ChangeModeRequestImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ComponentPackage.CHANGE_MODE_REQUEST__COMPONENT_ID:
+			case ComponentPackage.OPERATION_MODE_REQUEST__COMPONENT_ID:
 				return getComponentId();
-			case ComponentPackage.CHANGE_MODE_REQUEST__CORRELATION_ID:
+			case ComponentPackage.OPERATION_MODE_REQUEST__CORRELATION_ID:
 				return getCorrelationId();
-			case ComponentPackage.CHANGE_MODE_REQUEST__OCCUPIER_ID:
+			case ComponentPackage.OPERATION_MODE_REQUEST__OCCUPIER_ID:
 				return getOccupierId();
-			case ComponentPackage.CHANGE_MODE_REQUEST__INPUT_PARAMETERS:
+			case ComponentPackage.OPERATION_MODE_REQUEST__INPUT_PARAMETERS:
 				return getInputParameters();
-			case ComponentPackage.CHANGE_MODE_REQUEST__MODE:
-				return getMode();
+			case ComponentPackage.OPERATION_MODE_REQUEST__OPERATION_MODE:
+				return getOperationMode();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -290,21 +290,21 @@ public class ChangeModeRequestImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ComponentPackage.CHANGE_MODE_REQUEST__COMPONENT_ID:
+			case ComponentPackage.OPERATION_MODE_REQUEST__COMPONENT_ID:
 				setComponentId((String)newValue);
 				return;
-			case ComponentPackage.CHANGE_MODE_REQUEST__CORRELATION_ID:
+			case ComponentPackage.OPERATION_MODE_REQUEST__CORRELATION_ID:
 				setCorrelationId((String)newValue);
 				return;
-			case ComponentPackage.CHANGE_MODE_REQUEST__OCCUPIER_ID:
+			case ComponentPackage.OPERATION_MODE_REQUEST__OCCUPIER_ID:
 				setOccupierId((String)newValue);
 				return;
-			case ComponentPackage.CHANGE_MODE_REQUEST__INPUT_PARAMETERS:
+			case ComponentPackage.OPERATION_MODE_REQUEST__INPUT_PARAMETERS:
 				getInputParameters().clear();
 				getInputParameters().addAll((Collection<? extends Variable>)newValue);
 				return;
-			case ComponentPackage.CHANGE_MODE_REQUEST__MODE:
-				setMode((ControlMode)newValue);
+			case ComponentPackage.OPERATION_MODE_REQUEST__OPERATION_MODE:
+				setOperationMode((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -318,20 +318,20 @@ public class ChangeModeRequestImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ComponentPackage.CHANGE_MODE_REQUEST__COMPONENT_ID:
+			case ComponentPackage.OPERATION_MODE_REQUEST__COMPONENT_ID:
 				setComponentId(COMPONENT_ID_EDEFAULT);
 				return;
-			case ComponentPackage.CHANGE_MODE_REQUEST__CORRELATION_ID:
+			case ComponentPackage.OPERATION_MODE_REQUEST__CORRELATION_ID:
 				setCorrelationId(CORRELATION_ID_EDEFAULT);
 				return;
-			case ComponentPackage.CHANGE_MODE_REQUEST__OCCUPIER_ID:
+			case ComponentPackage.OPERATION_MODE_REQUEST__OCCUPIER_ID:
 				setOccupierId(OCCUPIER_ID_EDEFAULT);
 				return;
-			case ComponentPackage.CHANGE_MODE_REQUEST__INPUT_PARAMETERS:
+			case ComponentPackage.OPERATION_MODE_REQUEST__INPUT_PARAMETERS:
 				getInputParameters().clear();
 				return;
-			case ComponentPackage.CHANGE_MODE_REQUEST__MODE:
-				setMode(MODE_EDEFAULT);
+			case ComponentPackage.OPERATION_MODE_REQUEST__OPERATION_MODE:
+				setOperationMode(OPERATION_MODE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -345,16 +345,16 @@ public class ChangeModeRequestImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ComponentPackage.CHANGE_MODE_REQUEST__COMPONENT_ID:
+			case ComponentPackage.OPERATION_MODE_REQUEST__COMPONENT_ID:
 				return COMPONENT_ID_EDEFAULT == null ? componentId != null : !COMPONENT_ID_EDEFAULT.equals(componentId);
-			case ComponentPackage.CHANGE_MODE_REQUEST__CORRELATION_ID:
+			case ComponentPackage.OPERATION_MODE_REQUEST__CORRELATION_ID:
 				return CORRELATION_ID_EDEFAULT == null ? correlationId != null : !CORRELATION_ID_EDEFAULT.equals(correlationId);
-			case ComponentPackage.CHANGE_MODE_REQUEST__OCCUPIER_ID:
+			case ComponentPackage.OPERATION_MODE_REQUEST__OCCUPIER_ID:
 				return OCCUPIER_ID_EDEFAULT == null ? occupierId != null : !OCCUPIER_ID_EDEFAULT.equals(occupierId);
-			case ComponentPackage.CHANGE_MODE_REQUEST__INPUT_PARAMETERS:
+			case ComponentPackage.OPERATION_MODE_REQUEST__INPUT_PARAMETERS:
 				return inputParameters != null && !inputParameters.isEmpty();
-			case ComponentPackage.CHANGE_MODE_REQUEST__MODE:
-				return mode != MODE_EDEFAULT;
+			case ComponentPackage.OPERATION_MODE_REQUEST__OPERATION_MODE:
+				return OPERATION_MODE_EDEFAULT == null ? operationMode != null : !OPERATION_MODE_EDEFAULT.equals(operationMode);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -375,33 +375,10 @@ public class ChangeModeRequestImpl extends MinimalEObjectImpl.Container implemen
 		result.append(correlationId);
 		result.append(", occupierId: ");
 		result.append(occupierId);
-		result.append(", mode: ");
-		result.append(mode);
+		result.append(", operationMode: ");
+		result.append(operationMode);
 		result.append(')');
 		return result.toString();
 	}
 
-	public static class Builder {
-		private String componentId;
-		private ControlMode mode;
-
-		public Builder componentId(String componentId) {
-			this.componentId = componentId;
-			return this;
-		}
-
-		public Builder mode(ControlMode mode) {
-			this.mode = mode;
-			return this;
-		}
-
-		public ChangeModeRequestImpl build() {
-			return new ChangeModeRequestImpl(this);
-		}
-	}
-
-	private ChangeModeRequestImpl(Builder builder) {
-		this.componentId = builder.componentId;
-		this.mode = builder.mode;
-	}
-}
+} //OperationModeRequestImpl

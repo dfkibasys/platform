@@ -64,6 +64,7 @@ public class CapabilityRequestItemProvider
 
 			addComponentIdPropertyDescriptor(object);
 			addCorrelationIdPropertyDescriptor(object);
+			addOccupierIdPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -104,6 +105,28 @@ public class CapabilityRequestItemProvider
 				 getString("_UI_ComponentRequest_correlationId_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_ComponentRequest_correlationId_feature", "_UI_ComponentRequest_type"),
 				 ComponentPackage.Literals.COMPONENT_REQUEST__CORRELATION_ID,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Occupier Id feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOccupierIdPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ComponentRequest_occupierId_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ComponentRequest_occupierId_feature", "_UI_ComponentRequest_type"),
+				 ComponentPackage.Literals.COMPONENT_REQUEST__OCCUPIER_ID,
 				 true,
 				 false,
 				 false,
@@ -184,6 +207,7 @@ public class CapabilityRequestItemProvider
 		switch (notification.getFeatureID(CapabilityRequest.class)) {
 			case ComponentPackage.CAPABILITY_REQUEST__COMPONENT_ID:
 			case ComponentPackage.CAPABILITY_REQUEST__CORRELATION_ID:
+			case ComponentPackage.CAPABILITY_REQUEST__OCCUPIER_ID:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case ComponentPackage.CAPABILITY_REQUEST__INPUT_PARAMETERS:

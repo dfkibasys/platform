@@ -166,6 +166,34 @@ public class ComponentSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ComponentPackage.OCCUPATION_LEVEL_REQUEST: {
+				OccupationLevelRequest occupationLevelRequest = (OccupationLevelRequest)theEObject;
+				T result = caseOccupationLevelRequest(occupationLevelRequest);
+				if (result == null) result = caseComponentRequest(occupationLevelRequest);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ComponentPackage.EXECUTION_MODE_REQUEST: {
+				ExecutionModeRequest executionModeRequest = (ExecutionModeRequest)theEObject;
+				T result = caseExecutionModeRequest(executionModeRequest);
+				if (result == null) result = caseComponentRequest(executionModeRequest);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ComponentPackage.EXECUTION_COMMAND_REQUEST: {
+				ExecutionCommandRequest executionCommandRequest = (ExecutionCommandRequest)theEObject;
+				T result = caseExecutionCommandRequest(executionCommandRequest);
+				if (result == null) result = caseComponentRequest(executionCommandRequest);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ComponentPackage.OPERATION_MODE_REQUEST: {
+				OperationModeRequest operationModeRequest = (OperationModeRequest)theEObject;
+				T result = caseOperationModeRequest(operationModeRequest);
+				if (result == null) result = caseComponentRequest(operationModeRequest);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -407,6 +435,66 @@ public class ComponentSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseProcessResponse(ProcessResponse object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Occupation Level Request</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Occupation Level Request</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOccupationLevelRequest(OccupationLevelRequest object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Execution Mode Request</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Execution Mode Request</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseExecutionModeRequest(ExecutionModeRequest object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Execution Command Request</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Execution Command Request</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseExecutionCommandRequest(ExecutionCommandRequest object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Operation Mode Request</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Operation Mode Request</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOperationModeRequest(OperationModeRequest object) {
 		return null;
 	}
 

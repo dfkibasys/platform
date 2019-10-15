@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest#getComponentId <em>Component Id</em>}</li>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest#getCorrelationId <em>Correlation Id</em>}</li>
+ *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest#getOccupierId <em>Occupier Id</em>}</li>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest#getInputParameters <em>Input Parameters</em>}</li>
  * </ul>
  *
@@ -75,6 +76,32 @@ public interface ComponentRequest extends EObject {
 	 * @generated
 	 */
 	void setCorrelationId(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Occupier Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Occupier Id</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Occupier Id</em>' attribute.
+	 * @see #setOccupierId(String)
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage#getComponentRequest_OccupierId()
+	 * @model
+	 * @generated
+	 */
+	String getOccupierId();
+
+	/**
+	 * Sets the value of the '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest#getOccupierId <em>Occupier Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Occupier Id</em>' attribute.
+	 * @see #getOccupierId()
+	 * @generated
+	 */
+	void setOccupierId(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Input Parameters</b></em>' containment reference list.

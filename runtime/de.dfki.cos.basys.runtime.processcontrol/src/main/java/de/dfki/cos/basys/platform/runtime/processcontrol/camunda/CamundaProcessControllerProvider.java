@@ -185,6 +185,7 @@ public class CamundaProcessControllerProvider implements ProcessControllerProvid
 				if (task.variables.assignee != null || task.variables.assignee.value != null) {
 					request.setCorrelationId(task.id);
 					request.setComponentId(task.variables.assignee.value);
+					request.setOccupierId(task.processInstanceId);
 				}
 				controller.scheduleTask(new TaskDescription(request));
 			} catch (IOException e) {

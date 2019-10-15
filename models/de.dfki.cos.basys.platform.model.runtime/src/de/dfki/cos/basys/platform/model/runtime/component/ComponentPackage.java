@@ -415,13 +415,22 @@ public interface ComponentPackage extends EPackage {
 	int COMPONENT_REQUEST__CORRELATION_ID = 1;
 
 	/**
+	 * The feature id for the '<em><b>Occupier Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_REQUEST__OCCUPIER_ID = 2;
+
+	/**
 	 * The feature id for the '<em><b>Input Parameters</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_REQUEST__INPUT_PARAMETERS = 2;
+	int COMPONENT_REQUEST__INPUT_PARAMETERS = 3;
 
 	/**
 	 * The number of structural features of the '<em>Request</em>' class.
@@ -430,7 +439,7 @@ public interface ComponentPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_REQUEST_FEATURE_COUNT = 3;
+	int COMPONENT_REQUEST_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Request</em>' class.
@@ -468,6 +477,15 @@ public interface ComponentPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMMAND_REQUEST__CORRELATION_ID = COMPONENT_REQUEST__CORRELATION_ID;
+
+	/**
+	 * The feature id for the '<em><b>Occupier Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMAND_REQUEST__OCCUPIER_ID = COMPONENT_REQUEST__OCCUPIER_ID;
 
 	/**
 	 * The feature id for the '<em><b>Input Parameters</b></em>' containment reference list.
@@ -534,6 +552,15 @@ public interface ComponentPackage extends EPackage {
 	int CHANGE_MODE_REQUEST__CORRELATION_ID = COMPONENT_REQUEST__CORRELATION_ID;
 
 	/**
+	 * The feature id for the '<em><b>Occupier Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_MODE_REQUEST__OCCUPIER_ID = COMPONENT_REQUEST__OCCUPIER_ID;
+
+	/**
 	 * The feature id for the '<em><b>Input Parameters</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -596,6 +623,15 @@ public interface ComponentPackage extends EPackage {
 	 * @ordered
 	 */
 	int CAPABILITY_REQUEST__CORRELATION_ID = COMPONENT_REQUEST__CORRELATION_ID;
+
+	/**
+	 * The feature id for the '<em><b>Occupier Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_REQUEST__OCCUPIER_ID = COMPONENT_REQUEST__OCCUPIER_ID;
 
 	/**
 	 * The feature id for the '<em><b>Input Parameters</b></em>' containment reference list.
@@ -715,6 +751,15 @@ public interface ComponentPackage extends EPackage {
 	 * @ordered
 	 */
 	int STATUS_REQUEST__CORRELATION_ID = COMPONENT_REQUEST__CORRELATION_ID;
+
+	/**
+	 * The feature id for the '<em><b>Occupier Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATUS_REQUEST__OCCUPIER_ID = COMPONENT_REQUEST__OCCUPIER_ID;
 
 	/**
 	 * The feature id for the '<em><b>Input Parameters</b></em>' containment reference list.
@@ -1282,6 +1327,298 @@ public interface ComponentPackage extends EPackage {
 	int PROCESS_RESPONSE_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.impl.OccupationLevelRequestImpl <em>Occupation Level Request</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.OccupationLevelRequestImpl
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getOccupationLevelRequest()
+	 * @generated
+	 */
+	int OCCUPATION_LEVEL_REQUEST = 16;
+
+	/**
+	 * The feature id for the '<em><b>Component Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OCCUPATION_LEVEL_REQUEST__COMPONENT_ID = COMPONENT_REQUEST__COMPONENT_ID;
+
+	/**
+	 * The feature id for the '<em><b>Correlation Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OCCUPATION_LEVEL_REQUEST__CORRELATION_ID = COMPONENT_REQUEST__CORRELATION_ID;
+
+	/**
+	 * The feature id for the '<em><b>Occupier Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OCCUPATION_LEVEL_REQUEST__OCCUPIER_ID = COMPONENT_REQUEST__OCCUPIER_ID;
+
+	/**
+	 * The feature id for the '<em><b>Input Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OCCUPATION_LEVEL_REQUEST__INPUT_PARAMETERS = COMPONENT_REQUEST__INPUT_PARAMETERS;
+
+	/**
+	 * The feature id for the '<em><b>Occupation Level</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OCCUPATION_LEVEL_REQUEST__OCCUPATION_LEVEL = COMPONENT_REQUEST_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Occupation Level Request</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OCCUPATION_LEVEL_REQUEST_FEATURE_COUNT = COMPONENT_REQUEST_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Occupation Level Request</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OCCUPATION_LEVEL_REQUEST_OPERATION_COUNT = COMPONENT_REQUEST_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ExecutionModeRequestImpl <em>Execution Mode Request</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ExecutionModeRequestImpl
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getExecutionModeRequest()
+	 * @generated
+	 */
+	int EXECUTION_MODE_REQUEST = 17;
+
+	/**
+	 * The feature id for the '<em><b>Component Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_MODE_REQUEST__COMPONENT_ID = COMPONENT_REQUEST__COMPONENT_ID;
+
+	/**
+	 * The feature id for the '<em><b>Correlation Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_MODE_REQUEST__CORRELATION_ID = COMPONENT_REQUEST__CORRELATION_ID;
+
+	/**
+	 * The feature id for the '<em><b>Occupier Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_MODE_REQUEST__OCCUPIER_ID = COMPONENT_REQUEST__OCCUPIER_ID;
+
+	/**
+	 * The feature id for the '<em><b>Input Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_MODE_REQUEST__INPUT_PARAMETERS = COMPONENT_REQUEST__INPUT_PARAMETERS;
+
+	/**
+	 * The feature id for the '<em><b>Execution Mode</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_MODE_REQUEST__EXECUTION_MODE = COMPONENT_REQUEST_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Execution Mode Request</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_MODE_REQUEST_FEATURE_COUNT = COMPONENT_REQUEST_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Execution Mode Request</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_MODE_REQUEST_OPERATION_COUNT = COMPONENT_REQUEST_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ExecutionCommandRequestImpl <em>Execution Command Request</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ExecutionCommandRequestImpl
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getExecutionCommandRequest()
+	 * @generated
+	 */
+	int EXECUTION_COMMAND_REQUEST = 18;
+
+	/**
+	 * The feature id for the '<em><b>Component Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_COMMAND_REQUEST__COMPONENT_ID = COMPONENT_REQUEST__COMPONENT_ID;
+
+	/**
+	 * The feature id for the '<em><b>Correlation Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_COMMAND_REQUEST__CORRELATION_ID = COMPONENT_REQUEST__CORRELATION_ID;
+
+	/**
+	 * The feature id for the '<em><b>Occupier Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_COMMAND_REQUEST__OCCUPIER_ID = COMPONENT_REQUEST__OCCUPIER_ID;
+
+	/**
+	 * The feature id for the '<em><b>Input Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_COMMAND_REQUEST__INPUT_PARAMETERS = COMPONENT_REQUEST__INPUT_PARAMETERS;
+
+	/**
+	 * The feature id for the '<em><b>Execution Command</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_COMMAND_REQUEST__EXECUTION_COMMAND = COMPONENT_REQUEST_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Execution Command Request</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_COMMAND_REQUEST_FEATURE_COUNT = COMPONENT_REQUEST_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Execution Command Request</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_COMMAND_REQUEST_OPERATION_COUNT = COMPONENT_REQUEST_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.impl.OperationModeRequestImpl <em>Operation Mode Request</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.OperationModeRequestImpl
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getOperationModeRequest()
+	 * @generated
+	 */
+	int OPERATION_MODE_REQUEST = 19;
+
+	/**
+	 * The feature id for the '<em><b>Component Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION_MODE_REQUEST__COMPONENT_ID = COMPONENT_REQUEST__COMPONENT_ID;
+
+	/**
+	 * The feature id for the '<em><b>Correlation Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION_MODE_REQUEST__CORRELATION_ID = COMPONENT_REQUEST__CORRELATION_ID;
+
+	/**
+	 * The feature id for the '<em><b>Occupier Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION_MODE_REQUEST__OCCUPIER_ID = COMPONENT_REQUEST__OCCUPIER_ID;
+
+	/**
+	 * The feature id for the '<em><b>Input Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION_MODE_REQUEST__INPUT_PARAMETERS = COMPONENT_REQUEST__INPUT_PARAMETERS;
+
+	/**
+	 * The feature id for the '<em><b>Operation Mode</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION_MODE_REQUEST__OPERATION_MODE = COMPONENT_REQUEST_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Operation Mode Request</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION_MODE_REQUEST_FEATURE_COUNT = COMPONENT_REQUEST_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Operation Mode Request</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION_MODE_REQUEST_OPERATION_COUNT = COMPONENT_REQUEST_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory <em>Category</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1289,7 +1626,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getComponentCategory()
 	 * @generated
 	 */
-	int COMPONENT_CATEGORY = 16;
+	int COMPONENT_CATEGORY = 20;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.State <em>State</em>}' enum.
@@ -1299,7 +1636,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getState()
 	 * @generated
 	 */
-	int STATE = 17;
+	int STATE = 21;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.ControlMode <em>Control Mode</em>}' enum.
@@ -1309,7 +1646,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getControlMode()
 	 * @generated
 	 */
-	int CONTROL_MODE = 18;
+	int CONTROL_MODE = 22;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.ControlCommand <em>Control Command</em>}' enum.
@@ -1319,7 +1656,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getControlCommand()
 	 * @generated
 	 */
-	int CONTROL_COMMAND = 19;
+	int CONTROL_COMMAND = 23;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.RequestStatus <em>Request Status</em>}' enum.
@@ -1329,7 +1666,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getRequestStatus()
 	 * @generated
 	 */
-	int REQUEST_STATUS = 20;
+	int REQUEST_STATUS = 24;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus <em>Response Status</em>}' enum.
@@ -1339,7 +1676,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getResponseStatus()
 	 * @generated
 	 */
-	int RESPONSE_STATUS = 21;
+	int RESPONSE_STATUS = 25;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.VariableType <em>Variable Type</em>}' enum.
@@ -1349,7 +1686,37 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getVariableType()
 	 * @generated
 	 */
-	int VARIABLE_TYPE = 22;
+	int VARIABLE_TYPE = 26;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.ExecutionMode <em>Execution Mode</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ExecutionMode
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getExecutionMode()
+	 * @generated
+	 */
+	int EXECUTION_MODE = 27;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.ExecutionCommand <em>Execution Command</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ExecutionCommand
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getExecutionCommand()
+	 * @generated
+	 */
+	int EXECUTION_COMMAND = 28;
+
+	/**
+	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.OccupationLevel <em>Occupation Level</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.OccupationLevel
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getOccupationLevel()
+	 * @generated
+	 */
+	int OCCUPATION_LEVEL = 29;
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo <em>Info</em>}'.
@@ -1708,6 +2075,17 @@ public interface ComponentPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getComponentRequest_CorrelationId();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest#getOccupierId <em>Occupier Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Occupier Id</em>'.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest#getOccupierId()
+	 * @see #getComponentRequest()
+	 * @generated
+	 */
+	EAttribute getComponentRequest_OccupierId();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest#getInputParameters <em>Input Parameters</em>}'.
@@ -2325,6 +2703,90 @@ public interface ComponentPackage extends EPackage {
 	EReference getProcessResponse_ResultVariables();
 
 	/**
+	 * Returns the meta object for class '{@link de.dfki.cos.basys.platform.model.runtime.component.OccupationLevelRequest <em>Occupation Level Request</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Occupation Level Request</em>'.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.OccupationLevelRequest
+	 * @generated
+	 */
+	EClass getOccupationLevelRequest();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.OccupationLevelRequest#getOccupationLevel <em>Occupation Level</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Occupation Level</em>'.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.OccupationLevelRequest#getOccupationLevel()
+	 * @see #getOccupationLevelRequest()
+	 * @generated
+	 */
+	EAttribute getOccupationLevelRequest_OccupationLevel();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.cos.basys.platform.model.runtime.component.ExecutionModeRequest <em>Execution Mode Request</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Execution Mode Request</em>'.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ExecutionModeRequest
+	 * @generated
+	 */
+	EClass getExecutionModeRequest();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.ExecutionModeRequest#getExecutionMode <em>Execution Mode</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Execution Mode</em>'.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ExecutionModeRequest#getExecutionMode()
+	 * @see #getExecutionModeRequest()
+	 * @generated
+	 */
+	EAttribute getExecutionModeRequest_ExecutionMode();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.cos.basys.platform.model.runtime.component.ExecutionCommandRequest <em>Execution Command Request</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Execution Command Request</em>'.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ExecutionCommandRequest
+	 * @generated
+	 */
+	EClass getExecutionCommandRequest();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.ExecutionCommandRequest#getExecutionCommand <em>Execution Command</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Execution Command</em>'.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ExecutionCommandRequest#getExecutionCommand()
+	 * @see #getExecutionCommandRequest()
+	 * @generated
+	 */
+	EAttribute getExecutionCommandRequest_ExecutionCommand();
+
+	/**
+	 * Returns the meta object for class '{@link de.dfki.cos.basys.platform.model.runtime.component.OperationModeRequest <em>Operation Mode Request</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Operation Mode Request</em>'.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.OperationModeRequest
+	 * @generated
+	 */
+	EClass getOperationModeRequest();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.OperationModeRequest#getOperationMode <em>Operation Mode</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Operation Mode</em>'.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.OperationModeRequest#getOperationMode()
+	 * @see #getOperationModeRequest()
+	 * @generated
+	 */
+	EAttribute getOperationModeRequest_OperationMode();
+
+	/**
 	 * Returns the meta object for enum '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory <em>Category</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2393,6 +2855,36 @@ public interface ComponentPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getVariableType();
+
+	/**
+	 * Returns the meta object for enum '{@link de.dfki.cos.basys.platform.model.runtime.component.ExecutionMode <em>Execution Mode</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Execution Mode</em>'.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ExecutionMode
+	 * @generated
+	 */
+	EEnum getExecutionMode();
+
+	/**
+	 * Returns the meta object for enum '{@link de.dfki.cos.basys.platform.model.runtime.component.ExecutionCommand <em>Execution Command</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Execution Command</em>'.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ExecutionCommand
+	 * @generated
+	 */
+	EEnum getExecutionCommand();
+
+	/**
+	 * Returns the meta object for enum '{@link de.dfki.cos.basys.platform.model.runtime.component.OccupationLevel <em>Occupation Level</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Occupation Level</em>'.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.OccupationLevel
+	 * @generated
+	 */
+	EEnum getOccupationLevel();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -2688,6 +3180,14 @@ public interface ComponentPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute COMPONENT_REQUEST__CORRELATION_ID = eINSTANCE.getComponentRequest_CorrelationId();
+
+		/**
+		 * The meta object literal for the '<em><b>Occupier Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMPONENT_REQUEST__OCCUPIER_ID = eINSTANCE.getComponentRequest_OccupierId();
 
 		/**
 		 * The meta object literal for the '<em><b>Input Parameters</b></em>' containment reference list feature.
@@ -3170,6 +3670,78 @@ public interface ComponentPackage extends EPackage {
 		EReference PROCESS_RESPONSE__RESULT_VARIABLES = eINSTANCE.getProcessResponse_ResultVariables();
 
 		/**
+		 * The meta object literal for the '{@link de.dfki.cos.basys.platform.model.runtime.component.impl.OccupationLevelRequestImpl <em>Occupation Level Request</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.OccupationLevelRequestImpl
+		 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getOccupationLevelRequest()
+		 * @generated
+		 */
+		EClass OCCUPATION_LEVEL_REQUEST = eINSTANCE.getOccupationLevelRequest();
+
+		/**
+		 * The meta object literal for the '<em><b>Occupation Level</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OCCUPATION_LEVEL_REQUEST__OCCUPATION_LEVEL = eINSTANCE.getOccupationLevelRequest_OccupationLevel();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ExecutionModeRequestImpl <em>Execution Mode Request</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ExecutionModeRequestImpl
+		 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getExecutionModeRequest()
+		 * @generated
+		 */
+		EClass EXECUTION_MODE_REQUEST = eINSTANCE.getExecutionModeRequest();
+
+		/**
+		 * The meta object literal for the '<em><b>Execution Mode</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXECUTION_MODE_REQUEST__EXECUTION_MODE = eINSTANCE.getExecutionModeRequest_ExecutionMode();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ExecutionCommandRequestImpl <em>Execution Command Request</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ExecutionCommandRequestImpl
+		 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getExecutionCommandRequest()
+		 * @generated
+		 */
+		EClass EXECUTION_COMMAND_REQUEST = eINSTANCE.getExecutionCommandRequest();
+
+		/**
+		 * The meta object literal for the '<em><b>Execution Command</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXECUTION_COMMAND_REQUEST__EXECUTION_COMMAND = eINSTANCE.getExecutionCommandRequest_ExecutionCommand();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.cos.basys.platform.model.runtime.component.impl.OperationModeRequestImpl <em>Operation Mode Request</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.OperationModeRequestImpl
+		 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getOperationModeRequest()
+		 * @generated
+		 */
+		EClass OPERATION_MODE_REQUEST = eINSTANCE.getOperationModeRequest();
+
+		/**
+		 * The meta object literal for the '<em><b>Operation Mode</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OPERATION_MODE_REQUEST__OPERATION_MODE = eINSTANCE.getOperationModeRequest_OperationMode();
+
+		/**
 		 * The meta object literal for the '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory <em>Category</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3238,6 +3810,36 @@ public interface ComponentPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum VARIABLE_TYPE = eINSTANCE.getVariableType();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.cos.basys.platform.model.runtime.component.ExecutionMode <em>Execution Mode</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.cos.basys.platform.model.runtime.component.ExecutionMode
+		 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getExecutionMode()
+		 * @generated
+		 */
+		EEnum EXECUTION_MODE = eINSTANCE.getExecutionMode();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.cos.basys.platform.model.runtime.component.ExecutionCommand <em>Execution Command</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.cos.basys.platform.model.runtime.component.ExecutionCommand
+		 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getExecutionCommand()
+		 * @generated
+		 */
+		EEnum EXECUTION_COMMAND = eINSTANCE.getExecutionCommand();
+
+		/**
+		 * The meta object literal for the '{@link de.dfki.cos.basys.platform.model.runtime.component.OccupationLevel <em>Occupation Level</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.dfki.cos.basys.platform.model.runtime.component.OccupationLevel
+		 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getOccupationLevel()
+		 * @generated
+		 */
+		EEnum OCCUPATION_LEVEL = eINSTANCE.getOccupationLevel();
 
 	}
 

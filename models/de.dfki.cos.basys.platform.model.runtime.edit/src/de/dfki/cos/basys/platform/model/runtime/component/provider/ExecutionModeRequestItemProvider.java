@@ -4,9 +4,10 @@ package de.dfki.cos.basys.platform.model.runtime.component.provider;
 
 
 import de.dfki.cos.basys.platform.model.runtime.communication.provider.RuntimeEditPlugin;
+
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentFactory;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentResponse;
+import de.dfki.cos.basys.platform.model.runtime.component.ExecutionModeRequest;
 
 import java.util.Collection;
 import java.util.List;
@@ -30,12 +31,12 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link de.dfki.cos.basys.platform.model.runtime.component.ComponentResponse} object.
+ * This is the item provider adapter for a {@link de.dfki.cos.basys.platform.model.runtime.component.ExecutionModeRequest} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ComponentResponseItemProvider 
+public class ExecutionModeRequestItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -49,7 +50,7 @@ public class ComponentResponseItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ComponentResponseItemProvider(AdapterFactory adapterFactory) {
+	public ExecutionModeRequestItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -65,9 +66,9 @@ public class ComponentResponseItemProvider
 			super.getPropertyDescriptors(object);
 
 			addComponentIdPropertyDescriptor(object);
-			addStatusPropertyDescriptor(object);
-			addStatusCodePropertyDescriptor(object);
-			addMessagePropertyDescriptor(object);
+			addCorrelationIdPropertyDescriptor(object);
+			addOccupierIdPropertyDescriptor(object);
+			addExecutionModePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -83,9 +84,9 @@ public class ComponentResponseItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ComponentResponse_componentId_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ComponentResponse_componentId_feature", "_UI_ComponentResponse_type"),
-				 ComponentPackage.Literals.COMPONENT_RESPONSE__COMPONENT_ID,
+				 getString("_UI_ComponentRequest_componentId_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ComponentRequest_componentId_feature", "_UI_ComponentRequest_type"),
+				 ComponentPackage.Literals.COMPONENT_REQUEST__COMPONENT_ID,
 				 true,
 				 false,
 				 false,
@@ -95,19 +96,19 @@ public class ComponentResponseItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Status feature.
+	 * This adds a property descriptor for the Correlation Id feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addStatusPropertyDescriptor(Object object) {
+	protected void addCorrelationIdPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ComponentResponse_status_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ComponentResponse_status_feature", "_UI_ComponentResponse_type"),
-				 ComponentPackage.Literals.COMPONENT_RESPONSE__STATUS,
+				 getString("_UI_ComponentRequest_correlationId_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ComponentRequest_correlationId_feature", "_UI_ComponentRequest_type"),
+				 ComponentPackage.Literals.COMPONENT_REQUEST__CORRELATION_ID,
 				 true,
 				 false,
 				 false,
@@ -117,41 +118,41 @@ public class ComponentResponseItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Status Code feature.
+	 * This adds a property descriptor for the Occupier Id feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addStatusCodePropertyDescriptor(Object object) {
+	protected void addOccupierIdPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ComponentResponse_statusCode_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ComponentResponse_statusCode_feature", "_UI_ComponentResponse_type"),
-				 ComponentPackage.Literals.COMPONENT_RESPONSE__STATUS_CODE,
+				 getString("_UI_ComponentRequest_occupierId_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ComponentRequest_occupierId_feature", "_UI_ComponentRequest_type"),
+				 ComponentPackage.Literals.COMPONENT_REQUEST__OCCUPIER_ID,
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Message feature.
+	 * This adds a property descriptor for the Execution Mode feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addMessagePropertyDescriptor(Object object) {
+	protected void addExecutionModePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ComponentResponse_message_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ComponentResponse_message_feature", "_UI_ComponentResponse_type"),
-				 ComponentPackage.Literals.COMPONENT_RESPONSE__MESSAGE,
+				 getString("_UI_ExecutionModeRequest_executionMode_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ExecutionModeRequest_executionMode_feature", "_UI_ExecutionModeRequest_type"),
+				 ComponentPackage.Literals.EXECUTION_MODE_REQUEST__EXECUTION_MODE,
 				 true,
 				 false,
 				 false,
@@ -172,8 +173,7 @@ public class ComponentResponseItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(ComponentPackage.Literals.COMPONENT_RESPONSE__REQUEST);
-			childrenFeatures.add(ComponentPackage.Literals.COMPONENT_RESPONSE__OUTPUT_PARAMETERS);
+			childrenFeatures.add(ComponentPackage.Literals.COMPONENT_REQUEST__INPUT_PARAMETERS);
 		}
 		return childrenFeatures;
 	}
@@ -192,14 +192,14 @@ public class ComponentResponseItemProvider
 	}
 
 	/**
-	 * This returns ComponentResponse.gif.
+	 * This returns ExecutionModeRequest.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ComponentResponse"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ExecutionModeRequest"));
 	}
 
 	/**
@@ -210,12 +210,12 @@ public class ComponentResponseItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ComponentResponse)object).getComponentId();
+		String label = ((ExecutionModeRequest)object).getComponentId();
 		return label == null || label.length() == 0 ?
-			getString("_UI_ComponentResponse_type") :
-			getString("_UI_ComponentResponse_type") + " " + label;
+			getString("_UI_ExecutionModeRequest_type") :
+			getString("_UI_ExecutionModeRequest_type") + " " + label;
 	}
-	
+
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -228,15 +228,14 @@ public class ComponentResponseItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ComponentResponse.class)) {
-			case ComponentPackage.COMPONENT_RESPONSE__COMPONENT_ID:
-			case ComponentPackage.COMPONENT_RESPONSE__STATUS:
-			case ComponentPackage.COMPONENT_RESPONSE__STATUS_CODE:
-			case ComponentPackage.COMPONENT_RESPONSE__MESSAGE:
+		switch (notification.getFeatureID(ExecutionModeRequest.class)) {
+			case ComponentPackage.EXECUTION_MODE_REQUEST__COMPONENT_ID:
+			case ComponentPackage.EXECUTION_MODE_REQUEST__CORRELATION_ID:
+			case ComponentPackage.EXECUTION_MODE_REQUEST__OCCUPIER_ID:
+			case ComponentPackage.EXECUTION_MODE_REQUEST__EXECUTION_MODE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case ComponentPackage.COMPONENT_RESPONSE__REQUEST:
-			case ComponentPackage.COMPONENT_RESPONSE__OUTPUT_PARAMETERS:
+			case ComponentPackage.EXECUTION_MODE_REQUEST__INPUT_PARAMETERS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -256,47 +255,7 @@ public class ComponentResponseItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ComponentPackage.Literals.COMPONENT_RESPONSE__REQUEST,
-				 ComponentFactory.eINSTANCE.createCommandRequest()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ComponentPackage.Literals.COMPONENT_RESPONSE__REQUEST,
-				 ComponentFactory.eINSTANCE.createChangeModeRequest()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ComponentPackage.Literals.COMPONENT_RESPONSE__REQUEST,
-				 ComponentFactory.eINSTANCE.createCapabilityRequest()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ComponentPackage.Literals.COMPONENT_RESPONSE__REQUEST,
-				 ComponentFactory.eINSTANCE.createStatusRequest()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ComponentPackage.Literals.COMPONENT_RESPONSE__REQUEST,
-				 ComponentFactory.eINSTANCE.createOccupationLevelRequest()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ComponentPackage.Literals.COMPONENT_RESPONSE__REQUEST,
-				 ComponentFactory.eINSTANCE.createExecutionModeRequest()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ComponentPackage.Literals.COMPONENT_RESPONSE__REQUEST,
-				 ComponentFactory.eINSTANCE.createExecutionCommandRequest()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ComponentPackage.Literals.COMPONENT_RESPONSE__REQUEST,
-				 ComponentFactory.eINSTANCE.createOperationModeRequest()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ComponentPackage.Literals.COMPONENT_RESPONSE__OUTPUT_PARAMETERS,
+				(ComponentPackage.Literals.COMPONENT_REQUEST__INPUT_PARAMETERS,
 				 ComponentFactory.eINSTANCE.createVariable()));
 	}
 

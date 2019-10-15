@@ -167,6 +167,26 @@ public class ComponentRequestCollectionItemProvider
 			(createChildParameter
 				(ComponentPackage.Literals.COMPONENT_REQUEST_COLLECTION__COMPONENT_REQUESTS,
 				 ComponentFactory.eINSTANCE.createStatusRequest()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ComponentPackage.Literals.COMPONENT_REQUEST_COLLECTION__COMPONENT_REQUESTS,
+				 ComponentFactory.eINSTANCE.createOccupationLevelRequest()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ComponentPackage.Literals.COMPONENT_REQUEST_COLLECTION__COMPONENT_REQUESTS,
+				 ComponentFactory.eINSTANCE.createExecutionModeRequest()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ComponentPackage.Literals.COMPONENT_REQUEST_COLLECTION__COMPONENT_REQUESTS,
+				 ComponentFactory.eINSTANCE.createExecutionCommandRequest()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ComponentPackage.Literals.COMPONENT_REQUEST_COLLECTION__COMPONENT_REQUESTS,
+				 ComponentFactory.eINSTANCE.createOperationModeRequest()));
 	}
 
 	/**

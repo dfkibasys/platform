@@ -1,9 +1,10 @@
 {
   "id": "component-2",
   "name": "component-2",
+  "category" : "DEVICE_COMPONENT",
   "externalConnectionString": "",
-  "implementationJavaClass": "de.dfki.cos.basys.common.component.util.TestComponent",
-  "key1": "value1",
-  "key2": "value2",
-  "key3": "value3"  
+  "implementationJavaClass": "de.dfki.cos.basys.platform.runtime.component.v2.BasysComponent",
+  "inChannelName" : "component-2#in",
+  "outChannelName" : "component-2#out",
+  "recordStateChanges": "true" 
 }

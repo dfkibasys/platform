@@ -10,6 +10,7 @@ import org.apache.curator.utils.CloseableUtils;
 import org.apache.curator.x.discovery.ServiceDiscovery;
 import org.apache.curator.x.discovery.ServiceDiscoveryBuilder;
 import org.apache.curator.x.discovery.ServiceInstance;
+import org.apache.curator.x.discovery.details.InstanceSerializer;
 import org.apache.curator.x.discovery.details.JsonInstanceSerializer;
 
 import de.dfki.cos.basys.common.component.ComponentInfo;
@@ -23,7 +24,7 @@ public class ZookeeperClient implements FunctionalClient, PathChildrenCacheListe
 	
 	protected CuratorFramework client;	
 	private ServiceDiscovery<ComponentInfo> serviceDiscovery;
-	private JsonInstanceSerializer<ComponentInfo> serializer;
+	private InstanceSerializer<ComponentInfo> serializer;
 	private PathChildrenCache managementCache, serviceCache, deviceCache;
 	
 	private ComponentRegistryObserver observer = null;
@@ -38,11 +39,12 @@ public class ZookeeperClient implements FunctionalClient, PathChildrenCacheListe
 		client = CuratorFrameworkFactory.newClient(connectionString, new ExponentialBackoffRetry(1000, 3));
 		serviceDiscovery = ServiceDiscoveryBuilder.builder(ComponentInfo.class).client(client).basePath(PATH).serializer(serializer).build();
 		managementCache = new PathChildrenCache(client, PATH + "/" + StringConstants.categoryManagement, true);
-		managementCache.getListenable().addListener(this);
 		serviceCache = new PathChildrenCache(client, PATH + "/" + StringConstants.categoryService, true);
-		serviceCache.getListenable().addListener(this);
 		deviceCache = new PathChildrenCache(client, PATH + "/" + StringConstants.categoryDevice, true);
-		deviceCache.getListenable().addListener(this);	
+		addListener(this);
+//		managementCache.getListenable().addListener(this);
+//		serviceCache.getListenable().addListener(this);
+//		deviceCache.getListenable().addListener(this);	
 		
 		try {
 			client.start();
@@ -72,8 +74,19 @@ public class ZookeeperClient implements FunctionalClient, PathChildrenCacheListe
 		return serviceDiscovery;
 	}
 	
+	public void setObserver(ComponentRegistryObserver observer) {
+		this.observer = observer;		
+	}
+	
+	public ComponentRegistryObserver getObserver() {
+		return observer;
+	}
+	
 	@Override
 	public void childEvent(CuratorFramework client, PathChildrenCacheEvent event) throws Exception {
+		if (observer == null)
+			return;
+		
 		switch (event.getType()) {
 		case CHILD_ADDED: {
 			//LOGGER.info(event.getType() + ": " + event.getData().getPath());

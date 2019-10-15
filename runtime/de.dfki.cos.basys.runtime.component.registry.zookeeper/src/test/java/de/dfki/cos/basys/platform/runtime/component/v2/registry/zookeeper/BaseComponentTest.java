@@ -1,7 +1,11 @@
 package de.dfki.cos.basys.platform.runtime.component.v2.registry.zookeeper;
 
+import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.InputStream;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
@@ -11,18 +15,17 @@ import org.junit.BeforeClass;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
+
+import de.dfki.cos.basys.common.component.manager.impl.ComponentManagerImpl;
 import de.dfki.cos.basys.platform.model.runtime.communication.ChannelPool;
 import de.dfki.cos.basys.platform.model.runtime.communication.Client;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
-import de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentConfigurationImpl;
-import de.dfki.cos.basys.platform.model.runtime.component.impl.PropertyImpl;
 import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
 import de.dfki.cos.basys.platform.runtime.communication.provider.JmsCommunicationProvider;
-import de.dfki.cos.basys.platform.runtime.component.ComponentContext;
-import de.dfki.cos.basys.platform.runtime.component.manager.impl.ComponentManagerImpl;
-import de.dfki.cos.basys.platform.runtime.component.registry.zookeeper.ZookeeperComponentRegistry;
-import de.dfki.cos.basys.platform.runtime.component.registry.zookeeper.ZookeeperComponentRegistryObserver;
+import de.dfki.cos.basys.platform.runtime.component.v2.registry.zookeeper.ZookeeperComponentRegistry;
+import de.dfki.cos.basys.platform.runtime.component.v2.BasysComponentContext;
+import de.dfki.cos.basys.platform.runtime.component.v2.StringConstants;
 
 public class BaseComponentTest {
 
@@ -31,95 +34,72 @@ public class BaseComponentTest {
 	protected ComponentManagerImpl componentManager;
 	
 	protected Client communicationClient;
-	protected ChannelPool sharedPool;
-	protected ComponentContext context;
-	protected ComponentConfiguration config1, config2, config3, managerConfig; 
+	protected ChannelPool sharedChannelPool;
+	protected BasysComponentContext context;
+	protected Properties managerConfig, registryConfig;
+	protected Properties config1, config2, config3;
 	
-
-	protected ZookeeperComponentRegistry registry;
-	protected ZookeeperComponentRegistryObserver observer;
-
-	protected ComponentConfiguration registryConfig, observerConfig; 
+	protected ZookeeperComponentRegistry componentRegistry;
 	
 	@Before
 	public void setUp() throws Exception {
-				
-		managerConfig = new ComponentConfigurationImpl.Builder()
-				.componentId("component-manager")
-				.componentName("component-manager")
-				.componentCategory(ComponentCategory.MANAGEMENT_COMPONENT)
-				.build();	
+		
+		managerConfig = new Properties();
+		managerConfig.put(StringConstants.id, "component-manager");
+		managerConfig.put(StringConstants.name, "component-manager");
+		managerConfig.put(StringConstants.category, StringConstants.categoryManagement);
+		managerConfig.put(StringConstants.connectionString, StringConstants.testConfigurationFolder);
+		managerConfig.put("recursive", "true");
+		
+		registryConfig = new Properties();
+		registryConfig.put(StringConstants.id, "component-registry");
+		registryConfig.put(StringConstants.name, "component-registry");
+		registryConfig.put(StringConstants.category, StringConstants.categoryManagement);
+		registryConfig.put(StringConstants.connectionString, ZookeeperComponentRegistry.defaultConnectionString);
 
-		config1 = new ComponentConfigurationImpl.Builder()
-				.componentId("component-1")
-				.componentName("component-1")
-				.componentCategory(ComponentCategory.DEVICE_COMPONENT)
-				.componentImplementationJavaClass("de.dfki.cos.basys.platform.runtime.component.device.TestDeviceComponent")
-				.inChannelName("component1#in")
-				.outChannelName("component1#out")
-				.build();		
-		
-		config2 = new ComponentConfigurationImpl.Builder()
-				.componentId("component-2")
-				.componentName("component-2")
-				.componentCategory(ComponentCategory.DEVICE_COMPONENT)
-				.componentImplementationJavaClass("de.dfki.cos.basys.platform.runtime.component.device.TestDeviceComponent")
-				.inChannelName("component2#in")
-				.outChannelName("component2#out")
-				.build();	
+		config1 = new Properties();
+		config1.put(StringConstants.id, "component-1");
+		config1.put(StringConstants.name, "component-1");
+		config1.put(StringConstants.category, StringConstants.categoryDevice);
+		config1.put(StringConstants.inChannelName, "component-1#in");
+		config1.put(StringConstants.outChannelName, "component-1#out");
+
+		config2 = new Properties();
+		config2.put(StringConstants.id, "component-2");
+		config2.put(StringConstants.name, "component-2");
+		config2.put(StringConstants.category, StringConstants.categoryDevice);
+		config1.put(StringConstants.inChannelName, "component-2#in");
+		config1.put(StringConstants.outChannelName, "component-2#out");
+
+		config3 = new Properties();
+		config3.put(StringConstants.id, "component-3");
+		config3.put(StringConstants.name, "component-3");
+		config3.put(StringConstants.category, StringConstants.categoryDevice);
+		config1.put(StringConstants.inChannelName, "component-3#in");
+		config1.put(StringConstants.outChannelName, "component-3#out");
 				
-		config3 = new ComponentConfigurationImpl.Builder()
-				.componentId("component-3")
-				.componentName("component-3")
-				.componentCategory(ComponentCategory.DEVICE_COMPONENT)
-				.componentImplementationJavaClass("de.dfki.cos.basys.platform.runtime.component.device.TestDeviceComponent")
-				.inChannelName("component3#in")
-				.outChannelName("component3#out")
-				.build();	
-				
-		config1.getProperties().add(new PropertyImpl.Builder().key("recordStateChanges").value("true").build());
-		config2.getProperties().add(new PropertyImpl.Builder().key("recordStateChanges").value("true").build());
-		config3.getProperties().add(new PropertyImpl.Builder().key("recordStateChanges").value("true").build());
-		
-		registryConfig = new ComponentConfigurationImpl.Builder()
-				.componentId("component-registry")
-				.componentName("component-registry")
-				.componentCategory(ComponentCategory.MANAGEMENT_COMPONENT)
-				.externalConnectionString(ZookeeperComponentRegistry.defaultConnectionString)
-				.build();	
-		
-		observerConfig = new ComponentConfigurationImpl.Builder()
-				.componentId("component-registry-observer")
-				.componentName("component-registry-observer")
-				.componentCategory(ComponentCategory.MANAGEMENT_COMPONENT)
-				.externalConnectionString(ZookeeperComponentRegistry.defaultConnectionString)
-				.build();	
-		
-		
-		registry = new ZookeeperComponentRegistry(registryConfig);
-		observer = new ZookeeperComponentRegistryObserver(observerConfig);
-		componentManager = new ComponentManagerImpl(managerConfig);	
-		
 		communicationClient = CommFactory.getInstance().createClient("client", null);
-		sharedPool = CommFactory.getInstance().connectJmsChannelPool(communicationClient, null);
-		context = new ComponentContext.Builder().sharedChannelPool(sharedPool).componentRegistry(registry).build();
-					
-		registry.activate(context);
-		observer.activate(context);		
-		componentManager.activate(context);
+		sharedChannelPool = CommFactory.getInstance().connectJmsChannelPool(communicationClient, null);	
+		componentRegistry = new ZookeeperComponentRegistry(registryConfig);
+		//componentManager = new ComponentManagerImpl(managerConfig);
+		
+		context = BasysComponentContext.getStaticContext();
+		context.setSharedChannelPool(sharedChannelPool);
+		context.setComponentRegistry(componentRegistry);
+		context.setComponentManager(componentManager);
+				
+		componentRegistry.activate(context);		
+		//componentManager.activate(context);
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		componentManager.deactivate();
-		componentManager = null;
-				
-		observer.deactivate();
-		observer = null;
+		//componentManager.deactivate();
+		//componentManager = null;
 		
-		registry.deactivate();
-		registry = null;
-
+		componentRegistry.deactivate();
+		componentRegistry = null;
+		
 		communicationClient.disconnect();
 		communicationClient = null;
 		
@@ -148,4 +128,5 @@ public class BaseComponentTest {
 			e.printStackTrace();
 		}
 	}
+	
 }

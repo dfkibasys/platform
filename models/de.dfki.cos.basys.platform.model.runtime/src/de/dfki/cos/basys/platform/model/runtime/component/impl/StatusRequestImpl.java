@@ -29,6 +29,7 @@ import java.util.Collection;
  * <ul>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.StatusRequestImpl#getComponentId <em>Component Id</em>}</li>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.StatusRequestImpl#getCorrelationId <em>Correlation Id</em>}</li>
+ *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.StatusRequestImpl#getOccupierId <em>Occupier Id</em>}</li>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.StatusRequestImpl#getInputParameters <em>Input Parameters</em>}</li>
  * </ul>
  *
@@ -74,6 +75,26 @@ public class StatusRequestImpl extends MinimalEObjectImpl.Container implements S
 	 * @ordered
 	 */
 	protected String correlationId = CORRELATION_ID_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getOccupierId() <em>Occupier Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOccupierId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String OCCUPIER_ID_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getOccupierId() <em>Occupier Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOccupierId()
+	 * @generated
+	 * @ordered
+	 */
+	protected String occupierId = OCCUPIER_ID_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getInputParameters() <em>Input Parameters</em>}' containment reference list.
@@ -151,6 +172,27 @@ public class StatusRequestImpl extends MinimalEObjectImpl.Container implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getOccupierId() {
+		return occupierId;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOccupierId(String newOccupierId) {
+		String oldOccupierId = occupierId;
+		occupierId = newOccupierId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.STATUS_REQUEST__OCCUPIER_ID, oldOccupierId, occupierId));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<Variable> getInputParameters() {
 		if (inputParameters == null) {
 			inputParameters = new EObjectContainmentEList<Variable>(Variable.class, this, ComponentPackage.STATUS_REQUEST__INPUT_PARAMETERS);
@@ -184,6 +226,8 @@ public class StatusRequestImpl extends MinimalEObjectImpl.Container implements S
 				return getComponentId();
 			case ComponentPackage.STATUS_REQUEST__CORRELATION_ID:
 				return getCorrelationId();
+			case ComponentPackage.STATUS_REQUEST__OCCUPIER_ID:
+				return getOccupierId();
 			case ComponentPackage.STATUS_REQUEST__INPUT_PARAMETERS:
 				return getInputParameters();
 		}
@@ -204,6 +248,9 @@ public class StatusRequestImpl extends MinimalEObjectImpl.Container implements S
 				return;
 			case ComponentPackage.STATUS_REQUEST__CORRELATION_ID:
 				setCorrelationId((String)newValue);
+				return;
+			case ComponentPackage.STATUS_REQUEST__OCCUPIER_ID:
+				setOccupierId((String)newValue);
 				return;
 			case ComponentPackage.STATUS_REQUEST__INPUT_PARAMETERS:
 				getInputParameters().clear();
@@ -227,6 +274,9 @@ public class StatusRequestImpl extends MinimalEObjectImpl.Container implements S
 			case ComponentPackage.STATUS_REQUEST__CORRELATION_ID:
 				setCorrelationId(CORRELATION_ID_EDEFAULT);
 				return;
+			case ComponentPackage.STATUS_REQUEST__OCCUPIER_ID:
+				setOccupierId(OCCUPIER_ID_EDEFAULT);
+				return;
 			case ComponentPackage.STATUS_REQUEST__INPUT_PARAMETERS:
 				getInputParameters().clear();
 				return;
@@ -246,6 +296,8 @@ public class StatusRequestImpl extends MinimalEObjectImpl.Container implements S
 				return COMPONENT_ID_EDEFAULT == null ? componentId != null : !COMPONENT_ID_EDEFAULT.equals(componentId);
 			case ComponentPackage.STATUS_REQUEST__CORRELATION_ID:
 				return CORRELATION_ID_EDEFAULT == null ? correlationId != null : !CORRELATION_ID_EDEFAULT.equals(correlationId);
+			case ComponentPackage.STATUS_REQUEST__OCCUPIER_ID:
+				return OCCUPIER_ID_EDEFAULT == null ? occupierId != null : !OCCUPIER_ID_EDEFAULT.equals(occupierId);
 			case ComponentPackage.STATUS_REQUEST__INPUT_PARAMETERS:
 				return inputParameters != null && !inputParameters.isEmpty();
 		}
@@ -266,6 +318,8 @@ public class StatusRequestImpl extends MinimalEObjectImpl.Container implements S
 		result.append(componentId);
 		result.append(", correlationId: ");
 		result.append(correlationId);
+		result.append(", occupierId: ");
+		result.append(occupierId);
 		result.append(')');
 		return result.toString();
 	}

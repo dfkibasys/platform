@@ -141,15 +141,15 @@
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.glassfish.jersey.core</groupId>
 			<artifactId>jersey-client</artifactId>
 			<version>${jersey-version}</version>
 			 <scope>test</scope>
-		</dependency>
+		</dependency> -->
 
 		<!-- https://mvnrepository.com/artifact/org.glassfish.jersey.media/jersey-media-json-jackson -->
-		<dependency>
+	<!-- 	<dependency>
 			<groupId>org.glassfish.jersey.media</groupId>
 			<artifactId>jersey-media-json-jackson</artifactId>
 			<version>${jersey-version}</version>
@@ -160,7 +160,7 @@
 					<artifactId>jackson-annotations</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency>
-	</dependencies>
+		</dependency> -->
+	</dependencies> 
 
 </project>

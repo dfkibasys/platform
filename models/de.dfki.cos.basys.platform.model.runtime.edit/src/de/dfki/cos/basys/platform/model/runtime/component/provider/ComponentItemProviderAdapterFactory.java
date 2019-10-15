@@ -417,6 +417,98 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.model.runtime.component.OccupationLevelRequest} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OccupationLevelRequestItemProvider occupationLevelRequestItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.cos.basys.platform.model.runtime.component.OccupationLevelRequest}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOccupationLevelRequestAdapter() {
+		if (occupationLevelRequestItemProvider == null) {
+			occupationLevelRequestItemProvider = new OccupationLevelRequestItemProvider(this);
+		}
+
+		return occupationLevelRequestItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.model.runtime.component.ExecutionModeRequest} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ExecutionModeRequestItemProvider executionModeRequestItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.cos.basys.platform.model.runtime.component.ExecutionModeRequest}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createExecutionModeRequestAdapter() {
+		if (executionModeRequestItemProvider == null) {
+			executionModeRequestItemProvider = new ExecutionModeRequestItemProvider(this);
+		}
+
+		return executionModeRequestItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.model.runtime.component.ExecutionCommandRequest} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ExecutionCommandRequestItemProvider executionCommandRequestItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.cos.basys.platform.model.runtime.component.ExecutionCommandRequest}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createExecutionCommandRequestAdapter() {
+		if (executionCommandRequestItemProvider == null) {
+			executionCommandRequestItemProvider = new ExecutionCommandRequestItemProvider(this);
+		}
+
+		return executionCommandRequestItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.model.runtime.component.OperationModeRequest} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OperationModeRequestItemProvider operationModeRequestItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.cos.basys.platform.model.runtime.component.OperationModeRequest}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOperationModeRequestAdapter() {
+		if (operationModeRequestItemProvider == null) {
+			operationModeRequestItemProvider = new OperationModeRequestItemProvider(this);
+		}
+
+		return operationModeRequestItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -530,6 +622,10 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 		if (processRequestItemProvider != null) processRequestItemProvider.dispose();
 		if (processRequestStatusItemProvider != null) processRequestStatusItemProvider.dispose();
 		if (processResponseItemProvider != null) processResponseItemProvider.dispose();
+		if (occupationLevelRequestItemProvider != null) occupationLevelRequestItemProvider.dispose();
+		if (executionModeRequestItemProvider != null) executionModeRequestItemProvider.dispose();
+		if (executionCommandRequestItemProvider != null) executionCommandRequestItemProvider.dispose();
+		if (operationModeRequestItemProvider != null) operationModeRequestItemProvider.dispose();
 	}
 
 }

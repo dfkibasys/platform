@@ -28,6 +28,7 @@ import java.util.Collection;
  * <ul>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.CapabilityRequestImpl#getComponentId <em>Component Id</em>}</li>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.CapabilityRequestImpl#getCorrelationId <em>Correlation Id</em>}</li>
+ *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.CapabilityRequestImpl#getOccupierId <em>Occupier Id</em>}</li>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.CapabilityRequestImpl#getInputParameters <em>Input Parameters</em>}</li>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.CapabilityRequestImpl#getCapabilityVariant <em>Capability Variant</em>}</li>
  * </ul>
@@ -71,6 +72,24 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 	 * @ordered
 	 */
 	protected String correlationId = CORRELATION_ID_EDEFAULT;
+	/**
+	 * The default value of the '{@link #getOccupierId() <em>Occupier Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOccupierId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String OCCUPIER_ID_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getOccupierId() <em>Occupier Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOccupierId()
+	 * @generated
+	 * @ordered
+	 */
+	protected String occupierId = OCCUPIER_ID_EDEFAULT;
 	/**
 	 * The cached value of the '{@link #getInputParameters() <em>Input Parameters</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -150,6 +169,27 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 		correlationId = newCorrelationId;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.CAPABILITY_REQUEST__CORRELATION_ID, oldCorrelationId, correlationId));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getOccupierId() {
+		return occupierId;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOccupierId(String newOccupierId) {
+		String oldOccupierId = occupierId;
+		occupierId = newOccupierId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.CAPABILITY_REQUEST__OCCUPIER_ID, oldOccupierId, occupierId));
 	}
 
 	/**
@@ -237,6 +277,8 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 				return getComponentId();
 			case ComponentPackage.CAPABILITY_REQUEST__CORRELATION_ID:
 				return getCorrelationId();
+			case ComponentPackage.CAPABILITY_REQUEST__OCCUPIER_ID:
+				return getOccupierId();
 			case ComponentPackage.CAPABILITY_REQUEST__INPUT_PARAMETERS:
 				return getInputParameters();
 			case ComponentPackage.CAPABILITY_REQUEST__CAPABILITY_VARIANT:
@@ -259,6 +301,9 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 				return;
 			case ComponentPackage.CAPABILITY_REQUEST__CORRELATION_ID:
 				setCorrelationId((String)newValue);
+				return;
+			case ComponentPackage.CAPABILITY_REQUEST__OCCUPIER_ID:
+				setOccupierId((String)newValue);
 				return;
 			case ComponentPackage.CAPABILITY_REQUEST__INPUT_PARAMETERS:
 				getInputParameters().clear();
@@ -285,6 +330,9 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 			case ComponentPackage.CAPABILITY_REQUEST__CORRELATION_ID:
 				setCorrelationId(CORRELATION_ID_EDEFAULT);
 				return;
+			case ComponentPackage.CAPABILITY_REQUEST__OCCUPIER_ID:
+				setOccupierId(OCCUPIER_ID_EDEFAULT);
+				return;
 			case ComponentPackage.CAPABILITY_REQUEST__INPUT_PARAMETERS:
 				getInputParameters().clear();
 				return;
@@ -307,6 +355,8 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 				return COMPONENT_ID_EDEFAULT == null ? componentId != null : !COMPONENT_ID_EDEFAULT.equals(componentId);
 			case ComponentPackage.CAPABILITY_REQUEST__CORRELATION_ID:
 				return CORRELATION_ID_EDEFAULT == null ? correlationId != null : !CORRELATION_ID_EDEFAULT.equals(correlationId);
+			case ComponentPackage.CAPABILITY_REQUEST__OCCUPIER_ID:
+				return OCCUPIER_ID_EDEFAULT == null ? occupierId != null : !OCCUPIER_ID_EDEFAULT.equals(occupierId);
 			case ComponentPackage.CAPABILITY_REQUEST__INPUT_PARAMETERS:
 				return inputParameters != null && !inputParameters.isEmpty();
 			case ComponentPackage.CAPABILITY_REQUEST__CAPABILITY_VARIANT:
@@ -329,6 +379,8 @@ public class CapabilityRequestImpl extends MinimalEObjectImpl.Container implemen
 		result.append(componentId);
 		result.append(", correlationId: ");
 		result.append(correlationId);
+		result.append(", occupierId: ");
+		result.append(occupierId);
 		result.append(')');
 		return result.toString();
 	}

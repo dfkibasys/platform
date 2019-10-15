@@ -48,7 +48,8 @@ public class ZookeeperComponentRegistry extends BaseComponent implements Compone
 		}
 		
 		connectionManager = new ConnectionManagerImpl(config, ZookeeperClient::new);
-		client = connectionManager.getFunctionalClient(ZookeeperClient.class);
+		client = connectionManager.getFunctionalClient(ZookeeperClient.class);		
+		client.setObserver(this);
 	}
 
 	

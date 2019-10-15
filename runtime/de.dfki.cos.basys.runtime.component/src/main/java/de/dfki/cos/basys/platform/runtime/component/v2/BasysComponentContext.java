@@ -5,8 +5,8 @@ import java.util.concurrent.Executors;
 import com.google.common.eventbus.EventBus;
 
 import de.dfki.cos.basys.common.component.ComponentContext;
+import de.dfki.cos.basys.common.component.manager.ComponentManager;
 import de.dfki.cos.basys.platform.model.runtime.communication.ChannelPool;
-import de.dfki.cos.basys.platform.runtime.component.manager.ComponentManager;
 import de.dfki.cos.basys.platform.runtime.component.v2.registry.ComponentRegistry;
 
 public class BasysComponentContext extends ComponentContext {
