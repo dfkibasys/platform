@@ -75,6 +75,24 @@ public class ControlComponentProxy extends BasysComponent {
 	protected ComponentRequestStatus handleOperationModeRequest(OperationModeRequest req) {
 		LOGGER.info(String.format("handleOperationModeRequest '%s' (occupierId = %s)", req.getOperationMode(), req.getOccupierId()));
 
+		/*
+		 * Prerequisites:
+		 *  - free
+		 *  - idle execution state
+		 * 
+		 * Steps to perform:
+		 *  - occupy
+		 *  - set operation mode
+		 *  - set input parameters
+		 *  - start
+		 *  - wait for completed or stopped state
+		 *  - read output parameters
+		 *  - send response to process
+		 *  - reset
+		 *  - free 
+		 */
+		
+		
 		// TODO: Check for Occupation and Execution State. If possible/neccessary set everything. 
 		
 //		if (client.getOccupierId() !=
