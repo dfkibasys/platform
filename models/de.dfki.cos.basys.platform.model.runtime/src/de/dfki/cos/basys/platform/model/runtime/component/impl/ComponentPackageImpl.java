@@ -1719,6 +1719,7 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		addEEnumLiteral(requestStatusEEnum, RequestStatus.REJECTED);
 		addEEnumLiteral(requestStatusEEnum, RequestStatus.NOOP);
 		addEEnumLiteral(requestStatusEEnum, RequestStatus.QUEUED);
+		addEEnumLiteral(requestStatusEEnum, RequestStatus.DONE);
 
 		initEEnum(responseStatusEEnum, ResponseStatus.class, "ResponseStatus");
 		addEEnumLiteral(responseStatusEEnum, ResponseStatus.UNDEFINED);

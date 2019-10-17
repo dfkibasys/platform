@@ -145,6 +145,7 @@
     <eLiterals name="REJECTED" value="2"/>
     <eLiterals name="NOOP" value="3" literal="NOOP"/>
     <eLiterals name="QUEUED" value="4" literal="QUEUED"/>
+    <eLiterals name="DONE" value="5" literal="DONE"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ResponseStatus">
     <eLiterals name="UNDEFINED"/>
