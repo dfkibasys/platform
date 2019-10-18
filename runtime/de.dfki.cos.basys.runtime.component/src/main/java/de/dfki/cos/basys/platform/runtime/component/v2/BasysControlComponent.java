@@ -1,6 +1,8 @@
 package de.dfki.cos.basys.platform.runtime.component.v2;
 
 import java.util.Properties;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
 import java.util.function.Supplier;
 
 
@@ -30,21 +32,23 @@ import de.dfki.cos.basys.platform.model.runtime.component.StatusRequest;
 import de.dfki.cos.basys.platform.model.runtime.component.Variable;
 import de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentRequestStatusImpl;
 
-public class ControlComponentProxy extends BasysComponent implements PackMLWaitStatesHandler {
+public class BasysControlComponent extends BasysComponent implements PackMLWaitStatesHandler {
 
 	ControlComponentClient client;
 	
 	OperationModeRequest currentOperationModeRequest;
 	
-	public ControlComponentProxy(Properties config) {
+	public BasysControlComponent(Properties config) {
 		super(config);
 		connectionManager = new ConnectionManagerImpl(config, new Supplier<ControlComponentClient>() {
 			@Override
 			public ControlComponentClient get() {
 				ControlComponentClient client = new ControlComponentClient(config);
+				client.setExecutionStateChangedHandler(BasysControlComponent.this);
 				return client;
 			}
 		});
+		this.client = getConnectionManager().getFunctionalClient(ControlComponentClient.class);
 	}
 	
 	@Override
@@ -152,38 +156,87 @@ public class ControlComponentProxy extends BasysComponent implements PackMLWaitS
 
 	@Override
 	public void onIdle() {
-		if (currentOperationModeRequest != null) {
-			ComponentOrderStatus status;
-			status = client.setOperationMode(currentOperationModeRequest.getOperationMode(), currentOperationModeRequest.getOccupierId());
-			if (status.getStatus() == OrderStatus.DONE) {
-				for (Variable var : currentOperationModeRequest.getInputParameters()) {
-					// TODO: set input parameters
-				}			
-			}			
-			status = client.start(currentOperationModeRequest.getOccupierId());
+		if (currentOperationModeRequest != null) {		
+			
+			try {
+				ComponentOrderStatus status = context.getScheduledExecutorService().submit(new Callable<ComponentOrderStatus>() {
+					@Override
+					public ComponentOrderStatus call() throws Exception {
+						ComponentOrderStatus status;
+						status = client.setOperationMode(currentOperationModeRequest.getOperationMode(), currentOperationModeRequest.getOccupierId());
+						if (status.getStatus() == OrderStatus.DONE) {
+							for (Variable var : currentOperationModeRequest.getInputParameters()) {
+								// TODO: set input parameters
+							}			
+							status = client.start(currentOperationModeRequest.getOccupierId());
+						}			
+						return status;
+						
+					}
+				}).get();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 	}
 
 	@Override
 	public void onComplete() {
 		if (currentOperationModeRequest != null) {
-			currentOperationModeRequest = null;
-			ComponentOrderStatus status;
-			//TODO: get output parameters
-			//TODO: notify process
-			status = client.free(currentOperationModeRequest.getOccupierId());
+			try {
+				ComponentOrderStatus status = context.getScheduledExecutorService().submit(new Callable<ComponentOrderStatus>() {
+					@Override
+					public ComponentOrderStatus call() throws Exception {
+						ComponentOrderStatus status;						
+						//TODO: get output parameters
+						//TODO: notify process
+						status = client.free(currentOperationModeRequest.getOccupierId());
+						currentOperationModeRequest = null;
+						return status;
+						
+					}
+				}).get();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}			
+			
 		}		
 	}
 
 	@Override
 	public void onStopped() {
 		if (currentOperationModeRequest != null) {
-			currentOperationModeRequest = null;
-			ComponentOrderStatus status;
-			//TODO: get output parameters
-			//TODO: notify process
-			status = client.free(currentOperationModeRequest.getOccupierId());
-		}
+			try {
+				ComponentOrderStatus status = context.getScheduledExecutorService().submit(new Callable<ComponentOrderStatus>() {
+					@Override
+					public ComponentOrderStatus call() throws Exception {
+						ComponentOrderStatus status;						
+						//TODO: get output parameters
+						//TODO: notify process
+						status = client.free(currentOperationModeRequest.getOccupierId());
+						currentOperationModeRequest = null;
+						return status;
+						
+					}
+				}).get();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}			
+			
+		}		
 	}
 	
 	@Override

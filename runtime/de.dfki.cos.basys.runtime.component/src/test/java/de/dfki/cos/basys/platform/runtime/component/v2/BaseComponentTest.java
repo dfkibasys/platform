@@ -37,6 +37,7 @@ public class BaseComponentTest {
 		managerConfig.put(StringConstants.id, "component-manager");
 		managerConfig.put(StringConstants.name, "component-manager");
 		managerConfig.put(StringConstants.category, StringConstants.categoryManagement);
+		managerConfig.put("recursive", false);
 		
 		communicationClient = CommFactory.getInstance().createClient("client", null);
 		sharedChannelPool = CommFactory.getInstance().connectJmsChannelPool(communicationClient, null);	
