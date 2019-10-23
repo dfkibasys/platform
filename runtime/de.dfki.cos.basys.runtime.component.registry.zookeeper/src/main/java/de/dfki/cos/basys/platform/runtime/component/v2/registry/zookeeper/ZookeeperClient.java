@@ -13,6 +13,7 @@ import org.apache.curator.x.discovery.ServiceInstance;
 import org.apache.curator.x.discovery.details.InstanceSerializer;
 import org.apache.curator.x.discovery.details.JsonInstanceSerializer;
 
+import de.dfki.cos.basys.common.component.ComponentContext;
 import de.dfki.cos.basys.common.component.ComponentInfo;
 import de.dfki.cos.basys.common.component.FunctionalClient;
 import de.dfki.cos.basys.platform.runtime.component.v2.StringConstants;
@@ -34,7 +35,7 @@ public class ZookeeperClient implements FunctionalClient, PathChildrenCacheListe
 	}
 
 	@Override
-	public boolean connect(String connectionString) {
+	public boolean connect(ComponentContext context, String connectionString) {
 		serializer = new JsonInstanceSerializer<ComponentInfo>(ComponentInfo.class);
 		client = CuratorFrameworkFactory.newClient(connectionString, new ExponentialBackoffRetry(1000, 3));
 		serviceDiscovery = ServiceDiscoveryBuilder.builder(ComponentInfo.class).client(client).basePath(PATH).serializer(serializer).build();

@@ -1,12 +1,11 @@
 package de.dfki.cos.basys.platform.runtime.component.v2;
 
-import java.util.concurrent.Executors;
-
-import com.google.common.eventbus.EventBus;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import de.dfki.cos.basys.common.component.ComponentContext;
 import de.dfki.cos.basys.common.component.manager.ComponentManager;
 import de.dfki.cos.basys.platform.model.runtime.communication.ChannelPool;
+import de.dfki.cos.basys.platform.runtime.component.service.EmfServiceComponent;
 import de.dfki.cos.basys.platform.runtime.component.v2.registry.ComponentRegistry;
 
 public class BasysComponentContext extends ComponentContext {
@@ -14,6 +13,7 @@ public class BasysComponentContext extends ComponentContext {
 	protected ComponentRegistry componentRegistry;
 	protected ComponentManager componentManager;
 	protected ChannelPool sharedChannelPool;
+	protected ResourceSet sharedResourceSet;
 
 	private static BasysComponentContext staticContext = null;
 	
@@ -22,6 +22,7 @@ public class BasysComponentContext extends ComponentContext {
 			staticContext = new BasysComponentContext();
 			staticContext.setEventBus(ComponentContext.getStaticContext().getEventBus());
 			staticContext.setScheduledExecutorService(ComponentContext.getStaticContext().getScheduledExecutorService());
+			staticContext.setSharedResourceSet(EmfServiceComponent.createResourceSet());
 		}
 		return staticContext;
 	}
@@ -36,6 +37,7 @@ public class BasysComponentContext extends ComponentContext {
 		this.componentRegistry = context.getComponentRegistry();
 		this.componentManager = context.getComponentManager();
 		this.sharedChannelPool = context.getSharedChannelPool();
+		this.sharedResourceSet = context.getSharedResourceSet();
 	}
 	
 	public ComponentRegistry getComponentRegistry() {
@@ -60,6 +62,14 @@ public class BasysComponentContext extends ComponentContext {
 
 	public void setSharedChannelPool(ChannelPool sharedChannelPool) {
 		this.sharedChannelPool = sharedChannelPool;
+	}
+	
+	public ResourceSet getSharedResourceSet() {
+		return sharedResourceSet;
+	}
+	
+	public void setSharedResourceSet(ResourceSet sharedResourceSet) {
+		this.sharedResourceSet = sharedResourceSet;
 	}
 	
 }
