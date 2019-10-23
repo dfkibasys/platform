@@ -27,21 +27,17 @@ import de.dfki.cos.basys.platform.model.runtime.communication.Request;
 import de.dfki.cos.basys.platform.model.runtime.communication.Response;
 import de.dfki.cos.basys.platform.runtime.component.v2.BasysComponent;
 import de.dfki.cos.basys.platform.runtime.gateway.Gateway;
+import de.dfki.cos.basys.platform.runtime.gateway.GatewayProvider;
 
 public class JmsGatewayComponent extends BasysComponent implements Gateway {
-
-	private Session session = null;
-	
-	protected Map<Channel, MessageProducer> outgoing = new HashMap<>();
-	protected Map<MessageConsumer, Channel> incoming = new HashMap<>();
 
 	public JmsGatewayComponent(Properties config) {
 		super(config);
 		
-		connectionManager = new ConnectionManagerImpl(config, new Supplier<JmsClient>() {
+		connectionManager = new ConnectionManagerImpl(config, new Supplier<GatewayProvider>() {
 			@Override
-			public JmsClient get() {
-				JmsClient client = new JmsClient(config);
+			public GatewayProvider get() {
+				GatewayProvider client = new JmsGatewayProvider(config);
 				return client;
 			}
 		});		
@@ -51,17 +47,17 @@ public class JmsGatewayComponent extends BasysComponent implements Gateway {
 	protected void doActivate() throws de.dfki.cos.basys.common.component.ComponentException {
 		super.doActivate();
 		
-		session = connectionManager.getFunctionalClient(JmsClient.class).getSession();
+		Gateway gw = connectionManager.getFunctionalClient(GatewayProvider.class).getGateway();
 		
 		if (isConnected()) {					
 			for (String key : config.stringPropertyNames()) {
 				if (key.startsWith("incoming")) {
 					String[] parts = config.getProperty(key).split(" ");
-					installIncomingChannel(parts[0], parts[1]);
+					gw.installIncomingChannel(parts[0], parts[1]);
 				}
 				else if (key.startsWith("outgoing")) {
 					String[] parts = config.getProperty(key).split(" ");
-					installOutgoingChannel(parts[0], parts[1]);
+					gw.installOutgoingChannel(parts[0], parts[1]);
 				}
 			}
 		} else {
@@ -70,106 +66,17 @@ public class JmsGatewayComponent extends BasysComponent implements Gateway {
 	}
 	
 	@Override
-	protected void doDeactivate() throws de.dfki.cos.basys.common.component.ComponentException {
-		super.doDeactivate();
-		
-		outgoing.forEach((channel, mp) -> {
-			channel.close();
-			try {
-				mp.close();
-			} catch (JMSException e) {
-				e.printStackTrace();
-			}
-		});
-		
-		incoming.forEach((mc, channel) -> {				
-			try {
-				mc.close();
-			} catch (JMSException e) {
-				e.printStackTrace();
-			}
-			channel.close();
-		});
-	}
-
-	@Override
 	public void installOutgoingChannel(String internalChannelName, String externalChannelName) {
-		try {
-
-			Topic jmsTopicProducer = session.createTopic(externalChannelName);
-			MessageProducer sender = session.createProducer(jmsTopicProducer);
-
-			Channel internalChannel = cf.openChannel(context.getSharedChannelPool(), internalChannelName, false, new ChannelListener() {
-
-				@Override
-				public Response handleRequest(Channel channel, Request req) {
-					// TODO Auto-generated method stub
-					return null;
-				}
-
-				@Override
-				public void handleNotification(Channel channel, Notification not) {
-					try {
-						TextMessage outMsg = session.createTextMessage();
-						String payload = JsonUtils.toString(not);
-						outMsg.setText(payload);
-						sender.send(outMsg);
-					} catch (JMSException | JsonProcessingException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-
-				@Override
-				public void handleMessage(Channel channel, String msg) {
-					try {
-						TextMessage outMsg = session.createTextMessage();
-						outMsg.setText(msg);
-						sender.send(outMsg);
-					} catch (JMSException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-			});
-			outgoing.put(internalChannel, sender);
-		} catch (JMSException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+		Gateway gw = connectionManager.getFunctionalClient(GatewayProvider.class).getGateway();
+		gw.installOutgoingChannel(internalChannelName, externalChannelName);		
 	}
 
 	@Override
 	public void installIncomingChannel(String externalChannelName, String internalChannelName) {
-		try {
-			Channel internalChannel = cf.openChannel(context.getSharedChannelPool(), internalChannelName, false, null);
-
-			Topic jmsTopicConsumer = session.createTopic(externalChannelName);
-			MessageConsumer receiver = session.createConsumer(jmsTopicConsumer);
-			receiver.setMessageListener(new MessageListener() {
-
-				@Override
-				public void onMessage(Message message) {
-					try {
-
-						String payload = ((TextMessage) message).getText();
-						internalChannel.sendMessage(payload);
-
-					} catch (Exception e) {
-						// TODO: handle exception
-						e.printStackTrace();
-					}
-
-				}
-			});
-
-			incoming.put(receiver, internalChannel);
-		} catch (JMSException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		Gateway gw = connectionManager.getFunctionalClient(GatewayProvider.class).getGateway();
+		gw.installIncomingChannel(externalChannelName, internalChannelName);		
 	}
+
 
 
 }
