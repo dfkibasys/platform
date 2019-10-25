@@ -19,6 +19,13 @@ import de.dfki.cos.basys.platform.model.runtime.component.CommandRequest;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentFactory;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest;
+import de.dfki.cos.basys.platform.model.runtime.component.ExecutionCommand;
+import de.dfki.cos.basys.platform.model.runtime.component.ExecutionCommandRequest;
+import de.dfki.cos.basys.platform.model.runtime.component.ExecutionMode;
+import de.dfki.cos.basys.platform.model.runtime.component.ExecutionModeRequest;
+import de.dfki.cos.basys.platform.model.runtime.component.OccupationLevel;
+import de.dfki.cos.basys.platform.model.runtime.component.OccupationLevelRequest;
+import de.dfki.cos.basys.platform.model.runtime.component.OperationModeRequest;
 import de.dfki.cos.basys.platform.model.runtime.component.ProcessRequest;
 import de.dfki.cos.basys.platform.model.runtime.component.ProcessRequestStatus;
 import de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus;
@@ -41,6 +48,7 @@ public class CamundaProcessControlClient implements ProcessControlClient {
 
 	ScheduledExecutorService executor = Executors.newScheduledThreadPool(32);
 
+	String topic = "ControlComponent";
 	String workerId = this.getClass().getName();
 	int maxFetchCount = 1;
 	long lockDuration = 24 * 60 * 60 * 1000; // 1 day
@@ -49,6 +57,11 @@ public class CamundaProcessControlClient implements ProcessControlClient {
 	int retryTimeout = 1000;
 	
 	public CamundaProcessControlClient(Properties config) {
+
+		if (config.getProperty("topic") != null) {
+			topic = config.getProperty("topic");
+			LOGGER.info("topic = " + topic);
+		}
 		
 		if (config.getProperty("workerId") != null) {
 			workerId = config.getProperty("workerId");
@@ -165,40 +178,59 @@ public class CamundaProcessControlClient implements ProcessControlClient {
 
 		LOGGER.trace("pollCamunda");
 
-		List<ExternalServiceTaskDto> tasks = client.getExternalTasks("BasysTask", maxFetchCount, lockDuration, asyncResponseTimeout, "assignee", "command", "parameters");
+		List<ExternalServiceTaskDto> tasks = client.getExternalTasks(topic, maxFetchCount, lockDuration, asyncResponseTimeout, "componentId", "requestType", "token", "parameters");
 		
 		if (tasks.size() > 0) {
 			LOGGER.info("pollCamunda fetched " + tasks.size() + " task(s)" );
 		}
 		
 		for (ExternalServiceTaskDto task : tasks) {
-			if (task.variables.assignee == null || task.variables.assignee.value == null) {
-				client.handleError(task.id, "ExternalTask does not contain an assignee", maxRetryCount, retryTimeout);
-				continue;
-			}
-			if (task.variables.command == null || task.variables.command.value == null) {
-				client.handleError(task.id, "ExternalTask does not contain a command", maxRetryCount, retryTimeout);
+			
+			if (task.variables.requestType == null || task.variables.requestType.value == null) {
+				client.handleError(task.id, "ExternalTask does not contain a requestType", maxRetryCount, retryTimeout);
 				continue;
 			}
 			
-			if (task.variables.assignee.value.equals("WAIT")) {
-				int duration = Integer.parseInt(task.variables.command.value);
+			if (task.variables.requestType.value.equals("WAIT")) {
+				int duration = Integer.parseInt(task.variables.token.value);
 				scheduleWait(task.id,duration);
 				continue;
 			}
-
-			try {
-				//LOGGER.debug(task.variables.command.value);
-				ComponentRequest request = JsonUtils.fromString(task.variables.command.value, ComponentRequest.class);
-				if (task.variables.assignee != null || task.variables.assignee.value != null) {
-					request.setCorrelationId(task.id);
-					request.setComponentId(task.variables.assignee.value);
-					request.setOccupierId(task.processInstanceId);
-				}
-				controller.scheduleTask(new TaskDescription(request));
-			} catch (IOException e) {
-				e.printStackTrace();
+				
+			if (task.variables.componentId == null || task.variables.componentId.value == null) {
+				client.handleError(task.id, "ExternalTask does not contain a componentId", maxRetryCount, retryTimeout);
+				continue;
 			}
+			
+			ComponentRequest r = null;
+			
+			switch (task.variables.requestType.value) {
+			case "ExecutionCommandRequest":
+				r = ComponentFactory.eINSTANCE.createExecutionCommandRequest();
+				((ExecutionCommandRequest)r).setExecutionCommand(ExecutionCommand.get(task.variables.token.value));
+				break;
+			case "ExecutionModeRequest":
+				r = ComponentFactory.eINSTANCE.createExecutionModeRequest();
+				((ExecutionModeRequest)r).setExecutionMode(ExecutionMode.get(task.variables.token.value));
+				break;
+			case "OccupationLevelRequest":
+				r = ComponentFactory.eINSTANCE.createOccupationLevelRequest();
+				((OccupationLevelRequest)r).setOccupationLevel(OccupationLevel.get(task.variables.token.value));
+				break;
+			case "OperationModeRequest":
+				r = ComponentFactory.eINSTANCE.createOperationModeRequest();
+				((OperationModeRequest)r).setOperationMode(task.variables.token.value);
+				break;
+
+			default:
+				break;
+			}
+			
+			r.setCorrelationId(task.id);
+			r.setOccupierId(task.processInstanceId);				
+			r.setComponentId(task.variables.componentId.value);					
+			
+			controller.scheduleTask(new TaskDescription(r));
 
 		}
 	}
