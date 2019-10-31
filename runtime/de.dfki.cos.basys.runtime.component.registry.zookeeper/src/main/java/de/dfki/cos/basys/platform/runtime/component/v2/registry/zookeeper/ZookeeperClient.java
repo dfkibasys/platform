@@ -2,6 +2,7 @@ package de.dfki.cos.basys.platform.runtime.component.v2.registry.zookeeper;
 
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
+import org.apache.curator.framework.imps.CuratorFrameworkState;
 import org.apache.curator.framework.recipes.cache.PathChildrenCache;
 import org.apache.curator.framework.recipes.cache.PathChildrenCacheEvent;
 import org.apache.curator.framework.recipes.cache.PathChildrenCacheListener;
@@ -12,6 +13,8 @@ import org.apache.curator.x.discovery.ServiceDiscoveryBuilder;
 import org.apache.curator.x.discovery.ServiceInstance;
 import org.apache.curator.x.discovery.details.InstanceSerializer;
 import org.apache.curator.x.discovery.details.JsonInstanceSerializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import de.dfki.cos.basys.common.component.ComponentContext;
 import de.dfki.cos.basys.common.component.ComponentInfo;
@@ -21,6 +24,8 @@ import de.dfki.cos.basys.platform.runtime.component.v2.registry.ComponentRegistr
 
 public class ZookeeperClient implements FunctionalClient, PathChildrenCacheListener {
 
+	public final Logger LOGGER;
+	
 	public static final String PATH = "/basys/registry";
 	
 	protected CuratorFramework client;	
@@ -31,7 +36,7 @@ public class ZookeeperClient implements FunctionalClient, PathChildrenCacheListe
 	private ComponentRegistryObserver observer = null;
 	
 	public ZookeeperClient() {
-		// TODO Auto-generated constructor stub
+		LOGGER = LoggerFactory.getLogger(getClass().getName());
 	}
 
 	@Override
@@ -53,24 +58,28 @@ public class ZookeeperClient implements FunctionalClient, PathChildrenCacheListe
 			managementCache.start();
 			serviceCache.start();
 			deviceCache.start();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return true;
+			return true;
+		} catch (Exception e) {			
+			LOGGER.error(e.getLocalizedMessage());
+			disconnect();
+			return false;
+		}		
 	}
 
 	@Override
-	public boolean disconnect() {
+	public void disconnect() {
 		CloseableUtils.closeQuietly(managementCache);
 		CloseableUtils.closeQuietly(serviceCache);
 		CloseableUtils.closeQuietly(deviceCache);
 		CloseableUtils.closeQuietly(serviceDiscovery);
 		CloseableUtils.closeQuietly(client);
-		return true;
 	}
 
+	@Override
+	public boolean isConnected() {		
+		return client != null && client.getState() == CuratorFrameworkState.STARTED;
+	}
+	
 	public ServiceDiscovery<ComponentInfo> getServiceDiscovery() {
 		return serviceDiscovery;
 	}

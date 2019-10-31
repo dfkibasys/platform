@@ -43,6 +43,7 @@ public class CamundaProcessControlClient implements ProcessControlClient {
 	
 	ProcessController controller;
 	CamundaRestClient client;	
+	private boolean connected;
 	
 	BlockingQueue<TaskDescription> responseQueue = new LinkedBlockingQueue<TaskDescription>(32);
 
@@ -111,10 +112,12 @@ public class CamundaProcessControlClient implements ProcessControlClient {
 			public void run() {
 				try {
 				pollCamunda();
+				connected = true;
 				} catch (Exception e) {
 					LOGGER.error(e.getMessage());
 					e.printStackTrace();
 					LOGGER.error("Camunda could not be polled - is it running?");
+					connected = false;
 					try {
 						Thread.sleep(5000);
 					} catch (InterruptedException e1) {
@@ -152,12 +155,13 @@ public class CamundaProcessControlClient implements ProcessControlClient {
 			}
 			
 		}, 5000, TimeUnit.MILLISECONDS);
-		return true;
+		connected = true;
+		return connected;
 	}
 
 
 	@Override
-	public boolean disconnect() {
+	public void disconnect() {
 		try {
 			LOGGER.info("attempt to shutdown executor");
 			executor.shutdown();
@@ -169,9 +173,14 @@ public class CamundaProcessControlClient implements ProcessControlClient {
 				LOGGER.warn("cancel non-finished tasks");
 			}
 			List<Runnable> runnables = executor.shutdownNow();
+			connected = false;
 			LOGGER.info("shutdown finished");
 		}
-		return true;
+	}
+	
+	@Override
+	public boolean isConnected() {		
+		return connected;
 	}
 
 	private void pollCamunda() {

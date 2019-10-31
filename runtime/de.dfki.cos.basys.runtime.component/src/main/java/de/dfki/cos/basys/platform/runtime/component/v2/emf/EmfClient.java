@@ -96,9 +96,13 @@ public class EmfClient implements FunctionalClient {
 	}
 
 	@Override
-	public boolean disconnect() {
+	public void disconnect() {
 		resourceSet = null;
-		return true;
+	}
+
+	@Override
+	public boolean isConnected() {		
+		return resourceSet!=null;
 	}
 
 	public <T extends EObject> T getEntity(String id) {
@@ -208,5 +212,6 @@ public class EmfClient implements FunctionalClient {
 		
 		return resourceSet;		
 	}
+
 	
 }

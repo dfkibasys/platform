@@ -80,7 +80,7 @@ public class MqttGatewayProvider implements GatewayProvider, Gateway {
 	}
 
 	@Override
-	public boolean disconnect() {
+	public void disconnect() {
 		try {			
 			outgoing.forEach((channel, mp) -> {
 				channel.close();				
@@ -91,13 +91,16 @@ public class MqttGatewayProvider implements GatewayProvider, Gateway {
 			});
 			
 			mqttClient.disconnect().waitForCompletion();
-			return true;
 		} catch (MqttException e) {
 			LOGGER.warn("MqttClient \"" + id + "\"" + " cannot disconnect", e);
-			return false;
 		}
 	}
 
+	@Override
+	public boolean isConnected() {
+		return mqttClient.isConnected();
+	}
+	
 	@Override
 	public Gateway getGateway() {
 		return this;
@@ -176,5 +179,6 @@ public class MqttGatewayProvider implements GatewayProvider, Gateway {
 		}
 		
 	}
+
 
 }

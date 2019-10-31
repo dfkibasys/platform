@@ -55,6 +55,7 @@ public class JmsGatewayProvider implements GatewayProvider, Gateway {
 	// JMS
 	private Connection connection;
 	private Session session;
+	private boolean connected = false;
 
 	public JmsGatewayProvider(Properties config) {
 		this.id = config.getProperty(StringConstants.id);
@@ -70,25 +71,27 @@ public class JmsGatewayProvider implements GatewayProvider, Gateway {
 		try {
 			connection = connectionFactory.createConnection();
 			connection.setClientID(id);
-			connection.start();
+			connection.start();			
 			connection.setExceptionListener(new ExceptionListener() {				
 				@Override
 				public void onException(JMSException e) {
-					LOGGER.info("JmsClient \"" + id + "\": " + e.getLocalizedMessage() );					
+					LOGGER.info("JmsClient \"" + id + "\": " + e.getLocalizedMessage() );	
+					connected = false;
 				}
 			});
 
 			session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 			LOGGER.info("JmsClient \"" + id + "\" connected to \"" + connectionString + "\"");
-			return true;
+			connected = true;
+			return connected;
 		} catch (JMSException e) {
 			LOGGER.warn("JmsClient \"" + id + "\" cannot connect to \"" + connectionString + "\"", e);
-			return false;
+			return connected;
 		}
 	}
 
 	@Override
-	public boolean disconnect() {
+	public void disconnect() {
 		try {
 			
 			outgoing.forEach((channel, mp) -> {
@@ -111,11 +114,15 @@ public class JmsGatewayProvider implements GatewayProvider, Gateway {
 						
 			session.close();
 			connection.close();
-			return true;
+			connected = false;
 		} catch (JMSException e) {
 			LOGGER.warn("JmsClient \"" + id + "\"" + " cannot disconnect", e);
-			return false;
 		}
+	}
+	
+	@Override
+	public boolean isConnected() {
+		return connected;
 	}
 	
 	@Override
@@ -201,5 +208,7 @@ public class JmsGatewayProvider implements GatewayProvider, Gateway {
 			e.printStackTrace();
 		}
 	}
+
+
 	
 }
