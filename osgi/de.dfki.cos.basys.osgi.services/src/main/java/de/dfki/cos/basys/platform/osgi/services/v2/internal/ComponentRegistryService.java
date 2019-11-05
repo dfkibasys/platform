@@ -13,12 +13,12 @@ import org.osgi.service.component.annotations.Reference;
 
 import de.dfki.cos.basys.common.component.ComponentException;
 import de.dfki.cos.basys.common.component.ComponentInfo;
+import de.dfki.cos.basys.common.component.registry.ComponentRegistration;
+import de.dfki.cos.basys.common.component.registry.ComponentRegistrationException;
+import de.dfki.cos.basys.common.component.registry.ComponentRegistry;
 import de.dfki.cos.basys.platform.osgi.services.ChannelPoolProvider;
 import de.dfki.cos.basys.platform.osgi.services.v2.OsgiComponentWrapper;
 import de.dfki.cos.basys.platform.runtime.component.v2.BasysComponentContext;
-import de.dfki.cos.basys.platform.runtime.component.v2.registry.ComponentRegistration;
-import de.dfki.cos.basys.platform.runtime.component.v2.registry.ComponentRegistrationException;
-import de.dfki.cos.basys.platform.runtime.component.v2.registry.ComponentRegistry;
 import de.dfki.cos.basys.platform.runtime.component.v2.registry.zookeeper.ZookeeperComponentRegistry;
 
 @Component(configurationPolicy = ConfigurationPolicy.REQUIRE, immediate = true)

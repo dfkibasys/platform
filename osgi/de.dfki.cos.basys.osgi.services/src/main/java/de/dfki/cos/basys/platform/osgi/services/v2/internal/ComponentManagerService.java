@@ -18,10 +18,10 @@ import de.dfki.cos.basys.common.component.ComponentException;
 import de.dfki.cos.basys.common.component.manager.ComponentManager;
 import de.dfki.cos.basys.common.component.manager.ComponentManagerException;
 import de.dfki.cos.basys.common.component.manager.impl.ComponentManagerImpl;
+import de.dfki.cos.basys.common.component.registry.ComponentRegistry;
 import de.dfki.cos.basys.platform.osgi.services.ChannelPoolProvider;
 import de.dfki.cos.basys.platform.osgi.services.v2.OsgiComponentWrapper;
 import de.dfki.cos.basys.platform.runtime.component.v2.BasysComponentContext;
-import de.dfki.cos.basys.platform.runtime.component.v2.registry.ComponentRegistry;
 
 @Component(configurationPolicy = ConfigurationPolicy.REQUIRE, immediate = true)
 public class ComponentManagerService extends OsgiComponentWrapper implements ComponentManager {

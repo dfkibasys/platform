@@ -13,13 +13,13 @@ import org.apache.curator.x.discovery.ServiceInstance;
 import de.dfki.cos.basys.platform.runtime.communication.CommUtils;
 import de.dfki.cos.basys.common.component.Component;
 import de.dfki.cos.basys.common.component.ComponentInfo;
+import de.dfki.cos.basys.common.component.StringConstants;
 import de.dfki.cos.basys.common.component.impl.BaseComponent;
 import de.dfki.cos.basys.common.component.impl.ConnectionManagerImpl;
-import de.dfki.cos.basys.platform.runtime.component.v2.StringConstants;
-import de.dfki.cos.basys.platform.runtime.component.v2.registry.ComponentRegistration;
-import de.dfki.cos.basys.platform.runtime.component.v2.registry.ComponentRegistrationException;
-import de.dfki.cos.basys.platform.runtime.component.v2.registry.ComponentRegistry;
-import de.dfki.cos.basys.platform.runtime.component.v2.registry.ComponentRegistryObserver;
+import de.dfki.cos.basys.common.component.registry.ComponentRegistration;
+import de.dfki.cos.basys.common.component.registry.ComponentRegistrationException;
+import de.dfki.cos.basys.common.component.registry.ComponentRegistry;
+import de.dfki.cos.basys.common.component.registry.ComponentRegistryObserver;
 
 public class ZookeeperComponentRegistry extends BaseComponent implements ComponentRegistry, ComponentRegistryObserver {
 
@@ -42,7 +42,7 @@ public class ZookeeperComponentRegistry extends BaseComponent implements Compone
 	public ZookeeperComponentRegistry(Properties config) {
 		super(config);	
 		
-		if (config.contains(StringConstants.connectionString)) {
+		if (!config.contains(StringConstants.connectionString)) {
 			config.setProperty(StringConstants.connectionString, defaultConnectionString);			
 			LOGGER.warn("External connection string not provided. Defaulting to " + defaultConnectionString);
 		}

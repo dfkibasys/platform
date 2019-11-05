@@ -47,8 +47,6 @@ import de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentRequestS
 import de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentResponseImpl;
 import de.dfki.cos.basys.platform.model.runtime.component.impl.SimulationConfigurationImpl;
 import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
-import de.dfki.cos.basys.platform.runtime.component.v2.registry.ComponentRegistration;
-import de.dfki.cos.basys.platform.runtime.component.v2.registry.ComponentRegistrationException;
 import de.dfki.cos.basys.platform.runtime.component.util.BasysResourceSetImpl;
 
 public class BasysComponent extends BaseComponent implements ChannelListener {
@@ -63,8 +61,6 @@ public class BasysComponent extends BaseComponent implements ChannelListener {
 	// protected Channel telemetryChannel;
 	
 	protected boolean connectedToBasys = false;
-
-	protected ComponentRegistration registration;
 	
 	//protected ComponentRequest pendingRequest;
 
@@ -84,20 +80,10 @@ public class BasysComponent extends BaseComponent implements ChannelListener {
 		if (context.getSharedChannelPool() != null || config.containsKey(StringConstants.communicationProviderImplementationJavaClass)) {
 			connectToBasys();
 		}
-		try {
-			register();
-		} catch (ComponentRegistrationException e) {
-			throw new ComponentException(e);
-		}
 	}
 	
 	@Override
 	protected void doDeactivate() throws ComponentException {
-		try {
-			unregister();
-		} catch (ComponentRegistrationException e) {
-			throw new ComponentException(e);
-		}
 		if (context.getSharedChannelPool() != null || config.containsKey(StringConstants.communicationProviderImplementationJavaClass)) {			
 			disconnectFromBasys();
 		}
@@ -170,27 +156,7 @@ public class BasysComponent extends BaseComponent implements ChannelListener {
 		LOGGER.debug("disconnectFromBasys - finished");
 	}
 
-	protected void register() throws ComponentRegistrationException {
-		LOGGER.debug("register");
-		if (context.getComponentRegistry() != null) {
-			registration = context.getComponentRegistry().createRegistration(this);
-			registration.register();
-			LOGGER.debug("register - finished");
-		} else {
-			LOGGER.info("no component registry available");
-		}
-	}
 
-	protected void unregister() throws ComponentRegistrationException {
-		LOGGER.debug("unregister");
-		if (registration != null) {
-			registration.unregister();
-			registration = null;
-			LOGGER.debug("unregister - finished");
-		} else {
-			LOGGER.debug("not registered");
-		}
-	}
 	
 	@Override
 	public ComponentInfo getInfo() {
@@ -204,13 +170,9 @@ public class BasysComponent extends BaseComponent implements ChannelListener {
 		return connectedToBasys;
 	}
 	
-	public boolean isRegistered() {
-		return registration != null;
-	}
-	
 	@Override
 	protected void notifyChange() {
-		LOGGER.trace("notifyChange");
+		super.notifyChange();
 		// TODO: something like:Notification not = createStatusUpdate();
 
 		//LOGGER.info(String.format("component '%s' (id=%s) is now in state %s and mode %s", getName(), getId(), getState(), getMode()));
@@ -229,20 +191,6 @@ public class BasysComponent extends BaseComponent implements ChannelListener {
 //		} else {
 //			LOGGER.info("cannot send status update notification");
 //		}
-		if (registration != null) {
-			try {
-				LOGGER.trace("update registration");
-				registration.update();
-			} catch (ComponentRegistrationException e) {
-				LOGGER.warn("could not update registration");
-				LOGGER.warn(e.getMessage());
-				e.printStackTrace();
-			}
-		} else {
-			LOGGER.info("cannot update registration, not registered");
-		}
-
-		LOGGER.trace("notifyChange - finished");
 	}
 	
 	/*

@@ -6,9 +6,9 @@ import org.apache.curator.x.discovery.UriSpec;
 
 import de.dfki.cos.basys.common.component.Component;
 import de.dfki.cos.basys.common.component.ComponentInfo;
-import de.dfki.cos.basys.platform.runtime.component.v2.StringConstants;
-import de.dfki.cos.basys.platform.runtime.component.v2.registry.ComponentRegistration;
-import de.dfki.cos.basys.platform.runtime.component.v2.registry.ComponentRegistrationException;
+import de.dfki.cos.basys.common.component.StringConstants;
+import de.dfki.cos.basys.common.component.registry.ComponentRegistration;
+import de.dfki.cos.basys.common.component.registry.ComponentRegistrationException;
 
 public class ZookeeperComponentRegistration implements ComponentRegistration {
 

@@ -19,8 +19,8 @@ import org.slf4j.LoggerFactory;
 import de.dfki.cos.basys.common.component.ComponentContext;
 import de.dfki.cos.basys.common.component.ComponentInfo;
 import de.dfki.cos.basys.common.component.FunctionalClient;
+import de.dfki.cos.basys.common.component.registry.ComponentRegistryObserver;
 import de.dfki.cos.basys.platform.runtime.component.v2.StringConstants;
-import de.dfki.cos.basys.platform.runtime.component.v2.registry.ComponentRegistryObserver;
 
 public class ZookeeperClient implements FunctionalClient, PathChildrenCacheListener {
 

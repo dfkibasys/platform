@@ -9,7 +9,6 @@ public interface StringConstants extends de.dfki.cos.basys.common.component.Stri
 	 * Configuration and info parameters 
 	 */
 
-	public static final String hostName = "hostName";
 	public static final String communicationProviderImplementationJavaClass = "communicationProviderImplementationJavaClass";
 	public static final String communicationProviderConnectionString = "communicationProviderConnectionString";
 	public static final String inChannelName = "inChannelName";
