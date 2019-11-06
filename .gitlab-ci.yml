@@ -17,7 +17,7 @@ stages:
 build:
   stage: build
   script:
-    - mvn -V $MAVEN_CLI_OPTS compile
+    - mvn -V $MAVEN_CLI_OPTS install -DskipTests
 
 test:
   stage: test
