@@ -1,8 +1,13 @@
 package de.dfki.cos.basys.platform.runtime.communication.provider;
 
+import static org.junit.Assert.*;
+
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,9 +20,8 @@ import de.dfki.cos.basys.platform.model.runtime.communication.Response;
 import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
 import de.dfki.cos.basys.platform.runtime.communication.provider.JmsCommunicationProvider;
 import de.dfki.cos.basys.platform.runtime.communication.provider.TestChannelListener;
-import junit.framework.TestCase;
 
-public class JmsCommunicationProviderTest extends TestCase {
+public class JmsCommunicationProviderTest {
 
 	protected final Logger LOGGER = LoggerFactory.getLogger(JmsCommunicationProviderTest.class);
 
@@ -29,9 +33,8 @@ public class JmsCommunicationProviderTest extends TestCase {
 	Client client_1, client_2;
 	ChannelPool cp_11, cp_12, cp_21, cp_22;
 
-	@Override
-	protected void setUp() throws Exception {
-		super.setUp();
+	@Before
+	public void setUp() throws Exception {
 
 		LOGGER.info("setUp");
 
@@ -44,9 +47,8 @@ public class JmsCommunicationProviderTest extends TestCase {
 		cp_22 = fac.connectChannelPool(client_2, brokerUri, new JmsCommunicationProvider());
 	}
 
-	@Override
-	protected void tearDown() throws Exception {
-		super.tearDown();
+	@After
+	public void tearDown() throws Exception {
 
 		LOGGER.info("tearDown");
 
@@ -54,6 +56,7 @@ public class JmsCommunicationProviderTest extends TestCase {
 		client_2.disconnect();
 	}
 
+	@Test
 	public void testConnectDisconnect() {
 		LOGGER.info("testConnectDisconnect");
 
@@ -81,6 +84,7 @@ public class JmsCommunicationProviderTest extends TestCase {
 		assertFalse(client_2.isConnected());
 	}
 
+	@Test
 	public void testSubscribeUnsubscribe() {
 		LOGGER.info("testSubscribeUnsubscribe");
 
@@ -143,6 +147,7 @@ public class JmsCommunicationProviderTest extends TestCase {
 		assertFalse(ch_22_2.isOpen());
 	}
 
+	@Test
 	public void testSendMessage() {
 		LOGGER.info("testSendMessage");
 
@@ -171,6 +176,7 @@ public class JmsCommunicationProviderTest extends TestCase {
 		// assertTrue(tester_2.isSuccess());
 	}
 
+	@Test
 	public void testSendNotification() {
 		LOGGER.info("testSendNotification");
 
@@ -202,6 +208,7 @@ public class JmsCommunicationProviderTest extends TestCase {
 		assertTrue(tester_2.isSuccess());
 	}
 
+	@Test
 	public void testSendRequestSync() {
 		LOGGER.info("testSendRequestSync");
 

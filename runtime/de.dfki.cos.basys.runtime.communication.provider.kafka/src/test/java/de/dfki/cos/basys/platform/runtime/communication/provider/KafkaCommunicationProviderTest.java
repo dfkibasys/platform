@@ -14,13 +14,14 @@ import de.dfki.cos.basys.platform.model.runtime.communication.Notification;
 import de.dfki.cos.basys.platform.model.runtime.communication.Request;
 import de.dfki.cos.basys.platform.model.runtime.communication.Response;
 import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
-import junit.framework.TestCase;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
 
-public class KafkaCommunicationProviderTest extends TestCase {
+public class KafkaCommunicationProviderTest {
 	protected final Logger LOGGER = LoggerFactory.getLogger(KafkaCommunicationProvider.class);
 
 	// String brokerUri = "vm://localhost?broker.persistent=false";
@@ -32,9 +33,8 @@ public class KafkaCommunicationProviderTest extends TestCase {
 	ChannelPool cp_11, cp_12, cp_21, cp_22;
 
 
-	@Override
-	protected void setUp() throws Exception {
-		super.setUp();
+	@Before
+	public void setUp() throws Exception {
 		LOGGER.info("setUp");
 
 		client_1 = fac.createClient("client_1", null);
@@ -46,15 +46,15 @@ public class KafkaCommunicationProviderTest extends TestCase {
 		cp_22 = fac.connectChannelPool(client_2, brokerUri, new KafkaCommunicationProvider());
 	}
 
-	@Override
-	protected void tearDown() throws Exception {
-		super.tearDown();
+	@After
+	public void tearDown() throws Exception {
 		LOGGER.info("tearDown");
 
 		client_1.disconnect();
 		client_2.disconnect();
 	}
 
+	@Test
 	public void testConnectDisconnect() {
 		LOGGER.info("testConnectDisconnect");
 
@@ -82,6 +82,7 @@ public class KafkaCommunicationProviderTest extends TestCase {
 		assertFalse(client_2.isConnected());
 	}
 
+	@Test
 	public void testSubscribeUnsubscribe() {
 		LOGGER.info("testSubscribeUnsubscribe");
 //
@@ -146,6 +147,7 @@ public class KafkaCommunicationProviderTest extends TestCase {
 		
 	}
 	
+	@Test
 	public void testSendMessage() {
 		LOGGER.info("testSendMessage");
 
@@ -174,6 +176,7 @@ public class KafkaCommunicationProviderTest extends TestCase {
 		// assertTrue(tester_2.isSuccess());
 	}
 
+	@Test
 	public void testSendNotification() {
 		LOGGER.info("testSendNotification");
 
@@ -204,6 +207,7 @@ public class KafkaCommunicationProviderTest extends TestCase {
 		assertTrue(tester_2.isSuccess());
 	}
 	
+	@Test
 	public void testSendRequestSync() {
 		LOGGER.info("testSendRequestSync");
 

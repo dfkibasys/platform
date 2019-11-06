@@ -11,7 +11,7 @@
 	<properties>
 		<bundle.symbolicName>de.dfki.cos.basys.platform.runtime.communication.provider.kafka</bundle.symbolicName>
 		<bundle.namespace>de.dfki.cos.basys.platform.runtime.communication.provider</bundle.namespace>
-		<kafka-version>2.3.0</kafka-version>
+		<kafka-version>2.3.1</kafka-version>
 	</properties>
 
 	<modelVersion>4.0.0</modelVersion>
