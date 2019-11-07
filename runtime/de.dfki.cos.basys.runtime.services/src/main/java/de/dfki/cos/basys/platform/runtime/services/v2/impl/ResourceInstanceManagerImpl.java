@@ -12,7 +12,6 @@ import de.dfki.cos.basys.platform.model.domain.resourceinstance.ResourceInstance
 import de.dfki.cos.basys.platform.model.domain.resourceinstance.ResourceinstancePackage;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
 import de.dfki.cos.basys.platform.runtime.component.service.EmfServiceComponent;
-import de.dfki.cos.basys.platform.runtime.component.v2.emf.EmfBasysComponent;
 import de.dfki.cos.basys.platform.runtime.services.ResourceInstanceManager;
 
 public class ResourceInstanceManagerImpl extends EmfBasysComponent implements ResourceInstanceManager {
@@ -23,7 +22,7 @@ public class ResourceInstanceManagerImpl extends EmfBasysComponent implements Re
 
 	@Override
 	public ResourceInstance getResourceInstance(String id) {
-		return client.getEntity(id);
+		return service.getEntity(id);
 	}
 
 	@Override
@@ -34,7 +33,7 @@ public class ResourceInstanceManagerImpl extends EmfBasysComponent implements Re
 
 	@Override
 	public ResourceInstanceRepository getResourceInstanceRepository() {
-		ResourceInstanceRepository repository = client.getFirstEntity(ResourceinstancePackage.eINSTANCE.getResourceInstanceRepository());
+		ResourceInstanceRepository repository = service.getFirstEntity(ResourceinstancePackage.eINSTANCE.getResourceInstanceRepository());
 		return repository;
 	}
 

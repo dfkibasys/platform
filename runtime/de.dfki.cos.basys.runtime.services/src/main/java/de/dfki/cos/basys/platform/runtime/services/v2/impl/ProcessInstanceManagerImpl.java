@@ -9,7 +9,6 @@ import de.dfki.cos.basys.platform.model.domain.processinstance.impl.Processinsta
 import de.dfki.cos.basys.platform.model.domain.processinstance.util.ProcessinstanceResourceFactoryImpl;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
 import de.dfki.cos.basys.platform.runtime.component.service.EmfServiceComponent;
-import de.dfki.cos.basys.platform.runtime.component.v2.emf.EmfBasysComponent;
 import de.dfki.cos.basys.platform.runtime.services.ProcessInstanceManager;
 
 public class ProcessInstanceManagerImpl extends EmfBasysComponent implements ProcessInstanceManager {
@@ -20,7 +19,7 @@ public class ProcessInstanceManagerImpl extends EmfBasysComponent implements Pro
 
 	@Override
 	public ProcessInstance getProcessInstance(String id) {
-		return client.getEntity(id);
+		return service.getEntity(id);
 	}
 
 	@Override
@@ -31,7 +30,7 @@ public class ProcessInstanceManagerImpl extends EmfBasysComponent implements Pro
 
 	@Override
 	public ProcessInstanceStore getProcessInstanceStore() {
-		ProcessInstanceStore store = client.getFirstEntity(ProcessinstancePackage.eINSTANCE.getProcessInstanceStore());
+		ProcessInstanceStore store = service.getFirstEntity(ProcessinstancePackage.eINSTANCE.getProcessInstanceStore());
 		return store;
 	}
 	

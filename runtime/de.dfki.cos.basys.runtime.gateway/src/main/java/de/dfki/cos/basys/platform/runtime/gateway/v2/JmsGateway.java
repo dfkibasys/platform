@@ -22,7 +22,7 @@ import org.slf4j.LoggerFactory;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import de.dfki.cos.basys.common.component.ComponentContext;
-import de.dfki.cos.basys.common.component.FunctionalClient;
+import de.dfki.cos.basys.common.component.ServiceConnection;
 import de.dfki.cos.basys.common.emf.json.JsonUtils;
 import de.dfki.cos.basys.platform.model.runtime.communication.Channel;
 import de.dfki.cos.basys.platform.model.runtime.communication.ChannelListener;
@@ -39,9 +39,8 @@ import de.dfki.cos.basys.platform.runtime.component.v2.BasysComponent;
 import de.dfki.cos.basys.platform.runtime.component.v2.BasysComponentContext;
 import de.dfki.cos.basys.platform.runtime.component.v2.StringConstants;
 import de.dfki.cos.basys.platform.runtime.gateway.Gateway;
-import de.dfki.cos.basys.platform.runtime.gateway.GatewayProvider;
 
-public class JmsGatewayProvider implements GatewayProvider, Gateway {
+public class JmsGateway implements ServiceConnection, Gateway {
 
 	public final Logger LOGGER;
 	private String id = null;
@@ -57,7 +56,7 @@ public class JmsGatewayProvider implements GatewayProvider, Gateway {
 	private Session session;
 	private boolean connected = false;
 
-	public JmsGatewayProvider(Properties config) {
+	public JmsGateway(Properties config) {
 		this.id = config.getProperty(StringConstants.id);
 		this.LOGGER = LoggerFactory.getLogger("basys.component." + id.replaceAll(" ", "-"));
 	}
@@ -123,11 +122,6 @@ public class JmsGatewayProvider implements GatewayProvider, Gateway {
 	@Override
 	public boolean isConnected() {
 		return connected;
-	}
-	
-	@Override
-	public Gateway getGateway() {		
-		return this;
 	}
 
 	@Override

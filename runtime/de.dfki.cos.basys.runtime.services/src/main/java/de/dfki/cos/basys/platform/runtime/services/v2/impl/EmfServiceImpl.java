@@ -1,4 +1,4 @@
-package de.dfki.cos.basys.platform.runtime.component.v2.emf;
+package de.dfki.cos.basys.platform.runtime.services.v2.impl;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import de.dfki.cos.basys.common.component.ComponentContext;
-import de.dfki.cos.basys.common.component.FunctionalClient;
+import de.dfki.cos.basys.common.component.ServiceConnection;
 import de.dfki.cos.basys.common.emf.EmfPersistence;
 import de.dfki.cos.basys.platform.model.domain.capability.CapabilityPackage;
 import de.dfki.cos.basys.platform.model.domain.capability.util.CapabilityResourceFactoryImpl;
@@ -46,8 +46,9 @@ import de.dfki.cos.basys.platform.model.domain.topology.util.TopologyResourceFac
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
 import de.dfki.cos.basys.platform.runtime.component.util.BasysResourceSetImpl;
 import de.dfki.cos.basys.platform.runtime.component.v2.BasysComponentContext;
+import de.dfki.cos.basys.platform.runtime.services.v2.EmfService;
 
-public class EmfClient implements FunctionalClient {
+public class EmfServiceImpl implements ServiceConnection, EmfService {
 
 	protected ResourceSet resourceSet;
 	URI uri;
@@ -55,13 +56,9 @@ public class EmfClient implements FunctionalClient {
 	
 	private final Logger LOGGER;
 	
-	public EmfClient(Properties config) {
+	public EmfServiceImpl(Properties config) {
 		this.config = config;
 		LOGGER = LoggerFactory.getLogger("EmfClient");
-	}
-
-	public void setResourceSet(ResourceSet resourceSet) {
-		this.resourceSet = resourceSet;
 	}
 	
 	@Override
@@ -105,6 +102,7 @@ public class EmfClient implements FunctionalClient {
 		return resourceSet!=null;
 	}
 
+	@Override
 	public <T extends EObject> T getEntity(String id) {
 		if (uri != null) {
 			return (T) resourceSet.getEObject(uri.appendFragment(id), true);
@@ -119,11 +117,13 @@ public class EmfClient implements FunctionalClient {
 		return null;
 	}
 
+	@Override
 	public void deleteEntity(String id) {
 		EObject entity = getEntity(id);
 		EcoreUtil.delete(entity, true);
 	}
 
+	@Override
 	public <T extends EObject> List<T> getAllEntities(EClass type, boolean pruneSearchOnMatch) {
 		List<T> result = new LinkedList<T>();
 		TreeIterator<EObject> it = resourceSet.getResource(uri, true).getAllContents();
@@ -140,6 +140,7 @@ public class EmfClient implements FunctionalClient {
 		return new ArrayList<T>(result);
 	}
 
+	@Override
 	public <T extends EObject> T getFirstEntity(EClass type) {
 		TreeIterator<EObject> it = resourceSet.getResource(uri, true).getAllContents();
 		while (it.hasNext()) {
@@ -151,6 +152,7 @@ public class EmfClient implements FunctionalClient {
 		return null;
 	}
 
+	@Override
 	public EObject findEntity(String property, String value) {
 		TreeIterator<EObject> it = resourceSet.getEObject(uri, true).eAllContents();
 		while (it.hasNext()) {

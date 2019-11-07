@@ -48,7 +48,7 @@ public class BasysControlComponent extends BasysComponent implements PackMLWaitS
 				return client;
 			}
 		});
-		this.client = getConnectionManager().getFunctionalClient(ControlComponentClient.class);
+		this.client = getConnectionManager().getServiceInterface(ControlComponentClient.class);
 	}
 	
 	@Override

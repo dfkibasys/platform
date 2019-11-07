@@ -7,7 +7,6 @@ import de.dfki.cos.basys.platform.model.domain.productinstance.ProductInstanceSt
 import de.dfki.cos.basys.platform.model.domain.productinstance.ProductinstancePackage;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
 import de.dfki.cos.basys.platform.runtime.component.service.EmfServiceComponent;
-import de.dfki.cos.basys.platform.runtime.component.v2.emf.EmfBasysComponent;
 import de.dfki.cos.basys.platform.runtime.services.ProductInstanceManager;
 
 public class ProductInstanceManagerImpl extends EmfBasysComponent implements ProductInstanceManager {
@@ -18,12 +17,12 @@ public class ProductInstanceManagerImpl extends EmfBasysComponent implements Pro
 
 	@Override
 	public ProductInstance getProductInstance(String id) {
-		return client.getEntity(id);
+		return service.getEntity(id);
 	}
 
 	@Override
 	public ProductInstanceStore getProductInstanceStore() {
-		ProductInstanceStore store = client.getFirstEntity(ProductinstancePackage.eINSTANCE.getProductInstanceStore());
+		ProductInstanceStore store = service.getFirstEntity(ProductinstancePackage.eINSTANCE.getProductInstanceStore());
 		return store;
 	}
 

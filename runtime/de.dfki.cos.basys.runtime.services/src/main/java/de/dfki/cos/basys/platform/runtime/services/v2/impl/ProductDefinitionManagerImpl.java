@@ -11,7 +11,6 @@ import de.dfki.cos.basys.platform.model.domain.productdefinition.impl.Productdef
 import de.dfki.cos.basys.platform.model.domain.productdefinition.util.ProductdefinitionResourceFactoryImpl;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
 import de.dfki.cos.basys.platform.runtime.component.service.EmfServiceComponent;
-import de.dfki.cos.basys.platform.runtime.component.v2.emf.EmfBasysComponent;
 import de.dfki.cos.basys.platform.runtime.services.ProductDefinitionManager;
 
 public class ProductDefinitionManagerImpl extends EmfBasysComponent implements ProductDefinitionManager {
@@ -22,22 +21,22 @@ public class ProductDefinitionManagerImpl extends EmfBasysComponent implements P
 
 	@Override
 	public ProductVariant getProductVariant(String id) {
-		return client.getEntity(id);
+		return service.getEntity(id);
 	}
 
 	@Override
 	public AssemblyGroup getAssemblyGroup(String assemblyGroupId) {
-		return client.getEntity(assemblyGroupId);
+		return service.getEntity(assemblyGroupId);
 	}
 
 	@Override
 	public ProductGroup getProductGroup(String productGroupId) {
-		return client.getEntity(productGroupId);
+		return service.getEntity(productGroupId);
 	}
 
 	@Override
 	public ProductCatalogue getProductCatalogue() {
-		ProductCatalogue catalogue = client.getFirstEntity(ProductdefinitionPackage.eINSTANCE.getProductCatalogue());
+		ProductCatalogue catalogue = service.getFirstEntity(ProductdefinitionPackage.eINSTANCE.getProductCatalogue());
 		return catalogue;
 	}
 

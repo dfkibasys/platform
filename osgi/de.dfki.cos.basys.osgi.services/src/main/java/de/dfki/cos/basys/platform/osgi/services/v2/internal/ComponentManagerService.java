@@ -131,15 +131,15 @@ public class ComponentManagerService extends OsgiComponentWrapper implements Com
 		impl.deleteComponent(id);
 	}
 
-	@Override
-	public de.dfki.cos.basys.common.component.Component createComponent(File configFile) throws ComponentManagerException {
-		return impl.createComponent(configFile);		
-	}
-
-	@Override
-	public void createComponents(File configFolder, boolean recursive) throws ComponentManagerException {
-		impl.createComponents(configFolder, recursive);
-	}
+//	@Override
+//	public de.dfki.cos.basys.common.component.Component createComponent(File configFile) throws ComponentManagerException {
+//		return impl.createComponent(configFile);		
+//	}
+//
+//	@Override
+//	public void createComponents(File configFolder, boolean recursive) throws ComponentManagerException {
+//		impl.createComponents(configFolder, recursive);
+//	}
 
 
 

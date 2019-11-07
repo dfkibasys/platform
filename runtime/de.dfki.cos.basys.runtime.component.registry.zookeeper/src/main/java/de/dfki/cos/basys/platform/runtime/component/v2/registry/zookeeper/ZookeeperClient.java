@@ -16,13 +16,13 @@ import org.apache.curator.x.discovery.details.JsonInstanceSerializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import de.dfki.cos.basys.common.component.ServiceConnection;
 import de.dfki.cos.basys.common.component.ComponentContext;
 import de.dfki.cos.basys.common.component.ComponentInfo;
-import de.dfki.cos.basys.common.component.FunctionalClient;
 import de.dfki.cos.basys.common.component.registry.ComponentRegistryObserver;
 import de.dfki.cos.basys.platform.runtime.component.v2.StringConstants;
 
-public class ZookeeperClient implements FunctionalClient, PathChildrenCacheListener {
+public class ZookeeperClient implements ServiceConnection, PathChildrenCacheListener {
 
 	public final Logger LOGGER;
 	

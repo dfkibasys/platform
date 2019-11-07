@@ -9,7 +9,6 @@ import de.dfki.cos.basys.platform.model.domain.processdefinition.impl.Processdef
 import de.dfki.cos.basys.platform.model.domain.processdefinition.util.ProcessdefinitionResourceFactoryImpl;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
 import de.dfki.cos.basys.platform.runtime.component.service.EmfServiceComponent;
-import de.dfki.cos.basys.platform.runtime.component.v2.emf.EmfBasysComponent;
 import de.dfki.cos.basys.platform.runtime.services.ProcessDefinitionManager;
 
 public class ProcessDefinitionManagerImpl extends EmfBasysComponent implements ProcessDefinitionManager {
@@ -20,7 +19,7 @@ public class ProcessDefinitionManagerImpl extends EmfBasysComponent implements P
 
 	@Override
 	public ProcessDefinition getProcessDefinition(String id) {
-		return client.getEntity(id);
+		return service.getEntity(id);
 	}
 
 	@Override
@@ -31,7 +30,7 @@ public class ProcessDefinitionManagerImpl extends EmfBasysComponent implements P
 
 	@Override
 	public List<ProcessDefinition> getAllProcessDefinitions() {
-		return client.getAllEntities(ProcessdefinitionPackage.eINSTANCE.getProcessDefinition(), false);
+		return service.getAllEntities(ProcessdefinitionPackage.eINSTANCE.getProcessDefinition(), false);
 	}
 
 }

@@ -10,7 +10,6 @@ import de.dfki.cos.basys.platform.model.domain.resourcetype.impl.ResourcetypePac
 import de.dfki.cos.basys.platform.model.domain.resourcetype.util.ResourcetypeResourceFactoryImpl;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
 import de.dfki.cos.basys.platform.runtime.component.service.EmfServiceComponent;
-import de.dfki.cos.basys.platform.runtime.component.v2.emf.EmfBasysComponent;
 import de.dfki.cos.basys.platform.runtime.services.ResourceTypeManager;
 
 public class ResourceTypeManagerImpl extends EmfBasysComponent implements ResourceTypeManager {
@@ -21,7 +20,7 @@ public class ResourceTypeManagerImpl extends EmfBasysComponent implements Resour
 
 	@Override
 	public ResourceType getResourceType(String id) {
-		return client.getEntity(id);
+		return service.getEntity(id);
 	}
 
 	@Override
@@ -32,7 +31,7 @@ public class ResourceTypeManagerImpl extends EmfBasysComponent implements Resour
 
 	@Override
 	public ResourceTypeCatalogueCollection getResourceTypeCatalogueCollection() {
-		ResourceTypeCatalogueCollection catalogueCollection = client.getFirstEntity(ResourcetypePackage.eINSTANCE.getResourceTypeCatalogueCollection());
+		ResourceTypeCatalogueCollection catalogueCollection = service.getFirstEntity(ResourcetypePackage.eINSTANCE.getResourceTypeCatalogueCollection());
 		return catalogueCollection;
 	}
 

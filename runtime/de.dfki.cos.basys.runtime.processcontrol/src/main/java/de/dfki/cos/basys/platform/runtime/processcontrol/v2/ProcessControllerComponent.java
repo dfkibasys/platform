@@ -28,26 +28,26 @@ import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
 import de.dfki.cos.basys.platform.runtime.component.v2.BasysComponent;
 import de.dfki.cos.basys.platform.runtime.processcontrol.ProcessController;
 import de.dfki.cos.basys.platform.runtime.processcontrol.TaskDescription;
-import de.dfki.cos.basys.platform.runtime.processcontrol.v2.camunda.CamundaProcessControlClient;
+import de.dfki.cos.basys.platform.runtime.processcontrol.v2.camunda.CamundaProcessControllerService;
 
 public class ProcessControllerComponent extends BasysComponent implements ProcessController {
 
-	private ProcessControlClient client;
+	private ProcessControllerService service;
 	
 	//ScheduledExecutorService executor = Executors.newScheduledThreadPool(32);
 	
 	public ProcessControllerComponent(Properties config) {
 		super(config);
-		connectionManager = new ConnectionManagerImpl(config, new Supplier<ProcessControlClient>() {
+		connectionManager = new ConnectionManagerImpl(config, new Supplier<CamundaProcessControllerService>() {
 			@Override
-			public ProcessControlClient get() {
-				CamundaProcessControlClient client = new CamundaProcessControlClient(config);
-				client.setController(ProcessControllerComponent.this);
-				return client;
+			public CamundaProcessControllerService get() {
+				CamundaProcessControllerService service = new CamundaProcessControllerService(config);
+				service.setController(ProcessControllerComponent.this);
+				return service;
 			}
 		});	
 		
-		this.client = connectionManager.getFunctionalClient(ProcessControlClient.class);
+		this.service = connectionManager.getServiceInterface(ProcessControllerService.class);
 	}
 	
 
@@ -60,7 +60,7 @@ public class ProcessControllerComponent extends BasysComponent implements Proces
 			return ce.getTask();
 		}, context.getScheduledExecutorService()).thenApply((ts) -> {
 			if (ts.getRequest().getCorrelationId() != null) {				
-				client.handleTaskResponse(ts);				
+				service.handleTaskResponse(ts);				
 			}
 			return ts.getResponse();
 		}).handle((response, ex) -> {

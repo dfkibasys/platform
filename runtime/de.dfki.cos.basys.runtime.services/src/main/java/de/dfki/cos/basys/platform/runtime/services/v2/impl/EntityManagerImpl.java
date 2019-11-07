@@ -12,7 +12,6 @@ import de.dfki.cos.basys.platform.model.domain.material.util.MaterialResourceFac
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
 import de.dfki.cos.basys.platform.runtime.component.service.EmfServiceComponent;
 import de.dfki.cos.basys.platform.runtime.component.v2.BasysComponent;
-import de.dfki.cos.basys.platform.runtime.component.v2.emf.EmfBasysComponent;
 import de.dfki.cos.basys.platform.runtime.services.EntityManager;
 import de.dfki.cos.basys.platform.runtime.services.MaterialManager;
 
@@ -24,7 +23,7 @@ public class EntityManagerImpl extends EmfBasysComponent implements EntityManage
 
 	@Override
 	public Entity getEntity(String id) {
-		return client.getEntity(id);
+		return service.getEntity(id);
 	}
 
 }

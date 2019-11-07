@@ -13,7 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import de.dfki.cos.basys.common.component.ComponentContext;
-import de.dfki.cos.basys.common.component.FunctionalClient;
+import de.dfki.cos.basys.common.component.ServiceConnection;
 import de.dfki.cos.basys.common.emf.json.JsonUtils;
 import de.dfki.cos.basys.platform.model.runtime.component.CommandRequest;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
@@ -35,9 +35,9 @@ import de.dfki.cos.basys.platform.runtime.processcontrol.ProcessController;
 import de.dfki.cos.basys.platform.runtime.processcontrol.ProcessControllerProvider;
 import de.dfki.cos.basys.platform.runtime.processcontrol.TaskDescription;
 import de.dfki.cos.basys.platform.runtime.processcontrol.impl.ProcessControllerImpl;
-import de.dfki.cos.basys.platform.runtime.processcontrol.v2.ProcessControlClient;
+import de.dfki.cos.basys.platform.runtime.processcontrol.v2.ProcessControllerService;
 
-public class CamundaProcessControlClient implements ProcessControlClient {
+public class CamundaProcessControllerService implements ServiceConnection, ProcessControllerService {
 
 	Logger LOGGER = LoggerFactory.getLogger(this.getClass().getName());
 	
@@ -57,7 +57,7 @@ public class CamundaProcessControlClient implements ProcessControlClient {
 	int maxRetryCount = 0;
 	int retryTimeout = 1000;
 	
-	public CamundaProcessControlClient(Properties config) {
+	public CamundaProcessControllerService(Properties config) {
 
 		if (config.getProperty("topic") != null) {
 			topic = config.getProperty("topic");

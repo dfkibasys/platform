@@ -18,7 +18,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import de.dfki.cos.basys.common.component.ComponentContext;
-import de.dfki.cos.basys.common.component.FunctionalClient;
+import de.dfki.cos.basys.common.component.ServiceConnection;
 import de.dfki.cos.basys.platform.model.runtime.communication.Channel;
 import de.dfki.cos.basys.platform.model.runtime.communication.ChannelListener;
 import de.dfki.cos.basys.platform.model.runtime.communication.Notification;
@@ -29,9 +29,8 @@ import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
 import de.dfki.cos.basys.platform.runtime.component.v2.BasysComponentContext;
 import de.dfki.cos.basys.platform.runtime.component.v2.StringConstants;
 import de.dfki.cos.basys.platform.runtime.gateway.Gateway;
-import de.dfki.cos.basys.platform.runtime.gateway.GatewayProvider;
 
-public class MqttGatewayProvider implements GatewayProvider, Gateway {
+public class MqttGateway implements ServiceConnection, Gateway {
 
 	public final Logger LOGGER;
 	private String id = null;
@@ -44,7 +43,7 @@ public class MqttGatewayProvider implements GatewayProvider, Gateway {
 	protected Map<String, Channel> incoming = new HashMap<>();
 
 	
-	public MqttGatewayProvider(Properties config) {
+	public MqttGateway(Properties config) {
 		this.id = config.getProperty(StringConstants.id);
 		this.LOGGER = LoggerFactory.getLogger("basys.component." + id.replaceAll(" ", "-"));
 	}
@@ -99,11 +98,6 @@ public class MqttGatewayProvider implements GatewayProvider, Gateway {
 	@Override
 	public boolean isConnected() {
 		return mqttClient.isConnected();
-	}
-	
-	@Override
-	public Gateway getGateway() {
-		return this;
 	}
 	
 	@Override

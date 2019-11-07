@@ -6,7 +6,6 @@ import de.dfki.cos.basys.platform.model.domain.linebalancing.LineBalancingAssign
 import de.dfki.cos.basys.platform.model.domain.order.Order;
 import de.dfki.cos.basys.platform.model.domain.order.OrderPackage;
 import de.dfki.cos.basys.platform.model.domain.order.OrderStore;
-import de.dfki.cos.basys.platform.runtime.component.v2.emf.EmfBasysComponent;
 import de.dfki.cos.basys.platform.runtime.services.OrderManager;
 
 public class OrderManagerImpl extends EmfBasysComponent implements OrderManager {
@@ -17,13 +16,13 @@ public class OrderManagerImpl extends EmfBasysComponent implements OrderManager 
 	
 	@Override
 	public OrderStore getOrderStore() {
-		OrderStore store = client.getFirstEntity(OrderPackage.eINSTANCE.getOrderStore());
+		OrderStore store = service.getFirstEntity(OrderPackage.eINSTANCE.getOrderStore());
 		return store;
 	}
 
 	@Override
 	public Order getOrder(String id) {
-		return client.getEntity(id);
+		return service.getEntity(id);
 	}
 
 	@Override
