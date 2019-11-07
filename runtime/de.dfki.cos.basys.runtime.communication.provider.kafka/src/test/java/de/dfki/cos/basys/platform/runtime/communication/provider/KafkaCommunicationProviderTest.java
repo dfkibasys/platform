@@ -1,6 +1,9 @@
 package de.dfki.cos.basys.platform.runtime.communication.provider;
 
 import static org.junit.Assert.*;
+
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
@@ -49,9 +52,12 @@ public class KafkaCommunicationProviderTest {
 	@After
 	public void tearDown() throws Exception {
 		LOGGER.info("tearDown");
-
+	
 		client_1.disconnect();
 		client_2.disconnect();
+		
+
+		//printClassPath();
 	}
 
 	@Test
@@ -147,10 +153,25 @@ public class KafkaCommunicationProviderTest {
 		
 	}
 	
+	protected void printClassPath() {
+		ClassLoader cl = ClassLoader.getSystemClassLoader();
+
+        URL[] urls = ((URLClassLoader)cl).getURLs();
+
+        System.out.println("####################################################");
+        System.out.println("");
+        for(URL url: urls){
+        	System.out.println(url.getFile());
+        }
+        System.out.println("");
+        System.out.println("####################################################");
+	}
+	
 	@Test
+	@Ignore
 	public void testSendMessage() {
 		LOGGER.info("testSendMessage");
-
+		
 		String message = "this is a test message!";
 		String prefix = UUID.randomUUID().toString();
 

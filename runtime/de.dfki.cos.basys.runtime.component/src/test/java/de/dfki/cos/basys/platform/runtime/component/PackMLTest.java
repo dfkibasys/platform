@@ -230,6 +230,8 @@ public class PackMLTest extends BaseComponentTest {
 		TestDeviceComponent comp = new TestDeviceComponent(config1);
 		comp.activate(context);
 
+		// switch to SOMULATION mode produces an additional STOPPED entry
+		assertEquals(State.STOPPED, comp.getState(true));
 		assertEquals(State.STOPPED, comp.getState(true));
 			
 		comp.reset();
@@ -262,6 +264,8 @@ public class PackMLTest extends BaseComponentTest {
 		TestDeviceComponent comp = new TestDeviceComponent(config1);
 		comp.activate(context);
 
+		// switch to SOMULATION mode produces an additional STOPPED entry
+		assertEquals(State.STOPPED, comp.getState(true));
 		assertEquals(State.STOPPED, comp.getState(true));
 			
 		comp.reset();

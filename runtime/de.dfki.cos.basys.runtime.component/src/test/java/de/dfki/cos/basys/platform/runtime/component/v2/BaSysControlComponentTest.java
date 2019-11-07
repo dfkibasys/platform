@@ -6,6 +6,7 @@ import java.io.File;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import de.dfki.cos.basys.common.component.Component;
@@ -32,6 +33,7 @@ public class BaSysControlComponentTest extends BaseComponentTest {
 	}
 
 	@Test
+	@Ignore
 	public void testSingleConnectToBackend() throws ComponentException, ComponentManagerException {		
 		componentManager.activate(context);
 		componentManager.createComponent(new File(StringConstants.testConfigurationFolder + "/controlcomponents/component-2.json"));
@@ -45,7 +47,11 @@ public class BaSysControlComponentTest extends BaseComponentTest {
 	}
 
 	@Test
+	@Ignore
 	public void testHandleOperationModeRequest() throws ComponentException, ComponentManagerException {		
+		
+		printClassPath();
+		
 		componentManager.activate(context);
 		BasysControlComponent c = (BasysControlComponent) componentManager.createComponent(new File(StringConstants.testConfigurationFolder + "/controlcomponents/component-3.json"));
 		assertEquals(true, c.isConnectedToBasys());			
