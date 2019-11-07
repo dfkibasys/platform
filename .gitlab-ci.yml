@@ -14,19 +14,23 @@ stages:
   - test
   - deploy
 
-build:
+install_skip_tests:
   stage: build
   script:
-    - mvn -V $MAVEN_CLI_OPTS install -DskipTests
+    - mvn -V $MAVEN_CLI_OPTS clean install -DskipTests
+  except:
+    - master
+    - deploy
 
-test:
+install:
   stage: test
   script:
-    - mvn $MAVEN_CLI_OPTS test
+    - mvn $MAVEN_CLI_OPTS clean install
 
 deploy:
   stage: deploy
   script:
-    - mvn $MAVEN_CLI_OPTS deploy
+    - mvn $MAVEN_CLI_OPTS clean deploy
   only:
     - master
+    - deploy
