@@ -20,7 +20,7 @@ install_skip_tests:
     - mvn -V $MAVEN_CLI_OPTS clean install -DskipTests
   except:
     - master
-    - deploy
+    - develop
 
 install:
   stage: test
@@ -33,4 +33,4 @@ deploy:
     - mvn $MAVEN_CLI_OPTS clean deploy
   only:
     - master
-    - deploy
+    - develop
