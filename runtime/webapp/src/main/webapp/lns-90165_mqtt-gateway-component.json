@@ -1,0 +1,9 @@
+{
+  "id" : "mqtt-gateway",
+  "name" : "mqtt-gateway",
+  "nategory" : "MANAGEMENT_COMPONENT",
+  "implementationJavaClass" : "de.dfki.cos.basys.platform.runtime.gateway.v2.MqttGatewayComponent",
+  "serviceConnectionString" : "tcp://lns-90165.sb.dfki.de:1883",
+  "incoming.to_processcontrol" :"basys/components/command process-controller#in",
+  "outgoing.to_dashboard" : "basys#components#status#> hybrit/devices"
+}

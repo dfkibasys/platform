@@ -29,7 +29,6 @@
 		<module>de.dfki.cos.basys.runtime.processcontrol</module>
 		<module>de.dfki.cos.basys.runtime.services</module>
         <module>de.dfki.cos.basys.runtime.services.worldmodelManager</module>
-        <module>webapp</module>
 	</modules>
 
 </project>
