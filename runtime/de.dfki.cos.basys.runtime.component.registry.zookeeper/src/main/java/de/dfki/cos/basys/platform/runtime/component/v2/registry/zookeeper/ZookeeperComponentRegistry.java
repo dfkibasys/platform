@@ -42,8 +42,8 @@ public class ZookeeperComponentRegistry extends BaseComponent implements Compone
 	public ZookeeperComponentRegistry(Properties config) {
 		super(config);	
 		
-		if (!config.contains(StringConstants.connectionString)) {
-			config.setProperty(StringConstants.connectionString, defaultConnectionString);			
+		if (!config.contains(StringConstants.serviceConnectionString)) {
+			config.setProperty(StringConstants.serviceConnectionString, defaultConnectionString);			
 			LOGGER.warn("External connection string not provided. Defaulting to " + defaultConnectionString);
 		}
 		

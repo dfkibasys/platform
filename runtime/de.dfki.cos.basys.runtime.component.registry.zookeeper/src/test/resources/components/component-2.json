@@ -2,7 +2,7 @@
   "id": "component-2",
   "name": "component-2",
   "category" : "DEVICE_COMPONENT",
-  "externalConnectionString": "",
+  "serviceConnectionString": "",
   "implementationJavaClass": "de.dfki.cos.basys.platform.runtime.component.v2.BasysComponent",
   "inChannelName" : "component-2#in",
   "outChannelName" : "component-2#out",

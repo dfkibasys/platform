@@ -48,14 +48,14 @@ public class BaseComponentTest {
 		managerConfig.put(StringConstants.id, "component-manager");
 		managerConfig.put(StringConstants.name, "component-manager");
 		managerConfig.put(StringConstants.category, StringConstants.categoryManagement);
-		managerConfig.put(StringConstants.connectionString, StringConstants.testConfigurationFolder);
+		managerConfig.put(StringConstants.serviceConnectionString, StringConstants.testConfigurationFolder);
 		managerConfig.put("recursive", "true");
 		
 		registryConfig = new Properties();
 		registryConfig.put(StringConstants.id, "component-registry");
 		registryConfig.put(StringConstants.name, "component-registry");
 		registryConfig.put(StringConstants.category, StringConstants.categoryManagement);
-		registryConfig.put(StringConstants.connectionString, ZookeeperComponentRegistry.defaultConnectionString);
+		registryConfig.put(StringConstants.serviceConnectionString, ZookeeperComponentRegistry.defaultConnectionString);
 
 		config1 = new Properties();
 		config1.put(StringConstants.id, "component-1");

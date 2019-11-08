@@ -27,7 +27,7 @@ public class MiddlewareConnectionTest extends BaseComponentTest {
 
 	@Test
 	public void testSingleConnectToMiddleware() throws ComponentException, ComponentManagerException {
-		managerConfig.put(StringConstants.connectionString, StringConstants.testConfigurationFolder + "/controlcomponents/component-1.json");
+		managerConfig.put(StringConstants.serviceConnectionString, StringConstants.testConfigurationFolder + "/controlcomponents/component-1.json");
 		componentManager.activate(context);
 		//componentManager.createComponent(new File(StringConstants.testConfigurationFolder + "/component-1.json"));
 		
@@ -41,7 +41,7 @@ public class MiddlewareConnectionTest extends BaseComponentTest {
 
 	@Test
 	public void testMultiConnectToMiddleware() throws ComponentException {
-		managerConfig.put(StringConstants.connectionString, StringConstants.testConfigurationFolder);
+		managerConfig.put(StringConstants.serviceConnectionString, StringConstants.testConfigurationFolder);
 		managerConfig.put("recursive", "true");
 		componentManager.activate(context);
 		
