@@ -26,9 +26,10 @@ public class MiddlewareConnectionTest extends BaseComponentTest {
 	}
 
 	@Test
-	public void testSingleConnectToMiddleware() throws ComponentException, ComponentManagerException {		
+	public void testSingleConnectToMiddleware() throws ComponentException, ComponentManagerException {
+		managerConfig.put(StringConstants.connectionString, StringConstants.testConfigurationFolder + "/controlcomponents/component-1.json");
 		componentManager.activate(context);
-		componentManager.createComponent(new File(StringConstants.testConfigurationFolder + "/component-1.json"));
+		//componentManager.createComponent(new File(StringConstants.testConfigurationFolder + "/component-1.json"));
 		
 		for (Component component : componentManager.getComponents()) {
 			BasysComponent c = (BasysComponent) component;

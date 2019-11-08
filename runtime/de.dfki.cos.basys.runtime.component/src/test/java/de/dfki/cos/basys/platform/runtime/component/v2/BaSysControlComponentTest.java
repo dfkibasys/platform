@@ -34,9 +34,10 @@ public class BaSysControlComponentTest extends BaseComponentTest {
 
 	@Test
 	@Ignore
-	public void testSingleConnectToBackend() throws ComponentException, ComponentManagerException {		
+	public void testSingleConnectToBackend() throws ComponentException, ComponentManagerException {
+		managerConfig.put(StringConstants.connectionString, StringConstants.testConfigurationFolder + "/controlcomponents/component-1.json");
 		componentManager.activate(context);
-		componentManager.createComponent(new File(StringConstants.testConfigurationFolder + "/controlcomponents/component-2.json"));
+		//componentManager.createComponent(new File(StringConstants.testConfigurationFolder + "/controlcomponents/component-2.json"));
 		
 		for (Component component : componentManager.getComponents()) {
 			BasysComponent c = (BasysComponent) component;
@@ -49,11 +50,10 @@ public class BaSysControlComponentTest extends BaseComponentTest {
 	@Test
 	@Ignore
 	public void testHandleOperationModeRequest() throws ComponentException, ComponentManagerException {		
-		
-		printClassPath();
-		
+		managerConfig.put(StringConstants.connectionString, StringConstants.testConfigurationFolder + "/controlcomponents/component-1.json");
 		componentManager.activate(context);
-		BasysControlComponent c = (BasysControlComponent) componentManager.createComponent(new File(StringConstants.testConfigurationFolder + "/controlcomponents/component-3.json"));
+		//BasysControlComponent c = (BasysControlComponent) componentManager.createComponent(new File(StringConstants.testConfigurationFolder + "/controlcomponents/component-3.json"));
+		BasysControlComponent c = (BasysControlComponent) (componentManager.getComponents().get(0));
 		assertEquals(true, c.isConnectedToBasys());			
 		assertEquals(true, c.isConnected());
 		
