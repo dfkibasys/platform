@@ -2,6 +2,7 @@ package de.dfki.cos.basys.platform.runtime.webapp;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 //import javax.servlet.annotation.WebServlet;
@@ -53,6 +54,29 @@ public class TestServlet extends HttpServlet {
 	            writer.println(request.getServerPort());
 	        } else if ("getServletPath".equals(request.getParameter("function"))) {
 	            writer.println(request.getServletPath());
+	        } else if ("getResourcePaths".equals(request.getParameter("function"))) {
+	        	writer.println("Path: " + request.getParameter("path"));
+	        	Set<String> paths = getServletContext().getResourcePaths(request.getParameter("path"));
+	    		for (String path : paths) {
+	    			writer.println(path);
+	    		}	        	
+	        } else if ("loadClass".equals(request.getParameter("function"))) {
+	        	writer.println("Class: " + request.getParameter("class"));
+	        	try {
+		        	writer.println("1st try");
+		        	writer.println("Using ClassLoader: " + this.getClass().getClassLoader().toString());
+					Class c = Class.forName(request.getParameter("class"));
+				} catch (ClassNotFoundException e) {
+					e.printStackTrace();
+					try {
+			        	writer.println("2nd try");
+			        	writer.println("Using ClassLoader: " + getServletContext().getClassLoader().toString());
+						Class c = Class.forName(request.getParameter("class"),true, getServletContext().getClassLoader());
+					} catch (ClassNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}	        	      	
 	        } else {
 	            writer.println("INVALID FUNCTION");
 	        }

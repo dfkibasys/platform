@@ -71,7 +71,7 @@ public class MqttGateway implements ServiceConnection, Gateway {
 
 				}
 			}).waitForCompletion();
-			return true;
+			return mqttClient.isConnected();
 		} catch (MqttException e) {
 			LOGGER.warn("MqttClient \"" + id + "\" cannot connect to \"" + connectionString + "\"", e);
 			return false;
@@ -96,8 +96,8 @@ public class MqttGateway implements ServiceConnection, Gateway {
 	}
 
 	@Override
-	public boolean isConnected() {
-		return mqttClient.isConnected();
+	public boolean isConnected() {		
+		return (mqttClient != null) ? mqttClient.isConnected() : false;
 	}
 	
 	@Override

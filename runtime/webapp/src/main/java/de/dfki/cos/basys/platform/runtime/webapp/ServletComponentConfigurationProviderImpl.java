@@ -1,16 +1,9 @@
 package de.dfki.cos.basys.platform.runtime.webapp;
 
-import java.io.File;
-import java.io.FileFilter;
-import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
-
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.InputStreamReader;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
@@ -18,19 +11,12 @@ import java.util.Set;
 
 import javax.servlet.ServletContext;
 
-import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.io.filefilter.SuffixFileFilter;
-import org.eclipse.emf.common.util.URI;
-
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 
-import de.dfki.cos.basys.common.component.Component;
 import de.dfki.cos.basys.common.component.ComponentContext;
 import de.dfki.cos.basys.common.component.ServiceConnection;
-import de.dfki.cos.basys.common.component.StringConstants;
 import de.dfki.cos.basys.common.component.manager.ComponentConfigurationProvider;
-import de.dfki.cos.basys.common.component.manager.ComponentManagerException;
 
 public class ServletComponentConfigurationProviderImpl implements ComponentConfigurationProvider, ServiceConnection {
 
@@ -56,8 +42,15 @@ public class ServletComponentConfigurationProviderImpl implements ComponentConfi
 	
 	@Override
 	public boolean connect(ComponentContext context, String connectionString) {
-		resourcePaths = servletContext.getResourcePaths(connectionString);
-		return resourcePaths != null;
+		resourcePaths = new HashSet<>();
+		try {
+			doRetrieveMatchingServletContextResources(servletContext, connectionString, resourcePaths);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//resourcePaths = servletContext.getResourcePaths(connectionString);		
+		return resourcePaths.size() > 0;
 	}
 
 	@Override
@@ -80,13 +73,14 @@ public class ServletComponentConfigurationProviderImpl implements ComponentConfi
 	@Override
 	public Properties getComponentConfiguration(String path) {
 		try {
+			InputStream input = servletContext.getResourceAsStream(path);
 			if (path.endsWith(".properties")) {
-				InputStream input = servletContext.getResourceAsStream(path);
 				Properties config = new Properties();		
 				config.load(input);
 				return config;
 			} else if (path.endsWith(".json")) {
-				JsonReader reader = new JsonReader(new FileReader(path));
+				InputStreamReader isreader = new InputStreamReader(input);
+				JsonReader reader = new JsonReader(isreader);
 				Properties config = gson.fromJson(reader, Properties.class);
 				return config;
 			}
@@ -96,4 +90,24 @@ public class ServletComponentConfigurationProviderImpl implements ComponentConfi
 		return null;
 	}
 
+	protected void doRetrieveMatchingServletContextResources(
+			ServletContext servletContext, String dir, Set<String> result)
+			throws IOException {
+
+		Set<String> candidates = servletContext.getResourcePaths(dir);
+		if (candidates != null) {
+		
+			for (String currPath : candidates) {				
+				if (currPath.endsWith("/") && recursive) {
+					doRetrieveMatchingServletContextResources(servletContext, currPath, result);
+				}
+				
+				if (currPath.endsWith(".properties") || currPath.endsWith(".json")) {
+					result.add(currPath);
+				}
+				
+			}
+		}
+	}
+	
 }

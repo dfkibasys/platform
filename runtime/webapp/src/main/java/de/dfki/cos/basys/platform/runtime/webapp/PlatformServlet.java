@@ -11,6 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import de.dfki.cos.basys.common.component.StringConstants;
 import de.dfki.cos.basys.common.component.manager.ComponentManagerException;
 import de.dfki.cos.basys.common.component.manager.impl.ComponentManagerImpl;
 import de.dfki.cos.basys.platform.model.runtime.communication.Authentication;
@@ -23,6 +27,7 @@ import de.dfki.cos.basys.platform.runtime.component.v2.registry.zookeeper.Zookee
 public class PlatformServlet extends HttpServlet {
 
 	private static final long serialVersionUID = -7909626257191251148L;
+	private final Logger LOGGER;
 	
 	Client communicationClient;
 	ChannelPool channelPool;
@@ -30,19 +35,20 @@ public class PlatformServlet extends HttpServlet {
 	ComponentManagerImpl componentManager;
 	BasysComponentContext context;
 	
-	boolean debug = true;
+	boolean debug = false;
 	
 	public PlatformServlet() {
-		// TODO Auto-generated constructor stub
+		LOGGER = LoggerFactory.getLogger("basys.servlet");
 	}
 
 	@Override
 	public void init() throws ServletException {
-		System.out.println("Servlet " + this.getServletName() + " has started");
-
+		LOGGER.info("Servlet " + this.getServletName() + " has started");		
+		LOGGER.info("Servlet-ClassLoader: " + getServletContext().getClassLoader().toString());
+		
 		if (debug) return;
 		
-		try {			
+		try {						
 			createChannelPool();
 			createComponentRegistry();
 			createComponentManager();
@@ -57,7 +63,8 @@ public class PlatformServlet extends HttpServlet {
 			componentManager.addComponent(componentRegistry);			
 			
 		} catch (IOException | de.dfki.cos.basys.common.component.ComponentException | ComponentManagerException e) {
-			throw new ServletException(e);
+			//throw new ServletException(e);
+			e.printStackTrace();
 		}
 		
 	}
@@ -79,8 +86,8 @@ public class PlatformServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		
-		System.out.println("Servlet " + this.getServletName() + " has stopped");
+
+		LOGGER.info("Servlet " + this.getServletName() + " has stopped");
 	}
 	
 
@@ -113,14 +120,9 @@ public class PlatformServlet extends HttpServlet {
 			}
 		}
 
-		if (config.containsKey("implementationJavaClass") ) {
-
-			String providerImplementationJavaClass = config.getProperty("implementationJavaClass");
-			
-			String connectionString = null;
-			if (config.containsKey("connectionString"))			
-				connectionString = config.getProperty("externalConnectionString");
-
+		if (config.containsKey(StringConstants.serviceImplementationJavaClass) ) {
+			String providerImplementationJavaClass = config.getProperty(StringConstants.serviceImplementationJavaClass);			
+			String connectionString = config.getProperty(StringConstants.serviceConnectionString);
 			channelPool = CommFactory.getInstance().connectChannelPool(communicationClient, connectionString, providerImplementationJavaClass);
 		}
 	}
