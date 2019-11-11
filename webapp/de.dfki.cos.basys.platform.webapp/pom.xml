@@ -12,12 +12,12 @@
 
 	<properties>
 		<bundle.symbolicName>BaSys 4.2 Platform</bundle.symbolicName>
-		<bundle.namespace>de.dfki.cos.basys.platform.runtime.webapp</bundle.namespace>
+		<bundle.namespace>de.dfki.cos.basys.platform.webapp</bundle.namespace>
 	</properties>
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>de.dfki.cos.basys.platform.runtime</groupId>
-	<artifactId>webapp</artifactId>
+	<groupId>de.dfki.cos.basys.platform.webapp</groupId>
+	<artifactId>de.dfki.cos.basys.platform.webapp</artifactId>
 
 	<name>${bundle.symbolicName}</name>
 
@@ -95,7 +95,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>basys-platform</finalName>
+		<finalName>basys-platform-webapp</finalName>
 
 		<plugins>
 			<!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-maven-plugin -->
