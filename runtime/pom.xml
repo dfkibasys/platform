@@ -20,16 +20,19 @@
 		<module>de.dfki.cos.basys.runtime.communication.provider.kafka</module>
 		<module>de.dfki.cos.basys.runtime.component</module>
 		<module>de.dfki.cos.basys.runtime.component.registry.zookeeper</module>
+		<!-- deprecated
 		<module>de.dfki.cos.basys.runtime.component.device.rest</module>
 		<module>de.dfki.cos.basys.runtime.component.device.opcua</module>
 		<module>de.dfki.cos.basys.runtime.component.device.mqtt</module>
 		<module>de.dfki.cos.basys.runtime.component.device.ros</module>
 		<module>de.dfki.cos.basys.runtime.component.device.xmlrpc</module>
+		-->
 		<module>de.dfki.cos.basys.runtime.gateway</module>
 		<module>de.dfki.cos.basys.runtime.processcontrol</module>
 		<module>de.dfki.cos.basys.runtime.services</module>
-        <module>de.dfki.cos.basys.runtime.services.worldmodelManager</module>
-        <module>webapp</module>
+        <!-- deprecated
+		<module>de.dfki.cos.basys.runtime.services.worldmodelManager</module>
+		-->
 	</modules>
 
 </project>
