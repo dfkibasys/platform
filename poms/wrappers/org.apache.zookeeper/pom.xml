@@ -12,7 +12,7 @@
     <bundle.symbolicName>org.apache.zookeeper</bundle.symbolicName>
     <wrapped.groupId>org.apache.zookeeper</wrapped.groupId>
     <wrapped.artifactId>zookeeper</wrapped.artifactId>
-    <wrapped.version>3.5.4-beta</wrapped.version>
+    <wrapped.version>3.5.6</wrapped.version>
   </properties>
 
   <modelVersion>4.0.0</modelVersion>
@@ -29,6 +29,20 @@
       <artifactId>${wrapped.artifactId}</artifactId>
       <version>${wrapped.version}</version>
       <optional>true</optional>
+      <exclusions>
+      	<exclusion>
+          <groupId>log4j</groupId>
+          <artifactId>log4j</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-log4j12</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-api</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
   </dependencies>
 

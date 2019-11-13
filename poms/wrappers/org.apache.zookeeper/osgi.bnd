@@ -7,6 +7,7 @@
 # to also inline dependencies of this artifact add Embed-Transitive: true
 #
 Embed-Dependency: *;scope=compile|runtime;type=!pom;inline=true
+Embed-Transitive: true
 Import-Package: \
 	!jline.console.completer,\
 	*
