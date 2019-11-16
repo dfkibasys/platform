@@ -19,7 +19,7 @@ import javax.jms.Topic;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import de.dfki.cos.basys.common.component.ServiceConnection;
-import de.dfki.cos.basys.common.component.impl.ConnectionManagerImpl;
+import de.dfki.cos.basys.common.component.impl.ServiceManagerImpl;
 import de.dfki.cos.basys.common.emf.json.JsonUtils;
 import de.dfki.cos.basys.platform.model.runtime.communication.Channel;
 import de.dfki.cos.basys.platform.model.runtime.communication.ChannelListener;

@@ -8,7 +8,7 @@ import java.util.function.Supplier;
 
 import de.dfki.cos.basys.common.component.ComponentOrderStatus;
 import de.dfki.cos.basys.common.component.OrderStatus;
-import de.dfki.cos.basys.common.component.impl.ConnectionManagerImpl;
+import de.dfki.cos.basys.common.component.impl.ServiceManagerImpl;
 import de.dfki.cos.basys.controlcomponent.ExecutionCommand;
 import de.dfki.cos.basys.controlcomponent.ExecutionMode;
 import de.dfki.cos.basys.controlcomponent.OccupationLevel;
@@ -40,7 +40,7 @@ public class BasysControlComponent extends BasysComponent implements PackMLWaitS
 	
 	public BasysControlComponent(Properties config) {
 		super(config);
-		connectionManager = new ConnectionManagerImpl(config, new Supplier<ControlComponentClient>() {
+		connectionManager = new ServiceManagerImpl(config, new Supplier<ControlComponentClient>() {
 			@Override
 			public ControlComponentClient get() {
 				ControlComponentClient client = new ControlComponentClient(config);
@@ -48,7 +48,7 @@ public class BasysControlComponent extends BasysComponent implements PackMLWaitS
 				return client;
 			}
 		});
-		this.client = getConnectionManager().getServiceInterface(ControlComponentClient.class);
+		this.client = getServiceManager().getServiceInterface(ControlComponentClient.class);
 	}
 	
 	@Override

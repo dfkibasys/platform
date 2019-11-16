@@ -12,7 +12,7 @@ import java.util.function.Supplier;
 
 import org.eclipse.emf.ecore.EObject;
 
-import de.dfki.cos.basys.common.component.impl.ConnectionManagerImpl;
+import de.dfki.cos.basys.common.component.impl.ServiceManagerImpl;
 import de.dfki.cos.basys.common.emf.json.JsonUtils;
 import de.dfki.cos.basys.platform.model.runtime.communication.Channel;
 import de.dfki.cos.basys.platform.model.runtime.communication.Notification;
@@ -38,7 +38,7 @@ public class ProcessControllerComponent extends BasysComponent implements Proces
 	
 	public ProcessControllerComponent(Properties config) {
 		super(config);
-		connectionManager = new ConnectionManagerImpl(config, new Supplier<CamundaProcessControllerService>() {
+		connectionManager = new ServiceManagerImpl(config, new Supplier<CamundaProcessControllerService>() {
 			@Override
 			public CamundaProcessControllerService get() {
 				CamundaProcessControllerService service = new CamundaProcessControllerService(config);

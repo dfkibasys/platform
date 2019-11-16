@@ -15,7 +15,7 @@ import de.dfki.cos.basys.common.component.Component;
 import de.dfki.cos.basys.common.component.ComponentInfo;
 import de.dfki.cos.basys.common.component.StringConstants;
 import de.dfki.cos.basys.common.component.impl.BaseComponent;
-import de.dfki.cos.basys.common.component.impl.ConnectionManagerImpl;
+import de.dfki.cos.basys.common.component.impl.ServiceManagerImpl;
 import de.dfki.cos.basys.common.component.registry.ComponentRegistration;
 import de.dfki.cos.basys.common.component.registry.ComponentRegistrationException;
 import de.dfki.cos.basys.common.component.registry.ComponentRegistry;
@@ -47,7 +47,7 @@ public class ZookeeperComponentRegistry extends BaseComponent implements Compone
 			LOGGER.warn("External connection string not provided. Defaulting to " + defaultConnectionString);
 		}
 		
-		connectionManager = new ConnectionManagerImpl(config, ZookeeperClient::new);
+		connectionManager = new ServiceManagerImpl(config, ZookeeperClient::new);
 		client = connectionManager.getServiceInterface(ZookeeperClient.class);		
 		client.setObserver(this);
 	}
