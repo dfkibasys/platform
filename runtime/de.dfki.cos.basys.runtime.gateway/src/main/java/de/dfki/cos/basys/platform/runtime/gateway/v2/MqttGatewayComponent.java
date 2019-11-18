@@ -10,7 +10,7 @@ public class MqttGatewayComponent extends AbstractGatewayComponent {
 	public MqttGatewayComponent(Properties config) {
 		super(config);
 
-		connectionManager = new ServiceManagerImpl(config, new Supplier<MqttGateway>() {
+		serviceManager = new ServiceManagerImpl(config, new Supplier<MqttGateway>() {
 			@Override
 			public MqttGateway get() {
 				MqttGateway client = new MqttGateway(config);

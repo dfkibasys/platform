@@ -40,7 +40,7 @@ public abstract class AbstractGatewayComponent extends BasysComponent implements
 	protected void doActivate() throws de.dfki.cos.basys.common.component.ComponentException {
 		super.doActivate();
 		
-		Gateway gw = connectionManager.getServiceInterface(Gateway.class);
+		Gateway gw = getService(Gateway.class);
 		
 		if (isConnected()) {					
 			for (String key : config.stringPropertyNames()) {
@@ -60,13 +60,13 @@ public abstract class AbstractGatewayComponent extends BasysComponent implements
 	
 	@Override
 	public void installOutgoingChannel(String internalChannelName, String externalChannelName) {
-		Gateway gw = connectionManager.getServiceInterface(Gateway.class);
+		Gateway gw = getService(Gateway.class);
 		gw.installOutgoingChannel(internalChannelName, externalChannelName);		
 	}
 
 	@Override
 	public void installIncomingChannel(String externalChannelName, String internalChannelName) {
-		Gateway gw = connectionManager.getServiceInterface(Gateway.class);
+		Gateway gw = getService(Gateway.class);
 		gw.installIncomingChannel(externalChannelName, internalChannelName);		
 	}
 

@@ -10,7 +10,7 @@ public class JmsGatewayComponent extends AbstractGatewayComponent {
 	public JmsGatewayComponent(Properties config) {
 		super(config);
 
-		connectionManager = new ServiceManagerImpl(config, new Supplier<JmsGateway>() {
+		serviceManager = new ServiceManagerImpl(config, new Supplier<JmsGateway>() {
 			@Override
 			public JmsGateway get() {
 				JmsGateway gateway = new JmsGateway(config);

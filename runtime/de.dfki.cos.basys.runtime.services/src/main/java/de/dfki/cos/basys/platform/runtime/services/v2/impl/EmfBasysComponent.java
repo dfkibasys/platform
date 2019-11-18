@@ -14,14 +14,14 @@ public class EmfBasysComponent extends BasysComponent {
 	public EmfBasysComponent(Properties config) {
 		super(config);
 		
-		connectionManager = new ServiceManagerImpl(config, new Supplier<EmfServiceImpl>() {
+		serviceManager = new ServiceManagerImpl<EmfService>(config, new Supplier<EmfServiceImpl>() {
 			@Override
 			public EmfServiceImpl get() {
 				EmfServiceImpl client = new EmfServiceImpl(config);
 				return client;
 			}
 		});		
-		this.service = connectionManager.getServiceInterface(EmfService.class);
+		this.service = getService(EmfService.class);
 	}
 
 }

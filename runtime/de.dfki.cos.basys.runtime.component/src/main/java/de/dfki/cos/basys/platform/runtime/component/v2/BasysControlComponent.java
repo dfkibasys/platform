@@ -33,14 +33,12 @@ import de.dfki.cos.basys.platform.model.runtime.component.Variable;
 import de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentRequestStatusImpl;
 
 public class BasysControlComponent extends BasysComponent implements PackMLWaitStatesHandler {
-
-	ControlComponentClient client;
 	
 	OperationModeRequest currentOperationModeRequest;
 	
 	public BasysControlComponent(Properties config) {
 		super(config);
-		connectionManager = new ServiceManagerImpl(config, new Supplier<ControlComponentClient>() {
+		serviceManager = new ServiceManagerImpl<ControlComponentClient>(config, new Supplier<ControlComponentClient>() {
 			@Override
 			public ControlComponentClient get() {
 				ControlComponentClient client = new ControlComponentClient(config);
@@ -48,7 +46,6 @@ public class BasysControlComponent extends BasysComponent implements PackMLWaitS
 				return client;
 			}
 		});
-		this.client = getServiceManager().getServiceInterface(ControlComponentClient.class);
 	}
 	
 	@Override
@@ -97,6 +94,7 @@ public class BasysControlComponent extends BasysComponent implements PackMLWaitS
 		
 		ComponentOrderStatus status = null;		
 		String occupierId = req.getOccupierId();
+		ControlComponentClient client = getService();
 		status = client.occupy(occupierId);
 		if (status.getStatus() == OrderStatus.DONE) {
 			currentOperationModeRequest = req;
@@ -115,6 +113,7 @@ public class BasysControlComponent extends BasysComponent implements PackMLWaitS
 	protected ComponentRequestStatus handleExecutionCommandRequest(ExecutionCommandRequest req) {
 		LOGGER.info(String.format("handleExecutionCommandRequest '%s' (occupierId = %s)", req.getExecutionCommand(), req.getOccupierId()));
 		
+		ControlComponentClient client = getService();
 		ComponentOrderStatus order = client.raiseExecutionCommand(ExecutionCommand.get(req.getExecutionCommand().getLiteral()), req.getOccupierId());
 	
 		ComponentRequestStatus status = new ComponentRequestStatusImpl.Builder()
@@ -129,6 +128,7 @@ public class BasysControlComponent extends BasysComponent implements PackMLWaitS
 	protected ComponentRequestStatus handleExecutionModeRequest(ExecutionModeRequest req) {
 		LOGGER.info(String.format("handleExecutionModeRequest '%s' (occupierId = %s)", req.getExecutionMode(), req.getOccupierId()));
 		
+		ControlComponentClient client = getService();
 		ComponentOrderStatus order = client.setExecutionMode(ExecutionMode.get(req.getExecutionMode().getLiteral()), req.getOccupierId());
 	
 		ComponentRequestStatus status = new ComponentRequestStatusImpl.Builder()
@@ -143,6 +143,7 @@ public class BasysControlComponent extends BasysComponent implements PackMLWaitS
 	protected ComponentRequestStatus handleOccupationLevelRequest(OccupationLevelRequest req) {
 		LOGGER.info(String.format("handleOccupationLevelRequest '%s' (occupierId = %s)", req.getOccupationLevel(), req.getOccupierId()));
 		
+		ControlComponentClient client = getService();
 		ComponentOrderStatus order = client.occupy(OccupationLevel.get(req.getOccupationLevel().getLiteral()), req.getOccupierId());
 	
 		ComponentRequestStatus status = new ComponentRequestStatusImpl.Builder()
@@ -163,6 +164,7 @@ public class BasysControlComponent extends BasysComponent implements PackMLWaitS
 					@Override
 					public ComponentOrderStatus call() throws Exception {
 						ComponentOrderStatus status;
+						ControlComponentClient client = getService();
 						status = client.setOperationMode(currentOperationModeRequest.getOperationMode(), currentOperationModeRequest.getOccupierId());
 						if (status.getStatus() == OrderStatus.DONE) {
 							for (Variable var : currentOperationModeRequest.getInputParameters()) {
@@ -195,6 +197,7 @@ public class BasysControlComponent extends BasysComponent implements PackMLWaitS
 						ComponentOrderStatus status;						
 						//TODO: get output parameters
 						//TODO: notify process
+						ControlComponentClient client = getService();
 						status = client.free(currentOperationModeRequest.getOccupierId());
 						currentOperationModeRequest = null;
 						return status;
@@ -222,6 +225,7 @@ public class BasysControlComponent extends BasysComponent implements PackMLWaitS
 						ComponentOrderStatus status;						
 						//TODO: get output parameters
 						//TODO: notify process
+						ControlComponentClient client = getService();
 						status = client.free(currentOperationModeRequest.getOccupierId());
 						currentOperationModeRequest = null;
 						return status;

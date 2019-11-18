@@ -31,23 +31,21 @@ import de.dfki.cos.basys.platform.runtime.processcontrol.TaskDescription;
 import de.dfki.cos.basys.platform.runtime.processcontrol.v2.camunda.CamundaProcessControllerService;
 
 public class ProcessControllerComponent extends BasysComponent implements ProcessController {
-
-	private ProcessControllerService service;
 	
 	//ScheduledExecutorService executor = Executors.newScheduledThreadPool(32);
 	
 	public ProcessControllerComponent(Properties config) {
 		super(config);
-		connectionManager = new ServiceManagerImpl(config, new Supplier<CamundaProcessControllerService>() {
+		serviceManager = new ServiceManagerImpl<ProcessControllerService>(config, new Supplier<CamundaProcessControllerService>() {
 			@Override
 			public CamundaProcessControllerService get() {
 				CamundaProcessControllerService service = new CamundaProcessControllerService(config);
 				service.setController(ProcessControllerComponent.this);
 				return service;
 			}
-		});	
+		});
 		
-		this.service = connectionManager.getServiceInterface(ProcessControllerService.class);
+		
 	}
 	
 
@@ -60,7 +58,7 @@ public class ProcessControllerComponent extends BasysComponent implements Proces
 			return ce.getTask();
 		}, context.getScheduledExecutorService()).thenApply((ts) -> {
 			if (ts.getRequest().getCorrelationId() != null) {				
-				service.handleTaskResponse(ts);				
+				getService(ProcessControllerService.class).handleTaskResponse(ts);				
 			}
 			return ts.getResponse();
 		}).handle((response, ex) -> {

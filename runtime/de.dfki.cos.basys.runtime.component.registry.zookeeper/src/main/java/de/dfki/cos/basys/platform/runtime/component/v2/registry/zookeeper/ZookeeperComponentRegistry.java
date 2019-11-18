@@ -25,8 +25,6 @@ public class ZookeeperComponentRegistry extends BaseComponent implements Compone
 
 	public static String defaultConnectionString;
 
-	private ZookeeperClient client;
-
 	private Map<String, ComponentInfo> componentCache = new HashMap<>();
 	
 	static {
@@ -47,8 +45,8 @@ public class ZookeeperComponentRegistry extends BaseComponent implements Compone
 			LOGGER.warn("External connection string not provided. Defaulting to " + defaultConnectionString);
 		}
 		
-		connectionManager = new ServiceManagerImpl(config, ZookeeperClient::new);
-		client = connectionManager.getServiceInterface(ZookeeperClient.class);		
+		serviceManager = new ServiceManagerImpl<ZookeeperClient>(config, ZookeeperClient::new);
+		ZookeeperClient client = getService();		
 		client.setObserver(this);
 	}
 
@@ -57,6 +55,7 @@ public class ZookeeperComponentRegistry extends BaseComponent implements Compone
 	@Override
 	public ComponentRegistration createRegistration(Component component) throws ComponentRegistrationException {
 		try {
+			ZookeeperClient client = getService();
 			return new ZookeeperComponentRegistration(client.getServiceDiscovery(), component);
 		} catch (Exception e) {
 			throw new ComponentRegistrationException(e);
@@ -66,6 +65,7 @@ public class ZookeeperComponentRegistry extends BaseComponent implements Compone
 	@Override
 	public List<ComponentInfo> getComponents(String category) {
 		try {		 			
+			ZookeeperClient client = getService();
 			Collection<ServiceInstance<ComponentInfo>> instances = client.getServiceDiscovery().queryForInstances(category.toString());
 			List<ComponentInfo> result = new ArrayList<>(instances.size());
 			instances.forEach(i -> result.add(i.getPayload()));
@@ -79,6 +79,7 @@ public class ZookeeperComponentRegistry extends BaseComponent implements Compone
 	@Override
 	public ComponentInfo getComponentById(String category, String id) {
 		try {
+			ZookeeperClient client = getService();
 			ServiceInstance<ComponentInfo> instance = client.getServiceDiscovery().queryForInstance(category.toString(), id);
 			if (instance != null)
 				return instance.getPayload();
