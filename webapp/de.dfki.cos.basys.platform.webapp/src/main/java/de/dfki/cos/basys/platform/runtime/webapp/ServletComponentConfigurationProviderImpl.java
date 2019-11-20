@@ -71,11 +71,10 @@ public class ServletComponentConfigurationProviderImpl implements ComponentConfi
 	}
 
 	@Override
-	public Properties getComponentConfiguration(String path) {
-		try {
-			InputStream input = servletContext.getResourceAsStream(path);
+	public Properties getComponentConfigurationForPath(String path) {		
+		try (InputStream input = servletContext.getResourceAsStream(path)) {
 			if (path.endsWith(".properties")) {
-				Properties config = new Properties();		
+				Properties config = new Properties();
 				config.load(input);
 				return config;
 			} else if (path.endsWith(".json")) {
@@ -84,7 +83,7 @@ public class ServletComponentConfigurationProviderImpl implements ComponentConfi
 				Properties config = gson.fromJson(reader, Properties.class);
 				return config;
 			}
-		} catch (Exception e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return null;
@@ -109,5 +108,7 @@ public class ServletComponentConfigurationProviderImpl implements ComponentConfi
 			}
 		}
 	}
+
+
 	
 }
