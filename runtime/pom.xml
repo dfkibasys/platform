@@ -17,9 +17,12 @@
 
 	<modules>
 		<module>de.dfki.cos.basys.runtime.communication</module>
+		<!--
 		<module>de.dfki.cos.basys.runtime.communication.provider.kafka</module>
-		<module>de.dfki.cos.basys.runtime.component</module>
+		-->
+		<module>de.dfki.cos.basys.runtime.component</module>		
 		<module>de.dfki.cos.basys.runtime.component.registry.zookeeper</module>
+		
 		<!-- deprecated
 		<module>de.dfki.cos.basys.runtime.component.device.rest</module>
 		<module>de.dfki.cos.basys.runtime.component.device.opcua</module>
