@@ -24,10 +24,6 @@ public interface OccupationLevelRequest extends ComponentRequest {
 	 * Returns the value of the '<em><b>Occupation Level</b></em>' attribute.
 	 * The literals are from the enumeration {@link de.dfki.cos.basys.platform.model.runtime.component.OccupationLevel}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Occupation Level</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Occupation Level</em>' attribute.
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.OccupationLevel

@@ -9,15 +9,15 @@ import org.junit.Test;
 import de.dfki.cos.basys.platform.model.domain.topology.TopologyElement;
 import de.dfki.cos.basys.platform.runtime.services.impl.TopologyManagerImpl;
 
-public class TopologyManagerTest extends BaseEmfServiceComponentTest<TopologyManagerImpl> {
+public class TopologyManagerTest extends BaseComponentTest {
 
+	TopologyManager service = null;
+	
 	@Override
 	@Before
-	public void setUp() throws Exception {
-		javaClassName += "TopologyManagerImpl";
-		file = "model.topology";
-
+	public void setUp() throws Exception {		
 		super.setUp();
+		service = (TopologyManager) componentManager.getComponentById("topology-manager");
 	}
 
 	@Override

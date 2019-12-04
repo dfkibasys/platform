@@ -2,6 +2,7 @@
  */
 package de.dfki.cos.basys.platform.model.runtime.component;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,6 +14,8 @@ package de.dfki.cos.basys.platform.model.runtime.component;
  * </p>
  * <ul>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.OperationModeRequest#getOperationMode <em>Operation Mode</em>}</li>
+ *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.OperationModeRequest#getInputParameters <em>Input Parameters</em>}</li>
+ *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.OperationModeRequest#getOutputParameters <em>Output Parameters</em>}</li>
  * </ul>
  *
  * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage#getOperationModeRequest()
@@ -23,10 +26,6 @@ public interface OperationModeRequest extends ComponentRequest {
 	/**
 	 * Returns the value of the '<em><b>Operation Mode</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Operation Mode</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Operation Mode</em>' attribute.
 	 * @see #setOperationMode(String)
@@ -45,5 +44,29 @@ public interface OperationModeRequest extends ComponentRequest {
 	 * @generated
 	 */
 	void setOperationMode(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Input Parameters</b></em>' containment reference list.
+	 * The list contents are of type {@link de.dfki.cos.basys.platform.model.runtime.component.Variable}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Input Parameters</em>' containment reference list.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage#getOperationModeRequest_InputParameters()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Variable> getInputParameters();
+
+	/**
+	 * Returns the value of the '<em><b>Output Parameters</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Output Parameters</em>' attribute list.
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage#getOperationModeRequest_OutputParameters()
+	 * @model
+	 * @generated
+	 */
+	EList<String> getOutputParameters();
 
 } // OperationModeRequest

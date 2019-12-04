@@ -101,10 +101,6 @@ public enum ExecutionMode implements Enumerator {
 	/**
 	 * The '<em><b>PRODUCTION</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>PRODUCTION</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #PRODUCTION
 	 * @model
@@ -116,10 +112,6 @@ public enum ExecutionMode implements Enumerator {
 	/**
 	 * The '<em><b>MAINTENANCE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>MAINTENANCE</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #MAINTENANCE
 	 * @model
@@ -131,10 +123,6 @@ public enum ExecutionMode implements Enumerator {
 	/**
 	 * The '<em><b>MANUAL</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>MANUAL</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #MANUAL
 	 * @model
@@ -146,10 +134,6 @@ public enum ExecutionMode implements Enumerator {
 	/**
 	 * The '<em><b>CHANGE OVER</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>CHANGE OVER</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CHANGE_OVER
 	 * @model
@@ -161,10 +145,6 @@ public enum ExecutionMode implements Enumerator {
 	/**
 	 * The '<em><b>CLEAN</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>CLEAN</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CLEAN
 	 * @model
@@ -176,10 +156,6 @@ public enum ExecutionMode implements Enumerator {
 	/**
 	 * The '<em><b>SET UP</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>SET UP</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #SET_UP
 	 * @model
@@ -191,10 +167,6 @@ public enum ExecutionMode implements Enumerator {
 	/**
 	 * The '<em><b>EMPTY OUT</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>EMPTY OUT</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #EMPTY_OUT
 	 * @model
@@ -206,10 +178,6 @@ public enum ExecutionMode implements Enumerator {
 	/**
 	 * The '<em><b>SIMULATION</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>SIMULATION</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #SIMULATION
 	 * @model
@@ -340,6 +308,7 @@ public enum ExecutionMode implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getValue() {
 	  return value;
 	}
@@ -349,6 +318,7 @@ public enum ExecutionMode implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 	  return name;
 	}
@@ -358,6 +328,7 @@ public enum ExecutionMode implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getLiteral() {
 	  return literal;
 	}

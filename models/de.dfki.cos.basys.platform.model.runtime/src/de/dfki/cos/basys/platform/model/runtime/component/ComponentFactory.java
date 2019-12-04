@@ -49,31 +49,13 @@ public interface ComponentFactory extends EFactory {
 	Property createProperty();
 
 	/**
-	 * Returns a new object of class '<em>Command Request</em>'.
+	 * Returns a new object of class '<em>Request Collection</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Command Request</em>'.
+	 * @return a new object of class '<em>Request Collection</em>'.
 	 * @generated
 	 */
-	CommandRequest createCommandRequest();
-
-	/**
-	 * Returns a new object of class '<em>Change Mode Request</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Change Mode Request</em>'.
-	 * @generated
-	 */
-	ChangeModeRequest createChangeModeRequest();
-
-	/**
-	 * Returns a new object of class '<em>Capability Request</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Capability Request</em>'.
-	 * @generated
-	 */
-	CapabilityRequest createCapabilityRequest();
+	ComponentRequestCollection createComponentRequestCollection();
 
 	/**
 	 * Returns a new object of class '<em>Request Status</em>'.
@@ -103,15 +85,6 @@ public interface ComponentFactory extends EFactory {
 	ComponentResponse createComponentResponse();
 
 	/**
-	 * Returns a new object of class '<em>Request Collection</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Request Collection</em>'.
-	 * @generated
-	 */
-	ComponentRequestCollection createComponentRequestCollection();
-
-	/**
 	 * Returns a new object of class '<em>Variable</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -119,42 +92,6 @@ public interface ComponentFactory extends EFactory {
 	 * @generated
 	 */
 	Variable createVariable();
-
-	/**
-	 * Returns a new object of class '<em>Simulation Configuration</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Simulation Configuration</em>'.
-	 * @generated
-	 */
-	SimulationConfiguration createSimulationConfiguration();
-
-	/**
-	 * Returns a new object of class '<em>Process Request</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Process Request</em>'.
-	 * @generated
-	 */
-	ProcessRequest createProcessRequest();
-
-	/**
-	 * Returns a new object of class '<em>Process Request Status</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Process Request Status</em>'.
-	 * @generated
-	 */
-	ProcessRequestStatus createProcessRequestStatus();
-
-	/**
-	 * Returns a new object of class '<em>Process Response</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Process Response</em>'.
-	 * @generated
-	 */
-	ProcessResponse createProcessResponse();
 
 	/**
 	 * Returns a new object of class '<em>Occupation Level Request</em>'.
@@ -191,6 +128,15 @@ public interface ComponentFactory extends EFactory {
 	 * @generated
 	 */
 	OperationModeRequest createOperationModeRequest();
+
+	/**
+	 * Returns a new object of class '<em>Simulation Configuration</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Simulation Configuration</em>'.
+	 * @generated
+	 */
+	SimulationConfiguration createSimulationConfiguration();
 
 	/**
 	 * Returns the package supported by this factory.

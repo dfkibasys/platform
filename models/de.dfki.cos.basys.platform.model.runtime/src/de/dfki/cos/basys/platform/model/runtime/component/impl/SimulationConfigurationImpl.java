@@ -2,21 +2,25 @@
  */
 package de.dfki.cos.basys.platform.model.runtime.component.impl;
 
+import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
+import de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration;
+import de.dfki.cos.basys.platform.model.runtime.component.Variable;
+
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
-import de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration;
-import de.dfki.cos.basys.platform.model.runtime.component.Variable;
 
 /**
  * <!-- begin-user-doc -->
@@ -890,111 +894,4 @@ public class SimulationConfigurationImpl extends MinimalEObjectImpl.Container im
 		return result.toString();
 	}
 
-	public static class Builder {
-		private int onResettingDuration = ON_RESETTING_DURATION_EDEFAULT;
-		private int onStartingDuration = ON_STARTING_DURATION_EDEFAULT;
-		private int onExecuteDuration = ON_EXECUTE_DURATION_EDEFAULT;
-		private int onCompletingDuration = ON_COMPLETING_DURATION_EDEFAULT;
-		private int onStoppingDuration = ON_STOPPING_DURATION_EDEFAULT;
-		private int onAbortingDuration = ON_ABORTING_DURATION_EDEFAULT;
-		private int onClearingDuration = ON_CLEARING_DURATION_EDEFAULT;
-		private int onHoldingDuration = ON_HOLDING_DURATION_EDEFAULT;
-		private int onUnholdingDuration = ON_UNHOLDING_DURATION_EDEFAULT;
-		private int onSuspendingDuration = ON_SUSPENDING_DURATION_EDEFAULT;
-		private int onUnsuspendingDuration = ON_UNSUSPENDING_DURATION_EDEFAULT;
-		private EList<Variable> onCompletingVariables;
-		private int onCompletingStatusCode;
-		private int onStoppingStatusCode;
-
-		public Builder onResettingDuration(int onResettingDuration) {
-			this.onResettingDuration = onResettingDuration;
-			return this;
-		}
-
-		public Builder onStartingDuration(int onStartingDuration) {
-			this.onStartingDuration = onStartingDuration;
-			return this;
-		}
-
-		public Builder onExecuteDuration(int onExecuteDuration) {
-			this.onExecuteDuration = onExecuteDuration;
-			return this;
-		}
-
-		public Builder onCompletingDuration(int onCompletingDuration) {
-			this.onCompletingDuration = onCompletingDuration;
-			return this;
-		}
-
-		public Builder onStoppingDuration(int onStoppingDuration) {
-			this.onStoppingDuration = onStoppingDuration;
-			return this;
-		}
-
-		public Builder onAbortingDuration(int onAbortingDuration) {
-			this.onAbortingDuration = onAbortingDuration;
-			return this;
-		}
-
-		public Builder onClearingDuration(int onClearingDuration) {
-			this.onClearingDuration = onClearingDuration;
-			return this;
-		}
-
-		public Builder onHoldingDuration(int onHoldingDuration) {
-			this.onHoldingDuration = onHoldingDuration;
-			return this;
-		}
-
-		public Builder onUnholdingDuration(int onUnholdingDuration) {
-			this.onUnholdingDuration = onUnholdingDuration;
-			return this;
-		}
-
-		public Builder onSuspendingDuration(int onSuspendingDuration) {
-			this.onSuspendingDuration = onSuspendingDuration;
-			return this;
-		}
-
-		public Builder onUnsuspendingDuration(int onUnsuspendingDuration) {
-			this.onUnsuspendingDuration = onUnsuspendingDuration;
-			return this;
-		}
-
-		public Builder onCompletingVariables(EList<Variable> onCompletingVariables) {
-			this.onCompletingVariables = onCompletingVariables;
-			return this;
-		}
-
-		public Builder onCompletingStatusCode(int onCompletingStatusCode) {
-			this.onCompletingStatusCode = onCompletingStatusCode;
-			return this;
-		}
-
-		public Builder onStoppingStatusCode(int onStoppingStatusCode) {
-			this.onStoppingStatusCode = onStoppingStatusCode;
-			return this;
-		}
-
-		public SimulationConfigurationImpl build() {
-			return new SimulationConfigurationImpl(this);
-		}
-	}
-
-	private SimulationConfigurationImpl(Builder builder) {
-		this.onResettingDuration = builder.onResettingDuration;
-		this.onStartingDuration = builder.onStartingDuration;
-		this.onExecuteDuration = builder.onExecuteDuration;
-		this.onCompletingDuration = builder.onCompletingDuration;
-		this.onStoppingDuration = builder.onStoppingDuration;
-		this.onAbortingDuration = builder.onAbortingDuration;
-		this.onClearingDuration = builder.onClearingDuration;
-		this.onHoldingDuration = builder.onHoldingDuration;
-		this.onUnholdingDuration = builder.onUnholdingDuration;
-		this.onSuspendingDuration = builder.onSuspendingDuration;
-		this.onUnsuspendingDuration = builder.onUnsuspendingDuration;
-		this.onCompletingVariables = builder.onCompletingVariables;
-		this.onCompletingStatusCode = builder.onCompletingStatusCode;
-		this.onStoppingStatusCode = builder.onStoppingStatusCode;
-	}
-}
+} //SimulationConfigurationImpl

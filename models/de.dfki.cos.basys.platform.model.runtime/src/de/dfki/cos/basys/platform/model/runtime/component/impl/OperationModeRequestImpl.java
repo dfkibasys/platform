@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -33,8 +34,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.OperationModeRequestImpl#getComponentId <em>Component Id</em>}</li>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.OperationModeRequestImpl#getCorrelationId <em>Correlation Id</em>}</li>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.OperationModeRequestImpl#getOccupierId <em>Occupier Id</em>}</li>
- *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.OperationModeRequestImpl#getInputParameters <em>Input Parameters</em>}</li>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.OperationModeRequestImpl#getOperationMode <em>Operation Mode</em>}</li>
+ *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.OperationModeRequestImpl#getInputParameters <em>Input Parameters</em>}</li>
+ *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.OperationModeRequestImpl#getOutputParameters <em>Output Parameters</em>}</li>
  * </ul>
  *
  * @generated
@@ -101,16 +103,6 @@ public class OperationModeRequestImpl extends MinimalEObjectImpl.Container imple
 	protected String occupierId = OCCUPIER_ID_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getInputParameters() <em>Input Parameters</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInputParameters()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Variable> inputParameters;
-
-	/**
 	 * The default value of the '{@link #getOperationMode() <em>Operation Mode</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -129,6 +121,26 @@ public class OperationModeRequestImpl extends MinimalEObjectImpl.Container imple
 	 * @ordered
 	 */
 	protected String operationMode = OPERATION_MODE_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getInputParameters() <em>Input Parameters</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInputParameters()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Variable> inputParameters;
+
+	/**
+	 * The cached value of the '{@link #getOutputParameters() <em>Output Parameters</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutputParameters()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<String> outputParameters;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -154,6 +166,7 @@ public class OperationModeRequestImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getComponentId() {
 		return componentId;
 	}
@@ -163,6 +176,7 @@ public class OperationModeRequestImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setComponentId(String newComponentId) {
 		String oldComponentId = componentId;
 		componentId = newComponentId;
@@ -175,6 +189,7 @@ public class OperationModeRequestImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getCorrelationId() {
 		return correlationId;
 	}
@@ -184,6 +199,7 @@ public class OperationModeRequestImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCorrelationId(String newCorrelationId) {
 		String oldCorrelationId = correlationId;
 		correlationId = newCorrelationId;
@@ -196,6 +212,7 @@ public class OperationModeRequestImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getOccupierId() {
 		return occupierId;
 	}
@@ -205,6 +222,7 @@ public class OperationModeRequestImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setOccupierId(String newOccupierId) {
 		String oldOccupierId = occupierId;
 		occupierId = newOccupierId;
@@ -217,6 +235,30 @@ public class OperationModeRequestImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public String getOperationMode() {
+		return operationMode;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setOperationMode(String newOperationMode) {
+		String oldOperationMode = operationMode;
+		operationMode = newOperationMode;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.OPERATION_MODE_REQUEST__OPERATION_MODE, oldOperationMode, operationMode));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EList<Variable> getInputParameters() {
 		if (inputParameters == null) {
 			inputParameters = new EObjectContainmentEList<Variable>(Variable.class, this, ComponentPackage.OPERATION_MODE_REQUEST__INPUT_PARAMETERS);
@@ -229,20 +271,12 @@ public class OperationModeRequestImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getOperationMode() {
-		return operationMode;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setOperationMode(String newOperationMode) {
-		String oldOperationMode = operationMode;
-		operationMode = newOperationMode;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.OPERATION_MODE_REQUEST__OPERATION_MODE, oldOperationMode, operationMode));
+	@Override
+	public EList<String> getOutputParameters() {
+		if (outputParameters == null) {
+			outputParameters = new EDataTypeUniqueEList<String>(String.class, this, ComponentPackage.OPERATION_MODE_REQUEST__OUTPUT_PARAMETERS);
+		}
+		return outputParameters;
 	}
 
 	/**
@@ -273,10 +307,12 @@ public class OperationModeRequestImpl extends MinimalEObjectImpl.Container imple
 				return getCorrelationId();
 			case ComponentPackage.OPERATION_MODE_REQUEST__OCCUPIER_ID:
 				return getOccupierId();
-			case ComponentPackage.OPERATION_MODE_REQUEST__INPUT_PARAMETERS:
-				return getInputParameters();
 			case ComponentPackage.OPERATION_MODE_REQUEST__OPERATION_MODE:
 				return getOperationMode();
+			case ComponentPackage.OPERATION_MODE_REQUEST__INPUT_PARAMETERS:
+				return getInputParameters();
+			case ComponentPackage.OPERATION_MODE_REQUEST__OUTPUT_PARAMETERS:
+				return getOutputParameters();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -299,12 +335,16 @@ public class OperationModeRequestImpl extends MinimalEObjectImpl.Container imple
 			case ComponentPackage.OPERATION_MODE_REQUEST__OCCUPIER_ID:
 				setOccupierId((String)newValue);
 				return;
+			case ComponentPackage.OPERATION_MODE_REQUEST__OPERATION_MODE:
+				setOperationMode((String)newValue);
+				return;
 			case ComponentPackage.OPERATION_MODE_REQUEST__INPUT_PARAMETERS:
 				getInputParameters().clear();
 				getInputParameters().addAll((Collection<? extends Variable>)newValue);
 				return;
-			case ComponentPackage.OPERATION_MODE_REQUEST__OPERATION_MODE:
-				setOperationMode((String)newValue);
+			case ComponentPackage.OPERATION_MODE_REQUEST__OUTPUT_PARAMETERS:
+				getOutputParameters().clear();
+				getOutputParameters().addAll((Collection<? extends String>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -327,11 +367,14 @@ public class OperationModeRequestImpl extends MinimalEObjectImpl.Container imple
 			case ComponentPackage.OPERATION_MODE_REQUEST__OCCUPIER_ID:
 				setOccupierId(OCCUPIER_ID_EDEFAULT);
 				return;
+			case ComponentPackage.OPERATION_MODE_REQUEST__OPERATION_MODE:
+				setOperationMode(OPERATION_MODE_EDEFAULT);
+				return;
 			case ComponentPackage.OPERATION_MODE_REQUEST__INPUT_PARAMETERS:
 				getInputParameters().clear();
 				return;
-			case ComponentPackage.OPERATION_MODE_REQUEST__OPERATION_MODE:
-				setOperationMode(OPERATION_MODE_EDEFAULT);
+			case ComponentPackage.OPERATION_MODE_REQUEST__OUTPUT_PARAMETERS:
+				getOutputParameters().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -351,10 +394,12 @@ public class OperationModeRequestImpl extends MinimalEObjectImpl.Container imple
 				return CORRELATION_ID_EDEFAULT == null ? correlationId != null : !CORRELATION_ID_EDEFAULT.equals(correlationId);
 			case ComponentPackage.OPERATION_MODE_REQUEST__OCCUPIER_ID:
 				return OCCUPIER_ID_EDEFAULT == null ? occupierId != null : !OCCUPIER_ID_EDEFAULT.equals(occupierId);
-			case ComponentPackage.OPERATION_MODE_REQUEST__INPUT_PARAMETERS:
-				return inputParameters != null && !inputParameters.isEmpty();
 			case ComponentPackage.OPERATION_MODE_REQUEST__OPERATION_MODE:
 				return OPERATION_MODE_EDEFAULT == null ? operationMode != null : !OPERATION_MODE_EDEFAULT.equals(operationMode);
+			case ComponentPackage.OPERATION_MODE_REQUEST__INPUT_PARAMETERS:
+				return inputParameters != null && !inputParameters.isEmpty();
+			case ComponentPackage.OPERATION_MODE_REQUEST__OUTPUT_PARAMETERS:
+				return outputParameters != null && !outputParameters.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -377,6 +422,8 @@ public class OperationModeRequestImpl extends MinimalEObjectImpl.Container imple
 		result.append(occupierId);
 		result.append(", operationMode: ");
 		result.append(operationMode);
+		result.append(", outputParameters: ");
+		result.append(outputParameters);
 		result.append(')');
 		return result.toString();
 	}

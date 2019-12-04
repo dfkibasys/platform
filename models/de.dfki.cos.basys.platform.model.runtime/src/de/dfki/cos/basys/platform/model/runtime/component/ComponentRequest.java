@@ -2,7 +2,6 @@
  */
 package de.dfki.cos.basys.platform.model.runtime.component;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -17,7 +16,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest#getComponentId <em>Component Id</em>}</li>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest#getCorrelationId <em>Correlation Id</em>}</li>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest#getOccupierId <em>Occupier Id</em>}</li>
- *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest#getInputParameters <em>Input Parameters</em>}</li>
  * </ul>
  *
  * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage#getComponentRequest()
@@ -28,10 +26,6 @@ public interface ComponentRequest extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Component Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Component Id</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Component Id</em>' attribute.
 	 * @see #setComponentId(String)
@@ -54,10 +48,6 @@ public interface ComponentRequest extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Correlation Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Correlation Id</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Correlation Id</em>' attribute.
 	 * @see #setCorrelationId(String)
@@ -80,10 +70,6 @@ public interface ComponentRequest extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Occupier Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Occupier Id</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Occupier Id</em>' attribute.
 	 * @see #setOccupierId(String)
@@ -102,21 +88,5 @@ public interface ComponentRequest extends EObject {
 	 * @generated
 	 */
 	void setOccupierId(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Input Parameters</b></em>' containment reference list.
-	 * The list contents are of type {@link de.dfki.cos.basys.platform.model.runtime.component.Variable}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Input Parameters</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Input Parameters</em>' containment reference list.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage#getComponentRequest_InputParameters()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Variable> getInputParameters();
 
 } // ComponentRequest

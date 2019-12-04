@@ -4,6 +4,7 @@ package de.dfki.cos.basys.platform.model.runtime.component.provider;
 
 
 import de.dfki.cos.basys.platform.model.runtime.communication.provider.RuntimeEditPlugin;
+
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentFactory;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentResponse;
@@ -215,7 +216,7 @@ public class ComponentResponseItemProvider
 			getString("_UI_ComponentResponse_type") :
 			getString("_UI_ComponentResponse_type") + " " + label;
 	}
-	
+
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -253,21 +254,6 @@ public class ComponentResponseItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ComponentPackage.Literals.COMPONENT_RESPONSE__REQUEST,
-				 ComponentFactory.eINSTANCE.createCommandRequest()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ComponentPackage.Literals.COMPONENT_RESPONSE__REQUEST,
-				 ComponentFactory.eINSTANCE.createChangeModeRequest()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ComponentPackage.Literals.COMPONENT_RESPONSE__REQUEST,
-				 ComponentFactory.eINSTANCE.createCapabilityRequest()));
 
 		newChildDescriptors.add
 			(createChildParameter

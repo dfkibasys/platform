@@ -16,15 +16,15 @@ import org.junit.Test;
 import de.dfki.cos.basys.platform.model.domain.processdefinition.ProcessDefinition;
 import de.dfki.cos.basys.platform.runtime.services.impl.ProcessDefinitionManagerImpl;
 
-public class ProcessDefinitionManagerTest extends BaseEmfServiceComponentTest<ProcessDefinitionManagerImpl> {
+public class ProcessDefinitionManagerTest extends BaseComponentTest {
 
+	ProcessDefinitionManager service = null;
+	
 	@Override
 	@Before
-	public void setUp() throws Exception {
-		javaClassName += "ProcessDefinitionManagerImpl";
-		file = "model.processdefinition";
-
+	public void setUp() throws Exception {		
 		super.setUp();
+		service = (ProcessDefinitionManager) componentManager.getComponentById("process-definition-manager");
 	}
 
 	@Override

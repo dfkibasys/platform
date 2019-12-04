@@ -3,6 +3,7 @@
 package de.dfki.cos.basys.platform.model.runtime.component;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -35,10 +36,6 @@ public interface ComponentConfiguration extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Component Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Component Id</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Component Id</em>' attribute.
 	 * @see #setComponentId(String)
@@ -61,10 +58,6 @@ public interface ComponentConfiguration extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Component Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Component Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Component Name</em>' attribute.
 	 * @see #setComponentName(String)
@@ -89,10 +82,6 @@ public interface ComponentConfiguration extends EObject {
 	 * The default value is <code>"NONE"</code>.
 	 * The literals are from the enumeration {@link de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Component Category</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Component Category</em>' attribute.
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory
@@ -117,10 +106,6 @@ public interface ComponentConfiguration extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Component Implementation Java Class</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Component Implementation Java Class</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Component Implementation Java Class</em>' attribute.
 	 * @see #setComponentImplementationJavaClass(String)
@@ -143,10 +128,6 @@ public interface ComponentConfiguration extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Communication Provider Implementation Java Class</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Communication Provider Implementation Java Class</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Communication Provider Implementation Java Class</em>' attribute.
 	 * @see #setCommunicationProviderImplementationJavaClass(String)
@@ -169,10 +150,6 @@ public interface ComponentConfiguration extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Communication Provider Connection String</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Communication Provider Connection String</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Communication Provider Connection String</em>' attribute.
 	 * @see #setCommunicationProviderConnectionString(String)
@@ -195,10 +172,6 @@ public interface ComponentConfiguration extends EObject {
 	/**
 	 * Returns the value of the '<em><b>In Channel Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>In Channel Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>In Channel Name</em>' attribute.
 	 * @see #setInChannelName(String)
@@ -221,10 +194,6 @@ public interface ComponentConfiguration extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Out Channel Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Out Channel Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Out Channel Name</em>' attribute.
 	 * @see #setOutChannelName(String)
@@ -247,10 +216,6 @@ public interface ComponentConfiguration extends EObject {
 	/**
 	 * Returns the value of the '<em><b>External Connection String</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>External Connection String</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>External Connection String</em>' attribute.
 	 * @see #setExternalConnectionString(String)
@@ -274,10 +239,6 @@ public interface ComponentConfiguration extends EObject {
 	 * Returns the value of the '<em><b>Properties</b></em>' containment reference list.
 	 * The list contents are of type {@link de.dfki.cos.basys.platform.model.runtime.component.Property}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Properties</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Properties</em>' containment reference list.
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage#getComponentConfiguration_Properties()
@@ -289,10 +250,6 @@ public interface ComponentConfiguration extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Simulation Configuration</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Simulation Configuration</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Simulation Configuration</em>' containment reference.
 	 * @see #setSimulationConfiguration(SimulationConfiguration)

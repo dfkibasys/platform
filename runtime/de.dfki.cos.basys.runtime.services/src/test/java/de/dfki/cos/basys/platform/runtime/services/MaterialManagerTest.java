@@ -12,15 +12,15 @@ import de.dfki.cos.basys.platform.model.domain.material.MaterialCatalogue;
 import de.dfki.cos.basys.platform.model.domain.material.MaterialGroup;
 import de.dfki.cos.basys.platform.runtime.services.impl.MaterialManagerImpl;
 
-public class MaterialManagerTest extends BaseEmfServiceComponentTest<MaterialManagerImpl> {
+public class MaterialManagerTest extends BaseComponentTest {
 
+	MaterialManager service = null;
+	
 	@Override
 	@Before
-	public void setUp() throws Exception {
-		javaClassName += "MaterialManagerImpl";
-		file = "model.material";
-
+	public void setUp() throws Exception {		
 		super.setUp();
+		service = (MaterialManager) componentManager.getComponentById("material-manager");
 	}
 
 	@Override

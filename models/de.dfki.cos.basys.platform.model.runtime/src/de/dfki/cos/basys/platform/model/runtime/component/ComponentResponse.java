@@ -3,6 +3,7 @@
 package de.dfki.cos.basys.platform.model.runtime.component;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -30,10 +31,6 @@ public interface ComponentResponse extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Component Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Component Id</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Component Id</em>' attribute.
 	 * @see #setComponentId(String)
@@ -57,10 +54,6 @@ public interface ComponentResponse extends EObject {
 	 * Returns the value of the '<em><b>Status</b></em>' attribute.
 	 * The literals are from the enumeration {@link de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Status</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Status</em>' attribute.
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus
@@ -85,10 +78,6 @@ public interface ComponentResponse extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Status Code</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Status Code</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Status Code</em>' attribute.
 	 * @see #setStatusCode(int)
@@ -111,10 +100,6 @@ public interface ComponentResponse extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Message</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Message</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Message</em>' attribute.
 	 * @see #setMessage(String)
@@ -137,10 +122,6 @@ public interface ComponentResponse extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Request</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Request</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Request</em>' containment reference.
 	 * @see #setRequest(ComponentRequest)
@@ -164,10 +145,6 @@ public interface ComponentResponse extends EObject {
 	 * Returns the value of the '<em><b>Output Parameters</b></em>' containment reference list.
 	 * The list contents are of type {@link de.dfki.cos.basys.platform.model.runtime.component.Variable}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Output Parameters</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Output Parameters</em>' containment reference list.
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage#getComponentResponse_OutputParameters()

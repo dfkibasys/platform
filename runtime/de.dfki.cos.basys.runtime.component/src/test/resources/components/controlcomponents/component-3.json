@@ -3,7 +3,7 @@
   "name": "component-3",
   "category" : "DEVICE_COMPONENT",
   "serviceConnectionString": "opc.tcp://127.0.0.1:12685/basys",
-  "implementationJavaClass": "de.dfki.cos.basys.platform.runtime.component.v2.BasysControlComponent",
+  "implementationJavaClass": "de.dfki.cos.basys.platform.runtime.component.BasysControlComponent",
   "inChannelName" : "component-3#in",
   "outChannelName" : "component-3#out",
   "recordStateChanges": "true"

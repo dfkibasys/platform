@@ -24,10 +24,6 @@ public interface ExecutionModeRequest extends ComponentRequest {
 	 * Returns the value of the '<em><b>Execution Mode</b></em>' attribute.
 	 * The literals are from the enumeration {@link de.dfki.cos.basys.platform.model.runtime.component.ExecutionMode}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Execution Mode</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Execution Mode</em>' attribute.
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.ExecutionMode

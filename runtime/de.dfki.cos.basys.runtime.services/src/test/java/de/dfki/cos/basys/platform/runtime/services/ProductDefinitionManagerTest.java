@@ -13,15 +13,15 @@ import de.dfki.cos.basys.platform.model.domain.productdefinition.ProductGroup;
 import de.dfki.cos.basys.platform.model.domain.productdefinition.ProductVariant;
 import de.dfki.cos.basys.platform.runtime.services.impl.ProductDefinitionManagerImpl;
 
-public class ProductDefinitionManagerTest extends BaseEmfServiceComponentTest<ProductDefinitionManagerImpl> {
+public class ProductDefinitionManagerTest extends BaseComponentTest {
 
+	ProductDefinitionManager service = null;
+	
 	@Override
 	@Before
-	public void setUp() throws Exception {
-		javaClassName += "ProductDefinitionManagerImpl";
-		file = "model.productdefinition";
-
+	public void setUp() throws Exception {		
 		super.setUp();
+		service = (ProductDefinitionManager) componentManager.getComponentById("product-definition-manager");
 	}
 
 	@Override

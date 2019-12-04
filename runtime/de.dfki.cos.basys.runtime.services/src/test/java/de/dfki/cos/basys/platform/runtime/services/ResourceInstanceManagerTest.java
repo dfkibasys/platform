@@ -11,15 +11,15 @@ import de.dfki.cos.basys.platform.model.domain.resourceinstance.ResourceInstance
 import de.dfki.cos.basys.platform.model.domain.resourceinstance.ResourceInstanceRepository;
 import de.dfki.cos.basys.platform.runtime.services.impl.ResourceInstanceManagerImpl;
 
-public class ResourceInstanceManagerTest extends BaseEmfServiceComponentTest<ResourceInstanceManagerImpl> {
+public class ResourceInstanceManagerTest extends BaseComponentTest {
 
+	ResourceInstanceManager service = null;
+	
 	@Override
 	@Before
-	public void setUp() throws Exception {
-		javaClassName += "ResourceInstanceManagerImpl";
-		file = "model.resourceinstance";
-
+	public void setUp() throws Exception {		
 		super.setUp();
+		service = (ResourceInstanceManager) componentManager.getComponentById("resource-instance-manager");
 	}
 
 	@Override

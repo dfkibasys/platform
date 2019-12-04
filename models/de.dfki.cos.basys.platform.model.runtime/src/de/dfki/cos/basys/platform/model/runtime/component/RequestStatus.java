@@ -46,7 +46,9 @@ public enum RequestStatus implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	REJECTED(2, "REJECTED", "REJECTED"), /**
+	REJECTED(2, "REJECTED", "REJECTED"),
+
+	/**
 	 * The '<em><b>NOOP</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -54,7 +56,9 @@ public enum RequestStatus implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	NOOP(3, "NOOP", "NOOP"), /**
+	NOOP(3, "NOOP", "NOOP"),
+
+	/**
 	 * The '<em><b>QUEUED</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -62,7 +66,9 @@ public enum RequestStatus implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	QUEUED(4, "QUEUED", "QUEUED"), /**
+	QUEUED(4, "QUEUED", "QUEUED"),
+
+	/**
 	 * The '<em><b>DONE</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -75,10 +81,6 @@ public enum RequestStatus implements Enumerator {
 	/**
 	 * The '<em><b>UNDEFINED</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>UNDEFINED</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #UNDEFINED
 	 * @model
@@ -90,10 +92,6 @@ public enum RequestStatus implements Enumerator {
 	/**
 	 * The '<em><b>ACCEPTED</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>ACCEPTED</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #ACCEPTED
 	 * @model
@@ -105,10 +103,6 @@ public enum RequestStatus implements Enumerator {
 	/**
 	 * The '<em><b>REJECTED</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>REJECTED</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #REJECTED
 	 * @model
@@ -120,10 +114,6 @@ public enum RequestStatus implements Enumerator {
 	/**
 	 * The '<em><b>NOOP</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>NOOP</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #NOOP
 	 * @model
@@ -135,10 +125,6 @@ public enum RequestStatus implements Enumerator {
 	/**
 	 * The '<em><b>QUEUED</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>QUEUED</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #QUEUED
 	 * @model
@@ -150,10 +136,6 @@ public enum RequestStatus implements Enumerator {
 	/**
 	 * The '<em><b>DONE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>DONE</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #DONE
 	 * @model
@@ -280,6 +262,7 @@ public enum RequestStatus implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getValue() {
 	  return value;
 	}
@@ -289,6 +272,7 @@ public enum RequestStatus implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 	  return name;
 	}
@@ -298,6 +282,7 @@ public enum RequestStatus implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getLiteral() {
 	  return literal;
 	}

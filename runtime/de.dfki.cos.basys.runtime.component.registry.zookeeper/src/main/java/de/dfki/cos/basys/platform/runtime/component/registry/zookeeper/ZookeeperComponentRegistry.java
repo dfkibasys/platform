@@ -3,36 +3,30 @@ package de.dfki.cos.basys.platform.runtime.component.registry.zookeeper;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 
-import org.apache.curator.framework.CuratorFramework;
-import org.apache.curator.framework.CuratorFrameworkFactory;
-import org.apache.curator.retry.ExponentialBackoffRetry;
-import org.apache.curator.utils.CloseableUtils;
-import org.apache.curator.x.discovery.ServiceDiscovery;
-import org.apache.curator.x.discovery.ServiceDiscoveryBuilder;
 import org.apache.curator.x.discovery.ServiceInstance;
-import org.apache.curator.x.discovery.details.JsonInstanceSerializer;
 
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo;
 import de.dfki.cos.basys.platform.runtime.communication.CommUtils;
-import de.dfki.cos.basys.platform.runtime.component.BaseComponent;
-import de.dfki.cos.basys.platform.runtime.component.Component;
-import de.dfki.cos.basys.platform.runtime.component.ComponentException;
-import de.dfki.cos.basys.platform.runtime.component.registry.ComponentRegistration;
-import de.dfki.cos.basys.platform.runtime.component.registry.ComponentRegistrationException;
-import de.dfki.cos.basys.platform.runtime.component.registry.ComponentRegistry;
+import de.dfki.cos.basys.common.component.Component;
+import de.dfki.cos.basys.common.component.ComponentInfo;
+import de.dfki.cos.basys.common.component.StringConstants;
+import de.dfki.cos.basys.common.component.impl.BaseComponent;
+import de.dfki.cos.basys.common.component.impl.ServiceManagerImpl;
+import de.dfki.cos.basys.common.component.registry.ComponentRegistration;
+import de.dfki.cos.basys.common.component.registry.ComponentRegistrationException;
+import de.dfki.cos.basys.common.component.registry.ComponentRegistry;
+import de.dfki.cos.basys.common.component.registry.ComponentRegistryObserver;
 
-public class ZookeeperComponentRegistry extends BaseComponent implements ComponentRegistry {
+public class ZookeeperComponentRegistry extends BaseComponent implements ComponentRegistry, ComponentRegistryObserver {
 
 	public static String defaultConnectionString;
-	public static final String PATH = "/basys/registry";
-	protected CuratorFramework client;
 
-	private ServiceDiscovery<ComponentInfo> serviceDiscovery;
-
+	private Map<String, ComponentInfo> componentCache = new HashMap<>();
+	
 	static {
 		try {
 			String serverName = CommUtils.getPreferredBasysMiddleware();
@@ -43,53 +37,36 @@ public class ZookeeperComponentRegistry extends BaseComponent implements Compone
 		}		
 	}	
 	
-	public ZookeeperComponentRegistry(ComponentConfiguration config) {
-		super(config);
+	public ZookeeperComponentRegistry(Properties config) {
+		super(config);	
 		
-		if (componentConfig.getExternalConnectionString() == null) {
-			componentConfig.setExternalConnectionString(defaultConnectionString);			
+		if (!config.contains(StringConstants.serviceConnectionString)) {
+			config.setProperty(StringConstants.serviceConnectionString, defaultConnectionString);			
 			LOGGER.warn("External connection string not provided. Defaulting to " + defaultConnectionString);
-		} 
-		client = CuratorFrameworkFactory.newClient(componentConfig.getExternalConnectionString(), new ExponentialBackoffRetry(1000, 3));
-
-		JsonInstanceSerializer<ComponentInfo> serializer = new JsonInstanceSerializer<ComponentInfo>(ComponentInfo.class, false);
-
-		serviceDiscovery = ServiceDiscoveryBuilder.builder(ComponentInfo.class).client(client).basePath(PATH).serializer(serializer).build();
-
-	}
-
-	@Override
-	public void connectToExternal() throws ComponentException {
-
-		try {
-			client.start();
-			serviceDiscovery.start();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
-
+		
+		serviceManager = new ServiceManagerImpl<ZookeeperClient>(config, ZookeeperClient::new);
+		ZookeeperClient client = getService();		
+		client.setObserver(this);
 	}
 
-	@Override
-	public void disconnectFromExternal() {
-		CloseableUtils.closeQuietly(serviceDiscovery);
-		CloseableUtils.closeQuietly(client);
-	}
+	
 
 	@Override
 	public ComponentRegistration createRegistration(Component component) throws ComponentRegistrationException {
 		try {
-			return new ZookeeperComponentRegistration(serviceDiscovery, component);
+			ZookeeperClient client = getService();
+			return new ZookeeperComponentRegistration(client.getServiceDiscovery(), component);
 		} catch (Exception e) {
 			throw new ComponentRegistrationException(e);
 		}
 	}
 
 	@Override
-	public List<ComponentInfo> getComponents(ComponentCategory category) {
+	public List<ComponentInfo> getComponents(String category) {
 		try {		 			
-			Collection<ServiceInstance<ComponentInfo>> instances = serviceDiscovery.queryForInstances(category.toString());
+			ZookeeperClient client = getService();
+			Collection<ServiceInstance<ComponentInfo>> instances = client.getServiceDiscovery().queryForInstances(category.toString());
 			List<ComponentInfo> result = new ArrayList<>(instances.size());
 			instances.forEach(i -> result.add(i.getPayload()));
 			return result;
@@ -100,9 +77,10 @@ public class ZookeeperComponentRegistry extends BaseComponent implements Compone
 	}
 
 	@Override
-	public ComponentInfo getComponentById(ComponentCategory category, String id) {
+	public ComponentInfo getComponentById(String category, String id) {
 		try {
-			ServiceInstance<ComponentInfo> instance = serviceDiscovery.queryForInstance(category.toString(), id);
+			ZookeeperClient client = getService();
+			ServiceInstance<ComponentInfo> instance = client.getServiceDiscovery().queryForInstance(category.toString(), id);
 			if (instance != null)
 				return instance.getPayload();
 		} catch (Exception e) {
@@ -112,9 +90,46 @@ public class ZookeeperComponentRegistry extends BaseComponent implements Compone
 	}
 
 	@Override
-	public ComponentInfo getComponentByName(ComponentCategory category, String name) {
+	public ComponentInfo getComponentByName(String category, String name) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	/*
+	 * ComponentRegistryObserver
+	 */
+	
+
+	@Override
+	public ComponentInfo getComponentInfo(String componentId) {
+		return componentCache.get(componentId);
+	}
+	
+	@Override
+	public void handleComponentAdded(ComponentInfo info) {
+		componentCache.put(info.getId(), info);
+//		if (outChannel != null) {
+//			Notification not = CommFactory.getInstance().createNotification("");
+//			outChannel.sendNotification(not);
+//		}
+	}
+
+	@Override
+	public void handleComponentUpdated(ComponentInfo info) {
+		componentCache.put(info.getId(), info);
+//		if (outChannel != null) {
+//			Notification not = CommFactory.getInstance().createNotification("");
+//			outChannel.sendNotification(not);
+//		}
+	}
+
+	@Override
+	public void handleComponentRemoved(ComponentInfo info) {
+		componentCache.remove(info.getId(), info);
+//		if (outChannel != null) {
+//			Notification not = CommFactory.getInstance().createNotification("");
+//			outChannel.sendNotification(not);
+//		}
 	}
 
 }

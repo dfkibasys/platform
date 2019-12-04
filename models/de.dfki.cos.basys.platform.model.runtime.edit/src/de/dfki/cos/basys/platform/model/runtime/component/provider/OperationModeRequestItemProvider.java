@@ -69,6 +69,7 @@ public class OperationModeRequestItemProvider
 			addCorrelationIdPropertyDescriptor(object);
 			addOccupierIdPropertyDescriptor(object);
 			addOperationModePropertyDescriptor(object);
+			addOutputParametersPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -162,6 +163,28 @@ public class OperationModeRequestItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Output Parameters feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOutputParametersPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_OperationModeRequest_outputParameters_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_OperationModeRequest_outputParameters_feature", "_UI_OperationModeRequest_type"),
+				 ComponentPackage.Literals.OPERATION_MODE_REQUEST__OUTPUT_PARAMETERS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -173,7 +196,7 @@ public class OperationModeRequestItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(ComponentPackage.Literals.COMPONENT_REQUEST__INPUT_PARAMETERS);
+			childrenFeatures.add(ComponentPackage.Literals.OPERATION_MODE_REQUEST__INPUT_PARAMETERS);
 		}
 		return childrenFeatures;
 	}
@@ -233,6 +256,7 @@ public class OperationModeRequestItemProvider
 			case ComponentPackage.OPERATION_MODE_REQUEST__CORRELATION_ID:
 			case ComponentPackage.OPERATION_MODE_REQUEST__OCCUPIER_ID:
 			case ComponentPackage.OPERATION_MODE_REQUEST__OPERATION_MODE:
+			case ComponentPackage.OPERATION_MODE_REQUEST__OUTPUT_PARAMETERS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case ComponentPackage.OPERATION_MODE_REQUEST__INPUT_PARAMETERS:
@@ -255,7 +279,7 @@ public class OperationModeRequestItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ComponentPackage.Literals.COMPONENT_REQUEST__INPUT_PARAMETERS,
+				(ComponentPackage.Literals.OPERATION_MODE_REQUEST__INPUT_PARAMETERS,
 				 ComponentFactory.eINSTANCE.createVariable()));
 	}
 

@@ -2,6 +2,7 @@ package de.dfki.cos.basys.platform.osgi.services.internal;
 
 import java.util.Map;
 
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.osgi.service.component.ComponentContext;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
@@ -10,17 +11,16 @@ import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.component.annotations.Reference;
 
+import de.dfki.cos.basys.common.component.manager.ComponentManager;
+import de.dfki.cos.basys.common.component.manager.ComponentManagerException;
 import de.dfki.cos.basys.platform.model.domain.processinstance.ProcessInstance;
 import de.dfki.cos.basys.platform.model.domain.processinstance.ProcessInstanceStore;
-import de.dfki.cos.basys.platform.osgi.services.BasysOsgiComponent;
-import de.dfki.cos.basys.platform.osgi.services.ResourceSetProvider;
-import de.dfki.cos.basys.platform.runtime.component.manager.ComponentManager;
-import de.dfki.cos.basys.platform.runtime.component.manager.ComponentManagerException;
+import de.dfki.cos.basys.platform.osgi.services.OsgiComponentWrapper;
 import de.dfki.cos.basys.platform.runtime.services.ProcessInstanceManager;
 import de.dfki.cos.basys.platform.runtime.services.impl.ProcessInstanceManagerImpl;
 
 @Component(configurationPolicy = ConfigurationPolicy.REQUIRE, immediate = true)
-public final class ProcessInstanceManagerServiceImpl extends BasysOsgiComponent implements ProcessInstanceManager {
+public final class ProcessInstanceManagerServiceImpl extends OsgiComponentWrapper implements ProcessInstanceManager {
 
 	ComponentManager componentManager;
 	ProcessInstanceManagerImpl impl;
@@ -35,9 +35,8 @@ public final class ProcessInstanceManagerServiceImpl extends BasysOsgiComponent 
 		super.activate(context, properties);
 
 		impl = new ProcessInstanceManagerImpl(config);
-		impl.setSharedResourceSet(provider.getSharedResourceSet());
 		try {
-			componentManager.addLocalComponent(impl);
+			componentManager.addComponent(impl);
 		} catch (ComponentManagerException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -66,17 +65,6 @@ public final class ProcessInstanceManagerServiceImpl extends BasysOsgiComponent 
 
 	void unsetComponentManager(ComponentManager componentManager) {
 		this.componentManager = null;
-	}
-
-	ResourceSetProvider provider;
-	
-	@Reference
-	void setResourceSetProvider(ResourceSetProvider provider) {
-		this.provider = provider;
-	}
-	
-	void unsetResourceSetProvider(ResourceSetProvider provider) {
-		this.provider = null;
 	}
 	
 	/*

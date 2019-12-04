@@ -4,6 +4,7 @@ package de.dfki.cos.basys.platform.model.runtime.component.provider;
 
 
 import de.dfki.cos.basys.platform.model.runtime.communication.provider.RuntimeEditPlugin;
+
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
 
@@ -14,6 +15,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -376,7 +378,7 @@ public class ComponentInfoItemProvider
 			getString("_UI_ComponentInfo_type") :
 			getString("_UI_ComponentInfo_type") + " " + label;
 	}
-	
+
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached

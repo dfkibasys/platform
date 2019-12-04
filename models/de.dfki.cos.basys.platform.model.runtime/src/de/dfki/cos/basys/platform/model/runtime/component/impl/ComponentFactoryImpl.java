@@ -2,6 +2,8 @@
  */
 package de.dfki.cos.basys.platform.model.runtime.component.impl;
 
+import de.dfki.cos.basys.platform.model.runtime.component.*;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -10,8 +12,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import de.dfki.cos.basys.platform.model.runtime.component.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -60,22 +60,16 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 			case ComponentPackage.COMPONENT_INFO: return createComponentInfo();
 			case ComponentPackage.COMPONENT_CONFIGURATION: return createComponentConfiguration();
 			case ComponentPackage.PROPERTY: return createProperty();
-			case ComponentPackage.COMMAND_REQUEST: return createCommandRequest();
-			case ComponentPackage.CHANGE_MODE_REQUEST: return createChangeModeRequest();
-			case ComponentPackage.CAPABILITY_REQUEST: return createCapabilityRequest();
+			case ComponentPackage.COMPONENT_REQUEST_COLLECTION: return createComponentRequestCollection();
 			case ComponentPackage.COMPONENT_REQUEST_STATUS: return createComponentRequestStatus();
 			case ComponentPackage.STATUS_REQUEST: return createStatusRequest();
 			case ComponentPackage.COMPONENT_RESPONSE: return createComponentResponse();
-			case ComponentPackage.COMPONENT_REQUEST_COLLECTION: return createComponentRequestCollection();
 			case ComponentPackage.VARIABLE: return createVariable();
-			case ComponentPackage.SIMULATION_CONFIGURATION: return createSimulationConfiguration();
-			case ComponentPackage.PROCESS_REQUEST: return createProcessRequest();
-			case ComponentPackage.PROCESS_REQUEST_STATUS: return createProcessRequestStatus();
-			case ComponentPackage.PROCESS_RESPONSE: return createProcessResponse();
 			case ComponentPackage.OCCUPATION_LEVEL_REQUEST: return createOccupationLevelRequest();
 			case ComponentPackage.EXECUTION_MODE_REQUEST: return createExecutionModeRequest();
 			case ComponentPackage.EXECUTION_COMMAND_REQUEST: return createExecutionCommandRequest();
 			case ComponentPackage.OPERATION_MODE_REQUEST: return createOperationModeRequest();
+			case ComponentPackage.SIMULATION_CONFIGURATION: return createSimulationConfiguration();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -91,18 +85,14 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 		switch (eDataType.getClassifierID()) {
 			case ComponentPackage.COMPONENT_CATEGORY:
 				return createComponentCategoryFromString(eDataType, initialValue);
-			case ComponentPackage.STATE:
-				return createStateFromString(eDataType, initialValue);
-			case ComponentPackage.CONTROL_MODE:
-				return createControlModeFromString(eDataType, initialValue);
-			case ComponentPackage.CONTROL_COMMAND:
-				return createControlCommandFromString(eDataType, initialValue);
 			case ComponentPackage.REQUEST_STATUS:
 				return createRequestStatusFromString(eDataType, initialValue);
 			case ComponentPackage.RESPONSE_STATUS:
 				return createResponseStatusFromString(eDataType, initialValue);
 			case ComponentPackage.VARIABLE_TYPE:
 				return createVariableTypeFromString(eDataType, initialValue);
+			case ComponentPackage.EXECUTION_STATE:
+				return createExecutionStateFromString(eDataType, initialValue);
 			case ComponentPackage.EXECUTION_MODE:
 				return createExecutionModeFromString(eDataType, initialValue);
 			case ComponentPackage.EXECUTION_COMMAND:
@@ -124,18 +114,14 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 		switch (eDataType.getClassifierID()) {
 			case ComponentPackage.COMPONENT_CATEGORY:
 				return convertComponentCategoryToString(eDataType, instanceValue);
-			case ComponentPackage.STATE:
-				return convertStateToString(eDataType, instanceValue);
-			case ComponentPackage.CONTROL_MODE:
-				return convertControlModeToString(eDataType, instanceValue);
-			case ComponentPackage.CONTROL_COMMAND:
-				return convertControlCommandToString(eDataType, instanceValue);
 			case ComponentPackage.REQUEST_STATUS:
 				return convertRequestStatusToString(eDataType, instanceValue);
 			case ComponentPackage.RESPONSE_STATUS:
 				return convertResponseStatusToString(eDataType, instanceValue);
 			case ComponentPackage.VARIABLE_TYPE:
 				return convertVariableTypeToString(eDataType, instanceValue);
+			case ComponentPackage.EXECUTION_STATE:
+				return convertExecutionStateToString(eDataType, instanceValue);
 			case ComponentPackage.EXECUTION_MODE:
 				return convertExecutionModeToString(eDataType, instanceValue);
 			case ComponentPackage.EXECUTION_COMMAND:
@@ -152,6 +138,7 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ComponentInfo createComponentInfo() {
 		ComponentInfoImpl componentInfo = new ComponentInfoImpl();
 		return componentInfo;
@@ -162,6 +149,7 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ComponentConfiguration createComponentConfiguration() {
 		ComponentConfigurationImpl componentConfiguration = new ComponentConfigurationImpl();
 		return componentConfiguration;
@@ -172,6 +160,7 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Property createProperty() {
 		PropertyImpl property = new PropertyImpl();
 		return property;
@@ -182,66 +171,7 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CommandRequest createCommandRequest() {
-		CommandRequestImpl commandRequest = new CommandRequestImpl();
-		return commandRequest;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ChangeModeRequest createChangeModeRequest() {
-		ChangeModeRequestImpl changeModeRequest = new ChangeModeRequestImpl();
-		return changeModeRequest;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public CapabilityRequest createCapabilityRequest() {
-		CapabilityRequestImpl capabilityRequest = new CapabilityRequestImpl();
-		return capabilityRequest;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ComponentRequestStatus createComponentRequestStatus() {
-		ComponentRequestStatusImpl componentRequestStatus = new ComponentRequestStatusImpl();
-		return componentRequestStatus;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public StatusRequest createStatusRequest() {
-		StatusRequestImpl statusRequest = new StatusRequestImpl();
-		return statusRequest;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ComponentResponse createComponentResponse() {
-		ComponentResponseImpl componentResponse = new ComponentResponseImpl();
-		return componentResponse;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	@Override
 	public ComponentRequestCollection createComponentRequestCollection() {
 		ComponentRequestCollectionImpl componentRequestCollection = new ComponentRequestCollectionImpl();
 		return componentRequestCollection;
@@ -252,6 +182,40 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public ComponentRequestStatus createComponentRequestStatus() {
+		ComponentRequestStatusImpl componentRequestStatus = new ComponentRequestStatusImpl();
+		return componentRequestStatus;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public StatusRequest createStatusRequest() {
+		StatusRequestImpl statusRequest = new StatusRequestImpl();
+		return statusRequest;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ComponentResponse createComponentResponse() {
+		ComponentResponseImpl componentResponse = new ComponentResponseImpl();
+		return componentResponse;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Variable createVariable() {
 		VariableImpl variable = new VariableImpl();
 		return variable;
@@ -262,46 +226,7 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SimulationConfiguration createSimulationConfiguration() {
-		SimulationConfigurationImpl simulationConfiguration = new SimulationConfigurationImpl();
-		return simulationConfiguration;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ProcessRequest createProcessRequest() {
-		ProcessRequestImpl processRequest = new ProcessRequestImpl();
-		return processRequest;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ProcessRequestStatus createProcessRequestStatus() {
-		ProcessRequestStatusImpl processRequestStatus = new ProcessRequestStatusImpl();
-		return processRequestStatus;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ProcessResponse createProcessResponse() {
-		ProcessResponseImpl processResponse = new ProcessResponseImpl();
-		return processResponse;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	@Override
 	public OccupationLevelRequest createOccupationLevelRequest() {
 		OccupationLevelRequestImpl occupationLevelRequest = new OccupationLevelRequestImpl();
 		return occupationLevelRequest;
@@ -312,6 +237,7 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ExecutionModeRequest createExecutionModeRequest() {
 		ExecutionModeRequestImpl executionModeRequest = new ExecutionModeRequestImpl();
 		return executionModeRequest;
@@ -322,6 +248,7 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ExecutionCommandRequest createExecutionCommandRequest() {
 		ExecutionCommandRequestImpl executionCommandRequest = new ExecutionCommandRequestImpl();
 		return executionCommandRequest;
@@ -332,9 +259,21 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public OperationModeRequest createOperationModeRequest() {
 		OperationModeRequestImpl operationModeRequest = new OperationModeRequestImpl();
 		return operationModeRequest;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public SimulationConfiguration createSimulationConfiguration() {
+		SimulationConfigurationImpl simulationConfiguration = new SimulationConfigurationImpl();
+		return simulationConfiguration;
 	}
 
 	/**
@@ -354,66 +293,6 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 	 * @generated
 	 */
 	public String convertComponentCategoryToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public State createStateFromString(EDataType eDataType, String initialValue) {
-		State result = State.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertStateToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ControlMode createControlModeFromString(EDataType eDataType, String initialValue) {
-		ControlMode result = ControlMode.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertControlModeToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ControlCommand createControlCommandFromString(EDataType eDataType, String initialValue) {
-		ControlCommand result = ControlCommand.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertControlCommandToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -482,6 +361,26 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ExecutionState createExecutionStateFromString(EDataType eDataType, String initialValue) {
+		ExecutionState result = ExecutionState.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertExecutionStateToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ExecutionMode createExecutionModeFromString(EDataType eDataType, String initialValue) {
 		ExecutionMode result = ExecutionMode.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -542,6 +441,7 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ComponentPackage getComponentPackage() {
 		return (ComponentPackage)getEPackage();
 	}

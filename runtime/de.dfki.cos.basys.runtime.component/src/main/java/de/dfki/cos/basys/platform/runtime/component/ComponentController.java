@@ -6,36 +6,28 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+import de.dfki.cos.basys.common.component.ComponentInfo;
 import de.dfki.cos.basys.common.emf.json.JsonUtils;
-import de.dfki.cos.basys.platform.model.domain.resourceinstance.CapabilityVariant;
 import de.dfki.cos.basys.platform.model.runtime.communication.Channel;
 import de.dfki.cos.basys.platform.model.runtime.communication.ChannelListener;
 import de.dfki.cos.basys.platform.model.runtime.communication.Notification;
 import de.dfki.cos.basys.platform.model.runtime.communication.Request;
 import de.dfki.cos.basys.platform.model.runtime.communication.Response;
-import de.dfki.cos.basys.platform.model.runtime.component.CapabilityRequest;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentFactory;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentRequestStatus;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentResponse;
-import de.dfki.cos.basys.platform.model.runtime.component.ControlMode;
 import de.dfki.cos.basys.platform.model.runtime.component.RequestStatus;
 import de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus;
-import de.dfki.cos.basys.platform.model.runtime.component.State;
-import de.dfki.cos.basys.platform.model.runtime.component.impl.CapabilityRequestImpl;
 import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
-import de.dfki.cos.basys.platform.runtime.component.packml.StatusInterface;
-import de.dfki.cos.basys.platform.runtime.component.packml.UnitConfiguration;
 
-public class ComponentController implements ChannelListener, StatusInterface {
+public class ComponentController implements ChannelListener {
 
 	protected String componentId;
 
 	protected CommFactory cf = CommFactory.getInstance();
 
-	protected ComponentContext context = null;
+	protected BasysComponentContext context = null;
 
 	protected Channel componentInChannel = null;
 	protected Channel componentOutChannel = null;
@@ -61,13 +53,13 @@ public class ComponentController implements ChannelListener, StatusInterface {
 		this.executeCondition = lock.newCondition();
 	}
 
-	public void lazyConnect(ComponentContext context) {
+	public void lazyConnect(BasysComponentContext context) {
 		// TODO: controller should register itself at remote device component in order
 		// to avoid two controllers can control a component at the same time.
 		this.context = context;
 	}
 
-	public synchronized void connect(ComponentContext context) {
+	public synchronized void connect(BasysComponentContext context) {
 
 		if (isConnected)
 			return;
@@ -76,18 +68,18 @@ public class ComponentController implements ChannelListener, StatusInterface {
 		// to avoid two controllers can control a component at the same time.
 		this.context = context;
 
-		componentInfo = context.getComponentRegistry().getComponentById(ComponentCategory.DEVICE_COMPONENT,
-				componentId);
+		componentInfo = context.getComponentRegistry().getComponentById(StringConstants.categoryDevice,	componentId);
 		//synchronized (componentInfo) {
-			if (componentInfo.getInChannelName() != null && !componentInfo.getInChannelName().equals(""))
-				componentInChannel = cf.openChannel(context.getSharedChannelPool(), componentInfo.getInChannelName(),
-						false, null);
-			if (componentInfo.getOutChannelName() != null && !componentInfo.getOutChannelName().equals(""))
-				componentOutChannel = cf.openChannel(context.getSharedChannelPool(), componentInfo.getOutChannelName(),
-						false, this);
-			if (componentInfo.getStatusChannelName() != null && !componentInfo.getStatusChannelName().equals(""))
-				componentStatusChannel = cf.openChannel(context.getSharedChannelPool(),
-						componentInfo.getStatusChannelName(), false, this);
+		String inChannelName = componentInfo.getProperty(StringConstants.inChannelName);
+		String outChannelName = componentInfo.getProperty(StringConstants.outChannelName);
+		String statusChannelName = componentInfo.getProperty(StringConstants.statusChannelName);
+	
+		if (inChannelName != null && !inChannelName.equals(""))
+			componentInChannel = cf.openChannel(context.getSharedChannelPool(), inChannelName, false, null);
+		if (outChannelName != null && !outChannelName.equals(""))
+			componentOutChannel = cf.openChannel(context.getSharedChannelPool(), outChannelName, false, this);
+		if (statusChannelName != null && !statusChannelName.equals(""))
+			componentStatusChannel = cf.openChannel(context.getSharedChannelPool(), statusChannelName, false, this);
 		//}
 
 		isConnected = true;
@@ -151,7 +143,7 @@ public class ComponentController implements ChannelListener, StatusInterface {
 				ComponentResponse response = ComponentFactory.eINSTANCE.createComponentResponse();
 				// TODO: ggf. eContainer-Wechsel?
 				response.setRequest(request);
-				response.setComponentId(getId());
+				response.setComponentId(componentId);
 				response.setMessage(status.getMessage());
 				response.setStatus(ResponseStatus.NOT_OK);	
 				return response;
@@ -167,12 +159,6 @@ public class ComponentController implements ChannelListener, StatusInterface {
 		lock.unlock();
 	}
 	
-	public CompletableFuture<ComponentResponse> executeCapabilityFuture(CapabilityVariant<?,?> capability) {
-		CapabilityRequest cr = new CapabilityRequestImpl.Builder().componentId(componentId).capabilityVariant(capability)
-				.build();
-		return executeComponentRequest(cr);
-	}	
-
 	@Override
 	public void handleMessage(Channel channel, String msg) {
 		if (listener != null) {
@@ -218,30 +204,6 @@ public class ComponentController implements ChannelListener, StatusInterface {
 		}
 
 		return null;
-	}
-
-	@Override
-	public String getId() {
-		return componentId;
-	}
-
-	@Override
-	public State getState() {
-		connect(context);
-		return componentInfo.getCurrentState();
-
-	}
-
-	@Override
-	public ControlMode getMode() {
-		connect(context);
-		return componentInfo.getCurrentMode();
-
-	}
-
-	@Override
-	public UnitConfiguration getUnitConfig() {
-		throw new UnsupportedOperationException("method not implemented in component controller.");
 	}
 
 	public class ComponentRequestEnvelop {

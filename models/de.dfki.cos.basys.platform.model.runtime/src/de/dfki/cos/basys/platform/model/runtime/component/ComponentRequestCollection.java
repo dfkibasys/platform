@@ -3,6 +3,7 @@
 package de.dfki.cos.basys.platform.model.runtime.component;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -26,10 +27,6 @@ public interface ComponentRequestCollection extends EObject {
 	 * Returns the value of the '<em><b>Component Requests</b></em>' containment reference list.
 	 * The list contents are of type {@link de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Component Requests</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Component Requests</em>' containment reference list.
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage#getComponentRequestCollection_ComponentRequests()

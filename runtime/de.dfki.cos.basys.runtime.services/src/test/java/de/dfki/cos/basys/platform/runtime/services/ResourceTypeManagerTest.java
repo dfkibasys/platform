@@ -11,15 +11,15 @@ import de.dfki.cos.basys.platform.model.domain.resourcetype.ResourceType;
 import de.dfki.cos.basys.platform.model.domain.resourcetype.ResourceTypeCatalogueCollection;
 import de.dfki.cos.basys.platform.runtime.services.impl.ResourceTypeManagerImpl;
 
-public class ResourceTypeManagerTest extends BaseEmfServiceComponentTest<ResourceTypeManagerImpl> {
+public class ResourceTypeManagerTest extends BaseComponentTest {
 
+	ResourceTypeManager service = null;
+	
 	@Override
 	@Before
-	public void setUp() throws Exception {
-		javaClassName += "ResourceTypeManagerImpl";
-		file = "model.resourcetype";
-
+	public void setUp() throws Exception {		
 		super.setUp();
+		service = (ResourceTypeManager) componentManager.getComponentById("resource-type-manager");
 	}
 
 	@Override

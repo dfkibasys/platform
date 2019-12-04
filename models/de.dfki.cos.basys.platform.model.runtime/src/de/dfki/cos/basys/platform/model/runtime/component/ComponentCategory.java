@@ -56,7 +56,9 @@ public enum ComponentCategory implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	MANAGEMENT_COMPONENT(3, "MANAGEMENT_COMPONENT", "MANAGEMENT_COMPONENT"), /**
+	MANAGEMENT_COMPONENT(3, "MANAGEMENT_COMPONENT", "MANAGEMENT_COMPONENT"),
+
+	/**
 	 * The '<em><b>PROCESS COMPONENT</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -69,10 +71,6 @@ public enum ComponentCategory implements Enumerator {
 	/**
 	 * The '<em><b>NONE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>NONE</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #NONE
 	 * @model
@@ -84,10 +82,6 @@ public enum ComponentCategory implements Enumerator {
 	/**
 	 * The '<em><b>SERVICE COMPONENT</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>SERVICE COMPONENT</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #SERVICE_COMPONENT
 	 * @model
@@ -99,10 +93,6 @@ public enum ComponentCategory implements Enumerator {
 	/**
 	 * The '<em><b>DEVICE COMPONENT</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>DEVICE COMPONENT</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #DEVICE_COMPONENT
 	 * @model
@@ -114,10 +104,6 @@ public enum ComponentCategory implements Enumerator {
 	/**
 	 * The '<em><b>MANAGEMENT COMPONENT</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>MANAGEMENT COMPONENT</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #MANAGEMENT_COMPONENT
 	 * @model
@@ -129,10 +115,6 @@ public enum ComponentCategory implements Enumerator {
 	/**
 	 * The '<em><b>PROCESS COMPONENT</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>PROCESS COMPONENT</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #PROCESS_COMPONENT
 	 * @model
@@ -257,6 +239,7 @@ public enum ComponentCategory implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getValue() {
 	  return value;
 	}
@@ -266,6 +249,7 @@ public enum ComponentCategory implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 	  return name;
 	}
@@ -275,6 +259,7 @@ public enum ComponentCategory implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getLiteral() {
 	  return literal;
 	}

@@ -2,16 +2,18 @@
  */
 package de.dfki.cos.basys.platform.model.runtime.component.impl;
 
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
-import de.dfki.cos.basys.platform.model.runtime.component.ControlMode;
-import de.dfki.cos.basys.platform.model.runtime.component.State;
+import de.dfki.cos.basys.platform.model.runtime.component.ExecutionMode;
+import de.dfki.cos.basys.platform.model.runtime.component.ExecutionState;
+
+import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.ecore.EClass;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -167,7 +169,7 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 	 * @generated
 	 * @ordered
 	 */
-	protected static final State CURRENT_STATE_EDEFAULT = State.UNDEFINED;
+	protected static final ExecutionState CURRENT_STATE_EDEFAULT = ExecutionState.UNDEFINED;
 
 	/**
 	 * The cached value of the '{@link #getCurrentState() <em>Current State</em>}' attribute.
@@ -177,7 +179,7 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 	 * @generated
 	 * @ordered
 	 */
-	protected State currentState = CURRENT_STATE_EDEFAULT;
+	protected ExecutionState currentState = CURRENT_STATE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getCurrentMode() <em>Current Mode</em>}' attribute.
@@ -187,7 +189,7 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 	 * @generated
 	 * @ordered
 	 */
-	protected static final ControlMode CURRENT_MODE_EDEFAULT = ControlMode.UNDEFINED;
+	protected static final ExecutionMode CURRENT_MODE_EDEFAULT = ExecutionMode.PRODUCTION;
 
 	/**
 	 * The cached value of the '{@link #getCurrentMode() <em>Current Mode</em>}' attribute.
@@ -197,7 +199,7 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 	 * @generated
 	 * @ordered
 	 */
-	protected ControlMode currentMode = CURRENT_MODE_EDEFAULT;
+	protected ExecutionMode currentMode = CURRENT_MODE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getCommunicationProvider() <em>Communication Provider</em>}' attribute.
@@ -462,7 +464,7 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 	 * @generated
 	 */
 	@Override
-	public State getCurrentState() {
+	public ExecutionState getCurrentState() {
 		return currentState;
 	}
 
@@ -472,8 +474,8 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 	 * @generated
 	 */
 	@Override
-	public void setCurrentState(State newCurrentState) {
-		State oldCurrentState = currentState;
+	public void setCurrentState(ExecutionState newCurrentState) {
+		ExecutionState oldCurrentState = currentState;
 		currentState = newCurrentState == null ? CURRENT_STATE_EDEFAULT : newCurrentState;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.COMPONENT_INFO__CURRENT_STATE, oldCurrentState, currentState));
@@ -485,7 +487,7 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 	 * @generated
 	 */
 	@Override
-	public ControlMode getCurrentMode() {
+	public ExecutionMode getCurrentMode() {
 		return currentMode;
 	}
 
@@ -495,8 +497,8 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 	 * @generated
 	 */
 	@Override
-	public void setCurrentMode(ControlMode newCurrentMode) {
-		ControlMode oldCurrentMode = currentMode;
+	public void setCurrentMode(ExecutionMode newCurrentMode) {
+		ExecutionMode oldCurrentMode = currentMode;
 		currentMode = newCurrentMode == null ? CURRENT_MODE_EDEFAULT : newCurrentMode;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.COMPONENT_INFO__CURRENT_MODE, oldCurrentMode, currentMode));
@@ -599,6 +601,7 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isConnected() {
 		return connected;
 	}
@@ -608,6 +611,7 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setConnected(boolean newConnected) {
 		boolean oldConnected = connected;
 		connected = newConnected;
@@ -658,7 +662,6 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -681,10 +684,10 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 				setStatusChannelName((String)newValue);
 				return;
 			case ComponentPackage.COMPONENT_INFO__CURRENT_STATE:
-				setCurrentState((State)newValue);
+				setCurrentState((ExecutionState)newValue);
 				return;
 			case ComponentPackage.COMPONENT_INFO__CURRENT_MODE:
-				setCurrentMode((ControlMode)newValue);
+				setCurrentMode((ExecutionMode)newValue);
 				return;
 			case ComponentPackage.COMPONENT_INFO__COMMUNICATION_PROVIDER:
 				setCommunicationProvider((String)newValue);
@@ -834,111 +837,4 @@ public class ComponentInfoImpl extends MinimalEObjectImpl.Container implements C
 		return result.toString();
 	}
 
-	public static class Builder {
-		private String componentId;
-		private String componentName;
-		private ComponentCategory componentCategory;
-		private String inChannelName;
-		private String outChannelName;
-		private String statusChannelName;
-		private State currentState;
-		private ControlMode currentMode;
-		private String communicationProvider;
-		private String connectionString;
-		private String hostName;
-		private String uriSpec;
-		private boolean connected; 
-		//private List<Property> properties;
-
-		public Builder componentId(String componentId) {
-			this.componentId = componentId;
-			return this;
-		}
-
-		public Builder componentName(String componentName) {
-			this.componentName = componentName;
-			return this;
-		}
-
-		public Builder componentCategory(ComponentCategory componentCategory) {
-			this.componentCategory = componentCategory;
-			return this;
-		}
-
-		public Builder inChannelName(String inChannelName) {
-			this.inChannelName = inChannelName;
-			return this;
-		}
-
-		public Builder outChannelName(String outChannelName) {
-			this.outChannelName = outChannelName;
-			return this;
-		}
-
-		public Builder statusChannelName(String statusChannelName) {
-			this.statusChannelName = statusChannelName;
-			return this;
-		}
-
-		public Builder currentState(State currentState) {
-			this.currentState = currentState;
-			return this;
-		}
-
-		public Builder currentMode(ControlMode currentMode) {
-			this.currentMode = currentMode;
-			return this;
-		}
-
-		public Builder communicationProvider(String communicationProvider) {
-			this.communicationProvider = communicationProvider;
-			return this;
-		}
-
-		public Builder connectionString(String connectionString) {
-			this.connectionString = connectionString;
-			return this;
-		}
-
-		public Builder hostName(String hostName) {
-			this.hostName = hostName;
-			return this;
-		}
-
-		public Builder uriSpec(String uriSpec) {
-			this.uriSpec = uriSpec;
-			return this;
-		}
-		
-		public Builder isConnected(boolean connected) {
-			this.connected = connected;
-			return this;
-		}
-		
-//		public Builder properties(List<Property> properties) {
-//			this.properties = properties;
-//			return this;
-//		}
-
-		public ComponentInfoImpl build() {
-			return new ComponentInfoImpl(this);
-		}
-	}
-
-	private ComponentInfoImpl(Builder builder) {
-		this.componentId = builder.componentId;
-		this.componentName = builder.componentName;
-		this.componentCategory = builder.componentCategory;
-		this.inChannelName = builder.inChannelName;
-		this.outChannelName = builder.outChannelName;
-		this.statusChannelName = builder.statusChannelName;
-		this.currentState = builder.currentState;
-		this.currentMode = builder.currentMode;
-		this.communicationProvider = builder.communicationProvider;
-		this.connectionString = builder.connectionString;
-		this.hostName = builder.hostName;
-		this.uriSpec = builder.uriSpec;
-		this.connected = builder.connected;
-		//this.getProperties().addAll(builder.properties);
-	}
-}
+} //ComponentInfoImpl

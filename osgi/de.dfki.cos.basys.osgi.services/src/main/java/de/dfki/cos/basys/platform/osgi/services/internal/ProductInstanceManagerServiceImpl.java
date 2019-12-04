@@ -10,17 +10,16 @@ import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.component.annotations.Reference;
 
+import de.dfki.cos.basys.common.component.manager.ComponentManager;
+import de.dfki.cos.basys.common.component.manager.ComponentManagerException;
 import de.dfki.cos.basys.platform.model.domain.productinstance.ProductInstance;
 import de.dfki.cos.basys.platform.model.domain.productinstance.ProductInstanceStore;
-import de.dfki.cos.basys.platform.osgi.services.BasysOsgiComponent;
-import de.dfki.cos.basys.platform.osgi.services.ResourceSetProvider;
-import de.dfki.cos.basys.platform.runtime.component.manager.ComponentManager;
-import de.dfki.cos.basys.platform.runtime.component.manager.ComponentManagerException;
+import de.dfki.cos.basys.platform.osgi.services.OsgiComponentWrapper;
 import de.dfki.cos.basys.platform.runtime.services.ProductInstanceManager;
 import de.dfki.cos.basys.platform.runtime.services.impl.ProductInstanceManagerImpl;
 
 @Component(configurationPolicy = ConfigurationPolicy.REQUIRE, immediate = true)
-public final class ProductInstanceManagerServiceImpl extends BasysOsgiComponent implements ProductInstanceManager {
+public final class ProductInstanceManagerServiceImpl extends OsgiComponentWrapper implements ProductInstanceManager {
 
 	ComponentManager componentManager;
 	ProductInstanceManagerImpl impl;
@@ -35,9 +34,8 @@ public final class ProductInstanceManagerServiceImpl extends BasysOsgiComponent 
 		super.activate(context, properties);
 
 		impl = new ProductInstanceManagerImpl(config);
-		impl.setSharedResourceSet(provider.getSharedResourceSet());
 		try {
-			componentManager.addLocalComponent(impl);
+			componentManager.addComponent(impl);
 		} catch (ComponentManagerException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -66,17 +64,6 @@ public final class ProductInstanceManagerServiceImpl extends BasysOsgiComponent 
 
 	void unsetComponentManager(ComponentManager componentManager) {
 		this.componentManager = null;
-	}
-
-	ResourceSetProvider provider;
-	
-	@Reference
-	void setResourceSetProvider(ResourceSetProvider provider) {
-		this.provider = provider;
-	}
-	
-	void unsetResourceSetProvider(ResourceSetProvider provider) {
-		this.provider = null;
 	}
 	
 	/*

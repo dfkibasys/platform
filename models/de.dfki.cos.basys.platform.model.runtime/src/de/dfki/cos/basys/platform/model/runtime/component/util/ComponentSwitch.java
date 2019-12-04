@@ -84,30 +84,15 @@ public class ComponentSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ComponentPackage.COMPONENT_REQUEST_COLLECTION: {
+				ComponentRequestCollection componentRequestCollection = (ComponentRequestCollection)theEObject;
+				T result = caseComponentRequestCollection(componentRequestCollection);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case ComponentPackage.COMPONENT_REQUEST: {
 				ComponentRequest componentRequest = (ComponentRequest)theEObject;
 				T result = caseComponentRequest(componentRequest);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ComponentPackage.COMMAND_REQUEST: {
-				CommandRequest commandRequest = (CommandRequest)theEObject;
-				T result = caseCommandRequest(commandRequest);
-				if (result == null) result = caseComponentRequest(commandRequest);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ComponentPackage.CHANGE_MODE_REQUEST: {
-				ChangeModeRequest changeModeRequest = (ChangeModeRequest)theEObject;
-				T result = caseChangeModeRequest(changeModeRequest);
-				if (result == null) result = caseComponentRequest(changeModeRequest);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ComponentPackage.CAPABILITY_REQUEST: {
-				CapabilityRequest capabilityRequest = (CapabilityRequest)theEObject;
-				T result = caseCapabilityRequest(capabilityRequest);
-				if (result == null) result = caseComponentRequest(capabilityRequest);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -130,39 +115,9 @@ public class ComponentSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ComponentPackage.COMPONENT_REQUEST_COLLECTION: {
-				ComponentRequestCollection componentRequestCollection = (ComponentRequestCollection)theEObject;
-				T result = caseComponentRequestCollection(componentRequestCollection);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case ComponentPackage.VARIABLE: {
 				Variable variable = (Variable)theEObject;
 				T result = caseVariable(variable);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ComponentPackage.SIMULATION_CONFIGURATION: {
-				SimulationConfiguration simulationConfiguration = (SimulationConfiguration)theEObject;
-				T result = caseSimulationConfiguration(simulationConfiguration);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ComponentPackage.PROCESS_REQUEST: {
-				ProcessRequest processRequest = (ProcessRequest)theEObject;
-				T result = caseProcessRequest(processRequest);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ComponentPackage.PROCESS_REQUEST_STATUS: {
-				ProcessRequestStatus processRequestStatus = (ProcessRequestStatus)theEObject;
-				T result = caseProcessRequestStatus(processRequestStatus);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ComponentPackage.PROCESS_RESPONSE: {
-				ProcessResponse processResponse = (ProcessResponse)theEObject;
-				T result = caseProcessResponse(processResponse);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -191,6 +146,12 @@ public class ComponentSwitch<T> extends Switch<T> {
 				OperationModeRequest operationModeRequest = (OperationModeRequest)theEObject;
 				T result = caseOperationModeRequest(operationModeRequest);
 				if (result == null) result = caseComponentRequest(operationModeRequest);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ComponentPackage.SIMULATION_CONFIGURATION: {
+				SimulationConfiguration simulationConfiguration = (SimulationConfiguration)theEObject;
+				T result = caseSimulationConfiguration(simulationConfiguration);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -255,51 +216,6 @@ public class ComponentSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseComponentRequest(ComponentRequest object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Command Request</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Command Request</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseCommandRequest(CommandRequest object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Change Mode Request</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Change Mode Request</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseChangeModeRequest(ChangeModeRequest object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Capability Request</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Capability Request</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseCapabilityRequest(CapabilityRequest object) {
 		return null;
 	}
 
@@ -390,51 +306,6 @@ public class ComponentSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseSimulationConfiguration(SimulationConfiguration object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Process Request</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Process Request</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseProcessRequest(ProcessRequest object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Process Request Status</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Process Request Status</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseProcessRequestStatus(ProcessRequestStatus object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Process Response</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Process Response</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseProcessResponse(ProcessResponse object) {
 		return null;
 	}
 

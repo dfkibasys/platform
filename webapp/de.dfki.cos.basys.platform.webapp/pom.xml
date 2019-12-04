@@ -23,7 +23,14 @@
 
 	<packaging>war</packaging>
 
-	<dependencies>
+	<dependencies>	
+	
+		<dependency>
+			<groupId>de.dfki.cos.basys.common</groupId>
+			<artifactId>de.dfki.cos.basys.common.aas</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>de.dfki.cos.basys.platform.runtime</groupId>
 			<artifactId>de.dfki.cos.basys.platform.runtime.component</artifactId>
@@ -49,6 +56,18 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.glassfish.jersey.containers</groupId>
+			<artifactId>jersey-container-servlet-core</artifactId>
+			<version>${jersey-version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.glassfish.jersey.containers</groupId>
+			<artifactId>jersey-container-servlet</artifactId>
+			<version>${jersey-version}</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.glassfish.jersey.core</groupId>
 			<artifactId>jersey-common</artifactId>
 			<version>${jersey-version}</version>
@@ -64,7 +83,7 @@
 		    <groupId>org.glassfish.jersey.core</groupId>
 		    <artifactId>jersey-client</artifactId>
 		    <version>${jersey-version}</version>		
-		</dependency>
+		</dependency>	
 				
 		<dependency>
 			<groupId>org.glassfish.jersey.media</groupId>

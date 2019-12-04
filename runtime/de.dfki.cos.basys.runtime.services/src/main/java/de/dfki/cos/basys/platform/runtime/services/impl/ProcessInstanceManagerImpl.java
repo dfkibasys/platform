@@ -1,23 +1,21 @@
 package de.dfki.cos.basys.platform.runtime.services.impl;
 
+import java.util.Properties;
+
 import de.dfki.cos.basys.platform.model.domain.processinstance.ProcessInstance;
 import de.dfki.cos.basys.platform.model.domain.processinstance.ProcessInstanceStore;
 import de.dfki.cos.basys.platform.model.domain.processinstance.ProcessinstancePackage;
-import de.dfki.cos.basys.platform.model.domain.processinstance.impl.ProcessinstancePackageImpl;
-import de.dfki.cos.basys.platform.model.domain.processinstance.util.ProcessinstanceResourceFactoryImpl;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
-import de.dfki.cos.basys.platform.runtime.component.service.EmfServiceComponent;
 import de.dfki.cos.basys.platform.runtime.services.ProcessInstanceManager;
 
-public class ProcessInstanceManagerImpl extends EmfServiceComponent implements ProcessInstanceManager {
+public class ProcessInstanceManagerImpl extends EmfBasysComponent implements ProcessInstanceManager {
 
-	public ProcessInstanceManagerImpl(ComponentConfiguration config) {
+	public ProcessInstanceManagerImpl(Properties config) {
 		super(config);
 	}
 
 	@Override
 	public ProcessInstance getProcessInstance(String id) {
-		return getEntity(id);
+		return service.getEntity(id);
 	}
 
 	@Override
@@ -28,7 +26,7 @@ public class ProcessInstanceManagerImpl extends EmfServiceComponent implements P
 
 	@Override
 	public ProcessInstanceStore getProcessInstanceStore() {
-		ProcessInstanceStore store = getFirstEntity(ProcessinstancePackage.eINSTANCE.getProcessInstanceStore());
+		ProcessInstanceStore store = service.getFirstEntity(ProcessinstancePackage.eINSTANCE.getProcessInstanceStore());
 		return store;
 	}
 	

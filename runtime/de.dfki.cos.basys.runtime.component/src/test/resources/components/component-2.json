@@ -3,7 +3,7 @@
   "name": "component-2",
   "category" : "DEVICE_COMPONENT",
   "serviceConnectionString": "",
-  "implementationJavaClass": "de.dfki.cos.basys.platform.runtime.component.v2.BasysComponent",
+  "implementationJavaClass": "de.dfki.cos.basys.platform.runtime.component.BasysComponent",
   "inChannelName" : "component-2#in",
   "outChannelName" : "component-2#out",
   "recordStateChanges": "true" 

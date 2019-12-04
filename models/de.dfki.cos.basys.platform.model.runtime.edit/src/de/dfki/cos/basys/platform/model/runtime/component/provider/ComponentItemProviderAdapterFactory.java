@@ -2,6 +2,8 @@
  */
 package de.dfki.cos.basys.platform.model.runtime.component.provider;
 
+import de.dfki.cos.basys.platform.model.runtime.component.util.ComponentAdapterFactory;
+
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -20,8 +22,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
-import de.dfki.cos.basys.platform.model.runtime.component.util.ComponentAdapterFactory;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support Viewers.
@@ -141,72 +141,26 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.model.runtime.component.CommandRequest} instances.
+	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.model.runtime.component.ComponentRequestCollection} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CommandRequestItemProvider commandRequestItemProvider;
+	protected ComponentRequestCollectionItemProvider componentRequestCollectionItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link de.dfki.cos.basys.platform.model.runtime.component.CommandRequest}.
+	 * This creates an adapter for a {@link de.dfki.cos.basys.platform.model.runtime.component.ComponentRequestCollection}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createCommandRequestAdapter() {
-		if (commandRequestItemProvider == null) {
-			commandRequestItemProvider = new CommandRequestItemProvider(this);
+	public Adapter createComponentRequestCollectionAdapter() {
+		if (componentRequestCollectionItemProvider == null) {
+			componentRequestCollectionItemProvider = new ComponentRequestCollectionItemProvider(this);
 		}
 
-		return commandRequestItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.model.runtime.component.ChangeModeRequest} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ChangeModeRequestItemProvider changeModeRequestItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link de.dfki.cos.basys.platform.model.runtime.component.ChangeModeRequest}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createChangeModeRequestAdapter() {
-		if (changeModeRequestItemProvider == null) {
-			changeModeRequestItemProvider = new ChangeModeRequestItemProvider(this);
-		}
-
-		return changeModeRequestItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.model.runtime.component.CapabilityRequest} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected CapabilityRequestItemProvider capabilityRequestItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link de.dfki.cos.basys.platform.model.runtime.component.CapabilityRequest}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createCapabilityRequestAdapter() {
-		if (capabilityRequestItemProvider == null) {
-			capabilityRequestItemProvider = new CapabilityRequestItemProvider(this);
-		}
-
-		return capabilityRequestItemProvider;
+		return componentRequestCollectionItemProvider;
 	}
 
 	/**
@@ -279,29 +233,6 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.model.runtime.component.ComponentRequestCollection} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ComponentRequestCollectionItemProvider componentRequestCollectionItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link de.dfki.cos.basys.platform.model.runtime.component.ComponentRequestCollection}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createComponentRequestCollectionAdapter() {
-		if (componentRequestCollectionItemProvider == null) {
-			componentRequestCollectionItemProvider = new ComponentRequestCollectionItemProvider(this);
-		}
-
-		return componentRequestCollectionItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.model.runtime.component.Variable} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -322,98 +253,6 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 		}
 
 		return variableItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SimulationConfigurationItemProvider simulationConfigurationItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createSimulationConfigurationAdapter() {
-		if (simulationConfigurationItemProvider == null) {
-			simulationConfigurationItemProvider = new SimulationConfigurationItemProvider(this);
-		}
-
-		return simulationConfigurationItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.model.runtime.component.ProcessRequest} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ProcessRequestItemProvider processRequestItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link de.dfki.cos.basys.platform.model.runtime.component.ProcessRequest}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createProcessRequestAdapter() {
-		if (processRequestItemProvider == null) {
-			processRequestItemProvider = new ProcessRequestItemProvider(this);
-		}
-
-		return processRequestItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.model.runtime.component.ProcessRequestStatus} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ProcessRequestStatusItemProvider processRequestStatusItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link de.dfki.cos.basys.platform.model.runtime.component.ProcessRequestStatus}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createProcessRequestStatusAdapter() {
-		if (processRequestStatusItemProvider == null) {
-			processRequestStatusItemProvider = new ProcessRequestStatusItemProvider(this);
-		}
-
-		return processRequestStatusItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.model.runtime.component.ProcessResponse} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ProcessResponseItemProvider processResponseItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link de.dfki.cos.basys.platform.model.runtime.component.ProcessResponse}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createProcessResponseAdapter() {
-		if (processResponseItemProvider == null) {
-			processResponseItemProvider = new ProcessResponseItemProvider(this);
-		}
-
-		return processResponseItemProvider;
 	}
 
 	/**
@@ -509,11 +348,35 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SimulationConfigurationItemProvider simulationConfigurationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSimulationConfigurationAdapter() {
+		if (simulationConfigurationItemProvider == null) {
+			simulationConfigurationItemProvider = new SimulationConfigurationItemProvider(this);
+		}
+
+		return simulationConfigurationItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ComposeableAdapterFactory getRootAdapterFactory() {
 		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
 	}
@@ -524,6 +387,7 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
@@ -572,6 +436,7 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void addListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.addListener(notifyChangedListener);
 	}
@@ -582,6 +447,7 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void removeListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.removeListener(notifyChangedListener);
 	}
@@ -592,6 +458,7 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void fireNotifyChanged(Notification notification) {
 		changeNotifier.fireNotifyChanged(notification);
 
@@ -606,26 +473,21 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void dispose() {
 		if (componentInfoItemProvider != null) componentInfoItemProvider.dispose();
 		if (componentConfigurationItemProvider != null) componentConfigurationItemProvider.dispose();
 		if (propertyItemProvider != null) propertyItemProvider.dispose();
-		if (commandRequestItemProvider != null) commandRequestItemProvider.dispose();
-		if (changeModeRequestItemProvider != null) changeModeRequestItemProvider.dispose();
-		if (capabilityRequestItemProvider != null) capabilityRequestItemProvider.dispose();
+		if (componentRequestCollectionItemProvider != null) componentRequestCollectionItemProvider.dispose();
 		if (componentRequestStatusItemProvider != null) componentRequestStatusItemProvider.dispose();
 		if (statusRequestItemProvider != null) statusRequestItemProvider.dispose();
 		if (componentResponseItemProvider != null) componentResponseItemProvider.dispose();
-		if (componentRequestCollectionItemProvider != null) componentRequestCollectionItemProvider.dispose();
 		if (variableItemProvider != null) variableItemProvider.dispose();
-		if (simulationConfigurationItemProvider != null) simulationConfigurationItemProvider.dispose();
-		if (processRequestItemProvider != null) processRequestItemProvider.dispose();
-		if (processRequestStatusItemProvider != null) processRequestStatusItemProvider.dispose();
-		if (processResponseItemProvider != null) processResponseItemProvider.dispose();
 		if (occupationLevelRequestItemProvider != null) occupationLevelRequestItemProvider.dispose();
 		if (executionModeRequestItemProvider != null) executionModeRequestItemProvider.dispose();
 		if (executionCommandRequestItemProvider != null) executionCommandRequestItemProvider.dispose();
 		if (operationModeRequestItemProvider != null) operationModeRequestItemProvider.dispose();
+		if (simulationConfigurationItemProvider != null) simulationConfigurationItemProvider.dispose();
 	}
 
 }

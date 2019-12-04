@@ -4,6 +4,7 @@ package de.dfki.cos.basys.platform.model.runtime.component.provider;
 
 
 import de.dfki.cos.basys.platform.model.runtime.communication.provider.RuntimeEditPlugin;
+
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentFactory;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentRequestCollection;
@@ -17,6 +18,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -116,7 +118,7 @@ public class ComponentRequestCollectionItemProvider
 	public String getText(Object object) {
 		return getString("_UI_ComponentRequestCollection_type");
 	}
-	
+
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -147,21 +149,6 @@ public class ComponentRequestCollectionItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ComponentPackage.Literals.COMPONENT_REQUEST_COLLECTION__COMPONENT_REQUESTS,
-				 ComponentFactory.eINSTANCE.createCommandRequest()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ComponentPackage.Literals.COMPONENT_REQUEST_COLLECTION__COMPONENT_REQUESTS,
-				 ComponentFactory.eINSTANCE.createChangeModeRequest()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ComponentPackage.Literals.COMPONENT_REQUEST_COLLECTION__COMPONENT_REQUESTS,
-				 ComponentFactory.eINSTANCE.createCapabilityRequest()));
 
 		newChildDescriptors.add
 			(createChildParameter

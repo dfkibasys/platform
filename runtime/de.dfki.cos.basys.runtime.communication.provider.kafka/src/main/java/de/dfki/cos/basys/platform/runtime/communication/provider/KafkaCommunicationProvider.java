@@ -12,6 +12,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.regex.Pattern;
 
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -162,7 +163,7 @@ public class KafkaCommunicationProvider implements CommunicationProvider {
 	@Override
 	public void doOpenChannel(Channel channel) throws ProviderException {
 		LOGGER.trace("doOpenChannel: " + channel.getName());
-
+		//TODO support pattern
 		KafkaChannel internalChannel = this.channels.get(channel.getId());
 		if (internalChannel == null) {
 			internalChannel = new KafkaChannel(channel);
@@ -326,7 +327,9 @@ public class KafkaCommunicationProvider implements CommunicationProvider {
 
 				try {
 					this.messageConsumer = createConsumer();
+					//TODO name can be pattern
 					messageConsumer.subscribe(Arrays.asList(name));
+					//messageConsumer.subscribe(new Pattern());
 					
 					Runnable task = new Runnable() {
 						@Override

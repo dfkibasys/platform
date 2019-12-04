@@ -80,20 +80,12 @@ public class ComponentAdapterFactory extends AdapterFactoryImpl {
 				return createPropertyAdapter();
 			}
 			@Override
+			public Adapter caseComponentRequestCollection(ComponentRequestCollection object) {
+				return createComponentRequestCollectionAdapter();
+			}
+			@Override
 			public Adapter caseComponentRequest(ComponentRequest object) {
 				return createComponentRequestAdapter();
-			}
-			@Override
-			public Adapter caseCommandRequest(CommandRequest object) {
-				return createCommandRequestAdapter();
-			}
-			@Override
-			public Adapter caseChangeModeRequest(ChangeModeRequest object) {
-				return createChangeModeRequestAdapter();
-			}
-			@Override
-			public Adapter caseCapabilityRequest(CapabilityRequest object) {
-				return createCapabilityRequestAdapter();
 			}
 			@Override
 			public Adapter caseComponentRequestStatus(ComponentRequestStatus object) {
@@ -108,28 +100,8 @@ public class ComponentAdapterFactory extends AdapterFactoryImpl {
 				return createComponentResponseAdapter();
 			}
 			@Override
-			public Adapter caseComponentRequestCollection(ComponentRequestCollection object) {
-				return createComponentRequestCollectionAdapter();
-			}
-			@Override
 			public Adapter caseVariable(Variable object) {
 				return createVariableAdapter();
-			}
-			@Override
-			public Adapter caseSimulationConfiguration(SimulationConfiguration object) {
-				return createSimulationConfigurationAdapter();
-			}
-			@Override
-			public Adapter caseProcessRequest(ProcessRequest object) {
-				return createProcessRequestAdapter();
-			}
-			@Override
-			public Adapter caseProcessRequestStatus(ProcessRequestStatus object) {
-				return createProcessRequestStatusAdapter();
-			}
-			@Override
-			public Adapter caseProcessResponse(ProcessResponse object) {
-				return createProcessResponseAdapter();
 			}
 			@Override
 			public Adapter caseOccupationLevelRequest(OccupationLevelRequest object) {
@@ -146,6 +118,10 @@ public class ComponentAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseOperationModeRequest(OperationModeRequest object) {
 				return createOperationModeRequestAdapter();
+			}
+			@Override
+			public Adapter caseSimulationConfiguration(SimulationConfiguration object) {
+				return createSimulationConfigurationAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -220,48 +196,6 @@ public class ComponentAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createComponentRequestAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.cos.basys.platform.model.runtime.component.CommandRequest <em>Command Request</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.CommandRequest
-	 * @generated
-	 */
-	public Adapter createCommandRequestAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.cos.basys.platform.model.runtime.component.ChangeModeRequest <em>Change Mode Request</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ChangeModeRequest
-	 * @generated
-	 */
-	public Adapter createChangeModeRequestAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.cos.basys.platform.model.runtime.component.CapabilityRequest <em>Capability Request</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.CapabilityRequest
-	 * @generated
-	 */
-	public Adapter createCapabilityRequestAdapter() {
 		return null;
 	}
 
@@ -346,48 +280,6 @@ public class ComponentAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSimulationConfigurationAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.cos.basys.platform.model.runtime.component.ProcessRequest <em>Process Request</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ProcessRequest
-	 * @generated
-	 */
-	public Adapter createProcessRequestAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.cos.basys.platform.model.runtime.component.ProcessRequestStatus <em>Process Request Status</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ProcessRequestStatus
-	 * @generated
-	 */
-	public Adapter createProcessRequestStatusAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.cos.basys.platform.model.runtime.component.ProcessResponse <em>Process Response</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ProcessResponse
-	 * @generated
-	 */
-	public Adapter createProcessResponseAdapter() {
 		return null;
 	}
 

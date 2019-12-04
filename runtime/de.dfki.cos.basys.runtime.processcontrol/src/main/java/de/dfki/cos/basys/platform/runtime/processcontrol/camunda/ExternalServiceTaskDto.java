@@ -36,7 +36,7 @@ public class ExternalServiceTaskDto {
 
 	}
 	
-	public static class Command {
+	public static class Variable {
 		String type;
 		String value;
 		ValueInfo valueInfo;
@@ -66,6 +66,10 @@ public class ExternalServiceTaskDto {
 		}
 
 	}
+
+	public static class ComponentId extends Variable {}
+	public static class RequestType extends Variable {}
+	public static class Token extends Variable {}
 
 	public static class Parameters {
 		String type;
@@ -98,48 +102,34 @@ public class ExternalServiceTaskDto {
 
 	}
 
-	public static class Assignee {
-		String type;
-		String value;
-		ValueInfo valueInfo;
-
-		public String getType() {
-			return type;
-		}
-
-		public void setType(String type) {
-			this.type = type;
-		}
-
-		public String getValue() {
-			return value;
-		}
-
-		public void setValue(String value) {
-			this.value = value;
-		}
-		
-		public ValueInfo getValueInfo() {
-			return valueInfo;
-		}
-		
-		public void setValueInfo(ValueInfo valueInfo) {
-			this.valueInfo = valueInfo;
-		}
-
-	}
-
 	public static class Variables {
-		Command command;
+		ComponentId componentId;
+		RequestType requestType;
+		Token token;
 		Parameters parameters;
-		Assignee assignee;
 
-		public Command getCommand() {
-			return command;
+		public ComponentId getComponentId() {
+			return componentId;
 		}
-
-		public void setCommand(Command command) {
-			this.command = command;
+		
+		public void setComponentId(ComponentId componentId) {
+			this.componentId = componentId;
+		}
+		
+		public RequestType getRequestType() {
+			return requestType;
+		}
+		
+		public void setRequestType(RequestType requestType) {
+			this.requestType = requestType;
+		}
+		
+		public Token getToken() {
+			return token;
+		}
+		
+		public void setToken(Token token) {
+			this.token = token;
 		}
 		
 		public Parameters getParameters() {
@@ -148,14 +138,6 @@ public class ExternalServiceTaskDto {
 		
 		public void setParameters(Parameters parameters) {
 			this.parameters = parameters;
-		}
-
-		public Assignee getAssignee() {
-			return assignee;
-		}
-
-		public void setAssignee(Assignee assignee) {
-			this.assignee = assignee;
 		}
 
 	}

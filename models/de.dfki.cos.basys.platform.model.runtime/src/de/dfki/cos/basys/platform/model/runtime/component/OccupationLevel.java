@@ -61,10 +61,6 @@ public enum OccupationLevel implements Enumerator {
 	/**
 	 * The '<em><b>FREE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>FREE</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #FREE
 	 * @model
@@ -76,10 +72,6 @@ public enum OccupationLevel implements Enumerator {
 	/**
 	 * The '<em><b>OCCUPIED</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>OCCUPIED</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #OCCUPIED
 	 * @model
@@ -91,10 +83,6 @@ public enum OccupationLevel implements Enumerator {
 	/**
 	 * The '<em><b>PRIORITY</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>PRIORITY</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #PRIORITY
 	 * @model
@@ -106,10 +94,6 @@ public enum OccupationLevel implements Enumerator {
 	/**
 	 * The '<em><b>LOCAL</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>LOCAL</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #LOCAL
 	 * @model
@@ -232,6 +216,7 @@ public enum OccupationLevel implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getValue() {
 	  return value;
 	}
@@ -241,6 +226,7 @@ public enum OccupationLevel implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 	  return name;
 	}
@@ -250,6 +236,7 @@ public enum OccupationLevel implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getLiteral() {
 	  return literal;
 	}

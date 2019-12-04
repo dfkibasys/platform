@@ -4,6 +4,7 @@ package de.dfki.cos.basys.platform.model.runtime.component.provider;
 
 
 import de.dfki.cos.basys.platform.model.runtime.communication.provider.RuntimeEditPlugin;
+
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
 import de.dfki.cos.basys.platform.model.runtime.component.Variable;
 
@@ -158,7 +159,7 @@ public class VariableItemProvider
 			getString("_UI_Variable_type") :
 			getString("_UI_Variable_type") + " " + label;
 	}
-	
+
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached

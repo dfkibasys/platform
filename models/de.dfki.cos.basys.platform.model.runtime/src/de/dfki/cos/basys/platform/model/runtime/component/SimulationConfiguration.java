@@ -40,10 +40,6 @@ public interface SimulationConfiguration extends EObject {
 	 * Returns the value of the '<em><b>On Resetting Duration</b></em>' attribute.
 	 * The default value is <code>"1000"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>On Resetting Duration</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>On Resetting Duration</em>' attribute.
 	 * @see #setOnResettingDuration(int)
@@ -67,10 +63,6 @@ public interface SimulationConfiguration extends EObject {
 	 * Returns the value of the '<em><b>On Starting Duration</b></em>' attribute.
 	 * The default value is <code>"1000"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>On Starting Duration</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>On Starting Duration</em>' attribute.
 	 * @see #setOnStartingDuration(int)
@@ -94,10 +86,6 @@ public interface SimulationConfiguration extends EObject {
 	 * Returns the value of the '<em><b>On Execute Duration</b></em>' attribute.
 	 * The default value is <code>"3000"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>On Execute Duration</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>On Execute Duration</em>' attribute.
 	 * @see #setOnExecuteDuration(int)
@@ -121,10 +109,6 @@ public interface SimulationConfiguration extends EObject {
 	 * Returns the value of the '<em><b>On Completing Duration</b></em>' attribute.
 	 * The default value is <code>"1000"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>On Completing Duration</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>On Completing Duration</em>' attribute.
 	 * @see #setOnCompletingDuration(int)
@@ -148,10 +132,6 @@ public interface SimulationConfiguration extends EObject {
 	 * Returns the value of the '<em><b>On Stopping Duration</b></em>' attribute.
 	 * The default value is <code>"1000"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>On Stopping Duration</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>On Stopping Duration</em>' attribute.
 	 * @see #setOnStoppingDuration(int)
@@ -175,10 +155,6 @@ public interface SimulationConfiguration extends EObject {
 	 * Returns the value of the '<em><b>On Aborting Duration</b></em>' attribute.
 	 * The default value is <code>"1000"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>On Aborting Duration</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>On Aborting Duration</em>' attribute.
 	 * @see #setOnAbortingDuration(int)
@@ -202,10 +178,6 @@ public interface SimulationConfiguration extends EObject {
 	 * Returns the value of the '<em><b>On Clearing Duration</b></em>' attribute.
 	 * The default value is <code>"1000"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>On Clearing Duration</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>On Clearing Duration</em>' attribute.
 	 * @see #setOnClearingDuration(int)
@@ -229,10 +201,6 @@ public interface SimulationConfiguration extends EObject {
 	 * Returns the value of the '<em><b>On Holding Duration</b></em>' attribute.
 	 * The default value is <code>"1000"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>On Holding Duration</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>On Holding Duration</em>' attribute.
 	 * @see #setOnHoldingDuration(int)
@@ -256,10 +224,6 @@ public interface SimulationConfiguration extends EObject {
 	 * Returns the value of the '<em><b>On Unholding Duration</b></em>' attribute.
 	 * The default value is <code>"1000"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>On Unholding Duration</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>On Unholding Duration</em>' attribute.
 	 * @see #setOnUnholdingDuration(int)
@@ -283,10 +247,6 @@ public interface SimulationConfiguration extends EObject {
 	 * Returns the value of the '<em><b>On Suspending Duration</b></em>' attribute.
 	 * The default value is <code>"1000"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>On Suspending Duration</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>On Suspending Duration</em>' attribute.
 	 * @see #setOnSuspendingDuration(int)
@@ -310,10 +270,6 @@ public interface SimulationConfiguration extends EObject {
 	 * Returns the value of the '<em><b>On Unsuspending Duration</b></em>' attribute.
 	 * The default value is <code>"1000"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>On Unsuspending Duration</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>On Unsuspending Duration</em>' attribute.
 	 * @see #setOnUnsuspendingDuration(int)
@@ -337,10 +293,6 @@ public interface SimulationConfiguration extends EObject {
 	 * Returns the value of the '<em><b>On Completing Variables</b></em>' containment reference list.
 	 * The list contents are of type {@link de.dfki.cos.basys.platform.model.runtime.component.Variable}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>On Completing Variables</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>On Completing Variables</em>' containment reference list.
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage#getSimulationConfiguration_OnCompletingVariables()
@@ -353,10 +305,6 @@ public interface SimulationConfiguration extends EObject {
 	 * Returns the value of the '<em><b>On Completing Status Code</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>On Completing Status Code</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>On Completing Status Code</em>' attribute.
 	 * @see #setOnCompletingStatusCode(int)
@@ -380,10 +328,6 @@ public interface SimulationConfiguration extends EObject {
 	 * Returns the value of the '<em><b>On Stopping Status Code</b></em>' attribute.
 	 * The default value is <code>"1"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>On Stopping Status Code</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>On Stopping Status Code</em>' attribute.
 	 * @see #setOnStoppingStatusCode(int)

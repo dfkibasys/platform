@@ -36,10 +36,6 @@ public interface ComponentInfo extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Component Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Id</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Component Id</em>' attribute.
 	 * @see #setComponentId(String)
@@ -62,10 +58,6 @@ public interface ComponentInfo extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Component Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Component Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Component Name</em>' attribute.
 	 * @see #setComponentName(String)
@@ -90,10 +82,6 @@ public interface ComponentInfo extends EObject {
 	 * The default value is <code>"NONE"</code>.
 	 * The literals are from the enumeration {@link de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Category</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Component Category</em>' attribute.
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory
@@ -118,10 +106,6 @@ public interface ComponentInfo extends EObject {
 	/**
 	 * Returns the value of the '<em><b>In Channel Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>In Channel Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>In Channel Name</em>' attribute.
 	 * @see #setInChannelName(String)
@@ -144,10 +128,6 @@ public interface ComponentInfo extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Out Channel Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Out Channel Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Out Channel Name</em>' attribute.
 	 * @see #setOutChannelName(String)
@@ -170,10 +150,6 @@ public interface ComponentInfo extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Status Channel Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Status Channel Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Status Channel Name</em>' attribute.
 	 * @see #setStatusChannelName(String)
@@ -195,69 +171,57 @@ public interface ComponentInfo extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Current State</b></em>' attribute.
-	 * The literals are from the enumeration {@link de.dfki.cos.basys.platform.model.runtime.component.State}.
+	 * The literals are from the enumeration {@link de.dfki.cos.basys.platform.model.runtime.component.ExecutionState}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Current State</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Current State</em>' attribute.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.State
-	 * @see #setCurrentState(State)
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ExecutionState
+	 * @see #setCurrentState(ExecutionState)
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage#getComponentInfo_CurrentState()
 	 * @model
 	 * @generated
 	 */
-	State getCurrentState();
+	ExecutionState getCurrentState();
 
 	/**
 	 * Sets the value of the '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo#getCurrentState <em>Current State</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Current State</em>' attribute.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.State
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ExecutionState
 	 * @see #getCurrentState()
 	 * @generated
 	 */
-	void setCurrentState(State value);
+	void setCurrentState(ExecutionState value);
 
 	/**
 	 * Returns the value of the '<em><b>Current Mode</b></em>' attribute.
-	 * The literals are from the enumeration {@link de.dfki.cos.basys.platform.model.runtime.component.ControlMode}.
+	 * The literals are from the enumeration {@link de.dfki.cos.basys.platform.model.runtime.component.ExecutionMode}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Current Mode</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Current Mode</em>' attribute.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ControlMode
-	 * @see #setCurrentMode(ControlMode)
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ExecutionMode
+	 * @see #setCurrentMode(ExecutionMode)
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage#getComponentInfo_CurrentMode()
 	 * @model
 	 * @generated
 	 */
-	ControlMode getCurrentMode();
+	ExecutionMode getCurrentMode();
 
 	/**
 	 * Sets the value of the '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo#getCurrentMode <em>Current Mode</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Current Mode</em>' attribute.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ControlMode
+	 * @see de.dfki.cos.basys.platform.model.runtime.component.ExecutionMode
 	 * @see #getCurrentMode()
 	 * @generated
 	 */
-	void setCurrentMode(ControlMode value);
+	void setCurrentMode(ExecutionMode value);
 
 	/**
 	 * Returns the value of the '<em><b>Communication Provider</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Communication Provider</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Communication Provider</em>' attribute.
 	 * @see #setCommunicationProvider(String)
@@ -280,10 +244,6 @@ public interface ComponentInfo extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Connection String</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Connection String</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Connection String</em>' attribute.
 	 * @see #setConnectionString(String)
@@ -306,10 +266,6 @@ public interface ComponentInfo extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Host Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Host Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Host Name</em>' attribute.
 	 * @see #setHostName(String)
@@ -332,10 +288,6 @@ public interface ComponentInfo extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Uri Spec</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Uri Spec</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Uri Spec</em>' attribute.
 	 * @see #setUriSpec(String)
@@ -358,10 +310,6 @@ public interface ComponentInfo extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Connected</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Connected</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Connected</em>' attribute.
 	 * @see #setConnected(boolean)

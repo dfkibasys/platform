@@ -5,23 +5,13 @@ package de.dfki.cos.basys.platform.model.runtime.component.impl;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
 import de.dfki.cos.basys.platform.model.runtime.component.OccupationLevel;
 import de.dfki.cos.basys.platform.model.runtime.component.OccupationLevelRequest;
-import de.dfki.cos.basys.platform.model.runtime.component.Variable;
-
-import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,7 +24,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.OccupationLevelRequestImpl#getComponentId <em>Component Id</em>}</li>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.OccupationLevelRequestImpl#getCorrelationId <em>Correlation Id</em>}</li>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.OccupationLevelRequestImpl#getOccupierId <em>Occupier Id</em>}</li>
- *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.OccupationLevelRequestImpl#getInputParameters <em>Input Parameters</em>}</li>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.OccupationLevelRequestImpl#getOccupationLevel <em>Occupation Level</em>}</li>
  * </ul>
  *
@@ -102,16 +91,6 @@ public class OccupationLevelRequestImpl extends MinimalEObjectImpl.Container imp
 	protected String occupierId = OCCUPIER_ID_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getInputParameters() <em>Input Parameters</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInputParameters()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Variable> inputParameters;
-
-	/**
 	 * The default value of the '{@link #getOccupationLevel() <em>Occupation Level</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -155,6 +134,7 @@ public class OccupationLevelRequestImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getComponentId() {
 		return componentId;
 	}
@@ -164,6 +144,7 @@ public class OccupationLevelRequestImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setComponentId(String newComponentId) {
 		String oldComponentId = componentId;
 		componentId = newComponentId;
@@ -176,6 +157,7 @@ public class OccupationLevelRequestImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getCorrelationId() {
 		return correlationId;
 	}
@@ -185,6 +167,7 @@ public class OccupationLevelRequestImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCorrelationId(String newCorrelationId) {
 		String oldCorrelationId = correlationId;
 		correlationId = newCorrelationId;
@@ -197,6 +180,7 @@ public class OccupationLevelRequestImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getOccupierId() {
 		return occupierId;
 	}
@@ -206,6 +190,7 @@ public class OccupationLevelRequestImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setOccupierId(String newOccupierId) {
 		String oldOccupierId = occupierId;
 		occupierId = newOccupierId;
@@ -218,18 +203,7 @@ public class OccupationLevelRequestImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Variable> getInputParameters() {
-		if (inputParameters == null) {
-			inputParameters = new EObjectContainmentEList<Variable>(Variable.class, this, ComponentPackage.OCCUPATION_LEVEL_REQUEST__INPUT_PARAMETERS);
-		}
-		return inputParameters;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	@Override
 	public OccupationLevel getOccupationLevel() {
 		return occupationLevel;
 	}
@@ -239,25 +213,12 @@ public class OccupationLevelRequestImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setOccupationLevel(OccupationLevel newOccupationLevel) {
 		OccupationLevel oldOccupationLevel = occupationLevel;
 		occupationLevel = newOccupationLevel == null ? OCCUPATION_LEVEL_EDEFAULT : newOccupationLevel;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.OCCUPATION_LEVEL_REQUEST__OCCUPATION_LEVEL, oldOccupationLevel, occupationLevel));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ComponentPackage.OCCUPATION_LEVEL_REQUEST__INPUT_PARAMETERS:
-				return ((InternalEList<?>)getInputParameters()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -274,8 +235,6 @@ public class OccupationLevelRequestImpl extends MinimalEObjectImpl.Container imp
 				return getCorrelationId();
 			case ComponentPackage.OCCUPATION_LEVEL_REQUEST__OCCUPIER_ID:
 				return getOccupierId();
-			case ComponentPackage.OCCUPATION_LEVEL_REQUEST__INPUT_PARAMETERS:
-				return getInputParameters();
 			case ComponentPackage.OCCUPATION_LEVEL_REQUEST__OCCUPATION_LEVEL:
 				return getOccupationLevel();
 		}
@@ -287,7 +246,6 @@ public class OccupationLevelRequestImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -299,10 +257,6 @@ public class OccupationLevelRequestImpl extends MinimalEObjectImpl.Container imp
 				return;
 			case ComponentPackage.OCCUPATION_LEVEL_REQUEST__OCCUPIER_ID:
 				setOccupierId((String)newValue);
-				return;
-			case ComponentPackage.OCCUPATION_LEVEL_REQUEST__INPUT_PARAMETERS:
-				getInputParameters().clear();
-				getInputParameters().addAll((Collection<? extends Variable>)newValue);
 				return;
 			case ComponentPackage.OCCUPATION_LEVEL_REQUEST__OCCUPATION_LEVEL:
 				setOccupationLevel((OccupationLevel)newValue);
@@ -328,9 +282,6 @@ public class OccupationLevelRequestImpl extends MinimalEObjectImpl.Container imp
 			case ComponentPackage.OCCUPATION_LEVEL_REQUEST__OCCUPIER_ID:
 				setOccupierId(OCCUPIER_ID_EDEFAULT);
 				return;
-			case ComponentPackage.OCCUPATION_LEVEL_REQUEST__INPUT_PARAMETERS:
-				getInputParameters().clear();
-				return;
 			case ComponentPackage.OCCUPATION_LEVEL_REQUEST__OCCUPATION_LEVEL:
 				setOccupationLevel(OCCUPATION_LEVEL_EDEFAULT);
 				return;
@@ -352,8 +303,6 @@ public class OccupationLevelRequestImpl extends MinimalEObjectImpl.Container imp
 				return CORRELATION_ID_EDEFAULT == null ? correlationId != null : !CORRELATION_ID_EDEFAULT.equals(correlationId);
 			case ComponentPackage.OCCUPATION_LEVEL_REQUEST__OCCUPIER_ID:
 				return OCCUPIER_ID_EDEFAULT == null ? occupierId != null : !OCCUPIER_ID_EDEFAULT.equals(occupierId);
-			case ComponentPackage.OCCUPATION_LEVEL_REQUEST__INPUT_PARAMETERS:
-				return inputParameters != null && !inputParameters.isEmpty();
 			case ComponentPackage.OCCUPATION_LEVEL_REQUEST__OCCUPATION_LEVEL:
 				return occupationLevel != OCCUPATION_LEVEL_EDEFAULT;
 		}

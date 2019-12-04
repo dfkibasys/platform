@@ -156,55 +156,13 @@
       <genEnumLiterals ecoreEnumLiteral="component.ecore#//ComponentCategory/MANAGEMENT_COMPONENT"/>
       <genEnumLiterals ecoreEnumLiteral="component.ecore#//ComponentCategory/PROCESS_COMPONENT"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="component.ecore#//State">
-      <genEnumLiterals ecoreEnumLiteral="component.ecore#//State/UNDEFINED"/>
-      <genEnumLiterals ecoreEnumLiteral="component.ecore#//State/CLEARING"/>
-      <genEnumLiterals ecoreEnumLiteral="component.ecore#//State/STOPPED"/>
-      <genEnumLiterals ecoreEnumLiteral="component.ecore#//State/STARTING"/>
-      <genEnumLiterals ecoreEnumLiteral="component.ecore#//State/IDLE"/>
-      <genEnumLiterals ecoreEnumLiteral="component.ecore#//State/SUSPENDED"/>
-      <genEnumLiterals ecoreEnumLiteral="component.ecore#//State/EXECUTE"/>
-      <genEnumLiterals ecoreEnumLiteral="component.ecore#//State/STOPPING"/>
-      <genEnumLiterals ecoreEnumLiteral="component.ecore#//State/ABORTING"/>
-      <genEnumLiterals ecoreEnumLiteral="component.ecore#//State/ABORTED"/>
-      <genEnumLiterals ecoreEnumLiteral="component.ecore#//State/HOLDING"/>
-      <genEnumLiterals ecoreEnumLiteral="component.ecore#//State/HELD"/>
-      <genEnumLiterals ecoreEnumLiteral="component.ecore#//State/UNHOLDING"/>
-      <genEnumLiterals ecoreEnumLiteral="component.ecore#//State/SUSPENDING"/>
-      <genEnumLiterals ecoreEnumLiteral="component.ecore#//State/UNSUSPENDING"/>
-      <genEnumLiterals ecoreEnumLiteral="component.ecore#//State/RESETTING"/>
-      <genEnumLiterals ecoreEnumLiteral="component.ecore#//State/COMPLETING"/>
-      <genEnumLiterals ecoreEnumLiteral="component.ecore#//State/COMPLETE"/>
-    </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="component.ecore#//ControlMode">
-      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ControlMode/UNDEFINED"/>
-      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ControlMode/PRODUCTION"/>
-      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ControlMode/MAINTENANCE"/>
-      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ControlMode/MANUAL"/>
-      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ControlMode/CHANGE_OVER"/>
-      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ControlMode/CLEAN"/>
-      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ControlMode/SET_UP"/>
-      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ControlMode/EMPTY_OUT"/>
-      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ControlMode/SIMULATION"/>
-    </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="component.ecore#//ControlCommand">
-      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ControlCommand/NO_COMMAND"/>
-      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ControlCommand/RESET"/>
-      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ControlCommand/START"/>
-      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ControlCommand/STOP"/>
-      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ControlCommand/HOLD"/>
-      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ControlCommand/UNHOLD"/>
-      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ControlCommand/SUSPEND"/>
-      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ControlCommand/UNSUSPEND"/>
-      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ControlCommand/ABORT"/>
-      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ControlCommand/CLEAR"/>
-    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="component.ecore#//RequestStatus">
       <genEnumLiterals ecoreEnumLiteral="component.ecore#//RequestStatus/UNDEFINED"/>
       <genEnumLiterals ecoreEnumLiteral="component.ecore#//RequestStatus/ACCEPTED"/>
       <genEnumLiterals ecoreEnumLiteral="component.ecore#//RequestStatus/REJECTED"/>
       <genEnumLiterals ecoreEnumLiteral="component.ecore#//RequestStatus/NOOP"/>
       <genEnumLiterals ecoreEnumLiteral="component.ecore#//RequestStatus/QUEUED"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//RequestStatus/DONE"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="component.ecore#//ResponseStatus">
       <genEnumLiterals ecoreEnumLiteral="component.ecore#//ResponseStatus/UNDEFINED"/>
@@ -219,6 +177,26 @@
       <genEnumLiterals ecoreEnumLiteral="component.ecore#//VariableType/DOUBLE"/>
       <genEnumLiterals ecoreEnumLiteral="component.ecore#//VariableType/LONG"/>
       <genEnumLiterals ecoreEnumLiteral="component.ecore#//VariableType/DATE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="component.ecore#//ExecutionState">
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ExecutionState/UNDEFINED"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ExecutionState/CLEARING"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ExecutionState/STOPPED"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ExecutionState/STARTING"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ExecutionState/IDLE"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ExecutionState/SUSPENDED"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ExecutionState/EXECUTE"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ExecutionState/STOPPING"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ExecutionState/ABORTING"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ExecutionState/ABORTED"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ExecutionState/HOLDING"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ExecutionState/HELD"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ExecutionState/UNHOLDING"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ExecutionState/SUSPENDING"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ExecutionState/UNSUSPENDING"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ExecutionState/RESETTING"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ExecutionState/COMPLETING"/>
+      <genEnumLiterals ecoreEnumLiteral="component.ecore#//ExecutionState/COMPLETE"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="component.ecore#//ExecutionMode">
       <genEnumLiterals ecoreEnumLiteral="component.ecore#//ExecutionMode/PRODUCTION"/>
@@ -282,20 +260,13 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//Property/key"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//Property/value"/>
     </genClasses>
+    <genClasses ecoreClass="component.ecore#//ComponentRequestCollection">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference component.ecore#//ComponentRequestCollection/componentRequests"/>
+    </genClasses>
     <genClasses image="false" ecoreClass="component.ecore#//ComponentRequest">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentRequest/componentId"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentRequest/correlationId"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentRequest/occupierId"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference component.ecore#//ComponentRequest/inputParameters"/>
-    </genClasses>
-    <genClasses ecoreClass="component.ecore#//CommandRequest">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//CommandRequest/controlCommand"/>
-    </genClasses>
-    <genClasses ecoreClass="component.ecore#//ChangeModeRequest">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ChangeModeRequest/mode"/>
-    </genClasses>
-    <genClasses ecoreClass="component.ecore#//CapabilityRequest">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference component.ecore#//CapabilityRequest/capabilityVariant"/>
     </genClasses>
     <genClasses ecoreClass="component.ecore#//ComponentRequestStatus">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ComponentRequestStatus/componentId"/>
@@ -311,13 +282,24 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference component.ecore#//ComponentResponse/request"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference component.ecore#//ComponentResponse/outputParameters"/>
     </genClasses>
-    <genClasses ecoreClass="component.ecore#//ComponentRequestCollection">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference component.ecore#//ComponentRequestCollection/componentRequests"/>
-    </genClasses>
     <genClasses ecoreClass="component.ecore#//Variable">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//Variable/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//Variable/value"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//Variable/type"/>
+    </genClasses>
+    <genClasses ecoreClass="component.ecore#//OccupationLevelRequest">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//OccupationLevelRequest/occupationLevel"/>
+    </genClasses>
+    <genClasses ecoreClass="component.ecore#//ExecutionModeRequest">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ExecutionModeRequest/executionMode"/>
+    </genClasses>
+    <genClasses ecoreClass="component.ecore#//ExecutionCommandRequest">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ExecutionCommandRequest/executionCommand"/>
+    </genClasses>
+    <genClasses ecoreClass="component.ecore#//OperationModeRequest">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//OperationModeRequest/operationMode"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference component.ecore#//OperationModeRequest/inputParameters"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//OperationModeRequest/outputParameters"/>
     </genClasses>
     <genClasses ecoreClass="component.ecore#//SimulationConfiguration">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//SimulationConfiguration/onResettingDuration"/>
@@ -334,38 +316,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference component.ecore#//SimulationConfiguration/onCompletingVariables"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//SimulationConfiguration/onCompletingStatusCode"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//SimulationConfiguration/onStoppingStatusCode"/>
-    </genClasses>
-    <genClasses ecoreClass="component.ecore#//ProcessRequest">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ProcessRequest/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ProcessRequest/businessKey"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference component.ecore#//ProcessRequest/variables"/>
-    </genClasses>
-    <genClasses ecoreClass="component.ecore#//ProcessRequestStatus">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ProcessRequestStatus/processInstanceId"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ProcessRequestStatus/businessKey"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ProcessRequestStatus/status"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ProcessRequestStatus/message"/>
-    </genClasses>
-    <genClasses ecoreClass="component.ecore#//ProcessResponse">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ProcessResponse/processInstanceId"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ProcessResponse/businessKey"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ProcessResponse/status"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ProcessResponse/statusCode"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ProcessResponse/message"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference component.ecore#//ProcessResponse/request"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference component.ecore#//ProcessResponse/resultVariables"/>
-    </genClasses>
-    <genClasses ecoreClass="component.ecore#//OccupationLevelRequest">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//OccupationLevelRequest/occupationLevel"/>
-    </genClasses>
-    <genClasses ecoreClass="component.ecore#//ExecutionModeRequest">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ExecutionModeRequest/executionMode"/>
-    </genClasses>
-    <genClasses ecoreClass="component.ecore#//ExecutionCommandRequest">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//ExecutionCommandRequest/executionCommand"/>
-    </genClasses>
-    <genClasses ecoreClass="component.ecore#//OperationModeRequest">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//OperationModeRequest/operationMode"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

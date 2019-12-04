@@ -2,19 +2,23 @@
  */
 package de.dfki.cos.basys.platform.model.runtime.component.impl;
 
-import java.util.Collection;
-import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentRequestCollection;
+
+import java.util.Collection;
+
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -39,6 +43,7 @@ public class ComponentRequestCollectionImpl extends MinimalEObjectImpl.Container
 	 * @ordered
 	 */
 	protected EList<ComponentRequest> componentRequests;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -63,6 +68,7 @@ public class ComponentRequestCollectionImpl extends MinimalEObjectImpl.Container
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ComponentRequest> getComponentRequests() {
 		if (componentRequests == null) {
 			componentRequests = new EObjectContainmentEList<ComponentRequest>(ComponentRequest.class, this, ComponentPackage.COMPONENT_REQUEST_COLLECTION__COMPONENT_REQUESTS);

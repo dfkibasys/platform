@@ -2,22 +2,15 @@
  */
 package de.dfki.cos.basys.platform.model.runtime.component.impl;
 
-import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
 import de.dfki.cos.basys.platform.model.runtime.component.StatusRequest;
-import de.dfki.cos.basys.platform.model.runtime.component.Variable;
-import java.util.Collection;
+
+import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.ecore.EClass;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,7 +23,6 @@ import java.util.Collection;
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.StatusRequestImpl#getComponentId <em>Component Id</em>}</li>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.StatusRequestImpl#getCorrelationId <em>Correlation Id</em>}</li>
  *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.StatusRequestImpl#getOccupierId <em>Occupier Id</em>}</li>
- *   <li>{@link de.dfki.cos.basys.platform.model.runtime.component.impl.StatusRequestImpl#getInputParameters <em>Input Parameters</em>}</li>
  * </ul>
  *
  * @generated
@@ -97,16 +89,6 @@ public class StatusRequestImpl extends MinimalEObjectImpl.Container implements S
 	protected String occupierId = OCCUPIER_ID_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getInputParameters() <em>Input Parameters</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInputParameters()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Variable> inputParameters;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -130,6 +112,7 @@ public class StatusRequestImpl extends MinimalEObjectImpl.Container implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getComponentId() {
 		return componentId;
 	}
@@ -139,6 +122,7 @@ public class StatusRequestImpl extends MinimalEObjectImpl.Container implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setComponentId(String newComponentId) {
 		String oldComponentId = componentId;
 		componentId = newComponentId;
@@ -151,6 +135,7 @@ public class StatusRequestImpl extends MinimalEObjectImpl.Container implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getCorrelationId() {
 		return correlationId;
 	}
@@ -160,6 +145,7 @@ public class StatusRequestImpl extends MinimalEObjectImpl.Container implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCorrelationId(String newCorrelationId) {
 		String oldCorrelationId = correlationId;
 		correlationId = newCorrelationId;
@@ -172,6 +158,7 @@ public class StatusRequestImpl extends MinimalEObjectImpl.Container implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getOccupierId() {
 		return occupierId;
 	}
@@ -181,37 +168,12 @@ public class StatusRequestImpl extends MinimalEObjectImpl.Container implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setOccupierId(String newOccupierId) {
 		String oldOccupierId = occupierId;
 		occupierId = newOccupierId;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.STATUS_REQUEST__OCCUPIER_ID, oldOccupierId, occupierId));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<Variable> getInputParameters() {
-		if (inputParameters == null) {
-			inputParameters = new EObjectContainmentEList<Variable>(Variable.class, this, ComponentPackage.STATUS_REQUEST__INPUT_PARAMETERS);
-		}
-		return inputParameters;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ComponentPackage.STATUS_REQUEST__INPUT_PARAMETERS:
-				return ((InternalEList<?>)getInputParameters()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -228,8 +190,6 @@ public class StatusRequestImpl extends MinimalEObjectImpl.Container implements S
 				return getCorrelationId();
 			case ComponentPackage.STATUS_REQUEST__OCCUPIER_ID:
 				return getOccupierId();
-			case ComponentPackage.STATUS_REQUEST__INPUT_PARAMETERS:
-				return getInputParameters();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -239,7 +199,6 @@ public class StatusRequestImpl extends MinimalEObjectImpl.Container implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -251,10 +210,6 @@ public class StatusRequestImpl extends MinimalEObjectImpl.Container implements S
 				return;
 			case ComponentPackage.STATUS_REQUEST__OCCUPIER_ID:
 				setOccupierId((String)newValue);
-				return;
-			case ComponentPackage.STATUS_REQUEST__INPUT_PARAMETERS:
-				getInputParameters().clear();
-				getInputParameters().addAll((Collection<? extends Variable>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -277,9 +232,6 @@ public class StatusRequestImpl extends MinimalEObjectImpl.Container implements S
 			case ComponentPackage.STATUS_REQUEST__OCCUPIER_ID:
 				setOccupierId(OCCUPIER_ID_EDEFAULT);
 				return;
-			case ComponentPackage.STATUS_REQUEST__INPUT_PARAMETERS:
-				getInputParameters().clear();
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -298,8 +250,6 @@ public class StatusRequestImpl extends MinimalEObjectImpl.Container implements S
 				return CORRELATION_ID_EDEFAULT == null ? correlationId != null : !CORRELATION_ID_EDEFAULT.equals(correlationId);
 			case ComponentPackage.STATUS_REQUEST__OCCUPIER_ID:
 				return OCCUPIER_ID_EDEFAULT == null ? occupierId != null : !OCCUPIER_ID_EDEFAULT.equals(occupierId);
-			case ComponentPackage.STATUS_REQUEST__INPUT_PARAMETERS:
-				return inputParameters != null && !inputParameters.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

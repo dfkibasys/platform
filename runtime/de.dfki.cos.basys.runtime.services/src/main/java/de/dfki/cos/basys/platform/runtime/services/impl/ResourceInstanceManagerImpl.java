@@ -2,6 +2,7 @@ package de.dfki.cos.basys.platform.runtime.services.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import de.dfki.cos.basys.platform.model.domain.capability.Capability;
 import de.dfki.cos.basys.platform.model.domain.resourceinstance.CapabilityApplication;
@@ -9,19 +10,17 @@ import de.dfki.cos.basys.platform.model.domain.resourceinstance.CapabilityVarian
 import de.dfki.cos.basys.platform.model.domain.resourceinstance.ResourceInstance;
 import de.dfki.cos.basys.platform.model.domain.resourceinstance.ResourceInstanceRepository;
 import de.dfki.cos.basys.platform.model.domain.resourceinstance.ResourceinstancePackage;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
-import de.dfki.cos.basys.platform.runtime.component.service.EmfServiceComponent;
 import de.dfki.cos.basys.platform.runtime.services.ResourceInstanceManager;
 
-public class ResourceInstanceManagerImpl extends EmfServiceComponent implements ResourceInstanceManager {
+public class ResourceInstanceManagerImpl extends EmfBasysComponent implements ResourceInstanceManager {
 
-	public ResourceInstanceManagerImpl(ComponentConfiguration config) {
+	public ResourceInstanceManagerImpl(Properties config) {
 		super(config);	
 	}
 
 	@Override
 	public ResourceInstance getResourceInstance(String id) {
-		return getEntity(id);
+		return service.getEntity(id);
 	}
 
 	@Override
@@ -32,7 +31,7 @@ public class ResourceInstanceManagerImpl extends EmfServiceComponent implements 
 
 	@Override
 	public ResourceInstanceRepository getResourceInstanceRepository() {
-		ResourceInstanceRepository repository = getFirstEntity(ResourceinstancePackage.eINSTANCE.getResourceInstanceRepository());
+		ResourceInstanceRepository repository = service.getFirstEntity(ResourceinstancePackage.eINSTANCE.getResourceInstanceRepository());
 		return repository;
 	}
 

@@ -11,15 +11,15 @@ import de.dfki.cos.basys.platform.model.domain.processinstance.ProcessInstance;
 import de.dfki.cos.basys.platform.model.domain.processinstance.ProcessInstanceStore;
 import de.dfki.cos.basys.platform.runtime.services.impl.ProcessInstanceManagerImpl;
 
-public class ProcessInstanceManagerTest extends BaseEmfServiceComponentTest<ProcessInstanceManagerImpl> {
+public class ProcessInstanceManagerTest extends BaseComponentTest {
 
+	ProcessInstanceManager service = null;
+	
 	@Override
 	@Before
-	public void setUp() throws Exception {
-		javaClassName += "ProcessInstanceManagerImpl";
-		file = "model.processinstance";
-
+	public void setUp() throws Exception {		
 		super.setUp();
+		service = (ProcessInstanceManager) componentManager.getComponentById("process-instance-manager");
 	}
 
 	@Override

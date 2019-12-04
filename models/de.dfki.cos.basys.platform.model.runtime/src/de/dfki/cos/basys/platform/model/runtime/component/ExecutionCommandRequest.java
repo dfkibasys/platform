@@ -24,10 +24,6 @@ public interface ExecutionCommandRequest extends ComponentRequest {
 	 * Returns the value of the '<em><b>Execution Command</b></em>' attribute.
 	 * The literals are from the enumeration {@link de.dfki.cos.basys.platform.model.runtime.component.ExecutionCommand}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Execution Command</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Execution Command</em>' attribute.
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.ExecutionCommand

@@ -21,8 +21,8 @@ import de.dfki.cos.basys.platform.model.runtime.communication.Authentication;
 import de.dfki.cos.basys.platform.model.runtime.communication.ChannelPool;
 import de.dfki.cos.basys.platform.model.runtime.communication.Client;
 import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
-import de.dfki.cos.basys.platform.runtime.component.v2.BasysComponentContext;
-import de.dfki.cos.basys.platform.runtime.component.v2.registry.zookeeper.ZookeeperComponentRegistry;
+import de.dfki.cos.basys.platform.runtime.component.BasysComponentContext;
+import de.dfki.cos.basys.platform.runtime.component.registry.zookeeper.ZookeeperComponentRegistry;
 
 public class PlatformServlet extends HttpServlet {
 

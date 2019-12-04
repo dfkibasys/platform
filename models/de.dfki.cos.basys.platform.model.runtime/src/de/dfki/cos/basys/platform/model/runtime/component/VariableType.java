@@ -91,10 +91,6 @@ public enum VariableType implements Enumerator {
 	/**
 	 * The '<em><b>NULL</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>NULL</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #NULL
 	 * @model literal=""
@@ -106,10 +102,6 @@ public enum VariableType implements Enumerator {
 	/**
 	 * The '<em><b>BOOLEAN</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>BOOLEAN</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #BOOLEAN
 	 * @model
@@ -121,10 +113,6 @@ public enum VariableType implements Enumerator {
 	/**
 	 * The '<em><b>INTEGER</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>INTEGER</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #INTEGER
 	 * @model
@@ -136,10 +124,6 @@ public enum VariableType implements Enumerator {
 	/**
 	 * The '<em><b>STRING</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>STRING</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #STRING
 	 * @model
@@ -151,10 +135,6 @@ public enum VariableType implements Enumerator {
 	/**
 	 * The '<em><b>DOUBLE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>DOUBLE</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #DOUBLE
 	 * @model
@@ -166,10 +146,6 @@ public enum VariableType implements Enumerator {
 	/**
 	 * The '<em><b>LONG</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>LONG</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #LONG
 	 * @model
@@ -181,10 +157,6 @@ public enum VariableType implements Enumerator {
 	/**
 	 * The '<em><b>DATE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>DATE</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #DATE
 	 * @model
@@ -313,6 +285,7 @@ public enum VariableType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getValue() {
 	  return value;
 	}
@@ -322,6 +295,7 @@ public enum VariableType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 	  return name;
 	}
@@ -331,6 +305,7 @@ public enum VariableType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getLiteral() {
 	  return literal;
 	}

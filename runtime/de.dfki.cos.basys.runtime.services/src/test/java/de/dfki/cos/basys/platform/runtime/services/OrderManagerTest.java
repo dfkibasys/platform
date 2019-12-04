@@ -12,15 +12,15 @@ import de.dfki.cos.basys.platform.model.domain.order.Order;
 import de.dfki.cos.basys.platform.model.domain.order.OrderStore;
 import de.dfki.cos.basys.platform.runtime.services.impl.OrderManagerImpl;
 
-public class OrderManagerTest extends BaseEmfServiceComponentTest<OrderManagerImpl> {
+public class OrderManagerTest extends BaseComponentTest {
 
+	OrderManager service = null;
+	
 	@Override
 	@Before
-	public void setUp() throws Exception {
-		javaClassName += "OrderManagerImpl";
-		file = "model.order";
-
+	public void setUp() throws Exception {		
 		super.setUp();
+		service = (OrderManager) componentManager.getComponentById("order-manager");
 	}
 
 	@Override

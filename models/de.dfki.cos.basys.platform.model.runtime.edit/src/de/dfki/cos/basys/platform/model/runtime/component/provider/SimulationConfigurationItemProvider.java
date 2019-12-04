@@ -4,6 +4,7 @@ package de.dfki.cos.basys.platform.model.runtime.component.provider;
 
 
 import de.dfki.cos.basys.platform.model.runtime.communication.provider.RuntimeEditPlugin;
+
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentFactory;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
 import de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration;
@@ -419,7 +420,7 @@ public class SimulationConfigurationItemProvider
 		SimulationConfiguration simulationConfiguration = (SimulationConfiguration)object;
 		return getString("_UI_SimulationConfiguration_type") + " " + simulationConfiguration.getOnResettingDuration();
 	}
-	
+
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached

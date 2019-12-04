@@ -11,15 +11,15 @@ import de.dfki.cos.basys.platform.model.domain.productinstance.ProductInstance;
 import de.dfki.cos.basys.platform.model.domain.productinstance.ProductInstanceStore;
 import de.dfki.cos.basys.platform.runtime.services.impl.ProductInstanceManagerImpl;
 
-public class ProductInstanceManagerTest extends BaseEmfServiceComponentTest<ProductInstanceManagerImpl> {
+public class ProductInstanceManagerTest extends BaseComponentTest {
 
+	ProductInstanceManager service = null;
+	
 	@Override
 	@Before
-	public void setUp() throws Exception {
-		javaClassName += "ProductInstanceManagerImpl";
-		file = "model.productinstance";
-
+	public void setUp() throws Exception {		
 		super.setUp();
+		service = (ProductInstanceManager) componentManager.getComponentById("product-instance-manager");
 	}
 
 	@Override

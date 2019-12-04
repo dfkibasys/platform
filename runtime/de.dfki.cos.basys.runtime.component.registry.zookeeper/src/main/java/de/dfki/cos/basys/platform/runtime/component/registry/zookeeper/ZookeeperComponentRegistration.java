@@ -4,10 +4,11 @@ import org.apache.curator.x.discovery.ServiceDiscovery;
 import org.apache.curator.x.discovery.ServiceInstance;
 import org.apache.curator.x.discovery.UriSpec;
 
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo;
-import de.dfki.cos.basys.platform.runtime.component.Component;
-import de.dfki.cos.basys.platform.runtime.component.registry.ComponentRegistration;
-import de.dfki.cos.basys.platform.runtime.component.registry.ComponentRegistrationException;
+import de.dfki.cos.basys.common.component.Component;
+import de.dfki.cos.basys.common.component.ComponentInfo;
+import de.dfki.cos.basys.common.component.StringConstants;
+import de.dfki.cos.basys.common.component.registry.ComponentRegistration;
+import de.dfki.cos.basys.common.component.registry.ComponentRegistrationException;
 
 public class ZookeeperComponentRegistration implements ComponentRegistration {
 
@@ -31,17 +32,17 @@ public class ZookeeperComponentRegistration implements ComponentRegistration {
 		// layout
 		UriSpec uriSpec = new UriSpec("{scheme}://{hostName}:{port}");
 		
-		ComponentInfo componentInfo = component.getComponentInfo();
+		ComponentInfo componentInfo = component.getInfo();
 
 		try {
 			ServiceInstance<ComponentInfo> inst = ServiceInstance.<ComponentInfo>builder()
-					.name(component.getCategory().getName())
+					.name(component.getCategory())
 					.id(component.getId())
 					.payload(componentInfo)
 					.port((int) (65535 * Math.random())) // in a real application, you'd use a common port
 					.uriSpec(uriSpec).build();
 			
-			componentInfo.setHostName(inst.getAddress());
+			componentInfo.setProperty(StringConstants.hostName, inst.getAddress());
 			//componentInfo.setUriSpec(uriSpec.toString());
 			return inst;
 		} catch (Exception e) {

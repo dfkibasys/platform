@@ -13,11 +13,10 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo;
-import de.dfki.cos.basys.platform.model.runtime.component.State;
-import de.dfki.cos.basys.platform.runtime.component.ComponentException;
-import de.dfki.cos.basys.platform.runtime.component.device.TestDeviceComponent;
+import de.dfki.cos.basys.common.component.ComponentInfo;
+import de.dfki.cos.basys.platform.runtime.component.BasysComponent;
+import de.dfki.cos.basys.platform.runtime.component.StringConstants;
+import de.dfki.cos.basys.common.component.ComponentException;
 
 public class ServiceRegistryTest extends BaseComponentTest {
 
@@ -52,41 +51,41 @@ public class ServiceRegistryTest extends BaseComponentTest {
 		// TODO: implement test
 		// Step 1: register 3 different services
 
-		TestDeviceComponent comp1 = new TestDeviceComponent(config1);
-		TestDeviceComponent comp2 = new TestDeviceComponent(config2);
-		TestDeviceComponent comp3 = new TestDeviceComponent(config3);
+		BasysComponent comp1 = new BasysComponent(config1);
+		BasysComponent comp2 = new BasysComponent(config2);
+		BasysComponent comp3 = new BasysComponent(config3);
 
 		comp1.activate(context);
-		ComponentInfo details1 = registry.getComponentById(comp1.getCategory(), comp1.getId());
+		ComponentInfo details1 = componentRegistry.getComponentById(comp1.getCategory(), comp1.getId());
 		assertNotNull(details1);
-		assertEquals(config1.getComponentId(), details1.getComponentId());
+		assertEquals(config1.getProperty(StringConstants.id), details1.getId());
 	
 		comp2.activate(context);
-		ComponentInfo details2 = registry.getComponentById(comp2.getCategory(), comp2.getId());
+		ComponentInfo details2 = componentRegistry.getComponentById(comp2.getCategory(), comp2.getId());
 		assertNotNull(details2);
-		assertEquals(config2.getComponentId(), details2.getComponentId());
+		assertEquals(config2.getProperty(StringConstants.id), details2.getId());
 		
 		comp3.activate(context);
-		ComponentInfo details3 = registry.getComponentById(comp3.getCategory(), comp3.getId());
+		ComponentInfo details3 = componentRegistry.getComponentById(comp3.getCategory(), comp3.getId());
 		assertNotNull(details3);
-		assertEquals(config3.getComponentId(), details3.getComponentId());
+		assertEquals(config3.getProperty(StringConstants.id), details3.getId());
 				
-		List<ComponentInfo> services = registry.getComponents(ComponentCategory.DEVICE_COMPONENT);
+		List<ComponentInfo> services = componentRegistry.getComponents(StringConstants.categoryDevice);
 		assertEquals(3, services.size());
 
 		comp1.deactivate();
-		details1 = registry.getComponentById(comp1.getCategory(), comp1.getId());
+		details1 = componentRegistry.getComponentById(comp1.getCategory(), comp1.getId());
 		assertNull(details1);
 
 		comp2.deactivate();
-		details2 = registry.getComponentById(comp2.getCategory(), comp2.getId());
+		details2 = componentRegistry.getComponentById(comp2.getCategory(), comp2.getId());
 		assertNull(details2);
 
 		comp3.deactivate();
-		details3 = registry.getComponentById(comp3.getCategory(), comp3.getId());
+		details3 = componentRegistry.getComponentById(comp3.getCategory(), comp3.getId());
 		assertNull(details3);
 		
-		services = registry.getComponents(ComponentCategory.DEVICE_COMPONENT);
+		services = componentRegistry.getComponents(StringConstants.categoryDevice);
 		assertEquals(0, services.size());
 
 		LOGGER.info("testRegisterServicesAndList - complete");
@@ -94,64 +93,64 @@ public class ServiceRegistryTest extends BaseComponentTest {
 
 	
 
-	@Test
-	@Ignore
-	public void testDeviceComponentLifecycle3() throws ComponentException {
-		LOGGER.info("testServiceLifecycle - start");
-		
-		TestDeviceComponent comp = new TestDeviceComponent(config1);
-		comp.activate(context);
-
-		assertEquals(State.STOPPED, comp.getState(true));
-		ComponentInfo info = registry.getComponentById(comp.getCategory(), comp.getId());
-		assertNotNull(info);
-		assertEquals(config1.getComponentId(), info.getComponentId());
-		assertEquals(State.STOPPED,info.getCurrentState());
-			
-		comp.reset();
-		sleep(1);
-		
-		assertEquals(State.RESETTING, comp.getState(true));
-		assertEquals(State.IDLE, comp.getState(true));
-		info = registry.getComponentById(comp.getCategory(), comp.getId());
-		assertNotNull(info);
-		assertEquals(config1.getComponentId(), info.getComponentId());		
-		assertEquals(State.IDLE,info.getCurrentState());
-		
-		comp.start();
-		sleep(1);
-		
-		assertEquals(State.STARTING, comp.getState(true));
-		assertEquals(State.EXECUTE, comp.getState(true));
-		info = registry.getComponentById(comp.getCategory(), comp.getId());
-		assertNotNull(info);
-		assertEquals(config1.getComponentId(), info.getComponentId());
-		assertEquals(State.EXECUTE,info.getCurrentState());
-
-		assertEquals(State.COMPLETING, comp.getState(true));
-		assertEquals(State.COMPLETE, comp.getState(true));		
-		info = registry.getComponentById(comp.getCategory(), comp.getId());
-		assertNotNull(info);
-		assertEquals(config1.getComponentId(), info.getComponentId());
-		assertEquals(State.COMPLETE,info.getCurrentState());
-		
-		comp.stop();
-		sleep(1);
-		
-		assertEquals(State.STOPPING, comp.getState(true));
-		assertEquals(State.STOPPED, comp.getState(true));		
-		info = registry.getComponentById(comp.getCategory(), comp.getId());
-		assertNotNull(info);
-		assertEquals(config1.getComponentId(), info.getComponentId());
-		assertEquals(State.STOPPED,info.getCurrentState());
-		
-		sleep(2);
-		comp.deactivate();
-		info = registry.getComponentById(comp.getCategory(), comp.getId());
-		assertNull(info);
-		
-		LOGGER.info("testServiceLifecycle - complete");
-	}
+//	@Test
+//	@Ignore
+//	public void testDeviceComponentLifecycle3() throws ComponentException {
+//		LOGGER.info("testServiceLifecycle - start");
+//		
+//		TestDeviceComponent comp = new TestDeviceComponent(config1);
+//		comp.activate(context);
+//
+//		assertEquals(State.STOPPED, comp.getState(true));
+//		ComponentInfo info = componentRegistry.getComponentById(comp.getCategory(), comp.getId());
+//		assertNotNull(info);
+//		assertEquals(config1.getComponentId(), info.getComponentId());
+//		assertEquals(State.STOPPED,info.getCurrentState());
+//			
+//		comp.reset();
+//		sleep(1);
+//		
+//		assertEquals(State.RESETTING, comp.getState(true));
+//		assertEquals(State.IDLE, comp.getState(true));
+//		info = componentRegistry.getComponentById(comp.getCategory(), comp.getId());
+//		assertNotNull(info);
+//		assertEquals(config1.getComponentId(), info.getComponentId());		
+//		assertEquals(State.IDLE,info.getCurrentState());
+//		
+//		comp.start();
+//		sleep(1);
+//		
+//		assertEquals(State.STARTING, comp.getState(true));
+//		assertEquals(State.EXECUTE, comp.getState(true));
+//		info = componentRegistry.getComponentById(comp.getCategory(), comp.getId());
+//		assertNotNull(info);
+//		assertEquals(config1.getComponentId(), info.getComponentId());
+//		assertEquals(State.EXECUTE,info.getCurrentState());
+//
+//		assertEquals(State.COMPLETING, comp.getState(true));
+//		assertEquals(State.COMPLETE, comp.getState(true));		
+//		info = componentRegistry.getComponentById(comp.getCategory(), comp.getId());
+//		assertNotNull(info);
+//		assertEquals(config1.getComponentId(), info.getComponentId());
+//		assertEquals(State.COMPLETE,info.getCurrentState());
+//		
+//		comp.stop();
+//		sleep(1);
+//		
+//		assertEquals(State.STOPPING, comp.getState(true));
+//		assertEquals(State.STOPPED, comp.getState(true));		
+//		info = componentRegistry.getComponentById(comp.getCategory(), comp.getId());
+//		assertNotNull(info);
+//		assertEquals(config1.getComponentId(), info.getComponentId());
+//		assertEquals(State.STOPPED,info.getCurrentState());
+//		
+//		sleep(2);
+//		comp.deactivate();
+//		info = componentRegistry.getComponentById(comp.getCategory(), comp.getId());
+//		assertNull(info);
+//		
+//		LOGGER.info("testServiceLifecycle - complete");
+//	}
 		
 	// @Test
 	// public void testRegisterServicesAndRemove() {

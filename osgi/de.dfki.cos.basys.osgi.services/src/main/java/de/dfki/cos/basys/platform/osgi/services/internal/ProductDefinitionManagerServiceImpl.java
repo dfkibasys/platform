@@ -10,19 +10,18 @@ import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.component.annotations.Reference;
 
+import de.dfki.cos.basys.common.component.manager.ComponentManager;
+import de.dfki.cos.basys.common.component.manager.ComponentManagerException;
 import de.dfki.cos.basys.platform.model.domain.productdefinition.AssemblyGroup;
 import de.dfki.cos.basys.platform.model.domain.productdefinition.ProductCatalogue;
 import de.dfki.cos.basys.platform.model.domain.productdefinition.ProductGroup;
 import de.dfki.cos.basys.platform.model.domain.productdefinition.ProductVariant;
-import de.dfki.cos.basys.platform.osgi.services.BasysOsgiComponent;
-import de.dfki.cos.basys.platform.osgi.services.ResourceSetProvider;
-import de.dfki.cos.basys.platform.runtime.component.manager.ComponentManager;
-import de.dfki.cos.basys.platform.runtime.component.manager.ComponentManagerException;
+import de.dfki.cos.basys.platform.osgi.services.OsgiComponentWrapper;
 import de.dfki.cos.basys.platform.runtime.services.ProductDefinitionManager;
 import de.dfki.cos.basys.platform.runtime.services.impl.ProductDefinitionManagerImpl;
 
 @Component(configurationPolicy = ConfigurationPolicy.REQUIRE, immediate = true)
-public final class ProductDefinitionManagerServiceImpl extends BasysOsgiComponent implements ProductDefinitionManager {
+public final class ProductDefinitionManagerServiceImpl extends OsgiComponentWrapper implements ProductDefinitionManager {
 
 	ComponentManager componentManager;
 	ProductDefinitionManagerImpl impl;
@@ -37,9 +36,8 @@ public final class ProductDefinitionManagerServiceImpl extends BasysOsgiComponen
 		super.activate(context, properties);
 
 		impl = new ProductDefinitionManagerImpl(config);
-		impl.setSharedResourceSet(provider.getSharedResourceSet());
 		try {
-			componentManager.addLocalComponent(impl);
+			componentManager.addComponent(impl);
 		} catch (ComponentManagerException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -70,17 +68,6 @@ public final class ProductDefinitionManagerServiceImpl extends BasysOsgiComponen
 		this.componentManager = null;
 	}
 
-	ResourceSetProvider provider;
-	
-	@Reference
-	void setResourceSetProvider(ResourceSetProvider provider) {
-		this.provider = provider;
-	}
-	
-	void unsetResourceSetProvider(ResourceSetProvider provider) {
-		this.provider = null;
-	}
-	
 	/*
 	 * Service interface
 	 */

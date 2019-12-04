@@ -111,10 +111,6 @@ public enum ExecutionCommand implements Enumerator {
 	/**
 	 * The '<em><b>RESET</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>RESET</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #RESET
 	 * @model
@@ -126,10 +122,6 @@ public enum ExecutionCommand implements Enumerator {
 	/**
 	 * The '<em><b>START</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>START</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #START
 	 * @model
@@ -141,10 +133,6 @@ public enum ExecutionCommand implements Enumerator {
 	/**
 	 * The '<em><b>STOP</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>STOP</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #STOP
 	 * @model
@@ -156,10 +144,6 @@ public enum ExecutionCommand implements Enumerator {
 	/**
 	 * The '<em><b>HOLD</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>HOLD</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #HOLD
 	 * @model
@@ -171,10 +155,6 @@ public enum ExecutionCommand implements Enumerator {
 	/**
 	 * The '<em><b>UNHOLD</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>UNHOLD</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #UNHOLD
 	 * @model
@@ -186,10 +166,6 @@ public enum ExecutionCommand implements Enumerator {
 	/**
 	 * The '<em><b>SUSPEND</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>SUSPEND</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #SUSPEND
 	 * @model
@@ -201,10 +177,6 @@ public enum ExecutionCommand implements Enumerator {
 	/**
 	 * The '<em><b>UNSUSPEND</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>UNSUSPEND</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #UNSUSPEND
 	 * @model
@@ -216,10 +188,6 @@ public enum ExecutionCommand implements Enumerator {
 	/**
 	 * The '<em><b>ABORT</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>ABORT</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #ABORT
 	 * @model
@@ -231,10 +199,6 @@ public enum ExecutionCommand implements Enumerator {
 	/**
 	 * The '<em><b>CLEAR</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>CLEAR</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CLEAR
 	 * @model
@@ -367,6 +331,7 @@ public enum ExecutionCommand implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getValue() {
 	  return value;
 	}
@@ -376,6 +341,7 @@ public enum ExecutionCommand implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 	  return name;
 	}
@@ -385,6 +351,7 @@ public enum ExecutionCommand implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getLiteral() {
 	  return literal;
 	}

@@ -11,18 +11,18 @@ import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.component.annotations.Reference;
 
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo;
-import de.dfki.cos.basys.platform.osgi.services.BasysOsgiComponent;
+import de.dfki.cos.basys.common.component.ComponentException;
+import de.dfki.cos.basys.common.component.ComponentInfo;
+import de.dfki.cos.basys.common.component.registry.ComponentRegistration;
+import de.dfki.cos.basys.common.component.registry.ComponentRegistrationException;
+import de.dfki.cos.basys.common.component.registry.ComponentRegistry;
 import de.dfki.cos.basys.platform.osgi.services.ChannelPoolProvider;
-import de.dfki.cos.basys.platform.runtime.component.ComponentException;
-import de.dfki.cos.basys.platform.runtime.component.registry.ComponentRegistration;
-import de.dfki.cos.basys.platform.runtime.component.registry.ComponentRegistrationException;
-import de.dfki.cos.basys.platform.runtime.component.registry.ComponentRegistry;
+import de.dfki.cos.basys.platform.osgi.services.OsgiComponentWrapper;
+import de.dfki.cos.basys.platform.runtime.component.BasysComponentContext;
 import de.dfki.cos.basys.platform.runtime.component.registry.zookeeper.ZookeeperComponentRegistry;
 
 @Component(configurationPolicy = ConfigurationPolicy.REQUIRE, immediate = true)
-public class ComponentRegistryService extends BasysOsgiComponent implements ComponentRegistry {
+public class ComponentRegistryService extends OsgiComponentWrapper implements ComponentRegistry {
 
 	ZookeeperComponentRegistry registry;
 	ChannelPoolProvider channelPoolProvider;
@@ -39,8 +39,9 @@ public class ComponentRegistryService extends BasysOsgiComponent implements Comp
 		registry = new ZookeeperComponentRegistry(config);
 		//modified(context, properties);
 		
-		de.dfki.cos.basys.platform.runtime.component.ComponentContext basysComponentContext = new de.dfki.cos.basys.platform.runtime.component.ComponentContext.Builder()
-				.sharedChannelPool(channelPoolProvider.getSharedChannelPool()).componentRegistry(registry).build();
+		BasysComponentContext basysComponentContext = BasysComponentContext.getStaticContext();
+		basysComponentContext.setSharedChannelPool(channelPoolProvider.getSharedChannelPool());
+		basysComponentContext.setComponentRegistry(registry);
 
 		try {
 			registry.activate(basysComponentContext);
@@ -84,12 +85,12 @@ public class ComponentRegistryService extends BasysOsgiComponent implements Comp
 	 */
 
 	@Override
-	public ComponentRegistration createRegistration(de.dfki.cos.basys.platform.runtime.component.Component instance) throws ComponentRegistrationException {
+	public ComponentRegistration createRegistration(de.dfki.cos.basys.common.component.Component instance) throws ComponentRegistrationException {
 		return registry.createRegistration(instance);
 	}
 
 	@Override
-	public List<ComponentInfo> getComponents(ComponentCategory category) {
+	public List<ComponentInfo> getComponents(String category) {
 		//Strange, but it works
 		//https://stackoverflow.com/questions/19694928/jackson-jersey-deserialize-exception-for-id-type-id-class-no-such-class?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
 
@@ -106,7 +107,7 @@ public class ComponentRegistryService extends BasysOsgiComponent implements Comp
 	}
 
 	@Override
-	public ComponentInfo getComponentById(ComponentCategory category, String id) {
+	public ComponentInfo getComponentById(String category, String id) {
 		
 		ClassLoader old = Thread.currentThread().getContextClassLoader();
 		try {
@@ -118,7 +119,7 @@ public class ComponentRegistryService extends BasysOsgiComponent implements Comp
 	}
 
 	@Override
-	public ComponentInfo getComponentByName(ComponentCategory category, String name) {
+	public ComponentInfo getComponentByName(String category, String name) {
 		
 		ClassLoader old = Thread.currentThread().getContextClassLoader();
 		try {
@@ -128,4 +129,5 @@ public class ComponentRegistryService extends BasysOsgiComponent implements Comp
 			Thread.currentThread().setContextClassLoader(old);
 		}
 	}
+
 }

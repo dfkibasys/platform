@@ -2,13 +2,15 @@
  */
 package de.dfki.cos.basys.platform.model.runtime.component.impl;
 
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
 import de.dfki.cos.basys.platform.model.runtime.component.Property;
+
+import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.ecore.EClass;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -216,27 +218,4 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
 		return result.toString();
 	}
 
-	public static class Builder {
-		private String key;
-		private String value;
-
-		public Builder key(String key) {
-			this.key = key;
-			return this;
-		}
-
-		public Builder value(String value) {
-			this.value = value;
-			return this;
-		}
-
-		public PropertyImpl build() {
-			return new PropertyImpl(this);
-		}
-	}
-
-	private PropertyImpl(Builder builder) {
-		this.key = builder.key;
-		this.value = builder.value;
-	}
-}
+} //PropertyImpl

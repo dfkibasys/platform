@@ -51,10 +51,6 @@ public enum ResponseStatus implements Enumerator {
 	/**
 	 * The '<em><b>UNDEFINED</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>UNDEFINED</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #UNDEFINED
 	 * @model
@@ -66,10 +62,6 @@ public enum ResponseStatus implements Enumerator {
 	/**
 	 * The '<em><b>OK</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>OK</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #OK
 	 * @model
@@ -81,10 +73,6 @@ public enum ResponseStatus implements Enumerator {
 	/**
 	 * The '<em><b>NOT OK</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>NOT OK</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #NOT_OK
 	 * @model
@@ -205,6 +193,7 @@ public enum ResponseStatus implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getValue() {
 	  return value;
 	}
@@ -214,6 +203,7 @@ public enum ResponseStatus implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 	  return name;
 	}
@@ -223,6 +213,7 @@ public enum ResponseStatus implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getLiteral() {
 	  return literal;
 	}
