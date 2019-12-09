@@ -29,7 +29,7 @@ public class ProcessControllerComponent extends BasysComponent implements Proces
 	
 	public ProcessControllerComponent(Properties config) {
 		super(config);
-		serviceManager = new ServiceManagerImpl<ProcessControllerService>(config, new Supplier<CamundaProcessControllerService>() {
+		serviceManager = new ServiceManagerImpl<TaskResponseHandler>(config, new Supplier<CamundaProcessControllerService>() {
 			@Override
 			public CamundaProcessControllerService get() {
 				CamundaProcessControllerService service = new CamundaProcessControllerService(config);
@@ -51,7 +51,7 @@ public class ProcessControllerComponent extends BasysComponent implements Proces
 			return ce.getTask();
 		}, context.getScheduledExecutorService()).thenApply((ts) -> {
 			if (ts.getRequest().getCorrelationId() != null) {				
-				getService(ProcessControllerService.class).handleTaskResponse(ts);				
+				getService(TaskResponseHandler.class).handleTaskResponse(ts);				
 			}
 			return ts.getResponse();
 		}).handle((response, ex) -> {

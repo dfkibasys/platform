@@ -76,14 +76,14 @@ public class CamundaRestClient {
 								.request(MediaType.APPLICATION_JSON)
 								//.property(ClientProperties.CONNECT_TIMEOUT, (int) asyncResponseTimeout)
 								//.property(ClientProperties.READ_TIMEOUT, (int) asyncResponseTimeout)
-								.post(e)	;
+								.post(e);
 
-		// String resultE = response.readEntity(String.class);
-
+	
+		
 		if (response.getStatus() != 200) {		
 			LOGGER.warn("getExternalTasks finished with status code " + response.getStatus() + " - " + response.getStatusInfo());
 		}
-		
+		String dto = response.readEntity(String.class);
 		try {
 			List<ExternalServiceTaskDto> result = response.readEntity(new GenericType<List<ExternalServiceTaskDto>>() {
 			});
@@ -91,7 +91,7 @@ public class CamundaRestClient {
 			//LOGGER.debug("retrieved " + result.size() + " tasks");
 			
 			for (ExternalServiceTaskDto task : result) {
-				taskToProcessInstanceMap.put(task.getId(),task.getProcessInstanceId());
+				taskToProcessInstanceMap.put(task.id,task.processInstanceId);
 			}
 	
 			return result;

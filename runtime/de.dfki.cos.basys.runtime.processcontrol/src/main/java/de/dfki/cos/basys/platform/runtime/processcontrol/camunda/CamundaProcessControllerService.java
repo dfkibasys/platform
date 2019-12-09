@@ -1,6 +1,9 @@
 package de.dfki.cos.basys.platform.runtime.processcontrol.camunda;
 
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
@@ -10,6 +13,11 @@ import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import de.dfki.cos.basys.common.component.ComponentContext;
 import de.dfki.cos.basys.common.component.ServiceConnection;
@@ -23,11 +31,13 @@ import de.dfki.cos.basys.platform.model.runtime.component.OccupationLevel;
 import de.dfki.cos.basys.platform.model.runtime.component.OccupationLevelRequest;
 import de.dfki.cos.basys.platform.model.runtime.component.OperationModeRequest;
 import de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus;
+import de.dfki.cos.basys.platform.model.runtime.component.Variable;
+import de.dfki.cos.basys.platform.model.runtime.component.impl.VariableImpl;
 import de.dfki.cos.basys.platform.runtime.processcontrol.ProcessController;
-import de.dfki.cos.basys.platform.runtime.processcontrol.ProcessControllerService;
+import de.dfki.cos.basys.platform.runtime.processcontrol.TaskResponseHandler;
 import de.dfki.cos.basys.platform.runtime.processcontrol.TaskDescription;
 
-public class CamundaProcessControllerService implements ServiceConnection, ProcessControllerService {
+public class CamundaProcessControllerService implements ServiceConnection, TaskResponseHandler {
 
 	Logger LOGGER = LoggerFactory.getLogger(this.getClass().getName());
 	
@@ -177,7 +187,7 @@ public class CamundaProcessControllerService implements ServiceConnection, Proce
 
 		LOGGER.trace("pollCamunda");
 
-		List<ExternalServiceTaskDto> tasks = client.getExternalTasks(topic, maxFetchCount, lockDuration, asyncResponseTimeout, "componentId", "requestType", "token", "parameters");
+		List<ExternalServiceTaskDto> tasks = client.getExternalTasks(topic, maxFetchCount, lockDuration, asyncResponseTimeout, "componentId", "requestType", "token", "parameters", "outputParameters");
 		
 		if (tasks.size() > 0) {
 			LOGGER.info("pollCamunda fetched " + tasks.size() + " task(s)" );
@@ -218,7 +228,37 @@ public class CamundaProcessControllerService implements ServiceConnection, Proce
 				break;
 			case "OperationModeRequest":
 				r = ComponentFactory.eINSTANCE.createOperationModeRequest();
-				((OperationModeRequest)r).setOperationMode(task.variables.token.value);
+				OperationModeRequest req = (OperationModeRequest) r;
+				req.setOperationMode(task.variables.token.value);
+				ObjectMapper mapper = new ObjectMapper();
+				try {
+					
+					Map<String,String> input = mapper.readValue(task.variables.parameters.value,new TypeReference<Map<String,String>>(){});
+					LOGGER.debug(input.toString());					
+					for (Map.Entry<String, String> entry : input.entrySet()) {
+						Variable var = new VariableImpl.Builder().name(entry.getKey()).value(entry.getValue()).build();
+						req.getInputParameters().add(var);						
+					    //System.out.println(entry.getKey() + "/" + entry.getValue());
+					}
+										
+					List<String> output = mapper.readValue(task.variables.outputParameters.value,new TypeReference<List<String>>(){});			
+					LOGGER.debug(output.toString());		
+					req.getOutputParameters().addAll(output);
+					
+				} catch (JsonParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (JsonMappingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			
+				
+				//((OperationModeRequest)r).getInputParameters().addAll(c)
+				//((OperationModeRequest)r).getOutputParameters().addAll(c)
 				break;
 
 			default:

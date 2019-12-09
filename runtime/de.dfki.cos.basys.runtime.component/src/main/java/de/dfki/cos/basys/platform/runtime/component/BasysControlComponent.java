@@ -1,5 +1,7 @@
 package de.dfki.cos.basys.platform.runtime.component;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
@@ -20,8 +22,10 @@ import de.dfki.cos.basys.platform.model.runtime.component.ExecutionModeRequest;
 import de.dfki.cos.basys.platform.model.runtime.component.OccupationLevelRequest;
 import de.dfki.cos.basys.platform.model.runtime.component.OperationModeRequest;
 import de.dfki.cos.basys.platform.model.runtime.component.RequestStatus;
+import de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus;
 import de.dfki.cos.basys.platform.model.runtime.component.Variable;
 import de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentRequestStatusImpl;
+import de.dfki.cos.basys.platform.model.runtime.component.impl.VariableImpl;
 
 public class BasysControlComponent extends BasysComponent implements PackMLWaitStatesHandler {
 	
@@ -159,7 +163,7 @@ public class BasysControlComponent extends BasysComponent implements PackMLWaitS
 						status = client.setOperationMode(currentOperationModeRequest.getOperationMode(), currentOperationModeRequest.getOccupierId());
 						if (status.getStatus() == OrderStatus.DONE) {
 							for (Variable var : currentOperationModeRequest.getInputParameters()) {
-								// TODO: set input parameters
+								client.setParameterValue(var.getName(), var.getValue());
 							}			
 							status = client.start(currentOperationModeRequest.getOccupierId());
 						}			
@@ -185,11 +189,23 @@ public class BasysControlComponent extends BasysComponent implements PackMLWaitS
 				ComponentOrderStatus status = context.getScheduledExecutorService().submit(new Callable<ComponentOrderStatus>() {
 					@Override
 					public ComponentOrderStatus call() throws Exception {
-						ComponentOrderStatus status;						
-						//TODO: get output parameters
-						//TODO: notify process
-						ControlComponentClient client = getService();
+						ComponentOrderStatus status;
+						ControlComponentClient client = getService();						
 						status = client.free(currentOperationModeRequest.getOccupierId());
+						
+						int n = currentOperationModeRequest.getOutputParameters().size();
+						if (n==0) {
+							sendComponentResponse(currentOperationModeRequest, ResponseStatus.OK, client.getErrorCode());	
+						} else {
+							List<Variable> variables = new ArrayList<>(n);
+							for (String name : currentOperationModeRequest.getOutputParameters()) {
+								Object value = client.getParameterValue(name);
+								Variable var = new VariableImpl.Builder().name(name).value(value.toString()).build();
+								variables.add(var);
+							}							
+							sendComponentResponse(currentOperationModeRequest, ResponseStatus.OK, client.getErrorCode(), variables);							
+						}
+						
 						currentOperationModeRequest = null;
 						return status;
 						
@@ -213,11 +229,23 @@ public class BasysControlComponent extends BasysComponent implements PackMLWaitS
 				ComponentOrderStatus status = context.getScheduledExecutorService().submit(new Callable<ComponentOrderStatus>() {
 					@Override
 					public ComponentOrderStatus call() throws Exception {
-						ComponentOrderStatus status;						
-						//TODO: get output parameters
-						//TODO: notify process
-						ControlComponentClient client = getService();
+						ComponentOrderStatus status;
+						ControlComponentClient client = getService();						
 						status = client.free(currentOperationModeRequest.getOccupierId());
+						
+						int n = currentOperationModeRequest.getOutputParameters().size();
+						if (n==0) {
+							sendComponentResponse(currentOperationModeRequest, ResponseStatus.OK, client.getErrorCode());	
+						} else {
+							List<Variable> variables = new ArrayList<>(n);
+							for (String name : currentOperationModeRequest.getOutputParameters()) {
+								Object value = client.getParameterValue(name);
+								Variable var = new VariableImpl.Builder().name(name).value(value.toString()).build();
+								variables.add(var);
+							}							
+							sendComponentResponse(currentOperationModeRequest, ResponseStatus.NOT_OK, client.getErrorCode(), variables);							
+						}
+						
 						currentOperationModeRequest = null;
 						return status;
 						

@@ -1,6 +1,6 @@
 package de.dfki.cos.basys.platform.runtime.processcontrol;
 
-public interface ProcessControllerService {
+public interface TaskResponseHandler {
 
 	// String doDeployProcessDefinition(String deploymentName, String processDefinition); //return deploymentId
 
