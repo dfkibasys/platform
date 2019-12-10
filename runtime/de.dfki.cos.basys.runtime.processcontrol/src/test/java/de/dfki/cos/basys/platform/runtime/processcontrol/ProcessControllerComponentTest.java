@@ -17,9 +17,7 @@ import de.dfki.cos.basys.platform.model.runtime.component.impl.VariableImpl;
 import de.dfki.cos.basys.platform.runtime.processcontrol.camunda.CamundaRestClient;
 import de.dfki.cos.basys.platform.runtime.processcontrol.camunda.ExternalServiceTaskDto;
 
-public class ProcessControlTest extends BaseComponentTest {
-
-	protected ComponentConfiguration taskSchedulerConfig;
+public class ProcessControllerComponentTest extends BaseComponentTest {
 	
 	@Override
 	@Before
@@ -36,7 +34,13 @@ public class ProcessControlTest extends BaseComponentTest {
 	}
 
 	
-
+	@Test
+	public void testTaskFetch() {
+		ProcessControllerComponent component = (ProcessControllerComponent) componentManager.getComponentById("process-controller");
+			
+		
+		sleep(300);
+	}
 	
 	
 	

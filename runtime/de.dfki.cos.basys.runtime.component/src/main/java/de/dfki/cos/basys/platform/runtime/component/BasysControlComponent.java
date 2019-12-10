@@ -13,6 +13,7 @@ import de.dfki.cos.basys.common.component.impl.ServiceManagerImpl;
 import de.dfki.cos.basys.controlcomponent.ExecutionCommand;
 import de.dfki.cos.basys.controlcomponent.ExecutionMode;
 import de.dfki.cos.basys.controlcomponent.OccupationLevel;
+import de.dfki.cos.basys.controlcomponent.ParameterInfo;
 import de.dfki.cos.basys.controlcomponent.client.ControlComponentClient;
 import de.dfki.cos.basys.controlcomponent.packml.PackMLWaitStatesHandler;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest;
@@ -24,6 +25,7 @@ import de.dfki.cos.basys.platform.model.runtime.component.OperationModeRequest;
 import de.dfki.cos.basys.platform.model.runtime.component.RequestStatus;
 import de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus;
 import de.dfki.cos.basys.platform.model.runtime.component.Variable;
+import de.dfki.cos.basys.platform.model.runtime.component.VariableType;
 import de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentRequestStatusImpl;
 import de.dfki.cos.basys.platform.model.runtime.component.impl.VariableImpl;
 
@@ -199,8 +201,13 @@ public class BasysControlComponent extends BasysComponent implements PackMLWaitS
 						} else {
 							List<Variable> variables = new ArrayList<>(n);
 							for (String name : currentOperationModeRequest.getOutputParameters()) {
-								Object value = client.getParameterValue(name);
-								Variable var = new VariableImpl.Builder().name(name).value(value.toString()).build();
+								//Object value = client.getParameterValue(name);
+								ParameterInfo p = client.getParameter(name);
+								Variable var = new VariableImpl.Builder()
+										.name(name)
+										.value(p.getValue().toString())
+										.type(VariableType.fromOpcUa(p.getType()))
+										.build();
 								variables.add(var);
 							}							
 							sendComponentResponse(currentOperationModeRequest, ResponseStatus.OK, client.getErrorCode(), variables);							
@@ -239,8 +246,13 @@ public class BasysControlComponent extends BasysComponent implements PackMLWaitS
 						} else {
 							List<Variable> variables = new ArrayList<>(n);
 							for (String name : currentOperationModeRequest.getOutputParameters()) {
-								Object value = client.getParameterValue(name);
-								Variable var = new VariableImpl.Builder().name(name).value(value.toString()).build();
+								//Object value = client.getParameterValue(name);
+								ParameterInfo p = client.getParameter(name);
+								Variable var = new VariableImpl.Builder()
+										.name(name)
+										.value(p.getValue().toString())
+										.type(VariableType.fromOpcUa(p.getType()))
+										.build();
 								variables.add(var);
 							}							
 							sendComponentResponse(currentOperationModeRequest, ResponseStatus.NOT_OK, client.getErrorCode(), variables);							

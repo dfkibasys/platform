@@ -225,7 +225,30 @@ public enum VariableType implements Enumerator {
 		}
 		return null;
 	}
+	
+	public static VariableType fromOpcUa(String name) {
+		switch (name) {
+		case "Int32":
+		case "Int16":
+		case "Integer":
+			return INTEGER;
+		case "Int64":
+			return LONG;
+		case "Double":
+		case "Float":
+			return DOUBLE;
+		case "String":
+			return STRING;
+		case "Boolean":
+			return BOOLEAN;
+		case "DateTime":
+			return DATE;
 
+		default:
+			return NULL;
+		}
+	}
+	
 	/**
 	 * Returns the '<em><b>Variable Type</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->

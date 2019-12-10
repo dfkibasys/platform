@@ -26,16 +26,17 @@
 	<dependencies>	
 	
 		<dependency>
+			<groupId>de.dfki.cos.basys.platform.runtime</groupId>
+			<artifactId>de.dfki.cos.basys.platform.runtime.component</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+		<dependency>
 			<groupId>de.dfki.cos.basys.common</groupId>
 			<artifactId>de.dfki.cos.basys.common.aas</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		
-		<dependency>
-			<groupId>de.dfki.cos.basys.platform.runtime</groupId>
-			<artifactId>de.dfki.cos.basys.platform.runtime.component</artifactId>
-			<version>${project.version}</version>
-		</dependency>
 		
 		<dependency>
 			<groupId>de.dfki.cos.basys.platform.runtime</groupId>

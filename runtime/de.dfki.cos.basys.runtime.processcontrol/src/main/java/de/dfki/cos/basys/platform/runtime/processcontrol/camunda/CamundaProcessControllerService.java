@@ -255,10 +255,6 @@ public class CamundaProcessControllerService implements ServiceConnection, TaskR
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			
-				
-				//((OperationModeRequest)r).getInputParameters().addAll(c)
-				//((OperationModeRequest)r).getOutputParameters().addAll(c)
 				break;
 
 			default:
@@ -270,7 +266,6 @@ public class CamundaProcessControllerService implements ServiceConnection, TaskR
 			r.setComponentId(task.variables.componentId.value);					
 			
 			controller.scheduleTask(new TaskDescription(r));
-
 		}
 	}
 	
