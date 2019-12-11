@@ -1,5 +1,7 @@
 package de.dfki.cos.basys.platform.runtime.component;
 
+import java.sql.Date;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -165,7 +167,33 @@ public class BasysControlComponent extends BasysComponent implements PackMLWaitS
 						status = client.setOperationMode(currentOperationModeRequest.getOperationMode(), currentOperationModeRequest.getOccupierId());
 						if (status.getStatus() == OrderStatus.DONE) {
 							for (Variable var : currentOperationModeRequest.getInputParameters()) {
-								client.setParameterValue(var.getName(), var.getValue());
+								
+								//TODO: put switch block into Variable class, test date parsing and setting via opcua
+								Object value = null;
+								
+								switch (var.getType()) {
+								case BOOLEAN:
+									value = Boolean.parseBoolean(var.getValue());
+									break;
+								case DATE:
+									value = DateFormat.getDateInstance().parse(var.getValue());
+									break;
+								case DOUBLE:
+									value = Double.parseDouble(var.getValue());
+									break;
+								case INTEGER:
+									value = Integer.parseInt(var.getValue());
+									break;
+								case LONG:
+									value = Long.parseLong(var.getValue());
+									break;
+								default:
+									value = var.getValue();
+									break;
+								}
+								
+								
+								client.setParameterValue(var.getName(), value);
 							}			
 							status = client.start(currentOperationModeRequest.getOccupierId());
 						}			
