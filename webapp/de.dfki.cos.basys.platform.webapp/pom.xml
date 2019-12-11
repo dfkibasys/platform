@@ -32,13 +32,6 @@
 		</dependency>
 		
 		<dependency>
-			<groupId>de.dfki.cos.basys.common</groupId>
-			<artifactId>de.dfki.cos.basys.common.aas</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		
-		
-		<dependency>
 			<groupId>de.dfki.cos.basys.platform.runtime</groupId>
 			<artifactId>de.dfki.cos.basys.platform.runtime.component.registry.zookeeper</artifactId>
 			<version>${project.version}</version>
