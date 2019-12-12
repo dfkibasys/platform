@@ -29,7 +29,6 @@ import de.dfki.cos.basys.platform.model.runtime.communication.Notification;
 import de.dfki.cos.basys.platform.model.runtime.communication.Request;
 import de.dfki.cos.basys.platform.model.runtime.communication.Response;
 import de.dfki.cos.basys.platform.model.runtime.communication.exceptions.ChannelException;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentRequestStatus;
@@ -41,7 +40,6 @@ import de.dfki.cos.basys.platform.model.runtime.component.StatusRequest;
 import de.dfki.cos.basys.platform.model.runtime.component.Variable;
 import de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentRequestStatusImpl;
 import de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentResponseImpl;
-import de.dfki.cos.basys.platform.model.runtime.component.impl.SimulationConfigurationImpl;
 import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
 import de.dfki.cos.basys.platform.runtime.component.util.BasysResourceSetImpl;
 

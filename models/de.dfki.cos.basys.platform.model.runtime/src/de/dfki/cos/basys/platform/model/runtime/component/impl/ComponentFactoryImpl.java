@@ -57,19 +57,15 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case ComponentPackage.COMPONENT_INFO: return createComponentInfo();
-			case ComponentPackage.COMPONENT_CONFIGURATION: return createComponentConfiguration();
-			case ComponentPackage.PROPERTY: return createProperty();
+			case ComponentPackage.COMPONENT_RESPONSE: return createComponentResponse();
+			case ComponentPackage.VARIABLE: return createVariable();
 			case ComponentPackage.COMPONENT_REQUEST_COLLECTION: return createComponentRequestCollection();
 			case ComponentPackage.COMPONENT_REQUEST_STATUS: return createComponentRequestStatus();
 			case ComponentPackage.STATUS_REQUEST: return createStatusRequest();
-			case ComponentPackage.COMPONENT_RESPONSE: return createComponentResponse();
-			case ComponentPackage.VARIABLE: return createVariable();
 			case ComponentPackage.OCCUPATION_LEVEL_REQUEST: return createOccupationLevelRequest();
 			case ComponentPackage.EXECUTION_MODE_REQUEST: return createExecutionModeRequest();
 			case ComponentPackage.EXECUTION_COMMAND_REQUEST: return createExecutionCommandRequest();
 			case ComponentPackage.OPERATION_MODE_REQUEST: return createOperationModeRequest();
-			case ComponentPackage.SIMULATION_CONFIGURATION: return createSimulationConfiguration();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -83,8 +79,6 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case ComponentPackage.COMPONENT_CATEGORY:
-				return createComponentCategoryFromString(eDataType, initialValue);
 			case ComponentPackage.REQUEST_STATUS:
 				return createRequestStatusFromString(eDataType, initialValue);
 			case ComponentPackage.RESPONSE_STATUS:
@@ -112,8 +106,6 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case ComponentPackage.COMPONENT_CATEGORY:
-				return convertComponentCategoryToString(eDataType, instanceValue);
 			case ComponentPackage.REQUEST_STATUS:
 				return convertRequestStatusToString(eDataType, instanceValue);
 			case ComponentPackage.RESPONSE_STATUS:
@@ -131,39 +123,6 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ComponentInfo createComponentInfo() {
-		ComponentInfoImpl componentInfo = new ComponentInfoImpl();
-		return componentInfo;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ComponentConfiguration createComponentConfiguration() {
-		ComponentConfigurationImpl componentConfiguration = new ComponentConfigurationImpl();
-		return componentConfiguration;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Property createProperty() {
-		PropertyImpl property = new PropertyImpl();
-		return property;
 	}
 
 	/**
@@ -263,37 +222,6 @@ public class ComponentFactoryImpl extends EFactoryImpl implements ComponentFacto
 	public OperationModeRequest createOperationModeRequest() {
 		OperationModeRequestImpl operationModeRequest = new OperationModeRequestImpl();
 		return operationModeRequest;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public SimulationConfiguration createSimulationConfiguration() {
-		SimulationConfigurationImpl simulationConfiguration = new SimulationConfigurationImpl();
-		return simulationConfiguration;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ComponentCategory createComponentCategoryFromString(EDataType eDataType, String initialValue) {
-		ComponentCategory result = ComponentCategory.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertComponentCategoryToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

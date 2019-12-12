@@ -301,6 +301,7 @@ public class ComponentResponseImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Variable> getOutputParameters() {
 		if (outputParameters == null) {
 			outputParameters = new EObjectContainmentEList<Variable>(Variable.class, this, ComponentPackage.COMPONENT_RESPONSE__OUTPUT_PARAMETERS);

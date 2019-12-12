@@ -66,21 +66,15 @@ public class ComponentSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case ComponentPackage.COMPONENT_INFO: {
-				ComponentInfo componentInfo = (ComponentInfo)theEObject;
-				T result = caseComponentInfo(componentInfo);
+			case ComponentPackage.COMPONENT_RESPONSE: {
+				ComponentResponse componentResponse = (ComponentResponse)theEObject;
+				T result = caseComponentResponse(componentResponse);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ComponentPackage.COMPONENT_CONFIGURATION: {
-				ComponentConfiguration componentConfiguration = (ComponentConfiguration)theEObject;
-				T result = caseComponentConfiguration(componentConfiguration);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ComponentPackage.PROPERTY: {
-				Property property = (Property)theEObject;
-				T result = caseProperty(property);
+			case ComponentPackage.VARIABLE: {
+				Variable variable = (Variable)theEObject;
+				T result = caseVariable(variable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -106,18 +100,6 @@ public class ComponentSwitch<T> extends Switch<T> {
 				StatusRequest statusRequest = (StatusRequest)theEObject;
 				T result = caseStatusRequest(statusRequest);
 				if (result == null) result = caseComponentRequest(statusRequest);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ComponentPackage.COMPONENT_RESPONSE: {
-				ComponentResponse componentResponse = (ComponentResponse)theEObject;
-				T result = caseComponentResponse(componentResponse);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ComponentPackage.VARIABLE: {
-				Variable variable = (Variable)theEObject;
-				T result = caseVariable(variable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -149,59 +131,8 @@ public class ComponentSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ComponentPackage.SIMULATION_CONFIGURATION: {
-				SimulationConfiguration simulationConfiguration = (SimulationConfiguration)theEObject;
-				T result = caseSimulationConfiguration(simulationConfiguration);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			default: return defaultCase(theEObject);
 		}
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Info</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Info</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseComponentInfo(ComponentInfo object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Configuration</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Configuration</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseComponentConfiguration(ComponentConfiguration object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Property</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Property</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseProperty(Property object) {
-		return null;
 	}
 
 	/**
@@ -291,21 +222,6 @@ public class ComponentSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseVariable(Variable object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Simulation Configuration</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Simulation Configuration</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseSimulationConfiguration(SimulationConfiguration object) {
 		return null;
 	}
 

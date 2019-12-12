@@ -23,11 +23,7 @@ import de.dfki.cos.basys.platform.model.pattern.PatternPackage;
 import de.dfki.cos.basys.platform.model.runtime.communication.CommunicationPackage;
 
 import de.dfki.cos.basys.platform.model.runtime.communication.impl.CommunicationPackageImpl;
-
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentFactory;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentRequestCollection;
@@ -41,10 +37,8 @@ import de.dfki.cos.basys.platform.model.runtime.component.ExecutionState;
 import de.dfki.cos.basys.platform.model.runtime.component.OccupationLevel;
 import de.dfki.cos.basys.platform.model.runtime.component.OccupationLevelRequest;
 import de.dfki.cos.basys.platform.model.runtime.component.OperationModeRequest;
-import de.dfki.cos.basys.platform.model.runtime.component.Property;
 import de.dfki.cos.basys.platform.model.runtime.component.RequestStatus;
 import de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus;
-import de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration;
 import de.dfki.cos.basys.platform.model.runtime.component.StatusRequest;
 import de.dfki.cos.basys.platform.model.runtime.component.Variable;
 import de.dfki.cos.basys.platform.model.runtime.component.VariableType;
@@ -52,7 +46,6 @@ import de.dfki.cos.basys.platform.model.runtime.component.VariableType;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -66,27 +59,6 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
  * @generated
  */
 public class ComponentPackageImpl extends EPackageImpl implements ComponentPackage {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass componentInfoEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass componentConfigurationEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass propertyEClass = null;
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -156,20 +128,6 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 * @generated
 	 */
 	private EClass operationModeRequestEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass simulationConfigurationEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EEnum componentCategoryEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -297,306 +255,6 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(ComponentPackage.eNS_URI, theComponentPackage);
 		return theComponentPackage;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getComponentInfo() {
-		return componentInfoEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getComponentInfo_ComponentId() {
-		return (EAttribute)componentInfoEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getComponentInfo_ComponentName() {
-		return (EAttribute)componentInfoEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getComponentInfo_ComponentCategory() {
-		return (EAttribute)componentInfoEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getComponentInfo_InChannelName() {
-		return (EAttribute)componentInfoEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getComponentInfo_OutChannelName() {
-		return (EAttribute)componentInfoEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getComponentInfo_StatusChannelName() {
-		return (EAttribute)componentInfoEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getComponentInfo_CurrentState() {
-		return (EAttribute)componentInfoEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getComponentInfo_CurrentMode() {
-		return (EAttribute)componentInfoEClass.getEStructuralFeatures().get(7);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getComponentInfo_CommunicationProvider() {
-		return (EAttribute)componentInfoEClass.getEStructuralFeatures().get(8);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getComponentInfo_ConnectionString() {
-		return (EAttribute)componentInfoEClass.getEStructuralFeatures().get(9);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getComponentInfo_HostName() {
-		return (EAttribute)componentInfoEClass.getEStructuralFeatures().get(10);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getComponentInfo_UriSpec() {
-		return (EAttribute)componentInfoEClass.getEStructuralFeatures().get(11);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getComponentInfo_Connected() {
-		return (EAttribute)componentInfoEClass.getEStructuralFeatures().get(12);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getComponentConfiguration() {
-		return componentConfigurationEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getComponentConfiguration_ComponentId() {
-		return (EAttribute)componentConfigurationEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getComponentConfiguration_ComponentName() {
-		return (EAttribute)componentConfigurationEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getComponentConfiguration_ComponentCategory() {
-		return (EAttribute)componentConfigurationEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getComponentConfiguration_ComponentImplementationJavaClass() {
-		return (EAttribute)componentConfigurationEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getComponentConfiguration_CommunicationProviderImplementationJavaClass() {
-		return (EAttribute)componentConfigurationEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getComponentConfiguration_CommunicationProviderConnectionString() {
-		return (EAttribute)componentConfigurationEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getComponentConfiguration_InChannelName() {
-		return (EAttribute)componentConfigurationEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getComponentConfiguration_OutChannelName() {
-		return (EAttribute)componentConfigurationEClass.getEStructuralFeatures().get(7);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getComponentConfiguration_ExternalConnectionString() {
-		return (EAttribute)componentConfigurationEClass.getEStructuralFeatures().get(8);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getComponentConfiguration_Properties() {
-		return (EReference)componentConfigurationEClass.getEStructuralFeatures().get(9);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getComponentConfiguration_SimulationConfiguration() {
-		return (EReference)componentConfigurationEClass.getEStructuralFeatures().get(10);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EOperation getComponentConfiguration__GetProperty__String() {
-		return componentConfigurationEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getProperty() {
-		return propertyEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getProperty_Key() {
-		return (EAttribute)propertyEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getProperty_Value() {
-		return (EAttribute)propertyEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -925,166 +583,6 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 	 * @generated
 	 */
 	@Override
-	public EClass getSimulationConfiguration() {
-		return simulationConfigurationEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getSimulationConfiguration_OnResettingDuration() {
-		return (EAttribute)simulationConfigurationEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getSimulationConfiguration_OnStartingDuration() {
-		return (EAttribute)simulationConfigurationEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getSimulationConfiguration_OnExecuteDuration() {
-		return (EAttribute)simulationConfigurationEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getSimulationConfiguration_OnCompletingDuration() {
-		return (EAttribute)simulationConfigurationEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getSimulationConfiguration_OnStoppingDuration() {
-		return (EAttribute)simulationConfigurationEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getSimulationConfiguration_OnAbortingDuration() {
-		return (EAttribute)simulationConfigurationEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getSimulationConfiguration_OnClearingDuration() {
-		return (EAttribute)simulationConfigurationEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getSimulationConfiguration_OnHoldingDuration() {
-		return (EAttribute)simulationConfigurationEClass.getEStructuralFeatures().get(7);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getSimulationConfiguration_OnUnholdingDuration() {
-		return (EAttribute)simulationConfigurationEClass.getEStructuralFeatures().get(8);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getSimulationConfiguration_OnSuspendingDuration() {
-		return (EAttribute)simulationConfigurationEClass.getEStructuralFeatures().get(9);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getSimulationConfiguration_OnUnsuspendingDuration() {
-		return (EAttribute)simulationConfigurationEClass.getEStructuralFeatures().get(10);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getSimulationConfiguration_OnCompletingVariables() {
-		return (EReference)simulationConfigurationEClass.getEStructuralFeatures().get(11);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getSimulationConfiguration_OnCompletingStatusCode() {
-		return (EAttribute)simulationConfigurationEClass.getEStructuralFeatures().get(12);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getSimulationConfiguration_OnStoppingStatusCode() {
-		return (EAttribute)simulationConfigurationEClass.getEStructuralFeatures().get(13);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EEnum getComponentCategory() {
-		return componentCategoryEEnum;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EEnum getRequestStatus() {
 		return requestStatusEEnum;
 	}
@@ -1178,38 +676,18 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		isCreated = true;
 
 		// Create classes and their features
-		componentInfoEClass = createEClass(COMPONENT_INFO);
-		createEAttribute(componentInfoEClass, COMPONENT_INFO__COMPONENT_ID);
-		createEAttribute(componentInfoEClass, COMPONENT_INFO__COMPONENT_NAME);
-		createEAttribute(componentInfoEClass, COMPONENT_INFO__COMPONENT_CATEGORY);
-		createEAttribute(componentInfoEClass, COMPONENT_INFO__IN_CHANNEL_NAME);
-		createEAttribute(componentInfoEClass, COMPONENT_INFO__OUT_CHANNEL_NAME);
-		createEAttribute(componentInfoEClass, COMPONENT_INFO__STATUS_CHANNEL_NAME);
-		createEAttribute(componentInfoEClass, COMPONENT_INFO__CURRENT_STATE);
-		createEAttribute(componentInfoEClass, COMPONENT_INFO__CURRENT_MODE);
-		createEAttribute(componentInfoEClass, COMPONENT_INFO__COMMUNICATION_PROVIDER);
-		createEAttribute(componentInfoEClass, COMPONENT_INFO__CONNECTION_STRING);
-		createEAttribute(componentInfoEClass, COMPONENT_INFO__HOST_NAME);
-		createEAttribute(componentInfoEClass, COMPONENT_INFO__URI_SPEC);
-		createEAttribute(componentInfoEClass, COMPONENT_INFO__CONNECTED);
+		componentResponseEClass = createEClass(COMPONENT_RESPONSE);
+		createEAttribute(componentResponseEClass, COMPONENT_RESPONSE__COMPONENT_ID);
+		createEAttribute(componentResponseEClass, COMPONENT_RESPONSE__STATUS);
+		createEAttribute(componentResponseEClass, COMPONENT_RESPONSE__STATUS_CODE);
+		createEAttribute(componentResponseEClass, COMPONENT_RESPONSE__MESSAGE);
+		createEReference(componentResponseEClass, COMPONENT_RESPONSE__REQUEST);
+		createEReference(componentResponseEClass, COMPONENT_RESPONSE__OUTPUT_PARAMETERS);
 
-		componentConfigurationEClass = createEClass(COMPONENT_CONFIGURATION);
-		createEAttribute(componentConfigurationEClass, COMPONENT_CONFIGURATION__COMPONENT_ID);
-		createEAttribute(componentConfigurationEClass, COMPONENT_CONFIGURATION__COMPONENT_NAME);
-		createEAttribute(componentConfigurationEClass, COMPONENT_CONFIGURATION__COMPONENT_CATEGORY);
-		createEAttribute(componentConfigurationEClass, COMPONENT_CONFIGURATION__COMPONENT_IMPLEMENTATION_JAVA_CLASS);
-		createEAttribute(componentConfigurationEClass, COMPONENT_CONFIGURATION__COMMUNICATION_PROVIDER_IMPLEMENTATION_JAVA_CLASS);
-		createEAttribute(componentConfigurationEClass, COMPONENT_CONFIGURATION__COMMUNICATION_PROVIDER_CONNECTION_STRING);
-		createEAttribute(componentConfigurationEClass, COMPONENT_CONFIGURATION__IN_CHANNEL_NAME);
-		createEAttribute(componentConfigurationEClass, COMPONENT_CONFIGURATION__OUT_CHANNEL_NAME);
-		createEAttribute(componentConfigurationEClass, COMPONENT_CONFIGURATION__EXTERNAL_CONNECTION_STRING);
-		createEReference(componentConfigurationEClass, COMPONENT_CONFIGURATION__PROPERTIES);
-		createEReference(componentConfigurationEClass, COMPONENT_CONFIGURATION__SIMULATION_CONFIGURATION);
-		createEOperation(componentConfigurationEClass, COMPONENT_CONFIGURATION___GET_PROPERTY__STRING);
-
-		propertyEClass = createEClass(PROPERTY);
-		createEAttribute(propertyEClass, PROPERTY__KEY);
-		createEAttribute(propertyEClass, PROPERTY__VALUE);
+		variableEClass = createEClass(VARIABLE);
+		createEAttribute(variableEClass, VARIABLE__NAME);
+		createEAttribute(variableEClass, VARIABLE__VALUE);
+		createEAttribute(variableEClass, VARIABLE__TYPE);
 
 		componentRequestCollectionEClass = createEClass(COMPONENT_REQUEST_COLLECTION);
 		createEReference(componentRequestCollectionEClass, COMPONENT_REQUEST_COLLECTION__COMPONENT_REQUESTS);
@@ -1226,19 +704,6 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 
 		statusRequestEClass = createEClass(STATUS_REQUEST);
 
-		componentResponseEClass = createEClass(COMPONENT_RESPONSE);
-		createEAttribute(componentResponseEClass, COMPONENT_RESPONSE__COMPONENT_ID);
-		createEAttribute(componentResponseEClass, COMPONENT_RESPONSE__STATUS);
-		createEAttribute(componentResponseEClass, COMPONENT_RESPONSE__STATUS_CODE);
-		createEAttribute(componentResponseEClass, COMPONENT_RESPONSE__MESSAGE);
-		createEReference(componentResponseEClass, COMPONENT_RESPONSE__REQUEST);
-		createEReference(componentResponseEClass, COMPONENT_RESPONSE__OUTPUT_PARAMETERS);
-
-		variableEClass = createEClass(VARIABLE);
-		createEAttribute(variableEClass, VARIABLE__NAME);
-		createEAttribute(variableEClass, VARIABLE__VALUE);
-		createEAttribute(variableEClass, VARIABLE__TYPE);
-
 		occupationLevelRequestEClass = createEClass(OCCUPATION_LEVEL_REQUEST);
 		createEAttribute(occupationLevelRequestEClass, OCCUPATION_LEVEL_REQUEST__OCCUPATION_LEVEL);
 
@@ -1253,24 +718,7 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		createEReference(operationModeRequestEClass, OPERATION_MODE_REQUEST__INPUT_PARAMETERS);
 		createEAttribute(operationModeRequestEClass, OPERATION_MODE_REQUEST__OUTPUT_PARAMETERS);
 
-		simulationConfigurationEClass = createEClass(SIMULATION_CONFIGURATION);
-		createEAttribute(simulationConfigurationEClass, SIMULATION_CONFIGURATION__ON_RESETTING_DURATION);
-		createEAttribute(simulationConfigurationEClass, SIMULATION_CONFIGURATION__ON_STARTING_DURATION);
-		createEAttribute(simulationConfigurationEClass, SIMULATION_CONFIGURATION__ON_EXECUTE_DURATION);
-		createEAttribute(simulationConfigurationEClass, SIMULATION_CONFIGURATION__ON_COMPLETING_DURATION);
-		createEAttribute(simulationConfigurationEClass, SIMULATION_CONFIGURATION__ON_STOPPING_DURATION);
-		createEAttribute(simulationConfigurationEClass, SIMULATION_CONFIGURATION__ON_ABORTING_DURATION);
-		createEAttribute(simulationConfigurationEClass, SIMULATION_CONFIGURATION__ON_CLEARING_DURATION);
-		createEAttribute(simulationConfigurationEClass, SIMULATION_CONFIGURATION__ON_HOLDING_DURATION);
-		createEAttribute(simulationConfigurationEClass, SIMULATION_CONFIGURATION__ON_UNHOLDING_DURATION);
-		createEAttribute(simulationConfigurationEClass, SIMULATION_CONFIGURATION__ON_SUSPENDING_DURATION);
-		createEAttribute(simulationConfigurationEClass, SIMULATION_CONFIGURATION__ON_UNSUSPENDING_DURATION);
-		createEReference(simulationConfigurationEClass, SIMULATION_CONFIGURATION__ON_COMPLETING_VARIABLES);
-		createEAttribute(simulationConfigurationEClass, SIMULATION_CONFIGURATION__ON_COMPLETING_STATUS_CODE);
-		createEAttribute(simulationConfigurationEClass, SIMULATION_CONFIGURATION__ON_STOPPING_STATUS_CODE);
-
 		// Create enums
-		componentCategoryEEnum = createEEnum(COMPONENT_CATEGORY);
 		requestStatusEEnum = createEEnum(REQUEST_STATUS);
 		responseStatusEEnum = createEEnum(RESPONSE_STATUS);
 		variableTypeEEnum = createEEnum(VARIABLE_TYPE);
@@ -1318,40 +766,18 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		operationModeRequestEClass.getESuperTypes().add(this.getComponentRequest());
 
 		// Initialize classes, features, and operations; add parameters
-		initEClass(componentInfoEClass, ComponentInfo.class, "ComponentInfo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getComponentInfo_ComponentId(), theEcorePackage.getEString(), "componentId", null, 0, 1, ComponentInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComponentInfo_ComponentName(), theEcorePackage.getEString(), "componentName", null, 0, 1, ComponentInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComponentInfo_ComponentCategory(), this.getComponentCategory(), "componentCategory", "NONE", 0, 1, ComponentInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComponentInfo_InChannelName(), theEcorePackage.getEString(), "inChannelName", null, 0, 1, ComponentInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComponentInfo_OutChannelName(), theEcorePackage.getEString(), "outChannelName", null, 0, 1, ComponentInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComponentInfo_StatusChannelName(), theEcorePackage.getEString(), "statusChannelName", null, 0, 1, ComponentInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComponentInfo_CurrentState(), this.getExecutionState(), "currentState", null, 0, 1, ComponentInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComponentInfo_CurrentMode(), this.getExecutionMode(), "currentMode", null, 0, 1, ComponentInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComponentInfo_CommunicationProvider(), theEcorePackage.getEString(), "communicationProvider", null, 0, 1, ComponentInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComponentInfo_ConnectionString(), theEcorePackage.getEString(), "connectionString", null, 0, 1, ComponentInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComponentInfo_HostName(), theEcorePackage.getEString(), "hostName", null, 0, 1, ComponentInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComponentInfo_UriSpec(), theEcorePackage.getEString(), "uriSpec", null, 0, 1, ComponentInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComponentInfo_Connected(), theEcorePackage.getEBoolean(), "connected", null, 0, 1, ComponentInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(componentResponseEClass, ComponentResponse.class, "ComponentResponse", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getComponentResponse_ComponentId(), theEcorePackage.getEString(), "componentId", null, 0, 1, ComponentResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getComponentResponse_Status(), this.getResponseStatus(), "status", null, 0, 1, ComponentResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getComponentResponse_StatusCode(), theEcorePackage.getEInt(), "statusCode", null, 0, 1, ComponentResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getComponentResponse_Message(), theEcorePackage.getEString(), "message", null, 0, 1, ComponentResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getComponentResponse_Request(), this.getComponentRequest(), null, "request", null, 0, 1, ComponentResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getComponentResponse_OutputParameters(), this.getVariable(), null, "outputParameters", null, 0, -1, ComponentResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(componentConfigurationEClass, ComponentConfiguration.class, "ComponentConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getComponentConfiguration_ComponentId(), theEcorePackage.getEString(), "componentId", null, 0, 1, ComponentConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComponentConfiguration_ComponentName(), theEcorePackage.getEString(), "componentName", null, 0, 1, ComponentConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComponentConfiguration_ComponentCategory(), this.getComponentCategory(), "componentCategory", "NONE", 0, 1, ComponentConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComponentConfiguration_ComponentImplementationJavaClass(), theEcorePackage.getEString(), "componentImplementationJavaClass", null, 0, 1, ComponentConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComponentConfiguration_CommunicationProviderImplementationJavaClass(), theEcorePackage.getEString(), "communicationProviderImplementationJavaClass", null, 0, 1, ComponentConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComponentConfiguration_CommunicationProviderConnectionString(), theEcorePackage.getEString(), "communicationProviderConnectionString", null, 0, 1, ComponentConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComponentConfiguration_InChannelName(), theEcorePackage.getEString(), "inChannelName", null, 0, 1, ComponentConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComponentConfiguration_OutChannelName(), theEcorePackage.getEString(), "outChannelName", null, 0, 1, ComponentConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComponentConfiguration_ExternalConnectionString(), theEcorePackage.getEString(), "externalConnectionString", null, 0, 1, ComponentConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getComponentConfiguration_Properties(), this.getProperty(), null, "properties", null, 0, -1, ComponentConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getComponentConfiguration_SimulationConfiguration(), this.getSimulationConfiguration(), null, "simulationConfiguration", null, 0, 1, ComponentConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		EOperation op = initEOperation(getComponentConfiguration__GetProperty__String(), this.getProperty(), "getProperty", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theEcorePackage.getEString(), "key", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		initEClass(propertyEClass, Property.class, "Property", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getProperty_Key(), theEcorePackage.getEString(), "key", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getProperty_Value(), theEcorePackage.getEString(), "value", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(variableEClass, Variable.class, "Variable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getVariable_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVariable_Value(), theEcorePackage.getEString(), "value", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVariable_Type(), this.getVariableType(), "type", "", 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(componentRequestCollectionEClass, ComponentRequestCollection.class, "ComponentRequestCollection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getComponentRequestCollection_ComponentRequests(), this.getComponentRequest(), null, "componentRequests", null, 0, -1, ComponentRequestCollection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1368,19 +794,6 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 
 		initEClass(statusRequestEClass, StatusRequest.class, "StatusRequest", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(componentResponseEClass, ComponentResponse.class, "ComponentResponse", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getComponentResponse_ComponentId(), theEcorePackage.getEString(), "componentId", null, 0, 1, ComponentResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComponentResponse_Status(), this.getResponseStatus(), "status", null, 0, 1, ComponentResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComponentResponse_StatusCode(), theEcorePackage.getEInt(), "statusCode", null, 0, 1, ComponentResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getComponentResponse_Message(), theEcorePackage.getEString(), "message", null, 0, 1, ComponentResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getComponentResponse_Request(), this.getComponentRequest(), null, "request", null, 0, 1, ComponentResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getComponentResponse_OutputParameters(), this.getVariable(), null, "outputParameters", null, 0, -1, ComponentResponse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(variableEClass, Variable.class, "Variable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getVariable_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getVariable_Value(), theEcorePackage.getEString(), "value", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getVariable_Type(), this.getVariableType(), "type", "", 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(occupationLevelRequestEClass, OccupationLevelRequest.class, "OccupationLevelRequest", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOccupationLevelRequest_OccupationLevel(), this.getOccupationLevel(), "occupationLevel", null, 0, 1, OccupationLevelRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1395,30 +808,7 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 		initEReference(getOperationModeRequest_InputParameters(), this.getVariable(), null, "inputParameters", null, 0, -1, OperationModeRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOperationModeRequest_OutputParameters(), theEcorePackage.getEString(), "outputParameters", null, 0, -1, OperationModeRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(simulationConfigurationEClass, SimulationConfiguration.class, "SimulationConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSimulationConfiguration_OnResettingDuration(), theEcorePackage.getEInt(), "onResettingDuration", "1000", 0, 1, SimulationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimulationConfiguration_OnStartingDuration(), theEcorePackage.getEInt(), "onStartingDuration", "1000", 0, 1, SimulationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimulationConfiguration_OnExecuteDuration(), theEcorePackage.getEInt(), "onExecuteDuration", "3000", 0, 1, SimulationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimulationConfiguration_OnCompletingDuration(), theEcorePackage.getEInt(), "onCompletingDuration", "1000", 0, 1, SimulationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimulationConfiguration_OnStoppingDuration(), theEcorePackage.getEInt(), "onStoppingDuration", "1000", 0, 1, SimulationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimulationConfiguration_OnAbortingDuration(), theEcorePackage.getEInt(), "onAbortingDuration", "1000", 0, 1, SimulationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimulationConfiguration_OnClearingDuration(), theEcorePackage.getEInt(), "onClearingDuration", "1000", 0, 1, SimulationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimulationConfiguration_OnHoldingDuration(), theEcorePackage.getEInt(), "onHoldingDuration", "1000", 0, 1, SimulationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimulationConfiguration_OnUnholdingDuration(), theEcorePackage.getEInt(), "onUnholdingDuration", "1000", 0, 1, SimulationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimulationConfiguration_OnSuspendingDuration(), theEcorePackage.getEInt(), "onSuspendingDuration", "1000", 0, 1, SimulationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimulationConfiguration_OnUnsuspendingDuration(), theEcorePackage.getEInt(), "onUnsuspendingDuration", "1000", 0, 1, SimulationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSimulationConfiguration_OnCompletingVariables(), this.getVariable(), null, "onCompletingVariables", null, 0, -1, SimulationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimulationConfiguration_OnCompletingStatusCode(), theEcorePackage.getEInt(), "onCompletingStatusCode", "0", 0, 1, SimulationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSimulationConfiguration_OnStoppingStatusCode(), theEcorePackage.getEInt(), "onStoppingStatusCode", "1", 0, 1, SimulationConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		// Initialize enums and add enum literals
-		initEEnum(componentCategoryEEnum, ComponentCategory.class, "ComponentCategory");
-		addEEnumLiteral(componentCategoryEEnum, ComponentCategory.NONE);
-		addEEnumLiteral(componentCategoryEEnum, ComponentCategory.SERVICE_COMPONENT);
-		addEEnumLiteral(componentCategoryEEnum, ComponentCategory.DEVICE_COMPONENT);
-		addEEnumLiteral(componentCategoryEEnum, ComponentCategory.MANAGEMENT_COMPONENT);
-		addEEnumLiteral(componentCategoryEEnum, ComponentCategory.PROCESS_COMPONENT);
-
 		initEEnum(requestStatusEEnum, RequestStatus.class, "RequestStatus");
 		addEEnumLiteral(requestStatusEEnum, RequestStatus.UNDEFINED);
 		addEEnumLiteral(requestStatusEEnum, RequestStatus.ACCEPTED);

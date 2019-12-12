@@ -68,16 +68,12 @@ public class ComponentAdapterFactory extends AdapterFactoryImpl {
 	protected ComponentSwitch<Adapter> modelSwitch =
 		new ComponentSwitch<Adapter>() {
 			@Override
-			public Adapter caseComponentInfo(ComponentInfo object) {
-				return createComponentInfoAdapter();
+			public Adapter caseComponentResponse(ComponentResponse object) {
+				return createComponentResponseAdapter();
 			}
 			@Override
-			public Adapter caseComponentConfiguration(ComponentConfiguration object) {
-				return createComponentConfigurationAdapter();
-			}
-			@Override
-			public Adapter caseProperty(Property object) {
-				return createPropertyAdapter();
+			public Adapter caseVariable(Variable object) {
+				return createVariableAdapter();
 			}
 			@Override
 			public Adapter caseComponentRequestCollection(ComponentRequestCollection object) {
@@ -96,14 +92,6 @@ public class ComponentAdapterFactory extends AdapterFactoryImpl {
 				return createStatusRequestAdapter();
 			}
 			@Override
-			public Adapter caseComponentResponse(ComponentResponse object) {
-				return createComponentResponseAdapter();
-			}
-			@Override
-			public Adapter caseVariable(Variable object) {
-				return createVariableAdapter();
-			}
-			@Override
 			public Adapter caseOccupationLevelRequest(OccupationLevelRequest object) {
 				return createOccupationLevelRequestAdapter();
 			}
@@ -118,10 +106,6 @@ public class ComponentAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseOperationModeRequest(OperationModeRequest object) {
 				return createOperationModeRequestAdapter();
-			}
-			@Override
-			public Adapter caseSimulationConfiguration(SimulationConfiguration object) {
-				return createSimulationConfigurationAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -142,48 +126,6 @@ public class ComponentAdapterFactory extends AdapterFactoryImpl {
 		return modelSwitch.doSwitch((EObject)target);
 	}
 
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo <em>Info</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo
-	 * @generated
-	 */
-	public Adapter createComponentInfoAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration <em>Configuration</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration
-	 * @generated
-	 */
-	public Adapter createComponentConfigurationAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.cos.basys.platform.model.runtime.component.Property <em>Property</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.Property
-	 * @generated
-	 */
-	public Adapter createPropertyAdapter() {
-		return null;
-	}
 
 	/**
 	 * Creates a new adapter for an object of class '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest <em>Request</em>}'.
@@ -266,20 +208,6 @@ public class ComponentAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createVariableAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration <em>Simulation Configuration</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration
-	 * @generated
-	 */
-	public Adapter createSimulationConfigurationAdapter() {
 		return null;
 	}
 

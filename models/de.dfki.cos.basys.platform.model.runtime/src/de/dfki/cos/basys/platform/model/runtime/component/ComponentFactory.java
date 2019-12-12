@@ -22,33 +22,6 @@ public interface ComponentFactory extends EFactory {
 	ComponentFactory eINSTANCE = de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Info</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Info</em>'.
-	 * @generated
-	 */
-	ComponentInfo createComponentInfo();
-
-	/**
-	 * Returns a new object of class '<em>Configuration</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Configuration</em>'.
-	 * @generated
-	 */
-	ComponentConfiguration createComponentConfiguration();
-
-	/**
-	 * Returns a new object of class '<em>Property</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Property</em>'.
-	 * @generated
-	 */
-	Property createProperty();
-
-	/**
 	 * Returns a new object of class '<em>Request Collection</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -128,15 +101,6 @@ public interface ComponentFactory extends EFactory {
 	 * @generated
 	 */
 	OperationModeRequest createOperationModeRequest();
-
-	/**
-	 * Returns a new object of class '<em>Simulation Configuration</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Simulation Configuration</em>'.
-	 * @generated
-	 */
-	SimulationConfiguration createSimulationConfiguration();
 
 	/**
 	 * Returns the package supported by this factory.

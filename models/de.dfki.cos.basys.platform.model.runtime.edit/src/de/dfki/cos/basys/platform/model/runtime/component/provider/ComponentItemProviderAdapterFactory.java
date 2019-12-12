@@ -72,75 +72,6 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ComponentInfoItemProvider componentInfoItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createComponentInfoAdapter() {
-		if (componentInfoItemProvider == null) {
-			componentInfoItemProvider = new ComponentInfoItemProvider(this);
-		}
-
-		return componentInfoItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ComponentConfigurationItemProvider componentConfigurationItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createComponentConfigurationAdapter() {
-		if (componentConfigurationItemProvider == null) {
-			componentConfigurationItemProvider = new ComponentConfigurationItemProvider(this);
-		}
-
-		return componentConfigurationItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.model.runtime.component.Property} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected PropertyItemProvider propertyItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link de.dfki.cos.basys.platform.model.runtime.component.Property}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createPropertyAdapter() {
-		if (propertyItemProvider == null) {
-			propertyItemProvider = new PropertyItemProvider(this);
-		}
-
-		return propertyItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.model.runtime.component.ComponentRequestCollection} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -348,29 +279,6 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SimulationConfigurationItemProvider simulationConfigurationItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createSimulationConfigurationAdapter() {
-		if (simulationConfigurationItemProvider == null) {
-			simulationConfigurationItemProvider = new SimulationConfigurationItemProvider(this);
-		}
-
-		return simulationConfigurationItemProvider;
-	}
-
-	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -475,19 +383,15 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 	 */
 	@Override
 	public void dispose() {
-		if (componentInfoItemProvider != null) componentInfoItemProvider.dispose();
-		if (componentConfigurationItemProvider != null) componentConfigurationItemProvider.dispose();
-		if (propertyItemProvider != null) propertyItemProvider.dispose();
+		if (componentResponseItemProvider != null) componentResponseItemProvider.dispose();
+		if (variableItemProvider != null) variableItemProvider.dispose();
 		if (componentRequestCollectionItemProvider != null) componentRequestCollectionItemProvider.dispose();
 		if (componentRequestStatusItemProvider != null) componentRequestStatusItemProvider.dispose();
 		if (statusRequestItemProvider != null) statusRequestItemProvider.dispose();
-		if (componentResponseItemProvider != null) componentResponseItemProvider.dispose();
-		if (variableItemProvider != null) variableItemProvider.dispose();
 		if (occupationLevelRequestItemProvider != null) occupationLevelRequestItemProvider.dispose();
 		if (executionModeRequestItemProvider != null) executionModeRequestItemProvider.dispose();
 		if (executionCommandRequestItemProvider != null) executionCommandRequestItemProvider.dispose();
 		if (operationModeRequestItemProvider != null) operationModeRequestItemProvider.dispose();
-		if (simulationConfigurationItemProvider != null) simulationConfigurationItemProvider.dispose();
 	}
 
 }

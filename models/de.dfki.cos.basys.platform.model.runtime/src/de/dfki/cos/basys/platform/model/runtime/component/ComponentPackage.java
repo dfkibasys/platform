@@ -5,7 +5,6 @@ package de.dfki.cos.basys.platform.model.runtime.component;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -61,333 +60,6 @@ public interface ComponentPackage extends EPackage {
 	ComponentPackage eINSTANCE = de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentInfoImpl <em>Info</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentInfoImpl
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getComponentInfo()
-	 * @generated
-	 */
-	int COMPONENT_INFO = 0;
-
-	/**
-	 * The feature id for the '<em><b>Component Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_INFO__COMPONENT_ID = 0;
-
-	/**
-	 * The feature id for the '<em><b>Component Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_INFO__COMPONENT_NAME = 1;
-
-	/**
-	 * The feature id for the '<em><b>Component Category</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_INFO__COMPONENT_CATEGORY = 2;
-
-	/**
-	 * The feature id for the '<em><b>In Channel Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_INFO__IN_CHANNEL_NAME = 3;
-
-	/**
-	 * The feature id for the '<em><b>Out Channel Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_INFO__OUT_CHANNEL_NAME = 4;
-
-	/**
-	 * The feature id for the '<em><b>Status Channel Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_INFO__STATUS_CHANNEL_NAME = 5;
-
-	/**
-	 * The feature id for the '<em><b>Current State</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_INFO__CURRENT_STATE = 6;
-
-	/**
-	 * The feature id for the '<em><b>Current Mode</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_INFO__CURRENT_MODE = 7;
-
-	/**
-	 * The feature id for the '<em><b>Communication Provider</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_INFO__COMMUNICATION_PROVIDER = 8;
-
-	/**
-	 * The feature id for the '<em><b>Connection String</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_INFO__CONNECTION_STRING = 9;
-
-	/**
-	 * The feature id for the '<em><b>Host Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_INFO__HOST_NAME = 10;
-
-	/**
-	 * The feature id for the '<em><b>Uri Spec</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_INFO__URI_SPEC = 11;
-
-	/**
-	 * The feature id for the '<em><b>Connected</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_INFO__CONNECTED = 12;
-
-	/**
-	 * The number of structural features of the '<em>Info</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_INFO_FEATURE_COUNT = 13;
-
-	/**
-	 * The number of operations of the '<em>Info</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_INFO_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentConfigurationImpl <em>Configuration</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentConfigurationImpl
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getComponentConfiguration()
-	 * @generated
-	 */
-	int COMPONENT_CONFIGURATION = 1;
-
-	/**
-	 * The feature id for the '<em><b>Component Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONFIGURATION__COMPONENT_ID = 0;
-
-	/**
-	 * The feature id for the '<em><b>Component Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONFIGURATION__COMPONENT_NAME = 1;
-
-	/**
-	 * The feature id for the '<em><b>Component Category</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONFIGURATION__COMPONENT_CATEGORY = 2;
-
-	/**
-	 * The feature id for the '<em><b>Component Implementation Java Class</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONFIGURATION__COMPONENT_IMPLEMENTATION_JAVA_CLASS = 3;
-
-	/**
-	 * The feature id for the '<em><b>Communication Provider Implementation Java Class</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONFIGURATION__COMMUNICATION_PROVIDER_IMPLEMENTATION_JAVA_CLASS = 4;
-
-	/**
-	 * The feature id for the '<em><b>Communication Provider Connection String</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONFIGURATION__COMMUNICATION_PROVIDER_CONNECTION_STRING = 5;
-
-	/**
-	 * The feature id for the '<em><b>In Channel Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONFIGURATION__IN_CHANNEL_NAME = 6;
-
-	/**
-	 * The feature id for the '<em><b>Out Channel Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONFIGURATION__OUT_CHANNEL_NAME = 7;
-
-	/**
-	 * The feature id for the '<em><b>External Connection String</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONFIGURATION__EXTERNAL_CONNECTION_STRING = 8;
-
-	/**
-	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONFIGURATION__PROPERTIES = 9;
-
-	/**
-	 * The feature id for the '<em><b>Simulation Configuration</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONFIGURATION__SIMULATION_CONFIGURATION = 10;
-
-	/**
-	 * The number of structural features of the '<em>Configuration</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONFIGURATION_FEATURE_COUNT = 11;
-
-	/**
-	 * The operation id for the '<em>Get Property</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONFIGURATION___GET_PROPERTY__STRING = 0;
-
-	/**
-	 * The number of operations of the '<em>Configuration</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_CONFIGURATION_OPERATION_COUNT = 1;
-
-	/**
-	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.impl.PropertyImpl <em>Property</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.PropertyImpl
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getProperty()
-	 * @generated
-	 */
-	int PROPERTY = 2;
-
-	/**
-	 * The feature id for the '<em><b>Key</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROPERTY__KEY = 0;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROPERTY__VALUE = 1;
-
-	/**
-	 * The number of structural features of the '<em>Property</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROPERTY_FEATURE_COUNT = 2;
-
-	/**
-	 * The number of operations of the '<em>Property</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROPERTY_OPERATION_COUNT = 0;
-
-	/**
 	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentRequestCollectionImpl <em>Request Collection</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -395,34 +67,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getComponentRequestCollection()
 	 * @generated
 	 */
-	int COMPONENT_REQUEST_COLLECTION = 3;
-
-	/**
-	 * The feature id for the '<em><b>Component Requests</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_REQUEST_COLLECTION__COMPONENT_REQUESTS = 0;
-
-	/**
-	 * The number of structural features of the '<em>Request Collection</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_REQUEST_COLLECTION_FEATURE_COUNT = 1;
-
-	/**
-	 * The number of operations of the '<em>Request Collection</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_REQUEST_COLLECTION_OPERATION_COUNT = 0;
+	int COMPONENT_REQUEST_COLLECTION = 2;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest <em>Request</em>}' class.
@@ -432,52 +77,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getComponentRequest()
 	 * @generated
 	 */
-	int COMPONENT_REQUEST = 4;
-
-	/**
-	 * The feature id for the '<em><b>Component Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_REQUEST__COMPONENT_ID = 0;
-
-	/**
-	 * The feature id for the '<em><b>Correlation Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_REQUEST__CORRELATION_ID = 1;
-
-	/**
-	 * The feature id for the '<em><b>Occupier Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_REQUEST__OCCUPIER_ID = 2;
-
-	/**
-	 * The number of structural features of the '<em>Request</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_REQUEST_FEATURE_COUNT = 3;
-
-	/**
-	 * The number of operations of the '<em>Request</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_REQUEST_OPERATION_COUNT = 0;
+	int COMPONENT_REQUEST = 3;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentRequestStatusImpl <em>Request Status</em>}' class.
@@ -487,52 +87,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getComponentRequestStatus()
 	 * @generated
 	 */
-	int COMPONENT_REQUEST_STATUS = 5;
-
-	/**
-	 * The feature id for the '<em><b>Component Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_REQUEST_STATUS__COMPONENT_ID = 0;
-
-	/**
-	 * The feature id for the '<em><b>Status</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_REQUEST_STATUS__STATUS = 1;
-
-	/**
-	 * The feature id for the '<em><b>Message</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_REQUEST_STATUS__MESSAGE = 2;
-
-	/**
-	 * The number of structural features of the '<em>Request Status</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_REQUEST_STATUS_FEATURE_COUNT = 3;
-
-	/**
-	 * The number of operations of the '<em>Request Status</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_REQUEST_STATUS_OPERATION_COUNT = 0;
+	int COMPONENT_REQUEST_STATUS = 4;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.impl.StatusRequestImpl <em>Status Request</em>}' class.
@@ -542,52 +97,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getStatusRequest()
 	 * @generated
 	 */
-	int STATUS_REQUEST = 6;
-
-	/**
-	 * The feature id for the '<em><b>Component Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STATUS_REQUEST__COMPONENT_ID = COMPONENT_REQUEST__COMPONENT_ID;
-
-	/**
-	 * The feature id for the '<em><b>Correlation Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STATUS_REQUEST__CORRELATION_ID = COMPONENT_REQUEST__CORRELATION_ID;
-
-	/**
-	 * The feature id for the '<em><b>Occupier Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STATUS_REQUEST__OCCUPIER_ID = COMPONENT_REQUEST__OCCUPIER_ID;
-
-	/**
-	 * The number of structural features of the '<em>Status Request</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STATUS_REQUEST_FEATURE_COUNT = COMPONENT_REQUEST_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Status Request</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STATUS_REQUEST_OPERATION_COUNT = COMPONENT_REQUEST_OPERATION_COUNT + 0;
+	int STATUS_REQUEST = 5;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentResponseImpl <em>Response</em>}' class.
@@ -597,7 +107,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getComponentResponse()
 	 * @generated
 	 */
-	int COMPONENT_RESPONSE = 7;
+	int COMPONENT_RESPONSE = 0;
 
 	/**
 	 * The feature id for the '<em><b>Component Id</b></em>' attribute.
@@ -679,7 +189,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getVariable()
 	 * @generated
 	 */
-	int VARIABLE = 8;
+	int VARIABLE = 1;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -727,6 +237,168 @@ public interface ComponentPackage extends EPackage {
 	int VARIABLE_OPERATION_COUNT = 0;
 
 	/**
+	 * The feature id for the '<em><b>Component Requests</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_REQUEST_COLLECTION__COMPONENT_REQUESTS = 0;
+
+	/**
+	 * The number of structural features of the '<em>Request Collection</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_REQUEST_COLLECTION_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Request Collection</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_REQUEST_COLLECTION_OPERATION_COUNT = 0;
+
+	/**
+	 * The feature id for the '<em><b>Component Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_REQUEST__COMPONENT_ID = 0;
+
+	/**
+	 * The feature id for the '<em><b>Correlation Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_REQUEST__CORRELATION_ID = 1;
+
+	/**
+	 * The feature id for the '<em><b>Occupier Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_REQUEST__OCCUPIER_ID = 2;
+
+	/**
+	 * The number of structural features of the '<em>Request</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_REQUEST_FEATURE_COUNT = 3;
+
+	/**
+	 * The number of operations of the '<em>Request</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_REQUEST_OPERATION_COUNT = 0;
+
+	/**
+	 * The feature id for the '<em><b>Component Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_REQUEST_STATUS__COMPONENT_ID = 0;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_REQUEST_STATUS__STATUS = 1;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_REQUEST_STATUS__MESSAGE = 2;
+
+	/**
+	 * The number of structural features of the '<em>Request Status</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_REQUEST_STATUS_FEATURE_COUNT = 3;
+
+	/**
+	 * The number of operations of the '<em>Request Status</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_REQUEST_STATUS_OPERATION_COUNT = 0;
+
+	/**
+	 * The feature id for the '<em><b>Component Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATUS_REQUEST__COMPONENT_ID = COMPONENT_REQUEST__COMPONENT_ID;
+
+	/**
+	 * The feature id for the '<em><b>Correlation Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATUS_REQUEST__CORRELATION_ID = COMPONENT_REQUEST__CORRELATION_ID;
+
+	/**
+	 * The feature id for the '<em><b>Occupier Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATUS_REQUEST__OCCUPIER_ID = COMPONENT_REQUEST__OCCUPIER_ID;
+
+	/**
+	 * The number of structural features of the '<em>Status Request</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATUS_REQUEST_FEATURE_COUNT = COMPONENT_REQUEST_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Status Request</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATUS_REQUEST_OPERATION_COUNT = COMPONENT_REQUEST_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.impl.OccupationLevelRequestImpl <em>Occupation Level Request</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -734,7 +406,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getOccupationLevelRequest()
 	 * @generated
 	 */
-	int OCCUPATION_LEVEL_REQUEST = 9;
+	int OCCUPATION_LEVEL_REQUEST = 6;
 
 	/**
 	 * The feature id for the '<em><b>Component Id</b></em>' attribute.
@@ -798,7 +470,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getExecutionModeRequest()
 	 * @generated
 	 */
-	int EXECUTION_MODE_REQUEST = 10;
+	int EXECUTION_MODE_REQUEST = 7;
 
 	/**
 	 * The feature id for the '<em><b>Component Id</b></em>' attribute.
@@ -862,7 +534,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getExecutionCommandRequest()
 	 * @generated
 	 */
-	int EXECUTION_COMMAND_REQUEST = 11;
+	int EXECUTION_COMMAND_REQUEST = 8;
 
 	/**
 	 * The feature id for the '<em><b>Component Id</b></em>' attribute.
@@ -926,7 +598,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getOperationModeRequest()
 	 * @generated
 	 */
-	int OPERATION_MODE_REQUEST = 12;
+	int OPERATION_MODE_REQUEST = 9;
 
 	/**
 	 * The feature id for the '<em><b>Component Id</b></em>' attribute.
@@ -1001,170 +673,6 @@ public interface ComponentPackage extends EPackage {
 	int OPERATION_MODE_REQUEST_OPERATION_COUNT = COMPONENT_REQUEST_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.impl.SimulationConfigurationImpl <em>Simulation Configuration</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.SimulationConfigurationImpl
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getSimulationConfiguration()
-	 * @generated
-	 */
-	int SIMULATION_CONFIGURATION = 13;
-
-	/**
-	 * The feature id for the '<em><b>On Resetting Duration</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_CONFIGURATION__ON_RESETTING_DURATION = 0;
-
-	/**
-	 * The feature id for the '<em><b>On Starting Duration</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_CONFIGURATION__ON_STARTING_DURATION = 1;
-
-	/**
-	 * The feature id for the '<em><b>On Execute Duration</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_CONFIGURATION__ON_EXECUTE_DURATION = 2;
-
-	/**
-	 * The feature id for the '<em><b>On Completing Duration</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_CONFIGURATION__ON_COMPLETING_DURATION = 3;
-
-	/**
-	 * The feature id for the '<em><b>On Stopping Duration</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_CONFIGURATION__ON_STOPPING_DURATION = 4;
-
-	/**
-	 * The feature id for the '<em><b>On Aborting Duration</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_CONFIGURATION__ON_ABORTING_DURATION = 5;
-
-	/**
-	 * The feature id for the '<em><b>On Clearing Duration</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_CONFIGURATION__ON_CLEARING_DURATION = 6;
-
-	/**
-	 * The feature id for the '<em><b>On Holding Duration</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_CONFIGURATION__ON_HOLDING_DURATION = 7;
-
-	/**
-	 * The feature id for the '<em><b>On Unholding Duration</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_CONFIGURATION__ON_UNHOLDING_DURATION = 8;
-
-	/**
-	 * The feature id for the '<em><b>On Suspending Duration</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_CONFIGURATION__ON_SUSPENDING_DURATION = 9;
-
-	/**
-	 * The feature id for the '<em><b>On Unsuspending Duration</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_CONFIGURATION__ON_UNSUSPENDING_DURATION = 10;
-
-	/**
-	 * The feature id for the '<em><b>On Completing Variables</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_CONFIGURATION__ON_COMPLETING_VARIABLES = 11;
-
-	/**
-	 * The feature id for the '<em><b>On Completing Status Code</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_CONFIGURATION__ON_COMPLETING_STATUS_CODE = 12;
-
-	/**
-	 * The feature id for the '<em><b>On Stopping Status Code</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_CONFIGURATION__ON_STOPPING_STATUS_CODE = 13;
-
-	/**
-	 * The number of structural features of the '<em>Simulation Configuration</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_CONFIGURATION_FEATURE_COUNT = 14;
-
-	/**
-	 * The number of operations of the '<em>Simulation Configuration</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIMULATION_CONFIGURATION_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory <em>Category</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getComponentCategory()
-	 * @generated
-	 */
-	int COMPONENT_CATEGORY = 14;
-
-	/**
 	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.RequestStatus <em>Request Status</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1172,7 +680,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getRequestStatus()
 	 * @generated
 	 */
-	int REQUEST_STATUS = 15;
+	int REQUEST_STATUS = 10;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus <em>Response Status</em>}' enum.
@@ -1182,7 +690,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getResponseStatus()
 	 * @generated
 	 */
-	int RESPONSE_STATUS = 16;
+	int RESPONSE_STATUS = 11;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.VariableType <em>Variable Type</em>}' enum.
@@ -1192,7 +700,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getVariableType()
 	 * @generated
 	 */
-	int VARIABLE_TYPE = 17;
+	int VARIABLE_TYPE = 12;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.ExecutionState <em>Execution State</em>}' enum.
@@ -1202,7 +710,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getExecutionState()
 	 * @generated
 	 */
-	int EXECUTION_STATE = 18;
+	int EXECUTION_STATE = 13;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.ExecutionMode <em>Execution Mode</em>}' enum.
@@ -1212,7 +720,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getExecutionMode()
 	 * @generated
 	 */
-	int EXECUTION_MODE = 19;
+	int EXECUTION_MODE = 14;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.ExecutionCommand <em>Execution Command</em>}' enum.
@@ -1222,7 +730,7 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getExecutionCommand()
 	 * @generated
 	 */
-	int EXECUTION_COMMAND = 20;
+	int EXECUTION_COMMAND = 15;
 
 	/**
 	 * The meta object id for the '{@link de.dfki.cos.basys.platform.model.runtime.component.OccupationLevel <em>Occupation Level</em>}' enum.
@@ -1232,334 +740,8 @@ public interface ComponentPackage extends EPackage {
 	 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getOccupationLevel()
 	 * @generated
 	 */
-	int OCCUPATION_LEVEL = 21;
+	int OCCUPATION_LEVEL = 16;
 
-
-	/**
-	 * Returns the meta object for class '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo <em>Info</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Info</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo
-	 * @generated
-	 */
-	EClass getComponentInfo();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo#getComponentId <em>Component Id</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Component Id</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo#getComponentId()
-	 * @see #getComponentInfo()
-	 * @generated
-	 */
-	EAttribute getComponentInfo_ComponentId();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo#getComponentName <em>Component Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Component Name</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo#getComponentName()
-	 * @see #getComponentInfo()
-	 * @generated
-	 */
-	EAttribute getComponentInfo_ComponentName();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo#getComponentCategory <em>Component Category</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Component Category</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo#getComponentCategory()
-	 * @see #getComponentInfo()
-	 * @generated
-	 */
-	EAttribute getComponentInfo_ComponentCategory();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo#getInChannelName <em>In Channel Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>In Channel Name</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo#getInChannelName()
-	 * @see #getComponentInfo()
-	 * @generated
-	 */
-	EAttribute getComponentInfo_InChannelName();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo#getOutChannelName <em>Out Channel Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Out Channel Name</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo#getOutChannelName()
-	 * @see #getComponentInfo()
-	 * @generated
-	 */
-	EAttribute getComponentInfo_OutChannelName();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo#getStatusChannelName <em>Status Channel Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Status Channel Name</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo#getStatusChannelName()
-	 * @see #getComponentInfo()
-	 * @generated
-	 */
-	EAttribute getComponentInfo_StatusChannelName();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo#getCurrentState <em>Current State</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Current State</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo#getCurrentState()
-	 * @see #getComponentInfo()
-	 * @generated
-	 */
-	EAttribute getComponentInfo_CurrentState();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo#getCurrentMode <em>Current Mode</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Current Mode</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo#getCurrentMode()
-	 * @see #getComponentInfo()
-	 * @generated
-	 */
-	EAttribute getComponentInfo_CurrentMode();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo#getCommunicationProvider <em>Communication Provider</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Communication Provider</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo#getCommunicationProvider()
-	 * @see #getComponentInfo()
-	 * @generated
-	 */
-	EAttribute getComponentInfo_CommunicationProvider();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo#getConnectionString <em>Connection String</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Connection String</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo#getConnectionString()
-	 * @see #getComponentInfo()
-	 * @generated
-	 */
-	EAttribute getComponentInfo_ConnectionString();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo#getHostName <em>Host Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Host Name</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo#getHostName()
-	 * @see #getComponentInfo()
-	 * @generated
-	 */
-	EAttribute getComponentInfo_HostName();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo#getUriSpec <em>Uri Spec</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Uri Spec</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo#getUriSpec()
-	 * @see #getComponentInfo()
-	 * @generated
-	 */
-	EAttribute getComponentInfo_UriSpec();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo#isConnected <em>Connected</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Connected</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentInfo#isConnected()
-	 * @see #getComponentInfo()
-	 * @generated
-	 */
-	EAttribute getComponentInfo_Connected();
-
-	/**
-	 * Returns the meta object for class '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration <em>Configuration</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Configuration</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration
-	 * @generated
-	 */
-	EClass getComponentConfiguration();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration#getComponentId <em>Component Id</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Component Id</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration#getComponentId()
-	 * @see #getComponentConfiguration()
-	 * @generated
-	 */
-	EAttribute getComponentConfiguration_ComponentId();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration#getComponentName <em>Component Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Component Name</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration#getComponentName()
-	 * @see #getComponentConfiguration()
-	 * @generated
-	 */
-	EAttribute getComponentConfiguration_ComponentName();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration#getComponentCategory <em>Component Category</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Component Category</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration#getComponentCategory()
-	 * @see #getComponentConfiguration()
-	 * @generated
-	 */
-	EAttribute getComponentConfiguration_ComponentCategory();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration#getComponentImplementationJavaClass <em>Component Implementation Java Class</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Component Implementation Java Class</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration#getComponentImplementationJavaClass()
-	 * @see #getComponentConfiguration()
-	 * @generated
-	 */
-	EAttribute getComponentConfiguration_ComponentImplementationJavaClass();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration#getCommunicationProviderImplementationJavaClass <em>Communication Provider Implementation Java Class</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Communication Provider Implementation Java Class</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration#getCommunicationProviderImplementationJavaClass()
-	 * @see #getComponentConfiguration()
-	 * @generated
-	 */
-	EAttribute getComponentConfiguration_CommunicationProviderImplementationJavaClass();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration#getCommunicationProviderConnectionString <em>Communication Provider Connection String</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Communication Provider Connection String</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration#getCommunicationProviderConnectionString()
-	 * @see #getComponentConfiguration()
-	 * @generated
-	 */
-	EAttribute getComponentConfiguration_CommunicationProviderConnectionString();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration#getInChannelName <em>In Channel Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>In Channel Name</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration#getInChannelName()
-	 * @see #getComponentConfiguration()
-	 * @generated
-	 */
-	EAttribute getComponentConfiguration_InChannelName();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration#getOutChannelName <em>Out Channel Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Out Channel Name</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration#getOutChannelName()
-	 * @see #getComponentConfiguration()
-	 * @generated
-	 */
-	EAttribute getComponentConfiguration_OutChannelName();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration#getExternalConnectionString <em>External Connection String</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>External Connection String</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration#getExternalConnectionString()
-	 * @see #getComponentConfiguration()
-	 * @generated
-	 */
-	EAttribute getComponentConfiguration_ExternalConnectionString();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration#getProperties <em>Properties</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Properties</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration#getProperties()
-	 * @see #getComponentConfiguration()
-	 * @generated
-	 */
-	EReference getComponentConfiguration_Properties();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration#getSimulationConfiguration <em>Simulation Configuration</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Simulation Configuration</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration#getSimulationConfiguration()
-	 * @see #getComponentConfiguration()
-	 * @generated
-	 */
-	EReference getComponentConfiguration_SimulationConfiguration();
-
-	/**
-	 * Returns the meta object for the '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration#getProperty(java.lang.String) <em>Get Property</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Get Property</em>' operation.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentConfiguration#getProperty(java.lang.String)
-	 * @generated
-	 */
-	EOperation getComponentConfiguration__GetProperty__String();
-
-	/**
-	 * Returns the meta object for class '{@link de.dfki.cos.basys.platform.model.runtime.component.Property <em>Property</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Property</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.Property
-	 * @generated
-	 */
-	EClass getProperty();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.Property#getKey <em>Key</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Key</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.Property#getKey()
-	 * @see #getProperty()
-	 * @generated
-	 */
-	EAttribute getProperty_Key();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.Property#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.Property#getValue()
-	 * @see #getProperty()
-	 * @generated
-	 */
-	EAttribute getProperty_Value();
 
 	/**
 	 * Returns the meta object for class '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentRequestCollection <em>Request Collection</em>}'.
@@ -1904,180 +1086,6 @@ public interface ComponentPackage extends EPackage {
 	EAttribute getOperationModeRequest_OutputParameters();
 
 	/**
-	 * Returns the meta object for class '{@link de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration <em>Simulation Configuration</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Simulation Configuration</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration
-	 * @generated
-	 */
-	EClass getSimulationConfiguration();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration#getOnResettingDuration <em>On Resetting Duration</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>On Resetting Duration</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration#getOnResettingDuration()
-	 * @see #getSimulationConfiguration()
-	 * @generated
-	 */
-	EAttribute getSimulationConfiguration_OnResettingDuration();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration#getOnStartingDuration <em>On Starting Duration</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>On Starting Duration</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration#getOnStartingDuration()
-	 * @see #getSimulationConfiguration()
-	 * @generated
-	 */
-	EAttribute getSimulationConfiguration_OnStartingDuration();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration#getOnExecuteDuration <em>On Execute Duration</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>On Execute Duration</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration#getOnExecuteDuration()
-	 * @see #getSimulationConfiguration()
-	 * @generated
-	 */
-	EAttribute getSimulationConfiguration_OnExecuteDuration();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration#getOnCompletingDuration <em>On Completing Duration</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>On Completing Duration</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration#getOnCompletingDuration()
-	 * @see #getSimulationConfiguration()
-	 * @generated
-	 */
-	EAttribute getSimulationConfiguration_OnCompletingDuration();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration#getOnStoppingDuration <em>On Stopping Duration</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>On Stopping Duration</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration#getOnStoppingDuration()
-	 * @see #getSimulationConfiguration()
-	 * @generated
-	 */
-	EAttribute getSimulationConfiguration_OnStoppingDuration();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration#getOnAbortingDuration <em>On Aborting Duration</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>On Aborting Duration</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration#getOnAbortingDuration()
-	 * @see #getSimulationConfiguration()
-	 * @generated
-	 */
-	EAttribute getSimulationConfiguration_OnAbortingDuration();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration#getOnClearingDuration <em>On Clearing Duration</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>On Clearing Duration</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration#getOnClearingDuration()
-	 * @see #getSimulationConfiguration()
-	 * @generated
-	 */
-	EAttribute getSimulationConfiguration_OnClearingDuration();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration#getOnHoldingDuration <em>On Holding Duration</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>On Holding Duration</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration#getOnHoldingDuration()
-	 * @see #getSimulationConfiguration()
-	 * @generated
-	 */
-	EAttribute getSimulationConfiguration_OnHoldingDuration();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration#getOnUnholdingDuration <em>On Unholding Duration</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>On Unholding Duration</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration#getOnUnholdingDuration()
-	 * @see #getSimulationConfiguration()
-	 * @generated
-	 */
-	EAttribute getSimulationConfiguration_OnUnholdingDuration();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration#getOnSuspendingDuration <em>On Suspending Duration</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>On Suspending Duration</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration#getOnSuspendingDuration()
-	 * @see #getSimulationConfiguration()
-	 * @generated
-	 */
-	EAttribute getSimulationConfiguration_OnSuspendingDuration();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration#getOnUnsuspendingDuration <em>On Unsuspending Duration</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>On Unsuspending Duration</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration#getOnUnsuspendingDuration()
-	 * @see #getSimulationConfiguration()
-	 * @generated
-	 */
-	EAttribute getSimulationConfiguration_OnUnsuspendingDuration();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration#getOnCompletingVariables <em>On Completing Variables</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>On Completing Variables</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration#getOnCompletingVariables()
-	 * @see #getSimulationConfiguration()
-	 * @generated
-	 */
-	EReference getSimulationConfiguration_OnCompletingVariables();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration#getOnCompletingStatusCode <em>On Completing Status Code</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>On Completing Status Code</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration#getOnCompletingStatusCode()
-	 * @see #getSimulationConfiguration()
-	 * @generated
-	 */
-	EAttribute getSimulationConfiguration_OnCompletingStatusCode();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration#getOnStoppingStatusCode <em>On Stopping Status Code</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>On Stopping Status Code</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.SimulationConfiguration#getOnStoppingStatusCode()
-	 * @see #getSimulationConfiguration()
-	 * @generated
-	 */
-	EAttribute getSimulationConfiguration_OnStoppingStatusCode();
-
-	/**
-	 * Returns the meta object for enum '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory <em>Category</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Category</em>'.
-	 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory
-	 * @generated
-	 */
-	EEnum getComponentCategory();
-
-	/**
 	 * Returns the meta object for enum '{@link de.dfki.cos.basys.platform.model.runtime.component.RequestStatus <em>Request Status</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2170,252 +1178,6 @@ public interface ComponentPackage extends EPackage {
 	 * @generated
 	 */
 	interface Literals {
-		/**
-		 * The meta object literal for the '{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentInfoImpl <em>Info</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentInfoImpl
-		 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getComponentInfo()
-		 * @generated
-		 */
-		EClass COMPONENT_INFO = eINSTANCE.getComponentInfo();
-
-		/**
-		 * The meta object literal for the '<em><b>Component Id</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COMPONENT_INFO__COMPONENT_ID = eINSTANCE.getComponentInfo_ComponentId();
-
-		/**
-		 * The meta object literal for the '<em><b>Component Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COMPONENT_INFO__COMPONENT_NAME = eINSTANCE.getComponentInfo_ComponentName();
-
-		/**
-		 * The meta object literal for the '<em><b>Component Category</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COMPONENT_INFO__COMPONENT_CATEGORY = eINSTANCE.getComponentInfo_ComponentCategory();
-
-		/**
-		 * The meta object literal for the '<em><b>In Channel Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COMPONENT_INFO__IN_CHANNEL_NAME = eINSTANCE.getComponentInfo_InChannelName();
-
-		/**
-		 * The meta object literal for the '<em><b>Out Channel Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COMPONENT_INFO__OUT_CHANNEL_NAME = eINSTANCE.getComponentInfo_OutChannelName();
-
-		/**
-		 * The meta object literal for the '<em><b>Status Channel Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COMPONENT_INFO__STATUS_CHANNEL_NAME = eINSTANCE.getComponentInfo_StatusChannelName();
-
-		/**
-		 * The meta object literal for the '<em><b>Current State</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COMPONENT_INFO__CURRENT_STATE = eINSTANCE.getComponentInfo_CurrentState();
-
-		/**
-		 * The meta object literal for the '<em><b>Current Mode</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COMPONENT_INFO__CURRENT_MODE = eINSTANCE.getComponentInfo_CurrentMode();
-
-		/**
-		 * The meta object literal for the '<em><b>Communication Provider</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COMPONENT_INFO__COMMUNICATION_PROVIDER = eINSTANCE.getComponentInfo_CommunicationProvider();
-
-		/**
-		 * The meta object literal for the '<em><b>Connection String</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COMPONENT_INFO__CONNECTION_STRING = eINSTANCE.getComponentInfo_ConnectionString();
-
-		/**
-		 * The meta object literal for the '<em><b>Host Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COMPONENT_INFO__HOST_NAME = eINSTANCE.getComponentInfo_HostName();
-
-		/**
-		 * The meta object literal for the '<em><b>Uri Spec</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COMPONENT_INFO__URI_SPEC = eINSTANCE.getComponentInfo_UriSpec();
-
-		/**
-		 * The meta object literal for the '<em><b>Connected</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COMPONENT_INFO__CONNECTED = eINSTANCE.getComponentInfo_Connected();
-
-		/**
-		 * The meta object literal for the '{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentConfigurationImpl <em>Configuration</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentConfigurationImpl
-		 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getComponentConfiguration()
-		 * @generated
-		 */
-		EClass COMPONENT_CONFIGURATION = eINSTANCE.getComponentConfiguration();
-
-		/**
-		 * The meta object literal for the '<em><b>Component Id</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COMPONENT_CONFIGURATION__COMPONENT_ID = eINSTANCE.getComponentConfiguration_ComponentId();
-
-		/**
-		 * The meta object literal for the '<em><b>Component Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COMPONENT_CONFIGURATION__COMPONENT_NAME = eINSTANCE.getComponentConfiguration_ComponentName();
-
-		/**
-		 * The meta object literal for the '<em><b>Component Category</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COMPONENT_CONFIGURATION__COMPONENT_CATEGORY = eINSTANCE.getComponentConfiguration_ComponentCategory();
-
-		/**
-		 * The meta object literal for the '<em><b>Component Implementation Java Class</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COMPONENT_CONFIGURATION__COMPONENT_IMPLEMENTATION_JAVA_CLASS = eINSTANCE.getComponentConfiguration_ComponentImplementationJavaClass();
-
-		/**
-		 * The meta object literal for the '<em><b>Communication Provider Implementation Java Class</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COMPONENT_CONFIGURATION__COMMUNICATION_PROVIDER_IMPLEMENTATION_JAVA_CLASS = eINSTANCE.getComponentConfiguration_CommunicationProviderImplementationJavaClass();
-
-		/**
-		 * The meta object literal for the '<em><b>Communication Provider Connection String</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COMPONENT_CONFIGURATION__COMMUNICATION_PROVIDER_CONNECTION_STRING = eINSTANCE.getComponentConfiguration_CommunicationProviderConnectionString();
-
-		/**
-		 * The meta object literal for the '<em><b>In Channel Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COMPONENT_CONFIGURATION__IN_CHANNEL_NAME = eINSTANCE.getComponentConfiguration_InChannelName();
-
-		/**
-		 * The meta object literal for the '<em><b>Out Channel Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COMPONENT_CONFIGURATION__OUT_CHANNEL_NAME = eINSTANCE.getComponentConfiguration_OutChannelName();
-
-		/**
-		 * The meta object literal for the '<em><b>External Connection String</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COMPONENT_CONFIGURATION__EXTERNAL_CONNECTION_STRING = eINSTANCE.getComponentConfiguration_ExternalConnectionString();
-
-		/**
-		 * The meta object literal for the '<em><b>Properties</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference COMPONENT_CONFIGURATION__PROPERTIES = eINSTANCE.getComponentConfiguration_Properties();
-
-		/**
-		 * The meta object literal for the '<em><b>Simulation Configuration</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference COMPONENT_CONFIGURATION__SIMULATION_CONFIGURATION = eINSTANCE.getComponentConfiguration_SimulationConfiguration();
-
-		/**
-		 * The meta object literal for the '<em><b>Get Property</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation COMPONENT_CONFIGURATION___GET_PROPERTY__STRING = eINSTANCE.getComponentConfiguration__GetProperty__String();
-
-		/**
-		 * The meta object literal for the '{@link de.dfki.cos.basys.platform.model.runtime.component.impl.PropertyImpl <em>Property</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.PropertyImpl
-		 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getProperty()
-		 * @generated
-		 */
-		EClass PROPERTY = eINSTANCE.getProperty();
-
-		/**
-		 * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PROPERTY__KEY = eINSTANCE.getProperty_Key();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PROPERTY__VALUE = eINSTANCE.getProperty_Value();
-
 		/**
 		 * The meta object literal for the '{@link de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentRequestCollectionImpl <em>Request Collection</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -2691,138 +1453,6 @@ public interface ComponentPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute OPERATION_MODE_REQUEST__OUTPUT_PARAMETERS = eINSTANCE.getOperationModeRequest_OutputParameters();
-
-		/**
-		 * The meta object literal for the '{@link de.dfki.cos.basys.platform.model.runtime.component.impl.SimulationConfigurationImpl <em>Simulation Configuration</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.SimulationConfigurationImpl
-		 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getSimulationConfiguration()
-		 * @generated
-		 */
-		EClass SIMULATION_CONFIGURATION = eINSTANCE.getSimulationConfiguration();
-
-		/**
-		 * The meta object literal for the '<em><b>On Resetting Duration</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_CONFIGURATION__ON_RESETTING_DURATION = eINSTANCE.getSimulationConfiguration_OnResettingDuration();
-
-		/**
-		 * The meta object literal for the '<em><b>On Starting Duration</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_CONFIGURATION__ON_STARTING_DURATION = eINSTANCE.getSimulationConfiguration_OnStartingDuration();
-
-		/**
-		 * The meta object literal for the '<em><b>On Execute Duration</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_CONFIGURATION__ON_EXECUTE_DURATION = eINSTANCE.getSimulationConfiguration_OnExecuteDuration();
-
-		/**
-		 * The meta object literal for the '<em><b>On Completing Duration</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_CONFIGURATION__ON_COMPLETING_DURATION = eINSTANCE.getSimulationConfiguration_OnCompletingDuration();
-
-		/**
-		 * The meta object literal for the '<em><b>On Stopping Duration</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_CONFIGURATION__ON_STOPPING_DURATION = eINSTANCE.getSimulationConfiguration_OnStoppingDuration();
-
-		/**
-		 * The meta object literal for the '<em><b>On Aborting Duration</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_CONFIGURATION__ON_ABORTING_DURATION = eINSTANCE.getSimulationConfiguration_OnAbortingDuration();
-
-		/**
-		 * The meta object literal for the '<em><b>On Clearing Duration</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_CONFIGURATION__ON_CLEARING_DURATION = eINSTANCE.getSimulationConfiguration_OnClearingDuration();
-
-		/**
-		 * The meta object literal for the '<em><b>On Holding Duration</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_CONFIGURATION__ON_HOLDING_DURATION = eINSTANCE.getSimulationConfiguration_OnHoldingDuration();
-
-		/**
-		 * The meta object literal for the '<em><b>On Unholding Duration</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_CONFIGURATION__ON_UNHOLDING_DURATION = eINSTANCE.getSimulationConfiguration_OnUnholdingDuration();
-
-		/**
-		 * The meta object literal for the '<em><b>On Suspending Duration</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_CONFIGURATION__ON_SUSPENDING_DURATION = eINSTANCE.getSimulationConfiguration_OnSuspendingDuration();
-
-		/**
-		 * The meta object literal for the '<em><b>On Unsuspending Duration</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_CONFIGURATION__ON_UNSUSPENDING_DURATION = eINSTANCE.getSimulationConfiguration_OnUnsuspendingDuration();
-
-		/**
-		 * The meta object literal for the '<em><b>On Completing Variables</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SIMULATION_CONFIGURATION__ON_COMPLETING_VARIABLES = eINSTANCE.getSimulationConfiguration_OnCompletingVariables();
-
-		/**
-		 * The meta object literal for the '<em><b>On Completing Status Code</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_CONFIGURATION__ON_COMPLETING_STATUS_CODE = eINSTANCE.getSimulationConfiguration_OnCompletingStatusCode();
-
-		/**
-		 * The meta object literal for the '<em><b>On Stopping Status Code</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SIMULATION_CONFIGURATION__ON_STOPPING_STATUS_CODE = eINSTANCE.getSimulationConfiguration_OnStoppingStatusCode();
-
-		/**
-		 * The meta object literal for the '{@link de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory <em>Category</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentCategory
-		 * @see de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl#getComponentCategory()
-		 * @generated
-		 */
-		EEnum COMPONENT_CATEGORY = eINSTANCE.getComponentCategory();
 
 		/**
 		 * The meta object literal for the '{@link de.dfki.cos.basys.platform.model.runtime.component.RequestStatus <em>Request Status</em>}' enum.
