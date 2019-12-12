@@ -1,6 +1,6 @@
 /**
  */
-package de.dfki.cos.basys.platform.model.runtime.component;
+package de.dfki.cos.basys.platform.runtime.component.model;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -8,16 +8,17 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.Enumerator;
 
+
 /**
  * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Response Status</b></em>',
+ * A representation of the literals of the enumeration '<em><b>Request Status</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage#getResponseStatus()
+ * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage#getRequestStatus()
  * @model
  * @generated
  */
-public enum ResponseStatus implements Enumerator {
+public enum RequestStatus implements Enumerator {
 	/**
 	 * The '<em><b>UNDEFINED</b></em>' literal object.
 	 * <!-- begin-user-doc -->
@@ -29,24 +30,54 @@ public enum ResponseStatus implements Enumerator {
 	UNDEFINED(0, "UNDEFINED", "UNDEFINED"),
 
 	/**
-	 * The '<em><b>OK</b></em>' literal object.
+	 * The '<em><b>ACCEPTED</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #OK_VALUE
+	 * @see #ACCEPTED_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	OK(1, "OK", "OK"),
+	ACCEPTED(1, "ACCEPTED", "ACCEPTED"),
 
 	/**
-	 * The '<em><b>NOT OK</b></em>' literal object.
+	 * The '<em><b>REJECTED</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #NOT_OK_VALUE
+	 * @see #REJECTED_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	NOT_OK(2, "NOT_OK", "NOT_OK");
+	REJECTED(2, "REJECTED", "REJECTED"),
+
+	/**
+	 * The '<em><b>NOOP</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #NOOP_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	NOOP(3, "NOOP", "NOOP"),
+
+	/**
+	 * The '<em><b>QUEUED</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #QUEUED_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	QUEUED(4, "QUEUED", "QUEUED"),
+
+	/**
+	 * The '<em><b>DONE</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #DONE_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	DONE(5, "DONE", "DONE");
 
 	/**
 	 * The '<em><b>UNDEFINED</b></em>' literal value.
@@ -60,59 +91,95 @@ public enum ResponseStatus implements Enumerator {
 	public static final int UNDEFINED_VALUE = 0;
 
 	/**
-	 * The '<em><b>OK</b></em>' literal value.
+	 * The '<em><b>ACCEPTED</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #OK
+	 * @see #ACCEPTED
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int OK_VALUE = 1;
+	public static final int ACCEPTED_VALUE = 1;
 
 	/**
-	 * The '<em><b>NOT OK</b></em>' literal value.
+	 * The '<em><b>REJECTED</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #NOT_OK
+	 * @see #REJECTED
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int NOT_OK_VALUE = 2;
+	public static final int REJECTED_VALUE = 2;
 
 	/**
-	 * An array of all the '<em><b>Response Status</b></em>' enumerators.
+	 * The '<em><b>NOOP</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #NOOP
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int NOOP_VALUE = 3;
+
+	/**
+	 * The '<em><b>QUEUED</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #QUEUED
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int QUEUED_VALUE = 4;
+
+	/**
+	 * The '<em><b>DONE</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #DONE
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int DONE_VALUE = 5;
+
+	/**
+	 * An array of all the '<em><b>Request Status</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final ResponseStatus[] VALUES_ARRAY =
-		new ResponseStatus[] {
+	private static final RequestStatus[] VALUES_ARRAY =
+		new RequestStatus[] {
 			UNDEFINED,
-			OK,
-			NOT_OK,
+			ACCEPTED,
+			REJECTED,
+			NOOP,
+			QUEUED,
+			DONE,
 		};
 
 	/**
-	 * A public read-only list of all the '<em><b>Response Status</b></em>' enumerators.
+	 * A public read-only list of all the '<em><b>Request Status</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<ResponseStatus> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<RequestStatus> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Response Status</b></em>' literal with the specified literal value.
+	 * Returns the '<em><b>Request Status</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param literal the literal.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static ResponseStatus get(String literal) {
+	public static RequestStatus get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			ResponseStatus result = VALUES_ARRAY[i];
+			RequestStatus result = VALUES_ARRAY[i];
 			if (result.toString().equals(literal)) {
 				return result;
 			}
@@ -121,16 +188,16 @@ public enum ResponseStatus implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Response Status</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Request Status</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name the name.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static ResponseStatus getByName(String name) {
+	public static RequestStatus getByName(String name) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			ResponseStatus result = VALUES_ARRAY[i];
+			RequestStatus result = VALUES_ARRAY[i];
 			if (result.getName().equals(name)) {
 				return result;
 			}
@@ -139,18 +206,21 @@ public enum ResponseStatus implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Response Status</b></em>' literal with the specified integer value.
+	 * Returns the '<em><b>Request Status</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the integer value.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static ResponseStatus get(int value) {
+	public static RequestStatus get(int value) {
 		switch (value) {
 			case UNDEFINED_VALUE: return UNDEFINED;
-			case OK_VALUE: return OK;
-			case NOT_OK_VALUE: return NOT_OK;
+			case ACCEPTED_VALUE: return ACCEPTED;
+			case REJECTED_VALUE: return REJECTED;
+			case NOOP_VALUE: return NOOP;
+			case QUEUED_VALUE: return QUEUED;
+			case DONE_VALUE: return DONE;
 		}
 		return null;
 	}
@@ -182,7 +252,7 @@ public enum ResponseStatus implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private ResponseStatus(int value, String name, String literal) {
+	private RequestStatus(int value, String name, String literal) {
 		this.value = value;
 		this.name = name;
 		this.literal = literal;
@@ -229,4 +299,4 @@ public enum ResponseStatus implements Enumerator {
 		return literal;
 	}
 	
-} //ResponseStatus
+} //RequestStatus

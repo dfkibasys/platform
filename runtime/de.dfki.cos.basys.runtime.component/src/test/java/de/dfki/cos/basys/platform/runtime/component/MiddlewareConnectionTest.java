@@ -13,9 +13,8 @@ import de.dfki.cos.basys.common.component.Component;
 import de.dfki.cos.basys.common.component.ComponentException;
 import de.dfki.cos.basys.common.component.StringConstants;
 import de.dfki.cos.basys.common.component.manager.ComponentManagerException;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentFactory;
-import de.dfki.cos.basys.platform.model.runtime.component.OperationModeRequest;
 import de.dfki.cos.basys.platform.runtime.component.BasysComponent;
+import de.dfki.cos.basys.platform.runtime.component.model.OperationModeRequest;
 
 public class MiddlewareConnectionTest extends BaseComponentTest {
 
@@ -84,7 +83,7 @@ public class MiddlewareConnectionTest extends BaseComponentTest {
 		
 		sleep(10);
 		
-		OperationModeRequest request = ComponentFactory.eINSTANCE.createOperationModeRequest();
+		OperationModeRequest request = new OperationModeRequest();
 		request.setOperationMode("testmode");
 		request.setOccupierId("itsme");
 		

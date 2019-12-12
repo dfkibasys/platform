@@ -95,7 +95,7 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.model.runtime.component.ComponentRequestStatus} instances.
+	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.runtime.component.model.ComponentRequestStatus} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -103,7 +103,7 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 	protected ComponentRequestStatusItemProvider componentRequestStatusItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link de.dfki.cos.basys.platform.model.runtime.component.ComponentRequestStatus}.
+	 * This creates an adapter for a {@link de.dfki.cos.basys.platform.runtime.component.model.ComponentRequestStatus}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -118,7 +118,7 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.model.runtime.component.StatusRequest} instances.
+	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.runtime.component.model.StatusRequest} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -126,7 +126,7 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 	protected StatusRequestItemProvider statusRequestItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link de.dfki.cos.basys.platform.model.runtime.component.StatusRequest}.
+	 * This creates an adapter for a {@link de.dfki.cos.basys.platform.runtime.component.model.StatusRequest}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -141,7 +141,7 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.model.runtime.component.ComponentResponse} instances.
+	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.runtime.component.model.ComponentResponse} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -149,7 +149,7 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 	protected ComponentResponseItemProvider componentResponseItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link de.dfki.cos.basys.platform.model.runtime.component.ComponentResponse}.
+	 * This creates an adapter for a {@link de.dfki.cos.basys.platform.runtime.component.model.ComponentResponse}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -164,7 +164,7 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.model.runtime.component.Variable} instances.
+	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.runtime.component.model.Variable} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -172,7 +172,7 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 	protected VariableItemProvider variableItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link de.dfki.cos.basys.platform.model.runtime.component.Variable}.
+	 * This creates an adapter for a {@link de.dfki.cos.basys.platform.runtime.component.model.Variable}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -187,7 +187,7 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.model.runtime.component.OccupationLevelRequest} instances.
+	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.runtime.component.model.OccupationLevelRequest} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -195,7 +195,7 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 	protected OccupationLevelRequestItemProvider occupationLevelRequestItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link de.dfki.cos.basys.platform.model.runtime.component.OccupationLevelRequest}.
+	 * This creates an adapter for a {@link de.dfki.cos.basys.platform.runtime.component.model.OccupationLevelRequest}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -210,7 +210,7 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.model.runtime.component.ExecutionModeRequest} instances.
+	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.runtime.component.model.ExecutionModeRequest} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -218,7 +218,7 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 	protected ExecutionModeRequestItemProvider executionModeRequestItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link de.dfki.cos.basys.platform.model.runtime.component.ExecutionModeRequest}.
+	 * This creates an adapter for a {@link de.dfki.cos.basys.platform.runtime.component.model.ExecutionModeRequest}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -233,7 +233,7 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.model.runtime.component.ExecutionCommandRequest} instances.
+	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.runtime.component.model.ExecutionCommandRequest} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -241,7 +241,7 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 	protected ExecutionCommandRequestItemProvider executionCommandRequestItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link de.dfki.cos.basys.platform.model.runtime.component.ExecutionCommandRequest}.
+	 * This creates an adapter for a {@link de.dfki.cos.basys.platform.runtime.component.model.ExecutionCommandRequest}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -256,7 +256,7 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.model.runtime.component.OperationModeRequest} instances.
+	 * This keeps track of the one adapter used for all {@link de.dfki.cos.basys.platform.runtime.component.model.OperationModeRequest} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -264,7 +264,7 @@ public class ComponentItemProviderAdapterFactory extends ComponentAdapterFactory
 	protected OperationModeRequestItemProvider operationModeRequestItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link de.dfki.cos.basys.platform.model.runtime.component.OperationModeRequest}.
+	 * This creates an adapter for a {@link de.dfki.cos.basys.platform.runtime.component.model.OperationModeRequest}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

@@ -1,7 +1,7 @@
 package de.dfki.cos.basys.platform.runtime.processcontrol;
 
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentResponse;
+import de.dfki.cos.basys.platform.runtime.component.model.ComponentRequest;
+import de.dfki.cos.basys.platform.runtime.component.model.ComponentResponse;
 
 public class TaskDescription {
 

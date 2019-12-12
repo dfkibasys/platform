@@ -7,7 +7,7 @@ import de.dfki.cos.basys.platform.model.runtime.communication.provider.RuntimeEd
 
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentFactory;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentResponse;
+import de.dfki.cos.basys.platform.runtime.component.model.ComponentResponse;
 
 import java.util.Collection;
 import java.util.List;
@@ -31,7 +31,7 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link de.dfki.cos.basys.platform.model.runtime.component.ComponentResponse} object.
+ * This is the item provider adapter for a {@link de.dfki.cos.basys.platform.runtime.component.model.ComponentResponse} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

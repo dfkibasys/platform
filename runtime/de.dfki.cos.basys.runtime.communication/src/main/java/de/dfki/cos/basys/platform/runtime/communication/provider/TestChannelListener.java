@@ -11,7 +11,6 @@ import de.dfki.cos.basys.platform.model.runtime.communication.Channel;
 import de.dfki.cos.basys.platform.model.runtime.communication.ChannelListener;
 import de.dfki.cos.basys.platform.model.runtime.communication.Request;
 import de.dfki.cos.basys.platform.model.runtime.communication.Response;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentResponse;
 import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
 
 public class TestChannelListener implements ChannelListener {

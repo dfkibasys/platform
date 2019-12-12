@@ -16,11 +16,10 @@ import de.dfki.cos.basys.platform.model.runtime.communication.Channel;
 import de.dfki.cos.basys.platform.model.runtime.communication.Notification;
 import de.dfki.cos.basys.platform.model.runtime.communication.Request;
 import de.dfki.cos.basys.platform.model.runtime.communication.Response;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentResponse;
 import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
 import de.dfki.cos.basys.platform.runtime.component.BasysComponent;
+import de.dfki.cos.basys.platform.runtime.component.model.ComponentRequest;
+import de.dfki.cos.basys.platform.runtime.component.model.ComponentResponse;
 import de.dfki.cos.basys.platform.runtime.processcontrol.camunda.CamundaProcessControllerService;
 
 public class ProcessControllerComponent extends BasysComponent implements ProcessController {
@@ -81,7 +80,7 @@ public class ProcessControllerComponent extends BasysComponent implements Proces
 		try {
 			ComponentRequest request = JsonUtils.fromString(payload, ComponentRequest.class);
 			ComponentResponse response = scheduleTask(new TaskDescription(request)).get();
-			res = CommFactory.getInstance().createResponse(req.getId(), JsonUtils.toString(response));
+			res = CommFactory.getInstance().createResponse(req.getId(), context.getObjectMapper().writeValueAsString(response));
 		} catch (IOException | InterruptedException | ExecutionException e) {			
 			e.printStackTrace();
 			res.setPayload(e.getMessage());

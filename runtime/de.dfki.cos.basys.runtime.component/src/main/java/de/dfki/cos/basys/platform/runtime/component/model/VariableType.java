@@ -1,6 +1,6 @@
 /**
  */
-package de.dfki.cos.basys.platform.model.runtime.component;
+package de.dfki.cos.basys.platform.runtime.component.model;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -8,221 +8,200 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.Enumerator;
 
+
 /**
  * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Execution Mode</b></em>',
+ * A representation of the literals of the enumeration '<em><b>Variable Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage#getExecutionMode()
+ * @see de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage#getVariableType()
  * @model
  * @generated
  */
-public enum ExecutionMode implements Enumerator {
+public enum VariableType implements Enumerator {
 	/**
-	 * The '<em><b>PRODUCTION</b></em>' literal object.
+	 * The '<em><b>NULL</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #PRODUCTION_VALUE
+	 * @see #NULL_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	PRODUCTION(0, "PRODUCTION", "PRODUCTION"),
+	NULL(0, "NULL", ""),
 
 	/**
-	 * The '<em><b>MAINTENANCE</b></em>' literal object.
+	 * The '<em><b>BOOLEAN</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #MAINTENANCE_VALUE
+	 * @see #BOOLEAN_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	MAINTENANCE(1, "MAINTENANCE", "MAINTENANCE"),
+	BOOLEAN(1, "BOOLEAN", "BOOLEAN"),
 
 	/**
-	 * The '<em><b>MANUAL</b></em>' literal object.
+	 * The '<em><b>INTEGER</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #MANUAL_VALUE
+	 * @see #INTEGER_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	MANUAL(2, "MANUAL", "MANUAL"),
+	INTEGER(2, "INTEGER", "INTEGER"),
 
 	/**
-	 * The '<em><b>CHANGE OVER</b></em>' literal object.
+	 * The '<em><b>STRING</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #CHANGE_OVER_VALUE
+	 * @see #STRING_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	CHANGE_OVER(3, "CHANGE_OVER", "CHANGE_OVER"),
+	STRING(3, "STRING", "STRING"),
 
 	/**
-	 * The '<em><b>CLEAN</b></em>' literal object.
+	 * The '<em><b>DOUBLE</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #CLEAN_VALUE
+	 * @see #DOUBLE_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	CLEAN(4, "CLEAN", "CLEAN"),
+	DOUBLE(4, "DOUBLE", "DOUBLE"),
 
 	/**
-	 * The '<em><b>SET UP</b></em>' literal object.
+	 * The '<em><b>LONG</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #SET_UP_VALUE
+	 * @see #LONG_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	SET_UP(5, "SET_UP", "SET_UP"),
+	LONG(5, "LONG", "LONG"),
 
 	/**
-	 * The '<em><b>EMPTY OUT</b></em>' literal object.
+	 * The '<em><b>DATE</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #EMPTY_OUT_VALUE
+	 * @see #DATE_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	EMPTY_OUT(6, "EMPTY_OUT", "EMPTY_OUT"),
+	DATE(6, "DATE", "DATE");
 
 	/**
-	 * The '<em><b>SIMULATION</b></em>' literal object.
+	 * The '<em><b>NULL</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #SIMULATION_VALUE
+	 * @see #NULL
+	 * @model literal=""
 	 * @generated
 	 * @ordered
 	 */
-	SIMULATION(7, "SIMULATION", "SIMULATION");
+	public static final int NULL_VALUE = 0;
 
 	/**
-	 * The '<em><b>PRODUCTION</b></em>' literal value.
+	 * The '<em><b>BOOLEAN</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #PRODUCTION
+	 * @see #BOOLEAN
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int PRODUCTION_VALUE = 0;
+	public static final int BOOLEAN_VALUE = 1;
 
 	/**
-	 * The '<em><b>MAINTENANCE</b></em>' literal value.
+	 * The '<em><b>INTEGER</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #MAINTENANCE
+	 * @see #INTEGER
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int MAINTENANCE_VALUE = 1;
+	public static final int INTEGER_VALUE = 2;
 
 	/**
-	 * The '<em><b>MANUAL</b></em>' literal value.
+	 * The '<em><b>STRING</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #MANUAL
+	 * @see #STRING
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int MANUAL_VALUE = 2;
+	public static final int STRING_VALUE = 3;
 
 	/**
-	 * The '<em><b>CHANGE OVER</b></em>' literal value.
+	 * The '<em><b>DOUBLE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #CHANGE_OVER
+	 * @see #DOUBLE
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int CHANGE_OVER_VALUE = 3;
+	public static final int DOUBLE_VALUE = 4;
 
 	/**
-	 * The '<em><b>CLEAN</b></em>' literal value.
+	 * The '<em><b>LONG</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #CLEAN
+	 * @see #LONG
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int CLEAN_VALUE = 4;
+	public static final int LONG_VALUE = 5;
 
 	/**
-	 * The '<em><b>SET UP</b></em>' literal value.
+	 * The '<em><b>DATE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #SET_UP
+	 * @see #DATE
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int SET_UP_VALUE = 5;
+	public static final int DATE_VALUE = 6;
 
 	/**
-	 * The '<em><b>EMPTY OUT</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #EMPTY_OUT
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int EMPTY_OUT_VALUE = 6;
-
-	/**
-	 * The '<em><b>SIMULATION</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #SIMULATION
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int SIMULATION_VALUE = 7;
-
-	/**
-	 * An array of all the '<em><b>Execution Mode</b></em>' enumerators.
+	 * An array of all the '<em><b>Variable Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final ExecutionMode[] VALUES_ARRAY =
-		new ExecutionMode[] {
-			PRODUCTION,
-			MAINTENANCE,
-			MANUAL,
-			CHANGE_OVER,
-			CLEAN,
-			SET_UP,
-			EMPTY_OUT,
-			SIMULATION,
+	private static final VariableType[] VALUES_ARRAY =
+		new VariableType[] {
+			NULL,
+			BOOLEAN,
+			INTEGER,
+			STRING,
+			DOUBLE,
+			LONG,
+			DATE,
 		};
 
 	/**
-	 * A public read-only list of all the '<em><b>Execution Mode</b></em>' enumerators.
+	 * A public read-only list of all the '<em><b>Variable Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<ExecutionMode> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<VariableType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Execution Mode</b></em>' literal with the specified literal value.
+	 * Returns the '<em><b>Variable Type</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param literal the literal.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static ExecutionMode get(String literal) {
+	public static VariableType get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			ExecutionMode result = VALUES_ARRAY[i];
+			VariableType result = VALUES_ARRAY[i];
 			if (result.toString().equals(literal)) {
 				return result;
 			}
@@ -231,41 +210,63 @@ public enum ExecutionMode implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Execution Mode</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Variable Type</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name the name.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static ExecutionMode getByName(String name) {
+	public static VariableType getByName(String name) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			ExecutionMode result = VALUES_ARRAY[i];
+			VariableType result = VALUES_ARRAY[i];
 			if (result.getName().equals(name)) {
 				return result;
 			}
 		}
 		return null;
 	}
+	
+	public static VariableType fromOpcUa(String name) {
+		switch (name) {
+		case "Int32":
+		case "Int16":
+		case "Integer":
+			return INTEGER;
+		case "Int64":
+			return LONG;
+		case "Double":
+		case "Float":
+			return DOUBLE;
+		case "String":
+			return STRING;
+		case "Boolean":
+			return BOOLEAN;
+		case "DateTime":
+			return DATE;
 
+		default:
+			return NULL;
+		}
+	}
+	
 	/**
-	 * Returns the '<em><b>Execution Mode</b></em>' literal with the specified integer value.
+	 * Returns the '<em><b>Variable Type</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the integer value.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static ExecutionMode get(int value) {
+	public static VariableType get(int value) {
 		switch (value) {
-			case PRODUCTION_VALUE: return PRODUCTION;
-			case MAINTENANCE_VALUE: return MAINTENANCE;
-			case MANUAL_VALUE: return MANUAL;
-			case CHANGE_OVER_VALUE: return CHANGE_OVER;
-			case CLEAN_VALUE: return CLEAN;
-			case SET_UP_VALUE: return SET_UP;
-			case EMPTY_OUT_VALUE: return EMPTY_OUT;
-			case SIMULATION_VALUE: return SIMULATION;
+			case NULL_VALUE: return NULL;
+			case BOOLEAN_VALUE: return BOOLEAN;
+			case INTEGER_VALUE: return INTEGER;
+			case STRING_VALUE: return STRING;
+			case DOUBLE_VALUE: return DOUBLE;
+			case LONG_VALUE: return LONG;
+			case DATE_VALUE: return DATE;
 		}
 		return null;
 	}
@@ -297,7 +298,7 @@ public enum ExecutionMode implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private ExecutionMode(int value, String name, String literal) {
+	private VariableType(int value, String name, String literal) {
 		this.value = value;
 		this.name = name;
 		this.literal = literal;
@@ -344,4 +345,4 @@ public enum ExecutionMode implements Enumerator {
 		return literal;
 	}
 	
-} //ExecutionMode
+} //VariableType

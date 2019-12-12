@@ -13,13 +13,12 @@ import de.dfki.cos.basys.platform.model.runtime.communication.ChannelListener;
 import de.dfki.cos.basys.platform.model.runtime.communication.Notification;
 import de.dfki.cos.basys.platform.model.runtime.communication.Request;
 import de.dfki.cos.basys.platform.model.runtime.communication.Response;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentFactory;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentRequestStatus;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentResponse;
-import de.dfki.cos.basys.platform.model.runtime.component.RequestStatus;
-import de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus;
 import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
+import de.dfki.cos.basys.platform.runtime.component.model.ComponentRequest;
+import de.dfki.cos.basys.platform.runtime.component.model.ComponentRequestStatus;
+import de.dfki.cos.basys.platform.runtime.component.model.ComponentResponse;
+import de.dfki.cos.basys.platform.runtime.component.model.RequestStatus;
+import de.dfki.cos.basys.platform.runtime.component.model.ResponseStatus;
 
 public class ComponentController implements ChannelListener {
 
@@ -111,7 +110,7 @@ public class ComponentController implements ChannelListener {
 
 		ComponentRequestStatus status = null;
 		try {
-			String payload = JsonUtils.toString(request);
+			String payload = context.getObjectMapper().writeValueAsString(request);
 			Request message = cf.createRequest(payload);
 			Response response = componentInChannel.sendRequest(message);
 			String result = response.getPayload();
@@ -140,12 +139,13 @@ public class ComponentController implements ChannelListener {
 				}
 				return envelop.getResponse();
 			} else {
-				ComponentResponse response = ComponentFactory.eINSTANCE.createComponentResponse();
-				// TODO: ggf. eContainer-Wechsel?
-				response.setRequest(request);
-				response.setComponentId(componentId);
-				response.setMessage(status.getMessage());
-				response.setStatus(ResponseStatus.NOT_OK);	
+				ComponentResponse response = new ComponentResponse.Builder()			
+												.request(request)
+												.componentId(componentId)
+												.message(status.getMessage())
+												.status(ResponseStatus.NOT_OK)
+												.build();	
+				
 				return response;
 			} 
 		});

@@ -8,14 +8,9 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.google.gson.Gson;
 
-import de.dfki.cos.basys.common.component.Component;
+
 import de.dfki.cos.basys.common.component.ComponentContext;
 import de.dfki.cos.basys.common.component.ComponentException;
 import de.dfki.cos.basys.common.component.ComponentInfo;
@@ -29,18 +24,14 @@ import de.dfki.cos.basys.platform.model.runtime.communication.Notification;
 import de.dfki.cos.basys.platform.model.runtime.communication.Request;
 import de.dfki.cos.basys.platform.model.runtime.communication.Response;
 import de.dfki.cos.basys.platform.model.runtime.communication.exceptions.ChannelException;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentRequestStatus;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentResponse;
-import de.dfki.cos.basys.platform.model.runtime.component.RequestStatus;
-import de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus;
-import de.dfki.cos.basys.platform.model.runtime.component.ExecutionState;
-import de.dfki.cos.basys.platform.model.runtime.component.StatusRequest;
-import de.dfki.cos.basys.platform.model.runtime.component.Variable;
-import de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentRequestStatusImpl;
-import de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentResponseImpl;
 import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
+import de.dfki.cos.basys.platform.runtime.component.model.ComponentRequest;
+import de.dfki.cos.basys.platform.runtime.component.model.ComponentRequestStatus;
+import de.dfki.cos.basys.platform.runtime.component.model.ComponentResponse;
+import de.dfki.cos.basys.platform.runtime.component.model.RequestStatus;
+import de.dfki.cos.basys.platform.runtime.component.model.ResponseStatus;
+import de.dfki.cos.basys.platform.runtime.component.model.StatusRequest;
+import de.dfki.cos.basys.platform.runtime.component.model.Variable;
 import de.dfki.cos.basys.platform.runtime.component.util.BasysResourceSetImpl;
 
 public class BasysComponent extends BaseComponent implements ChannelListener {
@@ -209,20 +200,20 @@ public class BasysComponent extends BaseComponent implements ChannelListener {
 				ComponentRequest cr = (ComponentRequest) ob;
 				if (!getId().equals(cr.getComponentId())) {
 					// don't make the same mistake as BMW: https://www.heise.de/newsticker/meldung/ConnectedDrive-Der-BMW-Hack-im-Detail-2540786.html
-					status = new ComponentRequestStatusImpl.Builder().componentId(cr.getComponentId()).status(RequestStatus.REJECTED).message("componentId does not match").build();
+					status = new ComponentRequestStatus.Builder().componentId(cr.getComponentId()).status(RequestStatus.REJECTED).message("componentId does not match").build();
 				} else {
 					status = handleComponentRequest(cr);
 				}				
 			} else {
-				status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.REJECTED).message("unknown request").build();
+				status = new ComponentRequestStatus.Builder().status(RequestStatus.REJECTED).message("unknown request").build();
 			}
-			String payload = JsonUtils.toString(status);
+			String payload = context.getObjectMapper().writeValueAsString(status);
 			return cf.createResponse(request.getId(), payload);
 		} catch (IOException e) {
 			e.printStackTrace();
-			status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.REJECTED).message(e.getMessage()).build();
+			status = new ComponentRequestStatus.Builder().status(RequestStatus.REJECTED).message(e.getMessage()).build();
 			try {
-				String payload = JsonUtils.toString(status);
+				String payload = context.getObjectMapper().writeValueAsString(status);
 				return cf.createResponse(request.getId(), payload);
 			} catch (IOException e1) {
 				e1.printStackTrace();
@@ -238,7 +229,7 @@ public class BasysComponent extends BaseComponent implements ChannelListener {
 			StatusRequest req = (StatusRequest) cr;
 			status = handleStatusRequest(req);
 		} else {
-			status = new ComponentRequestStatusImpl.Builder().status(RequestStatus.REJECTED).message("unknown request").build();
+			status = new ComponentRequestStatus.Builder().status(RequestStatus.REJECTED).message("unknown request").build();
 		}
 		
 		return status;
@@ -248,23 +239,21 @@ public class BasysComponent extends BaseComponent implements ChannelListener {
 		ComponentRequestStatus status;
 		
 		if (statusChannel != null && statusChannel.isOpen()) {
-			status = new ComponentRequestStatusImpl.Builder().componentId(getId()).status(RequestStatus.ACCEPTED).build();
+			status = new ComponentRequestStatus.Builder().componentId(getId()).status(RequestStatus.ACCEPTED).build();
 			LOGGER.info("send status update notification upon explicit request");
 			try {
 				ComponentInfo info = getInfo();
 				//TODO: check serialization
-				String payload = "";
-				Gson gson = new Gson();
-				payload = gson.toJson(info);
+				String payload = context.getObjectMapper().writeValueAsString(info);				
 				Notification not = cf.createNotification(payload);
 				//TODO: ggf auf eigenem Thread?
 				statusChannel.sendNotification(not);
 				
-			} catch (ChannelException e) {
+			} catch (ChannelException | JsonProcessingException e) {
 				e.printStackTrace();
 			}
 		} else {
-			status = new ComponentRequestStatusImpl.Builder().componentId(getId()).status(RequestStatus.REJECTED).message("status channel not available").build();
+			status = new ComponentRequestStatus.Builder().componentId(getId()).status(RequestStatus.REJECTED).message("status channel not available").build();
 		}
 		return status;
 	}
@@ -276,8 +265,7 @@ public class BasysComponent extends BaseComponent implements ChannelListener {
 	
 	protected void sendComponentResponse(ComponentRequest request, ResponseStatus status, int statusCode, Variable resultVariable) {
 		List<Variable> resultVariables = new ArrayList<>(1);
-		// Copy variable(s) is important for simulation: Variables are 'contained' in a SimulationConfiguration
-		resultVariables.add(EcoreUtil.copy(resultVariable));
+		resultVariables.add(resultVariable);
 		sendComponentResponse(request, status, statusCode, resultVariables);
 	}
 	
@@ -286,17 +274,15 @@ public class BasysComponent extends BaseComponent implements ChannelListener {
 			LOGGER.error("Cannot send response to null request. Skipping.");
 			return;
 		}
-		
-		ComponentRequest r = EcoreUtil.copy(request);
 	
-		ComponentResponse response = new ComponentResponseImpl.Builder().componentId(getId()).status(status).statusCode(statusCode).request(r).build();
+		ComponentResponse response = new ComponentResponse.Builder().componentId(getId()).status(status).statusCode(statusCode).request(request).build();
 		
 		if (resultVariables != null) {
 			// Copy variable(s) is important for simulation: Variables are 'contained' in a SimulationConfiguration
-			response.getOutputParameters().addAll(EcoreUtil.copyAll(resultVariables));
+			response.getOutputParameters().addAll(resultVariables);
 		}
 		try {
-			String payload = JsonUtils.toString(response);
+			String payload = context.getObjectMapper().writeValueAsString(response);
 			Notification not = cf.createNotification(payload);
 			outChannel.sendNotification(not);
 		} catch (JsonProcessingException e) {

@@ -18,18 +18,16 @@ import de.dfki.cos.basys.controlcomponent.OccupationLevel;
 import de.dfki.cos.basys.controlcomponent.ParameterInfo;
 import de.dfki.cos.basys.controlcomponent.client.ControlComponentClient;
 import de.dfki.cos.basys.controlcomponent.packml.PackMLWaitStatesHandler;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentRequest;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentRequestStatus;
-import de.dfki.cos.basys.platform.model.runtime.component.ExecutionCommandRequest;
-import de.dfki.cos.basys.platform.model.runtime.component.ExecutionModeRequest;
-import de.dfki.cos.basys.platform.model.runtime.component.OccupationLevelRequest;
-import de.dfki.cos.basys.platform.model.runtime.component.OperationModeRequest;
-import de.dfki.cos.basys.platform.model.runtime.component.RequestStatus;
-import de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus;
-import de.dfki.cos.basys.platform.model.runtime.component.Variable;
-import de.dfki.cos.basys.platform.model.runtime.component.VariableType;
-import de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentRequestStatusImpl;
-import de.dfki.cos.basys.platform.model.runtime.component.impl.VariableImpl;
+import de.dfki.cos.basys.platform.runtime.component.model.ComponentRequest;
+import de.dfki.cos.basys.platform.runtime.component.model.ComponentRequestStatus;
+import de.dfki.cos.basys.platform.runtime.component.model.ExecutionCommandRequest;
+import de.dfki.cos.basys.platform.runtime.component.model.ExecutionModeRequest;
+import de.dfki.cos.basys.platform.runtime.component.model.OccupationLevelRequest;
+import de.dfki.cos.basys.platform.runtime.component.model.OperationModeRequest;
+import de.dfki.cos.basys.platform.runtime.component.model.RequestStatus;
+import de.dfki.cos.basys.platform.runtime.component.model.ResponseStatus;
+import de.dfki.cos.basys.platform.runtime.component.model.Variable;
+import de.dfki.cos.basys.platform.runtime.component.model.VariableType;
 
 public class BasysControlComponent extends BasysComponent implements PackMLWaitStatesHandler {
 	
@@ -100,7 +98,7 @@ public class BasysControlComponent extends BasysComponent implements PackMLWaitS
 			status = client.reset(occupierId);
 		}
 		
-		ComponentRequestStatus result = new ComponentRequestStatusImpl.Builder()
+		ComponentRequestStatus result = new ComponentRequestStatus.Builder()
 				.status(RequestStatus.get(status.getStatus().getLiteral()))
 				.message(status.getMessage())
 				.build();
@@ -115,7 +113,7 @@ public class BasysControlComponent extends BasysComponent implements PackMLWaitS
 		ControlComponentClient client = getService();
 		ComponentOrderStatus order = client.raiseExecutionCommand(ExecutionCommand.get(req.getExecutionCommand().getLiteral()), req.getOccupierId());
 	
-		ComponentRequestStatus status = new ComponentRequestStatusImpl.Builder()
+		ComponentRequestStatus status = new ComponentRequestStatus.Builder()
 				.status(RequestStatus.get(order.getStatus().getLiteral()))
 				.message(order.getMessage())
 				.build();
@@ -130,7 +128,7 @@ public class BasysControlComponent extends BasysComponent implements PackMLWaitS
 		ControlComponentClient client = getService();
 		ComponentOrderStatus order = client.setExecutionMode(ExecutionMode.get(req.getExecutionMode().getLiteral()), req.getOccupierId());
 	
-		ComponentRequestStatus status = new ComponentRequestStatusImpl.Builder()
+		ComponentRequestStatus status = new ComponentRequestStatus.Builder()
 				.status(RequestStatus.get(order.getStatus().getLiteral()))
 				.message(order.getMessage())
 				.build();
@@ -145,7 +143,7 @@ public class BasysControlComponent extends BasysComponent implements PackMLWaitS
 		ControlComponentClient client = getService();
 		ComponentOrderStatus order = client.occupy(OccupationLevel.get(req.getOccupationLevel().getLiteral()), req.getOccupierId());
 	
-		ComponentRequestStatus status = new ComponentRequestStatusImpl.Builder()
+		ComponentRequestStatus status = new ComponentRequestStatus.Builder()
 				.status(RequestStatus.get(order.getStatus().getLiteral()))
 				.message(order.getMessage())
 				.build();
@@ -166,34 +164,9 @@ public class BasysControlComponent extends BasysComponent implements PackMLWaitS
 						ControlComponentClient client = getService();
 						status = client.setOperationMode(currentOperationModeRequest.getOperationMode(), currentOperationModeRequest.getOccupierId());
 						if (status.getStatus() == OrderStatus.DONE) {
-							for (Variable var : currentOperationModeRequest.getInputParameters()) {
-								
-								//TODO: put switch block into Variable class, test date parsing and setting via opcua
-								Object value = null;
-								
-								switch (var.getType()) {
-								case BOOLEAN:
-									value = Boolean.parseBoolean(var.getValue());
-									break;
-								case DATE:
-									value = DateFormat.getDateInstance().parse(var.getValue());
-									break;
-								case DOUBLE:
-									value = Double.parseDouble(var.getValue());
-									break;
-								case INTEGER:
-									value = Integer.parseInt(var.getValue());
-									break;
-								case LONG:
-									value = Long.parseLong(var.getValue());
-									break;
-								default:
-									value = var.getValue();
-									break;
-								}
-								
-								
-								client.setParameterValue(var.getName(), value);
+							for (Variable var : currentOperationModeRequest.getInputParameters()) {								
+								//TODO: put switch block into Variable class, test date parsing and setting via opcua																				
+								client.setParameterValue(var.getName(), var.getValue());
 							}			
 							status = client.start(currentOperationModeRequest.getOccupierId());
 						}			
@@ -231,9 +204,9 @@ public class BasysControlComponent extends BasysComponent implements PackMLWaitS
 							for (String name : currentOperationModeRequest.getOutputParameters()) {
 								//Object value = client.getParameterValue(name);
 								ParameterInfo p = client.getParameter(name);
-								Variable var = new VariableImpl.Builder()
+								Variable var = new Variable.Builder()
 										.name(name)
-										.value(p.getValue().toString())
+										.valueString(p.getValue().toString())
 										.type(VariableType.fromOpcUa(p.getType()))
 										.build();
 								variables.add(var);
@@ -276,9 +249,9 @@ public class BasysControlComponent extends BasysComponent implements PackMLWaitS
 							for (String name : currentOperationModeRequest.getOutputParameters()) {
 								//Object value = client.getParameterValue(name);
 								ParameterInfo p = client.getParameter(name);
-								Variable var = new VariableImpl.Builder()
+								Variable var = new Variable.Builder()
 										.name(name)
-										.value(p.getValue().toString())
+										.valueString(p.getValue().toString())
 										.type(VariableType.fromOpcUa(p.getType()))
 										.build();
 								variables.add(var);

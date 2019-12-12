@@ -10,9 +10,9 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import de.dfki.cos.basys.platform.model.runtime.component.Variable;
-import de.dfki.cos.basys.platform.model.runtime.component.VariableType;
 import de.dfki.cos.basys.platform.model.runtime.component.impl.VariableImpl;
+import de.dfki.cos.basys.platform.runtime.component.model.Variable;
+import de.dfki.cos.basys.platform.runtime.component.model.VariableType;
 import de.dfki.cos.basys.platform.runtime.processcontrol.camunda.CamundaRestClient;
 import de.dfki.cos.basys.platform.runtime.processcontrol.camunda.ExternalServiceTaskDto;
 

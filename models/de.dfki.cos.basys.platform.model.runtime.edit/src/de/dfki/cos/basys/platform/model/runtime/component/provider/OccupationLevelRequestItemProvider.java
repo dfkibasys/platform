@@ -6,7 +6,7 @@ package de.dfki.cos.basys.platform.model.runtime.component.provider;
 import de.dfki.cos.basys.platform.model.runtime.communication.provider.RuntimeEditPlugin;
 
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
-import de.dfki.cos.basys.platform.model.runtime.component.OccupationLevelRequest;
+import de.dfki.cos.basys.platform.runtime.component.model.OccupationLevelRequest;
 
 import java.util.Collection;
 import java.util.List;
@@ -28,7 +28,7 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link de.dfki.cos.basys.platform.model.runtime.component.OccupationLevelRequest} object.
+ * This is the item provider adapter for a {@link de.dfki.cos.basys.platform.runtime.component.model.OccupationLevelRequest} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

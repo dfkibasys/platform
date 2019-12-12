@@ -43,7 +43,6 @@ import de.dfki.cos.basys.platform.model.domain.topology.TopologyPackage;
 import de.dfki.cos.basys.platform.model.domain.topology.util.TopologyResourceFactoryImpl;
 import de.dfki.cos.basys.platform.model.pattern.PatternPackage;
 import de.dfki.cos.basys.platform.model.pattern.util.PatternResourceFactoryImpl;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
 
 public class BasysResourceSetImpl extends ResourceSetImpl {
 	
@@ -99,11 +98,7 @@ public class BasysResourceSetImpl extends ResourceSetImpl {
 		getResourceFactoryRegistry().getExtensionToFactoryMap().put("topology", new TopologyResourceFactoryImpl());
 		
 		getPackageRegistry().put(LinebalancingPackage.eNS_URI,LinebalancingPackage.eINSTANCE);
-		getResourceFactoryRegistry().getExtensionToFactoryMap().put("linebalancing", new LinebalancingResourceFactoryImpl());
-		
-		getPackageRegistry().put(ComponentPackage.eNS_URI,ComponentPackage.eINSTANCE);
-		getResourceFactoryRegistry().getExtensionToFactoryMap().put("component", new XMIResourceFactoryImpl());
-	
+		getResourceFactoryRegistry().getExtensionToFactoryMap().put("linebalancing", new LinebalancingResourceFactoryImpl());	
 		
 		//TODO: get real network endpoint or even urispec for each individual service from component registry
 //		String BASE_URL = "http://localhost:8080/services/";

@@ -2,8 +2,10 @@ package de.dfki.cos.basys.platform.runtime.component;
 
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+
 import de.dfki.cos.basys.common.component.ComponentContext;
-import de.dfki.cos.basys.common.component.manager.ComponentManager;
 import de.dfki.cos.basys.platform.model.runtime.communication.ChannelPool;
 import de.dfki.cos.basys.platform.runtime.component.util.BasysResourceSetImpl;
 
@@ -11,6 +13,7 @@ public class BasysComponentContext extends ComponentContext {
 
 	protected ChannelPool sharedChannelPool;
 	protected ResourceSet sharedResourceSet;
+	protected ObjectMapper objectMapper;
 
 	private static BasysComponentContext staticContext = null;
 
@@ -20,6 +23,7 @@ public class BasysComponentContext extends ComponentContext {
 			staticContext.setEventBus(ComponentContext.getStaticContext().getEventBus());
 			staticContext.setScheduledExecutorService(ComponentContext.getStaticContext().getScheduledExecutorService());
 			staticContext.setSharedResourceSet(new BasysResourceSetImpl.Factory().createResourceSet());
+			staticContext.setObjectMapper(new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT));		
 		}
 		return staticContext;
 	}
@@ -50,4 +54,12 @@ public class BasysComponentContext extends ComponentContext {
 		this.sharedResourceSet = sharedResourceSet;
 	}
 
+	public ObjectMapper getObjectMapper() {
+		return objectMapper;
+	}
+	
+	public void setObjectMapper(ObjectMapper objectMapper) {
+		this.objectMapper = objectMapper;
+	}
+	
 }

@@ -14,13 +14,13 @@ import de.dfki.cos.basys.platform.model.runtime.communication.Request;
 import de.dfki.cos.basys.platform.model.runtime.communication.Response;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentFactory;
 import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentRequestStatus;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentResponse;
-import de.dfki.cos.basys.platform.model.runtime.component.RequestStatus;
-import de.dfki.cos.basys.platform.model.runtime.component.ResponseStatus;
 import de.dfki.cos.basys.platform.runtime.component.BasysComponentContext;
 import de.dfki.cos.basys.platform.runtime.component.ComponentController;
 import de.dfki.cos.basys.platform.runtime.component.StringConstants;
+import de.dfki.cos.basys.platform.runtime.component.model.ComponentRequestStatus;
+import de.dfki.cos.basys.platform.runtime.component.model.ComponentResponse;
+import de.dfki.cos.basys.platform.runtime.component.model.RequestStatus;
+import de.dfki.cos.basys.platform.runtime.component.model.ResponseStatus;
 
 public class TaskExecutor implements ChannelListener {
 

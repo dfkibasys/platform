@@ -30,8 +30,6 @@ import de.dfki.cos.basys.platform.model.runtime.communication.exceptions.ClientE
 import de.dfki.cos.basys.platform.model.runtime.communication.exceptions.CommunicationException;
 import de.dfki.cos.basys.platform.model.runtime.communication.exceptions.MessageException;
 import de.dfki.cos.basys.platform.model.runtime.communication.exceptions.ProviderException;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
-import de.dfki.cos.basys.platform.model.runtime.component.impl.ComponentPackageImpl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -227,16 +225,12 @@ public class CommunicationPackageImpl extends EPackageImpl implements Communicat
 		ResourceinstancePackage.eINSTANCE.eClass();
 		EcorePackage.eINSTANCE.eClass();
 
-		// Obtain or create and register interdependencies
-		ComponentPackageImpl theComponentPackage = (ComponentPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ComponentPackage.eNS_URI) instanceof ComponentPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ComponentPackage.eNS_URI) : ComponentPackage.eINSTANCE);
-
+	
 		// Create package meta-data objects
 		theCommunicationPackage.createPackageContents();
-		theComponentPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theCommunicationPackage.initializePackageContents();
-		theComponentPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theCommunicationPackage.freeze();
