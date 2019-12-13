@@ -12,6 +12,7 @@ import de.dfki.cos.basys.platform.model.runtime.communication.Response;
 import de.dfki.cos.basys.platform.runtime.component.BasysComponentContext;
 import de.dfki.cos.basys.platform.runtime.component.ComponentController;
 import de.dfki.cos.basys.platform.runtime.component.StringConstants;
+import de.dfki.cos.basys.platform.runtime.component.model.ComponentMessage;
 import de.dfki.cos.basys.platform.runtime.component.model.ComponentRequest;
 import de.dfki.cos.basys.platform.runtime.component.model.ComponentRequestEnvelop;
 import de.dfki.cos.basys.platform.runtime.component.model.ComponentRequestStatus;
@@ -20,27 +21,29 @@ import de.dfki.cos.basys.platform.runtime.component.model.RequestStatus;
 
 public class ComponentRequestExecutor implements ChannelListener {
 
-	ComponentRequestEnvelop task;
+	ComponentRequestEnvelop envelop;
 	ComponentController remoteComponent;	
 	CountDownLatch counter = new CountDownLatch(1);
+	BasysComponentContext context;
 
 	public ComponentRequestExecutor(ComponentRequest request) {
-		this.task = new ComponentRequestEnvelop(request);
-		remoteComponent = new ComponentController(task.getRequest().getComponentId(), this);
+		this.envelop = new ComponentRequestEnvelop(request);
+		remoteComponent = new ComponentController(envelop.getRequest().getComponentId(), this);
 	}
 
 	public ComponentRequest getRequest() {
-		return task.getRequest();
+		return envelop.getRequest();
 	}
 	
 	public ComponentResponse getResponse() {
-		return task.getResponse();
+		return envelop.getResponse();
 	}
 	
 	public void execute(BasysComponentContext context) {
+		this.context = context;
 		remoteComponent.connect(context);
 		
-		ComponentRequestStatus status = remoteComponent.sendComponentRequest(task.getRequest());
+		ComponentRequestStatus status = remoteComponent.sendComponentRequest(envelop.getRequest());
 		if (status.getStatus() == RequestStatus.ACCEPTED || status.getStatus() == RequestStatus.QUEUED) {
 			try {
 				counter.await(5,TimeUnit.MINUTES);
@@ -50,8 +53,8 @@ public class ComponentRequestExecutor implements ChannelListener {
 			}
 		} else {
 			ComponentResponse response = new ComponentResponse.Builder()			
-				.request(task.getRequest())
-				.componentId(task.getRequest().getComponentId())
+				.request(envelop.getRequest())
+				.componentId(envelop.getRequest().getComponentId())
 				.message(status.getMessage())
 				.build();
 			if (status.getStatus() == RequestStatus.NOOP) {
@@ -59,18 +62,18 @@ public class ComponentRequestExecutor implements ChannelListener {
 			} else {
 				response.setStatus(RequestStatus.NOT_OK);
 			}
-			task.setResponse(response);
+			envelop.setResponse(response);
 		} 
 		
-		if (task.getResponse() == null) {
+		if (envelop.getResponse() == null) {
 			ComponentResponse response = new ComponentResponse.Builder()			
-					.request(task.getRequest())
-					.componentId(task.getRequest().getComponentId())
+					.request(envelop.getRequest())
+					.componentId(envelop.getRequest().getComponentId())
 					.message("timeout reached")
 					.status(RequestStatus.NOT_OK)
 					.build();
 						
-			task.setResponse(response);
+			envelop.setResponse(response);
 		}
 		
 		remoteComponent.disconnect();
@@ -89,28 +92,28 @@ public class ComponentRequestExecutor implements ChannelListener {
 			try {
 				
 				String payload = not.getPayload();	
-				ComponentMessage message = context
+				ComponentMessage message = context.getObjectMapper().readValue(not.getPayload(), ComponentMessage.class);
 				
-				if (ComponentPackage.eINSTANCE.getComponentRequestStatus().isSuperTypeOf(payload.eClass())) {
-					ComponentRequestStatus status = (ComponentRequestStatus)payload;
+				if (message instanceof ComponentRequestStatus) {
+					ComponentRequestStatus status = (ComponentRequestStatus)message;
 					if (status.getStatus() != RequestStatus.ACCEPTED) {						
-						ComponentResponse response = ComponentFactory.eINSTANCE.createComponentResponse();
-						// TODO: ggf. Container-Wechsel?
-						response.setRequest(task.getRequest());
-						response.setComponentId(task.getRequest().getComponentId());
-						response.setMessage(status.getMessage());
+						ComponentResponse response = new ComponentResponse.Builder()			
+								.request(envelop.getRequest())
+								.componentId(envelop.getRequest().getComponentId())
+								.message(status.getMessage())
+								.build();
 						if (status.getStatus() == RequestStatus.NOOP) {
 							response.setStatus(RequestStatus.OK);
 						} else {
 							response.setStatus(RequestStatus.NOT_OK);
 						}						
-						task.setResponse(response);
+						envelop.setResponse(response);
 						counter.countDown();
 					}					
-				} else if (payload.eClass().equals(ComponentPackage.eINSTANCE.getComponentResponse())) {
-					ComponentResponse response = (ComponentResponse)payload;
-					if (task.getRequest().getCorrelationId().equals(response.getRequest().getCorrelationId())) {
-						task.setResponse(response);
+				} else if (message instanceof ComponentResponse) {
+					ComponentResponse response = (ComponentResponse)message;
+					if (envelop.getRequest().getCorrelationId().equals(response.getRequest().getCorrelationId())) {
+						envelop.setResponse(response);
 						counter.countDown();
 					}			
 				}
