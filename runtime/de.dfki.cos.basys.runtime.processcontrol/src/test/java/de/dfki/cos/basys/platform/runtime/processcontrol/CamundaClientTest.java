@@ -18,7 +18,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import de.dfki.cos.basys.platform.model.runtime.component.impl.VariableImpl;
 import de.dfki.cos.basys.platform.runtime.component.model.Variable;
 import de.dfki.cos.basys.platform.runtime.component.model.VariableType;
 import de.dfki.cos.basys.platform.runtime.processcontrol.camunda.CamundaRestClient;
@@ -44,14 +43,14 @@ public class CamundaClientTest {
 	public void testExternalServiceTaskDto() throws Exception {
 	
 		List<Variable> vars = new LinkedList<>();
-		vars.add(new VariableImpl.Builder().name("StringVariable").value("aValueUpdate").type(VariableType.STRING).build());
-		vars.add(new VariableImpl.Builder().name("IntVariable").value("55").type(VariableType.INTEGER).build());
-		vars.add(new VariableImpl.Builder().name("BoolVariable").value("true").type(VariableType.BOOLEAN).build());
-		vars.add(new VariableImpl.Builder().name("qaResult").value("true").type(VariableType.BOOLEAN).build());
-		vars.add(new VariableImpl.Builder().name("colaRequest").value("true").type(VariableType.BOOLEAN).build());
-		vars.add(new VariableImpl.Builder().name("emptyBottle").value("true").type(VariableType.BOOLEAN).build());
-		vars.add(new VariableImpl.Builder().name("qaRequest").value("true").type(VariableType.BOOLEAN).build());
-		vars.add(new VariableImpl.Builder().name("milkrunRequest").value("true").type(VariableType.BOOLEAN).build());
+		vars.add(new Variable.Builder().name("StringVariable").valueString("aValueUpdate").type(VariableType.STRING).build());
+		vars.add(new Variable.Builder().name("IntVariable").valueString("55").type(VariableType.INTEGER).build());
+		vars.add(new Variable.Builder().name("BoolVariable").valueString("true").type(VariableType.BOOLEAN).build());
+		vars.add(new Variable.Builder().name("qaResult").valueString("true").type(VariableType.BOOLEAN).build());
+		vars.add(new Variable.Builder().name("colaRequest").valueString("true").type(VariableType.BOOLEAN).build());
+		vars.add(new Variable.Builder().name("emptyBottle").valueString("true").type(VariableType.BOOLEAN).build());
+		vars.add(new Variable.Builder().name("qaRequest").valueString("true").type(VariableType.BOOLEAN).build());
+		vars.add(new Variable.Builder().name("milkrunRequest").valueString("true").type(VariableType.BOOLEAN).build());
 				
 		List<ExternalServiceTaskDto> tasks = camundaClient.getExternalTasks("ControlComponent", 5, 10 * 1000, 2000, "requestType", "token", "componentId", "parameters", "outputParameters");
 		//assertTrue(tasks.size()>0);
@@ -88,14 +87,14 @@ public class CamundaClientTest {
 	public void testSetProcessVariablesAlt() throws Exception {
 
 		List<Variable> vars = new LinkedList<>();
-		vars.add(new VariableImpl.Builder().name("StringVariable").value("aValueUpdate").type(VariableType.STRING).build());
-		vars.add(new VariableImpl.Builder().name("IntVariable").value("55").type(VariableType.INTEGER).build());
-		vars.add(new VariableImpl.Builder().name("BoolVariable").value("true").type(VariableType.BOOLEAN).build());
-		vars.add(new VariableImpl.Builder().name("qaResult").value("true").type(VariableType.BOOLEAN).build());
-		vars.add(new VariableImpl.Builder().name("colaRequest").value("true").type(VariableType.BOOLEAN).build());
-		vars.add(new VariableImpl.Builder().name("emptyBottle").value("true").type(VariableType.BOOLEAN).build());
-		vars.add(new VariableImpl.Builder().name("qaRequest").value("true").type(VariableType.BOOLEAN).build());
-		vars.add(new VariableImpl.Builder().name("milkrunRequest").value("true").type(VariableType.BOOLEAN).build());
+		vars.add(new Variable.Builder().name("StringVariable").valueString("aValueUpdate").type(VariableType.STRING).build());
+		vars.add(new Variable.Builder().name("IntVariable").valueString("55").type(VariableType.INTEGER).build());
+		vars.add(new Variable.Builder().name("BoolVariable").valueString("true").type(VariableType.BOOLEAN).build());
+		vars.add(new Variable.Builder().name("qaResult").valueString("true").type(VariableType.BOOLEAN).build());
+		vars.add(new Variable.Builder().name("colaRequest").valueString("true").type(VariableType.BOOLEAN).build());
+		vars.add(new Variable.Builder().name("emptyBottle").valueString("true").type(VariableType.BOOLEAN).build());
+		vars.add(new Variable.Builder().name("qaRequest").valueString("true").type(VariableType.BOOLEAN).build());
+		vars.add(new Variable.Builder().name("milkrunRequest").valueString("true").type(VariableType.BOOLEAN).build());
 		
 		
 		//String processdefinitionId = "";
@@ -141,9 +140,9 @@ public class CamundaClientTest {
 	public void testSetProcessVariables() throws Exception {
 
 		List<Variable> vars = new LinkedList<>();
-		vars.add(new VariableImpl.Builder().name("StringVariable").value("aValueUpdate").type(VariableType.STRING).build());
-		vars.add(new VariableImpl.Builder().name("IntVariable").value("55").type(VariableType.INTEGER).build());
-		vars.add(new VariableImpl.Builder().name("BoolVariable").value("true").type(VariableType.BOOLEAN).build());
+		vars.add(new Variable.Builder().name("StringVariable").valueString("aValueUpdate").type(VariableType.STRING).build());
+		vars.add(new Variable.Builder().name("IntVariable").valueString("55").type(VariableType.INTEGER).build());
+		vars.add(new Variable.Builder().name("BoolVariable").valueString("true").type(VariableType.BOOLEAN).build());
 		
 		List<ExternalServiceTaskDto> tasks = camundaClient.getExternalTasks("BasysTask", 5, 30 * 1000, 2000, "assignee", "command", "parameters");
 		assertEquals(1,	tasks.size());

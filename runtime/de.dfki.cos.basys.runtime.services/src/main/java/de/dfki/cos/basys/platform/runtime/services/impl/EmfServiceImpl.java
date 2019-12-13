@@ -43,10 +43,9 @@ import de.dfki.cos.basys.platform.model.domain.resourcetype.ResourcetypePackage;
 import de.dfki.cos.basys.platform.model.domain.resourcetype.util.ResourcetypeResourceFactoryImpl;
 import de.dfki.cos.basys.platform.model.domain.topology.TopologyPackage;
 import de.dfki.cos.basys.platform.model.domain.topology.util.TopologyResourceFactoryImpl;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentPackage;
 import de.dfki.cos.basys.platform.runtime.component.BasysComponentContext;
-import de.dfki.cos.basys.platform.runtime.component.util.BasysResourceSetImpl;
 import de.dfki.cos.basys.platform.runtime.services.EmfService;
+import de.dfki.cos.basys.platform.runtime.services.util.BasysResourceSetImpl;
 
 public class EmfServiceImpl implements ServiceConnection, EmfService {
 
@@ -199,10 +198,7 @@ public class EmfServiceImpl implements ServiceConnection, EmfService {
 		
 		resourceSet.getPackageRegistry().put(LinebalancingPackage.eNS_URI,LinebalancingPackage.eINSTANCE);
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("linebalancing", new LinebalancingResourceFactoryImpl());
-		
-		resourceSet.getPackageRegistry().put(ComponentPackage.eNS_URI,ComponentPackage.eINSTANCE);
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("component", new XMIResourceFactoryImpl());
-		
+				
 		//TODO: get real network endpoint or even urispec for each individual service from component registry
 		String BASE_URL = "http://localhost:8080/services/";
 		String fileName = "model";

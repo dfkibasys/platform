@@ -21,23 +21,22 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import de.dfki.cos.basys.common.component.ComponentContext;
 import de.dfki.cos.basys.common.component.ServiceConnection;
-import de.dfki.cos.basys.platform.model.runtime.component.ComponentFactory;
-import de.dfki.cos.basys.platform.model.runtime.component.ExecutionCommand;
-import de.dfki.cos.basys.platform.model.runtime.component.ExecutionMode;
-import de.dfki.cos.basys.platform.model.runtime.component.OccupationLevel;
-import de.dfki.cos.basys.platform.model.runtime.component.impl.VariableImpl;
+import de.dfki.cos.basys.controlcomponent.ExecutionCommand;
+import de.dfki.cos.basys.controlcomponent.ExecutionMode;
+import de.dfki.cos.basys.controlcomponent.OccupationLevel;
 import de.dfki.cos.basys.platform.runtime.component.model.ComponentRequest;
+import de.dfki.cos.basys.platform.runtime.component.model.ComponentRequestEnvelop;
+import de.dfki.cos.basys.platform.runtime.component.model.ComponentResponse;
 import de.dfki.cos.basys.platform.runtime.component.model.ExecutionCommandRequest;
 import de.dfki.cos.basys.platform.runtime.component.model.ExecutionModeRequest;
 import de.dfki.cos.basys.platform.runtime.component.model.OccupationLevelRequest;
 import de.dfki.cos.basys.platform.runtime.component.model.OperationModeRequest;
-import de.dfki.cos.basys.platform.runtime.component.model.ResponseStatus;
+import de.dfki.cos.basys.platform.runtime.component.model.RequestStatus;
 import de.dfki.cos.basys.platform.runtime.component.model.Variable;
 import de.dfki.cos.basys.platform.runtime.processcontrol.ProcessController;
-import de.dfki.cos.basys.platform.runtime.processcontrol.TaskResponseHandler;
-import de.dfki.cos.basys.platform.runtime.processcontrol.TaskDescription;
+import de.dfki.cos.basys.platform.runtime.processcontrol.ComponentResponseHandler;
 
-public class CamundaProcessControllerService implements ServiceConnection, TaskResponseHandler {
+public class CamundaProcessControllerService implements ServiceConnection, ComponentResponseHandler {
 
 	Logger LOGGER = LoggerFactory.getLogger(this.getClass().getName());
 	
@@ -45,7 +44,7 @@ public class CamundaProcessControllerService implements ServiceConnection, TaskR
 	CamundaRestClient client;	
 	private boolean connected;
 	
-	BlockingQueue<TaskDescription> responseQueue = new LinkedBlockingQueue<TaskDescription>(32);
+	BlockingQueue<ComponentResponse> responseQueue = new LinkedBlockingQueue<ComponentResponse>(32);
 
 	ScheduledExecutorService executor = Executors.newScheduledThreadPool(32);
 
@@ -135,16 +134,16 @@ public class CamundaProcessControllerService implements ServiceConnection, TaskR
 			public void run() {
 				while (true) {
 					try {
-						TaskDescription ts = responseQueue.poll(1000, TimeUnit.MILLISECONDS);
-						if (ts != null) {
-							if (ts.getResponse().getStatus() == ResponseStatus.OK) {
-								if (ts.getResponse().getOutputParameters().size() > 0) {
-									client.complete(ts.getRequest().getCorrelationId(), ts.getResponse().getOutputParameters());
+						ComponentResponse response = responseQueue.poll(1000, TimeUnit.MILLISECONDS);
+						if (response != null) {
+							if (response.getStatus() == RequestStatus.OK) {
+								if (response.getOutputParameters().size() > 0) {
+									client.complete(response.getRequest().getCorrelationId(), response.getOutputParameters());
 								} else {
-									client.complete(ts.getRequest().getCorrelationId());
+									client.complete(response.getRequest().getCorrelationId());
 								}
 							} else {
-								client.handleError(ts.getRequest().getCorrelationId(), ts.getResponse().getMessage(), 0, 1000);
+								client.handleError(response.getRequest().getCorrelationId(), response.getMessage(), 0, 1000);
 							}
 							Thread.sleep(200);
 						}
@@ -215,19 +214,19 @@ public class CamundaProcessControllerService implements ServiceConnection, TaskR
 			
 			switch (task.variables.requestType.value) {
 			case "ExecutionCommandRequest":
-				r = ComponentFactory.eINSTANCE.createExecutionCommandRequest();
+				r = new ExecutionCommandRequest();
 				((ExecutionCommandRequest)r).setExecutionCommand(ExecutionCommand.get(task.variables.token.value));
 				break;
 			case "ExecutionModeRequest":
-				r = ComponentFactory.eINSTANCE.createExecutionModeRequest();
+				r = new ExecutionModeRequest();
 				((ExecutionModeRequest)r).setExecutionMode(ExecutionMode.get(task.variables.token.value));
 				break;
 			case "OccupationLevelRequest":
-				r = ComponentFactory.eINSTANCE.createOccupationLevelRequest();
+				r = new OccupationLevelRequest();;
 				((OccupationLevelRequest)r).setOccupationLevel(OccupationLevel.get(task.variables.token.value));
 				break;
 			case "OperationModeRequest":
-				r = ComponentFactory.eINSTANCE.createOperationModeRequest();
+				r = new OperationModeRequest();
 				OperationModeRequest req = (OperationModeRequest) r;
 				req.setOperationMode(task.variables.token.value);
 				ObjectMapper mapper = new ObjectMapper();
@@ -236,7 +235,7 @@ public class CamundaProcessControllerService implements ServiceConnection, TaskR
 					Map<String,String> input = mapper.readValue(task.variables.parameters.value,new TypeReference<Map<String,String>>(){});
 					LOGGER.debug(input.toString());					
 					for (Map.Entry<String, String> entry : input.entrySet()) {
-						Variable var = new VariableImpl.Builder().name(entry.getKey()).value(entry.getValue()).build();
+						Variable var = new Variable.Builder().name(entry.getKey()).valueString(entry.getValue()).build();
 						req.getInputParameters().add(var);						
 					    //System.out.println(entry.getKey() + "/" + entry.getValue());
 					}
@@ -265,7 +264,7 @@ public class CamundaProcessControllerService implements ServiceConnection, TaskR
 			r.setOccupierId(task.processInstanceId);				
 			r.setComponentId(task.variables.componentId.value);					
 			
-			controller.scheduleTask(new TaskDescription(r));
+			controller.scheduleComponentRequest(r);
 		}
 	}
 	
@@ -279,9 +278,9 @@ public class CamundaProcessControllerService implements ServiceConnection, TaskR
 	}
 
 	@Override
-	public void handleTaskResponse(TaskDescription task) {
+	public void handleComponentResponse(ComponentResponse response) {
 		try {
-			responseQueue.put(task);
+			responseQueue.put(response);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

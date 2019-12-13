@@ -1,4 +1,4 @@
-package de.dfki.cos.basys.platform.runtime.component.util;
+package de.dfki.cos.basys.platform.runtime.services.util;
 
 import java.io.IOException;
 

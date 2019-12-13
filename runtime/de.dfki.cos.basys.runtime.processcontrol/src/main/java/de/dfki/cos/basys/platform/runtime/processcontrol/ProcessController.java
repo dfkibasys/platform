@@ -2,6 +2,7 @@ package de.dfki.cos.basys.platform.runtime.processcontrol;
 
 import java.util.concurrent.CompletableFuture;
 
+import de.dfki.cos.basys.platform.runtime.component.model.ComponentRequest;
 import de.dfki.cos.basys.platform.runtime.component.model.ComponentResponse;
 
 public interface ProcessController {
@@ -10,9 +11,9 @@ public interface ProcessController {
 //	
 //	ProcessRequestStatus startProcessInstance(ProcessRequest request);	
 		
-	CompletableFuture<ComponentResponse> scheduleTask(TaskDescription task);
+	CompletableFuture<ComponentResponse> scheduleComponentRequest(ComponentRequest request);
 
-	void scheduleTask(TaskDescription task, long delay);
+	void scheduleComponentRequest(ComponentRequest request, long delay);
 	
 
 }

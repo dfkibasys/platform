@@ -20,6 +20,7 @@ public class MiddlewareConnectionTest extends BaseComponentTest {
 
 	@Before
 	public void setUp() throws Exception {
+		enableComm = true;
 		super.setUp();
 	}
 
@@ -91,5 +92,5 @@ public class MiddlewareConnectionTest extends BaseComponentTest {
 		
 		sleep(60*5);		
 	}
-
+	
 }

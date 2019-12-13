@@ -2,11 +2,12 @@
  */
 package de.dfki.cos.basys.platform.runtime.component.model;
 
-public class ComponentRequestStatus {
+public class ComponentRequestStatus implements ComponentMessage {
 	String componentId;
 	RequestStatus status;
 	String message;
-
+	
+	@Override
 	public String getComponentId() {
 		return componentId;
 	}
@@ -14,7 +15,8 @@ public class ComponentRequestStatus {
 	public void setComponentId(String componentId) {
 		this.componentId = componentId;
 	}
-
+	
+	@Override
 	public RequestStatus getStatus() {
 		return status;
 	}
@@ -23,6 +25,7 @@ public class ComponentRequestStatus {
 		this.status = status;
 	}
 
+	@Override
 	public String getMessage() {
 		return message;
 	}

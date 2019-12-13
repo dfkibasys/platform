@@ -4,10 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
-import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
-import org.eclipse.emf.ecore.EObject;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 
@@ -15,7 +13,6 @@ import de.dfki.cos.basys.common.component.ComponentContext;
 import de.dfki.cos.basys.common.component.ComponentException;
 import de.dfki.cos.basys.common.component.ComponentInfo;
 import de.dfki.cos.basys.common.component.impl.BaseComponent;
-import de.dfki.cos.basys.common.emf.json.JsonUtils;
 import de.dfki.cos.basys.platform.model.runtime.communication.Channel;
 import de.dfki.cos.basys.platform.model.runtime.communication.ChannelListener;
 import de.dfki.cos.basys.platform.model.runtime.communication.ChannelPool;
@@ -29,10 +26,8 @@ import de.dfki.cos.basys.platform.runtime.component.model.ComponentRequest;
 import de.dfki.cos.basys.platform.runtime.component.model.ComponentRequestStatus;
 import de.dfki.cos.basys.platform.runtime.component.model.ComponentResponse;
 import de.dfki.cos.basys.platform.runtime.component.model.RequestStatus;
-import de.dfki.cos.basys.platform.runtime.component.model.ResponseStatus;
 import de.dfki.cos.basys.platform.runtime.component.model.StatusRequest;
 import de.dfki.cos.basys.platform.runtime.component.model.Variable;
-import de.dfki.cos.basys.platform.runtime.component.util.BasysResourceSetImpl;
 
 public class BasysComponent extends BaseComponent implements ChannelListener {
 	
@@ -51,7 +46,6 @@ public class BasysComponent extends BaseComponent implements ChannelListener {
 
 	public BasysComponent(Properties config) {
 		super(config);
-		JsonUtils.factory = new BasysResourceSetImpl.Factory();
 	}
 	
 	@Override
@@ -195,20 +189,18 @@ public class BasysComponent extends BaseComponent implements ChannelListener {
 	public Response handleRequest(Channel channel, Request request) {
 		ComponentRequestStatus status = null;
 		try {
-			EObject ob = JsonUtils.fromString(request.getPayload(), EObject.class);
-			if (ob instanceof ComponentRequest) {
-				ComponentRequest cr = (ComponentRequest) ob;
-				if (!getId().equals(cr.getComponentId())) {
-					// don't make the same mistake as BMW: https://www.heise.de/newsticker/meldung/ConnectedDrive-Der-BMW-Hack-im-Detail-2540786.html
-					status = new ComponentRequestStatus.Builder().componentId(cr.getComponentId()).status(RequestStatus.REJECTED).message("componentId does not match").build();
-				} else {
-					status = handleComponentRequest(cr);
-				}				
+			
+			ComponentRequest req = context.getObjectMapper().readValue(request.getPayload(), ComponentRequest.class);
+		
+			if (!getId().equals(req.getComponentId())) {
+				// don't make the same mistake as BMW: https://www.heise.de/newsticker/meldung/ConnectedDrive-Der-BMW-Hack-im-Detail-2540786.html
+				status = new ComponentRequestStatus.Builder().componentId(req.getComponentId()).status(RequestStatus.REJECTED).message("componentId does not match").build();
 			} else {
-				status = new ComponentRequestStatus.Builder().status(RequestStatus.REJECTED).message("unknown request").build();
-			}
+				status = handleComponentRequest(req);
+			}				
 			String payload = context.getObjectMapper().writeValueAsString(status);
 			return cf.createResponse(request.getId(), payload);
+					
 		} catch (IOException e) {
 			e.printStackTrace();
 			status = new ComponentRequestStatus.Builder().status(RequestStatus.REJECTED).message(e.getMessage()).build();
@@ -258,18 +250,18 @@ public class BasysComponent extends BaseComponent implements ChannelListener {
 		return status;
 	}
 	
-	protected void sendComponentResponse(ComponentRequest request, ResponseStatus status, int statusCode) {
+	protected void sendComponentResponse(ComponentRequest request, RequestStatus status, int statusCode) {
 		List<Variable> resultVariables = new ArrayList<>(0);
 		sendComponentResponse(request, status, statusCode, resultVariables);
 	}
 	
-	protected void sendComponentResponse(ComponentRequest request, ResponseStatus status, int statusCode, Variable resultVariable) {
+	protected void sendComponentResponse(ComponentRequest request, RequestStatus status, int statusCode, Variable resultVariable) {
 		List<Variable> resultVariables = new ArrayList<>(1);
 		resultVariables.add(resultVariable);
 		sendComponentResponse(request, status, statusCode, resultVariables);
 	}
 	
-	protected void sendComponentResponse(ComponentRequest request, ResponseStatus status, int statusCode, List<Variable> resultVariables) {
+	protected void sendComponentResponse(ComponentRequest request, RequestStatus status, int statusCode, List<Variable> resultVariables) {
 		if (request == null) {
 			LOGGER.error("Cannot send response to null request. Skipping.");
 			return;

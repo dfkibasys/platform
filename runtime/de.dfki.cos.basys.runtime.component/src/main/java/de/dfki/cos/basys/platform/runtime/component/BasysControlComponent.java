@@ -9,12 +9,12 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.function.Supplier;
 
-import de.dfki.cos.basys.common.component.ComponentOrderStatus;
-import de.dfki.cos.basys.common.component.OrderStatus;
 import de.dfki.cos.basys.common.component.impl.ServiceManagerImpl;
+import de.dfki.cos.basys.controlcomponent.ComponentOrderStatus;
 import de.dfki.cos.basys.controlcomponent.ExecutionCommand;
 import de.dfki.cos.basys.controlcomponent.ExecutionMode;
 import de.dfki.cos.basys.controlcomponent.OccupationLevel;
+import de.dfki.cos.basys.controlcomponent.OrderStatus;
 import de.dfki.cos.basys.controlcomponent.ParameterInfo;
 import de.dfki.cos.basys.controlcomponent.client.ControlComponentClient;
 import de.dfki.cos.basys.controlcomponent.packml.PackMLWaitStatesHandler;
@@ -25,7 +25,6 @@ import de.dfki.cos.basys.platform.runtime.component.model.ExecutionModeRequest;
 import de.dfki.cos.basys.platform.runtime.component.model.OccupationLevelRequest;
 import de.dfki.cos.basys.platform.runtime.component.model.OperationModeRequest;
 import de.dfki.cos.basys.platform.runtime.component.model.RequestStatus;
-import de.dfki.cos.basys.platform.runtime.component.model.ResponseStatus;
 import de.dfki.cos.basys.platform.runtime.component.model.Variable;
 import de.dfki.cos.basys.platform.runtime.component.model.VariableType;
 
@@ -198,7 +197,7 @@ public class BasysControlComponent extends BasysComponent implements PackMLWaitS
 						
 						int n = currentOperationModeRequest.getOutputParameters().size();
 						if (n==0) {
-							sendComponentResponse(currentOperationModeRequest, ResponseStatus.OK, client.getErrorCode());	
+							sendComponentResponse(currentOperationModeRequest, RequestStatus.OK, client.getErrorCode());	
 						} else {
 							List<Variable> variables = new ArrayList<>(n);
 							for (String name : currentOperationModeRequest.getOutputParameters()) {
@@ -211,7 +210,7 @@ public class BasysControlComponent extends BasysComponent implements PackMLWaitS
 										.build();
 								variables.add(var);
 							}							
-							sendComponentResponse(currentOperationModeRequest, ResponseStatus.OK, client.getErrorCode(), variables);							
+							sendComponentResponse(currentOperationModeRequest, RequestStatus.OK, client.getErrorCode(), variables);							
 						}
 						
 						currentOperationModeRequest = null;
@@ -243,7 +242,7 @@ public class BasysControlComponent extends BasysComponent implements PackMLWaitS
 						
 						int n = currentOperationModeRequest.getOutputParameters().size();
 						if (n==0) {
-							sendComponentResponse(currentOperationModeRequest, ResponseStatus.OK, client.getErrorCode());	
+							sendComponentResponse(currentOperationModeRequest, RequestStatus.NOT_OK, client.getErrorCode());	
 						} else {
 							List<Variable> variables = new ArrayList<>(n);
 							for (String name : currentOperationModeRequest.getOutputParameters()) {
@@ -256,7 +255,7 @@ public class BasysControlComponent extends BasysComponent implements PackMLWaitS
 										.build();
 								variables.add(var);
 							}							
-							sendComponentResponse(currentOperationModeRequest, ResponseStatus.NOT_OK, client.getErrorCode(), variables);							
+							sendComponentResponse(currentOperationModeRequest, RequestStatus.NOT_OK, client.getErrorCode(), variables);							
 						}
 						
 						currentOperationModeRequest = null;

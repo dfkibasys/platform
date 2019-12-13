@@ -22,6 +22,7 @@ import de.dfki.cos.basys.platform.runtime.component.BasysComponentContext;
 
 public class BaseComponentTest {
 
+
 	protected final Logger LOGGER = LoggerFactory.getLogger(getClass());
 
 	protected ComponentManagerImpl componentManager;
@@ -29,24 +30,28 @@ public class BaseComponentTest {
 	protected Client communicationClient;
 	protected ChannelPool sharedChannelPool;
 	protected BasysComponentContext context;
-	protected Properties managerConfig; 
+	protected Properties managerConfig;
+	boolean enableComm = false;
 	
 	@Before
 	public void setUp() throws Exception {
+
+		context = BasysComponentContext.getStaticContext();
 		
 		managerConfig = new Properties();
 		managerConfig.put(StringConstants.id, "component-manager");
 		managerConfig.put(StringConstants.name, "component-manager");
 		managerConfig.put(StringConstants.category, StringConstants.categoryManagement);
-		managerConfig.put("recursive", false);
+		managerConfig.put(StringConstants.serviceConnectionString, StringConstants.testConfigurationFolder);
 		
-		communicationClient = CommFactory.getInstance().createClient("client", null);
-		sharedChannelPool = CommFactory.getInstance().connectJmsChannelPool(communicationClient, null);	
-
-		context = BasysComponentContext.getStaticContext();
-		context.setSharedChannelPool(sharedChannelPool);
+		if (enableComm) {
+			communicationClient = CommFactory.getInstance().createClient("client", null);
+			sharedChannelPool = CommFactory.getInstance().connectJmsChannelPool(communicationClient, null);
+			context.setSharedChannelPool(sharedChannelPool);
+		}
 		
-		componentManager = new ComponentManagerImpl(managerConfig);				
+		componentManager = new ComponentManagerImpl(managerConfig);		
+		componentManager.activate(context);
 		
 	}
 
@@ -55,8 +60,10 @@ public class BaseComponentTest {
 		componentManager.deactivate();
 		componentManager = null;
 		
-		communicationClient.disconnect();
-		communicationClient = null;
+		if (communicationClient != null) {
+			communicationClient.disconnect();
+			communicationClient = null;
+		}
 		
 		context = null;
 	}
@@ -83,5 +90,5 @@ public class BaseComponentTest {
 			e.printStackTrace();
 		}
 	}
-	
+
 }

@@ -5,15 +5,16 @@ package de.dfki.cos.basys.platform.runtime.component.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ComponentResponse {
+public class ComponentResponse implements ComponentMessage {
 
 	String componentId;
-	ResponseStatus status;
+	RequestStatus status;
 	int statusCode;
 	String message;
 	ComponentRequest request;
 	List<Variable> outputParameters = new ArrayList<>();
 
+	@Override
 	public String getComponentId() {
 		return componentId;
 	}
@@ -22,11 +23,11 @@ public class ComponentResponse {
 		this.componentId = componentId;
 	}
 
-	public ResponseStatus getStatus() {
+	public RequestStatus getStatus() {
 		return status;
 	}
 
-	public void setStatus(ResponseStatus status) {
+	public void setStatus(RequestStatus status) {
 		this.status = status;
 	}
 
@@ -38,6 +39,7 @@ public class ComponentResponse {
 		this.statusCode = statusCode;
 	}
 
+	@Override
 	public String getMessage() {
 		return message;
 	}
@@ -64,7 +66,7 @@ public class ComponentResponse {
 
 	public static class Builder {
 		private String componentId;
-		private ResponseStatus status;
+		private RequestStatus status;
 		private int statusCode;
 		private String message;
 		private ComponentRequest request;
@@ -75,7 +77,7 @@ public class ComponentResponse {
 			return this;
 		}
 
-		public Builder status(ResponseStatus status) {
+		public Builder status(RequestStatus status) {
 			this.status = status;
 			return this;
 		}

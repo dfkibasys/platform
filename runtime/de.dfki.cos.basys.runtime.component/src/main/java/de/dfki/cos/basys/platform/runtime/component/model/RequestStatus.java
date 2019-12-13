@@ -77,8 +77,29 @@ public enum RequestStatus implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	DONE(5, "DONE", "DONE");
+	DONE(5, "DONE", "DONE"),
 
+	/**
+	 * The '<em><b>OK</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #OK_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	OK(6, "OK", "OK"),
+
+	/**
+	 * The '<em><b>NOT OK</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #NOT_OK_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	NOT_OK(6, "NOT_OK", "NOT_OK");
+	
+	
 	/**
 	 * The '<em><b>UNDEFINED</b></em>' literal value.
 	 * <!-- begin-user-doc -->
@@ -146,6 +167,28 @@ public enum RequestStatus implements Enumerator {
 	public static final int DONE_VALUE = 5;
 
 	/**
+	 * The '<em><b>OK</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #OK
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int OK_VALUE = 6;
+
+	/**
+	 * The '<em><b>NOT OK</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #NOT_OK
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int NOT_OK_VALUE = 7;
+	
+	/**
 	 * An array of all the '<em><b>Request Status</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -159,6 +202,8 @@ public enum RequestStatus implements Enumerator {
 			NOOP,
 			QUEUED,
 			DONE,
+			OK,
+			NOT_OK
 		};
 
 	/**
@@ -221,6 +266,8 @@ public enum RequestStatus implements Enumerator {
 			case NOOP_VALUE: return NOOP;
 			case QUEUED_VALUE: return QUEUED;
 			case DONE_VALUE: return DONE;
+			case OK_VALUE: return OK;
+			case NOT_OK_VALUE: return NOT_OK;
 		}
 		return null;
 	}

@@ -1,5 +1,9 @@
 package de.dfki.cos.basys.platform.runtime.component;
 
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+import java.util.TimeZone;
+
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -7,7 +11,6 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 
 import de.dfki.cos.basys.common.component.ComponentContext;
 import de.dfki.cos.basys.platform.model.runtime.communication.ChannelPool;
-import de.dfki.cos.basys.platform.runtime.component.util.BasysResourceSetImpl;
 
 public class BasysComponentContext extends ComponentContext {
 
@@ -22,8 +25,17 @@ public class BasysComponentContext extends ComponentContext {
 			staticContext = new BasysComponentContext();
 			staticContext.setEventBus(ComponentContext.getStaticContext().getEventBus());
 			staticContext.setScheduledExecutorService(ComponentContext.getStaticContext().getScheduledExecutorService());
-			staticContext.setSharedResourceSet(new BasysResourceSetImpl.Factory().createResourceSet());
-			staticContext.setObjectMapper(new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT));		
+			//staticContext.setSharedResourceSet(new BasysResourceSetImpl.Factory().createResourceSet());
+		
+			final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.ENGLISH);
+			dateFormat.setTimeZone(TimeZone.getDefault());
+			
+			staticContext.setObjectMapper(new ObjectMapper()
+					.enable(SerializationFeature.INDENT_OUTPUT)
+					.setDateFormat(dateFormat)
+					.setTimeZone(TimeZone.getDefault()));
+					//.enableDefaultTypingAsProperty(ObjectMapper.DefaultTyping.JAVA_LANG_OBJECT,"@class")
+					//.enableDefaultTyping());		
 		}
 		return staticContext;
 	}
