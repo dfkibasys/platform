@@ -7,6 +7,8 @@ public class ComponentRequestStatus implements ComponentMessage {
 	RequestStatus status;
 	String message;
 	
+	public ComponentRequestStatus() {}
+	
 	@Override
 	public String getComponentId() {
 		return componentId;

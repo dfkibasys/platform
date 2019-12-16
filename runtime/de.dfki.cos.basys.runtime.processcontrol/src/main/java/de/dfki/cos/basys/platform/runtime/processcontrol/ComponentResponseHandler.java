@@ -8,5 +8,5 @@ public interface ComponentResponseHandler {
 
 	// ProcessRequestStatus doStartProcessInstance(ProcessRequest request);
 
-	void handleComponentResponse(ComponentResponse task);
+	void handleComponentResponse(ComponentResponse response);
 }

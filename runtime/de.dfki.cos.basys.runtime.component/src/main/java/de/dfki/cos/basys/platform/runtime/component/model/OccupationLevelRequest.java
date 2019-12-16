@@ -8,6 +8,8 @@ public class OccupationLevelRequest extends ComponentRequest {
 	
 	OccupationLevel occupationLevel;
 
+	public OccupationLevelRequest() {}
+	
 	public OccupationLevel getOccupationLevel() {
 		return occupationLevel;
 	}

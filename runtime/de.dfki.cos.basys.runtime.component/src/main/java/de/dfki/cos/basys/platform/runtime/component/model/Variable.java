@@ -8,9 +8,11 @@ import java.text.ParseException;
 public class Variable {
 
 	String name;
-	String valueString;
+	Object value;
 	VariableType type;
 
+	public Variable() {}
+	
 	public String getName() {
 		return name;
 	}
@@ -19,12 +21,12 @@ public class Variable {
 		this.name = name;
 	}
 
-	public String getValueString() {
-		return valueString;
+	public Object getValue() {
+		return value;
 	}
 
-	public void setValueString(String valueString) {
-		this.valueString = valueString;
+	public void setValue(Object value) {
+		this.value = value;
 	}
 
 	public VariableType getType() {
@@ -35,41 +37,44 @@ public class Variable {
 		this.type = type;
 	}
 
-	public Object getValue() {
-		Object value = null;
+	public Object castValue() {
+		Object result = null;
+		if (value == null)
+			return result;
+		
 
 		switch (getType()) {
 		case BOOLEAN:
-			value = Boolean.parseBoolean(getValueString());
+			result = Boolean.parseBoolean(value.toString());
 			break;
 		case DATE:
 			try {
-				value = DateFormat.getDateInstance().parse(getValueString());
+				result = DateFormat.getDateInstance().parse(value.toString());
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			break;
 		case DOUBLE:
-			value = Double.parseDouble(getValueString());
+			result = Double.parseDouble(value.toString());
 			break;
 		case INTEGER:
-			value = Integer.parseInt(getValueString());
+			result = Integer.parseInt(value.toString());
 			break;
 		case LONG:
-			value = Long.parseLong(getValueString());
+			result = Long.parseLong(value.toString());
 			break;
 		default:
-			value = getValueString();
+			result = value.toString();
 			break;
 		}
 
-		return value;
+		return result;
 	}
 
 	public static class Builder {
 		private String name;
-		private String valueString;
+		private Object value;
 		private VariableType type;
 
 		public Builder name(String name) {
@@ -77,8 +82,8 @@ public class Variable {
 			return this;
 		}
 
-		public Builder valueString(String valueString) {
-			this.valueString = valueString;
+		public Builder value(Object value) {
+			this.value = value;
 			return this;
 		}
 
@@ -94,7 +99,7 @@ public class Variable {
 
 	private Variable(Builder builder) {
 		this.name = builder.name;
-		this.valueString = builder.valueString;
+		this.value = builder.value;
 		this.type = builder.type;
 	}
 }

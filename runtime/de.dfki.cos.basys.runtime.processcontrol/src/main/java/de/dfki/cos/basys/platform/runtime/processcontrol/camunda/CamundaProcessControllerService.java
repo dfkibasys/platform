@@ -186,7 +186,7 @@ public class CamundaProcessControllerService implements ServiceConnection, Compo
 
 		LOGGER.trace("pollCamunda");
 
-		List<ExternalServiceTaskDto> tasks = client.getExternalTasks(topic, maxFetchCount, lockDuration, asyncResponseTimeout, "componentId", "requestType", "token", "parameters", "outputParameters");
+		List<ExternalServiceTaskDto> tasks = client.getExternalTasks(topic, maxFetchCount, lockDuration, asyncResponseTimeout, "componentId", "requestType", "token", "inputParameters", "outputParameters");
 		
 		if (tasks.size() > 0) {
 			LOGGER.info("pollCamunda fetched " + tasks.size() + " task(s)" );
@@ -232,15 +232,15 @@ public class CamundaProcessControllerService implements ServiceConnection, Compo
 				ObjectMapper mapper = new ObjectMapper();
 				try {
 					
-					Map<String,String> input = mapper.readValue(task.variables.parameters.value,new TypeReference<Map<String,String>>(){});
-					LOGGER.debug(input.toString());					
-					for (Map.Entry<String, String> entry : input.entrySet()) {
-						Variable var = new Variable.Builder().name(entry.getKey()).valueString(entry.getValue()).build();
+					List<Variable> inputParameters = mapper.readValue(task.variables.inputParameters.value,new TypeReference<List<Variable>>(){});
+					LOGGER.debug(inputParameters.toString());					
+					for (Variable var : inputParameters) {
+						//Variable var = new Variable.Builder().name(entry.getKey()).valueString(entry.getValue()).build();
 						req.getInputParameters().add(var);						
 					    //System.out.println(entry.getKey() + "/" + entry.getValue());
 					}
 										
-					List<String> output = mapper.readValue(task.variables.outputParameters.value,new TypeReference<List<String>>(){});			
+					List<Variable> output = mapper.readValue(task.variables.outputParameters.value,new TypeReference<List<Variable>>(){});			
 					LOGGER.debug(output.toString());		
 					req.getOutputParameters().addAll(output);
 					

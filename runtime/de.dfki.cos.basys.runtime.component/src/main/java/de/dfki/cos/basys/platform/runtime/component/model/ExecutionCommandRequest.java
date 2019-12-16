@@ -8,6 +8,8 @@ public class ExecutionCommandRequest extends ComponentRequest {
 	
 	ExecutionCommand executionCommand;
 
+	public ExecutionCommandRequest() {}
+	
 	public ExecutionCommand getExecutionCommand() {
 		return executionCommand;
 	}

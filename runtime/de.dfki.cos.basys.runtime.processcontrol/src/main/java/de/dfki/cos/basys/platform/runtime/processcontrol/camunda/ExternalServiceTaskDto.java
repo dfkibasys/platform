@@ -19,7 +19,7 @@ public class ExternalServiceTaskDto {
 		public Variable componentId;
 		public Variable requestType;
 		public Variable token;
-		public Variable parameters;
+		public Variable inputParameters;
 		public Variable outputParameters;
 	}
 

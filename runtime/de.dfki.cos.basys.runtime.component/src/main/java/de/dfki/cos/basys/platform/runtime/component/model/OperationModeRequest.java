@@ -9,8 +9,10 @@ public class OperationModeRequest extends ComponentRequest {
 
 	String operationMode;
 	List<Variable> inputParameters = new ArrayList<>();
-	List<String> outputParameters = new ArrayList<>();
+	List<Variable> outputParameters = new ArrayList<>();
 
+	public OperationModeRequest() {}
+	
 	public String getOperationMode() {
 		return operationMode;
 	}
@@ -27,11 +29,11 @@ public class OperationModeRequest extends ComponentRequest {
 		this.inputParameters = inputParameters;
 	}
 
-	public List<String> getOutputParameters() {
+	public List<Variable> getOutputParameters() {
 		return outputParameters;
 	}
 
-	public void setOutputParameters(List<String> outputParameters) {
+	public void setOutputParameters(List<Variable> outputParameters) {
 		this.outputParameters = outputParameters;
 	}
 

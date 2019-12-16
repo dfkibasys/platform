@@ -14,6 +14,8 @@ public class ComponentResponse implements ComponentMessage {
 	ComponentRequest request;
 	List<Variable> outputParameters = new ArrayList<>();
 
+	public ComponentResponse() {}
+	
 	@Override
 	public String getComponentId() {
 		return componentId;
@@ -70,7 +72,7 @@ public class ComponentResponse implements ComponentMessage {
 		private int statusCode;
 		private String message;
 		private ComponentRequest request;
-		private List<Variable> outputParameters;
+		private List<Variable> outputParameters = new ArrayList<>();
 
 		public Builder componentId(String componentId) {
 			this.componentId = componentId;

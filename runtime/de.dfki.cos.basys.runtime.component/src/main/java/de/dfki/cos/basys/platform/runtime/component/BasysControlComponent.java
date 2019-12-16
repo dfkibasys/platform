@@ -165,7 +165,7 @@ public class BasysControlComponent extends BasysComponent implements PackMLWaitS
 						if (status.getStatus() == OrderStatus.DONE) {
 							for (Variable var : currentOperationModeRequest.getInputParameters()) {								
 								//TODO: put switch block into Variable class, test date parsing and setting via opcua																				
-								client.setParameterValue(var.getName(), var.getValue());
+								client.setParameterValue(var.getName(), var.castValue());
 							}			
 							status = client.start(currentOperationModeRequest.getOccupierId());
 						}			
@@ -198,19 +198,15 @@ public class BasysControlComponent extends BasysComponent implements PackMLWaitS
 						int n = currentOperationModeRequest.getOutputParameters().size();
 						if (n==0) {
 							sendComponentResponse(currentOperationModeRequest, RequestStatus.OK, client.getErrorCode());	
-						} else {
-							List<Variable> variables = new ArrayList<>(n);
-							for (String name : currentOperationModeRequest.getOutputParameters()) {
-								//Object value = client.getParameterValue(name);
-								ParameterInfo p = client.getParameter(name);
-								Variable var = new Variable.Builder()
-										.name(name)
-										.valueString(p.getValue().toString())
-										.type(VariableType.fromOpcUa(p.getType()))
-										.build();
-								variables.add(var);
+						} else {							
+							for (Variable var : currentOperationModeRequest.getOutputParameters()) {								
+								ParameterInfo p = client.getParameter(var.getName());
+								var.setValue(p.getValue());
+								if (var.getType() != VariableType.fromOpcUa(p.getType())) {
+									LOGGER.warn("output parameter {} : retrieved type {} does not match expected type {}!", var.getName(), VariableType.fromOpcUa(p.getType()), p.getType());
+								}								
 							}							
-							sendComponentResponse(currentOperationModeRequest, RequestStatus.OK, client.getErrorCode(), variables);							
+							sendComponentResponse(currentOperationModeRequest, RequestStatus.OK, client.getErrorCode(), currentOperationModeRequest.getOutputParameters());							
 						}
 						
 						currentOperationModeRequest = null;
@@ -244,18 +240,14 @@ public class BasysControlComponent extends BasysComponent implements PackMLWaitS
 						if (n==0) {
 							sendComponentResponse(currentOperationModeRequest, RequestStatus.NOT_OK, client.getErrorCode());	
 						} else {
-							List<Variable> variables = new ArrayList<>(n);
-							for (String name : currentOperationModeRequest.getOutputParameters()) {
-								//Object value = client.getParameterValue(name);
-								ParameterInfo p = client.getParameter(name);
-								Variable var = new Variable.Builder()
-										.name(name)
-										.valueString(p.getValue().toString())
-										.type(VariableType.fromOpcUa(p.getType()))
-										.build();
-								variables.add(var);
+							for (Variable var : currentOperationModeRequest.getOutputParameters()) {								
+								ParameterInfo p = client.getParameter(var.getName());
+								var.setValue(p.getValue());
+								if (var.getType() != VariableType.fromOpcUa(p.getType())) {
+									LOGGER.warn("output parameter {} : retrieved type {} does not match expected type {}!", var.getName(), VariableType.fromOpcUa(p.getType()), p.getType());
+								}								
 							}							
-							sendComponentResponse(currentOperationModeRequest, RequestStatus.NOT_OK, client.getErrorCode(), variables);							
+							sendComponentResponse(currentOperationModeRequest, RequestStatus.NOT_OK, client.getErrorCode(), currentOperationModeRequest.getOutputParameters());						
 						}
 						
 						currentOperationModeRequest = null;

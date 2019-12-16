@@ -72,6 +72,8 @@ public class CamundaRestClient {
 				MediaType.APPLICATION_JSON);
 
 		
+		LOGGER.debug(e.getEntity());
+		
 		Response response = externalTaskEndpoint.path("/fetchAndLock")
 								.request(MediaType.APPLICATION_JSON)
 								//.property(ClientProperties.CONNECT_TIMEOUT, (int) asyncResponseTimeout)
