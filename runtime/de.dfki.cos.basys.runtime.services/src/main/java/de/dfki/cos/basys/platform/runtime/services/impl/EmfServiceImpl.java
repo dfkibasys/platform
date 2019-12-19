@@ -19,7 +19,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import de.dfki.cos.basys.common.component.ComponentContext;
-import de.dfki.cos.basys.common.component.ServiceConnection;
+import de.dfki.cos.basys.common.component.ServiceProvider;
 import de.dfki.cos.basys.common.emf.EmfPersistence;
 import de.dfki.cos.basys.platform.model.domain.capability.CapabilityPackage;
 import de.dfki.cos.basys.platform.model.domain.capability.util.CapabilityResourceFactoryImpl;
@@ -47,7 +47,7 @@ import de.dfki.cos.basys.platform.runtime.component.BasysComponentContext;
 import de.dfki.cos.basys.platform.runtime.services.EmfService;
 import de.dfki.cos.basys.platform.runtime.services.util.BasysResourceSetImpl;
 
-public class EmfServiceImpl implements ServiceConnection, EmfService {
+public class EmfServiceImpl implements ServiceProvider<EmfService>, EmfService {
 
 	protected ResourceSet resourceSet;
 	URI uri;
@@ -209,6 +209,11 @@ public class EmfServiceImpl implements ServiceConnection, EmfService {
 		}
 		
 		return resourceSet;		
+	}
+
+	@Override
+	public EmfService getService() {
+		return this;
 	}
 
 	

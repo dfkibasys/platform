@@ -22,7 +22,7 @@ import org.slf4j.LoggerFactory;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import de.dfki.cos.basys.common.component.ComponentContext;
-import de.dfki.cos.basys.common.component.ServiceConnection;
+import de.dfki.cos.basys.common.component.ServiceProvider;
 import de.dfki.cos.basys.common.emf.json.JsonUtils;
 import de.dfki.cos.basys.platform.model.runtime.communication.Channel;
 import de.dfki.cos.basys.platform.model.runtime.communication.ChannelListener;
@@ -33,7 +33,7 @@ import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
 import de.dfki.cos.basys.platform.runtime.component.BasysComponentContext;
 import de.dfki.cos.basys.platform.runtime.component.StringConstants;
 
-public class JmsGateway implements ServiceConnection, Gateway {
+public class JmsGateway implements ServiceProvider<Gateway>, Gateway {
 
 	public final Logger LOGGER;
 	private String id = null;
@@ -118,6 +118,11 @@ public class JmsGateway implements ServiceConnection, Gateway {
 	}
 
 	@Override
+	public Gateway getService() {
+		return this;
+	}
+	
+	@Override
 	public void installOutgoingChannel(String internalChannelName, String externalChannelName) {
 		try {
 
@@ -195,7 +200,5 @@ public class JmsGateway implements ServiceConnection, Gateway {
 			e.printStackTrace();
 		}
 	}
-
-
 	
 }

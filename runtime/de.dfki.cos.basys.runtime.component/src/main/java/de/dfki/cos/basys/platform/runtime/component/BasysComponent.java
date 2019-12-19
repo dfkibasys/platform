@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Supplier;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
@@ -12,7 +13,10 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import de.dfki.cos.basys.common.component.ComponentContext;
 import de.dfki.cos.basys.common.component.ComponentException;
 import de.dfki.cos.basys.common.component.ComponentInfo;
+import de.dfki.cos.basys.common.component.ServiceProvider;
 import de.dfki.cos.basys.common.component.impl.BaseComponent;
+import de.dfki.cos.basys.common.component.impl.ServiceComponent;
+import de.dfki.cos.basys.common.component.impl.ServiceManagerImpl;
 import de.dfki.cos.basys.platform.model.runtime.communication.Channel;
 import de.dfki.cos.basys.platform.model.runtime.communication.ChannelListener;
 import de.dfki.cos.basys.platform.model.runtime.communication.ChannelPool;
@@ -29,7 +33,7 @@ import de.dfki.cos.basys.platform.runtime.component.model.RequestStatus;
 import de.dfki.cos.basys.platform.runtime.component.model.StatusRequest;
 import de.dfki.cos.basys.platform.runtime.component.model.Variable;
 
-public class BasysComponent extends BaseComponent implements ChannelListener {
+public class BasysComponent<T> extends ServiceComponent<T> implements ChannelListener {
 	
 	protected BasysComponentContext context;
 
@@ -46,6 +50,14 @@ public class BasysComponent extends BaseComponent implements ChannelListener {
 
 	public BasysComponent(Properties config) {
 		super(config);
+	}	
+	
+	public BasysComponent(Properties config, ServiceProvider<T> serviceProvider) {
+		super(config, serviceProvider);
+	}
+	
+	public BasysComponent(Properties config, Supplier<ServiceProvider<T>> serviceProviderSupplier) {
+		super(config, serviceProviderSupplier);
 	}
 	
 	@Override

@@ -20,7 +20,7 @@ public class ResourceInstanceManagerImpl extends EmfBasysComponent implements Re
 
 	@Override
 	public ResourceInstance getResourceInstance(String id) {
-		return service.getEntity(id);
+		return getService().getEntity(id);
 	}
 
 	@Override
@@ -31,7 +31,7 @@ public class ResourceInstanceManagerImpl extends EmfBasysComponent implements Re
 
 	@Override
 	public ResourceInstanceRepository getResourceInstanceRepository() {
-		ResourceInstanceRepository repository = service.getFirstEntity(ResourceinstancePackage.eINSTANCE.getResourceInstanceRepository());
+		ResourceInstanceRepository repository = getService().getFirstEntity(ResourceinstancePackage.eINSTANCE.getResourceInstanceRepository());
 		return repository;
 	}
 

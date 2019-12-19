@@ -15,17 +15,17 @@ public class TopologyManagerImpl extends EmfBasysComponent implements TopologyMa
 
 	@Override
 	public Enterprise getEnterprise() {
-		return service.getFirstEntity(TopologyPackage.eINSTANCE.getEnterprise()); 
+		return getService().getFirstEntity(TopologyPackage.eINSTANCE.getEnterprise()); 
 	}
 
 	@Override
 	public TopologyElement getTopologyElement(String id) {
-		return service.getEntity(id);
+		return getService().getEntity(id);
 	}
 
 	@Override
 	public TopologyElement getParentTopologyElement(String id) {
-		TopologyElement element = service.getEntity(id);
+		TopologyElement element = getService().getEntity(id);
 		if (element.eContainer() != null)
 			return (TopologyElement) element.eContainer();
 		else 

@@ -21,6 +21,7 @@ public class MiddlewareConnectionTest extends BaseComponentTest {
 	@Before
 	public void setUp() throws Exception {
 		enableComm = true;
+		activateComponentManager = false;
 		super.setUp();
 	}
 
@@ -45,7 +46,7 @@ public class MiddlewareConnectionTest extends BaseComponentTest {
 
 	@Test
 	public void testMultiConnectToMiddleware() throws ComponentException {
-		managerConfig.put(StringConstants.serviceConnectionString, StringConstants.testConfigurationFolder);
+		managerConfig.put(StringConstants.serviceConnectionString, StringConstants.testConfigurationFolder + "/controlcomponents");
 		managerConfig.put("recursive", "true");
 		componentManager.activate(context);
 		assertEquals(3, componentManager.getComponents().size());

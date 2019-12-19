@@ -16,7 +16,7 @@ public class ResourceTypeManagerImpl extends EmfBasysComponent implements Resour
 
 	@Override
 	public ResourceType getResourceType(String id) {
-		return service.getEntity(id);
+		return getService().getEntity(id);
 	}
 
 	@Override
@@ -27,7 +27,7 @@ public class ResourceTypeManagerImpl extends EmfBasysComponent implements Resour
 
 	@Override
 	public ResourceTypeCatalogueCollection getResourceTypeCatalogueCollection() {
-		ResourceTypeCatalogueCollection catalogueCollection = service.getFirstEntity(ResourcetypePackage.eINSTANCE.getResourceTypeCatalogueCollection());
+		ResourceTypeCatalogueCollection catalogueCollection = getService().getFirstEntity(ResourcetypePackage.eINSTANCE.getResourceTypeCatalogueCollection());
 		return catalogueCollection;
 	}
 

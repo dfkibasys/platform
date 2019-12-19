@@ -20,7 +20,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import de.dfki.cos.basys.common.component.ComponentContext;
-import de.dfki.cos.basys.common.component.ServiceConnection;
+import de.dfki.cos.basys.common.component.ServiceProvider;
 import de.dfki.cos.basys.controlcomponent.ExecutionCommand;
 import de.dfki.cos.basys.controlcomponent.ExecutionMode;
 import de.dfki.cos.basys.controlcomponent.OccupationLevel;
@@ -36,10 +36,11 @@ import de.dfki.cos.basys.platform.runtime.component.model.Variable;
 import de.dfki.cos.basys.platform.runtime.processcontrol.ProcessController;
 import de.dfki.cos.basys.platform.runtime.processcontrol.ComponentResponseHandler;
 
-public class CamundaProcessControllerService implements ServiceConnection, ComponentResponseHandler {
+public class CamundaProcessControllerService implements ServiceProvider<ComponentResponseHandler>, ComponentResponseHandler {
 
 	Logger LOGGER = LoggerFactory.getLogger(this.getClass().getName());
 	
+	//ComponentContext context;
 	ProcessController controller;
 	CamundaRestClient client;	
 	private boolean connected;
@@ -56,7 +57,7 @@ public class CamundaProcessControllerService implements ServiceConnection, Compo
 	int maxRetryCount = 0;
 	int retryTimeout = 1000;
 	
-	public CamundaProcessControllerService(Properties config) {
+	public CamundaProcessControllerService(Properties config, ProcessController controller) {
 
 		if (config.getProperty("topic") != null) {
 			topic = config.getProperty("topic");
@@ -92,14 +93,14 @@ public class CamundaProcessControllerService implements ServiceConnection, Compo
 			retryTimeout = Integer.parseInt(config.getProperty("retryTimeout"));
 			LOGGER.info("retryTimeout = " + retryTimeout);
 		}			
-	}
-	
-	public void setController(ProcessController controller) {
+		
 		this.controller = controller;
 	}
-
+	
 	@Override
 	public boolean connect(ComponentContext context, String connectionString) {
+		
+		//this.context = context;
 		
 		if (connectionString.endsWith("/"))
 			connectionString = connectionString.substring(0, connectionString.length()-1);		
@@ -264,6 +265,8 @@ public class CamundaProcessControllerService implements ServiceConnection, Compo
 			r.setOccupierId(task.processInstanceId);				
 			r.setComponentId(task.variables.componentId.value);					
 			
+			
+			//context.getEventBus().post(r);
 			controller.scheduleComponentRequest(r);
 		}
 	}
@@ -285,6 +288,11 @@ public class CamundaProcessControllerService implements ServiceConnection, Compo
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
+	}
+
+	@Override
+	public ComponentResponseHandler getService() {
+		return this;
 	}
 
 }

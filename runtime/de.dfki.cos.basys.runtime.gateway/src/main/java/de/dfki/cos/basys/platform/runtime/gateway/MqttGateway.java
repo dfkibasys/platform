@@ -18,7 +18,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import de.dfki.cos.basys.common.component.ComponentContext;
-import de.dfki.cos.basys.common.component.ServiceConnection;
+import de.dfki.cos.basys.common.component.ServiceProvider;
 import de.dfki.cos.basys.platform.model.runtime.communication.Channel;
 import de.dfki.cos.basys.platform.model.runtime.communication.ChannelListener;
 import de.dfki.cos.basys.platform.model.runtime.communication.Notification;
@@ -29,7 +29,7 @@ import de.dfki.cos.basys.platform.runtime.communication.CommFactory;
 import de.dfki.cos.basys.platform.runtime.component.BasysComponentContext;
 import de.dfki.cos.basys.platform.runtime.component.StringConstants;
 
-public class MqttGateway implements ServiceConnection, Gateway {
+public class MqttGateway implements ServiceProvider<Gateway>, Gateway {
 
 	public final Logger LOGGER;
 	private String id = null;
@@ -97,6 +97,11 @@ public class MqttGateway implements ServiceConnection, Gateway {
 	@Override
 	public boolean isConnected() {		
 		return (mqttClient != null) ? mqttClient.isConnected() : false;
+	}
+
+	@Override
+	public Gateway getService() {
+		return this;
 	}
 	
 	@Override

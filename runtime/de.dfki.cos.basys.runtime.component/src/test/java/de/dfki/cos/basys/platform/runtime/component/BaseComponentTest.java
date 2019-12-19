@@ -31,7 +31,9 @@ public class BaseComponentTest {
 	protected ChannelPool sharedChannelPool;
 	protected BasysComponentContext context;
 	protected Properties managerConfig;
-	boolean enableComm = false;
+	
+	protected boolean enableComm = false;
+	protected boolean activateComponentManager = true;
 	
 	@Before
 	public void setUp() throws Exception {
@@ -50,8 +52,11 @@ public class BaseComponentTest {
 			context.setSharedChannelPool(sharedChannelPool);
 		}
 		
-		componentManager = new ComponentManagerImpl(managerConfig);		
-		componentManager.activate(context);
+		componentManager = new ComponentManagerImpl(managerConfig);	
+		
+		if (activateComponentManager) {
+			componentManager.activate(context);
+		}
 		
 	}
 

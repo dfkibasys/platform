@@ -16,13 +16,13 @@ public class OrderManagerImpl extends EmfBasysComponent implements OrderManager 
 	
 	@Override
 	public OrderStore getOrderStore() {
-		OrderStore store = service.getFirstEntity(OrderPackage.eINSTANCE.getOrderStore());
+		OrderStore store = getService().getFirstEntity(OrderPackage.eINSTANCE.getOrderStore());
 		return store;
 	}
 
 	@Override
 	public Order getOrder(String id) {
-		return service.getEntity(id);
+		return getService().getEntity(id);
 	}
 
 	@Override

@@ -1,5 +1,7 @@
 package de.dfki.cos.basys.platform.runtime.component.registry.zookeeper;
 
+import java.util.Properties;
+
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.framework.imps.CuratorFrameworkState;
@@ -16,13 +18,13 @@ import org.apache.curator.x.discovery.details.JsonInstanceSerializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.dfki.cos.basys.common.component.ServiceConnection;
+import de.dfki.cos.basys.common.component.ServiceProvider;
 import de.dfki.cos.basys.common.component.ComponentContext;
 import de.dfki.cos.basys.common.component.ComponentInfo;
 import de.dfki.cos.basys.common.component.registry.ComponentRegistryObserver;
 import de.dfki.cos.basys.platform.runtime.component.StringConstants;
 
-public class ZookeeperClient implements ServiceConnection, PathChildrenCacheListener {
+public class ZookeeperClient implements ServiceProvider<ZookeeperClient>, PathChildrenCacheListener {
 
 	public final Logger LOGGER;
 	
@@ -35,8 +37,9 @@ public class ZookeeperClient implements ServiceConnection, PathChildrenCacheList
 	
 	private ComponentRegistryObserver observer = null;
 	
-	public ZookeeperClient() {
+	public ZookeeperClient(Properties config, ComponentRegistryObserver observer) {
 		LOGGER = LoggerFactory.getLogger(getClass().getName());
+		this.observer = observer;
 	}
 
 	@Override
@@ -84,14 +87,6 @@ public class ZookeeperClient implements ServiceConnection, PathChildrenCacheList
 		return serviceDiscovery;
 	}
 	
-	public void setObserver(ComponentRegistryObserver observer) {
-		this.observer = observer;		
-	}
-	
-	public ComponentRegistryObserver getObserver() {
-		return observer;
-	}
-	
 	@Override
 	public void childEvent(CuratorFramework client, PathChildrenCacheEvent event) throws Exception {
 		if (observer == null)
@@ -130,5 +125,10 @@ public class ZookeeperClient implements ServiceConnection, PathChildrenCacheList
 		managementCache.getListenable().removeListener(listener);
 		serviceCache.getListenable().removeListener(listener);
 		deviceCache.getListenable().removeListener(listener);	
+	}
+
+	@Override
+	public ZookeeperClient getService() {
+		return this;
 	}
 }

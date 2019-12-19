@@ -16,18 +16,18 @@ public class MaterialManagerImpl extends EmfBasysComponent implements MaterialMa
 
 	@Override
 	public MaterialCatalogue getMaterialCatalogue() {
-		MaterialCatalogue catalogue = service.getFirstEntity(MaterialPackage.eINSTANCE.getMaterialCatalogue());
+		MaterialCatalogue catalogue = getService().getFirstEntity(MaterialPackage.eINSTANCE.getMaterialCatalogue());
 		return catalogue;
 	}
 
 	@Override
 	public Material getMaterial(String id) {
-		return service.getEntity(id);
+		return getService().getEntity(id);
 	}
 
 	@Override
 	public MaterialGroup getMaterialGroup(String id) {
-		return service.getEntity(id);
+		return getService().getEntity(id);
 	}
 
 }

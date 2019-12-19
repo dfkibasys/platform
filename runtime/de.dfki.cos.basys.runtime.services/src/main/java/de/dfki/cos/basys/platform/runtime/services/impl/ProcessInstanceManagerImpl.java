@@ -15,7 +15,7 @@ public class ProcessInstanceManagerImpl extends EmfBasysComponent implements Pro
 
 	@Override
 	public ProcessInstance getProcessInstance(String id) {
-		return service.getEntity(id);
+		return getService().getEntity(id);
 	}
 
 	@Override
@@ -26,7 +26,7 @@ public class ProcessInstanceManagerImpl extends EmfBasysComponent implements Pro
 
 	@Override
 	public ProcessInstanceStore getProcessInstanceStore() {
-		ProcessInstanceStore store = service.getFirstEntity(ProcessinstancePackage.eINSTANCE.getProcessInstanceStore());
+		ProcessInstanceStore store = getService().getFirstEntity(ProcessinstancePackage.eINSTANCE.getProcessInstanceStore());
 		return store;
 	}
 	

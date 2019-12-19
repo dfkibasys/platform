@@ -10,18 +10,18 @@ import java.util.Properties;
 
 import org.apache.curator.x.discovery.ServiceInstance;
 
-import de.dfki.cos.basys.platform.runtime.communication.CommUtils;
 import de.dfki.cos.basys.common.component.Component;
 import de.dfki.cos.basys.common.component.ComponentInfo;
 import de.dfki.cos.basys.common.component.StringConstants;
-import de.dfki.cos.basys.common.component.impl.BaseComponent;
+import de.dfki.cos.basys.common.component.impl.ServiceComponent;
 import de.dfki.cos.basys.common.component.impl.ServiceManagerImpl;
 import de.dfki.cos.basys.common.component.registry.ComponentRegistration;
 import de.dfki.cos.basys.common.component.registry.ComponentRegistrationException;
 import de.dfki.cos.basys.common.component.registry.ComponentRegistry;
 import de.dfki.cos.basys.common.component.registry.ComponentRegistryObserver;
+import de.dfki.cos.basys.platform.runtime.communication.CommUtils;
 
-public class ZookeeperComponentRegistry extends BaseComponent implements ComponentRegistry, ComponentRegistryObserver {
+public class ZookeeperComponentRegistry extends ServiceComponent<ZookeeperClient> implements ComponentRegistry, ComponentRegistryObserver {
 
 	public static String defaultConnectionString;
 
@@ -45,9 +45,9 @@ public class ZookeeperComponentRegistry extends BaseComponent implements Compone
 			LOGGER.warn("External connection string not provided. Defaulting to " + defaultConnectionString);
 		}
 		
-		serviceManager = new ServiceManagerImpl<ZookeeperClient>(config, ZookeeperClient::new);
-		ZookeeperClient client = getService();		
-		client.setObserver(this);
+		ZookeeperClient serviceProvider = new ZookeeperClient(config, this);
+		serviceManager = new ServiceManagerImpl<ZookeeperClient>(config, serviceProvider);		
+		
 	}
 
 	

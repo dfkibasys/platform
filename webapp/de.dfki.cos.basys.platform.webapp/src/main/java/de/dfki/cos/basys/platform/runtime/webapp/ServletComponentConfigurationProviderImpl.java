@@ -15,10 +15,10 @@ import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 
 import de.dfki.cos.basys.common.component.ComponentContext;
-import de.dfki.cos.basys.common.component.ServiceConnection;
+import de.dfki.cos.basys.common.component.ServiceProvider;
 import de.dfki.cos.basys.common.component.manager.ComponentConfigurationProvider;
 
-public class ServletComponentConfigurationProviderImpl implements ComponentConfigurationProvider, ServiceConnection {
+public class ServletComponentConfigurationProviderImpl implements ComponentConfigurationProvider, ServiceProvider<ComponentConfigurationProvider> {
 
 	private boolean recursive = false;
 	private Gson gson = new Gson();
@@ -64,6 +64,12 @@ public class ServletComponentConfigurationProviderImpl implements ComponentConfi
 	}
 
 	@Override
+	public ComponentConfigurationProvider getService() {
+		return this;
+	}
+
+	
+	@Override
 	public List<String> getComponentConfigurationPaths() {
 		List<String> result = new LinkedList<String>();
 		resourcePaths.stream().filter(path -> path.endsWith(".properties") || path.endsWith(".json")).forEach(result::add);
@@ -108,7 +114,6 @@ public class ServletComponentConfigurationProviderImpl implements ComponentConfi
 			}
 		}
 	}
-
 
 	
 }

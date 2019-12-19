@@ -7,6 +7,6 @@ public interface ComponentResponseHandler {
 	// String doDeployProcessDefinition(String deploymentName, String processDefinition); //return deploymentId
 
 	// ProcessRequestStatus doStartProcessInstance(ProcessRequest request);
-
+	//void setController(ProcessController controller);
 	void handleComponentResponse(ComponentResponse response);
 }

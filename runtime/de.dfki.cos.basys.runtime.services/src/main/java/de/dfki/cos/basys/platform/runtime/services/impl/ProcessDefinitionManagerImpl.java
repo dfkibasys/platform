@@ -15,7 +15,7 @@ public class ProcessDefinitionManagerImpl extends EmfBasysComponent implements P
 
 	@Override
 	public ProcessDefinition getProcessDefinition(String id) {
-		return service.getEntity(id);
+		return getService().getEntity(id);
 	}
 
 	@Override
@@ -26,7 +26,7 @@ public class ProcessDefinitionManagerImpl extends EmfBasysComponent implements P
 
 	@Override
 	public List<ProcessDefinition> getAllProcessDefinitions() {
-		return service.getAllEntities(ProcessdefinitionPackage.eINSTANCE.getProcessDefinition(), false);
+		return getService().getAllEntities(ProcessdefinitionPackage.eINSTANCE.getProcessDefinition(), false);
 	}
 
 }

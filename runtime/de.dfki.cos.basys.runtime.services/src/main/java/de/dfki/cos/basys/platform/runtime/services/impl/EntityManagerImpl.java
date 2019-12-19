@@ -13,7 +13,7 @@ public class EntityManagerImpl extends EmfBasysComponent implements EntityManage
 
 	@Override
 	public Entity getEntity(String id) {
-		return service.getEntity(id);
+		return getService().getEntity(id);
 	}
 
 }

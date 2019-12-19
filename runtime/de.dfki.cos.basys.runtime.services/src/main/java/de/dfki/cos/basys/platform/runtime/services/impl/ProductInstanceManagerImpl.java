@@ -15,12 +15,12 @@ public class ProductInstanceManagerImpl extends EmfBasysComponent implements Pro
 
 	@Override
 	public ProductInstance getProductInstance(String id) {
-		return service.getEntity(id);
+		return getService().getEntity(id);
 	}
 
 	@Override
 	public ProductInstanceStore getProductInstanceStore() {
-		ProductInstanceStore store = service.getFirstEntity(ProductinstancePackage.eINSTANCE.getProductInstanceStore());
+		ProductInstanceStore store = getService().getFirstEntity(ProductinstancePackage.eINSTANCE.getProductInstanceStore());
 		return store;
 	}
 

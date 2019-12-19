@@ -52,14 +52,14 @@ public class CamundaClientTest {
 		vars.add(new Variable.Builder().name("qaRequest").value("true").type(VariableType.BOOLEAN).build());
 		vars.add(new Variable.Builder().name("milkrunRequest").value("true").type(VariableType.BOOLEAN).build());
 				
-		List<ExternalServiceTaskDto> tasks = camundaClient.getExternalTasks("ControlComponent", 5, 10 * 1000, 2000, "requestType", "token", "componentId", "parameters", "outputParameters");
+		List<ExternalServiceTaskDto> tasks = camundaClient.getExternalTasks("ControlComponent", 5, 10 * 1000, 2000, "requestType", "token", "componentId", "inputParameters", "outputParameters");
 		//assertTrue(tasks.size()>0);
 		for (ExternalServiceTaskDto task : tasks) {
 			
 			ObjectMapper mapper = new ObjectMapper();
 			try {
-				Map<String,Object> input = mapper.readValue(task.variables.inputParameters.value,new TypeReference<Map<String,Object>>(){});
-				List<String> output = mapper.readValue(task.variables.outputParameters.value,new TypeReference<List<String>>(){});
+				List<Variable> input = mapper.readValue(task.variables.inputParameters.value,new TypeReference<List<Variable>>(){});
+				List<Variable> output = mapper.readValue(task.variables.outputParameters.value,new TypeReference<List<Variable>>(){});
 
 				System.out.println("------------------------");
 				System.out.println(input);

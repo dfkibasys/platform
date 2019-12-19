@@ -17,22 +17,22 @@ public class ProductDefinitionManagerImpl extends EmfBasysComponent implements P
 
 	@Override
 	public ProductVariant getProductVariant(String id) {
-		return service.getEntity(id);
+		return getService().getEntity(id);
 	}
 
 	@Override
 	public AssemblyGroup getAssemblyGroup(String assemblyGroupId) {
-		return service.getEntity(assemblyGroupId);
+		return getService().getEntity(assemblyGroupId);
 	}
 
 	@Override
 	public ProductGroup getProductGroup(String productGroupId) {
-		return service.getEntity(productGroupId);
+		return getService().getEntity(productGroupId);
 	}
 
 	@Override
 	public ProductCatalogue getProductCatalogue() {
-		ProductCatalogue catalogue = service.getFirstEntity(ProductdefinitionPackage.eINSTANCE.getProductCatalogue());
+		ProductCatalogue catalogue = getService().getFirstEntity(ProductdefinitionPackage.eINSTANCE.getProductCatalogue());
 		return catalogue;
 	}
 

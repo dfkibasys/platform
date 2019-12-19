@@ -10,6 +10,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.function.Supplier;
 
 import de.dfki.cos.basys.common.component.impl.ServiceManagerImpl;
+import de.dfki.cos.basys.common.component.ServiceProvider;
 import de.dfki.cos.basys.controlcomponent.ComponentOrderStatus;
 import de.dfki.cos.basys.controlcomponent.ExecutionCommand;
 import de.dfki.cos.basys.controlcomponent.ExecutionMode;
@@ -17,6 +18,7 @@ import de.dfki.cos.basys.controlcomponent.OccupationLevel;
 import de.dfki.cos.basys.controlcomponent.OrderStatus;
 import de.dfki.cos.basys.controlcomponent.ParameterInfo;
 import de.dfki.cos.basys.controlcomponent.client.ControlComponentClient;
+import de.dfki.cos.basys.controlcomponent.client.ControlComponentClientImpl;
 import de.dfki.cos.basys.controlcomponent.packml.PackMLWaitStatesHandler;
 import de.dfki.cos.basys.platform.runtime.component.model.ComponentRequest;
 import de.dfki.cos.basys.platform.runtime.component.model.ComponentRequestStatus;
@@ -28,20 +30,15 @@ import de.dfki.cos.basys.platform.runtime.component.model.RequestStatus;
 import de.dfki.cos.basys.platform.runtime.component.model.Variable;
 import de.dfki.cos.basys.platform.runtime.component.model.VariableType;
 
-public class BasysControlComponent extends BasysComponent implements PackMLWaitStatesHandler {
+public class BasysControlComponent extends BasysComponent<ControlComponentClient> implements PackMLWaitStatesHandler {
 	
 	OperationModeRequest currentOperationModeRequest;
 	
 	public BasysControlComponent(Properties config) {
 		super(config);
-		serviceManager = new ServiceManagerImpl<ControlComponentClient>(config, new Supplier<ControlComponentClient>() {
-			@Override
-			public ControlComponentClient get() {
-				ControlComponentClient client = new ControlComponentClient(config);
-				client.setExecutionStateChangedHandler(BasysControlComponent.this);
-				return client;
-			}
-		});
+		
+		 ControlComponentClientImpl serviceProvider = new ControlComponentClientImpl(config, this);
+		 serviceManager = new ServiceManagerImpl<ControlComponentClient>(config, serviceProvider);			
 	}
 	
 	@Override
@@ -90,11 +87,10 @@ public class BasysControlComponent extends BasysComponent implements PackMLWaitS
 		
 		ComponentOrderStatus status = null;		
 		String occupierId = req.getOccupierId();
-		ControlComponentClient client = getService();
-		status = client.occupy(occupierId);
+		status = getService().occupy(occupierId);
 		if (status.getStatus() == OrderStatus.DONE) {
 			currentOperationModeRequest = req;
-			status = client.reset(occupierId);
+			status = getService().reset(occupierId);
 		}
 		
 		ComponentRequestStatus result = new ComponentRequestStatus.Builder()
@@ -109,8 +105,7 @@ public class BasysControlComponent extends BasysComponent implements PackMLWaitS
 	protected ComponentRequestStatus handleExecutionCommandRequest(ExecutionCommandRequest req) {
 		LOGGER.info(String.format("handleExecutionCommandRequest '%s' (occupierId = %s)", req.getExecutionCommand(), req.getOccupierId()));
 		
-		ControlComponentClient client = getService();
-		ComponentOrderStatus order = client.raiseExecutionCommand(ExecutionCommand.get(req.getExecutionCommand().getLiteral()), req.getOccupierId());
+		ComponentOrderStatus order = getService().raiseExecutionCommand(ExecutionCommand.get(req.getExecutionCommand().getLiteral()), req.getOccupierId());
 	
 		ComponentRequestStatus status = new ComponentRequestStatus.Builder()
 				.status(RequestStatus.get(order.getStatus().getLiteral()))
@@ -139,8 +134,7 @@ public class BasysControlComponent extends BasysComponent implements PackMLWaitS
 	protected ComponentRequestStatus handleOccupationLevelRequest(OccupationLevelRequest req) {
 		LOGGER.info(String.format("handleOccupationLevelRequest '%s' (occupierId = %s)", req.getOccupationLevel(), req.getOccupierId()));
 		
-		ControlComponentClient client = getService();
-		ComponentOrderStatus order = client.occupy(OccupationLevel.get(req.getOccupationLevel().getLiteral()), req.getOccupierId());
+		ComponentOrderStatus order = getService().occupy(OccupationLevel.get(req.getOccupationLevel().getLiteral()), req.getOccupierId());
 	
 		ComponentRequestStatus status = new ComponentRequestStatus.Builder()
 				.status(RequestStatus.get(order.getStatus().getLiteral()))
@@ -160,14 +154,13 @@ public class BasysControlComponent extends BasysComponent implements PackMLWaitS
 					@Override
 					public ComponentOrderStatus call() throws Exception {
 						ComponentOrderStatus status;
-						ControlComponentClient client = getService();
-						status = client.setOperationMode(currentOperationModeRequest.getOperationMode(), currentOperationModeRequest.getOccupierId());
+						status = getService().setOperationMode(currentOperationModeRequest.getOperationMode(), currentOperationModeRequest.getOccupierId());
 						if (status.getStatus() == OrderStatus.DONE) {
 							for (Variable var : currentOperationModeRequest.getInputParameters()) {								
 								//TODO: put switch block into Variable class, test date parsing and setting via opcua																				
-								client.setParameterValue(var.getName(), var.castValue());
+								getService().setParameterValue(var.getName(), var.castValue());
 							}			
-							status = client.start(currentOperationModeRequest.getOccupierId());
+							status = getService().start(currentOperationModeRequest.getOccupierId());
 						}			
 						return status;
 						
@@ -191,22 +184,21 @@ public class BasysControlComponent extends BasysComponent implements PackMLWaitS
 				ComponentOrderStatus status = context.getScheduledExecutorService().submit(new Callable<ComponentOrderStatus>() {
 					@Override
 					public ComponentOrderStatus call() throws Exception {
-						ComponentOrderStatus status;
-						ControlComponentClient client = getService();						
-						status = client.free(currentOperationModeRequest.getOccupierId());
+						ComponentOrderStatus status;					
+						status = getService().free(currentOperationModeRequest.getOccupierId());
 						
 						int n = currentOperationModeRequest.getOutputParameters().size();
 						if (n==0) {
-							sendComponentResponse(currentOperationModeRequest, RequestStatus.OK, client.getErrorCode());	
+							sendComponentResponse(currentOperationModeRequest, RequestStatus.OK, getService().getErrorCode());	
 						} else {							
 							for (Variable var : currentOperationModeRequest.getOutputParameters()) {								
-								ParameterInfo p = client.getParameter(var.getName());
+								ParameterInfo p = getService().getParameter(var.getName());
 								var.setValue(p.getValue());
 								if (var.getType() != VariableType.fromOpcUa(p.getType())) {
 									LOGGER.warn("output parameter {} : retrieved type {} does not match expected type {}!", var.getName(), VariableType.fromOpcUa(p.getType()), p.getType());
 								}								
 							}							
-							sendComponentResponse(currentOperationModeRequest, RequestStatus.OK, client.getErrorCode(), currentOperationModeRequest.getOutputParameters());							
+							sendComponentResponse(currentOperationModeRequest, RequestStatus.OK, getService().getErrorCode(), currentOperationModeRequest.getOutputParameters());							
 						}
 						
 						currentOperationModeRequest = null;
@@ -232,22 +224,21 @@ public class BasysControlComponent extends BasysComponent implements PackMLWaitS
 				ComponentOrderStatus status = context.getScheduledExecutorService().submit(new Callable<ComponentOrderStatus>() {
 					@Override
 					public ComponentOrderStatus call() throws Exception {
-						ComponentOrderStatus status;
-						ControlComponentClient client = getService();						
-						status = client.free(currentOperationModeRequest.getOccupierId());
+						ComponentOrderStatus status;						
+						status = getService().free(currentOperationModeRequest.getOccupierId());
 						
 						int n = currentOperationModeRequest.getOutputParameters().size();
 						if (n==0) {
-							sendComponentResponse(currentOperationModeRequest, RequestStatus.NOT_OK, client.getErrorCode());	
+							sendComponentResponse(currentOperationModeRequest, RequestStatus.NOT_OK, getService().getErrorCode());	
 						} else {
 							for (Variable var : currentOperationModeRequest.getOutputParameters()) {								
-								ParameterInfo p = client.getParameter(var.getName());
+								ParameterInfo p = getService().getParameter(var.getName());
 								var.setValue(p.getValue());
 								if (var.getType() != VariableType.fromOpcUa(p.getType())) {
 									LOGGER.warn("output parameter {} : retrieved type {} does not match expected type {}!", var.getName(), VariableType.fromOpcUa(p.getType()), p.getType());
 								}								
 							}							
-							sendComponentResponse(currentOperationModeRequest, RequestStatus.NOT_OK, client.getErrorCode(), currentOperationModeRequest.getOutputParameters());						
+							sendComponentResponse(currentOperationModeRequest, RequestStatus.NOT_OK, getService().getErrorCode(), currentOperationModeRequest.getOutputParameters());						
 						}
 						
 						currentOperationModeRequest = null;
