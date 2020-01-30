@@ -14,7 +14,8 @@ import de.dfki.cos.basys.common.component.ServiceProvider;
 import de.dfki.cos.basys.controlcomponent.ComponentOrderStatus;
 import de.dfki.cos.basys.controlcomponent.ExecutionCommand;
 import de.dfki.cos.basys.controlcomponent.ExecutionMode;
-import de.dfki.cos.basys.controlcomponent.OccupationLevel;
+import de.dfki.cos.basys.controlcomponent.OccupationCommand;
+import de.dfki.cos.basys.controlcomponent.OccupationState;
 import de.dfki.cos.basys.controlcomponent.OrderStatus;
 import de.dfki.cos.basys.controlcomponent.ParameterInfo;
 import de.dfki.cos.basys.controlcomponent.client.ControlComponentClient;
@@ -24,7 +25,7 @@ import de.dfki.cos.basys.platform.runtime.component.model.ComponentRequest;
 import de.dfki.cos.basys.platform.runtime.component.model.ComponentRequestStatus;
 import de.dfki.cos.basys.platform.runtime.component.model.ExecutionCommandRequest;
 import de.dfki.cos.basys.platform.runtime.component.model.ExecutionModeRequest;
-import de.dfki.cos.basys.platform.runtime.component.model.OccupationLevelRequest;
+import de.dfki.cos.basys.platform.runtime.component.model.OccupationCommandRequest;
 import de.dfki.cos.basys.platform.runtime.component.model.OperationModeRequest;
 import de.dfki.cos.basys.platform.runtime.component.model.RequestStatus;
 import de.dfki.cos.basys.platform.runtime.component.model.Variable;
@@ -54,9 +55,9 @@ public class BasysControlComponent extends BasysComponent<ControlComponentClient
 		} else if (cr instanceof ExecutionModeRequest) {
 			ExecutionModeRequest req = (ExecutionModeRequest) cr;
 			status = handleExecutionModeRequest(req);
-		} else if (cr instanceof OccupationLevelRequest) {
-			OccupationLevelRequest req = (OccupationLevelRequest) cr;
-			status = handleOccupationLevelRequest(req);
+		} else if (cr instanceof OccupationCommandRequest) {
+			OccupationCommandRequest req = (OccupationCommandRequest) cr;
+			status = handleOccupationCommandRequest(req);
 		} else {
 			status = super.handleComponentRequest(cr);
 		}
@@ -131,17 +132,17 @@ public class BasysControlComponent extends BasysComponent<ControlComponentClient
 		return status;
 	}
 
-	protected ComponentRequestStatus handleOccupationLevelRequest(OccupationLevelRequest req) {
-		LOGGER.info(String.format("handleOccupationLevelRequest '%s' (occupierId = %s)", req.getOccupationLevel(), req.getOccupierId()));
+	protected ComponentRequestStatus handleOccupationCommandRequest(OccupationCommandRequest req) {
+		LOGGER.info(String.format("handleOccupationCommandRequest '%s' (occupierId = %s)", req.getOccupationCommand(), req.getOccupierId()));
 		
-		ComponentOrderStatus order = getService().occupy(OccupationLevel.get(req.getOccupationLevel().getLiteral()), req.getOccupierId());
+		ComponentOrderStatus order = getService().occupy(req.getOccupationCommand(), req.getOccupierId());
 	
 		ComponentRequestStatus status = new ComponentRequestStatus.Builder()
 				.status(RequestStatus.get(order.getStatus().getLiteral()))
 				.message(order.getMessage())
 				.build();
 
-		LOGGER.info(String.format("handleOccupationLevelRequest '%s' - finished", req.getOccupationLevel()));
+		LOGGER.info(String.format("handleOccupationCommandRequest '%s' - finished", req.getOccupationCommand()));
 		return status;
 	}
 

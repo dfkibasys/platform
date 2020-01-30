@@ -23,13 +23,13 @@ import de.dfki.cos.basys.common.component.ComponentContext;
 import de.dfki.cos.basys.common.component.ServiceProvider;
 import de.dfki.cos.basys.controlcomponent.ExecutionCommand;
 import de.dfki.cos.basys.controlcomponent.ExecutionMode;
-import de.dfki.cos.basys.controlcomponent.OccupationLevel;
+import de.dfki.cos.basys.controlcomponent.OccupationCommand;
 import de.dfki.cos.basys.platform.runtime.component.model.ComponentRequest;
 import de.dfki.cos.basys.platform.runtime.component.model.ComponentRequestEnvelop;
 import de.dfki.cos.basys.platform.runtime.component.model.ComponentResponse;
 import de.dfki.cos.basys.platform.runtime.component.model.ExecutionCommandRequest;
 import de.dfki.cos.basys.platform.runtime.component.model.ExecutionModeRequest;
-import de.dfki.cos.basys.platform.runtime.component.model.OccupationLevelRequest;
+import de.dfki.cos.basys.platform.runtime.component.model.OccupationCommandRequest;
 import de.dfki.cos.basys.platform.runtime.component.model.OperationModeRequest;
 import de.dfki.cos.basys.platform.runtime.component.model.RequestStatus;
 import de.dfki.cos.basys.platform.runtime.component.model.Variable;
@@ -222,9 +222,9 @@ public class CamundaProcessControllerService implements ServiceProvider<Componen
 				r = new ExecutionModeRequest();
 				((ExecutionModeRequest)r).setExecutionMode(ExecutionMode.get(task.variables.token.value));
 				break;
-			case "OccupationLevelRequest":
-				r = new OccupationLevelRequest();;
-				((OccupationLevelRequest)r).setOccupationLevel(OccupationLevel.get(task.variables.token.value));
+			case "OccupationCommandRequest":
+				r = new OccupationCommandRequest();
+				((OccupationCommandRequest)r).setOccupationCommand(OccupationCommand.get(task.variables.token.value));
 				break;
 			case "OperationModeRequest":
 				r = new OperationModeRequest();
