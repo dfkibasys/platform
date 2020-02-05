@@ -66,7 +66,7 @@ public class BasysControlComponent extends BasysComponent<ControlComponentClient
 	}
 
 	protected ComponentRequestStatus handleOperationModeRequest(OperationModeRequest req) {
-		LOGGER.info(String.format("handleOperationModeRequest '%s' (occupierId = %s)", req.getOperationMode(), req.getOccupierId()));
+		LOGGER.info(String.format("handleOperationModeRequest '%s' (businessKey = %s)", req.getOperationMode(), req.getOccupierId()));
 
 		/*
 		 * Prerequisites:
@@ -88,10 +88,10 @@ public class BasysControlComponent extends BasysComponent<ControlComponentClient
 		
 		ComponentOrderStatus status = null;		
 		String occupierId = req.getOccupierId();
-		status = getService().occupy(occupierId);
+		status = getService().occupy();
 		if (status.getStatus() == OrderStatus.DONE) {
 			currentOperationModeRequest = req;
-			status = getService().reset(occupierId);
+			status = getService().reset();
 		}
 		
 		ComponentRequestStatus result = new ComponentRequestStatus.Builder()
@@ -104,9 +104,9 @@ public class BasysControlComponent extends BasysComponent<ControlComponentClient
 	}
 
 	protected ComponentRequestStatus handleExecutionCommandRequest(ExecutionCommandRequest req) {
-		LOGGER.info(String.format("handleExecutionCommandRequest '%s' (occupierId = %s)", req.getExecutionCommand(), req.getOccupierId()));
+		LOGGER.info(String.format("handleExecutionCommandRequest '%s' (businessKey = %s)", req.getExecutionCommand(), req.getOccupierId()));
 		
-		ComponentOrderStatus order = getService().raiseExecutionCommand(ExecutionCommand.get(req.getExecutionCommand().getLiteral()), req.getOccupierId());
+		ComponentOrderStatus order = getService().raiseExecutionCommand(ExecutionCommand.get(req.getExecutionCommand().getLiteral()));
 	
 		ComponentRequestStatus status = new ComponentRequestStatus.Builder()
 				.status(RequestStatus.get(order.getStatus().getLiteral()))
@@ -118,10 +118,10 @@ public class BasysControlComponent extends BasysComponent<ControlComponentClient
 	}
 
 	protected ComponentRequestStatus handleExecutionModeRequest(ExecutionModeRequest req) {
-		LOGGER.info(String.format("handleExecutionModeRequest '%s' (occupierId = %s)", req.getExecutionMode(), req.getOccupierId()));
+		LOGGER.info(String.format("handleExecutionModeRequest '%s' (businessKey = %s)", req.getExecutionMode(), req.getOccupierId()));
 		
 		ControlComponentClient client = getService();
-		ComponentOrderStatus order = client.setExecutionMode(ExecutionMode.get(req.getExecutionMode().getLiteral()), req.getOccupierId());
+		ComponentOrderStatus order = client.setExecutionMode(ExecutionMode.get(req.getExecutionMode().getLiteral()));
 	
 		ComponentRequestStatus status = new ComponentRequestStatus.Builder()
 				.status(RequestStatus.get(order.getStatus().getLiteral()))
@@ -133,9 +133,9 @@ public class BasysControlComponent extends BasysComponent<ControlComponentClient
 	}
 
 	protected ComponentRequestStatus handleOccupationCommandRequest(OccupationCommandRequest req) {
-		LOGGER.info(String.format("handleOccupationCommandRequest '%s' (occupierId = %s)", req.getOccupationCommand(), req.getOccupierId()));
+		LOGGER.info(String.format("handleOccupationCommandRequest '%s' (businessKey = %s)", req.getOccupationCommand(), req.getOccupierId()));
 		
-		ComponentOrderStatus order = getService().occupy(req.getOccupationCommand(), req.getOccupierId());
+		ComponentOrderStatus order = getService().occupy(req.getOccupationCommand());
 	
 		ComponentRequestStatus status = new ComponentRequestStatus.Builder()
 				.status(RequestStatus.get(order.getStatus().getLiteral()))
@@ -155,13 +155,13 @@ public class BasysControlComponent extends BasysComponent<ControlComponentClient
 					@Override
 					public ComponentOrderStatus call() throws Exception {
 						ComponentOrderStatus status;
-						status = getService().setOperationMode(currentOperationModeRequest.getOperationMode(), currentOperationModeRequest.getOccupierId());
+						status = getService().setOperationMode(currentOperationModeRequest.getOperationMode());
 						if (status.getStatus() == OrderStatus.DONE) {
 							for (Variable var : currentOperationModeRequest.getInputParameters()) {								
 								//TODO: put switch block into Variable class, test date parsing and setting via opcua																				
 								getService().setParameterValue(var.getName(), var.castValue());
 							}			
-							status = getService().start(currentOperationModeRequest.getOccupierId());
+							status = getService().start();
 						}			
 						return status;
 						
@@ -186,7 +186,7 @@ public class BasysControlComponent extends BasysComponent<ControlComponentClient
 					@Override
 					public ComponentOrderStatus call() throws Exception {
 						ComponentOrderStatus status;					
-						status = getService().free(currentOperationModeRequest.getOccupierId());
+						status = getService().free();
 						
 						int n = currentOperationModeRequest.getOutputParameters().size();
 						if (n==0) {
@@ -226,7 +226,7 @@ public class BasysControlComponent extends BasysComponent<ControlComponentClient
 					@Override
 					public ComponentOrderStatus call() throws Exception {
 						ComponentOrderStatus status;						
-						status = getService().free(currentOperationModeRequest.getOccupierId());
+						status = getService().free();
 						
 						int n = currentOperationModeRequest.getOutputParameters().size();
 						if (n==0) {
