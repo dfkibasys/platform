@@ -47,6 +47,7 @@ public class CamundaProcessControllerService implements ServiceProvider<Componen
 	
 	BlockingQueue<ComponentResponse> responseQueue = new LinkedBlockingQueue<ComponentResponse>(32);
 
+	//TODO: take from context
 	ScheduledExecutorService executor = Executors.newScheduledThreadPool(32);
 
 	String topic = "ControlComponent";
@@ -267,7 +268,7 @@ public class CamundaProcessControllerService implements ServiceProvider<Componen
 			
 			
 			//context.getEventBus().post(r);
-			controller.scheduleComponentRequest(r);
+			controller.scheduleComponentRequest(r, this);
 		}
 	}
 	

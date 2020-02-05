@@ -11,9 +11,9 @@ public interface ProcessController {
 //	
 //	ProcessRequestStatus startProcessInstance(ProcessRequest request);	
 		
-	CompletableFuture<ComponentResponse> scheduleComponentRequest(ComponentRequest request);
+	CompletableFuture<ComponentResponse> scheduleComponentRequest(ComponentRequest request, ComponentResponseHandler callback);
 
-	void scheduleComponentRequest(ComponentRequest request, long delay);
+	void scheduleComponentRequest(ComponentRequest request, ComponentResponseHandler callback, long delay);
 	
 
 }

@@ -17,8 +17,6 @@ import de.dfki.cos.basys.platform.runtime.processcontrol.camunda.CamundaProcessC
 
 public class ProcessControllerComponent extends BasysComponent<ComponentResponseHandler> implements ProcessController {
 	
-	//ScheduledExecutorService executor = Executors.newScheduledThreadPool(32);
-	
 	public ProcessControllerComponent(Properties config) {
 		super(config);	
 		
@@ -26,22 +24,16 @@ public class ProcessControllerComponent extends BasysComponent<ComponentResponse
 		serviceManager = new ServiceManagerImpl<ComponentResponseHandler>(config, serviceProvider);		
 	}
 	
-	@Subscribe
-	public void handleComponentRequestEvent(ComponentRequest request) {
-		scheduleComponentRequest(request);
-	}
-	
-	
 	@Override
-	public CompletableFuture<ComponentResponse> scheduleComponentRequest(ComponentRequest request) {
+	public CompletableFuture<ComponentResponse> scheduleComponentRequest(ComponentRequest request, ComponentResponseHandler callback) {
 		LOGGER.debug("scheduleTask");
 		ComponentRequestExecutor executor = new ComponentRequestExecutor(request);
 		CompletableFuture<ComponentResponse> cf = CompletableFuture.supplyAsync(() -> {
 			executor.execute(context);
 			return executor.getResponse();
 		}, context.getScheduledExecutorService()).thenApply((response) -> {
-			if (response.getRequest().getCorrelationId() != null) {				
-				getService().handleComponentResponse(response);				
+			if (callback != null) {				
+				callback.handleComponentResponse(response);				
 			}
 			return response;
 		}).handle((response, ex) -> {
@@ -55,11 +47,11 @@ public class ProcessControllerComponent extends BasysComponent<ComponentResponse
 	}
 
 	@Override
-	public void scheduleComponentRequest(ComponentRequest request, long delay) {
+	public void scheduleComponentRequest(ComponentRequest request, ComponentResponseHandler callback, long delay) {
 		context.getScheduledExecutorService().schedule(new Runnable() {
 			@Override
 			public void run() {
-				scheduleComponentRequest(request);
+				scheduleComponentRequest(request, callback);
 			}
 		}, delay, TimeUnit.MILLISECONDS);
 	}
