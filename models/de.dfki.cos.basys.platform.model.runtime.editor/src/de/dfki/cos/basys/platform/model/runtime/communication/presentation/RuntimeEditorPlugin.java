@@ -3,8 +3,6 @@
 package de.dfki.cos.basys.platform.model.runtime.communication.presentation;
 
 import de.dfki.cos.basys.platform.model.base.provider.BaseEditPlugin;
-import de.dfki.cos.basys.platform.model.domain.order.provider.DomainEditPlugin;
-
 import org.eclipse.emf.common.EMFPlugin;
 
 import org.eclipse.emf.common.ui.EclipseUIPlugin;
@@ -46,7 +44,6 @@ public final class RuntimeEditorPlugin extends EMFPlugin {
 		super
 			(new ResourceLocator [] {
 				BaseEditPlugin.INSTANCE,
-				DomainEditPlugin.INSTANCE,
 				EcoreEditPlugin.INSTANCE,
 			});
 	}

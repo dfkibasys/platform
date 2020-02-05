@@ -69,6 +69,7 @@ import org.eclipse.swt.events.ControlEvent;
 
 import org.eclipse.swt.graphics.Point;
 
+import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.FillLayout;
 
 import org.eclipse.swt.widgets.Composite;
@@ -155,17 +156,7 @@ import org.eclipse.emf.edit.ui.util.EditUIUtil;
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 
 import de.dfki.cos.basys.platform.model.base.provider.BaseItemProviderAdapterFactory;
-import de.dfki.cos.basys.platform.model.data.provider.DataItemProviderAdapterFactory;
-import de.dfki.cos.basys.platform.model.domain.capability.provider.CapabilityItemProviderAdapterFactory;
-import de.dfki.cos.basys.platform.model.domain.material.provider.MaterialItemProviderAdapterFactory;
-import de.dfki.cos.basys.platform.model.domain.productdefinition.provider.ProductdefinitionItemProviderAdapterFactory;
-import de.dfki.cos.basys.platform.model.domain.resourceinstance.provider.ResourceinstanceItemProviderAdapterFactory;
-import de.dfki.cos.basys.platform.model.domain.resourcetype.provider.ResourcetypeItemProviderAdapterFactory;
-import de.dfki.cos.basys.platform.model.domain.topology.provider.TopologyItemProviderAdapterFactory;
-import de.dfki.cos.basys.platform.model.pattern.provider.PatternItemProviderAdapterFactory;
 import de.dfki.cos.basys.platform.model.runtime.communication.provider.CommunicationItemProviderAdapterFactory;
-import de.dfki.cos.basys.platform.model.runtime.component.provider.ComponentItemProviderAdapterFactory;
-
 import org.eclipse.emf.ecore.provider.EcoreItemProviderAdapterFactory;
 
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
@@ -336,6 +327,7 @@ public class CommunicationEditor
 	 */
 	protected IPartListener partListener =
 		new IPartListener() {
+			@Override
 			public void partActivated(IWorkbenchPart p) {
 				if (p instanceof ContentOutline) {
 					if (((ContentOutline)p).getCurrentPage() == contentOutlinePage) {
@@ -354,15 +346,19 @@ public class CommunicationEditor
 					handleActivate();
 				}
 			}
+			@Override
 			public void partBroughtToTop(IWorkbenchPart p) {
 				// Ignore.
 			}
+			@Override
 			public void partClosed(IWorkbenchPart p) {
 				// Ignore.
 			}
+			@Override
 			public void partDeactivated(IWorkbenchPart p) {
 				// Ignore.
 			}
+			@Override
 			public void partOpened(IWorkbenchPart p) {
 				// Ignore.
 			}
@@ -448,6 +444,7 @@ public class CommunicationEditor
 					dispatching = true;
 					getSite().getShell().getDisplay().asyncExec
 						(new Runnable() {
+							 @Override
 							 public void run() {
 								 dispatching = false;
 								 updateProblemIndication();
@@ -477,6 +474,7 @@ public class CommunicationEditor
 	 */
 	protected IResourceChangeListener resourceChangeListener =
 		new IResourceChangeListener() {
+			@Override
 			public void resourceChanged(IResourceChangeEvent event) {
 				IResourceDelta delta = event.getDelta();
 				try {
@@ -485,6 +483,7 @@ public class CommunicationEditor
 						protected Collection<Resource> changedResources = new ArrayList<Resource>();
 						protected Collection<Resource> removedResources = new ArrayList<Resource>();
 
+						@Override
 						public boolean visit(IResourceDelta delta) {
 							if (delta.getResource().getType() == IResource.FILE) {
 								if (delta.getKind() == IResourceDelta.REMOVED ||
@@ -520,6 +519,7 @@ public class CommunicationEditor
 					if (!visitor.getRemovedResources().isEmpty()) {
 						getSite().getShell().getDisplay().asyncExec
 							(new Runnable() {
+								 @Override
 								 public void run() {
 									 removedResources.addAll(visitor.getRemovedResources());
 									 if (!isDirty()) {
@@ -532,6 +532,7 @@ public class CommunicationEditor
 					if (!visitor.getChangedResources().isEmpty()) {
 						getSite().getShell().getDisplay().asyncExec
 							(new Runnable() {
+								 @Override
 								 public void run() {
 									 changedResources.addAll(visitor.getChangedResources());
 									 if (getSite().getPage().getActiveEditor() == CommunicationEditor.this) {
@@ -590,8 +591,9 @@ public class CommunicationEditor
 	 */
 	protected void handleChangedResources() {
 		if (!changedResources.isEmpty() && (!isDirty() || handleDirtyConflict())) {
+			ResourceSet resourceSet = editingDomain.getResourceSet();
 			if (isDirty()) {
-				changedResources.addAll(editingDomain.getResourceSet().getResources());
+				changedResources.addAll(resourceSet.getResources());
 			}
 			editingDomain.getCommandStack().flush();
 
@@ -600,7 +602,7 @@ public class CommunicationEditor
 				if (resource.isLoaded()) {
 					resource.unload();
 					try {
-						resource.load(Collections.EMPTY_MAP);
+						resource.load(resourceSet.getLoadOptions());
 					}
 					catch (IOException exception) {
 						if (!resourceToDiagnosticMap.containsKey(resource)) {
@@ -711,16 +713,7 @@ public class CommunicationEditor
 
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new CommunicationItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new ComponentItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new BaseItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new PatternItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new DataItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new ProductdefinitionItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new TopologyItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new CapabilityItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new MaterialItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new ResourcetypeItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new ResourceinstanceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new EcoreItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
@@ -732,9 +725,11 @@ public class CommunicationEditor
 		//
 		commandStack.addCommandStackListener
 			(new CommandStackListener() {
+				 @Override
 				 public void commandStackChanged(final EventObject event) {
 					 getContainer().getDisplay().asyncExec
 						 (new Runnable() {
+							  @Override
 							  public void run() {
 								  firePropertyChange(IEditorPart.PROP_DIRTY);
 
@@ -746,7 +741,7 @@ public class CommunicationEditor
 								  }
 								  for (Iterator<PropertySheetPage> i = propertySheetPages.iterator(); i.hasNext(); ) {
 									  PropertySheetPage propertySheetPage = i.next();
-									  if (propertySheetPage.getControl().isDisposed()) {
+									  if (propertySheetPage.getControl() == null || propertySheetPage.getControl().isDisposed()) {
 										  i.remove();
 									  }
 									  else {
@@ -787,6 +782,7 @@ public class CommunicationEditor
 		if (theSelection != null && !theSelection.isEmpty()) {
 			Runnable runnable =
 				new Runnable() {
+					@Override
 					public void run() {
 						// Try to select the items in the current content viewer of the editor.
 						//
@@ -807,6 +803,7 @@ public class CommunicationEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EditingDomain getEditingDomain() {
 		return editingDomain;
 	}
@@ -903,6 +900,7 @@ public class CommunicationEditor
 					new ISelectionChangedListener() {
 						// This just notifies those things that are affected by the section.
 						//
+						@Override
 						public void selectionChanged(SelectionChangedEvent selectionChangedEvent) {
 							setSelection(selectionChangedEvent.getSelection());
 						}
@@ -937,6 +935,7 @@ public class CommunicationEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Viewer getViewer() {
 		return currentViewer;
 	}
@@ -1242,8 +1241,11 @@ public class CommunicationEditor
 
 			getSite().getShell().getDisplay().asyncExec
 				(new Runnable() {
+					 @Override
 					 public void run() {
-						 setActivePage(0);
+						 if (!getContainer().isDisposed()) {
+							 setActivePage(0);
+						 }
 					 }
 				 });
 		}
@@ -1266,6 +1268,7 @@ public class CommunicationEditor
 
 		getSite().getShell().getDisplay().asyncExec
 			(new Runnable() {
+				 @Override
 				 public void run() {
 					 updateProblemIndication();
 				 }
@@ -1283,9 +1286,9 @@ public class CommunicationEditor
 		if (getPageCount() <= 1) {
 			setPageText(0, "");
 			if (getContainer() instanceof CTabFolder) {
-				((CTabFolder)getContainer()).setTabHeight(1);
 				Point point = getContainer().getSize();
-				getContainer().setSize(point.x, point.y + 6);
+				Rectangle clientArea = getContainer().getClientArea();
+				getContainer().setSize(point.x,  2 * point.y - clientArea.height - clientArea.y);
 			}
 		}
 	}
@@ -1301,9 +1304,9 @@ public class CommunicationEditor
 		if (getPageCount() > 1) {
 			setPageText(0, getString("_UI_SelectionPage_label"));
 			if (getContainer() instanceof CTabFolder) {
-				((CTabFolder)getContainer()).setTabHeight(SWT.DEFAULT);
 				Point point = getContainer().getSize();
-				getContainer().setSize(point.x, point.y - 6);
+				Rectangle clientArea = getContainer().getClientArea();
+				getContainer().setSize(point.x, clientArea.height + clientArea.y);
 			}
 		}
 	}
@@ -1331,15 +1334,15 @@ public class CommunicationEditor
 	 */
 	@SuppressWarnings("rawtypes")
 	@Override
-	public Object getAdapter(Class key) {
+	public <T> T getAdapter(Class<T> key) {
 		if (key.equals(IContentOutlinePage.class)) {
-			return showOutlineView() ? getContentOutlinePage() : null;
+			return showOutlineView() ? key.cast(getContentOutlinePage()) : null;
 		}
 		else if (key.equals(IPropertySheetPage.class)) {
-			return getPropertySheetPage();
+			return key.cast(getPropertySheetPage());
 		}
 		else if (key.equals(IGotoMarker.class)) {
-			return this;
+			return key.cast(this);
 		}
 		else {
 			return super.getAdapter(key);
@@ -1402,6 +1405,7 @@ public class CommunicationEditor
 				(new ISelectionChangedListener() {
 					 // This ensures that we handle selections correctly.
 					 //
+					 @Override
 					 public void selectionChanged(SelectionChangedEvent event) {
 						 handleContentOutlineSelection(event.getSelection());
 					 }
@@ -1419,7 +1423,7 @@ public class CommunicationEditor
 	 */
 	public IPropertySheetPage getPropertySheetPage() {
 		PropertySheetPage propertySheetPage =
-			new ExtendedPropertySheetPage(editingDomain) {
+			new ExtendedPropertySheetPage(editingDomain, ExtendedPropertySheetPage.Decoration.NONE, null, 0, false) {
 				@Override
 				public void setSelectionToViewer(List<?> selection) {
 					CommunicationEditor.this.setSelectionToViewer(selection);
@@ -1626,6 +1630,7 @@ public class CommunicationEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void gotoMarker(IMarker marker) {
 		List<?> targetObjects = markerHelper.getTargetObjects(editingDomain, marker);
 		if (!targetObjects.isEmpty()) {
@@ -1670,6 +1675,7 @@ public class CommunicationEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void addSelectionChangedListener(ISelectionChangedListener listener) {
 		selectionChangedListeners.add(listener);
 	}
@@ -1680,6 +1686,7 @@ public class CommunicationEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void removeSelectionChangedListener(ISelectionChangedListener listener) {
 		selectionChangedListeners.remove(listener);
 	}
@@ -1690,6 +1697,7 @@ public class CommunicationEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ISelection getSelection() {
 		return editorSelection;
 	}
@@ -1701,6 +1709,7 @@ public class CommunicationEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSelection(ISelection selection) {
 		editorSelection = selection;
 
@@ -1770,6 +1779,7 @@ public class CommunicationEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void menuAboutToShow(IMenuManager menuManager) {
 		((IMenuListener)getEditorSite().getActionBarContributor()).menuAboutToShow(menuManager);
 	}
