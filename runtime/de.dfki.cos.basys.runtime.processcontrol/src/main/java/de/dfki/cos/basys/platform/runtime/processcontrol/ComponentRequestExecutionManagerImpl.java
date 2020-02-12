@@ -7,34 +7,45 @@ import java.util.function.Supplier;
 
 import com.google.common.eventbus.Subscribe;
 
+import de.dfki.cos.basys.common.component.ComponentException;
 import de.dfki.cos.basys.common.component.impl.ServiceManagerImpl;
 import de.dfki.cos.basys.controlcomponent.client.ControlComponentClient;
 import de.dfki.cos.basys.controlcomponent.client.ControlComponentClientImpl;
 import de.dfki.cos.basys.platform.runtime.component.BasysComponent;
 import de.dfki.cos.basys.platform.runtime.component.model.ComponentRequest;
 import de.dfki.cos.basys.platform.runtime.component.model.ComponentResponse;
-import de.dfki.cos.basys.platform.runtime.processcontrol.camunda.CamundaProcessControllerService;
+import de.dfki.cos.basys.platform.runtime.processcontrol.camunda.ControlComponentWorker;
 
-public class ProcessControllerComponent extends BasysComponent<ComponentResponseHandler> implements ProcessController {
+public class ComponentRequestExecutionManagerImpl extends BasysComponent<ComponentRequestIssuer> implements ComponentRequestExecutionManager {
 	
-	public ProcessControllerComponent(Properties config) {
+	public ComponentRequestExecutionManagerImpl(Properties config) {
 		super(config);	
 		
-		CamundaProcessControllerService serviceProvider = new CamundaProcessControllerService(config, this);
-		serviceManager = new ServiceManagerImpl<ComponentResponseHandler>(config, serviceProvider);		
+//		ControlComponentWorker serviceProvider = new ControlComponentWorker(config);
+//		serviceManager = new ServiceManagerImpl<ComponentRequestIssuer>(config, serviceProvider);		
 	}
 	
 	@Override
-	public CompletableFuture<ComponentResponse> scheduleComponentRequest(ComponentRequest request, ComponentResponseHandler callback) {
-		LOGGER.debug("scheduleTask");
+	protected void doActivate() throws ComponentException {	
+		super.doActivate();
+		
+	}
+	
+	@Override
+	protected void doDeactivate() throws ComponentException {
+		super.doDeactivate();
+		
+	}
+	
+	@Override
+	public CompletableFuture<ComponentResponse> executeComponentRequest(ComponentRequest request) {
+		LOGGER.debug("executeComponentRequest");
 		ComponentRequestExecutor executor = new ComponentRequestExecutor(request);
 		CompletableFuture<ComponentResponse> cf = CompletableFuture.supplyAsync(() -> {
 			executor.execute(context);
 			return executor.getResponse();
 		}, context.getScheduledExecutorService()).thenApply((response) -> {
-			if (callback != null) {				
-				callback.handleComponentResponse(response);				
-			}
+			getService().handleComponentResponse(response);
 			return response;
 		}).handle((response, ex) -> {
 			if (ex != null) {
@@ -46,15 +57,15 @@ public class ProcessControllerComponent extends BasysComponent<ComponentResponse
 		return cf;
 	}
 
-	@Override
-	public void scheduleComponentRequest(ComponentRequest request, ComponentResponseHandler callback, long delay) {
-		context.getScheduledExecutorService().schedule(new Runnable() {
-			@Override
-			public void run() {
-				scheduleComponentRequest(request, callback);
-			}
-		}, delay, TimeUnit.MILLISECONDS);
-	}
+//	@Override
+//	public void executeComponentRequest(ComponentRequest request, long delay) {
+//		context.getScheduledExecutorService().schedule(new Runnable() {
+//			@Override
+//			public void run() {
+//				executeComponentRequest(request);
+//			}
+//		}, delay, TimeUnit.MILLISECONDS);
+//	}
 	
 //	@Override
 //	public Response handleRequest(Channel channel, Request req) {
@@ -91,20 +102,6 @@ public class ProcessControllerComponent extends BasysComponent<ComponentResponse
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-//	}
-
-
-//	@Override
-//	public String deployProcessDefinition(String deploymentName, String processDefinition) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-
-
-//	@Override
-//	public ProcessRequestStatus startProcessInstance(ProcessRequest request) {
-//		// TODO Auto-generated method stub
-//		return null;
 //	}
 
 }

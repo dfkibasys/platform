@@ -5,15 +5,15 @@ import java.util.concurrent.CompletableFuture;
 import de.dfki.cos.basys.platform.runtime.component.model.ComponentRequest;
 import de.dfki.cos.basys.platform.runtime.component.model.ComponentResponse;
 
-public interface ProcessController {
+public interface ComponentRequestExecutionManager {
 
 //	String deployProcessDefinition(String deploymentName, String processDefinition);
 //	
 //	ProcessRequestStatus startProcessInstance(ProcessRequest request);	
 		
-	CompletableFuture<ComponentResponse> scheduleComponentRequest(ComponentRequest request, ComponentResponseHandler callback);
+	CompletableFuture<ComponentResponse> executeComponentRequest(ComponentRequest request);
 
-	void scheduleComponentRequest(ComponentRequest request, ComponentResponseHandler callback, long delay);
+	//void executeComponentRequest(ComponentRequest request, long delay);
 	
 
 }

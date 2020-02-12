@@ -35,7 +35,7 @@ public class ProcessControllerComponentTest extends BaseComponentTest {
 	@Test
 	@Ignore
 	public void testTaskFetch() {
-		ProcessControllerComponent component = (ProcessControllerComponent) componentManager.getComponentById("process-controller");
+		ComponentRequestExecutionManagerImpl component = (ComponentRequestExecutionManagerImpl) componentManager.getComponentById("process-controller");
 			
 		
 		sleep(300);

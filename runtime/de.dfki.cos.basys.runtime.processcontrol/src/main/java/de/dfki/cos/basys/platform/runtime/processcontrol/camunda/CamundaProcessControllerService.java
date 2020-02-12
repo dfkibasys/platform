@@ -33,7 +33,7 @@ import de.dfki.cos.basys.platform.runtime.component.model.OccupationCommandReque
 import de.dfki.cos.basys.platform.runtime.component.model.OperationModeRequest;
 import de.dfki.cos.basys.platform.runtime.component.model.RequestStatus;
 import de.dfki.cos.basys.platform.runtime.component.model.Variable;
-import de.dfki.cos.basys.platform.runtime.processcontrol.ProcessController;
+import de.dfki.cos.basys.platform.runtime.processcontrol.ComponentRequestExecutionManager;
 import de.dfki.cos.basys.platform.runtime.processcontrol.ComponentResponseHandler;
 
 public class CamundaProcessControllerService implements ServiceProvider<ComponentResponseHandler>, ComponentResponseHandler {
@@ -41,7 +41,7 @@ public class CamundaProcessControllerService implements ServiceProvider<Componen
 	Logger LOGGER = LoggerFactory.getLogger(this.getClass().getName());
 	
 	//ComponentContext context;
-	ProcessController controller;
+	ComponentRequestExecutionManager controller;
 	CamundaRestClient client;	
 	private boolean connected;
 	
@@ -58,7 +58,7 @@ public class CamundaProcessControllerService implements ServiceProvider<Componen
 	int maxRetryCount = 0;
 	int retryTimeout = 1000;
 	
-	public CamundaProcessControllerService(Properties config, ProcessController controller) {
+	public CamundaProcessControllerService(Properties config, ComponentRequestExecutionManager controller) {
 
 		if (config.getProperty("topic") != null) {
 			topic = config.getProperty("topic");
