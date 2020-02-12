@@ -31,6 +31,7 @@
 		<module>de.dfki.cos.basys.runtime.component.device.xmlrpc</module>
 		-->
 		<module>de.dfki.cos.basys.runtime.gateway</module>
+		<module>de.dfki.cos.basys.runtime.instance</module>
 		<module>de.dfki.cos.basys.runtime.processcontrol</module>
 		<module>de.dfki.cos.basys.runtime.services</module>
         <!-- deprecated
