@@ -30,7 +30,7 @@ public abstract class AbstractComponentRequestIssuer
 	@Override
 	public ComponentRequest pollNewComponentRequest() {
 		try {
-			return requestQueue.poll(1000, TimeUnit.SECONDS);
+			return requestQueue.poll(5, TimeUnit.SECONDS);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 		}

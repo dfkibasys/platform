@@ -1,4 +1,4 @@
-package de.dfki.cos.basys.platform.runtime.processcontrol;
+package de.dfki.cos.basys.platform.runtime.processcontrol.impl;
 
 import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
