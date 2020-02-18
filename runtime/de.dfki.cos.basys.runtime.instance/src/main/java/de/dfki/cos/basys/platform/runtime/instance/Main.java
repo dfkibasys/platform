@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Properties;
 import java.util.concurrent.ExecutionException;
 
@@ -33,75 +35,54 @@ public class Main {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger("basys");
 
+	private static BasysComponentContext context = BasysComponentContext.getStaticContext();
+	
 	private static Client communicationClient;
 	private static ChannelPool channelPool;
 	private static ComponentManagerImpl componentManager;
-	private static BasysComponentContext context;
 
+	private static Properties channelPoolConfig = new Properties();
+	private static Properties componentRegistryConfig = new Properties();
+	private static Properties componentManagerConfig = new Properties();
+	
 	boolean debug = false;
 
 	public static void main(String[] args) throws Exception {
-
 		Options options = new Options();
 
-		Option configFileOption = new Option("c", "config", true, "path to a config.properties file");
+		Option configFileOption = new Option("c", "config", true, "path to a config folder");
 		configFileOption.setRequired(false);
 		options.addOption(configFileOption);
 
-		Option certsFolderOption = new Option("x", "certsFolder", true,
-				"folder containing server and client certificates");
+		Option certsFolderOption = new Option("xf", "certsFolder", true, "folder containing server and client certificates");
 		certsFolderOption.setRequired(false);
 		options.addOption(certsFolderOption);
 
-		Option componentsFolderOption = new Option("cf", "componentConfigFolder", true,
-				"folder containing component configurations");
+		Option componentsFolderOption = new Option("cf", "componentConfigFolder", true, "folder containing component configurations");
 		componentsFolderOption.setRequired(false);
 		options.addOption(componentsFolderOption);
-
-		Option recursiveOption = new Option("r", "recursive", false, "scan folder recursively");
-		recursiveOption.setRequired(false);
-		options.addOption(recursiveOption);
-
-		Option watchFolderOption = new Option("w", "watchFolder", false, "watch folder for new and deleted files");
-		watchFolderOption.setRequired(false);
-		options.addOption(watchFolderOption);
-
-		Option asyncOption = new Option("a", "async", false, "create components asynchronously");
-		asyncOption.setRequired(false);
-		options.addOption(asyncOption);
-//
-//		Option tpcPortOption = new Option("tcp", "tpcPort", true, "the server's TCP port");
-//		tpcPortOption.setRequired(false);
-//		options.addOption(tpcPortOption);
-//
-//		Option httpsPortOption = new Option("https", "httpsPort", true, "the server's HTTPS port");
-//		httpsPortOption.setRequired(false);
-//		options.addOption(httpsPortOption);
 
 		CommandLineParser parser = new DefaultParser();
 		HelpFormatter formatter = new HelpFormatter();
 		CommandLine cmd;
 
-		Properties config = new Properties(getDefaultConfig());
-
 		try {
 			cmd = parser.parse(options, args);
 			if (cmd.hasOption("c")) {
-				File configFile = new File(cmd.getOptionValue("c"));
-				config.load(new FileInputStream(configFile));
-			}
+				String configFolderPath = cmd.getOptionValue("c");
+		
+				Path channelPoolConfigPath = Paths.get(configFolderPath, "channel-pool.properties");
+				channelPoolConfig.load(new FileInputStream(channelPoolConfigPath.toFile()));
+
+				Path componentRegistryConfigPath = Paths.get(configFolderPath, "component-registry.properties");
+				componentRegistryConfig.load(new FileInputStream(componentRegistryConfigPath.toFile()));
+
+				Path componentManagerConfigPath = Paths.get(configFolderPath, "component-manager.properties");
+				componentManagerConfig.load(new FileInputStream(componentManagerConfigPath.toFile()));							
+			}			
 
 			if (cmd.hasOption("cf")) {
-				config.setProperty("componentConfigFolder", cmd.getOptionValue("cf"));
-			}
-			if (cmd.hasOption("r")) {
-				config.setProperty("recursive", cmd.getOptionValue("r"));
-			}
-			if (cmd.hasOption("w")) {
-				config.setProperty("watchFolder", cmd.getOptionValue("w"));
-			}
-			if (cmd.hasOption("a")) {
-				config.setProperty("async", cmd.getOptionValue("a"));
+				componentManagerConfig.setProperty("serviceConnectionString", cmd.getOptionValue("cf"));
 			}
 
 		} catch (ParseException e) {
@@ -110,15 +91,8 @@ public class Main {
 
 			System.exit(1);
 		}
-
-
-		// 1. create context
-
-		context = BasysComponentContext.getStaticContext();
 		
-		// 2. establish communication
-		
-		Properties channelPoolConfig = new Properties();
+		// 1. establish communication
 		if (channelPoolConfig.containsKey("clientId")) {
 			String clientId = channelPoolConfig.getProperty("clientId");
 			if (channelPoolConfig.containsKey("username") && channelPoolConfig.containsKey("password")) {
@@ -133,38 +107,25 @@ public class Main {
 
 		if (channelPoolConfig.containsKey(StringConstants.serviceImplementationJavaClass) ) {
 			String providerImplementationJavaClass = channelPoolConfig.getProperty(StringConstants.serviceImplementationJavaClass);			
+			//if connectionString is null, defaultConnectionString will be used later
 			String connectionString = channelPoolConfig.getProperty(StringConstants.serviceConnectionString);
 			channelPool = CommFactory.getInstance().connectChannelPool(communicationClient, connectionString, providerImplementationJavaClass);
 		}
 		context.setSharedChannelPool(channelPool);
 		
-		// 3. create component manager		
-		
-		Properties componentManagerConfig = new Properties(config);
-		componentManagerConfig.put(StringConstants.id, "component-manager");
-		componentManagerConfig.put(StringConstants.name, "component-manager");
-		componentManagerConfig.put(StringConstants.serviceConnectionString,	config.getProperty("componentConfigFolder"));
-		componentManagerConfig.put("recursive", config.getProperty("recursive"));
-		componentManagerConfig.put("watchFolder", config.getProperty("watchFolder"));
-		componentManagerConfig.put("async", config.getProperty("async"));
-		
+		// 2. create component manager	
 		componentManager = new ComponentManagerImpl(componentManagerConfig);
 		context.setComponentManager(componentManager);
 		
-		// 4. create component registry		
-		
-		Properties componentRegistryConfig = new Properties(config);
-
+		// 3. create component registry		
 		Component componentRegistry = componentManager.createComponent(componentRegistryConfig);
 		context.setComponentRegistry( (ComponentRegistry) componentRegistry);
 		componentRegistry.activate(context);
 		
-		// 5. activate component manager
-
-		componentManager.activate(ComponentContext.getStaticContext());
+		// 4. activate component manager
+		componentManager.activate(context);
 		
-		// 6. define graceful shutdown
-		
+		// 5. define graceful shutdown		
 		Runtime.getRuntime().addShutdownHook(new Thread() {
 			@Override
 			public void run() {
@@ -182,15 +143,5 @@ public class Main {
 				}
 			}
 		});
-
-	}	
-	
-    public static Properties getDefaultConfig() {
-    	Properties defaultConfig = new Properties();
-        defaultConfig.setProperty("componentConfigFolder", "src/test/resources/components");
-        defaultConfig.setProperty("recursive", "false");
-        defaultConfig.setProperty("watchFolder", "true");
-        defaultConfig.setProperty("async", "false");
-    	return defaultConfig;
-    }
+	}
 }

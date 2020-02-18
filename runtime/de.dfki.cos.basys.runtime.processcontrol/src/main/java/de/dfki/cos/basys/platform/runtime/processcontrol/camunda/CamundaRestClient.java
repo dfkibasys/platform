@@ -135,7 +135,13 @@ public class CamundaRestClient {
 	public synchronized void complete(String taskId) {
 		LOGGER.debug("Complete task {}", taskId);
 		Response response = externalTaskEndpoint.path("/{taskId}/complete").resolveTemplate("taskId", taskId).request(MediaType.APPLICATION_JSON).post(Entity.entity("{\"workerId\": \"" + workerId + "\"}", MediaType.APPLICATION_JSON));
-		LOGGER.debug("Complete task {} succeded with status code {}", taskId, response.getStatus());
+		
+		if (response.getStatus() != 204) {		
+			LOGGER.warn("Complete task {} failed with status code {}: {}", taskId, response.getStatus(), response.getStatusInfo(), response.getEntity());
+			LOGGER.warn(response.readEntity(String.class));
+		} else {
+			LOGGER.debug("Complete task {} succeded with status code {}", taskId, response.getStatus());				
+		}		
 	}
 
 //	public void complete2(String taskId, List<Variable> variables) {
@@ -161,7 +167,13 @@ public class CamundaRestClient {
 
 		Response response = externalTaskEndpoint.path("/{taskId}/complete").resolveTemplate("taskId", taskId).request(MediaType.APPLICATION_JSON)
 				.post(Entity.entity("{" + "\"workerId\": \"" + workerId + "\"," + "\"variables\": {" + vars + "}" + "}", MediaType.APPLICATION_JSON));
-		LOGGER.debug("Complete task {} succeded with status code {}", taskId, response.getStatus());
+		
+		if (response.getStatus() != 204) {		
+			LOGGER.warn("Complete task {} failed with status code {}: {}", taskId, response.getStatus(), response.getStatusInfo());
+			LOGGER.warn(response.readEntity(String.class));
+		} else {
+			LOGGER.debug("Complete task {} succeded with status code {}", taskId, response.getStatus());				
+		}
 	}
 
 //	public synchronized boolean isCanceled(String taskId) {
