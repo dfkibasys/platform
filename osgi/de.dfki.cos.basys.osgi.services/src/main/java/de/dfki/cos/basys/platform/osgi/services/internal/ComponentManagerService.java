@@ -122,6 +122,11 @@ public class ComponentManagerService extends OsgiComponentWrapper implements Com
 	}
 
 	@Override
+	public void addComponent(Properties config) throws ComponentManagerException {
+		impl.addComponent(config);
+	}
+	
+	@Override
 	public void addComponent(de.dfki.cos.basys.common.component.Component component) throws ComponentManagerException {
 		impl.addComponent(component);
 	}
