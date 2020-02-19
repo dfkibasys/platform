@@ -1,19 +1,10 @@
 package de.dfki.cos.basys.platform.runtime.processcontrol;
 
-import static org.junit.Assert.assertEquals;
-
-import java.util.LinkedList;
-import java.util.List;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import de.dfki.cos.basys.platform.runtime.component.model.Variable;
-import de.dfki.cos.basys.platform.runtime.component.model.VariableType;
-import de.dfki.cos.basys.platform.runtime.processcontrol.camunda.CamundaRestClient;
-import de.dfki.cos.basys.platform.runtime.processcontrol.camunda.ExternalServiceTaskDto;
 import de.dfki.cos.basys.platform.runtime.processcontrol.impl.ComponentRequestExecutionManagerImpl;
 
 public class ProcessControllerComponentTest extends BaseComponentTest {

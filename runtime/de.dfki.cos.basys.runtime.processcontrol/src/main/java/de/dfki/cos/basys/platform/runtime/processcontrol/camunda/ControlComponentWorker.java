@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
 
+import org.camunda.bpm.client.task.ExternalTask;
+
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -26,40 +28,44 @@ public class ControlComponentWorker extends CamundaExternalTaskWorker {
 		super(config);
 	}
 
-	public ComponentRequest createComponentRequest(ExternalServiceTaskDto task) {		
+	public ComponentRequest createComponentRequest(ExternalTask externalTask) {		
 		ComponentRequest r = null;
 		
-		switch (task.variables.requestType.value) {
+		String requestType = externalTask.getVariable("requestType");
+		String componentId = externalTask.getVariable("componentId");
+		String token = externalTask.getVariable("token");
+		String input = externalTask.getVariable("inputParameters");
+		String output = externalTask.getVariable("outputParameters");		
+		
+		switch (requestType) {
 		case "ExecutionCommandRequest":
 			r = new ExecutionCommandRequest();
-			((ExecutionCommandRequest)r).setExecutionCommand(ExecutionCommand.get(task.variables.token.value));
+			((ExecutionCommandRequest)r).setExecutionCommand(ExecutionCommand.get(token));
 			break;
 		case "ExecutionModeRequest":
 			r = new ExecutionModeRequest();
-			((ExecutionModeRequest)r).setExecutionMode(ExecutionMode.get(task.variables.token.value));
+			((ExecutionModeRequest)r).setExecutionMode(ExecutionMode.get(token));
 			break;
 		case "OccupationCommandRequest":
 			r = new OccupationCommandRequest();
-			((OccupationCommandRequest)r).setOccupationCommand(OccupationCommand.get(task.variables.token.value));
+			((OccupationCommandRequest)r).setOccupationCommand(OccupationCommand.get(token));
 			break;
 		case "OperationModeRequest":
 			r = new OperationModeRequest();
 			OperationModeRequest req = (OperationModeRequest) r;
-			req.setOperationMode(task.variables.token.value);
+			req.setOperationMode(token);
 			ObjectMapper mapper = new ObjectMapper();
-			try {
-				
-				List<Variable> inputParameters = mapper.readValue(task.variables.inputParameters.value,new TypeReference<List<Variable>>(){});
-				LOGGER.debug(inputParameters.toString());					
-				for (Variable var : inputParameters) {
-					//Variable var = new Variable.Builder().name(entry.getKey()).valueString(entry.getValue()).build();
-					req.getInputParameters().add(var);						
-				    //System.out.println(entry.getKey() + "/" + entry.getValue());
+			try {		
+				if (input != null) {
+					List<Variable> inputParameters = mapper.readValue(input,new TypeReference<List<Variable>>(){});
+					LOGGER.debug(inputParameters.toString());
+					req.getInputParameters().addAll(inputParameters);
 				}
-									
-				List<Variable> output = mapper.readValue(task.variables.outputParameters.value,new TypeReference<List<Variable>>(){});			
-				LOGGER.debug(output.toString());		
-				req.getOutputParameters().addAll(output);
+				if (output != null) {
+					List<Variable> outputParameters = mapper.readValue(output,new TypeReference<List<Variable>>(){});			
+					LOGGER.debug(outputParameters.toString());		
+					req.getOutputParameters().addAll(outputParameters);
+				}
 				
 			} catch (JsonParseException e) {
 				// TODO Auto-generated catch block
@@ -77,9 +83,9 @@ public class ControlComponentWorker extends CamundaExternalTaskWorker {
 			break;
 		}
 		
-		r.setCorrelationId(task.id);
-		r.setOccupierId(task.processInstanceId);				
-		r.setComponentId(task.variables.componentId.value);					
+		r.setCorrelationId(externalTask.getId());
+		r.setOccupierId(externalTask.getProcessInstanceId());				
+		r.setComponentId(componentId);					
 		
 		return r;
 	}

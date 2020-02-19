@@ -12,6 +12,11 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
+import org.camunda.bpm.client.ExternalTaskClient;
+import org.camunda.bpm.client.task.ExternalTask;
+import org.camunda.bpm.client.task.ExternalTaskHandler;
+import org.camunda.bpm.client.task.ExternalTaskService;
+import org.camunda.bpm.client.topic.TopicSubscription;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,12 +43,7 @@ import de.dfki.cos.basys.platform.runtime.processcontrol.ComponentRequestExecuti
 import de.dfki.cos.basys.platform.runtime.processcontrol.impl.AbstractComponentRequestIssuer;
 import de.dfki.cos.basys.platform.runtime.processcontrol.ComponentRequestIssuer;
 
-public abstract class CamundaExternalTaskWorker extends AbstractComponentRequestIssuer {
-
-	
-	protected CamundaRestClient client;	
-	
-	private ScheduledFuture<?> pollingFuture;
+public abstract class CamundaExternalTaskWorker extends AbstractComponentRequestIssuer implements ExternalTaskHandler {
 
 	protected String topic = "undefined";
 	protected String workerId = this.getClass().getName();
@@ -52,6 +52,12 @@ public abstract class CamundaExternalTaskWorker extends AbstractComponentRequest
 	protected long asyncResponseTimeout = 10000; // Long Polling request timeout in milliseconds
 	protected int maxRetryCount = 0;
 	protected int retryTimeout = 1000;
+
+	protected ExternalTaskClient client;
+	protected TopicSubscription subscription;
+	protected ExternalTaskService externalTaskService;
+	protected Map<String, ExternalTask> externalTasks = new HashMap<>();
+	
 	
 	public CamundaExternalTaskWorker(Properties config) {
 
@@ -91,96 +97,92 @@ public abstract class CamundaExternalTaskWorker extends AbstractComponentRequest
 		}			
 	}
 	
+	public void execute(ExternalTask externalTask, ExternalTaskService externalTaskService) {
+		// the externalTaskService is only created once for all externalTasks. So we store it here the first time.		
+		if (this.externalTaskService == null) {
+			this.externalTaskService = externalTaskService;
+		}
+		
+		String requestType = externalTask.getVariable("requestType");
+		if (requestType == null) {
+			externalTaskService.handleFailure(externalTask, "No requestType", "ExternalTask does not contain a requestType", maxRetryCount, retryTimeout);
+			return;
+		}
+		
+		String componentId = externalTask.getVariable("componentId");
+		if (componentId == null) {
+			externalTaskService.handleFailure(externalTask, "No componentId", "ExternalTask does not contain a componentId", maxRetryCount, retryTimeout);
+			return;
+		}
+		
+		externalTasks.put(externalTask.getId(), externalTask);	
+		ComponentRequest request = createComponentRequest(externalTask);
+		
+		try {
+			requestQueue.put(request);
+		} catch (InterruptedException e) {
+			Thread.currentThread().interrupt();
+		}
+	}
+	
 	@Override
 	public boolean connect(ComponentContext context, String connectionString) {
 		super.connect(context, connectionString);
 		
 		if (connectionString.endsWith("/"))
 			connectionString = connectionString.substring(0, connectionString.length()-1);		
+				
+		client = ExternalTaskClient.create()
+				  .baseUrl(connectionString)
+				  .asyncResponseTimeout(asyncResponseTimeout)
+				  .lockDuration(lockDuration)
+				  .maxTasks(maxFetchCount)
+				  .build();
 		
-		this.client = new CamundaRestClient(workerId, connectionString);
-		pollingFuture = this.context.getScheduledExecutorService().scheduleWithFixedDelay(new Runnable() {
-
-			@Override
-			public void run() {
-				try {
-				pollCamunda();
-				connected = true;
-				} catch (Exception e) {
-					LOGGER.error(e.getMessage());
-					e.printStackTrace();
-					LOGGER.error("Camunda could not be polled - is it running?");
-					connected = false;
-					try {
-						Thread.sleep(5000);
-					} catch (InterruptedException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				}
-
-			}
-		}, 5000, 100, TimeUnit.MILLISECONDS);
+		subscription = client.subscribe(topic)
+			.lockDuration(lockDuration)
+			.variables("componentId", "requestType", "token", "inputParameters", "outputParameters")
+			.handler(this)
+			.open();		
 		
-		return connected;
+		return client.isActive();
 	}
-
+	
 	@Override
 	public void disconnect() {
 		super.disconnect();
-		pollingFuture.cancel(true);
+		if (subscription != null)
+			subscription.close();
+		if (client != null)
+			client.stop();
 	}
 	
-
-	
-	private void pollCamunda() {
-
-		LOGGER.trace("pollCamunda");
-
-		List<ExternalServiceTaskDto> tasks = client.getExternalTasks(topic, maxFetchCount, lockDuration, asyncResponseTimeout, "componentId", "requestType", "token", "inputParameters", "outputParameters");
-		
-		if (tasks.size() > 0) {
-			LOGGER.info("pollCamunda fetched " + tasks.size() + " task(s)" );
-		}
-		
-		for (ExternalServiceTaskDto task : tasks) {
-		
-			if (task.variables.requestType == null || task.variables.requestType.value == null) {
-				client.handleError(task.id, "ExternalTask does not contain a requestType", maxRetryCount, retryTimeout);
-				continue;
-			}
-				
-			if (task.variables.componentId == null || task.variables.componentId.value == null) {
-				client.handleError(task.id, "ExternalTask does not contain a componentId", maxRetryCount, retryTimeout);
-				continue;
-			}
-			
-			ComponentRequest request = createComponentRequest(task);
-			
-			try {
-				requestQueue.put(request);
-			} catch (InterruptedException e) {
-				Thread.currentThread().interrupt();
-			}
-		}
+	@Override
+	public boolean isConnected() {
+		return client == null ? false : client.isActive();
 	}
 	
-	public abstract ComponentRequest createComponentRequest(ExternalServiceTaskDto task);
+	public abstract ComponentRequest createComponentRequest(ExternalTask externalTask);
 
 	@Override
 	protected void doHandleComponentResponse(ComponentResponse response) {
-		if (response.getStatus() == RequestStatus.OK) {								
+		ExternalTask externalTask = externalTasks.remove(response.getRequest().getCorrelationId());
+
+		if (response.getStatus() == RequestStatus.OK) {
 			if (response.getOutputParameters().size() > 0) {
-				client.complete(response.getRequest().getCorrelationId(), response.getOutputParameters());
+				Map<String, Object> variables = new HashMap<>();
+				for (Variable var : response.getOutputParameters()) {
+					variables.put(var.getName(), var.getValue());
+				}
+				externalTaskService.complete(externalTask, variables);
 			} else {
-				client.complete(response.getRequest().getCorrelationId());
+
+				externalTaskService.complete(externalTask);
 			}
 		} else {
-			client.handleError(response.getRequest().getCorrelationId(), response.getMessage(), 0, 1000);
-		}		
+			externalTaskService.handleFailure(externalTask, response.getMessage(), "", maxRetryCount, retryTimeout);
+		}
 	}
-	
-
 
 
 }
