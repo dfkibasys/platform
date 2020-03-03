@@ -30,6 +30,7 @@ import de.dfki.cos.basys.platform.runtime.component.model.ComponentRequest;
 import de.dfki.cos.basys.platform.runtime.component.model.ComponentRequestStatus;
 import de.dfki.cos.basys.platform.runtime.component.model.ComponentResponse;
 import de.dfki.cos.basys.platform.runtime.component.model.RequestStatus;
+import de.dfki.cos.basys.platform.runtime.component.model.ServiceRequest;
 import de.dfki.cos.basys.platform.runtime.component.model.StatusRequest;
 import de.dfki.cos.basys.platform.runtime.component.model.Variable;
 
@@ -232,7 +233,10 @@ public class BasysComponent<T> extends ServiceComponent<T> implements ChannelLis
 		if (cr instanceof StatusRequest) {
 			StatusRequest req = (StatusRequest) cr;
 			status = handleStatusRequest(req);
-		} else {
+		} else if (cr instanceof ServiceRequest) {
+			ServiceRequest req = (ServiceRequest) cr;
+				status = handleServiceRequest(req);
+		} else{
 			status = new ComponentRequestStatus.Builder().status(RequestStatus.REJECTED).message("unknown request").build();
 		}
 		
@@ -259,6 +263,11 @@ public class BasysComponent<T> extends ServiceComponent<T> implements ChannelLis
 		} else {
 			status = new ComponentRequestStatus.Builder().componentId(getId()).status(RequestStatus.REJECTED).message("status channel not available").build();
 		}
+		return status;
+	}
+	
+	protected ComponentRequestStatus handleServiceRequest(ServiceRequest req) {
+		ComponentRequestStatus status = new ComponentRequestStatus.Builder().status(RequestStatus.REJECTED).message("unknown service request").build();
 		return status;
 	}
 	

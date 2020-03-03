@@ -4,7 +4,7 @@ package de.dfki.cos.basys.platform.runtime.component.model;
 
 import de.dfki.cos.basys.controlcomponent.ExecutionCommand;
 
-public class ExecutionCommandRequest extends ComponentRequest {
+public class ExecutionCommandRequest extends ControlComponentRequest {
 	
 	ExecutionCommand executionCommand;
 

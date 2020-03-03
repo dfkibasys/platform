@@ -2,28 +2,17 @@ package de.dfki.cos.basys.platform.runtime.processcontrol.impl;
 
 import java.util.Properties;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
-import java.util.function.Supplier;
 
-import com.google.common.eventbus.Subscribe;
-
+import de.dfki.cos.basys.common.component.ComponentContext;
 import de.dfki.cos.basys.common.component.ComponentException;
-import de.dfki.cos.basys.common.component.impl.ServiceManagerImpl;
-import de.dfki.cos.basys.controlcomponent.client.ControlComponentClient;
-import de.dfki.cos.basys.controlcomponent.client.ControlComponentClientImpl;
 import de.dfki.cos.basys.platform.runtime.component.BasysComponent;
 import de.dfki.cos.basys.platform.runtime.component.model.ComponentRequest;
 import de.dfki.cos.basys.platform.runtime.component.model.ComponentResponse;
 import de.dfki.cos.basys.platform.runtime.processcontrol.ComponentRequestExecutionManager;
 import de.dfki.cos.basys.platform.runtime.processcontrol.ComponentRequestIssuer;
-import de.dfki.cos.basys.platform.runtime.processcontrol.camunda.ControlComponentWorker;
 
-public class ComponentRequestExecutionManagerImpl extends BasysComponent<ComponentRequestIssuer>
-		implements ComponentRequestExecutionManager {
-
-	private ScheduledFuture<?> pollingTask;
-	private boolean pollRequestQueue = true;
+public class ComponentRequestExecutionManagerImpl extends AbstractComponentRequestExecutionManager {
 
 	public ComponentRequestExecutionManagerImpl(Properties config) {
 		super(config);
@@ -31,37 +20,7 @@ public class ComponentRequestExecutionManagerImpl extends BasysComponent<Compone
 //		ControlComponentWorker serviceProvider = new ControlComponentWorker(config);
 //		serviceManager = new ServiceManagerImpl<ComponentRequestIssuer>(config, serviceProvider);		
 	}
-
-	@Override
-	protected void doActivate() throws ComponentException {
-		super.doActivate();
-		pollRequestQueue = true;
-
-		pollingTask = this.context.getScheduledExecutorService().schedule(new Runnable() {
-
-			@Override
-			public void run() {
-				while (pollRequestQueue) {
-					ComponentRequest request = getService().pollNewComponentRequest();
-					if (request != null) {
-						executeComponentRequest(request);
-					} else {
-						LOGGER.debug("no requests polled");
-					}
-				}
-			}
-
-		}, 5000, TimeUnit.MILLISECONDS);
-
-	}
-
-	@Override
-	protected void doDeactivate() throws ComponentException {
-		super.doDeactivate();
-		pollRequestQueue = false;
-		pollingTask.cancel(true);
-	}
-
+	
 	@Override
 	public CompletableFuture<ComponentResponse> executeComponentRequest(ComponentRequest request) {
 		LOGGER.debug("executeComponentRequest");

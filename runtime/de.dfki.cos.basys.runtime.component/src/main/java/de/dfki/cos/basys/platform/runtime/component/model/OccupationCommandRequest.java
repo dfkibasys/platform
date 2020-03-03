@@ -4,7 +4,7 @@ package de.dfki.cos.basys.platform.runtime.component.model;
 
 import de.dfki.cos.basys.controlcomponent.OccupationCommand;
 
-public class OccupationCommandRequest extends ComponentRequest {
+public class OccupationCommandRequest extends ControlComponentRequest {
 	
 	OccupationCommand occupationCommand;
 

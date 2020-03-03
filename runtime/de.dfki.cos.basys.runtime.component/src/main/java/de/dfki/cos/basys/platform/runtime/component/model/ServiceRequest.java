@@ -5,20 +5,20 @@ package de.dfki.cos.basys.platform.runtime.component.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OperationModeRequest extends ControlComponentRequest {
-
-	String operationMode;
+public class ServiceRequest extends ComponentRequest {
+	
+	String serviceName;
 	List<Variable> inputParameters = new ArrayList<>();
 	List<Variable> outputParameters = new ArrayList<>();
 
-	public OperationModeRequest() {}
+	public ServiceRequest() {}
 	
-	public String getOperationMode() {
-		return operationMode;
+	public String getServiceName() {
+		return serviceName;
 	}
 
-	public void setOperationMode(String operationMode) {
-		this.operationMode = operationMode;
+	public void setServiceName(String serviceName) {
+		this.serviceName = serviceName;
 	}
 
 	public List<Variable> getInputParameters() {
@@ -36,5 +36,5 @@ public class OperationModeRequest extends ControlComponentRequest {
 	public void setOutputParameters(List<Variable> outputParameters) {
 		this.outputParameters = outputParameters;
 	}
-
-}
+	
+} 
