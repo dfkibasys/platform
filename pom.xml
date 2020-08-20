@@ -23,10 +23,12 @@
 		<module>provision</module>		
 		<module>models</module>		
 		<module>runtime</module>
+		<!--
 		<module>osgi</module>
 		<module>webapp</module>
 		<module>archetypes</module>
 		<module>karaf</module>
+		-->
 	</modules>
 
 	<scm>
