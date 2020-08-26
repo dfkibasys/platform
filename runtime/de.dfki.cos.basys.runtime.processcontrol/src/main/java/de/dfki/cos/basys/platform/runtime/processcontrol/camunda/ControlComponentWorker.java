@@ -29,13 +29,26 @@ public class ControlComponentWorker extends CamundaExternalTaskWorker {
 	}
 
 	public ComponentRequest createComponentRequest(ExternalTask externalTask) {		
+		
 		ComponentRequest r = null;
 		
 		String requestType = externalTask.getVariable("requestType");
+		if (requestType == null) {
+			externalTaskService.handleFailure(externalTask, "No requestType", "ExternalTask does not contain a requestType", maxRetryCount, retryTimeout);
+			return null;
+		}
+		
 		String componentId = externalTask.getVariable("componentId");
+		if (componentId == null) {
+			externalTaskService.handleFailure(externalTask, "No componentId", "ExternalTask does not contain a componentId", maxRetryCount, retryTimeout);
+			return null;
+		}
+		
 		String token = externalTask.getVariable("token");
-		String input = externalTask.getVariable("inputParameters");
-		String output = externalTask.getVariable("outputParameters");		
+		if (token == null) {
+			externalTaskService.handleFailure(externalTask, "No token", "ExternalTask does not contain a token", maxRetryCount, retryTimeout);
+			return null;
+		}
 		
 		switch (requestType) {
 		case "ExecutionCommandRequest":
@@ -56,6 +69,10 @@ public class ControlComponentWorker extends CamundaExternalTaskWorker {
 			req.setOperationMode(token);
 			ObjectMapper mapper = new ObjectMapper();
 			try {		
+				
+				String input = externalTask.getVariable("inputParameters");
+				String output = externalTask.getVariable("outputParameters");		
+				
 				if (input != null) {
 					List<Variable> inputParameters = mapper.readValue(input,new TypeReference<List<Variable>>(){});
 					LOGGER.debug(inputParameters.toString());

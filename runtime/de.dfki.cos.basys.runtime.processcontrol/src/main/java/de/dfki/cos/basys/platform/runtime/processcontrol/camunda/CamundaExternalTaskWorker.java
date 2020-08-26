@@ -47,6 +47,7 @@ public abstract class CamundaExternalTaskWorker extends AbstractComponentRequest
 
 	protected String topic = "undefined";
 	protected String workerId = this.getClass().getName();
+	protected String[] variables = {"componentId", "requestType", "token", "inputParameters", "outputParameters"};
 	protected int maxFetchCount = 1;
 	protected long lockDuration = 24 * 60 * 60 * 1000; // 1 day
 	protected long asyncResponseTimeout = 10000; // Long Polling request timeout in milliseconds
@@ -90,10 +91,15 @@ public abstract class CamundaExternalTaskWorker extends AbstractComponentRequest
 			maxRetryCount = Integer.parseInt(config.getProperty("maxRetryCount"));
 			LOGGER.info("maxRetryCount = " + maxRetryCount);
 		}	
-		
+
 		if (config.getProperty("retryTimeout") != null) {
 			retryTimeout = Integer.parseInt(config.getProperty("retryTimeout"));
 			LOGGER.info("retryTimeout = " + retryTimeout);
+		}
+		
+		if (config.getProperty("variables") != null) {
+			variables = config.getProperty("variables").split("\\s*,\\s*");
+			LOGGER.info("variables = " + variables.toString());
 		}			
 	}
 	
@@ -102,21 +108,11 @@ public abstract class CamundaExternalTaskWorker extends AbstractComponentRequest
 		if (this.externalTaskService == null) {
 			this.externalTaskService = externalTaskService;
 		}
-		
-		String requestType = externalTask.getVariable("requestType");
-		if (requestType == null) {
-			externalTaskService.handleFailure(externalTask, "No requestType", "ExternalTask does not contain a requestType", maxRetryCount, retryTimeout);
-			return;
-		}
-		
-		String componentId = externalTask.getVariable("componentId");
-		if (componentId == null) {
-			externalTaskService.handleFailure(externalTask, "No componentId", "ExternalTask does not contain a componentId", maxRetryCount, retryTimeout);
-			return;
-		}
-		
-		externalTasks.put(externalTask.getId(), externalTask);	
+			
 		ComponentRequest request = createComponentRequest(externalTask);
+		if (request != null) {
+			externalTasks.put(externalTask.getId(), externalTask);
+		}
 		
 		try {
 			requestQueue.put(request);
@@ -141,7 +137,7 @@ public abstract class CamundaExternalTaskWorker extends AbstractComponentRequest
 		
 		subscription = client.subscribe(topic)
 			.lockDuration(lockDuration)
-			.variables("componentId", "requestType", "token", "inputParameters", "outputParameters")
+			.variables(variables)
 			.handler(this)
 			.open();		
 		
