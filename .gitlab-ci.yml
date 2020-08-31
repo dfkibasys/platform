@@ -16,6 +16,9 @@ stages:
 
 install_skip_tests:
   stage: build
+  tags:
+    - basys
+    - maven
   script:
     - mvn -V $MAVEN_CLI_OPTS clean install -DskipTests
   except:
@@ -24,11 +27,17 @@ install_skip_tests:
 
 install:
   stage: test
+  tags:
+    - basys
+    - maven
   script:
     - mvn $MAVEN_CLI_OPTS clean install
 
 deploy:
   stage: deploy
+  tags:
+    - basys
+    - maven
   script:
     - mvn $MAVEN_CLI_OPTS clean deploy
   only:
