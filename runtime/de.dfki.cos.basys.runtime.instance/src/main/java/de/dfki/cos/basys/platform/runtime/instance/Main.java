@@ -16,9 +16,12 @@ import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
+import org.eclipse.basyx.aas.registration.api.IAASRegistryService;
+import org.eclipse.basyx.aas.registration.proxy.AASRegistryProxy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import de.dfki.cos.basys.aas.services.ServletContainerComponent;
 import de.dfki.cos.basys.common.component.Component;
 import de.dfki.cos.basys.common.component.ComponentContext;
 import de.dfki.cos.basys.common.component.ComponentException;
@@ -44,8 +47,11 @@ public class Main {
 	private static Properties channelPoolConfig = new Properties();
 	private static Properties componentRegistryConfig = new Properties();
 	private static Properties componentManagerConfig = new Properties();
+	private static Properties servletContainerConfig = new Properties(ServletContainerComponent.getDefaultConfig());
+
+	private static String aasRegistryEndpoint = "http://localhost:4999";
 	
-	boolean debug = false;
+	private static String configFolderPath = "config/";
 
 	public static void main(String[] args) throws Exception {
 		Options options = new Options();
@@ -61,6 +67,18 @@ public class Main {
 		Option componentsFolderOption = new Option("cf", "componentConfigFolder", true, "folder containing component configurations");
 		componentsFolderOption.setRequired(false);
 		options.addOption(componentsFolderOption);
+		
+		Option zkOption = new Option("zk", "zookeeper", true, "the Zookeeper connection string for the registry service, default 'localhost:2181'");
+		zkOption.setRequired(false);		
+		options.addOption(zkOption);
+		
+		Option aarRegistryOption = new Option("r", "aas-registry", true, "aas registry rest endpoint");
+		aarRegistryOption.setRequired(false);
+		options.addOption(aarRegistryOption);
+		
+		Option middlewareOption = new Option("cs", "connectionString", true, "connection string to connect to communication middleware");
+		aarRegistryOption.setRequired(false);
+		options.addOption(aarRegistryOption);
 
 		CommandLineParser parser = new DefaultParser();
 		HelpFormatter formatter = new HelpFormatter();
@@ -69,28 +87,72 @@ public class Main {
 		try {
 			cmd = parser.parse(options, args);
 			if (cmd.hasOption("c")) {
-				String configFolderPath = cmd.getOptionValue("c");
-		
-				Path channelPoolConfigPath = Paths.get(configFolderPath, "channel-pool.properties");
-				channelPoolConfig.load(new FileInputStream(channelPoolConfigPath.toFile()));
-
-				Path componentRegistryConfigPath = Paths.get(configFolderPath, "component-registry.properties");
-				componentRegistryConfig.load(new FileInputStream(componentRegistryConfigPath.toFile()));
-
-				Path componentManagerConfigPath = Paths.get(configFolderPath, "component-manager.properties");
-				componentManagerConfig.load(new FileInputStream(componentManagerConfigPath.toFile()));							
-			}			
-
-			if (cmd.hasOption("cf")) {
-				componentManagerConfig.setProperty("serviceConnectionString", cmd.getOptionValue("cf"));
+				configFolderPath = cmd.getOptionValue("c");
 			}
 
+			Path channelPoolConfigPath = Paths.get(configFolderPath, "channel-pool.properties");
+			if (channelPoolConfigPath.toFile().exists()) {
+				channelPoolConfig.load(new FileInputStream(channelPoolConfigPath.toFile()));
+				LOGGER.info("channel-pool.properties loaded: " + channelPoolConfigPath.toFile());
+			} else {
+				LOGGER.warn("channel-pool.properties not found in " + channelPoolConfigPath.toFile() + ". Using defaults.");
+			}			
+			
+			Path componentRegistryConfigPath = Paths.get(configFolderPath, "component-registry.properties");
+			if (componentRegistryConfigPath.toFile().exists()) {
+				componentRegistryConfig.load(new FileInputStream(componentRegistryConfigPath.toFile()));
+				LOGGER.info("component-registry.properties loaded: " + componentRegistryConfigPath.toFile());
+			} else {
+				LOGGER.warn("component-registry.properties not found in " + componentRegistryConfigPath.toFile() + ". Using defaults.");
+			}			
+			
+			Path componentManagerConfigPath = Paths.get(configFolderPath, "component-manager.properties");		
+			if (componentManagerConfigPath.toFile().exists()) {
+				componentManagerConfig.load(new FileInputStream(componentManagerConfigPath.toFile()));
+				LOGGER.info("component-manager.properties loaded: " + componentManagerConfigPath.toFile());
+			} else {
+				LOGGER.warn("component-manager.properties not found in " + componentManagerConfigPath.toFile() + ". Using defaults.");
+			}
+			
+			Path servletContainerConfigPath = Paths.get(configFolderPath, "servlet-container.properties");
+			if (servletContainerConfigPath.toFile().exists()) {
+				servletContainerConfig.load(new FileInputStream(servletContainerConfigPath.toFile()));
+				LOGGER.info("servlet-container.properties loaded: " + servletContainerConfigPath.toFile());
+			} else {
+				LOGGER.warn("servlet-container.properties not found in " + servletContainerConfigPath.toFile() + ". Using defaults.");
+			}
+
+			if (cmd.hasOption("cf")) {
+				componentManagerConfig.setProperty(StringConstants.serviceConnectionString, cmd.getOptionValue("cf"));
+			} else {
+				componentManagerConfig.setProperty(StringConstants.serviceConnectionString, "components/");
+			}
+			
+			if (cmd.hasOption("cs")) {
+				channelPoolConfig.setProperty(StringConstants.serviceConnectionString, cmd.getOptionValue("cs"));	
+			}
+			
+			if (cmd.hasOption("zk")) {
+				componentRegistryConfig.setProperty(StringConstants.serviceConnectionString, cmd.getOptionValue("zk"));			
+			}
+			
+			if (cmd.hasOption("r")) {
+				aasRegistryEndpoint = cmd.getOptionValue("r");
+			}
+			
 		} catch (ParseException e) {
 			System.out.println(e.getMessage());
 			formatter.printHelp("utility-name", options);
 
 			System.exit(1);
 		}
+		
+		// 0. create AAS registry client
+		IAASRegistryService aasRegistry = new AASRegistryProxy(aasRegistryEndpoint);
+		context.setAasRegistry(aasRegistry);
+		
+		ServletContainerComponent servletContainer = new ServletContainerComponent(servletContainerConfig);
+		servletContainer.activate(context);	
 		
 		// 1. establish communication
 		if (channelPoolConfig.containsKey("clientId")) {
@@ -124,6 +186,9 @@ public class Main {
 		
 		// 4. activate component manager
 		componentManager.activate(context);
+		
+		if (servletContainer != null)
+			componentManager.addComponent(servletContainer);
 		
 		// 5. define graceful shutdown		
 		Runtime.getRuntime().addShutdownHook(new Thread() {

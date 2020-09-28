@@ -9,10 +9,11 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
+import de.dfki.cos.basys.aas.component.AasComponentContext;
 import de.dfki.cos.basys.common.component.ComponentContext;
 import de.dfki.cos.basys.platform.model.runtime.communication.ChannelPool;
 
-public class BasysComponentContext extends ComponentContext {
+public class BasysComponentContext extends AasComponentContext {
 
 	protected ChannelPool sharedChannelPool;
 	protected ResourceSet sharedResourceSet;
@@ -23,8 +24,9 @@ public class BasysComponentContext extends ComponentContext {
 	public static BasysComponentContext getStaticContext() {
 		if (staticContext == null) {
 			staticContext = new BasysComponentContext();
-			staticContext.setEventBus(ComponentContext.getStaticContext().getEventBus());
-			staticContext.setScheduledExecutorService(ComponentContext.getStaticContext().getScheduledExecutorService());
+			staticContext.setEventBus(AasComponentContext.getStaticContext().getEventBus());
+			staticContext.setScheduledExecutorService(AasComponentContext.getStaticContext().getScheduledExecutorService());
+			staticContext.setAasRegistry(AasComponentContext.getStaticContext().getAasRegistry());
 			//staticContext.setSharedResourceSet(new BasysResourceSetImpl.Factory().createResourceSet());
 		
 			final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.ENGLISH);

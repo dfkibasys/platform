@@ -26,10 +26,23 @@
 
 	<dependencies>
 
-
+<!-- 
 		<dependency>
 			<groupId>de.dfki.cos.basys.common</groupId>
 			<artifactId>de.dfki.cos.basys.common.component</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		 -->
+		
+		<!-- <dependency>
+			<groupId>de.dfki.cos.basys.aas</groupId>
+			<artifactId>de.dfki.cos.basys.aas.component</artifactId>
+			<version>${project.version}</version>
+		</dependency> -->
+	
+		<dependency>
+			<groupId>de.dfki.cos.basys.aas</groupId>
+			<artifactId>de.dfki.cos.basys.aas.services</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 				
