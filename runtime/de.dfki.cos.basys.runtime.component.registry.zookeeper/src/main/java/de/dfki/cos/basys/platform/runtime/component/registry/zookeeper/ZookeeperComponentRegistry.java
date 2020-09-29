@@ -40,7 +40,7 @@ public class ZookeeperComponentRegistry extends ServiceComponent<ZookeeperClient
 	public ZookeeperComponentRegistry(Properties config) {
 		super(config);	
 		
-		if (!config.contains(StringConstants.serviceConnectionString)) {
+		if (!config.containsKey(StringConstants.serviceConnectionString)) {
 			config.setProperty(StringConstants.serviceConnectionString, defaultConnectionString);			
 			LOGGER.warn("External connection string not provided. Defaulting to " + defaultConnectionString);
 		}
