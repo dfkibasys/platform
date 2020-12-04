@@ -18,6 +18,7 @@ import de.dfki.cos.basys.platform.runtime.component.model.ComponentRequestEnvelo
 import de.dfki.cos.basys.platform.runtime.component.model.ComponentRequestStatus;
 import de.dfki.cos.basys.platform.runtime.component.model.ComponentResponse;
 import de.dfki.cos.basys.platform.runtime.component.model.RequestStatus;
+import de.dfki.cos.basys.platform.runtime.component.model.ServiceRequest;
 
 public class ComponentRequestExecutor implements ChannelListener {
 
@@ -28,7 +29,11 @@ public class ComponentRequestExecutor implements ChannelListener {
 
 	public ComponentRequestExecutor(ComponentRequest request) {
 		this.envelop = new ComponentRequestEnvelop(request);
-		remoteComponent = new ComponentController(envelop.getRequest().getComponentId(), this);
+		if (request instanceof ServiceRequest) {
+			remoteComponent = new ComponentController(envelop.getRequest().getComponentId(), StringConstants.categoryService, this);
+		} else {
+			remoteComponent = new ComponentController(envelop.getRequest().getComponentId(), this);
+		}
 	}
 
 	public ComponentRequest getRequest() {

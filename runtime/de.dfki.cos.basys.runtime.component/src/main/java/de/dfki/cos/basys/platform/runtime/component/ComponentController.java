@@ -1,6 +1,7 @@
 package de.dfki.cos.basys.platform.runtime.component;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -33,6 +34,8 @@ public class ComponentController implements ChannelListener {
 	protected ChannelListener listener = null;
 
 	protected boolean isConnected = false;
+	
+	protected String componentCategory = StringConstants.categoryDevice;
 //
 //	private Lock lock;
 //	private Condition executeCondition;
@@ -41,11 +44,20 @@ public class ComponentController implements ChannelListener {
 	
 	
 	public ComponentController(String componentId) {
-		this(componentId, null);
+		this(componentId, StringConstants.categoryDevice, null);
 	}
 
 	public ComponentController(String componentId, ChannelListener listener) {
+		this (componentId, StringConstants.categoryDevice, listener);
+	}
+	
+	public ComponentController(String componentId, String componentCategory) {
+		this(componentId, componentCategory, null);
+	}
+
+	public ComponentController(String componentId, String componentCategory, ChannelListener listener) {
 		this.componentId = componentId;
+		this.componentCategory = componentCategory;
 		this.listener = listener;
 		//this.lock = new ReentrantLock();
 		//this.executeCondition = lock.newCondition();
@@ -60,7 +72,10 @@ public class ComponentController implements ChannelListener {
 		// to avoid two controllers can control a component at the same time.
 		this.context = context;
 
-		componentInfo = context.getComponentRegistry().getComponentById(StringConstants.categoryDevice, componentId);
+		List<ComponentInfo> comps = context.getComponentRegistry().getComponents("SERVICE_COMPONENT");
+		
+		
+		componentInfo = context.getComponentRegistry().getComponentById(componentCategory, componentId);
 		
 		String inChannelName = componentInfo.getProperty(StringConstants.inChannelName);
 		String outChannelName = componentInfo.getProperty(StringConstants.outChannelName);
