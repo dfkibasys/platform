@@ -44,20 +44,20 @@
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/org.apache.curator/curator-framework -->
-<!--  		<dependency>
+  		<dependency>
 			<groupId>org.apache.curator</groupId>
 			<artifactId>curator-framework</artifactId>
 			<version>${curator.version}</version>
 		</dependency> 
- -->
+
 		<!-- https://mvnrepository.com/artifact/org.apache.curator/curator-x-discovery -->
-<!-- 		<dependency>
+		<dependency>
 			<groupId>org.apache.curator</groupId>
 			<artifactId>curator-x-discovery</artifactId>
 			<version>${curator-x.version}</version>
-		</dependency>  -->
+		</dependency>  
 
-<!-- 		 <dependency>
+ 		 <dependency>
 			<groupId>org.apache.curator</groupId>
 			<artifactId>curator-client</artifactId>
 			<version>${curator.version}</version>
@@ -71,9 +71,9 @@
 					<artifactId>log4j</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency> -->
+		</dependency>
 		
- 
+ <!-- 
 		<dependency>
 			<groupId>de.dfki.cos.basys.platform.wrapper-bundle-settings</groupId>
 			<artifactId>org.apache.curator.client</artifactId>
@@ -97,7 +97,7 @@
 			<artifactId>org.apache.zookeeper</artifactId>
 			<version>0.2.7-SNAPSHOT</version>			
 		</dependency>
-
+-->
  
 <!-- 		<dependency>
 			<groupId>com.google.guava</groupId>
