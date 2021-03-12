@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.threeten.bp.OffsetDateTime;
 
 import com.google.gson.stream.JsonReader;
@@ -20,6 +22,7 @@ import de.dfki.cos.basys.platform.runtime.processcontrol.deployment.DeploymentSe
 
 public class CamundaDeploymentService implements ServiceProvider<DeploymentService>, DeploymentService {
 
+	public final Logger LOGGER = LoggerFactory.getLogger(getClass());
 	private DeploymentApi api = null;
 	
 	@Override
@@ -48,9 +51,8 @@ public class CamundaDeploymentService implements ServiceProvider<DeploymentServi
 	}
 
 	@Override
-	public String createDeployment(String filePath) {
-		
-		//byte[] data = FileUtils.readFileToByteArray(new File(filePath));
+	public String createDeployment(String filePath) {		
+		LOGGER.debug("create deployment " + filePath);
 		
 		String tenantId = null;
         String deploymentSource = "BaSys Process Deployer";
@@ -61,25 +63,31 @@ public class CamundaDeploymentService implements ServiceProvider<DeploymentServi
 			DeploymentWithDefinitionsDto response = api.createDeployment(tenantId, deploymentSource, deployChangedOnly, enableDuplicateFiltering, deploymentName, new File(filePath));
 			return response.getId();
 		} catch (ApiException e) {
-			e.printStackTrace();
+			LOGGER.error("could not create deployment " + filePath);
+			LOGGER.error(e.getMessage());	
 		}
         return null;
 	}
 	
 	@Override
 	public void deleteDeployment(String id) {		
+		LOGGER.debug("delete deployment " + id);
+		
         Boolean cascade = true;
         Boolean skipCustomListeners = null;
         Boolean skipIoMappings = null;
         try {
 			api.deleteDeployment(id, cascade, skipCustomListeners, skipIoMappings);
 		} catch (ApiException e) {
-			e.printStackTrace();
+			LOGGER.error("could not delete deployment " + id);		
+			LOGGER.error(e.getMessage());	
 		}
 	}
 
 	@Override
-	public void clearDeployments() {
+	public void clearDeployments() {		
+		LOGGER.debug("clear deployments");
+		
 		String id = null;
         String name = null;
         String nameLike = null;

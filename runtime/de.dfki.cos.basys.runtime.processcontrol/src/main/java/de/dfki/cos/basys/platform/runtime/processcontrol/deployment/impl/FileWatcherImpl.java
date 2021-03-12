@@ -2,42 +2,29 @@ package de.dfki.cos.basys.platform.runtime.processcontrol.deployment.impl;
 
 import java.io.File;
 import java.io.FileFilter;
-import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
-import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardWatchEventKinds;
 import java.nio.file.WatchEvent;
 import java.nio.file.WatchKey;
 import java.nio.file.WatchService;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.Properties;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
-
-import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.filefilter.SuffixFileFilter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import com.google.gson.Gson;
-import com.google.gson.stream.JsonReader;
-
-import de.dfki.cos.basys.common.component.Component;
 import de.dfki.cos.basys.common.component.ComponentContext;
 import de.dfki.cos.basys.common.component.ServiceProvider;
-import de.dfki.cos.basys.common.component.StringConstants;
 import de.dfki.cos.basys.platform.runtime.processcontrol.deployment.impl.FileWatcherEvent.Type;
 
 public class FileWatcherImpl implements ServiceProvider<FileWatcherImpl> {
 
+	public final Logger LOGGER = LoggerFactory.getLogger(getClass());
 	private String rootFolder = null;
 	private boolean recursive, watchFolder = false;
 	private String[] suffixes = { ".json", ".properties" };
@@ -75,17 +62,15 @@ public class FileWatcherImpl implements ServiceProvider<FileWatcherImpl> {
 							try {
 								WatchKey key = watcher.take();
 								List<WatchEvent<?>> eventList = key.pollEvents();
-								System.out.println("size = " + eventList.size());
+								LOGGER.debug("size = " + eventList.size());
 								for (WatchEvent<?> e : eventList) {
-
-									System.out.print(e.kind() + " -> ");
 									Path name = (Path) e.context();
 									Path filePath = path.resolve(name);
-									System.out.print(filePath);
+									
 									if (Files.isDirectory(filePath)) {
-										System.out.println(" <dir>");
+										LOGGER.debug(e.kind() + " -> " + filePath.toString() + " <dir>");
 									} else {
-										System.out.println(" <file>");
+										LOGGER.debug(e.kind() + " -> " + filePath.toString() + " <file>");
 										if (e.kind() == StandardWatchEventKinds.ENTRY_CREATE) {
 											context.getEventBus().post(new FileWatcherEvent(Type.FILE_CREATED, filePath.toString()));											
 										}
